@@ -43,6 +43,7 @@ PY_Cstruct1_cls_tp_del (PY_Cstruct1_cls *self)
 
 // ----------------------------------------
 // Function:  Cstruct1_cls +name(Cstruct1_cls_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int ifield

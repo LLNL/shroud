@@ -49,6 +49,7 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 
 // ----------------------------------------
 // Function:  Cstruct_numpy +name(Cstruct_numpy_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nitems

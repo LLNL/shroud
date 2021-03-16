@@ -14,6 +14,9 @@
                                 "_constructor": true,
                                 "name": "Cstruct1_cls_ctor"
                             },
+                            "metaattrs": {
+                                "intent": "ctor"
+                            },
                             "params": [
                                 {
                                     "declarator": {
@@ -256,7 +259,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -311,8 +314,8 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_inout_class",
-                            "stmt1": "py_struct_&_inout_class",
+                            "stmt0": "py_inout_struct_&_class",
+                            "stmt1": "py_inout_struct_&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -336,7 +339,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -350,7 +353,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -409,8 +412,8 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_in_class",
-                            "stmt1": "py_struct_&_in_class",
+                            "stmt0": "py_in_struct_&_class",
+                            "stmt1": "py_in_struct_&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -434,7 +437,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -446,6 +449,9 @@
                     "declarator": {
                         "name": "passStructByReferenceInoutCls",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -503,8 +509,8 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_inout_class",
-                            "stmt1": "py_struct_&_inout_class",
+                            "stmt0": "py_inout_struct_&_class",
+                            "stmt1": "py_inout_struct_&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -521,6 +527,9 @@
                     "declarator": {
                         "name": "passStructByReferenceOutCls",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -577,8 +586,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_out_class",
-                            "stmt1": "py_struct_&_out_class",
+                            "stmt0": "py_out_struct_&_class",
+                            "stmt1": "py_out_struct_&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -602,7 +611,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -652,7 +661,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_bool_scalar_result",
+                        "stmt0": "c_function_bool_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -664,9 +673,9 @@
                         "f_type": "logical",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_BOOL",
-                        "stmt0": "f_bool_scalar_result",
-                        "stmt1": "f_bool_result",
-                        "stmtc0": "c_bool_scalar_result",
+                        "stmt0": "f_function_bool_scalar",
+                        "stmt1": "f_function_bool",
+                        "stmtc0": "c_function_bool_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -688,7 +697,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -744,7 +753,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_data",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -760,9 +769,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(data)",
-                            "stmt0": "f_native_*_in",
+                            "stmt0": "f_in_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in",
+                            "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -782,8 +791,8 @@
                             "py_var": "SHPy_data",
                             "pytmp_var": "SHTPy_data",
                             "size_var": "SHSize_data",
-                            "stmt0": "py_native_*_in_pointer_numpy",
-                            "stmt1": "py_native_*_in_pointer_numpy",
+                            "stmt0": "py_in_native_*_pointer_numpy",
+                            "stmt1": "py_in_native_*_pointer_numpy",
                             "value_var": "SHValue_data"
                         }
                     }
@@ -826,7 +835,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_bool_scalar_result",
+                        "stmt0": "c_function_bool_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -838,9 +847,9 @@
                         "f_type": "logical",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_BOOL",
-                        "stmt0": "f_bool_scalar_result",
-                        "stmt1": "f_bool_result",
-                        "stmtc0": "c_bool_scalar_result",
+                        "stmt0": "f_function_bool_scalar",
+                        "stmt1": "f_function_bool",
+                        "stmtc0": "c_function_bool_scalar",
                         "stmtc1": "c_default"
                     },
                     "fmtpy": {
@@ -857,8 +866,8 @@
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_bool_scalar_result",
-                        "stmt1": "py_bool_result",
+                        "stmt0": "py_function_bool_scalar",
+                        "stmt1": "py_function_bool",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -874,6 +883,9 @@
                     "declarator": {
                         "name": "defaultArgsInOut",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -962,7 +974,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_in1",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -974,9 +986,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "in1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -995,7 +1007,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_out1",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1007,9 +1019,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "out1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1028,7 +1040,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_out2",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1040,9 +1052,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "out2",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1065,9 +1077,9 @@
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "default_args_in_out"
                 }
             },
@@ -1086,6 +1098,9 @@
                     "declarator": {
                         "name": "defaultArgsInOut",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1192,7 +1207,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
                             "shadow_var": "SHadow_flag",
-                            "stmt0": "c_bool_scalar_in",
+                            "stmt0": "c_in_bool_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1204,9 +1219,9 @@
                             "f_type": "logical",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt0": "f_bool_scalar_in",
-                            "stmt1": "f_bool_in",
-                            "stmtc0": "c_bool_scalar_in",
+                            "stmt0": "f_in_bool_scalar",
+                            "stmt1": "f_in_bool",
+                            "stmtc0": "c_in_bool_scalar",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1226,8 +1241,8 @@
                             "py_object": "PyObject",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt0": "py_bool_scalar_in",
-                            "stmt1": "py_bool_in",
+                            "stmt0": "py_in_bool_scalar",
+                            "stmt1": "py_in_bool",
                             "value_var": "SHValue_flag"
                         }
                     },
@@ -1246,7 +1261,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_in1",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1258,9 +1273,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "in1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1278,7 +1293,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_in1",
                             "size_var": "SHSize_in1",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_in1"
                         }
@@ -1298,7 +1313,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_out1",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1310,9 +1325,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "out1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1331,8 +1346,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out1",
                             "size_var": "SHSize_out1",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_out1"
                         }
                     },
@@ -1351,7 +1366,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_out2",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1363,9 +1378,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "out2",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -1384,8 +1399,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out2",
                             "size_var": "SHSize_out2",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_out2"
                         }
                     }
@@ -1410,9 +1425,9 @@
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_1",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "default_args_in_out"
                 }
             }
@@ -1526,7 +1541,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "function"
                             },
                             "params": [
                                 {
@@ -1580,8 +1595,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "shadow_var": "SHadow_arg",
-                                    "stmt0": "c_struct_&_inout",
-                                    "stmt1": "c_struct"
+                                    "stmt0": "c_inout_struct_&",
+                                    "stmt1": "c_inout_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -1591,10 +1606,10 @@
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_struct_&_inout",
+                                    "stmt0": "f_inout_struct_&",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_struct_&_inout",
-                                    "stmtc1": "c_struct"
+                                    "stmtc0": "c_inout_struct_&",
+                                    "stmtc1": "c_inout_struct"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1617,8 +1632,8 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_struct_&_inout_numpy",
-                                    "stmt1": "py_struct_&_inout_numpy",
+                                    "stmt0": "py_inout_struct_&_numpy",
+                                    "stmt1": "py_inout_struct_&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -1659,7 +1674,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
+                                "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
@@ -1671,9 +1686,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             },
                             "fmtpy": {
@@ -1689,7 +1704,7 @@
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_native_scalar_result",
+                                "stmt0": "py_function_native_scalar",
                                 "stmt1": "py_default",
                                 "value_var": "SHValue_rv"
                             }
@@ -1703,7 +1718,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "function"
                             },
                             "params": [
                                 {
@@ -1758,8 +1773,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "shadow_var": "SHadow_arg",
-                                    "stmt0": "c_struct_&_in",
-                                    "stmt1": "c_struct"
+                                    "stmt0": "c_in_struct_&",
+                                    "stmt1": "c_in_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -1769,10 +1784,10 @@
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_struct_&_in",
+                                    "stmt0": "f_in_struct_&",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_struct_&_in",
-                                    "stmtc1": "c_struct"
+                                    "stmtc0": "c_in_struct_&",
+                                    "stmtc1": "c_in_struct"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1795,8 +1810,8 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_struct_&_in_numpy",
-                                    "stmt1": "py_struct_&_in_numpy",
+                                    "stmt0": "py_in_struct_&_numpy",
+                                    "stmt1": "py_in_struct_&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -1837,7 +1852,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
+                                "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
@@ -1849,9 +1864,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             },
                             "fmtpy": {
@@ -1867,7 +1882,7 @@
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_native_scalar_result",
+                                "stmt0": "py_function_native_scalar",
                                 "stmt1": "py_default",
                                 "value_var": "SHValue_rv"
                             }
@@ -1879,6 +1894,9 @@
                             "declarator": {
                                 "name": "passStructByReferenceInout",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1932,8 +1950,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "shadow_var": "SHadow_arg",
-                                    "stmt0": "c_struct_&_inout",
-                                    "stmt1": "c_struct"
+                                    "stmt0": "c_inout_struct_&",
+                                    "stmt1": "c_inout_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -1943,10 +1961,10 @@
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_struct_&_inout",
+                                    "stmt0": "f_inout_struct_&",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_struct_&_inout",
-                                    "stmtc1": "c_struct"
+                                    "stmtc0": "c_inout_struct_&",
+                                    "stmtc1": "c_inout_struct"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -1969,8 +1987,8 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_struct_&_inout_numpy",
-                                    "stmt1": "py_struct_&_inout_numpy",
+                                    "stmt0": "py_inout_struct_&_numpy",
+                                    "stmt1": "py_inout_struct_&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -1993,9 +2011,9 @@
                             "PY_name_impl": "PY_passStructByReferenceInout",
                             "function_name": "passStructByReferenceInout",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "pass_struct_by_reference_inout"
                         }
                     },
@@ -2005,6 +2023,9 @@
                             "declarator": {
                                 "name": "passStructByReferenceOut",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -2058,8 +2079,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "shadow_var": "SHadow_arg",
-                                    "stmt0": "c_struct_&_out",
-                                    "stmt1": "c_struct"
+                                    "stmt0": "c_out_struct_&",
+                                    "stmt1": "c_out_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -2069,10 +2090,10 @@
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_struct_&_out",
+                                    "stmt0": "f_out_struct_&",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_struct_&_out",
-                                    "stmtc1": "c_struct"
+                                    "stmtc0": "c_out_struct_&",
+                                    "stmtc1": "c_out_struct"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -2094,8 +2115,8 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt0": "py_struct_&_out_numpy",
-                                    "stmt1": "py_struct_&_out_numpy",
+                                    "stmt0": "py_out_struct_&_numpy",
+                                    "stmt1": "py_out_struct_&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -2118,9 +2139,9 @@
                             "PY_name_impl": "PY_passStructByReferenceOut",
                             "function_name": "passStructByReferenceOut",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "pass_struct_by_reference_out"
                         }
                     }

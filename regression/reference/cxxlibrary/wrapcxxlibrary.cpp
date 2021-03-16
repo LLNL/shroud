@@ -21,8 +21,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Attrs:     +intent(result)
-// Requested: c_bool_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_bool_scalar
 // Match:     c_default
 bool CXX_default_ptr_is_null_0(void)
 {
@@ -34,13 +34,13 @@ bool CXX_default_ptr_is_null_0(void)
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Attrs:     +intent(result)
-// Requested: c_bool_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_bool_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
-// Requested: c_native_*_in
+// Requested: c_in_native_*
 // Match:     c_default
 bool CXX_default_ptr_is_null_1(double * data)
 {
@@ -52,22 +52,22 @@ bool CXX_default_ptr_is_null_1(double * data)
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 {
@@ -78,27 +78,27 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  bool flag=false +value
 // Attrs:     +intent(in)
-// Requested: c_bool_scalar_in
+// Requested: c_in_bool_scalar
 // Match:     c_default
 void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     bool flag)

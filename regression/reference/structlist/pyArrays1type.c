@@ -49,6 +49,7 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 
 // ----------------------------------------
 // Function:  Arrays1 +name(Arrays1_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char name[20]

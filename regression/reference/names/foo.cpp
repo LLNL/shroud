@@ -19,8 +19,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Attrs:     +intent(result)
-// Exact:     c_shadow_scalar_ctor
+// Attrs:     +intent(ctor)
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHadow_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor
@@ -33,8 +34,8 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHadow_rv)
 
 // ----------------------------------------
 // Function:  void method1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 {
     ns0::Names *SH_this = static_cast<ns0::Names *>(self->addr);
@@ -45,8 +46,8 @@ void XXX_TES_ns0_Names_method1(TES_ns0_Names * self)
 
 // ----------------------------------------
 // Function:  void method2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2)
 {
     ns0::Names *SH_this2 = static_cast<ns0::Names *>(self2->addr);

@@ -891,14 +891,12 @@ class Wrapc(util.WrapperMixin):
         #            # i.e. This method returns a wrapped type
         #            self.header_forward[result_typemap.c_type] = True
 
+        sintent = ast.metaattrs["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
-            result_blk = None
-            if is_dtor:
-                stmts = ["c", "shadow", "dtor"]
-            else:
-                stmts = ["c"]
+            # intent will be "subroutine" or "dtor".
+            stmts = ["c", sintent]
             result_blk = statements.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
@@ -906,11 +904,8 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = ast.get_indirect_stmt()
-            if is_ctor:
-                sintent = "ctor"
-            else:
-                sintent = "result"
-            stmts = ["c", result_typemap.sgroup, spointer, sintent,
+            # intent will be "function" or "ctor".
+            stmts = ["c", sintent, result_typemap.sgroup, spointer,
                      generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
 
@@ -1078,7 +1073,7 @@ class Wrapc(util.WrapperMixin):
                 return_deref_attr = c_meta["deref"]
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
-                    "c", sgroup, spointer, "result",
+                    "c", "function", sgroup, spointer,
                     generated_suffix, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
@@ -1093,7 +1088,7 @@ class Wrapc(util.WrapperMixin):
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
-                stmts = ["c", sgroup, spointer, c_meta["intent"],
+                stmts = ["c", c_meta["intent"], sgroup, spointer,
                          arg.stmts_suffix, c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 

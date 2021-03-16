@@ -40,6 +40,7 @@ PY_User2_tp_del (PY_User2 *self)
 
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 #ifdef USE_CLASS3_A
 static PyObject *
@@ -57,11 +58,12 @@ PY_exfunc_0(
 
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 #ifndef USE_CLASS3_A
 static PyObject *

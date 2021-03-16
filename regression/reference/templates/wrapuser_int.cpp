@@ -21,17 +21,17 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void nested
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,
     double arg2)

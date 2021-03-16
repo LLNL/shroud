@@ -42,12 +42,13 @@ module library_three_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
@@ -65,17 +66,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  CustomType arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine class1_method1(obj, arg1)
         use iso_c_binding, only : C_INT

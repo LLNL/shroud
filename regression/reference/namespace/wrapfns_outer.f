@@ -31,8 +31,9 @@ module ns_outer_mod
 
         ! ----------------------------------------
         ! Function:  void One
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine one() &
                 bind(C, name="NS_outer_one")
             implicit none

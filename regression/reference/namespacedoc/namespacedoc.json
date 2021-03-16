@@ -17,6 +17,9 @@
                         "name": "worker3",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -48,9 +51,9 @@
                     "PY_name_impl": "PY_worker3",
                     "function_name": "worker3",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "worker3"
                 }
             },
@@ -60,6 +63,9 @@
                     "declarator": {
                         "name": "worker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [],
                     "specifier": [
@@ -92,9 +98,9 @@
                     "PY_name_impl": "PY_worker",
                     "function_name": "worker",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "worker"
                 }
             }
@@ -110,6 +116,9 @@
                             "declarator": {
                                 "name": "worker",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -142,9 +151,9 @@
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "worker"
                         }
                     }
@@ -189,6 +198,9 @@
                                 "name": "worker",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -220,9 +232,9 @@
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "worker"
                         }
                     }
@@ -267,6 +279,9 @@
                                 "name": "worker4",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -298,9 +313,9 @@
                             "PY_name_impl": "PY_worker4",
                             "function_name": "worker4",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "worker4"
                         }
                     }

@@ -21,6 +21,9 @@
                         "name": "UpdateAsFloat",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -70,7 +73,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -82,9 +85,9 @@
                             "f_type": "real(C_FLOAT)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -106,9 +109,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "UpdateAsFloat",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "update_as_float"
                 }
             },
@@ -118,6 +121,9 @@
                     "declarator": {
                         "name": "UpdateAsDouble",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -168,7 +174,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -180,9 +186,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -204,9 +210,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "UpdateAsDouble",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "update_as_double"
                 }
             },
@@ -218,7 +224,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -267,7 +273,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -279,9 +285,9 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -293,6 +299,9 @@
                     "declarator": {
                         "name": "GenericReal",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -391,7 +400,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -403,9 +412,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -419,8 +428,8 @@
                     "F_C_name": "c_generic_real",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GenericReal",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "generic_real"
                 }
             },
@@ -436,6 +445,9 @@
                     "declarator": {
                         "name": "GenericReal",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -482,9 +494,9 @@
                     "function_name": "GenericReal",
                     "function_suffix": "_float",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "generic_real"
                 }
             },
@@ -500,6 +512,9 @@
                     "declarator": {
                         "name": "GenericReal",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -546,9 +561,9 @@
                     "function_name": "GenericReal",
                     "function_suffix": "_double",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "generic_real"
                 }
             },
@@ -561,7 +576,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -707,7 +722,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
                             "shadow_var": "SHadow_arg1",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -719,9 +734,9 @@
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -740,7 +755,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
                             "shadow_var": "SHadow_arg2",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -752,9 +767,9 @@
                             "f_type": "integer(C_LONG)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -786,7 +801,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_LONG",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -811,7 +826,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -884,9 +899,9 @@
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -905,7 +920,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -978,9 +993,9 @@
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_LONG",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -998,7 +1013,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1077,7 +1092,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nvalues",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1101,7 +1116,7 @@
                             "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_values",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1145,7 +1160,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1157,9 +1172,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_cfi",
+                        "stmt0": "f_function_native_scalar_cfi",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_cfi",
+                        "stmtc0": "c_function_native_scalar_cfi",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1175,7 +1190,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1256,7 +1271,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nvalues",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1268,9 +1283,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nvalues",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1290,8 +1305,8 @@
                             "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_values",
-                            "stmt0": "c_native_*_in_cfi",
-                            "stmt1": "c_native_*_in_cfi"
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "values",
@@ -1304,10 +1319,10 @@
                             "f_var": "values",
                             "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_in_cfi",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_cfi",
-                            "stmtc1": "c_native_*_in_cfi"
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
                         }
                     }
                 },
@@ -1339,7 +1354,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_cfi",
+                        "stmt0": "c_function_native_scalar_cfi",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1357,6 +1372,9 @@
                     "declarator": {
                         "name": "AssignValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1687,7 +1705,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_from",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1710,7 +1728,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nfrom",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1733,7 +1751,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nto",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1756,7 +1774,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_to",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1774,8 +1792,8 @@
                     "F_C_name": "c_assign_values",
                     "F_C_subprogram": "subroutine",
                     "function_name": "AssignValues",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "assign_values"
                 }
             },
@@ -1792,6 +1810,9 @@
                     "declarator": {
                         "name": "AssignValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1894,7 +1915,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_from",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1906,9 +1927,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "from",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_in",
+                            "stmt0": "f_in_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in",
+                            "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1927,7 +1948,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nfrom",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1939,9 +1960,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nfrom",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1960,7 +1981,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nto",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1972,9 +1993,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nto",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1993,7 +2014,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_to",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2005,9 +2026,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "to",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_inout",
+                            "stmt0": "f_inout_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_inout",
+                            "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2030,9 +2051,9 @@
                     "function_name": "AssignValues",
                     "function_suffix": "_scalar",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "assign_values"
                 }
             },
@@ -2049,6 +2070,9 @@
                     "declarator": {
                         "name": "AssignValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2154,7 +2178,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_from",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2166,9 +2190,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "from",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_in",
+                            "stmt0": "f_in_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in",
+                            "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2187,7 +2211,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nfrom",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2199,9 +2223,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nfrom",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2220,7 +2244,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nto",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2232,9 +2256,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nto",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2253,7 +2277,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_to",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2269,9 +2293,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
-                            "stmt0": "f_native_*_inout",
+                            "stmt0": "f_inout_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_inout",
+                            "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2294,9 +2318,9 @@
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "assign_values"
                 }
             },
@@ -2313,6 +2337,9 @@
                     "declarator": {
                         "name": "AssignValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2421,7 +2448,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_from",
-                            "stmt0": "c_native_*_in",
+                            "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2437,9 +2464,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(from)",
-                            "stmt0": "f_native_*_in",
+                            "stmt0": "f_in_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in",
+                            "stmtc0": "c_in_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2458,7 +2485,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nfrom",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2470,9 +2497,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nfrom",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2491,7 +2518,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nto",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2503,9 +2530,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "nto",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2524,7 +2551,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_to",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2540,9 +2567,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
-                            "stmt0": "f_native_*_inout",
+                            "stmt0": "f_inout_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_inout",
+                            "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2565,9 +2592,9 @@
                     "function_name": "AssignValues",
                     "function_suffix": "_copy",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "assign_values"
                 }
             },
@@ -2578,6 +2605,9 @@
                     "declarator": {
                         "name": "SavePointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2789,7 +2819,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_void_*_in",
+                            "stmt0": "c_in_void_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2812,7 +2842,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2835,7 +2865,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2853,8 +2883,8 @@
                     "F_C_name": "c_save_pointer",
                     "F_C_subprogram": "subroutine",
                     "function_name": "SavePointer",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "save_pointer"
                 }
             },
@@ -2871,6 +2901,9 @@
                     "declarator": {
                         "name": "SavePointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2960,7 +2993,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_*_in_raw",
+                            "stmt0": "c_in_native_*_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2976,9 +3009,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
+                            "stmt0": "f_in_native_*_raw",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc0": "c_in_native_*_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2997,7 +3030,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3027,7 +3060,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3061,9 +3094,9 @@
                     "function_name": "SavePointer",
                     "function_suffix": "_float1d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "save_pointer"
                 }
             },
@@ -3080,6 +3113,9 @@
                     "declarator": {
                         "name": "SavePointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3169,7 +3205,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_*_in_raw",
+                            "stmt0": "c_in_native_*_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3185,9 +3221,9 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
+                            "stmt0": "f_in_native_*_raw",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc0": "c_in_native_*_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3206,7 +3242,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3236,7 +3272,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3270,9 +3306,9 @@
                     "function_name": "SavePointer",
                     "function_suffix": "_float2d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "save_pointer"
                 }
             },
@@ -3283,6 +3319,9 @@
                     "declarator": {
                         "name": "SavePointer2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3505,7 +3544,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_void_*_in",
+                            "stmt0": "c_in_void_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3528,7 +3567,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3551,7 +3590,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3569,8 +3608,8 @@
                     "F_C_name": "c_save_pointer2",
                     "F_C_subprogram": "subroutine",
                     "function_name": "SavePointer2",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "save_pointer2"
                 }
             },
@@ -3587,6 +3626,9 @@
                     "declarator": {
                         "name": "SavePointer2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3686,7 +3728,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_*_in_raw",
+                            "stmt0": "c_in_native_*_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3702,9 +3744,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
+                            "stmt0": "f_in_native_*_raw",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc0": "c_in_native_*_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3723,7 +3765,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3753,7 +3795,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3787,9 +3829,9 @@
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "save_pointer2"
                 }
             },
@@ -3806,6 +3848,9 @@
                     "declarator": {
                         "name": "SavePointer2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3905,7 +3950,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_*_in_raw",
+                            "stmt0": "c_in_native_*_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3921,9 +3966,9 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
+                            "stmt0": "f_in_native_*_raw",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc0": "c_in_native_*_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3942,7 +3987,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3972,7 +4017,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4006,9 +4051,9 @@
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "save_pointer2"
                 }
             },
@@ -4018,6 +4063,9 @@
                     "declarator": {
                         "name": "GetPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4113,7 +4161,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_void_**_out",
+                            "stmt0": "c_out_void_**",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4124,9 +4172,9 @@
                             "f_type": "type(C_PTR)",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "f_void_**_out",
-                            "stmt1": "f_void_**_out",
-                            "stmtc0": "c_void_**_out",
+                            "stmt0": "f_out_void_**",
+                            "stmt1": "f_out_void_**",
+                            "stmtc0": "c_out_void_**",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4145,7 +4193,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4157,9 +4205,9 @@
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4178,7 +4226,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4190,9 +4238,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4214,9 +4262,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "GetPointer",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_pointer"
                 }
             },
@@ -4227,6 +4275,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4472,7 +4523,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_void_**_out",
+                            "stmt0": "c_out_void_**",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4495,7 +4546,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4518,7 +4569,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4536,8 +4587,8 @@
                     "F_C_name": "c_get_pointer_as_pointer",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             },
@@ -4556,6 +4607,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4649,9 +4703,9 @@
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             },
@@ -4665,6 +4719,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4768,8 +4825,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_**_out_buf_pointer",
-                            "stmt1": "c_native_**_out_buf"
+                            "stmt0": "c_out_native_**_buf_pointer",
+                            "stmt1": "c_out_native_**_buf"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -4786,10 +4843,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_**_out_buf_pointer",
-                            "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf_pointer",
-                            "stmtc1": "c_native_**_out_buf"
+                            "stmt0": "f_out_native_**_buf_pointer",
+                            "stmt1": "f_out_native_**_buf_pointer",
+                            "stmtc0": "c_out_native_**_buf_pointer",
+                            "stmtc1": "c_out_native_**_buf"
                         }
                     },
                     "size": {
@@ -4807,7 +4864,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4819,9 +4876,9 @@
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4840,7 +4897,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4852,9 +4909,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4869,8 +4926,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             },
@@ -4889,6 +4946,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4982,9 +5042,9 @@
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             },
@@ -4998,6 +5058,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5101,8 +5164,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "shadow_var": "SHadow_addr",
-                            "stmt0": "c_native_**_out_buf_pointer",
-                            "stmt1": "c_native_**_out_buf"
+                            "stmt0": "c_out_native_**_buf_pointer",
+                            "stmt1": "c_out_native_**_buf"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -5119,10 +5182,10 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_native_**_out_buf_pointer",
-                            "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf_pointer",
-                            "stmtc1": "c_native_**_out_buf"
+                            "stmt0": "f_out_native_**_buf_pointer",
+                            "stmt1": "f_out_native_**_buf_pointer",
+                            "stmtc0": "c_out_native_**_buf_pointer",
+                            "stmtc1": "c_out_native_**_buf"
                         }
                     },
                     "size": {
@@ -5140,7 +5203,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "shadow_var": "SHadow_size",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5152,9 +5215,9 @@
                             "f_type": "integer(C_SIZE_T)",
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     },
@@ -5173,7 +5236,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5185,9 +5248,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -5202,8 +5265,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             }

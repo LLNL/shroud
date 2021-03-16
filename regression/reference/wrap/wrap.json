@@ -13,6 +13,9 @@
                                 "name": "FuncInClass",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -38,9 +41,9 @@
                             "F_subprogram": "subroutine",
                             "function_name": "FuncInClass",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "func_in_class"
                         }
                     }

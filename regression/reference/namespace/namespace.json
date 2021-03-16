@@ -31,7 +31,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -83,8 +83,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result_allocatable",
-                        "stmt1": "c_string_&_result"
+                        "stmt0": "c_function_string_&_allocatable",
+                        "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -97,10 +97,10 @@
                         "hnamefunc0": "NS_SHROUD_copy_string_and_free",
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_&_result_buf_allocatable",
-                        "stmt1": "f_string_&_result_buf_allocatable",
-                        "stmtc0": "c_string_&_result_buf_allocatable",
-                        "stmtc1": "c_string_&_result_buf_allocatable",
+                        "stmt0": "f_function_string_&_buf_allocatable",
+                        "stmt1": "f_function_string_&_buf_allocatable",
+                        "stmtc0": "c_function_string_&_buf_allocatable",
+                        "stmtc1": "c_function_string_&_buf_allocatable",
                         "temp0": "SHT_rv_temp0"
                     },
                     "fmtpy": {
@@ -117,8 +117,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_string_&_result",
-                        "stmt1": "py_string_&_result",
+                        "stmt0": "py_function_string_&",
+                        "stmt1": "py_function_string_&",
                         "value_var": "SHValue_rv"
                     }
                 }
@@ -138,7 +138,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -180,8 +180,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result_buf_allocatable",
-                        "stmt1": "c_string_&_result_buf_allocatable",
+                        "stmt0": "c_function_string_&_buf_allocatable",
+                        "stmt1": "c_function_string_&_buf_allocatable",
                         "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
@@ -198,6 +198,9 @@
                     "declarator": {
                         "name": "One",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [],
                     "specifier": [
@@ -230,9 +233,9 @@
                     "PY_name_impl": "PY_One",
                     "function_name": "One",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "one"
                 }
             }
@@ -334,6 +337,9 @@
                                     "attrs": {
                                         "_constructor": true,
                                         "name": "Cstruct1_ctor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "ctor"
                                     },
                                     "params": [
                                         {
@@ -569,6 +575,9 @@
                                 "name": "One",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -600,9 +609,9 @@
                             "PY_name_impl": "PY_One",
                             "function_name": "One",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "one"
                         }
                     }

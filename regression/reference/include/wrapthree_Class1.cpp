@@ -17,12 +17,12 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  CustomType arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)
 {

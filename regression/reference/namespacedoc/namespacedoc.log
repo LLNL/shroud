@@ -1,30 +1,30 @@
 Read yaml namespacedoc.yaml
 Close wrapped_types.yaml
-C void worker(void) 
+C void worker(void)  +intent(subroutine)
 Close wrapwrapped_inner1.h
 Close wrapwrapped_inner1.cpp
-C void worker(void) 
+C void worker(void)  +intent(subroutine)
 Close wrapwrapped_inner2.h
 Close wrapwrapped_inner2.cpp
-C void worker4(void) 
+C void worker4(void)  +intent(subroutine)
 Close wrapwrapped_inner4.h
 Close wrapwrapped_inner4.cpp
-C void worker3(void) 
-C void worker(void) 
+C void worker3(void)  +intent(subroutine)
+C void worker(void)  +intent(subroutine)
 Close wrapwrapped.h
 Close wrapwrapped.cpp
-Fortran void worker3(void) 
-Fortran void worker(void) 
-C-interface void worker3(void) 
-C-interface void worker(void) 
-Fortran void worker(void) 
-C-interface void worker(void) 
+Fortran void worker3(void)  +intent(subroutine)
+Fortran void worker(void)  +intent(subroutine)
+C-interface void worker3(void)  +intent(subroutine)
+C-interface void worker(void)  +intent(subroutine)
+Fortran void worker(void)  +intent(subroutine)
+C-interface void worker(void)  +intent(subroutine)
 Close wrapfwrapped_inner1.f
-Fortran void worker(void) 
-C-interface void worker(void) 
+Fortran void worker(void)  +intent(subroutine)
+C-interface void worker(void)  +intent(subroutine)
 Close wrapfwrapped_inner2.f
-Fortran void worker4(void) 
-C-interface void worker4(void) 
+Fortran void worker4(void)  +intent(subroutine)
+C-interface void worker4(void)  +intent(subroutine)
 Close wrapfwrapped.f
 Close utilwrapped.cpp
 Close typeswrapped.h

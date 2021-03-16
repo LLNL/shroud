@@ -18,8 +18,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void worker3
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void WWW_inner3_worker3(void)
 {
     // splicer begin function.worker3
@@ -29,8 +29,8 @@ void WWW_inner3_worker3(void)
 
 // ----------------------------------------
 // Function:  void worker
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void WWW_worker(void)
 {
     // splicer begin function.worker

@@ -86,13 +86,13 @@ static void ShroudStrFree(char *src)
  */
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 double CLI_pass_by_value_macro(int arg2)
 {
@@ -104,22 +104,23 @@ double CLI_pass_by_value_macro(int arg2)
 
 // ----------------------------------------
 // Function:  void Function4a +len(30)
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar_buf
+// Match:     c_subroutine
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
-// Requested: c_char_*_in
+// Requested: c_in_char_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * arg2
 // Attrs:     +intent(in)
-// Requested: c_char_*_in
+// Requested: c_in_char_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +len(NSHF_rv)
 // Attrs:     +intent(out)+is_result
-// Exact:     c_char_*_result_buf
+// Exact:     c_function_char_*_buf
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv)
 {
@@ -137,12 +138,12 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
  */
 // ----------------------------------------
 // Function:  void passCharPtrInOut
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
 // Attrs:     +intent(inout)
-// Exact:     c_char_*_inout_buf
+// Exact:     c_inout_char_*_buf
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
@@ -162,12 +163,12 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  */
 // ----------------------------------------
 // Function:  void returnOneName
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 // start CLI_return_one_name_bufferify
 void CLI_return_one_name_bufferify(char * name1, int Nname1)
 {
@@ -187,16 +188,16 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
  */
 // ----------------------------------------
 // Function:  void returnTwoNames
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * name2, int Nname2)
 {
@@ -213,16 +214,16 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
  */
 // ----------------------------------------
 // Function:  void ImpliedTextLen
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start CLI_implied_text_len_bufferify
 void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
@@ -241,12 +242,12 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
  */
 // ----------------------------------------
 // Function:  void bindC2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 {
     // splicer begin function.bind_c2_bufferify
@@ -264,18 +265,18 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
  */
 // ----------------------------------------
 // Function:  int passAssumedTypeBuf
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result_buf
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)
-// Requested: c_void_*_in
+// Requested: c_in_void_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     int Noutbuf)
 {
@@ -293,17 +294,17 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
  */
 // ----------------------------------------
 // Function:  void callback1a
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int type +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external+value
 // Attrs:     +intent(in)
-// Requested: c_void_scalar_in
+// Requested: c_in_void_scalar
 // Match:     c_default
 // start CLI_callback1a
 void CLI_callback1a(int type, void ( * incr)(void))
@@ -321,27 +322,27 @@ void CLI_callback1a(int type, void ( * incr)(void))
  */
 // ----------------------------------------
 // Function:  void callback3
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const char * type
 // Attrs:     +intent(in)
-// Requested: c_char_*_in
+// Requested: c_in_char_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * in +assumedtype
 // Attrs:     +intent(in)
-// Requested: c_void_*_in
+// Requested: c_in_void_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+value
 // Attrs:     +intent(in)
-// Requested: c_void_scalar_in
+// Requested: c_in_void_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
 // Attrs:     +intent(out)
-// Exact:     c_char_*_out_buf
+// Exact:     c_out_char_*_buf
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf)
 {

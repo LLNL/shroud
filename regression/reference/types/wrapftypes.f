@@ -24,13 +24,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  short arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function short_func(arg1) &
                 result(SHT_rv) &
@@ -43,13 +43,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function int_func(arg1) &
                 result(SHT_rv) &
@@ -62,13 +62,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function long_func(arg1) &
                 result(SHT_rv) &
@@ -81,13 +81,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long long arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function long_long_func(arg1) &
                 result(SHT_rv) &
@@ -100,13 +100,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  short int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function short_int_func(arg1) &
                 result(SHT_rv) &
@@ -119,13 +119,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function long_int_func(arg1) &
                 result(SHT_rv) &
@@ -138,13 +138,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long long int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
@@ -157,13 +157,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function unsigned_func(arg1) &
                 result(SHT_rv) &
@@ -176,13 +176,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned short arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function ushort_func(arg1) &
                 result(SHT_rv) &
@@ -195,13 +195,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function uint_func(arg1) &
                 result(SHT_rv) &
@@ -214,13 +214,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function ulong_func(arg1) &
                 result(SHT_rv) &
@@ -233,13 +233,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long long arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
@@ -252,13 +252,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
@@ -271,13 +271,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int8_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function int8_func(arg1) &
                 result(SHT_rv) &
@@ -290,13 +290,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int16_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function int16_func(arg1) &
                 result(SHT_rv) &
@@ -309,13 +309,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int32_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function int32_func(arg1) &
                 result(SHT_rv) &
@@ -328,13 +328,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int64_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function int64_func(arg1) &
                 result(SHT_rv) &
@@ -347,13 +347,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint8_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function uint8_func(arg1) &
                 result(SHT_rv) &
@@ -366,13 +366,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint16_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function uint16_func(arg1) &
                 result(SHT_rv) &
@@ -385,13 +385,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint32_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function uint32_func(arg1) &
                 result(SHT_rv) &
@@ -404,13 +404,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint64_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function uint64_func(arg1) &
                 result(SHT_rv) &
@@ -423,13 +423,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_t arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function size_func(arg1) &
                 result(SHT_rv) &
@@ -442,13 +442,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
-        ! Attrs:     +intent(result)
-        ! Requested: c_bool_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_bool_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  bool arg +value
         ! Attrs:     +intent(in)
-        ! Requested: c_bool_scalar_in
+        ! Requested: c_in_bool_scalar
         ! Match:     c_default
         function c_bool_func(arg) &
                 result(SHT_rv) &
@@ -461,13 +461,13 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
-        ! Attrs:     +intent(result)
-        ! Requested: c_bool_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_bool_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * flag +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out
+        ! Requested: c_out_native_*
         ! Match:     c_default
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
@@ -486,19 +486,19 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool bool_func
-    ! Attrs:     +intent(result)
-    ! Requested: f_bool_scalar_result
-    ! Match:     f_bool_result
-    ! Attrs:     +intent(result)
-    ! Requested: c_bool_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_bool_scalar
+    ! Match:     f_function_bool
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_bool_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  bool arg +value
     ! Attrs:     +intent(in)
-    ! Requested: f_bool_scalar_in
-    ! Match:     f_bool_in
+    ! Requested: f_in_bool_scalar
+    ! Match:     f_in_bool
     ! Attrs:     +intent(in)
-    ! Requested: c_bool_scalar_in
+    ! Requested: c_in_bool_scalar
     ! Match:     c_default
     function bool_func(arg) &
             result(SHT_rv)
@@ -514,19 +514,19 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
-    ! Attrs:     +intent(result)
-    ! Requested: f_bool_scalar_result
-    ! Match:     f_bool_result
-    ! Attrs:     +intent(result)
-    ! Requested: c_bool_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_bool_scalar
+    ! Match:     f_function_bool
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_bool_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_native_*_out
+    ! Requested: f_out_native_*
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief Function which returns bool with other intent(out) arguments

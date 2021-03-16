@@ -25,7 +25,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -93,9 +93,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt0": "f_function_native_scalar_buf",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc0": "c_function_native_scalar_buf",
                         "stmtc1": "c_default"
                     }
                 }
@@ -109,7 +109,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -178,8 +178,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_in_buf_native",
-                            "stmt1": "c_vector_in_buf"
+                            "stmt0": "c_in_vector_&_buf_native",
+                            "stmt1": "c_in_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -196,10 +196,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_in_buf_native",
+                            "stmt0": "f_in_vector_&_buf_native",
                             "stmt1": "f_default",
-                            "stmtc0": "c_vector_&_in_buf_native",
-                            "stmtc1": "c_vector_in_buf"
+                            "stmtc0": "c_in_vector_&_buf_native",
+                            "stmtc1": "c_in_vector_buf"
                         }
                     }
                 },
@@ -231,7 +231,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt0": "c_function_native_scalar_buf",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -252,6 +252,9 @@
                     "declarator": {
                         "name": "vector_iota_out",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -311,9 +314,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_out",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out"
                 }
             },
@@ -325,6 +328,9 @@
                     "declarator": {
                         "name": "vector_iota_out",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -396,8 +402,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
+                            "stmt0": "c_out_vector_&_buf_native",
+                            "stmt1": "c_out_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -415,10 +421,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_buf_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
+                            "stmt0": "f_out_vector_&_buf_native",
+                            "stmt1": "f_out_vector",
+                            "stmtc0": "c_out_vector_&_buf_native",
+                            "stmtc1": "c_out_vector_buf"
                         }
                     }
                 },
@@ -432,8 +438,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_out"
                 }
             },
@@ -447,6 +453,9 @@
                     "declarator": {
                         "name": "vector_iota_out_with_num",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -532,9 +541,9 @@
                     "F_subprogram": "function",
                     "function_name": "vector_iota_out_with_num",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num"
                 }
             },
@@ -546,6 +555,9 @@
                     "declarator": {
                         "name": "vector_iota_out_with_num",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -641,8 +653,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
+                            "stmt0": "c_out_vector_&_buf_native",
+                            "stmt1": "c_out_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -660,10 +672,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_buf_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
+                            "stmt0": "f_out_vector_&_buf_native",
+                            "stmt1": "f_out_vector",
+                            "stmtc0": "c_out_vector_&_buf_native",
+                            "stmtc1": "c_out_vector_buf"
                         }
                     }
                 },
@@ -678,8 +690,8 @@
                     "F_C_subprogram": "function",
                     "function_name": "vector_iota_out_with_num",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num"
                 }
             },
@@ -693,6 +705,9 @@
                     "declarator": {
                         "name": "vector_iota_out_with_num2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -772,9 +787,9 @@
                     "F_subprogram": "function",
                     "function_name": "vector_iota_out_with_num2",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num2"
                 }
             },
@@ -786,6 +801,9 @@
                     "declarator": {
                         "name": "vector_iota_out_with_num2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -875,8 +893,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
+                            "stmt0": "c_out_vector_&_buf_native",
+                            "stmt1": "c_out_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -894,10 +912,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_buf_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
+                            "stmt0": "f_out_vector_&_buf_native",
+                            "stmt1": "f_out_vector",
+                            "stmtc0": "c_out_vector_&_buf_native",
+                            "stmtc1": "c_out_vector_buf"
                         }
                     }
                 },
@@ -911,8 +929,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_with_num2",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num2"
                 }
             },
@@ -926,6 +944,9 @@
                     "declarator": {
                         "name": "vector_iota_out_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -988,9 +1009,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_out_alloc",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_alloc"
                 }
             },
@@ -1002,6 +1023,9 @@
                     "declarator": {
                         "name": "vector_iota_out_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1076,8 +1100,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_allocatable_native",
-                            "stmt1": "c_vector_out_buf"
+                            "stmt0": "c_out_vector_&_buf_allocatable_native",
+                            "stmt1": "c_out_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1095,10 +1119,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_buf_allocatable_native",
-                            "stmt1": "f_vector_out_allocatable",
-                            "stmtc0": "c_vector_&_out_buf_allocatable_native",
-                            "stmtc1": "c_vector_out_buf"
+                            "stmt0": "f_out_vector_&_buf_allocatable_native",
+                            "stmt1": "f_out_vector_allocatable",
+                            "stmtc0": "c_out_vector_&_buf_allocatable_native",
+                            "stmtc1": "c_out_vector_buf"
                         }
                     }
                 },
@@ -1112,8 +1136,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_alloc",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_out_alloc"
                 }
             },
@@ -1127,6 +1151,9 @@
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1189,9 +1216,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_inout_alloc",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_inout_alloc"
                 }
             },
@@ -1203,6 +1230,9 @@
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1279,8 +1309,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_inout_buf_allocatable_native",
-                            "stmt1": "c_vector_inout_buf"
+                            "stmt0": "c_inout_vector_&_buf_allocatable_native",
+                            "stmt1": "c_inout_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1299,10 +1329,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_inout_buf_allocatable_native",
-                            "stmt1": "f_vector_inout_allocatable",
-                            "stmtc0": "c_vector_&_inout_buf_allocatable_native",
-                            "stmtc1": "c_vector_inout_buf"
+                            "stmt0": "f_inout_vector_&_buf_allocatable_native",
+                            "stmt1": "f_inout_vector_allocatable",
+                            "stmtc0": "c_inout_vector_&_buf_allocatable_native",
+                            "stmtc1": "c_inout_vector_buf"
                         }
                     }
                 },
@@ -1316,8 +1346,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_inout_alloc",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_inout_alloc"
                 }
             },
@@ -1331,6 +1361,9 @@
                     "declarator": {
                         "name": "vector_increment",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1386,9 +1419,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "vector_increment",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_increment"
                 }
             },
@@ -1400,6 +1433,9 @@
                     "declarator": {
                         "name": "vector_increment",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1469,8 +1505,8 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_inout_buf_native",
-                            "stmt1": "c_vector_inout_buf"
+                            "stmt0": "c_inout_vector_&_buf_native",
+                            "stmt1": "c_inout_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1489,10 +1525,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_inout_buf_native",
-                            "stmt1": "f_vector_inout",
-                            "stmtc0": "c_vector_&_inout_buf_native",
-                            "stmtc1": "c_vector_inout_buf"
+                            "stmt0": "f_inout_vector_&_buf_native",
+                            "stmt1": "f_inout_vector",
+                            "stmtc0": "c_inout_vector_&_buf_native",
+                            "stmtc1": "c_inout_vector_buf"
                         }
                     }
                 },
@@ -1506,8 +1542,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_increment",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_increment"
                 }
             },
@@ -1521,6 +1557,9 @@
                     "declarator": {
                         "name": "vector_iota_out_d",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1579,9 +1618,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "vector_iota_out_d",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_d"
                 }
             },
@@ -1593,6 +1632,9 @@
                     "declarator": {
                         "name": "vector_iota_out_d",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1663,8 +1705,8 @@
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
+                            "stmt0": "c_out_vector_&_buf_native",
+                            "stmt1": "c_out_vector_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1682,10 +1724,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_buf_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
+                            "stmt0": "f_out_vector_&_buf_native",
+                            "stmt1": "f_out_vector",
+                            "stmtc0": "c_out_vector_&_buf_native",
+                            "stmtc1": "c_out_vector_buf"
                         }
                     }
                 },
@@ -1699,8 +1741,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_d",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_iota_out_d"
                 }
             },
@@ -1716,7 +1758,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1787,9 +1829,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt0": "f_function_native_scalar_buf",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc0": "c_function_native_scalar_buf",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1804,7 +1846,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1878,8 +1920,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_in_buf_string",
-                            "stmt1": "c_vector_in_buf_string"
+                            "stmt0": "c_in_vector_&_buf_string",
+                            "stmt1": "c_in_vector_buf_string"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1897,10 +1939,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt0": "f_vector_&_in_buf_string",
+                            "stmt0": "f_in_vector_&_buf_string",
                             "stmt1": "f_default",
-                            "stmtc0": "c_vector_&_in_buf_string",
-                            "stmtc1": "c_vector_in_buf_string"
+                            "stmtc0": "c_in_vector_&_buf_string",
+                            "stmtc1": "c_in_vector_buf_string"
                         }
                     }
                 },
@@ -1932,7 +1974,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt0": "c_function_native_scalar_buf",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1949,6 +1991,9 @@
                     "declarator": {
                         "name": "vector_string_fill",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2010,6 +2055,9 @@
                     "declarator": {
                         "name": "vector_string_append",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2080,7 +2128,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2149,10 +2197,10 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "size": "size(SHT_rv)",
-                        "stmt0": "f_vector_scalar_result_buf_allocatable",
-                        "stmt1": "f_vector_result_buf_allocatable",
-                        "stmtc0": "c_vector_scalar_result_buf_allocatable",
-                        "stmtc1": "c_vector_result_buf",
+                        "stmt0": "f_function_vector_scalar_buf_allocatable",
+                        "stmt1": "f_function_vector_buf_allocatable",
+                        "stmtc0": "c_function_vector_scalar_buf_allocatable",
+                        "stmtc1": "c_function_vector_buf",
                         "temp0": "SHT_rv_temp0"
                     }
                 }
@@ -2171,7 +2219,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2231,7 +2279,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_n",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2243,9 +2291,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "n",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2278,8 +2326,8 @@
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_vector_scalar_result_buf_allocatable",
-                        "stmt1": "c_vector_result_buf",
+                        "stmt0": "c_function_vector_scalar_buf_allocatable",
+                        "stmt1": "c_function_vector_buf",
                         "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {

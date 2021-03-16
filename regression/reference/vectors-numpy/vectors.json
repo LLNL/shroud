@@ -21,7 +21,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -92,8 +92,8 @@
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_vector_in_numpy",
-                            "stmt1": "py_vector_in_numpy",
+                            "stmt0": "py_in_vector_numpy",
+                            "stmt1": "py_in_vector_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -117,7 +117,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -129,6 +129,9 @@
                     "declarator": {
                         "name": "vector_iota_out",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -204,8 +207,8 @@
                             "py_capsule": "SHC_arg",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_vector_out_numpy",
-                            "stmt1": "py_vector_out_numpy",
+                            "stmt0": "py_out_vector_numpy",
+                            "stmt1": "py_out_vector_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -222,6 +225,9 @@
                     "declarator": {
                         "name": "vector_iota_out_with_num",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -305,6 +311,9 @@
                         "name": "vector_iota_out_with_num2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -381,6 +390,9 @@
                         "name": "vector_iota_out_alloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -441,6 +453,9 @@
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -503,6 +518,9 @@
                         "name": "vector_increment",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -556,6 +574,9 @@
                     "declarator": {
                         "name": "vector_iota_out_d",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -630,8 +651,8 @@
                             "py_capsule": "SHC_arg",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_vector_out_numpy",
-                            "stmt1": "py_vector_out_numpy",
+                            "stmt0": "py_out_vector_numpy",
+                            "stmt1": "py_out_vector_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -650,7 +671,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -709,6 +730,9 @@
                     "declarator": {
                         "name": "vector_string_fill",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -770,6 +794,9 @@
                     "declarator": {
                         "name": "vector_string_append",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -836,7 +863,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -895,7 +922,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_n",
                             "size_var": "SHSize_n",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_n"
                         }
@@ -928,8 +955,8 @@
                         "py_capsule": "SHC_SHCXX_rv",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_vector_result_numpy",
-                        "stmt1": "py_vector_result_numpy",
+                        "stmt0": "py_function_vector_numpy",
+                        "stmt1": "py_function_vector_numpy",
                         "value_var": "SHValue_rv"
                     }
                 }

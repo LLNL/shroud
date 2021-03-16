@@ -39,7 +39,7 @@ PY_Shape_tp_del (PY_Shape *self)
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 static int
 PY_Shape_tp_init(
@@ -60,8 +60,8 @@ PY_Shape_tp_init(
 
 // ----------------------------------------
 // Function:  int get_ivar
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_get_ivar__doc__[] =
 "documentation"

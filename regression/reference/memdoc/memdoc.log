@@ -1,11 +1,11 @@
 Read yaml memdoc.yaml
-C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
-C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
+C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
+C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
 Close wrapmemdoc.h
 Close wrapmemdoc.cpp
-Fortran const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
-C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
-C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
+Fortran const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
+C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
+C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(function)
 Close wrapfmemdoc.f
 Close utilmemdoc.cpp
 Close typesmemdoc.h

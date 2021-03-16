@@ -24,8 +24,9 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  void Function1
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine function1() &
                 bind(C, name="Function1")
             implicit none
@@ -33,18 +34,18 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function function2(arg1, arg2) &
                 result(SHT_rv) &

@@ -84,8 +84,8 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function c_arraywrapper_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
@@ -98,12 +98,13 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void setSize
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int size +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_arraywrapper_set_size(self, size) &
                 bind(C, name="ARR_ArrayWrapper_set_size")
@@ -116,8 +117,8 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  int getSize
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         pure function c_arraywrapper_get_size(self) &
                 result(SHT_rv) &
@@ -131,12 +132,13 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fillSize
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int & size +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_&_out
+        ! Requested: c_out_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fill_size(self, size) &
                 bind(C, name="ARR_ArrayWrapper_fill_size")
@@ -149,8 +151,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void allocate
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_arraywrapper_allocate(self) &
                 bind(C, name="ARR_ArrayWrapper_allocate")
             import :: ARR_SHROUD_capsule_data
@@ -160,9 +163,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_pointer
-        ! Match:     c_native_*_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_pointer
+        ! Match:     c_function_native_*
         function c_arraywrapper_get_array(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array")
@@ -175,9 +178,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_buf_pointer
-        ! Match:     c_native_*_result_buf
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_buf_pointer
+        ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -188,9 +191,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_pointer
-        ! Match:     c_native_*_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_pointer
+        ! Match:     c_function_native_*
         pure function c_arraywrapper_get_array_const(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const")
@@ -203,9 +206,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_buf_pointer
-        ! Match:     c_native_*_result_buf
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_buf_pointer
+        ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_const_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_bufferify")
@@ -217,9 +220,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_pointer
-        ! Match:     c_native_*_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_pointer
+        ! Match:     c_function_native_*
         function c_arraywrapper_get_array_c(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c")
@@ -232,9 +235,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_buf_pointer
-        ! Match:     c_native_*_result_buf
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_buf_pointer
+        ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_c_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -245,9 +248,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_pointer
-        ! Match:     c_native_*_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_pointer
+        ! Match:     c_function_native_*
         pure function c_arraywrapper_get_array_const_c(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_c")
@@ -260,9 +263,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result_buf_pointer
-        ! Match:     c_native_*_result_buf
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_buf_pointer
+        ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_const_c_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_c_bufferify")
@@ -274,17 +277,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_**_out_pointer
+        ! Requested: c_out_native_**_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout
+        ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr")
@@ -298,17 +302,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_**_out_buf_pointer
-        ! Match:     c_native_**_out_buf
+        ! Requested: c_out_native_**_buf_pointer
+        ! Match:     c_out_native_**_buf
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout
+        ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
                 Darray, isize) &
@@ -323,17 +328,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_*&_out_pointer
+        ! Requested: c_out_native_*&_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout
+        ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref")
@@ -347,17 +353,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_*&_out_buf_pointer
-        ! Match:     c_native_*&_out_buf
+        ! Requested: c_out_native_*&_buf_pointer
+        ! Match:     c_out_native_*&_buf
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout
+        ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
                 Darray, isize) &
@@ -372,17 +379,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_**_out_pointer
+        ! Requested: c_out_native_**_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout
+        ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const(self, array, &
                 isize) &
@@ -397,17 +405,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_**_out_buf_pointer
-        ! Match:     c_native_**_out_buf
+        ! Requested: c_out_native_**_buf_pointer
+        ! Match:     c_out_native_**_buf
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout
+        ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
                 Darray, isize) &
@@ -422,17 +431,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_*&_out_pointer
+        ! Requested: c_out_native_*&_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout
+        ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const(self, array, &
                 isize) &
@@ -447,17 +457,18 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
-        ! Requested: c_native_*&_out_buf_pointer
-        ! Match:     c_native_*&_out_buf
+        ! Requested: c_out_native_*&_buf_pointer
+        ! Match:     c_out_native_*&_buf
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout
+        ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
                 Darray, isize) &
@@ -472,12 +483,13 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidPtr
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_void_**_out
+        ! Requested: c_out_void_**
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_void_ptr(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetch_void_ptr")
@@ -490,12 +502,13 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidRef
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void * & array +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_void_*&_out
+        ! Requested: c_out_void_*&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_void_ref(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetch_void_ref")
@@ -508,13 +521,13 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  bool checkPtr
-        ! Attrs:     +intent(result)
-        ! Requested: c_bool_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_bool_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void * array +value
         ! Attrs:     +intent(in)
-        ! Requested: c_void_*_in
+        ! Requested: c_in_void_*
         ! Match:     c_default
         function c_arraywrapper_check_ptr(self, array) &
                 result(SHT_rv) &
@@ -529,8 +542,8 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double sumArray
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_arraywrapper_sum_array(self) &
                 result(SHT_rv) &
@@ -557,10 +570,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function arraywrapper_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -573,17 +586,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setSize
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int size +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine arraywrapper_set_size(obj, size)
         use iso_c_binding, only : C_INT
@@ -596,11 +609,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getSize
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function arraywrapper_get_size(obj) &
             result(SHT_rv)
@@ -614,17 +627,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fillSize
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int & size +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_native_&_out
+    ! Requested: f_out_native_&
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_&_out
+    ! Requested: c_out_native_&
     ! Match:     c_default
     subroutine arraywrapper_fill_size(obj, size)
         use iso_c_binding, only : C_INT
@@ -637,10 +650,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void allocate
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     subroutine arraywrapper_allocate(obj)
         class(arraywrapper) :: obj
         ! splicer begin class.ArrayWrapper.method.allocate
@@ -651,11 +664,11 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  double * getArray +dimension(getSize())
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_*_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result_buf_pointer
-    ! Match:     c_native_*_result_buf
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_*_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_buf_pointer
+    ! Match:     c_function_native_*_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -672,11 +685,11 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  double * getArrayConst +dimension(getSize())
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_*_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result_buf_pointer
-    ! Match:     c_native_*_result_buf
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_*_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_buf_pointer
+    ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_const(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -693,11 +706,11 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const double * getArrayC +dimension(getSize())
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_*_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result_buf_pointer
-    ! Match:     c_native_*_result_buf
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_*_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_buf_pointer
+    ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -714,11 +727,11 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const double * getArrayConstC +dimension(getSize())
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_*_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result_buf_pointer
-    ! Match:     c_native_*_result_buf
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_*_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_buf_pointer
+    ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_const_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -735,25 +748,25 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayPtr
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_native_**_out_buf_pointer
+    ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_native_**_out_buf_pointer
-    ! Match:     c_native_**_out_buf
+    ! Requested: c_out_native_**_buf_pointer
+    ! Match:     c_out_native_**_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
-    ! Requested: f_native_*_inout
+    ! Requested: f_inout_native_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout
+    ! Requested: c_inout_native_*
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -771,25 +784,25 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayRef
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_native_*&_out_buf_pointer
+    ! Exact:     f_out_native_*&_buf_pointer
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_native_*&_out_buf_pointer
-    ! Match:     c_native_*&_out_buf
+    ! Requested: c_out_native_*&_buf_pointer
+    ! Match:     c_out_native_*&_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)
-    ! Requested: f_native_&_inout
+    ! Requested: f_inout_native_&
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_&_inout
+    ! Requested: c_inout_native_&
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -807,25 +820,25 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayPtrConst
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_native_**_out_buf_pointer
+    ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_native_**_out_buf_pointer
-    ! Match:     c_native_**_out_buf
+    ! Requested: c_out_native_**_buf_pointer
+    ! Match:     c_out_native_**_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
-    ! Requested: f_native_*_inout
+    ! Requested: f_inout_native_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout
+    ! Requested: c_inout_native_*
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -843,25 +856,25 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayRefConst
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_native_*&_out_buf_pointer
+    ! Exact:     f_out_native_*&_buf_pointer
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: c_native_*&_out_buf_pointer
-    ! Match:     c_native_*&_out_buf
+    ! Requested: c_out_native_*&_buf_pointer
+    ! Match:     c_out_native_*&_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)
-    ! Requested: f_native_&_inout
+    ! Requested: f_inout_native_&
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_&_inout
+    ! Requested: c_inout_native_&
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -878,16 +891,16 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * * array +intent(out)
     ! Attrs:     +intent(out)
-    ! Exact:     f_void_**_out
+    ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
-    ! Requested: c_void_**_out
+    ! Requested: c_out_void_**
     ! Match:     c_default
     subroutine arraywrapper_fetch_void_ptr(obj, array)
         use iso_c_binding, only : C_PTR
@@ -900,17 +913,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fetchVoidRef
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * & array +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_void_*&_out
+    ! Requested: f_out_void_*&
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*&_out
+    ! Requested: c_out_void_*&
     ! Match:     c_default
     subroutine arraywrapper_fetch_void_ref(obj, array)
         class(arraywrapper) :: obj
@@ -922,18 +935,18 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool checkPtr
-    ! Attrs:     +intent(result)
-    ! Requested: f_bool_scalar_result
-    ! Match:     f_bool_result
-    ! Attrs:     +intent(result)
-    ! Requested: c_bool_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_bool_scalar
+    ! Match:     f_function_bool
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_bool_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * array +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_void_*_in
+    ! Exact:     f_in_void_*
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in
+    ! Requested: c_in_void_*
     ! Match:     c_default
     function arraywrapper_check_ptr(obj, array) &
             result(SHT_rv)
@@ -948,11 +961,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  double sumArray
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function arraywrapper_sum_array(obj) &
             result(SHT_rv)

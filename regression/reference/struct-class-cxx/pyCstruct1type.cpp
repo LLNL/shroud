@@ -39,6 +39,7 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 
 // ----------------------------------------
 // Function:  Cstruct1 +name(Cstruct1_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int ifield

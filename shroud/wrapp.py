@@ -1308,26 +1308,26 @@ return 1;""",
                 arg_implied.append(arg)
                 intent_blk = default_scope
             elif sgroup == "char":
-                stmts = ["py", sgroup, spointer, intent]
+                stmts = ["py", intent, sgroup, spointer]
                 charlen = arg.attrs["charlen"]
                 if charlen:
                     fmt_arg.charlen = charlen
                     stmts.append("charlen")
             elif arg_typemap.base == "struct":
-                stmts = ["py", sgroup, spointer, intent, arg_typemap.PY_struct_as]
+                stmts = ["py", intent, sgroup, spointer, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
-                stmts = ["py", sgroup, intent, options.PY_array_arg]
+                stmts = ["py", intent, sgroup, options.PY_array_arg]
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
-                stmts = ["py", sgroup, spointer, intent,
+                stmts = ["py", intent, sgroup, spointer,
                          deref, options.PY_array_arg]
             elif deref == "raw":
                 # A single pointer.
-                stmts = ["py", sgroup, spointer, intent, deref]
+                stmts = ["py", intent, sgroup, spointer, deref]
             else:
                 # Scalar argument
                 # ex. (int * arg1 +intent(in))
-                stmts = ["py", sgroup, spointer, intent]
+                stmts = ["py", intent, sgroup, spointer]
             if options.debug:
                 stmts_comments.append(
                     "// ----------------------------------------")
@@ -1992,12 +1992,12 @@ return 1;""",
             fmt_result.stmt0 = result_blk.name
             fmt_result.stmt1 = result_blk.name
         elif result_typemap.base == "struct":
-            stmts = ["py", sgroup, "result", options.PY_struct_arg]
+            stmts = ["py", "function", sgroup, options.PY_struct_arg]
         elif result_typemap.base == "vector":
-            stmts = ["py", sgroup, "result", options.PY_array_arg]
+            stmts = ["py", "function", sgroup, options.PY_array_arg]
         elif sgroup == "native":
             spointer = ast.get_indirect_stmt()
-            stmts = ["py", sgroup, spointer, "result"]
+            stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
                 deref = meta["deref"] or "pointer"
                 stmts.append(deref)
@@ -2005,7 +2005,7 @@ return 1;""",
                     stmts.append(options.PY_array_arg)
         else:
             spointer = ast.get_indirect_stmt()
-            stmts = ["py", sgroup, spointer, "result"]
+            stmts = ["py", "function", sgroup, spointer]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
@@ -3637,6 +3637,16 @@ fail_capsule=[
     "Py_XDECREF({py_capsule});",
 ]
 
+
+# language   "py"
+# intent     "in", "out", "inout", "function", "subroutine", "descr", "ctor", "dtor"
+# sgroup     "native", "string", "char"
+# spointer   "scalar" "*" "**", "&"
+# generated  "buf"
+# deref      "allocatable", "pointer"
+# owner      "caller"
+
+
 # Code clauses are used for C and C++.
 # Differences are dealt with by format entries stdlib and cast.
 # Language specific clauses are used in update_for_language.
@@ -3648,7 +3658,7 @@ py_statements = [
 # void
     dict(
         # Accept a capsule and extract address.
-        name="py_void_*_in",
+        name="py_in_void_*",
         declare=[
             "PyObject *{py_var};",
         ],
@@ -3665,7 +3675,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_void_**_out",
+        name="py_out_void_**",
         arg_declare=[
             "void *{c_var};",
         ],
@@ -3677,14 +3687,14 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_void_*&_out",
-        base="py_void_**_out",
+        name="py_out_void_*&",
+        base="py_out_void_**",
         arg_call=[
             "{c_var}",
         ]
     ),
     dict(
-        name="py_void_*_result",
+        name="py_function_void_*",
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),
@@ -3693,11 +3703,11 @@ py_statements = [
 ########################################
 # bool
     dict(
-        name="py_bool_in",
+        name="py_in_bool",
         pre_call=["{cxx_var} = PyObject_IsTrue({py_var});"]
     ),
     dict(
-        name="py_bool_inout",
+        name="py_inout_bool",
         arg_declare=[
             "bool {cxx_var};",
         ],
@@ -3714,7 +3724,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_bool_out",
+        name="py_out_bool",
         arg_declare=[
             "bool {cxx_var};",
         ],
@@ -3732,7 +3742,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_bool_result",
+        name="py_function_bool",
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -3747,32 +3757,24 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_bool_*_out",
-        base="py_bool_out",
+        name="py_out_bool_*",
+        base="py_out_bool",
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_bool_*_inout",
-        base="py_bool_inout",
+        name="py_inout_bool_*",
+        base="py_inout_bool",
         arg_call=["&{cxx_var}"],
     ),
     
 ####################
     dict(
-        name="py_native_*_in",
+        name="py_in_native_*",
         arg_declare=["{c_type} {c_var};"],
         arg_call=["&{c_var}"],
     ),
     dict(
-        name="py_native_*_inout",
-        arg_declare=["{c_type} {c_var};"],
-        arg_call=["&{c_var}"],
-        fmtdict=dict(
-            ctor_expr="{c_var}",
-        ),
-    ),
-    dict(
-        name="py_native_*_out",
+        name="py_inout_native_*",
         arg_declare=["{c_type} {c_var};"],
         arg_call=["&{c_var}"],
         fmtdict=dict(
@@ -3780,22 +3782,30 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_native_&_in",
+        name="py_out_native_*",
+        arg_declare=["{c_type} {c_var};"],
+        arg_call=["&{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
+    ),
+    dict(
+        name="py_in_native_&",
         arg_declare=["{c_type} {c_var};"],
     ),
     dict(
-        name="py_native_&_inout",
+        name="py_inout_native_&",
         arg_declare=["{c_type} {c_var};"],
     ),
     dict(
-        name="py_native_&_out",
+        name="py_out_native_&",
         arg_declare=["{c_const}{c_type} {c_var};"],
     ),
 
 ####################
 ## numpy
     dict(
-        name="py_native_*_in_pointer_numpy",
+        name="py_in_native_*_pointer_numpy",
         need_numpy=True,
         declare=[
             "PyObject * {pytmp_var};",
@@ -3824,7 +3834,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_*_inout_pointer_numpy",
+        name="py_inout_native_*_pointer_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3851,7 +3861,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_*_out_pointer_numpy",
+        name="py_out_native_*_pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
@@ -3877,7 +3887,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_*_result_pointer_list",
+        name="py_function_native_*_pointer_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -3894,7 +3904,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_native_*_result_pointer_numpy",
+        name="py_function_native_*_pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -3917,17 +3927,17 @@ py_statements = [
         fail_capsule=fail_capsule,
     ),
     dict(
-        name="py_native_&_result_pointer_numpy",
-        base="py_native_*_result_pointer_numpy",
+        name="py_function_native_&_pointer_numpy",
+        base="py_function_native_*_pointer_numpy",
     ),
     dict(
-        name="py_native_*_result_allocatable_numpy",
-        base="py_native_*_result_pointer_numpy",
+        name="py_function_native_*_allocatable_numpy",
+        base="py_function_native_*_pointer_numpy",
     ),
 
     dict(
-        name="py_native_**_out_pointer_numpy",
-        base="py_native_*_result_pointer_numpy",
+        name="py_out_native_**_pointer_numpy",
+        base="py_function_native_*_pointer_numpy",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -3939,15 +3949,15 @@ py_statements = [
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_native_*&_out_pointer_numpy",
-        base="py_native_**_out_pointer_numpy",
+        name="py_out_native_*&_pointer_numpy",
+        base="py_out_native_**_pointer_numpy",
         arg_call=["{cxx_var}"],
     ),
 
 ########################################
 ## list
     dict(
-        name="py_native_*_in_pointer_list",
+        name="py_in_native_*_pointer_list",
         c_helper="get_from_object_{cxx_type}_list",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3977,7 +3987,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_*_inout_pointer_list",
+        name="py_inout_native_*_pointer_list",
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="get_from_object_{cxx_type}_list to_PyList_{cxx_type}",
         parse_format="O",
@@ -4015,7 +4025,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_native_*_out_pointer_list",
+        name="py_out_native_*_pointer_list",
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4048,8 +4058,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_native_**_out_pointer_list",
-        base="py_native_*_result_pointer_list",
+        name="py_out_native_**_pointer_list",
+        base="py_function_native_*_pointer_list",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4063,19 +4073,19 @@ py_statements = [
 ########################################
 ## allocatable
     dict(
-        name="py_native_*_out_allocatable_list",
-        base="py_native_*_out_pointer_list",
+        name="py_out_native_*_allocatable_list",
+        base="py_out_native_*_pointer_list",
     ),
     dict(
-        name="py_native_*_out_allocatable_numpy",
-        base="py_native_*_out_pointer_numpy",
+        name="py_out_native_*_allocatable_numpy",
+        base="py_out_native_*_pointer_numpy",
     ),
 
 ########################################
 ## raw
     dict(
         # Declare a local pointer, pass address to library, convert to capsule.
-        name="py_native_**_out_raw",
+        name="py_out_native_**_raw",
         arg_declare=[
             "{c_type} *{c_var};",
         ],
@@ -4094,7 +4104,7 @@ py_statements = [
         # Get a string from argument but only pass first character to C++.
         # Since char is a scalar, need to actually get a char * - parse_format, parse_args.
         # XXX - make sure c_var is only 1 long?
-        name="py_char_scalar_in",
+        name="py_in_char_scalar",
         arg_declare=[
             "char *{c_var};",
         ],
@@ -4103,7 +4113,7 @@ py_statements = [
         arg_call=["{c_var}[0]"],
     ),
     dict(
-        name="py_char_scalar_result",
+        name="py_function_char_scalar",
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4113,17 +4123,17 @@ py_statements = [
         object_created=True,
     ),
     dict(
-        name="py_char_*_result",
+        name="py_function_char_*",
         fmtdict=dict(
             ctor_expr="{c_var}",
         ),
     ),
     dict(
-        name="py_char_*_in",
+        name="py_in_char_*",
         arg_call=["{c_var}"],
     ),
     dict(
-        name="py_char_*_out_charlen",
+        name="py_out_char_*_charlen",
         arg_declare=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
@@ -4133,7 +4143,7 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_char_*_inout",
+        name="py_inout_char_*",
         arg_call=["{c_var}"],
         fmtdict=dict(
             ctor_expr="{c_var}",
@@ -4141,7 +4151,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_char_**_in",
+        name="py_in_char_**",
         c_helper="get_from_object_charptr",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4173,7 +4183,7 @@ py_statements = [
 # string
 # ctor_expr is arguments to PyString_FromStringAndSize.
     dict(
-        name="py_string_scalar_in",
+        name="py_in_string_scalar",
         cxx_local_var="scalar",
         arg_declare=[
             # std::string defaults to making this scalar. Make sure it is pointer.
@@ -4185,11 +4195,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_&_in",
-        base="py_string_scalar_in",
+        name="py_in_string_&",
+        base="py_in_string_scalar",
     ),
     dict(
-        name="py_string_scalar_inout",
+        name="py_inout_string_scalar",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
@@ -4197,11 +4207,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_&_inout",
-        base="py_string_scalar_inout",
+        name="py_inout_string_&",
+        base="py_inout_string_scalar",
     ),
     dict(
-        name="py_string_scalar_out",
+        name="py_out_string_scalar",
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
@@ -4210,38 +4220,38 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_&_out",
-        base="py_string_scalar_out",
+        name="py_out_string_&",
+        base="py_out_string_scalar",
     ),
     dict(
-        name="py_string_scalar_result",
+        name="py_function_string_scalar",
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
-        name="py_string_*_result",
+        name="py_function_string_*",
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
-        name="py_string_&_result",
-        base="py_string_*_result",
+        name="py_function_string_&",
+        base="py_function_string_*",
     ),
     dict(
-        name="py_string_*_in",
-        base="py_string_scalar_in",
+        name="py_in_string_*",
+        base="py_in_string_scalar",
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_string_*_inout",
-        base="py_string_scalar_inout",
+        name="py_inout_string_*",
+        base="py_inout_string_scalar",
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_string_*_out",
-        base="py_string_scalar_out",
+        name="py_out_string_*",
+        base="py_out_string_scalar",
         arg_call=["&{cxx_var}"],
     ),
 
@@ -4254,15 +4264,15 @@ py_statements = [
     
 # and does not apply in Python.
     dict(
-        name="py_struct_in_list",
+        name="py_in_struct_list",
         arg_declare=[],
     ),
     dict(
-        name="py_struct_inout_list",
+        name="py_inout_struct_list",
         arg_declare=[],
     ),
     dict(
-        name="py_struct_out_list",
+        name="py_out_struct_list",
         arg_declare=[],
         post_declare=[
             "{cxx_type} {cxx_var};",
@@ -4270,29 +4280,29 @@ py_statements = [
     ),
 
     dict(
-        name="py_struct_scalar_in_list",
-        base="py_struct_in_list",
+        name="py_in_struct_scalar_list",
+        base="py_in_struct_list",
     ),
 
     # struct-list-cxx   (XXX - is not compiled)
     dict(
-        name="py_struct_*_in_list",
-        base="py_struct_in_list",
+        name="py_in_struct_*_list",
+        base="py_in_struct_list",
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_struct_*_inout_list",
-        base="py_struct_inout_list",
+        name="py_inout_struct_*_list",
+        base="py_inout_struct_list",
         arg_call=["&{cxx_var}"],
     ),
     dict(
-        name="py_struct_*_out_list",
-        base="py_struct_out_list",
+        name="py_out_struct_*_list",
+        base="py_out_struct_list",
         arg_call=["&{cxx_var}"],
     ),
 
     dict(
-        name="py_struct_*_in_numpy",
+        name="py_in_struct_*_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4328,7 +4338,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_*_inout_numpy",
+        name="py_inout_struct_*_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4361,7 +4371,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_*_out_numpy",
+        name="py_out_struct_*_numpy",
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -4392,7 +4402,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_result_numpy",
+        name="py_function_struct_numpy",
         # XXX - expand to array of struct
         need_numpy=True,
         allocate_local_var=True,
@@ -4419,34 +4429,34 @@ py_statements = [
     ),
 
     dict(
-        name="py_struct_&_in_numpy",
-        base="py_struct_*_in_numpy",
+        name="py_in_struct_&_numpy",
+        base="py_in_struct_*_numpy",
         arg_call=["*{cxx_var}"],
     ),
     dict(
-        name="py_struct_&_inout_numpy",
-        base="py_struct_*_inout_numpy",
+        name="py_inout_struct_&_numpy",
+        base="py_inout_struct_*_numpy",
         arg_call=["*{cxx_var}"],
     ),
     dict(
-        name="py_struct_&_out_numpy",
-        base="py_struct_*_out_numpy",
+        name="py_out_struct_&_numpy",
+        base="py_out_struct_*_numpy",
         arg_call=["*{cxx_var}"],
     ),
     dict(
-        name="py_struct_scalar_in_numpy",
-        base="py_struct_*_in_numpy",
+        name="py_in_struct_scalar_numpy",
+        base="py_in_struct_*_numpy",
         arg_call=["*{cxx_var}"],
     ),
 # cannot support inout/out with call-by-value
-#        name="py_struct_*_inout_numpy",
-#        name="py_struct_*_out_numpy",
+#        name="py_inout_struct_*_numpy",
+#        name="py_out_struct_*_numpy",
 
 ##########
 # Since cxx_var is always a pointer, use that case as the base for
 # pass by value.
     dict(
-        name="py_struct_*_in_class",
+        name="py_in_struct_*_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4455,7 +4465,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_struct_*_inout_class",
+        name="py_inout_struct_*_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4465,7 +4475,7 @@ py_statements = [
         object_created=True,
     ),
     dict(
-        name="py_struct_*_out_class",
+        name="py_out_struct_*_class",
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         arg_declare=[
@@ -4497,11 +4507,11 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_result_class",
+        name="py_function_struct_class",
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
-            "PyObject *{py_var} = {nullptr};  // struct_result_class",
+            "PyObject *{py_var} = {nullptr};  // struct_class",
         ],
         post_call=[
             "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});",
@@ -4516,27 +4526,27 @@ py_statements = [
 
 
     dict(
-        name="py_struct_scalar_in_class",
-        base="py_struct_*_in_class",
+        name="py_in_struct_scalar_class",
+        base="py_in_struct_*_class",
         arg_call=["*{cxx_var}"],
     ),
 # cannot support inout/out with call-by-value
-#        name="py_struct_scalar_inout_class",
-#        name="py_struct_scalar_out_class",
+#        name="py_inout_struct_scalar_class",
+#        name="py_out_struct_scalart_class",
     dict(
-        name="py_struct_&_in_class",
-        base="py_struct_*_in_class",
+        name="py_in_struct_&_class",
+        base="py_in_struct_*_class",
         arg_call=["*{cxx_var}"],
     ),
     dict(
-        name="py_struct_&_inout_class",
-        base="py_struct_*_inout_class",
+        name="py_inout_struct_&_class",
+        base="py_inout_struct_*_class",
         arg_call=["*{cxx_var}"],
     ),
     dict(
         # XXX - this memory will leak
-        name="py_struct_&_out_class",
-        base="py_struct_*_out_class",
+        name="py_out_struct_&_class",
+        base="py_out_struct_*_class",
         arg_call=["*{cxx_var}"],
         post_call=[
             "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});",
@@ -4547,7 +4557,7 @@ py_statements = [
 ########################################
 # shadow a.k.a class
     dict(
-        name="py_shadow_*_in",
+        name="py_in_shadow_*",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4556,7 +4566,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_*_inout",
+        name="py_inout_shadow_*",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4565,7 +4575,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_*_out",
+        name="py_out_shadow_*",
         declare=[
             "{PyObject} *{py_var} = {nullptr};"
         ],
@@ -4585,11 +4595,11 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_shadow_scalar_result",
-        base="py_struct_*_out_class",
+        name="py_function_shadow_scalar",
+        base="py_out_struct_*_class",
     ),
     dict(
-        name="py_shadow_*_result",
+        name="py_function_shadow_*",
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
 #            ],
@@ -4609,17 +4619,17 @@ py_statements = [
 #            goto_fail=True,
     ),
     dict(
-        name="py_shadow_&_result",
-        base="py_shadow_*_result",
+        name="py_function_shadow_&",
+        base="py_function_shadow_*",
     ),
     dict(
-        name="py_shadow_scalar_in",
-        base="py_shadow_*_in",
+        name="py_in_shadow_scalar",
+        base="py_in_shadow_*",
         arg_call=["*{cxx_var}"],
     ),
     dict(
-        name="py_shadow_&_in",
-        base="py_shadow_*_in",
+        name="py_in_shadow_&",
+        base="py_in_shadow_*",
         arg_call=["*{cxx_var}"],
     ),
     
@@ -4627,7 +4637,7 @@ py_statements = [
 # std::vector  only used with C++
 # list
     dict(
-        name="py_vector_in_list",
+        name="py_in_vector_list",
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
@@ -4650,7 +4660,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_vector_out_list",
+        name="py_out_vector_list",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
@@ -4675,7 +4685,7 @@ py_statements = [
     ),
     # XXX - must release after copying result.
     dict(
-        name="py_vector_result_list",
+        name="py_function_vector_list",
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
@@ -4695,7 +4705,7 @@ py_statements = [
 # cxx_var will always be a pointer since we must save it in a capsule.
 # vectors have the dimension attribute added by generate.py
     dict(
-        name="py_vector_in_numpy",
+        name="py_in_vector_numpy",
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
@@ -4726,7 +4736,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_vector_out_numpy",
+        name="py_out_vector_numpy",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
@@ -4756,7 +4766,7 @@ py_statements = [
         fail_capsule=fail_capsule,
     ),
     dict(
-        name="py_vector_result_numpy",
+        name="py_function_vector_numpy",
         need_numpy=True,
         allocate_local_var=True,
         declare=[

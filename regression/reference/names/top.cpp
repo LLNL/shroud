@@ -80,12 +80,12 @@ static void ShroudStrFree(char *src)
 
 // ----------------------------------------
 // Function:  void getName
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +intent(inout)
-// Requested: c_char_*_inout
+// Requested: c_inout_char_*
 // Match:     c_default
 void TES_get_name(char * name)
 {
@@ -96,12 +96,12 @@ void TES_get_name(char * name)
 
 // ----------------------------------------
 // Function:  void getName
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +intent(inout)
-// Exact:     c_char_*_inout_buf
+// Exact:     c_inout_char_*_buf
 void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 {
     // splicer begin function.get_name_bufferify
@@ -114,8 +114,8 @@ void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 
 // ----------------------------------------
 // Function:  void function1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void YYY_TES_function1(void)
 {
     // splicer begin function.function1
@@ -125,8 +125,8 @@ void YYY_TES_function1(void)
 
 // ----------------------------------------
 // Function:  void function2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void c_name_special(void)
 {
     // splicer begin function.function2
@@ -136,12 +136,12 @@ void c_name_special(void)
 
 // ----------------------------------------
 // Function:  void function3a
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void YYY_TES_function3a_0(int i)
 {
@@ -152,12 +152,12 @@ void YYY_TES_function3a_0(int i)
 
 // ----------------------------------------
 // Function:  void function3a
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  long i +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void YYY_TES_function3a_1(long i)
 {
@@ -168,13 +168,13 @@ void YYY_TES_function3a_1(long i)
 
 // ----------------------------------------
 // Function:  int function4
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in
+// Exact:     c_in_string_&
 int YYY_TES_function4(const char * rv)
 {
     // splicer begin function.function4
@@ -186,13 +186,13 @@ int YYY_TES_function4(const char * rv)
 
 // ----------------------------------------
 // Function:  int function4
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result_buf
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv +len_trim(Lrv)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in_buf
+// Exact:     c_in_string_&_buf
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
     // splicer begin function.function4_bufferify
@@ -204,8 +204,8 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 
 // ----------------------------------------
 // Function:  void function5 +name(fiveplus)
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void YYY_TES_fiveplus(void)
 {
     // splicer begin function.fiveplus
@@ -218,16 +218,16 @@ void YYY_TES_fiveplus(void)
  */
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name
 // Attrs:     +intent(inout)
-// Exact:     c_string_&_inout
+// Exact:     c_inout_string_&
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 void TES_test_multiline_splicer(char * name, int * value)
 {
@@ -242,16 +242,16 @@ void TES_test_multiline_splicer(char * name, int * value)
  */
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +len(Nname)+len_trim(Lname)
 // Attrs:     +intent(inout)
-// Exact:     c_string_&_inout_buf
+// Exact:     c_inout_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     int Nname, int * value)
@@ -268,17 +268,17 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  void FunctionTU
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void c_name_instantiation1(int arg1, long arg2)
 {
@@ -293,17 +293,17 @@ void c_name_instantiation1(int arg1, long arg2)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TES_function_tu_instantiation2(float arg1, double arg2)
 {
@@ -318,8 +318,8 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TES_use_impl_worker_instantiation3(void)
 {
@@ -331,14 +331,14 @@ int TES_use_impl_worker_instantiation3(void)
 
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
-// Requested: c_shadow_*_in
-// Match:     c_shadow_in
+// Requested: c_in_shadow_*
+// Match:     c_in_shadow
 int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum

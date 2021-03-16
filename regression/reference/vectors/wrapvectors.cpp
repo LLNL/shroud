@@ -39,14 +39,14 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result_buf
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
 // Attrs:     +intent(in)
-// Requested: c_vector_&_in_buf_native
-// Match:     c_vector_in_buf
+// Requested: c_in_vector_&_buf_native
+// Match:     c_in_vector_buf
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
@@ -64,13 +64,13 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Requested: c_vector_&_out_buf_native
-// Match:     c_vector_out_buf
+// Requested: c_out_vector_&_buf_native
+// Match:     c_out_vector_buf
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -98,13 +98,13 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Requested: c_vector_&_out_buf_native
-// Match:     c_vector_out_buf
+// Requested: c_out_vector_&_buf_native
+// Match:     c_out_vector_buf
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -133,13 +133,13 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Requested: c_vector_&_out_buf_native
-// Match:     c_vector_out_buf
+// Requested: c_out_vector_&_buf_native
+// Match:     c_out_vector_buf
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -164,13 +164,13 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_alloc
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_vector_&_out_buf_allocatable_native
-// Match:     c_vector_out_buf
+// Requested: c_out_vector_&_buf_allocatable_native
+// Match:     c_out_vector_buf
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -195,13 +195,13 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_inout_alloc
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
 // Attrs:     +deref(allocatable)+intent(inout)
-// Requested: c_vector_&_inout_buf_allocatable_native
-// Match:     c_vector_inout_buf
+// Requested: c_inout_vector_&_buf_allocatable_native
+// Match:     c_inout_vector_buf
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
@@ -223,13 +223,13 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 
 // ----------------------------------------
 // Function:  void vector_increment
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
 // Attrs:     +intent(inout)
-// Requested: c_vector_&_inout_buf_native
-// Match:     c_vector_inout_buf
+// Requested: c_inout_vector_&_buf_native
+// Match:     c_inout_vector_buf
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
@@ -253,13 +253,13 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_d
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Requested: c_vector_&_out_buf_native
-// Match:     c_vector_out_buf
+// Requested: c_out_vector_&_buf_native
+// Match:     c_out_vector_buf
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -282,14 +282,14 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  int vector_string_count
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result_buf
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
 // Attrs:     +intent(in)
-// Requested: c_vector_&_in_buf_string
-// Match:     c_vector_in_buf_string
+// Requested: c_in_vector_&_buf_string
+// Match:     c_in_vector_buf_string
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg)
 {
@@ -317,13 +317,13 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +deref(allocatable)+intent(result)
-// Requested: c_vector_scalar_result_buf_allocatable
-// Match:     c_vector_result_buf
+// Attrs:     +deref(allocatable)+intent(function)
+// Requested: c_function_vector_scalar_buf_allocatable
+// Match:     c_function_vector_buf
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
     int n)

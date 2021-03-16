@@ -23,8 +23,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(result)
-// Exact:     c_shadow_scalar_ctor
+// Attrs:     +intent(ctor)
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -37,7 +38,8 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 
 // ----------------------------------------
 // Function:  ~vector
-// Exact:     c_shadow_dtor
+// Attrs:     +intent(dtor)
+// Exact:     c_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
@@ -50,12 +52,12 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 
 // ----------------------------------------
 // Function:  void push_back
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
 // Attrs:     +intent(in)
-// Requested: c_native_&_in
+// Requested: c_in_native_&
 // Match:     c_default
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 {
@@ -68,13 +70,13 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 
 // ----------------------------------------
 // Function:  int & at
-// Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_&_result_pointer
-// Match:     c_native_&_result
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_native_&_pointer
+// Match:     c_function_native_&
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 {
@@ -88,13 +90,13 @@ int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 
 // ----------------------------------------
 // Function:  int & at
-// Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_&_result_buf_pointer
-// Match:     c_native_&_result
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_native_&_buf_pointer
+// Match:     c_function_native_&
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 int * TEM_vector_int_at_bufferify(TEM_vector_int * self, size_t n)
 {

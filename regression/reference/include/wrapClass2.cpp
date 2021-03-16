@@ -20,12 +20,12 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
 // Attrs:     +intent(in)
-// Requested: c_unknown_scalar_in
+// Requested: c_in_unknown_scalar
 // Match:     c_default
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 {
@@ -36,13 +36,13 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 
 // ----------------------------------------
 // Function:  void method2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  three::Class1 * c2
 // Attrs:     +intent(inout)
-// Requested: c_shadow_*_inout
-// Match:     c_shadow_inout
+// Requested: c_inout_shadow_*
+// Match:     c_inout_shadow
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);

@@ -18,8 +18,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void AFunction
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void NAM_afunction(void)
 {
     // splicer begin function.afunction

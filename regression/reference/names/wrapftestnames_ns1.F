@@ -24,8 +24,9 @@ module testnames_ns1_mod
 
         ! ----------------------------------------
         ! Function:  void init_ns1
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_init_ns1() &
                 bind(C, name="TES_ns1_init_ns1")
             implicit none
@@ -39,10 +40,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void init_ns1
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     subroutine testnames_init_ns1()
         ! splicer begin namespace.ns1.function.init_ns1
         call c_init_ns1()

@@ -539,7 +539,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sgroup = arg_typemap.sgroup
             spointer = arg.get_indirect_stmt()
             stmts = None
-            stmts = ["lua", sgroup, spointer, intent]
+            stmts = ["lua", intent, sgroup, spointer]
             if intent_blk is None:
                 intent_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
@@ -588,25 +588,19 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         sgroup = None
         spointer = ast.get_indirect_stmt()
-        sintent = None
 #        print("DDDDDDDDDDDDDD", ast.name)
+        sintent = ast.metaattrs["intent"]
         if is_ctor:
-            sgroup ="shadow"
-            sintent = "ctor"
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
         elif is_dtor:
-            sgroup ="shadow"
-            sintent = "dtor"
             fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
-            sgroup = "subroutine"
             spointer = None
+            sintent = "subroutine"
         else:
             sgroup = result_typemap.sgroup
-            sintent = "result"
-        stmts = ["lua", sgroup, spointer, sintent]
-#        print("XXXXXX", stmts)
+        stmts = ["lua", sintent, sgroup, spointer]
         result_blk = lookup_stmts(stmts)
         fmt_result.stmt0 = statements.compute_name(stmts)
         fmt_result.stmt1 = result_blk.name
@@ -986,7 +980,7 @@ lua_statements = [
     #####
     # void
     dict(
-        name="lua_void_*_result",
+        name="lua_function_void_*",
         mixin=[
             "lua_mixin_callfunction",
         ],
@@ -994,13 +988,13 @@ lua_statements = [
     #####
     # bool
     dict(
-        name="lua_bool_scalar_in",
+        name="lua_in_bool_scalar",
         pre_call=[
             "bool {c_var} = {pop_expr};",
         ],
     ),
     dict(
-        name="lua_bool_scalar_result",
+        name="lua_function_bool_scalar",
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
@@ -1009,19 +1003,19 @@ lua_statements = [
     #####
     # native
     dict(
-        name="lua_native_scalar_in",
+        name="lua_in_native_scalar",
         pre_call=[
             "{cxx_type} {cxx_var} =\t {pop_expr};",
         ],
     ),
     dict(
-        name="lua_native_*_inout",
+        name="lua_inout_native_*",
         pre_call=[
             "// lua_native_*_inout;",
         ],
     ),
     dict(
-        name="lua_native_scalar_result",
+        name="lua_function_native_scalar",
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
@@ -1030,24 +1024,24 @@ lua_statements = [
     #####
     # string
     dict(
-        name="lua_string_*_in",
+        name="lua_in_string_*",
         pre_call=[
             "const char * {c_var} = \t{pop_expr};",
         ],
     ),
     dict(
-        name="lua_string_&_in",
-        base="lua_string_*_in",
+        name="lua_in_string_&",
+        base="lua_in_string_*",
     ),
     dict(
-        name="lua_string_scalar_result",
+        name="lua_function_string_scalar",
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
         ],
     ),
     dict(
-        name="lua_string_&_result",
+        name="lua_function_string_&",
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
@@ -1056,7 +1050,7 @@ lua_statements = [
     #####
     # shadow
     dict(
-        name="lua_shadow_ctor",
+        name="lua_ctor",
         call=[
             "{LUA_userdata_type} * {LUA_userdata_var} ="
                 "\t ({LUA_userdata_type} *) lua_newuserdata"
@@ -1070,20 +1064,20 @@ lua_statements = [
         ],
     ),
     dict(
-        name="lua_shadow_dtor",
+        name="lua_dtor",
         call=[
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
         ],
     ),
     dict(
-        name="lua_shadow_*_in",
+        name="lua_in_shadow_*",
         pre_call=[
             "{cxx_type} * {cxx_var} =\t {pop_expr};",
         ],
     ),
     dict(
-        name="lua_shadow_*_result",
+        name="lua_function_shadow_*",
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push",

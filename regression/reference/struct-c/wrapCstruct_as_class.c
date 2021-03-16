@@ -16,8 +16,9 @@
 
 // ----------------------------------------
 // Function:  int getX1
-// Requested: c_native_scalar_result
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_native_scalar
+// Match:     c_subroutine
 // start STR_Cstruct_as_class_get_x1
 int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 {
@@ -30,12 +31,12 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 
 // ----------------------------------------
 // Function:  void setX1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start STR_Cstruct_as_class_set_x1
 void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
@@ -50,8 +51,9 @@ void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 
 // ----------------------------------------
 // Function:  int getY1
-// Requested: c_native_scalar_result
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_native_scalar
+// Match:     c_subroutine
 // start STR_Cstruct_as_class_get_y1
 int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 {
@@ -64,12 +66,12 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 
 // ----------------------------------------
 // Function:  void setY1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start STR_Cstruct_as_class_set_y1
 void STR_Cstruct_as_class_set_y1(STR_Cstruct_as_class * self, int val)

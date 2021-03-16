@@ -37,13 +37,13 @@ PyObject *PY_init_cxxlibrary_structns(void);
 
 // ----------------------------------------
 // Function:  int passStructByReferenceCls
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg
 // Attrs:     +intent(inout)
-// Exact:     py_struct_&_inout_class
+// Exact:     py_inout_struct_&_class
 static char PY_passStructByReferenceCls__doc__[] =
 "documentation"
 ;
@@ -80,13 +80,13 @@ PY_passStructByReferenceCls(
 
 // ----------------------------------------
 // Function:  int passStructByReferenceInCls
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Cstruct1_cls & arg
 // Attrs:     +intent(in)
-// Exact:     py_struct_&_in_class
+// Exact:     py_in_struct_&_class
 static char PY_passStructByReferenceInCls__doc__[] =
 "documentation"
 ;
@@ -127,11 +127,12 @@ PY_passStructByReferenceInCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInoutCls
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(inout)
 // Attrs:     +intent(inout)
-// Exact:     py_struct_&_inout_class
+// Exact:     py_inout_struct_&_class
 static char PY_passStructByReferenceInoutCls__doc__[] =
 "documentation"
 ;
@@ -164,11 +165,12 @@ PY_passStructByReferenceInoutCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOutCls
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_struct_&_out_class
+// Exact:     py_out_struct_&_class
 static char PY_passStructByReferenceOutCls__doc__[] =
 "documentation"
 ;
@@ -202,13 +204,13 @@ fail:
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Attrs:     +intent(result)
-// Requested: py_bool_scalar_result
-// Match:     py_bool_result
+// Attrs:     +intent(function)
+// Requested: py_function_bool_scalar
+// Match:     py_function_bool
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in_pointer_numpy
+// Exact:     py_in_native_*_pointer_numpy
 static char PY_defaultPtrIsNULL_1__doc__[] =
 "documentation"
 ;
@@ -280,25 +282,26 @@ fail:
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int in1 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 // ----------------------------------------
 // Argument:  bool flag=false +value
 // Attrs:     +intent(in)
-// Requested: py_bool_scalar_in
-// Match:     py_bool_in
+// Requested: py_in_bool_scalar
+// Match:     py_in_bool
 static char PY_defaultArgsInOut_1__doc__[] =
 "documentation"
 ;

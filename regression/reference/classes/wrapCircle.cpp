@@ -21,8 +21,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +intent(result)
-// Exact:     c_shadow_scalar_ctor
+// Attrs:     +intent(ctor)
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv)
 {
     // splicer begin class.Circle.method.ctor

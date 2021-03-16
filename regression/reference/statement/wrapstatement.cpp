@@ -45,8 +45,8 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
  */
 // ----------------------------------------
 // Function:  int GetNameLength +pure
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int STMT_get_name_length(void)
 {
@@ -57,9 +57,9 @@ int STMT_get_name_length(void)
 
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +len(get_name_length())
-// Attrs:     +deref(result-as-arg)+intent(result)
-// Requested: c_string_&_result_result-as-arg
-// Match:     c_string_&_result
+// Attrs:     +deref(result-as-arg)+intent(function)
+// Requested: c_function_string_&_result-as-arg
+// Match:     c_function_string_&
 const char * STMT_get_name_error_pattern(void)
 {
     // splicer begin function.get_name_error_pattern
@@ -76,12 +76,13 @@ const char * STMT_get_name_error_pattern(void)
 
 // ----------------------------------------
 // Function:  void getNameErrorPattern +len(get_name_length())
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar_buf
+// Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
 // Attrs:     +intent(out)+is_result
-// Exact:     c_string_&_result_buf
+// Exact:     c_function_string_&_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.get_name_error_pattern_bufferify

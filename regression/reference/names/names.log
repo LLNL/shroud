@@ -2,13 +2,13 @@ Read yaml names.yaml
 Close testnames_types.yaml
 Close wraptestnames_ns0_inner.cc
 class Names
-C Names(void) +name(defaultctor)  +intent(result)
-C void method1(void) 
-C void method2(void) 
+C Names(void) +name(defaultctor)  +intent(ctor)
+C void method1(void)  +intent(subroutine)
+C void method2(void)  +intent(subroutine)
 Close foo.h
 Close foo.cpp
 Close foons0.cpp
-C void init_ns1(void) 
+C void init_ns1(void)  +intent(subroutine)
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
 class ImplWorker1
@@ -17,10 +17,10 @@ class vector
 class vector
 class vector
 class Class1
-C void Member1(void) 
+C void Member1(void)  +intent(subroutine)
 Close wrapCAPI_Class1.hh
 Close wrapCAPI_Class1.cc
-C void Worker1(void) 
+C void Worker1(void)  +intent(subroutine)
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
 class Names2
@@ -29,21 +29,21 @@ class twoTs
 class twoTs
 class Cstruct_as_class
 class Cstruct_as_subclass
-C void getName(char * name +len(worklen)+len_trim(worktrim)) 
-C void getName(char * name +len(worklen)+len_trim(worktrim)) 
-C void function1(void) 
-C void function2(void) 
-C void function3a(int i +value) 
-C void function3a(long i +value) 
-C int function4(const std::string & rv)  +intent(result)
-C int function4(const std::string & rv +len_trim)  +intent(result)
-C void function5(void) +name(fiveplus) 
-C void TestMultilineSplicer(std::string & name, int * value +intent(out)) 
-C void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out)) 
-C void FunctionTU(int arg1 +value, long arg2 +value) 
-C void FunctionTU(float arg1 +value, double arg2 +value) 
-C int UseImplWorker(void)  +intent(result)
-C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(result)
+C void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C void function1(void)  +intent(subroutine)
+C void function2(void)  +intent(subroutine)
+C void function3a(int i +value)  +intent(subroutine)
+C void function3a(long i +value)  +intent(subroutine)
+C int function4(const std::string & rv)  +intent(function)
+C int function4(const std::string & rv +len_trim)  +intent(function)
+C void function5(void) +name(fiveplus)  +intent(subroutine)
+C void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out))  +intent(subroutine)
+C void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C int UseImplWorker(void)  +intent(function)
+C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
 Close top.h
 Close top.cpp
 class Names2
@@ -51,44 +51,44 @@ class twoTs
 class twoTs
 class Cstruct_as_class
 class Cstruct_as_subclass
-Fortran void getName(char * name +len(worklen)+len_trim(worktrim)) 
-Fortran void function1(void) 
-Fortran void function2(void) 
-Fortran void function3a(int i +value) 
-Fortran void function3a(long i +value) 
-Fortran int function4(const std::string & rv)  +intent(result)
-Fortran void function5(void) +name(fiveplus) 
-Fortran void TestMultilineSplicer(std::string & name, int * value +intent(out)) 
-Fortran void FunctionTU(int arg1 +value, long arg2 +value) 
-Fortran void FunctionTU(float arg1 +value, double arg2 +value) 
-Fortran int UseImplWorker(void)  +intent(result)
-Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(result)
-C-interface void getName(char * name +len(worklen)+len_trim(worktrim)) 
-C-interface void getName(char * name +len(worklen)+len_trim(worktrim)) 
-C-interface void function1(void) 
-C-interface void function2(void) 
-C-interface void function3a(int i +value) 
-C-interface void function3a(long i +value) 
-C-interface int function4(const std::string & rv)  +intent(result)
-C-interface int function4(const std::string & rv +len_trim)  +intent(result)
-C-interface void function5(void) +name(fiveplus) 
-C-interface void TestMultilineSplicer(std::string & name, int * value +intent(out)) 
-C-interface void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out)) 
-C-interface void FunctionTU(int arg1 +value, long arg2 +value) 
-C-interface void FunctionTU(float arg1 +value, double arg2 +value) 
-C-interface int UseImplWorker(void)  +intent(result)
-C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(result)
+Fortran void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+Fortran void function1(void)  +intent(subroutine)
+Fortran void function2(void)  +intent(subroutine)
+Fortran void function3a(int i +value)  +intent(subroutine)
+Fortran void function3a(long i +value)  +intent(subroutine)
+Fortran int function4(const std::string & rv)  +intent(function)
+Fortran void function5(void) +name(fiveplus)  +intent(subroutine)
+Fortran void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+Fortran void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+Fortran void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+Fortran int UseImplWorker(void)  +intent(function)
+Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
+C-interface void function1(void)  +intent(subroutine)
+C-interface void function2(void)  +intent(subroutine)
+C-interface void function3a(int i +value)  +intent(subroutine)
+C-interface void function3a(long i +value)  +intent(subroutine)
+C-interface int function4(const std::string & rv)  +intent(function)
+C-interface int function4(const std::string & rv +len_trim)  +intent(function)
+C-interface void function5(void) +name(fiveplus)  +intent(subroutine)
+C-interface void TestMultilineSplicer(std::string & name, int * value +intent(out))  +intent(subroutine)
+C-interface void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out))  +intent(subroutine)
+C-interface void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
+C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
+C-interface int UseImplWorker(void)  +intent(function)
+C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
 class Names
-Fortran Names(void) +name(defaultctor)  +intent(result)
-Fortran void method1(void) 
-Fortran void method2(void) 
-C-interface Names(void) +name(defaultctor)  +intent(result)
-C-interface void method1(void) 
-C-interface void method2(void) 
+Fortran Names(void) +name(defaultctor)  +intent(ctor)
+Fortran void method1(void)  +intent(subroutine)
+Fortran void method2(void)  +intent(subroutine)
+C-interface Names(void) +name(defaultctor)  +intent(ctor)
+C-interface void method1(void)  +intent(subroutine)
+C-interface void method2(void)  +intent(subroutine)
 Close wrapftestnames_ns0_inner.F
 Close foo.f
-Fortran void init_ns1(void) 
-C-interface void init_ns1(void) 
+Fortran void init_ns1(void)  +intent(subroutine)
+C-interface void init_ns1(void)  +intent(subroutine)
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
 class vector
@@ -97,10 +97,10 @@ class vector
 class vector
 Close wrapftestnames_std.F
 class Class1
-Fortran void Member1(void) 
-C-interface void Member1(void) 
-Fortran void Worker1(void) 
-C-interface void Worker1(void) 
+Fortran void Member1(void)  +intent(subroutine)
+C-interface void Member1(void)  +intent(subroutine)
+Fortran void Worker1(void)  +intent(subroutine)
+C-interface void Worker1(void)  +intent(subroutine)
 Close wrapftestnames_CAPI.F
 Close top.f
 Close utiltestnames.cc

@@ -24,14 +24,14 @@ extern "C" {
  */
 // ----------------------------------------
 // Function:  int passStructByReference
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Attrs:     +intent(inout)
-// Requested: c_struct_&_inout
-// Match:     c_struct
+// Requested: c_inout_struct_&
+// Match:     c_inout_struct
 int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference
@@ -47,14 +47,14 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Attrs:     +intent(in)
-// Requested: c_struct_&_in
-// Match:     c_struct
+// Requested: c_in_struct_&
+// Match:     c_in_struct
 int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_in
@@ -68,13 +68,13 @@ int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInout
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
 // Attrs:     +intent(inout)
-// Requested: c_struct_&_inout
-// Match:     c_struct
+// Requested: c_inout_struct_&
+// Match:     c_inout_struct
 void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_inout
@@ -86,13 +86,13 @@ void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOut
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_struct_&_out
-// Match:     c_struct
+// Requested: c_out_struct_&
+// Match:     c_out_struct
 void CXX_structns_pass_struct_by_reference_out(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_out

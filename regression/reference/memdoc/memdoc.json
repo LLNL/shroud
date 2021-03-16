@@ -31,7 +31,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -81,8 +81,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result_allocatable",
-                        "stmt1": "c_string_*_result"
+                        "stmt0": "c_function_string_*_allocatable",
+                        "stmt1": "c_function_string_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -95,10 +95,10 @@
                         "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                         "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_*_result_buf_allocatable_library",
-                        "stmt1": "f_string_*_result_buf_allocatable",
-                        "stmtc0": "c_string_*_result_buf_allocatable",
-                        "stmtc1": "c_string_*_result_buf_allocatable",
+                        "stmt0": "f_function_string_*_buf_allocatable_library",
+                        "stmt1": "f_function_string_*_buf_allocatable",
+                        "stmtc0": "c_function_string_*_buf_allocatable",
+                        "stmtc1": "c_function_string_*_buf_allocatable",
                         "temp0": "SHT_rv_temp0"
                     }
                 }
@@ -121,7 +121,7 @@
                     },
                     "metaattrs": {
                         "deref": "allocatable",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -163,8 +163,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result_buf_allocatable",
-                        "stmt1": "c_string_*_result_buf_allocatable",
+                        "stmt0": "c_function_string_*_buf_allocatable",
+                        "stmt1": "c_function_string_*_buf_allocatable",
                         "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {

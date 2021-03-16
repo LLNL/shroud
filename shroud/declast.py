@@ -1410,6 +1410,19 @@ class Declaration(Node):
         self.gen_arg_as_lang(decl, lang="c_type", **kwargs)
         return "".join(decl)
 
+    def gen_arg_as_language(self, lang, **kwargs):
+        """Generate C++ declaration of variable.
+        No parameters or attributes.
+
+        Parameters
+        ----------
+        lang : str
+            "c_type" or "cxx_type"
+        """
+        decl = []
+        self.gen_arg_as_lang(decl, lang=lang, **kwargs)
+        return "".join(decl)
+
     def gen_arg_as_lang(
         self,
         decl,
@@ -1563,7 +1576,7 @@ class Declaration(Node):
         if attrs["value"]:
             t.append("value")
         intent = intent or meta["intent"]
-        if intent and intent != "result":
+        if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
 
         decl = []
@@ -1646,7 +1659,7 @@ class Declaration(Node):
             if attrs["value"]:
                 t.append("value")
             intent = meta["intent"]
-            if intent and intent != "result":
+            if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
 
         if is_allocatable:

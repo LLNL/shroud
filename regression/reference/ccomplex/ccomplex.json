@@ -20,6 +20,9 @@
                         "name": "acceptFloatComplexInoutPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "declarator": {
@@ -71,7 +74,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
                             "shadow_var": "SHadow_arg1",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -83,9 +86,9 @@
                             "f_type": "complex(C_FLOAT_COMPLEX)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmt0": "f_native_*_inout",
+                            "stmt0": "f_inout_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_inout",
+                            "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -107,9 +110,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "acceptFloatComplexInoutPtr",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_float_complex_inout_ptr"
                 }
             },
@@ -119,6 +122,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexInoutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -170,7 +176,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "shadow_var": "SHadow_arg1",
-                            "stmt0": "c_native_*_inout",
+                            "stmt0": "c_inout_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -182,9 +188,9 @@
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "f_native_*_inout",
+                            "stmt0": "f_inout_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_inout",
+                            "stmtc0": "c_inout_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -206,8 +212,8 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_*_inout",
-                            "stmt1": "py_native_*_inout",
+                            "stmt0": "py_inout_native_*",
+                            "stmt1": "py_inout_native_*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -230,9 +236,9 @@
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
                     "function_name": "acceptDoubleComplexInoutPtr",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_double_complex_inout_ptr"
                 }
             },
@@ -242,6 +248,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexOutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -296,7 +305,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "shadow_var": "SHadow_arg1",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -308,9 +317,9 @@
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -331,8 +340,8 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -355,9 +364,9 @@
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtr",
                     "function_name": "acceptDoubleComplexOutPtr",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_double_complex_out_ptr"
                 }
             },
@@ -367,6 +376,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexInoutPtrFlag",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -446,8 +458,8 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_*_inout",
-                            "stmt1": "py_native_*_inout",
+                            "stmt0": "py_inout_native_*",
+                            "stmt1": "py_inout_native_*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -468,8 +480,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -486,6 +498,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexOutPtrFlag",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -563,7 +578,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "shadow_var": "SHadow_arg1",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -575,9 +590,9 @@
                             "f_type": "complex(C_DOUBLE_COMPLEX)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -598,8 +613,8 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -618,7 +633,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_flag",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -630,9 +645,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "flag",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
@@ -651,8 +666,8 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
+                            "stmt0": "py_out_native_*",
+                            "stmt1": "py_out_native_*",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -675,9 +690,9 @@
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtrFlag",
                     "function_name": "acceptDoubleComplexOutPtrFlag",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_double_complex_out_ptr_flag"
                 }
             }

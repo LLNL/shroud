@@ -38,16 +38,17 @@ PyObject *PY_init_templates_internal(void);
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 /**
  * \brief Function template with two template parameters.
@@ -78,16 +79,17 @@ PY_FunctionTU_0(
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 /**
  * \brief Function template with two template parameters.
@@ -118,8 +120,8 @@ PY_FunctionTU_1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
@@ -149,8 +151,8 @@ PY_UseImplWorker_internal_ImplWorker1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"

@@ -43,7 +43,7 @@ PY_vector_int_tp_del (PY_vector_int *self)
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 static int
 PY_vector_int_tp_init(
@@ -64,11 +64,12 @@ PY_vector_int_tp_init(
 
 // ----------------------------------------
 // Function:  void push_back
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
 // Attrs:     +intent(in)
-// Exact:     py_native_&_in
+// Exact:     py_in_native_&
 static char PY_push_back__doc__[] =
 "documentation"
 ;
@@ -96,12 +97,12 @@ PY_push_back(
 
 // ----------------------------------------
 // Function:  int & at
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_&_result_pointer_numpy
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_&_pointer_numpy
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_at__doc__[] =
 "documentation"

@@ -55,7 +55,7 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 static int
 PP_ExClass1_tp_init_0(
@@ -76,12 +76,12 @@ PP_ExClass1_tp_init_0(
 
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name
 // Attrs:     +intent(in)
-// Exact:     py_string_*_in
+// Exact:     py_in_string_*
 /**
  * \brief constructor
  *
@@ -121,13 +121,13 @@ PP_ExClass1_tp_init_1(
 
 // ----------------------------------------
 // Function:  int incrementCount
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int incr +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PP_incrementCount__doc__[] =
 "documentation"
@@ -161,8 +161,8 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Attrs:     +deref(allocatable)+intent(result)
-// Exact:     py_string_&_result
+// Attrs:     +deref(allocatable)+intent(function)
+// Exact:     py_function_string_&
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -188,8 +188,8 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Attrs:     +deref(result-as-arg)+intent(result)
-// Exact:     py_string_&_result
+// Attrs:     +deref(result-as-arg)+intent(function)
+// Exact:     py_function_string_&
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;
@@ -215,13 +215,13 @@ PP_getNameArg(
 
 // ----------------------------------------
 // Function:  int getValue
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static PyObject *
 PP_getValue_from_int(
@@ -251,13 +251,13 @@ PP_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long value +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static PyObject *
 PP_getValue_1(
@@ -287,14 +287,14 @@ PP_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
-// Attrs:     +intent(result)
-// Requested: py_bool_scalar_result
-// Match:     py_bool_result
+// Attrs:     +intent(function)
+// Requested: py_function_bool_scalar
+// Match:     py_function_bool
 // ----------------------------------------
 // Argument:  bool in +value
 // Attrs:     +intent(in)
-// Requested: py_bool_scalar_in
-// Match:     py_bool_in
+// Requested: py_in_bool_scalar
+// Match:     py_in_bool
 static char PP_hasAddr__doc__[] =
 "documentation"
 ;
@@ -336,6 +336,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PP_SplicerSpecial__doc__[] =
 "documentation"

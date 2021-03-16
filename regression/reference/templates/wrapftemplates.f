@@ -105,17 +105,18 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void nested
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double arg2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
@@ -132,8 +133,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function c_structasclass_int_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
@@ -146,12 +147,13 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void set_npts
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_structasclass_int_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_int_set_npts")
@@ -164,8 +166,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int get_npts
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_structasclass_int_get_npts(self) &
                 result(SHT_rv) &
@@ -179,12 +181,13 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void set_value
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int v +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_structasclass_int_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_int_set_value")
@@ -197,8 +200,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int get_value
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_structasclass_int_get_value(self) &
                 result(SHT_rv) &
@@ -215,8 +218,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function c_structasclass_double_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
@@ -229,12 +232,13 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void set_npts
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_structasclass_double_set_npts(self, n) &
                 bind(C, name="TEM_structAsClass_double_set_npts")
@@ -247,8 +251,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int get_npts
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_structasclass_double_get_npts(self) &
                 result(SHT_rv) &
@@ -262,12 +266,13 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void set_value
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double v +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_structasclass_double_set_value(self, v) &
                 bind(C, name="TEM_structAsClass_double_set_value")
@@ -280,8 +285,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  double get_value
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_structasclass_double_get_value(self) &
                 result(SHT_rv) &
@@ -298,8 +303,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(function)
+        ! Exact:     c_function_shadow_scalar
         function c_return_user_type(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_return_user_type")
@@ -312,17 +317,18 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long arg2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_0(arg1, arg2) &
                 bind(C, name="TEM_function_tu_0")
@@ -334,17 +340,18 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double arg2 +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_1(arg1, arg2) &
                 bind(C, name="TEM_function_tu_1")
@@ -356,8 +363,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker1() &
                 result(SHT_rv) &
@@ -369,8 +376,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker2() &
                 result(SHT_rv) &
@@ -428,25 +435,25 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void nested
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine user_int_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -486,10 +493,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -502,17 +509,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void set_npts
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine structasclass_int_set_npts(obj, n)
         use iso_c_binding, only : C_INT
@@ -525,11 +532,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  int get_npts
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function structasclass_int_get_npts(obj) &
             result(SHT_rv)
@@ -544,17 +551,17 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void set_value
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int v +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine structasclass_int_set_value(obj, v)
         use iso_c_binding, only : C_INT
@@ -568,11 +575,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int get_value
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function structasclass_int_get_value(obj) &
             result(SHT_rv)
@@ -612,10 +619,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -628,17 +635,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void set_npts
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine structasclass_double_set_npts(obj, n)
         use iso_c_binding, only : C_INT
@@ -651,11 +658,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  int get_npts
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function structasclass_double_get_npts(obj) &
             result(SHT_rv)
@@ -670,17 +677,17 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void set_value
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double v +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine structasclass_double_set_value(obj, v)
         use iso_c_binding, only : C_DOUBLE
@@ -694,11 +701,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  double get_value
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     function structasclass_double_get_value(obj) &
             result(SHT_rv)
@@ -738,11 +745,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
-    ! Attrs:     +intent(result)
-    ! Requested: f_shadow_scalar_result
-    ! Match:     f_shadow_result
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_shadow_scalar
+    ! Match:     f_function_shadow
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_shadow_scalar
     function return_user_type() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -756,25 +763,25 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void FunctionTU
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  long arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
@@ -792,25 +799,25 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void FunctionTU
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg2 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     !>
     !! \brief Function template with two template parameters.
@@ -828,11 +835,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int UseImplWorker
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     !>
     !! \brief Function which uses a templated T in the implemetation.
@@ -850,11 +857,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int UseImplWorker
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     !>
     !! \brief Function which uses a templated T in the implemetation.

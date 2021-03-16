@@ -23,12 +23,12 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Rank2In
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
 // Attrs:     +intent(in)
-// Exact:     c_native_*_in_cdesc
+// Exact:     c_in_native_*_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in
@@ -48,17 +48,16 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void GetScalar1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in
+// Exact:     c_in_string_&
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Attrs:     +intent(out)
-// Requested: c_void_*_out_cdesc
-// Match:     c_void_*_cdesc
+// Exact:     c_out_void_*_cdesc
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 {
     // splicer begin function.get_scalar1
@@ -77,16 +76,16 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
  */
 // ----------------------------------------
 // Function:  void GetScalar1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in_buf
+// Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
 // Attrs:     +intent(out)
-// Exact:     c_native_*_out_cdesc
+// Exact:     c_out_native_*_cdesc
 void CDE_get_scalar1_0_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {
@@ -124,16 +123,16 @@ void CDE_get_scalar1_0_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  void GetScalar1
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in_buf
+// Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
 // Attrs:     +intent(out)
-// Exact:     c_native_*_out_cdesc
+// Exact:     c_out_native_*_cdesc
 void CDE_get_scalar1_1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {
@@ -165,8 +164,8 @@ void CDE_get_scalar1_1_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  int getData
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int CDE_get_data_int(void)
 {
@@ -181,8 +180,8 @@ int CDE_get_data_int(void)
  */
 // ----------------------------------------
 // Function:  double getData
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 double CDE_get_data_double(void)
 {
@@ -201,16 +200,16 @@ double CDE_get_data_double(void)
  */
 // ----------------------------------------
 // Function:  void GetScalar2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in_buf
+// Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value)
 {
@@ -228,16 +227,16 @@ void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value)
  */
 // ----------------------------------------
 // Function:  void GetScalar2
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Attrs:     +intent(in)
-// Exact:     c_string_&_in_buf
+// Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out
+// Requested: c_out_native_*
 // Match:     c_default
 void CDE_get_scalar2_1_bufferify(char * name, int Lname, double * value)
 {

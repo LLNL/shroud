@@ -129,8 +129,7 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
-        if ast.get_subprogram() == "function":
-            ast.metaattrs["intent"] = "result"
+        ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
@@ -553,6 +552,7 @@ class GenFunctions(object):
         self.newlibrary = newlibrary
         self.config = config
         self.instantiate_scope = None
+        self.language = newlibrary.language
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -648,15 +648,21 @@ class GenFunctions(object):
         ast = var.ast
         arg_typemap = ast.typemap
         fieldname = ast.name  # attrs["name"]
+        if self.language == "c":
+            lang = "c_type"
+        else:
+            lang = "cxx_type"
 
         fmt = util.Scope(var.fmtdict)
 
         # getter
         funcname = "get" + fieldname.capitalize()
-        argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
         decl = "{}()".format(argdecl)
         field = wformat("{CXX_this}->{field_name}", fmt)
-        if arg_typemap.cxx_to_c is None:
+        if self.language == "c":
+            val = field
+        elif arg_typemap.cxx_to_c is None:
             val = field
         else:
             fmt.cxx_var = field
@@ -669,6 +675,7 @@ class GenFunctions(object):
         )
 
         fcn = cls.add_function(decl, splicer=splicer)
+        fcn.ast.metaattrs["intent"] = "subroutine"
         fcn.wrap.lua = False
         fcn.wrap.python = False
 
@@ -676,10 +683,12 @@ class GenFunctions(object):
         if ast.attrs["readonly"]:
             return
         funcname = "set" + ast.name.capitalize()
-        argdecl = ast.gen_arg_as_c(name="val", continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
         decl = "void {}({})".format(funcname, argdecl)
         field = wformat("{CXX_this}->{field_name}", fmt)
-        if arg_typemap.c_to_cxx is None:
+        if self.language == "c":
+            val = "val"
+        elif arg_typemap.c_to_cxx is None:            
             val = "val"
         else:
             fmt.c_var = "val"
@@ -701,6 +710,7 @@ class GenFunctions(object):
 
         fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
         # XXX - The function is not processed like other, so set intent directly.
+        fcn.ast.metaattrs["intent"] = "subroutine"
         fcn.ast.params[0].metaattrs["intent"] = "in"
         fcn.wrap.lua = False
         fcn.wrap.python = False
@@ -1386,6 +1396,7 @@ class GenFunctions(object):
 
         # Do not return C++ this instance.
         new.ast.set_return_to_void()
+        new.ast.metaattrs["intent"] = "subroutine"
     
     def convert_result_as_arg(self, node, ordered_functions):
         """Convert a function result into an argument.
@@ -1602,7 +1613,7 @@ class GenFunctions(object):
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
                 result_as_string.metaattrs["is_result"] = True
-                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
@@ -1776,7 +1787,7 @@ class GenFunctions(object):
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, meta["intent"], arg.stmts_suffix, specialize]
+            c_stmts = ["c", meta["intent"], sgroup, spointer, arg.stmts_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 
@@ -1801,7 +1812,7 @@ class GenFunctions(object):
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
                 result_as_string.metaattrs["is_result"] = True
-                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
@@ -2033,7 +2044,10 @@ class TemplateTypemap(visitor.Visitor):
             self.visit(cls)
         for fcn in node.functions:
             if fcn.ast.is_ctor():
+                fcn.ast.metaattrs["intent"] = "ctor"
                 fcn.ast.typemap = node.typemap
+            elif fcn.ast.is_dtor():
+                fcn.ast.metaattrs["intent"] = "dtor"
             self.visit(fcn)
         for var in node.variables:
             self.visit(var)

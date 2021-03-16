@@ -53,8 +53,8 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function xxx_tes_names_defaultctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -67,8 +67,9 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
@@ -78,8 +79,9 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data
@@ -102,10 +104,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -118,10 +120,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
@@ -131,10 +133,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2

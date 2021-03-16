@@ -27,8 +27,9 @@ extern "C" {
 // ~Class1(void)
 // ----------------------------------------
 // Function:  ~Class1
-// Requested: lua_shadow_scalar_dtor
-// Match:     lua_shadow_dtor
+// Attrs:     +intent(dtor)
+// Requested: lua_dtor_scalar
+// Match:     lua_dtor
 static int l_Class1_dtor(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc

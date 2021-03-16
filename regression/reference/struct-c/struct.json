@@ -626,6 +626,9 @@
                                 "name": "getX1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -684,8 +687,8 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_subroutine_native_scalar",
+                                "stmt1": "c_subroutine"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -696,9 +699,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             }
                         }
@@ -709,6 +712,9 @@
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -764,7 +770,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -776,9 +782,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -805,9 +811,9 @@
                             "function_name": "setX1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_x1"
                         }
                     },
@@ -817,6 +823,9 @@
                             "declarator": {
                                 "name": "getY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -876,8 +885,8 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_subroutine_native_scalar",
+                                "stmt1": "c_subroutine"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -888,9 +897,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             }
                         }
@@ -901,6 +910,9 @@
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -956,7 +968,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -968,9 +980,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -997,9 +1009,9 @@
                             "function_name": "setY1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_y1"
                         }
                     }
@@ -1103,6 +1115,9 @@
                                 "name": "getX1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -1161,8 +1176,8 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_subroutine_native_scalar",
+                                "stmt1": "c_subroutine"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1173,9 +1188,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             }
                         }
@@ -1186,6 +1201,9 @@
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1241,7 +1259,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -1253,9 +1271,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -1282,9 +1300,9 @@
                             "function_name": "setX1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_x1"
                         }
                     },
@@ -1294,6 +1312,9 @@
                             "declarator": {
                                 "name": "getY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -1353,8 +1374,8 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_subroutine_native_scalar",
+                                "stmt1": "c_subroutine"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1365,9 +1386,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             }
                         }
@@ -1378,6 +1399,9 @@
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1433,7 +1457,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -1445,9 +1469,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -1474,9 +1498,9 @@
                             "function_name": "setY1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_y1"
                         }
                     },
@@ -1486,6 +1510,9 @@
                             "declarator": {
                                 "name": "getZ1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -1545,8 +1572,8 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_scalar_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_subroutine_native_scalar",
+                                "stmt1": "c_subroutine"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1557,9 +1584,9 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_native_scalar_result",
+                                "stmt0": "f_function_native_scalar",
                                 "stmt1": "f_default",
-                                "stmtc0": "c_native_scalar_result",
+                                "stmtc0": "c_function_native_scalar",
                                 "stmtc1": "c_default"
                             }
                         }
@@ -1570,6 +1597,9 @@
                             "declarator": {
                                 "name": "setZ1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1625,7 +1655,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -1637,9 +1667,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -1666,9 +1696,9 @@
                             "function_name": "setZ1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmt1": "f_subroutine",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_z1"
                         }
                     }
@@ -1811,7 +1841,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1862,8 +1892,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_scalar_in",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_in_struct_scalar",
+                            "stmt1": "c_in_struct"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1873,10 +1903,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_scalar_in",
+                            "stmt0": "f_in_struct_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_scalar_in",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_in_struct_scalar",
+                            "stmtc1": "c_in_struct"
                         }
                     }
                 },
@@ -1915,7 +1945,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1927,9 +1957,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1942,7 +1972,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1995,8 +2025,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_*_in",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2006,10 +2036,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_in",
+                            "stmt0": "f_in_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_in",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
                         }
                     }
                 },
@@ -2048,7 +2078,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -2060,9 +2090,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -2079,7 +2109,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2153,7 +2183,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out",
+                            "stmt0": "c_out_char_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2176,8 +2206,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_s1",
-                            "stmt0": "c_struct_*_in",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
                         },
                         "fmtf": {
                             "F_C_var": "s1",
@@ -2220,7 +2250,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -2232,9 +2262,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt0": "f_function_native_scalar_buf",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc0": "c_function_native_scalar_buf",
                         "stmtc1": "c_default"
                     }
                 }
@@ -2249,7 +2279,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2327,8 +2357,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_out_char_*_buf",
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -2340,10 +2370,10 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out_buf",
+                            "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "stmtc0": "c_out_char_*_buf",
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     },
                     "s1": {
@@ -2361,8 +2391,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_s1",
-                            "stmt0": "c_struct_*_in",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
                         },
                         "fmtf": {
                             "F_C_var": "s1",
@@ -2372,10 +2402,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_in",
+                            "stmt0": "f_in_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_in",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
                         }
                     }
                 },
@@ -2407,7 +2437,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt0": "c_function_native_scalar_buf",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -2426,7 +2456,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2479,8 +2509,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_*_in",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2490,10 +2520,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_in",
+                            "stmt0": "f_in_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_in",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
                         }
                     }
                 },
@@ -2532,7 +2562,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -2544,9 +2574,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -2557,6 +2587,9 @@
                     "declarator": {
                         "name": "acceptStructOutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2644,8 +2677,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_*_out",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_out_struct_*",
+                            "stmt1": "c_out_struct"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2655,10 +2688,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_out",
+                            "stmt0": "f_out_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_out",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_out_struct_*",
+                            "stmtc1": "c_out_struct"
                         }
                     },
                     "d": {
@@ -2676,7 +2709,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2688,9 +2721,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2709,7 +2742,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2721,9 +2754,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2745,9 +2778,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "acceptStructOutPtr",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_struct_out_ptr"
                 }
             },
@@ -2757,6 +2790,9 @@
                     "declarator": {
                         "name": "acceptStructInOutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2809,8 +2845,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_*_inout",
-                            "stmt1": "c_struct"
+                            "stmt0": "c_inout_struct_*",
+                            "stmt1": "c_inout_struct"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -2820,10 +2856,10 @@
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_inout",
+                            "stmt0": "f_inout_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_inout",
-                            "stmtc1": "c_struct"
+                            "stmtc0": "c_inout_struct_*",
+                            "stmtc1": "c_inout_struct"
                         }
                     }
                 },
@@ -2844,9 +2880,9 @@
                     "F_subprogram": "subroutine",
                     "function_name": "acceptStructInOutPtr",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_struct_in_out_ptr"
                 }
             },
@@ -2858,7 +2894,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2923,7 +2959,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2935,9 +2971,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -2956,7 +2992,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2968,9 +3004,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -3010,8 +3046,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_scalar_result",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_function_struct_scalar",
+                        "stmt1": "c_function_struct"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3021,10 +3057,10 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_scalar_result",
-                        "stmt1": "f_struct_scalar_result",
-                        "stmtc0": "c_struct_scalar_result",
-                        "stmtc1": "c_struct_result"
+                        "stmt0": "f_function_struct_scalar",
+                        "stmt1": "f_function_struct_scalar",
+                        "stmtc0": "c_function_struct_scalar",
+                        "stmtc1": "c_function_struct"
                     }
                 }
             },
@@ -3045,7 +3081,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -3113,7 +3149,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3136,7 +3172,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3180,8 +3216,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3191,10 +3227,10 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_buf_pointer",
-                        "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf_pointer",
-                        "stmtc1": "c_struct_*_result"
+                        "stmt0": "f_function_struct_*_buf_pointer",
+                        "stmt1": "f_function_struct_*_buf_pointer",
+                        "stmtc0": "c_function_struct_*_buf_pointer",
+                        "stmtc1": "c_function_struct_*"
                     }
                 }
             },
@@ -3213,7 +3249,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -3282,7 +3318,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3294,9 +3330,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3315,7 +3351,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3327,9 +3363,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -3362,8 +3398,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_buf_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3390,7 +3426,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -3479,7 +3515,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3502,7 +3538,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3525,7 +3561,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out",
+                            "stmt0": "c_out_char_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3569,8 +3605,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3580,10 +3616,10 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_buf_pointer",
-                        "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf_pointer",
-                        "stmtc1": "c_struct_*_result"
+                        "stmt0": "f_function_struct_*_buf_pointer",
+                        "stmt1": "f_function_struct_*_buf_pointer",
+                        "stmtc0": "c_function_struct_*_buf_pointer",
+                        "stmtc1": "c_function_struct_*"
                     }
                 }
             },
@@ -3602,7 +3638,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -3694,7 +3730,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3706,9 +3742,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3727,7 +3763,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3739,9 +3775,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "i",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3761,8 +3797,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_out_char_*_buf",
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
@@ -3774,10 +3810,10 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out_buf",
+                            "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "stmtc0": "c_out_char_*_buf",
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
@@ -3809,8 +3845,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_buf_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3837,7 +3873,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -3885,8 +3921,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3896,10 +3932,10 @@
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_buf_pointer",
-                        "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf_pointer",
-                        "stmtc1": "c_struct_*_result"
+                        "stmt0": "f_function_struct_*_buf_pointer",
+                        "stmt1": "f_function_struct_*_buf_pointer",
+                        "stmtc0": "c_function_struct_*_buf_pointer",
+                        "stmtc1": "c_function_struct_*"
                     }
                 }
             },
@@ -3918,7 +3954,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -3961,8 +3997,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf_pointer",
-                        "stmt1": "c_struct_*_result"
+                        "stmt0": "c_function_struct_*_buf_pointer",
+                        "stmt1": "c_function_struct_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3984,7 +4020,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -4038,8 +4074,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_shadow_*_result",
-                        "stmt1": "c_shadow_result"
+                        "stmt0": "c_function_shadow_*",
+                        "stmt1": "c_function_shadow"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4049,10 +4085,10 @@
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_shadow_*_result",
-                        "stmt1": "f_shadow_result",
-                        "stmtc0": "c_shadow_*_result",
-                        "stmtc1": "c_shadow_result"
+                        "stmt0": "f_function_shadow_*",
+                        "stmt1": "f_function_shadow",
+                        "stmtc0": "c_function_shadow_*",
+                        "stmtc1": "c_function_shadow"
                     }
                 }
             },
@@ -4068,7 +4104,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -4136,7 +4172,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_x",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4148,9 +4184,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "x",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4169,7 +4205,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_y",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4181,9 +4217,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "y",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4223,8 +4259,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_shadow_*_result",
-                        "stmt1": "c_shadow_result"
+                        "stmt0": "c_function_shadow_*",
+                        "stmt1": "c_function_shadow"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4234,10 +4270,10 @@
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_shadow_*_result",
-                        "stmt1": "f_shadow_result",
-                        "stmtc0": "c_shadow_*_result",
-                        "stmtc1": "c_shadow_result"
+                        "stmt0": "f_function_shadow_*",
+                        "stmt1": "f_function_shadow",
+                        "stmtc0": "c_function_shadow_*",
+                        "stmtc1": "c_function_shadow"
                     }
                 }
             },
@@ -4249,7 +4285,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -4306,8 +4342,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_point",
-                            "stmt0": "c_shadow_*_in",
-                            "stmt1": "c_shadow_in"
+                            "stmt0": "c_in_shadow_*",
+                            "stmt1": "c_in_shadow"
                         },
                         "fmtf": {
                             "F_C_var": "point",
@@ -4317,10 +4353,10 @@
                             "f_type": "type(cstruct_as_class)",
                             "f_var": "point",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_shadow_*_in",
+                            "stmt0": "f_in_shadow_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_shadow_*_in",
-                            "stmtc1": "c_shadow_in"
+                            "stmtc0": "c_in_shadow_*",
+                            "stmtc1": "c_in_shadow"
                         }
                     }
                 },
@@ -4359,7 +4395,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -4371,9 +4407,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -4390,7 +4426,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -4474,7 +4510,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_x",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4486,9 +4522,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "x",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4507,7 +4543,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_y",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4519,9 +4555,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "y",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4540,7 +4576,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_z",
-                            "stmt0": "c_native_scalar_in",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4552,9 +4588,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "z",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4594,8 +4630,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_shadow_*_result",
-                        "stmt1": "c_shadow_result"
+                        "stmt0": "c_function_shadow_*",
+                        "stmt1": "c_function_shadow"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4605,10 +4641,10 @@
                         "f_type": "type(cstruct_as_subclass)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_shadow_*_result",
-                        "stmt1": "f_shadow_result",
-                        "stmtc0": "c_shadow_*_result",
-                        "stmtc1": "c_shadow_result"
+                        "stmt0": "f_function_shadow_*",
+                        "stmt1": "f_function_shadow",
+                        "stmtc0": "c_function_shadow_*",
+                        "stmtc1": "c_function_shadow"
                     }
                 }
             }

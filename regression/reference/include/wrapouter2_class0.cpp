@@ -18,8 +18,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method
-// Requested: c
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
 void LIB_outer2_class0_method(LIB_outer2_class0 * self)
 {
     outer2::class0 *SH_this = static_cast<outer2::class0 *>(self->addr);

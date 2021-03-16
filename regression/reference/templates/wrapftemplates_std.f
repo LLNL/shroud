@@ -71,8 +71,8 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function c_vector_int_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
@@ -85,8 +85,9 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(dtor)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -96,12 +97,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  void push_back
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_native_&_in
+        ! Requested: c_in_native_&
         ! Match:     c_default
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
@@ -114,13 +116,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_pointer
-        ! Match:     c_native_&_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_&_pointer
+        ! Match:     c_function_native_&
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
@@ -135,13 +137,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_buf_pointer
-        ! Match:     c_native_&_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_&_buf_pointer
+        ! Match:     c_function_native_&
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function c_vector_int_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -159,8 +161,8 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(result)
-        ! Exact:     c_shadow_scalar_result
+        ! Attrs:     +intent(ctor)
+        ! Exact:     c_function_shadow_scalar
         function c_vector_double_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
@@ -173,8 +175,9 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(dtor)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -184,12 +187,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  void push_back
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_native_&_in
+        ! Requested: c_in_native_&
         ! Match:     c_default
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
@@ -202,13 +206,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_pointer
-        ! Match:     c_native_&_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_&_pointer
+        ! Match:     c_function_native_&
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
@@ -223,13 +227,13 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at
-        ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_buf_pointer
-        ! Match:     c_native_&_result
+        ! Attrs:     +deref(pointer)+intent(function)
+        ! Requested: c_function_native_&_buf_pointer
+        ! Match:     c_function_native_&
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in
+        ! Requested: c_in_native_scalar
         ! Match:     c_default
         function c_vector_double_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -261,10 +265,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function vector_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -277,9 +281,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~vector
-    ! Requested: f_shadow_dtor
+    ! Attrs:     +intent(dtor)
+    ! Requested: f_dtor
     ! Match:     f_default
-    ! Exact:     c_shadow_dtor
+    ! Attrs:     +intent(dtor)
+    ! Exact:     c_dtor
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
         ! splicer begin namespace.std.class.vector_int.method.dtor
@@ -290,17 +296,17 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void push_back
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_native_&_in
+    ! Requested: f_in_native_&
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_&_in
+    ! Requested: c_in_native_&
     ! Match:     c_default
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
@@ -314,18 +320,18 @@ contains
     ! Generated by cxx_template - arg_to_buffer
     ! ----------------------------------------
     ! Function:  int & at
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_&_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_&_result_buf_pointer
-    ! Match:     c_native_&_result
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_&_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_&_buf_pointer
+    ! Match:     c_function_native_&
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     function vector_int_at(obj, n) &
             result(SHT_rv)
@@ -368,10 +374,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(result)
-    ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
-    ! Exact:     c_shadow_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     f_ctor
+    ! Attrs:     +intent(ctor)
+    ! Exact:     c_ctor
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -384,9 +390,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~vector
-    ! Requested: f_shadow_dtor
+    ! Attrs:     +intent(dtor)
+    ! Requested: f_dtor
     ! Match:     f_default
-    ! Exact:     c_shadow_dtor
+    ! Attrs:     +intent(dtor)
+    ! Exact:     c_dtor
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj
         ! splicer begin namespace.std.class.vector_double.method.dtor
@@ -397,17 +405,17 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void push_back
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const double & value +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_native_&_in
+    ! Requested: f_in_native_&
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_&_in
+    ! Requested: c_in_native_&
     ! Match:     c_default
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
@@ -421,18 +429,18 @@ contains
     ! Generated by cxx_template - arg_to_buffer
     ! ----------------------------------------
     ! Function:  double & at
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     f_native_&_result_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_&_result_buf_pointer
-    ! Match:     c_native_&_result
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Exact:     f_function_native_&_buf_pointer
+    ! Attrs:     +deref(pointer)+intent(function)
+    ! Requested: c_function_native_&_buf_pointer
+    ! Match:     c_function_native_&
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     function vector_double_at(obj, n) &
             result(SHT_rv)
