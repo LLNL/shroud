@@ -109,9 +109,8 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_x1
     interface
         function c_cstruct_as_class_get_x1(self) &
@@ -128,14 +127,13 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_cstruct_as_class_set_x1
     interface
         subroutine c_cstruct_as_class_set_x1(self, val) &
@@ -151,9 +149,8 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_y1
     interface
         function c_cstruct_as_class_get_y1(self) &
@@ -170,14 +167,13 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_cstruct_as_class_set_y1
     interface
         subroutine c_cstruct_as_class_set_y1(self, val) &
@@ -196,9 +192,8 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_x1
     interface
         function c_cstruct_as_subclass_get_x1(self) &
@@ -215,14 +210,13 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_cstruct_as_subclass_set_x1
     interface
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
@@ -238,9 +232,8 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_y1
     interface
         function c_cstruct_as_subclass_get_y1(self) &
@@ -257,14 +250,13 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_cstruct_as_subclass_set_y1
     interface
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
@@ -280,9 +272,8 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getZ1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_z1
     interface
         function c_cstruct_as_subclass_get_z1(self) &
@@ -299,14 +290,13 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setZ1
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_cstruct_as_subclass_set_z1
     interface
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
@@ -803,10 +793,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start cstruct_as_class_get_x1
@@ -823,18 +813,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_x1
     subroutine cstruct_as_class_set_x1(obj, val)
         use iso_c_binding, only : C_INT
@@ -848,10 +837,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start cstruct_as_class_get_y1
@@ -868,18 +857,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_y1
     subroutine cstruct_as_class_set_y1(obj, val)
         use iso_c_binding, only : C_INT
@@ -896,10 +884,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start cstruct_as_subclass_get_x1
@@ -916,18 +904,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_x1
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
@@ -941,10 +928,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start cstruct_as_subclass_get_y1
@@ -961,18 +948,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_y1
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
@@ -986,10 +972,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getZ1
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start cstruct_as_subclass_get_z1
@@ -1006,18 +992,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setZ1
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_z1
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT

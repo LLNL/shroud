@@ -485,7 +485,11 @@ CStmts = util.Scope(None,
     c_helper="", c_local_var=None,
     cxx_local_var=None,
     arg_call=[],
-    pre_call=[], call=[], post_call=[], final=[], ret=[],
+    pre_call=[],
+    call=[],
+    post_call=[],
+    final=[],
+    ret=[],
     destructor_name=None,
     owner="library",
     return_type=None, return_cptr=False,
@@ -1729,6 +1733,49 @@ fc_statements = [
         ],
     ),
 
+    ########################################
+    # getter/setter
+    # getters are functions.
+    # setters are first argument to subroutine.
+
+    dict(
+        # Base for all getters to avoid calling function.
+        name="c_getter",
+        call=[
+            "// skip call c_getter",
+        ],
+    ),
+    dict(
+        # Not actually calling a subroutine.
+        # Work is done by arg's setter.
+        name="c_setter",
+        call=[
+            "// skip call c_setter",
+        ],
+    ),
+    dict(
+        name="f_getter",
+    ),
+    dict(
+        name="f_setter",
+    ),
+
+    dict(
+        name="c_getter_native_scalar",
+        base="c_getter",
+        ret=[
+            "return {CXX_this}->{field_name};",
+        ],
+    ),
+    dict(
+        name="c_setter_native_scalar",
+        base="c_setter",
+        post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
+    ),
+    
+    
     ########################################
     # CFI - Further Interoperability with C
     # c_var will be CFI_cdesc_t *.

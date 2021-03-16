@@ -75,7 +75,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -86,11 +86,6 @@
                         "decl": "int getFlag()",
                         "declgen": "int getFlag(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->m_flag;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -117,6 +112,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "m_flag",
                             "function_name": "getFlag",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_flag"
@@ -124,19 +120,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",

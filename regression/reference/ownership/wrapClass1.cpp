@@ -36,13 +36,13 @@ void OWN_Class1_dtor(OWN_Class1 * self)
 
 // ----------------------------------------
 // Function:  int getFlag
-// Attrs:     +intent(subroutine)
-// Requested: c_subroutine_native_scalar
-// Match:     c_subroutine
+// Attrs:     +intent(getter)
+// Exact:     c_getter_native_scalar
 int OWN_Class1_get_flag(OWN_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.get_flag
+    // skip call c_getter
     return SH_this->m_flag;
     // splicer end class.Class1.method.get_flag
 }

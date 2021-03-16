@@ -332,15 +332,15 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 
 // ----------------------------------------
 // Function:  int getM_flag
-// Attrs:     +intent(subroutine)
-// Requested: c_subroutine_native_scalar
-// Match:     c_subroutine
+// Attrs:     +intent(getter)
+// Exact:     c_getter_native_scalar
 // start CLA_Class1_get_m_flag
 int CLA_Class1_get_m_flag(CLA_Class1 * self)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_flag
+    // skip call c_getter
     return SH_this->m_flag;
     // splicer end class.Class1.method.get_m_flag
 }
@@ -348,15 +348,15 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
 
 // ----------------------------------------
 // Function:  int getTest
-// Attrs:     +intent(subroutine)
-// Requested: c_subroutine_native_scalar
-// Match:     c_subroutine
+// Attrs:     +intent(getter)
+// Exact:     c_getter_native_scalar
 // start CLA_Class1_get_test
 int CLA_Class1_get_test(CLA_Class1 * self)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_test
+    // skip call c_getter
     return SH_this->m_test;
     // splicer end class.Class1.method.get_test
 }
@@ -364,21 +364,20 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 
 // ----------------------------------------
 // Function:  void setTest
-// Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
+// Attrs:     +intent(setter)
+// Exact:     c_setter
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
+// Attrs:     +intent(setter)
+// Exact:     c_setter_native_scalar
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_test
+    // skip call c_setter
     SH_this->m_test = val;
-    return;
     // splicer end class.Class1.method.set_test
 }
 // end CLA_Class1_set_test

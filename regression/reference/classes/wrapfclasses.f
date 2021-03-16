@@ -406,9 +406,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getM_flag
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -425,9 +424,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getTest
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -444,14 +442,13 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void setTest
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -1098,10 +1095,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getM_flag
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start class1_get_m_flag
@@ -1118,10 +1115,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getTest
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start class1_get_test
@@ -1138,18 +1135,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setTest
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT

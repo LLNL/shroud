@@ -634,7 +634,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -645,13 +645,9 @@
                         "decl": "int getX1()",
                         "declgen": "int getX1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->x1;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "x1",
                             "function_name": "getX1",
                             "underscore_name": "get_x1"
                         }
@@ -664,7 +660,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -677,7 +673,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -693,14 +689,9 @@
                         "decl": "void setX1(int val)",
                         "declgen": "void setX1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->x1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "x1",
                             "function_name": "setX1",
                             "underscore_name": "set_x1"
                         }
@@ -713,7 +704,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -724,13 +715,9 @@
                         "decl": "int getY1()",
                         "declgen": "int getY1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->y1;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "y1",
                             "function_name": "getY1",
                             "underscore_name": "get_y1"
                         }
@@ -743,7 +730,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -756,7 +743,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -772,14 +759,9 @@
                         "decl": "void setY1(int val)",
                         "declgen": "void setY1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->y1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "y1",
                             "function_name": "setY1",
                             "underscore_name": "set_y1"
                         }
@@ -874,7 +856,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -885,13 +867,9 @@
                         "decl": "int getX1()",
                         "declgen": "int getX1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->x1;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "x1",
                             "function_name": "getX1",
                             "underscore_name": "get_x1"
                         }
@@ -904,7 +882,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -917,7 +895,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -933,14 +911,9 @@
                         "decl": "void setX1(int val)",
                         "declgen": "void setX1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->x1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "x1",
                             "function_name": "setX1",
                             "underscore_name": "set_x1"
                         }
@@ -953,7 +926,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -964,13 +937,9 @@
                         "decl": "int getY1()",
                         "declgen": "int getY1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->y1;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "y1",
                             "function_name": "getY1",
                             "underscore_name": "get_y1"
                         }
@@ -983,7 +952,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -996,7 +965,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1012,14 +981,9 @@
                         "decl": "void setY1(int val)",
                         "declgen": "void setY1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->y1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "y1",
                             "function_name": "setY1",
                             "underscore_name": "set_y1"
                         }
@@ -1032,7 +996,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1043,13 +1007,9 @@
                         "decl": "int getZ1()",
                         "declgen": "int getZ1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->z1;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "z1",
                             "function_name": "getZ1",
                             "underscore_name": "get_z1"
                         }
@@ -1062,7 +1022,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -1075,7 +1035,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1091,14 +1051,9 @@
                         "decl": "void setZ1(int val)",
                         "declgen": "void setZ1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->z1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {},
                         "zz_fmtdict": {
+                            "field_name": "z1",
                             "function_name": "setZ1",
                             "underscore_name": "set_z1"
                         }

@@ -41,6 +41,9 @@ root
         * -- c_function_struct_*
       vector
         buf -- c_function_vector_buf
+    getter -- c_getter
+      native
+        scalar -- c_getter_native_scalar
     in
       char
         *
@@ -130,6 +133,9 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
+    setter -- c_setter
+      native
+        scalar -- c_setter_native_scalar
     subroutine -- c_subroutine
   f
     ctor -- f_ctor
@@ -187,6 +193,7 @@ root
           allocatable -- f_function_vector_buf_allocatable
       void
         * -- f_function_void_*
+    getter -- f_getter
     in
       bool -- f_in_bool
       char
@@ -232,6 +239,7 @@ root
         *
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_out_void_**
+    setter -- f_setter
     subroutine -- f_subroutine
 c_ctor:
   buf_extra:
@@ -727,6 +735,18 @@ c_function_vector_buf:
   pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   return_type: void
+c_getter:
+  call:
+  - // skip call c_getter
+  name: c_getter
+  owner: library
+c_getter_native_scalar:
+  call:
+  - // skip call c_getter
+  name: c_getter_native_scalar
+  owner: library
+  ret:
+  - return {CXX_this}->{field_name};
 c_in_char_**:
   buf_args:
   - arg_decl
@@ -1466,6 +1486,18 @@ c_out_void_*_cdesc:
   owner: library
   pre_call:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_context}->addr.base));"
+c_setter:
+  call:
+  - // skip call c_setter
+  name: c_setter
+  owner: library
+c_setter_native_scalar:
+  call:
+  - // skip call c_setter
+  name: c_setter_native_scalar
+  owner: library
+  post_call:
+  - '{CXX_this}->{field_name} = val;'
 c_subroutine:
   name: c_subroutine
   owner: library
@@ -1762,6 +1794,8 @@ f_function_void_*:
     iso_c_binding:
     - C_PTR
   name: f_function_void_*
+f_getter:
+  name: f_getter
 f_in_bool:
   c_local_var: true
   name: f_in_bool
@@ -1983,6 +2017,8 @@ f_out_void_*_cdesc:
   - '{c_var_context}%size = {size}'
   - '{c_var_context}%rank = {rank}'
   - '{c_var_context}%shape(1:{rank}) = shape({f_var})'
+f_setter:
+  name: f_setter
 f_subroutine:
   name: f_subroutine
 ***** Python

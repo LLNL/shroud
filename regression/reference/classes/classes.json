@@ -1773,7 +1773,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1784,11 +1784,6 @@
                         "decl": "int getM_flag()",
                         "declgen": "int getM_flag(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->m_flag;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1815,6 +1810,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "m_flag",
                             "function_name": "getM_flag",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_m_flag"
@@ -1822,19 +1818,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1860,7 +1854,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1871,11 +1865,6 @@
                         "decl": "int getTest()",
                         "declgen": "int getTest(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->m_test;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1902,6 +1891,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "m_test",
                             "function_name": "getTest",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_test"
@@ -1909,19 +1899,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1947,7 +1935,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -1960,7 +1948,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1976,12 +1964,6 @@
                         "decl": "void setTest(int val)",
                         "declgen": "void setTest(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->m_test = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -2003,8 +1985,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -2015,10 +1997,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -2041,12 +2023,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "m_test",
                             "function_name": "setTest",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_test"
                         }
                     }

@@ -1558,6 +1558,8 @@ rv = .false.
             fmt.f_intent = "OUT"
         else:
             fmt.f_intent = c_meta["intent"].upper()
+            if fmt.f_intent == "SETTER":
+                fmt.f_intent = "IN"
             ntypemap = f_ast.typemap
         if ntypemap.sgroup == "vector":
             # If a vector, use its type.

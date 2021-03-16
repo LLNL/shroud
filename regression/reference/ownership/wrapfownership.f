@@ -91,9 +91,8 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int getFlag
-        ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_native_scalar
-        ! Match:     c_subroutine
+        ! Attrs:     +intent(getter)
+        ! Exact:     c_getter_native_scalar
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="OWN_Class1_get_flag")
@@ -505,10 +504,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getFlag
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     function class1_get_flag(obj) &
