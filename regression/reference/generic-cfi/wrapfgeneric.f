@@ -216,7 +216,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_cfi
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
@@ -647,7 +647,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
@@ -682,7 +682,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)

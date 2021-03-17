@@ -329,7 +329,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*_buf
+    ! Requested: c_function_shadow_*
     ! Match:     c_function_shadow
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -517,7 +517,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void setM_name
     ! Attrs:     +intent(setter)
-    ! Requested: c_setter_void_scalar_buf
+    ! Requested: c_setter_void_scalar
     ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  std::string val +context(Dval)+intent(in)

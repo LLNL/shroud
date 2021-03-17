@@ -149,16 +149,16 @@ root
       bool -- f_function_bool
       char
         *
-          acfi
-            allocatable -- f_function_char_scalar/*_acfi_allocatable
           buf
             allocatable -- f_function_char_scalar/*_buf_allocatable
+          cfi
+            allocatable -- f_function_char_scalar/*_cfi_allocatable
           raw -- f_function_char_*_raw
         scalar
-          acfi
-            allocatable -- f_function_char_scalar/*_acfi_allocatable
           buf
             allocatable -- f_function_char_scalar/*_buf_allocatable
+          cfi
+            allocatable -- f_function_char_scalar/*_cfi_allocatable
       native
         & -- f_function_native_&
           buf
@@ -1550,13 +1550,6 @@ f_ctor:
 f_function_bool:
   name: f_function_bool
   need_wrapper: true
-f_function_char_*_acfi_allocatable:
-  arg_c_call:
-  - '{f_var}'
-  arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
-  name: f_function_char_*_acfi_allocatable
-  need_wrapper: true
 f_function_char_*_buf_allocatable:
   arg_c_call:
   - '{temp0}'
@@ -1572,17 +1565,17 @@ f_function_char_*_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
-f_function_char_*_raw:
-  arg_decl:
-  - 'type(C_PTR) :: {f_var}'
-  name: f_function_char_*_raw
-f_function_char_scalar_acfi_allocatable:
+f_function_char_*_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
-  name: f_function_char_scalar_acfi_allocatable
+  name: f_function_char_*_cfi_allocatable
   need_wrapper: true
+f_function_char_*_raw:
+  arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  name: f_function_char_*_raw
 f_function_char_scalar_buf_allocatable:
   arg_c_call:
   - '{temp0}'
@@ -1598,6 +1591,13 @@ f_function_char_scalar_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_char_scalar_cfi_allocatable:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  name: f_function_char_scalar_cfi_allocatable
+  need_wrapper: true
 f_function_native_&:
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'

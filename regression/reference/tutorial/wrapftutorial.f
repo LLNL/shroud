@@ -222,7 +222,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
@@ -365,7 +365,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
@@ -391,7 +391,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)

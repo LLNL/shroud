@@ -51,7 +51,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
@@ -75,7 +75,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -96,7 +96,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -120,7 +120,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -141,7 +141,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
@@ -162,7 +162,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
@@ -186,7 +186,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_increment
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
@@ -208,7 +208,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
@@ -227,7 +227,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Function:  int vector_string_count
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)

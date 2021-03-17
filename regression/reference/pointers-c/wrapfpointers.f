@@ -480,7 +480,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
@@ -563,7 +563,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
@@ -605,7 +605,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -653,7 +653,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
@@ -702,7 +702,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
@@ -744,7 +744,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
@@ -786,7 +786,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -834,7 +834,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)

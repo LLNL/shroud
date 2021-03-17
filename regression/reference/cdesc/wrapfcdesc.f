@@ -120,7 +120,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -143,7 +143,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar1
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -192,7 +192,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -215,7 +215,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Function:  void GetScalar2
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)

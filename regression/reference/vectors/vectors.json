@@ -502,6 +502,12 @@
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fstatements": {
+                    "c": {
+                        "ret": [
+                            "return Darg->size;"
+                        ],
+                        "return_type": "long"
+                    },
                     "c_buf": {
                         "ret": [
                             "return Darg->size;"
@@ -607,6 +613,12 @@
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fstatements": {
+                    "c": {
+                        "ret": [
+                            "return Darg->size;"
+                        ],
+                        "return_type": "long"
+                    },
                     "c_buf": {
                         "ret": [
                             "return Darg->size;"

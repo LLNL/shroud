@@ -197,8 +197,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +intent(ctor)
-        ! Requested: c_function_shadow_scalar_buf
-        ! Match:     c_function_shadow_scalar
+        ! Exact:     c_function_shadow_scalar
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(Lname)
         ! Attrs:     +api(buf)+intent(in)
@@ -410,8 +409,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +intent(ctor)
-        ! Requested: c_function_shadow_scalar_buf
-        ! Match:     c_function_shadow_scalar
+        ! Exact:     c_function_shadow_scalar
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
@@ -803,7 +801,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  bool isNameValid
         ! Attrs:     +intent(function)
-        ! Requested: c_function_bool_scalar_buf
+        ! Requested: c_function_bool_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
@@ -851,7 +849,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
@@ -890,7 +888,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void test_names
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)

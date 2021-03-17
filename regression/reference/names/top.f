@@ -145,7 +145,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void getName
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
@@ -235,7 +235,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  int function4
         ! Attrs:     +intent(function)
-        ! Requested: c_function_native_scalar_buf
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & rv +len_trim(Lrv)
@@ -286,7 +286,7 @@ module top_module
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +len(Nname)+len_trim(Lname)

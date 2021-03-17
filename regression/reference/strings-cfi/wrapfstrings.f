@@ -100,7 +100,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void passCharPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)+len_trim(Ldest)
@@ -143,7 +143,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
@@ -621,7 +621,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringConstReference
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +len(Narg1)+len_trim(Larg1)
@@ -656,7 +656,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringReferenceOut
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
@@ -693,7 +693,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringReference
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
@@ -730,7 +730,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringPointerConst
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string * arg1 +len(Narg1)+len_trim(Larg1)
@@ -765,7 +765,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
@@ -800,7 +800,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void fetchStringPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
@@ -841,7 +841,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void acceptStringPointerLen
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
@@ -889,7 +889,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void fetchStringPointerLen
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
@@ -933,7 +933,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_cfi
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
@@ -972,7 +972,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void explicit1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len(Nname)+len_trim(Lname)
@@ -1008,7 +1008,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void explicit2
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(Nname)+len_trim(Lname)
@@ -1082,7 +1082,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)+len(Ndest)+len_trim(Ldest)
@@ -1128,7 +1128,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  void PostDeclare
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)

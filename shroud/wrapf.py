@@ -1185,6 +1185,7 @@ rv = .false.
                 )
                 imports[fmt_func.F_capsule_data_type] = True
 
+        sapi = ast.metaattrs["api"]
         sintent = ast.metaattrs["intent"]
         # ctor and dtor are not valid for bind(C) interfaces.
         if sintent == "ctor":
@@ -1193,11 +1194,11 @@ rv = .false.
             sintent = "subroutine"
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
-        c_stmts = ["c", sintent, sgroup, spointer, node.generated_suffix,
+        c_stmts = ["c", sintent, sgroup, spointer, sapi,
                    ast.metaattrs["deref"]]
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
-            ["c", node.generated_suffix], c_result_blk, node)
+            ["c", sapi], c_result_blk, node)
         if options.debug:
             stmts_comments.append(
                 "! ----------------------------------------")

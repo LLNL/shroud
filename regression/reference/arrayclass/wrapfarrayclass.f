@@ -303,7 +303,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
@@ -354,7 +354,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
@@ -406,7 +406,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
@@ -458,7 +458,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar_buf
+        ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)

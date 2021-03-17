@@ -48,6 +48,10 @@ declarations:
     wrap_lua: False
     literalinclude: True
   fstatements:
+    c:
+      return_type: long
+      ret:
+      - return Darg->size;
     c_buf:
       return_type: long
       ret:

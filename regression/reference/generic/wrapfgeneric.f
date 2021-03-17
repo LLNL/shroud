@@ -702,7 +702,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
@@ -737,7 +737,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
