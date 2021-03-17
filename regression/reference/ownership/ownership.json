@@ -69,6 +69,10 @@
                     },
                     {
                         "<FUNCTION>": "1 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getFlag",

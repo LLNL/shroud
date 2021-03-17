@@ -621,6 +621,10 @@
                 "functions": [
                     {
                         "<FUNCTION>": "0 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
@@ -702,6 +706,10 @@
                     },
                     {
                         "<FUNCTION>": "1 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
@@ -808,6 +816,10 @@
                     },
                     {
                         "<FUNCTION>": "2 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
@@ -889,6 +901,10 @@
                     },
                     {
                         "<FUNCTION>": "3 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
@@ -1088,6 +1104,10 @@
                 "functions": [
                     {
                         "<FUNCTION>": "4 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
@@ -1169,6 +1189,10 @@
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
@@ -1275,6 +1299,10 @@
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
@@ -1356,6 +1384,10 @@
                     },
                     {
                         "<FUNCTION>": "7 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
@@ -1462,6 +1494,10 @@
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getZ1",
@@ -1543,6 +1579,10 @@
                     },
                     {
                         "<FUNCTION>": "9 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setZ1",

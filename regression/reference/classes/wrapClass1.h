@@ -74,6 +74,12 @@ int CLA_Class1_get_test(CLA_Class1 * self);
 
 void CLA_Class1_set_test(CLA_Class1 * self, int val);
 
+void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
+    CLA_SHROUD_array *cdesc);
+
+void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self,
+    CLA_SHROUD_array *Dval);
+
 #ifdef __cplusplus
 }
 #endif

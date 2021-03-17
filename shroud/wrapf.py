@@ -1827,6 +1827,7 @@ rv = .false.
 
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+            self.name_temp_vars(f_intent_blk, fmt_arg)
 
             if is_f_arg:
                 implied = f_attrs["implied"]

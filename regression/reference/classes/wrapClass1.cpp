@@ -382,4 +382,47 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 }
 // end CLA_Class1_set_test
 
+// ----------------------------------------
+// Function:  std::string getM_name +context(cdesc)
+// Attrs:     +deref(allocatable)+intent(getter)
+// Requested: c_getter_string_scalar_buf_allocatable
+// Match:     c_getter_string_scalar_buf
+// start CLA_Class1_get_m_name_bufferify
+void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
+    CLA_SHROUD_array *cdesc)
+{
+    classes::Class1 *SH_this = static_cast<classes::Class1 *>
+        (self->addr);
+    // splicer begin class.Class1.method.get_m_name_bufferify
+    // skip call c_getter
+    cdesc->addr.base = SH_this->m_name.data();
+    cdesc->type = 0; // SH_CHAR;
+    cdesc->elem_len = SH_this->m_name.size();
+    cdesc->rank = 0;
+    // splicer end class.Class1.method.get_m_name_bufferify
+}
+// end CLA_Class1_get_m_name_bufferify
+
+// ----------------------------------------
+// Function:  void setM_name
+// Attrs:     +intent(setter)
+// Exact:     c_setter
+// ----------------------------------------
+// Argument:  std::string val +context(Dval)+intent(in)
+// Attrs:     +intent(setter)
+// Exact:     c_setter_string_scalar_buf
+// start CLA_Class1_set_m_name_bufferify
+void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self,
+    CLA_SHROUD_array *Dval)
+{
+    classes::Class1 *SH_this = static_cast<classes::Class1 *>
+        (self->addr);
+    // splicer begin class.Class1.method.set_m_name_bufferify
+    // skip call c_setter
+    SH_this->m_name = std::string(static_cast<const char *>(
+        Dval->addr.base), Dval->elem_len);
+    // splicer end class.Class1.method.set_m_name_bufferify
+}
+// end CLA_Class1_set_m_name_bufferify
+
 }  // extern "C"

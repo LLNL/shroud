@@ -23,6 +23,9 @@ declarations:
   declarations:
   - decl: int m_flag +readonly;
   - decl: int m_test +name(test);
+  - decl: std::string m_name
+    options:
+      wrap_python: False
   - decl: Class1()
     format:
       function_suffix: _default

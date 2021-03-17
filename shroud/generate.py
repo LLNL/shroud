@@ -653,22 +653,48 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
+        deref = None
+        sgroup = var.ast.typemap.sgroup
+        if sgroup in ["char", "string"]:
+            value = None
+            deref = "allocatable"
+        elif sgroup == "vector":
+            value = None
+            deref = "pointer"
+        elif var.ast.is_pointer():
+            value = None
+            deref = "pointer"
+        else:
+            value = True
+            deref = None
+
+
         fmt = util.Scope(var.fmtdict)
         fmt_func = dict(
             # Use variable's field_name for the generated functions.
             field_name=var.fmtdict.field_name,
         )
+        if deref:
+            fmt_func["c_var_context"] = "cdesc"
 
+        ##########
         # getter
         funcname = "get" + fieldname.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
         decl = "{}()".format(argdecl)
 
-        fcn = cls.add_function(decl, format=fmt_func)
+        fattrs = {}
+        if deref:
+            fattrs["context"] = "cdesc"
+
+        fcn = cls.add_function(decl, format=fmt_func, fattrs=fattrs)
         fcn.ast.metaattrs["intent"] = "getter"
+        fcn.ast.metaattrs["deref"] = deref
         fcn.wrap.lua = False
         fcn.wrap.python = False
+        fcn._generated = "getter/setter"
 
+        ##########
         # setter
         if ast.attrs["readonly"]:
             return
@@ -678,11 +704,10 @@ class GenFunctions(object):
 
         attrs = dict(
             val=dict(
-                intent="in", #value=True
-            )  # XXX - what about pointer variables?
+                intent="in",
+                value=value,
+            )
         )
-        if not var.ast.is_pointer():
-            attrs["val"]["value"] = True
 
         fcn = cls.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
@@ -690,6 +715,7 @@ class GenFunctions(object):
         fcn.ast.params[0].metaattrs["intent"] = "setter"
         fcn.wrap.lua = False
         fcn.wrap.python = False
+        fcn._generated = "getter/setter"
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
@@ -1796,7 +1822,7 @@ class GenFunctions(object):
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
         else:
-            if node._generated in ["result_to_arg", "fortran_generic"]:
+            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
                 node.wrap.c = False
             
             # Fortran function may call C subroutine if string/vector result

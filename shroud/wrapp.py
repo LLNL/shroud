@@ -432,7 +432,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self.wrap_enums(node)
 
         for var in node.variables:
-            self.wrap_class_variable(node, var, fileinfo)
+            if var.wrap.python:
+                self.wrap_class_variable(node, var, fileinfo)
 
         # wrap methods
         self.tp_init_default = "0"

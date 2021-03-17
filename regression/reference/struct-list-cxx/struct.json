@@ -628,6 +628,7 @@
                 "functions": [
                     {
                         "<FUNCTION>": "0 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
@@ -654,6 +655,7 @@
                     },
                     {
                         "<FUNCTION>": "1 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
@@ -698,6 +700,7 @@
                     },
                     {
                         "<FUNCTION>": "2 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
@@ -724,6 +727,7 @@
                     },
                     {
                         "<FUNCTION>": "3 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
@@ -850,6 +854,7 @@
                 "functions": [
                     {
                         "<FUNCTION>": "4 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
@@ -876,6 +881,7 @@
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
@@ -920,6 +926,7 @@
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
@@ -946,6 +953,7 @@
                     },
                     {
                         "<FUNCTION>": "7 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
@@ -990,6 +998,7 @@
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getZ1",
@@ -1016,6 +1025,7 @@
                     },
                     {
                         "<FUNCTION>": "9 ****************************************",
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setZ1",
