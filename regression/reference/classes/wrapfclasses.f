@@ -1043,10 +1043,10 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*_buf
+    ! Requested: f_function_shadow_*
     ! Match:     f_function_shadow
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*_buf
+    ! Requested: c_function_shadow_*
     ! Match:     c_function_shadow
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)

@@ -1486,10 +1486,10 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar_cfi
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_cfi
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value

@@ -2612,9 +2612,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_buf",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_buf",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }

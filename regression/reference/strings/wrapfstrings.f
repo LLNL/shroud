@@ -2020,10 +2020,10 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar_buf
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value

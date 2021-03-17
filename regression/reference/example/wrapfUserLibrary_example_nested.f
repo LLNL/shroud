@@ -2061,10 +2061,10 @@ contains
     ! ----------------------------------------
     ! Function:  bool isNameValid
     ! Attrs:     +intent(function)
-    ! Requested: f_function_bool_scalar_buf
+    ! Requested: f_function_bool_scalar
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
-    ! Requested: c_function_bool_scalar_buf
+    ! Requested: c_function_bool_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name

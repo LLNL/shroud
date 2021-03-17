@@ -305,10 +305,10 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar_buf
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
@@ -574,10 +574,10 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_string_count
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar_buf
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
