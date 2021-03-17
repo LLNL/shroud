@@ -270,11 +270,14 @@ splicer_code:
          - // lines from explict splicer - namespace ns0
          class:
            Names:
-             CXX_definitions:
-             - // CXX_definitions for ns0 class Names
+             CXX_definitions: |
+               // CXX_definitions for ns0 class Names
+               // allow YAML multiline strings
        ns0::inner:
           CXX_definitions:
           - // CXX_definitions for ns0::inner
+          - // Allow blank line below (convert None to '')
+          -
      class:
        Names2:
          C_definitions:

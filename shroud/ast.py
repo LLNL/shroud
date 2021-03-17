@@ -2123,6 +2123,40 @@ def clean_list(lst):
         if line is None:
             lst[i] = ""
 
+
+def listify_cleanup(value):
+    """Clean up top level splicer_code
+
+    Convert newline delimited strings into a list of strings.
+    Remove trailing newline which will generate a blank line.
+    Or replace None with "" in a list.
+
+    Used with nested dictionaries used to mirror scopes.
+
+     CXX_definitions: |
+       // Add some text from splicer
+       // And another line
+     namespace:
+       ns0:
+         CXX_definitions:
+         - // lines from explict splicer - namespace ns0
+
+    """
+    
+    if isinstance(value, dict):
+       new = {}
+       for key, item in value.items():
+           new[key] = listify_cleanup(item)
+    elif isinstance(value, str):
+        new = value.split("\n")
+        if value[-1] == "\n":
+            new.pop()
+    elif isinstance(value, list):
+        new = ["" if v is None else v for v in value]
+    else:
+        new = [ str(value) ]
+    return new
+
 def listify(entry, names):
     """
     Convert newline delimited strings into a list of strings.
@@ -2264,4 +2298,11 @@ def create_library_from_dictionary(node):
 
     add_declarations(library.wrap_namespace, node)
 
+    if "splicer_code" in node: 
+        new = {}
+        for key, value in node["splicer_code"].items():
+            if key in ["c", "f", "py"]:
+                new[key] = listify_cleanup(value)
+        node["splicer_code"] = new
+    
     return library
