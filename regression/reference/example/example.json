@@ -464,7 +464,7 @@
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
-                                                "stmt0": "c_ctor_shadow_scalar_buf",
+                                                "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
@@ -2326,7 +2326,7 @@
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
-                                                "stmt0": "c_ctor_shadow_scalar_buf",
+                                                "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
@@ -6674,7 +6674,7 @@
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_BOOL",
                                         "shadow_var": "SHadow_rv",
-                                        "stmt0": "c_function_bool_scalar_buf",
+                                        "stmt0": "c_function_bool_scalar",
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {

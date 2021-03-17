@@ -1226,7 +1226,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_function_shadow_*_buf",
+                                "stmt0": "c_function_shadow_*",
                                 "stmt1": "c_function_shadow"
                             },
                             "fmtf": {

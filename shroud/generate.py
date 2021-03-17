@@ -1656,6 +1656,7 @@ class GenFunctions(object):
         fmt_func = node.fmtdict
 
         if node.wrap.c is False:
+#        if options.wrap_c is False:  # XXX cdesc.yaml GetScalar2
             # The user does not require a C wrapper.
             # This can be the case if the Fortran wrapper is doing all
             # the work via splicer or fstatements.
@@ -1783,7 +1784,7 @@ class GenFunctions(object):
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
 
         options = C_new.options
-        C_new.wrap.assign(c=True)
+        C_new.wrap.assign(c=node.options.wrap_c)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:

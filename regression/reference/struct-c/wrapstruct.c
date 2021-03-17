@@ -30,7 +30,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1

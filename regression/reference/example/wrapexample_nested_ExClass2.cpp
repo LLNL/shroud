@@ -93,7 +93,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar_buf
+// Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)

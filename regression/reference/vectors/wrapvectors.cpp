@@ -40,7 +40,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Function:  int vector_sum
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
@@ -283,7 +283,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 // ----------------------------------------
 // Function:  int vector_string_count
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)

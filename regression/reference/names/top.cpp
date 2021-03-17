@@ -187,7 +187,7 @@ int YYY_TES_function4(const char * rv)
 // ----------------------------------------
 // Function:  int function4
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv +len_trim(Lrv)
@@ -257,8 +257,8 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     int Nname, int * value)
 {
     // splicer begin function.test_multiline_splicer_bufferify
-    // buf line 1
-    // buf line 2
+    // line 1
+    // line 2
     // splicer end function.test_multiline_splicer_bufferify
 }
 

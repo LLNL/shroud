@@ -476,7 +476,7 @@ int POI_accept_char_array_in(char **names)
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)

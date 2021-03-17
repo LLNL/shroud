@@ -266,7 +266,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // ----------------------------------------
 // Function:  int passAssumedTypeBuf
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * arg +assumedtype

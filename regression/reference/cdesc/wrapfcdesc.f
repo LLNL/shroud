@@ -189,52 +189,6 @@ module cdesc_mod
             real(C_DOUBLE) :: SHT_rv
         end function c_get_data_double
 
-        ! ----------------------------------------
-        ! Function:  void GetScalar2
-        ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
-        ! ----------------------------------------
-        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
-        ! ----------------------------------------
-        ! Argument:  int * value +intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_get_scalar2_0_bufferify(name, Lname, value) &
-                bind(C, name="CDE_get_scalar2_0_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
-            integer(C_INT), intent(OUT) :: value
-        end subroutine c_get_scalar2_0_bufferify
-
-        ! ----------------------------------------
-        ! Function:  void GetScalar2
-        ! Attrs:     +intent(subroutine)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
-        ! ----------------------------------------
-        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +api(buf)+intent(in)
-        ! Exact:     c_in_string_&_buf
-        ! ----------------------------------------
-        ! Argument:  double * value +intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_get_scalar2_1_bufferify(name, Lname, value) &
-                bind(C, name="CDE_get_scalar2_1_bufferify")
-            use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
-            real(C_DOUBLE), intent(OUT) :: value
-        end subroutine c_get_scalar2_1_bufferify
-
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

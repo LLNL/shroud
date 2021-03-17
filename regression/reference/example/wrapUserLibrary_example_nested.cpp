@@ -49,7 +49,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Attrs:     +intent(function)
-// Requested: c_function_bool_scalar_buf
+// Requested: c_function_bool_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)

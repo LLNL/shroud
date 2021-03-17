@@ -1326,7 +1326,7 @@ int STR_accept_string_instance(char *arg1)
 // ----------------------------------------
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_cfi
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value

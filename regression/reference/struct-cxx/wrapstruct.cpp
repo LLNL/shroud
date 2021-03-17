@@ -107,7 +107,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1

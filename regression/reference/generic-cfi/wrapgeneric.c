@@ -22,7 +22,7 @@
 // ----------------------------------------
 // Function:  int SumValues
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_cfi
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)

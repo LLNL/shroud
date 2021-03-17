@@ -209,7 +209,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*_buf
+// Requested: c_function_shadow_*
 // Match:     c_function_shadow
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
