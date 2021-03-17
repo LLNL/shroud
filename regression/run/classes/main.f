@@ -93,6 +93,7 @@ contains
     type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
+    character(:), allocatable :: name
 
     call set_case_name("test_class1")
 
@@ -107,6 +108,19 @@ contains
     call obj0%set_test(4)
     mtest = obj0%get_test()
     call assert_equals(4, mtest, "get_test 2")
+
+    ! Get default name from constructor
+    name = obj0%get_m_name()
+    call assert_true(allocated(name), "get_m_name")
+    call assert_equals(len(name), 9, "get_m_name len")
+    call assert_equals(name, "ctor_name", "get_m_name value")
+
+    ! Set new name then get.
+    call obj0%set_m_name("changed_name")
+    name = obj0%get_m_name()
+    call assert_true(allocated(name), "get_m_name changed")
+    call assert_equals(len(name), 12, "get_m_name changed len")
+    call assert_equals(name, "changed_name", "get_m_name changed value")
 
     obj1 = class1(1)
     ptr = obj1%get_instance()

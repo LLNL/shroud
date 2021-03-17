@@ -645,6 +645,9 @@ class GenFunctions(object):
             cls -
             var -
         """
+        options = var.options
+        if options.wrap_fortran is False and options.wrap_c is False:
+            return
         ast = var.ast
         arg_typemap = ast.typemap
         fieldname = ast.name  # attrs["name"]
@@ -653,67 +656,69 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
-        fmt = util.Scope(var.fmtdict)
+        deref = None
+        sgroup = var.ast.typemap.sgroup
+        if sgroup in ["char", "string"]:
+            value = None
+            deref = "allocatable"
+        elif sgroup == "vector":
+            value = None
+            deref = "pointer"
+        elif var.ast.is_pointer():
+            value = None
+            deref = "pointer"
+        else:
+            value = True
+            deref = None
 
+
+        fmt = util.Scope(var.fmtdict)
+        fmt_func = dict(
+            # Use variable's field_name for the generated functions.
+            field_name=var.fmtdict.field_name,
+        )
+        if deref:
+            fmt_func["c_var_context"] = "cdesc"
+
+        ##########
         # getter
         funcname = "get" + fieldname.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
         decl = "{}()".format(argdecl)
-        field = wformat("{CXX_this}->{field_name}", fmt)
-        if self.language == "c":
-            val = field
-        elif arg_typemap.cxx_to_c is None:
-            val = field
-        else:
-            fmt.cxx_var = field
-            val = wformat(arg_typemap.cxx_to_c, fmt)
 
-        splicer = dict(
-            c=[
-                "return " + val + ";",
-            ],
-        )
+        fattrs = {}
+        if deref:
+            fattrs["context"] = "cdesc"
 
-        fcn = cls.add_function(decl, splicer=splicer)
-        fcn.ast.metaattrs["intent"] = "subroutine"
+        fcn = cls.add_function(decl, format=fmt_func, fattrs=fattrs)
+        fcn.ast.metaattrs["intent"] = "getter"
+        fcn.ast.metaattrs["deref"] = deref
         fcn.wrap.lua = False
         fcn.wrap.python = False
+        fcn._generated = "getter/setter"
 
+        ##########
         # setter
         if ast.attrs["readonly"]:
             return
         funcname = "set" + ast.name.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
         decl = "void {}({})".format(funcname, argdecl)
-        field = wformat("{CXX_this}->{field_name}", fmt)
-        if self.language == "c":
-            val = "val"
-        elif arg_typemap.c_to_cxx is None:            
-            val = "val"
-        else:
-            fmt.c_var = "val"
-            val = wformat(arg_typemap.c_to_cxx, fmt)
-        set_val = "{} = {};".format(field, val)
 
         attrs = dict(
             val=dict(
-                intent="in", value=True
-            )  # XXX - what about pointer variables?
+                intent="in",
+                value=value,
+            )
         )
 
-        splicer = dict(
-            c=[
-                set_val,
-                "return;"
-            ],
-        )
-
-        fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
+        fcn = cls.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
-        fcn.ast.metaattrs["intent"] = "subroutine"
-        fcn.ast.params[0].metaattrs["intent"] = "in"
+        fcn.ast.metaattrs["intent"] = "setter"
+        fcn.ast.params[0].metaattrs["intent"] = "setter"
         fcn.wrap.lua = False
         fcn.wrap.python = False
+        fcn._generated = "getter/setter"
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
@@ -1820,7 +1825,7 @@ class GenFunctions(object):
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
         else:
-            if node._generated in ["result_to_arg", "fortran_generic"]:
+            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
                 node.wrap.c = False
             
             # Fortran function may call C subroutine if string/vector result

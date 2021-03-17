@@ -621,13 +621,17 @@
                 "functions": [
                     {
                         "<FUNCTION>": "0 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -638,11 +642,6 @@
                         "decl": "int getX1()",
                         "declgen": "int getX1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->x1;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -669,6 +668,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "x1",
                             "function_name": "getX1",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_x1"
@@ -676,19 +676,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -708,13 +706,17 @@
                     },
                     {
                         "<FUNCTION>": "1 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -727,7 +729,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -743,12 +745,6 @@
                         "decl": "void setX1(int val)",
                         "declgen": "void setX1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->x1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -770,8 +766,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -782,10 +778,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -808,24 +804,29 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "x1",
                             "function_name": "setX1",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_x1"
                         }
                     },
                     {
                         "<FUNCTION>": "2 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -836,11 +837,6 @@
                         "decl": "int getY1()",
                         "declgen": "int getY1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->y1;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -867,6 +863,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "y1",
                             "function_name": "getY1",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_y1"
@@ -874,19 +871,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -906,13 +901,17 @@
                     },
                     {
                         "<FUNCTION>": "3 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -925,7 +924,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -941,12 +940,6 @@
                         "decl": "void setY1(int val)",
                         "declgen": "void setY1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->y1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -968,8 +961,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -980,10 +973,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -1006,12 +999,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "y1",
                             "function_name": "setY1",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_y1"
                         }
                     }
@@ -1110,13 +1104,17 @@
                 "functions": [
                     {
                         "<FUNCTION>": "4 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getX1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1127,11 +1125,6 @@
                         "decl": "int getX1()",
                         "declgen": "int getX1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->x1;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1158,6 +1151,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "x1",
                             "function_name": "getX1",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_x1"
@@ -1165,19 +1159,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1197,13 +1189,17 @@
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -1216,7 +1212,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1232,12 +1228,6 @@
                         "decl": "void setX1(int val)",
                         "declgen": "void setX1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->x1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1259,8 +1249,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -1271,10 +1261,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -1297,24 +1287,29 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "x1",
                             "function_name": "setX1",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_x1"
                         }
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getY1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1325,11 +1320,6 @@
                         "decl": "int getY1()",
                         "declgen": "int getY1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->y1;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1356,6 +1346,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "y1",
                             "function_name": "getY1",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_y1"
@@ -1363,19 +1354,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1395,13 +1384,17 @@
                     },
                     {
                         "<FUNCTION>": "7 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -1414,7 +1407,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1430,12 +1423,6 @@
                         "decl": "void setY1(int val)",
                         "declgen": "void setY1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->y1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1457,8 +1444,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -1469,10 +1456,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -1495,24 +1482,29 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "y1",
                             "function_name": "setY1",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_y1"
                         }
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "getZ1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "getter"
                             },
                             "params": [],
                             "specifier": [
@@ -1523,11 +1515,6 @@
                         "decl": "int getZ1()",
                         "declgen": "int getZ1(void)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->z1;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1554,6 +1541,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
+                            "field_name": "z1",
                             "function_name": "getZ1",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_z1"
@@ -1561,19 +1549,17 @@
                         "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_subroutine_native_scalar",
-                                "stmt1": "c_subroutine"
+                                "stmt0": "c_getter_native_scalar",
+                                "stmt1": "c_getter_native_scalar"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1593,13 +1579,17 @@
                     },
                     {
                         "<FUNCTION>": "9 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
                                 "name": "setZ1",
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "subroutine"
+                                "intent": "setter"
                             },
                             "params": [
                                 {
@@ -1612,7 +1602,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "setter"
                                     },
                                     "specifier": [
                                         "int"
@@ -1628,12 +1618,6 @@
                         "decl": "void setZ1(int val)",
                         "declgen": "void setZ1(int val +intent(in)+value)",
                         "options": {},
-                        "splicer": {
-                            "c": [
-                                "SH_this->z1 = val;",
-                                "return;"
-                            ]
-                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1655,8 +1639,8 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_val",
-                                    "stmt0": "c_in_native_scalar",
-                                    "stmt1": "c_default"
+                                    "stmt0": "c_setter_native_scalar",
+                                    "stmt1": "c_setter_native_scalar"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
@@ -1667,10 +1651,10 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_in_native_scalar",
-                                    "stmt1": "f_default",
-                                    "stmtc0": "c_in_native_scalar",
-                                    "stmtc1": "c_default"
+                                    "stmt0": "f_setter_native_scalar",
+                                    "stmt1": "f_setter",
+                                    "stmtc0": "c_setter_native_scalar",
+                                    "stmtc1": "c_setter_native_scalar"
                                 }
                             }
                         },
@@ -1693,12 +1677,13 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "field_name": "z1",
                             "function_name": "setZ1",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
                             "underscore_name": "set_z1"
                         }
                     }

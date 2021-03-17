@@ -459,13 +459,13 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
-    def name_temp_vars(self, blk, fmt):
+    def name_temp_vars(self, stmts, fmt):
         """Compute names of temporary variables.
 
-        Create blk.ntemps variables.
+        Create stmts.ntemps variables.
         Use fmt.c_var as the prefix.
         """
-        for i in range(blk.ntemps):
+        for i in range(stmts.ntemps):
             setattr(fmt,
                     "temp{}".format(i),
                     "{}_temp{}".format(fmt.c_var, i))

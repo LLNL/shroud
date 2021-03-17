@@ -485,7 +485,11 @@ CStmts = util.Scope(None,
     c_helper="", c_local_var=None,
     cxx_local_var=None,
     arg_call=[],
-    pre_call=[], call=[], post_call=[], final=[], ret=[],
+    pre_call=[],
+    call=[],
+    post_call=[],
+    final=[],
+    ret=[],
     destructor_name=None,
     owner="library",
     return_type=None, return_cptr=False,
@@ -1729,6 +1733,100 @@ fc_statements = [
         ],
     ),
 
+    ########################################
+    # getter/setter
+    # getters are functions.
+    #  When passed meta data, converted into a subroutine.
+    # setters are first argument to subroutine.
+
+    dict(
+        # Base for all getters to avoid calling function.
+        name="c_getter",
+        call=[
+            "// skip call c_getter",
+        ],
+    ),
+    dict(
+        # Not actually calling a subroutine.
+        # Work is done by arg's setter.
+        name="c_setter",
+        call=[
+            "// skip call c_setter",
+        ],
+    ),
+    dict(
+        name="f_getter",
+    ),
+    dict(
+        name="f_setter",
+    ),
+
+    dict(
+        name="c_getter_native_scalar",
+        base="c_getter",
+        ret=[
+            "return {CXX_this}->{field_name};",
+        ],
+    ),
+    dict(
+        name="c_setter_native_scalar",
+        base="c_setter",
+        post_call=[
+            "{CXX_this}->{field_name} = val;",
+        ],
+    ),
+
+    #####
+    dict(
+        # Return meta data to Fortran.
+        name="c_getter_string_scalar_buf",
+        base="c_getter",
+        buf_args=["context"],
+        post_call=[
+            "{c_var_context}->addr.base = {CXX_this}->{field_name}.data();",
+            "{c_var_context}->type = 0; // SH_CHAR;",
+            "{c_var_context}->elem_len = {CXX_this}->{field_name}.size();",
+            "{c_var_context}->rank = 0;"
+        ],
+        return_type="void",  # Convert to function.
+    ),
+    dict(
+        # Create std::string from Fortran meta data.
+        name="c_setter_string_scalar_buf",
+        base="c_setter",
+        buf_args=["context"],
+        post_call=[
+            "{CXX_this}->{field_name} = std::string("
+            "static_cast<const char *>(\t{c_var_context}->addr.base),\t "
+            "{c_var_context}->elem_len);",
+        ],
+    ),
+    dict(
+        # Extract meta data and pass to C.
+        name="f_setter_string_scalar_buf",
+        f_helper="array_context ShroudTypeDefines",
+        f_module=dict(iso_c_binding=["C_LOC"]),
+        arg_decl=[
+            "character(len=*), intent(IN), target :: {f_var}",
+        ],
+        pre_call=[
+            "{c_var_context}%base_addr = C_LOC({f_var})",
+            "{c_var_context}%type = SH_TYPE_CHAR",
+            "{c_var_context}%elem_len = len({f_var})",
+#            "{c_var_context}%size = size({f_var})",
+            "{c_var_context}%size = 1",
+            "{c_var_context}%rank = {rank}",
+            # This also works with scalars since (1:0) is a zero length array.
+#            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
+        ],
+    ),
+    dict(
+        # Get meta data from C and allocate CHARACTER.
+        name="f_getter_string_scalar_buf_allocatable",
+        base="f_function_string_scalar_buf_allocatable",
+    ),
+    
+    
     ########################################
     # CFI - Further Interoperability with C
     # c_var will be CFI_cdesc_t *.

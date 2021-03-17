@@ -1558,6 +1558,8 @@ rv = .false.
             fmt.f_intent = "OUT"
         else:
             fmt.f_intent = c_meta["intent"].upper()
+            if fmt.f_intent == "SETTER":
+                fmt.f_intent = "IN"
             ntypemap = f_ast.typemap
         if ntypemap.sgroup == "vector":
             # If a vector, use its type.
@@ -1825,6 +1827,7 @@ rv = .false.
 
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
+            self.name_temp_vars(f_intent_blk, fmt_arg)
 
             if is_f_arg:
                 implied = f_attrs["implied"]

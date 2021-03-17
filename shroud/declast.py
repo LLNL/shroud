@@ -1578,6 +1578,9 @@ class Declaration(Node):
         intent = intent or meta["intent"]
         if intent in ["in", "out", "inout"]:
             t.append("intent(%s)" % intent.upper())
+        elif intent == "setter":
+            # Argument to setter function.
+            t.append("intent(IN)")
 
         decl = []
         decl.append(", ".join(t))
@@ -1661,6 +1664,9 @@ class Declaration(Node):
             intent = meta["intent"]
             if intent in ["in", "out", "inout"]:
                 t.append("intent(%s)" % intent.upper())
+            elif intent == "setter":
+                # Argument to setter function.
+                t.append("intent(IN)")
 
         if is_allocatable:
             t.append("allocatable")

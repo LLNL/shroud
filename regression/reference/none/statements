@@ -41,6 +41,12 @@ root
         * -- c_function_struct_*
       vector
         buf -- c_function_vector_buf
+    getter -- c_getter
+      native
+        scalar -- c_getter_native_scalar
+      string
+        scalar
+          buf -- c_getter_string_scalar_buf
     in
       char
         *
@@ -130,6 +136,12 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
+    setter -- c_setter
+      native
+        scalar -- c_setter_native_scalar
+      string
+        scalar
+          buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
   f
     ctor -- f_ctor
@@ -187,6 +199,11 @@ root
           allocatable -- f_function_vector_buf_allocatable
       void
         * -- f_function_void_*
+    getter -- f_getter
+      string
+        scalar
+          buf
+            allocatable -- f_getter_string_scalar_buf_allocatable
     in
       bool -- f_in_bool
       char
@@ -232,6 +249,10 @@ root
         *
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_out_void_**
+    setter -- f_setter
+      string
+        scalar
+          buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
 c_ctor:
   buf_extra:
@@ -726,6 +747,31 @@ c_function_vector_buf:
   - '{temp0}->shape[0] = {temp0}->size;'
   pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  return_type: void
+c_getter:
+  call:
+  - // skip call c_getter
+  name: c_getter
+  owner: library
+c_getter_native_scalar:
+  call:
+  - // skip call c_getter
+  name: c_getter_native_scalar
+  owner: library
+  ret:
+  - return {CXX_this}->{field_name};
+c_getter_string_scalar_buf:
+  buf_args:
+  - context
+  call:
+  - // skip call c_getter
+  name: c_getter_string_scalar_buf
+  owner: library
+  post_call:
+  - '{c_var_context}->addr.base = {CXX_this}->{field_name}.data();'
+  - '{c_var_context}->type = 0; // SH_CHAR;'
+  - '{c_var_context}->elem_len = {CXX_this}->{field_name}.size();'
+  - '{c_var_context}->rank = 0;'
   return_type: void
 c_in_char_**:
   buf_args:
@@ -1466,6 +1512,28 @@ c_out_void_*_cdesc:
   owner: library
   pre_call:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_context}->addr.base));"
+c_setter:
+  call:
+  - // skip call c_setter
+  name: c_setter
+  owner: library
+c_setter_native_scalar:
+  call:
+  - // skip call c_setter
+  name: c_setter_native_scalar
+  owner: library
+  post_call:
+  - '{CXX_this}->{field_name} = val;'
+c_setter_string_scalar_buf:
+  buf_args:
+  - context
+  call:
+  - // skip call c_setter
+  name: c_setter_string_scalar_buf
+  owner: library
+  post_call:
+  - "{CXX_this}->{field_name} = std::string(static_cast<const char *>(\t{c_var_context}->addr.base),\t\
+    \ {c_var_context}->elem_len);"
 c_subroutine:
   name: c_subroutine
   owner: library
@@ -1762,6 +1830,23 @@ f_function_void_*:
     iso_c_binding:
     - C_PTR
   name: f_function_void_*
+f_getter:
+  name: f_getter
+f_getter_string_scalar_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
+  arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  c_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
+  name: f_getter_string_scalar_buf_allocatable
+  need_wrapper: true
+  ntemps: 1
+  post_call:
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
 f_in_bool:
   c_local_var: true
   name: f_in_bool
@@ -1983,6 +2068,22 @@ f_out_void_*_cdesc:
   - '{c_var_context}%size = {size}'
   - '{c_var_context}%rank = {rank}'
   - '{c_var_context}%shape(1:{rank}) = shape({f_var})'
+f_setter:
+  name: f_setter
+f_setter_string_scalar_buf:
+  arg_decl:
+  - 'character(len=*), intent(IN), target :: {f_var}'
+  f_helper: array_context ShroudTypeDefines
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  name: f_setter_string_scalar_buf
+  pre_call:
+  - '{c_var_context}%base_addr = C_LOC({f_var})'
+  - '{c_var_context}%type = SH_TYPE_CHAR'
+  - '{c_var_context}%elem_len = len({f_var})'
+  - '{c_var_context}%size = 1'
+  - '{c_var_context}%rank = {rank}'
 f_subroutine:
   name: f_subroutine
 ***** Python

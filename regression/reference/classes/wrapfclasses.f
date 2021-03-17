@@ -21,6 +21,39 @@ module classes_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper ShroudTypeDefines
+    ! Shroud type defines from helper ShroudTypeDefines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
     ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: CLA_SHROUD_capsule_data
@@ -71,6 +104,8 @@ module classes_mod
         procedure :: get_m_flag => class1_get_m_flag
         procedure :: get_test => class1_get_test
         procedure :: set_test => class1_set_test
+        procedure :: get_m_name => class1_get_m_name
+        procedure :: set_m_name => class1_set_m_name
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
@@ -406,9 +441,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getM_flag
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -425,9 +459,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getTest
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_native_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -444,14 +477,13 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void setTest
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -464,6 +496,44 @@ module classes_mod
         end subroutine c_class1_set_test
     end interface
     ! end c_class1_set_test
+
+    ! ----------------------------------------
+    ! Function:  std::string getM_name +context(cdesc)
+    ! Attrs:     +deref(allocatable)+intent(getter)
+    ! Requested: c_getter_string_scalar_buf_allocatable
+    ! Match:     c_getter_string_scalar_buf
+    ! start c_class1_get_m_name_bufferify
+    interface
+        subroutine c_class1_get_m_name_bufferify(self, cdesc) &
+                bind(C, name="CLA_Class1_get_m_name_bufferify")
+            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_array), intent(INOUT) :: cdesc
+        end subroutine c_class1_get_m_name_bufferify
+    end interface
+    ! end c_class1_get_m_name_bufferify
+
+    ! ----------------------------------------
+    ! Function:  void setM_name
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar_buf
+    ! Match:     c_setter
+    ! ----------------------------------------
+    ! Argument:  std::string val +context(Dval)+intent(in)
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_string_scalar_buf
+    ! start c_class1_set_m_name_bufferify
+    interface
+        subroutine c_class1_set_m_name_bufferify(self, Dval) &
+                bind(C, name="CLA_Class1_set_m_name_bufferify")
+            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_array), intent(INOUT) :: Dval
+        end subroutine c_class1_set_m_name_bufferify
+    end interface
+    ! end c_class1_set_m_name_bufferify
 
     ! splicer begin class.Class1.additional_interfaces
     ! splicer end class.Class1.additional_interfaces
@@ -1096,12 +1166,13 @@ contains
     end function class1_direction_func
     ! end class1_direction_func
 
+    ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int getM_flag
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start class1_get_m_flag
@@ -1116,12 +1187,13 @@ contains
     end function class1_get_m_flag
     ! end class1_get_m_flag
 
+    ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int getTest
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! start class1_get_test
@@ -1136,20 +1208,20 @@ contains
     end function class1_get_test
     ! end class1_get_test
 
+    ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  void setTest
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
@@ -1160,6 +1232,59 @@ contains
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
     ! end class1_set_test
+
+    ! Generated by getter/setter - arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  std::string getM_name +context(cdesc)
+    ! Attrs:     +deref(allocatable)+intent(getter)
+    ! Exact:     f_function_string_scalar_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(getter)
+    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! start class1_get_m_name
+    function class1_get_m_name(obj) &
+            result(SHT_rv)
+        class(class1) :: obj
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin class.Class1.method.get_m_name
+        type(CLA_SHROUD_array) :: SHT_rv_temp0
+        call c_class1_get_m_name_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
+        ! splicer end class.Class1.method.get_m_name
+    end function class1_get_m_name
+    ! end class1_get_m_name
+
+    ! Generated by getter/setter - arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void setM_name
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
+    ! ----------------------------------------
+    ! Argument:  std::string val +intent(in)
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter_string_scalar_buf
+    ! Argument:  std::string val +context(Dval)+intent(in)
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_string_scalar_buf
+    ! start class1_set_m_name
+    subroutine class1_set_m_name(obj, val)
+        use iso_c_binding, only : C_LOC
+        class(class1) :: obj
+        character(len=*), intent(IN), target :: val
+        type(CLA_SHROUD_array) :: Dval
+        ! splicer begin class.Class1.method.set_m_name
+        Dval%base_addr = C_LOC(val)
+        Dval%type = SH_TYPE_CHAR
+        Dval%elem_len = len(val)
+        Dval%size = 1
+        Dval%rank = 0
+        call c_class1_set_m_name_bufferify(obj%cxxmem, Dval)
+        ! splicer end class.Class1.method.set_m_name
+    end subroutine class1_set_m_name
+    ! end class1_set_m_name
 
     ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)

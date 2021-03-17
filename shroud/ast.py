@@ -793,6 +793,9 @@ class LibraryNode(AstNode, NamespaceMixin):
                 PY_member_object="XXXPY_member_object",
                 PY_to_object_func="XXXPY_to_object_func",
                 shadow_var="XXXsh_var",
+                temp0="XXXtemp0",
+                temp1="XXXtemp1",
+                temp2="XXXtemp2",
             ))
 
         fmt_library.F_filename_suffix = "f"

@@ -1115,6 +1115,7 @@ class Wrapc(util.WrapperMixin):
                         pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                     )
                 compute_cxx_deref(arg, cxx_local_var, fmt_arg)
+            self.name_temp_vars(intent_blk, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(stmts)
