@@ -10,6 +10,7 @@
 
 // splicer begin namespace.ns0.class.Names.CXX_definitions
 // CXX_definitions for ns0 class Names
+// allow YAML multiline strings
 // splicer end namespace.ns0.class.Names.CXX_definitions
 
 extern "C" {

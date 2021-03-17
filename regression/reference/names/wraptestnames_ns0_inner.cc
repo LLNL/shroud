@@ -9,6 +9,8 @@
 
 // splicer begin namespace.ns0::inner.CXX_definitions
 // CXX_definitions for ns0::inner
+// Allow blank line below (convert None to '')
+
 // splicer end namespace.ns0::inner.CXX_definitions
 
 extern "C" {
