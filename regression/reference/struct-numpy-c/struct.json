@@ -625,152 +625,6 @@
             {
                 "<CLASS>": "****************************************",
                 "cxx_header": [],
-                "functions": [
-                    {
-                        "<FUNCTION>": "0 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "getX1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getX1()",
-                        "declgen": "int getX1(void)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "x1",
-                            "function_name": "getX1",
-                            "underscore_name": "get_x1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "1 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "setX1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void setX1(int val)",
-                        "declgen": "void setX1(int val +intent(in)+value)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "x1",
-                            "function_name": "setX1",
-                            "underscore_name": "set_x1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "2 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "getY1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getY1()",
-                        "declgen": "int getY1(void)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "y1",
-                            "function_name": "getY1",
-                            "underscore_name": "get_y1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "3 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "setY1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void setY1(int val)",
-                        "declgen": "void setY1(int val +intent(in)+value)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "y1",
-                            "function_name": "setY1",
-                            "underscore_name": "set_y1"
-                        }
-                    }
-                ],
                 "name": "Cstruct_as_class",
                 "options": {
                     "literalinclude": true,
@@ -851,224 +705,6 @@
             {
                 "<CLASS>": "****************************************",
                 "cxx_header": [],
-                "functions": [
-                    {
-                        "<FUNCTION>": "4 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "getX1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getX1()",
-                        "declgen": "int getX1(void)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "x1",
-                            "function_name": "getX1",
-                            "underscore_name": "get_x1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "5 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "setX1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void setX1(int val)",
-                        "declgen": "void setX1(int val +intent(in)+value)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "x1",
-                            "function_name": "setX1",
-                            "underscore_name": "set_x1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "6 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "getY1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getY1()",
-                        "declgen": "int getY1(void)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "y1",
-                            "function_name": "getY1",
-                            "underscore_name": "get_y1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "7 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "setY1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void setY1(int val)",
-                        "declgen": "void setY1(int val +intent(in)+value)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "y1",
-                            "function_name": "setY1",
-                            "underscore_name": "set_y1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "8 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "getZ1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getZ1()",
-                        "declgen": "int getZ1(void)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "z1",
-                            "function_name": "getZ1",
-                            "underscore_name": "get_z1"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "9 ****************************************",
-                        "_generated": "getter/setter",
-                        "ast": {
-                            "declarator": {
-                                "name": "setZ1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void setZ1(int val)",
-                        "declgen": "void setZ1(int val +intent(in)+value)",
-                        "options": {},
-                        "wrap": {},
-                        "zz_fmtdict": {
-                            "field_name": "z1",
-                            "function_name": "setZ1",
-                            "underscore_name": "set_z1"
-                        }
-                    }
-                ],
                 "name": "Cstruct_as_subclass",
                 "options": {
                     "class_baseclass": "Cstruct_as_class",
@@ -1185,7 +821,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStructByValue",
@@ -1279,7 +915,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct1",
@@ -1376,7 +1012,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct2",
@@ -1518,7 +1154,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInPtr",
@@ -1615,7 +1251,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructOutPtr",
@@ -1769,7 +1405,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInOutPtr",
@@ -1847,7 +1483,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructByValue",
@@ -1978,7 +1614,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr1",
@@ -2116,7 +1752,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr2",
@@ -2298,7 +1934,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -2355,7 +1991,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class",
@@ -2388,7 +2024,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class_args",
@@ -2453,7 +2089,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -2504,7 +2140,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",

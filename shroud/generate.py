@@ -645,6 +645,9 @@ class GenFunctions(object):
             cls -
             var -
         """
+        options = var.options
+        if options.wrap_fortran is False and options.wrap_c is False:
+            return
         ast = var.ast
         arg_typemap = ast.typemap
         fieldname = ast.name  # attrs["name"]
