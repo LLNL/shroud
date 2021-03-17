@@ -100,7 +100,7 @@ void TES_get_name(char * name)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
-// Attrs:     +intent(inout)
+// Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
 void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 {
@@ -191,7 +191,7 @@ int YYY_TES_function4(const char * rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv +len_trim(Lrv)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
@@ -246,7 +246,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +len(Nname)+len_trim(Lname)
-// Attrs:     +intent(inout)
+// Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)

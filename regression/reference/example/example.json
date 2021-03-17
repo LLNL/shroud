@@ -369,6 +369,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "specifier": [
@@ -885,6 +886,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -1063,6 +1065,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1079,6 +1082,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -1189,6 +1193,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1205,6 +1210,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -2227,6 +2233,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "specifier": [
@@ -2540,6 +2547,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -2556,6 +2564,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -2793,6 +2802,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2997,6 +3007,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -3198,6 +3209,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -6563,6 +6575,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [
@@ -6950,6 +6963,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [
@@ -7263,6 +7277,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [

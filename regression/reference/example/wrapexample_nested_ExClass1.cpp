@@ -121,7 +121,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Match:     c_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     const char * name, int Lname,
@@ -196,7 +196,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self,
@@ -229,12 +229,12 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 
 // ----------------------------------------
 // Function:  void getNameArg
-// Attrs:     +intent(subroutine)
+// Attrs:     +api(buf)+intent(subroutine)
 // Requested: c_subroutine_void_scalar_buf
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & name +len(Nname)
-// Attrs:     +intent(out)+is_result
+// Attrs:     +api(buf)+intent(out)+is_result
 // Exact:     c_function_string_&_buf
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
     const AA_example_nested_ExClass1 * self, char * name, int Nname)

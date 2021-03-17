@@ -102,15 +102,15 @@ double TUT_pass_by_value(double arg1, int arg2)
  */
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_scalar_buf_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1 +len_trim(Larg1)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  const std::string & arg2 +len_trim(Larg2)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
     const char * arg1, int Larg1, const char * arg2, int Larg2)
@@ -206,7 +206,7 @@ void TUT_overloaded_function_from_name(const char * name)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
@@ -329,7 +329,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  float arg2 +value
@@ -351,7 +351,7 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double arg2 +value
@@ -654,12 +654,12 @@ const char * TUT_last_function_called(void)
 
 // ----------------------------------------
 // Function:  void LastFunctionCalled +len(30)
-// Attrs:     +intent(subroutine)
+// Attrs:     +api(buf)+intent(subroutine)
 // Requested: c_subroutine_void_scalar_buf
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)+is_result
+// Attrs:     +api(buf)+intent(out)+is_result
 // Exact:     c_function_string_&_buf
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

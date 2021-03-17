@@ -137,7 +137,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_&_buf_pointer
         ! Match:     c_function_native_&
         ! ----------------------------------------
@@ -227,7 +227,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_&_buf_pointer
         ! Match:     c_function_native_&
         ! ----------------------------------------
@@ -322,7 +322,7 @@ contains
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_&_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_&_buf_pointer
     ! Match:     c_function_native_&
     ! ----------------------------------------
@@ -431,7 +431,7 @@ contains
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_&_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_&_buf_pointer
     ! Match:     c_function_native_&
     ! ----------------------------------------

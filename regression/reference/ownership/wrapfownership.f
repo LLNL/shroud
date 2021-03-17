@@ -146,7 +146,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         subroutine c_return_int_ptr_pointer_bufferify(SHT_rv) &
@@ -196,7 +196,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         ! ----------------------------------------
@@ -234,7 +234,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Requested: c_function_native_*_buf_allocatable
         ! Match:     c_function_native_*_buf
         ! ----------------------------------------
@@ -272,7 +272,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         ! ----------------------------------------
@@ -329,7 +329,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         ! ----------------------------------------
@@ -387,7 +387,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         ! ----------------------------------------
@@ -552,7 +552,7 @@ contains
     ! Function:  int * ReturnIntPtrPointer +deref(pointer)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     function return_int_ptr_pointer() &
@@ -571,7 +571,7 @@ contains
     ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! ----------------------------------------
@@ -599,7 +599,7 @@ contains
     ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_native_*_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Requested: c_function_native_*_buf_allocatable
     ! Match:     c_function_native_*_buf
     ! ----------------------------------------
@@ -629,7 +629,7 @@ contains
     ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! ----------------------------------------
@@ -657,7 +657,7 @@ contains
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer_caller
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! ----------------------------------------
@@ -689,7 +689,7 @@ contains
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer_caller
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! ----------------------------------------

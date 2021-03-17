@@ -1263,6 +1263,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -1317,6 +1318,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -1737,6 +1739,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "specifier": [
@@ -1971,6 +1974,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -2268,6 +2272,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -2291,6 +2296,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -2615,6 +2621,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -3871,6 +3878,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -4585,6 +4593,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -5612,6 +5621,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [

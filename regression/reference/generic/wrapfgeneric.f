@@ -706,7 +706,7 @@ module generic_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -741,7 +741,7 @@ module generic_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1419,7 +1419,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1465,7 +1465,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------

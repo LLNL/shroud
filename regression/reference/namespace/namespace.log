@@ -7,14 +7,14 @@ Close wrapns_outer.h
 Close wrapns_outer.cpp
 class ClassWork
 C const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
-C const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
+C const std::string & LastFunctionCalled(void)  +api(buf)+deref(allocatable)+intent(function)
 C void One(void)  +intent(subroutine)
 Close wrapns.h
 Close wrapns.cpp
 Fortran const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
 Fortran void One(void)  +intent(subroutine)
 C-interface const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
-C-interface const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(function)
+C-interface const std::string & LastFunctionCalled(void)  +api(buf)+deref(allocatable)+intent(function)
 C-interface void One(void)  +intent(subroutine)
 class Cstruct1
 Fortran void One(void)  +intent(subroutine)

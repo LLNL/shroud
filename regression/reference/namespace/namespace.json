@@ -137,6 +137,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "intent": "function"
                     },

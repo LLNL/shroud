@@ -1207,6 +1207,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "cfi",
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
@@ -4743,6 +4744,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5082,6 +5084,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },

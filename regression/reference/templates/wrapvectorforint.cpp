@@ -90,7 +90,7 @@ int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 
 // ----------------------------------------
 // Function:  int & at
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_native_&_buf_pointer
 // Match:     c_function_native_&
 // ----------------------------------------

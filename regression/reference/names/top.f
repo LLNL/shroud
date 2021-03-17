@@ -149,7 +149,7 @@ module top_module
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
-        ! Attrs:     +intent(inout)
+        ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_char_*_buf
         subroutine c_get_name_bufferify(name, worktrim, worklen) &
                 bind(C, name="TES_get_name_bufferify")
@@ -239,7 +239,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & rv +len_trim(Lrv)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
@@ -290,7 +290,7 @@ module top_module
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
-        ! Attrs:     +intent(inout)
+        ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
@@ -545,7 +545,7 @@ contains
     ! Attrs:     +intent(inout)
     ! Requested: f_inout_char_*_buf
     ! Match:     f_default
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
@@ -639,7 +639,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & rv +len_trim(Lrv)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     function testnames_function4(rv) &
             result(SHT_rv)
@@ -677,7 +677,7 @@ contains
     ! Requested: f_inout_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
-    ! Attrs:     +intent(inout)
+    ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)

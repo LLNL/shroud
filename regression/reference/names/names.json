@@ -497,6 +497,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "specifier": [
@@ -1102,6 +1103,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -1476,6 +1478,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "specifier": [

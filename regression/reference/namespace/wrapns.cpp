@@ -58,7 +58,7 @@ const char * NS_last_function_called(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_buf_allocatable
 void NS_last_function_called_bufferify(NS_SHROUD_array *SHC_rv_temp0)
 {

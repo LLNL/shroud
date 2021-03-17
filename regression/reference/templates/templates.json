@@ -3204,6 +3204,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },
@@ -3976,6 +3977,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "intent": "function"
                                     },

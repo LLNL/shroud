@@ -1549,6 +1549,7 @@ class GenFunctions(object):
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
+        need_buf_result   = False
         has_string_result = False
 
         result_as_arg = ""  # Only applies to string functions
@@ -1561,10 +1562,12 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
@@ -1584,6 +1587,8 @@ class GenFunctions(object):
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
         C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
+        if need_buf_result:
+            C_new.ast.metaattrs["api"] = generated_suffix
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
 
@@ -1592,6 +1597,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             if cfi_args[arg.name]:
+                arg.metaattrs["api"] = generated_suffix
                 arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
@@ -1715,6 +1721,7 @@ class GenFunctions(object):
         has_buf_arg = any(buf_args.values())
 
         # Function result.
+        need_buf_result   = False
         has_string_result = False
         has_vector_result = False
         need_cdesc_result = False
@@ -1729,19 +1736,24 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
+            need_buf_result   = True
             has_vector_result = True
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
+                need_buf_result   = True
                 need_cdesc_result = True
             elif attrs["dimension"]:
+                need_buf_result   = True
                 need_cdesc_result = True
 
         # Functions with these results need wrappers.
@@ -1764,6 +1776,9 @@ class GenFunctions(object):
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
         C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
+        if need_buf_result:
+            C_new.ast.metaattrs["api"] = generated_suffix
+        
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
 
@@ -1773,6 +1788,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             if buf_args[arg.name]:
+                arg.metaattrs["api"] = generated_suffix
                 arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             meta = arg.metaattrs

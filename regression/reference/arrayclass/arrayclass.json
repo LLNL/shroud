@@ -668,6 +668,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -888,6 +889,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1107,6 +1109,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1329,6 +1332,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1632,6 +1636,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2012,6 +2017,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2394,6 +2400,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2776,6 +2783,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {

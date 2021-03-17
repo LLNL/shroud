@@ -213,7 +213,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Match:     c_function_shadow
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  bool flag +value
@@ -289,7 +289,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_buf_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
@@ -384,7 +384,7 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 
 // ----------------------------------------
 // Function:  std::string getM_name +context(cdesc)
-// Attrs:     +deref(allocatable)+intent(getter)
+// Attrs:     +api(buf)+deref(allocatable)+intent(getter)
 // Requested: c_getter_string_scalar_buf_allocatable
 // Match:     c_getter_string_scalar_buf
 // start CLA_Class1_get_m_name_bufferify
@@ -409,7 +409,7 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  std::string val +context(Dval)+intent(in)
-// Attrs:     +intent(setter)
+// Attrs:     +api(buf)+intent(setter)
 // Exact:     c_setter_string_scalar_buf
 // start CLA_Class1_set_m_name_bufferify
 void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self,

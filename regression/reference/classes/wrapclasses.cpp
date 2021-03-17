@@ -232,12 +232,12 @@ const char * CLA_last_function_called(void)
 
 // ----------------------------------------
 // Function:  void LastFunctionCalled +len(30)
-// Attrs:     +intent(subroutine)
+// Attrs:     +api(buf)+intent(subroutine)
 // Requested: c_subroutine_void_scalar_buf
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)+is_result
+// Attrs:     +api(buf)+intent(out)+is_result
 // Exact:     c_function_string_&_buf
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

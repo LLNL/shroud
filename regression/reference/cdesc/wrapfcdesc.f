@@ -124,7 +124,7 @@ module cdesc_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -147,7 +147,7 @@ module cdesc_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -196,7 +196,7 @@ module cdesc_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
@@ -219,7 +219,7 @@ module cdesc_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +intent(out)
@@ -291,7 +291,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -338,7 +338,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -427,7 +427,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
@@ -466,7 +466,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)

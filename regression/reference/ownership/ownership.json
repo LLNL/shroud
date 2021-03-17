@@ -549,6 +549,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -937,6 +938,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -1275,6 +1277,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "dimension": [
                             {
@@ -1610,6 +1613,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2082,6 +2086,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2596,6 +2601,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {

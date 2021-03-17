@@ -116,7 +116,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // Match:     c_in_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
@@ -261,7 +261,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_struct_*_buf_pointer
 // Match:     c_function_struct_*
 // ----------------------------------------
@@ -326,7 +326,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_struct_*_buf_pointer
 // Match:     c_function_struct_*
 // ----------------------------------------
@@ -341,7 +341,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
@@ -372,7 +372,7 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_struct_*_buf_pointer
 // Match:     c_function_struct_*
 STR_cstruct_list * STR_get_global_struct_list_bufferify(void)

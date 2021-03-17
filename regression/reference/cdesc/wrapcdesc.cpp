@@ -80,7 +80,7 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -127,7 +127,7 @@ void CDE_get_scalar1_0_bufferify(char * name, int Lname,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
@@ -204,7 +204,7 @@ double CDE_get_data_double(void)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
@@ -231,7 +231,7 @@ void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +intent(out)

@@ -201,7 +201,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_shadow_scalar
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
@@ -265,7 +265,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 SHT_rv) &
@@ -293,12 +293,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getNameArg
-        ! Attrs:     +intent(subroutine)
+        ! Attrs:     +api(buf)+intent(subroutine)
         ! Requested: c_subroutine_void_scalar_buf
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & name +len(Nname)
-        ! Attrs:     +intent(out)+is_result
+        ! Attrs:     +api(buf)+intent(out)+is_result
         ! Exact:     c_function_string_&_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
@@ -414,7 +414,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_shadow_scalar
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
@@ -457,12 +457,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        ! Attrs:     +intent(subroutine)
+        ! Attrs:     +api(buf)+intent(subroutine)
         ! Requested: c_subroutine_void_scalar_buf
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +len(NSHF_rv)
-        ! Attrs:     +intent(out)+is_result
+        ! Attrs:     +api(buf)+intent(out)+is_result
         ! Exact:     c_function_string_&_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
@@ -491,7 +491,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
@@ -518,7 +518,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
@@ -545,7 +545,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
@@ -807,7 +807,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
@@ -855,7 +855,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         subroutine c_test_names_bufferify(name, Lname) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
@@ -894,7 +894,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int flag +value
@@ -1345,7 +1345,7 @@ contains
     ! Requested: f_in_string_*_buf
     ! Match:     f_default
     ! Argument:  const string * name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     !>
     !! \brief constructor
@@ -1418,7 +1418,7 @@ contains
     ! Function:  const string & getNameErrorCheck
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1437,16 +1437,16 @@ contains
     ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getNameArg
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  string & name +len(Nname)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Requested: f_function_string_&_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
@@ -1585,7 +1585,7 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: f_in_string_*_buf
     ! Match:     f_default
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     !>
     !! \brief constructor
@@ -1628,15 +1628,15 @@ contains
     ! Requested: f_function_string_scalar_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_function_string_scalar_buf_result-as-arg
     ! Match:     c_function_string_scalar_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Requested: f_function_string_&_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
@@ -1654,7 +1654,7 @@ contains
     ! Function:  const string & getName2
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
@@ -1674,7 +1674,7 @@ contains
     ! Function:  string & getName3
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
@@ -1694,7 +1694,7 @@ contains
     ! Function:  string & getName4
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
@@ -2074,7 +2074,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     function is_name_valid(name) &
             result(SHT_rv)
@@ -2116,7 +2116,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
@@ -2139,7 +2139,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int flag +value

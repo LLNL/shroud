@@ -12,18 +12,18 @@ C Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)  +
 C Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)  +intent(function)
 C Class1 * getclass3(void) const  +intent(function)
 C const std::string & getName(void)  +deref(allocatable)+intent(function)
-C const std::string & getName(void)  +deref(allocatable)+intent(function)
+C const std::string & getName(void)  +api(buf)+deref(allocatable)+intent(function)
 C DIRECTION directionFunc(DIRECTION arg +value)  +intent(function)
 C int getM_flag(void)  +intent(getter)
 C int getTest(void)  +intent(getter)
 C void setTest(int val +intent(in)+value)  +intent(setter)
-C std::string getM_name(void) +context(cdesc)  +deref(allocatable)+intent(getter)
+C std::string getM_name(void) +context(cdesc)  +api(buf)+deref(allocatable)+intent(getter)
 C void setM_name(std::string val +context+intent(in))  +intent(setter)
 Close wrapClass1.h
 Close wrapClass1.cpp
 class Class2
 C const std::string & getName(void)  +deref(allocatable)+intent(function)
-C const std::string & getName(void)  +deref(allocatable)+intent(function)
+C const std::string & getName(void)  +api(buf)+deref(allocatable)+intent(function)
 Close wrapClass2.h
 Close wrapClass2.cpp
 class Singleton
@@ -50,7 +50,7 @@ C Class1 getClassCopy(int flag +value)  +intent(function)
 C void set_global_flag(int arg +value)  +intent(subroutine)
 C int get_global_flag(void)  +intent(function)
 C const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(function)
-C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +intent(subroutine)
+C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +api(buf)+intent(subroutine)
 Close wrapclasses.h
 Close wrapclasses.cpp
 class Class1
@@ -79,17 +79,17 @@ C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag 
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)  +intent(function)
 C-interface Class1 * getclass3(void) const  +intent(function)
 C-interface const std::string & getName(void)  +deref(allocatable)+intent(function)
-C-interface const std::string & getName(void)  +deref(allocatable)+intent(function)
+C-interface const std::string & getName(void)  +api(buf)+deref(allocatable)+intent(function)
 C-interface DIRECTION directionFunc(DIRECTION arg +value)  +intent(function)
 C-interface int getM_flag(void)  +intent(getter)
 C-interface int getTest(void)  +intent(getter)
 C-interface void setTest(int val +intent(in)+value)  +intent(setter)
-C-interface std::string getM_name(void) +context(cdesc)  +deref(allocatable)+intent(getter)
+C-interface std::string getM_name(void) +context(cdesc)  +api(buf)+deref(allocatable)+intent(getter)
 C-interface void setM_name(std::string val +context+intent(in))  +intent(setter)
 class Class2
 Fortran const std::string & getName(void)  +deref(allocatable)+intent(function)
 C-interface const std::string & getName(void)  +deref(allocatable)+intent(function)
-C-interface const std::string & getName(void)  +deref(allocatable)+intent(function)
+C-interface const std::string & getName(void)  +api(buf)+deref(allocatable)+intent(function)
 class Singleton
 Fortran static Singleton & getReference(void)  +intent(function)
 C-interface static Singleton & getReference(void)  +intent(function)
@@ -123,7 +123,7 @@ C-interface Class1 getClassCopy(int flag +value)  +intent(function)
 C-interface void set_global_flag(int arg +value)  +intent(subroutine)
 C-interface int get_global_flag(void)  +intent(function)
 C-interface const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(function)
-C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +intent(subroutine)
+C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +api(buf)+intent(subroutine)
 Close wrapfclasses.f
 Close utilclasses.cpp
 Close typesclasses.h

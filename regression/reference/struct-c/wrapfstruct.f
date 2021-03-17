@@ -401,7 +401,7 @@ module struct_mod
     ! Match:     c_in_struct
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
         function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
@@ -547,7 +547,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     ! ----------------------------------------
@@ -607,7 +607,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     ! ----------------------------------------
@@ -622,7 +622,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
         function c_return_struct_ptr2_bufferify(i, d, outbuf, Noutbuf) &
@@ -655,7 +655,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     interface
@@ -1050,7 +1050,7 @@ contains
     ! Requested: f_out_char_*_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
     !! Pass name argument which will build a bufferify function.
@@ -1072,7 +1072,7 @@ contains
     ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     ! ----------------------------------------
@@ -1114,7 +1114,7 @@ contains
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     ! ----------------------------------------
@@ -1139,7 +1139,7 @@ contains
     ! Requested: f_out_char_*_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
     !! \brief Return a pointer to a struct
@@ -1166,7 +1166,7 @@ contains
     ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_struct_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_struct_*_buf_pointer
     ! Match:     c_function_struct_*
     function get_global_struct_list() &

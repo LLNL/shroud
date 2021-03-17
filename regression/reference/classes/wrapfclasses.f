@@ -333,7 +333,7 @@ module classes_mod
     ! Match:     c_function_shadow
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  bool flag +value
@@ -400,7 +400,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     ! start c_class1_get_name_bufferify
     interface
@@ -499,7 +499,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  std::string getM_name +context(cdesc)
-    ! Attrs:     +deref(allocatable)+intent(getter)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(getter)
     ! Requested: c_getter_string_scalar_buf_allocatable
     ! Match:     c_getter_string_scalar_buf
     ! start c_class1_get_m_name_bufferify
@@ -521,7 +521,7 @@ module classes_mod
     ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  std::string val +context(Dval)+intent(in)
-    ! Attrs:     +intent(setter)
+    ! Attrs:     +api(buf)+intent(setter)
     ! Exact:     c_setter_string_scalar_buf
     ! start c_class1_set_m_name_bufferify
     interface
@@ -557,7 +557,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, SHT_rv) &
@@ -849,12 +849,12 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_subroutine_void_scalar_buf
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
@@ -1054,7 +1054,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  bool flag +value
@@ -1116,7 +1116,7 @@ contains
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     !>
     !! \brief test helper
@@ -1238,7 +1238,7 @@ contains
     ! Function:  std::string getM_name +context(cdesc)
     ! Attrs:     +deref(allocatable)+intent(getter)
     ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(getter)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(getter)
     ! Exact:     c_function_string_scalar_buf_allocatable
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
@@ -1267,7 +1267,7 @@ contains
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_string_scalar_buf
     ! Argument:  std::string val +context(Dval)+intent(in)
-    ! Attrs:     +intent(setter)
+    ! Attrs:     +api(buf)+intent(setter)
     ! Exact:     c_setter_string_scalar_buf
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
@@ -1317,7 +1317,7 @@ contains
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     !>
     !! \brief test helper
@@ -1644,15 +1644,15 @@ contains
     ! Requested: f_function_string_scalar_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_function_string_scalar_buf_result-as-arg
     ! Match:     c_function_string_scalar_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Requested: f_function_string_&_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     function last_function_called() &
             result(SHT_rv)

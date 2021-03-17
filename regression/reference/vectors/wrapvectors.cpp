@@ -44,7 +44,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Requested: c_in_vector_&_buf_native
 // Match:     c_in_vector_buf
 // start VEC_vector_sum_bufferify
@@ -68,7 +68,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Requested: c_out_vector_&_buf_native
 // Match:     c_out_vector_buf
 // start VEC_vector_iota_out_bufferify
@@ -102,7 +102,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Requested: c_out_vector_&_buf_native
 // Match:     c_out_vector_buf
 // start VEC_vector_iota_out_with_num_bufferify
@@ -137,7 +137,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Requested: c_out_vector_&_buf_native
 // Match:     c_out_vector_buf
 // start VEC_vector_iota_out_with_num2_bufferify
@@ -168,7 +168,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +api(buf)+deref(allocatable)+intent(out)
 // Requested: c_out_vector_&_buf_allocatable_native
 // Match:     c_out_vector_buf
 // start VEC_vector_iota_out_alloc_bufferify
@@ -199,7 +199,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
-// Attrs:     +deref(allocatable)+intent(inout)
+// Attrs:     +api(buf)+deref(allocatable)+intent(inout)
 // Requested: c_inout_vector_&_buf_allocatable_native
 // Match:     c_inout_vector_buf
 // start VEC_vector_iota_inout_alloc_bufferify
@@ -227,7 +227,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
-// Attrs:     +intent(inout)
+// Attrs:     +api(buf)+intent(inout)
 // Requested: c_inout_vector_&_buf_native
 // Match:     c_inout_vector_buf
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
@@ -257,7 +257,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Requested: c_out_vector_&_buf_native
 // Match:     c_out_vector_buf
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
@@ -287,7 +287,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Requested: c_in_vector_&_buf_string
 // Match:     c_in_vector_buf_string
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
@@ -317,7 +317,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Requested: c_function_vector_scalar_buf_allocatable
 // Match:     c_function_vector_buf
 // ----------------------------------------

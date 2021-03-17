@@ -627,6 +627,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "intent": "function"
                     },
@@ -645,6 +646,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -667,6 +669,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -1505,6 +1508,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -2907,6 +2911,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -3146,6 +3151,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -5993,6 +5999,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -6009,6 +6016,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out",
                                 "is_result": true
                             },

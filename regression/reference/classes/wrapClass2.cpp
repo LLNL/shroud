@@ -70,7 +70,7 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_buf_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *SHC_rv_temp0)

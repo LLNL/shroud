@@ -354,7 +354,7 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-// Attrs:     +deref(pointer)+intent(out)
+// Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // ----------------------------------------
@@ -391,7 +391,7 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-// Attrs:     +deref(pointer)+intent(out)
+// Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // ----------------------------------------

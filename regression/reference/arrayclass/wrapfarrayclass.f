@@ -178,7 +178,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_bufferify(self, SHT_rv) &
@@ -206,7 +206,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_const_bufferify(self, &
@@ -235,7 +235,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_c_bufferify(self, SHT_rv) &
@@ -263,7 +263,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
-        ! Attrs:     +deref(pointer)+intent(function)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_buf_pointer
         ! Match:     c_function_native_*_buf
         subroutine c_arraywrapper_get_array_const_c_bufferify(self, &
@@ -307,7 +307,7 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
-        ! Attrs:     +deref(pointer)+intent(out)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
         ! Requested: c_out_native_**_buf_pointer
         ! Match:     c_out_native_**_buf
         ! ----------------------------------------
@@ -358,7 +358,7 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
-        ! Attrs:     +deref(pointer)+intent(out)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
         ! Requested: c_out_native_*&_buf_pointer
         ! Match:     c_out_native_*&_buf
         ! ----------------------------------------
@@ -410,7 +410,7 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
-        ! Attrs:     +deref(pointer)+intent(out)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
         ! Requested: c_out_native_**_buf_pointer
         ! Match:     c_out_native_**_buf
         ! ----------------------------------------
@@ -462,7 +462,7 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
-        ! Attrs:     +deref(pointer)+intent(out)
+        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
         ! Requested: c_out_native_*&_buf_pointer
         ! Match:     c_out_native_*&_buf
         ! ----------------------------------------
@@ -666,7 +666,7 @@ contains
     ! Function:  double * getArray +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     function arraywrapper_get_array(obj) &
@@ -687,7 +687,7 @@ contains
     ! Function:  double * getArrayConst +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_const(obj) &
@@ -708,7 +708,7 @@ contains
     ! Function:  const double * getArrayC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_c(obj) &
@@ -729,7 +729,7 @@ contains
     ! Function:  const double * getArrayConstC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     function arraywrapper_get_array_const_c(obj) &
@@ -757,7 +757,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -793,7 +793,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_*&_buf_pointer
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_*&_buf_pointer
     ! Match:     c_out_native_*&_buf
     ! ----------------------------------------
@@ -829,7 +829,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -865,7 +865,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_*&_buf_pointer
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_*&_buf_pointer
     ! Match:     c_out_native_*&_buf
     ! ----------------------------------------

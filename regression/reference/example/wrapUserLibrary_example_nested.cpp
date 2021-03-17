@@ -53,7 +53,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 bool AA_example_nested_is_name_valid_bufferify(const char * name,
     int Lname)
@@ -98,7 +98,7 @@ void AA_example_nested_test_names(const char * name)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 void AA_example_nested_test_names_bufferify(const char * name,
     int Lname)
@@ -136,7 +136,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
-// Attrs:     +intent(in)
+// Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int flag +value
