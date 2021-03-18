@@ -102,10 +102,6 @@ def set_buf_variable_names(options, arg):
         attrs["capsule"] = options.C_var_capsule_template.format(
             c_var=c_var
         )
-    if attrs["context"] is True:
-        attrs["context"] = options.C_var_context_template.format(
-            c_var=c_var
-        )
     if attrs["cdesc"] is True:
         # XXX - not sure about future of cdesc and difference with context.
         attrs["context"] = options.C_var_context_template.format(
@@ -126,8 +122,6 @@ def assign_buf_variable_names(attrs, fmt):
     """
     if attrs["capsule"]:
         fmt.c_var_capsule = attrs["capsule"]
-    if attrs["context"]:
-        fmt.c_var_context = attrs["context"]
     if attrs["len"]:
         fmt.c_var_len = attrs["len"]
     if attrs["len_trim"]:
@@ -1726,12 +1720,13 @@ fc_statements = [
         ],
     ),
     dict(
+        # XXX - This group is not tested
         name="f_function_vector_buf",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array

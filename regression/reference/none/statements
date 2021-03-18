@@ -2087,7 +2087,7 @@ f_function_vector_buf:
     - C_SIZE_T
   name: f_function_vector_buf
   post_call:
-  - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
 f_function_vector_buf_allocatable:
   arg_c_call:
   - '{temp0}'

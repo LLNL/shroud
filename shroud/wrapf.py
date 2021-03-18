@@ -1466,15 +1466,6 @@ rv = .false.
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
                 fileinfo.add_f_helper("capsule_data_helper", fmt)
-            elif buf_arg == "context":
-                append_format(
-                    arg_f_decl, "type({F_array_type}) :: {c_var_context}", fmt
-                )
-                arg_c_call.append(fmt.c_var_context)
-                #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                if c_attrs["dimension"]:
-                    fmt.c_var_dimension = c_attrs["dimension"]
-                fileinfo.add_f_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_INT")
@@ -1584,10 +1575,6 @@ rv = .false.
             fmt.f_type = ntypemap.f_type
             fmt.sh_type = ntypemap.sh_type
         
-        if c_attrs["context"]:
-            if not fmt.c_var_context:
-                fmt.c_var_context = "FIXME"
-
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
@@ -1614,9 +1601,6 @@ rv = .false.
                     # XXX kludge, name is assumed to be temp0.
                     fmt.f_array_shape = wformat(
                         ",\t {temp0}%shape(1:{rank})", fmt)
-                elif c_ast.attrs["context"]:
-                    fmt.f_array_shape = wformat(
-                        ",\t {c_var_context}%shape(1:{rank})", fmt)
 
         return ntypemap
 

@@ -698,11 +698,6 @@ class Wrapc(util.WrapperMixin):
                 append_format(
                     proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
                 )
-            elif buf_arg == "context":
-                append_format(
-                    proto_list, "{C_array_type} *{c_var_context}", fmt
-                )
-                self.add_c_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 append_format(proto_list, "int {c_var_trim}", fmt)
             elif buf_arg == "len":
@@ -788,19 +783,15 @@ class Wrapc(util.WrapperMixin):
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 if hasattr(fmt, "temp0"):
-                    # XXX kludge, name is assumed to be temp0.
-                    fmt.c_var_context = fmt.temp0
-                elif ast.attrs["context"]:
-                    fmt.c_var_context = attrs["context"]
-                if hasattr(fmt, "c_var_context"):
+                    # XXX kludge, array_type is assumed to be temp0.
                     # Assign each rank of dimension.
                     fmtdim = []
                     fmtsize = []
                     for i, dim in enumerate(visitor.shape):
                         fmtdim.append("{}->shape[{}] = {};".format(
-                            fmt.c_var_context, i, dim))
+                            fmt.temp0, i, dim))
                         fmtsize.append("{}->shape[{}]".format(
-                            fmt.c_var_context, i, dim))
+                            fmt.temp0, i, dim))
                     fmt.c_array_shape = "\n" + "\n".join(fmtdim)
                     if fmtsize:
                         fmt.c_array_size = "*\t".join(fmtsize)
