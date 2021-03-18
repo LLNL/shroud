@@ -1554,7 +1554,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "character(*)"
+                                "f_type": "character(*)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     },
@@ -2231,7 +2232,7 @@
                         },
                         "zz_fmtdict": {
                             "F_C_call": "c_class1_set_m_name_bufferify",
-                            "F_arg_c_call": "obj%cxxmem,\t Dval",
+                            "F_arg_c_call": "obj%cxxmem,\t val,\t len(val, kind=C_INT)",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_m_name",
                             "F_name_generic": "set_m_name",
@@ -2262,7 +2263,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "Dval",
                                         "intent": "in"
                                     },
                                     "declarator": {
@@ -2285,7 +2285,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void setM_name(std::string val)",
-                        "declgen": "void setM_name(std::string val +context+intent(in))",
+                        "declgen": "void setM_name(std::string val +intent(in))",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2299,7 +2299,6 @@
                                     "c_deref": "",
                                     "c_member": ".",
                                     "c_var": "val",
-                                    "c_var_context": "Dval",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -2309,33 +2308,32 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "shadow_var": "SHadow_val",
                                     "stmt0": "c_setter_string_scalar_buf",
-                                    "stmt1": "c_setter_string_scalar_buf"
+                                    "stmt1": "c_setter_string_scalar_buf",
+                                    "temp0": "val_temp0"
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
-                                    "c_var_context": "Dval",
                                     "f_intent": "IN",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
                                     "f_var": "val",
-                                    "hnamefunc0": "array_context",
-                                    "hnamefunc1": "ShroudTypeDefines",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_setter_string_scalar_buf",
                                     "stmt1": "f_setter_string_scalar_buf",
                                     "stmtc0": "c_setter_string_scalar_buf",
-                                    "stmtc1": "c_setter_string_scalar_buf"
+                                    "stmtc1": "c_setter_string_scalar_buf",
+                                    "temp0": "val_temp0"
                                 }
                             }
                         },
                         "zz_fmtdict": {
                             "C_call_list": "val",
                             "C_name": "CLA_Class1_set_m_name_bufferify",
-                            "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *Dval",
+                            "C_prototype": "CLA_Class1 * self,\t char *val,\t int val_temp0",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t Dval",
+                            "F_C_arguments": "self,\t val,\t val_temp0",
                             "F_C_name": "c_class1_set_m_name_bufferify",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
@@ -2707,7 +2705,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "character(*)"
+                                "f_type": "character(*)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     }

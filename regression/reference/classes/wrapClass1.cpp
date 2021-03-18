@@ -408,19 +408,18 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
-// Argument:  std::string val +context(Dval)+intent(in)
+// Argument:  std::string val +intent(in)
 // Attrs:     +api(buf)+intent(setter)
 // Exact:     c_setter_string_scalar_buf
 // start CLA_Class1_set_m_name_bufferify
-void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *Dval)
+void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self, char *val,
+    int val_temp0)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_m_name_bufferify
     // skip call c_setter
-    SH_this->m_name = std::string(static_cast<const char *>(
-        Dval->addr.base), Dval->elem_len);
+    SH_this->m_name = std::string(val, val_temp0);
     // splicer end class.Class1.method.set_m_name_bufferify
 }
 // end CLA_Class1_set_m_name_bufferify

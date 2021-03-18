@@ -265,9 +265,9 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     else:
         step['_node'] = node
         scope = util.Scope(default_scopes[steps[0]])
-        if "mixin" in node:
-            for mpart in node["mixin"]:
-                scope.update(node_stmts[mpart])
+    if "mixin" in node:
+        for mpart in node["mixin"]:
+            scope.update(node_stmts[mpart])
     scope.update(node)
     step["_stmts"] = scope
     name = step["_key"]
@@ -577,6 +577,34 @@ fc_statements = [
         ntemps=1,
     ),
 
+    #####
+    # Pass CHARACTER address and length from Fortran to C.
+    dict(
+        name="f_mixin_in_character_buf",
+        arg_c_call=[
+            "{f_var}",
+            "len({f_var}, kind=C_INT)",
+        ],
+        f_module=dict(iso_c_binding=["C_INT"]),
+    ),
+    dict(
+        name="c_mixin_in_character_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "char *{c_var}",
+            "int {temp0}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+            "integer(C_INT), value :: {temp0}",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
+        ntemps=1,
+    ),
+
+    ##########
+    # bool
     dict(
         name="f_in_bool",
         c_local_var=True,
@@ -1794,30 +1822,18 @@ fc_statements = [
         # Create std::string from Fortran meta data.
         name="c_setter_string_scalar_buf",
         base="c_setter",
-        buf_args=["context"],
+        mixin=["c_mixin_in_character_buf"],
         post_call=[
-            "{CXX_this}->{field_name} = std::string("
-            "static_cast<const char *>(\t{c_var_context}->addr.base),\t "
-            "{c_var_context}->elem_len);",
+            "{CXX_this}->{field_name} = std::string({c_var},\t {temp0});",
         ],
     ),
     dict(
         # Extract meta data and pass to C.
         name="f_setter_string_scalar_buf",
-        f_helper="array_context ShroudTypeDefines",
-        f_module=dict(iso_c_binding=["C_LOC"]),
+        mixin=["f_mixin_in_character_buf"],
+        # XXX - when this is removed the arg_c_call are not used.
         arg_decl=[
-            "character(len=*), intent(IN), target :: {f_var}",
-        ],
-        pre_call=[
-            "{c_var_context}%base_addr = C_LOC({f_var})",
-            "{c_var_context}%type = SH_TYPE_CHAR",
-            "{c_var_context}%elem_len = len({f_var})",
-#            "{c_var_context}%size = size({f_var})",
-            "{c_var_context}%size = 1",
-            "{c_var_context}%rank = {rank}",
-            # This also works with scalars since (1:0) is a zero length array.
-#            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
+            "character(len=*), intent(IN) :: {f_var}",
         ],
     ),
     dict(

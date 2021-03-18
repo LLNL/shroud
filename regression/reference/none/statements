@@ -110,6 +110,9 @@ root
       function
         buf -- c_mixin_function_buf
         character -- c_mixin_function_character
+      in
+        character
+          buf -- c_mixin_in_character_buf
     out
       char
         *
@@ -230,6 +233,9 @@ root
     mixin
       function
         buf -- f_mixin_function_buf
+      in
+        character
+          buf -- f_mixin_in_character_buf
     out
       bool -- f_out_bool
       native
@@ -1305,6 +1311,25 @@ c_mixin_function_character:
   - ISO_Fortran_binding.h
   name: c_mixin_function_character
   owner: library
+c_mixin_in_character_buf:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_INT), value :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  name: c_mixin_in_character_buf
+  ntemps: 1
+  owner: library
 c_out_char_*_buf:
   buf_args:
   - arg
@@ -1526,14 +1551,27 @@ c_setter_native_scalar:
   - '{CXX_this}->{field_name} = val;'
 c_setter_string_scalar_buf:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   call:
   - // skip call c_setter
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_INT), value :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_setter_string_scalar_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "{CXX_this}->{field_name} = std::string(static_cast<const char *>(\t{c_var_context}->addr.base),\t\
-    \ {c_var_context}->elem_len);"
+  - "{CXX_this}->{field_name} = std::string({c_var},\t {temp0});"
 c_subroutine:
   name: c_subroutine
   owner: library
@@ -1969,6 +2007,14 @@ f_mixin_function_buf:
   - 'type({F_array_type}) :: {temp0}'
   name: f_mixin_function_buf
   ntemps: 1
+f_mixin_in_character_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_mixin_in_character_buf
 f_out_bool:
   c_local_var: true
   name: f_out_bool
@@ -2071,19 +2117,15 @@ f_out_void_*_cdesc:
 f_setter:
   name: f_setter
 f_setter_string_scalar_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
   arg_decl:
-  - 'character(len=*), intent(IN), target :: {f_var}'
-  f_helper: array_context ShroudTypeDefines
+  - 'character(len=*), intent(IN) :: {f_var}'
   f_module:
     iso_c_binding:
-    - C_LOC
+    - C_INT
   name: f_setter_string_scalar_buf
-  pre_call:
-  - '{c_var_context}%base_addr = C_LOC({f_var})'
-  - '{c_var_context}%type = SH_TYPE_CHAR'
-  - '{c_var_context}%elem_len = len({f_var})'
-  - '{c_var_context}%size = 1'
-  - '{c_var_context}%rank = {rank}'
 f_subroutine:
   name: f_subroutine
 ***** Python

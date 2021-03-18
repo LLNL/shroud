@@ -18,7 +18,7 @@ C int getM_flag(void)  +intent(getter)
 C int getTest(void)  +intent(getter)
 C void setTest(int val +intent(in)+value)  +intent(setter)
 C std::string getM_name(void) +context(cdesc)  +api(buf)+deref(allocatable)+intent(getter)
-C void setM_name(std::string val +context+intent(in))  +intent(setter)
+C void setM_name(std::string val +intent(in))  +intent(setter)
 Close wrapClass1.h
 Close wrapClass1.cpp
 class Class2
@@ -85,7 +85,7 @@ C-interface int getM_flag(void)  +intent(getter)
 C-interface int getTest(void)  +intent(getter)
 C-interface void setTest(int val +intent(in)+value)  +intent(setter)
 C-interface std::string getM_name(void) +context(cdesc)  +api(buf)+deref(allocatable)+intent(getter)
-C-interface void setM_name(std::string val +context+intent(in))  +intent(setter)
+C-interface void setM_name(std::string val +intent(in))  +intent(setter)
 class Class2
 Fortran const std::string & getName(void)  +deref(allocatable)+intent(function)
 C-interface const std::string & getName(void)  +deref(allocatable)+intent(function)

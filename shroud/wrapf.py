@@ -1206,6 +1206,7 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
+        self.name_temp_vars(c_result_blk, fmt_result)
 
         if c_result_blk.return_type == "void":
             # Change a function into a subroutine.
@@ -1268,6 +1269,7 @@ rv = .false.
                 self.document_stmts(
                     stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
+            self.name_temp_vars(c_intent_blk, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,

@@ -21,39 +21,6 @@ module classes_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper ShroudTypeDefines
-    ! Shroud type defines from helper ShroudTypeDefines
-    integer, parameter, private :: &
-        SH_TYPE_SIGNED_CHAR= 1, &
-        SH_TYPE_SHORT      = 2, &
-        SH_TYPE_INT        = 3, &
-        SH_TYPE_LONG       = 4, &
-        SH_TYPE_LONG_LONG  = 5, &
-        SH_TYPE_SIZE_T     = 6, &
-        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
-        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
-        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
-        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
-        SH_TYPE_INT8_T    =  7, &
-        SH_TYPE_INT16_T   =  8, &
-        SH_TYPE_INT32_T   =  9, &
-        SH_TYPE_INT64_T   = 10, &
-        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
-        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
-        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
-        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
-        SH_TYPE_FLOAT       = 22, &
-        SH_TYPE_DOUBLE      = 23, &
-        SH_TYPE_LONG_DOUBLE = 24, &
-        SH_TYPE_FLOAT_COMPLEX      = 25, &
-        SH_TYPE_DOUBLE_COMPLEX     = 26, &
-        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
-        SH_TYPE_BOOL      = 28, &
-        SH_TYPE_CHAR      = 29, &
-        SH_TYPE_CPTR      = 30, &
-        SH_TYPE_STRUCT    = 31, &
-        SH_TYPE_OTHER     = 32
-
     ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: CLA_SHROUD_capsule_data
@@ -520,17 +487,19 @@ module classes_mod
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
     ! ----------------------------------------
-    ! Argument:  std::string val +context(Dval)+intent(in)
+    ! Argument:  std::string val +intent(in)
     ! Attrs:     +api(buf)+intent(setter)
     ! Exact:     c_setter_string_scalar_buf
     ! start c_class1_set_m_name_bufferify
     interface
-        subroutine c_class1_set_m_name_bufferify(self, Dval) &
+        subroutine c_class1_set_m_name_bufferify(self, val, val_temp0) &
                 bind(C, name="CLA_Class1_set_m_name_bufferify")
-            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(INOUT) :: Dval
+            character(kind=C_CHAR), intent(IN) :: val(*)
+            integer(C_INT), value :: val_temp0
         end subroutine c_class1_set_m_name_bufferify
     end interface
     ! end c_class1_set_m_name_bufferify
@@ -1266,22 +1235,16 @@ contains
     ! Argument:  std::string val +intent(in)
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter_string_scalar_buf
-    ! Argument:  std::string val +context(Dval)+intent(in)
     ! Attrs:     +api(buf)+intent(setter)
     ! Exact:     c_setter_string_scalar_buf
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
-        use iso_c_binding, only : C_LOC
+        use iso_c_binding, only : C_INT
         class(class1) :: obj
-        character(len=*), intent(IN), target :: val
-        type(CLA_SHROUD_array) :: Dval
+        character(len=*), intent(IN) :: val
         ! splicer begin class.Class1.method.set_m_name
-        Dval%base_addr = C_LOC(val)
-        Dval%type = SH_TYPE_CHAR
-        Dval%elem_len = len(val)
-        Dval%size = 1
-        Dval%rank = 0
-        call c_class1_set_m_name_bufferify(obj%cxxmem, Dval)
+        call c_class1_set_m_name_bufferify(obj%cxxmem, val, &
+            len(val, kind=C_INT))
         ! splicer end class.Class1.method.set_m_name
     end subroutine class1_set_m_name
     ! end class1_set_m_name

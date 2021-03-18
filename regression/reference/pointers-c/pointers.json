@@ -6200,7 +6200,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6380,7 +6381,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6537,7 +6539,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6719,7 +6722,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
