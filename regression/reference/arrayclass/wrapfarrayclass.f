@@ -678,7 +678,8 @@ contains
         type(ARR_SHROUD_array) :: SHT_rv_temp0
         call c_arraywrapper_get_array_bufferify(obj%cxxmem, &
             SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 
@@ -699,7 +700,8 @@ contains
         type(ARR_SHROUD_array) :: SHT_rv_temp0
         call c_arraywrapper_get_array_const_bufferify(obj%cxxmem, &
             SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const
     end function arraywrapper_get_array_const
 
@@ -720,7 +722,8 @@ contains
         type(ARR_SHROUD_array) :: SHT_rv_temp0
         call c_arraywrapper_get_array_c_bufferify(obj%cxxmem, &
             SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_c
     end function arraywrapper_get_array_c
 
@@ -741,7 +744,8 @@ contains
         type(ARR_SHROUD_array) :: SHT_rv_temp0
         call c_arraywrapper_get_array_const_c_bufferify(obj%cxxmem, &
             SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const_c
     end function arraywrapper_get_array_const_c
 

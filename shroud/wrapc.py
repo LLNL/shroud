@@ -1051,8 +1051,6 @@ class Wrapc(util.WrapperMixin):
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
 
-            self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
-            
             if c_meta["is_result"]:
                 # This argument is the C function result
                 arg_call = False
@@ -1077,6 +1075,8 @@ class Wrapc(util.WrapperMixin):
                     result_api, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
+                self.name_temp_vars(intent_blk, fmt_arg)
+                self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
 
@@ -1091,6 +1091,11 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
                          c_meta["api"], c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
+                fmt_arg.c_var = arg.name
+                # XXX - order issue - c_var must be set before name_temp_vars,
+                #       but set by set_fmt_fields
+                self.name_temp_vars(intent_blk, fmt_arg)
+                self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
 
                 if intent_blk.cxx_local_var:
                     # Explicit conversion must be in pre_call.
@@ -1115,8 +1120,7 @@ class Wrapc(util.WrapperMixin):
                         pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                     )
                 compute_cxx_deref(arg, cxx_local_var, fmt_arg)
-            self.name_temp_vars(intent_blk, fmt_arg)
-
+            
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name

@@ -1613,10 +1613,10 @@ rv = .false.
                 if hasattr(fmt, "temp0"):
                     # XXX kludge, name is assumed to be temp0.
                     fmt.f_array_shape = wformat(
-                        ", {temp0}%shape(1:{rank})", fmt)
+                        ",\t {temp0}%shape(1:{rank})", fmt)
                 elif c_ast.attrs["context"]:
                     fmt.f_array_shape = wformat(
-                        ", {c_var_context}%shape(1:{rank})", fmt)
+                        ",\t {c_var_context}%shape(1:{rank})", fmt)
 
         return ntypemap
 
@@ -1814,8 +1814,6 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            arg_typemap = self.set_fmt_fields(
-                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
             f_meta = f_arg.metaattrs
 
@@ -1842,6 +1840,8 @@ rv = .false.
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             self.name_temp_vars(f_intent_blk, fmt_arg)
+            arg_typemap = self.set_fmt_fields(
+                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
 
             if is_f_arg:
                 implied = f_attrs["implied"]

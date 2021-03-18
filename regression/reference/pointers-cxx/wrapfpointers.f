@@ -1984,7 +1984,8 @@ contains
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(POI_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_to_fixed_array_bufferify(SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array
@@ -2026,7 +2027,8 @@ contains
         ! splicer begin function.return_int_ptr_to_fixed_const_array
         type(POI_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_to_fixed_const_array_bufferify(SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
