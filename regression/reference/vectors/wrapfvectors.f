@@ -344,7 +344,7 @@ contains
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
     ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector
+    ! Match:     f_out_vector_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Requested: c_out_vector_&_buf_native
     ! Match:     c_out_vector_buf
@@ -376,7 +376,7 @@ contains
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
     ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector
+    ! Match:     f_out_vector_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Requested: c_out_vector_&_buf_native
     ! Match:     c_out_vector_buf
@@ -413,7 +413,7 @@ contains
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
     ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector
+    ! Match:     f_out_vector_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Requested: c_out_vector_&_buf_native
     ! Match:     c_out_vector_buf
@@ -451,7 +451,7 @@ contains
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
     ! Requested: f_out_vector_&_buf_allocatable_native
-    ! Match:     f_out_vector_allocatable
+    ! Match:     f_out_vector_buf_allocatable
     ! Attrs:     +api(buf)+deref(allocatable)+intent(out)
     ! Requested: c_out_vector_&_buf_allocatable_native
     ! Match:     c_out_vector_buf
@@ -484,7 +484,7 @@ contains
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
     ! Requested: f_inout_vector_&_buf_allocatable_native
-    ! Match:     f_inout_vector_allocatable
+    ! Match:     f_inout_vector_buf_allocatable
     ! Attrs:     +api(buf)+deref(allocatable)+intent(inout)
     ! Requested: c_inout_vector_&_buf_allocatable_native
     ! Match:     c_inout_vector_buf
@@ -519,7 +519,7 @@ contains
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
     ! Requested: f_inout_vector_&_buf_native
-    ! Match:     f_inout_vector
+    ! Match:     f_inout_vector_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Requested: c_inout_vector_&_buf_native
     ! Match:     c_inout_vector_buf
@@ -546,7 +546,7 @@ contains
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
     ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector
+    ! Match:     f_out_vector_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Requested: c_out_vector_&_buf_native
     ! Match:     c_out_vector_buf

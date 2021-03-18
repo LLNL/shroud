@@ -419,7 +419,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector",
+                            "stmt1": "f_out_vector_buf",
                             "stmtc0": "c_out_vector_&_buf_native",
                             "stmtc1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -680,7 +680,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector",
+                            "stmt1": "f_out_vector_buf",
                             "stmtc0": "c_out_vector_&_buf_native",
                             "stmtc1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -918,7 +918,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector",
+                            "stmt1": "f_out_vector_buf",
                             "stmtc0": "c_out_vector_&_buf_native",
                             "stmtc1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -1123,7 +1123,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_buf_allocatable_native",
-                            "stmt1": "f_out_vector_allocatable",
+                            "stmt1": "f_out_vector_buf_allocatable",
                             "stmtc0": "c_out_vector_&_buf_allocatable_native",
                             "stmtc1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -1329,7 +1329,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_inout_vector_&_buf_allocatable_native",
-                            "stmt1": "f_inout_vector_allocatable",
+                            "stmt1": "f_inout_vector_buf_allocatable",
                             "stmtc0": "c_inout_vector_&_buf_allocatable_native",
                             "stmtc1": "c_inout_vector_buf",
                             "temp0": "arg_temp0",
@@ -1522,7 +1522,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_inout_vector_&_buf_native",
-                            "stmt1": "f_inout_vector",
+                            "stmt1": "f_inout_vector_buf",
                             "stmtc0": "c_inout_vector_&_buf_native",
                             "stmtc1": "c_inout_vector_buf",
                             "temp0": "arg_temp0",
@@ -1720,7 +1720,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
                             "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector",
+                            "stmt1": "f_out_vector_buf",
                             "stmtc0": "c_out_vector_&_buf_native",
                             "stmtc1": "c_out_vector_buf",
                             "temp0": "arg_temp0"

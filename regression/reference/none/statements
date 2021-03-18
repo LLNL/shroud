@@ -207,8 +207,8 @@ root
           buf
             pointer -- f_function_struct_*_buf_pointer
         scalar -- f_function_struct_scalar
-      vector -- f_function_vector
-        buf
+      vector
+        buf -- f_function_vector_buf
           allocatable -- f_function_vector_buf_allocatable
       void
         * -- f_function_void_*
@@ -238,8 +238,9 @@ root
       native
         *
           cdesc -- f_in/out/inout_native_*_cdesc
-      vector -- f_inout_vector
-        allocatable -- f_inout_vector_allocatable
+      vector
+        buf -- f_inout_vector_buf
+          allocatable -- f_inout_vector_buf_allocatable
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
@@ -273,8 +274,9 @@ root
           buf
             pointer -- f_out_native_**/*&_buf_pointer
           raw -- f_out_native_**_raw
-      vector -- f_out_vector
-        allocatable -- f_out_vector_allocatable
+      vector
+        buf -- f_out_vector_buf
+          allocatable -- f_out_vector_buf_allocatable
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
@@ -1974,13 +1976,13 @@ f_function_struct_*_buf_pointer:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
 f_function_struct_scalar:
   name: f_function_struct_scalar
-f_function_vector:
+f_function_vector_buf:
   c_helper: copy_array
   f_helper: copy_array_{cxx_T}
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_function_vector
+  name: f_function_vector_buf
   post_call:
   - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
 f_function_vector_buf_allocatable:
@@ -2124,7 +2126,7 @@ f_inout_native_*_cdesc:
   - '{c_var_context}%size = {size}'
   - '{c_var_context}%rank = {rank}'
   - '{c_var_context}%shape(1:{rank}) = shape({f_var})'
-f_inout_vector:
+f_inout_vector_buf:
   arg_c_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -2136,11 +2138,11 @@ f_inout_vector:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_inout_vector
+  name: f_inout_vector_buf
   ntemps: 1
   post_call:
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
-f_inout_vector_allocatable:
+f_inout_vector_buf_allocatable:
   arg_c_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -2152,7 +2154,7 @@ f_inout_vector_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_inout_vector_allocatable
+  name: f_inout_vector_buf_allocatable
   ntemps: 1
   post_call:
   - if (allocated({f_var})) deallocate({f_var})
@@ -2285,7 +2287,7 @@ f_out_native_*_cdesc:
   - '{c_var_context}%size = {size}'
   - '{c_var_context}%rank = {rank}'
   - '{c_var_context}%shape(1:{rank}) = shape({f_var})'
-f_out_vector:
+f_out_vector_buf:
   arg_c_call:
   - '{temp0}'
   c_helper: copy_array
@@ -2295,11 +2297,11 @@ f_out_vector:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_out_vector
+  name: f_out_vector_buf
   ntemps: 1
   post_call:
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
-f_out_vector_allocatable:
+f_out_vector_buf_allocatable:
   arg_c_call:
   - '{temp0}'
   c_helper: copy_array
@@ -2309,7 +2311,7 @@ f_out_vector_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_out_vector_allocatable
+  name: f_out_vector_buf_allocatable
   ntemps: 1
   post_call:
   - allocate({f_var}({temp0}%size))

@@ -1675,7 +1675,7 @@ fc_statements = [
         mixin=["f_mixin_in_array_buf"],
     ),
     dict(
-        name="f_out_vector",
+        name="f_out_vector_buf",
         mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1685,7 +1685,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector",
+        name="f_inout_vector_buf",
         mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1695,7 +1695,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_function_vector",
+        name="f_function_vector_buf",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1705,7 +1705,7 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_allocatable",
+        name="f_out_vector_buf_allocatable",
         mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1716,7 +1716,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_allocatable",
+        name="f_inout_vector_buf_allocatable",
         mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
