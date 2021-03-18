@@ -869,16 +869,16 @@ fc_statements = [
         # c_out_native_*_cdesc
         # c_inout_native_*_cdesc
         name="c_in/out/inout_native_*_cdesc",
-        buf_args=["context"],
+        mixin=["c_mixin_out_array_buf"],
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
-            "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
+            "{cxx_type} * {c_var} = {temp0}->addr.base;",
         ],
         cxx_pre_call=[
 #            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-#            "({c_var_context}->addr.base);",
+#            "({temp0}->addr.base);",
             "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-            "(const_cast<void *>({c_var_context}->addr.base));",
+            "(const_cast<void *>({temp0}->addr.base));",
         ],
     ),
 #    f_native_pointer_cdesc=dict(
@@ -887,22 +887,23 @@ fc_statements = [
         # f_out_native_*_cdesc
         # f_inout_native_*_cdesc
         name="f_in/out/inout_native_*_cdesc",
+        mixin=["f_mixin_out_array_buf"],
         # TARGET required for argument to C_LOC.
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper="ShroudTypeDefines",
+        f_helper="ShroudTypeDefines array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
         pre_call=[
-            "{c_var_context}%base_addr = C_LOC({f_var})",
-            "{c_var_context}%type = {sh_type}",
-            "! {c_var_context}%elem_len = C_SIZEOF()",
-#            "{c_var_context}%size = size({f_var})",
-            "{c_var_context}%size = {size}",
-            "{c_var_context}%rank = {rank}",
+            "{temp0}%base_addr = C_LOC({f_var})",
+            "{temp0}%type = {sh_type}",
+            "! {temp0}%elem_len = C_SIZEOF()",
+#            "{temp0}%size = size({f_var})",
+            "{temp0}%size = {size}",
+            "{temp0}%rank = {rank}",
             # This also works with scalars since (1:0) is a zero length array.
-            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
+            "{temp0}%shape(1:{rank}) = shape({f_var})",
         ],
     ),
 
