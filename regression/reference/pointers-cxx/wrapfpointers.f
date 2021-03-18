@@ -566,17 +566,17 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * * nitems +context(Dnitems)+intent(out)
+    ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_scalar_bufferify
     interface
-        subroutine c_get_ptr_to_scalar_bufferify(Dnitems) &
+        subroutine c_get_ptr_to_scalar_bufferify(nitems_temp0) &
                 bind(C, name="POI_get_ptr_to_scalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(OUT) :: nitems_temp0
         end subroutine c_get_ptr_to_scalar_bufferify
     end interface
     ! end c_get_ptr_to_scalar_bufferify
@@ -608,17 +608,17 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
+    ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
-        subroutine c_get_ptr_to_fixed_array_bufferify(Dcount) &
+        subroutine c_get_ptr_to_fixed_array_bufferify(count_temp0) &
                 bind(C, name="POI_get_ptr_to_fixed_array_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(OUT) :: count_temp0
         end subroutine c_get_ptr_to_fixed_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_array_bufferify
@@ -656,7 +656,7 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
+    ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -667,12 +667,13 @@ module pointers_mod
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount) &
+        subroutine c_get_ptr_to_dynamic_array_bufferify(count_temp0, &
+                ncount) &
                 bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
             use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(OUT) :: count_temp0
             integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
@@ -705,17 +706,17 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
+    ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_func_array_bufferify
     interface
-        subroutine c_get_ptr_to_func_array_bufferify(Dcount) &
+        subroutine c_get_ptr_to_func_array_bufferify(count_temp0) &
                 bind(C, name="POI_get_ptr_to_func_array_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(OUT) :: count_temp0
         end subroutine c_get_ptr_to_func_array_bufferify
     end interface
     ! end c_get_ptr_to_func_array_bufferify
@@ -747,17 +748,17 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
+    ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
-        subroutine c_get_ptr_to_const_scalar_bufferify(Dnitems) &
+        subroutine c_get_ptr_to_const_scalar_bufferify(nitems_temp0) &
                 bind(C, name="POI_get_ptr_to_const_scalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(OUT) :: nitems_temp0
         end subroutine c_get_ptr_to_const_scalar_bufferify
     end interface
     ! end c_get_ptr_to_const_scalar_bufferify
@@ -789,17 +790,17 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
+    ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
-        subroutine c_get_ptr_to_fixed_const_array_bufferify(Dcount) &
+        subroutine c_get_ptr_to_fixed_const_array_bufferify(count_temp0) &
                 bind(C, name="POI_get_ptr_to_fixed_const_array_bufferify")
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(OUT) :: count_temp0
         end subroutine c_get_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_const_array_bufferify
@@ -837,7 +838,7 @@ module pointers_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
+    ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -848,13 +849,13 @@ module pointers_mod
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_const_array_bufferify(Dcount, &
-                ncount) &
+        subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
+                count_temp0, ncount) &
                 bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
             use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(OUT) :: count_temp0
             integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_const_array_bufferify
     end interface
@@ -1605,7 +1606,6 @@ contains
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1613,10 +1613,10 @@ contains
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
-        type(POI_SHROUD_array) :: Dnitems
         ! splicer begin function.get_ptr_to_scalar
-        call c_get_ptr_to_scalar_bufferify(Dnitems)
-        call c_f_pointer(Dnitems%base_addr, nitems)
+        type(POI_SHROUD_array) :: nitems_temp0
+        call c_get_ptr_to_scalar_bufferify(nitems_temp0)
+        call c_f_pointer(nitems_temp0%base_addr, nitems)
         ! splicer end function.get_ptr_to_scalar
     end subroutine get_ptr_to_scalar
     ! end get_ptr_to_scalar
@@ -1632,7 +1632,6 @@ contains
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1643,10 +1642,11 @@ contains
     subroutine get_ptr_to_fixed_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_fixed_array
-        call c_get_ptr_to_fixed_array_bufferify(Dcount)
-        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
+        type(POI_SHROUD_array) :: count_temp0
+        call c_get_ptr_to_fixed_array_bufferify(count_temp0)
+        call c_f_pointer(count_temp0%base_addr, count, &
+            count_temp0%shape(1:1))
         ! splicer end function.get_ptr_to_fixed_array
     end subroutine get_ptr_to_fixed_array
     ! end get_ptr_to_fixed_array
@@ -1662,7 +1662,6 @@ contains
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1682,11 +1681,12 @@ contains
     subroutine get_ptr_to_dynamic_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(POI_SHROUD_array) :: Dcount
         integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_array
-        call c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount)
-        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
+        type(POI_SHROUD_array) :: count_temp0
+        call c_get_ptr_to_dynamic_array_bufferify(count_temp0, ncount)
+        call c_f_pointer(count_temp0%base_addr, count, &
+            count_temp0%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_array
     end subroutine get_ptr_to_dynamic_array
     ! end get_ptr_to_dynamic_array
@@ -1702,7 +1702,6 @@ contains
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1715,10 +1714,11 @@ contains
     subroutine get_ptr_to_func_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_func_array
-        call c_get_ptr_to_func_array_bufferify(Dcount)
-        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
+        type(POI_SHROUD_array) :: count_temp0
+        call c_get_ptr_to_func_array_bufferify(count_temp0)
+        call c_f_pointer(count_temp0%base_addr, count, &
+            count_temp0%shape(1:1))
         ! splicer end function.get_ptr_to_func_array
     end subroutine get_ptr_to_func_array
     ! end get_ptr_to_func_array
@@ -1734,7 +1734,6 @@ contains
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1742,10 +1741,10 @@ contains
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
-        type(POI_SHROUD_array) :: Dnitems
         ! splicer begin function.get_ptr_to_const_scalar
-        call c_get_ptr_to_const_scalar_bufferify(Dnitems)
-        call c_f_pointer(Dnitems%base_addr, nitems)
+        type(POI_SHROUD_array) :: nitems_temp0
+        call c_get_ptr_to_const_scalar_bufferify(nitems_temp0)
+        call c_f_pointer(nitems_temp0%base_addr, nitems)
         ! splicer end function.get_ptr_to_const_scalar
     end subroutine get_ptr_to_const_scalar
     ! end get_ptr_to_const_scalar
@@ -1761,7 +1760,6 @@ contains
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1769,10 +1767,11 @@ contains
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_fixed_const_array
-        call c_get_ptr_to_fixed_const_array_bufferify(Dcount)
-        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
+        type(POI_SHROUD_array) :: count_temp0
+        call c_get_ptr_to_fixed_const_array_bufferify(count_temp0)
+        call c_f_pointer(count_temp0%base_addr, count, &
+            count_temp0%shape(1:1))
         ! splicer end function.get_ptr_to_fixed_const_array
     end subroutine get_ptr_to_fixed_const_array
     ! end get_ptr_to_fixed_const_array
@@ -1788,7 +1787,6 @@ contains
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1804,11 +1802,13 @@ contains
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(POI_SHROUD_array) :: Dcount
         integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_const_array
-        call c_get_ptr_to_dynamic_const_array_bufferify(Dcount, ncount)
-        call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
+        type(POI_SHROUD_array) :: count_temp0
+        call c_get_ptr_to_dynamic_const_array_bufferify(count_temp0, &
+            ncount)
+        call c_f_pointer(count_temp0%base_addr, count, &
+            count_temp0%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_const_array
     end subroutine get_ptr_to_dynamic_const_array
     ! end get_ptr_to_dynamic_const_array
@@ -1984,7 +1984,8 @@ contains
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(POI_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_to_fixed_array_bufferify(SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array
@@ -2026,7 +2027,8 @@ contains
         ! splicer begin function.return_int_ptr_to_fixed_const_array
         type(POI_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_to_fixed_const_array_bufferify(SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array

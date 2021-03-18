@@ -90,23 +90,23 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +context(Dnitems)+intent(out)
+// Argument:  int * * nitems +intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // start POI_get_ptr_to_scalar_bufferify
-void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
+void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *nitems_temp0)
 {
     // splicer begin function.get_ptr_to_scalar_bufferify
     int *nitems;
     getPtrToScalar(&nitems);
-    Dnitems->cxx.addr  = nitems;
-    Dnitems->cxx.idtor = 0;
-    Dnitems->addr.base = nitems;
-    Dnitems->type = SH_TYPE_INT;
-    Dnitems->elem_len = sizeof(int);
-    Dnitems->rank = 0;
-    Dnitems->size = 1;
+    nitems_temp0->cxx.addr  = nitems;
+    nitems_temp0->cxx.idtor = 0;
+    nitems_temp0->addr.base = nitems;
+    nitems_temp0->type = SH_TYPE_INT;
+    nitems_temp0->elem_len = sizeof(int);
+    nitems_temp0->rank = 0;
+    nitems_temp0->size = 1;
     // splicer end function.get_ptr_to_scalar_bufferify
 }
 // end POI_get_ptr_to_scalar_bufferify
@@ -119,24 +119,24 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
+// Argument:  int * * count +dimension(10)+intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // start POI_get_ptr_to_fixed_array_bufferify
-void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
+void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *count_temp0)
 {
     // splicer begin function.get_ptr_to_fixed_array_bufferify
     int *count;
     getPtrToFixedArray(&count);
-    Dcount->cxx.addr  = count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 1;
-    Dcount->shape[0] = 10;
-    Dcount->size = Dcount->shape[0];
+    count_temp0->cxx.addr  = count;
+    count_temp0->cxx.idtor = 0;
+    count_temp0->addr.base = count;
+    count_temp0->type = SH_TYPE_INT;
+    count_temp0->elem_len = sizeof(int);
+    count_temp0->rank = 1;
+    count_temp0->shape[0] = 10;
+    count_temp0->size = count_temp0->shape[0];
     // splicer end function.get_ptr_to_fixed_array_bufferify
 }
 // end POI_get_ptr_to_fixed_array_bufferify
@@ -150,7 +150,7 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
+// Argument:  int * * count +dimension(ncount)+intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
@@ -160,20 +160,20 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Requested: c_out_native_*
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
-void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
-    int * ncount)
+void POI_get_ptr_to_dynamic_array_bufferify(
+    POI_SHROUD_array *count_temp0, int * ncount)
 {
     // splicer begin function.get_ptr_to_dynamic_array_bufferify
     int *count;
     getPtrToDynamicArray(&count, ncount);
-    Dcount->cxx.addr  = count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 1;
-    Dcount->shape[0] = *ncount;
-    Dcount->size = Dcount->shape[0];
+    count_temp0->cxx.addr  = count;
+    count_temp0->cxx.idtor = 0;
+    count_temp0->addr.base = count;
+    count_temp0->type = SH_TYPE_INT;
+    count_temp0->elem_len = sizeof(int);
+    count_temp0->rank = 1;
+    count_temp0->shape[0] = *ncount;
+    count_temp0->size = count_temp0->shape[0];
     // splicer end function.get_ptr_to_dynamic_array_bufferify
 }
 // end POI_get_ptr_to_dynamic_array_bufferify
@@ -188,24 +188,24 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
+// Argument:  int * * count +dimension(getLen())+intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // start POI_get_ptr_to_func_array_bufferify
-void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
+void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *count_temp0)
 {
     // splicer begin function.get_ptr_to_func_array_bufferify
     int *count;
     getPtrToFuncArray(&count);
-    Dcount->cxx.addr  = count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 1;
-    Dcount->shape[0] = getLen();
-    Dcount->size = Dcount->shape[0];
+    count_temp0->cxx.addr  = count;
+    count_temp0->cxx.idtor = 0;
+    count_temp0->addr.base = count;
+    count_temp0->type = SH_TYPE_INT;
+    count_temp0->elem_len = sizeof(int);
+    count_temp0->rank = 1;
+    count_temp0->shape[0] = getLen();
+    count_temp0->size = count_temp0->shape[0];
     // splicer end function.get_ptr_to_func_array_bufferify
 }
 // end POI_get_ptr_to_func_array_bufferify
@@ -215,23 +215,24 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const int * * nitems +context(Dnitems)+intent(out)
+// Argument:  const int * * nitems +intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // start POI_get_ptr_to_const_scalar_bufferify
-void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
+void POI_get_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *nitems_temp0)
 {
     // splicer begin function.get_ptr_to_const_scalar_bufferify
     const int *nitems;
     getPtrToConstScalar(&nitems);
-    Dnitems->cxx.addr  = (int *) nitems;
-    Dnitems->cxx.idtor = 0;
-    Dnitems->addr.base = nitems;
-    Dnitems->type = SH_TYPE_INT;
-    Dnitems->elem_len = sizeof(int);
-    Dnitems->rank = 0;
-    Dnitems->size = 1;
+    nitems_temp0->cxx.addr  = (int *) nitems;
+    nitems_temp0->cxx.idtor = 0;
+    nitems_temp0->addr.base = nitems;
+    nitems_temp0->type = SH_TYPE_INT;
+    nitems_temp0->elem_len = sizeof(int);
+    nitems_temp0->rank = 0;
+    nitems_temp0->size = 1;
     // splicer end function.get_ptr_to_const_scalar_bufferify
 }
 // end POI_get_ptr_to_const_scalar_bufferify
@@ -241,25 +242,25 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
+// Argument:  const int * * count +dimension(10)+intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // start POI_get_ptr_to_fixed_const_array_bufferify
 void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *Dcount)
+    POI_SHROUD_array *count_temp0)
 {
     // splicer begin function.get_ptr_to_fixed_const_array_bufferify
     const int *count;
     getPtrToFixedConstArray(&count);
-    Dcount->cxx.addr  = (int *) count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 1;
-    Dcount->shape[0] = 10;
-    Dcount->size = Dcount->shape[0];
+    count_temp0->cxx.addr  = (int *) count;
+    count_temp0->cxx.idtor = 0;
+    count_temp0->addr.base = count;
+    count_temp0->type = SH_TYPE_INT;
+    count_temp0->elem_len = sizeof(int);
+    count_temp0->rank = 1;
+    count_temp0->shape[0] = 10;
+    count_temp0->size = count_temp0->shape[0];
     // splicer end function.get_ptr_to_fixed_const_array_bufferify
 }
 // end POI_get_ptr_to_fixed_const_array_bufferify
@@ -269,7 +270,7 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
+// Argument:  const int * * count +dimension(ncount)+intent(out)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
@@ -280,19 +281,19 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_const_array_bufferify
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *Dcount, int * ncount)
+    POI_SHROUD_array *count_temp0, int * ncount)
 {
     // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
     const int *count;
     getPtrToDynamicConstArray(&count, ncount);
-    Dcount->cxx.addr  = (int *) count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 1;
-    Dcount->shape[0] = *ncount;
-    Dcount->size = Dcount->shape[0];
+    count_temp0->cxx.addr  = (int *) count;
+    count_temp0->cxx.idtor = 0;
+    count_temp0->addr.base = count;
+    count_temp0->type = SH_TYPE_INT;
+    count_temp0->elem_len = sizeof(int);
+    count_temp0->rank = 1;
+    count_temp0->shape[0] = *ncount;
+    count_temp0->size = count_temp0->shape[0];
     // splicer end function.get_ptr_to_dynamic_const_array_bufferify
 }
 // end POI_get_ptr_to_dynamic_const_array_bufferify

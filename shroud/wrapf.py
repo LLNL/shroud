@@ -696,6 +696,17 @@ rv = .false.
                 append_format(arg_f_names, aname, fmt)
         return found
 
+    def add_stmt_var(self, group, lst, fmt):
+        """Add a variable fc_statements to lst.
+
+        Return True if lines where added to lst.
+        """
+        if not group:
+            return False
+        for line in group:
+            append_format(lst, line, fmt)
+        return True
+
     def add_module_from_stmts(self, stmt, modules, imports, fmt):
         """Add USE/IMPORT statements defined in stmt.
 
@@ -1206,6 +1217,7 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
+        self.name_temp_vars(c_result_blk, fmt_result)
 
         if c_result_blk.return_type == "void":
             # Change a function into a subroutine.
@@ -1268,6 +1280,7 @@ rv = .false.
                 self.document_stmts(
                     stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
+            self.name_temp_vars(c_intent_blk, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1453,15 +1466,6 @@ rv = .false.
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
                 fileinfo.add_f_helper("capsule_data_helper", fmt)
-            elif buf_arg == "context":
-                append_format(
-                    arg_f_decl, "type({F_array_type}) :: {c_var_context}", fmt
-                )
-                arg_c_call.append(fmt.c_var_context)
-                #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                if c_attrs["dimension"]:
-                    fmt.c_var_dimension = c_attrs["dimension"]
-                fileinfo.add_f_helper("array_context", fmt)
             elif buf_arg == "len_trim":
                 append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_INT")
@@ -1571,10 +1575,6 @@ rv = .false.
             fmt.f_type = ntypemap.f_type
             fmt.sh_type = ntypemap.sh_type
         
-        if c_attrs["context"]:
-            if not fmt.c_var_context:
-                fmt.c_var_context = "FIXME"
-
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
@@ -1600,10 +1600,7 @@ rv = .false.
                 if hasattr(fmt, "temp0"):
                     # XXX kludge, name is assumed to be temp0.
                     fmt.f_array_shape = wformat(
-                        ", {temp0}%shape(1:{rank})", fmt)
-                elif c_ast.attrs["context"]:
-                    fmt.f_array_shape = wformat(
-                        ", {c_var_context}%shape(1:{rank})", fmt)
+                        ",\t {temp0}%shape(1:{rank})", fmt)
 
         return ntypemap
 
@@ -1801,8 +1798,6 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            arg_typemap = self.set_fmt_fields(
-                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
             f_meta = f_arg.metaattrs
 
@@ -1829,6 +1824,8 @@ rv = .false.
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             self.name_temp_vars(f_intent_blk, fmt_arg)
+            arg_typemap = self.set_fmt_fields(
+                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
 
             if is_f_arg:
                 implied = f_attrs["implied"]
@@ -1901,6 +1898,7 @@ rv = .false.
                     # Generate declaration from argument.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj))
                     arg_f_names.append(fmt_arg.f_var)
+                    self.add_stmt_var(f_intent_blk.arg_c_call, arg_c_call, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(f_stmts)

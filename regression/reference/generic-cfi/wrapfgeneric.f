@@ -650,7 +650,7 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
+    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -665,13 +665,13 @@ module generic_mod
     ! Requested: c_out_native_*
     ! Match:     c_default
     interface
-        subroutine c_get_pointer_as_pointer_float1d_bufferify(Daddr, &
-                type, size) &
+        subroutine c_get_pointer_as_pointer_float1d_bufferify( &
+                addr_temp0, type, size) &
                 bind(C, name="GEN_get_pointer_as_pointer_float1d_bufferify")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import :: GEN_SHROUD_array
             implicit none
-            type(GEN_SHROUD_array), intent(INOUT) :: Daddr
+            type(GEN_SHROUD_array), intent(OUT) :: addr_temp0
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer_float1d_bufferify
@@ -685,7 +685,7 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
+    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -700,13 +700,13 @@ module generic_mod
     ! Requested: c_out_native_*
     ! Match:     c_default
     interface
-        subroutine c_get_pointer_as_pointer_float2d_bufferify(Daddr, &
-                type, size) &
+        subroutine c_get_pointer_as_pointer_float2d_bufferify( &
+                addr_temp0, type, size) &
                 bind(C, name="GEN_get_pointer_as_pointer_float2d_bufferify")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import :: GEN_SHROUD_array
             implicit none
-            type(GEN_SHROUD_array), intent(INOUT) :: Daddr
+            type(GEN_SHROUD_array), intent(OUT) :: addr_temp0
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer_float2d_bufferify
@@ -1237,7 +1237,6 @@ contains
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1260,13 +1259,13 @@ contains
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
-        type(GEN_SHROUD_array) :: Daddr
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
-        call c_get_pointer_as_pointer_float1d_bufferify(Daddr, type, &
-            size)
-        call c_f_pointer(Daddr%base_addr, addr)
+        type(GEN_SHROUD_array) :: addr_temp0
+        call c_get_pointer_as_pointer_float1d_bufferify(addr_temp0, &
+            type, size)
+        call c_f_pointer(addr_temp0%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -1283,7 +1282,6 @@ contains
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
-    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
@@ -1306,13 +1304,13 @@ contains
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
-        type(GEN_SHROUD_array) :: Daddr
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
-        call c_get_pointer_as_pointer_float2d_bufferify(Daddr, type, &
-            size)
-        call c_f_pointer(Daddr%base_addr, addr)
+        type(GEN_SHROUD_array) :: addr_temp0
+        call c_get_pointer_as_pointer_float2d_bufferify(addr_temp0, &
+            type, size)
+        call c_f_pointer(addr_temp0%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

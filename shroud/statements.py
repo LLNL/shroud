@@ -102,10 +102,6 @@ def set_buf_variable_names(options, arg):
         attrs["capsule"] = options.C_var_capsule_template.format(
             c_var=c_var
         )
-    if attrs["context"] is True:
-        attrs["context"] = options.C_var_context_template.format(
-            c_var=c_var
-        )
     if attrs["cdesc"] is True:
         # XXX - not sure about future of cdesc and difference with context.
         attrs["context"] = options.C_var_context_template.format(
@@ -126,8 +122,6 @@ def assign_buf_variable_names(attrs, fmt):
     """
     if attrs["capsule"]:
         fmt.c_var_capsule = attrs["capsule"]
-    if attrs["context"]:
-        fmt.c_var_context = attrs["context"]
     if attrs["len"]:
         fmt.c_var_len = attrs["len"]
     if attrs["len_trim"]:
@@ -265,9 +259,9 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     else:
         step['_node'] = node
         scope = util.Scope(default_scopes[steps[0]])
-        if "mixin" in node:
-            for mpart in node["mixin"]:
-                scope.update(node_stmts[mpart])
+    if "mixin" in node:
+        for mpart in node["mixin"]:
+            scope.update(node_stmts[mpart])
     scope.update(node)
     step["_stmts"] = scope
     name = step["_key"]
@@ -552,12 +546,12 @@ fc_statements = [
     dict(
         name="f_subroutine",
     ),
-    
+
+    ########## mixin ##########
     dict(
         name="c_mixin_function_buf",
         # Pass array_type as argument to contain the function result.
         buf_args=["arg_decl"],
-        ntemps=1,
         c_arg_decl=[
             "{C_array_type} *{temp0}",
         ],
@@ -566,6 +560,7 @@ fc_statements = [
         ],
         f_import=["{F_array_type}"],
         return_type="void",  # Convert to function.
+        ntemps=1,
 ###        f_c_arg_names=["{c_var}"],
     ),
     dict(
@@ -577,6 +572,176 @@ fc_statements = [
         ntemps=1,
     ),
 
+    ##########
+    # array
+    dict(
+        # Pass argument and size to C.
+        name="f_mixin_in_array_buf",
+        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        need_wrapper=True,
+    ),
+    dict(
+        # Pass argument and size to C.
+        name="c_mixin_in_array_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+        ],
+        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        ntemps=2,
+    ),
+
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_inout_array_buf",
+        f_helper="array_context",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{temp0}"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        ntemps=1,
+    ),
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="c_mixin_inout_array_buf",
+        c_helper="array_context",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+            "{C_array_type} *{temp1}",
+        ],
+#        c_iface_header="<stddef.h>",
+#        cxx_iface_header="<cstddef>",
+        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+            "type({F_array_type}), intent(OUT) :: {temp1}",
+        ],
+        f_import=["{F_array_type}"],
+        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        ntemps=2,
+    ),
+
+    dict(
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_out_array_buf",
+        f_helper="array_context",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{temp0}"],
+        ntemps=1,
+    ),
+    dict(
+        # Pass array_type to C which will fill it in.
+        name="c_mixin_out_array_buf",
+        c_helper="array_context",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_c_arg_names=["{temp0}"],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {temp0}",
+        ],
+        f_import=["{F_array_type}"],
+        ntemps=1,
+    ),
+    
+
+    dict(
+        # Pass argument, size and len to C.
+        name="f_mixin_in_string_array_buf",
+        arg_c_call=[
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)",
+            "len({f_var}, kind=C_INT)"
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T", "C_INT"]),
+        need_wrapper=True,
+    ),
+    dict(
+        # Pass argument, size and len to C.
+        name="c_mixin_in_array_string_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "const char *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+            "int {temp1}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+            "integer(C_INT), intent(IN), value :: {temp1}",
+        ],
+        f_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
+        ntemps=2,
+    ),
+
+    
+    ##########
+    # Return CHARACTER address and length to Fortran.
+    dict(
+        name="f_mixin_out_character_buf",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        ntemps=1,
+    ),
+    dict(
+        name="c_mixin_out_character_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_import=["{F_array_type}"],
+#        return_type="void",  # Only difference from c_mixin_function_buf
+        ntemps=1,
+    ),
+
+    dict(
+        name="f_mixin_in_character_buf",
+        arg_c_call=[
+            "{f_var}",
+            "len({f_var}, kind=C_INT)",
+        ],
+        f_module=dict(iso_c_binding=["C_INT"]),
+    ),
+    dict(
+        name="c_mixin_in_character_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "char *{c_var}",
+            "int {temp0}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+            "integer(C_INT), value :: {temp0}",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
+        ntemps=1,
+    ),
+
+    ##########
+    # bool
     dict(
         name="f_in_bool",
         c_local_var=True,
@@ -627,21 +792,21 @@ fc_statements = [
     dict(
         # double **count _intent(out)+dimension(ncount)
         name="c_out_native_**_buf",
-        buf_args=["context"],
-        c_helper="ShroudTypeDefines",
+        mixin=["c_mixin_out_array_buf"],
+        c_helper="ShroudTypeDefines array_context",
         pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
         ],
         arg_call=["&{cxx_var}"],
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_type});",
-            "{c_var_context}->rank = {rank};"
+            "{temp0}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var};",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_type});",
+            "{temp0}->rank = {rank};"
             "{c_array_shape}",
-            "{c_var_context}->size = {c_array_size};",
+            "{temp0}->size = {c_array_size};",
         ],
         # XXX - similar to c_function_native_*_buf
     ),
@@ -669,15 +834,16 @@ fc_statements = [
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_native_**_out_buf_pointer
-        # f_native_*&_out_buf_pointer
+        # f_out_native_**_buf_pointer
+        # f_out_native_*&_buf_pointer
         name="f_out_native_**/*&_buf_pointer",
+        mixin=["f_mixin_out_array_buf"],
         arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         post_call=[
-            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
+            "call c_f_pointer({temp0}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(
@@ -697,16 +863,16 @@ fc_statements = [
         # c_out_native_*_cdesc
         # c_inout_native_*_cdesc
         name="c_in/out/inout_native_*_cdesc",
-        buf_args=["context"],
+        mixin=["c_mixin_out_array_buf"],
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
-            "{cxx_type} * {c_var} = {c_var_context}->addr.base;",
+            "{cxx_type} * {c_var} = {temp0}->addr.base;",
         ],
         cxx_pre_call=[
 #            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-#            "({c_var_context}->addr.base);",
+#            "({temp0}->addr.base);",
             "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-            "(const_cast<void *>({c_var_context}->addr.base));",
+            "(const_cast<void *>({temp0}->addr.base));",
         ],
     ),
 #    f_native_pointer_cdesc=dict(
@@ -715,22 +881,23 @@ fc_statements = [
         # f_out_native_*_cdesc
         # f_inout_native_*_cdesc
         name="f_in/out/inout_native_*_cdesc",
+        mixin=["f_mixin_out_array_buf"],
         # TARGET required for argument to C_LOC.
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
-        f_helper="ShroudTypeDefines",
+        f_helper="ShroudTypeDefines array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
 #        initialize=[
         pre_call=[
-            "{c_var_context}%base_addr = C_LOC({f_var})",
-            "{c_var_context}%type = {sh_type}",
-            "! {c_var_context}%elem_len = C_SIZEOF()",
-#            "{c_var_context}%size = size({f_var})",
-            "{c_var_context}%size = {size}",
-            "{c_var_context}%rank = {rank}",
+            "{temp0}%base_addr = C_LOC({f_var})",
+            "{temp0}%type = {sh_type}",
+            "! {temp0}%elem_len = C_SIZEOF()",
+#            "{temp0}%size = size({f_var})",
+            "{temp0}%size = {size}",
+            "{temp0}%rank = {rank}",
             # This also works with scalars since (1:0) is a zero length array.
-            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
+            "{temp0}%shape(1:{rank}) = shape({f_var})",
         ],
     ),
 
@@ -1320,19 +1487,19 @@ fc_statements = [
     # vector
     dict(
         name="c_in_vector_buf",
-        buf_args=["arg", "size"],
+        mixin=["c_mixin_in_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
             (
                 "{c_const}std::vector<{cxx_T}> "
-                "{cxx_var}({c_var}, {c_var} + {c_var_size});"
+                "{cxx_var}({c_var}, {c_var} + {temp0});"
             )
         ],
     ),
     # cxx_var is always a pointer to a vector
     dict(
         name="c_out_vector_buf",
-        buf_args=["context"],
+        mixin=["c_mixin_out_array_buf"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1341,15 +1508,15 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var}->empty()"
+            "{temp0}->cxx.addr  = {cxx_var};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_T});",
-            "{c_var_context}->size = {cxx_var}->size();",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_T});",
+            "{temp0}->size = {cxx_var}->size();",
+            "{temp0}->rank = 1;",
+            "{temp0}->shape[0] = {temp0}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1360,24 +1527,24 @@ fc_statements = [
     ),
     dict(
         name="c_inout_vector_buf",
-        buf_args=["arg", "size", "context"],
+        mixin=["c_mixin_inout_array_buf"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
-            "\t{c_var}, {c_var} + {c_var_size});"
+            "\t{c_var}, {c_var} + {temp0});"
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var}->empty()"
+            "{temp1}->cxx.addr  = {cxx_var};",
+            "{temp1}->cxx.idtor = {idtor};",
+            "{temp1}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_T});",
-            "{c_var_context}->size = {cxx_var}->size();",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{temp1}->type = {sh_type};",
+            "{temp1}->elem_len = sizeof({cxx_T});",
+            "{temp1}->size = {cxx_var}->size();",
+            "{temp1}->rank = 1;",
+            "{temp1}->shape[0] = {temp1}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1433,21 +1600,26 @@ fc_statements = [
     
     # Specialize for vector<string>.
     dict(
+        name="f_in_vector_buf_string",
+        mixin=["f_mixin_in_string_array_buf"],
+    ),
+    dict(
         name="c_in_vector_buf_string",
-        buf_args=["arg", "size", "len"],
+        mixin=["c_mixin_in_array_string_buf"],
+        ntemps=3,
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * BBB = {c_var};",
+            "{c_const}char * {temp2} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
+            "{c_temp}n = {temp0};",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "{cxx_var}.push_back("
-            "std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-            "BBB += {c_var_len};",
+            "std::string({temp2},ShroudLenTrim({temp2}, {temp1})));",
+            "{temp2} += {temp1};",
             "-}}",
             "-}}",
         ],
@@ -1524,52 +1696,60 @@ fc_statements = [
     #                    ),
     # copy into user's existing array
     dict(
-        name="f_out_vector",
+        name="f_in_vector_buf",
+        mixin=["f_mixin_in_array_buf"],
+    ),
+    dict(
+        name="f_out_vector_buf",
+        mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
-        name="f_inout_vector",
+        name="f_inout_vector_buf",
+        mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
-        name="f_function_vector",
+        # XXX - This group is not tested
+        name="f_function_vector_buf",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_allocatable",
+        name="f_out_vector_buf_allocatable",
+        mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "allocate({f_var}({c_var_context}%size))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({temp0}%size))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
-        name="f_inout_vector_allocatable",
+        name="f_inout_vector_buf_allocatable",
+        mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({c_var_context}%size))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({temp0}%size))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -1589,6 +1769,7 @@ fc_statements = [
         ],
     ),
 
+    ##########
     # Pass in a pointer to a shadow object via buf_args.
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
@@ -1780,13 +1961,12 @@ fc_statements = [
     dict(
         # Return meta data to Fortran.
         name="c_getter_string_scalar_buf",
-        base="c_getter",
-        buf_args=["context"],
+        mixin=["c_getter", "c_mixin_out_character_buf"],
         post_call=[
-            "{c_var_context}->addr.base = {CXX_this}->{field_name}.data();",
-            "{c_var_context}->type = 0; // SH_CHAR;",
-            "{c_var_context}->elem_len = {CXX_this}->{field_name}.size();",
-            "{c_var_context}->rank = 0;"
+            "{temp0}->addr.base = {CXX_this}->{field_name}.data();",
+            "{temp0}->type = 0; // SH_CHAR;",
+            "{temp0}->elem_len = {CXX_this}->{field_name}.size();",
+            "{temp0}->rank = 0;"
         ],
         return_type="void",  # Convert to function.
     ),
@@ -1794,31 +1974,15 @@ fc_statements = [
         # Create std::string from Fortran meta data.
         name="c_setter_string_scalar_buf",
         base="c_setter",
-        buf_args=["context"],
+        mixin=["c_mixin_in_character_buf"],
         post_call=[
-            "{CXX_this}->{field_name} = std::string("
-            "static_cast<const char *>(\t{c_var_context}->addr.base),\t "
-            "{c_var_context}->elem_len);",
+            "{CXX_this}->{field_name} = std::string({c_var},\t {temp0});",
         ],
     ),
     dict(
         # Extract meta data and pass to C.
         name="f_setter_string_scalar_buf",
-        f_helper="array_context ShroudTypeDefines",
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        arg_decl=[
-            "character(len=*), intent(IN), target :: {f_var}",
-        ],
-        pre_call=[
-            "{c_var_context}%base_addr = C_LOC({f_var})",
-            "{c_var_context}%type = SH_TYPE_CHAR",
-            "{c_var_context}%elem_len = len({f_var})",
-#            "{c_var_context}%size = size({f_var})",
-            "{c_var_context}%size = 1",
-            "{c_var_context}%rank = {rank}",
-            # This also works with scalars since (1:0) is a zero length array.
-#            "{c_var_context}%shape(1:{rank}) = shape({f_var})",
-        ],
+        mixin=["f_mixin_in_character_buf"],
     ),
     dict(
         # Get meta data from C and allocate CHARACTER.

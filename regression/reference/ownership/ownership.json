@@ -602,7 +602,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -880,7 +881,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1039,7 +1040,6 @@
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1057,7 +1057,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -1217,7 +1218,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1377,7 +1378,6 @@
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1395,7 +1395,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -1554,7 +1555,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1712,7 +1713,6 @@
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1730,7 +1730,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -2022,7 +2023,7 @@
                         "c_var_capsule": "Crv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -2185,7 +2186,6 @@
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "c_var_capsule": "Crv",
-                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -2203,7 +2203,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -2537,7 +2538,7 @@
                         "c_var_capsule": "Crv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -2699,7 +2700,6 @@
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "c_var_capsule": "Crv",
-                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -2717,7 +2717,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_type": "integer(C_INT)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },

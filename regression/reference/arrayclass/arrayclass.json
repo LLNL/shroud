@@ -612,7 +612,7 @@
                                 "c_var": "SHT_rv",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
-                                "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                                "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
@@ -716,7 +716,6 @@
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
-                                "c_var_context": "SHC_rv_temp0",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "SHC_rv",
@@ -734,7 +733,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)"
+                                "f_type": "real(C_DOUBLE)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     },
@@ -831,7 +831,7 @@
                                 "c_var": "SHT_rv",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
-                                "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                                "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
@@ -936,7 +936,6 @@
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
-                                "c_var_context": "SHC_rv_temp0",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "SHC_rv",
@@ -954,7 +953,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)"
+                                "f_type": "real(C_DOUBLE)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     },
@@ -1050,7 +1050,7 @@
                                 "c_var": "SHT_rv",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
-                                "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                                "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
@@ -1155,7 +1155,6 @@
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
-                                "c_var_context": "SHC_rv_temp0",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
@@ -1173,7 +1172,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)"
+                                "f_type": "real(C_DOUBLE)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     },
@@ -1271,7 +1271,7 @@
                                 "c_var": "SHT_rv",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
-                                "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
+                                "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
@@ -1377,7 +1377,6 @@
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
-                                "c_var_context": "SHC_rv_temp0",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
@@ -1395,7 +1394,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)"
+                                "f_type": "real(C_DOUBLE)",
+                                "temp0": "SHT_rv_temp0"
                             }
                         }
                     },
@@ -1581,7 +1581,7 @@
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arg_c_call": "obj%cxxmem,\t array_temp0,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ptr",
                             "F_name_generic": "fetch_array_ptr",
@@ -1616,7 +1616,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "Darray",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -1673,7 +1672,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1683,13 +1682,12 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
-                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
-                                    "c_array_size": "Darray->shape[0]",
+                                    "c_array_shape": "\narray_temp0->shape[0] = *isize;",
+                                    "c_array_size": "array_temp0->shape[0]",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "array",
@@ -1700,16 +1698,15 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_buf_pointer",
-                                    "stmt1": "c_out_native_**_buf"
+                                    "stmt1": "c_out_native_**_buf",
+                                    "temp0": "array_temp0"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
-                                    "c_var_dimension": "isize",
                                     "f_array_allocate": "(isize)",
-                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_array_shape": ",\t array_temp0%shape(1:1)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
@@ -1721,7 +1718,8 @@
                                     "stmt0": "f_out_native_**_buf_pointer",
                                     "stmt1": "f_out_native_**_buf_pointer",
                                     "stmtc0": "c_out_native_**_buf_pointer",
-                                    "stmtc1": "c_out_native_**_buf"
+                                    "stmtc1": "c_out_native_**_buf",
+                                    "temp0": "array_temp0"
                                 }
                             },
                             "isize": {
@@ -1761,9 +1759,9 @@
                         "zz_fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *array_temp0,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t Darray,\t isize",
+                            "F_C_arguments": "self,\t array_temp0,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
@@ -1960,7 +1958,7 @@
                             "F_C_call": "c_arraywrapper_fetch_array_ref_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arg_c_call": "obj%cxxmem,\t array_temp0,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ref",
                             "F_name_generic": "fetch_array_ref",
@@ -1995,7 +1993,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "Darray",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2052,7 +2049,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2062,13 +2059,12 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
-                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
-                                    "c_array_size": "Darray->shape[0]",
+                                    "c_array_shape": "\narray_temp0->shape[0] = *isize;",
+                                    "c_array_size": "array_temp0->shape[0]",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "array",
@@ -2079,16 +2075,15 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_buf_pointer",
-                                    "stmt1": "c_out_native_*&_buf"
+                                    "stmt1": "c_out_native_*&_buf",
+                                    "temp0": "array_temp0"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
-                                    "c_var_dimension": "isize",
                                     "f_array_allocate": "(isize)",
-                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_array_shape": ",\t array_temp0%shape(1:1)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
@@ -2100,7 +2095,8 @@
                                     "stmt0": "f_out_native_*&_buf_pointer",
                                     "stmt1": "f_out_native_*&_buf_pointer",
                                     "stmtc0": "c_out_native_*&_buf_pointer",
-                                    "stmtc1": "c_out_native_*&_buf"
+                                    "stmtc1": "c_out_native_*&_buf",
+                                    "temp0": "array_temp0"
                                 }
                             },
                             "isize": {
@@ -2140,9 +2136,9 @@
                         "zz_fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *array_temp0,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t Darray,\t isize",
+                            "F_C_arguments": "self,\t array_temp0,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_bufferify",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
@@ -2340,7 +2336,7 @@
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arg_c_call": "obj%cxxmem,\t array_temp0,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ptr_const",
                             "F_name_generic": "fetch_array_ptr_const",
@@ -2375,7 +2371,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "Darray",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2433,7 +2428,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2443,13 +2438,12 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
-                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
-                                    "c_array_size": "Darray->shape[0]",
+                                    "c_array_shape": "\narray_temp0->shape[0] = *isize;",
+                                    "c_array_size": "array_temp0->shape[0]",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
@@ -2460,16 +2454,15 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_buf_pointer",
-                                    "stmt1": "c_out_native_**_buf"
+                                    "stmt1": "c_out_native_**_buf",
+                                    "temp0": "array_temp0"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
-                                    "c_var_dimension": "isize",
                                     "f_array_allocate": "(isize)",
-                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_array_shape": ",\t array_temp0%shape(1:1)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
@@ -2481,7 +2474,8 @@
                                     "stmt0": "f_out_native_**_buf_pointer",
                                     "stmt1": "f_out_native_**_buf_pointer",
                                     "stmtc0": "c_out_native_**_buf_pointer",
-                                    "stmtc1": "c_out_native_**_buf"
+                                    "stmtc1": "c_out_native_**_buf",
+                                    "temp0": "array_temp0"
                                 }
                             },
                             "isize": {
@@ -2521,9 +2515,9 @@
                         "zz_fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *array_temp0,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t Darray,\t isize",
+                            "F_C_arguments": "self,\t array_temp0,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const_bufferify",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
@@ -2721,7 +2715,7 @@
                             "F_C_call": "c_arraywrapper_fetch_array_ref_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
+                            "F_arg_c_call": "obj%cxxmem,\t array_temp0,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ref_const",
                             "F_name_generic": "fetch_array_ref_const",
@@ -2756,7 +2750,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "Darray",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2814,7 +2807,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2824,13 +2817,12 @@
                             "array": {
                                 "fmtc": {
                                     "c_addr": "",
-                                    "c_array_shape": "\nDarray->shape[0] = *isize;",
-                                    "c_array_size": "Darray->shape[0]",
+                                    "c_array_shape": "\narray_temp0->shape[0] = *isize;",
+                                    "c_array_size": "array_temp0->shape[0]",
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
@@ -2841,16 +2833,15 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_buf_pointer",
-                                    "stmt1": "c_out_native_*&_buf"
+                                    "stmt1": "c_out_native_*&_buf",
+                                    "temp0": "array_temp0"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
-                                    "c_var_context": "Darray",
-                                    "c_var_dimension": "isize",
                                     "f_array_allocate": "(isize)",
-                                    "f_array_shape": ", Darray%shape(1:1)",
+                                    "f_array_shape": ",\t array_temp0%shape(1:1)",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
@@ -2862,7 +2853,8 @@
                                     "stmt0": "f_out_native_*&_buf_pointer",
                                     "stmt1": "f_out_native_*&_buf_pointer",
                                     "stmtc0": "c_out_native_*&_buf_pointer",
-                                    "stmtc1": "c_out_native_*&_buf"
+                                    "stmtc1": "c_out_native_*&_buf",
+                                    "temp0": "array_temp0"
                                 }
                             },
                             "isize": {
@@ -2902,9 +2894,9 @@
                         "zz_fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *array_temp0,\t int * isize",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t Darray,\t isize",
+                            "F_C_arguments": "self,\t array_temp0,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const_bufferify",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",

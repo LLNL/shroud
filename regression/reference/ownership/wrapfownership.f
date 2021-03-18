@@ -590,7 +590,8 @@ contains
         ! splicer begin function.return_int_ptr_dim_pointer
         type(OWN_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_dim_pointer_bufferify(SHT_rv_temp0, len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
@@ -648,7 +649,8 @@ contains
         ! splicer begin function.return_int_ptr_dim_default
         type(OWN_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_dim_default_bufferify(SHT_rv_temp0, len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default
     end function return_int_ptr_dim_default
 
@@ -678,8 +680,8 @@ contains
         type(OWN_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_temp0, &
             len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, &
-            SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         Crv%mem = SHT_rv_temp0%cxx
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
@@ -710,8 +712,8 @@ contains
         type(OWN_SHROUD_array) :: SHT_rv_temp0
         call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_temp0, &
             len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, &
-            SHT_rv, SHT_rv_temp0%shape(1:1))
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
+            SHT_rv_temp0%shape(1:1))
         Crv%mem = SHT_rv_temp0%cxx
         ! splicer end function.return_int_ptr_dim_default_new
     end function return_int_ptr_dim_default_new
