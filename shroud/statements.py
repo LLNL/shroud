@@ -552,7 +552,8 @@ fc_statements = [
     dict(
         name="f_subroutine",
     ),
-    
+
+    ########## mixin ##########
     dict(
         name="c_mixin_function_buf",
         # Pass array_type as argument to contain the function result.
@@ -607,6 +608,7 @@ fc_statements = [
         # Pass argument and size to C.
         # Pass array_type to C which will fill it in.
         name="f_mixin_inout_array_buf",
+        f_helper="array_context",
         declare=[
             "type({F_array_type}) :: {temp0}",
         ],
@@ -618,12 +620,15 @@ fc_statements = [
         # Pass argument and size to C.
         # Pass array_type to C which will fill it in.
         name="c_mixin_inout_array_buf",
+        c_helper="array_context",
         buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {temp0}",
             "{C_array_type} *{temp1}",
         ],
+#        c_iface_header="<stddef.h>",
+#        cxx_iface_header="<cstddef>",
         f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
         f_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
@@ -638,6 +643,7 @@ fc_statements = [
     dict(
         # Pass array_type to C which will fill it in.
         name="f_mixin_out_array_buf",
+        f_helper="array_context",
         declare=[
             "type({F_array_type}) :: {temp0}",
         ],
@@ -647,6 +653,7 @@ fc_statements = [
     dict(
         # Pass array_type to C which will fill it in.
         name="c_mixin_out_array_buf",
+        c_helper="array_context",
         buf_args=["arg_decl"],
         c_arg_decl=[
             "{C_array_type} *{temp0}",
@@ -769,21 +776,21 @@ fc_statements = [
     dict(
         # double **count _intent(out)+dimension(ncount)
         name="c_out_native_**_buf",
-        buf_args=["context"],
-        c_helper="ShroudTypeDefines",
+        mixin=["c_mixin_out_array_buf"],
+        c_helper="ShroudTypeDefines array_context",
         pre_call=[
             "{c_const}{cxx_type} *{cxx_var};",
         ],
         arg_call=["&{cxx_var}"],
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_type});",
-            "{c_var_context}->rank = {rank};"
+            "{temp0}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var};",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_type});",
+            "{temp0}->rank = {rank};"
             "{c_array_shape}",
-            "{c_var_context}->size = {c_array_size};",
+            "{temp0}->size = {c_array_size};",
         ],
         # XXX - similar to c_function_native_*_buf
     ),
@@ -811,15 +818,16 @@ fc_statements = [
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_native_**_out_buf_pointer
-        # f_native_*&_out_buf_pointer
+        # f_out_native_**_buf_pointer
+        # f_out_native_*&_buf_pointer
         name="f_out_native_**/*&_buf_pointer",
+        mixin=["f_mixin_out_array_buf"],
         arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         post_call=[
-            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
+            "call c_f_pointer({temp0}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(

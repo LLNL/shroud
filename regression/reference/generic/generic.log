@@ -20,8 +20,8 @@ C void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +impli
 C void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)  +intent(subroutine)
 C void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))  +intent(subroutine)
 C void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
-C void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
-C void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
+C void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
+C void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
 Close wrapgeneric.h
 Close wrapgeneric.c
 Fortran void UpdateAsFloat(float arg +value)  +intent(subroutine)
@@ -65,8 +65,8 @@ C-interface void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int t
 C-interface void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)  +intent(subroutine)
 C-interface void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))  +intent(subroutine)
 C-interface void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
-C-interface void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
-C-interface void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
+C-interface void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
+C-interface void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))  +intent(subroutine)
 Close wrapfgeneric.f
 Close utilgeneric.c
 Close typesgeneric.h

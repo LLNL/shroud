@@ -68,25 +68,27 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
     double * * array, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *Darray, int * isize);
+    ARR_SHROUD_array *array_temp0, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
     double * * array, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *Darray, int * isize);
+    ARR_SHROUD_array *array_temp0, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
     const double * * array, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
-    ARR_ArrayWrapper * self, ARR_SHROUD_array *Darray, int * isize);
+    ARR_ArrayWrapper * self, ARR_SHROUD_array *array_temp0,
+    int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
     const double * * array, int * isize);
 
 void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
-    ARR_ArrayWrapper * self, ARR_SHROUD_array *Darray, int * isize);
+    ARR_ArrayWrapper * self, ARR_SHROUD_array *array_temp0,
+    int * isize);
 
 void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
     void * * array);

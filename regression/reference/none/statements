@@ -1434,6 +1434,7 @@ c_mixin_inout_array_buf:
   - '{cxx_type} *{c_var}'
   - size_t {temp0}
   - '{C_array_type} *{temp1}'
+  c_helper: array_context
   f_arg_decl:
   - '{f_type}, intent(IN) :: {c_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
@@ -1453,6 +1454,7 @@ c_mixin_out_array_buf:
   - arg_decl
   c_arg_decl:
   - '{C_array_type} *{temp0}'
+  c_helper: array_context
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {temp0}'
   f_c_arg_names:
@@ -1492,36 +1494,54 @@ c_out_native_*&_buf:
   arg_call:
   - '{cxx_var}'
   buf_args:
-  - context
-  c_helper: ShroudTypeDefines
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
+  c_helper: ShroudTypeDefines array_context
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  f_c_arg_names:
+  - '{temp0}'
+  f_import:
+  - '{F_array_type}'
   name: c_out_native_*&_buf
+  ntemps: 1
   owner: library
   post_call:
-  - '{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_context}->cxx.idtor = {idtor};'
-  - '{c_var_context}->addr.base = {cxx_var};'
-  - '{c_var_context}->type = {sh_type};'
-  - '{c_var_context}->elem_len = sizeof({cxx_type});'
-  - '{c_var_context}->rank = {rank};{c_array_shape}'
-  - '{c_var_context}->size = {c_array_size};'
+  - '{temp0}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{temp0}->cxx.idtor = {idtor};'
+  - '{temp0}->addr.base = {cxx_var};'
+  - '{temp0}->type = {sh_type};'
+  - '{temp0}->elem_len = sizeof({cxx_type});'
+  - '{temp0}->rank = {rank};{c_array_shape}'
+  - '{temp0}->size = {c_array_size};'
   pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
 c_out_native_**_buf:
   arg_call:
   - '&{cxx_var}'
   buf_args:
-  - context
-  c_helper: ShroudTypeDefines
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
+  c_helper: ShroudTypeDefines array_context
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  f_c_arg_names:
+  - '{temp0}'
+  f_import:
+  - '{F_array_type}'
   name: c_out_native_**_buf
+  ntemps: 1
   owner: library
   post_call:
-  - '{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_context}->cxx.idtor = {idtor};'
-  - '{c_var_context}->addr.base = {cxx_var};'
-  - '{c_var_context}->type = {sh_type};'
-  - '{c_var_context}->elem_len = sizeof({cxx_type});'
-  - '{c_var_context}->rank = {rank};{c_array_shape}'
-  - '{c_var_context}->size = {c_array_size};'
+  - '{temp0}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{temp0}->cxx.idtor = {idtor};'
+  - '{temp0}->addr.base = {cxx_var};'
+  - '{temp0}->type = {sh_type};'
+  - '{temp0}->elem_len = sizeof({cxx_type});'
+  - '{temp0}->rank = {rank};{c_array_shape}'
+  - '{temp0}->size = {c_array_size};'
   pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
 c_out_native_*_cdesc:
@@ -2217,6 +2237,7 @@ f_mixin_inout_array_buf:
   - '{temp0}'
   declare:
   - 'type({F_array_type}) :: {temp0}'
+  f_helper: array_context
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -2227,6 +2248,7 @@ f_mixin_out_array_buf:
   - '{temp0}'
   declare:
   - 'type({F_array_type}) :: {temp0}'
+  f_helper: array_context
   name: f_mixin_out_array_buf
   ntemps: 1
 f_out_bool:
@@ -2235,14 +2257,20 @@ f_out_bool:
   post_call:
   - '{f_var} = {c_var}  ! coerce to logical'
 f_out_native_*&_buf_pointer:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: array_context
   f_module:
     iso_c_binding:
     - c_f_pointer
   name: f_out_native_*&_buf_pointer
+  ntemps: 1
   post_call:
-  - call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({temp0}%base_addr, {f_var}{f_array_shape})
 f_out_native_**:
   arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
@@ -2251,14 +2279,20 @@ f_out_native_**:
     - c_f_pointer
   name: f_out_native_**
 f_out_native_**_buf_pointer:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: array_context
   f_module:
     iso_c_binding:
     - c_f_pointer
   name: f_out_native_**_buf_pointer
+  ntemps: 1
   post_call:
-  - call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({temp0}%base_addr, {f_var}{f_array_shape})
 f_out_native_**_raw:
   arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'

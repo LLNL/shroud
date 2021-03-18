@@ -299,7 +299,7 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
+// Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
@@ -314,18 +314,18 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Requested: c_out_native_*
 // Match:     c_default
 void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *Daddr, int * type, size_t * size)
+    GEN_SHROUD_array *addr_temp0, int * type, size_t * size)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_bufferify
     float *addr;
     GetPointerAsPointer(&addr, type, size);
-    Daddr->cxx.addr  = addr;
-    Daddr->cxx.idtor = 0;
-    Daddr->addr.base = addr;
-    Daddr->type = SH_TYPE_FLOAT;
-    Daddr->elem_len = sizeof(float);
-    Daddr->rank = 0;
-    Daddr->size = 1;
+    addr_temp0->cxx.addr  = addr;
+    addr_temp0->cxx.idtor = 0;
+    addr_temp0->addr.base = addr;
+    addr_temp0->type = SH_TYPE_FLOAT;
+    addr_temp0->elem_len = sizeof(float);
+    addr_temp0->rank = 0;
+    addr_temp0->size = 1;
     // splicer end function.get_pointer_as_pointer_float1d_bufferify
 }
 #endif  // if 0
@@ -336,7 +336,7 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
+// Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
 // Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
@@ -351,18 +351,18 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Requested: c_out_native_*
 // Match:     c_default
 void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *Daddr, int * type, size_t * size)
+    GEN_SHROUD_array *addr_temp0, int * type, size_t * size)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_bufferify
     float *addr;
     GetPointerAsPointer(&addr, type, size);
-    Daddr->cxx.addr  = addr;
-    Daddr->cxx.idtor = 0;
-    Daddr->addr.base = addr;
-    Daddr->type = SH_TYPE_FLOAT;
-    Daddr->elem_len = sizeof(float);
-    Daddr->rank = 0;
-    Daddr->size = 1;
+    addr_temp0->cxx.addr  = addr;
+    addr_temp0->cxx.idtor = 0;
+    addr_temp0->addr.base = addr;
+    addr_temp0->type = SH_TYPE_FLOAT;
+    addr_temp0->elem_len = sizeof(float);
+    addr_temp0->rank = 0;
+    addr_temp0->size = 1;
     // splicer end function.get_pointer_as_pointer_float2d_bufferify
 }
 #endif  // if 0

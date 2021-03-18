@@ -3023,7 +3023,7 @@
                     "F_C_call": "c_get_ptr_to_scalar_bufferify",
                     "F_C_name": "c_get_ptr_to_scalar",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dnitems",
+                    "F_arg_c_call": "nitems_temp0",
                     "F_arguments": "nitems",
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
@@ -3052,7 +3052,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dnitems",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -3083,7 +3082,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +context+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
                 "options": {
                     "wrap_python": false
                 },
@@ -3099,7 +3098,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "nitems",
-                            "c_var_context": "Dnitems",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nitems",
@@ -3109,13 +3107,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "nitems_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
-                            "c_var_context": "Dnitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3125,16 +3123,17 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "nitems_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&nitems",
                     "C_name": "POI_get_ptr_to_scalar_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dnitems",
+                    "C_prototype": "POI_SHROUD_array *nitems_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dnitems",
+                    "F_C_arguments": "nitems_temp0",
                     "F_C_name": "c_get_ptr_to_scalar_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToScalar",
@@ -3240,7 +3239,7 @@
                     "F_C_call": "c_get_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_get_ptr_to_fixed_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dcount",
+                    "F_arg_c_call": "count_temp0",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
@@ -3269,7 +3268,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dcount",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -3306,7 +3304,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +context+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -3319,13 +3317,13 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nDcount->shape[0] = 10;",
-                            "c_array_size": "Dcount->shape[0]",
+                            "c_array_shape": "\ncount_temp0->shape[0] = 10;",
+                            "c_array_size": "count_temp0->shape[0]",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
+                            "c_var_context": "count_temp0",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -3336,16 +3334,15 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
-                            "c_var_dimension": "10",
                             "f_array_allocate": "(10)",
-                            "f_array_shape": ",\t Dcount%shape(1:1)",
+                            "f_array_shape": ",\t count_temp0%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -3357,16 +3354,17 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
                     "C_name": "POI_get_ptr_to_fixed_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_prototype": "POI_SHROUD_array *count_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dcount",
+                    "F_C_arguments": "count_temp0",
                     "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFixedArray",
@@ -3516,7 +3514,7 @@
                     "F_C_call": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dcount,\t ncount",
+                    "F_arg_c_call": "count_temp0,\t ncount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
@@ -3545,7 +3543,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dcount",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -3603,7 +3600,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +context+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -3616,13 +3613,13 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nDcount->shape[0] = *ncount;",
-                            "c_array_size": "Dcount->shape[0]",
+                            "c_array_shape": "\ncount_temp0->shape[0] = *ncount;",
+                            "c_array_size": "count_temp0->shape[0]",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
+                            "c_var_context": "count_temp0",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -3633,16 +3630,15 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
-                            "c_var_dimension": "ncount",
                             "f_array_allocate": "(ncount)",
-                            "f_array_shape": ",\t Dcount%shape(1:1)",
+                            "f_array_shape": ",\t count_temp0%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -3654,7 +3650,8 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         }
                     },
                     "ncount": {
@@ -3694,9 +3691,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "&count,\t ncount",
                     "C_name": "POI_get_ptr_to_dynamic_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
+                    "C_prototype": "POI_SHROUD_array *count_temp0,\t int * ncount",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dcount,\t ncount",
+                    "F_C_arguments": "count_temp0,\t ncount",
                     "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicArray",
@@ -3803,7 +3800,7 @@
                     "F_C_call": "c_get_ptr_to_func_array_bufferify",
                     "F_C_name": "c_get_ptr_to_func_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dcount",
+                    "F_arg_c_call": "count_temp0",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
@@ -3832,7 +3829,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dcount",
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -3870,7 +3866,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +context+dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
@@ -3883,13 +3879,13 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nDcount->shape[0] = getLen();",
-                            "c_array_size": "Dcount->shape[0]",
+                            "c_array_shape": "\ncount_temp0->shape[0] = getLen();",
+                            "c_array_size": "count_temp0->shape[0]",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
+                            "c_var_context": "count_temp0",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -3900,16 +3896,15 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
-                            "c_var_dimension": "getLen()",
                             "f_array_allocate": "(getLen())",
-                            "f_array_shape": ",\t Dcount%shape(1:1)",
+                            "f_array_shape": ",\t count_temp0%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -3921,16 +3916,17 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
                     "C_name": "POI_get_ptr_to_func_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_prototype": "POI_SHROUD_array *count_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dcount",
+                    "F_C_arguments": "count_temp0",
                     "F_C_name": "c_get_ptr_to_func_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFuncArray",
@@ -4029,7 +4025,7 @@
                     "F_C_call": "c_get_ptr_to_const_scalar_bufferify",
                     "F_C_name": "c_get_ptr_to_const_scalar",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dnitems",
+                    "F_arg_c_call": "nitems_temp0",
                     "F_arguments": "nitems",
                     "F_name_function": "get_ptr_to_const_scalar",
                     "F_name_generic": "get_ptr_to_const_scalar",
@@ -4058,7 +4054,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dnitems",
                                 "intent": "out"
                             },
                             "const": true,
@@ -4090,7 +4085,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +context+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
                 "options": {
                     "wrap_python": false
                 },
@@ -4106,7 +4101,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "nitems",
-                            "c_var_context": "Dnitems",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(int *) nitems",
@@ -4116,13 +4110,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "nitems_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
-                            "c_var_context": "Dnitems",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -4132,16 +4126,17 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "nitems_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&nitems",
                     "C_name": "POI_get_ptr_to_const_scalar_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dnitems",
+                    "C_prototype": "POI_SHROUD_array *nitems_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dnitems",
+                    "F_C_arguments": "nitems_temp0",
                     "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToConstScalar",
@@ -4245,7 +4240,7 @@
                     "F_C_call": "c_get_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_get_ptr_to_fixed_const_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dcount",
+                    "F_arg_c_call": "count_temp0",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_fixed_const_array",
                     "F_name_generic": "get_ptr_to_fixed_const_array",
@@ -4274,7 +4269,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dcount",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -4312,7 +4306,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +context+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4322,13 +4316,13 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nDcount->shape[0] = 10;",
-                            "c_array_size": "Dcount->shape[0]",
+                            "c_array_shape": "\ncount_temp0->shape[0] = 10;",
+                            "c_array_size": "count_temp0->shape[0]",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
+                            "c_var_context": "count_temp0",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(int *) count",
@@ -4339,16 +4333,15 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
-                            "c_var_dimension": "10",
                             "f_array_allocate": "(10)",
-                            "f_array_shape": ",\t Dcount%shape(1:1)",
+                            "f_array_shape": ",\t count_temp0%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -4360,16 +4353,17 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
                     "C_name": "POI_get_ptr_to_fixed_const_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dcount",
+                    "C_prototype": "POI_SHROUD_array *count_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dcount",
+                    "F_C_arguments": "count_temp0",
                     "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFixedConstArray",
@@ -4517,7 +4511,7 @@
                     "F_C_call": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "Dcount,\t ncount",
+                    "F_arg_c_call": "count_temp0,\t ncount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
@@ -4546,7 +4540,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Dcount",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -4605,7 +4598,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +context+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4615,13 +4608,13 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nDcount->shape[0] = *ncount;",
-                            "c_array_size": "Dcount->shape[0]",
+                            "c_array_shape": "\ncount_temp0->shape[0] = *ncount;",
+                            "c_array_size": "count_temp0->shape[0]",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
+                            "c_var_context": "count_temp0",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(int *) count",
@@ -4632,16 +4625,15 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
-                            "c_var_context": "Dcount",
-                            "c_var_dimension": "ncount",
                             "f_array_allocate": "(ncount)",
-                            "f_array_shape": ",\t Dcount%shape(1:1)",
+                            "f_array_shape": ",\t count_temp0%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -4653,7 +4645,8 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmtc1": "c_out_native_**_buf",
+                            "temp0": "count_temp0"
                         }
                     },
                     "ncount": {
@@ -4693,9 +4686,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "&count,\t ncount",
                     "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
+                    "C_prototype": "POI_SHROUD_array *count_temp0,\t int * ncount",
                     "C_return_type": "void",
-                    "F_C_arguments": "Dcount,\t ncount",
+                    "F_C_arguments": "count_temp0,\t ncount",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicConstArray",

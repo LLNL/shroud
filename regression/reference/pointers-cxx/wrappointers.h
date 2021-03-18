@@ -75,35 +75,37 @@ int POI_sum_fixed_array(void);
 
 void POI_get_ptr_to_scalar(int * * nitems);
 
-void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems);
+void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *nitems_temp0);
 
 void POI_get_ptr_to_fixed_array(int * * count);
 
-void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount);
+void POI_get_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *count_temp0);
 
 void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
 
-void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
-    int * ncount);
+void POI_get_ptr_to_dynamic_array_bufferify(
+    POI_SHROUD_array *count_temp0, int * ncount);
 
 void POI_get_ptr_to_func_array(int * * count);
 
-void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount);
+void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *count_temp0);
 
 void POI_get_ptr_to_const_scalar(const int * * nitems);
 
-void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems);
+void POI_get_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *nitems_temp0);
 
 void POI_get_ptr_to_fixed_const_array(const int * * count);
 
 void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *Dcount);
+    POI_SHROUD_array *count_temp0);
 
 void POI_get_ptr_to_dynamic_const_array(const int * * count,
     int * ncount);
 
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *Dcount, int * ncount);
+    POI_SHROUD_array *count_temp0, int * ncount);
 
 void POI_get_raw_ptr_to_scalar(int * * nitems);
 
