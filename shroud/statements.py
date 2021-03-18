@@ -1983,10 +1983,6 @@ fc_statements = [
         # Extract meta data and pass to C.
         name="f_setter_string_scalar_buf",
         mixin=["f_mixin_in_character_buf"],
-        # XXX - when this is removed the arg_c_call are not used.
-        arg_decl=[
-            "character(len=*), intent(IN) :: {f_var}",
-        ],
     ),
     dict(
         # Get meta data from C and allocate CHARACTER.
