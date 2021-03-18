@@ -558,7 +558,6 @@ fc_statements = [
         name="c_mixin_function_buf",
         # Pass array_type as argument to contain the function result.
         buf_args=["arg_decl"],
-        ntemps=1,
         c_arg_decl=[
             "{C_array_type} *{temp0}",
         ],
@@ -567,6 +566,7 @@ fc_statements = [
         ],
         f_import=["{F_array_type}"],
         return_type="void",  # Convert to function.
+        ntemps=1,
 ###        f_c_arg_names=["{c_var}"],
     ),
     dict(
@@ -699,7 +699,29 @@ fc_statements = [
 
     
     ##########
-    # Pass CHARACTER address and length from Fortran to C.
+    # Return CHARACTER address and length to Fortran.
+    dict(
+        name="f_mixin_out_character_buf",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        ntemps=1,
+    ),
+    dict(
+        name="c_mixin_out_character_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_import=["{F_array_type}"],
+#        return_type="void",  # Only difference from c_mixin_function_buf
+        ntemps=1,
+    ),
+
     dict(
         name="f_mixin_in_character_buf",
         arg_c_call=[
@@ -1943,13 +1965,12 @@ fc_statements = [
     dict(
         # Return meta data to Fortran.
         name="c_getter_string_scalar_buf",
-        base="c_getter",
-        buf_args=["context"],
+        mixin=["c_getter", "c_mixin_out_character_buf"],
         post_call=[
-            "{c_var_context}->addr.base = {CXX_this}->{field_name}.data();",
-            "{c_var_context}->type = 0; // SH_CHAR;",
-            "{c_var_context}->elem_len = {CXX_this}->{field_name}.size();",
-            "{c_var_context}->rank = 0;"
+            "{temp0}->addr.base = {CXX_this}->{field_name}.data();",
+            "{temp0}->type = 0; // SH_CHAR;",
+            "{temp0}->elem_len = {CXX_this}->{field_name}.size();",
+            "{temp0}->rank = 0;"
         ],
         return_type="void",  # Convert to function.
     ),

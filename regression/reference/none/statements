@@ -123,6 +123,8 @@ root
       out
         array
           buf -- c_mixin_out_array_buf
+        character
+          buf -- c_mixin_out_character_buf
     out
       char
         *
@@ -261,6 +263,8 @@ root
       out
         array
           buf -- f_mixin_out_array_buf
+        character
+          buf -- f_mixin_out_character_buf
     out
       bool -- f_out_bool
       native
@@ -794,16 +798,23 @@ c_getter_native_scalar:
   - return {CXX_this}->{field_name};
 c_getter_string_scalar_buf:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   call:
   - // skip call c_getter
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_getter_string_scalar_buf
+  ntemps: 1
   owner: library
   post_call:
-  - '{c_var_context}->addr.base = {CXX_this}->{field_name}.data();'
-  - '{c_var_context}->type = 0; // SH_CHAR;'
-  - '{c_var_context}->elem_len = {CXX_this}->{field_name}.size();'
-  - '{c_var_context}->rank = 0;'
+  - '{temp0}->addr.base = {CXX_this}->{field_name}.data();'
+  - '{temp0}->type = 0; // SH_CHAR;'
+  - '{temp0}->elem_len = {CXX_this}->{field_name}.size();'
+  - '{temp0}->rank = 0;'
   return_type: void
 c_in_char_**:
   buf_args:
@@ -1462,6 +1473,18 @@ c_mixin_out_array_buf:
   f_import:
   - '{F_array_type}'
   name: c_mixin_out_array_buf
+  ntemps: 1
+  owner: library
+c_mixin_out_character_buf:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
+  name: c_mixin_out_character_buf
   ntemps: 1
   owner: library
 c_out_char_*_buf:
@@ -2250,6 +2273,13 @@ f_mixin_out_array_buf:
   - 'type({F_array_type}) :: {temp0}'
   f_helper: array_context
   name: f_mixin_out_array_buf
+  ntemps: 1
+f_mixin_out_character_buf:
+  arg_c_call:
+  - '{temp0}'
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  name: f_mixin_out_character_buf
   ntemps: 1
 f_out_bool:
   c_local_var: true

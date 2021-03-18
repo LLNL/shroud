@@ -677,8 +677,6 @@ class GenFunctions(object):
             # Use variable's field_name for the generated functions.
             field_name=var.fmtdict.field_name,
         )
-        if deref:
-            fmt_func["c_var_context"] = "cdesc"
 
         ##########
         # getter
@@ -687,8 +685,6 @@ class GenFunctions(object):
         decl = "{}()".format(argdecl)
 
         fattrs = {}
-        if deref:
-            fattrs["context"] = "cdesc"
 
         fcn = cls.add_function(decl, format=fmt_func, fattrs=fattrs)
         fcn.ast.metaattrs["intent"] = "getter"
