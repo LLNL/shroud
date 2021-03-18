@@ -1184,7 +1184,6 @@ rv = .false.
                 )
                 imports[fmt_func.F_capsule_data_type] = True
 
-        sapi = ast.metaattrs["api"]
         result_api = ast.metaattrs["api"]
         sintent = ast.metaattrs["intent"]
         # ctor and dtor are not valid for bind(C) interfaces.
