@@ -1084,7 +1084,6 @@
                                     "specifier": [
                                         "std::string"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "std::string"
                                 },
                                 {
@@ -1114,7 +1113,6 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
-                        "generated_suffix": "buf",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1512,7 +1510,6 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2138,7 +2135,6 @@
                         },
                         "decl": "std::string getM_name()",
                         "declgen": "std::string getM_name(void) +context(cdesc)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2280,7 +2276,6 @@
                                     "specifier": [
                                         "std::string"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "std::string"
                                 }
                             ],
@@ -2291,7 +2286,6 @@
                         },
                         "decl": "void setM_name(std::string val)",
                         "declgen": "void setM_name(std::string val +context+intent(in))",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2669,7 +2663,6 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -4814,7 +4807,6 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

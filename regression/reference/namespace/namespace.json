@@ -149,7 +149,6 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

@@ -2306,7 +2306,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -2320,7 +2319,6 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3283,7 +3281,6 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3682,7 +3679,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3697,7 +3693,6 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3954,7 +3949,6 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

@@ -564,7 +564,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         },
                         {
@@ -588,7 +587,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -603,7 +601,6 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false,
@@ -862,7 +859,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -877,7 +873,6 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -1081,7 +1076,6 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1294,7 +1288,6 @@
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1506,7 +1499,6 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1629,7 +1621,6 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1853,7 +1844,6 @@
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2034,7 +2024,6 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2210,7 +2199,6 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2333,7 +2321,6 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2458,7 +2445,6 @@
                 },
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "const std::string getConstStringAlloc(void)",
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2646,7 +2632,6 @@
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -2863,7 +2848,6 @@
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3078,7 +3062,6 @@
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3202,7 +3185,6 @@
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3396,7 +3378,6 @@
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3607,7 +3588,6 @@
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "const std::string & getConstStringRefAlloc(void)",
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3835,7 +3815,6 @@
                         ]
                     }
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4052,7 +4031,6 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4245,7 +4223,6 @@
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4440,7 +4417,6 @@
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4641,7 +4617,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4656,7 +4631,6 @@
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4876,7 +4850,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4891,7 +4864,6 @@
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5108,7 +5080,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -5123,7 +5094,6 @@
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -5341,7 +5311,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -5355,7 +5324,6 @@
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5570,7 +5538,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -5584,7 +5551,6 @@
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5804,7 +5770,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -5819,7 +5784,6 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6098,7 +6062,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         },
                         {
@@ -6133,7 +6096,6 @@
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6449,7 +6411,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         },
                         {
@@ -6484,7 +6445,6 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6775,7 +6735,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -6789,7 +6748,6 @@
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -7206,7 +7164,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -7217,7 +7174,6 @@
                 },
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
                 "declgen": "void explicit1(char * name +intent(in)+len+len_trim)",
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -7416,7 +7372,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -7427,7 +7382,6 @@
                 },
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len+len_trim)",
-                "generated_suffix": "cfi",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7897,7 +7851,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         },
                         {
@@ -7921,7 +7874,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -7936,7 +7888,6 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "C_extern_C": true,
                     "wrap_fortran": false,
@@ -8279,7 +8230,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -8293,7 +8243,6 @@
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "PY_array_arg": "list",
                     "wrap_fortran": false

@@ -375,7 +375,6 @@
                                                     "specifier": [
                                                         "string"
                                                     ],
-                                                    "stmts_suffix": "buf",
                                                     "typemap_name": "std::string"
                                                 }
                                             ],
@@ -391,7 +390,6 @@
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
                                         },
-                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -898,7 +896,6 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1099,7 +1096,6 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name +len(Nname)) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1227,7 +1223,6 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name +len(Nname)) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "fortran": true
@@ -2239,7 +2234,6 @@
                                                     "specifier": [
                                                         "string"
                                                     ],
-                                                    "stmts_suffix": "buf",
                                                     "typemap_name": "std::string"
                                                 }
                                             ],
@@ -2253,7 +2247,6 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
-                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -2581,7 +2574,6 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "void getName(string & SHF_rv +len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2814,7 +2806,6 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3019,7 +3010,6 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3221,7 +3211,6 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -6581,7 +6570,6 @@
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         }
                                     ],
@@ -6592,7 +6580,6 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +len_trim)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6969,7 +6956,6 @@
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         }
                                     ],
@@ -6980,7 +6966,6 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +len_trim)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7283,7 +7268,6 @@
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         },
                                         {
@@ -7310,7 +7294,6 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +len_trim, int flag +value)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true,

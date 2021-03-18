@@ -1492,7 +1492,7 @@ class GenFunctions(object):
         Futher interoperability with C.
 
         If a function requires CFI_cdesc, clone the function and set
-        arg.stmts_suffix to "cfi" to use the correct statements.  The
+        arg.metaattrs["api"] to "cfi" to use the correct statements.  The
         new function will be called by Fortran directly via the
         bind(C) interface.  The original function no longer needs to
         be wrapped by Fortran; however, it will still be wrapped by C
@@ -1586,7 +1586,6 @@ class GenFunctions(object):
 
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
-        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
         if need_buf_result:
             C_new.ast.metaattrs["api"] = generated_suffix
         fmt_func = C_new.fmtdict
@@ -1598,7 +1597,6 @@ class GenFunctions(object):
         for arg in C_new.ast.params:
             if cfi_args[arg.name]:
                 arg.metaattrs["api"] = generated_suffix
-                arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
             if arg_typemap.sgroup in ["char", "string"]:
@@ -1776,7 +1774,6 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
         if need_buf_result:
             C_new.ast.metaattrs["api"] = generated_suffix
         
@@ -1790,7 +1787,6 @@ class GenFunctions(object):
         for arg in C_new.ast.params:
             if buf_args[arg.name]:
                 arg.metaattrs["api"] = generated_suffix
-                arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:
@@ -1809,7 +1805,7 @@ class GenFunctions(object):
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", meta["intent"], sgroup, spointer, arg.stmts_suffix, specialize]
+            c_stmts = ["c", meta["intent"], sgroup, spointer, meta["api"], specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 

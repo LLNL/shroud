@@ -503,7 +503,6 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -514,7 +513,6 @@
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1109,7 +1107,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -1120,7 +1117,6 @@
                 },
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv +len_trim)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1484,7 +1480,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -1518,7 +1513,6 @@
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [

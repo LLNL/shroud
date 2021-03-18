@@ -133,7 +133,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -152,7 +151,6 @@
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +rank(1)+size)",
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -355,7 +353,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -377,7 +374,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -589,7 +585,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -640,7 +635,6 @@
                         "result": "num"
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -842,7 +836,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -881,7 +874,6 @@
                         "result": "num"
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1067,7 +1059,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1089,7 +1080,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1276,7 +1266,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1298,7 +1287,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1477,7 +1465,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1496,7 +1483,6 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +context+rank(1)+size)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1677,7 +1663,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1699,7 +1684,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1891,7 +1875,6 @@
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1914,7 +1897,6 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -2279,7 +2261,6 @@
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

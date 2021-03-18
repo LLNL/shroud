@@ -536,7 +536,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -573,7 +572,6 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [
@@ -845,7 +843,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -882,7 +879,6 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [
@@ -1627,7 +1623,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -1668,7 +1663,6 @@
                         ]
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_c": false
                 },
@@ -1862,7 +1856,6 @@
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -1903,7 +1896,6 @@
                         ]
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_c": false
                 },

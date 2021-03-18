@@ -5299,7 +5299,6 @@
                             "specifier": [
                                 "float"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "float"
                         },
                         {
@@ -5352,7 +5351,6 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5639,7 +5637,6 @@
                             "specifier": [
                                 "float"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "float"
                         },
                         {
@@ -5692,7 +5689,6 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

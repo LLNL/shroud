@@ -3233,7 +3233,6 @@
                                 },
                                 "decl": "T & at(size_type n)",
                                 "declgen": "int & at(size_type n +value)",
-                                "generated_suffix": "buf",
                                 "have_template_args": true,
                                 "options": {
                                     "F_create_generic": false
@@ -4006,7 +4005,6 @@
                                 },
                                 "decl": "T & at(size_type n)",
                                 "declgen": "double & at(size_type n +value)",
-                                "generated_suffix": "buf",
                                 "have_template_args": true,
                                 "options": {
                                     "F_create_generic": false
