@@ -105,11 +105,18 @@ arg_c_call
 ^^^^^^^^^^
 
 List of arguments to pass to C wrapper.
-This can include an expression or additional arguments if required. 
+By default the arguments of the Fortran wrapper are passed to the C wrapper.
+The list can be modified to pass additional arguments or expressions.
 
 .. code-block:: text
 
-        arg_c_call=["C_LOC({f_var})"],
+        arg_c_call=[
+             "C_LOC({f_var})"
+        ],
+        arg_c_call=[
+            "{f_var}",
+            "len({f_var}, kind=C_INT)",
+        ],
 
 declare
 ^^^^^^^

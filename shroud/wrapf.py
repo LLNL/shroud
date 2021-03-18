@@ -696,6 +696,17 @@ rv = .false.
                 append_format(arg_f_names, aname, fmt)
         return found
 
+    def add_stmt_var(self, group, lst, fmt):
+        """Add a variable fc_statements to lst.
+
+        Return True if lines where added to lst.
+        """
+        if not group:
+            return False
+        for line in group:
+            append_format(lst, line, fmt)
+        return True
+
     def add_module_from_stmts(self, stmt, modules, imports, fmt):
         """Add USE/IMPORT statements defined in stmt.
 
@@ -1903,6 +1914,7 @@ rv = .false.
                     # Generate declaration from argument.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj))
                     arg_f_names.append(fmt_arg.f_var)
+                    self.add_stmt_var(f_intent_blk.arg_c_call, arg_c_call, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(f_stmts)
