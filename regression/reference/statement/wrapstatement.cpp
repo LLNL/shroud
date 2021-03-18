@@ -76,12 +76,12 @@ const char * STMT_get_name_error_pattern(void)
 
 // ----------------------------------------
 // Function:  void getNameErrorPattern +len(get_name_length())
-// Attrs:     +intent(subroutine)
+// Attrs:     +api(buf)+intent(subroutine)
 // Requested: c_subroutine_void_scalar_buf
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)+is_result
+// Attrs:     +api(buf)+intent(out)+is_result
 // Exact:     c_function_string_&_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {

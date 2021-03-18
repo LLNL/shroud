@@ -1492,7 +1492,7 @@ class GenFunctions(object):
         Futher interoperability with C.
 
         If a function requires CFI_cdesc, clone the function and set
-        arg.stmts_suffix to "cfi" to use the correct statements.  The
+        arg.metaattrs["api"] to "cfi" to use the correct statements.  The
         new function will be called by Fortran directly via the
         bind(C) interface.  The original function no longer needs to
         be wrapped by Fortran; however, it will still be wrapped by C
@@ -1549,6 +1549,7 @@ class GenFunctions(object):
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
+        need_buf_result   = False
         has_string_result = False
 
         result_as_arg = ""  # Only applies to string functions
@@ -1561,10 +1562,12 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
@@ -1583,7 +1586,8 @@ class GenFunctions(object):
 
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
-        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
+        if need_buf_result:
+            C_new.ast.metaattrs["api"] = generated_suffix
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
 
@@ -1592,7 +1596,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             if cfi_args[arg.name]:
-                arg.stmts_suffix = generated_suffix
+                arg.metaattrs["api"] = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
             if arg_typemap.sgroup in ["char", "string"]:
@@ -1650,6 +1654,7 @@ class GenFunctions(object):
         fmt_func = node.fmtdict
 
         if node.wrap.c is False:
+#        if options.wrap_c is False:  # XXX cdesc.yaml GetScalar2
             # The user does not require a C wrapper.
             # This can be the case if the Fortran wrapper is doing all
             # the work via splicer or fstatements.
@@ -1715,6 +1720,7 @@ class GenFunctions(object):
         has_buf_arg = any(buf_args.values())
 
         # Function result.
+        need_buf_result   = False
         has_string_result = False
         has_vector_result = False
         need_cdesc_result = False
@@ -1729,19 +1735,24 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
+            need_buf_result   = True
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
+            need_buf_result   = True
             has_vector_result = True
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
+                need_buf_result   = True
                 need_cdesc_result = True
             elif attrs["dimension"]:
+                need_buf_result   = True
                 need_cdesc_result = True
 
         # Functions with these results need wrappers.
@@ -1763,17 +1774,19 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
-        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
+        if need_buf_result:
+            C_new.ast.metaattrs["api"] = generated_suffix
+        
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
 
         options = C_new.options
-        C_new.wrap.assign(c=True)
+        C_new.wrap.assign(c=node.options.wrap_c)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
             if buf_args[arg.name]:
-                arg.stmts_suffix = generated_suffix
+                arg.metaattrs["api"] = generated_suffix
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:
@@ -1792,7 +1805,7 @@ class GenFunctions(object):
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", meta["intent"], sgroup, spointer, arg.stmts_suffix, specialize]
+            c_stmts = ["c", meta["intent"], sgroup, spointer, meta["api"], specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 

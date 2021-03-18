@@ -107,15 +107,15 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_scalar_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2 +len_trim(Larg2)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, Larg1, &
@@ -222,11 +222,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
@@ -365,11 +365,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +value
@@ -391,11 +391,11 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +value
@@ -732,12 +732,12 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_subroutine_void_scalar_buf
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
@@ -811,7 +811,7 @@ contains
     ! Function:  const std::string ConcatenateStrings
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_scalar_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
@@ -819,7 +819,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
@@ -827,7 +827,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & arg2 +len_trim(Larg2)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -951,7 +951,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
@@ -1091,7 +1091,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +value
@@ -1124,7 +1124,7 @@ contains
     ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +value
@@ -1393,15 +1393,15 @@ contains
     ! Requested: f_function_string_scalar_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_function_string_scalar_buf_result-as-arg
     ! Match:     c_function_string_scalar_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Requested: f_function_string_&_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     function last_function_called() &
             result(SHT_rv)

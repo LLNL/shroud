@@ -480,11 +480,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_char_**_buf
     ! start c_accept_char_array_in_bufferify
     interface
@@ -563,11 +563,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_scalar_bufferify
@@ -605,11 +605,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_fixed_array_bufferify
@@ -653,11 +653,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -702,11 +702,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_func_array_bufferify
@@ -744,11 +744,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_const_scalar_bufferify
@@ -786,11 +786,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start c_get_ptr_to_fixed_const_array_bufferify
@@ -834,11 +834,11 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1116,7 +1116,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start c_return_int_ptr_to_scalar_bufferify
@@ -1149,7 +1149,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start c_return_int_ptr_to_fixed_array_bufferify
@@ -1182,7 +1182,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start c_return_int_ptr_to_const_scalar_bufferify
@@ -1215,7 +1215,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
@@ -1305,7 +1305,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_**_buf_pointer
     ! Match:     c_function_native_**
     ! start c_return_raw_ptr_to_int2d_bufferify
@@ -1565,10 +1565,10 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar_buf
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_buf
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
@@ -1576,7 +1576,7 @@ contains
     ! Requested: f_in_char_**_buf
     ! Match:     f_default
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_char_**_buf
     !>
     !! Return strlen of the first index as a check.
@@ -1606,7 +1606,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start get_ptr_to_scalar
@@ -1633,7 +1633,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     !>
@@ -1663,7 +1663,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1703,7 +1703,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     !>
@@ -1735,7 +1735,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start get_ptr_to_const_scalar
@@ -1762,7 +1762,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! start get_ptr_to_fixed_const_array
@@ -1789,7 +1789,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1952,7 +1952,7 @@ contains
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start return_int_ptr_to_scalar
@@ -1973,7 +1973,7 @@ contains
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start return_int_ptr_to_fixed_array
@@ -1994,7 +1994,7 @@ contains
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start return_int_ptr_to_const_scalar
@@ -2015,7 +2015,7 @@ contains
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
     ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
     ! Match:     c_function_native_*_buf
     ! start return_int_ptr_to_fixed_const_array
@@ -2060,7 +2060,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(function)
     ! Requested: f_function_native_**_buf_pointer
     ! Match:     f_function_native_**
-    ! Attrs:     +deref(pointer)+intent(function)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_**_buf_pointer
     ! Match:     c_function_native_**
     !>

@@ -2612,9 +2612,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_buf",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_buf",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -2651,12 +2651,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -2670,7 +2670,6 @@
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2747,7 +2746,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_native_scalar_buf",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -3068,13 +3067,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -3085,7 +3084,6 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int * * nitems +context+intent(out))",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -3287,6 +3285,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -3298,7 +3297,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -3312,7 +3310,6 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3564,6 +3561,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -3575,7 +3573,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -3610,7 +3607,6 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3852,6 +3848,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -3864,7 +3861,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -3878,7 +3874,6 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4079,13 +4074,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -4096,7 +4091,6 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int * * nitems +context+intent(out))",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -4297,6 +4291,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -4308,7 +4303,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -4319,7 +4313,6 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +context+dimension(10)+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4570,6 +4563,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -4581,7 +4575,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -4613,7 +4606,6 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +context+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6157,6 +6149,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -6168,7 +6161,6 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6328,6 +6320,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -6344,7 +6337,6 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6494,6 +6486,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -6505,7 +6498,6 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6667,6 +6659,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -6683,7 +6676,6 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -7155,6 +7147,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -7169,7 +7162,6 @@
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false

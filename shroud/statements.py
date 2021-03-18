@@ -1854,7 +1854,7 @@ fc_statements = [
         # Add allocatable attribute to declaration.
         # f_function_char_scalar_cfi_allocatable
         # f_function_char_*_cfi_allocatable
-        name="f_function_char_scalar/*_acfi_allocatable",
+        name="f_function_char_scalar/*_cfi_allocatable",
         need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",

@@ -60,7 +60,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Attrs:     +deref(allocatable)+intent(function)
+// Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_*_buf_allocatable
 // start STR_get_const_string_ptr_alloc_bufferify
 void STR_get_const_string_ptr_alloc_bufferify(

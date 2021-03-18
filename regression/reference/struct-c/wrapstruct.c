@@ -30,7 +30,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Function:  int passStruct2
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_buf
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
@@ -39,7 +39,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Match:     c_in_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
     int Noutbuf)
@@ -58,7 +58,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_struct_*_buf_pointer
 // Match:     c_function_struct_*
 // ----------------------------------------
@@ -73,7 +73,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Attrs:     +intent(out)
+// Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)

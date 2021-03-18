@@ -85,7 +85,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
-        ! Attrs:     +deref(allocatable)+intent(function)
+        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_buf_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
@@ -131,7 +131,7 @@ contains
     ! Function:  const std::string & LastFunctionCalled
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_buf_allocatable
     function last_function_called() &
             result(SHT_rv)

@@ -120,6 +120,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "intent": "function"
                     },
@@ -131,7 +132,6 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

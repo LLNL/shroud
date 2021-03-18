@@ -93,9 +93,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_buf",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_buf",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -127,12 +127,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -151,7 +151,6 @@
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +rank(1)+size)",
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -231,7 +230,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_native_scalar_buf",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -348,12 +347,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -375,7 +374,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -500,6 +498,12 @@
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fstatements": {
+                    "c": {
+                        "ret": [
+                            "return Darg->size;"
+                        ],
+                        "return_type": "long"
+                    },
                     "c_buf": {
                         "ret": [
                             "return Darg->size;"
@@ -575,12 +579,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -604,6 +608,12 @@
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fstatements": {
+                    "c": {
+                        "ret": [
+                            "return Darg->size;"
+                        ],
+                        "return_type": "long"
+                    },
                     "c_buf": {
                         "ret": [
                             "return Darg->size;"
@@ -625,7 +635,6 @@
                         "result": "num"
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -821,12 +830,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -865,7 +874,6 @@
                         "result": "num"
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1044,13 +1052,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1072,7 +1080,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1252,13 +1259,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "allocatable",
                                 "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1280,7 +1287,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1453,12 +1459,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1477,7 +1483,6 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +context+rank(1)+size)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1652,12 +1657,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1679,7 +1684,6 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1829,9 +1833,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_buf",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_buf",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1865,12 +1869,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
                             ],
-                            "stmts_suffix": "buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1893,7 +1897,6 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -1974,7 +1977,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_native_scalar_buf",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -2218,6 +2221,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "intent": "function"
                     },
@@ -2257,7 +2261,6 @@
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

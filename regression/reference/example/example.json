@@ -369,12 +369,12 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "string"
                                                     ],
-                                                    "stmts_suffix": "buf",
                                                     "typemap_name": "std::string"
                                                 }
                                             ],
@@ -390,7 +390,6 @@
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
                                         },
-                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -463,7 +462,7 @@
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
-                                                "stmt0": "c_ctor_shadow_scalar_buf",
+                                                "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
@@ -885,6 +884,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -896,7 +896,6 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1063,6 +1062,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1079,6 +1079,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -1095,7 +1096,6 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name +len(Nname)) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1189,6 +1189,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1205,6 +1206,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -1221,7 +1223,6 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name +len(Nname)) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "fortran": true
@@ -2227,12 +2228,12 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "string"
                                                     ],
-                                                    "stmts_suffix": "buf",
                                                     "typemap_name": "std::string"
                                                 }
                                             ],
@@ -2246,7 +2247,6 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
-                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -2319,7 +2319,7 @@
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
-                                                "stmt0": "c_ctor_shadow_scalar_buf",
+                                                "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
@@ -2540,6 +2540,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -2556,6 +2557,7 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
+                                                        "api": "buf",
                                                         "intent": "out",
                                                         "is_result": true
                                                     },
@@ -2572,7 +2574,6 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "void getName(string & SHF_rv +len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2793,6 +2794,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2804,7 +2806,6 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2997,6 +2998,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -3008,7 +3010,6 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3198,6 +3199,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -3209,7 +3211,6 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
-                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -6501,9 +6502,9 @@
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_BOOL",
-                                        "stmt0": "f_function_bool_scalar_buf",
+                                        "stmt0": "f_function_bool_scalar",
                                         "stmt1": "f_function_bool",
-                                        "stmtc0": "c_function_bool_scalar_buf",
+                                        "stmtc0": "c_function_bool_scalar",
                                         "stmtc1": "c_default"
                                     },
                                     "fmtl": {
@@ -6563,12 +6564,12 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         }
                                     ],
@@ -6579,7 +6580,6 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name +len_trim)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6661,7 +6661,7 @@
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_BOOL",
                                         "shadow_var": "SHadow_rv",
-                                        "stmt0": "c_function_bool_scalar_buf",
+                                        "stmt0": "c_function_bool_scalar",
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
@@ -6950,12 +6950,12 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         }
                                     ],
@@ -6966,7 +6966,6 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name +len_trim)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7263,12 +7262,12 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "buf",
                                                 "intent": "in"
                                             },
                                             "specifier": [
                                                 "std::string"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::string"
                                         },
                                         {
@@ -7295,7 +7294,6 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name +len_trim, int flag +value)",
-                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true,

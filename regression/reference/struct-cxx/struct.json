@@ -2247,9 +2247,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_buf",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_buf",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -2300,12 +2300,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -2319,7 +2319,6 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2422,7 +2421,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_native_scalar_buf",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -3233,6 +3232,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -3281,7 +3281,6 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3622,6 +3621,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -3673,12 +3673,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3693,7 +3693,6 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3938,6 +3937,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -3949,7 +3949,6 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

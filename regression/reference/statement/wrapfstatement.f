@@ -50,12 +50,12 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  void getNameErrorPattern +len(get_name_length())
-        ! Attrs:     +intent(subroutine)
+        ! Attrs:     +api(buf)+intent(subroutine)
         ! Requested: c_subroutine_void_scalar_buf
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +len(NSHF_rv)
-        ! Attrs:     +intent(out)+is_result
+        ! Attrs:     +api(buf)+intent(out)+is_result
         ! Exact:     c_function_string_&_buf
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
@@ -78,15 +78,15 @@ contains
     ! Requested: f_function_string_scalar_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())
-    ! Attrs:     +intent(subroutine)
+    ! Attrs:     +api(buf)+intent(subroutine)
     ! Requested: c_function_string_scalar_buf_result-as-arg
     ! Match:     c_function_string_scalar_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Requested: f_function_string_&_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)+is_result
+    ! Attrs:     +api(buf)+intent(out)+is_result
     ! Exact:     c_function_string_&_buf
     function get_name_error_pattern() &
             result(SHT_rv)

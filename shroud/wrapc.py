@@ -874,7 +874,7 @@ class Wrapc(util.WrapperMixin):
         ast = node.ast
         C_subprogram = ast.get_subprogram()
         result_typemap = ast.typemap
-        generated_suffix = node.generated_suffix
+        result_api = ast.metaattrs["api"]
 
         result_is_const = ast.const
         is_ctor = CXX_ast.is_ctor()
@@ -906,7 +906,7 @@ class Wrapc(util.WrapperMixin):
             spointer = ast.get_indirect_stmt()
             # intent will be "function" or "ctor".
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                     generated_suffix, ast.metaattrs["deref"]]
+                     result_api, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -947,7 +947,7 @@ class Wrapc(util.WrapperMixin):
                 CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
         result_blk = statements.lookup_local_stmts(
-            ["c", generated_suffix], result_blk, node)
+            ["c", result_api], result_blk, node)
 
         proto_list = []  # arguments for wrapper prototype
         proto_tail = []  # extra arguments at end of call
@@ -1074,7 +1074,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", "function", sgroup, spointer,
-                    generated_suffix, return_deref_attr,
+                    result_api, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 need_wrapper = True
@@ -1089,7 +1089,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
-                         arg.stmts_suffix, c_meta["deref"], cdesc] + specialize
+                         c_meta["api"], c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:
@@ -1217,7 +1217,7 @@ class Wrapc(util.WrapperMixin):
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = statements.compute_name(
-                [node.C_error_pattern, generated_suffix])
+                [node.C_error_pattern, result_api])
             if C_error_pattern in self.patterns:
                 need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
@@ -1311,7 +1311,7 @@ class Wrapc(util.WrapperMixin):
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_name = statements.compute_name(["c", generated_suffix])
+        splicer_name = statements.compute_name(["c", result_api])
         if splicer_name in node.splicer:
             need_wrapper = True
             C_force = node.splicer[splicer_name]

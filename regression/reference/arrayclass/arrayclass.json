@@ -668,6 +668,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -685,7 +686,6 @@
                         },
                         "decl": "double* getArray() +dimension(getSize())",
                         "declgen": "double * getArray(void) +dimension(getSize())",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -888,6 +888,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -905,7 +906,6 @@
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
                         "declgen": "double * getArrayConst(void) const +dimension(getSize())",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1107,6 +1107,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1124,7 +1125,6 @@
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
                         "declgen": "const double * getArrayC(void) +dimension(getSize())",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1329,6 +1329,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1346,7 +1347,6 @@
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
                         "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1632,6 +1632,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -1643,7 +1644,6 @@
                                     "specifier": [
                                         "double"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "double"
                                 },
                                 {
@@ -1674,7 +1674,6 @@
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
                         "declgen": "void fetchArrayPtr(double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2012,6 +2011,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2023,7 +2023,6 @@
                                     "specifier": [
                                         "double"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "double"
                                 },
                                 {
@@ -2054,7 +2053,6 @@
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
                         "declgen": "void fetchArrayRef(double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2394,6 +2392,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2405,7 +2404,6 @@
                                     "specifier": [
                                         "double"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "double"
                                 },
                                 {
@@ -2436,7 +2434,6 @@
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
                         "declgen": "void fetchArrayPtrConst(const double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2776,6 +2773,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2787,7 +2785,6 @@
                                     "specifier": [
                                         "double"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "double"
                                 },
                                 {
@@ -2818,7 +2815,6 @@
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
                         "declgen": "void fetchArrayRefConst(const double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,

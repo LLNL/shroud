@@ -549,6 +549,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -560,7 +561,6 @@
                 },
                 "decl": "int * ReturnIntPtrPointer()",
                 "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -937,6 +937,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -975,7 +976,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1275,6 +1275,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "allocatable",
                         "dimension": [
                             {
@@ -1313,7 +1314,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1610,6 +1610,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -1648,7 +1649,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2082,6 +2082,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2120,7 +2121,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2596,6 +2596,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2634,7 +2635,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },

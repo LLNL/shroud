@@ -67,7 +67,7 @@ module memdoc_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_buf_allocatable
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
@@ -106,7 +106,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Requested: f_function_string_*_buf_allocatable_library
     ! Match:     f_function_string_*_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_*_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &

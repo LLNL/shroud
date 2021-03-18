@@ -1172,9 +1172,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_scalar_cfi",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_function_native_scalar_cfi",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1207,6 +1207,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "cfi",
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
@@ -1216,7 +1217,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "cfi",
                             "typemap_name": "int"
                         },
                         {
@@ -1246,7 +1246,6 @@
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
-                "generated_suffix": "cfi",
                 "options": {
                     "F_assumed_rank_max": 2,
                     "wrap_fortran": false
@@ -1354,7 +1353,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_native_scalar_cfi",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -4743,13 +4742,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "float"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "float"
                         },
                         {
@@ -4802,7 +4801,6 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5082,13 +5080,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
                             "specifier": [
                                 "float"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "float"
                         },
                         {
@@ -5141,7 +5139,6 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

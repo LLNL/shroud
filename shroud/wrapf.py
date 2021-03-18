@@ -1144,7 +1144,6 @@ rv = .false.
         ast = node.ast
         subprogram = ast.get_subprogram()
         result_typemap = ast.typemap
-        generated_suffix = node.generated_suffix
         is_ctor = ast.is_ctor()
         is_pure = ast.attrs["pure"]
         is_static = False
@@ -1185,6 +1184,7 @@ rv = .false.
                 )
                 imports[fmt_func.F_capsule_data_type] = True
 
+        result_api = ast.metaattrs["api"]
         sintent = ast.metaattrs["intent"]
         # ctor and dtor are not valid for bind(C) interfaces.
         if sintent == "ctor":
@@ -1193,11 +1193,11 @@ rv = .false.
             sintent = "subroutine"
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
-        c_stmts = ["c", sintent, sgroup, spointer, node.generated_suffix,
+        c_stmts = ["c", sintent, sgroup, spointer, result_api,
                    ast.metaattrs["deref"]]
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
-            ["c", node.generated_suffix], c_result_blk, node)
+            ["c", result_api], c_result_blk, node)
         if options.debug:
             stmts_comments.append(
                 "! ----------------------------------------")
@@ -1254,10 +1254,10 @@ rv = .false.
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
                 c_stmts = ["c", "function", sgroup, spointer,
-                           generated_suffix, deref_attr]
+                           result_api, deref_attr]
             else:
                 c_stmts = ["c", intent, sgroup, spointer,
-                           arg.stmts_suffix, deref_attr, cdesc]
+                           meta["api"], deref_attr, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             if options.debug:
@@ -1635,7 +1635,7 @@ rv = .false.
         subprogram = ast.get_subprogram()
         result_typemap = ast.typemap
         C_subprogram = C_node.ast.get_subprogram()
-        generated_suffix = C_node.generated_suffix
+        c_result_api = C_node.ast.metaattrs["api"]
         is_ctor = ast.is_ctor()
         is_static = False
 
@@ -1671,9 +1671,9 @@ rv = .false.
                 c_stmts = ["c", sintent]
             else:
                 sintent = "function"
-                f_stmts = ["f", sintent, sgroup, spointer, generated_suffix,
+                f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
                            return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sintent, sgroup, spointer, generated_suffix,
+                c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
                            return_deref_attr]
         fmt_func.F_subprogram = subprogram
 
@@ -1685,7 +1685,7 @@ rv = .false.
 
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
-            ["c", generated_suffix], c_result_blk, node)
+            ["c", c_result_api], c_result_blk, node)
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
 
@@ -1814,14 +1814,15 @@ rv = .false.
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", "function", c_sgroup, c_spointer, generated_suffix, c_deref_attr]
-                f_stmts = ["f", "function", f_sgroup, f_spointer, generated_suffix, f_deref_attr]
+                c_stmts = ["c", "function", c_sgroup, c_spointer, c_result_api, c_deref_attr]
+                f_stmts = ["f", "function", f_sgroup, f_spointer, c_result_api, f_deref_attr]
 
             else:
-                # Pass c_arg.stmts_suffix to both Fortran and C (i.e. "buf").
+                # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                c_stmts = ["c", intent, c_sgroup, c_spointer, c_arg.stmts_suffix, f_deref_attr, cdesc]
-                f_stmts = ["f", intent, f_sgroup, f_spointer, c_arg.stmts_suffix, f_deref_attr, cdesc]
+                sapi = c_meta["api"]
+                c_stmts = ["c", intent, c_sgroup, c_spointer, sapi, f_deref_attr, cdesc]
+                f_stmts = ["f", intent, f_sgroup, f_spointer, sapi, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

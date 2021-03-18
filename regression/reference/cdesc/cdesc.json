@@ -296,9 +296,6 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "// This function should not exist"
-                    ],
-                    "c_buf": [
                         "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
@@ -463,9 +460,6 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "// This function should not exist"
-                    ],
-                    "c_buf": [
                         "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
@@ -536,12 +530,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -578,13 +572,9 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [
-                        "// This function should not exist"
-                    ],
-                    "c_buf": [
                         "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
@@ -777,9 +767,6 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "// This function should not exist"
-                    ],
-                    "c_buf": [
                         "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
@@ -850,12 +837,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -892,13 +879,9 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
-                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [
-                        "// This function should not exist"
-                    ],
-                    "c_buf": [
                         "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
@@ -1588,7 +1571,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_scalar2_0_bufferify",
+                    "F_C_call": "-F_C_name-",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_0",
@@ -1634,12 +1617,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -1680,7 +1663,6 @@
                         ]
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_c": false
                 },
@@ -1690,31 +1672,11 @@
                     ]
                 },
                 "wrap": {
-                    "c": true,
                     "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "name",
-                            "c_var_trim": "Lname",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_name",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
-                        },
                         "fmtf": {
-                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "Lname",
@@ -1730,25 +1692,7 @@
                         }
                     },
                     "value": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "value",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "value",
-                            "cxx_type": "int",
-                            "cxx_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_value",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
-                        },
                         "fmtf": {
-                            "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_intent": "OUT",
@@ -1764,17 +1708,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
-                    "C_name": "CDE_get_scalar2_0_bufferify",
-                    "C_prototype": "char * name,\t int Lname,\t int * value",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t value",
-                    "F_C_name": "c_get_scalar2_0_bufferify",
-                    "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
                     "stype": "int",
                     "underscore_name": "get_scalar2"
                 }
@@ -1869,7 +1804,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_scalar2_1_bufferify",
+                    "F_C_call": "-F_C_name-",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_1",
@@ -1915,12 +1850,12 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "std::string"
                         },
                         {
@@ -1961,7 +1896,6 @@
                         ]
                     }
                 },
-                "generated_suffix": "buf",
                 "options": {
                     "wrap_c": false
                 },
@@ -1971,31 +1905,11 @@
                     ]
                 },
                 "wrap": {
-                    "c": true,
                     "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "name",
-                            "c_var_trim": "Lname",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_name",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_name",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name",
-                            "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
-                        },
                         "fmtf": {
-                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "Lname",
@@ -2011,25 +1925,7 @@
                         }
                     },
                     "value": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "value",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "value",
-                            "cxx_type": "double",
-                            "cxx_var": "value",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "shadow_var": "SHadow_value",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
-                        },
                         "fmtf": {
-                            "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_intent": "OUT",
@@ -2045,17 +1941,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_name,\t value",
-                    "C_name": "CDE_get_scalar2_1_bufferify",
-                    "C_prototype": "char * name,\t int Lname,\t double * value",
-                    "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t value",
-                    "F_C_name": "c_get_scalar2_1_bufferify",
-                    "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
                     "stype": "double",
                     "underscore_name": "get_scalar2"
                 }

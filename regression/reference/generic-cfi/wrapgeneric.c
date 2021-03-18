@@ -22,11 +22,11 @@
 // ----------------------------------------
 // Function:  int SumValues
 // Attrs:     +intent(function)
-// Requested: c_function_native_scalar_cfi
+// Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +api(cfi)+assumed-rank+intent(in)
 // Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int nvalues +value
@@ -300,7 +300,7 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-// Attrs:     +deref(pointer)+intent(out)
+// Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // ----------------------------------------
@@ -337,7 +337,7 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-// Attrs:     +deref(pointer)+intent(out)
+// Attrs:     +api(buf)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_buf_pointer
 // Match:     c_out_native_**_buf
 // ----------------------------------------

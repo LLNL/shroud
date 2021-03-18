@@ -109,8 +109,6 @@ class ToDict(visitor.Visitor):
             for tp in node.template_arguments:
                 lst.append(self.visit(tp))
             d["template_arguments"] = lst
-        if node.stmts_suffix:
-            d["stmts_suffix"] = node.stmts_suffix
         if node.ftrim_char_in:
             d["ftrim_char_in"] = node.ftrim_char_in
         return d
@@ -334,7 +332,6 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
-                "generated_suffix",
                 "statements",
                 # #- 'CXX_subprogram', 'C_subprogram', 'F_subprogram',
                 # #- 'CXX_return_type', 'C_return_type', 'F_return_type',

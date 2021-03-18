@@ -30,7 +30,7 @@ declarations:
       XXX The non-bufferified version should not be created since
       users will not manually create a context struct.
   splicer:
-    c_buf: |
+    c: |
       switch(Dvalue->type) {
       case SH_TYPE_INT: {
         *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
@@ -50,8 +50,6 @@ declarations:
       }
       // default:
       }
-    c: |
-      // This function should not exist
   fortran_generic:
 #  # rank(0) needed for C_var_context
   - decl: (int *value+intent(out)+rank(0)+cdesc)

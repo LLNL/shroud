@@ -92,7 +92,7 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 
 // ----------------------------------------
 // Function:  double & at
-// Attrs:     +deref(pointer)+intent(function)
+// Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_native_&_buf_pointer
 // Match:     c_function_native_&
 // ----------------------------------------

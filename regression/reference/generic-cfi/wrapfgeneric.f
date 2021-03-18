@@ -216,11 +216,11 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar_cfi
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +api(cfi)+assumed-rank+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues +value
@@ -647,11 +647,11 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -682,11 +682,11 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
+    ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1238,7 +1238,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------
@@ -1284,7 +1284,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     f_out_native_**_buf_pointer
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +deref(pointer)+intent(out)
+    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_buf_pointer
     ! Match:     c_out_native_**_buf
     ! ----------------------------------------

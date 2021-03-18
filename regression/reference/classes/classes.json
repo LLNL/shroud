@@ -1040,9 +1040,9 @@
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_function_shadow_*_buf",
+                                "stmt0": "f_function_shadow_*",
                                 "stmt1": "f_function_shadow",
-                                "stmtc0": "c_function_shadow_*_buf",
+                                "stmtc0": "c_function_shadow_*",
                                 "stmtc1": "c_function_shadow"
                             }
                         }
@@ -1078,12 +1078,12 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "specifier": [
                                         "std::string"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "std::string"
                                 },
                                 {
@@ -1113,7 +1113,6 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
-                        "generated_suffix": "buf",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1225,7 +1224,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_function_shadow_*_buf",
+                                "stmt0": "c_function_shadow_*",
                                 "stmt1": "c_function_shadow"
                             },
                             "fmtf": {
@@ -1496,6 +1495,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -1510,7 +1510,6 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2124,6 +2123,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "allocatable",
                                 "intent": "getter"
                             },
@@ -2135,7 +2135,6 @@
                         },
                         "decl": "std::string getM_name()",
                         "declgen": "std::string getM_name(void) +context(cdesc)",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2271,12 +2270,12 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "setter"
                                     },
                                     "specifier": [
                                         "std::string"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "std::string"
                                 }
                             ],
@@ -2287,7 +2286,6 @@
                         },
                         "decl": "void setM_name(std::string val)",
                         "declgen": "void setM_name(std::string val +context+intent(in))",
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2650,6 +2648,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2664,7 +2663,6 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
-                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -4775,6 +4773,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -4791,6 +4790,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -4807,7 +4807,6 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
-                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true,

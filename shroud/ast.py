@@ -1477,10 +1477,6 @@ class FunctionNode(AstNode):
         self.fortran_generic = kwargs.get("fortran_generic", [])
         self.return_this = kwargs.get("return_this", False)
 
-        # Used with c_statements to find correct intent block
-        # possible values are '', 'buf'
-        self.generated_suffix = ""
-
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
 
