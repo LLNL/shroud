@@ -2498,8 +2498,6 @@ f_setter_string_scalar_buf:
   arg_c_call:
   - '{f_var}'
   - len({f_var}, kind=C_INT)
-  arg_decl:
-  - 'character(len=*), intent(IN) :: {f_var}'
   f_module:
     iso_c_binding:
     - C_INT
