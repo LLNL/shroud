@@ -74,7 +74,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T)",
                     "F_arguments": "arg",
                     "F_name_function": "vector_sum",
                     "F_name_generic": "vector_sum",
@@ -114,8 +114,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "rank": 1,
-                                "size": "Sarg"
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -150,7 +149,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1)+size)",
+                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -167,7 +166,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -178,13 +176,14 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_vector_&_buf_native",
-                            "stmt1": "c_in_vector_buf"
+                            "stmt1": "c_in_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -196,18 +195,20 @@
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
                             "stmt0": "f_in_vector_&_buf_native",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_vector_buf",
                             "stmtc0": "c_in_vector_&_buf_native",
-                            "stmtc1": "c_in_vector_buf"
+                            "stmtc1": "c_in_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
-                    "C_prototype": "const int * arg,\t long Sarg",
+                    "C_prototype": "int *arg,\t size_t arg_temp0",
                     "C_return_type": "int",
-                    "F_C_arguments": "arg,\t Sarg",
+                    "F_C_arguments": "arg,\t arg_temp0",
                     "F_C_name": "c_vector_sum_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -305,7 +306,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_bufferify",
-                    "F_arg_c_call": "Darg",
+                    "F_arg_c_call": "arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_out",
                     "F_name_generic": "vector_iota_out",
@@ -334,7 +335,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -370,7 +370,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +context+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -390,7 +390,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -401,13 +400,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -422,16 +421,17 @@
                             "stmt0": "f_out_vector_&_buf_native",
                             "stmt1": "f_out_vector",
                             "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmtc1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_prototype": "VEC_SHROUD_array *arg_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Darg",
+                    "F_C_arguments": "arg_temp0",
                     "F_C_name": "c_vector_iota_out_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out",
@@ -500,13 +500,13 @@
                 "fstatements": {
                     "c": {
                         "ret": [
-                            "return Darg->size;"
+                            "return arg_temp0->size;"
                         ],
                         "return_type": "long"
                     },
                     "c_buf": {
                         "ret": [
-                            "return Darg->size;"
+                            "return arg_temp0->size;"
                         ],
                         "return_type": "long"
                     },
@@ -535,7 +535,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_with_num_bufferify",
-                    "F_arg_c_call": "Darg",
+                    "F_arg_c_call": "arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_out_with_num",
                     "F_name_generic": "vector_iota_out_with_num",
@@ -566,7 +566,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -602,7 +601,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -610,13 +609,13 @@
                 "fstatements": {
                     "c": {
                         "ret": [
-                            "return Darg->size;"
+                            "return arg_temp0->size;"
                         ],
                         "return_type": "long"
                     },
                     "c_buf": {
                         "ret": [
-                            "return Darg->size;"
+                            "return arg_temp0->size;"
                         ],
                         "return_type": "long"
                     },
@@ -652,7 +651,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -663,13 +661,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -684,16 +682,17 @@
                             "stmt0": "f_out_vector_&_buf_native",
                             "stmt1": "f_out_vector",
                             "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmtc1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_prototype": "VEC_SHROUD_array *arg_temp0",
                     "C_return_type": "long",
-                    "F_C_arguments": "Darg",
+                    "F_C_arguments": "arg_temp0",
                     "F_C_name": "c_vector_iota_out_with_num_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -771,7 +770,7 @@
                             ]
                         },
                         "post_call": [
-                            "num = Darg%size"
+                            "num = arg_temp0%size"
                         ],
                         "result": "num"
                     }
@@ -786,7 +785,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_with_num2_bufferify",
-                    "F_arg_c_call": "Darg",
+                    "F_arg_c_call": "arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_out_with_num2",
                     "F_name_generic": "vector_iota_out_with_num2",
@@ -817,7 +816,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -853,7 +851,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -869,7 +867,7 @@
                             ]
                         },
                         "post_call": [
-                            "num = Darg%size"
+                            "num = arg_temp0%size"
                         ],
                         "result": "num"
                     }
@@ -891,7 +889,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -902,13 +899,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -923,16 +920,17 @@
                             "stmt0": "f_out_vector_&_buf_native",
                             "stmt1": "f_out_vector",
                             "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmtc1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num2_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_prototype": "VEC_SHROUD_array *arg_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Darg",
+                    "F_C_arguments": "arg_temp0",
                     "F_C_name": "c_vector_iota_out_with_num2_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_with_num2",
@@ -1009,7 +1007,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_alloc_bufferify",
-                    "F_arg_c_call": "Darg",
+                    "F_arg_c_call": "arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_out_alloc",
                     "F_name_generic": "vector_iota_out_alloc",
@@ -1038,7 +1036,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "deref": "allocatable",
                                 "intent": "out",
                                 "rank": 1
@@ -1076,7 +1073,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1097,7 +1094,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1108,13 +1104,13 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_allocatable_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -1129,16 +1125,17 @@
                             "stmt0": "f_out_vector_&_buf_allocatable_native",
                             "stmt1": "f_out_vector_allocatable",
                             "stmtc0": "c_out_vector_&_buf_allocatable_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmtc1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_alloc_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_prototype": "VEC_SHROUD_array *arg_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Darg",
+                    "F_C_arguments": "arg_temp0",
                     "F_C_name": "c_vector_iota_out_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_alloc",
@@ -1215,7 +1212,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_inout_alloc_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_inout_alloc",
                     "F_name_generic": "vector_iota_inout_alloc",
@@ -1244,11 +1241,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "deref": "allocatable",
                                 "intent": "inout",
-                                "rank": 1,
-                                "size": "Sarg"
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1283,7 +1278,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(inout)+rank(1)+size)",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1304,8 +1299,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1316,14 +1309,14 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_inout_vector_&_buf_allocatable_native",
-                            "stmt1": "c_inout_vector_buf"
+                            "stmt1": "c_inout_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -1338,16 +1331,18 @@
                             "stmt0": "f_inout_vector_&_buf_allocatable_native",
                             "stmt1": "f_inout_vector_allocatable",
                             "stmtc0": "c_inout_vector_&_buf_allocatable_native",
-                            "stmtc1": "c_inout_vector_buf"
+                            "stmtc1": "c_inout_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify",
-                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
+                    "C_prototype": "int *arg,\t size_t arg_temp0,\t VEC_SHROUD_array *arg_temp1",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg,\t Sarg,\t Darg",
+                    "F_C_arguments": "arg,\t arg_temp0,\t arg_temp1",
                     "F_C_name": "c_vector_iota_inout_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_inout_alloc",
@@ -1417,7 +1412,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_increment",
                     "F_name_generic": "vector_increment",
@@ -1446,9 +1441,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
-                                "rank": 1,
-                                "size": "Sarg"
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1482,7 +1475,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +context+rank(1)+size)",
+                "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1499,8 +1492,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1511,14 +1502,14 @@
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_inout_vector_&_buf_native",
-                            "stmt1": "c_inout_vector_buf"
+                            "stmt1": "c_inout_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "int",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -1533,16 +1524,18 @@
                             "stmt0": "f_inout_vector_&_buf_native",
                             "stmt1": "f_inout_vector",
                             "stmtc0": "c_inout_vector_&_buf_native",
-                            "stmtc1": "c_inout_vector_buf"
+                            "stmtc1": "c_inout_vector_buf",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
-                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
+                    "C_prototype": "int *arg,\t size_t arg_temp0,\t VEC_SHROUD_array *arg_temp1",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg,\t Sarg,\t Darg",
+                    "F_C_arguments": "arg,\t arg_temp0,\t arg_temp1",
                     "F_C_name": "c_vector_increment_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_increment",
@@ -1615,7 +1608,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_d_bufferify",
-                    "F_arg_c_call": "Darg",
+                    "F_arg_c_call": "arg_temp0",
                     "F_arguments": "arg",
                     "F_name_function": "vector_iota_out_d",
                     "F_name_generic": "vector_iota_out_d",
@@ -1644,7 +1637,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "Darg",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -1680,7 +1672,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -1699,7 +1691,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1710,13 +1701,13 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_context": "Darg",
                             "cxx_T": "double",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -1731,16 +1722,17 @@
                             "stmt0": "f_out_vector_&_buf_native",
                             "stmt1": "f_out_vector",
                             "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmtc1": "c_out_vector_buf",
+                            "temp0": "arg_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_d_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_prototype": "VEC_SHROUD_array *arg_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "Darg",
+                    "F_C_arguments": "arg_temp0",
                     "F_C_name": "c_vector_iota_out_d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "vector_iota_out_d",
@@ -1814,7 +1806,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_string_count_bufferify",
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)",
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t len(arg, kind=C_INT)",
                     "F_arguments": "arg",
                     "F_name_function": "vector_string_count",
                     "F_name_generic": "vector_string_count",
@@ -1855,9 +1847,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "len": "Narg",
-                                "rank": 1,
-                                "size": "Sarg"
+                                "rank": 1
                             },
                             "const": true,
                             "declarator": {
@@ -1892,7 +1882,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +rank(1))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1912,8 +1902,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
-                            "c_var_len": "Narg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1924,14 +1912,15 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_vector_&_buf_string",
-                            "stmt1": "c_in_vector_buf_string"
+                            "stmt1": "c_in_vector_buf_string",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1",
+                            "temp2": "arg_temp2"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "c_var_len": "Narg",
-                            "c_var_size": "Sarg",
                             "cxx_T": "std::string",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -1943,18 +1932,21 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
                             "stmt0": "f_in_vector_&_buf_string",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_vector_buf_string",
                             "stmtc0": "c_in_vector_&_buf_string",
-                            "stmtc1": "c_in_vector_buf_string"
+                            "stmtc1": "c_in_vector_buf_string",
+                            "temp0": "arg_temp0",
+                            "temp1": "arg_temp1",
+                            "temp2": "arg_temp2"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_string_count_bufferify",
-                    "C_prototype": "const char * arg,\t long Sarg,\t int Narg",
+                    "C_prototype": "const char *arg,\t size_t arg_temp0,\t int arg_temp1",
                     "C_return_type": "int",
-                    "F_C_arguments": "arg,\t Sarg,\t Narg",
+                    "F_C_arguments": "arg,\t arg_temp0,\t arg_temp1",
                     "F_C_name": "c_vector_string_count_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",

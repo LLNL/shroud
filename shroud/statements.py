@@ -577,7 +577,121 @@ fc_statements = [
         ntemps=1,
     ),
 
-    #####
+    ##########
+    # array
+    dict(
+        # Pass argument and size to C.
+        name="f_mixin_in_array_buf",
+        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        need_wrapper=True,
+    ),
+    dict(
+        # Pass argument and size to C.
+        name="c_mixin_in_array_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+        ],
+        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        ntemps=2,
+    ),
+
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_inout_array_buf",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{temp0}"],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        ntemps=1,
+    ),
+    dict(
+        # Pass argument and size to C.
+        # Pass array_type to C which will fill it in.
+        name="c_mixin_inout_array_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{cxx_type} *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+            "{C_array_type} *{temp1}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_arg_decl=[
+            "{f_type}, intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+            "type({F_array_type}), intent(OUT) :: {temp1}",
+        ],
+        f_import=["{F_array_type}"],
+        f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
+        ntemps=2,
+    ),
+
+    dict(
+        # Pass array_type to C which will fill it in.
+        name="f_mixin_out_array_buf",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{temp0}"],
+        ntemps=1,
+    ),
+    dict(
+        # Pass array_type to C which will fill it in.
+        name="c_mixin_out_array_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_c_arg_names=["{temp0}"],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {temp0}",
+        ],
+        f_import=["{F_array_type}"],
+        ntemps=1,
+    ),
+    
+
+    dict(
+        # Pass argument, size and len to C.
+        name="f_mixin_in_string_array_buf",
+        arg_c_call=[
+            "{f_var}",
+            "size({f_var}, kind=C_SIZE_T)",
+            "len({f_var}, kind=C_INT)"
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T", "C_INT"]),
+        need_wrapper=True,
+    ),
+    dict(
+        # Pass argument, size and len to C.
+        name="c_mixin_in_array_string_buf",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "const char *{c_var}",   # XXX c_type
+            "size_t {temp0}",
+            "int {temp1}",
+        ],
+        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+            "integer(C_INT), intent(IN), value :: {temp1}",
+        ],
+        f_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
+        ntemps=2,
+    ),
+
+    
+    ##########
     # Pass CHARACTER address and length from Fortran to C.
     dict(
         name="f_mixin_in_character_buf",
@@ -1348,19 +1462,19 @@ fc_statements = [
     # vector
     dict(
         name="c_in_vector_buf",
-        buf_args=["arg", "size"],
+        mixin=["c_mixin_in_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
             (
                 "{c_const}std::vector<{cxx_T}> "
-                "{cxx_var}({c_var}, {c_var} + {c_var_size});"
+                "{cxx_var}({c_var}, {c_var} + {temp0});"
             )
         ],
     ),
     # cxx_var is always a pointer to a vector
     dict(
         name="c_out_vector_buf",
-        buf_args=["context"],
+        mixin=["c_mixin_out_array_buf"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1369,15 +1483,15 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var}->empty()"
+            "{temp0}->cxx.addr  = {cxx_var};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_T});",
-            "{c_var_context}->size = {cxx_var}->size();",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_T});",
+            "{temp0}->size = {cxx_var}->size();",
+            "{temp0}->rank = 1;",
+            "{temp0}->shape[0] = {temp0}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1388,24 +1502,24 @@ fc_statements = [
     ),
     dict(
         name="c_inout_vector_buf",
-        buf_args=["arg", "size", "context"],
+        mixin=["c_mixin_inout_array_buf"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
-            "\t{c_var}, {c_var} + {c_var_size});"
+            "\t{c_var}, {c_var} + {temp0});"
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var}->empty()"
+            "{temp1}->cxx.addr  = {cxx_var};",
+            "{temp1}->cxx.idtor = {idtor};",
+            "{temp1}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_T});",
-            "{c_var_context}->size = {cxx_var}->size();",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{temp1}->type = {sh_type};",
+            "{temp1}->elem_len = sizeof({cxx_T});",
+            "{temp1}->size = {cxx_var}->size();",
+            "{temp1}->rank = 1;",
+            "{temp1}->shape[0] = {temp1}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1461,21 +1575,26 @@ fc_statements = [
     
     # Specialize for vector<string>.
     dict(
+        name="f_in_vector_buf_string",
+        mixin=["f_mixin_in_string_array_buf"],
+    ),
+    dict(
         name="c_in_vector_buf_string",
-        buf_args=["arg", "size", "len"],
+        mixin=["c_mixin_in_array_string_buf"],
+        ntemps=3,
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * BBB = {c_var};",
+            "{c_const}char * {temp2} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
+            "{c_temp}n = {temp0};",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "{cxx_var}.push_back("
-            "std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-            "BBB += {c_var_len};",
+            "std::string({temp2},ShroudLenTrim({temp2}, {temp1})));",
+            "{temp2} += {temp1};",
             "-}}",
             "-}}",
         ],
@@ -1552,21 +1671,27 @@ fc_statements = [
     #                    ),
     # copy into user's existing array
     dict(
+        name="f_in_vector_buf",
+        mixin=["f_mixin_in_array_buf"],
+    ),
+    dict(
         name="f_out_vector",
+        mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
         name="f_inout_vector",
+        mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1581,23 +1706,24 @@ fc_statements = [
     # copy into allocated array
     dict(
         name="f_out_vector_allocatable",
+        mixin=["f_mixin_out_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "allocate({f_var}({c_var_context}%size))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({temp0}%size))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
         name="f_inout_vector_allocatable",
+        mixin=["f_mixin_inout_array_buf"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
-        f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({c_var_context}%size))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({temp0}%size))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -1617,6 +1743,7 @@ fc_statements = [
         ],
     ),
 
+    ##########
     # Pass in a pointer to a shadow object via buf_args.
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
