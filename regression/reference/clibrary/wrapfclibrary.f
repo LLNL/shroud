@@ -335,17 +335,17 @@ module clibrary_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! start c_return_one_name_bufferify
     interface
-        subroutine c_return_one_name_bufferify(name1, Nname1) &
+        subroutine c_return_one_name_bufferify(name1, name1_temp0) &
                 bind(C, name="CLI_return_one_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
-            integer(C_INT), value, intent(IN) :: Nname1
+            integer(C_INT), value, intent(IN) :: name1_temp0
         end subroutine c_return_one_name_bufferify
     end interface
     ! end c_return_one_name_bufferify
@@ -381,23 +381,23 @@ module clibrary_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
-    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
+    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
-        subroutine c_return_two_names_bufferify(name1, Nname1, name2, &
-                Nname2) &
+        subroutine c_return_two_names_bufferify(name1, name1_temp0, &
+                name2, name2_temp0) &
                 bind(C, name="CLI_return_two_names_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
-            integer(C_INT), value, intent(IN) :: Nname1
+            integer(C_INT), value, intent(IN) :: name1_temp0
             character(kind=C_CHAR), intent(OUT) :: name2(*)
-            integer(C_INT), value, intent(IN) :: Nname2
+            integer(C_INT), value, intent(IN) :: name2_temp0
         end subroutine c_return_two_names_bufferify
     end interface
 
@@ -434,7 +434,7 @@ module clibrary_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
+    ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
@@ -444,12 +444,12 @@ module clibrary_mod
     ! Match:     c_default
     ! start c_implied_text_len_bufferify
     interface
-        subroutine c_implied_text_len_bufferify(text, Ntext, ltext) &
+        subroutine c_implied_text_len_bufferify(text, text_temp0, ltext) &
                 bind(C, name="CLI_implied_text_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: text(*)
-            integer(C_INT), value, intent(IN) :: Ntext
+            integer(C_INT), value, intent(IN) :: text_temp0
             integer(C_INT), value, intent(IN) :: ltext
         end subroutine c_implied_text_len_bufferify
     end interface
@@ -600,16 +600,16 @@ module clibrary_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
-        subroutine c_bind_c2_bufferify(outbuf, Noutbuf) &
+        subroutine c_bind_c2_bufferify(outbuf, outbuf_temp0) &
                 bind(C, name="CLI_bind_c2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
+            integer(C_INT), value, intent(IN) :: outbuf_temp0
         end subroutine c_bind_c2_bufferify
     end interface
 
@@ -721,18 +721,19 @@ module clibrary_mod
     ! Requested: c_in_void_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
-        function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
+        function c_pass_assumed_type_buf_bufferify(arg, outbuf, &
+                outbuf_temp0) &
                 result(SHT_rv) &
                 bind(C, name="CLI_pass_assumed_type_buf_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             type(*) :: arg
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
+            integer(C_INT), value, intent(IN) :: outbuf_temp0
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
     end interface
@@ -884,12 +885,12 @@ module clibrary_mod
     ! Requested: c_in_void_scalar
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
         subroutine c_callback3_bufferify(type, in, incr, outbuf, &
-                Noutbuf) &
+                outbuf_temp0) &
                 bind(C, name="CLI_callback3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: callback3_incr
@@ -898,7 +899,7 @@ module clibrary_mod
             type(*) :: in
             procedure(callback3_incr) :: incr
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
+            integer(C_INT), value, intent(IN) :: outbuf_temp0
         end subroutine c_callback3_bufferify
     end interface
 
@@ -1071,9 +1072,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -1103,17 +1102,13 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -1143,9 +1138,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -1279,9 +1272,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -1309,9 +1300,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -1430,9 +1419,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>

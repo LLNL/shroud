@@ -72,8 +72,8 @@ int STR_pass_struct1(const STR_cstruct1 * arg);
 
 int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf);
 
-int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
-    int Noutbuf);
+int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
+    int outbuf_temp0);
 
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg);
 
@@ -90,7 +90,7 @@ STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d);
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf);
 
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
-    char * outbuf, int Noutbuf);
+    char *outbuf, int outbuf_temp0);
 
 STR_cstruct_list * STR_get_global_struct_list(void);
 

@@ -545,8 +545,7 @@
                         {
                             "attrs": {
                                 "charlen": "40",
-                                "intent": "out",
-                                "len": "Ndest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -591,7 +590,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out)+len, const char * src)",
+                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
@@ -612,7 +611,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -622,22 +620,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_dest",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf"
+                            "stmt1": "c_out_char_*_buf",
+                            "temp0": "dest_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc1": "c_out_char_*_buf",
+                            "temp0": "dest_temp0"
                         }
                     },
                     "src": {
@@ -673,9 +672,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
                     "C_name": "STR_pass_char_ptr_bufferify",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
+                    "C_prototype": "char *dest,\t int dest_temp0,\t const char * src",
                     "C_return_type": "void",
-                    "F_C_arguments": "dest,\t Ndest,\t src",
+                    "F_C_arguments": "dest,\t dest_temp0,\t src",
                     "F_C_name": "c_pass_char_ptr_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtr",
@@ -6993,7 +6992,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf"
+                            "stmt1": "c_out_char_*_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -7006,18 +7006,19 @@
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc1": "c_out_char_*_buf",
+                            "temp0": "name_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name",
                     "C_name": "STR_explicit2_bufferify",
-                    "C_prototype": "char * name,\t int AAtrim",
+                    "C_prototype": "char *name,\t int name_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t AAtrim",
+                    "F_C_arguments": "name,\t name_temp0",
                     "F_C_name": "c_explicit2_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "explicit2",
@@ -7414,8 +7415,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Ndest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -7460,7 +7460,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out)+len, const char * src)",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
@@ -7482,7 +7482,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -7492,22 +7491,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_dest",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf"
+                            "stmt1": "c_out_char_*_buf",
+                            "temp0": "dest_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc1": "c_out_char_*_buf",
+                            "temp0": "dest_temp0"
                         }
                     },
                     "src": {
@@ -7543,9 +7543,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
                     "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
+                    "C_prototype": "char *dest,\t int dest_temp0,\t const char * src",
                     "C_return_type": "void",
-                    "F_C_arguments": "dest,\t Ndest,\t src",
+                    "F_C_arguments": "dest,\t dest_temp0,\t src",
                     "F_C_name": "c_cpass_char_ptr_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "CpassCharPtr",

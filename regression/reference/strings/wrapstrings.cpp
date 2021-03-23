@@ -203,7 +203,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
+// Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // ----------------------------------------
@@ -212,12 +212,12 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Requested: c_in_char_*
 // Match:     c_default
 // start STR_pass_char_ptr_bufferify
-void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
+void STR_pass_char_ptr_bufferify(char *dest, int dest_temp0,
     const char * src)
 {
     // splicer begin function.pass_char_ptr_bufferify
     passCharPtr(dest, src);
-    ShroudStrBlankFill(dest, Ndest);
+    ShroudStrBlankFill(dest, dest_temp0);
     // splicer end function.pass_char_ptr_bufferify
 }
 // end STR_pass_char_ptr_bufferify
@@ -1337,11 +1337,11 @@ void STR_explicit2(char * name)
 // Argument:  char * name +intent(out)+len(AAtrim)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-void STR_explicit2_bufferify(char * name, int AAtrim)
+void STR_explicit2_bufferify(char *name, int name_temp0)
 {
     // splicer begin function.explicit2_bufferify
     explicit2(name);
-    ShroudStrBlankFill(name, AAtrim);
+    ShroudStrBlankFill(name, name_temp0);
     // splicer end function.explicit2_bufferify
 }
 
@@ -1357,7 +1357,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * dest +intent(out)+len(Ndest)
+// Argument:  char * dest +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // ----------------------------------------
@@ -1365,12 +1365,12 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // Attrs:     +intent(in)
 // Requested: c_in_char_*
 // Match:     c_default
-void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
+void STR_cpass_char_ptr_bufferify(char *dest, int dest_temp0,
     const char * src)
 {
     // splicer begin function.cpass_char_ptr_bufferify
     CpassCharPtr(dest, src);
-    ShroudStrBlankFill(dest, Ndest);
+    ShroudStrBlankFill(dest, dest_temp0);
     // splicer end function.cpass_char_ptr_bufferify
 }
 

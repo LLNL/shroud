@@ -28,21 +28,22 @@ void CLI_function4a_bufferify(char *SHC_rv, int SHC_rv_temp0,
 
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
-void CLI_return_one_name_bufferify(char * name1, int Nname1);
+void CLI_return_one_name_bufferify(char *name1, int name1_temp0);
 
-void CLI_return_two_names_bufferify(char * name1, int Nname1,
-    char * name2, int Nname2);
+void CLI_return_two_names_bufferify(char *name1, int name1_temp0,
+    char *name2, int name2_temp0);
 
-void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext);
+void CLI_implied_text_len_bufferify(char *text, int text_temp0,
+    int ltext);
 
-void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf);
+void CLI_bind_c2_bufferify(char *outbuf, int outbuf_temp0);
 
-int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
-    int Noutbuf);
+int CLI_pass_assumed_type_buf_bufferify(void * arg, char *outbuf,
+    int outbuf_temp0);
 
 void CLI_callback1a(int type, void ( * incr)(void));
 
 void CLI_callback3_bufferify(const char * type, void * in,
-    void ( * incr)(int *), char * outbuf, int Noutbuf);
+    void ( * incr)(int *), char *outbuf, int outbuf_temp0);
 
 #endif  // WRAPCLIBRARY_H

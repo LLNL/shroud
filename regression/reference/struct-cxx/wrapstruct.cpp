@@ -115,17 +115,17 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 // ----------------------------------------
-// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
-    int Noutbuf)
+int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
+    int outbuf_temp0)
 {
     // splicer begin function.pass_struct2_bufferify
     const Cstruct1 * SHCXX_s1 = static_cast<const Cstruct1 *>
         (static_cast<const void *>(s1));
     int SHC_rv = passStruct2(SHCXX_s1, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
+    ShroudStrBlankFill(outbuf, outbuf_temp0);
     return SHC_rv;
     // splicer end function.pass_struct2_bufferify
 }
@@ -340,15 +340,15 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
-    char * outbuf, int Noutbuf)
+    char *outbuf, int outbuf_temp0)
 {
     // splicer begin function.return_struct_ptr2_bufferify
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
+    ShroudStrBlankFill(outbuf, outbuf_temp0);
     STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
         static_cast<void *>(SHCXX_rv));
     return SHC_rv;

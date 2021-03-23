@@ -1160,11 +1160,17 @@ fc_statements = [
         ],
     ),
     dict(
+        name="f_out_char_*_buf",
+        mixin=["f_mixin_in_character_buf"],
+        need_wrapper=True,
+    ),
+    dict(
         name="c_out_char_*_buf",
-        buf_args=["arg", "len"],
+        mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrBlankFill",
         post_call=[
-            "ShroudStrBlankFill({c_var}, {c_var_len});"
+            "ShroudStrBlankFill({c_var}, {temp0});"
+            # XXX temp0 -> c_var_len
         ],
     ),
     dict(

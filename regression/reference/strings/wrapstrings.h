@@ -36,7 +36,7 @@ char STR_return_char(void);
 
 void STR_pass_char_ptr(char * dest, const char * src);
 
-void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
+void STR_pass_char_ptr_bufferify(char *dest, int dest_temp0,
     const char * src);
 
 void STR_pass_char_ptr_in_out(char * s);
@@ -159,9 +159,9 @@ void STR_explicit1(char * name);
 
 void STR_explicit2(char * name);
 
-void STR_explicit2_bufferify(char * name, int AAtrim);
+void STR_explicit2_bufferify(char *name, int name_temp0);
 
-void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
+void STR_cpass_char_ptr_bufferify(char *dest, int dest_temp0,
     const char * src);
 
 void STR_post_declare(int * count, char * name);

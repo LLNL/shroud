@@ -267,6 +267,9 @@ root
           buf -- f_mixin_out_character_buf
     out
       bool -- f_out_bool
+      char
+        *
+          buf -- f_out_char_*_buf
       native
         *
           allocatable -- f_out_native_*_allocatable
@@ -1597,13 +1600,26 @@ c_mixin_out_character_buf:
   owner: library
 c_out_char_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrBlankFill
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_out_char_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - ShroudStrBlankFill({c_var}, {c_var_len});
+  - ShroudStrBlankFill({c_var}, {temp0});
 c_out_char_*_cfi:
   buf_args:
   - arg_decl
@@ -2490,6 +2506,15 @@ f_out_bool:
   name: f_out_bool
   post_call:
   - '{f_var} = {c_var}  ! coerce to logical'
+f_out_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_out_char_*_buf
+  need_wrapper: true
 f_out_native_*&_buf_pointer:
   arg_c_call:
   - '{temp0}'

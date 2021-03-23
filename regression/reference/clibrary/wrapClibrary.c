@@ -162,15 +162,15 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // start CLI_return_one_name_bufferify
-void CLI_return_one_name_bufferify(char * name1, int Nname1)
+void CLI_return_one_name_bufferify(char *name1, int name1_temp0)
 {
     // splicer begin function.return_one_name_bufferify
     returnOneName(name1);
-    ShroudStrBlankFill(name1, Nname1);
+    ShroudStrBlankFill(name1, name1_temp0);
     // splicer end function.return_one_name_bufferify
 }
 // end CLI_return_one_name_bufferify
@@ -187,20 +187,20 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
+// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // ----------------------------------------
-// Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
+// Argument:  char * name2 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-void CLI_return_two_names_bufferify(char * name1, int Nname1,
-    char * name2, int Nname2)
+void CLI_return_two_names_bufferify(char *name1, int name1_temp0,
+    char *name2, int name2_temp0)
 {
     // splicer begin function.return_two_names_bufferify
     returnTwoNames(name1, name2);
-    ShroudStrBlankFill(name1, Nname1);
-    ShroudStrBlankFill(name2, Nname2);
+    ShroudStrBlankFill(name1, name1_temp0);
+    ShroudStrBlankFill(name2, name2_temp0);
     // splicer end function.return_two_names_bufferify
 }
 
@@ -213,7 +213,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
+// Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // ----------------------------------------
@@ -222,11 +222,12 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // Requested: c_in_native_scalar
 // Match:     c_default
 // start CLI_implied_text_len_bufferify
-void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
+void CLI_implied_text_len_bufferify(char *text, int text_temp0,
+    int ltext)
 {
     // splicer begin function.implied_text_len_bufferify
     ImpliedTextLen(text, ltext);
-    ShroudStrBlankFill(text, Ntext);
+    ShroudStrBlankFill(text, text_temp0);
     // splicer end function.implied_text_len_bufferify
 }
 // end CLI_implied_text_len_bufferify
@@ -241,14 +242,14 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * outbuf +intent(out)+len(Noutbuf)
+// Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
+void CLI_bind_c2_bufferify(char *outbuf, int outbuf_temp0)
 {
     // splicer begin function.bind_c2_bufferify
     bindC2(outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
+    ShroudStrBlankFill(outbuf, outbuf_temp0);
     // splicer end function.bind_c2_bufferify
 }
 
@@ -270,15 +271,15 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Requested: c_in_void_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * outbuf +intent(out)+len(Noutbuf)
+// Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
-    int Noutbuf)
+int CLI_pass_assumed_type_buf_bufferify(void * arg, char *outbuf,
+    int outbuf_temp0)
 {
     // splicer begin function.pass_assumed_type_buf_bufferify
     int SHC_rv = passAssumedTypeBuf(arg, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
+    ShroudStrBlankFill(outbuf, outbuf_temp0);
     return SHC_rv;
     // splicer end function.pass_assumed_type_buf_bufferify
 }
@@ -336,14 +337,14 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // Requested: c_in_void_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * outbuf +intent(out)+len(Noutbuf)
+// Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 void CLI_callback3_bufferify(const char * type, void * in,
-    void ( * incr)(int *), char * outbuf, int Noutbuf)
+    void ( * incr)(int *), char *outbuf, int outbuf_temp0)
 {
     // splicer begin function.callback3_bufferify
     callback3(type, in, incr, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
+    ShroudStrBlankFill(outbuf, outbuf_temp0);
     // splicer end function.callback3_bufferify
 }

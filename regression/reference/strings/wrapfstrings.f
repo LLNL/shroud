@@ -131,7 +131,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
+    ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
@@ -141,12 +141,12 @@ module strings_mod
     ! Match:     c_default
     ! start c_pass_char_ptr_bufferify
     interface
-        subroutine c_pass_char_ptr_bufferify(dest, Ndest, src) &
+        subroutine c_pass_char_ptr_bufferify(dest, dest_temp0, src) &
                 bind(C, name="STR_pass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: Ndest
+            integer(C_INT), value, intent(IN) :: dest_temp0
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_pass_char_ptr_bufferify
     end interface
@@ -1066,12 +1066,12 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
-        subroutine c_explicit2_bufferify(name, AAtrim) &
+        subroutine c_explicit2_bufferify(name, name_temp0) &
                 bind(C, name="STR_explicit2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: AAtrim
+            integer(C_INT), value, intent(IN) :: name_temp0
         end subroutine c_explicit2_bufferify
     end interface
 
@@ -1138,7 +1138,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)+len(Ndest)
+    ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
@@ -1147,12 +1147,12 @@ module strings_mod
     ! Requested: c_in_char_*
     ! Match:     c_default
     interface
-        subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src) &
+        subroutine c_cpass_char_ptr_bufferify(dest, dest_temp0, src) &
                 bind(C, name="STR_cpass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: Ndest
+            integer(C_INT), value, intent(IN) :: dest_temp0
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_cpass_char_ptr_bufferify
     end interface
@@ -1260,9 +1260,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
@@ -2020,8 +2018,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     subroutine explicit2(name)
@@ -2042,9 +2039,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * dest +intent(out)+len(Ndest)
+    ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     !>
