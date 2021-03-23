@@ -1556,7 +1556,6 @@ class GenFunctions(object):
 
         # Function result.
         need_buf_result   = False
-        has_string_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1569,17 +1568,15 @@ class GenFunctions(object):
             pass
         elif result_typemap.sgroup == "string":
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
 
-        if not (has_cfi_arg or
-                has_string_result):
+        if not (need_buf_result or
+                has_cfi_arg):
             return False
 
         options.wrap_fortran = False
@@ -1607,7 +1604,7 @@ class GenFunctions(object):
             arg_typemap = arg.typemap
 
         ast = C_new.ast
-        if has_string_result:
+        if True: # preserve to avoid changing indention for now.
             f_attrs = node.ast.attrs  # Fortran function attributes
             f_meta = node.ast.metaattrs  # Fortran function attributes
             if result_as_arg:
@@ -1719,9 +1716,6 @@ class GenFunctions(object):
 
         # Function result.
         need_buf_result   = False
-        has_string_result = False
-        has_vector_result = False
-        need_cdesc_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1734,29 +1728,22 @@ class GenFunctions(object):
             pass
         elif result_typemap.sgroup == "string":
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
             need_buf_result   = True
-            has_vector_result = True
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 need_buf_result   = True
-                need_cdesc_result = True
             elif attrs["dimension"]:
                 need_buf_result   = True
-                need_cdesc_result = True
 
         # Functions with these results need wrappers.
-        if not (has_string_result or
-                has_vector_result or
-                need_cdesc_result or
+        if not (need_buf_result or
                 has_buf_arg):
             return
 
@@ -1808,7 +1795,7 @@ class GenFunctions(object):
             statements.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
-        if has_string_result:
+        if True: # preserve to avoid changing indention for now.
             # Add additional argument to hold result.
             # This will allocate a new character variable to hold the
             # results of the C++ function.
