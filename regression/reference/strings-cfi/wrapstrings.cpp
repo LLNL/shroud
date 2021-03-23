@@ -581,7 +581,7 @@ void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
@@ -605,7 +605,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------

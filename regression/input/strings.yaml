@@ -140,7 +140,7 @@ declarations:
   doxygen:
     brief: return a 'const string&' as argument
     description: |
-      Pass an additional argument which wil be used as the return value.
+      Pass an additional argument which will be used as the return value.
       The length of the output variable is declared by the caller.
   format:
     F_string_result_as_arg: output

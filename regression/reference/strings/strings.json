@@ -2785,7 +2785,7 @@
                 "declgen": "const string & getConstStringRefAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
-                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
+                    "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "options": {},
                 "wrap": {
@@ -2895,7 +2895,7 @@
                 "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
-                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
+                    "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "options": {},
                 "wrap": {
@@ -3019,7 +3019,7 @@
                 "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
-                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
+                    "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "options": {},
                 "wrap": {

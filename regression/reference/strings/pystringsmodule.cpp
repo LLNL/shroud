@@ -529,7 +529,7 @@ static char PY_getConstStringRefAsArg__doc__[] =
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 static PyObject *
