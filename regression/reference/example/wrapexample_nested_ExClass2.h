@@ -47,8 +47,8 @@ const char * AA_example_nested_ExClass2_get_name(
     const AA_example_nested_ExClass2 * self);
 
 void AA_example_nested_ExClass2_get_name_bufferify(
-    const AA_example_nested_ExClass2 * self, char * SHF_rv,
-    int NSHF_rv);
+    const AA_example_nested_ExClass2 * self, char *SHC_rv,
+    int SHC_rv_temp0);
 
 const char * AA_example_nested_ExClass2_get_name2(
     AA_example_nested_ExClass2 * self);

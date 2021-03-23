@@ -49,20 +49,21 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_char_ptr2(void);
 
-void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_char_ptr2_bufferify(char *SHC_rv, int SHC_rv_temp0);
 
 const char * STR_get_char_ptr3(void);
 
-void STR_get_char_ptr3_bufferify(char * output, int Noutput);
+void STR_get_char_ptr3_bufferify(char *output, int output_temp0);
 
 const char * STR_get_char_ptr4(void);
 
 void STR_get_const_string_result_bufferify(
     STR_SHROUD_array *SHC_rv_temp0);
 
-void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_len_bufferify(char *SHC_rv, int SHC_rv_temp0);
 
-void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);
+void STR_get_const_string_as_arg_bufferify(char *output,
+    int output_temp0);
 
 void STR_get_const_string_alloc_bufferify(
     STR_SHROUD_array *SHC_rv_temp0);
@@ -74,17 +75,18 @@ void STR_get_const_string_ref_pure_bufferify(
 
 const char * STR_get_const_string_ref_len(void);
 
-void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ref_len_bufferify(char *SHC_rv,
+    int SHC_rv_temp0);
 
 const char * STR_get_const_string_ref_as_arg(void);
 
-void STR_get_const_string_ref_as_arg_bufferify(char * output,
-    int Noutput);
+void STR_get_const_string_ref_as_arg_bufferify(char *output,
+    int output_temp0);
 
 const char * STR_get_const_string_ref_len_empty(void);
 
-void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
-    int NSHF_rv);
+void STR_get_const_string_ref_len_empty_bufferify(char *SHC_rv,
+    int SHC_rv_temp0);
 
 const char * STR_get_const_string_ref_alloc(void);
 
@@ -93,7 +95,8 @@ void STR_get_const_string_ref_alloc_bufferify(
 
 const char * STR_get_const_string_ptr_len(void);
 
-void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_const_string_ptr_len_bufferify(char *SHC_rv,
+    int SHC_rv_temp0);
 
 const char * STR_get_const_string_ptr_alloc(void);
 

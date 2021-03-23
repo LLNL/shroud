@@ -323,14 +323,14 @@ const char * TUT_last_function_called(void)
     // splicer end function.last_function_called
 }
 
-void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
+void TUT_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.last_function_called_bufferify

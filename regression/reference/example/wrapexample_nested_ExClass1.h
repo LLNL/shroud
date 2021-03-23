@@ -58,7 +58,8 @@ const char * AA_example_nested_ExClass1_get_name_arg(
     const AA_example_nested_ExClass1 * self);
 
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
-    const AA_example_nested_ExClass1 * self, char * name, int Nname);
+    const AA_example_nested_ExClass1 * self, char *name,
+    int name_temp0);
 
 int AA_example_nested_ExClass1_get_value_from_int(
     AA_example_nested_ExClass1 * self, int value);

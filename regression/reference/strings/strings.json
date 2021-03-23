@@ -1124,7 +1124,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -1163,26 +1163,25 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getCharPtr2",
-                    "cxx_rv_decl": "const char * SHC_rv",
+                    "cxx_rv_decl": "const char * SHCXX_rv",
                     "function_name": "getCharPtr2",
                     "underscore_name": "get_char_ptr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
-                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
                         "cxx_type": "char",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_char_*_result-as-arg",
+                        "stmt0": "c_function_char_*_copy",
                         "stmt1": "c_function_char_*"
                     },
                     "fmtf": {
@@ -1195,10 +1194,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_char_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_char_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_char_scalar_buf"
+                        "stmt0": "f_function_char_*_buf_copy",
+                        "stmt1": "f_function_char_*_buf",
+                        "stmtc0": "c_function_char_*_buf_copy",
+                        "stmtc1": "c_function_char_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1228,45 +1227,28 @@
                     "attrs": {
                         "len": "30"
                     },
+                    "const": true,
                     "declarator": {
                         "name": "getCharPtr2",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "char"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "void getCharPtr2(char * SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const char * getCharPtr2(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1277,70 +1259,42 @@
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_type": "char",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_char_*_buf",
-                            "stmt1": "c_function_char_*_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_char_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_char_*_buf",
-                            "stmtc1": "c_function_char_*_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr2_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_get_char_ptr2_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "const char * SHC_rv",
+                    "cxx_rv_decl": "const char * SHCXX_rv",
                     "function_name": "getCharPtr2",
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_char_ptr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_type": "void",
-                        "cxx_var": "SHC_rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_char_*_buf_copy",
+                        "stmt1": "c_function_char_*_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -1357,7 +1311,6 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
                         "intent": "function"
                     },
                     "params": [],
@@ -1406,7 +1359,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_char_*_result-as-arg",
+                        "stmt0": "c_function_char_*",
                         "stmt1": "c_function_char_*"
                     },
                     "fmtf": {
@@ -1450,9 +1403,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1463,6 +1413,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -1478,7 +1429,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +len(Noutput))",
+                "declgen": "void getCharPtr3(char * output)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1497,7 +1448,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_rv",
@@ -1506,31 +1456,32 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_function_char_*_buf",
-                            "stmt1": "c_function_char_*_buf"
+                            "stmt0": "c_function_char_*_buf_result",
+                            "stmt1": "c_function_char_*_buf",
+                            "temp0": "output_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_char_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_char_*_buf",
-                            "stmtc1": "c_function_char_*_buf"
+                            "stmt0": "f_function_char_*_buf_result",
+                            "stmt1": "f_function_char_*_buf",
+                            "stmtc0": "c_function_char_*_buf_result",
+                            "stmtc1": "c_function_char_*_buf",
+                            "temp0": "output_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr3_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_prototype": "char *output,\t int output_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
+                    "F_C_arguments": "output,\t output_temp0",
                     "F_C_name": "c_get_char_ptr3_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
@@ -1576,9 +1527,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1589,6 +1537,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -1604,7 +1553,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +len(Noutput))",
+                "declgen": "void getCharPtr3(char * output)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1892,7 +1841,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -1934,9 +1883,9 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
+                        "stmt0": "f_function_string_scalar_buf_copy",
+                        "stmt1": "f_function_string_scalar_buf",
+                        "stmtc0": "c_function_string_scalar_buf_copy",
                         "stmtc1": "c_function_string_scalar_buf"
                     },
                     "fmtpy": {
@@ -1967,45 +1916,24 @@
                     "attrs": {
                         "len": 30
                     },
+                    "const": true,
                     "declarator": {
                         "name": "getConstStringLen",
                         "pointer": []
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringLen() +len=30",
-                "declgen": "void getConstStringLen(string * SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const string getConstStringLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2014,49 +1942,13 @@
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_scalar_buf",
-                            "stmt1": "c_function_string_scalar_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_*_buf",
-                            "stmtc1": "c_function_string_*_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_get_const_string_len_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringLen",
@@ -2065,19 +1957,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_scalar_buf_copy",
+                        "stmt1": "c_function_string_scalar_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -2091,7 +1992,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
                         "intent": "function"
                     },
                     "params": [],
@@ -2151,9 +2051,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2164,6 +2061,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -2179,7 +2077,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +len(Noutput))",
+                "declgen": "void getConstStringAsArg(string * output)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2196,7 +2094,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2205,31 +2102,32 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_function_string_scalar_buf",
-                            "stmt1": "c_function_string_scalar_buf"
+                            "stmt0": "c_function_string_scalar_buf_result",
+                            "stmt1": "c_function_string_scalar_buf",
+                            "temp0": "output_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_*_buf",
-                            "stmtc1": "c_function_string_*_buf"
+                            "stmt0": "f_function_string_*_buf_result",
+                            "stmt1": "f_function_string_*_buf",
+                            "stmtc0": "c_function_string_*_buf_result",
+                            "stmtc1": "c_function_string_*_buf",
+                            "temp0": "output_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_as_arg_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_prototype": "char *output,\t int output_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
+                    "F_C_arguments": "output,\t output_temp0",
                     "F_C_name": "c_get_const_string_as_arg_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
@@ -2276,9 +2174,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2289,6 +2184,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -2304,7 +2200,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +len(Noutput))",
+                "declgen": "void getConstStringAsArg(string * output)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2687,7 +2583,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -2745,7 +2641,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_&_result-as-arg",
+                        "stmt0": "c_function_string_&_copy",
                         "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
@@ -2758,10 +2654,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_string_scalar_buf"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -2792,45 +2688,28 @@
                     "attrs": {
                         "len": 30
                     },
+                    "const": true,
                     "declarator": {
                         "name": "getConstStringRefLen",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "void getConstStringRefLen(string & SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const string & getConstStringRefLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
@@ -2840,49 +2719,13 @@
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_&_buf",
-                            "stmt1": "c_function_string_&_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_&_buf",
-                            "stmtc1": "c_function_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_get_const_string_ref_len_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen",
@@ -2891,19 +2734,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -2921,7 +2773,6 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
                         "intent": "function"
                     },
                     "params": [],
@@ -2970,7 +2821,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_&_result-as-arg",
+                        "stmt0": "c_function_string_&",
                         "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
@@ -3015,9 +2866,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3028,6 +2876,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -3043,7 +2892,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +len(Noutput))",
+                "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3061,7 +2910,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -3070,31 +2918,32 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_function_string_&_buf",
-                            "stmt1": "c_function_string_&_buf"
+                            "stmt0": "c_function_string_&_buf_result",
+                            "stmt1": "c_function_string_&_buf",
+                            "temp0": "output_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_&_buf",
-                            "stmtc1": "c_function_string_&_buf"
+                            "stmt0": "f_function_string_&_buf_result",
+                            "stmt1": "f_function_string_&_buf",
+                            "stmtc0": "c_function_string_&_buf_result",
+                            "stmtc1": "c_function_string_&_buf",
+                            "temp0": "output_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_as_arg_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_prototype": "char *output,\t int output_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
+                    "F_C_arguments": "output,\t output_temp0",
                     "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
@@ -3141,9 +2990,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Noutput"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3154,6 +3000,7 @@
                             },
                             "metaattrs": {
                                 "api": "buf",
+                                "deref": "result",
                                 "intent": "out",
                                 "is_result": true
                             },
@@ -3169,7 +3016,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +len(Noutput))",
+                "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3217,7 +3064,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -3274,7 +3121,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_&_result-as-arg",
+                        "stmt0": "c_function_string_&_copy",
                         "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
@@ -3287,10 +3134,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_string_scalar_buf"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3321,45 +3168,28 @@
                     "attrs": {
                         "len": 30
                     },
+                    "const": true,
                     "declarator": {
                         "name": "getConstStringRefLenEmpty",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const string & getConstStringRefLenEmpty(void) +len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
@@ -3368,49 +3198,13 @@
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_&_buf",
-                            "stmt1": "c_function_string_&_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_&_buf",
-                            "stmtc1": "c_function_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_empty_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty",
@@ -3419,19 +3213,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -3636,7 +3439,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -3701,7 +3504,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_*_result-as-arg",
+                        "stmt0": "c_function_string_*_copy",
                         "stmt1": "c_function_string_*"
                     },
                     "fmtf": {
@@ -3714,10 +3517,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_string_scalar_buf"
+                        "stmt0": "f_function_string_*_buf_copy",
+                        "stmt1": "f_function_string_*_buf",
+                        "stmtc0": "c_function_string_*_buf_copy",
+                        "stmtc1": "c_function_string_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3747,45 +3550,28 @@
                     "attrs": {
                         "len": 30
                     },
+                    "const": true,
                     "declarator": {
                         "name": "getConstStringPtrLen",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "void getConstStringPtrLen(string * SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const string * getConstStringPtrLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
@@ -3802,49 +3588,13 @@
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_*_buf",
-                            "stmt1": "c_function_string_*_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_*_buf",
-                            "stmtc1": "c_function_string_*_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_get_const_string_ptr_len_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
@@ -3853,19 +3603,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": 30,
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_*_buf_copy",
+                        "stmt1": "c_function_string_*_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },

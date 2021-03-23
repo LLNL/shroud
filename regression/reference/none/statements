@@ -164,9 +164,9 @@ root
       bool -- f_function_bool
       char
         *
-          buf
+          buf -- f_function_char_*_buf
             allocatable -- f_function_char_scalar/*_buf_allocatable
-          cfi
+          cfi -- f_function_char_*_cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
           raw -- f_function_char_*_raw
         scalar
@@ -190,19 +190,19 @@ root
       shadow -- f_function_shadow
       string
         &
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         *
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         scalar
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
       struct
         * -- f_function_struct_*
@@ -318,13 +318,30 @@ c_function_char_*:
   return_cptr: true
 c_function_char_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  call:
+  - "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}{CXX_template}(\t\
+    {C_call_list});"
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_char_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var},\t -1);"
+  return_type: void
 c_function_char_*_buf_allocatable:
   buf_args:
   - arg_decl
@@ -362,6 +379,7 @@ c_function_char_*_cfi:
   post_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var},\t -1);"
+  return_type: void
 c_function_char_*_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -510,17 +528,31 @@ c_function_string_&:
   return_cptr: true
 c_function_string_&_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_&_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_&_buf_allocatable:
   buf_args:
   - arg_decl
@@ -557,6 +589,7 @@ c_function_string_&_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_&_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -588,17 +621,31 @@ c_function_string_*:
   return_cptr: true
 c_function_string_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_*_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_*_buf_allocatable:
   buf_args:
   - arg_decl
@@ -635,6 +682,7 @@ c_function_string_*_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_*_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -666,17 +714,31 @@ c_function_string_scalar:
   return_cptr: true
 c_function_string_scalar_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_scalar_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_scalar_buf_allocatable:
   buf_args:
   - arg_decl
@@ -717,6 +779,7 @@ c_function_string_scalar_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_scalar_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -1419,7 +1482,7 @@ c_mixin_function_character:
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   f_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   name: c_mixin_function_character
@@ -1466,8 +1529,8 @@ c_mixin_in_character_buf:
   - char *{c_var}
   - int {temp0}
   f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_INT), value :: {temp0}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
   f_c_arg_names:
   - '{c_var}'
   - '{temp0}'
@@ -1802,8 +1865,8 @@ c_setter_string_scalar_buf:
   call:
   - // skip call c_setter
   f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_INT), value :: {temp0}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
   f_c_arg_names:
   - '{c_var}'
   - '{temp0}'
@@ -1832,6 +1895,15 @@ f_ctor:
 f_function_bool:
   name: f_function_bool
   need_wrapper: true
+f_function_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_char_*_buf
+  need_wrapper: true
 f_function_char_*_buf_allocatable:
   arg_c_call:
   - '{temp0}'
@@ -1847,6 +1919,11 @@ f_function_char_*_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_char_*_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_char_*_cfi
+  need_wrapper: true
 f_function_char_*_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1985,6 +2062,15 @@ f_function_shadow:
     - C_PTR
   name: f_function_shadow
   need_wrapper: true
+f_function_string_&_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_&_buf
+  need_wrapper: true
 f_function_string_&_buf_allocatable:
   arg_c_call:
   - '{temp0}'
@@ -2000,12 +2086,26 @@ f_function_string_&_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_&_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_&_cfi
+  need_wrapper: true
 f_function_string_&_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   name: f_function_string_&_cfi_allocatable
+  need_wrapper: true
+f_function_string_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_*_buf
   need_wrapper: true
 f_function_string_*_buf_allocatable:
   arg_c_call:
@@ -2022,12 +2122,26 @@ f_function_string_*_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_*_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_*_cfi
+  need_wrapper: true
 f_function_string_*_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   name: f_function_string_*_cfi_allocatable
+  need_wrapper: true
+f_function_string_scalar_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_scalar_buf
   need_wrapper: true
 f_function_string_scalar_buf_allocatable:
   arg_c_call:
@@ -2044,6 +2158,11 @@ f_function_string_scalar_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_scalar_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_scalar_cfi
+  need_wrapper: true
 f_function_string_scalar_cfi_allocatable:
   arg_c_call:
   - '{f_var}'

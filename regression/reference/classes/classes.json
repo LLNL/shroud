@@ -4644,7 +4644,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -4701,7 +4701,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_&_result-as-arg",
+                        "stmt0": "c_function_string_&_copy",
                         "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
@@ -4714,10 +4714,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_string_scalar_buf"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -4757,93 +4757,40 @@
                     "attrs": {
                         "len": "30"
                     },
+                    "const": true,
                     "declarator": {
                         "name": "LastFunctionCalled",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "std::string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_&_buf",
-                            "stmt1": "c_function_string_&_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_&_buf",
-                            "stmtc1": "c_function_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "CLA_last_function_called_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_last_function_called_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
@@ -4852,19 +4799,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             }

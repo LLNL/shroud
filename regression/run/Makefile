@@ -54,6 +54,7 @@ test-fortran : \
 # gfortran 9.1
 # intel 16.0.3
 test-cfi : \
+  test-fortran-strings-cfi \
   test-fortran-generic-cfi
 
 ######################################################################

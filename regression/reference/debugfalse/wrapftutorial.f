@@ -394,12 +394,13 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
+        subroutine c_last_function_called_bufferify(SHT_rv, &
+                SHT_rv_temp0) &
                 bind(C, name="TUT_last_function_called_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_last_function_called_bufferify
     end interface
 

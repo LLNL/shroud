@@ -133,8 +133,8 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * AA_example_nested_ExClass2_get_name(
     const AA_example_nested_ExClass2 * self)
@@ -149,25 +149,22 @@ const char * AA_example_nested_ExClass2_get_name(
 }
 
 // ----------------------------------------
-// Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(NSHF_rv)
-// Attrs:     +api(buf)+intent(out)+is_result
-// Exact:     c_function_string_&_buf
+// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_string_&_buf_copy
+// Match:     c_function_string_&_buf
 void AA_example_nested_ExClass2_get_name_bufferify(
-    const AA_example_nested_ExClass2 * self, char * SHF_rv, int NSHF_rv)
+    const AA_example_nested_ExClass2 * self, char *SHC_rv,
+    int SHC_rv_temp0)
 {
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end namespace.example::nested.class.ExClass2.method.get_name_bufferify

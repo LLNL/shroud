@@ -17,7 +17,7 @@ C Statements
     {C_return_type} {C_name}({C_prototype})    buf_args
     {
         {pre_call}
-        {call_code}    arg_call
+        {call_code}   {call}    arg_call
         {post_call_pattern}
         {post_call}
         {final}
@@ -204,7 +204,7 @@ from the ``char *`` argument passed into the C API wrapper.
 
 .. code-block:: yaml
 
-        name="c_string_inout",
+        name="c_inout_string",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
 

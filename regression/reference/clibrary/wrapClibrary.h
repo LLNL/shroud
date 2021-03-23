@@ -23,8 +23,8 @@
 
 double CLI_pass_by_value_macro(int arg2);
 
-void CLI_function4a_bufferify(const char * arg1, const char * arg2,
-    char * SHF_rv, int NSHF_rv);
+void CLI_function4a_bufferify(char *SHC_rv, int SHC_rv_temp0,
+    const char * arg1, const char * arg2);
 
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 

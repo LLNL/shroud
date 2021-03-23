@@ -1031,7 +1031,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [
@@ -1185,7 +1185,7 @@
                     "F_C_name": "c_function4a",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT),\t trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function4a",
                     "F_name_generic": "function4a",
@@ -1193,26 +1193,25 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_Function4a",
-                    "cxx_rv_decl": "char * SHC_rv",
+                    "cxx_rv_decl": "char * SHCXX_rv",
                     "function_name": "Function4a",
                     "underscore_name": "function4a"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_get_value": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "char",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_char_*_result-as-arg",
+                        "stmt0": "c_function_char_*_copy",
                         "stmt1": "c_function_char_*"
                     },
                     "fmtf": {
@@ -1225,10 +1224,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_char_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_char_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_char_scalar_buf"
+                        "stmt0": "f_function_char_*_buf_copy",
+                        "stmt1": "f_function_char_*_buf",
+                        "stmtc0": "c_function_char_*_buf_copy",
+                        "stmtc1": "c_function_char_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1260,11 +1259,16 @@
                     },
                     "declarator": {
                         "name": "Function4a",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1304,78 +1308,21 @@
                                 "char"
                             ],
                             "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "char"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "void Function4a(const char * arg1, const char * arg2, char * SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_type": "char",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_char_*_buf",
-                            "stmt1": "c_function_char_*_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_char_*_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_char_*_buf",
-                            "stmtc1": "c_function_char_*_buf"
-                        }
-                    },
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -1438,12 +1385,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "CLI_function4a_bufferify",
-                    "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0,\t const char * arg1,\t const char * arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t arg2,\t SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0,\t arg1,\t arg2",
                     "F_C_name": "c_function4a_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "char * SHC_rv",
+                    "cxx_rv_decl": "char * SHCXX_rv",
                     "function_name": "Function4a",
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4a"
@@ -1451,18 +1399,26 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_type": "void",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_type": "void",
-                        "cxx_var": "SHC_rv",
+                        "cxx_type": "char",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_char_*_buf_copy",
+                        "stmt1": "c_function_char_*_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },

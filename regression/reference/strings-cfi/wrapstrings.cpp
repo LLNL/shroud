@@ -301,15 +301,15 @@ void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_char_*_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_char_*_copy
 // Match:     c_function_char_*
 // start STR_get_char_ptr2
 const char * STR_get_char_ptr2(void)
 {
     // splicer begin function.get_char_ptr2
-    const char * SHC_rv = getCharPtr2();
-    return SHC_rv;
+    const char * SHCXX_rv = getCharPtr2();
+    return SHCXX_rv;
     // splicer end function.get_char_ptr2
 }
 // end STR_get_char_ptr2
@@ -319,21 +319,17 @@ const char * STR_get_char_ptr2(void)
  *
  */
 // ----------------------------------------
-// Function:  void getCharPtr2 +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  char * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_char_*_cfi
+// Function:  const char * getCharPtr2 +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_char_*_cfi_copy
+// Match:     c_function_char_*_cfi
 // start STR_get_char_ptr2_CFI
-void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_char_ptr2_CFI
-    const char * SHC_rv = getCharPtr2();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
-    ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHC_rv, -1);
+    const char * SHCXX_rv = getCharPtr2();
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
+    ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv, -1);
     // splicer end function.get_char_ptr2_CFI
 }
 // end STR_get_char_ptr2_CFI
@@ -344,9 +340,8 @@ void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_char_*_result-as-arg
-// Match:     c_function_char_*
+// Attrs:     +intent(function)
+// Exact:     c_function_char_*
 // start STR_get_char_ptr3
 const char * STR_get_char_ptr3(void)
 {
@@ -368,8 +363,9 @@ const char * STR_get_char_ptr3(void)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  char * output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_char_*_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_char_*_cfi_result
+// Match:     c_function_char_*_cfi
 // start STR_get_char_ptr3_CFI
 void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output)
 {
@@ -424,23 +420,19 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  void getConstStringLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_scalar_cfi
-void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string getConstStringLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_scalar_cfi_copy
+// Match:     c_function_string_scalar_cfi
+void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_len_CFI
     const std::string SHCXX_rv = getConstStringLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_len_CFI
@@ -457,8 +449,9 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string * output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_scalar_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_string_scalar_cfi_result
+// Match:     c_function_string_scalar_cfi
 void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
     // splicer begin function.get_const_string_as_arg_CFI
@@ -542,8 +535,8 @@ void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * STR_get_const_string_ref_len(void)
 {
@@ -567,23 +560,19 @@ const char * STR_get_const_string_ref_len(void)
  * The function will not be ALLOCATABLE.
  */
 // ----------------------------------------
-// Function:  void getConstStringRefLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
-void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string & getConstStringRefLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_&_cfi_copy
+// Match:     c_function_string_&_cfi
+void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_len_CFI
     const std::string & SHCXX_rv = getConstStringRefLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_ref_len_CFI
@@ -597,9 +586,8 @@ void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
-// Match:     c_function_string_&
+// Attrs:     +intent(function)
+// Exact:     c_function_string_&
 const char * STR_get_const_string_ref_as_arg(void)
 {
     // splicer begin function.get_const_string_ref_as_arg
@@ -627,8 +615,9 @@ const char * STR_get_const_string_ref_as_arg(void)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_string_&_cfi_result
+// Match:     c_function_string_&_cfi
 void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
     // splicer begin function.get_const_string_ref_as_arg_CFI
@@ -649,8 +638,8 @@ void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * STR_get_const_string_ref_len_empty(void)
 {
@@ -671,23 +660,19 @@ const char * STR_get_const_string_ref_len_empty(void)
  *
  */
 // ----------------------------------------
-// Function:  void getConstStringRefLenEmpty +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
-void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string & getConstStringRefLenEmpty +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_&_cfi_copy
+// Match:     c_function_string_&_cfi
+void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_len_empty_CFI
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_ref_len_empty_CFI
@@ -734,8 +719,8 @@ void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_*_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_*_copy
 // Match:     c_function_string_*
 const char * STR_get_const_string_ptr_len(void)
 {
@@ -755,23 +740,19 @@ const char * STR_get_const_string_ptr_len(void)
  * because +len(30) so the contents are copied before returning.
  */
 // ----------------------------------------
-// Function:  void getConstStringPtrLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_*_cfi
-void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string * getConstStringPtrLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_*_cfi_copy
+// Match:     c_function_string_*_cfi
+void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ptr_len_CFI
     const std::string * SHCXX_rv = getConstStringPtrLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv->empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv->data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv->data(),
             SHCXX_rv->size());
     }
     // splicer end function.get_const_string_ptr_len_CFI

@@ -103,7 +103,7 @@ int TUT_callback1(int in, int ( * incr)(int));
 
 const char * TUT_last_function_called(void);
 
-void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
+void TUT_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0);
 
 #ifdef __cplusplus
 }

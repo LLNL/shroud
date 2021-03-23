@@ -723,8 +723,12 @@ fc_statements = [
             "len({f_var}, kind=C_INT)",
         ],
         f_module=dict(iso_c_binding=["C_INT"]),
+        # need_wrapper=True,
     ),
     dict(
+        # Used with function which pass in character argument.
+        # Used with function which return a char *.
+        # C wrapper will fill argument.
         name="c_mixin_in_character_buf",
         buf_args=["arg_decl"],
         c_arg_decl=[
@@ -733,8 +737,8 @@ fc_statements = [
         ],
         f_c_arg_names=["{c_var}", "{temp0}"],
         f_arg_decl=[
-            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
-            "integer(C_INT), value :: {temp0}",
+            "character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)",
+            "integer(C_INT), value, intent(IN) :: {temp0}",
         ],
         f_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
         ntemps=1,
@@ -1181,14 +1185,29 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
+        name="f_function_char_*_buf",
+        mixin=["f_mixin_in_character_buf"],
+        need_wrapper=True,
+    ),
+    dict(
+        # Copy result into caller's buffer.
+        #  char *getname() +len(30)
         name="c_function_char_*_buf",
-        buf_args=["arg", "len"],
+        cxx_local="pointer",
+        mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
+        call=[
+            # c_var is a function argument. Must use a temp variable.
+            "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}"
+            "{CXX_template}(\t{C_call_list});",
+        ],
         post_call=[
+            # XXX - temp0 -> c_var_len
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {cxx_var},\t -1);",
         ],
+        return_type="void",
     ),
 
     dict(
@@ -1365,18 +1384,25 @@ fc_statements = [
         # c_function_string_*_buf
         # c_function_string_&_buf
         name="c_function_string_scalar/*/&_buf",
-        buf_args=["arg", "len"],
+        mixin=["c_mixin_in_character_buf"],
+        f_arg_decl=[
+            # Change to intent(OUT) from mixin.
+            "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
+            "integer(C_INT), value, intent(IN) :: {temp0}",
+        ],
+        # temp0 -> c_var_len
         c_helper="ShroudStrCopy",
         post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
+        return_type="void",
     ),
 
     # std::string
@@ -1462,6 +1488,15 @@ fc_statements = [
         post_call=[
             "ShroudStrToArray({temp0}, {cxx_var}, {idtor});",
         ],
+    ),
+
+    dict(
+        # f_function_string_scalar_buf_allocatable
+        # f_function_string_*_buf_allocatable
+        # f_function_string_&_buf_allocatable
+        name="f_function_string_scalar/*/&_buf",
+        mixin=["f_mixin_in_character_buf"],
+        need_wrapper=True,
     ),
     
     # similar to f_function_char_scalar_allocatable
@@ -2027,6 +2062,7 @@ fc_statements = [
     ),
     
     dict(
+        # XXX - needs a better name. function/arg
         # Function which return char * or std::string.
         name="c_mixin_function_character",
         iface_header=["ISO_Fortran_binding.h"],
@@ -2035,7 +2071,7 @@ fc_statements = [
             "CFI_cdesc_t *{cfi_prefix}{c_var}",
         ],
         f_arg_decl=[
-            "character(len=*), intent({f_intent}) :: {c_var}",
+            "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
         ],
     ),
     dict(
@@ -2122,9 +2158,15 @@ fc_statements = [
     ),
     dict(
         # Copy result into caller's buffer.
+        name="f_function_char_*_cfi",
+        arg_c_call=["{f_var}"],
+        need_wrapper=True,
+    ),
+    dict(
+        # Copy result into caller's buffer.
         name="c_function_char_*_cfi",
         mixin=[
-            "c_mixin_function_character",
+            "c_mixin_arg_character_cfi",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -2137,6 +2179,7 @@ fc_statements = [
             "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
+        return_type="void",  # Convert to function.
     ),
     dict(
         name="c_function_char_*_cfi_allocatable",
@@ -2246,6 +2289,7 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
         ],
+        return_type="void",  # Convert to function.
     ),
     # std::string * function()
     dict(
@@ -2302,6 +2346,17 @@ fc_statements = [
 #        ],
     ),
     
+    dict(
+        # f_function_string_scalar_cfi
+        # f_function_string_*_cfi
+        # f_function_string_&_cfi
+        name="f_function_string_scalar/*/&_cfi",
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an CHARACTER, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        need_wrapper=True,
+        arg_c_call=["{f_var}"],
+    ),
     # similar to f_char_scalar_allocatable
     dict(
         # f_function_string_scalar_cfi_allocatable

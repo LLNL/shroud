@@ -103,10 +103,10 @@ double CLI_pass_by_value_macro(int arg2)
 }
 
 // ----------------------------------------
-// Function:  void Function4a +len(30)
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
-// Match:     c_subroutine
+// Function:  char * Function4a +len(30)
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_char_*_buf_copy
+// Match:     c_function_char_*_buf
 // ----------------------------------------
 // Argument:  const char * arg1
 // Attrs:     +intent(in)
@@ -117,16 +117,12 @@ double CLI_pass_by_value_macro(int arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_char_*
 // Match:     c_default
-// ----------------------------------------
-// Argument:  char * SHF_rv +len(NSHF_rv)
-// Attrs:     +api(buf)+intent(out)+is_result
-// Exact:     c_function_char_*_buf
-void CLI_function4a_bufferify(const char * arg1, const char * arg2,
-    char * SHF_rv, int NSHF_rv)
+void CLI_function4a_bufferify(char *SHC_rv, int SHC_rv_temp0,
+    const char * arg1, const char * arg2)
 {
     // splicer begin function.function4a_bufferify
-    char * SHC_rv = Function4a(arg1, arg2);
-    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, -1);
+    char *SHCXX_rv = Function4a(arg1, arg2);
+    ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv, -1);
     // splicer end function.function4a_bufferify
 }
 

@@ -49,8 +49,8 @@ C Class1 & getClassReference(void)  +intent(function)
 C Class1 getClassCopy(int flag +value)  +intent(function)
 C void set_global_flag(int arg +value)  +intent(subroutine)
 C int get_global_flag(void)  +intent(function)
-C const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(function)
-C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +api(buf)+intent(subroutine)
+C const std::string & LastFunctionCalled(void) +len(30)  +deref(copy)+intent(function)
+C const std::string & LastFunctionCalled(void) +len(30)  +api(buf)+deref(copy)+intent(function)
 Close wrapclasses.h
 Close wrapclasses.cpp
 class Class1
@@ -111,7 +111,7 @@ Fortran Class1 & getClassReference(void)  +intent(function)
 Fortran Class1 getClassCopy(int flag +value)  +intent(function)
 Fortran void set_global_flag(int arg +value)  +intent(subroutine)
 Fortran int get_global_flag(void)  +intent(function)
-Fortran const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(function)
+Fortran const std::string & LastFunctionCalled(void) +len(30)  +deref(copy)+intent(function)
 C-interface Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)  +intent(function)
 C-interface void passClassByValue(Class1 arg +value)  +intent(subroutine)
 C-interface int useclass(const Class1 * arg)  +intent(function)
@@ -122,8 +122,8 @@ C-interface Class1 & getClassReference(void)  +intent(function)
 C-interface Class1 getClassCopy(int flag +value)  +intent(function)
 C-interface void set_global_flag(int arg +value)  +intent(subroutine)
 C-interface int get_global_flag(void)  +intent(function)
-C-interface const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(function)
-C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +api(buf)+intent(subroutine)
+C-interface const std::string & LastFunctionCalled(void) +len(30)  +deref(copy)+intent(function)
+C-interface const std::string & LastFunctionCalled(void) +len(30)  +api(buf)+deref(copy)+intent(function)
 Close wrapfclasses.f
 Close utilclasses.cpp
 Close typesclasses.h

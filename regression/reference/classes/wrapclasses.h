@@ -50,7 +50,7 @@ int CLA_get_global_flag(void);
 
 const char * CLA_last_function_called(void);
 
-void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
+void CLA_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0);
 
 #ifdef __cplusplus
 }

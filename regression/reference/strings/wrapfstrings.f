@@ -225,8 +225,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_char_*_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_char_*_copy
     ! Match:     c_function_char_*
     ! start c_get_char_ptr2
     interface
@@ -241,31 +241,26 @@ module strings_mod
     ! end c_get_char_ptr2
 
     ! ----------------------------------------
-    ! Function:  void getCharPtr2 +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_char_*_buf
+    ! Function:  const char * getCharPtr2 +len(30)
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_char_*_buf_copy
+    ! Match:     c_function_char_*_buf
     ! start c_get_char_ptr2_bufferify
     interface
-        subroutine c_get_char_ptr2_bufferify(SHF_rv, NSHF_rv) &
+        subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_temp0) &
                 bind(C, name="STR_get_char_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_get_char_ptr2_bufferify
     end interface
     ! end c_get_char_ptr2_bufferify
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_char_*_result-as-arg
-    ! Match:     c_function_char_*
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_char_*
     ! start c_get_char_ptr3
     interface
         function c_get_char_ptr3() &
@@ -284,17 +279,18 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar_buf
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_char_*_buf
+    ! Argument:  char * output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_char_*_buf_result
+    ! Match:     c_function_char_*_buf
     ! start c_get_char_ptr3_bufferify
     interface
-        subroutine c_get_char_ptr3_bufferify(output, Noutput) &
+        subroutine c_get_char_ptr3_bufferify(output, output_temp0) &
                 bind(C, name="STR_get_char_ptr3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
+            integer(C_INT), value, intent(IN) :: output_temp0
         end subroutine c_get_char_ptr3_bufferify
     end interface
     ! end c_get_char_ptr3_bufferify
@@ -328,21 +324,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
+    ! Function:  const string getConstStringLen +len(30)
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_scalar_buf_copy
+    ! Match:     c_function_string_scalar_buf
     interface
-        subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
+        subroutine c_get_const_string_len_bufferify(SHT_rv, &
+                SHT_rv_temp0) &
                 bind(C, name="STR_get_const_string_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_get_const_string_len_bufferify
     end interface
 
@@ -352,16 +345,18 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar_buf
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  string * output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
+    ! Argument:  string * output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_*_buf_result
+    ! Match:     c_function_string_*_buf
     interface
-        subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
+        subroutine c_get_const_string_as_arg_bufferify(output, &
+                output_temp0) &
                 bind(C, name="STR_get_const_string_as_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
+            integer(C_INT), value, intent(IN) :: output_temp0
         end subroutine c_get_const_string_as_arg_bufferify
     end interface
 
@@ -412,8 +407,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_&_copy
     ! Match:     c_function_string_&
     interface
         function c_get_const_string_ref_len() &
@@ -426,29 +421,25 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Function:  const string & getConstStringRefLen +len(30)
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_buf_copy
+    ! Match:     c_function_string_&_buf
     interface
-        subroutine c_get_const_string_ref_len_bufferify(SHF_rv, NSHF_rv) &
+        subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
+                SHT_rv_temp0) &
                 bind(C, name="STR_get_const_string_ref_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_get_const_string_ref_len_bufferify
     end interface
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
-    ! Match:     c_function_string_&
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_string_&
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -465,24 +456,25 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar_buf
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  string & output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Argument:  string & output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_&_buf_result
+    ! Match:     c_function_string_&_buf
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
-                Noutput) &
+                output_temp0) &
                 bind(C, name="STR_get_const_string_ref_as_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
+            integer(C_INT), value, intent(IN) :: output_temp0
         end subroutine c_get_const_string_ref_as_arg_bufferify
     end interface
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_&_copy
     ! Match:     c_function_string_&
     interface
         function c_get_const_string_ref_len_empty() &
@@ -495,22 +487,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_buf_copy
+    ! Match:     c_function_string_&_buf
     interface
-        subroutine c_get_const_string_ref_len_empty_bufferify(SHF_rv, &
-                NSHF_rv) &
+        subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
+                SHT_rv_temp0) &
                 bind(C, name="STR_get_const_string_ref_len_empty_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_get_const_string_ref_len_empty_bufferify
     end interface
 
@@ -544,8 +532,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_*_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_*_copy
     ! Match:     c_function_string_*
     interface
         function c_get_const_string_ptr_len() &
@@ -558,21 +546,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_buf
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
+    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_*_buf_copy
+    ! Match:     c_function_string_*_buf
     interface
-        subroutine c_get_const_string_ptr_len_bufferify(SHF_rv, NSHF_rv) &
+        subroutine c_get_const_string_ptr_len_bufferify(SHT_rv, &
+                SHT_rv_temp0) &
                 bind(C, name="STR_get_const_string_ptr_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
         end subroutine c_get_const_string_ptr_len_bufferify
     end interface
 
@@ -1357,20 +1342,12 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_char_scalar_buf_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getCharPtr2 +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_function_char_scalar_buf_result-as-arg
-    ! Match:     c_function_char_scalar_buf
-    ! ----------------------------------------
-    ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_char_*_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_char_*_buf
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_char_*_buf_copy
+    ! Match:     f_function_char_*_buf
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_char_*_buf_copy
+    ! Match:     c_function_char_*_buf
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -1394,12 +1371,13 @@ contains
     ! Attrs:     +api(buf)+intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_char_*_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_char_*_buf
+    ! Argument:  char * output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_char_*_buf_result
+    ! Match:     f_function_char_*_buf
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_char_*_buf_result
+    ! Match:     c_function_char_*_buf
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -1440,20 +1418,12 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_buf_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_function_string_scalar_buf_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_scalar_buf_copy
+    ! Match:     f_function_string_scalar_buf
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_scalar_buf_copy
     ! Match:     c_function_string_scalar_buf
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_*_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1476,12 +1446,13 @@ contains
     ! Attrs:     +api(buf)+intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  string * output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_*_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
+    ! Argument:  string * output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_string_*_buf_result
+    ! Match:     f_function_string_*_buf
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_*_buf_result
+    ! Match:     c_function_string_*_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1542,20 +1513,12 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_buf_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringRefLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_function_string_scalar_buf_result-as-arg
-    ! Match:     c_function_string_scalar_buf
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_&_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_&_buf_copy
+    ! Match:     f_function_string_&_buf
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_buf_copy
+    ! Match:     c_function_string_&_buf
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -1581,12 +1544,13 @@ contains
     ! Attrs:     +api(buf)+intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  string & output +len(Noutput)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_&_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Argument:  string & output
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_string_&_buf_result
+    ! Match:     f_function_string_&_buf
+    ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_&_buf_result
+    ! Match:     c_function_string_&_buf
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -1605,20 +1569,12 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_buf_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_function_string_scalar_buf_result-as-arg
-    ! Match:     c_function_string_scalar_buf
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_&_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_&_buf
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_&_buf_copy
+    ! Match:     f_function_string_&_buf
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_buf_copy
+    ! Match:     c_function_string_&_buf
     !>
     !! \brief Test returning empty string reference
     !!
@@ -1655,20 +1611,12 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_buf_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringPtrLen +len(30)
-    ! Attrs:     +api(buf)+intent(subroutine)
-    ! Requested: c_function_string_scalar_buf_result-as-arg
-    ! Match:     c_function_string_scalar_buf
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Requested: f_function_string_*_buf
-    ! Match:     f_default
-    ! Attrs:     +api(buf)+intent(out)+is_result
-    ! Exact:     c_function_string_*_buf
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_*_buf_copy
+    ! Match:     f_function_string_*_buf
+    ! Attrs:     +api(buf)+deref(copy)+intent(function)
+    ! Requested: c_function_string_*_buf_copy
+    ! Match:     c_function_string_*_buf
     !>
     !! \brief return a 'const string *' as character(30)
     !!

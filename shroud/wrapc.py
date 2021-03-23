@@ -913,7 +913,11 @@ class Wrapc(util.WrapperMixin):
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
-            if self.language == "c":
+            if ast.metaattrs["deref"] == "copy":
+                c_local_var = "XXXX"
+#                fmt_result.cxx_var = fmt_result.C_string_result_as_arg
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            elif self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
             elif result_blk.c_local_var:
                 c_local_var = result_blk.c_local_var
@@ -1066,6 +1070,7 @@ class Wrapc(util.WrapperMixin):
                     result_api, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
+                fmt_arg.c_var = arg.name
                 self.name_temp_vars(intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
@@ -1232,7 +1237,7 @@ class Wrapc(util.WrapperMixin):
         else:
             if result_blk.cxx_local_var:
                 # A C++ var is created by pre_call.
-                # Assign to it directly. ex c_shadow_scalar_result
+                # Assign to it directly. ex c_function_shadow_scalar
                 fmt_result.cxx_addr = ""
                 fmt_func.cxx_rv_decl = "*" + fmt_result.cxx_var
             
@@ -1290,6 +1295,8 @@ class Wrapc(util.WrapperMixin):
             raw_return_code = []
         elif result_blk.ret:
             raw_return_code = result_blk.ret
+        elif return_deref_attr == "copy":
+            raw_return_code = ["return {cxx_var};"]
         elif return_deref_attr == "scalar":
             # dereference pointer to return scalar
             raw_return_code = ["return *{cxx_var};"]

@@ -216,7 +216,14 @@ class VerifyAttrs(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             # Array of shadow?
             pass
-        elif ntypemap.sgroup in ["string", "vector"]:
+        elif ntypemap.sgroup == "string":
+            if deref:
+                mderef = deref
+            elif attrs["len"]:
+                mderef = "copy"
+            else:
+                mderef = "allocatable"
+        elif ntypemap.sgroup == "vector":
             if deref:
                 mderef = deref
             else:
@@ -226,7 +233,10 @@ class VerifyAttrs(object):
             if deref:
                 mderef = deref
             elif ntypemap.sgroup == "char":  # char *
-                mderef = "allocatable"
+                if attrs["len"]:
+                    mderef = "copy"
+                else:
+                    mderef = "allocatable"
             elif attrs["dimension"]:
                 mderef = "pointer"
             else:
@@ -1605,18 +1615,15 @@ class GenFunctions(object):
         if has_string_result:
             f_attrs = node.ast.attrs  # Fortran function attributes
             f_meta = node.ast.metaattrs  # Fortran function attributes
-            if ast.attrs["len"] or result_as_arg:
+            if result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-#                attrs["len"] = options.C_var_len_template.format(
-#                    c_var=result_name
-#                )
                 # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = "result-as-arg"
-                result_as_string.metaattrs["deref"] = None
+                f_meta["deref"] = None
+                result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
@@ -1813,18 +1820,15 @@ class GenFunctions(object):
             f_attrs = node.ast.attrs  # Fortran function attributes
             f_meta = node.ast.metaattrs  # Fortran function attributes
 
-            if ast.attrs["len"] or result_as_arg:
+            if result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-                attrs["len"] = options.C_var_len_template.format(
-                    c_var=result_name
-                )
                 # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = "result-as-arg"
-                result_as_string.metaattrs["deref"] = None
+                f_meta["deref"] = None
+                result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None

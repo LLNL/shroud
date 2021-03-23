@@ -32,7 +32,8 @@ int STMT_get_name_length(void);
 
 const char * STMT_get_name_error_pattern(void);
 
-void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv);
+void STMT_get_name_error_pattern_bufferify(char *SHC_rv,
+    int SHC_rv_temp0);
 
 #ifdef __cplusplus
 }

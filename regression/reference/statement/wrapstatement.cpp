@@ -57,8 +57,8 @@ int STMT_get_name_length(void)
 
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +len(get_name_length())
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * STMT_get_name_error_pattern(void)
 {
@@ -75,22 +75,19 @@ const char * STMT_get_name_error_pattern(void)
 }
 
 // ----------------------------------------
-// Function:  void getNameErrorPattern +len(get_name_length())
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(NSHF_rv)
-// Attrs:     +api(buf)+intent(out)+is_result
-// Exact:     c_function_string_&_buf
-void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
+// Function:  const string & getNameErrorPattern +len(get_name_length())
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_string_&_buf_copy
+// Match:     c_function_string_&_buf
+void STMT_get_name_error_pattern_bufferify(char *SHC_rv,
+    int SHC_rv_temp0)
 {
     // splicer begin function.get_name_error_pattern_bufferify
     const std::string & SHCXX_rv = getNameErrorPattern();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_name_error_pattern_bufferify

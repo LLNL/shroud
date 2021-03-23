@@ -257,7 +257,7 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_char_*
 // ----------------------------------------
 // Argument:  const char * arg1

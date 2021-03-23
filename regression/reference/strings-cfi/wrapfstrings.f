@@ -190,8 +190,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_char_*_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_char_*_copy
     ! Match:     c_function_char_*
     ! start c_get_char_ptr2
     interface
@@ -206,29 +206,24 @@ module strings_mod
     ! end c_get_char_ptr2
 
     ! ----------------------------------------
-    ! Function:  void getCharPtr2 +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  char * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_char_*_cfi
+    ! Function:  const char * getCharPtr2 +len(30)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_char_*_cfi_copy
+    ! Match:     c_function_char_*_cfi
     ! start c_get_char_ptr2_cfi
     interface
-        subroutine c_get_char_ptr2_cfi(SHF_rv) &
+        subroutine c_get_char_ptr2_cfi(SHT_rv) &
                 bind(C, name="STR_get_char_ptr2_CFI")
             implicit none
-            character(len=*), intent(OUT) :: SHF_rv
+            character(len=*), intent(OUT) :: SHT_rv
         end subroutine c_get_char_ptr2_cfi
     end interface
     ! end c_get_char_ptr2_cfi
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_char_*_result-as-arg
-    ! Match:     c_function_char_*
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_char_*
     ! start c_get_char_ptr3
     interface
         function c_get_char_ptr3() &
@@ -248,17 +243,18 @@ module strings_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * output
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_char_*_cfi
-    ! start get_char_ptr3
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_char_*_cfi_result
+    ! Match:     c_function_char_*_cfi
+    ! start c_get_char_ptr3_cfi
     interface
-        subroutine get_char_ptr3(output) &
+        subroutine c_get_char_ptr3_cfi(output) &
                 bind(C, name="STR_get_char_ptr3_CFI")
             implicit none
             character(len=*), intent(OUT) :: output
-        end subroutine get_char_ptr3
+        end subroutine c_get_char_ptr3_cfi
     end interface
-    ! end get_char_ptr3
+    ! end c_get_char_ptr3_cfi
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr4 +deref(raw)
@@ -288,19 +284,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_*_cfi
+    ! Function:  const string getConstStringLen +len(30)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_scalar_cfi_copy
+    ! Match:     c_function_string_scalar_cfi
     interface
-        subroutine c_get_const_string_len_cfi(SHF_rv) &
+        subroutine c_get_const_string_len_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_len_CFI")
             implicit none
-            character(len=*), intent(OUT) :: SHF_rv
+            character(len=*), intent(OUT) :: SHT_rv
         end subroutine c_get_const_string_len_cfi
     end interface
 
@@ -311,14 +303,15 @@ module strings_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  string * output
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_*_cfi
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_*_cfi_result
+    ! Match:     c_function_string_*_cfi
     interface
-        subroutine get_const_string_as_arg(output) &
+        subroutine c_get_const_string_as_arg_cfi(output) &
                 bind(C, name="STR_get_const_string_as_arg_CFI")
             implicit none
             character(len=*), intent(OUT) :: output
-        end subroutine get_const_string_as_arg
+        end subroutine c_get_const_string_as_arg_cfi
     end interface
 
     ! ----------------------------------------
@@ -366,8 +359,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_&_copy
     ! Match:     c_function_string_&
     interface
         function c_get_const_string_ref_len() &
@@ -380,27 +373,22 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_&_cfi
+    ! Function:  const string & getConstStringRefLen +len(30)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_cfi_copy
+    ! Match:     c_function_string_&_cfi
     interface
-        subroutine c_get_const_string_ref_len_cfi(SHF_rv) &
+        subroutine c_get_const_string_ref_len_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_len_CFI")
             implicit none
-            character(len=*), intent(OUT) :: SHF_rv
+            character(len=*), intent(OUT) :: SHT_rv
         end subroutine c_get_const_string_ref_len_cfi
     end interface
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
-    ! Match:     c_function_string_&
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_string_&
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -418,20 +406,21 @@ module strings_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  string & output
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_&_cfi
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_&_cfi_result
+    ! Match:     c_function_string_&_cfi
     interface
-        subroutine get_const_string_ref_as_arg(output) &
+        subroutine c_get_const_string_ref_as_arg_cfi(output) &
                 bind(C, name="STR_get_const_string_ref_as_arg_CFI")
             implicit none
             character(len=*), intent(OUT) :: output
-        end subroutine get_const_string_ref_as_arg
+        end subroutine c_get_const_string_ref_as_arg_cfi
     end interface
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_&_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_&_copy
     ! Match:     c_function_string_&
     interface
         function c_get_const_string_ref_len_empty() &
@@ -444,19 +433,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_&_cfi
+    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_cfi_copy
+    ! Match:     c_function_string_&_cfi
     interface
-        subroutine c_get_const_string_ref_len_empty_cfi(SHF_rv) &
+        subroutine c_get_const_string_ref_len_empty_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_len_empty_CFI")
             implicit none
-            character(len=*), intent(OUT) :: SHF_rv
+            character(len=*), intent(OUT) :: SHT_rv
         end subroutine c_get_const_string_ref_len_empty_cfi
     end interface
 
@@ -489,8 +474,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: c_function_string_*_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: c_function_string_*_copy
     ! Match:     c_function_string_*
     interface
         function c_get_const_string_ptr_len() &
@@ -503,19 +488,15 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_cfi
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_*_cfi
+    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_*_cfi_copy
+    ! Match:     c_function_string_*_cfi
     interface
-        subroutine c_get_const_string_ptr_len_cfi(SHF_rv) &
+        subroutine c_get_const_string_ptr_len_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_len_CFI")
             implicit none
-            character(len=*), intent(OUT) :: SHF_rv
+            character(len=*), intent(OUT) :: SHT_rv
         end subroutine c_get_const_string_ptr_len_cfi
     end interface
 
@@ -1203,20 +1184,12 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_char_scalar_cfi_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getCharPtr2 +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_function_char_scalar_cfi_result-as-arg
-    ! Match:     c_function_char_scalar_cfi
-    ! ----------------------------------------
-    ! Argument:  char * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Requested: f_function_char_*_cfi
-    ! Match:     f_default
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_char_*_cfi
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_char_*_cfi_copy
+    ! Match:     f_function_char_*_cfi
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_char_*_cfi_copy
+    ! Match:     c_function_char_*_cfi
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -1230,6 +1203,34 @@ contains
         ! splicer end function.get_char_ptr2
     end function get_char_ptr2
     ! end get_char_ptr2
+
+    ! Generated by arg_to_cfi - arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void getCharPtr3
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char * output
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_char_*_cfi_result
+    ! Match:     f_function_char_*_cfi
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_char_*_cfi_result
+    ! Match:     c_function_char_*_cfi
+    !>
+    !! \brief return a 'const char *' as argument
+    !!
+    !<
+    ! start get_char_ptr3
+    subroutine get_char_ptr3(output)
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_char_ptr3
+        call c_get_char_ptr3_cfi(output)
+        ! splicer end function.get_char_ptr3
+    end subroutine get_char_ptr3
+    ! end get_char_ptr3
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
@@ -1253,20 +1254,12 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_cfi_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_function_string_scalar_cfi_result-as-arg
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_scalar_cfi_copy
+    ! Match:     f_function_string_scalar_cfi
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_scalar_cfi_copy
     ! Match:     c_function_string_scalar_cfi
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Requested: f_function_string_*_cfi
-    ! Match:     f_default
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_*_cfi
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1278,6 +1271,32 @@ contains
         call c_get_const_string_len_cfi(SHT_rv)
         ! splicer end function.get_const_string_len
     end function get_const_string_len
+
+    ! Generated by arg_to_cfi - arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void getConstStringAsArg
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  string * output
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_string_*_cfi_result
+    ! Match:     f_function_string_*_cfi
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_*_cfi_result
+    ! Match:     c_function_string_*_cfi
+    !>
+    !! \brief return a 'const string' as argument
+    !!
+    !<
+    subroutine get_const_string_as_arg(output)
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_string_as_arg
+        call c_get_const_string_as_arg_cfi(output)
+        ! splicer end function.get_const_string_as_arg
+    end subroutine get_const_string_as_arg
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
@@ -1318,20 +1337,12 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_cfi_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringRefLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_function_string_scalar_cfi_result-as-arg
-    ! Match:     c_function_string_scalar_cfi
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Requested: f_function_string_&_cfi
-    ! Match:     f_default
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_&_cfi
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_&_cfi_copy
+    ! Match:     f_function_string_&_cfi
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_cfi_copy
+    ! Match:     c_function_string_&_cfi
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -1347,23 +1358,43 @@ contains
         ! splicer end function.get_const_string_ref_len
     end function get_const_string_ref_len
 
+    ! Generated by arg_to_cfi - arg_to_cfi
+    ! ----------------------------------------
+    ! Function:  void getConstStringRefAsArg
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +api(cfi)+intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  string & output
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: f_function_string_&_cfi_result
+    ! Match:     f_function_string_&_cfi
+    ! Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+    ! Requested: c_function_string_&_cfi_result
+    ! Match:     c_function_string_&_cfi
+    !>
+    !! \brief return a 'const string&' as argument
+    !!
+    !! Pass an additional argument which wil be used as the return value.
+    !! The length of the output variable is declared by the caller.
+    !<
+    subroutine get_const_string_ref_as_arg(output)
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_string_ref_as_arg
+        call c_get_const_string_ref_as_arg_cfi(output)
+        ! splicer end function.get_const_string_ref_as_arg
+    end subroutine get_const_string_ref_as_arg
+
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_cfi_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringRefLenEmpty +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_function_string_scalar_cfi_result-as-arg
-    ! Match:     c_function_string_scalar_cfi
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Requested: f_function_string_&_cfi
-    ! Match:     f_default
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_&_cfi
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_&_cfi_copy
+    ! Match:     f_function_string_&_cfi
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_&_cfi_copy
+    ! Match:     c_function_string_&_cfi
     !>
     !! \brief Test returning empty string reference
     !!
@@ -1394,20 +1425,12 @@ contains
     ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Attrs:     +deref(result-as-arg)+intent(function)
-    ! Requested: f_function_string_scalar_cfi_result-as-arg
-    ! Match:     f_default
-    ! Function:  void getConstStringPtrLen +len(30)
-    ! Attrs:     +api(cfi)+intent(subroutine)
-    ! Requested: c_function_string_scalar_cfi_result-as-arg
-    ! Match:     c_function_string_scalar_cfi
-    ! ----------------------------------------
-    ! Argument:  string * SHF_rv +len(30)
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Requested: f_function_string_*_cfi
-    ! Match:     f_default
-    ! Attrs:     +api(cfi)+intent(out)+is_result
-    ! Exact:     c_function_string_*_cfi
+    ! Attrs:     +deref(copy)+intent(function)
+    ! Requested: f_function_string_*_cfi_copy
+    ! Match:     f_function_string_*_cfi
+    ! Attrs:     +api(cfi)+deref(copy)+intent(function)
+    ! Requested: c_function_string_*_cfi_copy
+    ! Match:     c_function_string_*_cfi
     !>
     !! \brief return a 'const string *' as character(30)
     !!
