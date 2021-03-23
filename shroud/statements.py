@@ -570,6 +570,7 @@ fc_statements = [
         ],
         arg_c_call=["{temp0}"],  # Pass result as an argument.
         ntemps=1,
+        need_wrapper=True,
     ),
 
     ##########
@@ -723,7 +724,7 @@ fc_statements = [
             "len({f_var}, kind=C_INT)",
         ],
         f_module=dict(iso_c_binding=["C_INT"]),
-        # need_wrapper=True,
+        need_wrapper=True,
     ),
     dict(
         # Used with function which pass in character argument.
@@ -1162,7 +1163,6 @@ fc_statements = [
     dict(
         name="f_out_char_*_buf",
         mixin=["f_mixin_in_character_buf"],
-        need_wrapper=True,
     ),
     dict(
         name="c_out_char_*_buf",
@@ -1193,7 +1193,6 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="f_function_char_*_buf",
         mixin=["f_mixin_in_character_buf"],
-        need_wrapper=True,
     ),
     dict(
         # Copy result into caller's buffer.
@@ -1283,7 +1282,6 @@ fc_statements = [
         # f_function_char_*_buf_allocatable
         name="f_function_char_scalar/*_buf_allocatable",
         mixin=["f_mixin_function_buf"],
-        need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[
@@ -1502,7 +1500,6 @@ fc_statements = [
         # f_function_string_&_buf_allocatable
         name="f_function_string_scalar/*/&_buf",
         mixin=["f_mixin_in_character_buf"],
-        need_wrapper=True,
     ),
     
     # similar to f_function_char_scalar_allocatable
@@ -1512,7 +1509,6 @@ fc_statements = [
         # f_function_string_&_buf_allocatable
         name="f_function_string_scalar/*/&_buf_allocatable",
         mixin=["f_mixin_function_buf"],
-        need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[

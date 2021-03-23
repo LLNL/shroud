@@ -2018,6 +2018,7 @@ f_function_native_*_buf_allocatable:
   - 'type({F_array_type}) :: {temp0}'
   f_helper: copy_array_{cxx_type}
   name: f_function_native_*_buf_allocatable
+  need_wrapper: true
   ntemps: 1
   post_call:
   - allocate({f_var}({f_array_allocate}))
@@ -2033,6 +2034,7 @@ f_function_native_*_buf_pointer:
     iso_c_binding:
     - c_f_pointer
   name: f_function_native_*_buf_pointer
+  need_wrapper: true
   ntemps: 1
   post_call:
   - call c_f_pointer({temp0}%base_addr, {F_result}{f_array_shape})
@@ -2051,6 +2053,7 @@ f_function_native_*_buf_pointer_caller:
     iso_c_binding:
     - c_f_pointer
   name: f_function_native_*_buf_pointer_caller
+  need_wrapper: true
   ntemps: 1
   post_call:
   - "call c_f_pointer(\t{temp0}%base_addr,\t {F_result}{f_array_shape})"
@@ -2241,6 +2244,7 @@ f_function_vector_buf_allocatable:
     iso_c_binding:
     - C_SIZE_T
   name: f_function_vector_buf_allocatable
+  need_wrapper: true
   ntemps: 1
   post_call:
   - allocate({f_var}({temp0}%size))
@@ -2444,6 +2448,7 @@ f_mixin_function_buf:
   declare:
   - 'type({F_array_type}) :: {temp0}'
   name: f_mixin_function_buf
+  need_wrapper: true
   ntemps: 1
 f_mixin_in_array_buf:
   arg_c_call:
@@ -2462,6 +2467,7 @@ f_mixin_in_character_buf:
     iso_c_binding:
     - C_INT
   name: f_mixin_in_character_buf
+  need_wrapper: true
 f_mixin_in_string_array_buf:
   arg_c_call:
   - '{f_var}'
@@ -2651,6 +2657,7 @@ f_setter_string_scalar_buf:
     iso_c_binding:
     - C_INT
   name: f_setter_string_scalar_buf
+  need_wrapper: true
 f_subroutine:
   name: f_subroutine
 ***** Python
