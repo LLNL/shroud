@@ -2219,9 +2219,11 @@ fc_statements = [
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
             "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});",
+            "size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {temp0});",
         ],
+        # {temp0} -> {c_var_trim}
+        ntemps=1,
     ),
     dict(
         # c_out_string_*_cfi
@@ -2256,8 +2258,8 @@ fc_statements = [
         pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});",
+            "size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {temp0});",
         ],
         post_call=[
             "ShroudStrCopy({c_var},"
@@ -2265,6 +2267,8 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
+        # {temp0} -> {c_var_trim}
+        ntemps=1,
     ),
     dict(
         # c_function_string_scalar_cfi

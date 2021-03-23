@@ -1040,11 +1040,12 @@ c_in_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_&_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_string_*:
   cxx_local_var: scalar
   name: c_in_string_*
@@ -1072,11 +1073,12 @@ c_in_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_*_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_string_scalar:
   buf_args:
   - arg_decl
@@ -1119,11 +1121,12 @@ c_in_string_scalar_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_scalar_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_struct:
   cxx_local_var: pointer
   name: c_in_struct
@@ -1306,14 +1309,15 @@ c_inout_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_inout_string_&_cfi
+  ntemps: 1
   owner: library
   post_call:
   - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_inout_string_*:
   cxx_local_var: scalar
   impl_header:
@@ -1349,14 +1353,15 @@ c_inout_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_inout_string_*_cfi
+  ntemps: 1
   owner: library
   post_call:
   - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_inout_struct:
   cxx_local_var: pointer
   name: c_inout_struct

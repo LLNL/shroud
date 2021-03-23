@@ -545,9 +545,7 @@
                         {
                             "attrs": {
                                 "charlen": "40",
-                                "intent": "out",
-                                "len": "Ndest",
-                                "len_trim": "Ldest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -567,10 +565,6 @@
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "len": "Nsrc",
-                                "len_trim": "Lsrc"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -596,7 +590,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out)+len+len_trim, const char * src +len+len_trim)",
+                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
@@ -618,8 +612,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
-                            "c_var_trim": "Ldest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_dest",
@@ -635,8 +627,6 @@
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
-                            "c_var_trim": "Ldest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -655,8 +645,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "src",
-                            "c_var_len": "Nsrc",
-                            "c_var_trim": "Lsrc",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
@@ -672,8 +660,6 @@
                             "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
-                            "c_var_len": "Nsrc",
-                            "c_var_trim": "Lsrc",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -840,9 +826,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "len": "Ns",
-                                "len_trim": "Ls"
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "s",
@@ -868,7 +852,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len+len_trim)",
+                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -888,8 +872,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -905,8 +887,6 @@
                             "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4365,10 +4345,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -4394,7 +4370,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
-                "declgen": "void acceptStringConstReference(const std::string & arg1 +len+len_trim)",
+                "declgen": "void acceptStringConstReference(const std::string & arg1)",
                 "doxygen": {
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -4414,8 +4390,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -4425,14 +4399,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_string_&_cfi",
-                            "stmt1": "c_in_string_&_cfi"
+                            "stmt1": "c_in_string_&_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4441,7 +4414,8 @@
                             "stmt0": "f_in_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_&_cfi",
-                            "stmtc1": "c_in_string_&_cfi"
+                            "stmtc1": "c_in_string_&_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     }
                 },
@@ -4599,9 +4573,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -4627,7 +4599,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))",
-                "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len+len_trim)",
+                "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
@@ -4647,8 +4619,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -4664,8 +4634,6 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4829,10 +4797,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -4857,7 +4821,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReference(std::string & arg1)",
-                "declgen": "void acceptStringReference(std::string & arg1 +len+len_trim)",
+                "declgen": "void acceptStringReference(std::string & arg1)",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -4878,8 +4842,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -4889,14 +4851,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi"
+                            "stmt1": "c_inout_string_&_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4905,7 +4866,8 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi"
+                            "stmtc1": "c_inout_string_&_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     }
                 },
@@ -5059,10 +5021,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -5088,7 +5046,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerConst(const std::string * arg1)",
-                "declgen": "void acceptStringPointerConst(const std::string * arg1 +len+len_trim)",
+                "declgen": "void acceptStringPointerConst(const std::string * arg1)",
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
@@ -5107,8 +5065,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -5118,14 +5074,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_string_*_cfi",
-                            "stmt1": "c_in_string_*_cfi"
+                            "stmt1": "c_in_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5134,7 +5089,8 @@
                             "stmt0": "f_in_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_*_cfi",
-                            "stmtc1": "c_in_string_*_cfi"
+                            "stmtc1": "c_in_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     }
                 },
@@ -5287,10 +5243,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -5315,7 +5267,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointer(std::string * arg1)",
-                "declgen": "void acceptStringPointer(std::string * arg1 +len+len_trim)",
+                "declgen": "void acceptStringPointer(std::string * arg1)",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
@@ -5334,8 +5286,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5345,14 +5295,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi"
+                            "stmt1": "c_inout_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5361,7 +5310,8 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi"
+                            "stmtc1": "c_inout_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     }
                 },
@@ -5519,9 +5469,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -5547,7 +5495,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchStringPointer(std::string * arg1 +intent(out))",
-                "declgen": "void fetchStringPointer(std::string * arg1 +intent(out)+len+len_trim)",
+                "declgen": "void fetchStringPointer(std::string * arg1 +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\n"
@@ -5567,8 +5515,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5584,8 +5530,6 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5811,10 +5755,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -5859,7 +5799,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
-                "declgen": "void acceptStringPointerLen(std::string * arg1 +len+len_trim, int * nlen +intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string * arg1, int * nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -5879,8 +5819,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5890,14 +5828,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi"
+                            "stmt1": "c_inout_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5906,7 +5843,8 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi"
+                            "stmtc1": "c_inout_string_*_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     },
                     "nlen": {
@@ -6160,9 +6098,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Narg1",
-                                "len_trim": "Larg1"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg1",
@@ -6208,7 +6144,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchStringPointerLen(std::string * arg1 +intent(out), int *nlen+intent(out))",
-                "declgen": "void fetchStringPointerLen(std::string * arg1 +intent(out)+len+len_trim, int * nlen +intent(out))",
+                "declgen": "void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -6228,8 +6164,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -6245,8 +6179,6 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6488,8 +6420,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "len": "Narg1",
-                                "len_trim": "Larg1",
                                 "value": true
                             },
                             "declarator": {
@@ -6512,7 +6442,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +len+len_trim+value)",
+                "declgen": "int acceptStringInstance(std::string arg1 +value)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -6531,8 +6461,6 @@
                             "c_deref": "",
                             "c_member": ".",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -6542,14 +6470,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_string_scalar_cfi",
-                            "stmt1": "c_in_string_scalar_cfi"
+                            "stmt1": "c_in_string_scalar_cfi",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_len": "Narg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6558,7 +6485,8 @@
                             "stmt0": "f_in_string_scalar_cfi",
                             "stmt1": "f_in_string_scalar",
                             "stmtc0": "c_in_string_scalar_cfi",
-                            "stmtc1": "c_in_string_scalar_cfi"
+                            "stmtc1": "c_in_string_scalar_cfi",
+                            "temp0": "arg1_temp0"
                         }
                     }
                 },
@@ -6914,8 +6842,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len": "Nname",
-                                "len_trim": "Lname"
+                                "len_trim": "AAlen"
                             },
                             "declarator": {
                                 "name": "name",
@@ -6941,7 +6868,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
-                "declgen": "void explicit1(char * name +intent(in)+len+len_trim)",
+                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6957,8 +6884,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
+                            "c_var_trim": "AAlen",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -6974,8 +6900,7 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
+                            "c_var_trim": "AAlen",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7122,8 +7047,7 @@
                         {
                             "attrs": {
                                 "intent": "out",
-                                "len": "Nname",
-                                "len_trim": "Lname"
+                                "len": "AAtrim"
                             },
                             "declarator": {
                                 "name": "name",
@@ -7149,7 +7073,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
-                "declgen": "void explicit2(char * name +intent(out)+len+len_trim)",
+                "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7167,8 +7091,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
+                            "c_var_len": "AAtrim",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -7184,8 +7107,7 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
+                            "c_var_len": "AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7600,9 +7522,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Ndest",
-                                "len_trim": "Ldest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -7622,10 +7542,6 @@
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "len": "Nsrc",
-                                "len_trim": "Lsrc"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -7651,7 +7567,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out)+len+len_trim, const char * src +len+len_trim)",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
@@ -7674,8 +7590,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
-                            "c_var_trim": "Ldest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_dest",
@@ -7691,8 +7605,6 @@
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
-                            "c_var_trim": "Ldest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7711,8 +7623,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "src",
-                            "c_var_len": "Nsrc",
-                            "c_var_trim": "Lsrc",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
@@ -7728,8 +7638,6 @@
                             "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
-                            "c_var_len": "Nsrc",
-                            "c_var_trim": "Lsrc",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7979,10 +7887,6 @@
                             "typemap_name": "int"
                         },
                         {
-                            "attrs": {
-                                "len": "Nname",
-                                "len_trim": "Lname"
-                            },
                             "declarator": {
                                 "name": "name",
                                 "pointer": [
@@ -8007,7 +7911,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
-                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +len+len_trim)",
+                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name)",
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
@@ -8064,8 +7968,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_name",
@@ -8075,14 +7977,13 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi"
+                            "stmt1": "c_inout_string_&_cfi",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -8091,7 +7992,8 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi"
+                            "stmtc1": "c_inout_string_&_cfi",
+                            "temp0": "name_temp0"
                         }
                     }
                 },

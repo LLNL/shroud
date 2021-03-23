@@ -1605,11 +1605,6 @@ class GenFunctions(object):
                 arg.metaattrs["api"] = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
-            if arg_typemap.sgroup in ["char", "string"]:
-                # Create local variable names to be used in statements.
-                # TODO: move into metaattrs
-                attrs["len"] = True
-                attrs["len_trim"] = True
 
         ast = C_new.ast
         if has_string_result:

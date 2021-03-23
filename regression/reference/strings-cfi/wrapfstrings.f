@@ -103,11 +103,11 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)+len_trim(Ldest)
+    ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
+    ! Argument:  const char * src
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     ! start pass_char_ptr
@@ -146,7 +146,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+    ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_char_*_cfi
     interface
@@ -605,7 +605,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  const std::string & arg1
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_&_cfi
     interface
@@ -640,7 +640,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_&_cfi
     interface
@@ -677,7 +677,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string & arg1
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_&_cfi
     ! start accept_string_reference
@@ -714,7 +714,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  const std::string * arg1
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_*_cfi
     interface
@@ -749,7 +749,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_*_cfi
     interface
@@ -784,7 +784,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_*_cfi
     interface
@@ -825,7 +825,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_*_cfi
     ! ----------------------------------------
@@ -873,7 +873,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_string_*_cfi
     ! ----------------------------------------
@@ -917,7 +917,7 @@ module strings_mod
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
+    ! Argument:  std::string arg1 +value
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_scalar_cfi
     interface
@@ -956,7 +956,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(in)+len(Nname)+len_trim(Lname)
+    ! Argument:  char * name +intent(in)+len_trim(AAlen)
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     interface
@@ -992,7 +992,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(Nname)+len_trim(Lname)
+    ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     interface
@@ -1066,11 +1066,11 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)+len(Ndest)+len_trim(Ldest)
+    ! Argument:  char * dest +intent(out)
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
+    ! Argument:  const char * src
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     interface
@@ -1117,7 +1117,7 @@ module strings_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+    ! Argument:  std::string & name
     ! Attrs:     +api(cfi)+intent(inout)
     ! Exact:     c_inout_string_&_cfi
     interface
@@ -1519,7 +1519,6 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: f_in_string_scalar_cfi
     ! Match:     f_in_string_scalar
-    ! Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_string_scalar_cfi
     !>
