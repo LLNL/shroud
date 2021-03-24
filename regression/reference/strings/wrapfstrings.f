@@ -1000,17 +1000,17 @@ module strings_mod
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +len_trim(Larg1)+value
+    ! Argument:  std::string arg1 +value
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_scalar_buf
     interface
-        function c_accept_string_instance_bufferify(arg1, Larg1) &
+        function c_accept_string_instance_bufferify(arg1, arg1_temp0) &
                 result(SHT_rv) &
                 bind(C, name="STR_accept_string_instance_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
             integer(C_INT) :: SHT_rv
         end function c_accept_string_instance_bufferify
     end interface
@@ -1951,9 +1951,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_scalar_buf
-    ! Match:     f_in_string_scalar
-    ! Argument:  std::string arg1 +len_trim(Larg1)+value
+    ! Exact:     f_in_string_scalar_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_scalar_buf
     !>
@@ -1967,7 +1965,7 @@ contains
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accept_string_instance
         SHT_rv = c_accept_string_instance_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
+            len(arg1, kind=C_INT))
         ! splicer end function.accept_string_instance
     end function accept_string_instance
 

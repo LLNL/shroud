@@ -6306,7 +6306,7 @@
                     "F_C_name": "c_accept_string_instance",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
+                    "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_instance",
                     "F_name_generic": "accept_string_instance",
@@ -6383,7 +6383,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "len_trim": "Larg1",
                                 "value": true
                             },
                             "declarator": {
@@ -6406,7 +6405,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +len_trim+value)",
+                "declgen": "int acceptStringInstance(std::string arg1 +value)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -6423,7 +6422,6 @@
                             "c_deref": "",
                             "c_member": ".",
                             "c_var": "arg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -6433,31 +6431,34 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_string_scalar_buf",
-                            "stmt1": "c_in_string_scalar_buf"
+                            "stmt1": "c_in_string_scalar_buf",
+                            "temp0": "arg1_temp0",
+                            "temp1": "arg1_temp1"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_scalar_buf",
-                            "stmt1": "f_in_string_scalar",
+                            "stmt1": "f_in_string_scalar_buf",
                             "stmtc0": "c_in_string_scalar_buf",
-                            "stmtc1": "c_in_string_scalar_buf"
+                            "stmtc1": "c_in_string_scalar_buf",
+                            "temp0": "arg1_temp0",
+                            "temp1": "arg1_temp1"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_instance_bufferify",
-                    "C_prototype": "char *arg1,\t int Larg1",
+                    "C_prototype": "char *arg1,\t int arg1_temp0",
                     "C_return_type": "int",
-                    "F_C_arguments": "arg1,\t Larg1",
+                    "F_C_arguments": "arg1,\t arg1_temp0",
                     "F_C_name": "c_accept_string_instance_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",

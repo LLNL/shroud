@@ -479,17 +479,18 @@ int POI_accept_char_array_in(char **names)
 // Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
+// Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_char_**_buf
 // start POI_accept_char_array_in_bufferify
-int POI_accept_char_array_in_bufferify(char *names, long Snames,
-    int Nnames)
+int POI_accept_char_array_in_bufferify(const char *names,
+    size_t names_temp0, int names_temp1)
 {
     // splicer begin function.accept_char_array_in_bufferify
-    char **SHCXX_names = ShroudStrArrayAlloc(names, Snames, Nnames);
+    char **SHCXX_names = ShroudStrArrayAlloc(names, names_temp0,
+        names_temp1);
     int SHC_rv = acceptCharArrayIn(SHCXX_names);
-    ShroudStrArrayFree(SHCXX_names, Snames);
+    ShroudStrArrayFree(SHCXX_names, names_temp0);
     return SHC_rv;
     // splicer end function.accept_char_array_in_bufferify
 }

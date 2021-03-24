@@ -720,6 +720,10 @@ fc_statements = [
     # Pass CHARACTER and LEN to C wrapper.
     dict(
         name="f_mixin_in_character_buf",
+#        arg_decl=[  # XXX make declaration explicit?
+#            # Remove VALUE added by f_default
+#            "character(len=*), intent({f_intent}) :: {f_var}",
+#        ],
         arg_c_call=[
             "{f_var}",
             "len({f_var}, kind=C_INT)",
@@ -1260,26 +1264,21 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
+        name='f_in_char_**_buf',
+        mixin=["f_mixin_in_string_array_buf"],
+    ),
+    dict(
         name='c_in_char_**_buf',
-        # arg_decl - argument is char *, not char **.
-        buf_args=["arg_decl", "size", "len"],
+        mixin=["c_mixin_in_array_string_buf"],
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         pre_call=[
             "char **{cxx_var} = ShroudStrArrayAlloc("
-            "{c_var},\t {c_var_size},\t {c_var_len});",
+            "{c_var},\t {temp0},\t {temp1});",
         ],
         post_call=[
-            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+            "ShroudStrArrayFree({cxx_var}, {temp0});",
         ],
-
-        c_arg_decl=[
-            "char *{c_var}",
-        ],
-        f_arg_decl=[
-            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
-        ],
-        f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     #####
     dict(
@@ -1429,6 +1428,17 @@ fc_statements = [
 
     # std::string
     dict(
+        name="f_XXXin_string_scalar",  # pairs with c_in_string_scalar_buf
+        need_wrapper=True,
+#        buf_args=["arg", "len"],
+        mixin=["f_mixin_in_character_buf"],
+        arg_decl=[
+            # Remove VALUE added by f_default
+            "character(len=*), intent(IN) :: {f_var}",
+        ],
+    ),
+    dict(
+        # Used with C wrapper.
         name="c_in_string_scalar",
         buf_args=["arg_decl"],
         c_arg_decl=[
@@ -1443,25 +1453,25 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
+        name="f_in_string_scalar_buf",
+        mixin=["f_mixin_in_character_buf"],
+        arg_decl=[
+            # Remove VALUE added by f_default
+            "character(len=*), intent({f_intent}) :: {f_var}",
+        ],
+    ),
+    dict(
         name="c_in_string_scalar_buf",
-        base="c_in_string_scalar",
-        buf_args=["arg_decl", "len_trim"],
+        mixin=["c_mixin_in_character_buf"],
         cxx_local_var="scalar",
         pre_call=[
-            "std::string {cxx_var}({c_var}, {c_var_trim});",
+            "int {temp1} = ShroudLenTrim({c_var}, {temp0});",
+            "std::string {cxx_var}({c_var}, {temp1});",
         ],
         call=[
             "{cxx_var}",
         ],
-    ),
-    dict(
-        name="f_in_string_scalar",  # pairs with c_in_string_scalar_buf
-        need_wrapper=True,
-        buf_args=["arg", "len"],
-        arg_decl=[
-            # Remove VALUE added by f_default
-            "character(len=*), intent(IN) :: {f_var}",
-        ],
+        ntemps=2,  # Extra temp for len_trim.
     ),
     
     # Uses a two part call to copy results of std::string into a
@@ -1679,9 +1689,14 @@ fc_statements = [
             "-}}",
         ],
     ),
+    # XXX untested [cf]_out_vector_buf_string
+    dict(
+        name="f_out_vector_buf_string",
+        mixin=["f_mixin_in_string_array_buf"],
+    ),
     dict(
         name="c_out_vector_buf_string",
-        buf_args=["arg", "size", "len"],
+        mixin=["c_mixin_in_array_string_buf"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
@@ -1690,21 +1705,26 @@ fc_statements = [
             "char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
+            "{c_temp}n = {temp0};",
             "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "ShroudStrCopy("
-            "BBB, {c_var_len},"
+            "BBB, {temp1},"
             "\t {cxx_var}[{c_temp}i].data(),"
             "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {c_var_len};",
+            "BBB += {temp1};",
             "-}}",
             "-}}",
         ],
     ),
+    # XXX untested [cf]_inout_vector_buf_string
+    dict(
+        name="f_inout_vector_buf_string",
+        mixin=["f_mixin_in_string_array_buf"],
+    ),
     dict(
         name="c_inout_vector_buf_string",
-        buf_args=["arg", "size", "len"],
+        mixin=["c_mixin_in_array_string_buf"],
         cxx_local_var="scalar",
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
@@ -1712,26 +1732,26 @@ fc_statements = [
             "{c_const}char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
+            "{c_temp}n = {temp0};",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "{cxx_var}.push_back"
-            "(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-            "BBB += {c_var_len};",
+            "(std::string(BBB,ShroudLenTrim(BBB, {temp1})));",
+            "BBB += {temp1};",
             "-}}",
             "-}}",
-    ],
+        ],
         post_call=[
             "{{+",
             "char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
+            "{c_temp}n = {temp0};",
             "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
             "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-            "ShroudStrCopy(BBB, {c_var_len},"
+            "ShroudStrCopy(BBB, {temp1},"
             "\t {cxx_var}[{c_temp}i].data(),"
             "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {c_var_len};",
+            "BBB += {temp1};",
             "-}}",
             "-}}",
         ],

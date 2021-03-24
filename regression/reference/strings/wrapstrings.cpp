@@ -1290,13 +1290,14 @@ int STR_accept_string_instance(char *arg1)
 // Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string arg1 +len_trim(Larg1)+value
+// Argument:  std::string arg1 +value
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_scalar_buf
-int STR_accept_string_instance_bufferify(char *arg1, int Larg1)
+int STR_accept_string_instance_bufferify(char *arg1, int arg1_temp0)
 {
     // splicer begin function.accept_string_instance_bufferify
-    std::string SHCXX_arg1(arg1, Larg1);
+    int arg1_temp1 = ShroudLenTrim(arg1, arg1_temp0);
+    std::string SHCXX_arg1(arg1, arg1_temp1);
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
     // splicer end function.accept_string_instance_bufferify

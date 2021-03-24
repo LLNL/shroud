@@ -483,19 +483,20 @@ module pointers_mod
     ! Requested: c_function_native_scalar
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
+    ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_char_**_buf
     ! start c_accept_char_array_in_bufferify
     interface
-        function c_accept_char_array_in_bufferify(names, Snames, Nnames) &
+        function c_accept_char_array_in_bufferify(names, names_temp0, &
+                names_temp1) &
                 result(SHT_rv) &
                 bind(C, name="POI_accept_char_array_in_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_LONG
+            use iso_c_binding, only : C_CHAR, C_INT, C_SIZE_T
             implicit none
             character(kind=C_CHAR), intent(IN) :: names(*)
-            integer(C_LONG), value, intent(IN) :: Snames
-            integer(C_INT), value, intent(IN) :: Nnames
+            integer(C_SIZE_T), intent(IN), value :: names_temp0
+            integer(C_INT), intent(IN), value :: names_temp1
             integer(C_INT) :: SHT_rv
         end function c_accept_char_array_in_bufferify
     end interface
@@ -1574,9 +1575,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_char_**_buf
-    ! Match:     f_default
-    ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
+    ! Exact:     f_in_char_**_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_char_**_buf
     !>
@@ -1585,12 +1584,12 @@ contains
     ! start accept_char_array_in
     function accept_char_array_in(names) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_LONG
+        use iso_c_binding, only : C_INT, C_SIZE_T
         character(len=*), intent(IN) :: names(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accept_char_array_in
         SHT_rv = c_accept_char_array_in_bufferify(names, &
-            size(names, kind=C_LONG), len(names, kind=C_INT))
+            size(names, kind=C_SIZE_T), len(names, kind=C_INT))
         ! splicer end function.accept_char_array_in
     end function accept_char_array_in
     ! end accept_char_array_in

@@ -152,7 +152,7 @@ void STR_fetch_string_pointer_len_bufferify(char *arg1, int arg1_temp0,
 
 int STR_accept_string_instance(char *arg1);
 
-int STR_accept_string_instance_bufferify(char *arg1, int Larg1);
+int STR_accept_string_instance_bufferify(char *arg1, int arg1_temp0);
 
 void STR_explicit1(char * name);
 

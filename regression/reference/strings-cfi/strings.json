@@ -6483,7 +6483,7 @@
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_scalar_cfi",
-                            "stmt1": "f_in_string_scalar",
+                            "stmt1": "f_default",
                             "stmtc0": "c_in_string_scalar_cfi",
                             "stmtc1": "c_in_string_scalar_cfi",
                             "temp0": "arg1_temp0"
@@ -6496,7 +6496,7 @@
                     "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1",
-                    "F_C_name": "c_accept_string_instance_cfi",
+                    "F_C_name": "accept_string_instance",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
