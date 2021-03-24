@@ -720,10 +720,7 @@ fc_statements = [
     # Pass CHARACTER and LEN to C wrapper.
     dict(
         name="f_mixin_in_character_buf",
-#        arg_decl=[  # XXX make declaration explicit?
-#            # Remove VALUE added by f_default
-#            "character(len=*), intent({f_intent}) :: {f_var}",
-#        ],
+        # Do not use arg_decl here since it does not understand +len(30) on functions.
         arg_c_call=[
             "{f_var}",
             "len({f_var}, kind=C_INT)",
