@@ -119,10 +119,11 @@ root
       in
         array
           buf -- c_mixin_in_array_buf
-          string
-            buf -- c_mixin_in_array_string_buf
         character
           buf -- c_mixin_in_character_buf
+        string
+          array
+            buf -- c_mixin_in_string_array_buf
       inout
         array
           buf -- c_mixin_inout_array_buf
@@ -1630,25 +1631,6 @@ c_mixin_in_array_buf:
   name: c_mixin_in_array_buf
   ntemps: 2
   owner: library
-c_mixin_in_array_string_buf:
-  buf_args:
-  - arg_decl
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {temp0}
-  - int {temp1}
-  f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
-  - 'integer(C_INT), intent(IN), value :: {temp1}'
-  f_c_arg_names:
-  - '{c_var}'
-  - '{temp0}'
-  - '{temp1}'
-  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
-  name: c_mixin_in_array_string_buf
-  ntemps: 2
-  owner: library
 c_mixin_in_character_buf:
   buf_args:
   - arg_decl
@@ -1667,6 +1649,25 @@ c_mixin_in_character_buf:
     - C_INT
   name: c_mixin_in_character_buf
   ntemps: 1
+  owner: library
+c_mixin_in_string_array_buf:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {temp0}
+  - int {temp1}
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
+  - 'integer(C_INT), intent(IN), value :: {temp1}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  - '{temp1}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  name: c_mixin_in_string_array_buf
+  ntemps: 2
   owner: library
 c_mixin_inout_array_buf:
   buf_args:

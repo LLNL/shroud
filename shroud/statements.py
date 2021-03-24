@@ -675,7 +675,7 @@ fc_statements = [
     ),
     dict(
         # Pass argument, size and len to C.
-        name="c_mixin_in_array_string_buf",
+        name="c_mixin_in_string_array_buf",
         buf_args=["arg_decl"],
         c_arg_decl=[
             "const char *{c_var}",   # XXX c_type
@@ -1269,7 +1269,7 @@ fc_statements = [
     ),
     dict(
         name='c_in_char_**_buf',
-        mixin=["c_mixin_in_array_string_buf"],
+        mixin=["c_mixin_in_string_array_buf"],
         c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
         cxx_local_var="pointer",
         pre_call=[
@@ -1430,7 +1430,6 @@ fc_statements = [
     dict(
         name="f_XXXin_string_scalar",  # pairs with c_in_string_scalar_buf
         need_wrapper=True,
-#        buf_args=["arg", "len"],
         mixin=["f_mixin_in_character_buf"],
         arg_decl=[
             # Remove VALUE added by f_default
@@ -1670,7 +1669,7 @@ fc_statements = [
     ),
     dict(
         name="c_in_vector_buf_string",
-        mixin=["c_mixin_in_array_string_buf"],
+        mixin=["c_mixin_in_string_array_buf"],
         ntemps=3,
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
@@ -1696,7 +1695,7 @@ fc_statements = [
     ),
     dict(
         name="c_out_vector_buf_string",
-        mixin=["c_mixin_in_array_string_buf"],
+        mixin=["c_mixin_in_string_array_buf"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
@@ -1724,7 +1723,7 @@ fc_statements = [
     ),
     dict(
         name="c_inout_vector_buf_string",
-        mixin=["c_mixin_in_array_string_buf"],
+        mixin=["c_mixin_in_string_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
