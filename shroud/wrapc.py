@@ -674,9 +674,8 @@ class Wrapc(util.WrapperMixin):
                 continue
             elif buf_arg == "shadow":
                 # Do not use const in declaration.
-                proto_list.append("{} {}{}".format(
+                proto_list.append("{} * {}".format(
                     ast.typemap.c_type,
-                    "" if attrs["value"] else "* ",
                     name or ast.name))
                 continue
             elif buf_arg == "arg_decl":

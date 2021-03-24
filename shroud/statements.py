@@ -1825,15 +1825,11 @@ fc_statements = [
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};",
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
         ],
     ),
     dict(
         name="c_inout_shadow",
-        base="c_in_shadow",
-    ),
-    dict(
-        name="c_in_shadow_scalar",
         base="c_in_shadow",
     ),
     # Return a C_capsule_data_type.

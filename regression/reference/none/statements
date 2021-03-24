@@ -59,7 +59,6 @@ root
           cfi -- c_in_native_*_cfi
         ** -- c_in_native_**
       shadow -- c_in_shadow
-        scalar -- c_in_shadow_scalar
       string
         & -- c_in_string_*/&
           buf -- c_in_string_*/&_buf
@@ -1013,15 +1012,7 @@ c_in_shadow:
   name: c_in_shadow
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
-c_in_shadow_scalar:
-  buf_args:
-  - shadow
-  cxx_local_var: pointer
-  name: c_in_shadow_scalar
-  owner: library
-  pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_in_string_&:
   cxx_local_var: scalar
   name: c_in_string_&
@@ -1329,7 +1320,7 @@ c_inout_shadow:
   name: c_inout_shadow
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_inout_string_&:
   cxx_local_var: scalar
   impl_header:

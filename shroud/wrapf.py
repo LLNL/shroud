@@ -1065,10 +1065,9 @@ rv = .false.
                 # Do not use const or value in declaration
                 # Function result arguments explicitly set to intent(out).
                 arg_c_names.append(fmt.F_C_var)
-                arg_c_decl.append("{}, intent({}){} :: {}".format(
+                arg_c_decl.append("{}, intent({}) :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.metaattrs["intent"]).upper(),
-                    ", value" if attrs["value"] else "",
                     fmt.F_C_var))
                 self.update_f_module(
                     modules, imports,

@@ -645,13 +645,14 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_scalar
+    ! Requested: c_in_shadow_scalar
+    ! Match:     c_in_shadow
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
             import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_capsule_data), intent(IN), value :: arg
+            type(CLA_SHROUD_capsule_data), intent(IN) :: arg
         end subroutine c_pass_class_by_value
     end interface
 
@@ -1455,7 +1456,8 @@ contains
     ! Requested: f_in_shadow_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Exact:     c_in_shadow_scalar
+    ! Requested: c_in_shadow_scalar
+    ! Match:     c_in_shadow
     !>
     !! \brief Pass arguments to a function.
     !!
