@@ -233,6 +233,7 @@ class Wrapf(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         fmt_class.F_derived_name = node.typemap.f_derived_type
+        fmt_class.f_capsule_data_type = node.typemap.f_capsule_data_type
 
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
@@ -1543,10 +1544,12 @@ rv = .false.
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ntypemap.name
         if subprogram != "subroutine":
-            if ntypemap.f_kind:
-                fmt.f_kind = ntypemap.f_kind
             fmt.f_type = ntypemap.f_type
             fmt.sh_type = ntypemap.sh_type
+            if ntypemap.f_kind:
+                fmt.f_kind = ntypemap.f_kind
+            if ntypemap.f_capsule_data_type:
+                fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

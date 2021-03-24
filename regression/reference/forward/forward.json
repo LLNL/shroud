@@ -46,6 +46,7 @@
                     "class_scope": "Class3::",
                     "cxx_class": "Class3",
                     "cxx_type": "Class3",
+                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class3",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -128,6 +129,7 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "forward::Class2",
+                                "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
@@ -284,6 +286,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "TUT_Class1",
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -300,6 +303,7 @@
                                     "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
+                                    "f_capsule_data_type": "SHROUD_class1_capsule",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
                                     "f_var": "arg",
@@ -438,6 +442,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "FOR_Class3",
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -454,6 +459,7 @@
                                     "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
+                                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                     "f_intent": "IN",
                                     "f_type": "type(class3)",
                                     "f_var": "arg",
@@ -578,6 +584,7 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
+                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -648,6 +655,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "STR_cstruct1",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",

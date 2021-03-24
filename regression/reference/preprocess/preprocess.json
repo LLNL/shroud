@@ -228,6 +228,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "i",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -336,6 +337,7 @@
                     "class_scope": "User1::",
                     "cxx_class": "User1",
                     "cxx_type": "User1",
+                    "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User1",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -451,6 +453,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "flag",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -558,6 +561,7 @@
                     "class_scope": "User2::",
                     "cxx_class": "User2",
                     "cxx_type": "User2",
+                    "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User2",
                     "hnamefunc0": "capsule_data_helper"
                 }

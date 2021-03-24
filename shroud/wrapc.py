@@ -758,6 +758,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt.c_const = ""
             compute_c_deref(ast, None, fmt)
+            fmt.c_type = ntypemap.c_type
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.idtor = "0"

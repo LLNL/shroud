@@ -771,6 +771,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
                 c_get_value="XXXc_get_value",
+                c_type="XXXc_type",
                 c_val="XXXc_val",
                 c_var="XXXc_var",
                 c_var_capsule="XXXc_var_capsule",
@@ -778,6 +779,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_len="XXXc_var_len",
                 c_var_trim="XXXc_var_trim",
                 f_c_dimension="XXXf_c_dimension",
+                f_c_type="XXXf_c_type",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",

@@ -682,6 +682,7 @@
                             "class_scope": "ClassWork::",
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork",
+                            "f_capsule_data_type": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork",
                             "hnamefunc0": "capsule_data_helper"
                         }

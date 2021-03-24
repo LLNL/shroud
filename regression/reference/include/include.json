@@ -54,6 +54,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "MPI_Fint",
                                     "c_var": "comm",
                                     "cxx_addr": "&",
                                     "cxx_decl": "MPI_Comm SHCXX_comm",
@@ -161,6 +162,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "LIB_three_Class1",
                                     "c_var": "c2",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -177,6 +179,7 @@
                                     "F_C_var": "c2",
                                     "F_pointer": "SHPTR_c2",
                                     "c_var": "c2",
+                                    "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_intent": "INOUT",
                                     "f_type": "type(class1)",
                                     "f_var": "c2",
@@ -237,6 +240,7 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
+                    "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -421,6 +425,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "arg1",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -498,6 +503,7 @@
                             "class_scope": "Class1::",
                             "cxx_class": "Class1",
                             "cxx_type": "Class1",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "three_Class1",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -609,6 +615,7 @@
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer1_class0",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -770,6 +777,7 @@
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer2_class0",
                             "hnamefunc0": "capsule_data_helper"
                         }
