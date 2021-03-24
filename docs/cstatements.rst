@@ -102,21 +102,6 @@ context
     *c_var_context*
     options.C_var_context_template
 
-len
-
-    Result of Fortran intrinsic ``LEN`` for string arguments.
-    Type ``int``.
-
-len_trim
-
-    Result of Fortran intrinsic ``LEN_TRIM`` for string arguments.
-    Type ``int``.
-
-size
-
-    Result of Fortran intrinsic ``SIZE`` for array arguments.
-    Type ``long``.
-
 shadow
 
     Argument will be of type *C_capsule_data_type*.
@@ -129,11 +114,8 @@ arg
     default.
 
 shadow
-size
 capsule
 context
-len_trim
-len
 
    
 buf_extra

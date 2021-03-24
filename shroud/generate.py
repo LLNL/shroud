@@ -1786,13 +1786,6 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.wrap.c = False
                 node.wrap.lua = False  # NotImplemented
-                specialize = arg.template_arguments[0].typemap.sgroup
-            arg_typemap, sp = statements.lookup_c_statements(arg)
-
-            spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", meta["intent"], sgroup, spointer, meta["api"], specialize]
-            intent_blk = statements.lookup_fc_stmts(c_stmts)
-            statements.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
         if True: # preserve to avoid changing indention for now.

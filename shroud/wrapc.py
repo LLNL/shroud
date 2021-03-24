@@ -692,16 +692,10 @@ class Wrapc(util.WrapperMixin):
                 continue
 
             need_wrapper = True
-            if buf_arg == "size":
-                append_format(proto_list, "long {c_var_size}", fmt)
-            elif buf_arg == "capsule":
+            if buf_arg == "capsule":
                 append_format(
                     proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
                 )
-            elif buf_arg == "len_trim":
-                append_format(proto_list, "int {c_var_trim}", fmt)
-            elif buf_arg == "len":
-                append_format(proto_list, "int {c_var_len}", fmt)
             else:
                 raise RuntimeError(
                     "wrap_function: unhandled case {}".format(buf_arg)

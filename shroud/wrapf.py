@@ -1091,12 +1091,6 @@ rv = .false.
                 msg = "ERROR: {} is missing from attrs".format(buf_arg)
                 arg_c_decl.append(msg)
                 self.log.write(msg + "\n")
-            elif buf_arg == "size":
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "integer(C_LONG), value, intent(IN) :: %s" % buf_arg_name
-                )
-                self.set_f_module(modules, "iso_c_binding", "C_LONG")
             elif buf_arg == "capsule":
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
@@ -1116,18 +1110,6 @@ rv = .false.
                 )
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
-            elif buf_arg == "len_trim":
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "integer(C_INT), value, intent(IN) :: %s" % buf_arg_name
-                )
-                self.set_f_module(modules, "iso_c_binding", "C_INT")
-            elif buf_arg == "len":
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "integer(C_INT), value, intent(IN) :: %s" % buf_arg_name
-                )
-                self.set_f_module(modules, "iso_c_binding", "C_INT")
             else:
                 raise RuntimeError(
                     "build_arg_list_interface: unhandled case {}".format(
@@ -1456,22 +1438,13 @@ rv = .false.
                 continue
 
             need_wrapper = True
-            if buf_arg == "size":
-                append_format(arg_c_call, "size({f_var}, kind=C_LONG)", fmt)
-                self.set_f_module(modules, "iso_c_binding", "C_LONG")
-            elif buf_arg == "capsule":
+            if buf_arg == "capsule":
                 append_format(
                     arg_f_decl, "type({F_capsule_type}) :: {c_var_capsule}", fmt
                 )
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
                 fileinfo.add_f_helper("capsule_data_helper", fmt)
-            elif buf_arg == "len_trim":
-                append_format(arg_c_call, "len_trim({f_var}, kind=C_INT)", fmt)
-                self.set_f_module(modules, "iso_c_binding", "C_INT")
-            elif buf_arg == "len":
-                append_format(arg_c_call, "len({f_var}, kind=C_INT)", fmt)
-                self.set_f_module(modules, "iso_c_binding", "C_INT")
             else:
                 raise RuntimeError(
                     "build_arg_list_impl: unhandled case {}".format(buf_arg)

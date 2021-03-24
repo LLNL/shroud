@@ -66,19 +66,6 @@ def lookup_local_stmts(path, parent, node):
             return blk
     return parent
 
-def create_buf_variable_names(options, blk, attrs):
-    """Turn on attribute for buf_arg if defined in blk.
-    """
-    for buf_arg in blk.buf_args:
-        if attrs[buf_arg] is not None and \
-           attrs[buf_arg] is not True:
-            # None - Not set.
-            # True - Do not override user specified variable name.
-            pass
-        elif buf_arg in ["size", "capsule", "context",
-                         "len_trim", "len"]:
-            attrs[buf_arg] = True
-
 def set_buf_variable_names(options, arg):
     """Set attribute name from option template.
     XXX - make sure they don't conflict with other names.
@@ -88,10 +75,6 @@ def set_buf_variable_names(options, arg):
     attrs = arg.attrs
     meta = arg.metaattrs
     
-    if attrs["size"] is True:
-        attrs["size"] = options.C_var_size_template.format(
-            c_var=c_var
-        )
     if attrs["capsule"] is True:
         attrs["capsule"] = options.C_var_capsule_template.format(
             c_var=c_var
@@ -105,14 +88,6 @@ def set_buf_variable_names(options, arg):
     if attrs["cdesc"] is True:
         # XXX - not sure about future of cdesc and difference with context.
         attrs["context"] = options.C_var_context_template.format(
-            c_var=c_var
-        )
-    if attrs["len_trim"] is True:
-        attrs["len_trim"] = options.C_var_trim_template.format(
-            c_var=c_var
-        )
-    if attrs["len"] is True:
-        attrs["len"] = options.C_var_len_template.format(
             c_var=c_var
         )
 
@@ -1133,35 +1108,35 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
-    dict(
-        # Blank fill result.
-        name="c_XXXfunction_char_scalar_buf",
-        buf_args=["arg", "len"],
-        c_impl_header=["<string.h>"],
-        cxx_impl_header=["<cstring>"],
-        post_call=[
-            "{stdlib}memset({c_var}, ' ', {c_var_len});",
-            "{c_var}[0] = {cxx_var};",
-        ],
-    ),
+#    dict(
+#        # Blank fill result.
+#        name="c_XXXfunction_char_scalar_buf",
+#        buf_args=["arg", "len"],
+#        c_impl_header=["<string.h>"],
+#        cxx_impl_header=["<cstring>"],
+#        post_call=[
+#            "{stdlib}memset({c_var}, ' ', {c_var_len});",
+#            "{c_var}[0] = {cxx_var};",
+#        ],
+#    ),
     
     dict(
         name="c_function_char_*",
         return_cptr=True,
     ),
-    dict(
-        name="c_XXXin_char_*_buf",
-        buf_args=["arg", "len_trim"],
-        cxx_local_var="pointer",
-        c_helper="ShroudStrAlloc ShroudStrFree",
-        pre_call=[
-            "char * {cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_trim},\t {c_var_trim});",
-        ],
-        post_call=[
-            "ShroudStrFree({cxx_var});"
-        ],
-    ),
+#    dict(
+#        name="c_XXXin_char_*_buf",
+#        buf_args=["arg", "len_trim"],
+#        cxx_local_var="pointer",
+#        c_helper="ShroudStrAlloc ShroudStrFree",
+#        pre_call=[
+#            "char * {cxx_var} = ShroudStrAlloc(\t"
+#            "{c_var},\t {c_var_trim},\t {c_var_trim});",
+#        ],
+#        post_call=[
+#            "ShroudStrFree({cxx_var});"
+#        ],
+#    ),
     dict(
         name="f_out_char_*_buf",
         mixin=["f_mixin_in_character_buf"],

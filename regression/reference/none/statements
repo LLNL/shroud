@@ -1,14 +1,6 @@
 ***** Fortran/C
 root
   c
-    XXXfunction
-      char
-        scalar
-          buf -- c_XXXfunction_char_scalar_buf
-    XXXin
-      char
-        *
-          buf -- c_XXXin_char_*_buf
     ctor -- c_ctor
     dtor -- c_dtor
     function
@@ -325,29 +317,6 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
-c_XXXfunction_char_scalar_buf:
-  buf_args:
-  - arg
-  - len
-  impl_header:
-  - <cstring>
-  name: c_XXXfunction_char_scalar_buf
-  owner: library
-  post_call:
-  - '{stdlib}memset({c_var}, '' '', {c_var_len});'
-  - '{c_var}[0] = {cxx_var};'
-c_XXXin_char_*_buf:
-  buf_args:
-  - arg
-  - len_trim
-  c_helper: ShroudStrAlloc ShroudStrFree
-  cxx_local_var: pointer
-  name: c_XXXin_char_*_buf
-  owner: library
-  post_call:
-  - ShroudStrFree({cxx_var});
-  pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
 c_ctor:
   buf_extra:
   - shadow
