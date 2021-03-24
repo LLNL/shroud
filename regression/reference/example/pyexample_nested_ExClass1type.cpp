@@ -188,7 +188,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +intent(function)
 // Exact:     py_function_string_&
 static char PP_getNameArg__doc__[] =
 "documentation"

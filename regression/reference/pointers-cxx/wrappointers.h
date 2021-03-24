@@ -66,8 +66,8 @@ int POI_accumulate(const int * arr, size_t len);
 
 int POI_accept_char_array_in(char **names);
 
-int POI_accept_char_array_in_bufferify(char *names, long Snames,
-    int Nnames);
+int POI_accept_char_array_in_bufferify(const char *names,
+    size_t names_temp0, int names_temp1);
 
 void POI_set_global_int(int value);
 

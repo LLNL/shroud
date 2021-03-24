@@ -39,8 +39,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     const char * name, AA_example_nested_ExClass1 * SHadow_rv);
 
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
-    const char * name, int Lname,
-    AA_example_nested_ExClass1 * SHadow_rv);
+    char *name, int name_temp0, AA_example_nested_ExClass1 * SHadow_rv);
 
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self);
 
@@ -58,7 +57,8 @@ const char * AA_example_nested_ExClass1_get_name_arg(
     const AA_example_nested_ExClass1 * self);
 
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
-    const AA_example_nested_ExClass1 * self, char * name, int Nname);
+    const AA_example_nested_ExClass1 * self, char *name,
+    int name_temp0);
 
 int AA_example_nested_ExClass1_get_value_from_int(
     AA_example_nested_ExClass1 * self, int value);

@@ -192,7 +192,7 @@ PP_ExClass2_tp_init(
 
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_string_&
 static char PP_getName__doc__[] =
 "documentation"

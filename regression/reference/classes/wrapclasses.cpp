@@ -218,8 +218,8 @@ int CLA_get_global_flag(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * CLA_last_function_called(void)
 {
@@ -231,22 +231,18 @@ const char * CLA_last_function_called(void)
 }
 
 // ----------------------------------------
-// Function:  void LastFunctionCalled +len(30)
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  std::string & SHF_rv +len(NSHF_rv)
-// Attrs:     +api(buf)+intent(out)+is_result
-// Exact:     c_function_string_&_buf
-void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
+// Function:  const std::string & LastFunctionCalled +len(30)
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_string_&_buf_copy
+// Match:     c_function_string_&_buf
+void CLA_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.last_function_called_bufferify

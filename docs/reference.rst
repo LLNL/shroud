@@ -519,18 +519,6 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
-C_var_len_template
-    Format for variable created with *len* annotation.
-    Default ``N{c_var}``
-
-C_var_size_template
-    Format for variable created with *size* annotation.
-    Default ``S{c_var}``
-
-C_var_trim_template
-    Format for variable created with *len_trim* annotation.
-    Default ``L{c_var}``
-
 F_C_name_template
     ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 

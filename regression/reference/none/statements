@@ -11,7 +11,6 @@ root
           cfi -- c_function_char_*_cfi
             allocatable -- c_function_char_*_cfi_allocatable
         scalar -- c_function_char_scalar
-          buf -- c_function_char_scalar_buf
           cfi -- c_function_char_scalar_cfi
       native
         & -- c_function_native_*/&/**
@@ -50,7 +49,6 @@ root
     in
       char
         *
-          buf -- c_in_char_*_buf
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
           buf -- c_in_char_**_buf
@@ -113,10 +111,11 @@ root
       in
         array
           buf -- c_mixin_in_array_buf
-          string
-            buf -- c_mixin_in_array_string_buf
         character
           buf -- c_mixin_in_character_buf
+        string
+          array
+            buf -- c_mixin_in_string_array_buf
       inout
         array
           buf -- c_mixin_inout_array_buf
@@ -159,14 +158,17 @@ root
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
   f
+    XXXin
+      string
+        scalar -- f_XXXin_string_scalar
     ctor -- f_ctor
     function
       bool -- f_function_bool
       char
         *
-          buf
+          buf -- f_function_char_*_buf
             allocatable -- f_function_char_scalar/*_buf_allocatable
-          cfi
+          cfi -- f_function_char_*_cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
           raw -- f_function_char_*_raw
         scalar
@@ -190,19 +192,19 @@ root
       shadow -- f_function_shadow
       string
         &
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         *
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         scalar
-          buf
+          buf -- f_function_string_scalar/*/&_buf
             allocatable -- f_function_string_scalar/*/&_buf_allocatable
-          cfi
+          cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
       struct
         * -- f_function_struct_*
@@ -222,12 +224,19 @@ root
     in
       bool -- f_in_bool
       char
+        **
+          buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
       native
         *
           cdesc -- f_in/out/inout_native_*_cdesc
       string
-        scalar -- f_in_string_scalar
+        &
+          buf -- f_in_string_*/&_buf
+        *
+          buf -- f_in_string_*/&_buf
+        scalar
+          buf -- f_in_string_scalar_buf
       vector
         buf -- f_in_vector_buf
           string -- f_in_vector_buf_string
@@ -237,12 +246,21 @@ root
         ** -- f_in_void_**
     inout
       bool -- f_inout_bool
+      char
+        *
+          buf -- f_inout_char_*_buf
       native
         *
           cdesc -- f_in/out/inout_native_*_cdesc
+      string
+        &
+          buf -- f_inout_string_*/&_buf
+        *
+          buf -- f_inout_string_*/&_buf
       vector
         buf -- f_inout_vector_buf
           allocatable -- f_inout_vector_buf_allocatable
+          string -- f_inout_vector_buf_string
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
@@ -267,6 +285,9 @@ root
           buf -- f_mixin_out_character_buf
     out
       bool -- f_out_bool
+      char
+        *
+          buf -- f_out_char_*_buf
       native
         *
           allocatable -- f_out_native_*_allocatable
@@ -278,9 +299,15 @@ root
           buf
             pointer -- f_out_native_**/*&_buf_pointer
           raw -- f_out_native_**_raw
+      string
+        &
+          buf -- f_out_string_*/&_buf
+        *
+          buf -- f_out_string_*/&_buf
       vector
         buf -- f_out_vector_buf
           allocatable -- f_out_vector_buf_allocatable
+          string -- f_out_vector_buf_string
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
@@ -318,13 +345,30 @@ c_function_char_*:
   return_cptr: true
 c_function_char_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  call:
+  - "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}{CXX_template}(\t\
+    {C_call_list});"
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_char_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var},\t -1);"
+  return_type: void
 c_function_char_*_buf_allocatable:
   buf_args:
   - arg_decl
@@ -362,6 +406,7 @@ c_function_char_*_cfi:
   post_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var},\t -1);"
+  return_type: void
 c_function_char_*_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -392,17 +437,6 @@ c_function_char_scalar:
   - 'character(kind=C_CHAR) :: {c_var}'
   name: c_function_char_scalar
   owner: library
-c_function_char_scalar_buf:
-  buf_args:
-  - arg
-  - len
-  impl_header:
-  - <cstring>
-  name: c_function_char_scalar_buf
-  owner: library
-  post_call:
-  - '{stdlib}memset({c_var}, '' '', {c_var_len});'
-  - '{c_var}[0] = {cxx_var};'
 c_function_char_scalar_cfi:
   buf_args:
   - arg_decl
@@ -510,17 +544,31 @@ c_function_string_&:
   return_cptr: true
 c_function_string_&_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_&_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_&_buf_allocatable:
   buf_args:
   - arg_decl
@@ -557,6 +605,7 @@ c_function_string_&_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_&_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -588,17 +637,31 @@ c_function_string_*:
   return_cptr: true
 c_function_string_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_*_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_*_buf_allocatable:
   buf_args:
   - arg_decl
@@ -635,6 +698,7 @@ c_function_string_*_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_*_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -666,17 +730,31 @@ c_function_string_scalar:
   return_cptr: true
 c_function_string_scalar_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_function_string_scalar_buf
+  ntemps: 1
   owner: library
   post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_scalar_buf_allocatable:
   buf_args:
   - arg_decl
@@ -717,6 +795,7 @@ c_function_string_scalar_cfi:
   - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
+  return_type: void
 c_function_string_scalar_cfi_allocatable:
   buf_args:
   - arg_decl
@@ -831,35 +910,28 @@ c_in_char_**:
 c_in_char_**_buf:
   buf_args:
   - arg_decl
-  - size
-  - len
   c_arg_decl:
-  - char *{c_var}
+  - const char *{c_var}
+  - size_t {temp0}
+  - int {temp1}
   c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  f_module:
-    iso_c_binding:
-    - C_CHAR
+  - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
+  - 'integer(C_INT), intent(IN), value :: {temp1}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  - '{temp1}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   name: c_in_char_**_buf
+  ntemps: 2
   owner: library
   post_call:
-  - ShroudStrArrayFree({cxx_var}, {c_var_size});
+  - ShroudStrArrayFree({cxx_var}, {temp0});
   pre_call:
-  - "char **{cxx_var} = ShroudStrArrayAlloc({c_var},\t {c_var_size},\t {c_var_len});"
-c_in_char_*_buf:
-  buf_args:
-  - arg
-  - len_trim
-  c_helper: ShroudStrAlloc ShroudStrFree
-  cxx_local_var: pointer
-  name: c_in_char_*_buf
-  owner: library
-  post_call:
-  - ShroudStrFree({cxx_var});
-  pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
+  - "char **{cxx_var} = ShroudStrArrayAlloc({c_var},\t {temp0},\t {temp1});"
 c_in_char_*_cfi:
   buf_args:
   - arg_decl
@@ -958,13 +1030,27 @@ c_in_string_&:
   - '{c_const}std::string {cxx_var}({c_var});'
 c_in_string_&_buf:
   buf_args:
-  - arg
-  - len_trim
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  c_helper: ShroudLenTrim
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_in_string_&_buf
+  ntemps: 1
   owner: library
   pre_call:
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));"
 c_in_string_&_cfi:
   buf_args:
   - arg_decl
@@ -977,11 +1063,12 @@ c_in_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_&_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_string_*:
   cxx_local_var: scalar
   name: c_in_string_*
@@ -990,13 +1077,27 @@ c_in_string_*:
   - '{c_const}std::string {cxx_var}({c_var});'
 c_in_string_*_buf:
   buf_args:
-  - arg
-  - len_trim
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  c_helper: ShroudLenTrim
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_in_string_*_buf
+  ntemps: 1
   owner: library
   pre_call:
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));"
 c_in_string_*_cfi:
   buf_args:
   - arg_decl
@@ -1009,11 +1110,12 @@ c_in_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_*_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_string_scalar:
   buf_args:
   - arg_decl
@@ -1029,21 +1131,28 @@ c_in_string_scalar:
 c_in_string_scalar_buf:
   buf_args:
   - arg_decl
-  - len_trim
   c_arg_decl:
   - char *{c_var}
+  - int {temp0}
   call:
   - '{cxx_var}'
   cxx_local_var: scalar
   f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
   f_module:
     iso_c_binding:
     - C_CHAR
+    - C_INT
   name: c_in_string_scalar_buf
+  ntemps: 2
   owner: library
   pre_call:
-  - std::string {cxx_var}({c_var}, {c_var_trim});
+  - int {temp1} = ShroudLenTrim({c_var}, {temp0});
+  - std::string {cxx_var}({c_var}, {temp1});
 c_in_string_scalar_cfi:
   buf_args:
   - arg_decl
@@ -1056,11 +1165,12 @@ c_in_string_scalar_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_in_string_scalar_cfi
+  ntemps: 1
   owner: library
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_in_struct:
   cxx_local_var: pointer
   name: c_in_struct
@@ -1151,18 +1261,30 @@ c_in_void_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
 c_inout_char_*_buf:
   buf_args:
-  - arg
-  - len_trim
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_inout_char_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var},\t -1);"
   - ShroudStrFree({cxx_var});
   pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
+  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {temp0},\t -1);"
 c_inout_char_*_cfi:
   buf_args:
   - arg_decl
@@ -1220,17 +1342,29 @@ c_inout_string_&:
   - '{c_const}std::string {cxx_var}({c_var});'
 c_inout_string_&_buf:
   buf_args:
-  - arg
-  - len_trim
-  - len
-  c_helper: ShroudStrCopy
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  c_helper: ShroudStrCopy ShroudLenTrim
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_inout_string_&_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   pre_call:
-  - std::string {cxx_var}({c_var}, {c_var_trim});
+  - "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));"
 c_inout_string_&_cfi:
   buf_args:
   - arg_decl
@@ -1243,14 +1377,15 @@ c_inout_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_inout_string_&_cfi
+  ntemps: 1
   owner: library
   post_call:
   - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_inout_string_*:
   cxx_local_var: scalar
   impl_header:
@@ -1263,17 +1398,29 @@ c_inout_string_*:
   - '{c_const}std::string {cxx_var}({c_var});'
 c_inout_string_*_buf:
   buf_args:
-  - arg
-  - len_trim
-  - len
-  c_helper: ShroudStrCopy
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  c_helper: ShroudStrCopy ShroudLenTrim
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_inout_string_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   pre_call:
-  - std::string {cxx_var}({c_var}, {c_var_trim});
+  - "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));"
 c_inout_string_*_cfi:
   buf_args:
   - arg_decl
@@ -1286,14 +1433,15 @@ c_inout_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   name: c_inout_string_*_cfi
+  ntemps: 1
   owner: library
   post_call:
   - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_var_trim} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_var_trim});'
+  - size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {temp0});'
 c_inout_struct:
   cxx_local_var: pointer
   name: c_inout_struct
@@ -1339,22 +1487,34 @@ c_inout_vector_buf:
     \ + {temp0});"
 c_inout_vector_buf_string:
   buf_args:
-  - arg
-  - size
-  - len
+  - arg_decl
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {temp0}
+  - int {temp1}
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
+  - 'integer(C_INT), intent(IN), value :: {temp1}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  - '{temp1}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   name: c_inout_vector_buf_string
+  ntemps: 2
   owner: library
   post_call:
   - '{{+'
   - char * BBB = {c_var};
   - std::vector<{cxx_T}>::size_type
   - +{c_temp}i = 0,
-  - '{c_temp}n = {c_var_size};'
+  - '{c_temp}n = {temp0};'
   - -{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);
   - for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-  - "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
-  - BBB += {c_var_len};
+  - "ShroudStrCopy(BBB, {temp1},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
+  - BBB += {temp1};
   - -}}
   - -}}
   pre_call:
@@ -1363,10 +1523,10 @@ c_inout_vector_buf_string:
   - '{c_const}char * BBB = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_temp}i = 0,
-  - '{c_temp}n = {c_var_size};'
+  - '{c_temp}n = {temp0};'
   - -for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-  - '{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));'
-  - BBB += {c_var_len};
+  - '{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {temp1})));'
+  - BBB += {temp1};
   - -}}
   - -}}
 c_inout_void_*_cdesc:
@@ -1419,7 +1579,7 @@ c_mixin_function_character:
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   f_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {c_var}'
+  - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   name: c_mixin_function_character
@@ -1440,7 +1600,26 @@ c_mixin_in_array_buf:
   name: c_mixin_in_array_buf
   ntemps: 2
   owner: library
-c_mixin_in_array_string_buf:
+c_mixin_in_character_buf:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  name: c_mixin_in_character_buf
+  ntemps: 1
+  owner: library
+c_mixin_in_string_array_buf:
   buf_args:
   - arg_decl
   c_arg_decl:
@@ -1456,27 +1635,8 @@ c_mixin_in_array_string_buf:
   - '{temp0}'
   - '{temp1}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
-  name: c_mixin_in_array_string_buf
+  name: c_mixin_in_string_array_buf
   ntemps: 2
-  owner: library
-c_mixin_in_character_buf:
-  buf_args:
-  - arg_decl
-  c_arg_decl:
-  - char *{c_var}
-  - int {temp0}
-  f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_INT), value :: {temp0}'
-  f_c_arg_names:
-  - '{c_var}'
-  - '{temp0}'
-  f_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  name: c_mixin_in_character_buf
-  ntemps: 1
   owner: library
 c_mixin_inout_array_buf:
   buf_args:
@@ -1529,13 +1689,26 @@ c_mixin_out_character_buf:
   owner: library
 c_out_char_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrBlankFill
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_out_char_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - ShroudStrBlankFill({c_var}, {c_var_len});
+  - ShroudStrBlankFill({c_var}, {temp0});
 c_out_char_*_cfi:
   buf_args:
   - arg_decl
@@ -1636,14 +1809,27 @@ c_out_string_&:
   - '{c_const}std::string {cxx_var};'
 c_out_string_&_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_out_string_&_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   pre_call:
   - std::string {cxx_var};
 c_out_string_&_cfi:
@@ -1677,14 +1863,27 @@ c_out_string_*:
   - '{c_const}std::string {cxx_var};'
 c_out_string_*_buf:
   buf_args:
-  - arg
-  - len
+  - arg_decl
+  c_arg_decl:
+  - char *{c_var}
+  - int {temp0}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
   name: c_out_string_*_buf
+  ntemps: 1
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - "ShroudStrCopy({c_var}, {temp0},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   pre_call:
   - std::string {cxx_var};
 c_out_string_*_cfi:
@@ -1743,23 +1942,35 @@ c_out_vector_buf:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
 c_out_vector_buf_string:
   buf_args:
-  - arg
-  - size
-  - len
+  - arg_decl
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {temp0}
+  - int {temp1}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {temp0}'
+  - 'integer(C_INT), intent(IN), value :: {temp1}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{temp0}'
+  - '{temp1}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
   name: c_out_vector_buf_string
+  ntemps: 2
   owner: library
   post_call:
   - '{{+'
   - char * BBB = {c_var};
   - std::vector<{cxx_T}>::size_type
   - +{c_temp}i = 0,
-  - '{c_temp}n = {c_var_size};'
+  - '{c_temp}n = {temp0};'
   - '{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);'
   - -for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+
-  - "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
-  - BBB += {c_var_len};
+  - "ShroudStrCopy(BBB, {temp1},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());"
+  - BBB += {temp1};
   - -}}
   - -}}
   pre_call:
@@ -1802,8 +2013,8 @@ c_setter_string_scalar_buf:
   call:
   - // skip call c_setter
   f_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
-  - 'integer(C_INT), value :: {temp0}'
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {temp0}'
   f_c_arg_names:
   - '{c_var}'
   - '{temp0}'
@@ -1819,6 +2030,17 @@ c_setter_string_scalar_buf:
 c_subroutine:
   name: c_subroutine
   owner: library
+f_XXXin_string_scalar:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  arg_decl:
+  - 'character(len=*), intent(IN) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_XXXin_string_scalar
+  need_wrapper: true
 f_ctor:
   call:
   - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
@@ -1831,6 +2053,15 @@ f_ctor:
   need_wrapper: true
 f_function_bool:
   name: f_function_bool
+  need_wrapper: true
+f_function_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_char_*_buf
   need_wrapper: true
 f_function_char_*_buf_allocatable:
   arg_c_call:
@@ -1847,6 +2078,11 @@ f_function_char_*_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_char_*_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_char_*_cfi
+  need_wrapper: true
 f_function_char_*_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1920,6 +2156,7 @@ f_function_native_*_buf_allocatable:
   - 'type({F_array_type}) :: {temp0}'
   f_helper: copy_array_{cxx_type}
   name: f_function_native_*_buf_allocatable
+  need_wrapper: true
   ntemps: 1
   post_call:
   - allocate({f_var}({f_array_allocate}))
@@ -1935,6 +2172,7 @@ f_function_native_*_buf_pointer:
     iso_c_binding:
     - c_f_pointer
   name: f_function_native_*_buf_pointer
+  need_wrapper: true
   ntemps: 1
   post_call:
   - call c_f_pointer({temp0}%base_addr, {F_result}{f_array_shape})
@@ -1953,6 +2191,7 @@ f_function_native_*_buf_pointer_caller:
     iso_c_binding:
     - c_f_pointer
   name: f_function_native_*_buf_pointer_caller
+  need_wrapper: true
   ntemps: 1
   post_call:
   - "call c_f_pointer(\t{temp0}%base_addr,\t {F_result}{f_array_shape})"
@@ -1985,6 +2224,15 @@ f_function_shadow:
     - C_PTR
   name: f_function_shadow
   need_wrapper: true
+f_function_string_&_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_&_buf
+  need_wrapper: true
 f_function_string_&_buf_allocatable:
   arg_c_call:
   - '{temp0}'
@@ -2000,12 +2248,26 @@ f_function_string_&_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_&_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_&_cfi
+  need_wrapper: true
 f_function_string_&_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   name: f_function_string_&_cfi_allocatable
+  need_wrapper: true
+f_function_string_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_*_buf
   need_wrapper: true
 f_function_string_*_buf_allocatable:
   arg_c_call:
@@ -2022,12 +2284,26 @@ f_function_string_*_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_*_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_*_cfi
+  need_wrapper: true
 f_function_string_*_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   name: f_function_string_*_cfi_allocatable
+  need_wrapper: true
+f_function_string_scalar_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_function_string_scalar_buf
   need_wrapper: true
 f_function_string_scalar_buf_allocatable:
   arg_c_call:
@@ -2044,6 +2320,11 @@ f_function_string_scalar_buf_allocatable:
   post_call:
   - 'allocate(character(len={temp0}%elem_len):: {f_var})'
   - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
+f_function_string_scalar_cfi:
+  arg_c_call:
+  - '{f_var}'
+  name: f_function_string_scalar_cfi
+  need_wrapper: true
 f_function_string_scalar_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -2101,6 +2382,7 @@ f_function_vector_buf_allocatable:
     iso_c_binding:
     - C_SIZE_T
   name: f_function_vector_buf_allocatable
+  need_wrapper: true
   ntemps: 1
   post_call:
   - allocate({f_var}({temp0}%size))
@@ -2134,6 +2416,17 @@ f_in_bool:
   name: f_in_bool
   pre_call:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
+f_in_char_**_buf:
+  arg_c_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  name: f_in_char_**_buf
+  need_wrapper: true
 f_in_char_scalar:
   arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
@@ -2158,10 +2451,34 @@ f_in_native_*_cdesc:
   - '{temp0}%size = {size}'
   - '{temp0}%rank = {rank}'
   - '{temp0}%shape(1:{rank}) = shape({f_var})'
-f_in_string_scalar:
+f_in_string_&_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_in_string_&_buf
+  need_wrapper: true
+f_in_string_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_in_string_*_buf
+  need_wrapper: true
+f_in_string_scalar_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
   arg_decl:
-  - 'character(len=*), intent(IN) :: {f_var}'
-  name: f_in_string_scalar
+  - 'character(len=*), intent({f_intent}) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_in_string_scalar_buf
   need_wrapper: true
 f_in_vector_buf:
   arg_c_call:
@@ -2224,6 +2541,15 @@ f_inout_bool:
   - '{f_var} = {c_var}  ! coerce to logical'
   pre_call:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
+f_inout_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_inout_char_*_buf
+  need_wrapper: true
 f_inout_native_*_cdesc:
   arg_c_call:
   - '{temp0}'
@@ -2244,6 +2570,24 @@ f_inout_native_*_cdesc:
   - '{temp0}%size = {size}'
   - '{temp0}%rank = {rank}'
   - '{temp0}%shape(1:{rank}) = shape({f_var})'
+f_inout_string_&_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_inout_string_&_buf
+  need_wrapper: true
+f_inout_string_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_inout_string_*_buf
+  need_wrapper: true
 f_inout_vector_buf:
   arg_c_call:
   - '{f_var}'
@@ -2278,6 +2622,17 @@ f_inout_vector_buf_allocatable:
   - if (allocated({f_var})) deallocate({f_var})
   - allocate({f_var}({temp0}%size))
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+f_inout_vector_buf_string:
+  arg_c_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  name: f_inout_vector_buf_string
+  need_wrapper: true
 f_inout_void_*_cdesc:
   arg_c_call:
   - '{temp0}'
@@ -2304,6 +2659,7 @@ f_mixin_function_buf:
   declare:
   - 'type({F_array_type}) :: {temp0}'
   name: f_mixin_function_buf
+  need_wrapper: true
   ntemps: 1
 f_mixin_in_array_buf:
   arg_c_call:
@@ -2322,6 +2678,7 @@ f_mixin_in_character_buf:
     iso_c_binding:
     - C_INT
   name: f_mixin_in_character_buf
+  need_wrapper: true
 f_mixin_in_string_array_buf:
   arg_c_call:
   - '{f_var}'
@@ -2366,6 +2723,15 @@ f_out_bool:
   name: f_out_bool
   post_call:
   - '{f_var} = {c_var}  ! coerce to logical'
+f_out_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_out_char_*_buf
+  need_wrapper: true
 f_out_native_*&_buf_pointer:
   arg_c_call:
   - '{temp0}'
@@ -2436,6 +2802,24 @@ f_out_native_*_cdesc:
   - '{temp0}%size = {size}'
   - '{temp0}%rank = {rank}'
   - '{temp0}%shape(1:{rank}) = shape({f_var})'
+f_out_string_&_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_out_string_&_buf
+  need_wrapper: true
+f_out_string_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  name: f_out_string_*_buf
+  need_wrapper: true
 f_out_vector_buf:
   arg_c_call:
   - '{temp0}'
@@ -2465,6 +2849,17 @@ f_out_vector_buf_allocatable:
   post_call:
   - allocate({f_var}({temp0}%size))
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+f_out_vector_buf_string:
+  arg_c_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  name: f_out_vector_buf_string
+  need_wrapper: true
 f_out_void_**:
   arg_decl:
   - 'type(C_PTR), intent(OUT) :: {f_var}'
@@ -2502,6 +2897,7 @@ f_setter_string_scalar_buf:
     iso_c_binding:
     - C_INT
   name: f_setter_string_scalar_buf
+  need_wrapper: true
 f_subroutine:
   name: f_subroutine
 ***** Python

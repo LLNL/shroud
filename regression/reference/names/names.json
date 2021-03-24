@@ -455,7 +455,7 @@
                     "F_C_call": "c_get_name_bufferify",
                     "F_C_name": "c_get_name",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT)",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
                     "F_arguments": "name",
                     "F_name_function": "get_name",
                     "F_name_generic": "get_name",
@@ -537,7 +537,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_inout_char_*_buf",
-                            "stmt1": "c_inout_char_*_buf"
+                            "stmt1": "c_inout_char_*_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -551,18 +552,19 @@
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_inout_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_char_*_buf",
                             "stmtc0": "c_inout_char_*_buf",
-                            "stmtc1": "c_inout_char_*_buf"
+                            "stmtc1": "c_inout_char_*_buf",
+                            "temp0": "name_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name",
                     "C_name": "TES_get_name_bufferify",
-                    "C_prototype": "char * name,\t int worktrim,\t int worklen",
+                    "C_prototype": "char *name,\t int name_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t worktrim,\t worklen",
+                    "F_C_arguments": "name,\t name_temp0",
                     "F_C_name": "c_get_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getName",
@@ -1012,7 +1014,7 @@
                     "F_C_name": "yyy_tes_function4",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "rv,\t len_trim(rv, kind=C_INT)",
+                    "F_arg_c_call": "rv,\t len(rv, kind=C_INT)",
                     "F_arguments": "rv",
                     "F_name_function": "function4",
                     "F_name_generic": "function4",
@@ -1088,9 +1090,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len_trim": "Lrv"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "rv",
@@ -1116,7 +1115,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv +len_trim)",
+                "declgen": "int function4(const std::string & rv)",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1130,7 +1129,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "rv",
-                            "c_var_trim": "Lrv",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&ARG_rv)",
@@ -1140,31 +1138,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_rv",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "rv_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "rv",
                             "F_pointer": "SHPTR_rv",
                             "c_var": "rv",
-                            "c_var_trim": "Lrv",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "rv",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "rv_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
-                    "C_prototype": "const char * rv,\t int Lrv",
+                    "C_prototype": "char *rv,\t int rv_temp0",
                     "C_return_type": "int",
-                    "F_C_arguments": "rv,\t Lrv",
+                    "F_C_arguments": "rv,\t rv_temp0",
                     "F_C_name": "yyy_tes_function4_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -1432,7 +1431,7 @@
                     "F_C_call": "c_test_multiline_splicer_bufferify",
                     "F_C_name": "c_test_multiline_splicer",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT),\t value",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "test_multiline_splicer",
                     "F_name_generic": "test_multiline_splicer",
@@ -1461,10 +1460,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len": "Nname",
-                                "len_trim": "Lname"
-                            },
                             "declarator": {
                                 "name": "name",
                                 "pointer": [
@@ -1509,7 +1504,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
@@ -1544,8 +1539,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ARG_name",
@@ -1555,23 +1548,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_inout_string_&_buf",
-                            "stmt1": "c_inout_string_&_buf"
+                            "stmt1": "c_inout_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "Nname",
-                            "c_var_trim": "Lname",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_inout_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_string_&_buf",
                             "stmtc0": "c_inout_string_&_buf",
-                            "stmtc1": "c_inout_string_&_buf"
+                            "stmtc1": "c_inout_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     },
                     "value": {
@@ -1611,9 +1604,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name,\t value",
                     "C_name": "TES_test_multiline_splicer_bufferify",
-                    "C_prototype": "char * name,\t int Lname,\t int Nname,\t int * value",
+                    "C_prototype": "char *name,\t int name_temp0,\t int * value",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t Nname,\t value",
+                    "F_C_arguments": "name,\t name_temp0,\t value",
                     "F_C_name": "c_test_multiline_splicer_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "TestMultilineSplicer",

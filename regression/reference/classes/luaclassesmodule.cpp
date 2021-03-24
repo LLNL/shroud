@@ -336,7 +336,7 @@ static int l_get_global_flag(lua_State *L)
 // const std::string & LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     lua_function_string_&
 static int l_last_function_called(lua_State *L)
 {

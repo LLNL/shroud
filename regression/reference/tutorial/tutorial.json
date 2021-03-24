@@ -557,7 +557,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "SHT_rv_temp0,\t arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv_temp0,\t arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -633,9 +633,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len_trim": "Larg1"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -655,9 +652,6 @@
                             "typemap_name": "std::string"
                         },
                         {
-                            "attrs": {
-                                "len_trim": "Larg2"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg2",
@@ -683,7 +677,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "const std::string ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim)",
+                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -700,7 +694,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -710,22 +703,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "arg1_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
-                            "c_var_trim": "Larg1",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "arg1_temp0"
                         }
                     },
                     "arg2": {
@@ -735,7 +729,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg2",
-                            "c_var_trim": "Larg2",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
@@ -745,31 +738,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_arg2",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "arg2_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
-                            "c_var_trim": "Larg2",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "arg2_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "TUT_SHROUD_array *SHC_rv_temp0,\t const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2",
+                    "C_prototype": "TUT_SHROUD_array *SHC_rv_temp0,\t char *arg1,\t int arg1_temp0,\t char *arg2,\t int arg2_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t arg1,\t Larg1,\t arg2,\t Larg2",
+                    "F_C_arguments": "SHT_rv,\t arg1,\t arg1_temp0,\t arg2,\t arg2_temp0",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1454,7 +1448,7 @@
                     "F_C_call": "c_overloaded_function_from_name_bufferify",
                     "F_C_name": "c_overloaded_function_from_name",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
                     "F_arguments": "name",
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
@@ -1493,9 +1487,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len_trim": "Lname"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -1521,7 +1512,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name +len_trim)",
+                "declgen": "void OverloadedFunction(const std::string & name)",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1535,7 +1526,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -1545,31 +1535,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
-                    "C_prototype": "const char * name,\t int Lname",
+                    "C_prototype": "char *name,\t int name_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname",
+                    "F_C_arguments": "name,\t name_temp0",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "OverloadedFunction",
@@ -2863,7 +2854,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -2894,9 +2885,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len_trim": "Lname"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -2938,7 +2926,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +len_trim, float arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -2987,7 +2975,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -2997,31 +2984,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_float_bufferify",
-                    "C_prototype": "const char * name,\t int Lname,\t float arg2",
+                    "C_prototype": "char *name,\t int name_temp0,\t float arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t arg2",
+                    "F_C_arguments": "name,\t name_temp0,\t arg2",
                     "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
@@ -3101,7 +3089,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -3132,9 +3120,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "len_trim": "Lname"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -3176,7 +3161,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +len_trim, double arg2 +value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -3225,7 +3210,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -3235,31 +3219,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_double_bufferify",
-                    "C_prototype": "const char * name,\t int Lname,\t double arg2",
+                    "C_prototype": "char *name,\t int name_temp0,\t double arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t arg2",
+                    "F_C_arguments": "name,\t name_temp0,\t arg2",
                     "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
@@ -5873,7 +5858,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],
@@ -5930,7 +5915,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_function_string_&_result-as-arg",
+                        "stmt0": "c_function_string_&_copy",
                         "stmt1": "c_function_string_&"
                     },
                     "fmtf": {
@@ -5943,10 +5928,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_scalar_buf_result-as-arg",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_function_string_scalar_buf_result-as-arg",
-                        "stmtc1": "c_function_string_scalar_buf"
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -5986,93 +5971,40 @@
                     "attrs": {
                         "len": "30"
                     },
+                    "const": true,
                     "declarator": {
                         "name": "LastFunctionCalled",
-                        "pointer": []
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
                     },
                     "metaattrs": {
                         "api": "buf",
-                        "intent": "subroutine"
+                        "deref": "copy",
+                        "intent": "function"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
-                        }
-                    ],
+                    "params": [],
                     "specifier": [
-                        "void"
+                        "std::string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
-                "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_function_string_&_buf",
-                            "stmt1": "c_function_string_&_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_function_string_&_buf",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_function_string_&_buf",
-                            "stmtc1": "c_function_string_&_buf"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name": "TUT_last_function_called_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
                     "F_C_name": "c_last_function_called_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
@@ -6081,19 +6013,28 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "30",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_subroutine_void_scalar_buf",
-                        "stmt1": "c_subroutine"
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             }

@@ -2196,7 +2196,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable",
+                        "deref": "copy",
                         "intent": "function"
                     },
                     "params": [],

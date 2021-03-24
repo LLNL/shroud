@@ -151,7 +151,7 @@ static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
 // const string & getNameArg(void) const
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +intent(function)
 // Exact:     lua_function_string_&
 static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
 {
@@ -323,7 +323,7 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
 // const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     lua_function_string_&
 static int l_example_nested_ExClass2_get_name(lua_State *L)
 {

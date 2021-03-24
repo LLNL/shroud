@@ -16,6 +16,22 @@
 
 extern "C" {
 
+
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
 // splicer begin namespace.example::nested.C_definitions
 // splicer end namespace.example::nested.C_definitions
 
@@ -52,11 +68,11 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Requested: c_function_bool_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-bool AA_example_nested_is_name_valid_bufferify(const char * name,
-    int Lname)
+bool AA_example_nested_is_name_valid_bufferify(char *name,
+    int name_temp0)
 {
     // splicer begin namespace.example::nested.function.is_name_valid_bufferify
     return name != NULL;
@@ -97,14 +113,13 @@ void AA_example_nested_test_names(const char * name)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void AA_example_nested_test_names_bufferify(const char * name,
-    int Lname)
+void AA_example_nested_test_names_bufferify(char *name, int name_temp0)
 {
     // splicer begin namespace.example::nested.function.test_names_bufferify
-    const std::string SHCXX_name(name, Lname);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     example::nested::test_names(SHCXX_name);
     // splicer end namespace.example::nested.function.test_names_bufferify
 }
@@ -135,7 +150,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
@@ -143,11 +158,11 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void AA_example_nested_test_names_flag_bufferify(const char * name,
-    int Lname, int flag)
+void AA_example_nested_test_names_flag_bufferify(char *name,
+    int name_temp0, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag_bufferify
-    const std::string SHCXX_name(name, Lname);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     example::nested::test_names(SHCXX_name, flag);
     // splicer end namespace.example::nested.function.test_names_flag_bufferify
 }

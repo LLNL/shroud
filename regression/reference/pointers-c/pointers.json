@@ -2575,7 +2575,7 @@
                     "F_C_name": "c_accept_char_array_in",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "names,\t size(names, kind=C_LONG),\t len(names, kind=C_INT)",
+                    "F_arg_c_call": "names,\t size(names, kind=C_SIZE_T),\t len(names, kind=C_INT)",
                     "F_arguments": "names",
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
@@ -2635,9 +2635,7 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len": "Nnames",
-                                "rank": 1,
-                                "size": "Snames"
+                                "rank": 1
                             },
                             "declarator": {
                                 "name": "names",
@@ -2666,7 +2664,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+len+rank(1)+size)",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
@@ -2683,8 +2681,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "names",
-                            "c_var_len": "Nnames",
-                            "c_var_size": "Snames",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_names",
@@ -2694,14 +2690,14 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_names",
                             "stmt0": "c_in_char_**_buf",
-                            "stmt1": "c_in_char_**_buf"
+                            "stmt1": "c_in_char_**_buf",
+                            "temp0": "names_temp0",
+                            "temp1": "names_temp1"
                         },
                         "fmtf": {
                             "F_C_var": "names",
                             "F_pointer": "SHPTR_names",
                             "c_var": "names",
-                            "c_var_len": "Nnames",
-                            "c_var_size": "Snames",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -2712,18 +2708,20 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
                             "stmt0": "f_in_char_**_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_char_**_buf",
                             "stmtc0": "c_in_char_**_buf",
-                            "stmtc1": "c_in_char_**_buf"
+                            "stmtc1": "c_in_char_**_buf",
+                            "temp0": "names_temp0",
+                            "temp1": "names_temp1"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_names",
                     "C_name": "POI_accept_char_array_in_bufferify",
-                    "C_prototype": "char *names,\t long Snames,\t int Nnames",
+                    "C_prototype": "const char *names,\t size_t names_temp0,\t int names_temp1",
                     "C_return_type": "int",
-                    "F_C_arguments": "names,\t Snames,\t Nnames",
+                    "F_C_arguments": "names,\t names_temp0,\t names_temp1",
                     "F_C_name": "c_accept_char_array_in_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",

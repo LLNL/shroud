@@ -56,7 +56,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     char * name, bool flag, CLA_Class1 * SHadow_rv);
 
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    char * name, int Lname, bool flag, CLA_Class1 * SHadow_rv);
+    char *name, int name_temp0, bool flag, CLA_Class1 * SHadow_rv);
 
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHadow_rv);

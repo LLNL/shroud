@@ -2288,8 +2288,7 @@
                         {
                             "attrs": {
                                 "charlen": "LENOUTBUF",
-                                "intent": "out",
-                                "len": "Noutbuf"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "outbuf",
@@ -2315,7 +2314,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
+                "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -2332,7 +2331,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -2342,22 +2340,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf"
+                            "stmt1": "c_out_char_*_buf",
+                            "temp0": "outbuf_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc1": "c_out_char_*_buf",
+                            "temp0": "outbuf_temp0"
                         }
                     },
                     "s1": {
@@ -2396,9 +2395,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
-                    "C_prototype": "const Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
+                    "C_prototype": "const Cstruct1 * s1,\t char *outbuf,\t int outbuf_temp0",
                     "C_return_type": "int",
-                    "F_C_arguments": "s1,\t outbuf,\t Noutbuf",
+                    "F_C_arguments": "s1,\t outbuf,\t outbuf_temp0",
                     "F_C_name": "c_pass_struct2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -3661,8 +3660,7 @@
                         {
                             "attrs": {
                                 "charlen": "LENOUTBUF",
-                                "intent": "out",
-                                "len": "Noutbuf"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "outbuf",
@@ -3688,7 +3686,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3772,7 +3770,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3782,31 +3779,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf"
+                            "stmt1": "c_out_char_*_buf",
+                            "temp0": "outbuf_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_out_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf"
+                            "stmtc1": "c_out_char_*_buf",
+                            "temp0": "outbuf_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "i,\t d,\t outbuf",
                     "C_name": "STR_return_struct_ptr2_bufferify",
-                    "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
+                    "C_prototype": "int i,\t double d,\t char *outbuf,\t int outbuf_temp0",
                     "C_return_type": "Cstruct1 *",
-                    "F_C_arguments": "i,\t d,\t outbuf,\t Noutbuf",
+                    "F_C_arguments": "i,\t d,\t outbuf,\t outbuf_temp0",
                     "F_C_name": "c_return_struct_ptr2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",

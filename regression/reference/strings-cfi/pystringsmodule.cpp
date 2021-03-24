@@ -275,7 +275,7 @@ PY_getCharPtr1(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_char_*
 static char PY_getCharPtr2__doc__[] =
 "documentation"
@@ -305,7 +305,7 @@ PY_getCharPtr2(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +intent(function)
 // Exact:     py_function_char_*
 static char PY_getCharPtr3__doc__[] =
 "documentation"
@@ -366,7 +366,7 @@ PY_getConstStringResult(
 
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_string_scalar
 static char PY_getConstStringLen__doc__[] =
 "documentation"
@@ -397,7 +397,7 @@ PY_getConstStringLen(
 
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +intent(function)
 // Exact:     py_function_string_scalar
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
@@ -486,7 +486,7 @@ PY_getConstStringRefPure(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_string_&
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
@@ -520,7 +520,7 @@ PY_getConstStringRefLen(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +intent(function)
 // Exact:     py_function_string_&
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
@@ -529,7 +529,7 @@ static char PY_getConstStringRefAsArg__doc__[] =
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 static PyObject *
@@ -553,7 +553,7 @@ PY_getConstStringRefAsArg(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_string_&
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
@@ -611,7 +611,7 @@ PY_getConstStringRefAlloc(
 
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
+// Attrs:     +deref(copy)+intent(function)
 // Exact:     py_function_string_*
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"

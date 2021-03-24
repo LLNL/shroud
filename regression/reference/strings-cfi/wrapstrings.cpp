@@ -182,11 +182,11 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)+len_trim(Ldest)
+// Argument:  char * dest +charlen(40)+intent(out)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_char_*_cfi
 // ----------------------------------------
-// Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
+// Argument:  const char * src
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_char_*_cfi
 // start STR_pass_char_ptr_CFI
@@ -237,7 +237,7 @@ void STR_pass_char_ptr_in_out(char * s)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+// Argument:  char * s +intent(inout)
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_char_*_cfi
 void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s)
@@ -301,15 +301,15 @@ void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_char_*_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_char_*_copy
 // Match:     c_function_char_*
 // start STR_get_char_ptr2
 const char * STR_get_char_ptr2(void)
 {
     // splicer begin function.get_char_ptr2
-    const char * SHC_rv = getCharPtr2();
-    return SHC_rv;
+    const char * SHCXX_rv = getCharPtr2();
+    return SHCXX_rv;
     // splicer end function.get_char_ptr2
 }
 // end STR_get_char_ptr2
@@ -319,21 +319,17 @@ const char * STR_get_char_ptr2(void)
  *
  */
 // ----------------------------------------
-// Function:  void getCharPtr2 +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  char * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_char_*_cfi
+// Function:  const char * getCharPtr2 +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_char_*_cfi_copy
+// Match:     c_function_char_*_cfi
 // start STR_get_char_ptr2_CFI
-void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_char_ptr2_CFI
-    const char * SHC_rv = getCharPtr2();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
-    ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHC_rv, -1);
+    const char * SHCXX_rv = getCharPtr2();
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
+    ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv, -1);
     // splicer end function.get_char_ptr2_CFI
 }
 // end STR_get_char_ptr2_CFI
@@ -344,9 +340,8 @@ void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_char_*_result-as-arg
-// Match:     c_function_char_*
+// Attrs:     +intent(function)
+// Exact:     c_function_char_*
 // start STR_get_char_ptr3
 const char * STR_get_char_ptr3(void)
 {
@@ -368,8 +363,9 @@ const char * STR_get_char_ptr3(void)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  char * output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_char_*_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_char_*_cfi_result
+// Match:     c_function_char_*_cfi
 // start STR_get_char_ptr3_CFI
 void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output)
 {
@@ -424,23 +420,19 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  void getConstStringLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_scalar_cfi
-void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string getConstStringLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_scalar_cfi_copy
+// Match:     c_function_string_scalar_cfi
+void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_len_CFI
     const std::string SHCXX_rv = getConstStringLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_len_CFI
@@ -457,8 +449,9 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string * output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_scalar_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_string_scalar_cfi_result
+// Match:     c_function_string_scalar_cfi
 void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
     // splicer begin function.get_const_string_as_arg_CFI
@@ -542,8 +535,8 @@ void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * STR_get_const_string_ref_len(void)
 {
@@ -567,23 +560,19 @@ const char * STR_get_const_string_ref_len(void)
  * The function will not be ALLOCATABLE.
  */
 // ----------------------------------------
-// Function:  void getConstStringRefLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
-void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string & getConstStringRefLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_&_cfi_copy
+// Match:     c_function_string_&_cfi
+void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_len_CFI
     const std::string & SHCXX_rv = getConstStringRefLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_ref_len_CFI
@@ -592,14 +581,13 @@ void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
-// Match:     c_function_string_&
+// Attrs:     +intent(function)
+// Exact:     c_function_string_&
 const char * STR_get_const_string_ref_as_arg(void)
 {
     // splicer begin function.get_const_string_ref_as_arg
@@ -617,7 +605,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 /**
  * \brief return a 'const string&' as argument
  *
- * Pass an additional argument which wil be used as the return value.
+ * Pass an additional argument which will be used as the return value.
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
@@ -627,8 +615,9 @@ const char * STR_get_const_string_ref_as_arg(void)
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & output
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
+// Attrs:     +api(cfi)+deref(result)+intent(out)+is_result
+// Requested: c_function_string_&_cfi_result
+// Match:     c_function_string_&_cfi
 void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
     // splicer begin function.get_const_string_ref_as_arg_CFI
@@ -649,8 +638,8 @@ void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_&_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
 // Match:     c_function_string_&
 const char * STR_get_const_string_ref_len_empty(void)
 {
@@ -671,23 +660,19 @@ const char * STR_get_const_string_ref_len_empty(void)
  *
  */
 // ----------------------------------------
-// Function:  void getConstStringRefLenEmpty +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string & SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_&_cfi
-void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string & getConstStringRefLenEmpty +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_&_cfi_copy
+// Match:     c_function_string_&_cfi
+void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_len_empty_CFI
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.get_const_string_ref_len_empty_CFI
@@ -734,8 +719,8 @@ void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Attrs:     +deref(result-as-arg)+intent(function)
-// Requested: c_function_string_*_result-as-arg
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_*_copy
 // Match:     c_function_string_*
 const char * STR_get_const_string_ptr_len(void)
 {
@@ -755,23 +740,19 @@ const char * STR_get_const_string_ptr_len(void)
  * because +len(30) so the contents are copied before returning.
  */
 // ----------------------------------------
-// Function:  void getConstStringPtrLen +len(30)
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
-// Match:     c_subroutine
-// ----------------------------------------
-// Argument:  string * SHF_rv +len(30)
-// Attrs:     +api(cfi)+intent(out)+is_result
-// Exact:     c_function_string_*_cfi
-void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
+// Function:  const string * getConstStringPtrLen +len(30)
+// Attrs:     +api(cfi)+deref(copy)+intent(function)
+// Requested: c_function_string_*_cfi_copy
+// Match:     c_function_string_*_cfi
+void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ptr_len_CFI
     const std::string * SHCXX_rv = getConstStringPtrLen();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    char *SHC_rv = static_cast<char *>(SHcfi_SHC_rv->base_addr);
     if (SHCXX_rv->empty()) {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHCXX_rv->data(),
+        ShroudStrCopy(SHC_rv, SHcfi_SHC_rv->elem_len, SHCXX_rv->data(),
             SHCXX_rv->size());
     }
     // splicer end function.get_const_string_ptr_len_CFI
@@ -926,15 +907,15 @@ void STR_accept_string_const_reference(const char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  const std::string & arg1
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_string_&_cfi
 void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHcfi_arg1)
 {
     // splicer begin function.accept_string_const_reference_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    const std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    const std::string SHCXX_arg1(arg1, arg1_temp0);
     acceptStringConstReference(SHCXX_arg1);
     // splicer end function.accept_string_const_reference_CFI
 }
@@ -975,7 +956,7 @@ void STR_accept_string_reference_out(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string & arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_string_&_cfi
 void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1027,7 +1008,7 @@ void STR_accept_string_reference(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string & arg1
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_string_&_cfi
 // start STR_accept_string_reference_CFI
@@ -1035,8 +1016,8 @@ void STR_accept_string_reference_CFI(CFI_cdesc_t *SHcfi_arg1)
 {
     // splicer begin function.accept_string_reference_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    std::string SHCXX_arg1(arg1, arg1_temp0);
     acceptStringReference(SHCXX_arg1);
     ShroudStrCopy(arg1, SHcfi_arg1->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
@@ -1073,15 +1054,15 @@ void STR_accept_string_pointer_const(const char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string * arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  const std::string * arg1
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_string_*_cfi
 void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHcfi_arg1)
 {
     // splicer begin function.accept_string_pointer_const_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    const std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    const std::string SHCXX_arg1(arg1, arg1_temp0);
     acceptStringPointerConst(&SHCXX_arg1);
     // splicer end function.accept_string_pointer_const_CFI
 }
@@ -1116,15 +1097,15 @@ void STR_accept_string_pointer(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_string_*_cfi
 void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1)
 {
     // splicer begin function.accept_string_pointer_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    std::string SHCXX_arg1(arg1, arg1_temp0);
     acceptStringPointer(&SHCXX_arg1);
     ShroudStrCopy(arg1, SHcfi_arg1->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
@@ -1163,7 +1144,7 @@ void STR_fetch_string_pointer(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_string_*_cfi
 void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1216,7 +1197,7 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_string_*_cfi
 // ----------------------------------------
@@ -1229,8 +1210,8 @@ void STR_accept_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
 {
     // splicer begin function.accept_string_pointer_len_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    std::string SHCXX_arg1(arg1, arg1_temp0);
     acceptStringPointerLen(&SHCXX_arg1, nlen);
     ShroudStrCopy(arg1, SHcfi_arg1->elem_len, SHCXX_arg1.data(),
         SHCXX_arg1.size());
@@ -1278,7 +1259,7 @@ void STR_fetch_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_string_*_cfi
 // ----------------------------------------
@@ -1329,15 +1310,15 @@ int STR_accept_string_instance(char *arg1)
 // Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
+// Argument:  std::string arg1 +value
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_string_scalar_cfi
 int STR_accept_string_instance_CFI(CFI_cdesc_t *SHcfi_arg1)
 {
     // splicer begin function.accept_string_instance_CFI
     char *arg1 = static_cast<char *>(SHcfi_arg1->base_addr);
-    size_t Larg1 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
-    std::string SHCXX_arg1(arg1, Larg1);
+    size_t arg1_temp0 = ShroudLenTrim(arg1, SHcfi_arg1->elem_len);
+    std::string SHCXX_arg1(arg1, arg1_temp0);
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
     // splicer end function.accept_string_instance_CFI
@@ -1364,7 +1345,7 @@ void STR_explicit1(char * name)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * name +intent(in)+len(Nname)+len_trim(Lname)
+// Argument:  char * name +intent(in)+len_trim(AAlen)
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_char_*_cfi
 void STR_explicit1_CFI(CFI_cdesc_t *SHcfi_name)
@@ -1398,7 +1379,7 @@ void STR_explicit2(char * name)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * name +intent(out)+len(Nname)+len_trim(Lname)
+// Argument:  char * name +intent(out)+len(AAtrim)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_char_*_cfi
 void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
@@ -1422,11 +1403,11 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * dest +intent(out)+len(Ndest)+len_trim(Ldest)
+// Argument:  char * dest +intent(out)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_char_*_cfi
 // ----------------------------------------
-// Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
+// Argument:  const char * src
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_char_*_cfi
 void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
@@ -1486,15 +1467,15 @@ void STR_post_declare(int * count, char * name)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & name +len(Nname)+len_trim(Lname)
+// Argument:  std::string & name
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_string_&_cfi
 void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHcfi_name)
 {
     // splicer begin function.post_declare_CFI
     char *name = static_cast<char *>(SHcfi_name->base_addr);
-    size_t Lname = ShroudLenTrim(name, SHcfi_name->elem_len);
-    std::string SHCXX_name(name, Lname);
+    size_t name_temp0 = ShroudLenTrim(name, SHcfi_name->elem_len);
+    std::string SHCXX_name(name, name_temp0);
     PostDeclare(count, SHCXX_name);
     ShroudStrCopy(name, SHcfi_name->elem_len, SHCXX_name.data(),
         SHCXX_name.size());

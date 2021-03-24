@@ -17,7 +17,7 @@ C Statements
     {C_return_type} {C_name}({C_prototype})    buf_args
     {
         {pre_call}
-        {call_code}    arg_call
+        {call_code}   {call}    arg_call
         {post_call_pattern}
         {post_call}
         {final}
@@ -102,21 +102,6 @@ context
     *c_var_context*
     options.C_var_context_template
 
-len
-
-    Result of Fortran intrinsic ``LEN`` for string arguments.
-    Type ``int``.
-
-len_trim
-
-    Result of Fortran intrinsic ``LEN_TRIM`` for string arguments.
-    Type ``int``.
-
-size
-
-    Result of Fortran intrinsic ``SIZE`` for array arguments.
-    Type ``long``.
-
 shadow
 
     Argument will be of type *C_capsule_data_type*.
@@ -129,11 +114,8 @@ arg
     default.
 
 shadow
-size
 capsule
 context
-len_trim
-len
 
    
 buf_extra
@@ -204,7 +186,7 @@ from the ``char *`` argument passed into the C API wrapper.
 
 .. code-block:: yaml
 
-        name="c_string_inout",
+        name="c_inout_string",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
 

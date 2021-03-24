@@ -22,6 +22,22 @@
 extern "C" {
 
 
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // start helper ShroudStrToArray
 // helper ShroudStrToArray
 // Save str metadata into array to allow Fortran to access values.
@@ -212,7 +228,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Requested: c_function_shadow_*
 // Match:     c_function_shadow
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
@@ -222,12 +238,12 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    char * name, int Lname, bool flag, CLA_Class1 * SHadow_rv)
+    char *name, int name_temp0, bool flag, CLA_Class1 * SHadow_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.return_this_buffer_bufferify
-    std::string SHCXX_name(name, Lname);
+    std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
     SHadow_rv->addr = SHCXX_rv;

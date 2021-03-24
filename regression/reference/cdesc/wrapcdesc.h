@@ -32,10 +32,10 @@ void CDE_rank2_in(CDE_SHROUD_array *arg_temp0);
 
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *value_temp0);
 
-void CDE_get_scalar1_0_bufferify(char * name, int Lname,
+void CDE_get_scalar1_0_bufferify(char *name, int name_temp0,
     CDE_SHROUD_array *value_temp0);
 
-void CDE_get_scalar1_1_bufferify(char * name, int Lname,
+void CDE_get_scalar1_1_bufferify(char *name, int name_temp0,
     CDE_SHROUD_array *value_temp0);
 
 int CDE_get_data_int(void);

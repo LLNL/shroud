@@ -216,7 +216,14 @@ class VerifyAttrs(object):
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             # Array of shadow?
             pass
-        elif ntypemap.sgroup in ["string", "vector"]:
+        elif ntypemap.sgroup == "string":
+            if deref:
+                mderef = deref
+            elif attrs["len"]:
+                mderef = "copy"
+            else:
+                mderef = "allocatable"
+        elif ntypemap.sgroup == "vector":
             if deref:
                 mderef = deref
             else:
@@ -226,7 +233,10 @@ class VerifyAttrs(object):
             if deref:
                 mderef = deref
             elif ntypemap.sgroup == "char":  # char *
-                mderef = "allocatable"
+                if attrs["len"]:
+                    mderef = "copy"
+                else:
+                    mderef = "allocatable"
             elif attrs["dimension"]:
                 mderef = "pointer"
             else:
@@ -1546,7 +1556,6 @@ class GenFunctions(object):
 
         # Function result.
         need_buf_result   = False
-        has_string_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1559,17 +1568,15 @@ class GenFunctions(object):
             pass
         elif result_typemap.sgroup == "string":
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
 
-        if not (has_cfi_arg or
-                has_string_result):
+        if not (need_buf_result or
+                has_cfi_arg):
             return False
 
         options.wrap_fortran = False
@@ -1595,28 +1602,20 @@ class GenFunctions(object):
                 arg.metaattrs["api"] = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
-            if arg_typemap.sgroup in ["char", "string"]:
-                # Create local variable names to be used in statements.
-                # TODO: move into metaattrs
-                attrs["len"] = True
-                attrs["len_trim"] = True
 
         ast = C_new.ast
-        if has_string_result:
+        if True: # preserve to avoid changing indention for now.
             f_attrs = node.ast.attrs  # Fortran function attributes
             f_meta = node.ast.metaattrs  # Fortran function attributes
-            if ast.attrs["len"] or result_as_arg:
+            if result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-#                attrs["len"] = options.C_var_len_template.format(
-#                    c_var=result_name
-#                )
                 # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = "result-as-arg"
-                result_as_string.metaattrs["deref"] = None
+                f_meta["deref"] = None
+                result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
@@ -1717,9 +1716,6 @@ class GenFunctions(object):
 
         # Function result.
         need_buf_result   = False
-        has_string_result = False
-        has_vector_result = False
-        need_cdesc_result = False
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1732,29 +1728,22 @@ class GenFunctions(object):
             pass
         elif result_typemap.sgroup == "string":
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
             need_buf_result   = True
-            has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
             need_buf_result   = True
-            has_vector_result = True
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 need_buf_result   = True
-                need_cdesc_result = True
             elif attrs["dimension"]:
                 need_buf_result   = True
-                need_cdesc_result = True
 
         # Functions with these results need wrappers.
-        if not (has_string_result or
-                has_vector_result or
-                need_cdesc_result or
+        if not (need_buf_result or
                 has_buf_arg):
             return
 
@@ -1797,34 +1786,24 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.wrap.c = False
                 node.wrap.lua = False  # NotImplemented
-                specialize = arg.template_arguments[0].typemap.sgroup
-            arg_typemap, sp = statements.lookup_c_statements(arg)
-
-            spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", meta["intent"], sgroup, spointer, meta["api"], specialize]
-            intent_blk = statements.lookup_fc_stmts(c_stmts)
-            statements.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
-        if has_string_result:
+        if True: # preserve to avoid changing indention for now.
             # Add additional argument to hold result.
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
             f_meta = node.ast.metaattrs  # Fortran function attributes
 
-            if ast.attrs["len"] or result_as_arg:
+            if result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-                attrs["len"] = options.C_var_len_template.format(
-                    c_var=result_name
-                )
                 # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = "result-as-arg"
-                result_as_string.metaattrs["deref"] = None
+                f_meta["deref"] = None
+                result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
