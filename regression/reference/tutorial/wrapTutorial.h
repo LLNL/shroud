@@ -44,7 +44,7 @@ void TUT_no_return_no_arguments(void);
 double TUT_pass_by_value(double arg1, int arg2);
 
 void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
-    const char * arg1, int Larg1, const char * arg2, int Larg2);
+    char *arg1, int arg1_temp0, char *arg2, int arg2_temp0);
 
 double TUT_use_default_arguments(void);
 
@@ -54,8 +54,8 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2);
 
 void TUT_overloaded_function_from_name(const char * name);
 
-void TUT_overloaded_function_from_name_bufferify(const char * name,
-    int Lname);
+void TUT_overloaded_function_from_name_bufferify(char *name,
+    int name_temp0);
 
 void TUT_overloaded_function_from_index(int indx);
 
@@ -71,11 +71,11 @@ void TUT_fortran_generic_overloaded_0(void);
 
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
 
-void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
-    int Lname, float arg2);
+void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
+    int name_temp0, float arg2);
 
-void TUT_fortran_generic_overloaded_1_double_bufferify(
-    const char * name, int Lname, double arg2);
+void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
+    int name_temp0, double arg2);
 
 int TUT_use_default_overload_num(int num);
 

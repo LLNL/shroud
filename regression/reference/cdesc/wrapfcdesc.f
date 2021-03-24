@@ -123,20 +123,21 @@ module cdesc_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_0_bufferify(name, Lname, value_temp0) &
+        subroutine c_get_scalar1_0_bufferify(name, name_temp0, &
+                value_temp0) &
                 bind(C, name="CDE_get_scalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             type(CDE_SHROUD_array), intent(OUT) :: value_temp0
         end subroutine c_get_scalar1_0_bufferify
 
@@ -146,20 +147,21 @@ module cdesc_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Argument:  std::string & name +intent(in)
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_1_bufferify(name, Lname, value_temp0) &
+        subroutine c_get_scalar1_1_bufferify(name, name_temp0, &
+                value_temp0) &
                 bind(C, name="CDE_get_scalar1_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             type(CDE_SHROUD_array), intent(OUT) :: value_temp0
         end subroutine c_get_scalar1_1_bufferify
 
@@ -242,9 +244,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -274,7 +274,7 @@ contains
         value_temp0%size = 1
         value_temp0%rank = 0
         value_temp0%shape(1:0) = shape(value)
-        call c_get_scalar1_0_bufferify(name, len_trim(name, kind=C_INT), &
+        call c_get_scalar1_0_bufferify(name, len(name, kind=C_INT), &
             value_temp0)
         ! splicer end function.get_scalar1_0
     end subroutine get_scalar1_0
@@ -289,9 +289,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -321,7 +319,7 @@ contains
         value_temp0%size = 1
         value_temp0%rank = 0
         value_temp0%shape(1:0) = shape(value)
-        call c_get_scalar1_1_bufferify(name, len_trim(name, kind=C_INT), &
+        call c_get_scalar1_1_bufferify(name, len(name, kind=C_INT), &
             value_temp0)
         ! splicer end function.get_scalar1_1
     end subroutine get_scalar1_1
@@ -378,9 +376,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -417,9 +413,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------

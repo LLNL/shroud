@@ -137,15 +137,15 @@ void CLI_function4a_bufferify(char *SHC_rv, int SHC_rv_temp0,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+// Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
-void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
+void CLI_pass_char_ptr_in_out_bufferify(char *s, int s_temp0)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, Ns, Ls);
+    char * SHCXX_s = ShroudStrAlloc(s, s_temp0, -1);
     passCharPtrInOut(SHCXX_s);
-    ShroudStrCopy(s, Ns, SHCXX_s, -1);
+    ShroudStrCopy(s, s_temp0, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
     // splicer end function.pass_char_ptr_in_out_bufferify
 }

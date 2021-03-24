@@ -266,7 +266,7 @@
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_C_var": "SHT_crv",
-                                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
+                                            "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
                                             "F_name_generic": "exclass1",
@@ -356,9 +356,6 @@
                                             },
                                             "params": [
                                                 {
-                                                    "attrs": {
-                                                        "len_trim": "Lname"
-                                                    },
                                                     "const": true,
                                                     "declarator": {
                                                         "name": "name",
@@ -384,7 +381,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1( const string *name )",
-                                        "declgen": "ExClass1(const string * name +len_trim)",
+                                        "declgen": "ExClass1(const string * name)",
                                         "doxygen": {
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
@@ -405,7 +402,6 @@
                                                     "c_deref": "*",
                                                     "c_member": "->",
                                                     "c_var": "name",
-                                                    "c_var_trim": "Lname",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -415,31 +411,32 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*_buf",
-                                                    "stmt1": "c_in_string_*_buf"
+                                                    "stmt1": "c_in_string_*_buf",
+                                                    "temp0": "name_temp0"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
-                                                    "c_var_trim": "Lname",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "f_in_string_*_buf",
-                                                    "stmt1": "f_default",
+                                                    "stmt1": "f_in_string_*_buf",
                                                     "stmtc0": "c_in_string_*_buf",
-                                                    "stmtc1": "c_in_string_*_buf"
+                                                    "stmtc1": "c_in_string_*_buf",
+                                                    "temp0": "name_temp0"
                                                 }
                                             }
                                         },
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
-                                            "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHadow_rv",
+                                            "C_prototype": "char *name,\t int name_temp0,\t AA_example_nested_ExClass1 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
-                                            "F_C_arguments": "name,\t Lname,\t SHT_crv",
+                                            "F_C_arguments": "name,\t name_temp0,\t SHT_crv",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
@@ -2120,7 +2117,7 @@
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
                                             "F_C_var": "SHT_crv",
-                                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
+                                            "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
                                             "F_name_generic": "exclass2",
@@ -2268,7 +2265,8 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*_buf",
-                                                    "stmt1": "c_in_string_*_buf"
+                                                    "stmt1": "c_in_string_*_buf",
+                                                    "temp0": "name_temp0"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
@@ -2281,18 +2279,19 @@
                                                     "f_var": "name",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "f_in_string_*_buf",
-                                                    "stmt1": "f_default",
+                                                    "stmt1": "f_in_string_*_buf",
                                                     "stmtc0": "c_in_string_*_buf",
-                                                    "stmtc1": "c_in_string_*_buf"
+                                                    "stmtc1": "c_in_string_*_buf",
+                                                    "temp0": "name_temp0"
                                                 }
                                             }
                                         },
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
-                                            "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHadow_rv",
+                                            "C_prototype": "char *name,\t int name_temp0,\t AA_example_nested_ExClass2 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
-                                            "F_C_arguments": "name,\t trim_name,\t SHT_crv",
+                                            "F_C_arguments": "name,\t name_temp0,\t SHT_crv",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
@@ -6417,7 +6416,7 @@
                                     "F_C_name": "c_is_name_valid",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
-                                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
+                                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
                                     "F_arguments": "name",
                                     "F_name_function": "is_name_valid",
                                     "F_name_generic": "is_name_valid",
@@ -6506,9 +6505,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "len_trim": "Lname"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -6534,7 +6530,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
-                                "declgen": "bool isNameValid(const std::string & name +len_trim)",
+                                "declgen": "bool isNameValid(const std::string & name)",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6559,7 +6555,6 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -6569,31 +6564,32 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf"
+                                            "stmt1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "f_in_string_&_buf",
-                                            "stmt1": "f_default",
+                                            "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf"
+                                            "stmtc1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
-                                    "C_prototype": "const char * name,\t int Lname",
+                                    "C_prototype": "char *name,\t int name_temp0",
                                     "C_return_type": "bool",
-                                    "F_C_arguments": "name,\t Lname",
+                                    "F_C_arguments": "name,\t name_temp0",
                                     "F_C_name": "c_is_name_valid_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -6853,7 +6849,7 @@
                                     "F_C_call": "c_test_names_bufferify",
                                     "F_C_name": "c_test_names",
                                     "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
+                                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
                                     "F_arguments": "name",
                                     "F_name_function": "test_names",
                                     "F_name_generic": "test_names",
@@ -6892,9 +6888,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "len_trim": "Lname"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -6920,7 +6913,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name)",
-                                "declgen": "void test_names(const std::string & name +len_trim)",
+                                "declgen": "void test_names(const std::string & name)",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -6934,7 +6927,6 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -6944,31 +6936,32 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf"
+                                            "stmt1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "f_in_string_&_buf",
-                                            "stmt1": "f_default",
+                                            "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf"
+                                            "stmtc1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
-                                    "C_prototype": "const char * name,\t int Lname",
+                                    "C_prototype": "char *name,\t int name_temp0",
                                     "C_return_type": "void",
-                                    "F_C_arguments": "name,\t Lname",
+                                    "F_C_arguments": "name,\t name_temp0",
                                     "F_C_name": "c_test_names_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",
@@ -7167,7 +7160,7 @@
                                     "F_C_call": "c_test_names_flag_bufferify",
                                     "F_C_name": "c_test_names_flag",
                                     "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t flag",
+                                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t flag",
                                     "F_arguments": "name,\t flag",
                                     "F_name_function": "test_names_flag",
                                     "F_name_generic": "test_names",
@@ -7204,9 +7197,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "len_trim": "Lname"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -7248,7 +7238,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name +len_trim, int flag +value)",
+                                "declgen": "void test_names(const std::string & name, int flag +value)",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7295,7 +7285,6 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -7305,31 +7294,32 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf"
+                                            "stmt1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
-                                            "c_var_trim": "Lname",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
                                             "f_var": "name",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "f_in_string_&_buf",
-                                            "stmt1": "f_default",
+                                            "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf"
+                                            "stmtc1": "c_in_string_&_buf",
+                                            "temp0": "name_temp0"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
-                                    "C_prototype": "const char * name,\t int Lname,\t int flag",
+                                    "C_prototype": "char *name,\t int name_temp0,\t int flag",
                                     "C_return_type": "void",
-                                    "F_C_arguments": "name,\t Lname,\t flag",
+                                    "F_C_arguments": "name,\t name_temp0,\t flag",
                                     "F_C_name": "c_test_names_flag_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",

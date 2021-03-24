@@ -26,7 +26,7 @@ double CLI_pass_by_value_macro(int arg2);
 void CLI_function4a_bufferify(char *SHC_rv, int SHC_rv_temp0,
     const char * arg1, const char * arg2);
 
-void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
+void CLI_pass_char_ptr_in_out_bufferify(char *s, int s_temp0);
 
 void CLI_return_one_name_bufferify(char *name1, int name1_temp0);
 

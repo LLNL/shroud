@@ -151,13 +151,12 @@ module top_module
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_char_*_buf
-        subroutine c_get_name_bufferify(name, worktrim, worklen) &
+        subroutine c_get_name_bufferify(name, name_temp0) &
                 bind(C, name="TES_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: worktrim
-            integer(C_INT), value, intent(IN) :: worklen
+            integer(C_INT), value, intent(IN) :: name_temp0
         end subroutine c_get_name_bufferify
 
         ! ----------------------------------------
@@ -238,16 +237,16 @@ module top_module
         ! Requested: c_function_native_scalar
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & rv +len_trim(Lrv)
+        ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
-        function yyy_tes_function4_bufferify(rv, Lrv) &
+        function yyy_tes_function4_bufferify(rv, rv_temp0) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: rv(*)
-            integer(C_INT), value, intent(IN) :: Lrv
+            integer(C_INT), value, intent(IN) :: rv_temp0
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4_bufferify
 
@@ -289,7 +288,7 @@ module top_module
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+        ! Argument:  std::string & name
         ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_string_&_buf
         ! ----------------------------------------
@@ -297,14 +296,13 @@ module top_module
         ! Attrs:     +intent(out)
         ! Requested: c_out_native_*
         ! Match:     c_default
-        subroutine c_test_multiline_splicer_bufferify(name, Lname, &
-                Nname, value) &
+        subroutine c_test_multiline_splicer_bufferify(name, name_temp0, &
+                value) &
                 bind(C, name="TES_test_multiline_splicer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
-            integer(C_INT), value, intent(IN) :: Nname
+            integer(C_INT), value, intent(IN) :: name_temp0
             integer(C_INT), intent(OUT) :: value
         end subroutine c_test_multiline_splicer_bufferify
 
@@ -543,16 +541,14 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +len(worklen)+len_trim(worktrim)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_char_*_buf
-    ! Match:     f_default
+    ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: name
         ! splicer begin function.get_name
-        call c_get_name_bufferify(name, len_trim(name, kind=C_INT), &
-            len(name, kind=C_INT))
+        call c_get_name_bufferify(name, len(name, kind=C_INT))
         ! splicer end function.get_name
     end subroutine get_name
 
@@ -636,9 +632,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & rv
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & rv +len_trim(Lrv)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     function testnames_function4(rv) &
@@ -647,8 +641,7 @@ contains
         character(len=*), intent(IN) :: rv
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
-        SHT_rv = yyy_tes_function4_bufferify(rv, &
-            len_trim(rv, kind=C_INT))
+        SHT_rv = yyy_tes_function4_bufferify(rv, len(rv, kind=C_INT))
         ! splicer end function.function4
     end function testnames_function4
 
@@ -674,9 +667,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+    ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     ! ----------------------------------------

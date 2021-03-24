@@ -255,15 +255,15 @@ void STR_pass_char_ptr_in_out(char * s)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+// Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
-void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
+void STR_pass_char_ptr_in_out_bufferify(char *s, int s_temp0)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, Ns, Ls);
+    char * SHCXX_s = ShroudStrAlloc(s, s_temp0, -1);
     passCharPtrInOut(SHCXX_s);
-    ShroudStrCopy(s, Ns, SHCXX_s, -1);
+    ShroudStrCopy(s, s_temp0, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
     // splicer end function.pass_char_ptr_in_out_bufferify
 }
@@ -897,14 +897,14 @@ void STR_accept_string_const_reference(const char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & arg1 +len_trim(Larg1)
+// Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void STR_accept_string_const_reference_bufferify(const char * arg1,
-    int Larg1)
+void STR_accept_string_const_reference_bufferify(char *arg1,
+    int arg1_temp0)
 {
     // splicer begin function.accept_string_const_reference_bufferify
-    const std::string SHCXX_arg1(arg1, Larg1);
+    const std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
     acceptStringConstReference(SHCXX_arg1);
     // splicer end function.accept_string_const_reference_bufferify
 }
@@ -945,15 +945,17 @@ void STR_accept_string_reference_out(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(out)+len(Narg1)
+// Argument:  std::string & arg1 +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_string_&_buf
-void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
+void STR_accept_string_reference_out_bufferify(char *arg1,
+    int arg1_temp0)
 {
     // splicer begin function.accept_string_reference_out_bufferify
     std::string SHCXX_arg1;
     acceptStringReferenceOut(SHCXX_arg1);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.accept_string_reference_out_bufferify
 }
 
@@ -995,17 +997,17 @@ void STR_accept_string_reference(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string & arg1
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_&_buf
 // start STR_accept_string_reference_bufferify
-void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
-    int Narg1)
+void STR_accept_string_reference_bufferify(char *arg1, int arg1_temp0)
 {
     // splicer begin function.accept_string_reference_bufferify
-    std::string SHCXX_arg1(arg1, Larg1);
+    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
     acceptStringReference(SHCXX_arg1);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.accept_string_reference_bufferify
 }
 // end STR_accept_string_reference_bufferify
@@ -1039,14 +1041,14 @@ void STR_accept_string_pointer_const(const char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string * arg1 +len_trim(Larg1)
+// Argument:  const std::string * arg1
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
-void STR_accept_string_pointer_const_bufferify(const char * arg1,
-    int Larg1)
+void STR_accept_string_pointer_const_bufferify(char *arg1,
+    int arg1_temp0)
 {
     // splicer begin function.accept_string_pointer_const_bufferify
-    const std::string SHCXX_arg1(arg1, Larg1);
+    const std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
     acceptStringPointerConst(&SHCXX_arg1);
     // splicer end function.accept_string_pointer_const_bufferify
 }
@@ -1081,16 +1083,16 @@ void STR_accept_string_pointer(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_*_buf
-void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
-    int Narg1)
+void STR_accept_string_pointer_bufferify(char *arg1, int arg1_temp0)
 {
     // splicer begin function.accept_string_pointer_bufferify
-    std::string SHCXX_arg1(arg1, Larg1);
+    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
     acceptStringPointer(&SHCXX_arg1);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.accept_string_pointer_bufferify
 }
 
@@ -1126,15 +1128,16 @@ void STR_fetch_string_pointer(char * arg1)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)+len(Narg1)
+// Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_string_*_buf
-void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1)
+void STR_fetch_string_pointer_bufferify(char *arg1, int arg1_temp0)
 {
     // splicer begin function.fetch_string_pointer_bufferify
     std::string SHCXX_arg1;
     fetchStringPointer(&SHCXX_arg1);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.fetch_string_pointer_bufferify
 }
 
@@ -1177,7 +1180,7 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_*_buf
 // ----------------------------------------
@@ -1185,13 +1188,14 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
-    int Narg1, int * nlen)
+void STR_accept_string_pointer_len_bufferify(char *arg1, int arg1_temp0,
+    int * nlen)
 {
     // splicer begin function.accept_string_pointer_len_bufferify
-    std::string SHCXX_arg1(arg1, Larg1);
+    std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
     acceptStringPointerLen(&SHCXX_arg1, nlen);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.accept_string_pointer_len_bufferify
 }
 
@@ -1236,7 +1240,7 @@ void STR_fetch_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)+len(Narg1)
+// Argument:  std::string * arg1 +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_string_*_buf
 // ----------------------------------------
@@ -1244,13 +1248,14 @@ void STR_fetch_string_pointer_len(char * arg1, int * nlen)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
+void STR_fetch_string_pointer_len_bufferify(char *arg1, int arg1_temp0,
     int * nlen)
 {
     // splicer begin function.fetch_string_pointer_len_bufferify
     std::string SHCXX_arg1;
     fetchStringPointerLen(&SHCXX_arg1, nlen);
-    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    ShroudStrCopy(arg1, arg1_temp0, SHCXX_arg1.data(),
+        SHCXX_arg1.size());
     // splicer end function.fetch_string_pointer_len_bufferify
 }
 
@@ -1418,16 +1423,16 @@ void STR_post_declare(int * count, char * name)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & name +len(Nname)+len_trim(Lname)
+// Argument:  std::string & name
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_&_buf
-void STR_post_declare_bufferify(int * count, char * name, int Lname,
-    int Nname)
+void STR_post_declare_bufferify(int * count, char *name, int name_temp0)
 {
     // splicer begin function.post_declare_bufferify
-    std::string SHCXX_name(name, Lname);
+    std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     PostDeclare(count, SHCXX_name);
-    ShroudStrCopy(name, Nname, SHCXX_name.data(), SHCXX_name.size());
+    ShroudStrCopy(name, name_temp0, SHCXX_name.data(),
+        SHCXX_name.size());
     // splicer end function.post_declare_bufferify
 }
 

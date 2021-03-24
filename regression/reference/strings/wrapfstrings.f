@@ -177,17 +177,16 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+    ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     interface
-        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
+        subroutine c_pass_char_ptr_in_out_bufferify(s, s_temp0) &
                 bind(C, name="STR_pass_char_ptr_in_out_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
-            integer(C_INT), value, intent(IN) :: Ls
-            integer(C_INT), value, intent(IN) :: Ns
+            integer(C_INT), value, intent(IN) :: s_temp0
         end subroutine c_pass_char_ptr_in_out_bufferify
     end interface
 
@@ -670,17 +669,17 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
-                Larg1) &
+                arg1_temp0) &
                 bind(C, name="STR_accept_string_const_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_accept_string_const_reference_bufferify
     end interface
 
@@ -708,16 +707,17 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
+    ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_&_buf
     interface
-        subroutine c_accept_string_reference_out_bufferify(arg1, Narg1) &
+        subroutine c_accept_string_reference_out_bufferify(arg1, &
+                arg1_temp0) &
                 bind(C, name="STR_accept_string_reference_out_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_accept_string_reference_out_bufferify
     end interface
 
@@ -747,19 +747,17 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string & arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     ! start c_accept_string_reference_bufferify
     interface
-        subroutine c_accept_string_reference_bufferify(arg1, Larg1, &
-                Narg1) &
+        subroutine c_accept_string_reference_bufferify(arg1, arg1_temp0) &
                 bind(C, name="STR_accept_string_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_accept_string_reference_bufferify
     end interface
     ! end c_accept_string_reference_bufferify
@@ -788,16 +786,17 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1 +len_trim(Larg1)
+    ! Argument:  const std::string * arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     interface
-        subroutine c_accept_string_pointer_const_bufferify(arg1, Larg1) &
+        subroutine c_accept_string_pointer_const_bufferify(arg1, &
+                arg1_temp0) &
                 bind(C, name="STR_accept_string_pointer_const_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_accept_string_pointer_const_bufferify
     end interface
 
@@ -825,17 +824,16 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_*_buf
     interface
-        subroutine c_accept_string_pointer_bufferify(arg1, Larg1, Narg1) &
+        subroutine c_accept_string_pointer_bufferify(arg1, arg1_temp0) &
                 bind(C, name="STR_accept_string_pointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_accept_string_pointer_bufferify
     end interface
 
@@ -863,16 +861,16 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
+    ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_*_buf
     interface
-        subroutine c_fetch_string_pointer_bufferify(arg1, Narg1) &
+        subroutine c_fetch_string_pointer_bufferify(arg1, arg1_temp0) &
                 bind(C, name="STR_fetch_string_pointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
         end subroutine c_fetch_string_pointer_bufferify
     end interface
 
@@ -906,7 +904,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Argument:  std::string * arg1
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_*_buf
     ! ----------------------------------------
@@ -915,14 +913,13 @@ module strings_mod
     ! Requested: c_out_native_*
     ! Match:     c_default
     interface
-        subroutine c_accept_string_pointer_len_bufferify(arg1, Larg1, &
-                Narg1, nlen) &
+        subroutine c_accept_string_pointer_len_bufferify(arg1, &
+                arg1_temp0, nlen) &
                 bind(C, name="STR_accept_string_pointer_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
             integer(C_INT), intent(OUT) :: nlen
         end subroutine c_accept_string_pointer_len_bufferify
     end interface
@@ -957,7 +954,7 @@ module strings_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
+    ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_*_buf
     ! ----------------------------------------
@@ -966,13 +963,13 @@ module strings_mod
     ! Requested: c_out_native_*
     ! Match:     c_default
     interface
-        subroutine c_fetch_string_pointer_len_bufferify(arg1, Narg1, &
-                nlen) &
+        subroutine c_fetch_string_pointer_len_bufferify(arg1, &
+                arg1_temp0, nlen) &
                 bind(C, name="STR_fetch_string_pointer_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
             integer(C_INT), intent(OUT) :: nlen
         end subroutine c_fetch_string_pointer_len_bufferify
     end interface
@@ -1192,18 +1189,17 @@ module strings_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+    ! Argument:  std::string & name
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     interface
-        subroutine c_post_declare_bufferify(count, name, Lname, Nname) &
+        subroutine c_post_declare_bufferify(count, name, name_temp0) &
                 bind(C, name="STR_post_declare_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), intent(IN) :: count(*)
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
-            integer(C_INT), value, intent(IN) :: Nname
+            integer(C_INT), value, intent(IN) :: name_temp0
         end subroutine c_post_declare_bufferify
     end interface
 
@@ -1292,9 +1288,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+    ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     !>
@@ -1307,8 +1301,7 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
-        call c_pass_char_ptr_in_out_bufferify(s, &
-            len_trim(s, kind=C_INT), len(s, kind=C_INT))
+        call c_pass_char_ptr_in_out_bufferify(s, len(s, kind=C_INT))
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
@@ -1713,9 +1706,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     !>
@@ -1730,7 +1721,7 @@ contains
         character(len=*), intent(IN) :: arg1
         ! splicer begin function.accept_string_const_reference
         call c_accept_string_const_reference_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
+            len(arg1, kind=C_INT))
         ! splicer end function.accept_string_const_reference
     end subroutine accept_string_const_reference
 
@@ -1744,9 +1735,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
+    ! Exact:     f_out_string_&_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_&_buf
     !>
@@ -1775,9 +1764,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
+    ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     !>
@@ -1793,7 +1780,7 @@ contains
         character(len=*), intent(INOUT) :: arg1
         ! splicer begin function.accept_string_reference
         call c_accept_string_reference_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
+            len(arg1, kind=C_INT))
         ! splicer end function.accept_string_reference
     end subroutine accept_string_reference
     ! end accept_string_reference
@@ -1808,9 +1795,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_*_buf
-    ! Match:     f_default
-    ! Argument:  const std::string * arg1 +len_trim(Larg1)
+    ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     !>
@@ -1822,7 +1807,7 @@ contains
         character(len=*), intent(IN) :: arg1
         ! splicer begin function.accept_string_pointer_const
         call c_accept_string_pointer_const_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
+            len(arg1, kind=C_INT))
         ! splicer end function.accept_string_pointer_const
     end subroutine accept_string_pointer_const
 
@@ -1836,9 +1821,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_*_buf
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Exact:     f_inout_string_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_*_buf
     !>
@@ -1850,7 +1833,7 @@ contains
         character(len=*), intent(INOUT) :: arg1
         ! splicer begin function.accept_string_pointer
         call c_accept_string_pointer_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
+            len(arg1, kind=C_INT))
         ! splicer end function.accept_string_pointer
     end subroutine accept_string_pointer
 
@@ -1864,9 +1847,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_*_buf
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
+    ! Exact:     f_out_string_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_*_buf
     !>
@@ -1893,9 +1874,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_*_buf
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
+    ! Exact:     f_inout_string_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_*_buf
     ! ----------------------------------------
@@ -1918,7 +1897,7 @@ contains
         integer(C_INT), intent(OUT) :: nlen
         ! splicer begin function.accept_string_pointer_len
         call c_accept_string_pointer_len_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT), nlen)
+            len(arg1, kind=C_INT), nlen)
         ! splicer end function.accept_string_pointer_len
     end subroutine accept_string_pointer_len
 
@@ -1932,9 +1911,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_string_*_buf
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
+    ! Exact:     f_out_string_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_*_buf
     ! ----------------------------------------
@@ -2077,9 +2054,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+    ! Exact:     f_inout_string_&_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     !>
@@ -2094,7 +2069,7 @@ contains
         character(len=*), intent(INOUT) :: name
         ! splicer begin function.post_declare
         call c_post_declare_bufferify(count, name, &
-            len_trim(name, kind=C_INT), len(name, kind=C_INT))
+            len(name, kind=C_INT))
         ! splicer end function.post_declare
     end subroutine post_declare
 

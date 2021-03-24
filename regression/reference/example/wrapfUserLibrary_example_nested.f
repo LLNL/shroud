@@ -199,17 +199,17 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
         ! ----------------------------------------
-        ! Argument:  const string * name +len_trim(Lname)
+        ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
+        function c_exclass1_ctor_1_bufferify(name, name_temp0, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
@@ -415,14 +415,14 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
+        function c_exclass2_ctor_bufferify(name, name_temp0, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: trim_name
+            integer(C_INT), value, intent(IN) :: name_temp0
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor_bufferify
@@ -802,16 +802,16 @@ module userlibrary_example_nested_mod
         ! Requested: c_function_bool_scalar
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
-        function c_is_name_valid_bufferify(name, Lname) &
+        function c_is_name_valid_bufferify(name, name_temp0) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_name_valid_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             logical(C_BOOL) :: SHT_rv
         end function c_is_name_valid_bufferify
 
@@ -850,15 +850,15 @@ module userlibrary_example_nested_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
-        subroutine c_test_names_bufferify(name, Lname) &
+        subroutine c_test_names_bufferify(name, name_temp0) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
         end subroutine c_test_names_bufferify
 
         ! ----------------------------------------
@@ -889,7 +889,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Argument:  const std::string & name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
@@ -897,12 +897,12 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_test_names_flag_bufferify(name, Lname, flag) &
+        subroutine c_test_names_flag_bufferify(name, name_temp0, flag) &
                 bind(C, name="AA_example_nested_test_names_flag_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_test_names_flag_bufferify
 
@@ -1338,9 +1338,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_*_buf
-    ! Match:     f_default
-    ! Argument:  const string * name +len_trim(Lname)
+    ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     !>
@@ -1359,7 +1357,7 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         type(C_PTR) :: SHT_prv
         SHT_prv = c_exclass1_ctor_1_bufferify(name, &
-            len_trim(name, kind=C_INT), SHT_rv%cxxmem)
+            len(name, kind=C_INT), SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 
@@ -1580,8 +1578,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_*_buf
-    ! Match:     f_default
+    ! Exact:     f_in_string_*_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_*_buf
     !>
@@ -1595,8 +1592,8 @@ contains
         type(exclass2) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         type(C_PTR) :: SHT_prv
-        SHT_prv = c_exclass2_ctor_bufferify(name, &
-            len_trim(name, kind=C_INT), SHT_rv%cxxmem)
+        SHT_prv = c_exclass2_ctor_bufferify(name, len(name, kind=C_INT), &
+            SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
     end function exclass2_ctor
 
@@ -2060,9 +2057,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     function is_name_valid(name) &
@@ -2102,16 +2097,14 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         ! splicer begin namespace.example::nested.function.test_names
-        call c_test_names_bufferify(name, len_trim(name, kind=C_INT))
+        call c_test_names_bufferify(name, len(name, kind=C_INT))
         ! splicer end namespace.example::nested.function.test_names
     end subroutine test_names
 
@@ -2125,9 +2118,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -2143,8 +2134,8 @@ contains
         character(len=*), intent(IN) :: name
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin namespace.example::nested.function.test_names_flag
-        call c_test_names_flag_bufferify(name, &
-            len_trim(name, kind=C_INT), flag)
+        call c_test_names_flag_bufferify(name, len(name, kind=C_INT), &
+            flag)
         ! splicer end namespace.example::nested.function.test_names_flag
     end subroutine test_names_flag
 

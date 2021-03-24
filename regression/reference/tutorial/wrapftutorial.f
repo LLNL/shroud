@@ -110,25 +110,25 @@ module tutorial_mod
     ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_scalar_buf_allocatable
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2 +len_trim(Larg2)
+    ! Argument:  const std::string & arg2
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     interface
-        subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, Larg1, &
-                arg2, Larg2) &
+        subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, &
+                arg1_temp0, arg2, arg2_temp0) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
             implicit none
             type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
+            integer(C_INT), value, intent(IN) :: arg1_temp0
             character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
+            integer(C_INT), value, intent(IN) :: arg2_temp0
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -225,17 +225,17 @@ module tutorial_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
-                Lname) &
+                name_temp0) &
                 bind(C, name="TUT_overloaded_function_from_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
         end subroutine c_overloaded_function_from_name_bufferify
     end interface
 
@@ -368,7 +368,7 @@ module tutorial_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -378,12 +378,12 @@ module tutorial_mod
     ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
-                Lname, arg2) &
+                name_temp0, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1_float_bufferify")
             use iso_c_binding, only : C_CHAR, C_FLOAT, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             real(C_FLOAT), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_float_bufferify
     end interface
@@ -394,7 +394,7 @@ module tutorial_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Argument:  const std::string & name
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -404,12 +404,12 @@ module tutorial_mod
     ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
-                Lname, arg2) &
+                name_temp0, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1_double_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_double_bufferify
     end interface
@@ -813,17 +813,13 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & arg2 +len_trim(Larg2)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     !>
@@ -839,8 +835,7 @@ contains
         ! splicer begin function.concatenate_strings
         type(TUT_SHROUD_array) :: SHT_rv_temp0
         call c_concatenate_strings_bufferify(SHT_rv_temp0, arg1, &
-            len_trim(arg1, kind=C_INT), arg2, &
-            len_trim(arg2, kind=C_INT))
+            len(arg1, kind=C_INT), arg2, len(arg2, kind=C_INT))
         allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
         call TUT_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
             SHT_rv_temp0%elem_len)
@@ -945,9 +940,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     subroutine overloaded_function_from_name(name)
@@ -955,7 +948,7 @@ contains
         character(len=*), intent(IN) :: name
         ! splicer begin function.overloaded_function_from_name
         call c_overloaded_function_from_name_bufferify(name, &
-            len_trim(name, kind=C_INT))
+            len(name, kind=C_INT))
         ! splicer end function.overloaded_function_from_name
     end subroutine overloaded_function_from_name
 
@@ -1085,9 +1078,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -1104,7 +1095,7 @@ contains
         real(C_FLOAT), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_float
         call c_fortran_generic_overloaded_1_float_bufferify(name, &
-            len_trim(name, kind=C_INT), arg2)
+            len(name, kind=C_INT), arg2)
         ! splicer end function.fortran_generic_overloaded_1_float
     end subroutine fortran_generic_overloaded_1_float
 
@@ -1118,9 +1109,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -1137,7 +1126,7 @@ contains
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_double
         call c_fortran_generic_overloaded_1_double_bufferify(name, &
-            len_trim(name, kind=C_INT), arg2)
+            len(name, kind=C_INT), arg2)
         ! splicer end function.fortran_generic_overloaded_1_double
     end subroutine fortran_generic_overloaded_1_double
 

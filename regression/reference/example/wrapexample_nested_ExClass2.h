@@ -38,8 +38,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHadow_rv);
 
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
-    const char * name, int trim_name,
-    AA_example_nested_ExClass2 * SHadow_rv);
+    char *name, int name_temp0, AA_example_nested_ExClass2 * SHadow_rv);
 
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self);
 

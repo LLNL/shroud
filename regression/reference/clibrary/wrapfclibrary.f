@@ -294,17 +294,16 @@ module clibrary_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+    ! Argument:  char * s +intent(inout)
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     interface
-        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
+        subroutine c_pass_char_ptr_in_out_bufferify(s, s_temp0) &
                 bind(C, name="CLI_pass_char_ptr_in_out_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
-            integer(C_INT), value, intent(IN) :: Ls
-            integer(C_INT), value, intent(IN) :: Ns
+            integer(C_INT), value, intent(IN) :: s_temp0
         end subroutine c_pass_char_ptr_in_out_bufferify
     end interface
 
@@ -1042,9 +1041,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_char_*_buf
-    ! Match:     f_default
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
+    ! Exact:     f_inout_char_*_buf
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     !>
@@ -1057,8 +1054,7 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
-        call c_pass_char_ptr_in_out_bufferify(s, &
-            len_trim(s, kind=C_INT), len(s, kind=C_INT))
+        call c_pass_char_ptr_in_out_bufferify(s, len(s, kind=C_INT))
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 

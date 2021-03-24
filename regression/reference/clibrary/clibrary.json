@@ -1651,7 +1651,7 @@
                     "F_C_call": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_name": "c_pass_char_ptr_in_out",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "s,\t len_trim(s, kind=C_INT),\t len(s, kind=C_INT)",
+                    "F_arg_c_call": "s,\t len(s, kind=C_INT)",
                     "F_arguments": "s",
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
@@ -1681,9 +1681,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "len": "Ns",
-                                "len_trim": "Ls"
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "s",
@@ -1709,7 +1707,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len+len_trim)",
+                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -1727,8 +1725,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -1738,32 +1734,32 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_s",
                             "stmt0": "c_inout_char_*_buf",
-                            "stmt1": "c_inout_char_*_buf"
+                            "stmt1": "c_inout_char_*_buf",
+                            "temp0": "s_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_inout_char_*_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_inout_char_*_buf",
                             "stmtc0": "c_inout_char_*_buf",
-                            "stmtc1": "c_inout_char_*_buf"
+                            "stmtc1": "c_inout_char_*_buf",
+                            "temp0": "s_temp0"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
                     "C_name": "CLI_pass_char_ptr_in_out_bufferify",
-                    "C_prototype": "char * s,\t int Ls,\t int Ns",
+                    "C_prototype": "char *s,\t int s_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "s,\t Ls,\t Ns",
+                    "F_C_arguments": "s,\t s_temp0",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtrInOut",

@@ -488,7 +488,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_scalar1_0_bufferify",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value_temp0",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value_temp0",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
@@ -520,8 +520,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "len_trim": "Lname"
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "name",
@@ -570,7 +569,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
-                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, int * value +cdesc+intent(out)+rank(0))",
+                "declgen": "void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
@@ -610,7 +609,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_name",
@@ -620,22 +618,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     },
                     "value": {
@@ -681,9 +680,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1_0_bufferify",
-                    "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *value_temp0",
+                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *value_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t value_temp0",
+                    "F_C_arguments": "name,\t name_temp0,\t value_temp0",
                     "F_C_name": "c_get_scalar1_0_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
@@ -796,7 +795,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_scalar1_1_bufferify",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value_temp0",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value_temp0",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
@@ -828,8 +827,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "len_trim": "Lname"
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "name",
@@ -878,7 +876,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
-                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, double * value +cdesc+intent(out)+rank(0))",
+                "declgen": "void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
@@ -918,7 +916,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_name",
@@ -928,22 +925,23 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf"
+                            "stmt1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf"
+                            "stmtc1": "c_in_string_&_buf",
+                            "temp0": "name_temp0"
                         }
                     },
                     "value": {
@@ -989,9 +987,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1_1_bufferify",
-                    "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *value_temp0",
+                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *value_temp0",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t Lname,\t value_temp0",
+                    "F_C_arguments": "name,\t name_temp0,\t value_temp0",
                     "F_C_name": "c_get_scalar1_1_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
@@ -1576,7 +1574,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
@@ -1609,8 +1607,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "len_trim": "Lname"
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "name",
@@ -1656,7 +1653,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in)+len_trim, int * value +intent(out))",
+                "declgen": "void GetScalar2(std::string & name +intent(in), int * value +intent(out))",
                 "doxygen": {
                     "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
                 },
@@ -1683,14 +1680,13 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
                             "stmtc1": "c_in_string_&_buf"
                         }
@@ -1809,7 +1805,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
+                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
@@ -1842,8 +1838,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
-                                "len_trim": "Lname"
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "name",
@@ -1889,7 +1884,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
-                "declgen": "void GetScalar2(std::string & name +intent(in)+len_trim, double * value +intent(out))",
+                "declgen": "void GetScalar2(std::string & name +intent(in), double * value +intent(out))",
                 "doxygen": {
                     "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
                 },
@@ -1916,14 +1911,13 @@
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "Lname",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_string_&_buf",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
                             "stmtc1": "c_in_string_&_buf"
                         }

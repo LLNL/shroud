@@ -41,7 +41,7 @@ void STR_pass_char_ptr_bufferify(char *dest, int dest_temp0,
 
 void STR_pass_char_ptr_in_out(char * s);
 
-void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
+void STR_pass_char_ptr_in_out_bufferify(char *s, int s_temp0);
 
 const char * STR_get_char_ptr1(void);
 
@@ -115,40 +115,39 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
 
 void STR_accept_string_const_reference(const char * arg1);
 
-void STR_accept_string_const_reference_bufferify(const char * arg1,
-    int Larg1);
+void STR_accept_string_const_reference_bufferify(char *arg1,
+    int arg1_temp0);
 
 void STR_accept_string_reference_out(char * arg1);
 
-void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1);
+void STR_accept_string_reference_out_bufferify(char *arg1,
+    int arg1_temp0);
 
 void STR_accept_string_reference(char * arg1);
 
-void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
-    int Narg1);
+void STR_accept_string_reference_bufferify(char *arg1, int arg1_temp0);
 
 void STR_accept_string_pointer_const(const char * arg1);
 
-void STR_accept_string_pointer_const_bufferify(const char * arg1,
-    int Larg1);
+void STR_accept_string_pointer_const_bufferify(char *arg1,
+    int arg1_temp0);
 
 void STR_accept_string_pointer(char * arg1);
 
-void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
-    int Narg1);
+void STR_accept_string_pointer_bufferify(char *arg1, int arg1_temp0);
 
 void STR_fetch_string_pointer(char * arg1);
 
-void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1);
+void STR_fetch_string_pointer_bufferify(char *arg1, int arg1_temp0);
 
 void STR_accept_string_pointer_len(char * arg1, int * nlen);
 
-void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
-    int Narg1, int * nlen);
+void STR_accept_string_pointer_len_bufferify(char *arg1, int arg1_temp0,
+    int * nlen);
 
 void STR_fetch_string_pointer_len(char * arg1, int * nlen);
 
-void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
+void STR_fetch_string_pointer_len_bufferify(char *arg1, int arg1_temp0,
     int * nlen);
 
 int STR_accept_string_instance(char *arg1);
@@ -166,8 +165,8 @@ void STR_cpass_char_ptr_bufferify(char *dest, int dest_temp0,
 
 void STR_post_declare(int * count, char * name);
 
-void STR_post_declare_bufferify(int * count, char * name, int Lname,
-    int Nname);
+void STR_post_declare_bufferify(int * count, char *name,
+    int name_temp0);
 
 #ifdef __cplusplus
 }

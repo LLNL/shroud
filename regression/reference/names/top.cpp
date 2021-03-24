@@ -102,12 +102,12 @@ void TES_get_name(char * name)
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
-void TES_get_name_bufferify(char * name, int worktrim, int worklen)
+void TES_get_name_bufferify(char *name, int name_temp0)
 {
     // splicer begin function.get_name_bufferify
-    char * ARG_name = ShroudStrAlloc(name, worklen, worktrim);
+    char * ARG_name = ShroudStrAlloc(name, name_temp0, -1);
     getName(ARG_name);
-    ShroudStrCopy(name, worklen, ARG_name, -1);
+    ShroudStrCopy(name, name_temp0, ARG_name, -1);
     ShroudStrFree(ARG_name);
     // splicer end function.get_name_bufferify
 }
@@ -190,13 +190,13 @@ int YYY_TES_function4(const char * rv)
 // Requested: c_function_native_scalar
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & rv +len_trim(Lrv)
+// Argument:  const std::string & rv
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-int YYY_TES_function4_bufferify(const char * rv, int Lrv)
+int YYY_TES_function4_bufferify(char *rv, int rv_temp0)
 {
     // splicer begin function.function4_bufferify
-    const std::string ARG_rv(rv, Lrv);
+    const std::string ARG_rv(rv, ShroudLenTrim(rv, rv_temp0));
     int SHC_rv = function4(ARG_rv);
     return SHC_rv;
     // splicer end function.function4_bufferify
@@ -245,7 +245,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +len(Nname)+len_trim(Lname)
+// Argument:  std::string & name
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_string_&_buf
 // ----------------------------------------
@@ -253,8 +253,8 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void TES_test_multiline_splicer_bufferify(char * name, int Lname,
-    int Nname, int * value)
+void TES_test_multiline_splicer_bufferify(char *name, int name_temp0,
+    int * value)
 {
     // splicer begin function.test_multiline_splicer_bufferify
     // line 1

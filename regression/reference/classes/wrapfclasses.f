@@ -299,7 +299,7 @@ module classes_mod
     ! Requested: c_function_shadow_*
     ! Match:     c_function_shadow
     ! ----------------------------------------
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -310,7 +310,7 @@ module classes_mod
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
-                Lname, flag, SHT_crv) &
+                name_temp0, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_return_this_buffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
@@ -318,7 +318,7 @@ module classes_mod
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), value, intent(IN) :: name_temp0
             logical(C_BOOL), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
@@ -1017,9 +1017,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_string_&_buf
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Exact:     f_in_string_&_buf
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
@@ -1047,7 +1045,7 @@ contains
         type(C_PTR) :: SHT_prv
         SH_flag = flag  ! coerce to C_BOOL
         SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
-            name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
+            name, len(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer

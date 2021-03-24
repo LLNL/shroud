@@ -18,6 +18,22 @@
 
 extern "C" {
 
+
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -98,14 +114,14 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *value_temp0)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_0_bufferify(char * name, int Lname,
+void CDE_get_scalar1_0_bufferify(char *name, int name_temp0,
     CDE_SHROUD_array *value_temp0)
 {
     // splicer begin function.get_scalar1_0_bufferify
@@ -145,14 +161,14 @@ void CDE_get_scalar1_0_bufferify(char * name, int Lname,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_1_bufferify(char * name, int Lname,
+void CDE_get_scalar1_1_bufferify(char *name, int name_temp0,
     CDE_SHROUD_array *value_temp0)
 {
     // splicer begin function.get_scalar1_1_bufferify

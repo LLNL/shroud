@@ -22,6 +22,22 @@
 extern "C" {
 
 
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
@@ -105,19 +121,19 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_scalar_buf_allocatable
 // ----------------------------------------
-// Argument:  const std::string & arg1 +len_trim(Larg1)
+// Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
-// Argument:  const std::string & arg2 +len_trim(Larg2)
+// Argument:  const std::string & arg2
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
-    const char * arg1, int Larg1, const char * arg2, int Larg2)
+    char *arg1, int arg1_temp0, char *arg2, int arg2_temp0)
 {
     // splicer begin function.concatenate_strings_bufferify
-    const std::string SHCXX_arg1(arg1, Larg1);
-    const std::string SHCXX_arg2(arg2, Larg2);
+    const std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
+    const std::string SHCXX_arg2(arg2, ShroudLenTrim(arg2, arg2_temp0));
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
     ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 1);
@@ -205,14 +221,14 @@ void TUT_overloaded_function_from_name(const char * name)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void TUT_overloaded_function_from_name_bufferify(const char * name,
-    int Lname)
+void TUT_overloaded_function_from_name_bufferify(char *name,
+    int name_temp0)
 {
     // splicer begin function.overloaded_function_from_name_bufferify
-    const std::string SHCXX_name(name, Lname);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     tutorial::OverloadedFunction(SHCXX_name);
     // splicer end function.overloaded_function_from_name_bufferify
 }
@@ -328,7 +344,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
@@ -336,11 +352,11 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
-    int Lname, float arg2)
+void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
+    int name_temp0, float arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_float_bufferify
-    const std::string SHCXX_name(name, Lname);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.fortran_generic_overloaded_1_float_bufferify
 }
@@ -350,7 +366,7 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +len_trim(Lname)
+// Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
@@ -358,11 +374,11 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void TUT_fortran_generic_overloaded_1_double_bufferify(
-    const char * name, int Lname, double arg2)
+void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
+    int name_temp0, double arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_double_bufferify
-    const std::string SHCXX_name(name, Lname);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.fortran_generic_overloaded_1_double_bufferify
 }

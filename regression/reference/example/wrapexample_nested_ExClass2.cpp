@@ -24,6 +24,22 @@
 extern "C" {
 
 
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
@@ -100,11 +116,10 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
-    const char * name, int trim_name,
-    AA_example_nested_ExClass2 * SHadow_rv)
+    char *name, int name_temp0, AA_example_nested_ExClass2 * SHadow_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
-    const std::string SHCXX_name(name, trim_name);
+    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SHCXX_name);
     SHadow_rv->addr = static_cast<void *>(SHCXX_rv);

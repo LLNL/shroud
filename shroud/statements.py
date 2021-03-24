@@ -717,6 +717,7 @@ fc_statements = [
         ntemps=1,
     ),
 
+    # Pass CHARACTER and LEN to C wrapper.
     dict(
         name="f_mixin_in_character_buf",
         arg_c_call=[
@@ -1133,7 +1134,7 @@ fc_statements = [
     ),
     dict(
         # Blank fill result.
-        name="c_function_char_scalar_buf",
+        name="c_XXXfunction_char_scalar_buf",
         buf_args=["arg", "len"],
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
@@ -1148,7 +1149,7 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
-        name="c_in_char_*_buf",
+        name="c_XXXin_char_*_buf",
         buf_args=["arg", "len_trim"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrFree",
@@ -1174,17 +1175,21 @@ fc_statements = [
         ],
     ),
     dict(
+        name="f_inout_char_*_buf",
+        mixin=["f_mixin_in_character_buf"],
+    ),
+    dict(
         name="c_inout_char_*_buf",
-        buf_args=["arg", "len_trim", "len"],
+        mixin=["c_mixin_in_character_buf"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
         pre_call=[
             "char * {cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_len},\t {c_var_trim});",
+            "{c_var},\t {temp0},\t -1);",
         ],
         post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {cxx_var},\t -1);",
             "ShroudStrFree({cxx_var});",
         ],
@@ -1328,43 +1333,56 @@ fc_statements = [
         ],
     ),
     dict(
+        name="f_in_string_*/&_buf",
+        mixin=["f_mixin_in_character_buf"],
+    ),
+    dict(
         # c_in_string_*_buf
         # c_in_string_&_buf
         name="c_in_string_*/&_buf",
-        buf_args=["arg", "len_trim"],
+        mixin=["c_mixin_in_character_buf"],
+        c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
-            "{c_const}std::string {cxx_var}({c_var}, {c_var_trim});",
+            "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));",
         ],
+    ),
+    dict(
+        name="f_out_string_*/&_buf",
+        mixin=["f_mixin_in_character_buf"],
     ),
     dict(
         # c_out_string_*_buf
         # c_out_string_&_buf
         name="c_out_string_*/&_buf",
-        buf_args=["arg", "len"],
+        mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
         pre_call=[
             "std::string {cxx_var};",
         ],
         post_call=[
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
     ),
     dict(
+        name="f_inout_string_*/&_buf",
+        mixin=["f_mixin_in_character_buf"],
+    ),
+    dict(
         # c_inout_string_*_buf
         # c_inout_string_&_buf
         name="c_inout_string_*/&_buf",
-        buf_args=["arg", "len_trim", "len"],
-        c_helper="ShroudStrCopy",
+        mixin=["c_mixin_in_character_buf"],
+        c_helper="ShroudStrCopy ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
-            "std::string {cxx_var}({c_var}, {c_var_trim});",
+            "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));",
         ],
         post_call=[
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "ShroudStrCopy({c_var}, {temp0},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -1437,7 +1455,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_in_string_scalar",  # pairs with c_string_scalar_in_buf
+        name="f_in_string_scalar",  # pairs with c_in_string_scalar_buf
         need_wrapper=True,
         buf_args=["arg", "len"],
         arg_decl=[
