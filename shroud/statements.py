@@ -1820,8 +1820,31 @@ fc_statements = [
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
     dict(
+        name="f_mixin_shadow",
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
+    ),
+    dict(
+        name="c_mixin_shadow",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{c_type} * {c_var}",
+        ],
+        f_arg_decl=[
+            "type({f_capsule_data_type}), intent({f_intent}) :: {f_var}",
+        ],
+        f_module_line="{f_c_module_line}",
+    ),
+    
+    dict(
+        name="f_in_shadow",
+        mixin=["f_mixin_shadow"],
+    ),
+    dict(
         name="c_in_shadow",
-        buf_args=["shadow"],
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "

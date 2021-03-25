@@ -231,7 +231,7 @@ contains
     ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Attrs:     +intent(in)
     ! Requested: f_in_shadow_*
-    ! Match:     f_default
+    ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
     ! Requested: c_in_shadow_*
     ! Match:     c_in_shadow
@@ -254,7 +254,7 @@ contains
     ! Argument:  Class3 * arg +intent(in)
     ! Attrs:     +intent(in)
     ! Requested: f_in_shadow_*
-    ! Match:     f_default
+    ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
     ! Requested: c_in_shadow_*
     ! Match:     c_in_shadow

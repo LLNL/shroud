@@ -123,6 +123,7 @@ root
           buf -- c_mixin_out_array_buf
         character
           buf -- c_mixin_out_character_buf
+      shadow -- c_mixin_shadow
     out
       char
         *
@@ -229,6 +230,7 @@ root
       native
         *
           cdesc -- f_in/out/inout_native_*_cdesc
+      shadow -- f_in_shadow
       string
         &
           buf -- f_in_string_*/&_buf
@@ -282,6 +284,7 @@ root
           buf -- f_mixin_out_array_buf
         character
           buf -- f_mixin_out_character_buf
+      shadow -- f_mixin_shadow
     out
       bool -- f_out_bool
       char
@@ -1007,8 +1010,13 @@ c_in_native_*_cfi:
   - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};'
 c_in_shadow:
   buf_args:
-  - shadow
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_in_shadow
   owner: library
   pre_call:
@@ -1315,8 +1323,13 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
 c_inout_shadow:
   buf_args:
-  - shadow
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_inout_shadow
   owner: library
   pre_call:
@@ -1677,6 +1690,16 @@ c_mixin_out_character_buf:
   - '{F_array_type}'
   name: c_mixin_out_character_buf
   ntemps: 1
+  owner: library
+c_mixin_shadow:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  f_module_line: '{f_c_module_line}'
+  name: c_mixin_shadow
   owner: library
 c_out_char_*_buf:
   buf_args:
@@ -2442,6 +2465,11 @@ f_in_native_*_cdesc:
   - '{temp0}%size = {size}'
   - '{temp0}%rank = {rank}'
   - '{temp0}%shape(1:{rank}) = shape({f_var})'
+f_in_shadow:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  name: f_in_shadow
+  need_wrapper: true
 f_in_string_&_buf:
   arg_c_call:
   - '{f_var}'
@@ -2709,6 +2737,11 @@ f_mixin_out_character_buf:
   - 'type({F_array_type}) :: {temp0}'
   name: f_mixin_out_character_buf
   ntemps: 1
+f_mixin_shadow:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  name: f_mixin_shadow
+  need_wrapper: true
 f_out_bool:
   c_local_var: true
   name: f_out_bool

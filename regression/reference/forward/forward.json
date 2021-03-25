@@ -311,7 +311,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
                                     "stmtc1": "c_in_shadow"
                                 },
@@ -468,7 +468,7 @@
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
                                     "stmtc1": "c_in_shadow"
                                 },
