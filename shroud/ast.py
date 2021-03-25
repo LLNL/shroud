@@ -779,6 +779,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_len="XXXc_var_len",
                 c_var_trim="XXXc_var_trim",
                 f_c_dimension="XXXf_c_dimension",
+                f_c_module_line="XXXf_c_module_line:XXXnone",
                 f_c_type="XXXf_c_type",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
@@ -787,6 +788,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
+                f_capsule_data_type="XXXf_capsule_data_type",
                 f_intent="XXXf_intent",
                 f_type="XXXf_type",
                 f_var="XXXf_var",

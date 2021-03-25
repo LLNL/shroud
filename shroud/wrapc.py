@@ -908,8 +908,13 @@ class Wrapc(util.WrapperMixin):
                 header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
             if ast.metaattrs["deref"] == "copy":
+                # XXX - replace with cxx_local_var == "result"
+                # Copy results into argument. Typically a Fortran wrapper variable.
                 c_local_var = "XXXX"
 #                fmt_result.cxx_var = fmt_result.C_string_result_as_arg
+                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+            elif result_blk.cxx_local_var == "result":
+                # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
@@ -1229,7 +1234,11 @@ class Wrapc(util.WrapperMixin):
                 "{CXX_template}({C_call_list});",
             ]
         else:
-            if result_blk.cxx_local_var:
+            if result_blk.cxx_local_var is None:
+                pass
+            elif result_blk.cxx_local_var == "result":
+                pass
+            else:
                 # A C++ var is created by pre_call.
                 # Assign to it directly. ex c_function_shadow_scalar
                 fmt_result.cxx_addr = ""

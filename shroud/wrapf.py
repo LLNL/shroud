@@ -753,10 +753,14 @@ rv = .false.
             Useful for interfaces.
         line : str
             module dictionary info as a string.
+            Will be formatted using fmt.
+            May be blank after format expansion.
         fmt : Scope
         """
         wline = wformat(line, fmt)
         wline = wline.replace(" ", "")
+        if not wline:
+            return
         f_module = {}
         for use in wline.split(";"):
             mname, syms = use.split(":")
@@ -1166,6 +1170,7 @@ rv = .false.
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
+            self.set_fmt_fields_iface(ast, fmt_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1240,7 +1245,8 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
-
+            self.set_fmt_fields_iface(arg, fmt_arg)
+            
             attrs = arg.attrs
             meta = arg.metaattrs
             intent = meta["intent"]
@@ -1512,6 +1518,23 @@ rv = .false.
         need_wrapper = need_wrapper or intent_blk.need_wrapper
         return need_wrapper
 
+    def set_fmt_fields_iface(self, ast, fmt):
+        """Set format fields for interface.
+
+        Transfer info from Typemap to fmt for use by statements.
+
+        Parameters
+        ----------
+        ast : ast.Declaration
+        fmt : util.Scope
+        """
+        ntypemap = ast.typemap
+        if ntypemap.f_capsule_data_type:
+            fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
+        f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
+        if f_c_module_line:
+            fmt.f_c_module_line = f_c_module_line
+    
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
                        subprogram=None,
                        ntypemap=None):
@@ -1551,12 +1574,8 @@ rv = .false.
             fmt.sh_type = ntypemap.sh_type
             if ntypemap.f_kind:
                 fmt.f_kind = ntypemap.f_kind
-            if ntypemap.f_capsule_data_type:
-                fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
-            f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
-            if f_c_module_line:
-                fmt.f_c_module_line = f_c_module_line
-        
+            self.set_fmt_fields_iface(c_ast, fmt)
+                
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]

@@ -1313,11 +1313,13 @@ fmtc
 """"
 
 Format strings used with C wrappers.
+Set for each argument.
 
 fmtf
 """"
 
 Format strings used with Fortran wrappers.
+Set for each argument.
 
 f_array_allocate
     Fortran shape expression used with ``ALLOCATE`` statement when
@@ -1334,6 +1336,14 @@ f_c_dimension
     Dimension used in ``bind(C)`` interface.
     May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
 
+f_c_module_line
+    Typemap.f_c_module in a format usable by FStmts.f_module_line.
+    The dictionary is converted into the string.
+
+f_capsule_data_type
+    The name of the derived type used to share memory information with C or C++.
+    *F_capsule_data_type* for the argument type.
+    
 f_declare_shape_prefix
 
 f_declare_shape_array

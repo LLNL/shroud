@@ -471,6 +471,8 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)"
                                             }
@@ -2336,6 +2338,8 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass2)"
                                             }
