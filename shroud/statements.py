@@ -1833,7 +1833,7 @@ fc_statements = [
             "{c_type} * {c_var}",
         ],
         f_arg_decl=[
-            "type({f_capsule_data_type}), intent({f_intent}) :: {f_var}",
+            "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
         ],
         f_module_line="{f_c_module_line}",
     ),
@@ -1858,17 +1858,13 @@ fc_statements = [
     # Return a C_capsule_data_type.
     dict(
         name="c_function_shadow",
-        buf_extra=["shadow"],
-        c_local_var="pointer",
+        mixin=["c_mixin_shadow"],
+        cxx_local_var="result",
         post_call=[
-            "{shadow_var}->addr = {cxx_nonconst_ptr};",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};",
         ],
-        ret=[
-            "return {shadow_var};",
-        ],
-        return_type="{c_type} *",
-        return_cptr=True,
+        return_type="void",
     ),
     dict(
         name="c_function_shadow_scalar",
@@ -1876,7 +1872,7 @@ fc_statements = [
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
         # c_local_var is passed in via buf_extra=shadow.
-        buf_extra=["shadow"],
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         c_local_var="pointer",
         owner="caller",
@@ -1884,41 +1880,28 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{shadow_var}->addr = {cxx_nonconst_ptr};",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};",
         ],
-        ret=[
-            "return {shadow_var};",
-        ],
-        return_type="{c_type} *",
-        return_cptr=True,
+        return_type="void",
     ),
     dict(
         name="f_function_shadow",
-        need_wrapper=True,
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        declare=[
-            "type(C_PTR) :: {F_result_ptr}",
-        ],
-        call=[
-            # The C function returns a pointer.
-            # Save in a type(C_PTR) variable.
-            "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-        ],
+        mixin=["f_mixin_shadow"],
     ),
     dict(
         name="c_ctor",
-        buf_extra=["shadow"],
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
         ],
         ret=[
             "return {shadow_var};",
         ],
-        return_type="{c_type} *",
+        return_type="void",
         owner="caller",
     ),
     dict(

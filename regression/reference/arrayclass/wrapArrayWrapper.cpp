@@ -24,13 +24,12 @@ extern "C" {
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
+void ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end class.ArrayWrapper.method.ctor
 }
 

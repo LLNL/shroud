@@ -24,14 +24,12 @@ extern "C" {
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-TEM_structAsClass_int * TEM_structAsClass_int_ctor(
-    TEM_structAsClass_int * SHadow_rv)
+void TEM_structAsClass_int_ctor(TEM_structAsClass_int * SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor
     structAsClass<int> *SHCXX_rv = new structAsClass<int>();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 3;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 3;
     // splicer end class.structAsClass.method.ctor
 }
 

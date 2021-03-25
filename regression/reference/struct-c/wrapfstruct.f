@@ -676,15 +676,12 @@ module struct_mod
     ! Match:     c_function_shadow
     ! start c_create__cstruct_as_class
     interface
-        function c_create__cstruct_as_class(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_create__cstruct_as_class(SHT_rv) &
                 bind(C, name="STR_create__cstruct_as_class")
-            use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_create__cstruct_as_class
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_create__cstruct_as_class
     end interface
     ! end c_create__cstruct_as_class
 
@@ -704,17 +701,15 @@ module struct_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        function c_create__cstruct_as_class_args(x, y, SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_create__cstruct_as_class_args(SHT_rv, x, y) &
                 bind(C, name="STR_create__cstruct_as_class_args")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_create__cstruct_as_class_args
+        end subroutine c_create__cstruct_as_class_args
     end interface
 
     ! ----------------------------------------
@@ -760,18 +755,16 @@ module struct_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        function c_create__cstruct_as_subclass_args(x, y, z, SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_create__cstruct_as_subclass_args(SHT_rv, x, y, z) &
                 bind(C, name="STR_create__cstruct_as_subclass_args")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
             integer(C_INT), value, intent(IN) :: z
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_create__cstruct_as_subclass_args
+        end subroutine c_create__cstruct_as_subclass_args
     end interface
 
     interface
@@ -1188,11 +1181,9 @@ contains
     ! start create__cstruct_as_class
     function create__cstruct_as_class() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(cstruct_as_class) :: SHT_rv
         ! splicer begin function.create__cstruct_as_class
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_create__cstruct_as_class(SHT_rv%cxxmem)
+        call c_create__cstruct_as_class(SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_class
     end function create__cstruct_as_class
     ! end create__cstruct_as_class
@@ -1223,13 +1214,12 @@ contains
     ! Match:     c_default
     function create__cstruct_as_class_args(x, y) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: x
         integer(C_INT), value, intent(IN) :: y
         type(cstruct_as_class) :: SHT_rv
         ! splicer begin function.create__cstruct_as_class_args
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_create__cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        call c_create__cstruct_as_class_args(SHT_rv%cxxmem, x, y)
         ! splicer end function.create__cstruct_as_class_args
     end function create__cstruct_as_class_args
 
@@ -1293,15 +1283,13 @@ contains
     ! Match:     c_default
     function create__cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: x
         integer(C_INT), value, intent(IN) :: y
         integer(C_INT), value, intent(IN) :: z
         type(cstruct_as_subclass) :: SHT_rv
         ! splicer begin function.create__cstruct_as_subclass_args
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_create__cstruct_as_subclass_args(x, y, z, &
-            SHT_rv%cxxmem)
+        call c_create__cstruct_as_subclass_args(SHT_rv%cxxmem, x, y, z)
         ! splicer end function.create__cstruct_as_subclass_args
     end function create__cstruct_as_subclass_args
 

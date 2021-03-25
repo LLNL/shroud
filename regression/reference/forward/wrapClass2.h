@@ -30,7 +30,7 @@ extern "C" {
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations
 
-FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv);
+void FOR_Class2_ctor(FOR_Class2 * SHC_rv);
 
 void FOR_Class2_dtor(FOR_Class2 * self);
 

@@ -73,15 +73,12 @@ module templates_std_mod
         ! Function:  vector
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function c_vector_int_ctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_vector_int_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
-            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_vector_int_ctor
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_vector_int_ctor
 
         ! ----------------------------------------
         ! Function:  ~vector
@@ -163,15 +160,12 @@ module templates_std_mod
         ! Function:  vector
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function c_vector_double_ctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_vector_double_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
-            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_vector_double_ctor
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_vector_double_ctor
 
         ! ----------------------------------------
         ! Function:  ~vector
@@ -271,11 +265,9 @@ contains
     ! Exact:     c_ctor
     function vector_int_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(vector_int) :: SHT_rv
         ! splicer begin namespace.std.class.vector_int.method.ctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
+        call c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.ctor
     end function vector_int_ctor
 
@@ -380,11 +372,9 @@ contains
     ! Exact:     c_ctor
     function vector_double_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(vector_double) :: SHT_rv
         ! splicer begin namespace.std.class.vector_double.method.ctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
+        call c_vector_double_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.ctor
     end function vector_double_ctor
 

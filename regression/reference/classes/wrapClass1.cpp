@@ -66,13 +66,12 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
 // start CLA_Class1_ctor_default
-CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
+void CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end class.Class1.method.ctor_default
 }
 // end CLA_Class1_ctor_default
@@ -88,13 +87,12 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 // Requested: c_in_native_scalar
 // Match:     c_default
 // start CLA_Class1_ctor_flag
-CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHadow_rv)
+void CLA_Class1_ctor_flag(CLA_Class1 * SHC_rv, int flag)
 {
     // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end class.Class1.method.ctor_flag
 }
 // end CLA_Class1_ctor_flag
@@ -202,8 +200,8 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Requested: c_in_bool_scalar
 // Match:     c_default
 // start CLA_Class1_return_this_buffer
-CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
-    char * name, bool flag, CLA_Class1 * SHadow_rv)
+void CLA_Class1_return_this_buffer(CLA_Class1 * self,
+    CLA_Class1 * SHC_rv, char * name, bool flag)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -211,9 +209,8 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     std::string SHCXX_name(name);
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end class.Class1.method.return_this_buffer
 }
 // end CLA_Class1_return_this_buffer
@@ -237,8 +234,8 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Requested: c_in_bool_scalar
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
-CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    char *name, int name_temp0, bool flag, CLA_Class1 * SHadow_rv)
+void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
+    CLA_Class1 * SHC_rv, char *name, int name_temp0, bool flag)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -246,9 +243,8 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end class.Class1.method.return_this_buffer_bufferify
 }
 // end CLA_Class1_return_this_buffer_bufferify
@@ -263,16 +259,14 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
 // Requested: c_function_shadow_*
 // Match:     c_function_shadow
 // start CLA_Class1_getclass3
-CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
-    CLA_Class1 * SHadow_rv)
+void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv)
 {
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.getclass3
     classes::Class1 * SHCXX_rv = SH_this->getclass3();
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end class.Class1.method.getclass3
 }
 // end CLA_Class1_getclass3

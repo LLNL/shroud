@@ -372,13 +372,12 @@ void OWN_create_class_static(int flag)
 // Attrs:     +intent(function)
 // Requested: c_function_shadow_*
 // Match:     c_function_shadow
-OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
+void OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end function.get_class_static
 }
 
@@ -396,13 +395,12 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHadow_rv)
+void OWN_get_class_new(OWN_Class1 * SHC_rv, int flag)
 {
     // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 1;
     // splicer end function.get_class_new
 }
 

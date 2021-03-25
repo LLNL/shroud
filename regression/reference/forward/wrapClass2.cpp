@@ -29,13 +29,12 @@ extern "C" {
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
+void FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor
     forward::Class2 *SHCXX_rv = new forward::Class2();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end class.Class2.method.ctor
 }
 

@@ -34,7 +34,7 @@ extern "C" {
 // splicer begin namespace.std.class.vector.C_declarations
 // splicer end namespace.std.class.vector.C_declarations
 
-TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv);
+void TEM_vector_int_ctor(TEM_vector_int * SHC_rv);
 
 void TEM_vector_int_dtor(TEM_vector_int * self);
 

@@ -55,15 +55,12 @@ module name_module
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function xxx_tes_names_defaultctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine xxx_tes_names_defaultctor(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
-            use iso_c_binding, only : C_PTR
             import :: TES_SHROUD_capsule_data
             implicit none
-            type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function xxx_tes_names_defaultctor
+            type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine xxx_tes_names_defaultctor
 
         ! ----------------------------------------
         ! Function:  void method1
@@ -110,11 +107,9 @@ contains
     ! Exact:     c_ctor
     function names_defaultctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(FNames) :: SHT_rv
         ! splicer begin namespace.ns0.class.Names.method.defaultctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = xxx_tes_names_defaultctor(SHT_rv%cxxmem)
+        call xxx_tes_names_defaultctor(SHT_rv%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.defaultctor
     end function names_defaultctor
 

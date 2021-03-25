@@ -320,18 +320,23 @@ root
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
 c_ctor:
-  buf_extra:
-  - shadow
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
-  - "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
-  - '{shadow_var}->idtor = {idtor};'
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_ctor
   owner: caller
   ret:
   - return {shadow_var};
-  return_type: '{c_type} *'
+  return_type: void
 c_dtor:
   call:
   - delete {CXX_this};
@@ -510,34 +515,38 @@ c_function_native_*_scalar:
   name: c_function_native_*_scalar
   owner: library
 c_function_shadow:
-  buf_extra:
-  - shadow
-  c_local_var: pointer
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  cxx_local_var: result
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_function_shadow
   owner: library
   post_call:
-  - '{shadow_var}->addr = {cxx_nonconst_ptr};'
-  - '{shadow_var}->idtor = {idtor};'
-  ret:
-  - return {shadow_var};
-  return_cptr: true
-  return_type: '{c_type} *'
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  return_type: void
 c_function_shadow_scalar:
-  buf_extra:
-  - shadow
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_function_shadow_scalar
   owner: caller
   post_call:
-  - '{shadow_var}->addr = {cxx_nonconst_ptr};'
-  - '{shadow_var}->idtor = {idtor};'
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
   pre_call:
   - '{cxx_type} * {cxx_var} = new {cxx_type};'
-  ret:
-  - return {shadow_var};
-  return_cptr: true
-  return_type: '{c_type} *'
+  return_type: void
 c_function_string_&:
   name: c_function_string_&
   owner: library
@@ -1015,7 +1024,7 @@ c_in_shadow:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
   f_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_module_line: '{f_c_module_line}'
   name: c_in_shadow
   owner: library
@@ -1328,7 +1337,7 @@ c_inout_shadow:
   - '{c_type} * {c_var}'
   cxx_local_var: pointer
   f_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_module_line: '{f_c_module_line}'
   name: c_inout_shadow
   owner: library
@@ -1697,7 +1706,7 @@ c_mixin_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
   f_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {f_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
   f_module_line: '{f_c_module_line}'
   name: c_mixin_shadow
   owner: library
@@ -2056,13 +2065,8 @@ f_XXXin_string_scalar:
   name: f_XXXin_string_scalar
   need_wrapper: true
 f_ctor:
-  call:
-  - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
   name: f_ctor
   need_wrapper: true
 f_function_bool:
@@ -2229,13 +2233,8 @@ f_function_native_*_raw:
 f_function_native_*_scalar:
   name: f_function_native_*_scalar
 f_function_shadow:
-  call:
-  - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
   name: f_function_shadow
   need_wrapper: true
 f_function_string_&_buf:
