@@ -750,6 +750,7 @@
                     "NS_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
             "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
             "f_class": "class(classwork)",
@@ -759,6 +760,7 @@
                     "classwork"
                 ]
             },
+            "f_module_line": "ns_nswork_mod:classwork",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(classwork)",

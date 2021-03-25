@@ -3334,6 +3334,7 @@
                     "STR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:STR_SHROUD_capsule_data",
             "f_c_type": "type(STR_SHROUD_capsule_data)",
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_class)",
@@ -3343,6 +3344,7 @@
                     "cstruct_as_class"
                 ]
             },
+            "f_module_line": "struct_mod:cstruct_as_class",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
@@ -3369,6 +3371,7 @@
                     "STR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:STR_SHROUD_capsule_data",
             "f_c_type": "type(STR_SHROUD_capsule_data)",
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_subclass)",
@@ -3378,6 +3381,7 @@
                     "cstruct_as_subclass"
                 ]
             },
+            "f_module_line": "struct_mod:cstruct_as_subclass",
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_subclass)",

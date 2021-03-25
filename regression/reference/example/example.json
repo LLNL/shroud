@@ -99,6 +99,7 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
@@ -302,6 +303,7 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
@@ -2163,6 +2165,7 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass2)",
@@ -3423,6 +3426,7 @@
                                                     "F_C_var": "in",
                                                     "F_pointer": "SHPTR_in",
                                                     "c_var": "in",
+                                                    "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                     "f_intent": "IN",
                                                     "f_type": "type(exclass1)",
@@ -3523,6 +3527,7 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
@@ -11340,6 +11345,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass1)",
@@ -11349,6 +11355,7 @@
                     "exclass1"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass1",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass1)",
@@ -11381,6 +11388,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass2)",
@@ -11390,6 +11398,7 @@
                     "exclass2"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass2",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2)",
@@ -11417,6 +11426,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass2nested)",
@@ -11426,6 +11436,7 @@
                     "exclass2nested"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass2nested",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2nested)",

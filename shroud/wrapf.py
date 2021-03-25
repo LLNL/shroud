@@ -760,9 +760,13 @@ rv = .false.
         f_module = {}
         for use in wline.split(";"):
             mname, syms = use.split(":")
-            module = modules.setdefault(mname, {})
-            for sym in syms.split(","):
-                module[sym] = True
+            if mname == "--import--":
+                for sym in syms.split(","):
+                    imports[sym] = True
+            else:
+                module = modules.setdefault(mname, {})
+                for sym in syms.split(","):
+                    module[sym] = True
         
     def update_f_module(self, modules, imports, f_module):
         """Aggragate the information from f_module into modules.
@@ -1549,6 +1553,9 @@ rv = .false.
                 fmt.f_kind = ntypemap.f_kind
             if ntypemap.f_capsule_data_type:
                 fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
+            f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
+            if f_c_module_line:
+                fmt.f_c_module_line = f_c_module_line
         
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

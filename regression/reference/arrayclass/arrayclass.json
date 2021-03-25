@@ -77,6 +77,7 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "ArrayWrapper",
+                                "f_c_module_line": "--import--:ARR_SHROUD_capsule_data",
                                 "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(arraywrapper)",
@@ -3553,6 +3554,7 @@
                     "ARR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:ARR_SHROUD_capsule_data",
             "f_c_type": "type(ARR_SHROUD_capsule_data)",
             "f_capsule_data_type": "ARR_SHROUD_capsule_data",
             "f_class": "class(arraywrapper)",
@@ -3562,6 +3564,7 @@
                     "arraywrapper"
                 ]
             },
+            "f_module_line": "arrayclass_mod:arraywrapper",
             "f_module_name": "arrayclass_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(arraywrapper)",

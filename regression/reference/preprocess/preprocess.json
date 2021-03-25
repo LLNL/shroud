@@ -607,6 +607,7 @@
                     "PRE_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
             "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user1)",
@@ -616,6 +617,7 @@
                     "user1"
                 ]
             },
+            "f_module_line": "preprocess_mod:user1",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
@@ -647,6 +649,7 @@
                     "PRE_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:PRE_SHROUD_capsule_data",
             "f_c_type": "type(PRE_SHROUD_capsule_data)",
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user2)",
@@ -656,6 +659,7 @@
                     "user2"
                 ]
             },
+            "f_module_line": "preprocess_mod:user2",
             "f_module_name": "preprocess_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",

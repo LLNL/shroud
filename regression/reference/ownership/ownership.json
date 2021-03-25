@@ -3594,6 +3594,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
+                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
@@ -3779,6 +3780,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
+                        "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
                         "f_capsule_data_type": "OWN_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
@@ -3843,6 +3845,7 @@
                     "OWN_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:OWN_SHROUD_capsule_data",
             "f_c_type": "type(OWN_SHROUD_capsule_data)",
             "f_capsule_data_type": "OWN_SHROUD_capsule_data",
             "f_class": "class(class1)",
@@ -3852,6 +3855,7 @@
                     "class1"
                 ]
             },
+            "f_module_line": "ownership_mod:class1",
             "f_module_name": "ownership_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
