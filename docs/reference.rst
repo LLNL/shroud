@@ -442,10 +442,6 @@ return_scalar_pointer
   
 .. bufferify
 
-SH_shadow
-    Prefix for shadow variables to avoid conflicting with other variables.
-    Defaults to ``SHadow_``.
-
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
     else, do not show the comments.
@@ -1240,10 +1236,6 @@ function_suffix
 LUA_name
     Name of function as known by LUA.
     Defaults to evaluation of option *LUA_name_template*.
-
-shadow_var
-   Name of variables which are shadow variables that represent a class.
-   Used with C++ classes for C structs with *wrap_struct_as=class*.
 
 template_suffix
    String which is append to the end of a generated function names

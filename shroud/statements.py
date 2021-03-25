@@ -448,7 +448,7 @@ def lookup_stmts_tree(tree, path):
 #  f_module    - Add module info to interface block.
 CStmts = util.Scope(None,
     name="c_default",
-    buf_args=[], buf_extra=[],
+    buf_args=[],
     iface_header=[],
     impl_header=[],
     c_helper="", c_local_var=None,
@@ -1871,7 +1871,7 @@ fc_statements = [
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
-        # c_local_var is passed in via buf_extra=shadow.
+        # c_local_var is passed in as argument.
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         c_local_var="pointer",
@@ -1897,9 +1897,6 @@ fc_statements = [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};",
-        ],
-        ret=[
-            "return {shadow_var};",
         ],
         return_type="void",
         owner="caller",

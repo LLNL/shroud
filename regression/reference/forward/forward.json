@@ -120,7 +120,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -218,7 +217,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_dtor",
                             "stmt1": "f_default",
                             "stmtc0": "c_dtor",
@@ -295,7 +293,6 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_in_shadow_*",
                                     "stmt1": "c_in_shadow"
                                 },
@@ -375,7 +372,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -452,7 +448,6 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_in_shadow_*",
                                     "stmt1": "c_in_shadow"
                                 },
@@ -534,7 +529,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -666,7 +660,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_struct_*",
                             "stmt1": "c_in_struct"
                         },
@@ -719,7 +712,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },

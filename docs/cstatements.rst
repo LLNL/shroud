@@ -117,14 +117,6 @@ shadow
 capsule
 context
 
-   
-buf_extra
-^^^^^^^^^
-
-Used to add argument for return values.
-For example, function which return class instance.
-
-
 iface_header
 ^^^^^^^^^^^^
 

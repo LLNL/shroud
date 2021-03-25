@@ -334,8 +334,6 @@ c_ctor:
   f_module_line: '{f_c_module_line}'
   name: c_ctor
   owner: caller
-  ret:
-  - return {shadow_var};
   return_type: void
 c_dtor:
   call:

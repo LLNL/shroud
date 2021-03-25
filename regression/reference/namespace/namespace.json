@@ -82,7 +82,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_allocatable",
                         "stmt1": "c_function_string_&"
                     },
@@ -179,7 +178,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_buf_allocatable",
                         "stmt1": "c_function_string_&_buf_allocatable",
                         "temp0": "SHC_rv_temp0"

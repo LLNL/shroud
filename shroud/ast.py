@@ -750,8 +750,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_type_dtor="idtor",  # name of destructor capsule infomation
             PY_value_init="{NULL, NULL, NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
-            SH_shadow="SHadow_",
-
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
@@ -795,7 +793,6 @@ class LibraryNode(AstNode, NamespaceMixin):
                 idtor="XXXidtor",
                 PY_member_object="XXXPY_member_object",
                 PY_to_object_func="XXXPY_to_object_func",
-                shadow_var="XXXsh_var",
                 temp0="XXXtemp0",
                 temp1="XXXtemp1",
                 temp2="XXXtemp2",

@@ -1069,19 +1069,6 @@ rv = .false.
                         arg_typemap.f_c_module or arg_typemap.f_module
                     )
                 continue
-            elif buf_arg == "shadow":
-                # Do not use const or value in declaration
-                # Function result arguments explicitly set to intent(out).
-                arg_c_names.append(fmt.F_C_var)
-                arg_c_decl.append("{}, intent({}) :: {}".format(
-                    ast.typemap.f_c_type,
-                    (intent or ast.metaattrs["intent"]).upper(),
-                    fmt.F_C_var))
-                self.update_f_module(
-                    modules, imports,
-                    ast.typemap.f_c_module or ast.typemap.f_module
-                )
-                continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
                 if intent_blk.f_c_arg_names:
@@ -1286,20 +1273,6 @@ rv = .false.
             )
         # --- End loop over function parameters
 
-        if subprogram == "function" and c_result_blk.buf_extra:
-            fmt_func.F_C_var = fmt_func.F_result_capsule
-            self.build_arg_list_interface(
-                node, fileinfo,
-                fmt_func,
-                ast,
-                c_result_blk,
-                c_result_blk.buf_extra,
-                modules,
-                imports,
-                arg_c_names,
-                arg_c_decl,
-                intent="out",
-            )
         # Filter out non-pure functions.
         if result_typemap.base == "shadow":
             # Functions which return shadow classes are not pure
@@ -1440,11 +1413,6 @@ rv = .false.
                                          arg_typemap.f_module)
                 else:
                     arg_c_call.append(fmt.c_var)
-                continue
-            elif buf_arg == "shadow":
-                # Pass down the pointer to {F_capsule_data_type}
-                need_wrapper = True
-                append_format(arg_c_call, "{f_var}%{F_derived_member}", fmt)
                 continue
 
             need_wrapper = True
@@ -1966,22 +1934,6 @@ rv = .false.
             )
         # --- End loop over function parameters
         #####
-
-        if subprogram == "function" and c_result_blk.buf_extra:
-            need_wrapper = self.build_arg_list_impl(
-                fileinfo,
-                fmt_result,
-                C_node.ast, #c_arg,
-                ast, # f_arg,
-                result_typemap,
-                statements.FStmts, #  Empty values like arg_c_call
-                c_result_blk.buf_extra,
-                modules,
-                imports,
-                arg_f_decl,
-                arg_c_call,
-                need_wrapper,
-            )
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value

@@ -672,12 +672,6 @@ class Wrapc(util.WrapperMixin):
                 # vector<int> -> int *
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
-            elif buf_arg == "shadow":
-                # Do not use const in declaration.
-                proto_list.append("{} * {}".format(
-                    ast.typemap.c_type,
-                    name or ast.name))
-                continue
             elif buf_arg == "arg_decl":
                 if name is None:
                     fmttmp = fmt
@@ -750,7 +744,6 @@ class Wrapc(util.WrapperMixin):
         """
 
         if not is_func:
-            fmt.shadow_var = fmt.SH_shadow + ast.name
             fmt.c_var = ast.name
             if ast.const:
                 fmt.c_const = "const "
@@ -895,7 +888,6 @@ class Wrapc(util.WrapperMixin):
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
-            fmt_result.shadow_var = fmt_result.SH_shadow + fmt_result.C_result
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
@@ -982,7 +974,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_func.c_deref = "*"
                 fmt_func.c_member = "->"
                 fmt_func.c_var = fmt_func.C_this
-                fmt_func.shadow_var = fmt_func.SH_shadow + fmt_func.C_this
                 if is_static:
                     fmt_func.CXX_this_call = (
                         fmt_func.namespace_scope + fmt_func.class_scope
@@ -1174,18 +1165,6 @@ class Wrapc(util.WrapperMixin):
         #                # i.e. This argument is another wrapped type
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
-
-        if CXX_subprogram == "function":
-            # Add extra arguments to end of prototype for result.
-            need_wrapper = self.build_proto_list(
-                fmt_result,
-                ast,
-                result_blk,
-                result_blk.buf_extra,
-                proto_tail,
-                need_wrapper,
-                name=fmt_result.shadow_var,
-            )
 
         if call_list:
             fmt_func.C_call_list = ",\t ".join(call_list)

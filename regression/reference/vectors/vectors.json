@@ -175,7 +175,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_vector_&_buf_native",
                             "stmt1": "c_in_vector_buf",
                             "temp0": "arg_temp0",
@@ -231,7 +230,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -400,7 +398,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
                             "stmt1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -662,7 +659,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
                             "stmt1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -901,7 +897,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
                             "stmt1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -1107,7 +1102,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_allocatable_native",
                             "stmt1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -1313,7 +1307,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_inout_vector_&_buf_allocatable_native",
                             "stmt1": "c_inout_vector_buf",
                             "temp0": "arg_temp0",
@@ -1507,7 +1500,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_inout_vector_&_buf_native",
                             "stmt1": "c_inout_vector_buf",
                             "temp0": "arg_temp0",
@@ -1707,7 +1699,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_out_vector_&_buf_native",
                             "stmt1": "c_out_vector_buf",
                             "temp0": "arg_temp0"
@@ -1919,7 +1910,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_vector_&_buf_string",
                             "stmt1": "c_in_vector_buf_string",
                             "temp0": "arg_temp0",
@@ -1977,7 +1967,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2283,7 +2272,6 @@
                             "cxx_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_n",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2330,7 +2318,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_vector_scalar_buf_allocatable",
                         "stmt1": "c_function_vector_buf",
                         "temp0": "SHC_rv_temp0"
