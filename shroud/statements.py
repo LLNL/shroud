@@ -1179,7 +1179,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         #  char *getname() +len(30)
         name="c_function_char_*_buf",
-        cxx_local="pointer",
+        cxx_local_var="result",
         mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
         call=[
@@ -2178,7 +2178,7 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        cxx_local_var=None,  # undo mixin
+        cxx_local_var="result",
         pre_call=[],         # undo mixin
         c_helper="ShroudStrCopy",
         post_call=[

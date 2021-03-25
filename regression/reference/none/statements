@@ -358,6 +358,7 @@ c_function_char_*_buf:
   call:
   - "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}{CXX_template}(\t\
     {C_call_list});"
+  cxx_local_var: result
   f_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {temp0}'
@@ -402,6 +403,7 @@ c_function_char_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   c_helper: ShroudStrCopy
+  cxx_local_var: result
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:

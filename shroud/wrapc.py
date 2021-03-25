@@ -899,13 +899,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
-            if ast.metaattrs["deref"] == "copy":
-                # XXX - replace with cxx_local_var == "result"
-                # Copy results into argument. Typically a Fortran wrapper variable.
-                c_local_var = "XXXX"
-#                fmt_result.cxx_var = fmt_result.C_string_result_as_arg
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            elif result_blk.cxx_local_var == "result":
+            if result_blk.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif self.language == "c":
@@ -919,6 +913,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.c_var
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
             if result_is_const:
                 fmt_result.c_const = "const "
             else:
@@ -1040,17 +1035,6 @@ class Wrapc(util.WrapperMixin):
                 # This argument is the C function result
                 arg_call = False
 
-                # Note that result_type is void, so use arg_typemap.
-                if arg_typemap.cxx_to_c is None:
-                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
-                else:
-                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for statement.final in fmt_result context
-                fmt_result.cxx_var = fmt_arg.cxx_var
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var, params=None, continuation=True
-                )
-
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 return_deref_attr = c_meta["deref"]
@@ -1066,7 +1050,22 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
 
-                if cxx_local_var:
+                # Note that result_type is void, so use arg_typemap.
+                if cxx_local_var == "result":
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
+                elif self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
+                elif arg_typemap.cxx_to_c is None:
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
+                else:
+                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
+                # Set cxx_var for statement.final in fmt_result context
+                fmt_result.cxx_var = fmt_arg.cxx_var
+
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True
+                )
+                if cxx_local_var in ["pointer", "scalar"]:
                     fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
                 compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
