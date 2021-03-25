@@ -1182,11 +1182,6 @@ fc_statements = [
         cxx_local_var="result",
         mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
-        call=[
-            # c_var is a function argument. Must use a temp variable.
-            "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}"
-            "{CXX_template}(\t{C_call_list});",
-        ],
         post_call=[
             # XXX - temp0 -> c_var_len
             # nsrc=-1 will call strlen({cxx_var})

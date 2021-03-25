@@ -343,7 +343,7 @@ const char * STR_get_char_ptr2(void)
 void STR_get_char_ptr2_bufferify(char *SHC_rv, int SHC_rv_temp0)
 {
     // splicer begin function.get_char_ptr2_bufferify
-    const char *SHCXX_rv = getCharPtr2();
+    const char * SHCXX_rv = getCharPtr2();
     ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv, -1);
     // splicer end function.get_char_ptr2_bufferify
 }

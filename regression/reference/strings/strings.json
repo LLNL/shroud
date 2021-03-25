@@ -1271,6 +1271,7 @@
                         "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
+                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",

@@ -355,9 +355,6 @@ c_function_char_*_buf:
   - char *{c_var}
   - int {temp0}
   c_helper: ShroudStrCopy
-  call:
-  - "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}{CXX_template}(\t\
-    {C_call_list});"
   cxx_local_var: result
   f_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
