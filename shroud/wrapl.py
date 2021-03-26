@@ -933,8 +933,10 @@ def write_stmts_tree(fp):
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(lua_tree, path)
 
-LuaStmts = util.Scope(None,
+LuaStmts = util.Scope(
+    None,
     name="lua_default",
+    intent=None,
     pre_call=[],
     call=[],
     post_call=[],

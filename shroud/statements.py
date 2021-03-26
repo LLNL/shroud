@@ -221,7 +221,7 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     scope.name = name
     nodes[name] = scope
     node_stmts[name] = node
-    
+    return scope
         
 def update_stmt_tree(stmts, nodes, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
@@ -296,7 +296,8 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
             if name in nodes:
                 raise RuntimeError("Duplicate key in statements: {}".
                                    format(name))
-            add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
+            stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
+            stmt.intent = steps[1]
 
 
 def write_cf_tree(fp):
@@ -414,6 +415,7 @@ def lookup_stmts_tree(tree, path):
 
 
 # C Statements.
+#  intent      - Set from name.
 #  arg_call    - List of arguments passed to C function.
 #
 #  Used with buf_args = "arg_decl".
@@ -423,8 +425,10 @@ def lookup_stmts_tree(tree, path):
 #  f_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
-CStmts = util.Scope(None,
+CStmts = util.Scope(
+    None,
     name="c_default",
+    intent=None,
     buf_args=[],
     iface_header=[],
     impl_header=[],
@@ -451,8 +455,10 @@ CStmts = util.Scope(None,
 )
 
 # Fortran Statements.
-FStmts = util.Scope(None,
+FStmts = util.Scope(
+    None,
     name="f_default",
+    intent=None,
     c_helper="",
     c_local_var=None,
     f_helper="",

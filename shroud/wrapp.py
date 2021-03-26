@@ -3568,8 +3568,10 @@ def write_stmts_tree(fp):
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(py_tree, path)
 
-PyStmts = util.Scope(None,
+PyStmts = util.Scope(
+    None,
     name="py_default",
+    intent=None,
     arg_declare=None,   # Empty list indicates no declaration.
     post_declare=[],
     fmtdict=None,
