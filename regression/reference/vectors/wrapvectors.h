@@ -28,30 +28,31 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int VEC_vector_sum_bufferify(int *arg, size_t arg_temp0);
+int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size);
 
-void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *arg_temp0);
+void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 
 long VEC_vector_iota_out_with_num_bufferify(
-    VEC_SHROUD_array *arg_temp0);
+    VEC_SHROUD_array *SHT_arg_cdesc);
 
 void VEC_vector_iota_out_with_num2_bufferify(
-    VEC_SHROUD_array *arg_temp0);
+    VEC_SHROUD_array *SHT_arg_cdesc);
 
-void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *arg_temp0);
+void VEC_vector_iota_out_alloc_bufferify(
+    VEC_SHROUD_array *SHT_arg_cdesc);
 
-void VEC_vector_iota_inout_alloc_bufferify(int *arg, size_t arg_temp0,
-    VEC_SHROUD_array *arg_temp1);
+void VEC_vector_iota_inout_alloc_bufferify(int *arg,
+    size_t SHT_arg_size, VEC_SHROUD_array *SHT_arg_cdesc);
 
-void VEC_vector_increment_bufferify(int *arg, size_t arg_temp0,
-    VEC_SHROUD_array *arg_temp1);
+void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
+    VEC_SHROUD_array *SHT_arg_cdesc);
 
-void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *arg_temp0);
+void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 
-int VEC_vector_string_count_bufferify(const char *arg, size_t arg_temp0,
-    int arg_temp1);
+int VEC_vector_string_count_bufferify(const char *arg,
+    size_t SHT_arg_size, int SHT_arg_len);
 
-void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
+void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHT_rv_cdesc,
     int n);
 
 #ifdef __cplusplus

@@ -217,7 +217,30 @@ which will return the number of items copied into the result argument.
           post_call:
           -  "num = Darg%size"
 
+temps
+^^^^^
 
+A list of suffixes for temporary variable names.
+
+.. code-block:: yaml
+
+    temps=["len"]
+
+ Create variable names in the format dictionary using
+ ``{fmt.c_temp}{rootname}_{name}``.
+ For example, argument *foo* creates *SHT_foo_len*.
+
+local
+^^^^^
+
+ Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+ *temps* is intended for arguments and is typically used in a mixin
+ group.  *local* is used by group to generate names for local
+ variables.  This allows creating names without conflicting with
+ *temps* from a *mixin* group.
+
+
+             
 How typemaps are found
 ----------------------
 

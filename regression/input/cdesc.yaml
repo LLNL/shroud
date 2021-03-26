@@ -31,21 +31,21 @@ declarations:
       users will not manually create a context struct.
   splicer:
     c: |
-      switch(Dvalue->type) {
+      switch(SHT_value_cdesc->type) {
       case SH_TYPE_INT: {
-        *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+        *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
         break;
       }
       case SH_TYPE_LONG: {
-        *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+        *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
         break;
       }
       case SH_TYPE_FLOAT: {
-        *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+        *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
         break;
       }
       case SH_TYPE_DOUBLE: {
-        *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+        *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
         break;
       }
       // default:

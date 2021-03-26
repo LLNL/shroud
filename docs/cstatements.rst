@@ -84,38 +84,6 @@ arg_decl
     The explicit dummy/prototype declarations will be provided in the fields
     *c_arg_decl* and *f_arg_decl*.
     
-capsule
-
-    An argument of type *C_capsule_data_type*/*F_capsule_data_type*.
-    It provides a pointer to the C++ memory as well as information
-    to release the memory.
-
-    .. XXX need to add helper automatically
-
-context
-
-    An argument of *C_array_type*/*F_array_type*.
-    For example, used with ``std::vector`` to hold
-    address and size of data contained in the argument
-    in a form which may be used directly by Fortran.
-
-    *c_var_context*
-    options.C_var_context_template
-
-shadow
-
-    Argument will be of type *C_capsule_data_type*.
-
-
-
-
-arg
-
-    default.
-
-shadow
-capsule
-context
 
 iface_header
 ^^^^^^^^^^^^
@@ -367,7 +335,7 @@ owner
 Set *owner* of the memory.
 Similar to attribute *owner*.
 
-.. c_shadow_scalar_result
+.. XXX example in c_function_shadow_scalar
 
 Used where the ``new``` operator is part of the generated code.
 For example where a class is returned by value or a constructor.
@@ -377,3 +345,26 @@ from the C++ library function.  The Fortran shadow class must keep
 this copy until the shadow class is deleted.
 
 Defaults to *library*.
+
+temps
+^^^^^
+
+A list of suffixes for temporary variable names.
+
+.. code-block:: yaml
+
+    temps=["len"]
+
+ Create variable names in the format dictionary using
+ ``{fmt.c_temp}{rootname}_{name}``.
+ For example, argument *foo* creates *SHT_foo_len*.
+
+local
+^^^^^
+
+ Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+ *temps* is intended for arguments and is typically used in a mixin
+ group.  *local* is used by group to generate names for local
+ variables.  This allows creating names without conflicting with
+ *temps* from a *mixin* group.
+ 

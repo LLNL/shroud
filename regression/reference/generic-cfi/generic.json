@@ -4689,7 +4689,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
-                    "F_arg_c_call": "addr_temp0,\t type,\t size",
+                    "F_arg_c_call": "SHT_addr_cdesc,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -4810,6 +4810,7 @@
                             "c_member": "->",
                             "c_type": "float",
                             "c_var": "addr",
+                            "c_var_cdesc": "SHT_addr_cdesc",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -4818,13 +4819,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf",
-                            "temp0": "addr_temp0"
+                            "stmt1": "c_out_native_**_buf"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "c_var_cdesc": "SHT_addr_cdesc",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "OUT",
@@ -4838,8 +4839,7 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf",
-                            "temp0": "addr_temp0"
+                            "stmtc1": "c_out_native_**_buf"
                         }
                     },
                     "size": {
@@ -4912,9 +4912,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "&addr,\t type,\t size",
                     "C_name": "GEN_get_pointer_as_pointer_float1d_bufferify",
-                    "C_prototype": "GEN_SHROUD_array *addr_temp0,\t int * type,\t size_t * size",
+                    "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc,\t int * type,\t size_t * size",
                     "C_return_type": "void",
-                    "F_C_arguments": "addr_temp0,\t type,\t size",
+                    "F_C_arguments": "SHT_addr_cdesc,\t type,\t size",
                     "F_C_name": "c_get_pointer_as_pointer_float1d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
@@ -5026,7 +5026,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
-                    "F_arg_c_call": "addr_temp0,\t type,\t size",
+                    "F_arg_c_call": "SHT_addr_cdesc,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -5147,6 +5147,7 @@
                             "c_member": "->",
                             "c_type": "float",
                             "c_var": "addr",
+                            "c_var_cdesc": "SHT_addr_cdesc",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -5155,13 +5156,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf",
-                            "temp0": "addr_temp0"
+                            "stmt1": "c_out_native_**_buf"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
+                            "c_var_cdesc": "SHT_addr_cdesc",
                             "f_assumed_shape": "(:,:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "OUT",
@@ -5175,8 +5176,7 @@
                             "stmt0": "f_out_native_**_buf_pointer",
                             "stmt1": "f_out_native_**_buf_pointer",
                             "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf",
-                            "temp0": "addr_temp0"
+                            "stmtc1": "c_out_native_**_buf"
                         }
                     },
                     "size": {
@@ -5249,9 +5249,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "&addr,\t type,\t size",
                     "C_name": "GEN_get_pointer_as_pointer_float2d_bufferify",
-                    "C_prototype": "GEN_SHROUD_array *addr_temp0,\t int * type,\t size_t * size",
+                    "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc,\t int * type,\t size_t * size",
                     "C_return_type": "void",
-                    "F_C_arguments": "addr_temp0,\t type,\t size",
+                    "F_C_arguments": "SHT_addr_cdesc,\t type,\t size",
                     "F_C_name": "c_get_pointer_as_pointer_float2d_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",

@@ -63,6 +63,22 @@ class WrapFlags(object):
         self.lua = self.lua or wrap.lua
         self.python = self.python or wrap.python
 
+    def __str__(self):
+        """Show which flags are set."""
+        flags = []
+        if self.fortran:
+            flags.append("fortran")
+        if self.f_c:
+            flags.append("f_c")
+        if self.c:
+            flags.append("c")
+        if self.lua:
+            flags.append("lua")
+        if self.python:
+            flags.append("python")
+        aflags = ",".join(flags)
+        return "WrapFlags({})".format(aflags)
+
 
 class AstNode(object):
     is_class = False
@@ -685,7 +701,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_result="rv",  # return value
             c_temp="SHT_",
             C_local="SHC_",
-            cfi_prefix="SHcfi_",
             C_name_scope = "",
             C_this="self",
             C_custom_return_type="",  # assume no value

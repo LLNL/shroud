@@ -314,18 +314,18 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Requested: c_out_native_*
 // Match:     c_default
 void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *addr_temp0, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_bufferify
     float *addr;
     GetPointerAsPointer(&addr, type, size);
-    addr_temp0->cxx.addr  = addr;
-    addr_temp0->cxx.idtor = 0;
-    addr_temp0->addr.base = addr;
-    addr_temp0->type = SH_TYPE_FLOAT;
-    addr_temp0->elem_len = sizeof(float);
-    addr_temp0->rank = 0;
-    addr_temp0->size = 1;
+    SHT_addr_cdesc->cxx.addr  = addr;
+    SHT_addr_cdesc->cxx.idtor = 0;
+    SHT_addr_cdesc->addr.base = addr;
+    SHT_addr_cdesc->type = SH_TYPE_FLOAT;
+    SHT_addr_cdesc->elem_len = sizeof(float);
+    SHT_addr_cdesc->rank = 0;
+    SHT_addr_cdesc->size = 1;
     // splicer end function.get_pointer_as_pointer_float1d_bufferify
 }
 #endif  // if 0
@@ -351,18 +351,18 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Requested: c_out_native_*
 // Match:     c_default
 void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *addr_temp0, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_bufferify
     float *addr;
     GetPointerAsPointer(&addr, type, size);
-    addr_temp0->cxx.addr  = addr;
-    addr_temp0->cxx.idtor = 0;
-    addr_temp0->addr.base = addr;
-    addr_temp0->type = SH_TYPE_FLOAT;
-    addr_temp0->elem_len = sizeof(float);
-    addr_temp0->rank = 0;
-    addr_temp0->size = 1;
+    SHT_addr_cdesc->cxx.addr  = addr;
+    SHT_addr_cdesc->cxx.idtor = 0;
+    SHT_addr_cdesc->addr.base = addr;
+    SHT_addr_cdesc->type = SH_TYPE_FLOAT;
+    SHT_addr_cdesc->elem_len = sizeof(float);
+    SHT_addr_cdesc->rank = 0;
+    SHT_addr_cdesc->size = 1;
     // splicer end function.get_pointer_as_pointer_float2d_bufferify
 }
 #endif  // if 0

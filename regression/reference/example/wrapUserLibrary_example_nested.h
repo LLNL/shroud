@@ -43,18 +43,19 @@ void AA_example_nested_local_function1(void);
 bool AA_example_nested_is_name_valid(const char * name);
 
 bool AA_example_nested_is_name_valid_bufferify(char *name,
-    int name_temp0);
+    int SHT_name_len);
 
 bool AA_example_nested_is_initialized(void);
 
 void AA_example_nested_test_names(const char * name);
 
-void AA_example_nested_test_names_bufferify(char *name, int name_temp0);
+void AA_example_nested_test_names_bufferify(char *name,
+    int SHT_name_len);
 
 void AA_example_nested_test_names_flag(const char * name, int flag);
 
 void AA_example_nested_test_names_flag_bufferify(char *name,
-    int name_temp0, int flag);
+    int SHT_name_len, int flag);
 
 void AA_example_nested_testoptional_0(void);
 

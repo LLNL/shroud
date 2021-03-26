@@ -555,9 +555,9 @@ contains
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_pointer
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_pointer_bufferify(SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv)
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_pointer_bufferify(SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv)
         ! splicer end function.return_int_ptr_pointer
     end function return_int_ptr_pointer
 
@@ -583,10 +583,10 @@ contains
         integer(C_INT), pointer :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_dim_pointer_bufferify(SHT_rv_temp0, len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_dim_pointer_bufferify(SHT_rv_cdesc, len)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
@@ -612,10 +612,10 @@ contains
         integer(C_INT), allocatable :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_alloc
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_temp0, len)
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc, len)
         allocate(SHT_rv((len)))
-        call OWN_SHROUD_copy_array_int(SHT_rv_temp0, SHT_rv, &
+        call OWN_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
             size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc
@@ -642,10 +642,10 @@ contains
         integer(C_INT), pointer :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_dim_default_bufferify(SHT_rv_temp0, len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_dim_default_bufferify(SHT_rv_cdesc, len)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default
     end function return_int_ptr_dim_default
 
@@ -672,12 +672,12 @@ contains
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer_new
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_temp0, &
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_cdesc, &
             len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
-        Crv%mem = SHT_rv_temp0%cxx
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        Crv%mem = SHT_rv_cdesc%cxx
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
 
@@ -704,12 +704,12 @@ contains
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default_new
-        type(OWN_SHROUD_array) :: SHT_rv_temp0
-        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_temp0, &
+        type(OWN_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_cdesc, &
             len)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
-        Crv%mem = SHT_rv_temp0%cxx
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        Crv%mem = SHT_rv_cdesc%cxx
         ! splicer end function.return_int_ptr_dim_default_new
     end function return_int_ptr_dim_default_new
 

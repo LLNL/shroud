@@ -55,7 +55,7 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
@@ -86,6 +86,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -97,8 +98,7 @@
                         "stmt0": "f_function_string_*_buf_allocatable_library",
                         "stmt1": "f_function_string_*_buf_allocatable",
                         "stmtc0": "c_function_string_*_buf_allocatable",
-                        "stmtc1": "c_function_string_*_buf_allocatable",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_string_*_buf_allocatable"
                     }
                 }
             },
@@ -138,7 +138,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *SHC_rv_temp0",
+                    "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
@@ -154,6 +154,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -162,15 +163,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_*_buf_allocatable",
-                        "stmt1": "c_function_string_*_buf_allocatable",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_string_*_buf_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "character(*)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "character(*)"
                     }
                 }
             }

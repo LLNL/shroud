@@ -72,7 +72,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 bool AA_example_nested_is_name_valid_bufferify(char *name,
-    int name_temp0)
+    int SHT_name_len)
 {
     // splicer begin namespace.example::nested.function.is_name_valid_bufferify
     return name != NULL;
@@ -116,10 +116,12 @@ void AA_example_nested_test_names(const char * name)
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void AA_example_nested_test_names_bufferify(char *name, int name_temp0)
+void AA_example_nested_test_names_bufferify(char *name,
+    int SHT_name_len)
 {
     // splicer begin namespace.example::nested.function.test_names_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     example::nested::test_names(SHCXX_name);
     // splicer end namespace.example::nested.function.test_names_bufferify
 }
@@ -159,10 +161,11 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Requested: c_in_native_scalar
 // Match:     c_default
 void AA_example_nested_test_names_flag_bufferify(char *name,
-    int name_temp0, int flag)
+    int SHT_name_len, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     example::nested::test_names(SHCXX_name, flag);
     // splicer end namespace.example::nested.function.test_names_flag_bufferify
 }

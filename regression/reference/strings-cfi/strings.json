@@ -612,6 +612,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "dest",
+                            "c_var_cfi": "SHT_dest_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_dest",
@@ -626,6 +627,7 @@
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "c_var_cfi": "SHT_dest_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -645,6 +647,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "src",
+                            "c_var_cfi": "SHT_src_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
@@ -659,6 +662,7 @@
                             "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
+                            "c_var_cfi": "SHT_src_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -674,7 +678,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_dest,\t SHCXX_src",
                     "C_name": "STR_pass_char_ptr_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_dest,\t CFI_cdesc_t *SHcfi_src",
+                    "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
                     "F_C_name": "pass_char_ptr",
@@ -872,6 +876,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "s",
+                            "c_var_cfi": "SHT_s_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -886,6 +891,7 @@
                             "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
+                            "c_var_cfi": "SHT_s_cfi",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -901,7 +907,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
                     "C_name": "STR_pass_char_ptr_in_out_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_s",
+                    "C_prototype": "CFI_cdesc_t *SHT_s_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "s",
                     "F_C_name": "pass_char_ptr_in_out",
@@ -1064,7 +1070,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr1_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_char_ptr1_cfi",
@@ -1080,6 +1086,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
@@ -1093,6 +1100,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -1167,7 +1175,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
@@ -1181,7 +1188,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
                         "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1256,7 +1262,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr2_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_char_ptr2_cfi",
@@ -1272,7 +1278,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1286,7 +1292,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -1444,6 +1450,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_rv",
@@ -1458,6 +1465,7 @@
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1472,7 +1480,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr3_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
+                    "C_prototype": "CFI_cdesc_t *SHT_output_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "output",
                     "F_C_name": "c_get_char_ptr3_cfi",
@@ -1780,7 +1788,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_result_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_result_cfi",
@@ -1796,6 +1804,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1809,6 +1818,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -1868,7 +1878,6 @@
                 "zz_fmtresult": {
                     "fmtf": {
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1938,7 +1947,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_len_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_len_cfi",
@@ -1954,7 +1963,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1968,7 +1977,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2091,6 +2100,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2105,6 +2115,7 @@
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2119,7 +2130,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_as_arg_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
+                    "C_prototype": "CFI_cdesc_t *SHT_output_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "output",
                     "F_C_name": "c_get_const_string_as_arg_cfi",
@@ -2330,7 +2341,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_alloc_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_alloc_cfi",
@@ -2346,6 +2357,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2359,6 +2371,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2516,7 +2529,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_pure_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ref_pure_cfi",
@@ -2532,6 +2545,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2545,6 +2559,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2622,7 +2637,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2636,7 +2650,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2712,7 +2725,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ref_len_cfi",
@@ -2728,7 +2741,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2742,7 +2755,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2903,6 +2916,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2917,6 +2931,7 @@
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
+                            "c_var_cfi": "SHT_output_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2931,7 +2946,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_as_arg_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
+                    "C_prototype": "CFI_cdesc_t *SHT_output_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "output",
                     "F_C_name": "c_get_const_string_ref_as_arg_cfi",
@@ -3105,7 +3120,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3119,7 +3133,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3194,7 +3207,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_empty_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ref_len_empty_cfi",
@@ -3210,7 +3223,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3224,7 +3237,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3374,7 +3387,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ref_alloc_cfi",
@@ -3390,6 +3403,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3403,6 +3417,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3486,7 +3501,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3500,7 +3514,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3582,7 +3595,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_len_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ptr_len_cfi",
@@ -3598,7 +3611,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3612,7 +3625,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3768,7 +3781,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ptr_alloc_cfi",
@@ -3784,6 +3797,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3797,6 +3811,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3958,7 +3973,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_cfi",
@@ -3974,6 +3989,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3987,6 +4003,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -4150,7 +4167,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_SHC_rv",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_cfi",
@@ -4166,6 +4183,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -4179,6 +4197,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -4363,9 +4382,11 @@
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -4374,13 +4395,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_cfi",
-                            "stmt1": "c_in_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4389,15 +4411,14 @@
                             "stmt0": "f_in_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_&_cfi",
-                            "stmtc1": "c_in_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_&_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_const_reference_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_const_reference",
@@ -4595,6 +4616,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -4609,6 +4631,7 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4624,7 +4647,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_out_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_reference_out",
@@ -4815,9 +4838,11 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -4826,13 +4851,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4841,15 +4867,14 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_&_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_reference_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_reference",
@@ -5038,9 +5063,11 @@
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -5049,13 +5076,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_*_cfi",
-                            "stmt1": "c_in_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5064,15 +5092,14 @@
                             "stmt0": "f_in_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_*_cfi",
-                            "stmtc1": "c_in_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_*_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer_const_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_pointer_const",
@@ -5259,9 +5286,11 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5270,13 +5299,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5285,15 +5315,14 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_*_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_accept_string_pointer_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_pointer",
@@ -5491,6 +5520,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5505,6 +5535,7 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5520,7 +5551,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
                     "C_name": "STR_fetch_string_pointer_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
                     "F_C_name": "fetch_string_pointer",
@@ -5792,9 +5823,11 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -5803,13 +5836,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5818,8 +5852,7 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_*_cfi"
                         }
                     },
                     "nlen": {
@@ -5859,7 +5892,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_accept_string_pointer_len_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1,\t int * nlen",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
                     "F_C_name": "accept_string_pointer_len",
@@ -6140,6 +6173,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -6154,6 +6188,7 @@
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6202,7 +6237,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
                     "C_name": "STR_fetch_string_pointer_len_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1,\t int * nlen",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
                     "F_C_name": "fetch_string_pointer_len",
@@ -6433,9 +6468,11 @@
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": ".",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -6444,13 +6481,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_scalar_cfi",
-                            "stmt1": "c_in_string_scalar_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_scalar_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
+                            "c_var_cfi": "SHT_arg1_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6459,15 +6497,14 @@
                             "stmt0": "f_in_string_scalar_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_scalar_cfi",
-                            "stmtc1": "c_in_string_scalar_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_scalar_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "STR_accept_string_instance_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_arg1",
+                    "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1",
                     "F_C_name": "accept_string_instance",
@@ -6737,7 +6774,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -6750,8 +6786,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
-                            "c_var_trim": "AAlen"
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6859,7 +6894,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
+                            "c_var_cfi": "SHT_name_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -6874,7 +6909,7 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
+                            "c_var_cfi": "SHT_name_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6891,7 +6926,7 @@
                     "C_bufferify_suffix": "_BUFFER",
                     "C_call_list": "SHCXX_name",
                     "C_name": "STR_explicit1_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_name",
+                    "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
                     "F_C_name": "explicit1",
@@ -6965,7 +7000,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -6978,8 +7012,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
-                            "c_var_len": "AAtrim"
+                            "c_var": "name"
                         }
                     }
                 },
@@ -7067,7 +7100,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
+                            "c_var_cfi": "SHT_name_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -7082,7 +7115,7 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
+                            "c_var_cfi": "SHT_name_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7098,7 +7131,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "STR_explicit2_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_name",
+                    "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
                     "F_C_name": "explicit2",
@@ -7565,6 +7598,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "dest",
+                            "c_var_cfi": "SHT_dest_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_dest",
@@ -7579,6 +7613,7 @@
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
+                            "c_var_cfi": "SHT_dest_cfi",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7598,6 +7633,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "src",
+                            "c_var_cfi": "SHT_src_cfi",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
@@ -7612,6 +7648,7 @@
                             "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
+                            "c_var_cfi": "SHT_src_cfi",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7627,7 +7664,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_dest,\t SHCXX_src",
                     "C_name": "STR_cpass_char_ptr_CFI",
-                    "C_prototype": "CFI_cdesc_t *SHcfi_dest,\t CFI_cdesc_t *SHcfi_src",
+                    "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
                     "F_C_name": "cpass_char_ptr",
@@ -7940,9 +7977,11 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_trim": "SHC_name_trim",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_cfi": "SHT_name_cfi",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_name",
@@ -7951,13 +7990,14 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_inout_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
+                            "c_local_trim": "SHC_name_trim",
                             "c_var": "name",
+                            "c_var_cfi": "SHT_name_cfi",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7966,15 +8006,14 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_inout_string_&_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count,\t SHCXX_name",
                     "C_name": "STR_post_declare_CFI",
-                    "C_prototype": "int * count,\t CFI_cdesc_t *SHcfi_name",
+                    "C_prototype": "int * count,\t CFI_cdesc_t *SHT_name_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name",
                     "F_C_name": "post_declare",

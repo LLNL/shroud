@@ -235,12 +235,12 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
 void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    CLA_Class1 * SHC_rv, char *name, int name_temp0, bool flag)
+    CLA_Class1 * SHC_rv, char *name, int SHT_name_len, bool flag)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.return_this_buffer_bufferify
-    std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    std::string SHCXX_name(name, ShroudLenTrim(name, SHT_name_len));
     classes::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SHCXX_name,
         flag);
     SHC_rv->addr = SHCXX_rv;
@@ -303,13 +303,13 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Exact:     c_function_string_&_buf_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *SHC_rv_temp0)
+    CLA_SHROUD_array *SHT_rv_cdesc)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
+    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end class.Class1.method.get_name_bufferify
 }
 // end CLA_Class1_get_name_bufferify
@@ -399,16 +399,16 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 // Match:     c_getter_string_scalar_buf
 // start CLA_Class1_get_m_name_bufferify
 void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *SHC_rv_temp0)
+    CLA_SHROUD_array *SHT_rv_cdesc)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_name_bufferify
     // skip call c_getter
-    SHC_rv_temp0->addr.base = SH_this->m_name.data();
-    SHC_rv_temp0->type = 0; // SH_CHAR;
-    SHC_rv_temp0->elem_len = SH_this->m_name.size();
-    SHC_rv_temp0->rank = 0;
+    SHT_rv_cdesc->addr.base = SH_this->m_name.data();
+    SHT_rv_cdesc->type = 0; // SH_CHAR;
+    SHT_rv_cdesc->elem_len = SH_this->m_name.size();
+    SHT_rv_cdesc->rank = 0;
     // splicer end class.Class1.method.get_m_name_bufferify
 }
 // end CLA_Class1_get_m_name_bufferify
@@ -423,13 +423,13 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // Exact:     c_setter_string_scalar_buf
 // start CLA_Class1_set_m_name_bufferify
 void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self, char *val,
-    int val_temp0)
+    int SHT_val_len)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_m_name_bufferify
     // skip call c_setter
-    SH_this->m_name = std::string(val, val_temp0);
+    SH_this->m_name = std::string(val, SHT_val_len);
     // splicer end class.Class1.method.set_m_name_bufferify
 }
 // end CLA_Class1_set_m_name_bufferify

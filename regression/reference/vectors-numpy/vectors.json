@@ -274,13 +274,13 @@
                 "fstatements": {
                     "c": {
                         "ret": [
-                            "return arg_temp0->size;"
+                            "return SHT_arg_cdesc->size;"
                         ],
                         "return_type": "long"
                     },
                     "c_buf": {
                         "ret": [
-                            "return arg_temp0->size;"
+                            "return SHT_arg_cdesc->size;"
                         ],
                         "return_type": "long"
                     },
@@ -373,7 +373,7 @@
                             ]
                         },
                         "post_call": [
-                            "num = arg_temp0%size"
+                            "num = SHT_arg_cdesc%size"
                         ],
                         "result": "num"
                     }

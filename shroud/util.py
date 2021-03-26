@@ -459,16 +459,21 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
-    def name_temp_vars(self, stmts, fmt):
+    def name_temp_vars(self, rootname, stmts, fmt):
         """Compute names of temporary variables.
 
-        Create stmts.ntemps variables.
-        Use fmt.c_var as the prefix.
+        Create stmts.temps and stmts.local variables.
         """
-        for i in range(stmts.ntemps):
-            setattr(fmt,
-                    "temp{}".format(i),
-                    "{}_temp{}".format(fmt.c_var, i))
+        if stmts.temps is not None:
+            for name in stmts.temps:
+                setattr(fmt,
+                        "c_var_{}".format(name),
+                        "{}{}_{}".format(fmt.c_temp, rootname, name))
+        if stmts.local is not None:
+            for name in stmts.local:
+                setattr(fmt,
+                        "c_local_{}".format(name),
+                        "{}{}_{}".format(fmt.C_local, rootname, name))
 
     def get_metaattrs(self, ast):
         decl = []

@@ -377,7 +377,7 @@ module struct_mod
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
         ! Attrs:     +api(buf)+intent(out)
         ! Exact:     c_out_char_*_buf
-        function c_pass_struct2_bufferify(s1, outbuf, outbuf_temp0) &
+        function c_pass_struct2_bufferify(s1, outbuf, SHT_outbuf_len) &
                 result(SHT_rv) &
                 bind(C, name="STR_pass_struct2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -385,7 +385,7 @@ module struct_mod
             implicit none
             type(cstruct1), intent(IN) :: s1
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: outbuf_temp0
+            integer(C_INT), value, intent(IN) :: SHT_outbuf_len
             integer(C_INT) :: SHT_rv
         end function c_pass_struct2_bufferify
 
@@ -583,7 +583,7 @@ module struct_mod
         ! Attrs:     +api(buf)+intent(out)
         ! Exact:     c_out_char_*_buf
         function c_return_struct_ptr2_bufferify(i, d, outbuf, &
-                outbuf_temp0) &
+                SHT_outbuf_len) &
                 result(SHT_rv) &
                 bind(C, name="STR_return_struct_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
@@ -591,7 +591,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: outbuf_temp0
+            integer(C_INT), value, intent(IN) :: SHT_outbuf_len
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr2_bufferify
 

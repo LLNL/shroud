@@ -303,7 +303,7 @@ module classes_mod
     ! start c_class1_return_this_buffer_bufferify
     interface
         subroutine c_class1_return_this_buffer_bufferify(self, SHT_rv, &
-                name, name_temp0, flag) &
+                name, SHT_name_len, flag) &
                 bind(C, name="CLA_Class1_return_this_buffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             import :: CLA_SHROUD_capsule_data
@@ -311,7 +311,7 @@ module classes_mod
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
             logical(C_BOOL), value, intent(IN) :: flag
         end subroutine c_class1_return_this_buffer_bufferify
     end interface
@@ -480,14 +480,14 @@ module classes_mod
     ! Exact:     c_setter_string_scalar_buf
     ! start c_class1_set_m_name_bufferify
     interface
-        subroutine c_class1_set_m_name_bufferify(self, val, val_temp0) &
+        subroutine c_class1_set_m_name_bufferify(self, val, SHT_val_len) &
                 bind(C, name="CLA_Class1_set_m_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: val(*)
-            integer(C_INT), value, intent(IN) :: val_temp0
+            integer(C_INT), value, intent(IN) :: SHT_val_len
         end subroutine c_class1_set_m_name_bufferify
     end interface
     ! end c_class1_set_m_name_bufferify
@@ -788,13 +788,12 @@ module classes_mod
     ! Requested: c_function_string_&_buf_copy
     ! Match:     c_function_string_&_buf
     interface
-        subroutine c_last_function_called_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+        subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="CLA_last_function_called_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_last_function_called_bufferify
     end interface
 
@@ -1052,11 +1051,11 @@ contains
         class(class1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_name
-        type(CLA_SHROUD_array) :: SHT_rv_temp0
-        call c_class1_get_name_bufferify(obj%cxxmem, SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(CLA_SHROUD_array) :: SHT_rv_cdesc
+        call c_class1_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
@@ -1170,11 +1169,11 @@ contains
         class(class1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_m_name
-        type(CLA_SHROUD_array) :: SHT_rv_temp0
-        call c_class1_get_m_name_bufferify(obj%cxxmem, SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(CLA_SHROUD_array) :: SHT_rv_cdesc
+        call c_class1_get_m_name_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end class.Class1.method.get_m_name
     end function class1_get_m_name
     ! end class1_get_m_name
@@ -1246,11 +1245,11 @@ contains
         class(class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class2.method.get_name
-        type(CLA_SHROUD_array) :: SHT_rv_temp0
-        call c_class2_get_name_bufferify(obj%cxxmem, SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(CLA_SHROUD_array) :: SHT_rv_cdesc
+        call c_class2_get_name_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end class.Class2.method.get_name
     end function class2_get_name
 

@@ -128,15 +128,17 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Argument:  const std::string & arg2
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
-    char *arg1, int arg1_temp0, char *arg2, int arg2_temp0)
+void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHT_rv_cdesc,
+    char *arg1, int SHT_arg1_len, char *arg2, int SHT_arg2_len)
 {
     // splicer begin function.concatenate_strings_bufferify
-    const std::string SHCXX_arg1(arg1, ShroudLenTrim(arg1, arg1_temp0));
-    const std::string SHCXX_arg2(arg2, ShroudLenTrim(arg2, arg2_temp0));
+    const std::string SHCXX_arg1(arg1,
+        ShroudLenTrim(arg1, SHT_arg1_len));
+    const std::string SHCXX_arg2(arg2,
+        ShroudLenTrim(arg2, SHT_arg2_len));
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 1);
+    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.concatenate_strings_bufferify
 }
 
@@ -225,10 +227,11 @@ void TUT_overloaded_function_from_name(const char * name)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
 void TUT_overloaded_function_from_name_bufferify(char *name,
-    int name_temp0)
+    int SHT_name_len)
 {
     // splicer begin function.overloaded_function_from_name_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     tutorial::OverloadedFunction(SHCXX_name);
     // splicer end function.overloaded_function_from_name_bufferify
 }
@@ -353,10 +356,11 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Requested: c_in_native_scalar
 // Match:     c_default
 void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
-    int name_temp0, float arg2)
+    int SHT_name_len, float arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_float_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.fortran_generic_overloaded_1_float_bufferify
 }
@@ -375,10 +379,11 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
 // Requested: c_in_native_scalar
 // Match:     c_default
 void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
-    int name_temp0, double arg2)
+    int SHT_name_len, double arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_double_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
     // splicer end function.fortran_generic_overloaded_1_double_bufferify
 }
@@ -673,14 +678,14 @@ const char * TUT_last_function_called(void)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
 // Requested: c_function_string_&_buf_copy
 // Match:     c_function_string_&_buf
-void TUT_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0)
+void TUT_last_function_called_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.last_function_called_bufferify

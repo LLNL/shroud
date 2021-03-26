@@ -54,12 +54,12 @@ module statement_mod
         ! Requested: c_function_string_&_buf_copy
         ! Match:     c_function_string_&_buf
         subroutine c_get_name_error_pattern_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+                SHT_rv_len) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_name_error_pattern_bufferify
 
         ! splicer begin additional_interfaces

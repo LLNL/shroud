@@ -119,16 +119,16 @@ module tutorial_mod
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, &
-                arg1_temp0, arg2, arg2_temp0) &
+                SHT_arg1_len, arg2, SHT_arg2_len) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
             implicit none
             type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
             character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: arg2_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg2_len
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -230,12 +230,12 @@ module tutorial_mod
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
-                name_temp0) &
+                SHT_name_len) &
                 bind(C, name="TUT_overloaded_function_from_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
         end subroutine c_overloaded_function_from_name_bufferify
     end interface
 
@@ -378,12 +378,12 @@ module tutorial_mod
     ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
-                name_temp0, arg2) &
+                SHT_name_len, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1_float_bufferify")
             use iso_c_binding, only : C_CHAR, C_FLOAT, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
             real(C_FLOAT), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_float_bufferify
     end interface
@@ -404,12 +404,12 @@ module tutorial_mod
     ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
-                name_temp0, arg2) &
+                SHT_name_len, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1_double_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_double_bufferify
     end interface
@@ -736,13 +736,12 @@ module tutorial_mod
     ! Requested: c_function_string_&_buf_copy
     ! Match:     c_function_string_&_buf
     interface
-        subroutine c_last_function_called_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+        subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="TUT_last_function_called_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_last_function_called_bufferify
     end interface
 
@@ -833,12 +832,12 @@ contains
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         ! splicer begin function.concatenate_strings
-        type(TUT_SHROUD_array) :: SHT_rv_temp0
-        call c_concatenate_strings_bufferify(SHT_rv_temp0, arg1, &
+        type(TUT_SHROUD_array) :: SHT_rv_cdesc
+        call c_concatenate_strings_bufferify(SHT_rv_cdesc, arg1, &
             len(arg1, kind=C_INT), arg2, len(arg2, kind=C_INT))
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call TUT_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call TUT_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.concatenate_strings
     end function concatenate_strings
 

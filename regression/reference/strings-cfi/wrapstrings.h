@@ -37,124 +37,124 @@ char STR_return_char(void);
 
 void STR_pass_char_ptr(char * dest, const char * src);
 
-void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
-    CFI_cdesc_t *SHcfi_src);
+void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
+    CFI_cdesc_t *SHT_src_cfi);
 
 void STR_pass_char_ptr_in_out(char * s);
 
-void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s);
+void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHT_s_cfi);
 
 const char * STR_get_char_ptr1(void);
 
-void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_char_ptr2(void);
 
-void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_char_ptr3(void);
 
-void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output);
+void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHT_output_cfi);
 
 const char * STR_get_char_ptr4(void);
 
-void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_result_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output);
+void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi);
 
-void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ref_pure(void);
 
-void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ref_len(void);
 
-void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ref_as_arg(void);
 
-void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output);
+void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi);
 
 const char * STR_get_const_string_ref_len_empty(void);
 
-void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ref_alloc(void);
 
-void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ptr_len(void);
 
-void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ptr_alloc(void);
 
-void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ptr_owns_alloc(void);
 
-void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
+void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
-    CFI_cdesc_t *SHcfi_SHC_rv);
+    CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_accept_string_const_reference(const char * arg1);
 
-void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_accept_string_reference_out(char * arg1);
 
-void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_accept_string_reference(char * arg1);
 
-void STR_accept_string_reference_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_accept_string_reference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_accept_string_pointer_const(const char * arg1);
 
-void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_accept_string_pointer(char * arg1);
 
-void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_fetch_string_pointer(char * arg1);
 
-void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1);
+void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_accept_string_pointer_len(char * arg1, int * nlen);
 
-void STR_accept_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
+void STR_accept_string_pointer_len_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen);
 
 void STR_fetch_string_pointer_len(char * arg1, int * nlen);
 
-void STR_fetch_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
+void STR_fetch_string_pointer_len_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen);
 
 int STR_accept_string_instance(char *arg1);
 
-int STR_accept_string_instance_CFI(CFI_cdesc_t *SHcfi_arg1);
+int STR_accept_string_instance_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_explicit1(char * name);
 
-void STR_explicit1_CFI(CFI_cdesc_t *SHcfi_name);
+void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);
 
 void STR_explicit2(char * name);
 
-void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name);
+void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
 
-void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
-    CFI_cdesc_t *SHcfi_src);
+void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
+    CFI_cdesc_t *SHT_src_cfi);
 
 void STR_post_declare(int * count, char * name);
 
-void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHcfi_name);
+void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi);
 
 #ifdef __cplusplus
 }

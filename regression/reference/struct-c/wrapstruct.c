@@ -42,11 +42,11 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 int STR_pass_struct2_bufferify(const Cstruct1 * s1, char *outbuf,
-    int outbuf_temp0)
+    int SHT_outbuf_len)
 {
     // splicer begin function.pass_struct2_bufferify
     int SHC_rv = passStruct2(s1, outbuf);
-    ShroudStrBlankFill(outbuf, outbuf_temp0);
+    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.pass_struct2_bufferify
 }
@@ -76,11 +76,11 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char *outbuf,
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
-    char *outbuf, int outbuf_temp0)
+    char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.return_struct_ptr2_bufferify
     Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
-    ShroudStrBlankFill(outbuf, outbuf_temp0);
+    ShroudStrBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
     // splicer end function.return_struct_ptr2_bufferify
 }

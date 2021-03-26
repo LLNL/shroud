@@ -754,16 +754,16 @@ class Wrapc(util.WrapperMixin):
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
-                if hasattr(fmt, "temp0"):
-                    # XXX kludge, array_type is assumed to be temp0.
+                if hasattr(fmt, "c_var_cdesc"):
+                    # array_type is assumed to be c_var_cdesc.
                     # Assign each rank of dimension.
                     fmtdim = []
                     fmtsize = []
                     for i, dim in enumerate(visitor.shape):
                         fmtdim.append("{}->shape[{}] = {};".format(
-                            fmt.temp0, i, dim))
+                            fmt.c_var_cdesc, i, dim))
                         fmtsize.append("{}->shape[{}]".format(
-                            fmt.temp0, i, dim))
+                            fmt.c_var_cdesc, i, dim))
                     fmt.c_array_shape = "\n" + "\n".join(fmtdim)
                     if fmtsize:
                         fmt.c_array_size = "*\t".join(fmtsize)
@@ -903,7 +903,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
-            self.name_temp_vars(result_blk, fmt_result)
+            self.name_temp_vars(fmt_result.C_result, result_blk, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
@@ -1025,11 +1025,11 @@ class Wrapc(util.WrapperMixin):
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", "function", sgroup, spointer,
-                    result_api, return_deref_attr,
+                    c_meta["api"], return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg.name
-                self.name_temp_vars(intent_blk, fmt_arg)
+                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
@@ -1063,7 +1063,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_var = arg.name
                 # XXX - order issue - c_var must be set before name_temp_vars,
                 #       but set by set_fmt_fields
-                self.name_temp_vars(intent_blk, fmt_arg)
+                self.name_temp_vars(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
 
                 if intent_blk.cxx_local_var:

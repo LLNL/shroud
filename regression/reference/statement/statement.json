@@ -165,7 +165,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": "get_name_length()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -179,7 +178,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "get_name_length()",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -232,9 +230,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "STMT_get_name_error_pattern_bufferify",
-                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
+                    "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                     "F_C_name": "c_get_name_error_pattern_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -248,7 +246,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "get_name_length()",
+                        "c_var_len": "SHT_rv_len",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -257,16 +255,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_buf_copy",
-                        "stmt1": "c_function_string_&_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_string_&_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "get_name_length()",
+                        "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "character(*)"
                     }
                 }
             }

@@ -38,7 +38,7 @@ void AA_example_nested_ExClass2_ctor(
     AA_example_nested_ExClass2 * SHC_rv, const char * name);
 
 void AA_example_nested_ExClass2_ctor_bufferify(
-    AA_example_nested_ExClass2 * SHC_rv, char *name, int name_temp0);
+    AA_example_nested_ExClass2 * SHC_rv, char *name, int SHT_name_len);
 
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self);
 
@@ -47,26 +47,26 @@ const char * AA_example_nested_ExClass2_get_name(
 
 void AA_example_nested_ExClass2_get_name_bufferify(
     const AA_example_nested_ExClass2 * self, char *SHC_rv,
-    int SHC_rv_temp0);
+    int SHT_rv_len);
 
 const char * AA_example_nested_ExClass2_get_name2(
     AA_example_nested_ExClass2 * self);
 
 void AA_example_nested_ExClass2_get_name2_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHC_rv_temp0);
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc);
 
 char * AA_example_nested_ExClass2_get_name3(
     const AA_example_nested_ExClass2 * self);
 
 void AA_example_nested_ExClass2_get_name3_bufferify(
     const AA_example_nested_ExClass2 * self,
-    AA_SHROUD_array *SHC_rv_temp0);
+    AA_SHROUD_array *SHT_rv_cdesc);
 
 char * AA_example_nested_ExClass2_get_name4(
     AA_example_nested_ExClass2 * self);
 
 void AA_example_nested_ExClass2_get_name4_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHC_rv_temp0);
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc);
 
 int AA_example_nested_ExClass2_get_name_length(
     const AA_example_nested_ExClass2 * self);

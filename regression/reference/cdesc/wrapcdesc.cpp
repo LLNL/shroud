@@ -45,10 +45,11 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +intent(in)
 // Exact:     c_in_native_*_cdesc
-void CDE_rank2_in(CDE_SHROUD_array *Darg)
+void CDE_rank2_in(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.rank2_in
-    int * arg = static_cast<int *>(const_cast<void *>(Darg->addr.base));
+    int * arg = static_cast<int *>
+        (const_cast<void *>(SHT_arg_cdesc->addr.base));
     Rank2In(arg);
     // splicer end function.rank2_in
 }
@@ -74,24 +75,24 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
 // Argument:  void * value +cdesc+intent(out)+rank(0)+value
 // Attrs:     +intent(out)
 // Exact:     c_out_void_*_cdesc
-void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
+void CDE_get_scalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.get_scalar1
-    switch(Dvalue->type) {
+    switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
-      *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+      *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
       break;
     }
     case SH_TYPE_LONG: {
-      *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+      *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
       break;
     }
     case SH_TYPE_FLOAT: {
-      *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+      *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
       break;
     }
     case SH_TYPE_DOUBLE: {
-      *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+      *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
       break;
     }
     // default:
@@ -120,25 +121,25 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // Argument:  int * value +cdesc+intent(out)+rank(0)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_0_bufferify(char *name, int name_temp0,
-    CDE_SHROUD_array *Dvalue)
+void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
+    CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.get_scalar1_0_bufferify
-    switch(Dvalue->type) {
+    switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
-      *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+      *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
       break;
     }
     case SH_TYPE_LONG: {
-      *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+      *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
       break;
     }
     case SH_TYPE_FLOAT: {
-      *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+      *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
       break;
     }
     case SH_TYPE_DOUBLE: {
-      *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+      *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
       break;
     }
     // default:
@@ -167,25 +168,25 @@ void CDE_get_scalar1_0_bufferify(char *name, int name_temp0,
 // Argument:  double * value +cdesc+intent(out)+rank(0)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_1_bufferify(char *name, int name_temp0,
-    CDE_SHROUD_array *Dvalue)
+void CDE_get_scalar1_1_bufferify(char *name, int SHT_name_len,
+    CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.get_scalar1_1_bufferify
-    switch(Dvalue->type) {
+    switch(SHT_value_cdesc->type) {
     case SH_TYPE_INT: {
-      *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+      *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();
       break;
     }
     case SH_TYPE_LONG: {
-      *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+      *static_cast<long *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<long>();
       break;
     }
     case SH_TYPE_FLOAT: {
-      *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+      *static_cast<float *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<float>();
       break;
     }
     case SH_TYPE_DOUBLE: {
-      *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+      *static_cast<double *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<double>();
       break;
     }
     // default:

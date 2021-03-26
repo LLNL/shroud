@@ -1164,11 +1164,12 @@ rv = .false.
             stmts_comments.append(
                 "! ----------------------------------------")
             c_decl = ast.gen_decl(params=None)
+#            stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
                 stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
-        self.name_temp_vars(c_result_blk, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, c_result_blk, fmt_result)
 
         if c_result_blk.return_type == "void":
             # Change a function into a subroutine.
@@ -1218,7 +1219,7 @@ rv = .false.
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
                 c_stmts = ["c", "function", sgroup, spointer,
-                           result_api, deref_attr]
+                           meta["api"], deref_attr]
             else:
                 c_stmts = ["c", intent, sgroup, spointer,
                            meta["api"], deref_attr, cdesc]
@@ -1232,7 +1233,7 @@ rv = .false.
                 self.document_stmts(
                     stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
-            self.name_temp_vars(c_intent_blk, fmt_arg)
+            self.name_temp_vars(arg_name, c_intent_blk, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1533,12 +1534,12 @@ rv = .false.
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                # XXX use temp0 since shape is assigned in C
+                # XXX use c_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if hasattr(fmt, "temp0"):
-                    # XXX kludge, name is assumed to be temp0.
+                if hasattr(fmt, "c_var_cdesc"):
+                    # XXX kludge, name is assumed to be c_var_cdesc.
                     fmt.f_array_shape = wformat(
-                        ",\t {temp0}%shape(1:{rank})", fmt)
+                        ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
 
         return ntypemap
 
@@ -1624,7 +1625,7 @@ rv = .false.
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
 
-        self.name_temp_vars(f_result_blk, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, f_result_blk, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             modules, fileinfo, subprogram, result_typemap)
 
@@ -1632,6 +1633,7 @@ rv = .false.
             stmts_comments.append(
                 "! ----------------------------------------")
             f_decl = ast.gen_decl(params=None)
+#            stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
@@ -1741,27 +1743,26 @@ rv = .false.
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
+            c_api = c_meta["api"]
             c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", "function", c_sgroup, c_spointer, c_result_api, c_deref_attr]
-                f_stmts = ["f", "function", f_sgroup, f_spointer, c_result_api, f_deref_attr]
-
+                c_stmts = ["c", "function", c_sgroup, c_spointer, c_api, c_deref_attr]
+                f_stmts = ["f", "function", f_sgroup, f_spointer, c_api, f_deref_attr]
             else:
                 # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                sapi = c_meta["api"]
-                c_stmts = ["c", intent, c_sgroup, c_spointer, sapi, f_deref_attr, cdesc]
-                f_stmts = ["f", intent, f_sgroup, f_spointer, sapi, f_deref_attr, cdesc]
+                c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr, cdesc]
+                f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
-            self.name_temp_vars(f_intent_blk, fmt_arg)
+            self.name_temp_vars(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
 
