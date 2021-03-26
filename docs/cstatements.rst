@@ -14,7 +14,7 @@ C Statements
 
     extern "C" {
 
-    {C_return_type} {C_name}({C_prototype})    buf_args
+    {C_return_type} {C_name}({C_prototype})
     {
         {pre_call}
         {call_code}   {call}    arg_call
@@ -23,6 +23,8 @@ C Statements
         {final}
         {ret}
     }
+
+C_prototype -> c_arg_decl
 
 A corresponding ``bind(C)`` interface can be created for Fortran.
     
@@ -160,7 +162,9 @@ c_arg_decl
 ^^^^^^^^^^
 
 A list of declarations to append to the prototype in the C wrapper.
-Used when *buf_arg* includes "arg_decl".
+Defaults to *None* which will cause Shroud to generate an argument from
+the wrapped function's argument.
+Functions do not add arguments by default.
 
 f_arg_decl
 ^^^^^^^^^^

@@ -59,8 +59,6 @@ class Wrapc(util.WrapperMixin):
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
 
-    _default_buf_args = ["arg"]
-
     def _begin_output_file(self):
         """Start a new class for output"""
         #        # forward declarations of C++ class as opaque C struct.
@@ -648,35 +646,28 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def build_proto_list(self, fmt, ast,
-                         intent_blk, buf_args, proto_list):
-        """Find prototype based on buf_args in fc_statements.
+    def build_proto_list(self, fmt, ast, stmts_blk, proto_list):
+        """Find prototype based on c_arg_decl in fc_statements.
 
-        Args:
-            fmt - Format dictionary (fmt_arg or fmt_result).
-            ast - Abstract Syntax Tree from parser.
-            intent_blk  - typemap.CStmts or util.Scope.
-            buf_args - List of arguments/metadata to add.
-            proto_list - Prototypes are appended to list.
-
-        return need_wrapper
-        A wrapper will be needed if there is meta data.
-        i.e. No wrapper if the C function can be called directly.
+        Parameters
+        ----------
+        fmt - util.Scope
+            Format dictionary (fmt_arg or fmt_result).
+        ast - declast.Declaration
+            Abstract Syntax Tree from parser.
+        stmts_blk  - typemap.CStmts or util.Scope.
+        proto_list - list
+            Prototypes are appended to list.
         """
-        if not buf_args:
-            return
-        assert len(buf_args) == 1
-        buf_arg = buf_args[0]
-        if buf_arg == "arg":
+        if stmts_blk.c_arg_decl is not None:
+            for arg in stmts_blk.c_arg_decl:
+                append_format(proto_list, arg, fmt)
+        elif stmts_blk.intent == "function":
+            # Functions do not pass arguments by default.
+            pass
+        else:
             # vector<int> -> int *
             proto_list.append(ast.gen_arg_as_c(continuation=True))
-        elif buf_arg == "arg_decl":
-            for arg in intent_blk.c_arg_decl:
-                append_format(proto_list, arg, fmt)
-        else:
-            raise RuntimeError(
-                "wrap_function: unhandled case {}".format(buf_arg)
-            )
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -985,7 +976,6 @@ class Wrapc(util.WrapperMixin):
             fmt_result,
             ast,
             result_blk,
-            result_blk.buf_args,
             proto_list,
         )
         #    c_var      - argument to C function  (wrapper function)
@@ -1105,7 +1095,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg,
                 arg,
                 intent_blk,
-                intent_blk.buf_args or self._default_buf_args,
                 proto_list,
             )
 

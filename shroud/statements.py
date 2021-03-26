@@ -443,7 +443,7 @@ CStmts = util.Scope(
     destructor_name=None,
     owner="library",
     return_type=None, return_cptr=False,
-    c_arg_decl=[],
+    c_arg_decl=None,
     f_c_arg_names=None,
     f_arg_decl=[],
     f_result_decl=None,
@@ -502,6 +502,7 @@ default_stmts = dict(
 fc_statements = [
     dict(
         name="c_subroutine",
+        c_arg_decl=[],
     ),
     dict(
         name="f_subroutine",
@@ -509,6 +510,7 @@ fc_statements = [
 
     dict(
         name="c_function",
+        c_arg_decl=[],
     ),
     dict(
         name="f_function",
@@ -1903,6 +1905,7 @@ fc_statements = [
         name="c_dtor",
         c_impl_header=["<stddef.h>"],
         cxx_impl_header=["<cstddef>"],
+        c_arg_decl=[],
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
@@ -1961,6 +1964,7 @@ fc_statements = [
     dict(
         # Base for all getters to avoid calling function.
         name="c_getter",
+        c_arg_decl=[],
         call=[
             "// skip call c_getter",
         ],
@@ -1969,6 +1973,7 @@ fc_statements = [
         # Not actually calling a subroutine.
         # Work is done by arg's setter.
         name="c_setter",
+        c_arg_decl=[],
         call=[
             "// skip call c_setter",
         ],
