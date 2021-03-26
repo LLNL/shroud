@@ -128,7 +128,7 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Argument:  const std::string & arg2
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
+void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHT_rv_cdesc,
     char *arg1, int arg1_temp0, char *arg2, int arg2_temp0)
 {
     // splicer begin function.concatenate_strings_bufferify
@@ -136,7 +136,7 @@ void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
     const std::string SHCXX_arg2(arg2, ShroudLenTrim(arg2, arg2_temp0));
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 1);
+    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.concatenate_strings_bufferify
 }
 

@@ -760,7 +760,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "TUT_SHROUD_array *SHC_rv_temp0,\t char *arg1,\t int arg1_temp0,\t char *arg2,\t int arg2_temp0",
+                    "C_prototype": "TUT_SHROUD_array *SHT_rv_cdesc,\t char *arg1,\t int arg1_temp0,\t char *arg2,\t int arg2_temp0",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t arg1,\t arg1_temp0,\t arg2,\t arg2_temp0",
                     "F_C_name": "c_concatenate_strings_bufferify",
@@ -776,6 +776,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -784,15 +785,14 @@
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_scalar_buf_allocatable",
-                        "stmt1": "c_function_string_scalar_buf_allocatable",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_string_scalar_buf_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "character(*)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "character(*)"
                     }
                 }
             },

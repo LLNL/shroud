@@ -565,7 +565,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "OWN_return_int_ptr_pointer_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_pointer_bufferify",
@@ -581,6 +581,7 @@
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -589,15 +590,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1014,7 +1014,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0,\t int * len",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t int * len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t len",
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
@@ -1027,11 +1027,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = *len;",
-                        "c_array_size": "SHC_rv_temp0->shape[0]",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1041,15 +1042,14 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1350,7 +1350,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0,\t int * len",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t int * len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t len",
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
@@ -1363,11 +1363,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = *len;",
-                        "c_array_size": "SHC_rv_temp0->shape[0]",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1377,15 +1378,14 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_allocatable",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1683,7 +1683,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0,\t int * len",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t int * len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t len",
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
@@ -1696,11 +1696,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = *len;",
-                        "c_array_size": "SHC_rv_temp0->shape[0]",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1710,15 +1711,14 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -2152,7 +2152,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_new_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0,\t int * len",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t int * len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t len",
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
@@ -2165,12 +2165,13 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = *len;",
-                        "c_array_size": "SHC_rv_temp0->shape[0]",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "c_var_capsule": "Crv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -2180,15 +2181,14 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -2663,7 +2663,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHC_rv_temp0,\t int * len",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc,\t int * len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t len",
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
@@ -2676,12 +2676,13 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = *len;",
-                        "c_array_size": "SHC_rv_temp0->shape[0]",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
                         "c_var_capsule": "Crv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -2691,15 +2692,14 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_native_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },

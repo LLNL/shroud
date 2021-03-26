@@ -1195,7 +1195,7 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
-        self.name_temp_vars(c_result_blk, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, c_result_blk, fmt_result)
 
         if c_result_blk.return_type == "void":
             # Change a function into a subroutine.
@@ -1259,7 +1259,7 @@ rv = .false.
                 self.document_stmts(
                     stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
-            self.name_temp_vars(c_intent_blk, fmt_arg)
+            self.name_temp_vars(arg_name, c_intent_blk, fmt_arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1564,8 +1564,12 @@ rv = .false.
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                # XXX use temp0 since shape is assigned in C
+                # XXX use c_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
+                if hasattr(fmt, "c_var_cdesc"):
+                    # XXX kludge, name is assumed to be c_var_cdesc.
+                    fmt.f_array_shape = wformat(
+                        ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
                 if hasattr(fmt, "temp0"):
                     # XXX kludge, name is assumed to be temp0.
                     fmt.f_array_shape = wformat(
@@ -1655,7 +1659,7 @@ rv = .false.
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
 
-        self.name_temp_vars(f_result_blk, fmt_result)
+        self.name_temp_vars(fmt_func.C_result, f_result_blk, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
                             modules, fileinfo, subprogram, result_typemap)
 
@@ -1792,7 +1796,7 @@ rv = .false.
 
             f_intent_blk = statements.lookup_fc_stmts(f_stmts)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
-            self.name_temp_vars(f_intent_blk, fmt_arg)
+            self.name_temp_vars(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
 

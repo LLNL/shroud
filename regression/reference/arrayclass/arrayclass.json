@@ -686,7 +686,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHC_rv_temp0",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_arraywrapper_get_array_bufferify",
@@ -703,11 +703,12 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_array_shape": "\nSHC_rv_temp0->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHC_rv_temp0->shape[0]",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "SHC_rv",
@@ -717,15 +718,14 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf",
-                                "temp0": "SHC_rv_temp0"
+                                "stmt1": "c_function_native_*_buf"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)",
-                                "temp0": "SHT_rv_temp0"
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -902,7 +902,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
-                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHC_rv_temp0",
+                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_arraywrapper_get_array_const_bufferify",
@@ -919,11 +919,12 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_array_shape": "\nSHC_rv_temp0->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHC_rv_temp0->shape[0]",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_const": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "SHC_rv",
@@ -933,15 +934,14 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf",
-                                "temp0": "SHC_rv_temp0"
+                                "stmt1": "c_function_native_*_buf"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)",
-                                "temp0": "SHT_rv_temp0"
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -1117,7 +1117,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHC_rv_temp0",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_arraywrapper_get_array_c_bufferify",
@@ -1134,11 +1134,12 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_array_shape": "\nSHC_rv_temp0->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHC_rv_temp0->shape[0]",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
@@ -1148,15 +1149,14 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf",
-                                "temp0": "SHC_rv_temp0"
+                                "stmt1": "c_function_native_*_buf"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)",
-                                "temp0": "SHT_rv_temp0"
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -1335,7 +1335,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
-                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHC_rv_temp0",
+                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_arraywrapper_get_array_const_c_bufferify",
@@ -1352,11 +1352,12 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_array_shape": "\nSHC_rv_temp0->shape[0] = SH_this->getSize();",
-                                "c_array_size": "SHC_rv_temp0->shape[0]",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
                                 "c_const": "const ",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
@@ -1366,15 +1367,14 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf",
-                                "temp0": "SHC_rv_temp0"
+                                "stmt1": "c_function_native_*_buf"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "real(C_DOUBLE)",
-                                "temp0": "SHT_rv_temp0"
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },

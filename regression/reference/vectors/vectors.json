@@ -2294,7 +2294,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "n",
                     "C_name": "VEC_return_vector_alloc_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *SHC_rv_temp0,\t int n",
+                    "C_prototype": "VEC_SHROUD_array *SHT_rv_cdesc,\t int n",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t n",
                     "F_C_name": "c_return_vector_alloc_bufferify",
@@ -2310,6 +2310,7 @@
                         "c_const": "",
                         "c_type": null,
                         "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_T": "int",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -2319,15 +2320,14 @@
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_vector_scalar_buf_allocatable",
-                        "stmt1": "c_function_vector_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_vector_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": null,
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": null
                     }
                 }
             }

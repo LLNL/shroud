@@ -470,6 +470,7 @@ CStmts = util.Scope(None,
     f_module_line=None,
     f_import=None,
     ntemps=0,
+    temps=None,
 )
 
 # Fortran Statements.
@@ -488,6 +489,7 @@ FStmts = util.Scope(None,
     declare=[], pre_call=[], call=[], post_call=[],
     result=None,  # name of result variable
     ntemps=0,
+    temps=None,
 )
 
 # Define class for nodes in tree based on their first entry.
@@ -528,14 +530,14 @@ fc_statements = [
         # Pass array_type as argument to contain the function result.
         buf_args=["arg_decl"],
         c_arg_decl=[
-            "{C_array_type} *{temp0}",
+            "{C_array_type} *{c_var_cdesc}",
         ],
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
         f_import=["{F_array_type}"],
         return_type="void",  # Convert to function.
-        ntemps=1,
+        temps=["cdesc"],
 ###        f_c_arg_names=["{c_var}"],
     ),
     dict(
@@ -978,14 +980,14 @@ fc_statements = [
         mixin=["c_mixin_function_buf"],
         c_helper="ShroudTypeDefines array_context",
         post_call=[
-            "{temp0}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{temp0}->cxx.idtor = {idtor};",
-            "{temp0}->addr.base = {cxx_var};",
-            "{temp0}->type = {sh_type};",
-            "{temp0}->elem_len = sizeof({cxx_type});",
-            "{temp0}->rank = {rank};"
+            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
-            "{temp0}->size = {c_array_size};",
+            "{c_var_cdesc}->size = {c_array_size};",
         ],
         return_cptr=True,
     ),
@@ -1200,13 +1202,13 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "{temp0}->cxx.addr = {cxx_nonconst_ptr};",
-            "{temp0}->cxx.idtor = {idtor};",
-            "{temp0}->addr.ccharp = {cxx_var};",
-            "{temp0}->type = {sh_type};",
-            "{temp0}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{temp0}->size = 1;",
-            "{temp0}->rank = 0;",
+            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;",
         ],
     ),
 
@@ -1458,7 +1460,7 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "ShroudStrToArray(\t{temp0},\t {cxx_addr}{cxx_var},\t {idtor});",
+            "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -1484,7 +1486,7 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "ShroudStrToArray({temp0}, {cxx_var}, {idtor});",
+            "ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});",
         ],
     ),
 
@@ -1596,15 +1598,15 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{temp0}->cxx.addr  = {cxx_var};",
-            "{temp0}->cxx.idtor = {idtor};",
-            "{temp0}->addr.base = {cxx_var}->empty()"
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{temp0}->type = {sh_type};",
-            "{temp0}->elem_len = sizeof({cxx_T});",
-            "{temp0}->size = {cxx_var}->size();",
-            "{temp0}->rank = 1;",
-            "{temp0}->shape[0] = {temp0}->size;",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
+            "{c_var_cdesc}->size = {cxx_var}->size();",
+            "{c_var_cdesc}->rank = 1;",
+            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[

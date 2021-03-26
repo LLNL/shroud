@@ -895,7 +895,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHC_rv_temp0",
+                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass1_get_name_error_check_bufferify",
@@ -915,6 +915,7 @@
                                                 "c_const": "const ",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -923,15 +924,14 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHC_rv_temp0"
+                                                "stmt1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)",
-                                                "temp0": "SHT_rv_temp0"
+                                                "f_type": "character(*)"
                                             }
                                         }
                                     },
@@ -2740,7 +2740,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name2_bufferify",
@@ -2760,6 +2760,7 @@
                                                 "c_const": "const ",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2768,15 +2769,14 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHC_rv_temp0"
+                                                "stmt1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)",
-                                                "temp0": "SHT_rv_temp0"
+                                                "f_type": "character(*)"
                                             }
                                         }
                                     },
@@ -2941,7 +2941,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
+                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name3_bufferify",
@@ -2961,6 +2961,7 @@
                                                 "c_const": "",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2969,15 +2970,14 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHC_rv_temp0"
+                                                "stmt1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)",
-                                                "temp0": "SHT_rv_temp0"
+                                                "f_type": "character(*)"
                                             }
                                         }
                                     },
@@ -3139,7 +3139,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHT_rv_cdesc",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name4_bufferify",
@@ -3159,6 +3159,7 @@
                                                 "c_const": "",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -3167,15 +3168,14 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHC_rv_temp0"
+                                                "stmt1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)",
-                                                "temp0": "SHT_rv_temp0"
+                                                "f_type": "character(*)"
                                             }
                                         }
                                     },
