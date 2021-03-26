@@ -52,7 +52,7 @@ module vectors_mod
     ! Function:  int vector_sum
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -230,7 +230,7 @@ module vectors_mod
     ! Function:  int vector_string_count
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -309,10 +309,10 @@ contains
     ! Function:  int vector_sum
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
@@ -570,10 +570,10 @@ contains
     ! Function:  int vector_string_count
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)

@@ -3,7 +3,7 @@ root
   c
     ctor -- c_ctor
     dtor -- c_dtor
-    function
+    function -- c_function
       char
         * -- c_function_char_*
           buf -- c_function_char_*_buf
@@ -162,7 +162,7 @@ root
       string
         scalar -- f_XXXin_string_scalar
     ctor -- f_ctor
-    function
+    function -- f_function
       bool -- f_function_bool
       char
         *
@@ -344,6 +344,9 @@ c_dtor:
   name: c_dtor
   owner: library
   return_type: void
+c_function:
+  name: c_function
+  owner: library
 c_function_char_*:
   name: c_function_char_*
   owner: library
@@ -2173,6 +2176,8 @@ f_ctor:
   - '{f_var}%{F_derived_member}'
   name: f_ctor
   need_wrapper: true
+f_function:
+  name: f_function
 f_function_bool:
   name: f_function_bool
   need_wrapper: true

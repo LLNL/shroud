@@ -165,7 +165,7 @@ module templates_mod
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_structasclass_int_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_npts")
@@ -199,7 +199,7 @@ module templates_mod
         ! Function:  int get_value
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_structasclass_int_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_get_value")
@@ -247,7 +247,7 @@ module templates_mod
         ! Function:  int get_npts
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_structasclass_double_get_npts(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_npts")
@@ -281,7 +281,7 @@ module templates_mod
         ! Function:  double get_value
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_structasclass_double_get_value(self) &
                 result(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_get_value")
@@ -356,7 +356,7 @@ module templates_mod
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_use_impl_worker_internal_implworker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker1")
@@ -369,7 +369,7 @@ module templates_mod
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_use_impl_worker_internal_implworker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker2")
@@ -523,10 +523,10 @@ contains
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function structasclass_int_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -566,10 +566,10 @@ contains
     ! Function:  int get_value
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function structasclass_int_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -647,10 +647,10 @@ contains
     ! Function:  int get_npts
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function structasclass_double_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -690,10 +690,10 @@ contains
     ! Function:  double get_value
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function structasclass_double_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -822,10 +822,10 @@ contains
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -844,10 +844,10 @@ contains
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!

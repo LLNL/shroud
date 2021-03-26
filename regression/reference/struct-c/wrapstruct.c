@@ -31,7 +31,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Function:  int passStruct2
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -130,7 +130,7 @@ void STR_create__cstruct_as_class_args(STR_Cstruct_as_class * SHC_rv,
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)

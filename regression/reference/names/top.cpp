@@ -170,7 +170,7 @@ void YYY_TES_function3a_1(long i)
 // Function:  int function4
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +intent(in)
@@ -188,7 +188,7 @@ int YYY_TES_function4(const char * rv)
 // Function:  int function4
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Attrs:     +api(buf)+intent(in)
@@ -320,7 +320,7 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int TES_use_impl_worker_instantiation3(void)
 {
     // splicer begin function.use_impl_worker_instantiation3
@@ -333,7 +333,7 @@ int TES_use_impl_worker_instantiation3(void)
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)

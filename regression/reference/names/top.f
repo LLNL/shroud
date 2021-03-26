@@ -217,7 +217,7 @@ module top_module
         ! Function:  int function4
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
@@ -235,7 +235,7 @@ module top_module
         ! Function:  int function4
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
@@ -356,7 +356,7 @@ module top_module
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
                 bind(C, name="TES_use_impl_worker_instantiation3")
@@ -369,7 +369,7 @@ module top_module
         ! Function:  int Cstruct_as_class_sum
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
@@ -625,10 +625,10 @@ contains
     ! Function:  int function4
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const std::string & rv
     ! Attrs:     +intent(in)
@@ -768,10 +768,10 @@ contains
     ! Function:  int UseImplWorker
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -789,10 +789,10 @@ contains
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)

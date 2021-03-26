@@ -502,10 +502,10 @@ contains
     ! Function:  int getFlag
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

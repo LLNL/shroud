@@ -36,7 +36,7 @@ module interface_mod
         ! Function:  double Function2
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  double arg1 +value
         ! Attrs:     +intent(in)

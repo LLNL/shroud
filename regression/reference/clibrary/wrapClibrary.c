@@ -88,7 +88,7 @@ static void ShroudStrFree(char *src)
 // Function:  double PassByValueMacro
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int arg2 +value
 // Attrs:     +intent(in)
@@ -264,7 +264,7 @@ void CLI_bind_c2_bufferify(char *outbuf, int SHT_outbuf_len)
 // Function:  int passAssumedTypeBuf
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Attrs:     +intent(in)

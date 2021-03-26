@@ -201,7 +201,7 @@ module classes_mod
     ! Function:  int Method1
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start c_class1_method1
     interface
         function c_class1_method1(self) &
@@ -220,7 +220,7 @@ module classes_mod
     ! Function:  bool equivalent
     ! Attrs:     +intent(function)
     ! Requested: c_function_bool_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
@@ -373,7 +373,7 @@ module classes_mod
     ! Function:  DIRECTION directionFunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -563,7 +563,7 @@ module classes_mod
     ! Function:  int get_ivar
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     interface
         pure function c_shape_get_ivar(self) &
                 result(SHT_rv) &
@@ -599,7 +599,7 @@ module classes_mod
     ! Function:  Class1::DIRECTION directionFunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -639,7 +639,7 @@ module classes_mod
     ! Function:  int useclass
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
@@ -756,7 +756,7 @@ module classes_mod
     ! Function:  int get_global_flag
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     interface
         function get_global_flag() &
                 result(SHT_rv) &
@@ -894,10 +894,10 @@ contains
     ! Function:  int Method1
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! \brief returns the value of flag member
     !!
@@ -921,7 +921,7 @@ contains
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
     ! Requested: c_function_bool_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
@@ -1064,10 +1064,10 @@ contains
     ! Function:  DIRECTION directionFunc
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  DIRECTION arg +value
     ! Attrs:     +intent(in)
@@ -1094,10 +1094,10 @@ contains
     ! Function:  int getM_flag
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
@@ -1115,10 +1115,10 @@ contains
     ! Function:  int getTest
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
@@ -1339,10 +1339,10 @@ contains
     ! Function:  int get_ivar
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function shape_get_ivar(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1425,10 +1425,10 @@ contains
     ! Function:  int useclass
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)

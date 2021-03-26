@@ -297,7 +297,7 @@ module struct_mod
         ! Function:  int passStructByValue
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  Cstruct1 arg +value
         ! Attrs:     +intent(in)
@@ -319,7 +319,7 @@ module struct_mod
         ! Function:  int passStruct1
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Attrs:     +intent(in)
@@ -341,7 +341,7 @@ module struct_mod
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
@@ -367,7 +367,7 @@ module struct_mod
         ! Function:  int passStruct2
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
@@ -393,7 +393,7 @@ module struct_mod
         ! Function:  int acceptStructInPtr
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -664,7 +664,7 @@ module struct_mod
         ! Function:  int Cstruct_as_class_sum
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
@@ -733,10 +733,10 @@ contains
     ! Function:  int getX1
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start cstruct_as_class_get_x1
     function cstruct_as_class_get_x1(obj) &
             result(SHT_rv)
@@ -779,10 +779,10 @@ contains
     ! Function:  int getY1
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start cstruct_as_class_get_y1
     function cstruct_as_class_get_y1(obj) &
             result(SHT_rv)
@@ -828,10 +828,10 @@ contains
     ! Function:  int getX1
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start cstruct_as_subclass_get_x1
     function cstruct_as_subclass_get_x1(obj) &
             result(SHT_rv)
@@ -874,10 +874,10 @@ contains
     ! Function:  int getY1
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start cstruct_as_subclass_get_y1
     function cstruct_as_subclass_get_y1(obj) &
             result(SHT_rv)
@@ -920,10 +920,10 @@ contains
     ! Function:  int getZ1
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start cstruct_as_subclass_get_z1
     function cstruct_as_subclass_get_z1(obj) &
             result(SHT_rv)
@@ -969,10 +969,10 @@ contains
     ! Function:  int passStruct2
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
     ! Attrs:     +intent(in)
@@ -1170,10 +1170,10 @@ contains
     ! Function:  int Cstruct_as_class_sum
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
     ! Attrs:     +intent(in)

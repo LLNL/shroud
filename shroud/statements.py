@@ -501,6 +501,13 @@ fc_statements = [
         name="f_subroutine",
     ),
 
+    dict(
+        name="c_function",
+    ),
+    dict(
+        name="f_function",
+    ),
+
     ########## mixin ##########
     dict(
         name="c_mixin_function_buf",

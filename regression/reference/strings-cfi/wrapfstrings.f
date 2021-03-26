@@ -895,7 +895,7 @@ module strings_mod
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
@@ -915,7 +915,7 @@ module strings_mod
     ! Function:  int acceptStringInstance
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +api(cfi)+intent(in)

@@ -127,7 +127,7 @@ module generic_mod
     ! Function:  double GetGlobalDouble
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     interface
         function get_global_double() &
                 result(SHT_rv) &
@@ -163,7 +163,7 @@ module generic_mod
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
@@ -190,7 +190,7 @@ module generic_mod
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values
     ! Attrs:     +assumed-rank+intent(in)
@@ -217,7 +217,7 @@ module generic_mod
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
     ! Attrs:     +assumed-rank+intent(in)
@@ -244,7 +244,7 @@ module generic_mod
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +assumed-rank+intent(in)
@@ -271,7 +271,7 @@ module generic_mod
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
     ! Attrs:     +assumed-rank+intent(in)
@@ -931,10 +931,10 @@ contains
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -975,10 +975,10 @@ contains
     ! Function:  long GenericReal2
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  long arg1 +value
     ! Attrs:     +intent(in)
@@ -1017,10 +1017,10 @@ contains
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
     ! Attrs:     +assumed-rank+intent(in)
@@ -1057,10 +1057,10 @@ contains
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +assumed-rank+intent(in)
@@ -1097,10 +1097,10 @@ contains
     ! Function:  int SumValues
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
     ! Attrs:     +assumed-rank+intent(in)
