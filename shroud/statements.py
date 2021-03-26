@@ -2054,11 +2054,12 @@ fc_statements = [
         iface_header=["ISO_Fortran_binding.h"],
         buf_args=["arg_decl"],
         c_arg_decl=[
-            "CFI_cdesc_t *{cfi_prefix}{c_var}",
+            "CFI_cdesc_t *{c_var_cfi}",
         ],
         f_arg_decl=[
             "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
         ],
+        temps=["cfi"],
     ),
     dict(
         # Character argument which use CFI_desc_t.
@@ -2067,15 +2068,16 @@ fc_statements = [
         buf_args=["arg_decl"],
         cxx_local_var="pointer",
         c_arg_decl=[
-            "CFI_cdesc_t *{cfi_prefix}{c_var}",
+            "CFI_cdesc_t *{c_var_cfi}",
         ],
         f_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}",
         ],
         pre_call=[
             "char *{cxx_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
+        temps=["cfi"],
     ),
 
     ########################################
@@ -2087,9 +2089,9 @@ fc_statements = [
         # Null terminate string.
         pre_call=[
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "char *{cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {cfi_prefix}{c_var}->elem_len,\t -1);",
+            "{c_var},\t {c_var_cfi}->elem_len,\t -1);",
         ],
         post_call=[
             "ShroudStrFree({cxx_var});",
@@ -2102,7 +2104,7 @@ fc_statements = [
         ],
         c_helper="ShroudStrBlankFill",
         post_call=[
-            "ShroudStrBlankFill({cxx_var}, {cfi_prefix}{c_var}->elem_len);"
+            "ShroudStrBlankFill({cxx_var}, {c_var_cfi}->elem_len);"
         ],
     ),
     dict(
@@ -2114,13 +2116,13 @@ fc_statements = [
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
         pre_call=[
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "char *{cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {cfi_prefix}{c_var}->elem_len,\t -1);",
+            "{c_var},\t {c_var_cfi}->elem_len,\t -1);",
         ],
         post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
             "ShroudStrFree({cxx_var});",
         ],
@@ -2137,8 +2139,8 @@ fc_statements = [
         pre_call=[],         # replace mixin        
         post_call=[
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "{stdlib}memset({c_var}, ' ', {cfi_prefix}{c_var}->elem_len);",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "{stdlib}memset({c_var}, ' ', {c_var_cfi}->elem_len);",
             "{c_var}[0] = {cxx_var};",
         ],
     ),
@@ -2161,8 +2163,8 @@ fc_statements = [
             # XXX c_type is undefined
             # nsrc=-1 will call strlen({cxx_var})
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
         return_type="void",  # Convert to function.
@@ -2181,9 +2183,9 @@ fc_statements = [
         pre_call=[],         # replace mixin
         post_call=[
             "if ({cxx_var} != {nullptr}) {{+",
-            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}, \t{cfi_prefix}{c_var}->elem_len);",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
             "-}}",
             "-}}",
         ],
@@ -2204,8 +2206,8 @@ fc_statements = [
         pre_call=[
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
         ],
     ),
@@ -2221,11 +2223,11 @@ fc_statements = [
         pre_call=[
             "std::string {cxx_var};",
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
         ],
         post_call=[
             "ShroudStrCopy({c_var},"
-            "\t {cfi_prefix}{c_var}->elem_len,"            
+            "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2241,13 +2243,13 @@ fc_statements = [
         cxx_local_var="scalar",
         pre_call=[
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
         ],
         post_call=[
             "ShroudStrCopy({c_var},"
-            "\t {cfi_prefix}{c_var}->elem_len,"
+            "\t {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -2265,12 +2267,12 @@ fc_statements = [
         c_helper="ShroudStrCopy",
         post_call=[
             "char *{c_var} = "
-            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -2293,9 +2295,9 @@ fc_statements = [
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
         post_call=[
-            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr,"
+            "{stdlib}memcpy({c_var_cfi}->base_addr,"
             " \t{cxx_var}{cxx_member}data(),"
             " \t{cxx_var}{cxx_member}length());",
             "-}}",
@@ -2316,9 +2318,9 @@ fc_statements = [
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
-            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}.data(), \t{cfi_prefix}{c_var}->elem_len);",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);",
             "-}}",
         ],
         

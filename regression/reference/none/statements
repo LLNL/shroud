@@ -400,7 +400,7 @@ c_function_char_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: result
   f_arg_decl:
@@ -410,14 +410,16 @@ c_function_char_*_cfi:
   name: c_function_char_*_cfi
   owner: library
   post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var},\t -1);"
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
   return_type: void
+  temps:
+  - cfi
 c_function_char_*_cfi_allocatable:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
@@ -428,13 +430,15 @@ c_function_char_*_cfi_allocatable:
   owner: library
   post_call:
   - if ({cxx_var} != {nullptr}) {{+
-  - "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t\
-    \ *) 0, \tstrlen({cxx_var}));"
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \tstrlen({cxx_var}));"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}, \t{cfi_prefix}{c_var}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_char_scalar:
   f_module:
     iso_c_binding:
@@ -447,7 +451,7 @@ c_function_char_scalar_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
@@ -457,9 +461,11 @@ c_function_char_scalar_cfi:
   name: c_function_char_scalar_cfi
   owner: library
   post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - '{stdlib}memset({c_var}, '' '', {cfi_prefix}{c_var}->elem_len);'
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{stdlib}memset({c_var}, '' '', {c_var_cfi}->elem_len);'
   - '{c_var}[0] = {cxx_var};'
+  temps:
+  - cfi
 c_function_native_&:
   f_module:
     iso_c_binding:
@@ -602,7 +608,7 @@ c_function_string_&_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -611,19 +617,21 @@ c_function_string_&_cfi:
   name: c_function_string_&_cfi
   owner: library
   post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_string_&_cfi_allocatable:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
@@ -635,13 +643,14 @@ c_function_string_&_cfi_allocatable:
   name: c_function_string_&_cfi_allocatable
   owner: library
   post_call:
-  - "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t\
-    \ *) 0, \t{cxx_var}{cxx_member}length());"
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}{cxx_member}data(),\
-    \ \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_string_*:
   name: c_function_string_*
   owner: library
@@ -697,7 +706,7 @@ c_function_string_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -706,19 +715,21 @@ c_function_string_*_cfi:
   name: c_function_string_*_cfi
   owner: library
   post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_string_*_cfi_allocatable:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
   f_c_arg_names:
@@ -730,13 +741,14 @@ c_function_string_*_cfi_allocatable:
   name: c_function_string_*_cfi_allocatable
   owner: library
   post_call:
-  - "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t\
-    \ *) 0, \t{cxx_var}{cxx_member}length());"
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}{cxx_member}data(),\
-    \ \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_string_scalar:
   name: c_function_string_scalar
   owner: library
@@ -796,7 +808,7 @@ c_function_string_scalar_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -805,19 +817,21 @@ c_function_string_scalar_cfi:
   name: c_function_string_scalar_cfi
   owner: library
   post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({cxx_var}{cxx_member}empty()) {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {nullptr},\t 0);"
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
   - -}} else {{+
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_string_scalar_cfi_allocatable:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   destructor_name: new_string
   f_arg_decl:
   - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
@@ -828,12 +842,14 @@ c_function_string_scalar_cfi_allocatable:
   name: c_function_string_scalar_cfi_allocatable
   owner: library
   post_call:
-  - "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t\
-    \ *) 0, \t{cxx_var}.length());"
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \t{cxx_var}.length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}.data(), \t{cfi_prefix}{c_var}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);"
   - -}}
   return_type: void
+  temps:
+  - cfi
 c_function_struct:
   c_local_var: pointer
   name: c_function_struct
@@ -957,7 +973,7 @@ c_in_char_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -968,9 +984,10 @@ c_in_char_*_cfi:
   post_call:
   - ShroudStrFree({cxx_var});
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {cfi_prefix}{c_var}->elem_len,\t\
-    \ -1);"
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t -1);"
+  temps:
+  - cfi
 c_in_char_scalar:
   buf_args:
   - arg_decl
@@ -1075,7 +1092,7 @@ c_in_string_&_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
   f_arg_decl:
@@ -1085,9 +1102,11 @@ c_in_string_&_cfi:
   name: c_in_string_&_cfi
   owner: library
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);'
+  temps:
+  - cfi
 c_in_string_*:
   cxx_local_var: scalar
   name: c_in_string_*
@@ -1122,7 +1141,7 @@ c_in_string_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
   f_arg_decl:
@@ -1132,9 +1151,11 @@ c_in_string_*_cfi:
   name: c_in_string_*_cfi
   owner: library
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);'
+  temps:
+  - cfi
 c_in_string_scalar:
   buf_args:
   - arg_decl
@@ -1177,7 +1198,7 @@ c_in_string_scalar_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudLenTrim
   cxx_local_var: scalar
   f_arg_decl:
@@ -1187,9 +1208,11 @@ c_in_string_scalar_cfi:
   name: c_in_string_scalar_cfi
   owner: library
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);'
+  temps:
+  - cfi
 c_in_struct:
   cxx_local_var: pointer
   name: c_in_struct
@@ -1313,7 +1336,7 @@ c_inout_char_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
   cxx_local_var: pointer
   f_arg_decl:
@@ -1323,12 +1346,13 @@ c_inout_char_*_cfi:
   name: c_inout_char_*_cfi
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,\t {cxx_var},\t -1);"
+  - "ShroudStrCopy({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
   - ShroudStrFree({cxx_var});
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {cfi_prefix}{c_var}->elem_len,\t\
-    \ -1);"
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t -1);"
+  temps:
+  - cfi
 c_inout_native_*_cdesc:
   buf_args:
   - arg_decl
@@ -1400,7 +1424,7 @@ c_inout_string_&_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
   f_arg_decl:
@@ -1410,12 +1434,14 @@ c_inout_string_&_cfi:
   name: c_inout_string_&_cfi
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);'
+  temps:
+  - cfi
 c_inout_string_*:
   cxx_local_var: scalar
   impl_header:
@@ -1456,7 +1482,7 @@ c_inout_string_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
   f_arg_decl:
@@ -1466,12 +1492,14 @@ c_inout_string_*_cfi:
   name: c_inout_string_*_cfi
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);'
+  temps:
+  - cfi
 c_inout_struct:
   cxx_local_var: pointer
   name: c_inout_struct
@@ -1585,7 +1613,7 @@ c_mixin_arg_character_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -1594,7 +1622,9 @@ c_mixin_arg_character_cfi:
   name: c_mixin_arg_character_cfi
   owner: library
   pre_call:
-  - char *{cxx_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  temps:
+  - cfi
 c_mixin_function_buf:
   buf_args:
   - arg_decl
@@ -1613,13 +1643,15 @@ c_mixin_function_character:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   name: c_mixin_function_character
   owner: library
+  temps:
+  - cfi
 c_mixin_in_array_buf:
   buf_args:
   - arg_decl
@@ -1768,7 +1800,7 @@ c_out_char_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrBlankFill
   cxx_local_var: pointer
   f_arg_decl:
@@ -1778,9 +1810,11 @@ c_out_char_*_cfi:
   name: c_out_char_*_cfi
   owner: library
   post_call:
-  - ShroudStrBlankFill({cxx_var}, {cfi_prefix}{c_var}->elem_len);
+  - ShroudStrBlankFill({cxx_var}, {c_var_cfi}->elem_len);
   pre_call:
-  - char *{cxx_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  temps:
+  - cfi
 c_out_native_*&_buf:
   arg_call:
   - '{cxx_var}'
@@ -1895,7 +1929,7 @@ c_out_string_&_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
   f_arg_decl:
@@ -1905,11 +1939,13 @@ c_out_string_&_cfi:
   name: c_out_string_&_cfi
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - std::string {cxx_var};
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  temps:
+  - cfi
 c_out_string_*:
   cxx_local_var: scalar
   impl_header:
@@ -1950,7 +1986,7 @@ c_out_string_*_cfi:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - CFI_cdesc_t *{cfi_prefix}{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   c_helper: ShroudStrCopy
   cxx_local_var: scalar
   f_arg_decl:
@@ -1960,11 +1996,13 @@ c_out_string_*_cfi:
   name: c_out_string_*_cfi
   owner: library
   post_call:
-  - "ShroudStrCopy({c_var},\t {cfi_prefix}{c_var}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
+  - "ShroudStrCopy({c_var},\t {c_var_cfi}->elem_len,\t {cxx_var}{cxx_member}data(),\t\
     \ {cxx_var}{cxx_member}size());"
   pre_call:
   - std::string {cxx_var};
-  - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  temps:
+  - cfi
 c_out_struct:
   cxx_local_var: pointer
   name: c_out_struct
