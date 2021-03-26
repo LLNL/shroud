@@ -1968,6 +1968,10 @@ fc_statements = [
         ],
     ),
     dict(
+        # Argument to setter.
+        name="c_setter_arg",
+    ),
+    dict(
         name="f_getter",
     ),
     dict(
@@ -1983,7 +1987,7 @@ fc_statements = [
     ),
     dict(
         name="c_setter_native_scalar",
-        base="c_setter",
+        base="c_setter_arg",
         post_call=[
             "{CXX_this}->{field_name} = val;",
         ],
@@ -2005,7 +2009,7 @@ fc_statements = [
     dict(
         # Create std::string from Fortran meta data.
         name="c_setter_string_scalar_buf",
-        base="c_setter",
+        base="c_setter_arg",
         mixin=["c_mixin_in_character_buf"],
         post_call=[
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",

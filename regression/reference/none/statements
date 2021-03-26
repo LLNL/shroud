@@ -151,6 +151,7 @@ root
         *
           cdesc -- c_in/out/inout_void_*_cdesc
     setter -- c_setter
+      arg -- c_setter_arg
       native
         scalar -- c_setter_native_scalar
       string
@@ -2126,9 +2127,10 @@ c_setter:
   - // skip call c_setter
   name: c_setter
   owner: library
+c_setter_arg:
+  name: c_setter_arg
+  owner: library
 c_setter_native_scalar:
-  call:
-  - // skip call c_setter
   name: c_setter_native_scalar
   owner: library
   post_call:
@@ -2139,8 +2141,6 @@ c_setter_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  call:
-  - // skip call c_setter
   f_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
