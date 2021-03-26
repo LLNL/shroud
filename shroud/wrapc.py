@@ -1025,7 +1025,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", "function", sgroup, spointer,
-                    result_api, return_deref_attr,
+                    c_meta["api"], return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg.name

@@ -1476,17 +1476,19 @@ class GenFunctions(object):
         # decl: const char * getCharPtr2()
         new_arg = C_new.ast.result_as_arg(result_name)
         new_arg.const = False # must be writeable
-        attrs = new_arg.attrs
-#        attrs["len"] = options.C_var_len_template.format(
-#            c_var=result_name
-#        )
-        new_arg.metaattrs["deref"] = None
+#        attrs = new_arg.attrs
+#        new_arg.metaattrs["deref"] = None
         # Special case for wrapf.py to override "allocatable"
 
-#        f_meta = node.ast.metaattrs  # Fortran function attributes
-#        f_meta["deref"] = "result-as-arg"
+        # Special case for wrapf.py to override "allocatable"
+        node.ast.metaattrs["deref"] = None
+        new_arg.metaattrs["deref"] = "result"
+        new_arg.metaattrs["is_result"] = True
+        C_new.ast.metaattrs["intent"] = "subroutine"
+        C_new.ast.metaattrs["deref"] = None
 
         node.wrap.fortran = False
+#        node.wrap.c = False
 
         return
         F_new = self.result_as_arg(node, C_new)
@@ -1625,6 +1627,8 @@ class GenFunctions(object):
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
         else:
+            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
+                node.wrap.c = False
             # Fortran function may call C subroutine if string/vector result
             # Fortran function calls bufferify function.
             node._PTR_F_C_index = C_new._function_index

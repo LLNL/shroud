@@ -1164,6 +1164,7 @@ rv = .false.
             stmts_comments.append(
                 "! ----------------------------------------")
             c_decl = ast.gen_decl(params=None)
+#            stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
                 stmts_comments, ast, statements.compute_name(c_stmts),
@@ -1218,7 +1219,7 @@ rv = .false.
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
                 c_stmts = ["c", "function", sgroup, spointer,
-                           result_api, deref_attr]
+                           meta["api"], deref_attr]
             else:
                 c_stmts = ["c", intent, sgroup, spointer,
                            meta["api"], deref_attr, cdesc]
@@ -1632,6 +1633,7 @@ rv = .false.
             stmts_comments.append(
                 "! ----------------------------------------")
             f_decl = ast.gen_decl(params=None)
+#            stmts_comments.append("! Index:     {}".format(node._function_index))
             stmts_comments.append("! Function:  " + f_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
@@ -1741,21 +1743,20 @@ rv = .false.
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
+            c_api = c_meta["api"]
             c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", "function", c_sgroup, c_spointer, c_result_api, c_deref_attr]
-                f_stmts = ["f", "function", f_sgroup, f_spointer, c_result_api, f_deref_attr]
-
+                c_stmts = ["c", "function", c_sgroup, c_spointer, c_api, c_deref_attr]
+                f_stmts = ["f", "function", f_sgroup, f_spointer, c_api, f_deref_attr]
             else:
                 # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                sapi = c_meta["api"]
-                c_stmts = ["c", intent, c_sgroup, c_spointer, sapi, f_deref_attr, cdesc]
-                f_stmts = ["f", intent, f_sgroup, f_spointer, sapi, f_deref_attr, cdesc]
+                c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr, cdesc]
+                f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
