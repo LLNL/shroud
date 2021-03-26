@@ -1484,19 +1484,21 @@ rv = .false.
         """
         c_attrs = c_ast.attrs
         c_meta = c_ast.metaattrs
-        statements.assign_buf_variable_names(c_attrs, fmt)
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
             pass
+            rootname = fmt.C_result
         elif subprogram == "function":
             # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
+            rootname = fmt.C_result
         else:
             fmt.f_intent = c_meta["intent"].upper()
             if fmt.f_intent == "SETTER":
                 fmt.f_intent = "IN"
             ntypemap = f_ast.typemap
+            rootname = c_ast.name
         if ntypemap.sgroup == "vector":
             # If a vector, use its type.
             ntypemap = c_ast.template_arguments[0].typemap
@@ -1507,6 +1509,7 @@ rv = .false.
             if ntypemap.f_kind:
                 fmt.f_kind = ntypemap.f_kind
             self.set_fmt_fields_iface(c_ast, fmt)
+        statements.assign_buf_variable_names(c_attrs, c_meta, fcn.options, fmt, rootname)
                 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

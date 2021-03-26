@@ -228,8 +228,8 @@ void OWN_return_int_ptr_dim_default_bufferify(
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+dimension(len)+owner(caller)
-// Attrs:     +deref(pointer)+intent(function)
+// Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
+// Attrs:     +capsule+deref(pointer)+intent(function)
 // Requested: c_function_native_*_pointer
 // Match:     c_function_native_*
 // ----------------------------------------
@@ -246,8 +246,8 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-// Attrs:     +deref(pointer)+intent(function)
+// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +capsule+deref(pointer)+intent(function)
 // Requested: c_function_native_*_pointer
 // Match:     c_function_native_*
 // ----------------------------------------
@@ -264,8 +264,8 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
+// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
 // Requested: c_function_native_*_buf_pointer
 // Match:     c_function_native_*_buf
 // ----------------------------------------
@@ -308,8 +308,8 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
-// Attrs:     +deref(pointer)+intent(function)
+// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Attrs:     +capsule+deref(pointer)+intent(function)
 // Requested: c_function_native_*_pointer
 // Match:     c_function_native_*
 // ----------------------------------------
@@ -326,8 +326,8 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
+// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
 // Requested: c_function_native_*_buf_pointer
 // Match:     c_function_native_*_buf
 // ----------------------------------------

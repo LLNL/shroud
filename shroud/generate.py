@@ -1992,11 +1992,8 @@ class Preprocess(object):
         attrs = node.ast.attrs
         meta = node.ast.metaattrs
         if attrs["owner"] == "caller" and \
-           meta["deref"] == "pointer" and \
-           attrs["capsule"] is None:
-            attrs["capsule"] = options.C_var_capsule_template.format(
-                c_var=node.fmtdict.C_result
-            )
+           meta["deref"] == "pointer":
+            meta["capsule"] = True
 
         for arg in node.ast.params:
             statements.set_buf_variable_names(options, arg)

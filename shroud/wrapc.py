@@ -726,8 +726,10 @@ class Wrapc(util.WrapperMixin):
             is_func  - True if function.
         """
 
-        if not is_func:
-            fmt.c_var = ast.name
+        if is_func:
+            rootname = fmt.C_result
+        else:
+            rootname = ast.name
             if ast.const:
                 fmt.c_const = "const "
             else:
@@ -739,7 +741,7 @@ class Wrapc(util.WrapperMixin):
             fmt.idtor = "0"
         
         attrs = ast.attrs
-        statements.assign_buf_variable_names(attrs, fmt)
+        statements.assign_buf_variable_names(attrs, ast.metaattrs, fcn.options, fmt, rootname)
         
         dim = attrs["dimension"]
         if dim:

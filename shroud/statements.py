@@ -69,41 +69,30 @@ def lookup_local_stmts(path, parent, node):
 def set_buf_variable_names(options, arg):
     """Set attribute name from option template.
     XXX - make sure they don't conflict with other names.
-    XXX = move capsule, context, cdesc to metaattrs
     """
     c_var = arg.name
     attrs = arg.attrs
-    meta = arg.metaattrs
     
-    if attrs["capsule"] is True:
-        attrs["capsule"] = options.C_var_capsule_template.format(
-            c_var=c_var
-        )
-    if attrs["owner"] == "caller" and \
-       meta["deref"] == "pointer" \
-              and attrs["capsule"] is None:
-        attrs["capsule"] = options.C_var_capsule_template.format(
-            c_var=c_var
-        )
     if attrs["cdesc"] is True:
         # XXX - not sure about future of cdesc and difference with context.
         attrs["context"] = options.C_var_context_template.format(
             c_var=c_var
         )
 
-def assign_buf_variable_names(attrs, fmt):
+def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     """
     Transfer names from attribute to fmt.
     """
-    if attrs["capsule"]:
-        fmt.c_var_capsule = attrs["capsule"]
+    # XXX - make sure they don't conflict with other names.
+    if meta["capsule"]:
+        fmt.c_var_capsule = options.C_var_capsule_template.format(c_var=rootname)
     if attrs["len"]:
         fmt.c_var_len = attrs["len"]
     if attrs["len_trim"]:
         fmt.c_var_trim = attrs["len_trim"]
     if attrs["size"]:
         fmt.c_var_size = attrs["size"]
-            
+
 
 def compute_return_prefix(arg, local_var):
     """Compute how to access variable: dereference, address, as-is"""
