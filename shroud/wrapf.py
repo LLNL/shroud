@@ -1020,65 +1020,65 @@ rv = .false.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
         """
+        if not buf_args:
+            return
+        assert len(buf_args) == 1
+        buf_arg = buf_args[0]
         attrs = ast.attrs
 
-        # Add implied buffer arguments to prototype
-        for buf_arg in buf_args:
-            if buf_arg == "arg":
-                arg_c_names.append(ast.name)
-                # argument declarations
-                if attrs["assumedtype"]:
-                    if attrs["rank"]:
-                        arg_c_decl.append(
-                            "type(*) :: {}(*)".format(ast.name)
-                        )
-                    elif attrs["dimension"]:
-                        arg_c_decl.append(
-                            "type(*) :: {}({})".format(
-                                ast.name, attrs["dimension"])
-                        )
-                    else:
-                        arg_c_decl.append(
-                            "type(*) :: {}".format(ast.name)
-                        )
-                elif ast.is_function_pointer():
-                    absiface = self.add_abstract_interface(node, ast, fileinfo)
+        if buf_arg == "arg":
+            arg_c_names.append(ast.name)
+            # argument declarations
+            if attrs["assumedtype"]:
+                if attrs["rank"]:
                     arg_c_decl.append(
-                        "procedure({}) :: {}".format(absiface, ast.name)
+                        "type(*) :: {}(*)".format(ast.name)
                     )
-                    imports[absiface] = True
-                elif ast.is_array() > 1:
-                    # Treat too many pointers as a type(C_PTR)
-                    # and let the wrapper sort it out.
-                    # 'char **' uses c_char_**_in as a special case.
-                    intent = ast.metaattrs["intent"].upper()
+                elif attrs["dimension"]:
                     arg_c_decl.append(
-                        "type(C_PTR), intent({}) :: {}".format(
-                            intent, fmt.F_C_var))
-                    self.set_f_module(modules, "iso_c_binding", "C_PTR")
-                else:
-                    arg_c_decl.append(ast.bind_c())
-                    arg_typemap = ast.typemap
-                    if ast.template_arguments:
-                        # If a template, use its type
-                        arg_typemap = ast.template_arguments[0].typemap
-                    self.update_f_module(
-                        modules, imports,
-                        arg_typemap.f_c_module or arg_typemap.f_module
+                        "type(*) :: {}({})".format(
+                            ast.name, attrs["dimension"])
                     )
-                continue
-            elif buf_arg == "arg_decl":
-                # Use explicit declaration from CStmt.
-                if intent_blk.f_c_arg_names:
-                    for name in intent_blk.f_c_arg_names:
-                        append_format(arg_c_names, name, fmt)
                 else:
-                    arg_c_names.append(fmt.F_C_var)
-                for arg in intent_blk.f_arg_decl:
-                    append_format(arg_c_decl, arg, fmt)
-                self.add_module_from_stmts(intent_blk, modules, imports, fmt)
-                continue
-
+                    arg_c_decl.append(
+                        "type(*) :: {}".format(ast.name)
+                    )
+            elif ast.is_function_pointer():
+                absiface = self.add_abstract_interface(node, ast, fileinfo)
+                arg_c_decl.append(
+                    "procedure({}) :: {}".format(absiface, ast.name)
+                )
+                imports[absiface] = True
+            elif ast.is_array() > 1:
+                # Treat too many pointers as a type(C_PTR)
+                # and let the wrapper sort it out.
+                # 'char **' uses c_char_**_in as a special case.
+                intent = ast.metaattrs["intent"].upper()
+                arg_c_decl.append(
+                    "type(C_PTR), intent({}) :: {}".format(
+                        intent, fmt.F_C_var))
+                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+            else:
+                arg_c_decl.append(ast.bind_c())
+                arg_typemap = ast.typemap
+                if ast.template_arguments:
+                    # If a template, use its type
+                    arg_typemap = ast.template_arguments[0].typemap
+                self.update_f_module(
+                    modules, imports,
+                    arg_typemap.f_c_module or arg_typemap.f_module
+                )
+        elif buf_arg == "arg_decl":
+            # Use explicit declaration from CStmt.
+            if intent_blk.f_c_arg_names:
+                for name in intent_blk.f_c_arg_names:
+                    append_format(arg_c_names, name, fmt)
+            else:
+                arg_c_names.append(fmt.F_C_var)
+            for arg in intent_blk.f_arg_decl:
+                append_format(arg_c_decl, arg, fmt)
+            self.add_module_from_stmts(intent_blk, modules, imports, fmt)
+        else:
             raise RuntimeError(
                 "build_arg_list_interface: unhandled case {}".format(
                     buf_arg
@@ -1368,27 +1368,26 @@ rv = .false.
         if f_intent_blk.arg_c_call:
             # Already added by add_stmt_declaration
             return need_wrapper
+        if not buf_args:
+            return need_wrapper
+        assert len(buf_args) == 1
+        buf_arg = buf_args[0]
 
-        c_attrs = c_ast.attrs
-
-        # Add any buffer arguments
-        for buf_arg in buf_args:
-            if buf_arg in ["arg", "arg_decl"]:
-                # Attributes   None=skip, True=use default, else use value
-                if arg_typemap.f_to_c:
-                    need_wrapper = True
-                    append_format(arg_c_call, arg_typemap.f_to_c, fmt)
-                # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
-                elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
-                    # Used with fortran_generic
-                    need_wrapper = True
-                    append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                    self.update_f_module(modules, imports,
-                                         arg_typemap.f_module)
-                else:
-                    arg_c_call.append(fmt.c_var)
-                continue
-
+        if buf_arg in ["arg", "arg_decl"]:
+            # Attributes   None=skip, True=use default, else use value
+            if arg_typemap.f_to_c:
+                need_wrapper = True
+                append_format(arg_c_call, arg_typemap.f_to_c, fmt)
+            # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
+            elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
+                # Used with fortran_generic
+                need_wrapper = True
+                append_format(arg_c_call, arg_typemap.f_cast, fmt)
+                self.update_f_module(modules, imports,
+                                     arg_typemap.f_module)
+            else:
+                arg_c_call.append(fmt.c_var)
+        else:
             raise RuntimeError(
                 "build_arg_list_impl: unhandled case {}".format(buf_arg)
             )

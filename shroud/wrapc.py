@@ -663,17 +663,17 @@ class Wrapc(util.WrapperMixin):
         A wrapper will be needed if there is meta data.
         i.e. No wrapper if the C function can be called directly.
         """
-        attrs = ast.attrs
-        for buf_arg in buf_args:
-            if buf_arg == "arg":
-                # vector<int> -> int *
-                proto_list.append(ast.gen_arg_as_c(continuation=True))
-                continue
-            elif buf_arg == "arg_decl":
-                for arg in intent_blk.c_arg_decl:
-                    append_format(proto_list, arg, fmt)
-                continue
-
+        if not buf_args:
+            return
+        assert len(buf_args) == 1
+        buf_arg = buf_args[0]
+        if buf_arg == "arg":
+            # vector<int> -> int *
+            proto_list.append(ast.gen_arg_as_c(continuation=True))
+        elif buf_arg == "arg_decl":
+            for arg in intent_blk.c_arg_decl:
+                append_format(proto_list, arg, fmt)
+        else:
             raise RuntimeError(
                 "wrap_function: unhandled case {}".format(buf_arg)
             )
