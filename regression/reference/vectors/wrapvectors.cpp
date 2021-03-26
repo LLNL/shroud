@@ -301,14 +301,14 @@ int VEC_vector_string_count_bufferify(const char *arg,
     // splicer begin function.vector_string_count_bufferify
     std::vector<std::string> SHCXX_arg;
     {
-        const char * SHT_s = arg;
+        const char * SHC_arg_s = arg;
         std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = SHT_arg_size;
-        for(; SHT_i < SHT_n; SHT_i++) {
-            SHCXX_arg.push_back(std::string(SHT_s,
-                ShroudLenTrim(SHT_s, SHT_arg_len)));
-            SHT_s += SHT_arg_len;
+            SHC_arg_i = 0,
+            SHC_arg_n = SHT_arg_size;
+        for(; SHC_arg_i < SHC_arg_n; SHC_arg_i++) {
+            SHCXX_arg.push_back(std::string(SHC_arg_s,
+                ShroudLenTrim(SHC_arg_s, SHT_arg_len)));
+            SHC_arg_s += SHT_arg_len;
         }
     }
     int SHC_rv = vector_string_count(SHCXX_arg);

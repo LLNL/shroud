@@ -1298,8 +1298,8 @@ int STR_accept_string_instance(char *arg1)
 int STR_accept_string_instance_bufferify(char *arg1, int SHT_arg1_len)
 {
     // splicer begin function.accept_string_instance_bufferify
-    int SHT_trim = ShroudLenTrim(arg1, SHT_arg1_len);
-    std::string SHCXX_arg1(arg1, SHT_trim);
+    int SHC_arg1_trim = ShroudLenTrim(arg1, SHT_arg1_len);
+    std::string SHCXX_arg1(arg1, SHC_arg1_trim);
     int SHC_rv = acceptStringInstance(SHCXX_arg1);
     return SHC_rv;
     // splicer end function.accept_string_instance_bufferify

@@ -6376,6 +6376,7 @@
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_member": ".",
                             "c_type": "char",
                             "c_var": "arg1",
@@ -6393,6 +6394,7 @@
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
+                            "c_local_trim": "SHC_arg1_trim",
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "f_intent": "IN",

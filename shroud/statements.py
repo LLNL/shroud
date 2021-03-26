@@ -448,6 +448,7 @@ CStmts = util.Scope(None,
     f_import=None,
     ntemps=0,
     temps=None,
+    local=None,
 )
 
 # Fortran Statements.
@@ -467,6 +468,7 @@ FStmts = util.Scope(None,
     result=None,  # name of result variable
     ntemps=0,
     temps=None,
+    local=None,
 )
 
 # Define class for nodes in tree based on their first entry.
@@ -1416,12 +1418,13 @@ fc_statements = [
         mixin=["c_mixin_in_character_buf"],
         cxx_local_var="scalar",
         pre_call=[
-            "int {c_temp}trim = ShroudLenTrim({c_var}, {c_var_len});",
-            "std::string {cxx_var}({c_var}, {c_temp}trim);",
+            "int {c_local_trim} = ShroudLenTrim({c_var}, {c_var_len});",
+            "std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         call=[
             "{cxx_var}",
         ],
+        local=["trim"],
     ),
     
     # Uses a two part call to copy results of std::string into a
@@ -1626,17 +1629,18 @@ fc_statements = [
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * {c_temp}s = {c_var};",
+            "{c_const}char * {c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
-            "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
-            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back(\t"
-            "std::string({c_temp}s,\tShroudLenTrim({c_temp}s, {c_var_len})));",
-            "{c_temp}s += {c_var_len};",
+            "std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));",
+            "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
         ],
+        local=["i", "n", "s"],
     ),
     # XXX untested [cf]_out_vector_buf_string
     dict(
@@ -1651,20 +1655,21 @@ fc_statements = [
         pre_call=["{c_const}std::vector<{cxx_T}> {cxx_var};"],
         post_call=[
             "{{+",
-            "char * BBB = {c_var};",
+            "char * {c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
-            "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
-            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "ShroudStrCopy("
-            "BBB, {c_var_len},"
-            "\t {cxx_var}[{c_temp}i].data(),"
-            "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {c_var_len};",
+            "{c_local_s}, {c_var_len},"
+            "\t {cxx_var}[{c_local_i}].data(),"
+            "\t {cxx_var}[{c_local_i}].size());",
+            "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
         ],
+        local=["i", "n", "s"],
     ),
     # XXX untested [cf]_inout_vector_buf_string
     dict(
@@ -1678,32 +1683,33 @@ fc_statements = [
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * BBB = {c_var};",
+            "{c_const}char * {c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
-            "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
-            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
             "{cxx_var}.push_back"
-            "(std::string(BBB,\tShroudLenTrim(BBB, {c_var_len})));",
-            "BBB += {c_var_len};",
+            "(std::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));",
+            "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
         ],
         post_call=[
             "{{+",
-            "char * BBB = {c_var};",
+            "char * {c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
-            "+{c_temp}i = 0,",
-            "{c_temp}n = {c_var_size};",
-            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-            "ShroudStrCopy(BBB, {c_var_len},"
-            "\t {cxx_var}[{c_temp}i].data(),"
-            "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {c_var_len};",
+            "+{c_local_i} = 0,",
+            "{c_local_n} = {c_var_size};",
+            "-{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
+            "for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
+            "ShroudStrCopy({c_local_s}, {c_var_len},"
+            "\t {cxx_var}[{c_local_i}].data(),"
+            "\t {cxx_var}[{c_local_i}].size());",
+            "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}",
         ],
+        local=["i", "n", "s"],
     ),
     #                    dict(
     #                        name="c_function_vector_buf_string",
@@ -2207,9 +2213,10 @@ fc_statements = [
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
+            "size_t {c_local_trim} = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
+        local=["trim"],
     ),
     dict(
         # c_out_string_*_cfi
@@ -2244,8 +2251,8 @@ fc_statements = [
         pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
+            "size_t {c_local_trim} = ShroudLenTrim({c_var}, {c_var_cfi}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});",
         ],
         post_call=[
             "ShroudStrCopy({c_var},"
@@ -2253,6 +2260,7 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
+        local=["trim"],
     ),
     dict(
         # c_function_string_scalar_cfi
