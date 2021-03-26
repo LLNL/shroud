@@ -427,7 +427,9 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "c_var_len": "worklen",
+                            "c_var_trim": "worktrim"
                         },
                         "fmtpy": {
                             "array_size": "1",

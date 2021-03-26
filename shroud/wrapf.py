@@ -1130,7 +1130,7 @@ rv = .false.
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
-            self.set_fmt_fields_iface(ast, fmt_result)
+            self.set_fmt_fields_iface(node, ast, fmt_result, fmt_func.F_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1205,7 +1205,7 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
-            self.set_fmt_fields_iface(arg, fmt_arg)
+            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name)
             
             attrs = arg.attrs
             meta = arg.metaattrs
@@ -1450,15 +1450,17 @@ rv = .false.
         need_wrapper = need_wrapper or intent_blk.need_wrapper
         return need_wrapper
 
-    def set_fmt_fields_iface(self, ast, fmt):
+    def set_fmt_fields_iface(self, fcn, ast, fmt, rootname):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
 
         Parameters
         ----------
-        ast : ast.Declaration
+        fcn : ast.FunctionNode
+        ast : declast.Declaration
         fmt : util.Scope
+        rootname : str
         """
         ntypemap = ast.typemap
         if ntypemap.f_capsule_data_type:
@@ -1466,6 +1468,7 @@ rv = .false.
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
         if f_c_module_line:
             fmt.f_c_module_line = f_c_module_line
+        statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
                        subprogram=None,
@@ -1508,8 +1511,7 @@ rv = .false.
             fmt.sh_type = ntypemap.sh_type
             if ntypemap.f_kind:
                 fmt.f_kind = ntypemap.f_kind
-            self.set_fmt_fields_iface(c_ast, fmt)
-        statements.assign_buf_variable_names(c_attrs, c_meta, fcn.options, fmt, rootname)
+            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname)
                 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

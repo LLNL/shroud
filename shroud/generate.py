@@ -1984,19 +1984,14 @@ class Preprocess(object):
             cls -
             node -
         """
-        options = self.newlibrary.options
-        # XXX - not sure if result uses any of these attributes.
-#        typemap.set_buf_variable_names(
-#            options, node.ast.attrs, "aaa")
-
         attrs = node.ast.attrs
         meta = node.ast.metaattrs
         if attrs["owner"] == "caller" and \
            meta["deref"] == "pointer":
             meta["capsule"] = True
 
-        for arg in node.ast.params:
-            statements.set_buf_variable_names(options, arg)
+#        for arg in node.ast.params:
+#   XXX - check for capsule on stuff like 'int **var +intent(out)+dimension(10)'
 
 
 def generate_functions(library, config):

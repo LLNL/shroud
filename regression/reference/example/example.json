@@ -2051,7 +2051,8 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
-                                                    "c_var": "name"
+                                                    "c_var": "name",
+                                                    "c_var_trim": "trim_name"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -2574,6 +2575,7 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "f_intent": "OUT",
                                                 "f_type": "character(*)",
                                                 "temp0": "SHT_rv_temp0"

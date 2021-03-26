@@ -27,7 +27,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Darg",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -70,6 +69,7 @@
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg",
+                            "c_var_cdesc": "Darg",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -78,13 +78,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*_cdesc",
-                            "stmt1": "c_in_native_*_cdesc",
-                            "temp0": "arg_temp0"
+                            "stmt1": "c_in_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "c_var_cdesc": "Darg",
                             "f_assumed_shape": "(:,:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -107,9 +107,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "CDE_rank2_in",
-                    "C_prototype": "CDE_SHROUD_array *arg_temp0",
+                    "C_prototype": "CDE_SHROUD_array *Darg",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg_temp0",
+                    "F_C_arguments": "Darg",
                     "F_C_call": "c_rank2_in",
                     "F_C_name": "c_rank2_in",
                     "F_C_subprogram": "subroutine",
@@ -162,7 +162,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Dvalue",
                                 "intent": "out",
                                 "rank": 0,
                                 "value": true
@@ -220,7 +219,6 @@
                             {
                                 "attrs": {
                                     "cdesc": true,
-                                    "context": "Dvalue",
                                     "intent": "out",
                                     "rank": 0
                                 },
@@ -269,7 +267,6 @@
                             {
                                 "attrs": {
                                     "cdesc": true,
-                                    "context": "Dvalue",
                                     "intent": "out",
                                     "rank": 0
                                 },
@@ -297,21 +294,21 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "switch(value_temp0->type) {",
+                        "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(const_cast<void *>(value_temp0->addr.base)) = getData<int>();",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(const_cast<void *>(value_temp0->addr.base)) = getData<long>();",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(const_cast<void *>(value_temp0->addr.base)) = getData<float>();",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(const_cast<void *>(value_temp0->addr.base)) = getData<double>();",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
                         "  break;",
                         "}",
                         "// default:",
@@ -353,6 +350,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "value",
+                            "c_var_cdesc": "Dvalue",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "value",
@@ -361,22 +359,21 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_out_void_*_cdesc",
-                            "stmt1": "c_out_void_*_cdesc",
-                            "temp0": "value_temp0"
+                            "stmt1": "c_out_void_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
                             "c_var": "value",
-                            "temp0": "value_temp0"
+                            "c_var_cdesc": "Dvalue"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1",
-                    "C_prototype": "char * name,\t CDE_SHROUD_array *value_temp0",
+                    "C_prototype": "char * name,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t value_temp0",
+                    "F_C_arguments": "name,\t Dvalue",
                     "F_C_name": "c_get_scalar1",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
@@ -428,7 +425,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Dvalue",
                                 "intent": "out",
                                 "rank": 0
                             },
@@ -462,21 +458,21 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "switch(value_temp0->type) {",
+                        "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(const_cast<void *>(value_temp0->addr.base)) = getData<int>();",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(const_cast<void *>(value_temp0->addr.base)) = getData<long>();",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(const_cast<void *>(value_temp0->addr.base)) = getData<float>();",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(const_cast<void *>(value_temp0->addr.base)) = getData<double>();",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
                         "  break;",
                         "}",
                         "// default:",
@@ -542,7 +538,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Dvalue",
                                 "intent": "out",
                                 "rank": 0
                             },
@@ -576,21 +571,21 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "switch(value_temp0->type) {",
+                        "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(const_cast<void *>(value_temp0->addr.base)) = getData<int>();",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(const_cast<void *>(value_temp0->addr.base)) = getData<long>();",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(const_cast<void *>(value_temp0->addr.base)) = getData<float>();",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(const_cast<void *>(value_temp0->addr.base)) = getData<double>();",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
                         "  break;",
                         "}",
                         "// default:",
@@ -645,6 +640,7 @@
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "value",
+                            "c_var_cdesc": "Dvalue",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "value",
@@ -653,13 +649,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_out_native_*_cdesc",
-                            "stmt1": "c_out_native_*_cdesc",
-                            "temp0": "value_temp0"
+                            "stmt1": "c_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
+                            "c_var_cdesc": "Dvalue",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -680,9 +676,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1_0_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *value_temp0",
+                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0,\t value_temp0",
+                    "F_C_arguments": "name,\t name_temp0,\t Dvalue",
                     "F_C_name": "c_get_scalar1_0_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
@@ -735,7 +731,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Dvalue",
                                 "intent": "out",
                                 "rank": 0
                             },
@@ -769,21 +764,21 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "switch(value_temp0->type) {",
+                        "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(const_cast<void *>(value_temp0->addr.base)) = getData<int>();",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(const_cast<void *>(value_temp0->addr.base)) = getData<long>();",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(const_cast<void *>(value_temp0->addr.base)) = getData<float>();",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(const_cast<void *>(value_temp0->addr.base)) = getData<double>();",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
                         "  break;",
                         "}",
                         "// default:",
@@ -849,7 +844,6 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "context": "Dvalue",
                                 "intent": "out",
                                 "rank": 0
                             },
@@ -883,21 +877,21 @@
                 "options": {},
                 "splicer": {
                     "c": [
-                        "switch(value_temp0->type) {",
+                        "switch(Dvalue->type) {",
                         "case SH_TYPE_INT: {",
-                        "  *static_cast<int *>(const_cast<void *>(value_temp0->addr.base)) = getData<int>();",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_LONG: {",
-                        "  *static_cast<long *>(const_cast<void *>(value_temp0->addr.base)) = getData<long>();",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_FLOAT: {",
-                        "  *static_cast<float *>(const_cast<void *>(value_temp0->addr.base)) = getData<float>();",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
                         "  break;",
                         "}",
                         "case SH_TYPE_DOUBLE: {",
-                        "  *static_cast<double *>(const_cast<void *>(value_temp0->addr.base)) = getData<double>();",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
                         "  break;",
                         "}",
                         "// default:",
@@ -952,6 +946,7 @@
                             "c_member": "->",
                             "c_type": "double",
                             "c_var": "value",
+                            "c_var_cdesc": "Dvalue",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "value",
@@ -960,13 +955,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "c_out_native_*_cdesc",
-                            "stmt1": "c_out_native_*_cdesc",
-                            "temp0": "value_temp0"
+                            "stmt1": "c_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
+                            "c_var_cdesc": "Dvalue",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
@@ -987,9 +982,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1_1_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *value_temp0",
+                    "C_prototype": "char *name,\t int name_temp0,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0,\t value_temp0",
+                    "F_C_arguments": "name,\t name_temp0,\t Dvalue",
                     "F_C_name": "c_get_scalar1_1_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",

@@ -1844,6 +1844,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }
@@ -2005,7 +2006,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_capsule": "Crv",
+                        "c_var_capsule": "CSHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
                         "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
@@ -2186,6 +2187,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)",
                         "temp0": "SHT_rv_temp0"
@@ -2517,7 +2519,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_capsule": "Crv",
+                        "c_var_capsule": "CSHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
                         "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
@@ -2697,6 +2699,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)",
                         "temp0": "SHT_rv_temp0"

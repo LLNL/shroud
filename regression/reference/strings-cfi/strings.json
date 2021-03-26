@@ -1286,6 +1286,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": "30",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -1967,6 +1968,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2740,6 +2742,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3221,6 +3224,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3608,6 +3612,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -6745,7 +6750,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "c_var_trim": "AAlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6972,7 +6978,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "c_var_len": "AAtrim"
                         }
                     }
                 },

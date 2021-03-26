@@ -85,14 +85,14 @@ module cdesc_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         ! ----------------------------------------
-        ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
+        ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
         ! Exact:     c_in_native_*_cdesc
-        subroutine c_rank2_in(arg_temp0) &
+        subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: CDE_SHROUD_array
             implicit none
-            type(CDE_SHROUD_array), intent(OUT) :: arg_temp0
+            type(CDE_SHROUD_array), intent(OUT) :: Darg
         end subroutine c_rank2_in
 
         ! ----------------------------------------
@@ -105,16 +105,16 @@ module cdesc_mod
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_&
         ! ----------------------------------------
-        ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+        ! Argument:  void * value +cdesc+intent(out)+rank(0)+value
         ! Attrs:     +intent(out)
         ! Exact:     c_out_void_*_cdesc
-        subroutine c_get_scalar1(name, value_temp0) &
+        subroutine c_get_scalar1(name, Dvalue) &
                 bind(C, name="CDE_get_scalar1")
             use iso_c_binding, only : C_CHAR
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(CDE_SHROUD_array), intent(OUT) :: value_temp0
+            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
         end subroutine c_get_scalar1
 
         ! ----------------------------------------
@@ -127,18 +127,17 @@ module cdesc_mod
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
-        ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+        ! Argument:  int * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_0_bufferify(name, name_temp0, &
-                value_temp0) &
+        subroutine c_get_scalar1_0_bufferify(name, name_temp0, Dvalue) &
                 bind(C, name="CDE_get_scalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: name_temp0
-            type(CDE_SHROUD_array), intent(OUT) :: value_temp0
+            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
         end subroutine c_get_scalar1_0_bufferify
 
         ! ----------------------------------------
@@ -151,18 +150,17 @@ module cdesc_mod
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
-        ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+        ! Argument:  double * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_1_bufferify(name, name_temp0, &
-                value_temp0) &
+        subroutine c_get_scalar1_1_bufferify(name, name_temp0, Dvalue) &
                 bind(C, name="CDE_get_scalar1_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: name_temp0
-            type(CDE_SHROUD_array), intent(OUT) :: value_temp0
+            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
         end subroutine c_get_scalar1_1_bufferify
 
         ! ----------------------------------------
@@ -214,7 +212,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
+    ! Argument:  int * arg +cdesc+intent(in)+rank(2)
     ! Attrs:     +intent(in)
     ! Exact:     f_in_native_*_cdesc
     ! Attrs:     +intent(in)
@@ -248,7 +246,7 @@ contains
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+    ! Argument:  int * value +cdesc+intent(out)+rank(0)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +intent(out)
@@ -293,7 +291,7 @@ contains
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
-    ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+    ! Argument:  double * value +cdesc+intent(out)+rank(0)
     ! Attrs:     +intent(out)
     ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +intent(out)

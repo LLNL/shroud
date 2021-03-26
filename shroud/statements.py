@@ -66,18 +66,6 @@ def lookup_local_stmts(path, parent, node):
             return blk
     return parent
 
-def set_buf_variable_names(options, arg):
-    """Set attribute name from option template.
-    XXX - make sure they don't conflict with other names.
-    """
-    c_var = arg.name
-    attrs = arg.attrs
-    
-    if attrs["cdesc"] is True:
-        # XXX - not sure about future of cdesc and difference with context.
-        attrs["context"] = options.C_var_context_template.format(
-            c_var=c_var
-        )
 
 def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     """
@@ -85,7 +73,11 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     """
     # XXX - make sure they don't conflict with other names.
     if meta["capsule"]:
-        fmt.c_var_capsule = options.C_var_capsule_template.format(c_var=rootname)
+        fmt.c_var_capsule = options.C_var_capsule_template.format(
+            c_var=rootname)
+    if attrs["cdesc"]:
+        fmt.c_var_cdesc = options.C_var_context_template.format(
+            c_var=rootname)
     if attrs["len"]:
         fmt.c_var_len = attrs["len"]
     if attrs["len_trim"]:
@@ -798,7 +790,7 @@ fc_statements = [
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         # XXX - Need to have 'buf' in name to use c_f_pointer
 #        post_call=[
-#            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
+#            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
 #        ],
     ),
     dict(
@@ -835,18 +827,28 @@ fc_statements = [
         # c_inout_native_*_cdesc
         name="c_in/out/inout_native_*_cdesc",
         mixin=["c_mixin_out_array_buf"],
+
+        # XXX - replace pending more use of c_var_cdesc
+        c_arg_decl=[
+            "{C_array_type} *{c_var_cdesc}",
+        ],
+        f_c_arg_names=["{c_var_cdesc}"],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
+        ],
+        ntemps=0,
+        
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
-            "{cxx_type} * {c_var} = {temp0}->addr.base;",
+            "{cxx_type} * {c_var} = {c_var_cdesc}->addr.base;",
         ],
         cxx_pre_call=[
 #            "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-#            "({temp0}->addr.base);",
+#            "({c_var_cdesc}->addr.base);",
             "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t"
-            "(const_cast<void *>({temp0}->addr.base));",
+            "(const_cast<void *>({c_var_cdesc}->addr.base));",
         ],
     ),
-#    f_native_pointer_cdesc=dict(
     dict(
         # f_in_native_*_cdesc
         # f_out_native_*_cdesc
@@ -859,7 +861,6 @@ fc_statements = [
         ],
         f_helper="ShroudTypeDefines array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
-#        initialize=[
         pre_call=[
             "{temp0}%base_addr = C_LOC({f_var})",
             "{temp0}%type = {sh_type}",
@@ -2338,7 +2339,7 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
 #        post_call=[
-#            "ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});",
+#            "ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});",
 #        ],
     ),
     

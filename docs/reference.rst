@@ -871,18 +871,6 @@ F_result
     It must not be the same as any of the routines arguments.
     It defaults to *SHT_rv*  (Shroud temporary return value).
 
-F_result_ptr
-    The name of a variable in the Fortran wrapper which holds the
-    result of the C wrapper for functions which return a class instance.
-    It will be type ``type(C_PTR)``.
-
-..  XXX -  useful in wrappers to check for NULL pointers which may indicate error
-
-F_result_capsule
-    The name of the additional argument in the interface for functions
-    which return a class instance.
-    It will be type *F_capsule_data_type*.
-
 F_string_result_as_arg
     The name of the output argument.
     Function which return a ``char *`` will instead be converted to a
