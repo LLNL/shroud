@@ -16,12 +16,11 @@
 void test_class(void)
 {
   int flag;
-  CLA_Class1 c1_buf, *c1;
+  CLA_Class1 c1;
 
-  c1 = CLA_Class1_ctor_default(&c1_buf);
-  assert(c1 == &c1_buf && "CLA_class1_new_default");
+  CLA_Class1_ctor_default(&c1);
 
-  flag = CLA_Class1_method1(c1);
+  flag = CLA_Class1_method1(&c1);
   assert(flag == 0 && "CLA_class1_method1");
 
 }

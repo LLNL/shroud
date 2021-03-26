@@ -55,14 +55,13 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_ctor_0",
-                                            "C_prototype": "AA_example_nested_ExClass1 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass1 *",
-                                            "F_C_arguments": "SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "SHT_rv",
                                             "F_C_call": "c_exclass1_ctor_0",
                                             "F_C_name": "c_exclass1_ctor_0",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
                                             "F_arguments": "",
                                             "F_name_function": "ctor_0",
@@ -91,7 +90,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
@@ -99,6 +97,8 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
@@ -203,6 +203,7 @@
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "char",
                                                     "c_var": "name",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -211,7 +212,6 @@
                                                     "cxx_var": "SHCXX_name",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*",
                                                     "stmt1": "c_in_string_*"
                                                 },
@@ -258,15 +258,14 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
-                                            "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass1 *",
-                                            "F_C_arguments": "name,\t SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass1 * SHC_rv,\t const char * name",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "SHT_rv,\t name",
                                             "F_C_call": "c_exclass1_ctor_1_bufferify",
                                             "F_C_name": "c_exclass1_ctor_1",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
-                                            "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_rv%cxxmem",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "SHT_rv%cxxmem,\t name,\t len(name, kind=C_INT)",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
                                             "F_name_generic": "exclass1",
@@ -292,7 +291,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
@@ -300,6 +298,8 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
@@ -401,6 +401,7 @@
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "char",
                                                     "c_var": "name",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -409,7 +410,6 @@
                                                     "cxx_var": "SHCXX_name",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*_buf",
                                                     "stmt1": "c_in_string_*_buf",
                                                     "temp0": "name_temp0"
@@ -434,13 +434,12 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
-                                            "C_prototype": "char *name,\t int name_temp0,\t AA_example_nested_ExClass1 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass1 *",
-                                            "F_C_arguments": "name,\t name_temp0,\t SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass1 * SHC_rv,\t char *name,\t int name_temp0",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "SHT_rv,\t name,\t name_temp0",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
                                             "F_name_generic": "exclass1",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
@@ -458,13 +457,14 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)"
                                             }
@@ -521,7 +521,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "dtor",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_dtor",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_dtor",
@@ -585,6 +584,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "int",
                                                     "c_var": "incr",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -593,7 +593,6 @@
                                                     "cxx_var": "incr",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_incr",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -672,7 +671,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "int SHC_rv",
                                             "function_name": "incrementCount",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "increment_count"
                                         },
                                         "zz_fmtresult": {
@@ -688,7 +686,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -797,7 +794,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getNameErrorCheck",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_error_check"
                                         },
                                         "zz_fmtresult": {
@@ -814,7 +810,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_allocatable",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -913,7 +908,6 @@
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getNameErrorCheck",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_error_check"
                                         },
                                         "zz_fmtresult": {
@@ -928,7 +922,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
                                                 "stmt1": "c_function_string_&_buf_allocatable",
                                                 "temp0": "SHC_rv_temp0"
@@ -991,7 +984,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getNameArg",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_arg"
                                         },
                                         "zz_fmtresult": {
@@ -1008,7 +1000,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -1103,6 +1094,7 @@
                                                     "c_const": "",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "char",
                                                     "c_var": "name",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -1111,7 +1103,6 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_name",
                                                     "stmt0": "c_function_string_&_buf_result",
                                                     "stmt1": "c_function_string_&_buf",
                                                     "temp0": "name_temp0"
@@ -1148,7 +1139,6 @@
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getNameArg",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_arg"
                                         },
                                         "zz_fmtresult": {
@@ -1162,7 +1152,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_subroutine_void_scalar_buf",
                                                 "stmt1": "c_subroutine"
                                             }
@@ -1289,6 +1278,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "int",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -1297,7 +1287,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -1377,7 +1366,6 @@
                                             "cxx_rv_decl": "int SHC_rv",
                                             "function_name": "getValue",
                                             "function_suffix": "_from_int",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_value"
                                         },
                                         "zz_fmtresult": {
@@ -1393,7 +1381,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -1491,6 +1478,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "long",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -1499,7 +1487,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -1577,7 +1564,6 @@
                                             "cxx_rv_decl": "long SHC_rv",
                                             "function_name": "getValue",
                                             "function_suffix": "_1",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_value"
                                         },
                                         "zz_fmtresult": {
@@ -1593,7 +1579,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_LONG",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -1690,6 +1675,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "bool",
                                                     "c_var": "in",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -1698,7 +1684,6 @@
                                                     "cxx_var": "in",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_BOOL",
-                                                    "shadow_var": "SHadow_in",
                                                     "stmt0": "c_in_bool_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -1779,7 +1764,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "bool SHC_rv",
                                             "function_name": "hasAddr",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "has_addr"
                                         },
                                         "zz_fmtresult": {
@@ -1795,7 +1779,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_BOOL",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_bool_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -1891,7 +1874,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "SplicerSpecial",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -1950,6 +1932,7 @@
                                     "class_scope": "ExClass1::",
                                     "cxx_class": "ExClass1",
                                     "cxx_type": "ExClass1",
+                                    "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass1",
                                     "hnamefunc0": "capsule_data_helper"
                                 }
@@ -2053,6 +2036,7 @@
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "char",
                                                     "c_var": "name",
                                                     "c_var_trim": "trim_name",
                                                     "cxx_addr": "&",
@@ -2062,7 +2046,6 @@
                                                     "cxx_var": "SHCXX_name",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*",
                                                     "stmt1": "c_in_string_*"
                                                 },
@@ -2109,15 +2092,14 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor",
-                                            "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass2 *",
-                                            "F_C_arguments": "name,\t SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass2 * SHC_rv,\t const char * name",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "SHT_rv,\t name",
                                             "F_C_call": "c_exclass2_ctor_bufferify",
                                             "F_C_name": "c_exclass2_ctor",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
-                                            "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_rv%cxxmem",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "SHT_rv%cxxmem,\t name,\t len(name, kind=C_INT)",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
                                             "F_name_generic": "exclass2",
@@ -2144,7 +2126,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
@@ -2152,6 +2133,8 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass2)",
                                                 "f_var": "SHT_rv",
@@ -2254,6 +2237,7 @@
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "char",
                                                     "c_var": "name",
                                                     "c_var_trim": "trim_name",
                                                     "cxx_addr": "&",
@@ -2263,7 +2247,6 @@
                                                     "cxx_var": "SHCXX_name",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_name",
                                                     "stmt0": "c_in_string_*_buf",
                                                     "stmt1": "c_in_string_*_buf",
                                                     "temp0": "name_temp0"
@@ -2289,13 +2272,12 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
-                                            "C_prototype": "char *name,\t int name_temp0,\t AA_example_nested_ExClass2 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass2 *",
-                                            "F_C_arguments": "name,\t name_temp0,\t SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass2 * SHC_rv,\t char *name,\t int name_temp0",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "SHT_rv,\t name,\t name_temp0",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
                                             "F_name_generic": "exclass2",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
@@ -2313,13 +2295,14 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
                                                 "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass2)"
                                             }
@@ -2375,7 +2358,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "dtor",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_dtor",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_dtor",
@@ -2454,7 +2436,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getName",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name"
                                         },
                                         "zz_fmtresult": {
@@ -2472,7 +2453,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_copy",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -2572,7 +2552,6 @@
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getName",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name"
                                         },
                                         "zz_fmtresult": {
@@ -2588,7 +2567,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_buf_copy",
                                                 "stmt1": "c_function_string_&_buf",
                                                 "temp0": "SHC_rv_temp0"
@@ -2662,7 +2640,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getName2",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name2"
                                         },
                                         "zz_fmtresult": {
@@ -2679,7 +2656,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_allocatable",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -2777,7 +2753,6 @@
                                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                                             "function_name": "getName2",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name2"
                                         },
                                         "zz_fmtresult": {
@@ -2792,7 +2767,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
                                                 "stmt1": "c_function_string_&_buf_allocatable",
                                                 "temp0": "SHC_rv_temp0"
@@ -2867,7 +2841,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
                                             "function_name": "getName3",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name3"
                                         },
                                         "zz_fmtresult": {
@@ -2884,7 +2857,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_allocatable",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -2982,7 +2954,6 @@
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
                                             "function_name": "getName3",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name3"
                                         },
                                         "zz_fmtresult": {
@@ -2997,7 +2968,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
                                                 "stmt1": "c_function_string_&_buf_allocatable",
                                                 "temp0": "SHC_rv_temp0"
@@ -3070,7 +3040,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
                                             "function_name": "getName4",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name4"
                                         },
                                         "zz_fmtresult": {
@@ -3087,7 +3056,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_allocatable",
                                                 "stmt1": "c_function_string_&"
                                             },
@@ -3184,7 +3152,6 @@
                                             "cxx_rv_decl": "std::string & SHCXX_rv",
                                             "function_name": "getName4",
                                             "function_suffix": "_bufferify",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name4"
                                         },
                                         "zz_fmtresult": {
@@ -3199,7 +3166,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_string_&_buf_allocatable",
                                                 "stmt1": "c_function_string_&_buf_allocatable",
                                                 "temp0": "SHC_rv_temp0"
@@ -3274,7 +3240,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "int SHC_rv",
                                             "function_name": "GetNameLength",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_length"
                                         },
                                         "zz_fmtresult": {
@@ -3290,7 +3255,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -3393,6 +3357,7 @@
                                                     "c_const": "const ",
                                                     "c_deref": "*",
                                                     "c_member": "->",
+                                                    "c_type": "AA_example_nested_ExClass1",
                                                     "c_var": "in",
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
@@ -3401,7 +3366,6 @@
                                                     "cxx_var": "SHCXX_in",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "shadow_var": "SHadow_in",
                                                     "stmt0": "c_in_shadow_*",
                                                     "stmt1": "c_in_shadow"
                                                 },
@@ -3409,12 +3373,14 @@
                                                     "F_C_var": "in",
                                                     "F_pointer": "SHPTR_in",
                                                     "c_var": "in",
+                                                    "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                    "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                     "f_intent": "IN",
                                                     "f_type": "type(exclass1)",
                                                     "f_var": "in",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "f_in_shadow_*",
-                                                    "stmt1": "f_default",
+                                                    "stmt1": "f_in_shadow",
                                                     "stmtc0": "c_in_shadow_*",
                                                     "stmtc1": "c_in_shadow"
                                                 },
@@ -3461,15 +3427,14 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "SHCXX_in",
                                             "C_name": "AA_example_nested_ExClass2_get_class1",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHadow_rv",
-                                            "C_return_type": "AA_example_nested_ExClass1 *",
-                                            "F_C_arguments": "self,\t in,\t SHT_crv",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * SHC_rv,\t AA_example_nested_ExClass1 * in",
+                                            "C_return_type": "void",
+                                            "F_C_arguments": "self,\t SHT_rv,\t in",
                                             "F_C_call": "c_exclass2_get_class1",
                                             "F_C_name": "c_exclass2_get_class1",
-                                            "F_C_result_clause": "\fresult(SHT_rv)",
-                                            "F_C_subprogram": "function",
-                                            "F_C_var": "SHT_crv",
-                                            "F_arg_c_call": "obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem",
+                                            "F_C_result_clause": "",
+                                            "F_C_subprogram": "subroutine",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem,\t in%cxxmem",
                                             "F_arguments": "obj,\t in",
                                             "F_name_function": "get_class1",
                                             "F_name_generic": "get_class1",
@@ -3485,7 +3450,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "example::nested::ExClass1 * SHCXX_rv",
                                             "function_name": "get_class1",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_class1"
                                         },
                                         "zz_fmtresult": {
@@ -3500,7 +3464,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_shadow_*",
                                                 "stmt1": "c_function_shadow"
                                             },
@@ -3508,6 +3471,8 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
+                                                "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
@@ -3810,6 +3775,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "int",
                                                     "c_var": "type",
                                                     "cxx_addr": "&",
                                                     "cxx_decl": "TypeID SHCXX_type",
@@ -3820,7 +3786,6 @@
                                                     "cxx_var": "SHCXX_type",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_type",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -3854,7 +3819,6 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_0",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "c_subroutine",
                                             "stmt1": "c_subroutine",
                                             "underscore_name": "declare"
@@ -4442,6 +4406,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "SIDRE_SidreLength",
                                                     "c_var": "len",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -4450,7 +4415,6 @@
                                                     "cxx_var": "len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "shadow_var": "SHadow_len",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -4475,6 +4439,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "int",
                                                     "c_var": "type",
                                                     "cxx_addr": "&",
                                                     "cxx_decl": "TypeID SHCXX_type",
@@ -4485,7 +4450,6 @@
                                                     "cxx_var": "SHCXX_type",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_type",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -4519,7 +4483,6 @@
                                             "c_var": "self",
                                             "function_name": "declare",
                                             "function_suffix": "_1",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "c_subroutine",
                                             "stmt1": "c_subroutine",
                                             "underscore_name": "declare"
@@ -4751,7 +4714,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "destroyall",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -4818,7 +4780,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "TypeID SHCXX_rv",
                                             "function_name": "getTypeID",
-                                            "shadow_var": "SHadow_self",
                                             "underscore_name": "get_type_id"
                                         },
                                         "zz_fmtresult": {
@@ -4836,7 +4797,6 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -5089,6 +5049,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "int",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -5097,7 +5058,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -5174,7 +5134,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -5294,6 +5253,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "long",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -5302,7 +5262,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -5377,7 +5336,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -5497,6 +5455,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "float",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -5505,7 +5464,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_FLOAT",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -5580,7 +5538,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -5706,6 +5663,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
+                                                    "c_type": "double",
                                                     "c_var": "value",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
@@ -5714,7 +5672,6 @@
                                                     "cxx_var": "value",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
-                                                    "shadow_var": "SHadow_value",
                                                     "stmt0": "c_in_native_scalar",
                                                     "stmt1": "c_default"
                                                 },
@@ -5789,7 +5746,6 @@
                                             "c_member": "->",
                                             "c_var": "self",
                                             "function_name": "setValue",
-                                            "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
                                             "stmtc0": "c_subroutine",
@@ -5951,7 +5907,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "int SHC_rv",
                                             "function_name": "getValue",
-                                            "shadow_var": "SHadow_self",
                                             "template_suffix": "_int",
                                             "underscore_name": "get_value"
                                         },
@@ -5968,7 +5923,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -6104,7 +6058,6 @@
                                             "c_var": "self",
                                             "cxx_rv_decl": "double SHC_rv",
                                             "function_name": "getValue",
-                                            "shadow_var": "SHadow_self",
                                             "template_suffix": "_double",
                                             "underscore_name": "get_value"
                                         },
@@ -6121,7 +6074,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_DOUBLE",
-                                                "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_function_native_scalar",
                                                 "stmt1": "c_default"
                                             },
@@ -6226,6 +6178,7 @@
                                     "class_scope": "ExClass2::",
                                     "cxx_class": "ExClass2",
                                     "cxx_type": "ExClass2",
+                                    "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass2",
                                     "hnamefunc0": "capsule_data_helper"
                                 }
@@ -6354,6 +6307,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -6362,7 +6316,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&",
                                             "stmt1": "c_in_string_&"
                                         },
@@ -6443,7 +6396,6 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_BOOL",
-                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_function_bool_scalar",
                                         "stmt1": "c_default"
                                     },
@@ -6554,6 +6506,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -6562,7 +6515,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
                                             "stmt1": "c_in_string_&_buf",
                                             "temp0": "name_temp0"
@@ -6611,7 +6563,6 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_BOOL",
-                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_function_bool_scalar",
                                         "stmt1": "c_default"
                                     },
@@ -6684,7 +6635,6 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_BOOL",
-                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_function_bool_scalar",
                                         "stmt1": "c_default"
                                     },
@@ -6788,6 +6738,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -6796,7 +6747,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&",
                                             "stmt1": "c_in_string_&"
                                         },
@@ -6926,6 +6876,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -6934,7 +6885,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
                                             "stmt1": "c_in_string_&_buf",
                                             "temp0": "name_temp0"
@@ -7043,6 +6993,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "flag",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7051,7 +7002,6 @@
                                             "cxx_var": "flag",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_flag",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -7099,6 +7049,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7107,7 +7058,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&",
                                             "stmt1": "c_in_string_&"
                                         },
@@ -7251,6 +7201,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "flag",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7259,7 +7210,6 @@
                                             "cxx_var": "flag",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_flag",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -7284,6 +7234,7 @@
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "char",
                                             "c_var": "name",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7292,7 +7243,6 @@
                                             "cxx_var": "SHCXX_name",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_name",
                                             "stmt0": "c_in_string_&_buf",
                                             "stmt1": "c_in_string_&_buf",
                                             "temp0": "name_temp0"
@@ -7434,6 +7384,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "i",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7442,7 +7393,6 @@
                                             "cxx_var": "i",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_i",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -7564,6 +7514,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "i",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7572,7 +7523,6 @@
                                             "cxx_var": "i",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_i",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -7630,6 +7580,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "long",
                                             "c_var": "j",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -7638,7 +7589,6 @@
                                             "cxx_var": "j",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_LONG",
-                                            "shadow_var": "SHadow_j",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -7786,7 +7736,6 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_SIZE_T",
-                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_function_native_scalar",
                                         "stmt1": "c_default"
                                     },
@@ -7884,6 +7833,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "MPI_Fint",
                                             "c_var": "comm",
                                             "cxx_addr": "&",
                                             "cxx_decl": "MPI_Comm SHCXX_comm",
@@ -7894,7 +7844,6 @@
                                             "cxx_var": "SHCXX_comm",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "shadow_var": "SHadow_comm",
                                             "stmt0": "c_in_unknown_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -8099,6 +8048,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "void",
                                             "c_var": "get",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -8107,7 +8057,6 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "shadow_var": "SHadow_get",
                                             "stmt0": "c_in_void_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -8247,6 +8196,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "double",
                                             "c_var": "get",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -8255,7 +8205,6 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "shadow_var": "SHadow_get",
                                             "stmt0": "c_in_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -8421,6 +8370,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "double",
                                             "c_var": "get",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -8429,7 +8379,6 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "shadow_var": "SHadow_get",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -8592,6 +8541,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "double",
                                             "c_var": "get",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -8600,7 +8550,6 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "shadow_var": "SHadow_get",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -8828,6 +8777,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "void",
                                             "c_var": "get",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -8836,7 +8786,6 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "shadow_var": "SHadow_get",
                                             "stmt0": "c_in_void_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -9150,6 +9099,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname1",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9158,7 +9108,6 @@
                                             "cxx_var": "verylongname1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname1",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9217,6 +9166,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname10",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9225,7 +9175,6 @@
                                             "cxx_var": "verylongname10",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname10",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9284,6 +9233,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname2",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9292,7 +9242,6 @@
                                             "cxx_var": "verylongname2",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname2",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9351,6 +9300,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname3",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9359,7 +9309,6 @@
                                             "cxx_var": "verylongname3",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname3",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9418,6 +9367,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname4",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9426,7 +9376,6 @@
                                             "cxx_var": "verylongname4",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname4",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9485,6 +9434,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname5",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9493,7 +9443,6 @@
                                             "cxx_var": "verylongname5",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname5",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9552,6 +9501,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname6",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9560,7 +9510,6 @@
                                             "cxx_var": "verylongname6",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname6",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9619,6 +9568,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname7",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9627,7 +9577,6 @@
                                             "cxx_var": "verylongname7",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname7",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9686,6 +9635,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname8",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9694,7 +9644,6 @@
                                             "cxx_var": "verylongname8",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname8",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -9753,6 +9702,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "int",
                                             "c_var": "verylongname9",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -9761,7 +9711,6 @@
                                             "cxx_var": "verylongname9",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname9",
                                             "stmt0": "c_inout_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -10045,6 +9994,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname1",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10053,7 +10003,6 @@
                                             "cxx_var": "verylongname1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname1",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10111,6 +10060,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname10",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10119,7 +10069,6 @@
                                             "cxx_var": "verylongname10",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname10",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10177,6 +10126,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname2",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10185,7 +10135,6 @@
                                             "cxx_var": "verylongname2",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname2",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10243,6 +10192,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname3",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10251,7 +10201,6 @@
                                             "cxx_var": "verylongname3",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname3",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10309,6 +10258,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname4",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10317,7 +10267,6 @@
                                             "cxx_var": "verylongname4",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname4",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10375,6 +10324,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname5",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10383,7 +10333,6 @@
                                             "cxx_var": "verylongname5",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname5",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10441,6 +10390,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname6",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10449,7 +10399,6 @@
                                             "cxx_var": "verylongname6",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname6",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10507,6 +10456,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname7",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10515,7 +10465,6 @@
                                             "cxx_var": "verylongname7",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname7",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10573,6 +10522,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname8",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10581,7 +10531,6 @@
                                             "cxx_var": "verylongname8",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname8",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10639,6 +10588,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "verylongname9",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -10647,7 +10597,6 @@
                                             "cxx_var": "verylongname9",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_verylongname9",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -10737,7 +10686,6 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
-                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_function_native_scalar",
                                         "stmt1": "c_default"
                                     },
@@ -10894,6 +10842,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "double",
                                             "c_var": "in",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -10902,7 +10851,6 @@
                                             "cxx_var": "in",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "shadow_var": "SHadow_in",
                                             "stmt0": "c_in_native_*",
                                             "stmt1": "c_default"
                                         },
@@ -10966,6 +10914,7 @@
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
+                                            "c_type": "double",
                                             "c_var": "out",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
@@ -10975,7 +10924,6 @@
                                             "idtor": "0",
                                             "rank": "1",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "shadow_var": "SHadow_out",
                                             "stmt0": "c_out_native_*_allocatable",
                                             "stmt1": "c_default"
                                         },
@@ -11041,6 +10989,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "sizein",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -11049,7 +10998,6 @@
                                             "cxx_var": "sizein",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_sizein",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -11276,6 +11224,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass1)",
@@ -11285,6 +11234,7 @@
                     "exclass1"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass1",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass1)",
@@ -11317,6 +11267,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass2)",
@@ -11326,6 +11277,7 @@
                     "exclass2"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass2",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2)",
@@ -11353,6 +11305,7 @@
                     "AA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(exclass2nested)",
@@ -11362,6 +11315,7 @@
                     "exclass2nested"
                 ]
             },
+            "f_module_line": "userlibrary_example_nested_mod:exclass2nested",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2nested)",

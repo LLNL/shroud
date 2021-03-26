@@ -122,6 +122,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "double",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -130,7 +131,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -155,6 +155,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int",
                             "c_var": "arg2",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -163,7 +164,6 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg2",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -217,7 +217,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },

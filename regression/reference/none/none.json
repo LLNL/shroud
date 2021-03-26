@@ -198,7 +198,6 @@
             "PY_type_obj": "obj",
             "PY_typedef_converter": "LIB_SHROUD_converter_value",
             "PY_value_init": "{NULL, NULL, NULL, NULL, 0}",
-            "SH_shadow": "SHadow_",
             "YAML_type_filename": "library_types.yaml",
             "c_array_shape": "",
             "c_array_size": "1",

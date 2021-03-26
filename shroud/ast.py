@@ -750,8 +750,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_type_dtor="idtor",  # name of destructor capsule infomation
             PY_value_init="{NULL, NULL, NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
-            SH_shadow="SHadow_",
-
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
@@ -771,6 +769,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
                 c_get_value="XXXc_get_value",
+                c_type="XXXc_type",
                 c_val="XXXc_val",
                 c_var="XXXc_var",
                 c_var_capsule="XXXc_var_capsule",
@@ -778,6 +777,8 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_len="XXXc_var_len",
                 c_var_trim="XXXc_var_trim",
                 f_c_dimension="XXXf_c_dimension",
+                f_c_module_line="XXXf_c_module_line:XXXnone",
+                f_c_type="XXXf_c_type",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",
@@ -785,13 +786,13 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
+                f_capsule_data_type="XXXf_capsule_data_type",
                 f_intent="XXXf_intent",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
                 idtor="XXXidtor",
                 PY_member_object="XXXPY_member_object",
                 PY_to_object_func="XXXPY_to_object_func",
-                shadow_var="XXXsh_var",
                 temp0="XXXtemp0",
                 temp1="XXXtemp1",
                 temp2="XXXtemp2",

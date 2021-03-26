@@ -118,14 +118,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_ctor_default",
-                            "C_prototype": "CLA_Class1 * SHadow_rv",
-                            "C_return_type": "CLA_Class1 *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "CLA_Class1 * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_class1_ctor_default",
                             "F_C_name": "c_class1_ctor_default",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor_default",
@@ -154,7 +153,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -162,6 +160,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -256,6 +256,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "flag",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -264,7 +265,6 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -320,15 +320,14 @@
                         "zz_fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "CLA_Class1_ctor_flag",
-                            "C_prototype": "int flag,\t CLA_Class1 * SHadow_rv",
-                            "C_return_type": "CLA_Class1 *",
-                            "F_C_arguments": "flag,\t SHT_crv",
+                            "C_prototype": "CLA_Class1 * SHC_rv,\t int flag",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv,\t flag",
                             "F_C_call": "c_class1_ctor_flag",
                             "F_C_name": "c_class1_ctor_flag",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
-                            "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "SHT_rv%cxxmem,\t flag",
                             "F_arguments": "flag",
                             "F_name_function": "ctor_flag",
                             "F_name_generic": "class1",
@@ -354,7 +353,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -362,6 +360,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -451,7 +451,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "delete",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_dtor",
                             "stmt1": "f_default",
                             "stmtc0": "c_dtor",
@@ -519,7 +518,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "Method1",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "method1"
                         },
                         "zz_fmtresult": {
@@ -535,7 +533,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
@@ -639,6 +636,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "CLA_Class1",
                                     "c_var": "obj2",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -647,7 +645,6 @@
                                     "cxx_var": "SHCXX_obj2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_obj2",
                                     "stmt0": "c_in_shadow_&",
                                     "stmt1": "c_in_shadow"
                                 },
@@ -655,12 +652,14 @@
                                     "F_C_var": "obj2",
                                     "F_pointer": "SHPTR_obj2",
                                     "c_var": "obj2",
+                                    "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
                                     "f_var": "obj2",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_&",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_&",
                                     "stmtc1": "c_in_shadow"
                                 },
@@ -715,7 +714,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "bool SHC_rv",
                             "function_name": "equivalent",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "equivalent"
                         },
                         "zz_fmtresult": {
@@ -731,7 +729,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_bool_scalar",
                                 "stmt1": "c_default"
                             },
@@ -859,7 +856,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "returnThis",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -948,6 +944,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "bool",
                                     "c_var": "flag",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -956,7 +953,6 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_in_bool_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -971,6 +967,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "char",
                                     "c_var": "name",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -979,7 +976,6 @@
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_name",
                                     "stmt0": "c_in_string_&",
                                     "stmt1": "c_in_string_&"
                                 },
@@ -992,15 +988,14 @@
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "CLA_Class1_return_this_buffer",
-                            "C_prototype": "CLA_Class1 * self,\t char * name,\t bool flag,\t CLA_Class1 * SHadow_rv",
-                            "C_return_type": "CLA_Class1 *",
-                            "F_C_arguments": "self,\t name,\t flag,\t SHT_crv",
+                            "C_prototype": "CLA_Class1 * self,\t CLA_Class1 * SHC_rv,\t char * name,\t bool flag",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t SHT_rv,\t name,\t flag",
                             "F_C_call": "c_class1_return_this_buffer_bufferify",
                             "F_C_name": "c_class1_return_this_buffer",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
-                            "F_arg_c_call": "obj%cxxmem,\t name,\t len(name, kind=C_INT),\t SH_flag,\t SHT_rv%cxxmem",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem,\t name,\t len(name, kind=C_INT),\t SH_flag",
                             "F_arguments": "obj,\t name,\t flag",
                             "F_name_function": "return_this_buffer",
                             "F_name_generic": "return_this_buffer",
@@ -1013,7 +1008,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "returnThisBuffer",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "return_this_buffer"
                         },
                         "zz_fmtresult": {
@@ -1028,7 +1022,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_shadow_*",
                                 "stmt1": "c_function_shadow"
                             },
@@ -1036,6 +1029,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -1127,6 +1122,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "bool",
                                     "c_var": "flag",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -1135,7 +1131,6 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_in_bool_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -1160,6 +1155,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "char",
                                     "c_var": "name",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -1168,7 +1164,6 @@
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_name",
                                     "stmt0": "c_in_string_&_buf",
                                     "stmt1": "c_in_string_&_buf",
                                     "temp0": "name_temp0"
@@ -1193,13 +1188,12 @@
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "CLA_Class1_return_this_buffer_bufferify",
-                            "C_prototype": "CLA_Class1 * self,\t char *name,\t int name_temp0,\t bool flag,\t CLA_Class1 * SHadow_rv",
-                            "C_return_type": "CLA_Class1 *",
-                            "F_C_arguments": "self,\t name,\t name_temp0,\t flag,\t SHT_crv",
+                            "C_prototype": "CLA_Class1 * self,\t CLA_Class1 * SHC_rv,\t char *name,\t int name_temp0,\t bool flag",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t SHT_rv,\t name,\t name_temp0,\t flag",
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1207,7 +1201,6 @@
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "returnThisBuffer",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "return_this_buffer"
                         },
                         "zz_fmtresult": {
@@ -1222,13 +1215,14 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_shadow_*",
                                 "stmt1": "c_function_shadow"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)"
                             }
@@ -1271,14 +1265,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_getclass3",
-                            "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * SHadow_rv",
-                            "C_return_type": "CLA_Class1 *",
-                            "F_C_arguments": "self,\t SHT_crv",
+                            "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t SHT_rv",
                             "F_C_call": "c_class1_getclass3",
                             "F_C_name": "c_class1_getclass3",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "getclass3",
@@ -1293,7 +1286,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "getclass3",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "getclass3"
                         },
                         "zz_fmtresult": {
@@ -1308,7 +1300,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_shadow_*",
                                 "stmt1": "c_function_shadow"
                             },
@@ -1316,6 +1307,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -1411,7 +1404,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "zz_fmtresult": {
@@ -1428,7 +1420,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_string_&_allocatable",
                                 "stmt1": "c_function_string_&"
                             },
@@ -1529,7 +1520,6 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "zz_fmtresult": {
@@ -1544,7 +1534,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_string_&_buf_allocatable",
                                 "stmt1": "c_function_string_&_buf_allocatable",
                                 "temp0": "SHC_rv_temp0"
@@ -1608,6 +1597,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "arg",
                                     "cxx_addr": "&",
                                     "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
@@ -1618,7 +1608,6 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -1699,7 +1688,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                             "function_name": "directionFunc",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "direction_func"
                         },
                         "zz_fmtresult": {
@@ -1717,7 +1705,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
@@ -1815,7 +1802,6 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_flag",
                             "function_name": "getM_flag",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_m_flag"
                         },
                         "zz_fmtresult": {
@@ -1829,7 +1815,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_getter_native_scalar",
                                 "stmt1": "c_getter_native_scalar"
                             },
@@ -1900,7 +1885,6 @@
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_test",
                             "function_name": "getTest",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_test"
                         },
                         "zz_fmtresult": {
@@ -1914,7 +1898,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_getter_native_scalar",
                                 "stmt1": "c_getter_native_scalar"
                             },
@@ -1987,6 +1970,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "val",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -1995,7 +1979,6 @@
                                     "cxx_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_val",
                                     "stmt0": "c_setter_native_scalar",
                                     "stmt1": "c_setter_native_scalar"
                                 },
@@ -2036,7 +2019,6 @@
                             "c_var": "self",
                             "field_name": "m_test",
                             "function_name": "setTest",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
@@ -2148,7 +2130,6 @@
                             "field_name": "m_name",
                             "function_name": "getM_name",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_m_name"
                         },
                         "zz_fmtresult": {
@@ -2162,7 +2143,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_getter_string_scalar_buf_allocatable",
                                 "stmt1": "c_getter_string_scalar_buf",
                                 "temp0": "SHC_rv_temp0"
@@ -2288,6 +2268,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "char",
                                     "c_var": "val",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2296,7 +2277,6 @@
                                     "cxx_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_val",
                                     "stmt0": "c_setter_string_scalar_buf",
                                     "stmt1": "c_setter_string_scalar_buf",
                                     "temp0": "val_temp0"
@@ -2333,7 +2313,6 @@
                             "field_name": "m_name",
                             "function_name": "setM_name",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "c_setter",
                             "stmt1": "c_setter",
                             "underscore_name": "set_m_name"
@@ -2481,6 +2460,7 @@
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
+                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class1",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -2552,7 +2532,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "zz_fmtresult": {
@@ -2569,7 +2548,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_string_&_allocatable",
                                 "stmt1": "c_function_string_&"
                             },
@@ -2670,7 +2648,6 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "zz_fmtresult": {
@@ -2685,7 +2662,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_string_&_buf_allocatable",
                                 "stmt1": "c_function_string_&_buf_allocatable",
                                 "temp0": "SHC_rv_temp0"
@@ -2737,6 +2713,7 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
+                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -2780,14 +2757,13 @@
                         "zz_fmtdict": {
                             "CXX_this_call": "classes::Singleton::",
                             "C_name": "CLA_Singleton_get_reference",
-                            "C_prototype": "CLA_Singleton * SHadow_rv",
-                            "C_return_type": "CLA_Singleton *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "CLA_Singleton * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_singleton_get_reference",
                             "F_C_name": "c_singleton_get_reference",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "get_reference",
@@ -2803,7 +2779,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Singleton & SHCXX_rv",
                             "function_name": "getReference",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_reference"
                         },
                         "zz_fmtresult": {
@@ -2818,7 +2793,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_shadow_&",
                                 "stmt1": "c_function_shadow"
                             },
@@ -2826,6 +2800,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Singleton",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(singleton)",
                                 "f_var": "SHT_rv",
@@ -2890,6 +2866,7 @@
                     "class_scope": "Singleton::",
                     "cxx_class": "Singleton",
                     "cxx_type": "Singleton",
+                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Singleton",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -2929,14 +2906,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Shape_ctor",
-                            "C_prototype": "CLA_Shape * SHadow_rv",
-                            "C_return_type": "CLA_Shape *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "CLA_Shape * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_shape_ctor",
                             "F_C_name": "c_shape_ctor",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -2964,7 +2940,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "2",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -2972,6 +2947,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Shape",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(shape)",
                                 "f_var": "SHT_rv",
@@ -3066,7 +3043,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "get_ivar",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_ivar"
                         },
                         "zz_fmtresult": {
@@ -3082,7 +3058,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
@@ -3167,6 +3142,7 @@
                     "class_scope": "Shape::",
                     "cxx_class": "Shape",
                     "cxx_type": "Shape",
+                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Shape",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -3213,14 +3189,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Circle_ctor",
-                            "C_prototype": "CLA_Circle * SHadow_rv",
-                            "C_return_type": "CLA_Circle *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "CLA_Circle * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_circle_ctor",
                             "F_C_name": "c_circle_ctor",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -3248,7 +3223,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -3256,6 +3230,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "classes::Circle",
+                                "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                                "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(circle)",
                                 "f_var": "SHT_rv",
@@ -3337,6 +3313,7 @@
                     "class_scope": "Circle::",
                     "cxx_class": "Circle",
                     "cxx_type": "Circle",
+                    "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Circle",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -3404,6 +3381,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int",
                             "c_var": "arg",
                             "cxx_addr": "&",
                             "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
@@ -3414,7 +3392,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3508,7 +3485,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3609,6 +3585,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -3617,22 +3594,23 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_shadow_scalar",
-                            "stmt1": "c_in_shadow_scalar"
+                            "stmt1": "c_in_shadow"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                            "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_intent": "IN",
                             "f_type": "type(class1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_scalar",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_shadow",
                             "stmtc0": "c_in_shadow_scalar",
-                            "stmtc1": "c_in_shadow_scalar"
+                            "stmtc1": "c_in_shadow"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -3662,7 +3640,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "CLA_pass_class_by_value",
-                    "C_prototype": "CLA_Class1 arg",
+                    "C_prototype": "CLA_Class1 * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_pass_class_by_value",
@@ -3736,6 +3714,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -3744,7 +3723,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_shadow_*",
                             "stmt1": "c_in_shadow"
                         },
@@ -3752,12 +3730,14 @@
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
+                            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                            "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_intent": "IN",
                             "f_type": "type(class1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_shadow_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_in_shadow",
                             "stmtc0": "c_in_shadow_*",
                             "stmtc1": "c_in_shadow"
                         },
@@ -3822,7 +3802,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3893,14 +3872,13 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass2",
-                    "C_prototype": "CLA_Class1 * SHadow_rv",
-                    "C_return_type": "CLA_Class1 *",
-                    "F_C_arguments": "SHT_crv",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_getclass2",
                     "F_C_name": "c_getclass2",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "getclass2",
@@ -3924,7 +3902,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_shadow_*",
                         "stmt1": "c_function_shadow"
                     },
@@ -3932,6 +3909,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -3976,14 +3955,13 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass3",
-                    "C_prototype": "CLA_Class1 * SHadow_rv",
-                    "C_return_type": "CLA_Class1 *",
-                    "F_C_arguments": "SHT_crv",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_getclass3",
                     "F_C_name": "c_getclass3",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "getclass3",
@@ -4008,7 +3986,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_shadow_*",
                         "stmt1": "c_function_shadow"
                     },
@@ -4016,6 +3993,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4082,14 +4061,13 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_get_const_class_reference",
-                    "C_prototype": "CLA_Class1 * SHadow_rv",
-                    "C_return_type": "CLA_Class1 *",
-                    "F_C_arguments": "SHT_crv",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_get_const_class_reference",
                     "F_C_name": "c_get_const_class_reference",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_const_class_reference",
@@ -4113,7 +4091,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_shadow_&",
                         "stmt1": "c_function_shadow"
                     },
@@ -4121,6 +4098,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4165,14 +4144,13 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_get_class_reference",
-                    "C_prototype": "CLA_Class1 * SHadow_rv",
-                    "C_return_type": "CLA_Class1 *",
-                    "F_C_arguments": "SHT_crv",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_get_class_reference",
                     "F_C_name": "c_get_class_reference",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_class_reference",
@@ -4197,7 +4175,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_shadow_&",
                         "stmt1": "c_function_shadow"
                     },
@@ -4205,6 +4182,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4291,6 +4270,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int",
                             "c_var": "flag",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -4299,7 +4279,6 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_flag",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -4322,15 +4301,14 @@
                 "zz_fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "CLA_get_class_copy",
-                    "C_prototype": "int flag,\t CLA_Class1 * SHadow_rv",
-                    "C_return_type": "CLA_Class1 *",
-                    "F_C_arguments": "flag,\t SHT_crv",
+                    "C_prototype": "CLA_Class1 * SHC_rv,\t int flag",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv,\t flag",
                     "F_C_call": "c_get_class_copy",
                     "F_C_name": "c_get_class_copy",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv%cxxmem,\t flag",
                     "F_arguments": "flag",
                     "F_name_function": "get_class_copy",
                     "F_name_generic": "get_class_copy",
@@ -4353,7 +4331,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_shadow_scalar",
                         "stmt1": "c_function_shadow_scalar"
                     },
@@ -4361,6 +4338,8 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                         "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4422,6 +4401,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int",
                             "c_var": "arg",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -4430,7 +4410,6 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -4576,7 +4555,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -4699,7 +4677,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_copy",
                         "stmt1": "c_function_string_&"
                     },
@@ -4809,7 +4786,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_buf_copy",
                         "stmt1": "c_function_string_&_buf",
                         "temp0": "SHC_rv_temp0"
@@ -4854,6 +4830,7 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
             "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(circle)",
@@ -4863,6 +4840,7 @@
                     "circle"
                 ]
             },
+            "f_module_line": "classes_mod:circle",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(circle)",
@@ -4895,6 +4873,7 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
             "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class1)",
@@ -4904,6 +4883,7 @@
                     "class1"
                 ]
             },
+            "f_module_line": "classes_mod:class1",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
@@ -4936,6 +4916,7 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
             "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class2)",
@@ -4945,6 +4926,7 @@
                     "class2"
                 ]
             },
+            "f_module_line": "classes_mod:class2",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
@@ -4976,6 +4958,7 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
             "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(shape)",
@@ -4985,6 +4968,7 @@
                     "shape"
                 ]
             },
+            "f_module_line": "classes_mod:shape",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(shape)",
@@ -5017,6 +5001,7 @@
                     "CLA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
             "f_c_type": "type(CLA_SHROUD_capsule_data)",
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(singleton)",
@@ -5026,6 +5011,7 @@
                     "singleton"
                 ]
             },
+            "f_module_line": "classes_mod:singleton",
             "f_module_name": "classes_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(singleton)",

@@ -308,8 +308,8 @@ void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 const char * STR_get_char_ptr2(void)
 {
     // splicer begin function.get_char_ptr2
-    const char * SHCXX_rv = getCharPtr2();
-    return SHCXX_rv;
+    const char * SHC_rv = getCharPtr2();
+    return SHC_rv;
     // splicer end function.get_char_ptr2
 }
 // end STR_get_char_ptr2

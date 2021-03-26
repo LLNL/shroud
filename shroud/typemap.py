@@ -25,6 +25,25 @@ except:
     def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
         return name.replace("::","_").translate(flat_trantab)
 
+def flatten_modules_to_line(modules):
+    """Flatten modules dictionary into a line.
+
+    This line can then be used in fc_statements to add module info.
+    The flattend line looks like:
+        module ":" symbol [ "," symbol ]*
+        [ ";" module ":" symbol [ "," symbol ]* ]
+
+    Parameters
+    ----------
+    modules : dictionary of dictionaries:
+        modules['iso_c_bindings'] = ['C_INT', ...]
+    """
+    if modules is None:
+        return None
+    line = []
+    for mname, symbols in modules.items():
+        line.append("{}:{}".format(mname, ",".join(symbols)))
+    return ";".join(line)
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -77,10 +96,8 @@ class Typemap(object):
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("c_return_code", None),
-        (
-            "f_c_module",
-            None,
-        ),  # Fortran modules needed for interface  (dictionary)
+        ("f_c_module", None), # Fortran modules needed for interface  (dictionary)
+        ("f_c_module_line", None),
         ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
@@ -93,6 +110,7 @@ class Typemap(object):
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
+        ("f_module_line", None),
         ("f_cast", "{f_var}"),  # Expression to convert to type
                                 # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
@@ -170,6 +188,11 @@ class Typemap(object):
                 setattr(self, key, value)
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
+
+    def finalize(self):
+        """Compute some fields based on other fields."""
+        self.f_c_module_line = flatten_modules_to_line(self.f_c_module or self.f_module)
+        self.f_module_line = flatten_modules_to_line(self.f_module)
 
     def XXXcopy(self):
         ntypemap = Typemap(self.name)
@@ -886,6 +909,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
     }
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    ntypemap.finalize()
     register_type(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
     return ntypemap
@@ -932,6 +956,7 @@ def create_class_typemap(node, fields=None):
     if fields is not None:
         ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    ntypemap.finalize()
     register_type(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
@@ -972,7 +997,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     # f_c_return_decl='type(C_PTR)' % unname,
 
     # The import is added in wrapf.py
-    #    ntypemap.f_c_module={ '-import-': ['F_capsule_data_type']}
+    #    ntypemap.f_c_module={ '--import--': ['F_capsule_data_type']}
 
     # #-    if not ntypemap.PY_PyTypeObject:
     # #-        ntypemap.PY_PyTypeObject = 'UUU'

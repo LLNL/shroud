@@ -36,14 +36,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_ctor",
-                            "C_prototype": "ARR_ArrayWrapper * SHadow_rv",
-                            "C_return_type": "ARR_ArrayWrapper *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_arraywrapper_ctor",
                             "F_C_name": "c_arraywrapper_ctor",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -69,7 +68,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -77,6 +75,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "ArrayWrapper",
+                                "f_c_module_line": "--import--:ARR_SHROUD_capsule_data",
+                                "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(arraywrapper)",
                                 "f_var": "SHT_rv",
@@ -159,6 +159,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "int",
                                     "c_var": "size",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -167,7 +168,6 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_size",
                                     "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -227,7 +227,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "setSize",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -285,7 +284,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "getSize",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_size"
                         },
                         "zz_fmtresult": {
@@ -301,7 +299,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
@@ -391,6 +388,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "size",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -399,7 +397,6 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_size",
                                     "stmt0": "c_out_native_&",
                                     "stmt1": "c_default"
                                 },
@@ -460,7 +457,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fillSize",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -513,7 +509,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "allocate",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -586,7 +581,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
                         "zz_fmtresult": {
@@ -603,7 +597,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_pointer",
                                 "stmt1": "c_function_native_*"
                             },
@@ -706,7 +699,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
                         "zz_fmtresult": {
@@ -724,7 +716,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_buf_pointer",
                                 "stmt1": "c_function_native_*_buf",
                                 "temp0": "SHC_rv_temp0"
@@ -805,7 +796,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
                         "zz_fmtresult": {
@@ -822,7 +812,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_pointer",
                                 "stmt1": "c_function_native_*"
                             },
@@ -926,7 +915,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
                         "zz_fmtresult": {
@@ -944,7 +932,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_buf_pointer",
                                 "stmt1": "c_function_native_*_buf",
                                 "temp0": "SHC_rv_temp0"
@@ -1024,7 +1011,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
                         "zz_fmtresult": {
@@ -1041,7 +1027,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_pointer",
                                 "stmt1": "c_function_native_*"
                             },
@@ -1145,7 +1130,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
                         "zz_fmtresult": {
@@ -1163,7 +1147,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_buf_pointer",
                                 "stmt1": "c_function_native_*_buf",
                                 "temp0": "SHC_rv_temp0"
@@ -1245,7 +1228,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
                         "zz_fmtresult": {
@@ -1262,7 +1244,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_pointer",
                                 "stmt1": "c_function_native_*"
                             },
@@ -1367,7 +1348,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
                         "zz_fmtresult": {
@@ -1385,7 +1365,6 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_*_buf_pointer",
                                 "stmt1": "c_function_native_*_buf",
                                 "temp0": "SHC_rv_temp0"
@@ -1485,6 +1464,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -1494,7 +1474,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_pointer",
                                     "stmt1": "c_default"
                                 },
@@ -1534,6 +1513,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -1542,7 +1522,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_*",
                                     "stmt1": "c_default"
                                 },
@@ -1593,7 +1572,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtr",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -1687,6 +1665,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -1696,7 +1675,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_buf_pointer",
                                     "stmt1": "c_out_native_**_buf",
                                     "temp0": "array_temp0"
@@ -1728,6 +1706,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -1736,7 +1715,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_*",
                                     "stmt1": "c_default"
                                 },
@@ -1770,7 +1748,6 @@
                             "c_var": "self",
                             "function_name": "fetchArrayPtr",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine",
                             "underscore_name": "fetch_array_ptr"
@@ -1862,6 +1839,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -1871,7 +1849,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_pointer",
                                     "stmt1": "c_default"
                                 },
@@ -1911,6 +1888,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -1919,7 +1897,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_&",
                                     "stmt1": "c_default"
                                 },
@@ -1970,7 +1947,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRef",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -2064,6 +2040,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2073,7 +2050,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_buf_pointer",
                                     "stmt1": "c_out_native_*&_buf",
                                     "temp0": "array_temp0"
@@ -2105,6 +2081,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2113,7 +2090,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_&",
                                     "stmt1": "c_default"
                                 },
@@ -2147,7 +2123,6 @@
                             "c_var": "self",
                             "function_name": "fetchArrayRef",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine",
                             "underscore_name": "fetch_array_ref"
@@ -2240,6 +2215,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2249,7 +2225,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_pointer",
                                     "stmt1": "c_default"
                                 },
@@ -2289,6 +2264,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2297,7 +2273,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_*",
                                     "stmt1": "c_default"
                                 },
@@ -2348,7 +2323,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayPtrConst",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -2443,6 +2417,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2452,7 +2427,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_**_buf_pointer",
                                     "stmt1": "c_out_native_**_buf",
                                     "temp0": "array_temp0"
@@ -2484,6 +2458,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2492,7 +2467,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_*",
                                     "stmt1": "c_default"
                                 },
@@ -2526,7 +2500,6 @@
                             "c_var": "self",
                             "function_name": "fetchArrayPtrConst",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine",
                             "underscore_name": "fetch_array_ptr_const"
@@ -2619,6 +2592,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2628,7 +2602,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_pointer",
                                     "stmt1": "c_default"
                                 },
@@ -2668,6 +2641,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2676,7 +2650,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_&",
                                     "stmt1": "c_default"
                                 },
@@ -2727,7 +2700,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchArrayRefConst",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -2822,6 +2794,7 @@
                                     "c_const": "const ",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2831,7 +2804,6 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_native_*&_buf_pointer",
                                     "stmt1": "c_out_native_*&_buf",
                                     "temp0": "array_temp0"
@@ -2863,6 +2835,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "int",
                                     "c_var": "isize",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2871,7 +2844,6 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "shadow_var": "SHadow_isize",
                                     "stmt0": "c_inout_native_&",
                                     "stmt1": "c_default"
                                 },
@@ -2905,7 +2877,6 @@
                             "c_var": "self",
                             "function_name": "fetchArrayRefConst",
                             "function_suffix": "_bufferify",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "c_subroutine",
                             "stmt1": "c_subroutine",
                             "underscore_name": "fetch_array_ref_const"
@@ -2967,6 +2938,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "void",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -2975,7 +2947,6 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_void_**",
                                     "stmt1": "c_default"
                                 },
@@ -3035,7 +3006,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchVoidPtr",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -3099,6 +3069,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "void",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -3107,7 +3078,6 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_out_void_*&",
                                     "stmt1": "c_default"
                                 },
@@ -3167,7 +3137,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "fetchVoidRef",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -3228,6 +3197,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "void",
                                     "c_var": "array",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -3236,7 +3206,6 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "shadow_var": "SHadow_array",
                                     "stmt0": "c_in_void_*",
                                     "stmt1": "c_default"
                                 },
@@ -3300,7 +3269,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "bool SHC_rv",
                             "function_name": "checkPtr",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "check_ptr"
                         },
                         "zz_fmtresult": {
@@ -3316,7 +3284,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_bool_scalar",
                                 "stmt1": "c_default"
                             },
@@ -3402,7 +3369,6 @@
                             "c_var": "self",
                             "cxx_rv_decl": "double SHC_rv",
                             "function_name": "sumArray",
-                            "shadow_var": "SHadow_self",
                             "underscore_name": "sum_array"
                         },
                         "zz_fmtresult": {
@@ -3418,7 +3384,6 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_function_native_scalar",
                                 "stmt1": "c_default"
                             },
@@ -3485,6 +3450,7 @@
                     "class_scope": "ArrayWrapper::",
                     "cxx_class": "ArrayWrapper",
                     "cxx_type": "ArrayWrapper",
+                    "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                     "file_scope": "ArrayWrapper",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -3530,6 +3496,7 @@
                     "ARR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:ARR_SHROUD_capsule_data",
             "f_c_type": "type(ARR_SHROUD_capsule_data)",
             "f_capsule_data_type": "ARR_SHROUD_capsule_data",
             "f_class": "class(arraywrapper)",
@@ -3539,6 +3506,7 @@
                     "arraywrapper"
                 ]
             },
+            "f_module_line": "arrayclass_mod:arraywrapper",
             "f_module_name": "arrayclass_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(arraywrapper)",

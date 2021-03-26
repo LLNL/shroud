@@ -117,14 +117,6 @@ shadow
 capsule
 context
 
-   
-buf_extra
-^^^^^^^^^
-
-Used to add argument for return values.
-For example, function which return class instance.
-
-
 iface_header
 ^^^^^^^^^^^^
 
@@ -189,6 +181,12 @@ from the ``char *`` argument passed into the C API wrapper.
         name="c_inout_string",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
+
+ Set to **return** when the *c_var* is passed in as an argument and
+ a C++ variable must be created.
+ Ex ``c_function_shadow``.
+ In this case, *cxx_to_c* is defined so a local variable will already
+ be created, unless *language=c* in which case *cxx_to_c* is unneeded.
 
 c_arg_decl
 ^^^^^^^^^^

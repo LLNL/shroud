@@ -442,10 +442,6 @@ return_scalar_pointer
   
 .. bufferify
 
-SH_shadow
-    Prefix for shadow variables to avoid conflicting with other variables.
-    Defaults to ``SHadow_``.
-
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
     else, do not show the comments.
@@ -1241,10 +1237,6 @@ LUA_name
     Name of function as known by LUA.
     Defaults to evaluation of option *LUA_name_template*.
 
-shadow_var
-   Name of variables which are shadow variables that represent a class.
-   Used with C++ classes for C structs with *wrap_struct_as=class*.
-
 template_suffix
    String which is append to the end of a generated function names
    to distinguish template instatiations.
@@ -1313,11 +1305,13 @@ fmtc
 """"
 
 Format strings used with C wrappers.
+Set for each argument.
 
 fmtf
 """"
 
 Format strings used with Fortran wrappers.
+Set for each argument.
 
 f_array_allocate
     Fortran shape expression used with ``ALLOCATE`` statement when
@@ -1334,6 +1328,14 @@ f_c_dimension
     Dimension used in ``bind(C)`` interface.
     May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
 
+f_c_module_line
+    Typemap.f_c_module in a format usable by FStmts.f_module_line.
+    The dictionary is converted into the string.
+
+f_capsule_data_type
+    The name of the derived type used to share memory information with C or C++.
+    *F_capsule_data_type* for the argument type.
+    
 f_declare_shape_prefix
 
 f_declare_shape_array

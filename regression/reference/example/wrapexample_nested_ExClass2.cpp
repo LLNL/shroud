@@ -89,16 +89,15 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +intent(in)
 // Exact:     c_in_string_*
-AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
-    const char * name, AA_example_nested_ExClass2 * SHadow_rv)
+void AA_example_nested_ExClass2_ctor(
+    AA_example_nested_ExClass2 * SHC_rv, const char * name)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor
     const std::string SHCXX_name(name);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SHCXX_name);
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 2;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 2;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
 
@@ -115,16 +114,15 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
-AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
-    char *name, int name_temp0, AA_example_nested_ExClass2 * SHadow_rv)
+void AA_example_nested_ExClass2_ctor_bufferify(
+    AA_example_nested_ExClass2 * SHC_rv, char *name, int name_temp0)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
     const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SHCXX_name);
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 2;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 2;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor_bufferify
 }
 
@@ -311,9 +309,10 @@ int AA_example_nested_ExClass2_get_name_length(
 // Attrs:     +intent(in)
 // Requested: c_in_shadow_*
 // Match:     c_in_shadow
-AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
-    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
-    AA_example_nested_ExClass1 * SHadow_rv)
+void AA_example_nested_ExClass2_get_class1(
+    AA_example_nested_ExClass2 * self,
+    AA_example_nested_ExClass1 * SHC_rv,
+    AA_example_nested_ExClass1 * in)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
@@ -322,9 +321,8 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 * SHCXX_rv = SH_this->get_class1(
         SHCXX_in);
-    SHadow_rv->addr = SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
 

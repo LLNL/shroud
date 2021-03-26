@@ -233,6 +233,7 @@ class Wrapf(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         fmt_class.F_derived_name = node.typemap.f_derived_type
+        fmt_class.f_capsule_data_type = node.typemap.f_capsule_data_type
 
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
@@ -752,16 +753,24 @@ rv = .false.
             Useful for interfaces.
         line : str
             module dictionary info as a string.
+            Will be formatted using fmt.
+            May be blank after format expansion.
         fmt : Scope
         """
         wline = wformat(line, fmt)
         wline = wline.replace(" ", "")
+        if not wline:
+            return
         f_module = {}
         for use in wline.split(";"):
             mname, syms = use.split(":")
-            module = modules.setdefault(mname, {})
-            for sym in syms.split(","):
-                module[sym] = True
+            if mname == "--import--":
+                for sym in syms.split(","):
+                    imports[sym] = True
+            else:
+                module = modules.setdefault(mname, {})
+                for sym in syms.split(","):
+                    module[sym] = True
         
     def update_f_module(self, modules, imports, f_module):
         """Aggragate the information from f_module into modules.
@@ -1060,20 +1069,6 @@ rv = .false.
                         arg_typemap.f_c_module or arg_typemap.f_module
                     )
                 continue
-            elif buf_arg == "shadow":
-                # Do not use const or value in declaration
-                # Function result arguments explicitly set to intent(out).
-                arg_c_names.append(fmt.F_C_var)
-                arg_c_decl.append("{}, intent({}){} :: {}".format(
-                    ast.typemap.f_c_type,
-                    (intent or ast.metaattrs["intent"]).upper(),
-                    ", value" if attrs["value"] else "",
-                    fmt.F_C_var))
-                self.update_f_module(
-                    modules, imports,
-                    ast.typemap.f_c_module or ast.typemap.f_module
-                )
-                continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
                 if intent_blk.f_c_arg_names:
@@ -1162,6 +1157,7 @@ rv = .false.
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
+            self.set_fmt_fields_iface(ast, fmt_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1236,7 +1232,8 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
-
+            self.set_fmt_fields_iface(arg, fmt_arg)
+            
             attrs = arg.attrs
             meta = arg.metaattrs
             intent = meta["intent"]
@@ -1276,20 +1273,6 @@ rv = .false.
             )
         # --- End loop over function parameters
 
-        if subprogram == "function" and c_result_blk.buf_extra:
-            fmt_func.F_C_var = fmt_func.F_result_capsule
-            self.build_arg_list_interface(
-                node, fileinfo,
-                fmt_func,
-                ast,
-                c_result_blk,
-                c_result_blk.buf_extra,
-                modules,
-                imports,
-                arg_c_names,
-                arg_c_decl,
-                intent="out",
-            )
         # Filter out non-pure functions.
         if result_typemap.base == "shadow":
             # Functions which return shadow classes are not pure
@@ -1431,11 +1414,6 @@ rv = .false.
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue
-            elif buf_arg == "shadow":
-                # Pass down the pointer to {F_capsule_data_type}
-                need_wrapper = True
-                append_format(arg_c_call, "{f_var}%{F_derived_member}", fmt)
-                continue
 
             need_wrapper = True
             if buf_arg == "capsule":
@@ -1508,6 +1486,23 @@ rv = .false.
         need_wrapper = need_wrapper or intent_blk.need_wrapper
         return need_wrapper
 
+    def set_fmt_fields_iface(self, ast, fmt):
+        """Set format fields for interface.
+
+        Transfer info from Typemap to fmt for use by statements.
+
+        Parameters
+        ----------
+        ast : ast.Declaration
+        fmt : util.Scope
+        """
+        ntypemap = ast.typemap
+        if ntypemap.f_capsule_data_type:
+            fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
+        f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
+        if f_c_module_line:
+            fmt.f_c_module_line = f_c_module_line
+    
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
                        subprogram=None,
                        ntypemap=None):
@@ -1543,11 +1538,12 @@ rv = .false.
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ntypemap.name
         if subprogram != "subroutine":
-            if ntypemap.f_kind:
-                fmt.f_kind = ntypemap.f_kind
             fmt.f_type = ntypemap.f_type
             fmt.sh_type = ntypemap.sh_type
-        
+            if ntypemap.f_kind:
+                fmt.f_kind = ntypemap.f_kind
+            self.set_fmt_fields_iface(c_ast, fmt)
+                
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
@@ -1938,22 +1934,6 @@ rv = .false.
             )
         # --- End loop over function parameters
         #####
-
-        if subprogram == "function" and c_result_blk.buf_extra:
-            need_wrapper = self.build_arg_list_impl(
-                fileinfo,
-                fmt_result,
-                C_node.ast, #c_arg,
-                ast, # f_arg,
-                result_typemap,
-                statements.FStmts, #  Empty values like arg_c_call
-                c_result_blk.buf_extra,
-                modules,
-                imports,
-                arg_f_decl,
-                arg_c_call,
-                need_wrapper,
-            )
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value

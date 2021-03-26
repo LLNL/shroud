@@ -24,13 +24,12 @@ extern "C" {
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
+void CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {
     // splicer begin class.Shape.method.ctor
     classes::Shape *SHCXX_rv = new classes::Shape();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 2;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 2;
     // splicer end class.Shape.method.ctor
 }
 

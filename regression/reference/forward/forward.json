@@ -46,6 +46,7 @@
                     "class_scope": "Class3::",
                     "cxx_class": "Class3",
                     "cxx_type": "Class3",
+                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class3",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -85,14 +86,13 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_ctor",
-                            "C_prototype": "FOR_Class2 * SHadow_rv",
-                            "C_return_type": "FOR_Class2 *",
-                            "F_C_arguments": "SHT_crv",
+                            "C_prototype": "FOR_Class2 * SHC_rv",
+                            "C_return_type": "void",
+                            "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_class2_ctor",
                             "F_C_name": "c_class2_ctor",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
+                            "F_C_result_clause": "",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -120,7 +120,6 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_ctor_shadow_scalar",
                                 "stmt1": "c_ctor"
                             },
@@ -128,6 +127,8 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "forward::Class2",
+                                "f_c_module_line": "--import--:FOR_SHROUD_capsule_data",
+                                "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
@@ -216,7 +217,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_dtor",
                             "stmt1": "f_default",
                             "stmtc0": "c_dtor",
@@ -284,6 +284,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "TUT_Class1",
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -292,7 +293,6 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_in_shadow_*",
                                     "stmt1": "c_in_shadow"
                                 },
@@ -300,12 +300,14 @@
                                     "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
+                                    "f_c_module_line": "tutorial_mod:SHROUD_class1_capsule",
+                                    "f_capsule_data_type": "SHROUD_class1_capsule",
                                     "f_intent": "IN",
                                     "f_type": "type(class1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
                                     "stmtc1": "c_in_shadow"
                                 },
@@ -370,7 +372,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -438,6 +439,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "FOR_Class3",
                                     "c_var": "arg",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -446,7 +448,6 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_in_shadow_*",
                                     "stmt1": "c_in_shadow"
                                 },
@@ -454,12 +455,14 @@
                                     "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
+                                    "f_c_module_line": "--import--:FOR_SHROUD_capsule_data",
+                                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                     "f_intent": "IN",
                                     "f_type": "type(class3)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "f_in_shadow_*",
-                                    "stmt1": "f_default",
+                                    "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
                                     "stmtc1": "c_in_shadow"
                                 },
@@ -526,7 +529,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -578,6 +580,7 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
+                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -648,6 +651,7 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "STR_cstruct1",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -656,7 +660,6 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_struct_*",
                             "stmt1": "c_in_struct"
                         },
@@ -709,7 +712,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -782,6 +784,7 @@
                     "FOR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:FOR_SHROUD_capsule_data",
             "f_c_type": "type(FOR_SHROUD_capsule_data)",
             "f_capsule_data_type": "FOR_SHROUD_capsule_data",
             "f_class": "class(class2)",
@@ -791,6 +794,7 @@
                     "class2"
                 ]
             },
+            "f_module_line": "forward_mod:class2",
             "f_module_name": "forward_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
@@ -823,6 +827,7 @@
                     "FOR_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:FOR_SHROUD_capsule_data",
             "f_c_type": "type(FOR_SHROUD_capsule_data)",
             "f_capsule_data_type": "FOR_SHROUD_capsule_data",
             "f_class": "class(class3)",
@@ -832,6 +837,7 @@
                     "class3"
                 ]
             },
+            "f_module_line": "forward_mod:class3",
             "f_module_name": "forward_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class3)",
@@ -861,6 +867,7 @@
                     "SHROUD_class1_capsule"
                 ]
             },
+            "f_c_module_line": "tutorial_mod:SHROUD_class1_capsule",
             "f_c_type": "type(SHROUD_class1_capsule)",
             "f_capsule_data_type": "SHROUD_class1_capsule",
             "f_class": "class(class1)",
@@ -870,6 +877,7 @@
                     "class1"
                 ]
             },
+            "f_module_line": "tutorial_mod:class1",
             "f_module_name": "tutorial_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",

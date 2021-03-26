@@ -80,15 +80,14 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
-    AA_example_nested_ExClass1 * SHadow_rv)
+void AA_example_nested_ExClass1_ctor_0(
+    AA_example_nested_ExClass1 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
 
@@ -109,16 +108,15 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Argument:  const string * name
 // Attrs:     +intent(in)
 // Exact:     c_in_string_*
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
-    const char * name, AA_example_nested_ExClass1 * SHadow_rv)
+void AA_example_nested_ExClass1_ctor_1(
+    AA_example_nested_ExClass1 * SHC_rv, const char * name)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
     const std::string SHCXX_name(name);
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
 
@@ -139,16 +137,15 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Argument:  const string * name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
-    char *name, int name_temp0, AA_example_nested_ExClass1 * SHadow_rv)
+void AA_example_nested_ExClass1_ctor_1_bufferify(
+    AA_example_nested_ExClass1 * SHC_rv, char *name, int name_temp0)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
     const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 1;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
 }
 

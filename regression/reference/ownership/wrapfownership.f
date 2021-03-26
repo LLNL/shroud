@@ -427,15 +427,12 @@ module ownership_mod
         ! Attrs:     +intent(function)
         ! Requested: c_function_shadow_*
         ! Match:     c_function_shadow
-        function c_get_class_static(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_class_static(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
-            use iso_c_binding, only : C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
-            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_class_static
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_class_static
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
@@ -447,16 +444,14 @@ module ownership_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        function c_get_class_new(flag, SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_class_new(SHT_rv, flag) &
                 bind(C, name="OWN_get_class_new")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_capsule_data
             implicit none
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: flag
-            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_class_new
+        end subroutine c_get_class_new
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -728,11 +723,9 @@ contains
     ! Match:     c_function_shadow
     function get_class_static() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_static
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_get_class_static(SHT_rv%cxxmem)
+        call c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
     end function get_class_static
 
@@ -758,12 +751,11 @@ contains
     !<
     function get_class_new(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_new
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
+        call c_get_class_new(SHT_rv%cxxmem, flag)
         ! splicer end function.get_class_new
     end function get_class_new
 

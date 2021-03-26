@@ -96,16 +96,15 @@ STR_cstruct_list * STR_get_global_struct_list(void);
 
 STR_cstruct_list * STR_get_global_struct_list_bufferify(void);
 
-STR_Cstruct_as_class * STR_create__cstruct_as_class(
-    STR_Cstruct_as_class * SHadow_rv);
+void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv);
 
-STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
-    STR_Cstruct_as_class * SHadow_rv);
+void STR_create__cstruct_as_class_args(STR_Cstruct_as_class * SHC_rv,
+    int x, int y);
 
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
 
-STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
-    int y, int z, STR_Cstruct_as_subclass * SHadow_rv);
+void STR_create__cstruct_as_subclass_args(
+    STR_Cstruct_as_subclass * SHC_rv, int x, int y, int z);
 
 #ifdef __cplusplus
 }

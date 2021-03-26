@@ -54,6 +54,7 @@
                                     "c_const": "",
                                     "c_deref": "",
                                     "c_member": ".",
+                                    "c_type": "MPI_Fint",
                                     "c_var": "comm",
                                     "cxx_addr": "&",
                                     "cxx_decl": "MPI_Comm SHCXX_comm",
@@ -64,7 +65,6 @@
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_comm",
                                     "stmt0": "c_in_unknown_scalar",
                                     "stmt1": "c_default"
                                 },
@@ -104,7 +104,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -161,6 +160,7 @@
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
+                                    "c_type": "LIB_three_Class1",
                                     "c_var": "c2",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
@@ -169,7 +169,6 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_c2",
                                     "stmt0": "c_inout_shadow_*",
                                     "stmt1": "c_inout_shadow"
                                 },
@@ -177,6 +176,8 @@
                                     "F_C_var": "c2",
                                     "F_pointer": "SHPTR_c2",
                                     "c_var": "c2",
+                                    "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
+                                    "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_intent": "INOUT",
                                     "f_type": "type(class1)",
                                     "f_var": "c2",
@@ -208,7 +209,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
-                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
@@ -237,6 +237,7 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
+                    "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -421,6 +422,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
+                                            "c_type": "int",
                                             "c_var": "arg1",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
@@ -429,7 +431,6 @@
                                             "cxx_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "shadow_var": "SHadow_arg1",
                                             "stmt0": "c_in_native_scalar",
                                             "stmt1": "c_default"
                                         },
@@ -469,7 +470,6 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
-                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
@@ -498,6 +498,7 @@
                             "class_scope": "Class1::",
                             "cxx_class": "Class1",
                             "cxx_type": "Class1",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "three_Class1",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -580,7 +581,6 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
-                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
@@ -609,6 +609,7 @@
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer1_class0",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -741,7 +742,6 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
-                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
@@ -770,6 +770,7 @@
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
+                            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer2_class0",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -897,6 +898,7 @@
                     "LIB_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
             "f_c_type": "type(LIB_SHROUD_capsule_data)",
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class2)",
@@ -906,6 +908,7 @@
                     "class2"
                 ]
             },
+            "f_module_line": "library_mod:class2",
             "f_module_name": "library_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
@@ -933,6 +936,7 @@
                     "LIB_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
             "f_c_type": "type(LIB_SHROUD_capsule_data)",
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class0)",
@@ -942,6 +946,7 @@
                     "class0"
                 ]
             },
+            "f_module_line": "library_outer1_mod:class0",
             "f_module_name": "library_outer1_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
@@ -968,6 +973,7 @@
                     "LIB_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
             "f_c_type": "type(LIB_SHROUD_capsule_data)",
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class0)",
@@ -977,6 +983,7 @@
                     "class0"
                 ]
             },
+            "f_module_line": "library_outer2_mod:class0",
             "f_module_name": "library_outer2_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
@@ -1004,6 +1011,7 @@
                     "LIB_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
             "f_c_type": "type(LIB_SHROUD_capsule_data)",
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class1)",
@@ -1013,6 +1021,7 @@
                     "class1"
                 ]
             },
+            "f_module_line": "library_three_mod:class1",
             "f_module_name": "library_three_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",

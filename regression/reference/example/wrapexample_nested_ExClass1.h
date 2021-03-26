@@ -32,14 +32,14 @@ extern "C" {
 // splicer begin namespace.example::nested.class.ExClass1.C_declarations
 // splicer end namespace.example::nested.class.ExClass1.C_declarations
 
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
-    AA_example_nested_ExClass1 * SHadow_rv);
+void AA_example_nested_ExClass1_ctor_0(
+    AA_example_nested_ExClass1 * SHC_rv);
 
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
-    const char * name, AA_example_nested_ExClass1 * SHadow_rv);
+void AA_example_nested_ExClass1_ctor_1(
+    AA_example_nested_ExClass1 * SHC_rv, const char * name);
 
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
-    char *name, int name_temp0, AA_example_nested_ExClass1 * SHadow_rv);
+void AA_example_nested_ExClass1_ctor_1_bufferify(
+    AA_example_nested_ExClass1 * SHC_rv, char *name, int name_temp0);
 
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self);
 

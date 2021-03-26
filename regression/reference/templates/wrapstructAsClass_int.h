@@ -28,8 +28,7 @@ extern "C" {
 // splicer begin class.structAsClass.C_declarations
 // splicer end class.structAsClass.C_declarations
 
-TEM_structAsClass_int * TEM_structAsClass_int_ctor(
-    TEM_structAsClass_int * SHadow_rv);
+void TEM_structAsClass_int_ctor(TEM_structAsClass_int * SHC_rv);
 
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self,
     int n);

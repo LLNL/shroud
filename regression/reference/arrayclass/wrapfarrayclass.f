@@ -86,15 +86,12 @@ module arrayclass_mod
         ! Function:  ArrayWrapper
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function c_arraywrapper_ctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_arraywrapper_ctor(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
-            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
-            type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_arraywrapper_ctor
+            type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_arraywrapper_ctor
 
         ! ----------------------------------------
         ! Function:  void setSize
@@ -576,11 +573,9 @@ contains
     ! Exact:     c_ctor
     function arraywrapper_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(arraywrapper) :: SHT_rv
         ! splicer begin class.ArrayWrapper.method.ctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_arraywrapper_ctor(SHT_rv%cxxmem)
+        call c_arraywrapper_ctor(SHT_rv%cxxmem)
         ! splicer end class.ArrayWrapper.method.ctor
     end function arraywrapper_ctor
 

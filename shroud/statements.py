@@ -448,7 +448,7 @@ def lookup_stmts_tree(tree, path):
 #  f_module    - Add module info to interface block.
 CStmts = util.Scope(None,
     name="c_default",
-    buf_args=[], buf_extra=[],
+    buf_args=[],
     iface_header=[],
     impl_header=[],
     c_helper="", c_local_var=None,
@@ -1179,14 +1179,9 @@ fc_statements = [
         # Copy result into caller's buffer.
         #  char *getname() +len(30)
         name="c_function_char_*_buf",
-        cxx_local="pointer",
+        cxx_local_var="result",
         mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
-        call=[
-            # c_var is a function argument. Must use a temp variable.
-            "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}"
-            "{CXX_template}(\t{C_call_list});",
-        ],
         post_call=[
             # XXX - temp0 -> c_var_len
             # nsrc=-1 will call strlen({cxx_var})
@@ -1820,44 +1815,57 @@ fc_statements = [
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
     dict(
-        name="c_in_shadow",
-        buf_args=["shadow"],
+        name="f_mixin_shadow",
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
+    ),
+    dict(
+        name="c_mixin_shadow",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{c_type} * {c_var}",
+        ],
+        f_arg_decl=[
+            "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
+        ],
+        f_module_line="{f_c_module_line}",
+    ),
+    
+    dict(
+        name="f_in_shadow",
+        mixin=["f_mixin_shadow"],
+    ),
+    dict(
+        # c_in_shadow
+        # c_inout_shadow
+        name="c_in/inout_shadow",
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};",
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
         ],
-    ),
-    dict(
-        name="c_inout_shadow",
-        base="c_in_shadow",
-    ),
-    dict(
-        name="c_in_shadow_scalar",
-        base="c_in_shadow",
     ),
     # Return a C_capsule_data_type.
     dict(
         name="c_function_shadow",
-        buf_extra=["shadow"],
-        c_local_var="pointer",
+        mixin=["c_mixin_shadow"],
+        cxx_local_var="result",
         post_call=[
-            "{shadow_var}->addr = {cxx_nonconst_ptr};",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};",
         ],
-        ret=[
-            "return {shadow_var};",
-        ],
-        return_type="{c_type} *",
-        return_cptr=True,
+        return_type="void",
     ),
     dict(
         name="c_function_shadow_scalar",
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
-        # c_local_var is passed in via buf_extra=shadow.
-        buf_extra=["shadow"],
+        # c_local_var is passed in as argument.
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         c_local_var="pointer",
         owner="caller",
@@ -1865,41 +1873,25 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{shadow_var}->addr = {cxx_nonconst_ptr};",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};",
         ],
-        ret=[
-            "return {shadow_var};",
-        ],
-        return_type="{c_type} *",
-        return_cptr=True,
+        return_type="void",
     ),
     dict(
         name="f_function_shadow",
-        need_wrapper=True,
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        declare=[
-            "type(C_PTR) :: {F_result_ptr}",
-        ],
-        call=[
-            # The C function returns a pointer.
-            # Save in a type(C_PTR) variable.
-            "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-        ],
+        mixin=["f_mixin_shadow"],
     ),
     dict(
         name="c_ctor",
-        buf_extra=["shadow"],
+        mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{shadow_var}->idtor = {idtor};",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
         ],
-        ret=[
-            "return {shadow_var};",
-        ],
-        return_type="{c_type} *",
+        return_type="void",
         owner="caller",
     ),
     dict(
@@ -2179,7 +2171,7 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_character_cfi",
         ],
-        cxx_local_var=None,  # undo mixin
+        cxx_local_var="result",
         pre_call=[],         # undo mixin
         c_helper="ShroudStrCopy",
         post_call=[

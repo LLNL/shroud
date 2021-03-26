@@ -324,8 +324,8 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHC_rv_temp0)
 const char * STR_get_char_ptr2(void)
 {
     // splicer begin function.get_char_ptr2
-    const char * SHCXX_rv = getCharPtr2();
-    return SHCXX_rv;
+    const char * SHC_rv = getCharPtr2();
+    return SHC_rv;
     // splicer end function.get_char_ptr2
 }
 // end STR_get_char_ptr2
@@ -343,7 +343,7 @@ const char * STR_get_char_ptr2(void)
 void STR_get_char_ptr2_bufferify(char *SHC_rv, int SHC_rv_temp0)
 {
     // splicer begin function.get_char_ptr2_bufferify
-    const char *SHCXX_rv = getCharPtr2();
+    const char * SHCXX_rv = getCharPtr2();
     ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv, -1);
     // splicer end function.get_char_ptr2_bufferify
 }

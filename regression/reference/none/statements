@@ -58,8 +58,7 @@ root
           cdesc -- c_in/out/inout_native_*_cdesc
           cfi -- c_in_native_*_cfi
         ** -- c_in_native_**
-      shadow -- c_in_shadow
-        scalar -- c_in_shadow_scalar
+      shadow -- c_in/inout_shadow
       string
         & -- c_in_string_*/&
           buf -- c_in_string_*/&_buf
@@ -86,7 +85,7 @@ root
       native
         *
           cdesc -- c_in/out/inout_native_*_cdesc
-      shadow -- c_inout_shadow
+      shadow -- c_in/inout_shadow
       string
         & -- c_inout_string_*/&
           buf -- c_inout_string_*/&_buf
@@ -124,6 +123,7 @@ root
           buf -- c_mixin_out_array_buf
         character
           buf -- c_mixin_out_character_buf
+      shadow -- c_mixin_shadow
     out
       char
         *
@@ -230,6 +230,7 @@ root
       native
         *
           cdesc -- f_in/out/inout_native_*_cdesc
+      shadow -- f_in_shadow
       string
         &
           buf -- f_in_string_*/&_buf
@@ -283,6 +284,7 @@ root
           buf -- f_mixin_out_array_buf
         character
           buf -- f_mixin_out_character_buf
+      shadow -- f_mixin_shadow
     out
       bool -- f_out_bool
       char
@@ -318,18 +320,21 @@ root
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
 c_ctor:
-  buf_extra:
-  - shadow
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
-  - "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
-  - '{shadow_var}->idtor = {idtor};'
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_ctor
   owner: caller
-  ret:
-  - return {shadow_var};
-  return_type: '{c_type} *'
+  return_type: void
 c_dtor:
   call:
   - delete {CXX_this};
@@ -350,9 +355,7 @@ c_function_char_*_buf:
   - char *{c_var}
   - int {temp0}
   c_helper: ShroudStrCopy
-  call:
-  - "{c_const}char *{cxx_var} =\t {CXX_this_call}{function_name}{CXX_template}(\t\
-    {C_call_list});"
+  cxx_local_var: result
   f_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {temp0}'
@@ -397,6 +400,7 @@ c_function_char_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   c_helper: ShroudStrCopy
+  cxx_local_var: result
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
@@ -508,34 +512,38 @@ c_function_native_*_scalar:
   name: c_function_native_*_scalar
   owner: library
 c_function_shadow:
-  buf_extra:
-  - shadow
-  c_local_var: pointer
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  cxx_local_var: result
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_function_shadow
   owner: library
   post_call:
-  - '{shadow_var}->addr = {cxx_nonconst_ptr};'
-  - '{shadow_var}->idtor = {idtor};'
-  ret:
-  - return {shadow_var};
-  return_cptr: true
-  return_type: '{c_type} *'
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  return_type: void
 c_function_shadow_scalar:
-  buf_extra:
-  - shadow
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   c_local_var: pointer
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_function_shadow_scalar
   owner: caller
   post_call:
-  - '{shadow_var}->addr = {cxx_nonconst_ptr};'
-  - '{shadow_var}->idtor = {idtor};'
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
   pre_call:
   - '{cxx_type} * {cxx_var} = new {cxx_type};'
-  ret:
-  - return {shadow_var};
-  return_cptr: true
-  return_type: '{c_type} *'
+  return_type: void
 c_function_string_&:
   name: c_function_string_&
   owner: library
@@ -1008,20 +1016,17 @@ c_in_native_*_cfi:
   - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};'
 c_in_shadow:
   buf_args:
-  - shadow
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_in_shadow
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
-c_in_shadow_scalar:
-  buf_args:
-  - shadow
-  cxx_local_var: pointer
-  name: c_in_shadow_scalar
-  owner: library
-  pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_in_string_&:
   cxx_local_var: scalar
   name: c_in_string_&
@@ -1324,12 +1329,17 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
 c_inout_shadow:
   buf_args:
-  - shadow
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
   cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
   name: c_inout_shadow
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_inout_string_&:
   cxx_local_var: scalar
   impl_header:
@@ -1687,6 +1697,16 @@ c_mixin_out_character_buf:
   name: c_mixin_out_character_buf
   ntemps: 1
   owner: library
+c_mixin_shadow:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_module_line: '{f_c_module_line}'
+  name: c_mixin_shadow
+  owner: library
 c_out_char_*_buf:
   buf_args:
   - arg_decl
@@ -2042,13 +2062,8 @@ f_XXXin_string_scalar:
   name: f_XXXin_string_scalar
   need_wrapper: true
 f_ctor:
-  call:
-  - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
   name: f_ctor
   need_wrapper: true
 f_function_bool:
@@ -2215,13 +2230,8 @@ f_function_native_*_raw:
 f_function_native_*_scalar:
   name: f_function_native_*_scalar
 f_function_shadow:
-  call:
-  - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
   name: f_function_shadow
   need_wrapper: true
 f_function_string_&_buf:
@@ -2451,6 +2461,11 @@ f_in_native_*_cdesc:
   - '{temp0}%size = {size}'
   - '{temp0}%rank = {rank}'
   - '{temp0}%shape(1:{rank}) = shape({f_var})'
+f_in_shadow:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  name: f_in_shadow
+  need_wrapper: true
 f_in_string_&_buf:
   arg_c_call:
   - '{f_var}'
@@ -2718,6 +2733,11 @@ f_mixin_out_character_buf:
   - 'type({F_array_type}) :: {temp0}'
   name: f_mixin_out_character_buf
   ntemps: 1
+f_mixin_shadow:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  name: f_mixin_shadow
+  need_wrapper: true
 f_out_bool:
   c_local_var: true
   name: f_out_bool

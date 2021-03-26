@@ -62,6 +62,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "short",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -70,7 +71,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -144,7 +144,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_SHORT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -230,6 +229,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -238,7 +238,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -312,7 +311,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -398,6 +396,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -406,7 +405,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -480,7 +478,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -568,6 +565,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "long long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -576,7 +574,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -650,7 +647,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_LONG_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -740,6 +736,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "short",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -748,7 +745,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -822,7 +818,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_SHORT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -910,6 +905,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -918,7 +914,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -992,7 +987,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1082,6 +1076,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "long long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1090,7 +1085,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -1164,7 +1158,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_LONG_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1252,6 +1245,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned int",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1260,7 +1254,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -1334,7 +1327,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1422,6 +1414,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned short",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1430,7 +1423,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -1504,7 +1496,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1592,6 +1583,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned int",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1600,7 +1592,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -1674,7 +1665,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1762,6 +1752,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1770,7 +1761,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -1844,7 +1834,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1934,6 +1923,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned long long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1942,7 +1932,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2016,7 +2005,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2108,6 +2096,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "unsigned long",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2116,7 +2105,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2190,7 +2178,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2276,6 +2263,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int8_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2284,7 +2272,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT8_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2358,7 +2345,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT8_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2444,6 +2430,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int16_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2452,7 +2439,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT16_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2526,7 +2512,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT16_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2612,6 +2597,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int32_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2620,7 +2606,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2694,7 +2679,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT32_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2780,6 +2764,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "int64_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2788,7 +2773,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -2862,7 +2846,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT64_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -2948,6 +2931,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "uint8_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -2956,7 +2940,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT8_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3030,7 +3013,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UINT8_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3116,6 +3098,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "uint16_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -3124,7 +3107,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT16_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3198,7 +3180,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UINT16_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3284,6 +3265,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "uint32_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -3292,7 +3274,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT32_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3366,7 +3347,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UINT32_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3452,6 +3432,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "uint64_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -3460,7 +3441,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT64_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3534,7 +3514,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_UINT64_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3620,6 +3599,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "size_t",
                             "c_var": "arg1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -3628,7 +3608,6 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
@@ -3702,7 +3681,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_SIZE_T",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -3788,6 +3766,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
+                            "c_type": "bool",
                             "c_var": "arg",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -3796,7 +3775,6 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_bool_scalar",
                             "stmt1": "c_default"
                         },
@@ -3872,7 +3850,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_bool_scalar",
                         "stmt1": "c_default"
                     },
@@ -3967,6 +3944,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "int",
                             "c_var": "flag",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -3975,7 +3953,6 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_flag",
                             "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
@@ -4050,7 +4027,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_BOOL",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_bool_scalar",
                         "stmt1": "c_default"
                     },

@@ -24,13 +24,12 @@ extern "C" {
 // Attrs:     +intent(ctor)
 // Requested: c_ctor_shadow_scalar
 // Match:     c_ctor
-CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv)
+void CLA_Circle_ctor(CLA_Circle * SHC_rv)
 {
     // splicer begin class.Circle.method.ctor
     classes::Circle *SHCXX_rv = new classes::Circle();
-    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHadow_rv->idtor = 3;
-    return SHadow_rv;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 3;
     // splicer end class.Circle.method.ctor
 }
 

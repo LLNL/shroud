@@ -68,6 +68,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "int",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -76,7 +77,6 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_in_native_*_cdesc",
                             "stmt1": "c_in_native_*_cdesc",
                             "temp0": "arg_temp0"
@@ -328,6 +328,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "char",
                             "c_var": "name",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -336,7 +337,6 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&",
                             "stmt1": "c_in_string_&"
                         },
@@ -351,6 +351,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "void",
                             "c_var": "value",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -359,7 +360,6 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_value",
                             "stmt0": "c_out_void_*_cdesc",
                             "stmt1": "c_out_void_*_cdesc",
                             "temp0": "value_temp0"
@@ -608,6 +608,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "char",
                             "c_var": "name",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -616,7 +617,6 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
                             "stmt1": "c_in_string_&_buf",
                             "temp0": "name_temp0"
@@ -643,6 +643,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "int",
                             "c_var": "value",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -651,7 +652,6 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_value",
                             "stmt0": "c_out_native_*_cdesc",
                             "stmt1": "c_out_native_*_cdesc",
                             "temp0": "value_temp0"
@@ -915,6 +915,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "char",
                             "c_var": "name",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -923,7 +924,6 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name",
                             "stmt0": "c_in_string_&_buf",
                             "stmt1": "c_in_string_&_buf",
                             "temp0": "name_temp0"
@@ -950,6 +950,7 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
+                            "c_type": "double",
                             "c_var": "value",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -958,7 +959,6 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "shadow_var": "SHadow_value",
                             "stmt0": "c_out_native_*_cdesc",
                             "stmt1": "c_out_native_*_cdesc",
                             "temp0": "value_temp0"
@@ -1158,7 +1158,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
@@ -1278,7 +1277,6 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },

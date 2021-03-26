@@ -15,7 +15,8 @@
 void test_int_vector(void)
 {
   TEM_vector_int v1_buf;
-  TEM_vector_int *v1 = TEM_vector_int_ctor(&v1_buf);
+  TEM_vector_int_ctor(&v1_buf);
+  TEM_vector_int *v1 = &v1_buf;
   int value = 1;
   int * out;
 

@@ -50,6 +50,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   *C_impl_utility*.  This function contains code to delete memory from
   shadow classes. Previously it was written file *C_impl_filename*.
   This may require changes to Makefiles.
+- C wrappers no longer return a pointer to the shadow struct and instead
+  are ``void`` functions.  The shadow struct must continue to be passed in
+  as an argument which will be filled in by the C wrapper.
 
 ### Removed
 - Removed format field *F_capsule_data_type_class*.

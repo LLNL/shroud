@@ -24,13 +24,12 @@ extern "C" {
 // Attrs:     +intent(function)
 // Requested: c_function_shadow_&
 // Match:     c_function_shadow
-CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHadow_rv)
+void CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
 {
     // splicer begin class.Singleton.method.get_reference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
-    SHadow_rv->addr = &SHCXX_rv;
-    SHadow_rv->idtor = 0;
-    return SHadow_rv;
+    SHC_rv->addr = &SHCXX_rv;
+    SHC_rv->idtor = 0;
     // splicer end class.Singleton.method.get_reference
 }
 

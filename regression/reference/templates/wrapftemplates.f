@@ -135,15 +135,12 @@ module templates_mod
         ! Function:  structAsClass
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function c_structasclass_int_ctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_structasclass_int_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
-            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_structasclass_int_ctor
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_structasclass_int_ctor
 
         ! ----------------------------------------
         ! Function:  void set_npts
@@ -220,15 +217,12 @@ module templates_mod
         ! Function:  structAsClass
         ! Attrs:     +intent(ctor)
         ! Exact:     c_function_shadow_scalar
-        function c_structasclass_double_ctor(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_structasclass_double_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
-            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_structasclass_double_ctor
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_structasclass_double_ctor
 
         ! ----------------------------------------
         ! Function:  void set_npts
@@ -305,15 +299,12 @@ module templates_mod
         ! Function:  user<int> returnUserType
         ! Attrs:     +intent(function)
         ! Exact:     c_function_shadow_scalar
-        function c_return_user_type(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_return_user_type(SHT_rv) &
                 bind(C, name="TEM_return_user_type")
-            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_return_user_type
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_return_user_type
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
@@ -499,11 +490,9 @@ contains
     ! Exact:     c_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(structasclass_int) :: SHT_rv
         ! splicer begin class.structAsClass_int.method.ctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_structasclass_int_ctor(SHT_rv%cxxmem)
+        call c_structasclass_int_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_int.method.ctor
     end function structasclass_int_ctor
 
@@ -625,11 +614,9 @@ contains
     ! Exact:     c_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(structasclass_double) :: SHT_rv
         ! splicer begin class.structAsClass_double.method.ctor
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_structasclass_double_ctor(SHT_rv%cxxmem)
+        call c_structasclass_double_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_double.method.ctor
     end function structasclass_double_ctor
 
@@ -752,11 +739,9 @@ contains
     ! Exact:     c_function_shadow_scalar
     function return_user_type() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(user_int) :: SHT_rv
         ! splicer begin function.return_user_type
-        type(C_PTR) :: SHT_prv
-        SHT_prv = c_return_user_type(SHT_rv%cxxmem)
+        call c_return_user_type(SHT_rv%cxxmem)
         ! splicer end function.return_user_type
     end function return_user_type
 

@@ -66,6 +66,7 @@
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
+                    "f_capsule_data_type": "WRA_SHROUD_capsule_data",
                     "file_scope": "Class1",
                     "hnamefunc0": "capsule_data_helper"
                 }
@@ -101,6 +102,7 @@
                     "WRA_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:WRA_SHROUD_capsule_data",
             "f_c_type": "type(WRA_SHROUD_capsule_data)",
             "f_capsule_data_type": "WRA_SHROUD_capsule_data",
             "f_class": "class(class1)",
@@ -110,6 +112,7 @@
                     "class1"
                 ]
             },
+            "f_module_line": "wrap_mod:class1",
             "f_module_name": "wrap_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",

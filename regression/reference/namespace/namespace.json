@@ -82,7 +82,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_allocatable",
                         "stmt1": "c_function_string_&"
                     },
@@ -179,7 +178,6 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_function_string_&_buf_allocatable",
                         "stmt1": "c_function_string_&_buf_allocatable",
                         "temp0": "SHC_rv_temp0"
@@ -682,6 +680,7 @@
                             "class_scope": "ClassWork::",
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork",
+                            "f_capsule_data_type": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork",
                             "hnamefunc0": "capsule_data_helper"
                         }
@@ -749,6 +748,7 @@
                     "NS_SHROUD_capsule_data"
                 ]
             },
+            "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
             "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
             "f_class": "class(classwork)",
@@ -758,6 +758,7 @@
                     "classwork"
                 ]
             },
+            "f_module_line": "ns_nswork_mod:classwork",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(classwork)",

@@ -672,13 +672,6 @@ class Wrapc(util.WrapperMixin):
                 # vector<int> -> int *
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
-            elif buf_arg == "shadow":
-                # Do not use const in declaration.
-                proto_list.append("{} {}{}".format(
-                    ast.typemap.c_type,
-                    "" if attrs["value"] else "* ",
-                    name or ast.name))
-                continue
             elif buf_arg == "arg_decl":
                 if name is None:
                     fmttmp = fmt
@@ -751,13 +744,13 @@ class Wrapc(util.WrapperMixin):
         """
 
         if not is_func:
-            fmt.shadow_var = fmt.SH_shadow + ast.name
             fmt.c_var = ast.name
             if ast.const:
                 fmt.c_const = "const "
             else:
                 fmt.c_const = ""
             compute_c_deref(ast, None, fmt)
+            fmt.c_type = ntypemap.c_type
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.idtor = "0"
@@ -895,7 +888,6 @@ class Wrapc(util.WrapperMixin):
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
-            fmt_result.shadow_var = fmt_result.SH_shadow + fmt_result.C_result
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
@@ -907,9 +899,8 @@ class Wrapc(util.WrapperMixin):
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
-            if ast.metaattrs["deref"] == "copy":
-                c_local_var = "XXXX"
-#                fmt_result.cxx_var = fmt_result.C_string_result_as_arg
+            if result_blk.cxx_local_var == "result":
+                # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
             elif self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
@@ -922,6 +913,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.c_var
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
+
             if result_is_const:
                 fmt_result.c_const = "const "
             else:
@@ -977,7 +969,6 @@ class Wrapc(util.WrapperMixin):
                 fmt_func.c_deref = "*"
                 fmt_func.c_member = "->"
                 fmt_func.c_var = fmt_func.C_this
-                fmt_func.shadow_var = fmt_func.SH_shadow + fmt_func.C_this
                 if is_static:
                     fmt_func.CXX_this_call = (
                         fmt_func.namespace_scope + fmt_func.class_scope
@@ -1044,17 +1035,6 @@ class Wrapc(util.WrapperMixin):
                 # This argument is the C function result
                 arg_call = False
 
-                # Note that result_type is void, so use arg_typemap.
-                if arg_typemap.cxx_to_c is None:
-                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
-                else:
-                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for statement.final in fmt_result context
-                fmt_result.cxx_var = fmt_arg.cxx_var
-                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var, params=None, continuation=True
-                )
-
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 return_deref_attr = c_meta["deref"]
@@ -1070,7 +1050,22 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
 
-                if cxx_local_var:
+                # Note that result_type is void, so use arg_typemap.
+                if cxx_local_var == "result":
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
+                elif self.language == "c":
+                    fmt_arg.cxx_var = fmt_arg.c_var
+                elif arg_typemap.cxx_to_c is None:
+                    fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
+                else:
+                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
+                # Set cxx_var for statement.final in fmt_result context
+                fmt_result.cxx_var = fmt_arg.cxx_var
+
+                fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True
+                )
+                if cxx_local_var in ["pointer", "scalar"]:
                     fmt_func.cxx_rv_decl = "*" + fmt_arg.cxx_var
                 compute_cxx_deref(CXX_ast, cxx_local_var, fmt_arg)
             else:
@@ -1170,18 +1165,6 @@ class Wrapc(util.WrapperMixin):
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
-        if CXX_subprogram == "function":
-            # Add extra arguments to end of prototype for result.
-            need_wrapper = self.build_proto_list(
-                fmt_result,
-                ast,
-                result_blk,
-                result_blk.buf_extra,
-                proto_tail,
-                need_wrapper,
-                name=fmt_result.shadow_var,
-            )
-
         if call_list:
             fmt_func.C_call_list = ",\t ".join(call_list)
 
@@ -1229,7 +1212,11 @@ class Wrapc(util.WrapperMixin):
                 "{CXX_template}({C_call_list});",
             ]
         else:
-            if result_blk.cxx_local_var:
+            if result_blk.cxx_local_var is None:
+                pass
+            elif result_blk.cxx_local_var == "result":
+                pass
+            else:
                 # A C++ var is created by pre_call.
                 # Assign to it directly. ex c_function_shadow_scalar
                 fmt_result.cxx_addr = ""
