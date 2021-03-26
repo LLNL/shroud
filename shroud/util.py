@@ -462,13 +462,8 @@ class WrapperMixin(object):
     def name_temp_vars(self, rootname, stmts, fmt):
         """Compute names of temporary variables.
 
-        Create stmts.ntemps variables.
-        Use fmt.c_var as the prefix.
+        Create stmts.temps and stmts.local variables.
         """
-        for i in range(stmts.ntemps):
-            setattr(fmt,
-                    "temp{}".format(i),
-                    "{}_temp{}".format(fmt.c_var, i))
         if stmts.temps is not None:
             for name in stmts.temps:
                 setattr(fmt,

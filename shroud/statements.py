@@ -446,7 +446,6 @@ CStmts = util.Scope(None,
     f_module=None,
     f_module_line=None,
     f_import=None,
-    ntemps=0,
     temps=None,
     local=None,
 )
@@ -466,7 +465,6 @@ FStmts = util.Scope(None,
     arg_c_call=None,
     declare=[], pre_call=[], call=[], post_call=[],
     result=None,  # name of result variable
-    ntemps=0,
     temps=None,
     local=None,
 )
