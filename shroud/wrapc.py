@@ -754,21 +754,8 @@ class Wrapc(util.WrapperMixin):
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
-                if hasattr(fmt, "temp0"):
-                    # XXX kludge, array_type is assumed to be temp0.
-                    # Assign each rank of dimension.
-                    fmtdim = []
-                    fmtsize = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtdim.append("{}->shape[{}] = {};".format(
-                            fmt.temp0, i, dim))
-                        fmtsize.append("{}->shape[{}]".format(
-                            fmt.temp0, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtdim)
-                    if fmtsize:
-                        fmt.c_array_size = "*\t".join(fmtsize)
                 if hasattr(fmt, "c_var_cdesc"):
-                    # XXX kludge, array_type is assumed to be c_var_cdesc.
+                    # array_type is assumed to be c_var_cdesc.
                     # Assign each rank of dimension.
                     fmtdim = []
                     fmtsize = []

@@ -1539,10 +1539,6 @@ rv = .false.
                     # XXX kludge, name is assumed to be c_var_cdesc.
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
-                if hasattr(fmt, "temp0"):
-                    # XXX kludge, name is assumed to be temp0.
-                    fmt.f_array_shape = wformat(
-                        ",\t {temp0}%shape(1:{rank})", fmt)
 
         return ntypemap
 
