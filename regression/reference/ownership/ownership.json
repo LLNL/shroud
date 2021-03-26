@@ -1726,7 +1726,6 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "attrs": {
-                        "capsule": "Crv",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -1739,6 +1738,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "capsule": true,
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -1844,6 +1844,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }
@@ -1857,7 +1858,6 @@
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "attrs": {
-                        "capsule": "Crv",
                         "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
@@ -1871,6 +1871,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "capsule": true,
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2005,7 +2006,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_capsule": "Crv",
+                        "c_var_capsule": "CSHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
                         "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
@@ -2054,7 +2055,6 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "capsule": "Crv",
                         "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
@@ -2069,6 +2069,7 @@
                     },
                     "metaattrs": {
                         "api": "buf",
+                        "capsule": true,
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2186,6 +2187,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)",
                         "temp0": "SHT_rv_temp0"
@@ -2370,7 +2372,6 @@
                 "_PTR_F_C_index": "29",
                 "ast": {
                     "attrs": {
-                        "capsule": "Crv",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2383,6 +2384,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "capsule": true,
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2517,7 +2519,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_capsule": "Crv",
+                        "c_var_capsule": "CSHT_rv",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
                         "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
@@ -2566,7 +2568,6 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "capsule": "Crv",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2580,6 +2581,7 @@
                     },
                     "metaattrs": {
                         "api": "buf",
+                        "capsule": true,
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -2697,6 +2699,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_capsule": "CSHT_rv",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)",
                         "temp0": "SHT_rv_temp0"
@@ -3122,7 +3125,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "capsule": "Carray",
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
@@ -3291,7 +3293,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "capsule": "Carray",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "caller"

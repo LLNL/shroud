@@ -1003,7 +1003,6 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
-        intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
 
@@ -1020,7 +1019,6 @@ rv = .false.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
-            intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
 
@@ -1081,36 +1079,11 @@ rv = .false.
                 self.add_module_from_stmts(intent_blk, modules, imports, fmt)
                 continue
 
-            buf_arg_name = attrs[buf_arg]
-            if buf_arg_name is None:
-                msg = "ERROR: {} is missing from attrs".format(buf_arg)
-                arg_c_decl.append(msg)
-                self.log.write(msg + "\n")
-            elif buf_arg == "capsule":
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "type(%s), intent(INOUT) :: %s"
-                    % (fmt.F_capsule_data_type, buf_arg_name)
+            raise RuntimeError(
+                "build_arg_list_interface: unhandled case {}".format(
+                    buf_arg
                 )
-                imports[fmt.F_capsule_data_type] = True
-            elif buf_arg == "context":
-                if ast.metaattrs["is_result"]:
-                    intent = "OUT"
-                else:
-                    intent = "INOUT"
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "type(%s), intent(%s) :: %s"
-                    % (fmt.F_array_type, intent, buf_arg_name)
-                )
-#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                imports[fmt.F_array_type] = True
-            else:
-                raise RuntimeError(
-                    "build_arg_list_interface: unhandled case {}".format(
-                        buf_arg
-                    )
-                )
+            )
 
     def wrap_function_interface(self, cls, node, fileinfo):
         """Write Fortran interface for C function.
@@ -1157,7 +1130,7 @@ rv = .false.
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
-            self.set_fmt_fields_iface(ast, fmt_result)
+            self.set_fmt_fields_iface(node, ast, fmt_result, fmt_func.F_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1232,7 +1205,7 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
-            self.set_fmt_fields_iface(arg, fmt_arg)
+            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name)
             
             attrs = arg.attrs
             meta = arg.metaattrs
@@ -1415,18 +1388,9 @@ rv = .false.
                     arg_c_call.append(fmt.c_var)
                 continue
 
-            need_wrapper = True
-            if buf_arg == "capsule":
-                append_format(
-                    arg_f_decl, "type({F_capsule_type}) :: {c_var_capsule}", fmt
-                )
-                # Pass F_capsule_data_type field to C++.
-                arg_c_call.append(fmt.c_var_capsule + "%mem")
-                fileinfo.add_f_helper("capsule_data_helper", fmt)
-            else:
-                raise RuntimeError(
-                    "build_arg_list_impl: unhandled case {}".format(buf_arg)
-                )
+            raise RuntimeError(
+                "build_arg_list_impl: unhandled case {}".format(buf_arg)
+            )
         return need_wrapper
 
     def add_code_from_statements(
@@ -1486,15 +1450,17 @@ rv = .false.
         need_wrapper = need_wrapper or intent_blk.need_wrapper
         return need_wrapper
 
-    def set_fmt_fields_iface(self, ast, fmt):
+    def set_fmt_fields_iface(self, fcn, ast, fmt, rootname):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
 
         Parameters
         ----------
-        ast : ast.Declaration
+        fcn : ast.FunctionNode
+        ast : declast.Declaration
         fmt : util.Scope
+        rootname : str
         """
         ntypemap = ast.typemap
         if ntypemap.f_capsule_data_type:
@@ -1502,6 +1468,7 @@ rv = .false.
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
         if f_c_module_line:
             fmt.f_c_module_line = f_c_module_line
+        statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
                        subprogram=None,
@@ -1520,19 +1487,21 @@ rv = .false.
         """
         c_attrs = c_ast.attrs
         c_meta = c_ast.metaattrs
-        statements.assign_buf_variable_names(c_attrs, fmt)
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
             pass
+            rootname = fmt.C_result
         elif subprogram == "function":
             # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
+            rootname = fmt.C_result
         else:
             fmt.f_intent = c_meta["intent"].upper()
             if fmt.f_intent == "SETTER":
                 fmt.f_intent = "IN"
             ntypemap = f_ast.typemap
+            rootname = c_ast.name
         if ntypemap.sgroup == "vector":
             # If a vector, use its type.
             ntypemap = c_ast.template_arguments[0].typemap
@@ -1542,7 +1511,7 @@ rv = .false.
             fmt.sh_type = ntypemap.sh_type
             if ntypemap.f_kind:
                 fmt.f_kind = ntypemap.f_kind
-            self.set_fmt_fields_iface(c_ast, fmt)
+            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname)
                 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

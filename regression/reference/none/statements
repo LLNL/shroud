@@ -986,19 +986,18 @@ c_in_native_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_in_native_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_in_native_*_cfi:
   buf_args:
   - arg_decl
@@ -1251,19 +1250,18 @@ c_in_void_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_in_void_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_inout_char_*_buf:
   buf_args:
   - arg_decl
@@ -1314,19 +1312,18 @@ c_inout_native_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_inout_native_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_inout_shadow:
   buf_args:
   - arg_decl
@@ -1543,19 +1540,18 @@ c_inout_void_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_inout_void_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_mixin_arg_character_cfi:
   buf_args:
   - arg_decl
@@ -1804,19 +1800,18 @@ c_out_native_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_out_native_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_out_string_&:
   cxx_local_var: scalar
   impl_header:
@@ -1999,19 +1994,18 @@ c_out_void_*_cdesc:
   buf_args:
   - arg_decl
   c_arg_decl:
-  - '{C_array_type} *{temp0}'
+  - '{C_array_type} *{c_var_cdesc}'
   c_helper: array_context
   f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {temp0}'
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
   f_c_arg_names:
-  - '{temp0}'
+  - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
   name: c_out_void_*_cdesc
-  ntemps: 1
   owner: library
   pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({temp0}->addr.base));"
+  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
 c_setter:
   call:
   - // skip call c_setter
