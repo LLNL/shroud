@@ -649,8 +649,7 @@ class Wrapc(util.WrapperMixin):
         append_format(output, "-}};", fmt_enum)
 
     def build_proto_list(self, fmt, ast,
-                         intent_blk, buf_args, proto_list, need_wrapper,
-                         name=None):
+                         intent_blk, buf_args, proto_list):
         """Find prototype based on buf_args in fc_statements.
 
         Args:
@@ -659,8 +658,6 @@ class Wrapc(util.WrapperMixin):
             intent_blk  - typemap.CStmts or util.Scope.
             buf_args - List of arguments/metadata to add.
             proto_list - Prototypes are appended to list.
-            need_wrapper -
-            name - name to override ast.name (with shadow only).
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
@@ -673,21 +670,13 @@ class Wrapc(util.WrapperMixin):
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
                 continue
             elif buf_arg == "arg_decl":
-                if name is None:
-                    fmttmp = fmt
-                else:
-                    # Update argument name if requested.
-                    fmttmp = util.Scope(fmt)
-                    fmttmp.c_var = name
-                    fmttmp.cxx_var = name
                 for arg in intent_blk.c_arg_decl:
-                    append_format(proto_list, arg, fmttmp)
+                    append_format(proto_list, arg, fmt)
                 continue
 
             raise RuntimeError(
                 "wrap_function: unhandled case {}".format(buf_arg)
             )
-        return need_wrapper
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
@@ -990,13 +979,12 @@ class Wrapc(util.WrapperMixin):
 
         self.set_fmt_fields(cls, node, ast, result_typemap, fmt_result, True)
 
-        need_wrapper = self.build_proto_list(
+        self.build_proto_list(
             fmt_result,
             ast,
             result_blk,
             result_blk.buf_args,
             proto_list,
-            need_wrapper,
         )
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
@@ -1111,13 +1099,12 @@ class Wrapc(util.WrapperMixin):
                 self.document_stmts(
                     stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
 
-            need_wrapper = self.build_proto_list(
+            self.build_proto_list(
                 fmt_arg,
                 arg,
                 intent_blk,
                 intent_blk.buf_args or self._default_buf_args,
                 proto_list,
-                need_wrapper,
             )
 
             self.set_cxx_nonconst_ptr(arg, fmt_arg)

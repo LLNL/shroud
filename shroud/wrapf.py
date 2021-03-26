@@ -1003,7 +1003,6 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
-        intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
 
@@ -1020,7 +1019,6 @@ rv = .false.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
-            intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
 
