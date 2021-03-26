@@ -55,7 +55,7 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
@@ -86,6 +86,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -97,8 +98,7 @@
                         "stmt0": "f_function_string_*_buf_allocatable_library",
                         "stmt1": "f_function_string_*_buf_allocatable",
                         "stmtc0": "c_function_string_*_buf_allocatable",
-                        "stmtc1": "c_function_string_*_buf_allocatable",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_string_*_buf_allocatable"
                     }
                 }
             },

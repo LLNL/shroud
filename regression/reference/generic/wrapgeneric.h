@@ -54,12 +54,12 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size);
 
 #if 0
 void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *addr_temp0, int * type, size_t * size);
+    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size);
 #endif
 
 #if 0
 void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *addr_temp0, int * type, size_t * size);
+    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size);
 #endif
 
 #endif  // WRAPGENERIC_H

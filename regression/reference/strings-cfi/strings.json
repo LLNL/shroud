@@ -4355,8 +4355,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_cfi",
-                            "stmt1": "c_in_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -4370,8 +4369,7 @@
                             "stmt0": "f_in_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_&_cfi",
-                            "stmtc1": "c_in_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_&_cfi"
                         }
                     }
                 },
@@ -4807,8 +4805,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -4822,8 +4819,7 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_&_cfi"
                         }
                     }
                 },
@@ -5030,8 +5026,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_*_cfi",
-                            "stmt1": "c_in_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -5045,8 +5040,7 @@
                             "stmt0": "f_in_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_*_cfi",
-                            "stmtc1": "c_in_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_*_cfi"
                         }
                     }
                 },
@@ -5251,8 +5245,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -5266,8 +5259,7 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_*_cfi"
                         }
                     }
                 },
@@ -5784,8 +5776,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_*_cfi",
-                            "stmt1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_inout_string_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -5799,8 +5790,7 @@
                             "stmt0": "f_inout_string_*_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_*_cfi",
-                            "stmtc1": "c_inout_string_*_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_inout_string_*_cfi"
                         }
                     },
                     "nlen": {
@@ -6425,8 +6415,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_scalar_cfi",
-                            "stmt1": "c_in_string_scalar_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_scalar_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
@@ -6440,8 +6429,7 @@
                             "stmt0": "f_in_string_scalar_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_string_scalar_cfi",
-                            "stmtc1": "c_in_string_scalar_cfi",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_scalar_cfi"
                         }
                     }
                 },
@@ -7924,8 +7912,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_&_cfi",
-                            "stmt1": "c_inout_string_&_cfi",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_inout_string_&_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -7939,8 +7926,7 @@
                             "stmt0": "f_inout_string_&_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_string_&_cfi",
-                            "stmtc1": "c_inout_string_&_cfi",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_inout_string_&_cfi"
                         }
                     }
                 },

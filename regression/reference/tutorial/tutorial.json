@@ -556,7 +556,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "SHT_rv_temp0,\t arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -572,6 +572,7 @@
                 "zz_fmtresult": {
                     "fmtf": {
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -583,8 +584,7 @@
                         "stmt0": "f_function_string_scalar_buf_allocatable",
                         "stmt1": "f_function_string_scalar_buf_allocatable",
                         "stmtc0": "c_function_string_scalar_buf_allocatable",
-                        "stmtc1": "c_function_string_scalar_buf_allocatable",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_string_scalar_buf_allocatable"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -694,6 +694,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "c_var_len": "SHT_arg1_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
@@ -702,13 +703,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "arg1_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
+                            "c_var_len": "SHT_arg1_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -717,8 +718,7 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "arg1_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     },
                     "arg2": {
@@ -729,6 +729,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg2",
+                            "c_var_len": "SHT_arg2_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg2)",
@@ -737,13 +738,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "arg2_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
+                            "c_var_len": "SHT_arg2_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -752,17 +753,16 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "arg2_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "TUT_SHROUD_array *SHT_rv_cdesc,\t char *arg1,\t int arg1_temp0,\t char *arg2,\t int arg2_temp0",
+                    "C_prototype": "TUT_SHROUD_array *SHT_rv_cdesc,\t char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t arg1,\t arg1_temp0,\t arg2,\t arg2_temp0",
+                    "F_C_arguments": "SHT_rv,\t arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1522,6 +1522,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -1530,13 +1531,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1545,17 +1546,16 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0",
+                    "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0",
+                    "F_C_arguments": "name,\t SHT_name_len",
                     "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "OverloadedFunction",
@@ -2969,6 +2969,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -2977,13 +2978,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2992,17 +2993,16 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_float_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0,\t float arg2",
+                    "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0,\t arg2",
+                    "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                     "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
@@ -3204,6 +3204,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -3212,13 +3213,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -3227,17 +3228,16 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_double_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0,\t double arg2",
+                    "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0,\t arg2",
+                    "F_C_arguments": "name,\t SHT_name_len,\t arg2",
                     "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
@@ -5980,9 +5980,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "TUT_last_function_called_bufferify",
-                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0",
+                    "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                     "F_C_name": "c_last_function_called_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -5996,6 +5996,7 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_len": "SHT_rv_len",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -6004,15 +6005,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_string_&_buf_copy",
-                        "stmt1": "c_function_string_&_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_string_&_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "character(*)"
                     }
                 }
             }

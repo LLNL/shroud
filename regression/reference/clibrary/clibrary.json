@@ -1380,9 +1380,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "CLI_function4a_bufferify",
-                    "C_prototype": "char *SHC_rv,\t int SHC_rv_temp0,\t const char * arg1,\t const char * arg2",
+                    "C_prototype": "char *SHC_rv,\t int SHT_rv_len,\t const char * arg1,\t const char * arg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t SHT_rv_temp0,\t arg1,\t arg2",
+                    "F_C_arguments": "SHT_rv,\t SHT_rv_len,\t arg1,\t arg2",
                     "F_C_name": "c_function4a_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1396,6 +1396,7 @@
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "c_var_len": "SHT_rv_len",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -1404,15 +1405,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_char_*_buf_copy",
-                        "stmt1": "c_function_char_*_buf",
-                        "temp0": "SHC_rv_temp0"
+                        "stmt1": "c_function_char_*_buf"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)",
-                        "temp0": "SHT_rv_temp0"
+                        "f_type": "character(*)"
                     }
                 }
             },
@@ -1720,6 +1720,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "s",
+                            "c_var_len": "SHT_s_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -1728,13 +1729,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_char_*_buf",
-                            "stmt1": "c_inout_char_*_buf",
-                            "temp0": "s_temp0"
+                            "stmt1": "c_inout_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
+                            "c_var_len": "SHT_s_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1743,17 +1744,16 @@
                             "stmt0": "f_inout_char_*_buf",
                             "stmt1": "f_inout_char_*_buf",
                             "stmtc0": "c_inout_char_*_buf",
-                            "stmtc1": "c_inout_char_*_buf",
-                            "temp0": "s_temp0"
+                            "stmtc1": "c_inout_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
                     "C_name": "CLI_pass_char_ptr_in_out_bufferify",
-                    "C_prototype": "char *s,\t int s_temp0",
+                    "C_prototype": "char *s,\t int SHT_s_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "s,\t s_temp0",
+                    "F_C_arguments": "s,\t SHT_s_len",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtrInOut",
@@ -1952,6 +1952,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name1",
+                            "c_var_len": "SHT_name1_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -1960,13 +1961,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "name1_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
+                            "c_var_len": "SHT_name1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1975,17 +1976,16 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "name1_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name1",
                     "C_name": "CLI_return_one_name_bufferify",
-                    "C_prototype": "char *name1,\t int name1_temp0",
+                    "C_prototype": "char *name1,\t int SHT_name1_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "name1,\t name1_temp0",
+                    "F_C_arguments": "name1,\t SHT_name1_len",
                     "F_C_name": "c_return_one_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "returnOneName",
@@ -2267,6 +2267,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name1",
+                            "c_var_len": "SHT_name1_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -2275,13 +2276,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "name1_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
+                            "c_var_len": "SHT_name1_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2290,8 +2291,7 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "name1_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     },
                     "name2": {
@@ -2302,6 +2302,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name2",
+                            "c_var_len": "SHT_name2_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name2",
@@ -2310,13 +2311,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "name2_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name2",
                             "F_pointer": "SHPTR_name2",
                             "c_var": "name2",
+                            "c_var_len": "SHT_name2_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2325,17 +2326,16 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "name2_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name1,\t name2",
                     "C_name": "CLI_return_two_names_bufferify",
-                    "C_prototype": "char *name1,\t int name1_temp0,\t char *name2,\t int name2_temp0",
+                    "C_prototype": "char *name1,\t int SHT_name1_len,\t char *name2,\t int SHT_name2_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "name1,\t name1_temp0,\t name2,\t name2_temp0",
+                    "F_C_arguments": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
                     "F_C_name": "c_return_two_names_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "returnTwoNames",
@@ -2637,6 +2637,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "text",
+                            "c_var_len": "SHT_text_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "text",
@@ -2645,13 +2646,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "text_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
+                            "c_var_len": "SHT_text_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -2660,17 +2661,16 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "text_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "text,\t ltext",
                     "C_name": "CLI_implied_text_len_bufferify",
-                    "C_prototype": "char *text,\t int text_temp0,\t int ltext",
+                    "C_prototype": "char *text,\t int SHT_text_len,\t int ltext",
                     "C_return_type": "void",
-                    "F_C_arguments": "text,\t text_temp0,\t ltext",
+                    "F_C_arguments": "text,\t SHT_text_len,\t ltext",
                     "F_C_name": "c_implied_text_len_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "ImpliedTextLen",
@@ -3841,6 +3841,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3849,13 +3850,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -3864,17 +3865,16 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "outbuf",
                     "C_name": "CLI_bind_c2_bufferify",
-                    "C_prototype": "char *outbuf,\t int outbuf_temp0",
+                    "C_prototype": "char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "outbuf,\t outbuf_temp0",
+                    "F_C_arguments": "outbuf,\t SHT_outbuf_len",
                     "F_C_name": "c_bind_c2_bufferify",
                     "F_C_subprogram": "subroutine",
                     "F_name_impl": "Fortran_bindC2a",
@@ -4579,6 +4579,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -4587,13 +4588,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -4602,17 +4603,16 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
-                    "C_prototype": "void * arg,\t char *outbuf,\t int outbuf_temp0",
+                    "C_prototype": "void * arg,\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "int",
-                    "F_C_arguments": "arg,\t outbuf,\t outbuf_temp0",
+                    "F_C_arguments": "arg,\t outbuf,\t SHT_outbuf_len",
                     "F_C_name": "c_pass_assumed_type_buf_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -5632,6 +5632,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -5640,13 +5641,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_out_char_*_buf",
-                            "stmt1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmt1": "c_out_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
+                            "c_var_len": "SHT_outbuf_len",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -5655,8 +5656,7 @@
                             "stmt0": "f_out_char_*_buf",
                             "stmt1": "f_out_char_*_buf",
                             "stmtc0": "c_out_char_*_buf",
-                            "stmtc1": "c_out_char_*_buf",
-                            "temp0": "outbuf_temp0"
+                            "stmtc1": "c_out_char_*_buf"
                         }
                     },
                     "type": {
@@ -5692,9 +5692,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "CLI_callback3_bufferify",
-                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char *outbuf,\t int outbuf_temp0",
+                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "type,\t in,\t incr,\t outbuf,\t outbuf_temp0",
+                    "F_C_arguments": "type,\t in,\t incr,\t outbuf,\t SHT_outbuf_len",
                     "F_C_name": "c_callback3_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "callback3",

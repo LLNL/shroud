@@ -530,6 +530,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "ARG_name",
@@ -538,13 +539,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_char_*_buf",
-                            "stmt1": "c_inout_char_*_buf",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_inout_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -553,17 +554,16 @@
                             "stmt0": "f_inout_char_*_buf",
                             "stmt1": "f_inout_char_*_buf",
                             "stmtc0": "c_inout_char_*_buf",
-                            "stmtc1": "c_inout_char_*_buf",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_inout_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name",
                     "C_name": "TES_get_name_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0",
+                    "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0",
+                    "F_C_arguments": "name,\t SHT_name_len",
                     "F_C_name": "c_get_name_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getName",
@@ -1128,6 +1128,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "rv",
+                            "c_var_len": "SHT_rv_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&ARG_rv)",
@@ -1136,13 +1137,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_string_&_buf",
-                            "stmt1": "c_in_string_&_buf",
-                            "temp0": "rv_temp0"
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "rv",
                             "F_pointer": "SHPTR_rv",
                             "c_var": "rv",
+                            "c_var_len": "SHT_rv_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1151,17 +1152,16 @@
                             "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_in_string_&_buf",
                             "stmtc0": "c_in_string_&_buf",
-                            "stmtc1": "c_in_string_&_buf",
-                            "temp0": "rv_temp0"
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
-                    "C_prototype": "char *rv,\t int rv_temp0",
+                    "C_prototype": "char *rv,\t int SHT_rv_len",
                     "C_return_type": "int",
-                    "F_C_arguments": "rv,\t rv_temp0",
+                    "F_C_arguments": "rv,\t SHT_rv_len",
                     "F_C_name": "yyy_tes_function4_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -1537,6 +1537,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ARG_name",
@@ -1545,13 +1546,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_string_&_buf",
-                            "stmt1": "c_inout_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmt1": "c_inout_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1560,8 +1561,7 @@
                             "stmt0": "f_inout_string_&_buf",
                             "stmt1": "f_inout_string_&_buf",
                             "stmtc0": "c_inout_string_&_buf",
-                            "stmtc1": "c_inout_string_&_buf",
-                            "temp0": "name_temp0"
+                            "stmtc1": "c_inout_string_&_buf"
                         }
                     },
                     "value": {
@@ -1601,9 +1601,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name,\t value",
                     "C_name": "TES_test_multiline_splicer_bufferify",
-                    "C_prototype": "char *name,\t int name_temp0,\t int * value",
+                    "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t name_temp0,\t value",
+                    "F_C_arguments": "name,\t SHT_name_len,\t value",
                     "F_C_name": "c_test_multiline_splicer_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "TestMultilineSplicer",

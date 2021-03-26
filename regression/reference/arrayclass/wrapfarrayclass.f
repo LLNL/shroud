@@ -313,13 +313,13 @@ module arrayclass_mod
         ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
-                array_temp0, isize) &
+                SHT_array_cdesc, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_bufferify")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array_temp0
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
             integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_bufferify
 
@@ -364,13 +364,13 @@ module arrayclass_mod
         ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
-                array_temp0, isize) &
+                SHT_array_cdesc, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref_bufferify")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array_temp0
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
             integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_bufferify
 
@@ -416,13 +416,13 @@ module arrayclass_mod
         ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
-                array_temp0, isize) &
+                SHT_array_cdesc, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_const_bufferify")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array_temp0
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
             integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_const_bufferify
 
@@ -468,13 +468,13 @@ module arrayclass_mod
         ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
-                array_temp0, isize) &
+                SHT_array_cdesc, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref_const_bufferify")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(OUT) :: array_temp0
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
             integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_const_bufferify
 
@@ -670,11 +670,11 @@ contains
         class(arraywrapper) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array
-        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        type(ARR_SHROUD_array) :: SHT_rv_cdesc
         call c_arraywrapper_get_array_bufferify(obj%cxxmem, &
-            SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+            SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 
@@ -692,11 +692,11 @@ contains
         class(arraywrapper) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_const
-        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        type(ARR_SHROUD_array) :: SHT_rv_cdesc
         call c_arraywrapper_get_array_const_bufferify(obj%cxxmem, &
-            SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+            SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const
     end function arraywrapper_get_array_const
 
@@ -714,11 +714,11 @@ contains
         class(arraywrapper) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_c
-        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        type(ARR_SHROUD_array) :: SHT_rv_cdesc
         call c_arraywrapper_get_array_c_bufferify(obj%cxxmem, &
-            SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+            SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_c
     end function arraywrapper_get_array_c
 
@@ -736,11 +736,11 @@ contains
         class(arraywrapper) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_const_c
-        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        type(ARR_SHROUD_array) :: SHT_rv_cdesc
         call c_arraywrapper_get_array_const_c_bufferify(obj%cxxmem, &
-            SHT_rv_temp0)
-        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, &
-            SHT_rv_temp0%shape(1:1))
+            SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const_c
     end function arraywrapper_get_array_const_c
 
@@ -772,11 +772,11 @@ contains
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ptr
-        type(ARR_SHROUD_array) :: array_temp0
+        type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ptr_bufferify(obj%cxxmem, &
-            array_temp0, isize)
-        call c_f_pointer(array_temp0%base_addr, array, &
-            array_temp0%shape(1:1))
+            SHT_array_cdesc, isize)
+        call c_f_pointer(SHT_array_cdesc%base_addr, array, &
+            SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ptr
     end subroutine arraywrapper_fetch_array_ptr
 
@@ -808,11 +808,11 @@ contains
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ref
-        type(ARR_SHROUD_array) :: array_temp0
+        type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ref_bufferify(obj%cxxmem, &
-            array_temp0, isize)
-        call c_f_pointer(array_temp0%base_addr, array, &
-            array_temp0%shape(1:1))
+            SHT_array_cdesc, isize)
+        call c_f_pointer(SHT_array_cdesc%base_addr, array, &
+            SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ref
     end subroutine arraywrapper_fetch_array_ref
 
@@ -844,11 +844,11 @@ contains
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
-        type(ARR_SHROUD_array) :: array_temp0
+        type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ptr_const_bufferify(obj%cxxmem, &
-            array_temp0, isize)
-        call c_f_pointer(array_temp0%base_addr, array, &
-            array_temp0%shape(1:1))
+            SHT_array_cdesc, isize)
+        call c_f_pointer(SHT_array_cdesc%base_addr, array, &
+            SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ptr_const
     end subroutine arraywrapper_fetch_array_ptr_const
 
@@ -880,11 +880,11 @@ contains
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ref_const
-        type(ARR_SHROUD_array) :: array_temp0
+        type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ref_const_bufferify(obj%cxxmem, &
-            array_temp0, isize)
-        call c_f_pointer(array_temp0%base_addr, array, &
-            array_temp0%shape(1:1))
+            SHT_array_cdesc, isize)
+        call c_f_pointer(SHT_array_cdesc%base_addr, array, &
+            SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ref_const
     end subroutine arraywrapper_fetch_array_ref_const
 

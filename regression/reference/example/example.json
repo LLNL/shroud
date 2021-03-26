@@ -403,6 +403,7 @@
                                                     "c_member": "->",
                                                     "c_type": "char",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -411,13 +412,13 @@
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "c_in_string_*_buf",
-                                                    "stmt1": "c_in_string_*_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmt1": "c_in_string_*_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
@@ -426,17 +427,16 @@
                                                     "stmt0": "f_in_string_*_buf",
                                                     "stmt1": "f_in_string_*_buf",
                                                     "stmtc0": "c_in_string_*_buf",
-                                                    "stmtc1": "c_in_string_*_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmtc1": "c_in_string_*_buf"
                                                 }
                                             }
                                         },
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass1 * SHC_rv,\t char *name,\t int name_temp0",
+                                            "C_prototype": "AA_example_nested_ExClass1 * SHC_rv,\t char *name,\t int SHT_name_len",
                                             "C_return_type": "void",
-                                            "F_C_arguments": "SHT_rv,\t name,\t name_temp0",
+                                            "F_C_arguments": "SHT_rv,\t name,\t SHT_name_len",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
@@ -778,7 +778,7 @@
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name_error_check",
                                             "F_name_generic": "get_name_error_check",
@@ -816,6 +816,7 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -827,8 +828,7 @@
                                                 "stmt0": "f_function_string_&_buf_allocatable",
                                                 "stmt1": "f_function_string_&_buf_allocatable",
                                                 "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHT_rv_temp0"
+                                                "stmtc1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -1096,6 +1096,7 @@
                                                     "c_member": "->",
                                                     "c_type": "char",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1104,13 +1105,13 @@
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "c_function_string_&_buf_result",
-                                                    "stmt1": "c_function_string_&_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmt1": "c_function_string_&_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
@@ -1119,16 +1120,15 @@
                                                     "stmt0": "f_function_string_&_buf_result",
                                                     "stmt1": "f_function_string_&_buf",
                                                     "stmtc0": "c_function_string_&_buf_result",
-                                                    "stmtc1": "c_function_string_&_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmtc1": "c_function_string_&_buf"
                                                 }
                                             }
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int name_temp0",
+                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int SHT_name_len",
                                             "C_return_type": "void",
-                                            "F_C_arguments": "self,\t name,\t name_temp0",
+                                            "F_C_arguments": "self,\t name,\t SHT_name_len",
                                             "F_C_name": "c_exclass1_get_name_arg_bufferify",
                                             "F_C_subprogram": "subroutine",
                                             "F_string_result_as_arg": "name",
@@ -2238,6 +2238,7 @@
                                                     "c_member": "->",
                                                     "c_type": "char",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "cxx_addr": "&",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -2246,13 +2247,13 @@
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "c_in_string_*_buf",
-                                                    "stmt1": "c_in_string_*_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmt1": "c_in_string_*_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
+                                                    "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_CHAR",
                                                     "f_type": "character(*)",
@@ -2261,17 +2262,16 @@
                                                     "stmt0": "f_in_string_*_buf",
                                                     "stmt1": "f_in_string_*_buf",
                                                     "stmtc0": "c_in_string_*_buf",
-                                                    "stmtc1": "c_in_string_*_buf",
-                                                    "temp0": "name_temp0"
+                                                    "stmtc1": "c_in_string_*_buf"
                                                 }
                                             }
                                         },
                                         "zz_fmtdict": {
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass2 * SHC_rv,\t char *name,\t int name_temp0",
+                                            "C_prototype": "AA_example_nested_ExClass2 * SHC_rv,\t char *name,\t int SHT_name_len",
                                             "C_return_type": "void",
-                                            "F_C_arguments": "SHT_rv,\t name,\t name_temp0",
+                                            "F_C_arguments": "SHT_rv,\t name,\t SHT_name_len",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
@@ -2534,9 +2534,9 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t char *SHC_rv,\t int SHC_rv_temp0",
+                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t char *SHC_rv,\t int SHT_rv_len",
                                             "C_return_type": "void",
-                                            "F_C_arguments": "self,\t SHT_rv,\t SHT_rv_temp0",
+                                            "F_C_arguments": "self,\t SHT_rv,\t SHT_rv_len",
                                             "F_C_name": "c_exclass2_get_name_bufferify",
                                             "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
@@ -2554,6 +2554,7 @@
                                                 "c_const": "const ",
                                                 "c_type": "char",
                                                 "c_var": "SHC_rv",
+                                                "c_var_len": "SHT_rv_len",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2562,15 +2563,14 @@
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "c_function_string_&_buf_copy",
-                                                "stmt1": "c_function_string_&_buf",
-                                                "temp0": "SHC_rv_temp0"
+                                                "stmt1": "c_function_string_&_buf"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_len": "SHT_rv_len",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)",
-                                                "temp0": "SHT_rv_temp0"
+                                                "f_type": "character(*)"
                                             }
                                         }
                                     },
@@ -2618,7 +2618,7 @@
                                             "F_C_name": "c_exclass2_get_name2",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name2",
                                             "F_name_generic": "get_name2",
@@ -2656,6 +2656,7 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -2667,8 +2668,7 @@
                                                 "stmt0": "f_function_string_&_buf_allocatable",
                                                 "stmt1": "f_function_string_&_buf_allocatable",
                                                 "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHT_rv_temp0"
+                                                "stmtc1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2819,7 +2819,7 @@
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name3",
                                             "F_name_generic": "get_name3",
@@ -2857,6 +2857,7 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -2868,8 +2869,7 @@
                                                 "stmt0": "f_function_string_&_buf_allocatable",
                                                 "stmt1": "f_function_string_&_buf_allocatable",
                                                 "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHT_rv_temp0"
+                                                "stmtc1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3018,7 +3018,7 @@
                                             "F_C_name": "c_exclass2_get_name4",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name4",
                                             "F_name_generic": "get_name4",
@@ -3056,6 +3056,7 @@
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "c_var_cdesc": "SHT_rv_cdesc",
                                                 "cxx_type": "std::string",
                                                 "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
@@ -3067,8 +3068,7 @@
                                                 "stmt0": "f_function_string_&_buf_allocatable",
                                                 "stmt1": "f_function_string_&_buf_allocatable",
                                                 "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable",
-                                                "temp0": "SHT_rv_temp0"
+                                                "stmtc1": "c_function_string_&_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -6502,6 +6502,7 @@
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -6510,13 +6511,13 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmt1": "c_in_string_&_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -6525,17 +6526,16 @@
                                             "stmt0": "f_in_string_&_buf",
                                             "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmtc1": "c_in_string_&_buf"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
-                                    "C_prototype": "char *name,\t int name_temp0",
+                                    "C_prototype": "char *name,\t int SHT_name_len",
                                     "C_return_type": "bool",
-                                    "F_C_arguments": "name,\t name_temp0",
+                                    "F_C_arguments": "name,\t SHT_name_len",
                                     "F_C_name": "c_is_name_valid_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -6872,6 +6872,7 @@
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -6880,13 +6881,13 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmt1": "c_in_string_&_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -6895,17 +6896,16 @@
                                             "stmt0": "f_in_string_&_buf",
                                             "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmtc1": "c_in_string_&_buf"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
-                                    "C_prototype": "char *name,\t int name_temp0",
+                                    "C_prototype": "char *name,\t int SHT_name_len",
                                     "C_return_type": "void",
-                                    "F_C_arguments": "name,\t name_temp0",
+                                    "F_C_arguments": "name,\t SHT_name_len",
                                     "F_C_name": "c_test_names_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",
@@ -7230,6 +7230,7 @@
                                             "c_member": "->",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
@@ -7238,13 +7239,13 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_OTHER",
                                             "stmt0": "c_in_string_&_buf",
-                                            "stmt1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmt1": "c_in_string_&_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
+                                            "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
                                             "f_kind": "C_CHAR",
                                             "f_type": "character(*)",
@@ -7253,17 +7254,16 @@
                                             "stmt0": "f_in_string_&_buf",
                                             "stmt1": "f_in_string_&_buf",
                                             "stmtc0": "c_in_string_&_buf",
-                                            "stmtc1": "c_in_string_&_buf",
-                                            "temp0": "name_temp0"
+                                            "stmtc1": "c_in_string_&_buf"
                                         }
                                     }
                                 },
                                 "zz_fmtdict": {
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
-                                    "C_prototype": "char *name,\t int name_temp0,\t int flag",
+                                    "C_prototype": "char *name,\t int SHT_name_len,\t int flag",
                                     "C_return_type": "void",
-                                    "F_C_arguments": "name,\t name_temp0,\t flag",
+                                    "F_C_arguments": "name,\t SHT_name_len,\t flag",
                                     "F_C_name": "c_test_names_flag_bufferify",
                                     "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",

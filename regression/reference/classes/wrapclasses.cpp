@@ -231,14 +231,14 @@ const char * CLA_last_function_called(void)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
 // Requested: c_function_string_&_buf_copy
 // Match:     c_function_string_&_buf
-void CLA_last_function_called_bufferify(char *SHC_rv, int SHC_rv_temp0)
+void CLA_last_function_called_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHC_rv, SHC_rv_temp0, nullptr, 0);
+        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudStrCopy(SHC_rv, SHC_rv_temp0, SHCXX_rv.data(),
+        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end function.last_function_called_bufferify

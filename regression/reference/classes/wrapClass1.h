@@ -56,7 +56,7 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self,
     CLA_Class1 * SHC_rv, char * name, bool flag);
 
 void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    CLA_Class1 * SHC_rv, char *name, int name_temp0, bool flag);
+    CLA_Class1 * SHC_rv, char *name, int SHT_name_len, bool flag);
 
 void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv);
 
@@ -74,10 +74,10 @@ int CLA_Class1_get_test(CLA_Class1 * self);
 void CLA_Class1_set_test(CLA_Class1 * self, int val);
 
 void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *SHC_rv_temp0);
+    CLA_SHROUD_array *SHT_rv_cdesc);
 
 void CLA_Class1_set_m_name_bufferify(CLA_Class1 * self, char *val,
-    int val_temp0);
+    int SHT_val_len);
 
 #ifdef __cplusplus
 }

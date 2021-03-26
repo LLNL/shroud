@@ -51,11 +51,11 @@ declarations:
     c:
       return_type: long
       ret:
-      - return arg_temp0->size;
+      - return SHT_arg_cdesc->size;
     c_buf:
       return_type: long
       ret:
-      - return arg_temp0->size;
+      - return SHT_arg_cdesc->size;
     f:
       result: num
       f_module:
@@ -84,7 +84,7 @@ declarations:
       declare:
       -  "integer(C_LONG) :: num"
       post_call:
-      -  "num = arg_temp0%size"
+      -  "num = SHT_arg_cdesc%size"
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:

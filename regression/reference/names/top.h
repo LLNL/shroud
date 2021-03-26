@@ -37,7 +37,7 @@ enum TES_Color {
 
 void TES_get_name(char * name);
 
-void TES_get_name_bufferify(char *name, int name_temp0);
+void TES_get_name_bufferify(char *name, int SHT_name_len);
 
 void YYY_TES_function1(void);
 
@@ -49,13 +49,13 @@ void YYY_TES_function3a_1(long i);
 
 int YYY_TES_function4(const char * rv);
 
-int YYY_TES_function4_bufferify(char *rv, int rv_temp0);
+int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len);
 
 void YYY_TES_fiveplus(void);
 
 void TES_test_multiline_splicer(char * name, int * value);
 
-void TES_test_multiline_splicer_bufferify(char *name, int name_temp0,
+void TES_test_multiline_splicer_bufferify(char *name, int SHT_name_len,
     int * value);
 
 void c_name_instantiation1(int arg1, long arg2);

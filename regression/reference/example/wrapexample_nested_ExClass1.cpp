@@ -138,10 +138,11 @@ void AA_example_nested_ExClass1_ctor_1(
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
 void AA_example_nested_ExClass1_ctor_1_bufferify(
-    AA_example_nested_ExClass1 * SHC_rv, char *name, int name_temp0)
+    AA_example_nested_ExClass1 * SHC_rv, char *name, int SHT_name_len)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
-    const std::string SHCXX_name(name, ShroudLenTrim(name, name_temp0));
+    const std::string SHCXX_name(name,
+        ShroudLenTrim(name, SHT_name_len));
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
@@ -249,16 +250,17 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 // Requested: c_function_string_&_buf_result
 // Match:     c_function_string_&_buf
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
-    const AA_example_nested_ExClass1 * self, char *name, int name_temp0)
+    const AA_example_nested_ExClass1 * self, char *name,
+    int SHT_name_len)
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
     const std::string & SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
-        ShroudStrCopy(name, name_temp0, nullptr, 0);
+        ShroudStrCopy(name, SHT_name_len, nullptr, 0);
     } else {
-        ShroudStrCopy(name, name_temp0, SHCXX_rv.data(),
+        ShroudStrCopy(name, SHT_name_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify

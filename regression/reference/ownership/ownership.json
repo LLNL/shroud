@@ -464,7 +464,7 @@
                     "F_C_name": "c_return_int_ptr_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
@@ -495,6 +495,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -504,8 +505,7 @@
                         "stmt0": "f_function_native_*_buf_pointer",
                         "stmt1": "f_function_native_*_buf_pointer",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -839,7 +839,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0,\t len",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_pointer",
                     "F_name_generic": "return_int_ptr_dim_pointer",
@@ -871,9 +871,10 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -884,8 +885,7 @@
                         "stmt0": "f_function_native_*_buf_pointer",
                         "stmt1": "f_function_native_*_buf_pointer",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1174,7 +1174,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0,\t len",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_alloc",
                     "F_name_generic": "return_int_ptr_dim_alloc",
@@ -1206,9 +1206,10 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1220,8 +1221,7 @@
                         "stmt0": "f_function_native_*_buf_allocatable",
                         "stmt1": "f_function_native_*_buf_allocatable",
                         "stmtc0": "c_function_native_*_buf_allocatable",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1509,7 +1509,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0,\t len",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_default",
                     "F_name_generic": "return_int_ptr_dim_default",
@@ -1541,9 +1541,10 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1554,8 +1555,7 @@
                         "stmt0": "f_function_native_*_buf_pointer",
                         "stmt1": "f_function_native_*_buf_pointer",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -1973,7 +1973,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0,\t len",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t len",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
@@ -2007,9 +2007,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_capsule": "CSHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -2021,8 +2022,7 @@
                         "stmt0": "f_function_native_*_buf_pointer_caller",
                         "stmt1": "f_function_native_*_buf_pointer_caller",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "len",
@@ -2486,7 +2486,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_temp0,\t len",
+                    "F_arg_c_call": "SHT_rv_cdesc,\t len",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_default_new",
                     "F_name_generic": "return_int_ptr_dim_default_new",
@@ -2520,9 +2520,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_capsule": "CSHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_array_allocate": "(len)",
-                        "f_array_shape": ",\t SHT_rv_temp0%shape(1:1)",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -2534,8 +2535,7 @@
                         "stmt0": "f_function_native_*_buf_pointer_caller",
                         "stmt1": "f_function_native_*_buf_pointer_caller",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf",
-                        "temp0": "SHT_rv_temp0"
+                        "stmtc1": "c_function_native_*_buf"
                     },
                     "fmtpy": {
                         "array_size": "len",

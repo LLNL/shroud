@@ -88,11 +88,11 @@ module cdesc_mod
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
         ! Attrs:     +intent(in)
         ! Exact:     c_in_native_*_cdesc
-        subroutine c_rank2_in(Darg) &
+        subroutine c_rank2_in(SHT_arg_cdesc) &
                 bind(C, name="CDE_rank2_in")
             import :: CDE_SHROUD_array
             implicit none
-            type(CDE_SHROUD_array), intent(OUT) :: Darg
+            type(CDE_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
         end subroutine c_rank2_in
 
         ! ----------------------------------------
@@ -108,13 +108,13 @@ module cdesc_mod
         ! Argument:  void * value +cdesc+intent(out)+rank(0)+value
         ! Attrs:     +intent(out)
         ! Exact:     c_out_void_*_cdesc
-        subroutine c_get_scalar1(name, Dvalue) &
+        subroutine c_get_scalar1(name, SHT_value_cdesc) &
                 bind(C, name="CDE_get_scalar1")
             use iso_c_binding, only : C_CHAR
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
+            type(CDE_SHROUD_array), intent(OUT) :: SHT_value_cdesc
         end subroutine c_get_scalar1
 
         ! ----------------------------------------
@@ -130,14 +130,15 @@ module cdesc_mod
         ! Argument:  int * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_0_bufferify(name, name_temp0, Dvalue) &
+        subroutine c_get_scalar1_0_bufferify(name, SHT_name_len, &
+                SHT_value_cdesc) &
                 bind(C, name="CDE_get_scalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
-            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
+            integer(C_INT), value, intent(IN) :: SHT_name_len
+            type(CDE_SHROUD_array), intent(OUT) :: SHT_value_cdesc
         end subroutine c_get_scalar1_0_bufferify
 
         ! ----------------------------------------
@@ -153,14 +154,15 @@ module cdesc_mod
         ! Argument:  double * value +cdesc+intent(out)+rank(0)
         ! Attrs:     +intent(out)
         ! Exact:     c_out_native_*_cdesc
-        subroutine c_get_scalar1_1_bufferify(name, name_temp0, Dvalue) &
+        subroutine c_get_scalar1_1_bufferify(name, SHT_name_len, &
+                SHT_value_cdesc) &
                 bind(C, name="CDE_get_scalar1_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
-            type(CDE_SHROUD_array), intent(OUT) :: Dvalue
+            integer(C_INT), value, intent(IN) :: SHT_name_len
+            type(CDE_SHROUD_array), intent(OUT) :: SHT_value_cdesc
         end subroutine c_get_scalar1_1_bufferify
 
         ! ----------------------------------------
@@ -221,14 +223,14 @@ contains
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
         ! splicer begin function.rank2_in
-        type(CDE_SHROUD_array) :: arg_temp0
-        arg_temp0%base_addr = C_LOC(arg)
-        arg_temp0%type = SH_TYPE_INT
-        ! arg_temp0%elem_len = C_SIZEOF()
-        arg_temp0%size = size(arg)
-        arg_temp0%rank = 2
-        arg_temp0%shape(1:2) = shape(arg)
-        call c_rank2_in(arg_temp0)
+        type(CDE_SHROUD_array) :: SHT_arg_cdesc
+        SHT_arg_cdesc%base_addr = C_LOC(arg)
+        SHT_arg_cdesc%type = SH_TYPE_INT
+        ! SHT_arg_cdesc%elem_len = C_SIZEOF()
+        SHT_arg_cdesc%size = size(arg)
+        SHT_arg_cdesc%rank = 2
+        SHT_arg_cdesc%shape(1:2) = shape(arg)
+        call c_rank2_in(SHT_arg_cdesc)
         ! splicer end function.rank2_in
     end subroutine rank2_in
 
@@ -265,15 +267,15 @@ contains
         character(len=*), intent(IN) :: name
         integer(C_INT), intent(OUT), target :: value
         ! splicer begin function.get_scalar1_0
-        type(CDE_SHROUD_array) :: value_temp0
-        value_temp0%base_addr = C_LOC(value)
-        value_temp0%type = SH_TYPE_INT
-        ! value_temp0%elem_len = C_SIZEOF()
-        value_temp0%size = 1
-        value_temp0%rank = 0
-        value_temp0%shape(1:0) = shape(value)
+        type(CDE_SHROUD_array) :: SHT_value_cdesc
+        SHT_value_cdesc%base_addr = C_LOC(value)
+        SHT_value_cdesc%type = SH_TYPE_INT
+        ! SHT_value_cdesc%elem_len = C_SIZEOF()
+        SHT_value_cdesc%size = 1
+        SHT_value_cdesc%rank = 0
+        SHT_value_cdesc%shape(1:0) = shape(value)
         call c_get_scalar1_0_bufferify(name, len(name, kind=C_INT), &
-            value_temp0)
+            SHT_value_cdesc)
         ! splicer end function.get_scalar1_0
     end subroutine get_scalar1_0
 
@@ -310,15 +312,15 @@ contains
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), intent(OUT), target :: value
         ! splicer begin function.get_scalar1_1
-        type(CDE_SHROUD_array) :: value_temp0
-        value_temp0%base_addr = C_LOC(value)
-        value_temp0%type = SH_TYPE_DOUBLE
-        ! value_temp0%elem_len = C_SIZEOF()
-        value_temp0%size = 1
-        value_temp0%rank = 0
-        value_temp0%shape(1:0) = shape(value)
+        type(CDE_SHROUD_array) :: SHT_value_cdesc
+        SHT_value_cdesc%base_addr = C_LOC(value)
+        SHT_value_cdesc%type = SH_TYPE_DOUBLE
+        ! SHT_value_cdesc%elem_len = C_SIZEOF()
+        SHT_value_cdesc%size = 1
+        SHT_value_cdesc%rank = 0
+        SHT_value_cdesc%shape(1:0) = shape(value)
         call c_get_scalar1_1_bufferify(name, len(name, kind=C_INT), &
-            value_temp0)
+            SHT_value_cdesc)
         ! splicer end function.get_scalar1_1
     end subroutine get_scalar1_1
 

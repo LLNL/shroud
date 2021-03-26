@@ -24,10 +24,10 @@
 // splicer end C_declarations
 
 int STR_pass_struct2_bufferify(const Cstruct1 * s1, char *outbuf,
-    int outbuf_temp0);
+    int SHT_outbuf_len);
 
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
-    char *outbuf, int outbuf_temp0);
+    char *outbuf, int SHT_outbuf_len);
 
 void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv);
 

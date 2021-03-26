@@ -141,12 +141,12 @@ module strings_mod
     ! Match:     c_default
     ! start c_pass_char_ptr_bufferify
     interface
-        subroutine c_pass_char_ptr_bufferify(dest, dest_temp0, src) &
+        subroutine c_pass_char_ptr_bufferify(dest, SHT_dest_len, src) &
                 bind(C, name="STR_pass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: dest_temp0
+            integer(C_INT), value, intent(IN) :: SHT_dest_len
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_pass_char_ptr_bufferify
     end interface
@@ -181,12 +181,12 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_char_*_buf
     interface
-        subroutine c_pass_char_ptr_in_out_bufferify(s, s_temp0) &
+        subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
                 bind(C, name="STR_pass_char_ptr_in_out_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
-            integer(C_INT), value, intent(IN) :: s_temp0
+            integer(C_INT), value, intent(IN) :: SHT_s_len
         end subroutine c_pass_char_ptr_in_out_bufferify
     end interface
 
@@ -246,12 +246,12 @@ module strings_mod
     ! Match:     c_function_char_*_buf
     ! start c_get_char_ptr2_bufferify
     interface
-        subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_temp0) &
+        subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="STR_get_char_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_char_ptr2_bufferify
     end interface
     ! end c_get_char_ptr2_bufferify
@@ -284,12 +284,12 @@ module strings_mod
     ! Match:     c_function_char_*_buf
     ! start c_get_char_ptr3_bufferify
     interface
-        subroutine c_get_char_ptr3_bufferify(output, output_temp0) &
+        subroutine c_get_char_ptr3_bufferify(output, SHT_output_len) &
                 bind(C, name="STR_get_char_ptr3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: output_temp0
+            integer(C_INT), value, intent(IN) :: SHT_output_len
         end subroutine c_get_char_ptr3_bufferify
     end interface
     ! end c_get_char_ptr3_bufferify
@@ -328,13 +328,12 @@ module strings_mod
     ! Requested: c_function_string_scalar_buf_copy
     ! Match:     c_function_string_scalar_buf
     interface
-        subroutine c_get_const_string_len_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+        subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="STR_get_const_string_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_const_string_len_bufferify
     end interface
 
@@ -350,12 +349,12 @@ module strings_mod
     ! Match:     c_function_string_*_buf
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, &
-                output_temp0) &
+                SHT_output_len) &
                 bind(C, name="STR_get_const_string_as_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: output_temp0
+            integer(C_INT), value, intent(IN) :: SHT_output_len
         end subroutine c_get_const_string_as_arg_bufferify
     end interface
 
@@ -426,12 +425,12 @@ module strings_mod
     ! Match:     c_function_string_&_buf
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+                SHT_rv_len) &
                 bind(C, name="STR_get_const_string_ref_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_const_string_ref_len_bufferify
     end interface
 
@@ -461,12 +460,12 @@ module strings_mod
     ! Match:     c_function_string_&_buf
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
-                output_temp0) &
+                SHT_output_len) &
                 bind(C, name="STR_get_const_string_ref_as_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: output_temp0
+            integer(C_INT), value, intent(IN) :: SHT_output_len
         end subroutine c_get_const_string_ref_as_arg_bufferify
     end interface
 
@@ -492,12 +491,12 @@ module strings_mod
     ! Match:     c_function_string_&_buf
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+                SHT_rv_len) &
                 bind(C, name="STR_get_const_string_ref_len_empty_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_const_string_ref_len_empty_bufferify
     end interface
 
@@ -551,12 +550,12 @@ module strings_mod
     ! Match:     c_function_string_*_buf
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHT_rv, &
-                SHT_rv_temp0) &
+                SHT_rv_len) &
                 bind(C, name="STR_get_const_string_ptr_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_const_string_ptr_len_bufferify
     end interface
 
@@ -674,12 +673,12 @@ module strings_mod
     ! Exact:     c_in_string_&_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
-                arg1_temp0) &
+                SHT_arg1_len) &
                 bind(C, name="STR_accept_string_const_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_accept_string_const_reference_bufferify
     end interface
 
@@ -712,12 +711,12 @@ module strings_mod
     ! Exact:     c_out_string_&_buf
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, &
-                arg1_temp0) &
+                SHT_arg1_len) &
                 bind(C, name="STR_accept_string_reference_out_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_accept_string_reference_out_bufferify
     end interface
 
@@ -752,12 +751,13 @@ module strings_mod
     ! Exact:     c_inout_string_&_buf
     ! start c_accept_string_reference_bufferify
     interface
-        subroutine c_accept_string_reference_bufferify(arg1, arg1_temp0) &
+        subroutine c_accept_string_reference_bufferify(arg1, &
+                SHT_arg1_len) &
                 bind(C, name="STR_accept_string_reference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_accept_string_reference_bufferify
     end interface
     ! end c_accept_string_reference_bufferify
@@ -791,12 +791,12 @@ module strings_mod
     ! Exact:     c_in_string_*_buf
     interface
         subroutine c_accept_string_pointer_const_bufferify(arg1, &
-                arg1_temp0) &
+                SHT_arg1_len) &
                 bind(C, name="STR_accept_string_pointer_const_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_accept_string_pointer_const_bufferify
     end interface
 
@@ -828,12 +828,12 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_*_buf
     interface
-        subroutine c_accept_string_pointer_bufferify(arg1, arg1_temp0) &
+        subroutine c_accept_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_accept_string_pointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_accept_string_pointer_bufferify
     end interface
 
@@ -865,12 +865,12 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_string_*_buf
     interface
-        subroutine c_fetch_string_pointer_bufferify(arg1, arg1_temp0) &
+        subroutine c_fetch_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_fetch_string_pointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
         end subroutine c_fetch_string_pointer_bufferify
     end interface
 
@@ -914,12 +914,12 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, &
-                arg1_temp0, nlen) &
+                SHT_arg1_len, nlen) &
                 bind(C, name="STR_accept_string_pointer_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
             integer(C_INT), intent(OUT) :: nlen
         end subroutine c_accept_string_pointer_len_bufferify
     end interface
@@ -964,12 +964,12 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, &
-                arg1_temp0, nlen) &
+                SHT_arg1_len, nlen) &
                 bind(C, name="STR_fetch_string_pointer_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
             integer(C_INT), intent(OUT) :: nlen
         end subroutine c_fetch_string_pointer_len_bufferify
     end interface
@@ -1004,13 +1004,13 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_string_scalar_buf
     interface
-        function c_accept_string_instance_bufferify(arg1, arg1_temp0) &
+        function c_accept_string_instance_bufferify(arg1, SHT_arg1_len) &
                 result(SHT_rv) &
                 bind(C, name="STR_accept_string_instance_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: arg1_temp0
+            integer(C_INT), value, intent(IN) :: SHT_arg1_len
             integer(C_INT) :: SHT_rv
         end function c_accept_string_instance_bufferify
     end interface
@@ -1063,12 +1063,12 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     interface
-        subroutine c_explicit2_bufferify(name, name_temp0) &
+        subroutine c_explicit2_bufferify(name, SHT_name_len) &
                 bind(C, name="STR_explicit2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
         end subroutine c_explicit2_bufferify
     end interface
 
@@ -1144,12 +1144,12 @@ module strings_mod
     ! Requested: c_in_char_*
     ! Match:     c_default
     interface
-        subroutine c_cpass_char_ptr_bufferify(dest, dest_temp0, src) &
+        subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src) &
                 bind(C, name="STR_cpass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: dest_temp0
+            integer(C_INT), value, intent(IN) :: SHT_dest_len
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_cpass_char_ptr_bufferify
     end interface
@@ -1193,13 +1193,13 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(inout)
     ! Exact:     c_inout_string_&_buf
     interface
-        subroutine c_post_declare_bufferify(count, name, name_temp0) &
+        subroutine c_post_declare_bufferify(count, name, SHT_name_len) &
                 bind(C, name="STR_post_declare_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), intent(IN) :: count(*)
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
         end subroutine c_post_declare_bufferify
     end interface
 
@@ -1321,11 +1321,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_char_ptr1
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_char_ptr1_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_char_ptr1_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
@@ -1398,11 +1398,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_result
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_result_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_result_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1468,11 +1468,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_alloc_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_alloc_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1492,11 +1492,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_pure
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_ref_pure_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1591,11 +1591,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_ref_alloc_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1638,11 +1638,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -1665,11 +1665,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -1688,11 +1688,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
-        type(STR_SHROUD_array) :: SHT_rv_temp0
-        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_temp0)
-        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
-            SHT_rv_temp0%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 

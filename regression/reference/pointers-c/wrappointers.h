@@ -22,26 +22,28 @@
 // splicer end C_declarations
 
 int POI_accept_char_array_in_bufferify(const char *names,
-    size_t names_temp0, int names_temp1);
+    size_t SHT_names_size, int SHT_names_len);
 
-void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *nitems_temp0);
+void POI_get_ptr_to_scalar_bufferify(
+    POI_SHROUD_array *SHT_nitems_cdesc);
 
 void POI_get_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *count_temp0);
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *count_temp0, int * ncount);
+    POI_SHROUD_array *SHT_count_cdesc, int * ncount);
 
-void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *count_temp0);
+void POI_get_ptr_to_func_array_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_get_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *nitems_temp0);
+    POI_SHROUD_array *SHT_nitems_cdesc);
 
 void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *count_temp0);
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *count_temp0, int * ncount);
+    POI_SHROUD_array *SHT_count_cdesc, int * ncount);
 
 void POI_return_int_ptr_to_scalar_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);

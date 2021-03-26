@@ -151,12 +151,12 @@ module top_module
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_char_*_buf
-        subroutine c_get_name_bufferify(name, name_temp0) &
+        subroutine c_get_name_bufferify(name, SHT_name_len) &
                 bind(C, name="TES_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
         end subroutine c_get_name_bufferify
 
         ! ----------------------------------------
@@ -240,13 +240,13 @@ module top_module
         ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
-        function yyy_tes_function4_bufferify(rv, rv_temp0) &
+        function yyy_tes_function4_bufferify(rv, SHT_rv_len) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: rv(*)
-            integer(C_INT), value, intent(IN) :: rv_temp0
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
             integer(C_INT) :: SHT_rv
         end function yyy_tes_function4_bufferify
 
@@ -296,13 +296,13 @@ module top_module
         ! Attrs:     +intent(out)
         ! Requested: c_out_native_*
         ! Match:     c_default
-        subroutine c_test_multiline_splicer_bufferify(name, name_temp0, &
-                value) &
+        subroutine c_test_multiline_splicer_bufferify(name, &
+                SHT_name_len, value) &
                 bind(C, name="TES_test_multiline_splicer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: name_temp0
+            integer(C_INT), value, intent(IN) :: SHT_name_len
             integer(C_INT), intent(OUT) :: value
         end subroutine c_test_multiline_splicer_bufferify
 

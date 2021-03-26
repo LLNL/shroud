@@ -76,7 +76,9 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
         fmt.c_var_capsule = options.C_var_capsule_template.format(
             c_var=rootname)
     if attrs["cdesc"]:
-        fmt.c_var_cdesc = options.C_var_context_template.format(
+        # XXX - c_var_cdesc is set via Stmts.temps=["cdesc"]
+        # XXX   not sure if this is needed still.
+        fmt.c_var_cdesc2 = options.C_var_context_template.format(
             c_var=rootname)
 
 
@@ -518,10 +520,10 @@ fc_statements = [
     dict(
         name="f_mixin_function_buf",
         declare=[
-            "type({F_array_type}) :: {temp0}",
+            "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{temp0}"],  # Pass result as an argument.
-        ntemps=1,
+        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
+        temps=["cdesc"],
         need_wrapper=True,
     ),
 
@@ -540,15 +542,15 @@ fc_statements = [
         buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
-            "size_t {temp0}",
+            "size_t {c_var_size}",
         ],
-        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_c_arg_names=["{c_var}", "{c_var_size}"],
         f_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
-            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
+            "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
         ],
         f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
-        ntemps=2,
+        temps=["size"],
     ),
 
     dict(
@@ -557,11 +559,11 @@ fc_statements = [
         name="f_mixin_inout_array_buf",
         f_helper="array_context",
         declare=[
-            "type({F_array_type}) :: {temp0}",
+            "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{temp0}"],
+        arg_c_call=["{f_var}", "size({f_var}, kind=C_SIZE_T)", "{c_var_cdesc}"],
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
-        ntemps=1,
+        temps=["cdesc"],
     ),
     dict(
         # Pass argument and size to C.
@@ -571,20 +573,20 @@ fc_statements = [
         buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
-            "size_t {temp0}",
-            "{C_array_type} *{temp1}",
+            "size_t {c_var_size}",
+            "{C_array_type} *{c_var_cdesc}",
         ],
 #        c_iface_header="<stddef.h>",
 #        cxx_iface_header="<cstddef>",
-        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_c_arg_names=["{c_var}", "{c_var_size}", "{c_var_cdesc}"],
         f_arg_decl=[
             "{f_type}, intent(IN) :: {c_var}(*)",
-            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
-            "type({F_array_type}), intent(OUT) :: {temp1}",
+            "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
         f_import=["{F_array_type}"],
         f_module_line="iso_c_binding:{f_kind},C_SIZE_T",
-        ntemps=2,
+        temps=["size", "cdesc"],
     ),
 
     dict(
@@ -592,10 +594,10 @@ fc_statements = [
         name="f_mixin_out_array_buf",
         f_helper="array_context",
         declare=[
-            "type({F_array_type}) :: {temp0}",
+            "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{temp0}"],
-        ntemps=1,
+        arg_c_call=["{c_var_cdesc}"],
+        temps=["cdesc"],
     ),
     dict(
         # Pass array_type to C which will fill it in.
@@ -603,14 +605,14 @@ fc_statements = [
         c_helper="array_context",
         buf_args=["arg_decl"],
         c_arg_decl=[
-            "{C_array_type} *{temp0}",
+            "{C_array_type} *{c_var_cdesc}",
         ],
-        f_c_arg_names=["{temp0}"],
+        f_c_arg_names=["{c_var_cdesc}"],
         f_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {temp0}",
+            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
         f_import=["{F_array_type}"],
-        ntemps=1,
+        temps=["cdesc"],
     ),
     
 
@@ -631,42 +633,43 @@ fc_statements = [
         buf_args=["arg_decl"],
         c_arg_decl=[
             "const char *{c_var}",   # XXX c_type
-            "size_t {temp0}",
-            "int {temp1}",
+            "size_t {c_var_size}",
+            "int {c_var_len}",
         ],
-        f_c_arg_names=["{c_var}", "{temp0}", "{temp1}"],
+        f_c_arg_names=["{c_var}", "{c_var_size}", "{c_var_len}"],
         f_arg_decl=[
             "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
-            "integer(C_SIZE_T), intent(IN), value :: {temp0}",
-            "integer(C_INT), intent(IN), value :: {temp1}",
+            "integer(C_SIZE_T), intent(IN), value :: {c_var_size}",
+            "integer(C_INT), intent(IN), value :: {c_var_len}",
         ],
         f_module_line="iso_c_binding:C_CHAR,C_SIZE_T,C_INT",
-        ntemps=2,
+        temps=["size", "len"],
     ),
 
     
     ##########
     # Return CHARACTER address and length to Fortran.
     dict(
+        # XXX - unused
         name="f_mixin_out_character_buf",
         declare=[
-            "type({F_array_type}) :: {temp0}",
+            "type({F_array_type}) :: {c_var_cdesc}",
         ],
-        arg_c_call=["{temp0}"],  # Pass result as an argument.
-        ntemps=1,
+        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
+        temps=["cdesc"],
     ),
     dict(
         name="c_mixin_out_character_buf",
         buf_args=["arg_decl"],
         c_arg_decl=[
-            "{C_array_type} *{temp0}",
+            "{C_array_type} *{c_var_cdesc}",
         ],
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
         f_import=["{F_array_type}"],
 #        return_type="void",  # Only difference from c_mixin_function_buf
-        ntemps=1,
+        temps=["cdesc"],
     ),
 
     # Pass CHARACTER and LEN to C wrapper.
@@ -688,15 +691,15 @@ fc_statements = [
         buf_args=["arg_decl"],
         c_arg_decl=[
             "char *{c_var}",
-            "int {temp0}",
+            "int {c_var_len}",
         ],
-        f_c_arg_names=["{c_var}", "{temp0}"],
+        f_c_arg_names=["{c_var}", "{c_var_len}"],
         f_arg_decl=[
             "character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)",
-            "integer(C_INT), value, intent(IN) :: {temp0}",
+            "integer(C_INT), value, intent(IN) :: {c_var_len}",
         ],
         f_module=dict(iso_c_binding=["C_CHAR", "C_INT"]),
-        ntemps=1,
+        temps=["len"],
     ),
 
     ##########
@@ -758,14 +761,14 @@ fc_statements = [
         ],
         arg_call=["&{cxx_var}"],
         post_call=[
-            "{temp0}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{temp0}->cxx.idtor = {idtor};",
-            "{temp0}->addr.base = {cxx_var};",
-            "{temp0}->type = {sh_type};",
-            "{temp0}->elem_len = sizeof({cxx_type});",
-            "{temp0}->rank = {rank};"
+            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};"
             "{c_array_shape}",
-            "{temp0}->size = {c_array_size};",
+            "{c_var_cdesc}->size = {c_array_size};",
         ],
         # XXX - similar to c_function_native_*_buf
     ),
@@ -802,7 +805,7 @@ fc_statements = [
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         post_call=[
-            "call c_f_pointer({temp0}%base_addr, {f_var}{f_array_shape})",
+            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
         ],
     ),
     dict(
@@ -832,7 +835,6 @@ fc_statements = [
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
         ],
-        ntemps=0,
         
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -858,14 +860,14 @@ fc_statements = [
         f_helper="ShroudTypeDefines array_context",
         f_module=dict(iso_c_binding=["C_LOC"]),
         pre_call=[
-            "{temp0}%base_addr = C_LOC({f_var})",
-            "{temp0}%type = {sh_type}",
-            "! {temp0}%elem_len = C_SIZEOF()",
-#            "{temp0}%size = size({f_var})",
-            "{temp0}%size = {size}",
-            "{temp0}%rank = {rank}",
+            "{c_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{c_var_cdesc}%type = {sh_type}",
+            "! {c_var_cdesc}%elem_len = C_SIZEOF()",
+#            "{c_var_cdesc}%size = size({f_var})",
+            "{c_var_cdesc}%size = {size}",
+            "{c_var_cdesc}%rank = {rank}",
             # This also works with scalars since (1:0) is a zero length array.
-            "{temp0}%shape(1:{rank}) = shape({f_var})",
+            "{c_var_cdesc}%shape(1:{rank}) = shape({f_var})",
         ],
     ),
 
@@ -986,7 +988,7 @@ fc_statements = [
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}({f_array_allocate}))",
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1015,7 +1017,7 @@ fc_statements = [
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
-            "call c_f_pointer({temp0}%base_addr, {F_result}{f_array_shape})",
+            "call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})",
         ],
     ),
     dict(
@@ -1030,8 +1032,8 @@ fc_statements = [
             "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
         ],
         post_call=[
-            "call c_f_pointer(\t{temp0}%base_addr,\t {F_result}{f_array_shape})",
-            "{c_var_capsule}%mem = {temp0}%cxx",
+            "call c_f_pointer(\t{c_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
+            "{c_var_capsule}%mem = {c_var_cdesc}%cxx",
         ],
     ),
     dict(
@@ -1132,8 +1134,7 @@ fc_statements = [
         mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrBlankFill",
         post_call=[
-            "ShroudStrBlankFill({c_var}, {temp0});"
-            # XXX temp0 -> c_var_len
+            "ShroudStrBlankFill({c_var}, {c_var_len});"
         ],
     ),
     dict(
@@ -1147,11 +1148,11 @@ fc_statements = [
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
         pre_call=[
             "char * {cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {temp0},\t -1);",
+            "{c_var},\t {c_var_len},\t -1);",
         ],
         post_call=[
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
             "ShroudStrFree({cxx_var});",
         ],
@@ -1169,9 +1170,8 @@ fc_statements = [
         mixin=["c_mixin_in_character_buf"],
         c_helper="ShroudStrCopy",
         post_call=[
-            # XXX - temp0 -> c_var_len
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var},\t -1);",
         ],
         return_type="void",
@@ -1227,10 +1227,10 @@ fc_statements = [
         cxx_local_var="pointer",
         pre_call=[
             "char **{cxx_var} = ShroudStrArrayAlloc("
-            "{c_var},\t {temp0},\t {temp1});",
+            "{c_var},\t {c_var_size},\t {c_var_len});",
         ],
         post_call=[
-            "ShroudStrArrayFree({cxx_var}, {temp0});",
+            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
         ],
     ),
     #####
@@ -1245,8 +1245,8 @@ fc_statements = [
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
-            "allocate(character(len={temp0}%elem_len):: {f_var})",
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)",
+            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
     ),
 
@@ -1296,7 +1296,7 @@ fc_statements = [
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
-            "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));",
+            "{c_const}std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));",
         ],
     ),
     dict(
@@ -1314,7 +1314,7 @@ fc_statements = [
             "std::string {cxx_var};",
         ],
         post_call=[
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -1331,10 +1331,10 @@ fc_statements = [
         c_helper="ShroudStrCopy ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
-            "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {temp0}));",
+            "std::string {cxx_var}({c_var},\t ShroudLenTrim({c_var}, {c_var_len}));",
         ],
         post_call=[
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
@@ -1362,16 +1362,15 @@ fc_statements = [
         f_arg_decl=[
             # Change to intent(OUT) from mixin.
             "character(kind=C_CHAR), intent(OUT) :: {c_var}(*)",
-            "integer(C_INT), value, intent(IN) :: {temp0}",
+            "integer(C_INT), value, intent(IN) :: {c_var_len}",
         ],
-        # temp0 -> c_var_len
         c_helper="ShroudStrCopy",
         post_call=[
             "if ({cxx_var}{cxx_member}empty()) {{+",
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {nullptr},\t 0);",
             "-}} else {{+",
-            "ShroudStrCopy({c_var}, {temp0},"
+            "ShroudStrCopy({c_var}, {c_var_len},"
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());",
             "-}}",
@@ -1417,13 +1416,12 @@ fc_statements = [
         mixin=["c_mixin_in_character_buf"],
         cxx_local_var="scalar",
         pre_call=[
-            "int {temp1} = ShroudLenTrim({c_var}, {temp0});",
-            "std::string {cxx_var}({c_var}, {temp1});",
+            "int {c_temp}trim = ShroudLenTrim({c_var}, {c_var_len});",
+            "std::string {cxx_var}({c_var}, {c_temp}trim);",
         ],
         call=[
             "{cxx_var}",
         ],
-        ntemps=2,  # Extra temp for len_trim.
     ),
     
     # Uses a two part call to copy results of std::string into a
@@ -1495,8 +1493,8 @@ fc_statements = [
             "character(len=:), allocatable :: {f_var}",
         ],
         post_call=[
-            "allocate(character(len={temp0}%elem_len):: {f_var})",
-            "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)",
+            "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
+            "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
     ),
     
@@ -1509,7 +1507,7 @@ fc_statements = [
         pre_call=[
             (
                 "{c_const}std::vector<{cxx_T}> "
-                "{cxx_var}({c_var}, {c_var} + {temp0});"
+                "{cxx_var}({c_var}, {c_var} + {c_var_size});"
             )
         ],
     ),
@@ -1525,15 +1523,15 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{temp0}->cxx.addr  = {cxx_var};",
-            "{temp0}->cxx.idtor = {idtor};",
-            "{temp0}->addr.base = {cxx_var}->empty()"
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{temp0}->type = {sh_type};",
-            "{temp0}->elem_len = sizeof({cxx_T});",
-            "{temp0}->size = {cxx_var}->size();",
-            "{temp0}->rank = 1;",
-            "{temp0}->shape[0] = {temp0}->size;",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
+            "{c_var_cdesc}->size = {cxx_var}->size();",
+            "{c_var_cdesc}->rank = 1;",
+            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1549,19 +1547,19 @@ fc_statements = [
         c_helper="ShroudTypeDefines",
         pre_call=[
             "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t("
-            "\t{c_var}, {c_var} + {temp0});"
+            "\t{c_var}, {c_var} + {c_var_size});"
         ],
         post_call=[
             # Return address and size of vector data.
-            "{temp1}->cxx.addr  = {cxx_var};",
-            "{temp1}->cxx.idtor = {idtor};",
-            "{temp1}->addr.base = {cxx_var}->empty()"
+            "{c_var_cdesc}->cxx.addr  = {cxx_var};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{temp1}->type = {sh_type};",
-            "{temp1}->elem_len = sizeof({cxx_T});",
-            "{temp1}->size = {cxx_var}->size();",
-            "{temp1}->rank = 1;",
-            "{temp1}->shape[0] = {temp1}->size;",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_T});",
+            "{c_var_cdesc}->size = {cxx_var}->size();",
+            "{c_var_cdesc}->rank = 1;",
+            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1623,20 +1621,19 @@ fc_statements = [
     dict(
         name="c_in_vector_buf_string",
         mixin=["c_mixin_in_string_array_buf"],
-        ntemps=3,
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
         pre_call=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * {temp2} = {c_var};",
+            "{c_const}char * {c_temp}s = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {temp0};",
+            "{c_temp}n = {c_var_size};",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-            "{cxx_var}.push_back("
-            "std::string({temp2},ShroudLenTrim({temp2}, {temp1})));",
-            "{temp2} += {temp1};",
+            "{cxx_var}.push_back(\t"
+            "std::string({c_temp}s,\tShroudLenTrim({c_temp}s, {c_var_len})));",
+            "{c_temp}s += {c_var_len};",
             "-}}",
             "-}}",
         ],
@@ -1657,14 +1654,14 @@ fc_statements = [
             "char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {temp0};",
+            "{c_temp}n = {c_var_size};",
             "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "ShroudStrCopy("
-            "BBB, {temp1},"
+            "BBB, {c_var_len},"
             "\t {cxx_var}[{c_temp}i].data(),"
             "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {temp1};",
+            "BBB += {c_var_len};",
             "-}}",
             "-}}",
         ],
@@ -1684,11 +1681,11 @@ fc_statements = [
             "{c_const}char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {temp0};",
+            "{c_temp}n = {c_var_size};",
             "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
             "{cxx_var}.push_back"
-            "(std::string(BBB,ShroudLenTrim(BBB, {temp1})));",
-            "BBB += {temp1};",
+            "(std::string(BBB,\tShroudLenTrim(BBB, {c_var_len})));",
+            "BBB += {c_var_len};",
             "-}}",
             "-}}",
         ],
@@ -1697,13 +1694,13 @@ fc_statements = [
             "char * BBB = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_temp}i = 0,",
-            "{c_temp}n = {temp0};",
+            "{c_temp}n = {c_var_size};",
             "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
             "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-            "ShroudStrCopy(BBB, {temp1},"
+            "ShroudStrCopy(BBB, {c_var_len},"
             "\t {cxx_var}[{c_temp}i].data(),"
             "\t {cxx_var}[{c_temp}i].size());",
-            "BBB += {temp1};",
+            "BBB += {c_var_len};",
             "-}}",
             "-}}",
         ],
@@ -1733,7 +1730,7 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1743,7 +1740,7 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1764,8 +1761,8 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "allocate({f_var}({temp0}%size))",
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({c_var_cdesc}%size))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -1775,8 +1772,8 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({temp0}%size))",
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({c_var_cdesc}%size))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -1791,8 +1788,8 @@ fc_statements = [
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
         ],
         post_call=[
-            "allocate({f_var}({temp0}%size))",
-            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+            "allocate({f_var}({c_var_cdesc}%size))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 
@@ -1987,10 +1984,10 @@ fc_statements = [
         name="c_getter_string_scalar_buf",
         mixin=["c_getter", "c_mixin_out_character_buf"],
         post_call=[
-            "{temp0}->addr.base = {CXX_this}->{field_name}.data();",
-            "{temp0}->type = 0; // SH_CHAR;",
-            "{temp0}->elem_len = {CXX_this}->{field_name}.size();",
-            "{temp0}->rank = 0;"
+            "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
+            "{c_var_cdesc}->type = 0; // SH_CHAR;",
+            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
+            "{c_var_cdesc}->rank = 0;"
         ],
         return_type="void",  # Convert to function.
     ),
@@ -2000,7 +1997,7 @@ fc_statements = [
         base="c_setter",
         mixin=["c_mixin_in_character_buf"],
         post_call=[
-            "{CXX_this}->{field_name} = std::string({c_var},\t {temp0});",
+            "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});",
         ],
     ),
     dict(
@@ -2208,11 +2205,9 @@ fc_statements = [
             # Get Fortran character pointer and create std::string.
             "char *{c_var} = "
             "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {temp0});",
+            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
         ],
-        # {temp0} -> {c_var_trim}
-        ntemps=1,
     ),
     dict(
         # c_out_string_*_cfi
@@ -2247,8 +2242,8 @@ fc_statements = [
         pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
-            "size_t {temp0} = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
-            "{c_const}std::string {cxx_var}({c_var}, {temp0});",
+            "size_t {c_temp}trim = ShroudLenTrim({c_var}, {cfi_prefix}{c_var}->elem_len);",
+            "{c_const}std::string {cxx_var}({c_var}, {c_temp}trim);",
         ],
         post_call=[
             "ShroudStrCopy({c_var},"
@@ -2256,8 +2251,6 @@ fc_statements = [
             "\t {cxx_var}{cxx_member}data(),"
             "\t {cxx_var}{cxx_member}size());"
         ],
-        # {temp0} -> {c_var_trim}
-        ntemps=1,
     ),
     dict(
         # c_function_string_scalar_cfi
