@@ -1167,7 +1167,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
@@ -1181,7 +1180,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
                         "cxx_type": "char",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1272,7 +1270,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1286,7 +1283,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -1868,7 +1864,6 @@
                 "zz_fmtresult": {
                     "fmtf": {
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1954,7 +1949,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1968,7 +1962,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -2622,7 +2615,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2636,7 +2628,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -2728,7 +2719,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2742,7 +2732,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3105,7 +3094,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3119,7 +3107,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3210,7 +3197,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3224,7 +3210,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -3486,7 +3471,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv->c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3500,7 +3484,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -3598,7 +3581,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": 30,
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3612,7 +3594,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": 30,
                         "f_intent": "OUT",
                         "f_type": "character(*)"
                     }
@@ -6737,7 +6718,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -6750,8 +6730,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
-                            "c_var_trim": "AAlen"
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6859,7 +6838,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -6874,7 +6852,6 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_trim": "AAlen",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -6965,7 +6942,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -6978,8 +6954,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name",
-                            "c_var_len": "AAtrim"
+                            "c_var": "name"
                         }
                     }
                 },
@@ -7067,7 +7042,6 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_name",
@@ -7082,7 +7056,6 @@
                             "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
-                            "c_var_len": "AAtrim",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",

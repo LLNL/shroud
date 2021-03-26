@@ -5889,7 +5889,6 @@
                         "c_type": "char",
                         "c_val": "SHCXX_rv.c_str()",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -5903,7 +5902,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -5998,7 +5996,6 @@
                         "c_const": "const ",
                         "c_type": "char",
                         "c_var": "SHC_rv",
-                        "c_var_len": "30",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -6013,7 +6010,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_len": "30",
                         "f_intent": "OUT",
                         "f_type": "character(*)",
                         "temp0": "SHT_rv_temp0"

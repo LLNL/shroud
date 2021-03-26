@@ -2187,11 +2187,8 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-<<<<<<< HEAD
                         "c_var_capsule": "CSHT_rv",
-=======
                         "c_var_cdesc": "SHT_rv_cdesc",
->>>>>>> temp-variables
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }
@@ -2702,11 +2699,8 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-<<<<<<< HEAD
                         "c_var_capsule": "CSHT_rv",
-=======
                         "c_var_cdesc": "SHT_rv_cdesc",
->>>>>>> temp-variables
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }

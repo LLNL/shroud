@@ -78,12 +78,6 @@ def assign_buf_variable_names(attrs, meta, options, fmt, rootname):
     if attrs["cdesc"]:
         fmt.c_var_cdesc = options.C_var_context_template.format(
             c_var=rootname)
-    if attrs["len"]:
-        fmt.c_var_len = attrs["len"]
-    if attrs["len_trim"]:
-        fmt.c_var_trim = attrs["len_trim"]
-    if attrs["size"]:
-        fmt.c_var_size = attrs["size"]
 
 
 def compute_return_prefix(arg, local_var):
