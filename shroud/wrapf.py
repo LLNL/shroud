@@ -1081,36 +1081,11 @@ rv = .false.
                 self.add_module_from_stmts(intent_blk, modules, imports, fmt)
                 continue
 
-            buf_arg_name = attrs[buf_arg]
-            if buf_arg_name is None:
-                msg = "ERROR: {} is missing from attrs".format(buf_arg)
-                arg_c_decl.append(msg)
-                self.log.write(msg + "\n")
-            elif buf_arg == "capsule":
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "type(%s), intent(INOUT) :: %s"
-                    % (fmt.F_capsule_data_type, buf_arg_name)
+            raise RuntimeError(
+                "build_arg_list_interface: unhandled case {}".format(
+                    buf_arg
                 )
-                imports[fmt.F_capsule_data_type] = True
-            elif buf_arg == "context":
-                if ast.metaattrs["is_result"]:
-                    intent = "OUT"
-                else:
-                    intent = "INOUT"
-                arg_c_names.append(buf_arg_name)
-                arg_c_decl.append(
-                    "type(%s), intent(%s) :: %s"
-                    % (fmt.F_array_type, intent, buf_arg_name)
-                )
-#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                imports[fmt.F_array_type] = True
-            else:
-                raise RuntimeError(
-                    "build_arg_list_interface: unhandled case {}".format(
-                        buf_arg
-                    )
-                )
+            )
 
     def wrap_function_interface(self, cls, node, fileinfo):
         """Write Fortran interface for C function.
@@ -1415,18 +1390,9 @@ rv = .false.
                     arg_c_call.append(fmt.c_var)
                 continue
 
-            need_wrapper = True
-            if buf_arg == "capsule":
-                append_format(
-                    arg_f_decl, "type({F_capsule_type}) :: {c_var_capsule}", fmt
-                )
-                # Pass F_capsule_data_type field to C++.
-                arg_c_call.append(fmt.c_var_capsule + "%mem")
-                fileinfo.add_f_helper("capsule_data_helper", fmt)
-            else:
-                raise RuntimeError(
-                    "build_arg_list_impl: unhandled case {}".format(buf_arg)
-                )
+            raise RuntimeError(
+                "build_arg_list_impl: unhandled case {}".format(buf_arg)
+            )
         return need_wrapper
 
     def add_code_from_statements(

@@ -684,15 +684,9 @@ class Wrapc(util.WrapperMixin):
                     append_format(proto_list, arg, fmttmp)
                 continue
 
-            need_wrapper = True
-            if buf_arg == "capsule":
-                append_format(
-                    proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
-                )
-            else:
-                raise RuntimeError(
-                    "wrap_function: unhandled case {}".format(buf_arg)
-                )
+            raise RuntimeError(
+                "wrap_function: unhandled case {}".format(buf_arg)
+            )
         return need_wrapper
 
     def add_code_from_statements(
