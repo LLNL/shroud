@@ -60,11 +60,11 @@ const char * NS_last_function_called(void)
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +api(buf)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_buf_allocatable
-void NS_last_function_called_bufferify(NS_SHROUD_array *SHC_rv_temp0)
+void NS_last_function_called_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
-    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
+    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end function.last_function_called_bufferify
 }
 

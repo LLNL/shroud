@@ -63,7 +63,7 @@ void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv);
 const char * CLA_Class1_get_name(CLA_Class1 * self);
 
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *SHC_rv_temp0);
+    CLA_SHROUD_array *SHT_rv_cdesc);
 
 int CLA_Class1_direction_func(CLA_Class1 * self, int arg);
 

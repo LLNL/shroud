@@ -212,13 +212,13 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Exact:     c_function_string_&_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self,
-    AA_SHROUD_array *SHC_rv_temp0)
+    AA_SHROUD_array *SHT_rv_cdesc)
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
+    ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }
 

@@ -306,17 +306,17 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 // Match:     c_function_native_*_buf
 // start POI_return_int_ptr_to_scalar_bufferify
 void POI_return_int_ptr_to_scalar_bufferify(
-    POI_SHROUD_array *SHC_rv_temp0)
+    POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_scalar_bufferify
     int * SHC_rv = returnIntPtrToScalar();
-    SHC_rv_temp0->cxx.addr  = SHC_rv;
-    SHC_rv_temp0->cxx.idtor = 0;
-    SHC_rv_temp0->addr.base = SHC_rv;
-    SHC_rv_temp0->type = SH_TYPE_INT;
-    SHC_rv_temp0->elem_len = sizeof(int);
-    SHC_rv_temp0->rank = 0;
-    SHC_rv_temp0->size = 1;
+    SHT_rv_cdesc->cxx.addr  = SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 0;
+    SHT_rv_cdesc->size = 1;
     // splicer end function.return_int_ptr_to_scalar_bufferify
 }
 // end POI_return_int_ptr_to_scalar_bufferify
@@ -328,18 +328,18 @@ void POI_return_int_ptr_to_scalar_bufferify(
 // Match:     c_function_native_*_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 void POI_return_int_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHC_rv_temp0)
+    POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_fixed_array_bufferify
     int * SHC_rv = returnIntPtrToFixedArray();
-    SHC_rv_temp0->cxx.addr  = SHC_rv;
-    SHC_rv_temp0->cxx.idtor = 0;
-    SHC_rv_temp0->addr.base = SHC_rv;
-    SHC_rv_temp0->type = SH_TYPE_INT;
-    SHC_rv_temp0->elem_len = sizeof(int);
-    SHC_rv_temp0->rank = 1;
-    SHC_rv_temp0->shape[0] = 10;
-    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
+    SHT_rv_cdesc->cxx.addr  = SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = 10;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_to_fixed_array_bufferify
 }
 // end POI_return_int_ptr_to_fixed_array_bufferify
@@ -351,17 +351,17 @@ void POI_return_int_ptr_to_fixed_array_bufferify(
 // Match:     c_function_native_*_buf
 // start POI_return_int_ptr_to_const_scalar_bufferify
 void POI_return_int_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *SHC_rv_temp0)
+    POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_const_scalar_bufferify
     const int * SHC_rv = returnIntPtrToConstScalar();
-    SHC_rv_temp0->cxx.addr  = (int *) SHC_rv;
-    SHC_rv_temp0->cxx.idtor = 0;
-    SHC_rv_temp0->addr.base = SHC_rv;
-    SHC_rv_temp0->type = SH_TYPE_INT;
-    SHC_rv_temp0->elem_len = sizeof(int);
-    SHC_rv_temp0->rank = 0;
-    SHC_rv_temp0->size = 1;
+    SHT_rv_cdesc->cxx.addr  = (int *) SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 0;
+    SHT_rv_cdesc->size = 1;
     // splicer end function.return_int_ptr_to_const_scalar_bufferify
 }
 // end POI_return_int_ptr_to_const_scalar_bufferify
@@ -373,18 +373,18 @@ void POI_return_int_ptr_to_const_scalar_bufferify(
 // Match:     c_function_native_*_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 void POI_return_int_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHC_rv_temp0)
+    POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
     const int * SHC_rv = returnIntPtrToFixedConstArray();
-    SHC_rv_temp0->cxx.addr  = (int *) SHC_rv;
-    SHC_rv_temp0->cxx.idtor = 0;
-    SHC_rv_temp0->addr.base = SHC_rv;
-    SHC_rv_temp0->type = SH_TYPE_INT;
-    SHC_rv_temp0->elem_len = sizeof(int);
-    SHC_rv_temp0->rank = 1;
-    SHC_rv_temp0->shape[0] = 10;
-    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
+    SHT_rv_cdesc->cxx.addr  = (int *) SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = 10;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
 }
 // end POI_return_int_ptr_to_fixed_const_array_bufferify

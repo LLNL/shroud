@@ -51,7 +51,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *arg_temp0);
 int VEC_vector_string_count_bufferify(const char *arg, size_t arg_temp0,
     int arg_temp1);
 
-void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
+void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHT_rv_cdesc,
     int n);
 
 #ifdef __cplusplus

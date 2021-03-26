@@ -51,7 +51,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self,
-    AA_SHROUD_array *SHC_rv_temp0);
+    AA_SHROUD_array *SHT_rv_cdesc);
 
 const char * AA_example_nested_ExClass1_get_name_arg(
     const AA_example_nested_ExClass1 * self);

@@ -328,20 +328,20 @@ int VEC_vector_string_count_bufferify(const char *arg, size_t arg_temp0,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
+void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHT_rv_cdesc,
     int n)
 {
     // splicer begin function.return_vector_alloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
-    SHC_rv_temp0->cxx.addr  = SHC_rv;
-    SHC_rv_temp0->cxx.idtor = 1;
-    SHC_rv_temp0->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
-    SHC_rv_temp0->type = SH_TYPE_OTHER;
-    SHC_rv_temp0->elem_len = sizeof(int);
-    SHC_rv_temp0->size = SHC_rv->size();
-    SHC_rv_temp0->rank = 1;
-    SHC_rv_temp0->shape[0] = SHC_rv_temp0->size;
+    SHT_rv_cdesc->cxx.addr  = SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 1;
+    SHT_rv_cdesc->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
+    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->size = SHC_rv->size();
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = SHT_rv_cdesc->size;
     // splicer end function.return_vector_alloc_bufferify
 }
 

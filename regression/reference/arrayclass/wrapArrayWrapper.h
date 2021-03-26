@@ -45,24 +45,24 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self);
 double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self);
 
 void ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *SHC_rv_temp0);
+    ARR_SHROUD_array *SHT_rv_cdesc);
 
 double * ARR_ArrayWrapper_get_array_const(
     const ARR_ArrayWrapper * self);
 
 void ARR_ArrayWrapper_get_array_const_bufferify(
-    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHC_rv_temp0);
+    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc);
 
 const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self);
 
 void ARR_ArrayWrapper_get_array_c_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *SHC_rv_temp0);
+    ARR_SHROUD_array *SHT_rv_cdesc);
 
 const double * ARR_ArrayWrapper_get_array_const_c(
     const ARR_ArrayWrapper * self);
 
 void ARR_ArrayWrapper_get_array_const_c_bufferify(
-    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHC_rv_temp0);
+    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc);
 
 void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
     double * * array, int * isize);
