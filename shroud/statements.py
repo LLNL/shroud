@@ -1838,17 +1838,15 @@ fc_statements = [
         mixin=["f_mixin_shadow"],
     ),
     dict(
-        name="c_in_shadow",
+        # c_in_shadow
+        # c_inout_shadow
+        name="c_in/inout_shadow",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
             "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
         ],
-    ),
-    dict(
-        name="c_inout_shadow",
-        base="c_in_shadow",
     ),
     # Return a C_capsule_data_type.
     dict(

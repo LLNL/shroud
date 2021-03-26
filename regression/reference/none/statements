@@ -58,7 +58,7 @@ root
           cdesc -- c_in/out/inout_native_*_cdesc
           cfi -- c_in_native_*_cfi
         ** -- c_in_native_**
-      shadow -- c_in_shadow
+      shadow -- c_in/inout_shadow
       string
         & -- c_in_string_*/&
           buf -- c_in_string_*/&_buf
@@ -85,7 +85,7 @@ root
       native
         *
           cdesc -- c_in/out/inout_native_*_cdesc
-      shadow -- c_inout_shadow
+      shadow -- c_in/inout_shadow
       string
         & -- c_inout_string_*/&
           buf -- c_inout_string_*/&_buf
