@@ -67,7 +67,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)

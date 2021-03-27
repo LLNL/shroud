@@ -47,7 +47,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Function:  int GetNameLength +pure
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int STMT_get_name_length(void)
 {
     // splicer begin function.get_name_length

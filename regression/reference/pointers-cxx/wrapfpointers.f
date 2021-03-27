@@ -430,7 +430,7 @@ module pointers_mod
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
@@ -459,7 +459,7 @@ module pointers_mod
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -481,7 +481,7 @@ module pointers_mod
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
@@ -527,7 +527,7 @@ module pointers_mod
     ! Function:  int sumFixedArray
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start sum_fixed_array
     interface
         function sum_fixed_array() &
@@ -972,7 +972,7 @@ module pointers_mod
     ! Function:  int checkInt2d
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Attrs:     +intent(in)
@@ -1015,7 +1015,7 @@ module pointers_mod
     ! Function:  void * returnAddress1
     ! Attrs:     +intent(function)
     ! Requested: c_function_void_*
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1038,7 +1038,7 @@ module pointers_mod
     ! Function:  void * returnAddress2
     ! Attrs:     +intent(function)
     ! Requested: c_function_void_*
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1082,7 +1082,7 @@ module pointers_mod
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
@@ -1538,10 +1538,10 @@ contains
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
@@ -1569,10 +1569,10 @@ contains
     ! Function:  int acceptCharArrayIn
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
@@ -1901,7 +1901,7 @@ contains
     ! Exact:     f_function_void_*
     ! Attrs:     +intent(function)
     ! Requested: c_function_void_*
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1926,10 +1926,10 @@ contains
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)

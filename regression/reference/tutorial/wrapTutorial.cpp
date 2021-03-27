@@ -93,7 +93,7 @@ void TUT_no_return_no_arguments(void)
 // Function:  double PassByValue
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double arg1 +value
 // Attrs:     +intent(in)
@@ -146,7 +146,7 @@ void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHT_rv_cdesc,
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // start TUT_use_default_arguments
 double TUT_use_default_arguments(void)
 {
@@ -161,7 +161,7 @@ double TUT_use_default_arguments(void)
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
@@ -181,7 +181,7 @@ double TUT_use_default_arguments_arg1(double arg1)
 // Function:  double UseDefaultArguments
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +value
 // Attrs:     +intent(in)
@@ -288,7 +288,7 @@ void TUT_template_argument_double(double arg)
 // Function:  int TemplateReturn
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int TUT_template_return_int(void)
 {
     // splicer begin function.template_return_int
@@ -301,7 +301,7 @@ int TUT_template_return_int(void)
 // Function:  double TemplateReturn
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 double TUT_template_return_double(void)
 {
     // splicer begin function.template_return_double
@@ -392,7 +392,7 @@ void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -410,7 +410,7 @@ int TUT_use_default_overload_num(int num)
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -433,7 +433,7 @@ int TUT_use_default_overload_num_offset(int num, int offset)
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int num +value
 // Attrs:     +intent(in)
@@ -462,7 +462,7 @@ int TUT_use_default_overload_num_offset_stride(int num, int offset,
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -485,7 +485,7 @@ int TUT_use_default_overload_3(double type, int num)
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -513,7 +513,7 @@ int TUT_use_default_overload_4(double type, int num, int offset)
 // Function:  int UseDefaultOverload
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  double type +value
 // Attrs:     +intent(in)
@@ -548,7 +548,7 @@ int TUT_use_default_overload_5(double type, int num, int offset,
 // Function:  TypeID typefunc
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  TypeID arg +value
 // Attrs:     +intent(in)
@@ -566,7 +566,7 @@ int TUT_typefunc(int arg)
 // Function:  EnumTypeID enumfunc
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  EnumTypeID arg +value
 // Attrs:     +intent(in)
@@ -587,7 +587,7 @@ int TUT_enumfunc(int arg)
 // Function:  Color colorfunc
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  Color arg +value
 // Attrs:     +intent(in)
@@ -638,7 +638,7 @@ void TUT_get_min_max(int * min, int * max)
 // Function:  int callback1
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int in +value
 // Attrs:     +intent(in)

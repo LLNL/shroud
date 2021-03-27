@@ -121,7 +121,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // Function:  int Method1
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // start CLA_Class1_method1
 int CLA_Class1_method1(CLA_Class1 * self)
 {
@@ -142,7 +142,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // Function:  bool equivalent
 // Attrs:     +intent(function)
 // Requested: c_function_bool_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
@@ -318,7 +318,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 // Function:  DIRECTION directionFunc
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)

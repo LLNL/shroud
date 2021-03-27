@@ -274,8 +274,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     subroutine vector_int_dtor(obj)
@@ -381,8 +380,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     subroutine vector_double_dtor(obj)

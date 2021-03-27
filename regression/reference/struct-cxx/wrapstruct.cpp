@@ -33,7 +33,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Function:  int passStructByValue
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
 // Attrs:     +intent(in)
@@ -55,7 +55,7 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 // Function:  int passStruct1
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Attrs:     +intent(in)
@@ -80,7 +80,7 @@ int STR_pass_struct1(const STR_cstruct1 * arg)
 // Function:  int passStruct2
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -108,7 +108,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // Function:  int passStruct2
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
@@ -134,7 +134,7 @@ int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
 // Function:  int acceptStructInPtr
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Attrs:     +intent(in)
@@ -430,7 +430,7 @@ void STR_create__cstruct_as_class_args(STR_Cstruct_as_class * SHC_rv,
 // Function:  int Cstruct_as_class_sum
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)

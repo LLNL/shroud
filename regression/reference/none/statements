@@ -3,7 +3,7 @@ root
   c
     ctor -- c_ctor
     dtor -- c_dtor
-    function
+    function -- c_function
       char
         * -- c_function_char_*
           buf -- c_function_char_*_buf
@@ -118,6 +118,7 @@ root
       inout
         array
           buf -- c_mixin_inout_array_buf
+      noargs -- c_mixin_noargs
       out
         array
           buf -- c_mixin_out_array_buf
@@ -151,6 +152,7 @@ root
         *
           cdesc -- c_in/out/inout_void_*_cdesc
     setter -- c_setter
+      arg -- c_setter_arg
       native
         scalar -- c_setter_native_scalar
       string
@@ -162,7 +164,8 @@ root
       string
         scalar -- f_XXXin_string_scalar
     ctor -- f_ctor
-    function
+    dtor -- f_dtor
+    function -- f_function
       bool -- f_function_bool
       char
         *
@@ -315,6 +318,7 @@ root
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_out_void_**
     setter -- f_setter
+      native -- f_setter_native
       string
         scalar
           buf -- f_setter_string_scalar_buf
@@ -331,7 +335,10 @@ c_ctor:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: ctor
   name: c_ctor
   owner: caller
   return_type: void
@@ -341,10 +348,16 @@ c_dtor:
   - '{C_this}->addr = {nullptr};'
   impl_header:
   - <cstddef>
+  intent: dtor
   name: c_dtor
   owner: library
   return_type: void
+c_function:
+  intent: function
+  name: c_function
+  owner: library
 c_function_char_*:
+  intent: function
   name: c_function_char_*
   owner: library
   return_cptr: true
@@ -366,6 +379,7 @@ c_function_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: function
   name: c_function_char_*_buf
   owner: library
   post_call:
@@ -381,8 +395,11 @@ c_function_char_*_buf_allocatable:
   c_helper: ShroudTypeDefines
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_char_*_buf_allocatable
   owner: library
   post_call:
@@ -405,8 +422,11 @@ c_function_char_*_cfi:
   cxx_local_var: result
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_char_*_cfi
   owner: library
   post_call:
@@ -426,6 +446,7 @@ c_function_char_*_cfi_allocatable:
   - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_char_*_cfi_allocatable
   owner: library
   post_call:
@@ -445,6 +466,7 @@ c_function_char_scalar:
     - C_CHAR
   f_result_decl:
   - 'character(kind=C_CHAR) :: {c_var}'
+  intent: function
   name: c_function_char_scalar
   owner: library
 c_function_char_scalar_cfi:
@@ -454,10 +476,13 @@ c_function_char_scalar_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
+  intent: function
   name: c_function_char_scalar_cfi
   owner: library
   post_call:
@@ -472,6 +497,7 @@ c_function_native_&:
     - C_PTR
   f_result_decl:
   - type(C_PTR) {c_var}
+  intent: function
   name: c_function_native_&
   owner: library
 c_function_native_*:
@@ -480,6 +506,7 @@ c_function_native_*:
     - C_PTR
   f_result_decl:
   - type(C_PTR) {c_var}
+  intent: function
   name: c_function_native_*
   owner: library
 c_function_native_**:
@@ -488,6 +515,7 @@ c_function_native_**:
     - C_PTR
   f_result_decl:
   - type(C_PTR) {c_var}
+  intent: function
   name: c_function_native_**
   owner: library
 c_function_native_*_buf:
@@ -498,8 +526,11 @@ c_function_native_*_buf:
   c_helper: ShroudTypeDefines array_context
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_native_*_buf
   owner: library
   post_call:
@@ -518,6 +549,7 @@ c_function_native_*_scalar:
   f_module_line: iso_c_binding:{f_kind}
   f_result_decl:
   - '{f_type} :: {c_var}'
+  intent: function
   name: c_function_native_*_scalar
   owner: library
 c_function_shadow:
@@ -528,7 +560,10 @@ c_function_shadow:
   cxx_local_var: result
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: function
   name: c_function_shadow
   owner: library
   post_call:
@@ -544,7 +579,10 @@ c_function_shadow_scalar:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: function
   name: c_function_shadow_scalar
   owner: caller
   post_call:
@@ -554,6 +592,7 @@ c_function_shadow_scalar:
   - '{cxx_type} * {cxx_var} = new {cxx_type};'
   return_type: void
 c_function_string_&:
+  intent: function
   name: c_function_string_&
   owner: library
   ret:
@@ -576,6 +615,7 @@ c_function_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: function
   name: c_function_string_&_buf
   owner: library
   post_call:
@@ -595,8 +635,11 @@ c_function_string_&_buf_allocatable:
   c_helper: ShroudStrToArray
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_string_&_buf_allocatable
   owner: library
   post_call:
@@ -612,8 +655,11 @@ c_function_string_&_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_string_&_cfi
   owner: library
   post_call:
@@ -640,6 +686,7 @@ c_function_string_&_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
+  intent: function
   name: c_function_string_&_cfi_allocatable
   owner: library
   post_call:
@@ -652,6 +699,7 @@ c_function_string_&_cfi_allocatable:
   temps:
   - cfi
 c_function_string_*:
+  intent: function
   name: c_function_string_*
   owner: library
   ret:
@@ -674,6 +722,7 @@ c_function_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: function
   name: c_function_string_*_buf
   owner: library
   post_call:
@@ -693,8 +742,11 @@ c_function_string_*_buf_allocatable:
   c_helper: ShroudStrToArray
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_string_*_buf_allocatable
   owner: library
   post_call:
@@ -710,8 +762,11 @@ c_function_string_*_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_string_*_cfi
   owner: library
   post_call:
@@ -738,6 +793,7 @@ c_function_string_*_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
+  intent: function
   name: c_function_string_*_cfi_allocatable
   owner: library
   post_call:
@@ -750,6 +806,7 @@ c_function_string_*_cfi_allocatable:
   temps:
   - cfi
 c_function_string_scalar:
+  intent: function
   name: c_function_string_scalar
   owner: library
   ret:
@@ -772,6 +829,7 @@ c_function_string_scalar_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: function
   name: c_function_string_scalar_buf
   owner: library
   post_call:
@@ -793,8 +851,11 @@ c_function_string_scalar_buf_allocatable:
   destructor_name: new_string
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_string_scalar_buf_allocatable
   owner: library
   post_call:
@@ -812,8 +873,11 @@ c_function_string_scalar_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_string_scalar_cfi
   owner: library
   post_call:
@@ -839,6 +903,7 @@ c_function_string_scalar_cfi_allocatable:
   - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: function
   name: c_function_string_scalar_cfi_allocatable
   owner: library
   post_call:
@@ -852,6 +917,7 @@ c_function_string_scalar_cfi_allocatable:
   - cfi
 c_function_struct:
   c_local_var: pointer
+  intent: function
   name: c_function_struct
   owner: library
   post_call:
@@ -864,6 +930,7 @@ c_function_struct_*:
     - C_PTR
   f_result_decl:
   - type(C_PTR) {c_var}
+  intent: function
   name: c_function_struct_*
   owner: library
   post_call:
@@ -879,8 +946,11 @@ c_function_vector_buf:
   destructor_name: std_vector_{cxx_T}
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: function
   name: c_function_vector_buf
   owner: library
   post_call:
@@ -900,11 +970,13 @@ c_function_vector_buf:
 c_getter:
   call:
   - // skip call c_getter
+  intent: getter
   name: c_getter
   owner: library
 c_getter_native_scalar:
   call:
   - // skip call c_getter
+  intent: getter
   name: c_getter_native_scalar
   owner: library
   ret:
@@ -918,8 +990,11 @@ c_getter_string_scalar_buf:
   - // skip call c_getter
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: getter
   name: c_getter_string_scalar_buf
   owner: library
   post_call:
@@ -937,9 +1012,12 @@ c_in_char_**:
   - char **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {c_var}(*)'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: in
   name: c_in_char_**
   owner: library
 c_in_char_**_buf:
@@ -960,6 +1038,7 @@ c_in_char_**_buf:
   - '{c_var_size}'
   - '{c_var_len}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: in
   name: c_in_char_**_buf
   owner: library
   post_call:
@@ -977,8 +1056,11 @@ c_in_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: in
   name: c_in_char_*_cfi
   owner: library
   post_call:
@@ -995,9 +1077,12 @@ c_in_char_scalar:
   - char {c_var}
   f_arg_decl:
   - 'character(kind=C_CHAR), value, intent(IN) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_CHAR
+  intent: in
   name: c_in_char_scalar
   owner: library
 c_in_native_**:
@@ -1007,9 +1092,12 @@ c_in_native_**:
   - '{cxx_type} **{cxx_var}'
   f_arg_decl:
   - 'type(C_PTR), intent(IN), value :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: in
   name: c_in_native_**
   owner: library
 c_in_native_*_cdesc:
@@ -1024,6 +1112,7 @@ c_in_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_in_native_*_cdesc
   owner: library
   pre_call:
@@ -1038,9 +1127,12 @@ c_in_native_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: iso_c_binding:{f_kind}
   iface_header:
   - ISO_Fortran_binding.h
+  intent: in
   name: c_in_native_*_cfi
   owner: library
   pre_call:
@@ -1053,13 +1145,17 @@ c_in_shadow:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: in/inout
   name: c_in_shadow
   owner: library
   pre_call:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_in_string_&:
   cxx_local_var: scalar
+  intent: in
   name: c_in_string_&
   owner: library
   pre_call:
@@ -1082,6 +1178,7 @@ c_in_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: in
   name: c_in_string_&_buf
   owner: library
   pre_call:
@@ -1097,8 +1194,11 @@ c_in_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: in
   local:
   - trim
   name: c_in_string_&_cfi
@@ -1111,6 +1211,7 @@ c_in_string_&_cfi:
   - cfi
 c_in_string_*:
   cxx_local_var: scalar
+  intent: in
   name: c_in_string_*
   owner: library
   pre_call:
@@ -1133,6 +1234,7 @@ c_in_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: in
   name: c_in_string_*_buf
   owner: library
   pre_call:
@@ -1148,8 +1250,11 @@ c_in_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: in
   local:
   - trim
   name: c_in_string_*_cfi
@@ -1167,9 +1272,12 @@ c_in_string_scalar:
   - char *{c_var}
   f_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_CHAR
+  intent: in
   name: c_in_string_scalar
   owner: library
 c_in_string_scalar_buf:
@@ -1191,6 +1299,7 @@ c_in_string_scalar_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: in
   local:
   - trim
   name: c_in_string_scalar_buf
@@ -1209,8 +1318,11 @@ c_in_string_scalar_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: in
   local:
   - trim
   name: c_in_string_scalar_cfi
@@ -1223,6 +1335,7 @@ c_in_string_scalar_cfi:
   - cfi
 c_in_struct:
   cxx_local_var: pointer
+  intent: in/out/inout
   name: c_in_struct
   owner: library
   pre_call:
@@ -1242,6 +1355,7 @@ c_in_vector_buf:
   - '{c_var}'
   - '{c_var_size}'
   f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: in
   name: c_in_vector_buf
   owner: library
   pre_call:
@@ -1266,6 +1380,7 @@ c_in_vector_buf_string:
   - '{c_var_size}'
   - '{c_var_len}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: in
   local:
   - i
   - n
@@ -1294,9 +1409,12 @@ c_in_void_**:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: in
   name: c_in_void_**
   owner: library
 c_in_void_*_cdesc:
@@ -1311,6 +1429,7 @@ c_in_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_in_void_*_cdesc
   owner: library
   pre_call:
@@ -1335,6 +1454,7 @@ c_inout_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: inout
   name: c_inout_char_*_buf
   owner: library
   post_call:
@@ -1353,8 +1473,11 @@ c_inout_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: inout
   name: c_inout_char_*_cfi
   owner: library
   post_call:
@@ -1377,6 +1500,7 @@ c_inout_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_inout_native_*_cdesc
   owner: library
   pre_call:
@@ -1391,7 +1515,10 @@ c_inout_shadow:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: in/inout
   name: c_inout_shadow
   owner: library
   pre_call:
@@ -1400,6 +1527,7 @@ c_inout_string_&:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
+  intent: inout
   name: c_inout_string_&
   owner: library
   post_call:
@@ -1424,6 +1552,7 @@ c_inout_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: inout
   name: c_inout_string_&_buf
   owner: library
   post_call:
@@ -1441,8 +1570,11 @@ c_inout_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: inout
   local:
   - trim
   name: c_inout_string_&_cfi
@@ -1460,6 +1592,7 @@ c_inout_string_*:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
+  intent: inout
   name: c_inout_string_*
   owner: library
   post_call:
@@ -1484,6 +1617,7 @@ c_inout_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: inout
   name: c_inout_string_*_buf
   owner: library
   post_call:
@@ -1501,8 +1635,11 @@ c_inout_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: inout
   local:
   - trim
   name: c_inout_string_*_cfi
@@ -1518,6 +1655,7 @@ c_inout_string_*_cfi:
   - cfi
 c_inout_struct:
   cxx_local_var: pointer
+  intent: in/out/inout
   name: c_inout_struct
   owner: library
   pre_call:
@@ -1544,6 +1682,7 @@ c_inout_vector_buf:
   f_import:
   - '{F_array_type}'
   f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: inout
   name: c_inout_vector_buf
   owner: library
   post_call:
@@ -1578,6 +1717,7 @@ c_inout_vector_buf_string:
   - '{c_var_size}'
   - '{c_var_len}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: inout
   local:
   - i
   - n
@@ -1623,6 +1763,7 @@ c_inout_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_inout_void_*_cdesc
   owner: library
   pre_call:
@@ -1637,8 +1778,11 @@ c_mixin_arg_character_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: mixin
   name: c_mixin_arg_character_cfi
   owner: library
   pre_call:
@@ -1652,8 +1796,11 @@ c_mixin_function_buf:
   - '{C_array_type} *{c_var_cdesc}'
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: mixin
   name: c_mixin_function_buf
   owner: library
   return_type: void
@@ -1666,8 +1813,11 @@ c_mixin_function_character:
   - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: mixin
   name: c_mixin_function_character
   owner: library
   temps:
@@ -1685,6 +1835,7 @@ c_mixin_in_array_buf:
   - '{c_var}'
   - '{c_var_size}'
   f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: mixin
   name: c_mixin_in_array_buf
   owner: library
   temps:
@@ -1705,6 +1856,7 @@ c_mixin_in_character_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: mixin
   name: c_mixin_in_character_buf
   owner: library
   temps:
@@ -1725,6 +1877,7 @@ c_mixin_in_string_array_buf:
   - '{c_var_size}'
   - '{c_var_len}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: mixin
   name: c_mixin_in_string_array_buf
   owner: library
   temps:
@@ -1749,11 +1902,16 @@ c_mixin_inout_array_buf:
   f_import:
   - '{F_array_type}'
   f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: mixin
   name: c_mixin_inout_array_buf
   owner: library
   temps:
   - size
   - cdesc
+c_mixin_noargs:
+  intent: mixin
+  name: c_mixin_noargs
+  owner: library
 c_mixin_out_array_buf:
   buf_args:
   - arg_decl
@@ -1766,6 +1924,7 @@ c_mixin_out_array_buf:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: mixin
   name: c_mixin_out_array_buf
   owner: library
   temps:
@@ -1777,8 +1936,11 @@ c_mixin_out_character_buf:
   - '{C_array_type} *{c_var_cdesc}'
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
+  intent: mixin
   name: c_mixin_out_character_buf
   owner: library
   temps:
@@ -1790,7 +1952,10 @@ c_mixin_shadow:
   - '{c_type} * {c_var}'
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
+  intent: mixin
   name: c_mixin_shadow
   owner: library
 c_out_char_*_buf:
@@ -1810,6 +1975,7 @@ c_out_char_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: out
   name: c_out_char_*_buf
   owner: library
   post_call:
@@ -1825,8 +1991,11 @@ c_out_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: out
   name: c_out_char_*_cfi
   owner: library
   post_call:
@@ -1849,6 +2018,7 @@ c_out_native_*&_buf:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: out
   name: c_out_native_*&_buf
   owner: library
   post_call:
@@ -1877,6 +2047,7 @@ c_out_native_**_buf:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: out
   name: c_out_native_**_buf
   owner: library
   post_call:
@@ -1903,6 +2074,7 @@ c_out_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_out_native_*_cdesc
   owner: library
   pre_call:
@@ -1913,6 +2085,7 @@ c_out_string_&:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
+  intent: out
   name: c_out_string_&
   owner: library
   post_call:
@@ -1937,6 +2110,7 @@ c_out_string_&_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: out
   name: c_out_string_&_buf
   owner: library
   post_call:
@@ -1954,8 +2128,11 @@ c_out_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: out
   name: c_out_string_&_cfi
   owner: library
   post_call:
@@ -1970,6 +2147,7 @@ c_out_string_*:
   cxx_local_var: scalar
   impl_header:
   - <cstring>
+  intent: out
   name: c_out_string_*
   owner: library
   post_call:
@@ -1994,6 +2172,7 @@ c_out_string_*_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: out
   name: c_out_string_*_buf
   owner: library
   post_call:
@@ -2011,8 +2190,11 @@ c_out_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
+  intent: out
   name: c_out_string_*_cfi
   owner: library
   post_call:
@@ -2025,6 +2207,7 @@ c_out_string_*_cfi:
   - cfi
 c_out_struct:
   cxx_local_var: pointer
+  intent: in/out/inout
   name: c_out_struct
   owner: library
   pre_call:
@@ -2044,6 +2227,7 @@ c_out_vector_buf:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: out
   name: c_out_vector_buf
   owner: library
   post_call:
@@ -2077,6 +2261,7 @@ c_out_vector_buf_string:
   - '{c_var_size}'
   - '{c_var_len}'
   f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: out
   local:
   - i
   - n
@@ -2112,6 +2297,7 @@ c_out_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
+  intent: in/out/inout
   name: c_out_void_*_cdesc
   owner: library
   pre_call:
@@ -2121,11 +2307,15 @@ c_out_void_*_cdesc:
 c_setter:
   call:
   - // skip call c_setter
+  intent: setter
   name: c_setter
   owner: library
+c_setter_arg:
+  intent: setter
+  name: c_setter_arg
+  owner: library
 c_setter_native_scalar:
-  call:
-  - // skip call c_setter
+  intent: setter
   name: c_setter_native_scalar
   owner: library
   post_call:
@@ -2136,8 +2326,6 @@ c_setter_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  call:
-  - // skip call c_setter
   f_arg_decl:
   - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
@@ -2148,6 +2336,7 @@ c_setter_string_scalar_buf:
     iso_c_binding:
     - C_CHAR
     - C_INT
+  intent: setter
   name: c_setter_string_scalar_buf
   owner: library
   post_call:
@@ -2155,6 +2344,7 @@ c_setter_string_scalar_buf:
   temps:
   - len
 c_subroutine:
+  intent: subroutine
   name: c_subroutine
   owner: library
 f_XXXin_string_scalar:
@@ -2166,14 +2356,23 @@ f_XXXin_string_scalar:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: XXXin
   name: f_XXXin_string_scalar
   need_wrapper: true
 f_ctor:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  intent: ctor
   name: f_ctor
   need_wrapper: true
+f_dtor:
+  intent: dtor
+  name: f_dtor
+f_function:
+  intent: function
+  name: f_function
 f_function_bool:
+  intent: function
   name: f_function_bool
   need_wrapper: true
 f_function_char_*_buf:
@@ -2183,6 +2382,7 @@ f_function_char_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: function
   name: f_function_char_*_buf
   need_wrapper: true
 f_function_char_*_buf_allocatable:
@@ -2194,6 +2394,7 @@ f_function_char_*_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: function
   name: f_function_char_*_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2204,6 +2405,7 @@ f_function_char_*_buf_allocatable:
 f_function_char_*_cfi:
   arg_c_call:
   - '{f_var}'
+  intent: function
   name: f_function_char_*_cfi
   need_wrapper: true
 f_function_char_*_cfi_allocatable:
@@ -2211,11 +2413,13 @@ f_function_char_*_cfi_allocatable:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
+  intent: function
   name: f_function_char_*_cfi_allocatable
   need_wrapper: true
 f_function_char_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  intent: function
   name: f_function_char_*_raw
 f_function_char_scalar_buf_allocatable:
   arg_c_call:
@@ -2226,6 +2430,7 @@ f_function_char_scalar_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: function
   name: f_function_char_scalar_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2238,6 +2443,7 @@ f_function_char_scalar_cfi_allocatable:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
+  intent: function
   name: f_function_char_scalar_cfi_allocatable
   need_wrapper: true
 f_function_native_&:
@@ -2249,6 +2455,7 @@ f_function_native_&:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
+  intent: function
   name: f_function_native_&
   post_call:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
@@ -2263,12 +2470,14 @@ f_function_native_&_buf_pointer:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
+  intent: function
   name: f_function_native_&_buf_pointer
   post_call:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
 f_function_native_**:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  intent: function
   name: f_function_native_**
 f_function_native_*_buf_allocatable:
   arg_c_call:
@@ -2279,6 +2488,7 @@ f_function_native_*_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_array_{cxx_type}
+  intent: function
   name: f_function_native_*_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2296,6 +2506,7 @@ f_function_native_*_buf_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  intent: function
   name: f_function_native_*_buf_pointer
   need_wrapper: true
   post_call:
@@ -2316,6 +2527,7 @@ f_function_native_*_buf_pointer_caller:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  intent: function
   name: f_function_native_*_buf_pointer_caller
   need_wrapper: true
   post_call:
@@ -2332,18 +2544,22 @@ f_function_native_*_pointer:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
+  intent: function
   name: f_function_native_*_pointer
   post_call:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
 f_function_native_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  intent: function
   name: f_function_native_*_raw
 f_function_native_*_scalar:
+  intent: function
   name: f_function_native_*_scalar
 f_function_shadow:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  intent: function
   name: f_function_shadow
   need_wrapper: true
 f_function_string_&_buf:
@@ -2353,6 +2569,7 @@ f_function_string_&_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: function
   name: f_function_string_&_buf
   need_wrapper: true
 f_function_string_&_buf_allocatable:
@@ -2364,6 +2581,7 @@ f_function_string_&_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: function
   name: f_function_string_&_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2374,6 +2592,7 @@ f_function_string_&_buf_allocatable:
 f_function_string_&_cfi:
   arg_c_call:
   - '{f_var}'
+  intent: function
   name: f_function_string_&_cfi
   need_wrapper: true
 f_function_string_&_cfi_allocatable:
@@ -2381,6 +2600,7 @@ f_function_string_&_cfi_allocatable:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
+  intent: function
   name: f_function_string_&_cfi_allocatable
   need_wrapper: true
 f_function_string_*_buf:
@@ -2390,6 +2610,7 @@ f_function_string_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: function
   name: f_function_string_*_buf
   need_wrapper: true
 f_function_string_*_buf_allocatable:
@@ -2401,6 +2622,7 @@ f_function_string_*_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: function
   name: f_function_string_*_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2411,6 +2633,7 @@ f_function_string_*_buf_allocatable:
 f_function_string_*_cfi:
   arg_c_call:
   - '{f_var}'
+  intent: function
   name: f_function_string_*_cfi
   need_wrapper: true
 f_function_string_*_cfi_allocatable:
@@ -2418,6 +2641,7 @@ f_function_string_*_cfi_allocatable:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
+  intent: function
   name: f_function_string_*_cfi_allocatable
   need_wrapper: true
 f_function_string_scalar_buf:
@@ -2427,6 +2651,7 @@ f_function_string_scalar_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: function
   name: f_function_string_scalar_buf
   need_wrapper: true
 f_function_string_scalar_buf_allocatable:
@@ -2438,6 +2663,7 @@ f_function_string_scalar_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: function
   name: f_function_string_scalar_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2448,6 +2674,7 @@ f_function_string_scalar_buf_allocatable:
 f_function_string_scalar_cfi:
   arg_c_call:
   - '{f_var}'
+  intent: function
   name: f_function_string_scalar_cfi
   need_wrapper: true
 f_function_string_scalar_cfi_allocatable:
@@ -2455,6 +2682,7 @@ f_function_string_scalar_cfi_allocatable:
   - '{f_var}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
+  intent: function
   name: f_function_string_scalar_cfi_allocatable
   need_wrapper: true
 f_function_struct_*:
@@ -2466,6 +2694,7 @@ f_function_struct_*:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
+  intent: function
   name: f_function_struct_*
   post_call:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
@@ -2480,10 +2709,12 @@ f_function_struct_*_buf_pointer:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
+  intent: function
   name: f_function_struct_*_buf_pointer
   post_call:
   - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
 f_function_struct_scalar:
+  intent: function
   name: f_function_struct_scalar
 f_function_vector_buf:
   c_helper: copy_array
@@ -2491,6 +2722,7 @@ f_function_vector_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: function
   name: f_function_vector_buf
   post_call:
   - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
@@ -2506,6 +2738,7 @@ f_function_vector_buf_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: function
   name: f_function_vector_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2519,8 +2752,10 @@ f_function_void_*:
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: function
   name: f_function_void_*
 f_getter:
+  intent: getter
   name: f_getter
 f_getter_string_scalar_buf_allocatable:
   arg_c_call:
@@ -2531,6 +2766,7 @@ f_getter_string_scalar_buf_allocatable:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
+  intent: getter
   name: f_getter_string_scalar_buf_allocatable
   need_wrapper: true
   post_call:
@@ -2540,6 +2776,7 @@ f_getter_string_scalar_buf_allocatable:
   - cdesc
 f_in_bool:
   c_local_var: true
+  intent: in
   name: f_in_bool
   pre_call:
   - '{c_var} = {f_var}  ! coerce to C_BOOL'
@@ -2552,11 +2789,13 @@ f_in_char_**_buf:
     iso_c_binding:
     - C_SIZE_T
     - C_INT
+  intent: in
   name: f_in_char_**_buf
   need_wrapper: true
 f_in_char_scalar:
   arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
+  intent: in
   name: f_in_char_scalar
 f_in_native_*_cdesc:
   arg_c_call:
@@ -2569,6 +2808,7 @@ f_in_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_in_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2582,6 +2822,7 @@ f_in_native_*_cdesc:
 f_in_shadow:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  intent: in
   name: f_in_shadow
   need_wrapper: true
 f_in_string_&_buf:
@@ -2591,6 +2832,7 @@ f_in_string_&_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: in
   name: f_in_string_&_buf
   need_wrapper: true
 f_in_string_*_buf:
@@ -2600,6 +2842,7 @@ f_in_string_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: in
   name: f_in_string_*_buf
   need_wrapper: true
 f_in_string_scalar_buf:
@@ -2611,6 +2854,7 @@ f_in_string_scalar_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: in
   name: f_in_string_scalar_buf
   need_wrapper: true
 f_in_vector_buf:
@@ -2620,6 +2864,7 @@ f_in_vector_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: in
   name: f_in_vector_buf
   need_wrapper: true
 f_in_vector_buf_string:
@@ -2631,6 +2876,7 @@ f_in_vector_buf_string:
     iso_c_binding:
     - C_SIZE_T
     - C_INT
+  intent: in
   name: f_in_vector_buf_string
   need_wrapper: true
 f_in_void_*:
@@ -2639,6 +2885,7 @@ f_in_void_*:
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: in
   name: f_in_void_*
 f_in_void_**:
   arg_decl:
@@ -2646,6 +2893,7 @@ f_in_void_**:
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: in
   name: f_in_void_**
 f_in_void_*_cdesc:
   arg_c_call:
@@ -2658,6 +2906,7 @@ f_in_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_in_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2670,6 +2919,7 @@ f_in_void_*_cdesc:
   - cdesc
 f_inout_bool:
   c_local_var: true
+  intent: inout
   name: f_inout_bool
   post_call:
   - '{f_var} = {c_var}  ! coerce to logical'
@@ -2682,6 +2932,7 @@ f_inout_char_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: inout
   name: f_inout_char_*_buf
   need_wrapper: true
 f_inout_native_*_cdesc:
@@ -2695,6 +2946,7 @@ f_inout_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_inout_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2712,6 +2964,7 @@ f_inout_string_&_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: inout
   name: f_inout_string_&_buf
   need_wrapper: true
 f_inout_string_*_buf:
@@ -2721,6 +2974,7 @@ f_inout_string_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: inout
   name: f_inout_string_*_buf
   need_wrapper: true
 f_inout_vector_buf:
@@ -2735,6 +2989,7 @@ f_inout_vector_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: inout
   name: f_inout_vector_buf
   post_call:
   - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
@@ -2752,6 +3007,7 @@ f_inout_vector_buf_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: inout
   name: f_inout_vector_buf_allocatable
   post_call:
   - if (allocated({f_var})) deallocate({f_var})
@@ -2768,6 +3024,7 @@ f_inout_vector_buf_string:
     iso_c_binding:
     - C_SIZE_T
     - C_INT
+  intent: inout
   name: f_inout_vector_buf_string
   need_wrapper: true
 f_inout_void_*_cdesc:
@@ -2781,6 +3038,7 @@ f_inout_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_inout_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2796,6 +3054,7 @@ f_mixin_function_buf:
   - '{c_var_cdesc}'
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
+  intent: mixin
   name: f_mixin_function_buf
   need_wrapper: true
   temps:
@@ -2807,6 +3066,7 @@ f_mixin_in_array_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: mixin
   name: f_mixin_in_array_buf
   need_wrapper: true
 f_mixin_in_character_buf:
@@ -2816,6 +3076,7 @@ f_mixin_in_character_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: mixin
   name: f_mixin_in_character_buf
   need_wrapper: true
 f_mixin_in_string_array_buf:
@@ -2827,6 +3088,7 @@ f_mixin_in_string_array_buf:
     iso_c_binding:
     - C_SIZE_T
     - C_INT
+  intent: mixin
   name: f_mixin_in_string_array_buf
   need_wrapper: true
 f_mixin_inout_array_buf:
@@ -2840,6 +3102,7 @@ f_mixin_inout_array_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: mixin
   name: f_mixin_inout_array_buf
   temps:
   - cdesc
@@ -2849,6 +3112,7 @@ f_mixin_out_array_buf:
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: array_context
+  intent: mixin
   name: f_mixin_out_array_buf
   temps:
   - cdesc
@@ -2857,16 +3121,19 @@ f_mixin_out_character_buf:
   - '{c_var_cdesc}'
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
+  intent: mixin
   name: f_mixin_out_character_buf
   temps:
   - cdesc
 f_mixin_shadow:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  intent: mixin
   name: f_mixin_shadow
   need_wrapper: true
 f_out_bool:
   c_local_var: true
+  intent: out
   name: f_out_bool
   post_call:
   - '{f_var} = {c_var}  ! coerce to logical'
@@ -2877,6 +3144,7 @@ f_out_char_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: out
   name: f_out_char_*_buf
   need_wrapper: true
 f_out_native_*&_buf_pointer:
@@ -2890,6 +3158,7 @@ f_out_native_*&_buf_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  intent: out
   name: f_out_native_*&_buf_pointer
   post_call:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
@@ -2901,6 +3170,7 @@ f_out_native_**:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  intent: out
   name: f_out_native_**
 f_out_native_**_buf_pointer:
   arg_c_call:
@@ -2913,6 +3183,7 @@ f_out_native_**_buf_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
+  intent: out
   name: f_out_native_**_buf_pointer
   post_call:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
@@ -2924,10 +3195,12 @@ f_out_native_**_raw:
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: out
   name: f_out_native_**_raw
 f_out_native_*_allocatable:
   arg_decl:
   - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  intent: out
   name: f_out_native_*_allocatable
   pre_call:
   - allocate({f_var}{f_array_allocate})
@@ -2942,6 +3215,7 @@ f_out_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_out_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2959,6 +3233,7 @@ f_out_string_&_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: out
   name: f_out_string_&_buf
   need_wrapper: true
 f_out_string_*_buf:
@@ -2968,6 +3243,7 @@ f_out_string_*_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: out
   name: f_out_string_*_buf
   need_wrapper: true
 f_out_vector_buf:
@@ -2980,6 +3256,7 @@ f_out_vector_buf:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: out
   name: f_out_vector_buf
   post_call:
   - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
@@ -2995,6 +3272,7 @@ f_out_vector_buf_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  intent: out
   name: f_out_vector_buf_allocatable
   post_call:
   - allocate({f_var}({c_var_cdesc}%size))
@@ -3010,6 +3288,7 @@ f_out_vector_buf_string:
     iso_c_binding:
     - C_SIZE_T
     - C_INT
+  intent: out
   name: f_out_vector_buf_string
   need_wrapper: true
 f_out_void_**:
@@ -3018,6 +3297,7 @@ f_out_void_**:
   f_module:
     iso_c_binding:
     - C_PTR
+  intent: out
   name: f_out_void_**
 f_out_void_*_cdesc:
   arg_c_call:
@@ -3030,6 +3310,7 @@ f_out_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
+  intent: in/out/inout
   name: f_out_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -3041,7 +3322,13 @@ f_out_void_*_cdesc:
   temps:
   - cdesc
 f_setter:
+  intent: setter
   name: f_setter
+f_setter_native:
+  arg_c_call:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_native
 f_setter_string_scalar_buf:
   arg_c_call:
   - '{f_var}'
@@ -3049,9 +3336,11 @@ f_setter_string_scalar_buf:
   f_module:
     iso_c_binding:
     - C_INT
+  intent: setter
   name: f_setter_string_scalar_buf
   need_wrapper: true
 f_subroutine:
+  intent: subroutine
   name: f_subroutine
 ***** Python
 root
@@ -3225,6 +3514,7 @@ base_py_ctor_array:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
+  intent: py
   name: base_py_ctor_array
   parse_args:
   - '{hnamefunc0}'
@@ -3237,6 +3527,7 @@ base_py_ctor_array_fill:
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
+  intent: py
   name: base_py_ctor_array_fill
   parse_args:
   - '&{py_var}'
@@ -3253,6 +3544,7 @@ py_ctor_char_*:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
+  intent: ctor
   name: py_ctor_char_*
   parse_args:
   - '{hnamefunc0}'
@@ -3266,6 +3558,7 @@ py_ctor_char_**:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
+  intent: ctor
   name: py_ctor_char_**
   parse_args:
   - '{hnamefunc0}'
@@ -3279,6 +3572,7 @@ py_ctor_char_[]:
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
+  intent: ctor
   name: py_ctor_char_[]
   parse_args:
   - '&{py_var}'
@@ -3293,6 +3587,7 @@ py_ctor_char_[]:
 py_ctor_native:
   declare:
   - '{c_type} {c_var} = 0;'
+  intent: ctor
   name: py_ctor_native
   post_call:
   - SH_obj->{field_name} = {field_name};
@@ -3301,6 +3596,7 @@ py_ctor_native_*:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
+  intent: ctor
   name: py_ctor_native_*
   parse_args:
   - '{hnamefunc0}'
@@ -3314,6 +3610,7 @@ py_ctor_native_[]:
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
+  intent: ctor
   name: py_ctor_native_[]
   parse_args:
   - '&{py_var}'
@@ -3332,6 +3629,7 @@ py_descr_char_*:
   - -}}
   - PyObject * rv = {ctor};
   - return rv;
+  intent: descr
   name: py_descr_char_*
   setter:
   - '{PY_typedef_converter} cvalue;'
@@ -3352,6 +3650,7 @@ py_descr_char_**_list:
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
   getter_helper: to_PyList_char
+  intent: descr
   name: py_descr_char_**_list
   setter:
   - '{PY_typedef_converter} cvalue;'
@@ -3380,6 +3679,7 @@ py_descr_char_[]:
     // XXX assumes is null terminated
 
     return rv;'
+  intent: descr
   name: py_descr_char_[]
   setter:
   - Py_XDECREF({c_var_obj});
@@ -3393,6 +3693,7 @@ py_descr_native:
   getter:
   - PyObject * rv = {ctor};
   - return rv;
+  intent: descr
   name: py_descr_native
   setter:
   - '{cxx_decl} = {PY_get};'
@@ -3412,6 +3713,7 @@ py_descr_native_*_list:
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
   getter_helper: to_PyList_{c_type}
+  intent: descr
   name: py_descr_native_*_list
   setter:
   - '{PY_typedef_converter} cvalue;'
@@ -3441,6 +3743,7 @@ py_descr_native_*_numpy:
   - '{c_var_obj} = rv;'
   - -}}
   - return rv;
+  intent: descr
   name: py_descr_native_*_numpy
   need_numpy: true
   setter:
@@ -3460,6 +3763,7 @@ py_descr_native_[]_list:
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
   getter_helper: to_PyList_{c_type}
+  intent: descr
   name: py_descr_native_[]_list
   need_numpy: true
   setter:
@@ -3480,6 +3784,7 @@ py_descr_native_[]_numpy:
   - -}}
   - Py_INCREF({c_var_obj});
   - return {c_var_obj};
+  intent: descr
   name: py_descr_native_[]_numpy
   need_numpy: true
   setter:
@@ -3496,6 +3801,7 @@ py_function_bool:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: function
   name: py_function_bool
   object_created: true
   post_call:
@@ -3504,10 +3810,12 @@ py_function_bool:
 py_function_char_*:
   fmtdict:
     ctor_expr: '{c_var}'
+  intent: function
   name: py_function_char_*
 py_function_char_scalar:
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
+  intent: function
   name: py_function_char_scalar
   object_created: true
   post_call:
@@ -3522,6 +3830,7 @@ py_function_native_&_pointer_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: function
   name: py_function_native_&_pointer_numpy
   need_numpy: true
   object_created: true
@@ -3546,6 +3855,7 @@ py_function_native_*_allocatable_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: function
   name: py_function_native_*_allocatable_numpy
   need_numpy: true
   object_created: true
@@ -3567,6 +3877,7 @@ py_function_native_*_pointer_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: function
   name: py_function_native_*_pointer_list
   object_created: true
   post_call:
@@ -3582,6 +3893,7 @@ py_function_native_*_pointer_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: function
   name: py_function_native_*_pointer_numpy
   need_numpy: true
   object_created: true
@@ -3597,12 +3909,14 @@ py_function_native_*_pointer_numpy:
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
 py_function_shadow_&:
+  intent: function
   name: py_function_shadow_&
   object_created: true
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
 py_function_shadow_*:
+  intent: function
   name: py_function_shadow_*
   object_created: true
   post_call:
@@ -3617,6 +3931,7 @@ py_function_shadow_scalar:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: function
   name: py_function_shadow_scalar
   object_created: true
   post_call:
@@ -3627,14 +3942,17 @@ py_function_shadow_scalar:
 py_function_string_&:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: function
   name: py_function_string_&
 py_function_string_*:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: function
   name: py_function_string_*
 py_function_string_scalar:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: function
   name: py_function_string_scalar
 py_function_struct_class:
   allocate_local_var: true
@@ -3644,6 +3962,7 @@ py_function_struct_class:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: function
   name: py_function_struct_class
   object_created: true
   post_call:
@@ -3660,6 +3979,7 @@ py_function_struct_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: function
   name: py_function_struct_numpy
   need_numpy: true
   object_created: true
@@ -3681,6 +4001,7 @@ py_function_vector_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: function
   name: py_function_vector_list
   object_created: true
   post_call:
@@ -3697,6 +4018,7 @@ py_function_vector_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: function
   name: py_function_vector_numpy
   need_numpy: true
   object_created: true
@@ -3715,14 +4037,17 @@ py_function_vector_numpy:
 py_function_void_*:
   fmtdict:
     ctor_expr: '{cxx_var}'
+  intent: function
   name: py_function_void_*
 py_in_bool:
+  intent: in
   name: py_in_bool
   pre_call:
   - '{cxx_var} = PyObject_IsTrue({py_var});'
 py_in_char_*:
   arg_call:
   - '{c_var}'
+  intent: in
   name: py_in_char_*
 py_in_char_**:
   arg_call:
@@ -3738,6 +4063,7 @@ py_in_char_**:
   fail:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
+  intent: in
   name: py_in_char_**
   parse_args:
   - '&{pytmp_var}'
@@ -3753,6 +4079,7 @@ py_in_char_scalar:
   - '{c_var}[0]'
   arg_declare:
   - char *{c_var};
+  intent: in
   name: py_in_char_scalar
   parse_args:
   - '&{c_var}'
@@ -3760,12 +4087,14 @@ py_in_char_scalar:
 py_in_native_&:
   arg_declare:
   - '{c_type} {c_var};'
+  intent: in
   name: py_in_native_&
 py_in_native_*:
   arg_call:
   - '&{c_var}'
   arg_declare:
   - '{c_type} {c_var};'
+  intent: in
   name: py_in_native_*
 py_in_native_*_pointer_list:
   arg_call:
@@ -3783,6 +4112,7 @@ py_in_native_*_pointer_list:
   fail:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
+  intent: in
   name: py_in_native_*_pointer_list
   parse_args:
   - '&{pytmp_var}'
@@ -3803,6 +4133,7 @@ py_in_native_*_pointer_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: in
   name: py_in_native_*_pointer_numpy
   need_numpy: true
   parse_args:
@@ -3822,11 +4153,13 @@ py_in_shadow_&:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  intent: in
   name: py_in_shadow_&
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_in_shadow_*:
   cxx_local_var: pointer
+  intent: in
   name: py_in_shadow_*
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
@@ -3834,6 +4167,7 @@ py_in_shadow_scalar:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  intent: in
   name: py_in_shadow_scalar
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
@@ -3843,6 +4177,7 @@ py_in_string_&:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: in
   name: py_in_string_&
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -3854,6 +4189,7 @@ py_in_string_*:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: in
   name: py_in_string_*
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -3863,6 +4199,7 @@ py_in_string_scalar:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: in
   name: py_in_string_scalar
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -3870,6 +4207,7 @@ py_in_struct_&_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  intent: in
   name: py_in_struct_&_class
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
@@ -3887,6 +4225,7 @@ py_in_struct_&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: in
   name: py_in_struct_&_numpy
   need_numpy: true
   parse_args:
@@ -3905,12 +4244,14 @@ py_in_struct_&_numpy:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_in_struct_*_class:
   cxx_local_var: pointer
+  intent: in
   name: py_in_struct_*_class
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_in_struct_*_list:
   arg_call:
   - '&{cxx_var}'
+  intent: in
   name: py_in_struct_*_list
 py_in_struct_*_numpy:
   arg_declare:
@@ -3924,6 +4265,7 @@ py_in_struct_*_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: in
   name: py_in_struct_*_numpy
   need_numpy: true
   parse_args:
@@ -3941,15 +4283,18 @@ py_in_struct_*_numpy:
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_in_struct_list:
+  intent: in
   name: py_in_struct_list
 py_in_struct_scalar_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  intent: in
   name: py_in_struct_scalar_class
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_in_struct_scalar_list:
+  intent: in
   name: py_in_struct_scalar_list
 py_in_struct_scalar_numpy:
   arg_call:
@@ -3965,6 +4310,7 @@ py_in_struct_scalar_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: in
   name: py_in_struct_scalar_numpy
   need_numpy: true
   parse_args:
@@ -3987,6 +4333,7 @@ py_in_vector_list:
   declare:
   - PyObject * {pytmp_var};
   goto_fail: true
+  intent: in
   name: py_in_vector_list
   parse_args:
   - '&{pytmp_var}'
@@ -4004,6 +4351,7 @@ py_in_vector_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: in
   name: py_in_vector_numpy
   need_numpy: true
   parse_args:
@@ -4029,6 +4377,7 @@ py_in_void_*:
   declare:
   - PyObject *{py_var};
   goto_fail: true
+  intent: in
   name: py_in_void_*
   parse_args:
   - '&{py_var}'
@@ -4043,6 +4392,7 @@ py_inout_bool:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: inout
   name: py_inout_bool
   object_created: true
   post_call:
@@ -4058,6 +4408,7 @@ py_inout_bool_*:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: inout
   name: py_inout_bool_*
   object_created: true
   post_call:
@@ -4070,10 +4421,12 @@ py_inout_char_*:
   - '{c_var}'
   fmtdict:
     ctor_expr: '{c_var}'
+  intent: inout
   name: py_inout_char_*
 py_inout_native_&:
   arg_declare:
   - '{c_type} {c_var};'
+  intent: inout
   name: py_inout_native_&
 py_inout_native_*:
   arg_call:
@@ -4082,6 +4435,7 @@ py_inout_native_*:
   - '{c_type} {c_var};'
   fmtdict:
     ctor_expr: '{c_var}'
+  intent: inout
   name: py_inout_native_*
 py_inout_native_*_pointer_list:
   arg_call:
@@ -4100,6 +4454,7 @@ py_inout_native_*_pointer_list:
   fail:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
+  intent: inout
   name: py_inout_native_*_pointer_list
   object_created: true
   parse_args:
@@ -4122,6 +4477,7 @@ py_inout_native_*_pointer_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: inout
   name: py_inout_native_*_pointer_numpy
   need_numpy: true
   object_created: true
@@ -4140,6 +4496,7 @@ py_inout_native_*_pointer_numpy:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_inout_shadow_*:
   cxx_local_var: pointer
+  intent: inout
   name: py_inout_shadow_*
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
@@ -4147,6 +4504,7 @@ py_inout_string_&:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: inout
   name: py_inout_string_&
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -4156,6 +4514,7 @@ py_inout_string_*:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: inout
   name: py_inout_string_*
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -4163,6 +4522,7 @@ py_inout_string_scalar:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: inout
   name: py_inout_string_scalar
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
@@ -4170,6 +4530,7 @@ py_inout_struct_&_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
+  intent: inout
   name: py_inout_struct_&_class
   object_created: true
   post_declare:
@@ -4185,6 +4546,7 @@ py_inout_struct_&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: inout
   name: py_inout_struct_&_numpy
   need_numpy: true
   object_created: true
@@ -4204,6 +4566,7 @@ py_inout_struct_&_numpy:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_inout_struct_*_class:
   cxx_local_var: pointer
+  intent: inout
   name: py_inout_struct_*_class
   object_created: true
   post_declare:
@@ -4211,6 +4574,7 @@ py_inout_struct_*_class:
 py_inout_struct_*_list:
   arg_call:
   - '&{cxx_var}'
+  intent: inout
   name: py_inout_struct_*_list
 py_inout_struct_*_numpy:
   arg_declare:
@@ -4221,6 +4585,7 @@ py_inout_struct_*_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: inout
   name: py_inout_struct_*_numpy
   need_numpy: true
   object_created: true
@@ -4239,6 +4604,7 @@ py_inout_struct_*_numpy:
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_inout_struct_list:
+  intent: inout
   name: py_inout_struct_list
 py_out_bool:
   arg_declare:
@@ -4248,6 +4614,7 @@ py_out_bool:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_bool
   object_created: true
   post_call:
@@ -4263,6 +4630,7 @@ py_out_bool_*:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_bool_*
   object_created: true
   post_call:
@@ -4275,10 +4643,12 @@ py_out_char_*_charlen:
   - '{c_const}char {c_var}[{charlen}];  // intent(out)'
   fmtdict:
     ctor_expr: '{c_var}'
+  intent: out
   name: py_out_char_*_charlen
 py_out_native_&:
   arg_declare:
   - '{c_const}{c_type} {c_var};'
+  intent: out
   name: py_out_native_&
 py_out_native_*:
   arg_call:
@@ -4287,6 +4657,7 @@ py_out_native_*:
   - '{c_type} {c_var};'
   fmtdict:
     ctor_expr: '{c_var}'
+  intent: out
   name: py_out_native_*
 py_out_native_*&_pointer_numpy:
   arg_call:
@@ -4302,6 +4673,7 @@ py_out_native_*&_pointer_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: out
   name: py_out_native_*&_pointer_numpy
   need_numpy: true
   object_created: true
@@ -4327,6 +4699,7 @@ py_out_native_**_pointer_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_native_**_pointer_list
   object_created: true
   post_call:
@@ -4346,6 +4719,7 @@ py_out_native_**_pointer_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: out
   name: py_out_native_**_pointer_numpy
   need_numpy: true
   object_created: true
@@ -4367,6 +4741,7 @@ py_out_native_**_raw:
   - '{c_type} *{c_var};'
   declare:
   - PyObject *{py_var} = {nullptr};
+  intent: out
   name: py_out_native_**_raw
   object_created: true
   post_call:
@@ -4390,6 +4765,7 @@ py_out_native_*_allocatable_list:
   - Py_XDECREF({py_var});
   - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
   goto_fail: true
+  intent: out
   name: py_out_native_*_allocatable_list
   object_created: true
   post_call:
@@ -4409,6 +4785,7 @@ py_out_native_*_allocatable_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_native_*_allocatable_numpy
   need_numpy: true
   object_created: true
@@ -4441,6 +4818,7 @@ py_out_native_*_pointer_list:
   - Py_XDECREF({py_var});
   - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
   goto_fail: true
+  intent: out
   name: py_out_native_*_pointer_list
   object_created: true
   post_call:
@@ -4460,6 +4838,7 @@ py_out_native_*_pointer_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_native_*_pointer_numpy
   need_numpy: true
   object_created: true
@@ -4479,6 +4858,7 @@ py_out_shadow_*:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_shadow_*
   object_created: true
   post_call:
@@ -4489,6 +4869,7 @@ py_out_string_&:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: out
   name: py_out_string_&
   post_declare:
   - '{c_const}std::string {cxx_var};'
@@ -4498,6 +4879,7 @@ py_out_string_*:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: out
   name: py_out_string_*
   post_declare:
   - '{c_const}std::string {cxx_var};'
@@ -4505,6 +4887,7 @@ py_out_string_scalar:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: out
   name: py_out_string_scalar
   post_declare:
   - '{c_const}std::string {cxx_var};'
@@ -4519,6 +4902,7 @@ py_out_struct_&_class:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_struct_&_class
   object_created: true
   post_call:
@@ -4536,6 +4920,7 @@ py_out_struct_&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_struct_&_numpy
   need_numpy: true
   object_created: true
@@ -4559,6 +4944,7 @@ py_out_struct_*_class:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_struct_*_class
   object_created: true
   post_call:
@@ -4569,6 +4955,7 @@ py_out_struct_*_class:
 py_out_struct_*_list:
   arg_call:
   - '&{cxx_var}'
+  intent: out
   name: py_out_struct_*_list
   post_declare:
   - '{cxx_type} {cxx_var};'
@@ -4580,6 +4967,7 @@ py_out_struct_*_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_struct_*_numpy
   need_numpy: true
   object_created: true
@@ -4595,6 +4983,7 @@ py_out_struct_*_numpy:
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_out_struct_list:
+  intent: out
   name: py_out_struct_list
   post_declare:
   - '{cxx_type} {cxx_var};'
@@ -4606,6 +4995,7 @@ py_out_vector_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  intent: out
   name: py_out_vector_list
   object_created: true
   post_call:
@@ -4627,6 +5017,7 @@ py_out_vector_numpy:
   fail_capsule:
   - Py_XDECREF({py_capsule});
   goto_fail: true
+  intent: out
   name: py_out_vector_numpy
   need_numpy: true
   object_created: true
@@ -4649,6 +5040,7 @@ py_out_void_*&:
   - void *{c_var};
   fmtdict:
     ctor_expr: '{cxx_var}'
+  intent: out
   name: py_out_void_*&
 py_out_void_**:
   arg_call:
@@ -4657,6 +5049,7 @@ py_out_void_**:
   - void *{c_var};
   fmtdict:
     ctor_expr: '{cxx_var}'
+  intent: out
   name: py_out_void_**
 ***** Lua
 root
@@ -4701,79 +5094,96 @@ lua_ctor:
   - luaL_getmetatable(L, "{LUA_metadata}");
   - /* Set the metatable on the userdata. */
   - lua_setmetatable(L, -2);
+  intent: ctor
   name: lua_ctor
 lua_dtor:
   call:
   - delete {LUA_userdata_var}->{LUA_userdata_member};
   - '{LUA_userdata_var}->{LUA_userdata_member} = NULL;'
+  intent: dtor
   name: lua_dtor
 lua_function_bool_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_bool_scalar
   post_call:
   - '{push_expr};'
 lua_function_native_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_native_scalar
   post_call:
   - '{push_expr};'
 lua_function_shadow_*:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_shadow_*
   post_call:
   - '{push_expr};'
 lua_function_string_&:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_string_&
   post_call:
   - '{push_expr};'
 lua_function_string_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_string_scalar
   post_call:
   - '{push_expr};'
 lua_function_void_*:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: function
   name: lua_function_void_*
 lua_in_bool_scalar:
+  intent: in
   name: lua_in_bool_scalar
   pre_call:
   - bool {c_var} = {pop_expr};
 lua_in_native_scalar:
+  intent: in
   name: lua_in_native_scalar
   pre_call:
   - "{cxx_type} {cxx_var} =\t {pop_expr};"
 lua_in_shadow_*:
+  intent: in
   name: lua_in_shadow_*
   pre_call:
   - "{cxx_type} * {cxx_var} =\t {pop_expr};"
 lua_in_string_&:
+  intent: in
   name: lua_in_string_&
   pre_call:
   - "const char * {c_var} = \t{pop_expr};"
 lua_in_string_*:
+  intent: in
   name: lua_in_string_*
   pre_call:
   - "const char * {c_var} = \t{pop_expr};"
 lua_inout_native_*:
+  intent: inout
   name: lua_inout_native_*
   pre_call:
   - // lua_native_*_inout;
 lua_mixin_callfunction:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: mixin
   name: lua_mixin_callfunction
 lua_mixin_push:
+  intent: mixin
   name: lua_mixin_push
   post_call:
   - '{push_expr};'
 lua_subroutine:
   call:
   - '{LUA_this_call}{function_name}({cxx_call_list});'
+  intent: subroutine
   name: lua_subroutine

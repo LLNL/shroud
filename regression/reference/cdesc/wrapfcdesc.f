@@ -169,7 +169,7 @@ module cdesc_mod
         ! Function:  int getData
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_get_data_int() &
                 result(SHT_rv) &
                 bind(C, name="CDE_get_data_int")
@@ -182,7 +182,7 @@ module cdesc_mod
         ! Function:  double getData
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_get_data_double() &
                 result(SHT_rv) &
                 bind(C, name="CDE_get_data_double")
@@ -329,10 +329,10 @@ contains
     ! Function:  int getData
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! Wrapper for function which is templated on the return value.
     !<
@@ -350,10 +350,10 @@ contains
     ! Function:  double getData
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     !>
     !! Wrapper for function which is templated on the return value.
     !<

@@ -427,7 +427,7 @@ void POI_fill_with_zeros(double * x, int x_length)
 // Function:  int accumulate
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Attrs:     +intent(in)
@@ -455,7 +455,7 @@ int POI_accumulate(const int * arr, size_t len)
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +intent(in)
@@ -477,7 +477,7 @@ int POI_accept_char_array_in(char **names)
 // Function:  int acceptCharArrayIn
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
@@ -521,7 +521,7 @@ void POI_set_global_int(int value)
 // Function:  int sumFixedArray
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // start POI_sum_fixed_array
 int POI_sum_fixed_array(void)
 {
@@ -1011,7 +1011,7 @@ void POI_get_raw_ptr_to_int2d(int * * * arg)
 // Function:  int checkInt2d
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Attrs:     +intent(in)
@@ -1052,7 +1052,7 @@ void POI_dimension_in(const int * arg)
 // Function:  void * returnAddress1
 // Attrs:     +intent(function)
 // Requested: c_function_void_*
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -1072,7 +1072,7 @@ void * POI_return_address1(int flag)
 // Function:  void * returnAddress2
 // Attrs:     +intent(function)
 // Requested: c_function_void_*
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -1110,7 +1110,7 @@ void POI_fetch_void_ptr(void * * addr)
 // Function:  int VoidPtrArray
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
 // Attrs:     +intent(in)

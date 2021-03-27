@@ -26,7 +26,7 @@ module statement_mod
         ! Function:  int GetNameLength +pure
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         pure function get_name_length() &
                 result(SHT_rv) &
                 bind(C, name="STMT_get_name_length")

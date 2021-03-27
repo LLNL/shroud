@@ -23,7 +23,7 @@
 // Function:  int SumValues
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(0)
 // Attrs:     +assumed-rank+intent(in)
@@ -50,7 +50,7 @@ int GEN_sum_values_0d(const int * values, int nvalues)
 // Function:  int SumValues
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
 // Attrs:     +assumed-rank+intent(in)
@@ -77,7 +77,7 @@ int GEN_sum_values_1d(const int * values, int nvalues)
 // Function:  int SumValues
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(2)
 // Attrs:     +assumed-rank+intent(in)

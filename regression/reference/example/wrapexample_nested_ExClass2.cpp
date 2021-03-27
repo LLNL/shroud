@@ -289,7 +289,7 @@ void AA_example_nested_ExClass2_get_name4_bufferify(
 // Function:  int GetNameLength
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int AA_example_nested_ExClass2_get_name_length(
     const AA_example_nested_ExClass2 * self)
 {
@@ -390,7 +390,7 @@ void AA_example_nested_ExClass2_destroyall(
 // Function:  TypeID getTypeID
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int AA_example_nested_ExClass2_get_type_id(
     const AA_example_nested_ExClass2 * self)
 {
@@ -483,7 +483,7 @@ void AA_example_nested_ExClass2_set_value_double(
 // Function:  int getValue
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int AA_example_nested_ExClass2_get_value_int(
     AA_example_nested_ExClass2 * self)
 {
@@ -499,7 +499,7 @@ int AA_example_nested_ExClass2_get_value_int(
 // Function:  double getValue
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 double AA_example_nested_ExClass2_get_value_double(
     AA_example_nested_ExClass2 * self)
 {

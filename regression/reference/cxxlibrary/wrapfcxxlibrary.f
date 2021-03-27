@@ -26,7 +26,7 @@ module cxxlibrary_mod
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
         ! Requested: c_function_bool_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_default_ptr_is_null_0() &
                 result(SHT_rv) &
                 bind(C, name="CXX_default_ptr_is_null_0")
@@ -39,7 +39,7 @@ module cxxlibrary_mod
         ! Function:  bool defaultPtrIsNULL
         ! Attrs:     +intent(function)
         ! Requested: c_function_bool_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Attrs:     +intent(in)
@@ -142,7 +142,7 @@ contains
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
     ! Requested: c_function_bool_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function default_ptr_is_null_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -159,7 +159,7 @@ contains
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
     ! Requested: c_function_bool_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
     ! Attrs:     +intent(in)

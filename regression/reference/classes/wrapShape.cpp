@@ -37,7 +37,7 @@ void CLA_Shape_ctor(CLA_Shape * SHC_rv)
 // Function:  int get_ivar
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int CLA_Shape_get_ivar(const CLA_Shape * self)
 {
     const classes::Shape *SH_this = static_cast<const classes::Shape *>

@@ -486,8 +486,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     subroutine class1_dtor(obj)
@@ -502,10 +501,10 @@ contains
     ! Function:  int getFlag
     ! Attrs:     +intent(getter)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(getter)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

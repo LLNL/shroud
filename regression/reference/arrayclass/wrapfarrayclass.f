@@ -116,7 +116,7 @@ module arrayclass_mod
         ! Function:  int getSize
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         pure function c_arraywrapper_get_size(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_size")
@@ -520,7 +520,7 @@ module arrayclass_mod
         ! Function:  bool checkPtr
         ! Attrs:     +intent(function)
         ! Requested: c_function_bool_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         ! ----------------------------------------
         ! Argument:  void * array +value
         ! Attrs:     +intent(in)
@@ -541,7 +541,7 @@ module arrayclass_mod
         ! Function:  double sumArray
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Match:     c_function
         function c_arraywrapper_sum_array(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_sum_array")
@@ -606,10 +606,10 @@ contains
     ! Function:  int getSize
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function arraywrapper_get_size(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -939,7 +939,7 @@ contains
     ! Match:     f_function_bool
     ! Attrs:     +intent(function)
     ! Requested: c_function_bool_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  void * array +value
     ! Attrs:     +intent(in)
@@ -962,10 +962,10 @@ contains
     ! Function:  double sumArray
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function arraywrapper_sum_array(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

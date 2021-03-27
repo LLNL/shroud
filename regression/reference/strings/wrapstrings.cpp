@@ -1269,7 +1269,7 @@ void STR_fetch_string_pointer_len_bufferify(char *arg1,
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +intent(in)
@@ -1290,7 +1290,7 @@ int STR_accept_string_instance(char *arg1)
 // Function:  int acceptStringInstance
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  std::string arg1 +value
 // Attrs:     +api(buf)+intent(in)

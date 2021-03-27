@@ -82,7 +82,7 @@ module tutorial_mod
     ! Function:  double PassByValue
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double arg1 +value
     ! Attrs:     +intent(in)
@@ -136,7 +136,7 @@ module tutorial_mod
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start c_use_default_arguments
     interface
         function c_use_default_arguments() &
@@ -153,7 +153,7 @@ module tutorial_mod
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -176,7 +176,7 @@ module tutorial_mod
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -300,7 +300,7 @@ module tutorial_mod
     ! Function:  int TemplateReturn
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     interface
         function c_template_return_int() &
                 result(SHT_rv) &
@@ -315,7 +315,7 @@ module tutorial_mod
     ! Function:  double TemplateReturn
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     interface
         function c_template_return_double() &
                 result(SHT_rv) &
@@ -418,7 +418,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -439,7 +439,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -466,7 +466,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -500,7 +500,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -527,7 +527,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -560,7 +560,7 @@ module tutorial_mod
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -599,7 +599,7 @@ module tutorial_mod
     ! Function:  TypeID typefunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
     ! Attrs:     +intent(in)
@@ -620,7 +620,7 @@ module tutorial_mod
     ! Function:  EnumTypeID enumfunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
     ! Attrs:     +intent(in)
@@ -641,7 +641,7 @@ module tutorial_mod
     ! Function:  Color colorfunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  Color arg +value
     ! Attrs:     +intent(in)
@@ -689,7 +689,7 @@ module tutorial_mod
     ! Function:  int callback1
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int in +value
     ! Attrs:     +intent(in)
@@ -846,10 +846,10 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! start use_default_arguments
     function use_default_arguments() &
             result(SHT_rv)
@@ -866,10 +866,10 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -894,10 +894,10 @@ contains
     ! Function:  double UseDefaultArguments
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
     ! Attrs:     +intent(in)
@@ -1024,10 +1024,10 @@ contains
     ! Function:  int TemplateReturn
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function template_return_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1042,10 +1042,10 @@ contains
     ! Function:  double TemplateReturn
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1134,10 +1134,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1161,10 +1161,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1196,10 +1196,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  int num +value
     ! Attrs:     +intent(in)
@@ -1242,10 +1242,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -1278,10 +1278,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)
@@ -1322,10 +1322,10 @@ contains
     ! Function:  int UseDefaultOverload
     ! Attrs:     +intent(function)
     ! Requested: f_function_native_scalar
-    ! Match:     f_default
+    ! Match:     f_function
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  double type +value
     ! Attrs:     +intent(in)

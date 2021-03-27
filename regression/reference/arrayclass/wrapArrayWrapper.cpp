@@ -54,7 +54,7 @@ void ARR_ArrayWrapper_set_size(ARR_ArrayWrapper * self, int size)
 // Function:  int getSize
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -505,7 +505,7 @@ void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
 // Function:  bool checkPtr
 // Attrs:     +intent(function)
 // Requested: c_function_bool_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  void * array +value
 // Attrs:     +intent(in)
@@ -524,7 +524,7 @@ bool ARR_ArrayWrapper_check_ptr(ARR_ArrayWrapper * self, void * array)
 // Function:  double sumArray
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 double ARR_ArrayWrapper_sum_array(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);

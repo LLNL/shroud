@@ -43,7 +43,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Function:  Class1::DIRECTION directionFunc
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
@@ -87,7 +87,7 @@ void CLA_pass_class_by_value(CLA_Class1 * arg)
 // Function:  int useclass
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
@@ -203,7 +203,7 @@ void CLA_set_global_flag(int arg)
 // Function:  int get_global_flag
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag

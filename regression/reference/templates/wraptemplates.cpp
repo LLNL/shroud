@@ -94,7 +94,7 @@ void TEM_function_tu_1(float arg1, double arg2)
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int TEM_use_impl_worker_internal_ImplWorker1(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker1
@@ -111,7 +111,7 @@ int TEM_use_impl_worker_internal_ImplWorker1(void)
 // Function:  int UseImplWorker
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
-// Match:     c_default
+// Match:     c_function
 int TEM_use_impl_worker_internal_ImplWorker2(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker2
