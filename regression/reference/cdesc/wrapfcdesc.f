@@ -86,7 +86,7 @@ module cdesc_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+intent(in)+rank(2)
-        ! Attrs:     +intent(in)
+        ! Attrs:     +cdesc+intent(in)
         ! Exact:     c_in_native_*_cdesc
         subroutine c_rank2_in(SHT_arg_cdesc) &
                 bind(C, name="CDE_rank2_in")
@@ -106,7 +106,7 @@ module cdesc_mod
         ! Exact:     c_in_string_&
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+intent(out)+rank(0)+value
-        ! Attrs:     +intent(out)
+        ! Attrs:     +cdesc+intent(out)
         ! Exact:     c_out_void_*_cdesc
         subroutine c_get_scalar1(name, SHT_value_cdesc) &
                 bind(C, name="CDE_get_scalar1")
@@ -128,7 +128,7 @@ module cdesc_mod
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +cdesc+intent(out)+rank(0)
-        ! Attrs:     +intent(out)
+        ! Attrs:     +cdesc+intent(out)
         ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_0_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
@@ -152,7 +152,7 @@ module cdesc_mod
         ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +cdesc+intent(out)+rank(0)
-        ! Attrs:     +intent(out)
+        ! Attrs:     +cdesc+intent(out)
         ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_1_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
@@ -215,9 +215,9 @@ contains
     ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +cdesc+intent(in)+rank(2)
-    ! Attrs:     +intent(in)
+    ! Attrs:     +cdesc+intent(in)
     ! Exact:     f_in_native_*_cdesc
-    ! Attrs:     +intent(in)
+    ! Attrs:     +cdesc+intent(in)
     ! Exact:     c_in_native_*_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
@@ -249,9 +249,9 @@ contains
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+intent(out)+rank(0)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +cdesc+intent(out)
     ! Exact:     f_out_native_*_cdesc
-    ! Attrs:     +intent(out)
+    ! Attrs:     +cdesc+intent(out)
     ! Exact:     c_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
@@ -294,9 +294,9 @@ contains
     ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+intent(out)+rank(0)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +cdesc+intent(out)
     ! Exact:     f_out_native_*_cdesc
-    ! Attrs:     +intent(out)
+    ! Attrs:     +cdesc+intent(out)
     ! Exact:     c_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single

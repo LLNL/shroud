@@ -39,6 +39,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "in"
                             },
                             "specifier": [
@@ -176,6 +177,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -232,6 +234,7 @@
                                     ]
                                 },
                                 "metaattrs": {
+                                    "cdesc": true,
                                     "intent": "out"
                                 },
                                 "specifier": [
@@ -280,6 +283,7 @@
                                     ]
                                 },
                                 "metaattrs": {
+                                    "cdesc": true,
                                     "intent": "out"
                                 },
                                 "specifier": [
@@ -440,6 +444,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -553,6 +558,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -747,6 +753,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -860,6 +867,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [

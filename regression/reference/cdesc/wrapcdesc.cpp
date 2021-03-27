@@ -43,7 +43,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
-// Attrs:     +intent(in)
+// Attrs:     +cdesc+intent(in)
 // Exact:     c_in_native_*_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *SHT_arg_cdesc)
 {
@@ -73,7 +73,7 @@ void CDE_rank2_in(CDE_SHROUD_array *SHT_arg_cdesc)
 // Exact:     c_in_string_&
 // ----------------------------------------
 // Argument:  void * value +cdesc+intent(out)+rank(0)+value
-// Attrs:     +intent(out)
+// Attrs:     +cdesc+intent(out)
 // Exact:     c_out_void_*_cdesc
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
 {
@@ -119,7 +119,7 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *SHT_value_cdesc)
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  int * value +cdesc+intent(out)+rank(0)
-// Attrs:     +intent(out)
+// Attrs:     +cdesc+intent(out)
 // Exact:     c_out_native_*_cdesc
 void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
@@ -166,7 +166,7 @@ void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
 // Exact:     c_in_string_&_buf
 // ----------------------------------------
 // Argument:  double * value +cdesc+intent(out)+rank(0)
-// Attrs:     +intent(out)
+// Attrs:     +cdesc+intent(out)
 // Exact:     c_out_native_*_cdesc
 void CDE_get_scalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)

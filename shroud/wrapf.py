@@ -1195,7 +1195,7 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
             deref_attr = meta["deref"]
-            cdesc = "cdesc" if attrs["cdesc"] is not None else None
+            cdesc = "cdesc" if meta["cdesc"] is True else None
 
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
@@ -1673,7 +1673,7 @@ rv = .false.
             c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_meta["intent"]
-            cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
+            cdesc = "cdesc" if c_meta["cdesc"] is True else None
 
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]

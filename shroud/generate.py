@@ -109,7 +109,7 @@ class VerifyAttrs(object):
         ast = node.ast
         node._has_found_default = False
 
-        for attr in node.ast.attrs:
+        for attr in ast.attrs:
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
@@ -132,6 +132,8 @@ class VerifyAttrs(object):
         ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
+        if ast.attrs["cdesc"]:
+            ast.metaattrs["cdesc"] = True
 
         if ast.typemap is None:
             print("XXXXXX typemap is None")
@@ -432,6 +434,8 @@ class VerifyAttrs(object):
         intent = self.check_intent_attr(node, arg)
         self.check_deref_attr_var(arg)
         self.check_common_attrs(arg)
+        if attrs["cdesc"]:
+            meta["cdesc"] = True
 
         is_ptr = arg.is_indirect()
 
