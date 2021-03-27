@@ -27,15 +27,6 @@ module ownership_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type OWN_SHROUD_capsule_data
 
-    ! helper capsule_helper
-    type :: OWN_SHROUD_capsule
-        private
-        type(OWN_SHROUD_capsule_data) :: mem
-    contains
-        final :: SHROUD_capsule_final
-        procedure :: delete => SHROUD_capsule_delete
-    end type OWN_SHROUD_capsule
-
     ! helper array_context
     type, bind(C) :: OWN_SHROUD_array
         ! address of C++ memory
@@ -52,6 +43,15 @@ module ownership_mod
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
     end type OWN_SHROUD_array
+
+    ! helper capsule_helper
+    type :: OWN_SHROUD_capsule
+        private
+        type(OWN_SHROUD_capsule_data) :: mem
+    contains
+        final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
+    end type OWN_SHROUD_capsule
 
     type class1
         type(OWN_SHROUD_capsule_data) :: cxxmem

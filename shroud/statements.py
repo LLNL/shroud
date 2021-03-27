@@ -567,6 +567,7 @@ fc_statements = [
     ),
     dict(
         name="f_mixin_function_buf",
+        f_helper="array_context",
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
@@ -696,6 +697,7 @@ fc_statements = [
     dict(
         # XXX - unused
         name="f_mixin_out_character_buf",
+        f_helper="array_context",
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
@@ -1004,6 +1006,9 @@ fc_statements = [
     #
     #        c_step1(context)
     #        call c_f_pointer(c_ptr, f_ptr, shape)
+    #
+    # Works with deref pointer and allocatable since Fortran
+    # does that part.
     dict(
         name="c_function_native_*_buf",
         mixin=["c_mixin_function_buf"],

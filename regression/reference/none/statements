@@ -2351,6 +2351,7 @@ f_function_native_*_buf_pointer:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -2902,6 +2903,7 @@ f_mixin_function_buf:
   - '{c_var_cdesc}'
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
   intent: mixin
   name: f_mixin_function_buf
   need_wrapper: true
@@ -2969,6 +2971,7 @@ f_mixin_out_character_buf:
   - '{c_var_cdesc}'
   declare:
   - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
   intent: mixin
   name: f_mixin_out_character_buf
   temps:
