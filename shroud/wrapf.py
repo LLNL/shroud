@@ -997,8 +997,7 @@ rv = .false.
         node, fileinfo,
         fmt,
         ast,
-        intent_blk,
-        buf_args,
+        stmts_blk,
         modules,
         imports,
         arg_c_names,
@@ -1013,20 +1012,25 @@ rv = .false.
             ast - Abstract Syntax Tree from parser
                node.ast for subprograms
                node.params[n] for parameters
-            intent_blk - typemap.CStmts or util.Scope
+            stmts_blk - typemap.CStmts or util.Scope
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
         """
-        if not buf_args:
-            return
-        assert len(buf_args) == 1
-        buf_arg = buf_args[0]
-        attrs = ast.attrs
-
-        if buf_arg == "arg":
+        if stmts_blk.f_arg_decl is not None:
+            # Use explicit declaration from CStmt, both must exist.
+            for name in stmts_blk.f_c_arg_names:
+                append_format(arg_c_names, name, fmt)
+            for arg in stmts_blk.f_arg_decl:
+                append_format(arg_c_decl, arg, fmt)
+            self.add_module_from_stmts(stmts_blk, modules, imports, fmt)
+        elif stmts_blk.intent == "function":
+            # Functions do not pass arguments by default.
+            pass
+        else:
+            attrs = ast.attrs
             arg_c_names.append(ast.name)
             # argument declarations
             if attrs["assumedtype"]:
@@ -1068,22 +1072,6 @@ rv = .false.
                     modules, imports,
                     arg_typemap.f_c_module or arg_typemap.f_module
                 )
-        elif buf_arg == "arg_decl":
-            # Use explicit declaration from CStmt.
-            if intent_blk.f_c_arg_names:
-                for name in intent_blk.f_c_arg_names:
-                    append_format(arg_c_names, name, fmt)
-            else:
-                arg_c_names.append(fmt.F_C_var)
-            for arg in intent_blk.f_arg_decl:
-                append_format(arg_c_decl, arg, fmt)
-            self.add_module_from_stmts(intent_blk, modules, imports, fmt)
-        else:
-            raise RuntimeError(
-                "build_arg_list_interface: unhandled case {}".format(
-                    buf_arg
-                )
-            )
 
     def wrap_function_interface(self, cls, node, fileinfo):
         """Write Fortran interface for C function.
@@ -1187,7 +1175,6 @@ rv = .false.
             fmt_result,
             ast,
             c_result_blk,
-            c_result_blk.buf_args,
             modules,
             imports,
             arg_c_names,
@@ -1239,7 +1226,6 @@ rv = .false.
                 fmt_arg,
                 arg,
                 c_intent_blk,
-                c_intent_blk.buf_args or self._default_buf_args,
                 modules,
                 imports,
                 arg_c_names,

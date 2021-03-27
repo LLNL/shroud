@@ -443,9 +443,10 @@ def lookup_stmts_tree(tree, path):
 #  arg_call    - List of arguments passed to C function.
 #
 #  Used with buf_args = "arg_decl".
-#  c_arg_decl  - Add C declaration to C wrapper with buf_args=arg_decl
-#  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
-#                with buf_args=arg_decl.
+#  c_arg_decl  - Add C declaration to C wrapper.
+#                Empty list is no arguments, None is default argument.
+#  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
+#                Empty list is no arguments, None is default argument.
 #  f_c_arg_names - 
 #  f_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
