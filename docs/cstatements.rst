@@ -41,6 +41,7 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
 Where
 F_C_clause =
 F_C_arguments =   f_c_arg_names
+arg_c_decl = f_arg_decl
     
 c_statements
 ------------
@@ -182,6 +183,9 @@ f_c_arg_names
 Names of arguments to pass to C function.
 Used when *buf_arg* is ``arg_decl``.
 Defaults to ``{F_C_var}``.
+
+.. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
+          exist as a group and be the same length.
 
 f_result_decl
 ^^^^^^^^^^^^^

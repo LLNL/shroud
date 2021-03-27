@@ -299,6 +299,30 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
             stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
             stmt.intent = steps[1]
 
+            # check for consistency
+            if key[0] == "c":
+                if (stmt.c_arg_decl is not None or
+                    stmt.f_arg_decl is not None or
+                    stmt.f_c_arg_names is not None):
+                    err = False
+                    if stmt.c_arg_decl is None:
+                        err = True
+                        print("Missing c_arg_decl in", node["name"])
+                    if stmt.f_arg_decl is None:
+                        err = True
+                        print("Missing f_arg_decl in", node["name"])
+                    if stmt.f_c_arg_names is None:
+                        err = True
+                        print("Missing f_c_arg_names in", node["name"])
+                    if err:
+                        raise RuntimeError(
+                            "c_arg_decl, f_arg_decl and f_c_arg_names must all exist")
+                    length = len(stmt.c_arg_decl)
+                    if any(len(lst) != length for lst in [stmt.f_arg_decl, stmt.f_c_arg_names]):
+                        raise RuntimeError(
+                            "c_arg_decl, f_arg_decl and f_c_arg_names "
+                            "must all be same length in {}".format(node["name"]))
+            
 
 def write_cf_tree(fp):
     """Write out statements tree.
@@ -422,6 +446,7 @@ def lookup_stmts_tree(tree, path):
 #  c_arg_decl  - Add C declaration to C wrapper with buf_args=arg_decl
 #  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
 #                with buf_args=arg_decl.
+#  f_c_arg_names - 
 #  f_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
@@ -443,9 +468,11 @@ CStmts = util.Scope(
     destructor_name=None,
     owner="library",
     return_type=None, return_cptr=False,
+
     c_arg_decl=None,
     f_c_arg_names=None,
-    f_arg_decl=[],
+    f_arg_decl=None,
+
     f_result_decl=None,
     f_module=None,
     f_module_line=None,
@@ -501,8 +528,15 @@ default_stmts = dict(
 
 fc_statements = [
     dict(
-        name="c_subroutine",
+        # No arguments. Set necessary fields as a group.
+        name="c_mixin_noargs",
         c_arg_decl=[],
+        f_arg_decl=[],
+        f_c_arg_names=[],
+    ),    
+    dict(
+        name="c_subroutine",
+        mixin=["c_mixin_noargs"],
     ),
     dict(
         name="f_subroutine",
@@ -510,7 +544,6 @@ fc_statements = [
 
     dict(
         name="c_function",
-        c_arg_decl=[],
     ),
     dict(
         name="f_function",
@@ -527,6 +560,7 @@ fc_statements = [
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_import=["{F_array_type}"],
         return_type="void",  # Convert to function.
         temps=["cdesc"],
@@ -682,6 +716,7 @@ fc_statements = [
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_import=["{F_array_type}"],
 #        return_type="void",  # Only difference from c_mixin_function_buf
         temps=["cdesc"],
@@ -764,6 +799,7 @@ fc_statements = [
         f_arg_decl=[
             "type(C_PTR), intent(IN), value :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
@@ -927,6 +963,7 @@ fc_statements = [
         f_arg_decl=[
             "type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
@@ -1095,6 +1132,7 @@ fc_statements = [
         f_arg_decl=[
             "character(kind=C_CHAR), value, intent(IN) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
@@ -1229,6 +1267,7 @@ fc_statements = [
         f_arg_decl=[
             "type(C_PTR), intent(IN) :: {c_var}(*)",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
@@ -1416,6 +1455,7 @@ fc_statements = [
             # Remove VALUE added by c_default
             "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
@@ -1832,6 +1872,7 @@ fc_statements = [
         f_arg_decl=[
             "type({f_capsule_data_type}), intent({f_intent}) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module_line="{f_c_module_line}",
     ),
     
@@ -1903,9 +1944,9 @@ fc_statements = [
     dict(
         # NULL in stddef.h
         name="c_dtor",
+        mixin=["c_mixin_noargs"],
         c_impl_header=["<stddef.h>"],
         cxx_impl_header=["<cstddef>"],
-        c_arg_decl=[],
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",
@@ -1964,7 +2005,7 @@ fc_statements = [
     dict(
         # Base for all getters to avoid calling function.
         name="c_getter",
-        c_arg_decl=[],
+        mixin=["c_mixin_noargs"],
         call=[
             "// skip call c_getter",
         ],
@@ -1973,7 +2014,7 @@ fc_statements = [
         # Not actually calling a subroutine.
         # Work is done by arg's setter.
         name="c_setter",
-        c_arg_decl=[],
+        mixin=["c_mixin_noargs"],
         call=[
             "// skip call c_setter",
         ],
@@ -2052,6 +2093,7 @@ fc_statements = [
         f_arg_decl=[
             "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
         ],
+        f_c_arg_names=["{c_var}"],
         f_module_line="iso_c_binding:{f_kind}",
         pre_call=[
             "{cxx_type} *{cxx_var} = "
@@ -2085,6 +2127,7 @@ fc_statements = [
         f_arg_decl=[
             "XXX-unused character(len=*), intent({f_intent}) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         temps=["cfi"],
     ),
     dict(
@@ -2099,6 +2142,7 @@ fc_statements = [
         f_arg_decl=[
             "character(len=*), intent({f_intent}) :: {c_var}",
         ],
+        f_c_arg_names=["{c_var}"],
         pre_call=[
             "char *{cxx_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",

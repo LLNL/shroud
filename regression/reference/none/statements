@@ -118,6 +118,7 @@ root
       inout
         array
           buf -- c_mixin_inout_array_buf
+      noargs -- c_mixin_noargs
       out
         array
           buf -- c_mixin_out_array_buf
@@ -332,6 +333,8 @@ c_ctor:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: ctor
   name: c_ctor
@@ -390,6 +393,8 @@ c_function_char_*_buf_allocatable:
   c_helper: ShroudTypeDefines
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -415,6 +420,8 @@ c_function_char_*_cfi:
   cxx_local_var: result
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -467,6 +474,8 @@ c_function_char_scalar_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   impl_header:
@@ -515,6 +524,8 @@ c_function_native_*_buf:
   c_helper: ShroudTypeDefines array_context
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -547,6 +558,8 @@ c_function_shadow:
   cxx_local_var: result
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: function
   name: c_function_shadow
@@ -564,6 +577,8 @@ c_function_shadow_scalar:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: function
   name: c_function_shadow_scalar
@@ -618,6 +633,8 @@ c_function_string_&_buf_allocatable:
   c_helper: ShroudStrToArray
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -636,6 +653,8 @@ c_function_string_&_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -721,6 +740,8 @@ c_function_string_*_buf_allocatable:
   c_helper: ShroudStrToArray
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -739,6 +760,8 @@ c_function_string_*_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -826,6 +849,8 @@ c_function_string_scalar_buf_allocatable:
   destructor_name: new_string
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -846,6 +871,8 @@ c_function_string_scalar_cfi:
   c_helper: ShroudStrCopy
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
@@ -917,6 +944,8 @@ c_function_vector_buf:
   destructor_name: std_vector_{cxx_T}
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: function
@@ -959,6 +988,8 @@ c_getter_string_scalar_buf:
   - // skip call c_getter
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: getter
@@ -979,6 +1010,8 @@ c_in_char_**:
   - char **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {c_var}(*)'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -1021,6 +1054,8 @@ c_in_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -1040,6 +1075,8 @@ c_in_char_scalar:
   - char {c_var}
   f_arg_decl:
   - 'character(kind=C_CHAR), value, intent(IN) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_CHAR
@@ -1053,6 +1090,8 @@ c_in_native_**:
   - '{cxx_type} **{cxx_var}'
   f_arg_decl:
   - 'type(C_PTR), intent(IN), value :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -1086,6 +1125,8 @@ c_in_native_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: iso_c_binding:{f_kind}
   iface_header:
   - ISO_Fortran_binding.h
@@ -1102,6 +1143,8 @@ c_in_shadow:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: in/inout
   name: c_in_shadow
@@ -1149,6 +1192,8 @@ c_in_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -1203,6 +1248,8 @@ c_in_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -1223,6 +1270,8 @@ c_in_string_scalar:
   - char *{c_var}
   f_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_CHAR
@@ -1267,6 +1316,8 @@ c_in_string_scalar_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
@@ -1356,6 +1407,8 @@ c_in_void_**:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -1418,6 +1471,8 @@ c_inout_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -1458,6 +1513,8 @@ c_inout_shadow:
   cxx_local_var: pointer
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: in/inout
   name: c_inout_shadow
@@ -1511,6 +1568,8 @@ c_inout_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -1574,6 +1633,8 @@ c_inout_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
@@ -1715,6 +1776,8 @@ c_mixin_arg_character_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: mixin
@@ -1731,6 +1794,8 @@ c_mixin_function_buf:
   - '{C_array_type} *{c_var_cdesc}'
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: mixin
@@ -1746,6 +1811,8 @@ c_mixin_function_character:
   - CFI_cdesc_t *{c_var_cfi}
   f_arg_decl:
   - 'XXX-unused character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: mixin
@@ -1839,6 +1906,10 @@ c_mixin_inout_array_buf:
   temps:
   - size
   - cdesc
+c_mixin_noargs:
+  intent: mixin
+  name: c_mixin_noargs
+  owner: library
 c_mixin_out_array_buf:
   buf_args:
   - arg_decl
@@ -1863,6 +1934,8 @@ c_mixin_out_character_buf:
   - '{C_array_type} *{c_var_cdesc}'
   f_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_import:
   - '{F_array_type}'
   intent: mixin
@@ -1877,6 +1950,8 @@ c_mixin_shadow:
   - '{c_type} * {c_var}'
   f_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: mixin
   name: c_mixin_shadow
@@ -1914,6 +1989,8 @@ c_out_char_*_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -2049,6 +2126,8 @@ c_out_string_&_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
@@ -2109,6 +2188,8 @@ c_out_string_*_cfi:
   cxx_local_var: scalar
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
