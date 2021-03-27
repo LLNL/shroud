@@ -6,8 +6,6 @@
 
 """
 Create and manage typemaps used to convert between languages.
-
-buf_args documented in cwrapper.rst.
 """
 from __future__ import print_function
 

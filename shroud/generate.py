@@ -1639,7 +1639,9 @@ class GenFunctions(object):
 
         This includes functions with string or vector arguments.
         If found then create a new C function that
-        will add arguments buf_args (typically a buffer and length).
+        sets metaattr["api"] to 'buf'. This will find groups in
+        fc_statements which will add arguments bufferify arguments
+        (typically a buffer and length).
 
         String arguments added deref(allocatable) by default so that
         char * function will create an allocatable string in Fortran.
