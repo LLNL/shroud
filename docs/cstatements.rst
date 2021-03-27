@@ -66,34 +66,12 @@ This is equivelent to having three groups:
     - name: c_inout_native_*_cfi
 
 
-buf_args
-^^^^^^^^^
-
-*buf_args* lists the arguments which are used by the C wrapper.
-The default is to provide a one-for-one correspondance with the 
-arguments of the function which is being wrapped.
-However, often an additional function is created which will pass 
-additional or different arguments to provide meta-data about the argument.
-
-The Fortran wrapper will call the generated 'bufferified' function
-and provide the meta-data to the C wrapper.
-
-arg
-
-    Use the library argument as the wrapper argument.
-    This is the default when *buf_args* is not explicit.
-
-arg_decl
-    The explicit dummy/prototype declarations will be provided in the fields
-    *c_arg_decl* and *f_arg_decl*.
-    
-
 iface_header
 ^^^^^^^^^^^^
 
 List of header files which will be included in the generated header
 for the C wrapper.  These headers must be C only.
-Used for headers needed when *buf_args* contains *arg_decl*.
+Used for headers needed for declarations in *c_arg_decl*.
 Can contain headers required for the generated prototypes.
 
 .. note that typemaps will also add c_headers.
@@ -127,7 +105,6 @@ indicates if the local variable is a **pointer** or **scalar**.
 For example, when a structure is returned by a C++ function, the C wrapper creates
 a local variable which contains a pointer to the C type of the struct.
 
-The local variable can be passed in when buf_args is *shadow*.
 
 
 

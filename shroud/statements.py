@@ -442,7 +442,6 @@ def lookup_stmts_tree(tree, path):
 #  intent      - Set from name.
 #  arg_call    - List of arguments passed to C function.
 #
-#  Used with buf_args = "arg_decl".
 #  c_arg_decl  - Add C declaration to C wrapper.
 #                Empty list is no arguments, None is default argument.
 #  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
@@ -455,7 +454,6 @@ CStmts = util.Scope(
     None,
     name="c_default",
     intent=None,
-    buf_args=[],
     iface_header=[],
     impl_header=[],
     c_helper="", c_local_var=None,
@@ -555,7 +553,6 @@ fc_statements = [
     dict(
         name="c_mixin_function_buf",
         # Pass array_type as argument to contain the function result.
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -590,7 +587,6 @@ fc_statements = [
     dict(
         # Pass argument and size to C.
         name="c_mixin_in_array_buf",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
@@ -621,7 +617,6 @@ fc_statements = [
         # Pass array_type to C which will fill it in.
         name="c_mixin_inout_array_buf",
         c_helper="array_context",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
@@ -654,7 +649,6 @@ fc_statements = [
         # Pass array_type to C which will fill it in.
         name="c_mixin_out_array_buf",
         c_helper="array_context",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -681,7 +675,6 @@ fc_statements = [
     dict(
         # Pass argument, size and len to C.
         name="c_mixin_in_string_array_buf",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "const char *{c_var}",   # XXX c_type
             "size_t {c_var_size}",
@@ -711,7 +704,6 @@ fc_statements = [
     ),
     dict(
         name="c_mixin_out_character_buf",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -740,7 +732,6 @@ fc_statements = [
         # Used with function which return a char *.
         # C wrapper will fill argument.
         name="c_mixin_in_character_buf",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "char *{c_var}",
             "int {c_var_len}",
@@ -794,7 +785,6 @@ fc_statements = [
         # Any array of pointers.  Assumed to be non-contiguous memory.
         # All Fortran can do is treat as a type(C_PTR).
         name="c_in_native_**",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{cxx_type} **{cxx_var}",
         ],
@@ -958,7 +948,6 @@ fc_statements = [
     dict(
         # Treat as an assumed length array in Fortran interface.
         name='c_in_void_**',
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "void **{c_var}",
         ],
@@ -1127,7 +1116,6 @@ fc_statements = [
     # char arg
     dict(
         name="c_in_char_scalar",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "char {c_var}",
         ],
@@ -1154,7 +1142,6 @@ fc_statements = [
 #    dict(
 #        # Blank fill result.
 #        name="c_XXXfunction_char_scalar_buf",
-#        buf_args=["arg", "len"],
 #        c_impl_header=["<string.h>"],
 #        cxx_impl_header=["<cstring>"],
 #        post_call=[
@@ -1169,7 +1156,6 @@ fc_statements = [
     ),
 #    dict(
 #        name="c_XXXin_char_*_buf",
-#        buf_args=["arg", "len_trim"],
 #        cxx_local_var="pointer",
 #        c_helper="ShroudStrAlloc ShroudStrFree",
 #        pre_call=[
@@ -1262,7 +1248,6 @@ fc_statements = [
     dict(
         # Treat as an assumed length array in Fortran interface.
         name='c_in_char_**',
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "char **{c_var}",
         ],
@@ -1447,7 +1432,6 @@ fc_statements = [
     dict(
         # Used with C wrapper.
         name="c_in_string_scalar",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             # Argument is a pointer while std::string is a scalar.
             # C++ compiler will convert to std::string when calling function.
@@ -1657,7 +1641,6 @@ fc_statements = [
     ),
     #                dict(
     #                    name="c_function_vector_buf",
-    #                    buf_args=['arg', 'size'],
     #                    c_helper='ShroudStrCopy',
     #                    post_call=[
     #                        'if ({cxx_var}.empty()) {{+',
@@ -1855,7 +1838,6 @@ fc_statements = [
     ),
 
     ##########
-    # Pass in a pointer to a shadow object via buf_args.
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
     dict(
@@ -1867,7 +1849,6 @@ fc_statements = [
     ),
     dict(
         name="c_mixin_shadow",
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "{c_type} * {c_var}",
         ],
@@ -2097,7 +2078,6 @@ fc_statements = [
     dict(
         name="c_in_native_*_cfi",
         iface_header=["ISO_Fortran_binding.h"],
-        buf_args=["arg_decl"],
         cxx_local_var="pointer",
         c_arg_decl=[
             "CFI_cdesc_t *{c_var}",
@@ -2132,7 +2112,6 @@ fc_statements = [
         # Function which return char * or std::string.
         name="c_mixin_function_character",
         iface_header=["ISO_Fortran_binding.h"],
-        buf_args=["arg_decl"],
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
         ],
@@ -2146,7 +2125,6 @@ fc_statements = [
         # Character argument which use CFI_desc_t.
         name="c_mixin_arg_character_cfi",
         iface_header=["ISO_Fortran_binding.h"],
-        buf_args=["arg_decl"],
         cxx_local_var="pointer",
         c_arg_decl=[
             "CFI_cdesc_t *{c_var_cfi}",
