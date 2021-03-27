@@ -452,7 +452,7 @@
                             "c_var": "self",
                             "function_name": "delete",
                             "stmt0": "f_dtor",
-                            "stmt1": "f_default",
+                            "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
                             "stmtc1": "c_dtor",
                             "underscore_name": "delete"
@@ -1992,7 +1992,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }

@@ -486,8 +486,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     subroutine class1_dtor(obj)

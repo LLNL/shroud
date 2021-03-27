@@ -541,6 +541,7 @@ fc_statements = [
     ),
     dict(
         name="f_subroutine",
+        arg_c_call=[],
     ),
 
     dict(
@@ -1927,6 +1928,10 @@ fc_statements = [
         mixin=["f_mixin_shadow"],
     ),
     dict(
+        name="f_dtor",
+        arg_c_call=[],
+    ),
+    dict(
         name="c_ctor",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
@@ -1940,7 +1945,7 @@ fc_statements = [
     ),
     dict(
         name="f_ctor",
-        base="f_function_shadow",
+        mixin=["f_mixin_shadow"],
     ),
     dict(
         # NULL in stddef.h
@@ -2029,6 +2034,7 @@ fc_statements = [
     ),
     dict(
         name="f_setter",
+        arg_c_call=[],
     ),
 
     dict(
@@ -2037,6 +2043,11 @@ fc_statements = [
         ret=[
             "return {CXX_this}->{field_name};",
         ],
+    ),
+    dict(
+        name="f_setter_native",
+        arg_c_call=["{c_var}"],
+        # f_setter is intended for the function, this is for an argument.
     ),
     dict(
         name="c_setter_native_scalar",

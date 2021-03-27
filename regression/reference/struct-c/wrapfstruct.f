@@ -817,7 +817,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_x1
@@ -863,7 +863,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_class_set_y1
@@ -912,7 +912,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_x1
@@ -958,7 +958,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_y1
@@ -1004,7 +1004,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start cstruct_as_subclass_set_z1

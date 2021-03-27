@@ -164,6 +164,7 @@ root
       string
         scalar -- f_XXXin_string_scalar
     ctor -- f_ctor
+    dtor -- f_dtor
     function -- f_function
       bool -- f_function_bool
       char
@@ -317,6 +318,7 @@ root
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_out_void_**
     setter -- f_setter
+      native -- f_setter_native
       string
         scalar
           buf -- f_setter_string_scalar_buf
@@ -2363,6 +2365,9 @@ f_ctor:
   intent: ctor
   name: f_ctor
   need_wrapper: true
+f_dtor:
+  intent: dtor
+  name: f_dtor
 f_function:
   intent: function
   name: f_function
@@ -3319,6 +3324,11 @@ f_out_void_*_cdesc:
 f_setter:
   intent: setter
   name: f_setter
+f_setter_native:
+  arg_c_call:
+  - '{c_var}'
+  intent: setter
+  name: f_setter_native
 f_setter_string_scalar_buf:
   arg_c_call:
   - '{f_var}'

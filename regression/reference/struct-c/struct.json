@@ -777,7 +777,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }
@@ -969,7 +969,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }
@@ -1255,7 +1255,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }
@@ -1447,7 +1447,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }
@@ -1639,7 +1639,7 @@
                                     "f_var": "val",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt0": "f_setter_native_scalar",
-                                    "stmt1": "f_setter",
+                                    "stmt1": "f_setter_native",
                                     "stmtc0": "c_setter_native_scalar",
                                     "stmtc1": "c_setter_native_scalar"
                                 }

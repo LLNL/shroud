@@ -877,8 +877,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     ! start class1_delete
@@ -1142,7 +1141,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(setter)
     ! Requested: f_setter_native_scalar
-    ! Match:     f_setter
+    ! Match:     f_setter_native
     ! Attrs:     +intent(setter)
     ! Exact:     c_setter_native_scalar
     ! start class1_set_test

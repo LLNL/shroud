@@ -218,7 +218,7 @@
                             "c_var": "self",
                             "function_name": "dtor",
                             "stmt0": "f_dtor",
-                            "stmt1": "f_default",
+                            "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
                             "stmtc1": "c_dtor",
                             "underscore_name": "dtor"

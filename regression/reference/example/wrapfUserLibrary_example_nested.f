@@ -1348,8 +1348,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~ExClass1
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     !>
@@ -1583,8 +1582,7 @@ contains
     ! ----------------------------------------
     ! Function:  ~ExClass2
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor
-    ! Match:     f_default
+    ! Exact:     f_dtor
     ! Attrs:     +intent(dtor)
     ! Exact:     c_dtor
     !>
