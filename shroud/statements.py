@@ -547,22 +547,6 @@ fc_statements = [
 
     ########## mixin ##########
     dict(
-        # YYY replaced by below
-        name="c_mixin_function_buf",
-        # Pass array_type as argument to contain the function result.
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
-        ],
-        f_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var}",
-        ],
-        f_c_arg_names=["{c_var}"],
-        f_import=["{F_array_type}"],
-        return_type="void",  # Convert to function.
-        temps=["cdesc"],
-###        f_c_arg_names=["{c_var}"],
-    ),
-    dict(
         name="c_mixin_function_cdesc",
         # Pass array_type as argument to contain the function result.
         c_arg_decl=[
@@ -659,17 +643,6 @@ fc_statements = [
     ),
 
     dict(
-        # YYY replaced by below
-        # Pass array_type to C which will fill it in.
-        name="f_mixin_out_array_buf",
-        f_helper="array_context",
-        declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-        ],
-        arg_c_call=["{c_var_cdesc}"],
-        temps=["cdesc"],
-    ),
-    dict(
         # Pass array_type to C which will fill it in.
         name="f_mixin_out_array_cdesc",
         f_helper="array_context",
@@ -677,21 +650,6 @@ fc_statements = [
             "type({F_array_type}) :: {c_var_cdesc}",
         ],
         arg_c_call=["{c_var_cdesc}"],
-        temps=["cdesc"],
-    ),
-    dict(
-        # YYY replaced by below
-        # Pass array_type to C which will fill it in.
-        name="c_mixin_out_array_buf",
-        c_helper="array_context",
-        c_arg_decl=[
-            "{C_array_type} *{c_var_cdesc}",
-        ],
-        f_c_arg_names=["{c_var_cdesc}"],
-        f_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var_cdesc}",
-        ],
-        f_import=["{F_array_type}"],
         temps=["cdesc"],
     ),
     dict(
@@ -885,23 +843,6 @@ fc_statements = [
 #        ],
     ),
     dict(
-        # YYY replaced by below
-        # deref(pointer)
-        # A C function with a 'int **' argument associates it
-        # with a Fortran pointer.
-        # f_out_native_**_buf_pointer
-        # f_out_native_*&_buf_pointer
-        name="f_out_native_**/*&_buf_pointer",
-        mixin=["f_mixin_out_array_buf"],
-        arg_decl=[
-            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        post_call=[
-            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
-        ],
-    ),
-    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
@@ -934,7 +875,7 @@ fc_statements = [
         # c_out_native_*_cdesc
         # c_inout_native_*_cdesc
         name="c_in/out/inout_native_*_cdesc",
-        mixin=["c_mixin_out_array_buf"],
+        mixin=["c_mixin_out_array_cdesc"],
 
         # XXX - replace pending more use of c_var_cdesc
         c_arg_decl=[
@@ -1075,7 +1016,7 @@ fc_statements = [
     # does that part.
     dict(
         name="c_function_native_*_cdesc",
-        mixin=["c_mixin_function_buf"],
+        mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines array_context",
         post_call=[
             "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
@@ -1088,21 +1029,6 @@ fc_statements = [
             "{c_var_cdesc}->size = {c_array_size};",
         ],
         return_cptr=True,
-    ),
-    dict(
-        # YYY - replaced by below
-        name="f_function_native_*_buf_allocatable",
-        mixin=["f_mixin_function_buf"],
-        c_helper="copy_array",
-        f_helper="copy_array_{cxx_type}",
-        arg_decl=[
-            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
-        ],
-        post_call=[
-            # XXX - allocate scalar
-            "allocate({f_var}({f_array_allocate}))",
-            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
-        ],
     ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
@@ -1145,23 +1071,6 @@ fc_statements = [
         ],
         post_call=[
             "call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})",
-        ],
-    ),
-    dict(
-        # YYY - replaced by below
-        # +deref(pointer) +owner(caller)
-        name="f_function_native_*_buf_pointer_caller",
-        mixin=["f_mixin_function_buf"],
-        f_helper="capsule_helper",
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        arg_name=["{c_var_capsule}"],
-        arg_decl=[
-            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-            "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
-        ],
-        post_call=[
-            "call c_f_pointer(\t{c_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
-            "{c_var_capsule}%mem = {c_var_cdesc}%cxx",
         ],
     ),
     dict(
@@ -1578,7 +1487,7 @@ fc_statements = [
         # c_function_string_*_cdesc_allocatable
         # c_function_string_&_cdesc_allocatable
         name="c_function_string_*/&_cdesc_allocatable",
-        mixin=["c_mixin_function_buf"],
+        mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -2067,14 +1976,6 @@ fc_statements = [
             "type(C_PTR) {c_var}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
-    ),
-    dict(
-        name="f_function_struct_scalar",
-        # Needed to differentiate from f_function_struct_pointer.
-    ),
-    dict(
-        name="f_function_struct_*",
-        base="f_function_native_*_buf_pointer",
     ),
     dict(
         name="f_function_struct_*_buf_pointer",
