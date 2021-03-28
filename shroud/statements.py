@@ -784,6 +784,7 @@ fc_statements = [
             "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
         ],
         pre_call=[
+            # XXX - allocate on pre_call, should be 'cdesc'?
             "allocate({f_var}{f_array_allocate})",
         ],
     ),
@@ -828,21 +829,6 @@ fc_statements = [
         arg_call=["{cxx_var}"],
     ),
     dict(
-        # XXX needs a 'buf' here, used in generic.yaml test.
-        # deref(pointer)
-        # A C function with a 'int **' argument associates it
-        # with a Fortran pointer.
-        name="f_XXXout_native_**",
-        arg_decl=[
-            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        # XXX - Need to have 'buf' in name to use c_f_pointer
-#        post_call=[
-#            "call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})",
-#        ],
-    ),
-    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
@@ -867,9 +853,7 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
 
-    # XXX only in buf?
     # Used with intent IN, INOUT, and OUT.
-#    c_native_pointer_cdesc=dict(
     dict(
         # c_in_native_*_cdesc
         # c_out_native_*_cdesc
