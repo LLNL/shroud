@@ -1714,7 +1714,11 @@ class GenFunctions(object):
                 elif arg.is_indirect():
                     has_buf_arg = "buf"
             elif arg_typemap.sgroup == "vector":
-                has_buf_arg = "buf"
+                if arg.metaattrs["intent"] == "in":
+                    # Pass SIZE.
+                    has_buf_arg = "buf"
+                else:
+                    has_buf_arg = "cdesc"
             elif (arg_typemap.sgroup == "native" and
                   arg.metaattrs["intent"] == "out" and
                   arg.metaattrs["deref"] != "raw" and
@@ -1746,7 +1750,7 @@ class GenFunctions(object):
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
-            need_buf_result   = "buf"
+            need_buf_result = "cdesc"
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 if attrs["dimension"]:

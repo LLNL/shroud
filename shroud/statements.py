@@ -547,7 +547,23 @@ fc_statements = [
 
     ########## mixin ##########
     dict(
+        # YYY replaced by below
         name="c_mixin_function_buf",
+        # Pass array_type as argument to contain the function result.
+        c_arg_decl=[
+            "{C_array_type} *{c_var_cdesc}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_c_arg_names=["{c_var}"],
+        f_import=["{F_array_type}"],
+        return_type="void",  # Convert to function.
+        temps=["cdesc"],
+###        f_c_arg_names=["{c_var}"],
+    ),
+    dict(
+        name="c_mixin_function_cdesc",
         # Pass array_type as argument to contain the function result.
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
@@ -610,7 +626,7 @@ fc_statements = [
     dict(
         # Pass argument and size to C.
         # Pass array_type to C which will fill it in.
-        name="f_mixin_inout_array_buf",
+        name="f_mixin_inout_array_cdesc",
         f_helper="array_context",
         declare=[
             "type({F_array_type}) :: {c_var_cdesc}",
@@ -622,7 +638,7 @@ fc_statements = [
     dict(
         # Pass argument and size to C.
         # Pass array_type to C which will fill it in.
-        name="c_mixin_inout_array_buf",
+        name="c_mixin_inout_array_cdesc",
         c_helper="array_context",
         c_arg_decl=[
             "{cxx_type} *{c_var}",   # XXX c_type
@@ -1640,8 +1656,8 @@ fc_statements = [
     ),
     # cxx_var is always a pointer to a vector
     dict(
-        name="c_out_vector_buf",
-        mixin=["c_mixin_out_array_buf"],
+        name="c_out_vector_cdesc",
+        mixin=["c_mixin_out_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1668,8 +1684,8 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_inout_vector_buf",
-        mixin=["c_mixin_inout_array_buf"],
+        name="c_inout_vector_cdesc",
+        mixin=["c_mixin_inout_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1697,8 +1713,8 @@ fc_statements = [
     ),
     # Almost same as intent_out_buf.
     dict(
-        name="c_function_vector_buf",
-        mixin=["c_mixin_function_buf"],
+        name="c_function_vector_cdesc",
+        mixin=["c_mixin_function_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1853,8 +1869,8 @@ fc_statements = [
         mixin=["f_mixin_in_array_buf"],
     ),
     dict(
-        name="f_out_vector_buf",
-        mixin=["f_mixin_out_array_buf"],
+        name="f_out_vector_cdesc",
+        mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1863,8 +1879,8 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_buf",
-        mixin=["f_mixin_inout_array_buf"],
+        name="f_inout_vector_cdesc",
+        mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1874,7 +1890,7 @@ fc_statements = [
     ),
     dict(
         # XXX - This group is not tested
-        name="f_function_vector_buf",
+        name="f_function_vector_cdesc",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1884,8 +1900,8 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_buf_allocatable",
-        mixin=["f_mixin_out_array_buf"],
+        name="f_out_vector_cdesc_allocatable",
+        mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1895,8 +1911,8 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_buf_allocatable",
-        mixin=["f_mixin_inout_array_buf"],
+        name="f_inout_vector_cdesc_allocatable",
+        mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         post_call=[
@@ -1908,8 +1924,8 @@ fc_statements = [
     # Similar to f_vector_out_allocatable but must declare result variable.
     # Always return a 1-d array.
     dict(
-        name="f_function_vector_buf_allocatable",
-        mixin=["f_mixin_function_buf"],
+        name="f_function_vector_cdesc_allocatable",
+        mixin=["f_mixin_function_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
