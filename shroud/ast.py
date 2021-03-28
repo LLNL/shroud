@@ -740,7 +740,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_get_shape_array="",
             f_intent="",
             f_kind="",
-            f_pointer_shape="",  # scalar
             f_shape_var="",
             f_type="",
             f_var_shape="",      # scalar

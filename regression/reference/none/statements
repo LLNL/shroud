@@ -15,7 +15,6 @@ root
       native
         & -- c_function_native_*/&/**
         * -- c_function_native_*/&/**
-          buf -- c_function_native_*_buf
           cdesc -- c_function_native_*_cdesc
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
@@ -193,7 +192,6 @@ root
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
               caller -- f_function_native_*_cdesc_pointer_caller
-          pointer -- f_function_native_*_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
@@ -512,31 +510,6 @@ c_function_native_**:
   intent: function
   name: c_function_native_**
   owner: library
-c_function_native_*_buf:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines array_context
-  f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  f_c_arg_names:
-  - '{c_var}'
-  f_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_native_*_buf
-  owner: library
-  post_call:
-  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.base = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  return_cptr: true
-  return_type: void
-  temps:
-  - cdesc
 c_function_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2326,6 +2299,8 @@ f_function_char_scalar_cfi_allocatable:
   name: f_function_char_scalar_cfi_allocatable
   need_wrapper: true
 f_function_native_&:
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}'
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'
   declare:
@@ -2337,7 +2312,7 @@ f_function_native_&:
   intent: function
   name: f_function_native_&
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
+  - call c_f_pointer({F_pointer}, {F_result})
 f_function_native_&_buf_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
@@ -2352,7 +2327,7 @@ f_function_native_&_buf_pointer:
   intent: function
   name: f_function_native_&_buf_pointer
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
+  - call c_f_pointer({F_pointer}, {F_result})
 f_function_native_**:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -2376,23 +2351,20 @@ f_function_native_*_buf_allocatable:
   temps:
   - cdesc
 f_function_native_*_buf_pointer:
-  arg_c_call:
-  - '{c_var_cdesc}'
   arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}, pointer :: {f_var}'
+  call:
+  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
   declare:
-  - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: array_context
+  - 'type(C_PTR) :: {F_pointer}'
   f_module:
     iso_c_binding:
+    - C_PTR
     - c_f_pointer
   intent: function
   name: f_function_native_*_buf_pointer
-  need_wrapper: true
   post_call:
-  - call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})
-  temps:
-  - cdesc
+  - call c_f_pointer({F_pointer}, {F_result})
 f_function_native_*_buf_pointer_caller:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -2472,19 +2444,6 @@ f_function_native_*_cdesc_pointer_caller:
   - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
   temps:
   - cdesc
-f_function_native_*_pointer:
-  call:
-  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
-  declare:
-  - 'type(C_PTR) :: {F_pointer}'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-    - c_f_pointer
-  intent: function
-  name: f_function_native_*_pointer
-  post_call:
-  - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
 f_function_native_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -2623,6 +2582,8 @@ f_function_string_scalar_cfi_allocatable:
   name: f_function_string_scalar_cfi_allocatable
   need_wrapper: true
 f_function_struct_*:
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}'
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'
   declare:
@@ -2634,10 +2595,10 @@ f_function_struct_*:
   intent: function
   name: f_function_struct_*
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
+  - call c_f_pointer({F_pointer}, {F_result})
 f_function_struct_*_buf_pointer:
   arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}, pointer :: {f_var}'
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'
   declare:
@@ -2649,7 +2610,7 @@ f_function_struct_*_buf_pointer:
   intent: function
   name: f_function_struct_*_buf_pointer
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result}{f_array_shape})
+  - call c_f_pointer({F_pointer}, {F_result})
 f_function_struct_scalar:
   intent: function
   name: f_function_struct_scalar

@@ -1121,15 +1121,16 @@ module pointers_mod
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Match:     c_function_native_*
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
-        subroutine c_return_int_ptr_to_scalar_bufferify(SHT_rv) &
-                bind(C, name="POI_return_int_ptr_to_scalar_bufferify")
-            import :: POI_SHROUD_array
+        function c_return_int_ptr_to_scalar_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToScalar")
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_return_int_ptr_to_scalar_bufferify
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_scalar_bufferify
 
@@ -1187,15 +1188,16 @@ module pointers_mod
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Match:     c_function_native_*
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
-        subroutine c_return_int_ptr_to_const_scalar_bufferify(SHT_rv) &
-                bind(C, name="POI_return_int_ptr_to_const_scalar_bufferify")
-            import :: POI_SHROUD_array
+        function c_return_int_ptr_to_const_scalar_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="returnIntPtrToConstScalar")
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_return_int_ptr_to_const_scalar_bufferify
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_to_const_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_const_scalar_bufferify
 
@@ -1955,16 +1957,16 @@ contains
     ! Exact:     f_function_native_*_buf_pointer
     ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Match:     c_function_native_*
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, c_f_pointer
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
-        type(POI_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_to_scalar_bufferify(SHT_rv_cdesc)
-        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv)
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_scalar_bufferify()
+        call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
@@ -1998,16 +2000,16 @@ contains
     ! Exact:     f_function_native_*_buf_pointer
     ! Attrs:     +api(buf)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Match:     c_function_native_*
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, c_f_pointer
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
-        type(POI_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_to_const_scalar_bufferify(SHT_rv_cdesc)
-        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv)
+        type(C_PTR) :: SHT_ptr
+        SHT_ptr = c_return_int_ptr_to_const_scalar_bufferify()
+        call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
     ! end return_int_ptr_to_const_scalar

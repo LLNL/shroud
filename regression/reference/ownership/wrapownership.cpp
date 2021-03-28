@@ -61,19 +61,12 @@ int * OWN_return_int_ptr_pointer(void)
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
 // Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*_buf
-void OWN_return_int_ptr_pointer_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc)
+// Match:     c_function_native_*
+int * OWN_return_int_ptr_pointer_bufferify(void)
 {
     // splicer begin function.return_int_ptr_pointer_bufferify
     int * SHC_rv = ReturnIntPtrPointer();
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHC_rv;
-    SHT_rv_cdesc->type = SH_TYPE_INT;
-    SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->rank = 0;
-    SHT_rv_cdesc->size = 1;
+    return SHC_rv;
     // splicer end function.return_int_ptr_pointer_bufferify
 }
 

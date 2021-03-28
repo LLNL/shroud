@@ -1016,23 +1016,6 @@ fc_statements = [
     # Works with deref pointer and allocatable since Fortran
     # does that part.
     dict(
-        # YYY - replaced by cdesc
-        name="c_function_native_*_buf",
-        mixin=["c_mixin_function_buf"],
-        c_helper="ShroudTypeDefines array_context",
-        post_call=[
-            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.base = {cxx_var};",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
-            "{c_var_cdesc}->rank = {rank};"
-            "{c_array_shape}",
-            "{c_var_cdesc}->size = {c_array_size};",
-        ],
-        return_cptr=True,
-    ),
-    dict(
         name="c_function_native_*_cdesc",
         mixin=["c_mixin_function_buf"],
         c_helper="ShroudTypeDefines array_context",
@@ -1078,12 +1061,13 @@ fc_statements = [
         ],
     ),
 
-    # f_pointer_shape may be blank for a scalar, otherwise it
-    # includes a leading comma.
     dict(
-        #### XXX used? c_f_pointer should have 'buf' in the name.
-        name="f_function_native_*_pointer",
+        # pointer to scalar
+        name="f_function_native_*_buf_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}",
+        ],
         declare=[
             "type(C_PTR) :: {F_pointer}",
         ],
@@ -1091,23 +1075,10 @@ fc_statements = [
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
         post_call=[
-            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+            "call c_f_pointer({F_pointer}, {F_result})",
         ],
     ),
     dict(
-        # XXX - no need for f_var since F_pointer exists.
-        name="f_function_native_*_buf_pointer",
-        mixin=["f_mixin_function_buf"],
-        f_module=dict(iso_c_binding=["c_f_pointer"]),
-        arg_decl=[
-            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-        ],
-        post_call=[
-            "call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})",
-        ],
-    ),
-    dict(
-        # XXX - no need for f_var since F_pointer exists.
         name="f_function_native_*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
@@ -1168,11 +1139,11 @@ fc_statements = [
     
     dict(
         name="f_function_native_&",
-        base="f_function_native_*_pointer",   # XXX - change base to &?
+        base="f_function_native_*_buf_pointer",   # XXX - change base to &?
     ),
     dict(
         name="f_function_native_&_buf_pointer",
-        base="f_function_native_*_pointer",   # XXX - change base to &?
+        base="f_function_native_*_buf_pointer",   # XXX - change base to &?
         arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -2045,14 +2016,11 @@ fc_statements = [
     ),
     dict(
         name="f_function_struct_*",
-        base="f_function_native_*_pointer",
+        base="f_function_native_*_buf_pointer",
     ),
     dict(
         name="f_function_struct_*_buf_pointer",
-        base="f_function_native_*_pointer",
-        arg_decl=[
-            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
-        ],
+        base="f_function_native_*_buf_pointer",
     ),
 
     ########################################

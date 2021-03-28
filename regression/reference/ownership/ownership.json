@@ -464,7 +464,6 @@
                     "F_C_name": "c_return_int_ptr_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
@@ -495,18 +494,16 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_*_buf_pointer",
                         "stmt1": "f_function_native_*_buf_pointer",
                         "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf"
+                        "stmtc1": "c_function_native_*"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -566,12 +563,12 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "OWN_return_int_ptr_pointer_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
+                    "C_prototype": "void",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "",
                     "F_C_name": "c_return_int_ptr_pointer_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrPointer",
                     "function_suffix": "_bufferify",
@@ -580,9 +577,9 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
+                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -591,12 +588,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf"
+                        "stmt1": "c_function_native_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }

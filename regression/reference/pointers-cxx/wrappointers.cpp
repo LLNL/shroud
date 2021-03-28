@@ -1144,20 +1144,13 @@ int * POI_return_int_ptr_to_scalar(void)
 // Function:  int * returnIntPtrToScalar
 // Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*_buf
+// Match:     c_function_native_*
 // start POI_return_int_ptr_to_scalar_bufferify
-void POI_return_int_ptr_to_scalar_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc)
+int * POI_return_int_ptr_to_scalar_bufferify(void)
 {
     // splicer begin function.return_int_ptr_to_scalar_bufferify
     int * SHC_rv = returnIntPtrToScalar();
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHC_rv;
-    SHT_rv_cdesc->type = SH_TYPE_INT;
-    SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->rank = 0;
-    SHT_rv_cdesc->size = 1;
+    return SHC_rv;
     // splicer end function.return_int_ptr_to_scalar_bufferify
 }
 // end POI_return_int_ptr_to_scalar_bufferify
@@ -1219,20 +1212,13 @@ const int * POI_return_int_ptr_to_const_scalar(void)
 // Function:  const int * returnIntPtrToConstScalar
 // Attrs:     +api(buf)+deref(pointer)+intent(function)
 // Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*_buf
+// Match:     c_function_native_*
 // start POI_return_int_ptr_to_const_scalar_bufferify
-void POI_return_int_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc)
+const int * POI_return_int_ptr_to_const_scalar_bufferify(void)
 {
     // splicer begin function.return_int_ptr_to_const_scalar_bufferify
     const int * SHC_rv = returnIntPtrToConstScalar();
-    SHT_rv_cdesc->cxx.addr  = const_cast<int *>(SHC_rv);
-    SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHC_rv;
-    SHT_rv_cdesc->type = SH_TYPE_INT;
-    SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->rank = 0;
-    SHT_rv_cdesc->size = 1;
+    return SHC_rv;
     // splicer end function.return_int_ptr_to_const_scalar_bufferify
 }
 // end POI_return_int_ptr_to_const_scalar_bufferify
