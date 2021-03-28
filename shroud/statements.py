@@ -562,16 +562,6 @@ fc_statements = [
 ###        f_c_arg_names=["{c_var}"],
     ),
     dict(
-        name="f_mixin_function_buf",
-        f_helper="array_context",
-        declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-        ],
-        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
-        temps=["cdesc"],
-        need_wrapper=True,
-    ),
-    dict(
         name="f_mixin_function_cdesc",
         f_helper="array_context",
         declare=[
@@ -699,16 +689,6 @@ fc_statements = [
     
     ##########
     # Return CHARACTER address and length to Fortran.
-    dict(
-        # XXX - unused
-        name="f_mixin_out_character_buf",
-        f_helper="array_context",
-        declare=[
-            "type({F_array_type}) :: {c_var_cdesc}",
-        ],
-        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
-        temps=["cdesc"],
-    ),
     dict(
         name="c_mixin_out_character_cdesc",
         c_arg_decl=[
@@ -861,7 +841,6 @@ fc_statements = [
         name="c_in/out/inout_native_*_cdesc",
         mixin=["c_mixin_out_array_cdesc"],
 
-        # XXX - replace pending more use of c_var_cdesc
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -2374,9 +2353,6 @@ fc_statements = [
             "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
             "delete cxx_ptr;",
         ],
-#        post_call=[
-#            "ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});",
-#        ],
     ),
     
     dict(

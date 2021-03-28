@@ -281,7 +281,6 @@ root
           cdesc -- f_in/out/inout_void_*_cdesc
     mixin
       function
-        buf -- f_mixin_function_buf
         cdesc -- f_mixin_function_cdesc
       in
         array
@@ -297,8 +296,6 @@ root
       out
         array
           cdesc -- f_mixin_out_array_cdesc
-        character
-          buf -- f_mixin_out_character_buf
       shadow -- f_mixin_shadow
     out
       bool -- f_out_bool
@@ -2899,17 +2896,6 @@ f_inout_void_*_cdesc:
   - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
   temps:
   - cdesc
-f_mixin_function_buf:
-  arg_c_call:
-  - '{c_var_cdesc}'
-  declare:
-  - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: array_context
-  intent: mixin
-  name: f_mixin_function_buf
-  need_wrapper: true
-  temps:
-  - cdesc
 f_mixin_function_cdesc:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -2976,16 +2962,6 @@ f_mixin_out_array_cdesc:
   f_helper: array_context
   intent: mixin
   name: f_mixin_out_array_cdesc
-  temps:
-  - cdesc
-f_mixin_out_character_buf:
-  arg_c_call:
-  - '{c_var_cdesc}'
-  declare:
-  - 'type({F_array_type}) :: {c_var_cdesc}'
-  f_helper: array_context
-  intent: mixin
-  name: f_mixin_out_character_buf
   temps:
   - cdesc
 f_mixin_shadow:
