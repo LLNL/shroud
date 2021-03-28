@@ -752,7 +752,7 @@ fc_statements = [
         temps=["cdesc"],
     ),
     dict(
-        name="c_mixin_out_character_buf",
+        name="c_mixin_out_character_cdesc",
         c_arg_decl=[
             "{C_array_type} *{c_var_cdesc}",
         ],
@@ -1320,8 +1320,8 @@ fc_statements = [
     ),
 
     dict(
-        name="c_function_char_*_buf_allocatable",
-        mixin=["c_mixin_function_buf"],
+        name="c_function_char_*_cdesc_allocatable",
+        mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -1377,10 +1377,10 @@ fc_statements = [
     ),
     #####
     dict(
-        # f_function_char_scalar_buf_allocatable
-        # f_function_char_*_buf_allocatable
-        name="f_function_char_scalar/*_buf_allocatable",
-        mixin=["f_mixin_function_buf"],
+        # f_function_char_scalar_cdesc_allocatable
+        # f_function_char_*_cdesc_allocatable
+        name="f_function_char_scalar/*_cdesc_allocatable",
+        mixin=["f_mixin_function_cdesc"],
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[
@@ -1575,9 +1575,9 @@ fc_statements = [
     # only used with bufferifed routines and intent(out) or result
     # std::string * function()
     dict(
-        # c_function_string_*_buf_allocatable
-        # c_function_string_&_buf_allocatable
-        name="c_function_string_*/&_buf_allocatable",
+        # c_function_string_*_cdesc_allocatable
+        # c_function_string_&_cdesc_allocatable
+        name="c_function_string_*/&_cdesc_allocatable",
         mixin=["c_mixin_function_buf"],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -1594,8 +1594,8 @@ fc_statements = [
     # This allows the std::string to outlast the function return.
     # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
     dict(
-        name="c_function_string_scalar_buf_allocatable",
-        mixin=["c_mixin_function_buf"],
+        name="c_function_string_scalar_cdesc_allocatable",
+        mixin=["c_mixin_function_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -1616,20 +1616,20 @@ fc_statements = [
     ),
 
     dict(
-        # f_function_string_scalar_buf_allocatable
-        # f_function_string_*_buf_allocatable
-        # f_function_string_&_buf_allocatable
+        # f_function_string_scalar_buf
+        # f_function_string_*_buf
+        # f_function_string_&_buf
         name="f_function_string_scalar/*/&_buf",
         mixin=["f_mixin_in_character_buf"],
     ),
     
     # similar to f_function_char_scalar_allocatable
     dict(
-        # f_function_string_scalar_buf_allocatable
-        # f_function_string_*_buf_allocatable
-        # f_function_string_&_buf_allocatable
-        name="f_function_string_scalar/*/&_buf_allocatable",
-        mixin=["f_mixin_function_buf"],
+        # f_function_string_scalar_cdesc_allocatable
+        # f_function_string_*_cdesc_allocatable
+        # f_function_string_&_cdesc_allocatable
+        name="f_function_string_scalar/*/&_cdesc_allocatable",
+        mixin=["f_mixin_function_cdesc"],
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[
@@ -2139,8 +2139,8 @@ fc_statements = [
     #####
     dict(
         # Return meta data to Fortran.
-        name="c_getter_string_scalar_buf",
-        mixin=["c_getter", "c_mixin_out_character_buf"],
+        name="c_getter_string_scalar_cdesc",
+        mixin=["c_getter", "c_mixin_out_character_cdesc"],
         post_call=[
             "{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
@@ -2165,8 +2165,8 @@ fc_statements = [
     ),
     dict(
         # Get meta data from C and allocate CHARACTER.
-        name="f_getter_string_scalar_buf_allocatable",
-        base="f_function_string_scalar_buf_allocatable",
+        name="f_getter_string_scalar_cdesc_allocatable",
+        base="f_function_string_scalar_cdesc_allocatable",
     ),
     
     

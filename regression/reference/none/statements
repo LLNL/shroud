@@ -7,7 +7,8 @@ root
       char
         * -- c_function_char_*
           buf -- c_function_char_*_buf
-            allocatable -- c_function_char_*_buf_allocatable
+          cdesc
+            allocatable -- c_function_char_*_cdesc_allocatable
           cfi -- c_function_char_*_cfi
             allocatable -- c_function_char_*_cfi_allocatable
         scalar -- c_function_char_scalar
@@ -23,17 +24,20 @@ root
       string
         & -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
-            allocatable -- c_function_string_*/&_buf_allocatable
+          cdesc
+            allocatable -- c_function_string_*/&_cdesc_allocatable
           cfi -- c_function_string_scalar/*/&_cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
         * -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
-            allocatable -- c_function_string_*/&_buf_allocatable
+          cdesc
+            allocatable -- c_function_string_*/&_cdesc_allocatable
           cfi -- c_function_string_scalar/*/&_cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
         scalar -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
-            allocatable -- c_function_string_scalar_buf_allocatable
+          cdesc
+            allocatable -- c_function_string_scalar_cdesc_allocatable
           cfi -- c_function_string_scalar/*/&_cfi
             allocatable -- c_function_string_scalar_cfi_allocatable
       struct -- c_function_struct
@@ -45,7 +49,7 @@ root
         scalar -- c_getter_native_scalar
       string
         scalar
-          buf -- c_getter_string_scalar_buf
+          cdesc -- c_getter_string_scalar_cdesc
     in
       char
         *
@@ -126,7 +130,7 @@ root
           buf -- c_mixin_out_array_buf
           cdesc -- c_mixin_out_array_cdesc
         character
-          buf -- c_mixin_out_character_buf
+          cdesc -- c_mixin_out_character_cdesc
       shadow -- c_mixin_shadow
     out
       char
@@ -177,13 +181,14 @@ root
       char
         *
           buf -- f_function_char_*_buf
-            allocatable -- f_function_char_scalar/*_buf_allocatable
+          cdesc
+            allocatable -- f_function_char_scalar/*_cdesc_allocatable
           cfi -- f_function_char_*_cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
           raw -- f_function_char_*_raw
         scalar
-          buf
-            allocatable -- f_function_char_scalar/*_buf_allocatable
+          cdesc
+            allocatable -- f_function_char_scalar/*_cdesc_allocatable
           cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
       native
@@ -206,17 +211,20 @@ root
       string
         &
           buf -- f_function_string_scalar/*/&_buf
-            allocatable -- f_function_string_scalar/*/&_buf_allocatable
+          cdesc
+            allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         *
           buf -- f_function_string_scalar/*/&_buf
-            allocatable -- f_function_string_scalar/*/&_buf_allocatable
+          cdesc
+            allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
         scalar
           buf -- f_function_string_scalar/*/&_buf
-            allocatable -- f_function_string_scalar/*/&_buf_allocatable
+          cdesc
+            allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
       struct
@@ -232,8 +240,8 @@ root
     getter -- f_getter
       string
         scalar
-          buf
-            allocatable -- f_getter_string_scalar_buf_allocatable
+          cdesc
+            allocatable -- f_getter_string_scalar_cdesc_allocatable
     in
       bool -- f_in_bool
       char
@@ -401,7 +409,7 @@ c_function_char_*_buf:
   return_type: void
   temps:
   - len
-c_function_char_*_buf_allocatable:
+c_function_char_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudTypeDefines
@@ -412,7 +420,7 @@ c_function_char_*_buf_allocatable:
   f_import:
   - '{F_array_type}'
   intent: function
-  name: c_function_char_*_buf_allocatable
+  name: c_function_char_*_cdesc_allocatable
   owner: library
   post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
@@ -625,7 +633,7 @@ c_function_string_&_buf:
   return_type: void
   temps:
   - len
-c_function_string_&_buf_allocatable:
+c_function_string_&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
@@ -636,7 +644,7 @@ c_function_string_&_buf_allocatable:
   f_import:
   - '{F_array_type}'
   intent: function
-  name: c_function_string_&_buf_allocatable
+  name: c_function_string_&_cdesc_allocatable
   owner: library
   post_call:
   - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -724,7 +732,7 @@ c_function_string_*_buf:
   return_type: void
   temps:
   - len
-c_function_string_*_buf_allocatable:
+c_function_string_*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
@@ -735,7 +743,7 @@ c_function_string_*_buf_allocatable:
   f_import:
   - '{F_array_type}'
   intent: function
-  name: c_function_string_*_buf_allocatable
+  name: c_function_string_*_cdesc_allocatable
   owner: library
   post_call:
   - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
@@ -823,7 +831,7 @@ c_function_string_scalar_buf:
   return_type: void
   temps:
   - len
-c_function_string_scalar_buf_allocatable:
+c_function_string_scalar_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper: ShroudStrToArray
@@ -836,7 +844,7 @@ c_function_string_scalar_buf_allocatable:
   f_import:
   - '{F_array_type}'
   intent: function
-  name: c_function_string_scalar_buf_allocatable
+  name: c_function_string_scalar_cdesc_allocatable
   owner: library
   post_call:
   - ShroudStrToArray({c_var_cdesc}, {cxx_var}, {idtor});
@@ -955,7 +963,7 @@ c_getter_native_scalar:
   owner: library
   ret:
   - return {CXX_this}->{field_name};
-c_getter_string_scalar_buf:
+c_getter_string_scalar_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   call:
@@ -967,7 +975,7 @@ c_getter_string_scalar_buf:
   f_import:
   - '{F_array_type}'
   intent: getter
-  name: c_getter_string_scalar_buf
+  name: c_getter_string_scalar_cdesc
   owner: library
   post_call:
   - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name}.data();'
@@ -1855,7 +1863,7 @@ c_mixin_out_array_cdesc:
   owner: library
   temps:
   - cdesc
-c_mixin_out_character_buf:
+c_mixin_out_character_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   f_arg_decl:
@@ -1865,7 +1873,7 @@ c_mixin_out_character_buf:
   f_import:
   - '{F_array_type}'
   intent: mixin
-  name: c_mixin_out_character_buf
+  name: c_mixin_out_character_cdesc
   owner: library
   temps:
   - cdesc
@@ -2289,7 +2297,7 @@ f_function_char_*_buf:
   intent: function
   name: f_function_char_*_buf
   need_wrapper: true
-f_function_char_*_buf_allocatable:
+f_function_char_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2299,7 +2307,7 @@ f_function_char_*_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: function
-  name: f_function_char_*_buf_allocatable
+  name: f_function_char_*_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
@@ -2325,7 +2333,7 @@ f_function_char_*_raw:
   - 'type(C_PTR) :: {f_var}'
   intent: function
   name: f_function_char_*_raw
-f_function_char_scalar_buf_allocatable:
+f_function_char_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2335,7 +2343,7 @@ f_function_char_scalar_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: function
-  name: f_function_char_scalar_buf_allocatable
+  name: f_function_char_scalar_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
@@ -2520,7 +2528,7 @@ f_function_string_&_buf:
   intent: function
   name: f_function_string_&_buf
   need_wrapper: true
-f_function_string_&_buf_allocatable:
+f_function_string_&_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2530,7 +2538,7 @@ f_function_string_&_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: function
-  name: f_function_string_&_buf_allocatable
+  name: f_function_string_&_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
@@ -2561,7 +2569,7 @@ f_function_string_*_buf:
   intent: function
   name: f_function_string_*_buf
   need_wrapper: true
-f_function_string_*_buf_allocatable:
+f_function_string_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2571,7 +2579,7 @@ f_function_string_*_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: function
-  name: f_function_string_*_buf_allocatable
+  name: f_function_string_*_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
@@ -2602,7 +2610,7 @@ f_function_string_scalar_buf:
   intent: function
   name: f_function_string_scalar_buf
   need_wrapper: true
-f_function_string_scalar_buf_allocatable:
+f_function_string_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2612,7 +2620,7 @@ f_function_string_scalar_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: function
-  name: f_function_string_scalar_buf_allocatable
+  name: f_function_string_scalar_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'
@@ -2707,7 +2715,7 @@ f_function_void_*:
 f_getter:
   intent: getter
   name: f_getter
-f_getter_string_scalar_buf_allocatable:
+f_getter_string_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
   arg_decl:
@@ -2717,7 +2725,7 @@ f_getter_string_scalar_buf_allocatable:
   - 'type({F_array_type}) :: {c_var_cdesc}'
   f_helper: copy_string array_context
   intent: getter
-  name: f_getter_string_scalar_buf_allocatable
+  name: f_getter_string_scalar_cdesc_allocatable
   need_wrapper: true
   post_call:
   - 'allocate(character(len={c_var_cdesc}%elem_len):: {f_var})'

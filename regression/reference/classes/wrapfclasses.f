@@ -355,8 +355,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, SHT_rv) &
@@ -454,9 +454,9 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  std::string getM_name
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(getter)
-    ! Requested: c_getter_string_scalar_buf_allocatable
-    ! Match:     c_getter_string_scalar_buf
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
+    ! Requested: c_getter_string_scalar_cdesc_allocatable
+    ! Match:     c_getter_string_scalar_cdesc
     ! start c_class1_get_m_name_bufferify
     interface
         subroutine c_class1_get_m_name_bufferify(self, SHT_rv) &
@@ -514,8 +514,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, SHT_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
@@ -1037,9 +1037,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     !>
     !! \brief test helper
     !!
@@ -1159,9 +1159,9 @@ contains
     ! ----------------------------------------
     ! Function:  std::string getM_name
     ! Attrs:     +deref(allocatable)+intent(getter)
-    ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(getter)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
@@ -1232,9 +1232,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     !>
     !! \brief test helper
     !!

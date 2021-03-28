@@ -70,8 +70,8 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
 {

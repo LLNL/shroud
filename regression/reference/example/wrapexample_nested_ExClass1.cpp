@@ -209,8 +209,8 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self,
     AA_SHROUD_array *SHT_rv_cdesc)

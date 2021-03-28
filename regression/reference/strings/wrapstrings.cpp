@@ -293,8 +293,8 @@ const char * STR_get_char_ptr1(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_char_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_char_*_cdesc_allocatable
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -414,8 +414,8 @@ const char * STR_get_char_ptr4(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_scalar_cdesc_allocatable
 void STR_get_const_string_result_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -487,8 +487,8 @@ void STR_get_const_string_as_arg_bufferify(char *output,
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_scalar_cdesc_allocatable
 void STR_get_const_string_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -525,8 +525,8 @@ const char * STR_get_const_string_ref_pure(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 // start STR_get_const_string_ref_pure_bufferify
 void STR_get_const_string_ref_pure_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
@@ -715,8 +715,8 @@ const char * STR_get_const_string_ref_alloc(void)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void STR_get_const_string_ref_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -795,8 +795,8 @@ const char * STR_get_const_string_ptr_alloc(void)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -836,8 +836,8 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -869,8 +869,8 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {

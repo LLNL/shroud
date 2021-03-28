@@ -203,8 +203,8 @@ const char * AA_example_nested_ExClass2_get_name2(
 
 // ----------------------------------------
 // Function:  const string & getName2
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
 {
@@ -235,8 +235,8 @@ char * AA_example_nested_ExClass2_get_name3(
 
 // ----------------------------------------
 // Function:  string & getName3
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
     const AA_example_nested_ExClass2 * self,
     AA_SHROUD_array *SHT_rv_cdesc)
@@ -268,8 +268,8 @@ char * AA_example_nested_ExClass2_get_name4(
 
 // ----------------------------------------
 // Function:  string & getName4
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc)
 {

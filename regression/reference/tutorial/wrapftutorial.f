@@ -107,8 +107,8 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +api(buf)+intent(in)
@@ -806,9 +806,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)

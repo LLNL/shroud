@@ -209,8 +209,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_char_*_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_char_*_cdesc_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(SHT_rv) &
@@ -311,8 +311,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_result_bufferify")
@@ -360,8 +360,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_alloc_bufferify")
@@ -390,8 +390,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
         subroutine c_get_const_string_ref_pure_bufferify(SHT_rv) &
@@ -517,8 +517,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_bufferify")
@@ -576,8 +576,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
@@ -604,8 +604,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
@@ -632,8 +632,8 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
                 SHT_rv) &
@@ -1309,9 +1309,9 @@ contains
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_char_*_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_char_*_buf_allocatable
+    ! Exact:     f_function_char_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_char_*_cdesc_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -1387,9 +1387,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
@@ -1461,9 +1461,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_scalar_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_scalar_buf_allocatable
+    ! Exact:     f_function_string_scalar_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_scalar_cdesc_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1480,9 +1480,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
@@ -1584,9 +1584,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1630,10 +1630,10 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_buf_allocatable_library
-    ! Match:     f_function_string_*_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Requested: f_function_string_*_cdesc_allocatable_library
+    ! Match:     f_function_string_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1650,10 +1650,10 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_buf_allocatable_caller
-    ! Match:     f_function_string_*_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Requested: f_function_string_*_cdesc_allocatable_caller
+    ! Match:     f_function_string_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -1677,10 +1677,10 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_string_*_buf_allocatable_caller
-    ! Match:     f_function_string_*_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_*_buf_allocatable
+    ! Requested: f_function_string_*_cdesc_allocatable_caller
+    ! Match:     f_function_string_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_*_cdesc_allocatable
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<

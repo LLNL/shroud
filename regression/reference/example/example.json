@@ -825,10 +825,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -876,7 +876,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -923,8 +923,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2663,10 +2663,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2713,7 +2713,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2760,8 +2760,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2864,10 +2864,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2914,7 +2914,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2961,8 +2961,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3063,10 +3063,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3112,7 +3112,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -3159,8 +3159,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",

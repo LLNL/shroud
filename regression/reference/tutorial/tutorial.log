@@ -3,7 +3,7 @@ Skipping std::string, unable to create C wrapper for function returning Concaten
 Read splicer ftutorialsplicer.f
 C void NoReturnNoArguments(void)  +intent(subroutine)
 C double PassByValue(double arg1 +value, int arg2 +value)  +intent(function)
-C const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)  +api(buf)+deref(allocatable)+intent(function)
+C const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)  +api(cdesc)+deref(allocatable)+intent(function)
 C double UseDefaultArguments(void)  +intent(function)
 C double UseDefaultArguments(double arg1=3.1415 +value)  +intent(function)
 C double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)  +intent(function)
@@ -62,7 +62,7 @@ Fortran int callback1(int in +value, int ( * incr)(int +value) +value)  +intent(
 Fortran const std::string & LastFunctionCalled(void) +len(30)  +deref(copy)+intent(function)
 C-interface void NoReturnNoArguments(void)  +intent(subroutine)
 C-interface double PassByValue(double arg1 +value, int arg2 +value)  +intent(function)
-C-interface const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)  +api(buf)+deref(allocatable)+intent(function)
+C-interface const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)  +api(cdesc)+deref(allocatable)+intent(function)
 C-interface double UseDefaultArguments(void)  +intent(function)
 C-interface double UseDefaultArguments(double arg1=3.1415 +value)  +intent(function)
 C-interface double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)  +intent(function)

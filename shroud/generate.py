@@ -1618,7 +1618,7 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
-                result_as_string.metaattrs["api"] = C_new.ast.metaattrs["api"]
+                result_as_string.metaattrs["api"] = "cfi"
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["api"] = None
@@ -1709,12 +1709,19 @@ class GenFunctions(object):
                 # User requested cdesc.
                 has_buf_arg = "cdesc"
             elif arg_typemap.sgroup == "string":
-                has_buf_arg = "buf"
+                if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                    has_buf_arg = "cdesc"
+                    # XXX - this is not tested
+                else:
+                    has_buf_arg = "buf"
             elif arg_typemap.sgroup == "char":
                 if arg.ftrim_char_in:
                     pass
                 elif arg.is_indirect():
-                    has_buf_arg = "buf"
+                    if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                        has_buf_arg = "cdesc"
+                    else:
+                        has_buf_arg = "buf"
             elif arg_typemap.sgroup == "vector":
                 if arg.metaattrs["intent"] == "in":
                     # Pass SIZE.
@@ -1744,11 +1751,18 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
-            need_buf_result   = "buf"
+            if meta["deref"] in ["allocatable", "pointer"]:
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
-            need_buf_result   = "buf"
+            if meta["deref"] in ["allocatable", "pointer"]:
+                # Result default to "allocatable".
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
@@ -1822,7 +1836,8 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
-                result_as_string.metaattrs["api"] = C_new.ast.metaattrs["api"]
+                # We've added an argument to fill, use api=buf.
+                result_as_string.metaattrs["api"] = "buf"
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["api"] = None

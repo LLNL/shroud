@@ -258,8 +258,8 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
-        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_buf_allocatable
+        ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+        ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
@@ -477,8 +477,8 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2
-        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_buf_allocatable
+        ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+        ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -504,8 +504,8 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3
-        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_buf_allocatable
+        ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+        ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -531,8 +531,8 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4
-        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-        ! Exact:     c_function_string_&_buf_allocatable
+        ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+        ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -1394,9 +1394,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
@@ -1620,9 +1620,9 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1640,9 +1640,9 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1660,9 +1660,9 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_string_&_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_string_&_buf_allocatable
+    ! Exact:     f_function_string_&_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
