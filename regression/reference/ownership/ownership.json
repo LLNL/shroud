@@ -558,6 +558,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -971,6 +972,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1306,6 +1308,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1639,6 +1642,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2108,6 +2112,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2619,6 +2624,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

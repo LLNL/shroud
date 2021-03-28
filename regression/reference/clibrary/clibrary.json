@@ -1305,6 +1305,7 @@
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1696,6 +1697,7 @@
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1927,6 +1929,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2241,6 +2244,7 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2579,6 +2583,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3803,6 +3808,7 @@
                 "options": {
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4508,6 +4514,7 @@
                 "options": {
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5524,6 +5531,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

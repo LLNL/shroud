@@ -3212,6 +3212,7 @@
                                 "options": {
                                     "F_create_generic": false
                                 },
+                                "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
                                     "f_c": true
@@ -3978,6 +3979,7 @@
                                 "options": {
                                     "F_create_generic": false
                                 },
+                                "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
                                     "f_c": true

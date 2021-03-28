@@ -2296,6 +2296,7 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3246,6 +3247,7 @@
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3654,6 +3656,7 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3906,6 +3909,7 @@
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

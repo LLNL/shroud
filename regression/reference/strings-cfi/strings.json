@@ -597,6 +597,7 @@
                     "wrap_fortran": false,
                     "wrap_lua": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -859,6 +860,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1059,6 +1061,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1251,6 +1254,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1431,6 +1435,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1553,6 +1558,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -1774,6 +1780,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1933,6 +1940,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2078,6 +2086,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2200,6 +2209,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -2324,6 +2334,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2512,6 +2523,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2708,6 +2720,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2891,6 +2904,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3014,6 +3028,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "fortran": true
                 },
@@ -3187,6 +3202,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3367,6 +3383,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3575,6 +3592,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3761,6 +3779,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3953,6 +3972,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4147,6 +4167,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4358,6 +4379,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4588,6 +4610,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4812,6 +4835,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5036,6 +5060,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5258,6 +5283,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5488,6 +5514,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5793,6 +5820,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6138,6 +6166,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6434,6 +6463,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6856,6 +6886,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -7061,6 +7092,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -7557,6 +7589,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -7900,6 +7933,7 @@
                     "PY_array_arg": "list",
                     "wrap_fortran": false
                 },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true

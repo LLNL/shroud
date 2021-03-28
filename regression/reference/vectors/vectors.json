@@ -154,6 +154,7 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -374,6 +375,7 @@
                     "literalinclude": true,
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -634,6 +636,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -871,6 +874,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1075,6 +1079,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1279,6 +1284,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1471,6 +1477,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1669,6 +1676,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1879,6 +1887,7 @@
                 "options": {
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2245,6 +2254,7 @@
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

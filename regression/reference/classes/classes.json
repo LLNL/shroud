@@ -1109,6 +1109,7 @@
                             "wrap_lua": false,
                             "wrap_python": false
                         },
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1497,6 +1498,7 @@
                             "brief": "test helper"
                         },
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2104,6 +2106,7 @@
                         "decl": "std::string getM_name()",
                         "declgen": "std::string getM_name(void)",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2251,6 +2254,7 @@
                         "decl": "void setM_name(std::string val)",
                         "declgen": "void setM_name(std::string val +intent(in))",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2622,6 +2626,7 @@
                             "brief": "test helper"
                         },
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -4742,6 +4747,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

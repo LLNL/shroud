@@ -517,6 +517,7 @@
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1112,6 +1113,7 @@
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1520,6 +1522,7 @@
                         "// py line 2"
                     ]
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
