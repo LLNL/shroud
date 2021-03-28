@@ -298,7 +298,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_c_module_line": "tutorial_mod:SHROUD_class1_capsule",
                                     "f_capsule_data_type": "SHROUD_class1_capsule",
@@ -453,7 +452,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_c_module_line": "--import--:FOR_SHROUD_capsule_data",
                                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
@@ -665,7 +663,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
                             "f_type": "type(Cstruct1)",

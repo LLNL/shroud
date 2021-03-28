@@ -228,7 +228,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg1",
-                                    "F_pointer": "SHPTR_arg1",
                                     "c_var": "arg1",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -280,7 +279,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg2",
-                                    "F_pointer": "SHPTR_arg2",
                                     "c_var": "arg2",
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
@@ -538,7 +536,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "n",
-                                    "F_pointer": "SHPTR_n",
                                     "c_var": "n",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -769,7 +766,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "v",
-                                    "F_pointer": "SHPTR_v",
                                     "c_var": "v",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -1127,7 +1123,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "n",
-                                    "F_pointer": "SHPTR_n",
                                     "c_var": "n",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -1358,7 +1353,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "v",
-                                    "F_pointer": "SHPTR_v",
                                     "c_var": "v",
                                     "f_intent": "IN",
                                     "f_kind": "C_DOUBLE",
@@ -1909,7 +1903,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1961,7 +1954,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_LONG",
@@ -2154,7 +2146,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_FLOAT",
@@ -2206,7 +2197,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -2890,7 +2880,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "value",
-                                            "F_pointer": "SHPTR_value",
                                             "c_var": "value",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -3143,6 +3132,7 @@
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
+                                        "c_local_ptr": "SHC_rv_ptr",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "int",
                                         "f_intent": "OUT",
@@ -3247,7 +3237,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "n",
-                                            "F_pointer": "SHPTR_n",
                                             "c_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "C_SIZE_T",
@@ -3657,7 +3646,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "value",
-                                            "F_pointer": "SHPTR_value",
                                             "c_var": "value",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
@@ -3910,6 +3898,7 @@
                                     },
                                     "fmtf": {
                                         "F_C_var": "SHT_rv",
+                                        "c_local_ptr": "SHC_rv_ptr",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "double",
                                         "f_intent": "OUT",
@@ -4014,7 +4003,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "n",
-                                            "F_pointer": "SHPTR_n",
                                             "c_var": "n",
                                             "f_intent": "IN",
                                             "f_kind": "C_SIZE_T",

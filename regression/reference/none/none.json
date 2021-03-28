@@ -165,7 +165,6 @@
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
             "F_name_scope": "",
-            "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
             "F_result_clause": "",

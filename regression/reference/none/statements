@@ -2308,32 +2308,36 @@ f_function_native_&:
   arg_decl:
   - '{f_type}, pointer :: {f_var}'
   call:
-  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
   declare:
-  - 'type(C_PTR) :: {F_pointer}'
+  - 'type(C_PTR) :: {c_local_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
   intent: function
+  local:
+  - ptr
   name: f_function_native_&
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result})
+  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_native_&_buf_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   call:
-  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
   declare:
-  - 'type(C_PTR) :: {F_pointer}'
+  - 'type(C_PTR) :: {c_local_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
   intent: function
+  local:
+  - ptr
   name: f_function_native_&_buf_pointer
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result})
+  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_native_**:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -2343,17 +2347,19 @@ f_function_native_*_buf_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}'
   call:
-  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
   declare:
-  - 'type(C_PTR) :: {F_pointer}'
+  - 'type(C_PTR) :: {c_local_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
   intent: function
+  local:
+  - ptr
   name: f_function_native_*_buf_pointer
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result})
+  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_native_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -2552,17 +2558,19 @@ f_function_struct_*_buf_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}'
   call:
-  - '{F_pointer} = {F_C_call}({F_arg_c_call})'
+  - '{c_local_ptr} = {F_C_call}({F_arg_c_call})'
   declare:
-  - 'type(C_PTR) :: {F_pointer}'
+  - 'type(C_PTR) :: {c_local_ptr}'
   f_module:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
   intent: function
+  local:
+  - ptr
   name: f_function_struct_*_buf_pointer
   post_call:
-  - call c_f_pointer({F_pointer}, {F_result})
+  - call c_f_pointer({c_local_ptr}, {F_result})
 f_function_vector_cdesc:
   c_helper: copy_array
   f_helper: copy_array_{cxx_T}

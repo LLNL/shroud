@@ -270,7 +270,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -650,7 +649,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "obj2",
-                                    "F_pointer": "SHPTR_obj2",
                                     "c_var": "obj2",
                                     "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -1136,7 +1134,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_BOOL",
@@ -1170,7 +1167,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "name",
-                                    "F_pointer": "SHPTR_name",
                                     "c_var": "name",
                                     "c_var_len": "SHT_name_len",
                                     "f_intent": "IN",
@@ -1613,7 +1609,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -1984,7 +1979,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -2283,7 +2277,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "c_var_len": "SHT_val_len",
                                     "f_intent": "IN",
@@ -3397,7 +3390,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -3599,7 +3591,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -3728,7 +3719,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -4284,7 +4274,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "flag",
-                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -4415,7 +4404,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",

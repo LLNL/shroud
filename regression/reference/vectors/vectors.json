@@ -181,7 +181,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
@@ -402,7 +401,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -663,7 +661,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -901,7 +898,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -1106,7 +1102,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -1312,7 +1307,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
@@ -1505,7 +1499,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
@@ -1703,7 +1696,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "double",
@@ -1918,7 +1910,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_local_i": "SHC_arg_i",
                             "c_local_n": "SHC_arg_n",
                             "c_local_s": "SHC_arg_s",
@@ -2279,7 +2270,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "n",
-                            "F_pointer": "SHPTR_n",
                             "c_var": "n",
                             "f_intent": "IN",
                             "f_kind": "C_INT",

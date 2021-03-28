@@ -1964,9 +1964,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_scalar_bufferify()
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_return_int_ptr_to_scalar_bufferify()
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
@@ -2007,9 +2007,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_const_scalar_bufferify()
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_return_int_ptr_to_const_scalar_bufferify()
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
     ! end return_int_ptr_to_const_scalar

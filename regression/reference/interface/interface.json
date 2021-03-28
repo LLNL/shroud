@@ -136,7 +136,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
@@ -169,7 +168,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_INT",

@@ -1016,14 +1016,15 @@ fc_statements = [
             "{f_type}, pointer :: {f_var}",
         ],
         declare=[
-            "type(C_PTR) :: {F_pointer}",
+            "type(C_PTR) :: {c_local_ptr}",
         ],
         call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
         post_call=[
-            "call c_f_pointer({F_pointer}, {F_result})",
+            "call c_f_pointer({c_local_ptr}, {F_result})",
         ],
+        local=["ptr"],
     ),
     dict(
         name="f_function_native_*_cdesc_pointer",

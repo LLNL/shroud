@@ -239,7 +239,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "i",
-                                    "F_pointer": "SHPTR_i",
                                     "c_var": "i",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -461,7 +460,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",

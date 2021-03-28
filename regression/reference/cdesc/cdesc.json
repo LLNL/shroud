@@ -184,7 +184,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_cdesc2": "Darg",
@@ -713,7 +712,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
@@ -749,7 +747,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "value",
-                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_cdesc": "SHT_value_cdesc",
                             "c_var_cdesc2": "Dvalue",
@@ -1021,7 +1018,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
@@ -1057,7 +1053,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "value",
-                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_cdesc": "SHT_value_cdesc",
                             "c_var_cdesc2": "Dvalue",
@@ -1769,7 +1764,6 @@
                 "zz_fmtargs": {
                     "name": {
                         "fmtf": {
-                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -1784,7 +1778,6 @@
                     },
                     "value": {
                         "fmtf": {
-                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -2000,7 +1993,6 @@
                 "zz_fmtargs": {
                     "name": {
                         "fmtf": {
-                            "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
@@ -2015,7 +2007,6 @@
                     },
                     "value": {
                         "fmtf": {
-                            "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE",
