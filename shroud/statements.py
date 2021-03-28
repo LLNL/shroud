@@ -510,18 +510,14 @@ default_stmts = dict(
                 
         
 
-# language   "c" 
+# language   "c", "f"
 # intent     "in", "out", "inout", "function", "subroutine", "ctor", "dtor"
-# sgroup     "native", "string", "char"
+# sgroup     "native", "string", "char" "struct", "shadow", "bool"
 # spointer   "scalar" "*" "**", "&"
-# generated  "buf"
-# deref      "allocatable", "pointer", "raw"
-#
-# language   "f"
-# intent     "in", "out", "inout", "function", "subroutine", "ctor", "dtor"
-# sgroup     "native", "string", "char"
-# spointer   "scalar" "*" "**", "&"
-# generated  "buf"
+# generated
+#      "buf"  Pass argument and meta data like SIZE or LEN.
+#      "cdesc"  Pass array_type
+#      "cfi"    Pass Fortran 2018 CFI_cdesc_t   option.F_CFI
 # deref      "allocatable", "pointer", "raw"
 # owner      "caller"
 

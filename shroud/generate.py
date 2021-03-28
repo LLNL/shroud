@@ -132,8 +132,6 @@ class VerifyAttrs(object):
         ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
-        if ast.attrs["cdesc"]:
-            ast.metaattrs["cdesc"] = True
 
         if ast.typemap is None:
             print("XXXXXX typemap is None")
@@ -434,8 +432,6 @@ class VerifyAttrs(object):
         intent = self.check_intent_attr(node, arg)
         self.check_deref_attr_var(arg)
         self.check_common_attrs(arg)
-        if attrs["cdesc"]:
-            meta["cdesc"] = True
 
         is_ptr = arg.is_indirect()
 
@@ -1595,6 +1591,7 @@ class GenFunctions(object):
 
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
+        C_new.splicer_group = "cfi"
         if need_buf_result:
             C_new.ast.metaattrs["api"] = generated_suffix
         fmt_func = C_new.fmtdict
@@ -1704,23 +1701,26 @@ class GenFunctions(object):
         # create buffer version of function.
         buf_args = {}
         for arg in ast.params:
-            has_buf_arg = False
+            has_buf_arg = None
             arg_typemap = arg.typemap
-            if arg_typemap.sgroup == "string":
-                has_buf_arg = True
+            if arg.attrs["cdesc"]:
+                # User requested cdesc.
+                has_buf_arg = "cdesc"
+            elif arg_typemap.sgroup == "string":
+                has_buf_arg = "buf"
             elif arg_typemap.sgroup == "char":
                 if arg.ftrim_char_in:
                     pass
                 elif arg.is_indirect():
-                    has_buf_arg = True
+                    has_buf_arg = "buf"
             elif arg_typemap.sgroup == "vector":
-                has_buf_arg = True
+                has_buf_arg = "buf"
             elif (arg_typemap.sgroup == "native" and
                   arg.metaattrs["intent"] == "out" and
                   arg.metaattrs["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
                 # double **values +intent(out) +deref(raw)
-                has_buf_arg = True
+                has_buf_arg = "buf"
             buf_args[arg.name] = has_buf_arg
         has_buf_arg = any(buf_args.values())
 
@@ -1769,6 +1769,7 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
+        C_new.splicer_group = "buf"
         if need_buf_result:
             C_new.ast.metaattrs["api"] = generated_suffix
         
@@ -1781,7 +1782,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             if buf_args[arg.name]:
-                arg.metaattrs["api"] = generated_suffix
+                arg.metaattrs["api"] = buf_args[arg.name]
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:

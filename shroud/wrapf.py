@@ -1195,7 +1195,6 @@ rv = .false.
             if intent != "in":
                 args_all_in = False
             deref_attr = meta["deref"]
-            cdesc = "cdesc" if meta["cdesc"] is True else None
 
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
@@ -1203,7 +1202,7 @@ rv = .false.
                            meta["api"], deref_attr]
             else:
                 c_stmts = ["c", intent, sgroup, spointer,
-                           meta["api"], deref_attr, cdesc]
+                           meta["api"], deref_attr]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             if options.debug:
@@ -1673,7 +1672,6 @@ rv = .false.
             c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_meta["intent"]
-            cdesc = "cdesc" if c_meta["cdesc"] is True else None
 
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]
@@ -1717,8 +1715,8 @@ rv = .false.
             else:
                 # Pass metaattrs["api"] to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr, cdesc]
-                f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr, cdesc]
+                c_stmts = ["c", intent, c_sgroup, c_spointer, c_api, f_deref_attr]
+                f_stmts = ["f", intent, f_sgroup, f_spointer, c_api, f_deref_attr]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

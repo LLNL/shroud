@@ -19,18 +19,21 @@ declarations:
 
 ######################################################################
 - decl: void GetScalar1(std::string & name+intent(in),
-                        void *value+intent(out)+rank(0)+cdesc)
+                        void *value+intent(in)+rank(0)+cdesc)
   doxygen:
     description: |
       Create several Fortran generic functions which call a single
-      C wrapper that checkes the type of the Fortran argument
+      C wrapper that checks the type of the Fortran argument
       and calls the correct templated function.
       Adding the string argument forces a bufferified function
       to be create.
-      XXX The non-bufferified version should not be created since
-      users will not manually create a context struct.
+      Argument value is intent(in). The pointer does not change, only
+      the pointee.
+      XXX - The function is virtual in the sense that GetScalar1 should
+      not need to exist but there is no way, yet, to avoid wrapping the
+      non-bufferify function.
   splicer:
-    c: |
+    c_buf: |
       switch(SHT_value_cdesc->type) {
       case SH_TYPE_INT: {
         *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();

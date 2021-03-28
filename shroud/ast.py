@@ -1474,6 +1474,7 @@ class FunctionNode(AstNode):
         self._gen_fortran_generic = False # An argument is assumed-rank.
         self.splicer = {}
         self.fstatements = {}
+        self.splicer_group = None
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper

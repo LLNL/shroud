@@ -1046,9 +1046,8 @@ class Wrapc(util.WrapperMixin):
                 # regular argument (not function result)
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
-                cdesc = "cdesc" if c_meta["cdesc"] is True else None
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
-                         c_meta["api"], c_meta["deref"], cdesc] + specialize
+                         c_meta["api"], c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg.name
                 # XXX - order issue - c_var must be set before name_temp_vars,
@@ -1166,7 +1165,7 @@ class Wrapc(util.WrapperMixin):
         post_call_pattern = []
         if node.C_error_pattern is not None:
             C_error_pattern = statements.compute_name(
-                [node.C_error_pattern, result_api])
+                [node.C_error_pattern, node.splicer_group])
             if C_error_pattern in self.patterns:
                 need_wrapper = True
                 post_call_pattern.append("// C_error_pattern")
@@ -1266,7 +1265,7 @@ class Wrapc(util.WrapperMixin):
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_name = statements.compute_name(["c", result_api])
+        splicer_name = statements.compute_name(["c", node.splicer_group])
         if splicer_name in node.splicer:
             need_wrapper = True
             C_force = node.splicer[splicer_name]

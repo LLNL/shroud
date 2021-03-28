@@ -9,7 +9,11 @@
 #ifndef CDESC_HPP
 #define CDESC_HPP
 
+#include <string>
+
 void Rank2In(int *arg);
+
+void GetScalar1(std::string & name, void *value);
 
 template<typename DataType>
 DataType getData();

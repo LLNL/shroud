@@ -15,6 +15,10 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "10",
                 "ast": {
                     "declarator": {
                         "name": "Rank2In",
@@ -39,7 +43,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
                                 "intent": "in"
                             },
                             "specifier": [
@@ -58,8 +61,105 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "c_var_cdesc2": "Darg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "c_var": "arg",
+                            "c_var_cdesc2": "Darg"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "CDE_rank2_in",
+                    "C_prototype": "int * arg",
+                    "C_return_type": "void",
+                    "F_C_arguments": "arg",
+                    "F_C_call": "c_rank2_in_bufferify",
+                    "F_C_name": "c_rank2_in",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_arg_cdesc",
+                    "F_arguments": "arg",
+                    "F_name_function": "rank2_in",
+                    "F_name_generic": "rank2_in",
+                    "F_name_impl": "rank2_in",
+                    "F_subprogram": "subroutine",
+                    "function_name": "Rank2In",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "rank2_in"
+                }
+            },
+            {
+                "<FUNCTION>": "10 ****************************************",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "Rank2In",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "cdesc": true,
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cdesc",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Rank2In(int *arg +intent(in)+rank(2)+cdesc)",
+                "declgen": "void Rank2In(int * arg +cdesc+intent(in)+rank(2))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -108,24 +208,16 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg",
-                    "C_name": "CDE_rank2_in",
+                    "C_name": "CDE_rank2_in_bufferify",
                     "C_prototype": "CDE_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
-                    "F_C_call": "c_rank2_in",
-                    "F_C_name": "c_rank2_in",
+                    "F_C_name": "c_rank2_in_bufferify",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_arg_cdesc",
-                    "F_arguments": "arg",
-                    "F_name_function": "rank2_in",
-                    "F_name_generic": "rank2_in",
-                    "F_name_impl": "rank2_in",
-                    "F_subprogram": "subroutine",
                     "function_name": "Rank2In",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "rank2_in"
                 }
             },
@@ -164,7 +256,7 @@
                         {
                             "attrs": {
                                 "cdesc": true,
-                                "intent": "out",
+                                "intent": "in",
                                 "rank": 0,
                                 "value": true
                             },
@@ -177,8 +269,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
-                                "intent": "out"
+                                "intent": "in"
                             },
                             "specifier": [
                                 "void"
@@ -191,10 +282,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
-                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(out)+rank(0)+value)",
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+cdesc)",
+                "declgen": "void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(in)+rank(0)+value)",
                 "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "fortran_generic": [
                     {
@@ -234,7 +325,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "cdesc": true,
                                     "intent": "out"
                                 },
                                 "specifier": [
@@ -283,7 +373,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "cdesc": true,
                                     "intent": "out"
                                 },
                                 "specifier": [
@@ -298,7 +387,7 @@
                 ],
                 "options": {},
                 "splicer": {
-                    "c": [
+                    "c_buf": [
                         "switch(SHT_value_cdesc->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();",
@@ -355,7 +444,6 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "value",
-                            "c_var_cdesc": "SHT_value_cdesc",
                             "c_var_cdesc2": "Dvalue",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -364,13 +452,12 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_out_void_*_cdesc",
-                            "stmt1": "c_out_void_*_cdesc"
+                            "stmt0": "c_in_void_*",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_C_var": "value",
                             "c_var": "value",
-                            "c_var_cdesc": "SHT_value_cdesc",
                             "c_var_cdesc2": "Dvalue"
                         }
                     }
@@ -378,9 +465,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
                     "C_name": "CDE_get_scalar1",
-                    "C_prototype": "char * name,\t CDE_SHROUD_array *SHT_value_cdesc",
+                    "C_prototype": "char * name,\t void * value",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t SHT_value_cdesc",
+                    "F_C_arguments": "name,\t value",
                     "F_C_name": "c_get_scalar1",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
@@ -397,7 +484,7 @@
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "1",
-                "_PTR_F_C_index": "10",
+                "_PTR_F_C_index": "11",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -444,7 +531,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -458,14 +544,14 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+cdesc)",
                 "declgen": "void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "options": {},
                 "splicer": {
-                    "c": [
+                    "c_buf": [
                         "switch(SHT_value_cdesc->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();",
@@ -508,7 +594,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "11 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
@@ -558,7 +644,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -572,14 +658,14 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+cdesc)",
                 "declgen": "void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "options": {},
                 "splicer": {
-                    "c": [
+                    "c_buf": [
                         "switch(SHT_value_cdesc->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();",
@@ -706,7 +792,7 @@
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "1",
-                "_PTR_F_C_index": "11",
+                "_PTR_F_C_index": "12",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -753,7 +839,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
                                 "intent": "out"
                             },
                             "specifier": [
@@ -767,14 +852,14 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+cdesc)",
                 "declgen": "void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "options": {},
                 "splicer": {
-                    "c": [
+                    "c_buf": [
                         "switch(SHT_value_cdesc->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();",
@@ -817,7 +902,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
@@ -867,7 +952,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "cdesc": true,
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -881,14 +966,14 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(in)+rank(0)+cdesc)",
                 "declgen": "void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
-                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "options": {},
                 "splicer": {
-                    "c": [
+                    "c_buf": [
                         "switch(SHT_value_cdesc->type) {",
                         "case SH_TYPE_INT: {",
                         "  *static_cast<int *>(const_cast<void *>(SHT_value_cdesc->addr.base)) = getData<int>();",
@@ -1497,7 +1582,7 @@
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "3",
-                "_PTR_F_C_index": "12",
+                "_PTR_F_C_index": "13",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1597,7 +1682,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "13 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
@@ -1728,7 +1813,7 @@
                     "arg_to_buffer"
                 ],
                 "_PTR_C_CXX_index": "3",
-                "_PTR_F_C_index": "13",
+                "_PTR_F_C_index": "14",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1828,7 +1913,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "14 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",

@@ -422,6 +422,9 @@ void STR_get_const_string_result_bufferify(
     // splicer begin function.get_const_string_result_bufferify
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = getConstStringResult();
+    // C_error_pattern
+    // Some error code for buf
+
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.get_const_string_result_bufferify
 }
@@ -439,6 +442,9 @@ void STR_get_const_string_len_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.get_const_string_len_bufferify
     const std::string SHCXX_rv = getConstStringLen();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -467,6 +473,9 @@ void STR_get_const_string_as_arg_bufferify(char *output,
 {
     // splicer begin function.get_const_string_as_arg_bufferify
     const std::string SHCXX_rv = getConstStringAsArg();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_len, nullptr, 0);
     } else {
@@ -572,6 +581,9 @@ void STR_get_const_string_ref_len_bufferify(char *SHC_rv,
 {
     // splicer begin function.get_const_string_ref_len_bufferify
     const std::string & SHCXX_rv = getConstStringRefLen();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -626,6 +638,9 @@ void STR_get_const_string_ref_as_arg_bufferify(char *output,
 {
     // splicer begin function.get_const_string_ref_as_arg_bufferify
     const std::string & SHCXX_rv = getConstStringRefAsArg();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_len, nullptr, 0);
     } else {
@@ -672,6 +687,9 @@ void STR_get_const_string_ref_len_empty_bufferify(char *SHC_rv,
 {
     // splicer begin function.get_const_string_ref_len_empty_bufferify
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {

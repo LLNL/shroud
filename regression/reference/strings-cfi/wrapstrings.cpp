@@ -406,6 +406,9 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.get_const_string_result_CFI
     const std::string SHCXX_rv = getConstStringResult();
+    // C_error_pattern
+    // Some error code for cfi
+
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
     if (SH_ret == CFI_SUCCESS) {
@@ -428,6 +431,9 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.get_const_string_len_CFI
     const std::string SHCXX_rv = getConstStringLen();
+    // C_error_pattern
+    // Some error code for cfi
+
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
@@ -456,6 +462,9 @@ void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
     // splicer begin function.get_const_string_as_arg_CFI
     const std::string SHCXX_rv = getConstStringAsArg();
+    // C_error_pattern
+    // Some error code for cfi
+
     char *output = static_cast<char *>(SHT_output_cfi->base_addr);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_cfi->elem_len, nullptr, 0);
@@ -568,6 +577,9 @@ void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.get_const_string_ref_len_CFI
     const std::string & SHCXX_rv = getConstStringRefLen();
+    // C_error_pattern
+    // Some error code for cfi
+
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
@@ -622,6 +634,9 @@ void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi)
 {
     // splicer begin function.get_const_string_ref_as_arg_CFI
     const std::string & SHCXX_rv = getConstStringRefAsArg();
+    // C_error_pattern
+    // Some error code for cfi
+
     char *output = static_cast<char *>(SHT_output_cfi->base_addr);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_cfi->elem_len, nullptr, 0);
@@ -668,6 +683,9 @@ void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.get_const_string_ref_len_empty_CFI
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
+    // C_error_pattern
+    // Some error code for cfi
+
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
