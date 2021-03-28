@@ -1385,7 +1385,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -1488,7 +1487,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar_buf",
+                        "stmt0": "c_subroutine_void_scalar",
                         "stmt1": "c_subroutine"
                     }
                 }
@@ -1508,7 +1507,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -2027,7 +2025,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -2128,7 +2125,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar_buf",
+                        "stmt0": "c_subroutine_void_scalar",
                         "stmt1": "c_subroutine"
                     }
                 }
@@ -2149,7 +2146,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -2832,7 +2828,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [
@@ -2934,7 +2929,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
-                        "stmt0": "c_subroutine_void_scalar_buf",
+                        "stmt0": "c_subroutine_void_scalar",
                         "stmt1": "c_subroutine"
                     }
                 }
@@ -2955,7 +2950,6 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
                         "intent": "subroutine"
                     },
                     "params": [

@@ -358,8 +358,8 @@ const char * STR_get_char_ptr3(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr3
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  char * output
@@ -450,8 +450,8 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  void getConstStringAsArg
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string * output
@@ -622,8 +622,8 @@ const char * STR_get_const_string_ref_as_arg(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefAsArg
-// Attrs:     +api(cfi)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_cfi
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & output

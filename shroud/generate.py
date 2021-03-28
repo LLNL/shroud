@@ -1618,8 +1618,10 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
+                result_as_string.metaattrs["api"] = C_new.ast.metaattrs["api"]
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["api"] = None
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
@@ -1820,8 +1822,10 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
+                result_as_string.metaattrs["api"] = C_new.ast.metaattrs["api"]
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["api"] = None
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 

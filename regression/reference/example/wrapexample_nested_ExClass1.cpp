@@ -241,8 +241,8 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 
 // ----------------------------------------
 // Function:  void getNameArg
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & name
