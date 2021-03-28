@@ -173,7 +173,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "size",
-                                    "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -402,7 +401,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "size",
-                                    "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "OUT",
                                     "f_kind": "C_INT",
@@ -612,12 +610,13 @@
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_buf_pointer",
-                                "stmt1": "f_function_native_*_buf_pointer",
-                                "stmtc0": "c_function_native_*_buf_pointer",
-                                "stmtc1": "c_function_native_*_buf"
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -661,7 +660,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -717,8 +716,8 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf"
+                                "stmt0": "c_function_native_*_cdesc_pointer",
+                                "stmt1": "c_function_native_*_cdesc"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -827,12 +826,13 @@
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_buf_pointer",
-                                "stmt1": "f_function_native_*_buf_pointer",
-                                "stmtc0": "c_function_native_*_buf_pointer",
-                                "stmtc1": "c_function_native_*_buf"
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -877,7 +877,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -933,8 +933,8 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf"
+                                "stmt0": "c_function_native_*_cdesc_pointer",
+                                "stmt1": "c_function_native_*_cdesc"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1042,12 +1042,13 @@
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_buf_pointer",
-                                "stmt1": "f_function_native_*_buf_pointer",
-                                "stmtc0": "c_function_native_*_buf_pointer",
-                                "stmtc1": "c_function_native_*_buf"
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1092,7 +1093,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1148,8 +1149,8 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf"
+                                "stmt0": "c_function_native_*_cdesc_pointer",
+                                "stmt1": "c_function_native_*_cdesc"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1259,12 +1260,13 @@
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "f_function_native_*_buf_pointer",
-                                "stmt1": "f_function_native_*_buf_pointer",
-                                "stmtc0": "c_function_native_*_buf_pointer",
-                                "stmtc1": "c_function_native_*_buf"
+                                "stmt0": "f_function_native_*_cdesc_pointer",
+                                "stmt1": "f_function_native_*_cdesc_pointer",
+                                "stmtc0": "c_function_native_*_cdesc_pointer",
+                                "stmtc1": "c_function_native_*_cdesc"
                             },
                             "fmtpy": {
                                 "array_size": "self->obj->getSize()",
@@ -1310,7 +1312,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "dimension": [
                                     {
@@ -1366,8 +1368,8 @@
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
-                                "stmt0": "c_function_native_*_buf_pointer",
-                                "stmt1": "c_function_native_*_buf"
+                                "stmt0": "c_function_native_*_cdesc_pointer",
+                                "stmt1": "c_function_native_*_cdesc"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1609,7 +1611,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "api": "buf",
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -1676,12 +1678,11 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "c_out_native_**_buf_pointer",
-                                    "stmt1": "c_out_native_**_buf"
+                                    "stmt0": "c_out_native_**_cdesc_pointer",
+                                    "stmt1": "c_out_native_**_cdesc"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(isize)",
@@ -1694,10 +1695,10 @@
                                     "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "f_out_native_**_buf_pointer",
-                                    "stmt1": "f_out_native_**_buf_pointer",
-                                    "stmtc0": "c_out_native_**_buf_pointer",
-                                    "stmtc1": "c_out_native_**_buf"
+                                    "stmt0": "f_out_native_**_cdesc_pointer",
+                                    "stmt1": "f_out_native_**_cdesc_pointer",
+                                    "stmtc0": "c_out_native_**_cdesc_pointer",
+                                    "stmtc1": "c_out_native_**_cdesc"
                                 }
                             },
                             "isize": {
@@ -1720,7 +1721,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "isize",
-                                    "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
@@ -1984,7 +1984,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "api": "buf",
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2051,12 +2051,11 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "c_out_native_*&_buf_pointer",
-                                    "stmt1": "c_out_native_*&_buf"
+                                    "stmt0": "c_out_native_*&_cdesc_pointer",
+                                    "stmt1": "c_out_native_*&_cdesc"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(isize)",
@@ -2069,10 +2068,10 @@
                                     "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "f_out_native_*&_buf_pointer",
-                                    "stmt1": "f_out_native_*&_buf_pointer",
-                                    "stmtc0": "c_out_native_*&_buf_pointer",
-                                    "stmtc1": "c_out_native_*&_buf"
+                                    "stmt0": "f_out_native_*&_cdesc_pointer",
+                                    "stmt1": "f_out_native_*&_cdesc_pointer",
+                                    "stmtc0": "c_out_native_*&_cdesc_pointer",
+                                    "stmtc1": "c_out_native_*&_cdesc"
                                 }
                             },
                             "isize": {
@@ -2095,7 +2094,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "isize",
-                                    "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
@@ -2361,7 +2359,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "api": "buf",
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2428,12 +2426,11 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "c_out_native_**_buf_pointer",
-                                    "stmt1": "c_out_native_**_buf"
+                                    "stmt0": "c_out_native_**_cdesc_pointer",
+                                    "stmt1": "c_out_native_**_cdesc"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(isize)",
@@ -2446,10 +2443,10 @@
                                     "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "f_out_native_**_buf_pointer",
-                                    "stmt1": "f_out_native_**_buf_pointer",
-                                    "stmtc0": "c_out_native_**_buf_pointer",
-                                    "stmtc1": "c_out_native_**_buf"
+                                    "stmt0": "f_out_native_**_cdesc_pointer",
+                                    "stmt1": "f_out_native_**_cdesc_pointer",
+                                    "stmtc0": "c_out_native_**_cdesc_pointer",
+                                    "stmtc1": "c_out_native_**_cdesc"
                                 }
                             },
                             "isize": {
@@ -2472,7 +2469,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "isize",
-                                    "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
@@ -2738,7 +2734,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "api": "buf",
+                                        "api": "cdesc",
                                         "deref": "pointer",
                                         "dimension": [
                                             {
@@ -2805,12 +2801,11 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "c_out_native_*&_buf_pointer",
-                                    "stmt1": "c_out_native_*&_buf"
+                                    "stmt0": "c_out_native_*&_cdesc_pointer",
+                                    "stmt1": "c_out_native_*&_cdesc"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_cdesc": "SHT_array_cdesc",
                                     "f_array_allocate": "(isize)",
@@ -2823,10 +2818,10 @@
                                     "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt0": "f_out_native_*&_buf_pointer",
-                                    "stmt1": "f_out_native_*&_buf_pointer",
-                                    "stmtc0": "c_out_native_*&_buf_pointer",
-                                    "stmtc1": "c_out_native_*&_buf"
+                                    "stmt0": "f_out_native_*&_cdesc_pointer",
+                                    "stmt1": "f_out_native_*&_cdesc_pointer",
+                                    "stmtc0": "c_out_native_*&_cdesc_pointer",
+                                    "stmtc1": "c_out_native_*&_cdesc"
                                 }
                             },
                             "isize": {
@@ -2849,7 +2844,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "isize",
-                                    "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
@@ -2952,7 +2946,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
                                     "f_type": "type(C_PTR)",
@@ -3083,7 +3076,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
                                     "f_type": "type(C_PTR)",
@@ -3211,7 +3203,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
-                                    "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "IN",
                                     "f_type": "type(C_PTR)",

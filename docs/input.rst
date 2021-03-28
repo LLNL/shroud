@@ -308,6 +308,7 @@ cdesc
 
 Pass argument from Fortran to C wrapper as a pointer to a context type.
 This struct contains the address, type, rank and size of the argument.
+A 'bufferify' function will be created for the context type.
 
 .. XXX argument is named by context
 

@@ -68,9 +68,9 @@ int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Attrs:     +api(buf)+intent(out)
-// Requested: c_out_vector_&_buf_native
-// Match:     c_out_vector_buf
+// Attrs:     +api(cdesc)+intent(out)
+// Requested: c_out_vector_&_cdesc_native
+// Match:     c_out_vector_cdesc
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -102,9 +102,9 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Attrs:     +api(buf)+intent(out)
-// Requested: c_out_vector_&_buf_native
-// Match:     c_out_vector_buf
+// Attrs:     +api(cdesc)+intent(out)
+// Requested: c_out_vector_&_cdesc_native
+// Match:     c_out_vector_cdesc
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -138,9 +138,9 @@ long VEC_vector_iota_out_with_num_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
-// Attrs:     +api(buf)+intent(out)
-// Requested: c_out_vector_&_buf_native
-// Match:     c_out_vector_buf
+// Attrs:     +api(cdesc)+intent(out)
+// Requested: c_out_vector_&_cdesc_native
+// Match:     c_out_vector_cdesc
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -170,9 +170,9 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-// Attrs:     +api(buf)+deref(allocatable)+intent(out)
-// Requested: c_out_vector_&_buf_allocatable_native
-// Match:     c_out_vector_buf
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Requested: c_out_vector_&_cdesc_allocatable_native
+// Match:     c_out_vector_cdesc
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -202,9 +202,9 @@ void VEC_vector_iota_out_alloc_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-// Attrs:     +api(buf)+deref(allocatable)+intent(inout)
-// Requested: c_inout_vector_&_buf_allocatable_native
-// Match:     c_inout_vector_buf
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
+// Requested: c_inout_vector_&_cdesc_allocatable_native
+// Match:     c_inout_vector_cdesc
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     size_t SHT_arg_size, VEC_SHROUD_array *SHT_arg_cdesc)
@@ -231,9 +231,9 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
-// Attrs:     +api(buf)+intent(inout)
-// Requested: c_inout_vector_&_buf_native
-// Match:     c_inout_vector_buf
+// Attrs:     +api(cdesc)+intent(inout)
+// Requested: c_inout_vector_&_cdesc_native
+// Match:     c_inout_vector_cdesc
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -262,9 +262,9 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
-// Attrs:     +api(buf)+intent(out)
-// Requested: c_out_vector_&_buf_native
-// Match:     c_out_vector_buf
+// Attrs:     +api(cdesc)+intent(out)
+// Requested: c_out_vector_&_cdesc_native
+// Match:     c_out_vector_cdesc
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -323,9 +323,9 @@ int VEC_vector_string_count_bufferify(const char *arg,
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Requested: c_function_vector_scalar_buf_allocatable
-// Match:     c_function_vector_buf
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Requested: c_function_vector_scalar_cdesc_allocatable
+// Match:     c_function_vector_cdesc
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)

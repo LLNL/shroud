@@ -79,7 +79,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_FLOAT_COMPLEX",
@@ -181,7 +180,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
@@ -310,7 +308,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
@@ -583,7 +580,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT",
                             "f_kind": "C_DOUBLE_COMPLEX",
@@ -638,7 +634,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "flag",
-                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",

@@ -651,9 +651,9 @@ module generic_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -686,9 +686,9 @@ module generic_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1236,10 +1236,10 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1281,10 +1281,10 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)

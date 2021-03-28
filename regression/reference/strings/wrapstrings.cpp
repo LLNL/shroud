@@ -293,8 +293,8 @@ const char * STR_get_char_ptr1(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_char_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_char_*_cdesc_allocatable
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -373,8 +373,8 @@ const char * STR_get_char_ptr3(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr3
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  char * output
@@ -414,14 +414,17 @@ const char * STR_get_char_ptr4(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_scalar_cdesc_allocatable
 void STR_get_const_string_result_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.get_const_string_result_bufferify
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = getConstStringResult();
+    // C_error_pattern
+    // Some error code for buf
+
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 1);
     // splicer end function.get_const_string_result_bufferify
 }
@@ -439,6 +442,9 @@ void STR_get_const_string_len_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.get_const_string_len_bufferify
     const std::string SHCXX_rv = getConstStringLen();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -454,8 +460,8 @@ void STR_get_const_string_len_bufferify(char *SHC_rv, int SHT_rv_len)
  */
 // ----------------------------------------
 // Function:  void getConstStringAsArg
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string * output
@@ -467,6 +473,9 @@ void STR_get_const_string_as_arg_bufferify(char *output,
 {
     // splicer begin function.get_const_string_as_arg_bufferify
     const std::string SHCXX_rv = getConstStringAsArg();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_len, nullptr, 0);
     } else {
@@ -478,8 +487,8 @@ void STR_get_const_string_as_arg_bufferify(char *output,
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_scalar_cdesc_allocatable
 void STR_get_const_string_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -516,8 +525,8 @@ const char * STR_get_const_string_ref_pure(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 // start STR_get_const_string_ref_pure_bufferify
 void STR_get_const_string_ref_pure_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
@@ -572,6 +581,9 @@ void STR_get_const_string_ref_len_bufferify(char *SHC_rv,
 {
     // splicer begin function.get_const_string_ref_len_bufferify
     const std::string & SHCXX_rv = getConstStringRefLen();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -613,8 +625,8 @@ const char * STR_get_const_string_ref_as_arg(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefAsArg
-// Attrs:     +api(buf)+intent(subroutine)
-// Requested: c_subroutine_void_scalar_buf
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_void_scalar
 // Match:     c_subroutine
 // ----------------------------------------
 // Argument:  string & output
@@ -626,6 +638,9 @@ void STR_get_const_string_ref_as_arg_bufferify(char *output,
 {
     // splicer begin function.get_const_string_ref_as_arg_bufferify
     const std::string & SHCXX_rv = getConstStringRefAsArg();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(output, SHT_output_len, nullptr, 0);
     } else {
@@ -672,6 +687,9 @@ void STR_get_const_string_ref_len_empty_bufferify(char *SHC_rv,
 {
     // splicer begin function.get_const_string_ref_len_empty_bufferify
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
+    // C_error_pattern
+    // Some error code for buf
+
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -697,8 +715,8 @@ const char * STR_get_const_string_ref_alloc(void)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 void STR_get_const_string_ref_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -777,8 +795,8 @@ const char * STR_get_const_string_ptr_alloc(void)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -818,8 +836,8 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -851,8 +869,8 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_*_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_*_cdesc_allocatable
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {

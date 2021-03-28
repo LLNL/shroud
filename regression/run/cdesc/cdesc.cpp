@@ -11,6 +11,11 @@ void Rank2In(int *arg)
 {
 }
 
+void GetScalar1(std::string & name, void *value)
+{
+}
+
+
 // Specialize template to emulate some sort of database which
 // returns different values based on type.
 template<>

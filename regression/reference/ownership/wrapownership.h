@@ -34,8 +34,7 @@ int OWN_return_int_ptr_scalar(void);
 
 int * OWN_return_int_ptr_pointer(void);
 
-void OWN_return_int_ptr_pointer_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc);
+int * OWN_return_int_ptr_pointer_bufferify(void);
 
 int * OWN_return_int_ptr_dim_raw(int * len);
 

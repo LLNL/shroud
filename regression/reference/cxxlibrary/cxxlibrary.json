@@ -757,7 +757,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "data",
-                            "F_pointer": "SHPTR_data",
                             "c_var": "data",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
@@ -977,7 +976,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "in1",
-                            "F_pointer": "SHPTR_in1",
                             "c_var": "in1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1010,7 +1008,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "out1",
-                            "F_pointer": "SHPTR_out1",
                             "c_var": "out1",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -1043,7 +1040,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "out2",
-                            "F_pointer": "SHPTR_out2",
                             "c_var": "out2",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -1210,7 +1206,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "flag",
-                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
@@ -1264,7 +1259,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "in1",
-                            "F_pointer": "SHPTR_in1",
                             "c_var": "in1",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -1316,7 +1310,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "out1",
-                            "F_pointer": "SHPTR_out1",
                             "c_var": "out1",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -1369,7 +1362,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "out2",
-                            "F_pointer": "SHPTR_out2",
                             "c_var": "out2",
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
@@ -1598,7 +1590,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
                                     "f_type": "type(cstruct1)",
@@ -1775,7 +1766,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
                                     "f_type": "type(cstruct1)",
@@ -1951,7 +1941,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
                                     "f_type": "type(cstruct1)",
@@ -2080,7 +2069,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "OUT",
                                     "f_type": "type(cstruct1)",

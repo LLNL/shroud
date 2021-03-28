@@ -270,7 +270,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -650,7 +649,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "obj2",
-                                    "F_pointer": "SHPTR_obj2",
                                     "c_var": "obj2",
                                     "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -1136,7 +1134,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_BOOL",
@@ -1170,7 +1167,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "name",
-                                    "F_pointer": "SHPTR_name",
                                     "c_var": "name",
                                     "c_var_len": "SHT_name_len",
                                     "f_intent": "IN",
@@ -1435,10 +1431,10 @@
                                 "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
                                 "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_function_string_&_buf_allocatable",
-                                "stmt1": "f_function_string_&_buf_allocatable",
-                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -1485,7 +1481,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -1535,8 +1531,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_function_string_&_buf_allocatable",
-                                "stmt1": "c_function_string_&_buf_allocatable"
+                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                "stmt1": "c_function_string_&_cdesc_allocatable"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1613,7 +1609,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
-                                    "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -1984,7 +1979,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -2080,10 +2074,10 @@
                                 "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
                                 "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_function_string_scalar_buf_allocatable",
-                                "stmt1": "f_function_string_scalar_buf_allocatable",
-                                "stmtc0": "c_function_string_scalar_buf_allocatable",
-                                "stmtc1": "c_function_string_scalar_buf_allocatable"
+                                "stmt0": "f_function_string_scalar_cdesc_allocatable",
+                                "stmt1": "f_function_string_scalar_cdesc_allocatable",
+                                "stmtc0": "c_function_string_scalar_cdesc_allocatable",
+                                "stmtc1": "c_function_string_scalar_cdesc_allocatable"
                             }
                         }
                     },
@@ -2097,7 +2091,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "getter"
                             },
@@ -2144,8 +2138,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_getter_string_scalar_buf_allocatable",
-                                "stmt1": "c_getter_string_scalar_buf"
+                                "stmt0": "c_getter_string_scalar_cdesc_allocatable",
+                                "stmt1": "c_getter_string_scalar_cdesc"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -2283,7 +2277,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "val",
-                                    "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "c_var_len": "SHT_val_len",
                                     "f_intent": "IN",
@@ -2563,10 +2556,10 @@
                                 "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
                                 "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_function_string_&_buf_allocatable",
-                                "stmt1": "f_function_string_&_buf_allocatable",
-                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -2613,7 +2606,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
@@ -2663,8 +2656,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_function_string_&_buf_allocatable",
-                                "stmt1": "c_function_string_&_buf_allocatable"
+                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                "stmt1": "c_function_string_&_cdesc_allocatable"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -3397,7 +3390,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -3599,7 +3591,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -3728,7 +3719,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
@@ -4284,7 +4274,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "flag",
-                            "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -4415,7 +4404,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_INT",

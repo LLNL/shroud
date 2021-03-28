@@ -1095,9 +1095,9 @@ contains
         integer(C_INT), value, intent(IN) :: i
         real(C_DOUBLE), value, intent(IN) :: d
         ! splicer begin function.return_struct_ptr1
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_struct_ptr1_bufferify(i, d)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_return_struct_ptr1_bufferify(i, d)
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr1
     end function return_struct_ptr1
 
@@ -1144,10 +1144,10 @@ contains
         real(C_DOUBLE), value, intent(IN) :: d
         character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.return_struct_ptr2
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_struct_ptr2_bufferify(i, d, outbuf, &
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_return_struct_ptr2_bufferify(i, d, outbuf, &
             len(outbuf, kind=C_INT))
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2
 
@@ -1164,9 +1164,9 @@ contains
         use iso_c_binding, only : C_PTR, c_f_pointer
         type(cstruct_list), pointer :: SHT_rv
         ! splicer begin function.get_global_struct_list
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_get_global_struct_list_bufferify()
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_get_global_struct_list_bufferify()
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.get_global_struct_list
     end function get_global_struct_list
 

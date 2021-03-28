@@ -118,8 +118,8 @@ double TUT_pass_by_value(double arg1, int arg2)
  */
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_scalar_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_scalar_cdesc_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Attrs:     +api(buf)+intent(in)

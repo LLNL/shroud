@@ -331,9 +331,9 @@ contains
         integer(C_INT), pointer :: SHT_rv
         integer(C_SIZE_T), value, intent(IN) :: n
         ! splicer begin namespace.std.class.vector_int.method.at
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_vector_int_at_bufferify(obj%cxxmem, n)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_vector_int_at_bufferify(obj%cxxmem, n)
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_int.method.at
     end function vector_int_at
 
@@ -437,9 +437,9 @@ contains
         real(C_DOUBLE), pointer :: SHT_rv
         integer(C_SIZE_T), value, intent(IN) :: n
         ! splicer begin namespace.std.class.vector_double.method.at
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_vector_double_at_bufferify(obj%cxxmem, n)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(C_PTR) :: SHC_rv_ptr
+        SHC_rv_ptr = c_vector_double_at_bufferify(obj%cxxmem, n)
+        call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end namespace.std.class.vector_double.method.at
     end function vector_double_at
 

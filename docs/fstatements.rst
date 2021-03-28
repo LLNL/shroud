@@ -180,11 +180,12 @@ For example, to assign to an intermediate variable:
 .. code-block:: text
 
         declare=[
-            "type(C_PTR) :: {F_pointer}",
+            "type(C_PTR) :: {c_local_ptr}",
         ],
         call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+            "{c_local_ptr} = {F_C_call}({F_arg_c_call})",
         ],
+        local=["ptr"],
                 
    
 post_call

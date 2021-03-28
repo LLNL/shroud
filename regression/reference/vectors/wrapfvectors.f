@@ -79,9 +79,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_bufferify
     interface
         subroutine c_vector_iota_out_bufferify(SHT_arg_cdesc) &
@@ -100,9 +100,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
@@ -124,9 +124,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_with_num2_bufferify
     interface
         subroutine c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc) &
@@ -145,9 +145,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_buf_allocatable_native
-    ! Match:     c_out_vector_buf
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_allocatable_native
+    ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc) &
@@ -166,9 +166,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_buf_allocatable_native
-    ! Match:     c_inout_vector_buf
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
+    ! Requested: c_inout_vector_&_cdesc_allocatable_native
+    ! Match:     c_inout_vector_cdesc
     ! start c_vector_iota_inout_alloc_bufferify
     interface
         subroutine c_vector_iota_inout_alloc_bufferify(arg, &
@@ -191,9 +191,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
-    ! Attrs:     +api(buf)+intent(inout)
-    ! Requested: c_inout_vector_&_buf_native
-    ! Match:     c_inout_vector_buf
+    ! Attrs:     +api(cdesc)+intent(inout)
+    ! Requested: c_inout_vector_&_cdesc_native
+    ! Match:     c_inout_vector_cdesc
     interface
         subroutine c_vector_increment_bufferify(arg, SHT_arg_size, &
                 SHT_arg_cdesc) &
@@ -214,9 +214,9 @@ module vectors_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
@@ -252,9 +252,9 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Requested: c_function_vector_scalar_buf_allocatable
-    ! Match:     c_function_vector_buf
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Requested: c_function_vector_scalar_cdesc_allocatable
+    ! Match:     c_function_vector_cdesc
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
@@ -343,11 +343,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector_buf
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Requested: f_out_vector_&_cdesc_native
+    ! Match:     f_out_vector_cdesc
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -375,11 +375,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector_buf
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Requested: f_out_vector_&_cdesc_native
+    ! Match:     f_out_vector_cdesc
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -412,11 +412,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector_buf
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Requested: f_out_vector_&_cdesc_native
+    ! Match:     f_out_vector_cdesc
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -450,11 +450,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_vector_&_buf_allocatable_native
-    ! Match:     f_out_vector_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_buf_allocatable_native
-    ! Match:     c_out_vector_buf
+    ! Requested: f_out_vector_&_cdesc_allocatable_native
+    ! Match:     f_out_vector_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_allocatable_native
+    ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -483,11 +483,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: f_inout_vector_&_buf_allocatable_native
-    ! Match:     f_inout_vector_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_buf_allocatable_native
-    ! Match:     c_inout_vector_buf
+    ! Requested: f_inout_vector_&_cdesc_allocatable_native
+    ! Match:     f_inout_vector_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
+    ! Requested: c_inout_vector_&_cdesc_allocatable_native
+    ! Match:     c_inout_vector_cdesc
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -518,11 +518,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_vector_&_buf_native
-    ! Match:     f_inout_vector_buf
-    ! Attrs:     +api(buf)+intent(inout)
-    ! Requested: c_inout_vector_&_buf_native
-    ! Match:     c_inout_vector_buf
+    ! Requested: f_inout_vector_&_cdesc_native
+    ! Match:     f_inout_vector_cdesc
+    ! Attrs:     +api(cdesc)+intent(inout)
+    ! Requested: c_inout_vector_&_cdesc_native
+    ! Match:     c_inout_vector_cdesc
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
@@ -545,11 +545,11 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_buf_native
-    ! Match:     f_out_vector_buf
-    ! Attrs:     +api(buf)+intent(out)
-    ! Requested: c_out_vector_&_buf_native
-    ! Match:     c_out_vector_buf
+    ! Requested: f_out_vector_&_cdesc_native
+    ! Match:     f_out_vector_cdesc
+    ! Attrs:     +api(cdesc)+intent(out)
+    ! Requested: c_out_vector_&_cdesc_native
+    ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -601,11 +601,11 @@ contains
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Requested: f_function_vector_scalar_buf_allocatable
-    ! Match:     f_function_vector_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Requested: c_function_vector_scalar_buf_allocatable
-    ! Match:     c_function_vector_buf
+    ! Requested: f_function_vector_scalar_cdesc_allocatable
+    ! Match:     f_function_vector_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Requested: c_function_vector_scalar_cdesc_allocatable
+    ! Match:     c_function_vector_cdesc
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)

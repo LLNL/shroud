@@ -70,7 +70,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "comm",
-                                    "F_pointer": "SHPTR_comm",
                                     "c_var": "comm",
                                     "f_intent": "IN",
                                     "f_kind": "C_INT",
@@ -174,7 +173,6 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "c2",
-                                    "F_pointer": "SHPTR_c2",
                                     "c_var": "c2",
                                     "f_c_module_line": "--import--:LIB_SHROUD_capsule_data",
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
@@ -436,7 +434,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "arg1",
-                                            "F_pointer": "SHPTR_arg1",
                                             "c_var": "arg1",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",

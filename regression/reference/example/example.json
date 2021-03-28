@@ -416,7 +416,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
-                                                    "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
@@ -598,7 +597,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "incr",
-                                                    "F_pointer": "SHPTR_incr",
                                                     "c_var": "incr",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
@@ -825,10 +823,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -876,7 +874,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -923,8 +921,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -1050,7 +1048,6 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1109,7 +1106,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
-                                                    "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_len": "SHT_name_len",
                                                     "f_intent": "OUT",
@@ -1152,7 +1148,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_subroutine_void_scalar_buf",
+                                                "stmt0": "c_subroutine_void_scalar",
                                                 "stmt1": "c_subroutine"
                                             }
                                         }
@@ -1173,7 +1169,6 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
                                                 "intent": "subroutine"
                                             },
                                             "params": [
@@ -1292,7 +1287,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
@@ -1492,7 +1486,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_LONG",
@@ -1689,7 +1682,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "in",
-                                                    "F_pointer": "SHPTR_in",
                                                     "c_var": "in",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_BOOL",
@@ -2251,7 +2243,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
-                                                    "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_len": "SHT_name_len",
                                                     "f_intent": "IN",
@@ -2665,10 +2656,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2715,7 +2706,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2762,8 +2753,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2866,10 +2857,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2916,7 +2907,7 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -2963,8 +2954,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3065,10 +3056,10 @@
                                                 "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                 "hnamefunc1": "array_context",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_string_&_buf_allocatable",
-                                                "stmt1": "f_function_string_&_buf_allocatable",
-                                                "stmtc0": "c_function_string_&_buf_allocatable",
-                                                "stmtc1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "f_function_string_&_cdesc_allocatable",
+                                                "stmt1": "f_function_string_&_cdesc_allocatable",
+                                                "stmtc0": "c_function_string_&_cdesc_allocatable",
+                                                "stmtc1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3114,7 +3105,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "api": "buf",
+                                                "api": "cdesc",
                                                 "deref": "allocatable",
                                                 "intent": "function"
                                             },
@@ -3161,8 +3152,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_string_&_buf_allocatable",
-                                                "stmt1": "c_function_string_&_buf_allocatable"
+                                                "stmt0": "c_function_string_&_cdesc_allocatable",
+                                                "stmt1": "c_function_string_&_cdesc_allocatable"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3365,7 +3356,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "in",
-                                                    "F_pointer": "SHPTR_in",
                                                     "c_var": "in",
                                                     "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
@@ -3785,7 +3775,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "type",
-                                                    "F_pointer": "SHPTR_type",
                                                     "c_var": "type",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
@@ -4414,7 +4403,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "len",
-                                                    "F_pointer": "SHPTR_len",
                                                     "c_var": "len",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_LONG",
@@ -4449,7 +4437,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "type",
-                                                    "F_pointer": "SHPTR_type",
                                                     "c_var": "type",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
@@ -5057,7 +5044,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_INT",
@@ -5261,7 +5247,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_LONG",
@@ -5463,7 +5448,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_FLOAT",
@@ -5671,7 +5655,6 @@
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "value",
-                                                    "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_DOUBLE",
@@ -6515,7 +6498,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
-                                            "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
@@ -6885,7 +6867,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
-                                            "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
@@ -7209,7 +7190,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "flag",
-                                            "F_pointer": "SHPTR_flag",
                                             "c_var": "flag",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -7243,7 +7223,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
-                                            "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_len": "SHT_name_len",
                                             "f_intent": "IN",
@@ -7392,7 +7371,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "i",
-                                            "F_pointer": "SHPTR_i",
                                             "c_var": "i",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -7522,7 +7500,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "i",
-                                            "F_pointer": "SHPTR_i",
                                             "c_var": "i",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -7588,7 +7565,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "j",
-                                            "F_pointer": "SHPTR_j",
                                             "c_var": "j",
                                             "f_intent": "IN",
                                             "f_kind": "C_LONG",
@@ -7843,7 +7819,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "comm",
-                                            "F_pointer": "SHPTR_comm",
                                             "c_var": "comm",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -8056,7 +8031,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "get",
-                                            "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
                                             "f_type": "type(C_PTR)",
@@ -8204,7 +8178,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "get",
-                                            "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
@@ -8378,7 +8351,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "get",
-                                            "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
@@ -8549,7 +8521,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "get",
-                                            "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
                                             "f_kind": "C_DOUBLE",
@@ -8785,7 +8756,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "get",
-                                            "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
                                             "f_type": "type(C_PTR)",
@@ -9107,7 +9077,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname1",
-                                            "F_pointer": "SHPTR_verylongname1",
                                             "c_var": "verylongname1",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9174,7 +9143,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname10",
-                                            "F_pointer": "SHPTR_verylongname10",
                                             "c_var": "verylongname10",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9241,7 +9209,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname2",
-                                            "F_pointer": "SHPTR_verylongname2",
                                             "c_var": "verylongname2",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9308,7 +9275,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname3",
-                                            "F_pointer": "SHPTR_verylongname3",
                                             "c_var": "verylongname3",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9375,7 +9341,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname4",
-                                            "F_pointer": "SHPTR_verylongname4",
                                             "c_var": "verylongname4",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9442,7 +9407,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname5",
-                                            "F_pointer": "SHPTR_verylongname5",
                                             "c_var": "verylongname5",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9509,7 +9473,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname6",
-                                            "F_pointer": "SHPTR_verylongname6",
                                             "c_var": "verylongname6",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9576,7 +9539,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname7",
-                                            "F_pointer": "SHPTR_verylongname7",
                                             "c_var": "verylongname7",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9643,7 +9605,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname8",
-                                            "F_pointer": "SHPTR_verylongname8",
                                             "c_var": "verylongname8",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -9710,7 +9671,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname9",
-                                            "F_pointer": "SHPTR_verylongname9",
                                             "c_var": "verylongname9",
                                             "f_intent": "INOUT",
                                             "f_kind": "C_INT",
@@ -10002,7 +9962,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname1",
-                                            "F_pointer": "SHPTR_verylongname1",
                                             "c_var": "verylongname1",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10068,7 +10027,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname10",
-                                            "F_pointer": "SHPTR_verylongname10",
                                             "c_var": "verylongname10",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10134,7 +10092,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname2",
-                                            "F_pointer": "SHPTR_verylongname2",
                                             "c_var": "verylongname2",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10200,7 +10157,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname3",
-                                            "F_pointer": "SHPTR_verylongname3",
                                             "c_var": "verylongname3",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10266,7 +10222,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname4",
-                                            "F_pointer": "SHPTR_verylongname4",
                                             "c_var": "verylongname4",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10332,7 +10287,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname5",
-                                            "F_pointer": "SHPTR_verylongname5",
                                             "c_var": "verylongname5",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10398,7 +10352,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname6",
-                                            "F_pointer": "SHPTR_verylongname6",
                                             "c_var": "verylongname6",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10464,7 +10417,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname7",
-                                            "F_pointer": "SHPTR_verylongname7",
                                             "c_var": "verylongname7",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10530,7 +10482,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname8",
-                                            "F_pointer": "SHPTR_verylongname8",
                                             "c_var": "verylongname8",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10596,7 +10547,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "verylongname9",
-                                            "F_pointer": "SHPTR_verylongname9",
                                             "c_var": "verylongname9",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
@@ -10850,7 +10800,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "in",
-                                            "F_pointer": "SHPTR_in",
                                             "c_var": "in",
                                             "f_assumed_shape": "(:,:)",
                                             "f_c_dimension": "(*)",
@@ -10923,7 +10872,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "out",
-                                            "F_pointer": "SHPTR_out",
                                             "c_var": "out",
                                             "f_array_allocate": "(shape(in))",
                                             "f_assumed_shape": "(:)",
@@ -10997,7 +10945,6 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "sizein",
-                                            "F_pointer": "SHPTR_sizein",
                                             "c_var": "sizein",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",

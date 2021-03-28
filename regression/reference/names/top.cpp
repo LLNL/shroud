@@ -257,8 +257,8 @@ void TES_test_multiline_splicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
     // splicer begin function.test_multiline_splicer_bufferify
-    // line 1
-    // line 2
+    // buf line 1
+    // buf line 2
     // splicer end function.test_multiline_splicer_bufferify
 }
 

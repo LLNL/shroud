@@ -109,7 +109,7 @@ class VerifyAttrs(object):
         ast = node.ast
         node._has_found_default = False
 
-        for attr in node.ast.attrs:
+        for attr in ast.attrs:
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
@@ -1557,7 +1557,7 @@ class GenFunctions(object):
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
-        need_buf_result   = False
+        need_buf_result   = None
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1569,11 +1569,11 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
-            need_buf_result   = True
+            need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
-            need_buf_result   = True
+            need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
 
@@ -1591,8 +1591,9 @@ class GenFunctions(object):
 
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
+        C_new.splicer_group = "cfi"
         if need_buf_result:
-            C_new.ast.metaattrs["api"] = generated_suffix
+            C_new.ast.metaattrs["api"] = need_buf_result
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
 
@@ -1617,8 +1618,10 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
+                result_as_string.metaattrs["api"] = "cfi"
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["api"] = None
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
@@ -1700,28 +1703,43 @@ class GenFunctions(object):
         # create buffer version of function.
         buf_args = {}
         for arg in ast.params:
-            has_buf_arg = False
+            has_buf_arg = None
             arg_typemap = arg.typemap
-            if arg_typemap.sgroup == "string":
-                has_buf_arg = True
+            if arg.attrs["cdesc"]:
+                # User requested cdesc.
+                has_buf_arg = "cdesc"
+            elif arg_typemap.sgroup == "string":
+                if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                    has_buf_arg = "cdesc"
+                    # XXX - this is not tested
+                else:
+                    has_buf_arg = "buf"
             elif arg_typemap.sgroup == "char":
                 if arg.ftrim_char_in:
                     pass
                 elif arg.is_indirect():
-                    has_buf_arg = True
+                    if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                        has_buf_arg = "cdesc"
+                    else:
+                        has_buf_arg = "buf"
             elif arg_typemap.sgroup == "vector":
-                has_buf_arg = True
+                if arg.metaattrs["intent"] == "in":
+                    # Pass SIZE.
+                    has_buf_arg = "buf"
+                else:
+                    has_buf_arg = "cdesc"
             elif (arg_typemap.sgroup == "native" and
                   arg.metaattrs["intent"] == "out" and
                   arg.metaattrs["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-                # double **values +intent(out) +deref(raw)
-                has_buf_arg = True
+                # double **values +intent(out) +deref(pointer)
+                has_buf_arg = "cdesc"
+                #has_buf_arg = "buf" # XXX - for scalar?
             buf_args[arg.name] = has_buf_arg
         has_buf_arg = any(buf_args.values())
 
         # Function result.
-        need_buf_result   = False
+        need_buf_result   = None
 
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
@@ -1733,20 +1751,30 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup == "string":
-            need_buf_result   = True
+            if meta["deref"] in ["allocatable", "pointer"]:
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.sgroup == "char" and result_is_ptr:
-            need_buf_result   = True
+            if meta["deref"] in ["allocatable", "pointer"]:
+                # Result default to "allocatable".
+                need_buf_result = "cdesc"
+            else:
+                need_buf_result = "buf"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
-            need_buf_result   = True
+            need_buf_result = "cdesc"
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
-                need_buf_result   = True
-            elif attrs["dimension"]:
-                need_buf_result   = True
+                if attrs["dimension"]:
+                    # int *get_array() +deref(pointer)+dimension(10)
+                    need_buf_result = "cdesc"
+                else:
+                    # int *get_scalar() +deref(pointer)
+                    need_buf_result = "buf"
 
         # Functions with these results need wrappers.
         if not (need_buf_result or
@@ -1765,8 +1793,9 @@ class GenFunctions(object):
 
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
+        C_new.splicer_group = "buf"
         if need_buf_result:
-            C_new.ast.metaattrs["api"] = generated_suffix
+            C_new.ast.metaattrs["api"] = need_buf_result
         
         fmt_func = C_new.fmtdict
         fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
@@ -1777,14 +1806,12 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             if buf_args[arg.name]:
-                arg.metaattrs["api"] = generated_suffix
+                arg.metaattrs["api"] = buf_args[arg.name]
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
-            sgroup = arg_typemap.sgroup
-            specialize = ""
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -1809,8 +1836,11 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = None
+                # We've added an argument to fill, use api=buf.
+                result_as_string.metaattrs["api"] = "buf"
                 result_as_string.metaattrs["deref"] = "result"
                 result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["api"] = None
                 C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 

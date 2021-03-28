@@ -721,7 +721,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_final="final",
             F_result="SHT_rv",
             F_name_scope = "",
-            F_pointer="SHT_ptr",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
             F_string_result_as_arg="",
@@ -740,7 +739,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_get_shape_array="",
             f_intent="",
             f_kind="",
-            f_pointer_shape="",  # scalar
             f_shape_var="",
             f_type="",
             f_var_shape="",      # scalar
@@ -1474,6 +1472,7 @@ class FunctionNode(AstNode):
         self._gen_fortran_generic = False # An argument is assumed-rank.
         self.splicer = {}
         self.fstatements = {}
+        self.splicer_group = None
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper

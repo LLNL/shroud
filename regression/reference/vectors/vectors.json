@@ -181,7 +181,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
                             "cxx_T": "int",
@@ -344,7 +343,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -397,12 +396,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -416,10 +414,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector_buf",
-                            "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmt0": "f_out_vector_&_cdesc_native",
+                            "stmt1": "f_out_vector_cdesc",
+                            "stmtc0": "c_out_vector_&_cdesc_native",
+                            "stmtc1": "c_out_vector_cdesc"
                         }
                     }
                 },
@@ -575,7 +573,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -658,12 +656,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -677,10 +674,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector_buf",
-                            "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmt0": "f_out_vector_&_cdesc_native",
+                            "stmt1": "f_out_vector_cdesc",
+                            "stmtc0": "c_out_vector_&_cdesc_native",
+                            "stmtc1": "c_out_vector_cdesc"
                         }
                     }
                 },
@@ -825,7 +822,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -896,12 +893,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -915,10 +911,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector_buf",
-                            "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmt0": "f_out_vector_&_cdesc_native",
+                            "stmt1": "f_out_vector_cdesc",
+                            "stmtc0": "c_out_vector_&_cdesc_native",
+                            "stmtc1": "c_out_vector_cdesc"
                         }
                     }
                 },
@@ -1046,7 +1042,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -1101,12 +1097,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_buf_allocatable_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt0": "c_out_vector_&_cdesc_allocatable_native",
+                            "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "int",
@@ -1120,10 +1115,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_buf_allocatable_native",
-                            "stmt1": "f_out_vector_buf_allocatable",
-                            "stmtc0": "c_out_vector_&_buf_allocatable_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmt0": "f_out_vector_&_cdesc_allocatable_native",
+                            "stmt1": "f_out_vector_cdesc_allocatable",
+                            "stmtc0": "c_out_vector_&_cdesc_allocatable_native",
+                            "stmtc1": "c_out_vector_cdesc"
                         }
                     }
                 },
@@ -1251,7 +1246,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "inout"
                             },
@@ -1307,12 +1302,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_buf_allocatable_native",
-                            "stmt1": "c_inout_vector_buf"
+                            "stmt0": "c_inout_vector_&_cdesc_allocatable_native",
+                            "stmt1": "c_inout_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
@@ -1327,10 +1321,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_inout_vector_&_buf_allocatable_native",
-                            "stmt1": "f_inout_vector_buf_allocatable",
-                            "stmtc0": "c_inout_vector_&_buf_allocatable_native",
-                            "stmtc1": "c_inout_vector_buf"
+                            "stmt0": "f_inout_vector_&_cdesc_allocatable_native",
+                            "stmt1": "f_inout_vector_cdesc_allocatable",
+                            "stmtc0": "c_inout_vector_&_cdesc_allocatable_native",
+                            "stmtc1": "c_inout_vector_cdesc"
                         }
                     }
                 },
@@ -1449,7 +1443,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "intent": "inout"
                             },
                             "specifier": [
@@ -1500,12 +1494,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_buf_native",
-                            "stmt1": "c_inout_vector_buf"
+                            "stmt0": "c_inout_vector_&_cdesc_native",
+                            "stmt1": "c_inout_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
@@ -1520,10 +1513,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_inout_vector_&_buf_native",
-                            "stmt1": "f_inout_vector_buf",
-                            "stmtc0": "c_inout_vector_&_buf_native",
-                            "stmtc1": "c_inout_vector_buf"
+                            "stmt0": "f_inout_vector_&_cdesc_native",
+                            "stmt1": "f_inout_vector_cdesc",
+                            "stmtc0": "c_inout_vector_&_cdesc_native",
+                            "stmtc1": "c_inout_vector_cdesc"
                         }
                     }
                 },
@@ -1646,7 +1639,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "intent": "out"
                             },
                             "specifier": [
@@ -1698,12 +1691,11 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_vector_&_buf_native",
-                            "stmt1": "c_out_vector_buf"
+                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cxx_T": "double",
@@ -1717,10 +1709,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt0": "f_out_vector_&_buf_native",
-                            "stmt1": "f_out_vector_buf",
-                            "stmtc0": "c_out_vector_&_buf_native",
-                            "stmtc1": "c_out_vector_buf"
+                            "stmt0": "f_out_vector_&_cdesc_native",
+                            "stmt1": "f_out_vector_cdesc",
+                            "stmtc0": "c_out_vector_&_cdesc_native",
+                            "stmtc1": "c_out_vector_cdesc"
                         }
                     }
                 },
@@ -1918,7 +1910,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
                             "c_local_i": "SHC_arg_i",
                             "c_local_n": "SHC_arg_n",
                             "c_local_s": "SHC_arg_s",
@@ -2193,10 +2184,10 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "size": "size(SHT_rv)",
-                        "stmt0": "f_function_vector_scalar_buf_allocatable",
-                        "stmt1": "f_function_vector_buf_allocatable",
-                        "stmtc0": "c_function_vector_scalar_buf_allocatable",
-                        "stmtc1": "c_function_vector_buf"
+                        "stmt0": "f_function_vector_scalar_cdesc_allocatable",
+                        "stmt1": "f_function_vector_cdesc_allocatable",
+                        "stmtc0": "c_function_vector_scalar_cdesc_allocatable",
+                        "stmtc1": "c_function_vector_cdesc"
                     }
                 }
             },
@@ -2213,7 +2204,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "api": "buf",
+                        "api": "cdesc",
                         "deref": "allocatable",
                         "intent": "function"
                     },
@@ -2279,7 +2270,6 @@
                         },
                         "fmtf": {
                             "F_C_var": "n",
-                            "F_pointer": "SHPTR_n",
                             "c_var": "n",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
@@ -2321,8 +2311,8 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_vector_scalar_buf_allocatable",
-                        "stmt1": "c_function_vector_buf"
+                        "stmt0": "c_function_vector_scalar_cdesc_allocatable",
+                        "stmt1": "c_function_vector_cdesc"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

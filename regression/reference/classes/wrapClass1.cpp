@@ -299,8 +299,8 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +api(buf)+deref(allocatable)+intent(function)
-// Exact:     c_function_string_&_buf_allocatable
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Exact:     c_function_string_&_cdesc_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
@@ -394,9 +394,9 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 
 // ----------------------------------------
 // Function:  std::string getM_name
-// Attrs:     +api(buf)+deref(allocatable)+intent(getter)
-// Requested: c_getter_string_scalar_buf_allocatable
-// Match:     c_getter_string_scalar_buf
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
+// Requested: c_getter_string_scalar_cdesc_allocatable
+// Match:     c_getter_string_scalar_cdesc
 // start CLA_Class1_get_m_name_bufferify
 void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
