@@ -1719,8 +1719,9 @@ class GenFunctions(object):
                   arg.metaattrs["intent"] == "out" and
                   arg.metaattrs["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-                # double **values +intent(out) +deref(raw)
-                has_buf_arg = "buf"
+                # double **values +intent(out) +deref(pointer)
+                has_buf_arg = "cdesc"
+                #has_buf_arg = "buf" # XXX - for scalar?
             buf_args[arg.name] = has_buf_arg
         has_buf_arg = any(buf_args.values())
 
@@ -1791,8 +1792,6 @@ class GenFunctions(object):
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
-            sgroup = arg_typemap.sgroup
-            specialize = ""
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.

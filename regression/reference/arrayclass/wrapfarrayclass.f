@@ -304,9 +304,9 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-        ! Requested: c_out_native_**_buf_pointer
-        ! Match:     c_out_native_**_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+        ! Requested: c_out_native_**_cdesc_pointer
+        ! Match:     c_out_native_**_cdesc
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
@@ -355,9 +355,9 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-        ! Requested: c_out_native_*&_buf_pointer
-        ! Match:     c_out_native_*&_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+        ! Requested: c_out_native_*&_cdesc_pointer
+        ! Match:     c_out_native_*&_cdesc
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
@@ -407,9 +407,9 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-        ! Requested: c_out_native_**_buf_pointer
-        ! Match:     c_out_native_**_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+        ! Requested: c_out_native_**_cdesc_pointer
+        ! Match:     c_out_native_**_cdesc
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
@@ -459,9 +459,9 @@ module arrayclass_mod
         ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-        ! Requested: c_out_native_*&_buf_pointer
-        ! Match:     c_out_native_*&_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+        ! Requested: c_out_native_*&_cdesc_pointer
+        ! Match:     c_out_native_*&_cdesc
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
@@ -754,10 +754,10 @@ contains
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -790,10 +790,10 @@ contains
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_*&_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_*&_buf_pointer
-    ! Match:     c_out_native_*&_buf
+    ! Exact:     f_out_native_*&_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_*&_cdesc_pointer
+    ! Match:     c_out_native_*&_cdesc
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)
@@ -826,10 +826,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -862,10 +862,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_*&_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_*&_buf_pointer
-    ! Match:     c_out_native_*&_buf
+    ! Exact:     f_out_native_*&_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_*&_cdesc_pointer
+    ! Match:     c_out_native_*&_cdesc
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)

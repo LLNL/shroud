@@ -92,9 +92,9 @@ int POI_accept_char_array_in_bufferify(const char *names,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // start POI_get_ptr_to_scalar_bufferify
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
@@ -121,9 +121,9 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // start POI_get_ptr_to_fixed_array_bufferify
 void POI_get_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -153,9 +153,9 @@ void POI_get_ptr_to_fixed_array_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -191,9 +191,9 @@ void POI_get_ptr_to_dynamic_array_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // start POI_get_ptr_to_func_array_bufferify
 void POI_get_ptr_to_func_array_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -219,9 +219,9 @@ void POI_get_ptr_to_func_array_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // start POI_get_ptr_to_const_scalar_bufferify
 void POI_get_ptr_to_const_scalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
@@ -246,9 +246,9 @@ void POI_get_ptr_to_const_scalar_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // start POI_get_ptr_to_fixed_const_array_bufferify
 void POI_get_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -274,9 +274,9 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)

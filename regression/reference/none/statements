@@ -122,6 +122,7 @@ root
       out
         array
           buf -- c_mixin_out_array_buf
+          cdesc -- c_mixin_out_array_cdesc
         character
           buf -- c_mixin_out_character_buf
       shadow -- c_mixin_shadow
@@ -134,9 +135,9 @@ root
         *
           cdesc -- c_in/out/inout_native_*_cdesc
         *&
-          buf -- c_out_native_*&_buf
+          cdesc -- c_out_native_*&_cdesc
         **
-          buf -- c_out_native_**_buf
+          cdesc -- c_out_native_**_cdesc
       string
         & -- c_out_string_*/&
           buf -- c_out_string_*/&_buf
@@ -163,6 +164,9 @@ root
     XXXin
       string
         scalar -- f_XXXin_string_scalar
+    XXXout
+      native
+        ** -- f_XXXout_native_**
     ctor -- f_ctor
     dtor -- f_dtor
     function -- f_function
@@ -289,6 +293,7 @@ root
       out
         array
           buf -- f_mixin_out_array_buf
+          cdesc -- f_mixin_out_array_cdesc
         character
           buf -- f_mixin_out_character_buf
       shadow -- f_mixin_shadow
@@ -304,9 +309,13 @@ root
         *&
           buf
             pointer -- f_out_native_**/*&_buf_pointer
-        ** -- f_out_native_**
+          cdesc
+            pointer -- f_out_native_**/*&_cdesc_pointer
+        **
           buf
             pointer -- f_out_native_**/*&_buf_pointer
+          cdesc
+            pointer -- f_out_native_**/*&_cdesc_pointer
           raw -- f_out_native_**_raw
       string
         &
@@ -1811,6 +1820,21 @@ c_mixin_out_array_buf:
   owner: library
   temps:
   - cdesc
+c_mixin_out_array_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: array_context
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var_cdesc}'
+  f_c_arg_names:
+  - '{c_var_cdesc}'
+  f_import:
+  - '{F_array_type}'
+  intent: mixin
+  name: c_mixin_out_array_cdesc
+  owner: library
+  temps:
+  - cdesc
 c_mixin_out_character_buf:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1878,7 +1902,7 @@ c_out_char_*_cfi:
   - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   temps:
   - cfi
-c_out_native_*&_buf:
+c_out_native_*&_cdesc:
   arg_call:
   - '{cxx_var}'
   c_arg_decl:
@@ -1891,7 +1915,7 @@ c_out_native_*&_buf:
   f_import:
   - '{F_array_type}'
   intent: out
-  name: c_out_native_*&_buf
+  name: c_out_native_*&_cdesc
   owner: library
   post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -1905,7 +1929,7 @@ c_out_native_*&_buf:
   - '{c_const}{cxx_type} *{cxx_var};'
   temps:
   - cdesc
-c_out_native_**_buf:
+c_out_native_**_cdesc:
   arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -1918,7 +1942,7 @@ c_out_native_**_buf:
   f_import:
   - '{F_array_type}'
   intent: out
-  name: c_out_native_**_buf
+  name: c_out_native_**_cdesc
   owner: library
   post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -2211,6 +2235,14 @@ f_XXXin_string_scalar:
   intent: XXXin
   name: f_XXXin_string_scalar
   need_wrapper: true
+f_XXXout_native_**:
+  arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: XXXout
+  name: f_XXXout_native_**
 f_ctor:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
@@ -3026,6 +3058,16 @@ f_mixin_out_array_buf:
   name: f_mixin_out_array_buf
   temps:
   - cdesc
+f_mixin_out_array_cdesc:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  intent: mixin
+  name: f_mixin_out_array_cdesc
+  temps:
+  - cdesc
 f_mixin_out_character_buf:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3075,14 +3117,23 @@ f_out_native_*&_buf_pointer:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
   temps:
   - cdesc
-f_out_native_**:
+f_out_native_*&_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
   arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
   f_module:
     iso_c_binding:
     - c_f_pointer
   intent: out
-  name: f_out_native_**
+  name: f_out_native_*&_cdesc_pointer
+  post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  temps:
+  - cdesc
 f_out_native_**_buf_pointer:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3096,6 +3147,23 @@ f_out_native_**_buf_pointer:
     - c_f_pointer
   intent: out
   name: f_out_native_**_buf_pointer
+  post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  temps:
+  - cdesc
+f_out_native_**_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: out
+  name: f_out_native_**_cdesc_pointer
   post_call:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
   temps:

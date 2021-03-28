@@ -272,9 +272,9 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
@@ -327,9 +327,9 @@ void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_*&_buf_pointer
-// Match:     c_out_native_*&_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_*&_cdesc_pointer
+// Match:     c_out_native_*&_cdesc
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)
@@ -382,9 +382,9 @@ void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_buf_pointer
-// Match:     c_out_native_**_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_**_cdesc_pointer
+// Match:     c_out_native_**_cdesc
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
@@ -438,9 +438,9 @@ void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Attrs:     +api(buf)+deref(pointer)+intent(out)
-// Requested: c_out_native_*&_buf_pointer
-// Match:     c_out_native_*&_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+// Requested: c_out_native_*&_cdesc_pointer
+// Match:     c_out_native_*&_cdesc
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)

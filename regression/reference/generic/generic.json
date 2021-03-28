@@ -5285,7 +5285,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5366,8 +5366,8 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt0": "c_out_native_**_cdesc_pointer",
+                            "stmt1": "c_out_native_**_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -5384,10 +5384,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_out_native_**_buf_pointer",
-                            "stmt1": "f_out_native_**_buf_pointer",
-                            "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmt0": "f_out_native_**_cdesc_pointer",
+                            "stmt1": "f_out_native_**_cdesc_pointer",
+                            "stmtc0": "c_out_native_**_cdesc_pointer",
+                            "stmtc1": "c_out_native_**_cdesc"
                         }
                     },
                     "size": {
@@ -5622,7 +5622,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "buf",
+                                "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5703,8 +5703,8 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_out_native_**_buf_pointer",
-                            "stmt1": "c_out_native_**_buf"
+                            "stmt0": "c_out_native_**_cdesc_pointer",
+                            "stmt1": "c_out_native_**_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -5721,10 +5721,10 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_out_native_**_buf_pointer",
-                            "stmt1": "f_out_native_**_buf_pointer",
-                            "stmtc0": "c_out_native_**_buf_pointer",
-                            "stmtc1": "c_out_native_**_buf"
+                            "stmt0": "f_out_native_**_cdesc_pointer",
+                            "stmt1": "f_out_native_**_cdesc_pointer",
+                            "stmtc0": "c_out_native_**_cdesc_pointer",
+                            "stmtc1": "c_out_native_**_cdesc"
                         }
                     },
                     "size": {

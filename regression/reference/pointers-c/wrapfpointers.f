@@ -568,9 +568,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start c_get_ptr_to_scalar_bufferify
     interface
         subroutine c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc) &
@@ -610,9 +610,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc) &
@@ -658,9 +658,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -708,9 +708,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start c_get_ptr_to_func_array_bufferify
     interface
         subroutine c_get_ptr_to_func_array_bufferify(SHT_count_cdesc) &
@@ -750,9 +750,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
         subroutine c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc) &
@@ -792,9 +792,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_const_array_bufferify( &
@@ -841,9 +841,9 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1607,10 +1607,10 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1633,10 +1633,10 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
@@ -1663,10 +1663,10 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1704,10 +1704,10 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     !>
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
@@ -1736,10 +1736,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1762,10 +1762,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1789,10 +1789,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_buf_pointer
-    ! Match:     c_out_native_**_buf
+    ! Exact:     f_out_native_**_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
+    ! Requested: c_out_native_**_cdesc_pointer
+    ! Match:     c_out_native_**_cdesc
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
