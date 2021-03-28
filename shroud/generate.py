@@ -1748,9 +1748,12 @@ class GenFunctions(object):
             need_buf_result   = "buf"
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
-                need_buf_result   = "buf"
-#            elif attrs["dimension"]:
-#                need_buf_result   = True
+                if attrs["dimension"]:
+                    # int *get_array() +deref(pointer)+dimension(10)
+                    need_buf_result = "cdesc"
+                else:
+                    # int *get_scalar() +deref(pointer)
+                    need_buf_result = "buf"
 
         # Functions with these results need wrappers.
         if not (need_buf_result or

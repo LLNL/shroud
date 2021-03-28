@@ -196,9 +196,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -234,9 +234,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-        ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-        ! Requested: c_function_native_*_buf_allocatable
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+        ! Requested: c_function_native_*_cdesc_allocatable
+        ! Match:     c_function_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -272,9 +272,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -329,9 +329,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
-        ! Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -387,9 +387,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
-        ! Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -564,10 +564,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -593,10 +593,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! Attrs:     +deref(allocatable)+intent(function)
-    ! Exact:     f_function_native_*_buf_allocatable
-    ! Attrs:     +api(buf)+deref(allocatable)+intent(function)
-    ! Requested: c_function_native_*_buf_allocatable
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Requested: c_function_native_*_cdesc_allocatable
+    ! Match:     c_function_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -623,10 +623,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -652,10 +652,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
     ! Attrs:     +capsule+deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer_caller
-    ! Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer_caller
+    ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -684,10 +684,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
     ! Attrs:     +capsule+deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer_caller
-    ! Attrs:     +api(buf)+capsule+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer_caller
+    ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)

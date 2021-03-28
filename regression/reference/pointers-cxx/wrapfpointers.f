@@ -1152,9 +1152,9 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_array_bufferify(SHT_rv) &
@@ -1218,9 +1218,9 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_const_array_bufferify( &
@@ -1973,10 +1973,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
@@ -2016,10 +2016,10 @@ contains
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)

@@ -175,9 +175,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_get_array_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -203,9 +203,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_get_array_const_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_bufferify")
@@ -232,9 +232,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_get_array_c_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -260,9 +260,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
-        ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-        ! Requested: c_function_native_*_buf_pointer
-        ! Match:     c_function_native_*_buf
+        ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+        ! Requested: c_function_native_*_cdesc_pointer
+        ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_get_array_const_c_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_c_bufferify")
@@ -660,10 +660,10 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArray +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -682,10 +682,10 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArrayConst +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     function arraywrapper_get_array_const(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -704,10 +704,10 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     function arraywrapper_get_array_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -726,10 +726,10 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayConstC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(function)
-    ! Exact:     f_function_native_*_buf_pointer
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_*_buf_pointer
-    ! Match:     c_function_native_*_buf
+    ! Exact:     f_function_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+    ! Requested: c_function_native_*_cdesc_pointer
+    ! Match:     c_function_native_*_cdesc
     function arraywrapper_get_array_const_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer

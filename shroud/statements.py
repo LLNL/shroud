@@ -571,6 +571,16 @@ fc_statements = [
         temps=["cdesc"],
         need_wrapper=True,
     ),
+    dict(
+        name="f_mixin_function_cdesc",
+        f_helper="array_context",
+        declare=[
+            "type({F_array_type}) :: {c_var_cdesc}",
+        ],
+        arg_c_call=["{c_var_cdesc}"],  # Pass result as an argument.
+        temps=["cdesc"],
+        need_wrapper=True,
+    ),
 
     ##########
     # array
@@ -1006,6 +1016,7 @@ fc_statements = [
     # Works with deref pointer and allocatable since Fortran
     # does that part.
     dict(
+        # YYY - replaced by cdesc
         name="c_function_native_*_buf",
         mixin=["c_mixin_function_buf"],
         c_helper="ShroudTypeDefines array_context",
@@ -1022,8 +1033,39 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
+        name="c_function_native_*_cdesc",
+        mixin=["c_mixin_function_buf"],
+        c_helper="ShroudTypeDefines array_context",
+        post_call=[
+            "{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_cdesc}->size = {c_array_size};",
+        ],
+        return_cptr=True,
+    ),
+    dict(
+        # YYY - replaced by below
         name="f_function_native_*_buf_allocatable",
         mixin=["f_mixin_function_buf"],
+        c_helper="copy_array",
+        f_helper="copy_array_{cxx_type}",
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        post_call=[
+            # XXX - allocate scalar
+            "allocate({f_var}({f_array_allocate}))",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
+        ],
+    ),
+    dict(
+        name="f_function_native_*_cdesc_allocatable",
+        mixin=["f_mixin_function_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_type}",
         arg_decl=[
@@ -1065,9 +1107,38 @@ fc_statements = [
         ],
     ),
     dict(
+        # XXX - no need for f_var since F_pointer exists.
+        name="f_function_native_*_cdesc_pointer",
+        mixin=["f_mixin_function_cdesc"],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
+        post_call=[
+            "call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})",
+        ],
+    ),
+    dict(
+        # YYY - replaced by below
         # +deref(pointer) +owner(caller)
         name="f_function_native_*_buf_pointer_caller",
         mixin=["f_mixin_function_buf"],
+        f_helper="capsule_helper",
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        arg_name=["{c_var_capsule}"],
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+            "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
+        ],
+        post_call=[
+            "call c_f_pointer(\t{c_var_cdesc}%base_addr,\t {F_result}{f_array_shape})",
+            "{c_var_capsule}%mem = {c_var_cdesc}%cxx",
+        ],
+    ),
+    dict(
+        # +deref(pointer) +owner(caller)
+        name="f_function_native_*_cdesc_pointer_caller",
+        mixin=["f_mixin_function_cdesc"],
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         arg_name=["{c_var_capsule}"],

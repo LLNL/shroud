@@ -16,6 +16,7 @@ root
         & -- c_function_native_*/&/**
         * -- c_function_native_*/&/**
           buf -- c_function_native_*_buf
+          cdesc -- c_function_native_*_cdesc
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
       shadow -- c_function_shadow
@@ -188,6 +189,10 @@ root
             allocatable -- f_function_native_*_buf_allocatable
             pointer -- f_function_native_*_buf_pointer
               caller -- f_function_native_*_buf_pointer_caller
+          cdesc
+            allocatable -- f_function_native_*_cdesc_allocatable
+            pointer -- f_function_native_*_cdesc_pointer
+              caller -- f_function_native_*_cdesc_pointer_caller
           pointer -- f_function_native_*_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
@@ -271,6 +276,7 @@ root
     mixin
       function
         buf -- f_mixin_function_buf
+        cdesc -- f_mixin_function_cdesc
       in
         array
           buf -- f_mixin_in_array_buf
@@ -518,6 +524,31 @@ c_function_native_*_buf:
   - '{F_array_type}'
   intent: function
   name: c_function_native_*_buf
+  owner: library
+  post_call:
+  - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {cxx_var};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  return_cptr: true
+  return_type: void
+  temps:
+  - cdesc
+c_function_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_native_*_cdesc
   owner: library
   post_call:
   - '{c_var_cdesc}->cxx.addr  = {cxx_nonconst_ptr};'
@@ -2384,6 +2415,63 @@ f_function_native_*_buf_pointer_caller:
   - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
   temps:
   - cdesc
+f_function_native_*_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array_{cxx_type}
+  intent: function
+  name: f_function_native_*_cdesc_allocatable
+  need_wrapper: true
+  post_call:
+  - allocate({f_var}({f_array_allocate}))
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))"
+  temps:
+  - cdesc
+f_function_native_*_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: function
+  name: f_function_native_*_cdesc_pointer
+  need_wrapper: true
+  post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  temps:
+  - cdesc
+f_function_native_*_cdesc_pointer_caller:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - 'type({F_capsule_type}), intent(OUT) :: {c_var_capsule}'
+  arg_name:
+  - '{c_var_capsule}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: capsule_helper
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: function
+  name: f_function_native_*_cdesc_pointer_caller
+  need_wrapper: true
+  post_call:
+  - "call c_f_pointer(\t{c_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
+  temps:
+  - cdesc
 f_function_native_*_pointer:
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'
@@ -2906,6 +2994,17 @@ f_mixin_function_buf:
   f_helper: array_context
   intent: mixin
   name: f_mixin_function_buf
+  need_wrapper: true
+  temps:
+  - cdesc
+f_mixin_function_cdesc:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  intent: mixin
+  name: f_mixin_function_cdesc
   need_wrapper: true
   temps:
   - cdesc

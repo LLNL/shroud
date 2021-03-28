@@ -6274,10 +6274,10 @@
                         "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_buf_pointer",
-                        "stmt1": "f_function_native_*_buf_pointer",
-                        "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf"
+                        "stmt0": "f_function_native_*_cdesc_pointer",
+                        "stmt1": "f_function_native_*_cdesc_pointer",
+                        "stmtc0": "c_function_native_*_cdesc_pointer",
+                        "stmtc1": "c_function_native_*_cdesc"
                     }
                 }
             },
@@ -6298,7 +6298,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "buf",
+                        "api": "cdesc",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -6349,8 +6349,8 @@
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf"
+                        "stmt0": "c_function_native_*_cdesc_pointer",
+                        "stmt1": "c_function_native_*_cdesc"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6611,10 +6611,10 @@
                         "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_buf_pointer",
-                        "stmt1": "f_function_native_*_buf_pointer",
-                        "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*_buf"
+                        "stmt0": "f_function_native_*_cdesc_pointer",
+                        "stmt1": "f_function_native_*_cdesc_pointer",
+                        "stmtc0": "c_function_native_*_cdesc_pointer",
+                        "stmtc1": "c_function_native_*_cdesc"
                     }
                 }
             },
@@ -6636,7 +6636,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "buf",
+                        "api": "cdesc",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -6687,8 +6687,8 @@
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*_buf"
+                        "stmt0": "c_function_native_*_cdesc_pointer",
+                        "stmt1": "c_function_native_*_cdesc"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

@@ -325,9 +325,9 @@ void POI_return_int_ptr_to_scalar_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Requested: c_function_native_*_cdesc_pointer
+// Match:     c_function_native_*_cdesc
 // start POI_return_int_ptr_to_fixed_array_bufferify
 void POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -370,9 +370,9 @@ void POI_return_int_ptr_to_const_scalar_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*_buf
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Requested: c_function_native_*_cdesc_pointer
+// Match:     c_function_native_*_cdesc
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 void POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
