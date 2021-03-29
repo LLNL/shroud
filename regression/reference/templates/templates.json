@@ -3065,7 +3065,8 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "n",
-                                            "c_var": "n"
+                                            "c_var": "n",
+                                            "f_intent": "IN"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -3832,7 +3833,8 @@
                                         },
                                         "fmtf": {
                                             "F_C_var": "n",
-                                            "c_var": "n"
+                                            "c_var": "n",
+                                            "f_intent": "IN"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

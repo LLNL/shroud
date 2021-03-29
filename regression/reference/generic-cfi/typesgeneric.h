@@ -79,6 +79,13 @@ struct s_GEN_SHROUD_array {
 typedef struct s_GEN_SHROUD_array GEN_SHROUD_array;
 // end array_context
 
+// helper capsule_GEN_StructAsClass
+struct s_GEN_StructAsClass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_StructAsClass GEN_StructAsClass;
+
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap);
 
 #endif  // TYPESGENERIC_H
