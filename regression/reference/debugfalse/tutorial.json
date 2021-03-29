@@ -679,6 +679,7 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1502,6 +1503,7 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2912,6 +2914,7 @@
                 "options": {
                     "F_string_len_trim": true
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3145,6 +3148,7 @@
                 "options": {
                     "F_string_len_trim": true
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5937,6 +5941,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

@@ -2637,6 +2637,7 @@
                     "description": "Return strlen of the first index as a check.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3048,6 +3049,7 @@
                 "options": {
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3270,6 +3272,7 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3564,6 +3567,7 @@
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3827,6 +3831,7 @@
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4043,6 +4048,7 @@
                 "options": {
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4261,6 +4267,7 @@
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4551,6 +4558,7 @@
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6086,6 +6094,7 @@
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6261,6 +6270,7 @@
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6419,6 +6429,7 @@
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -6596,6 +6607,7 @@
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -7079,6 +7091,7 @@
                     "F_force_wrapper": true,
                     "wrap_python": false
                 },
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

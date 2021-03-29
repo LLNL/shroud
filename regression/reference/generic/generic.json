@@ -5307,6 +5307,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5641,6 +5642,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

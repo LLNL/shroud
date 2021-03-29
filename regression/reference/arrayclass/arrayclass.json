@@ -679,6 +679,7 @@
                         "decl": "double* getArray() +dimension(getSize())",
                         "declgen": "double * getArray(void) +dimension(getSize())",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -896,6 +897,7 @@
                         "decl": "double* getArrayConst() const +dimension(getSize())",
                         "declgen": "double * getArrayConst(void) const +dimension(getSize())",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1112,6 +1114,7 @@
                         "decl": "const double *getArrayC() +dimension(getSize())",
                         "declgen": "const double * getArrayC(void) +dimension(getSize())",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1331,6 +1334,7 @@
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
                         "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1654,6 +1658,7 @@
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
                         "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2027,6 +2032,7 @@
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
                         "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2402,6 +2408,7 @@
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
                         "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2777,6 +2784,7 @@
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
                         "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "options": {},
+                        "splicer_group": "buf",
                         "wrap": {
                             "c": true,
                             "f_c": true

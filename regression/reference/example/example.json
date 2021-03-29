@@ -390,6 +390,7 @@
                                         "options": {
                                             "F_create_generic": true
                                         },
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -887,6 +888,7 @@
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -1080,6 +1082,7 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name) const",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -1201,6 +1204,7 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name) const",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -2217,6 +2221,7 @@
                                         "options": {
                                             "F_create_generic": true
                                         },
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -2519,6 +2524,7 @@
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -2719,6 +2725,7 @@
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -2920,6 +2927,7 @@
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -3118,6 +3126,7 @@
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
                                         "options": {},
+                                        "splicer_group": "buf",
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -6472,6 +6481,7 @@
                                         "rv = name .ne. \" \""
                                     ]
                                 },
+                                "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
                                     "f_c": true
@@ -6841,6 +6851,7 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
                                 "options": {},
+                                "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
                                     "f_c": true
@@ -7165,6 +7176,7 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
                                 "options": {},
+                                "splicer_group": "buf",
                                 "wrap": {
                                     "c": true,
                                     "f_c": true

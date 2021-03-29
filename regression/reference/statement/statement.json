@@ -224,6 +224,7 @@
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true

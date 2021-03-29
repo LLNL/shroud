@@ -132,6 +132,7 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
                 "options": {},
+                "splicer_group": "buf",
                 "wrap": {
                     "c": true,
                     "f_c": true
