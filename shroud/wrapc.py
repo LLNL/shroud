@@ -919,6 +919,8 @@ class Wrapc(util.WrapperMixin):
         if options.debug:
             stmts_comments.append(
                 "// ----------------------------------------")
+            if options.debug_index:
+                stmts_comments.append("// Index:     {}".format(node._function_index))
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
@@ -1291,9 +1293,6 @@ class Wrapc(util.WrapperMixin):
 
             impl = self.impl
             impl.append("")
-            if options.debug:
-                if options.debug_index:
-                    impl.append("// function_index=%d" % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
