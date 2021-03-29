@@ -434,7 +434,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "dest",
-                            "c_var": "dest"
+                            "c_var": "dest",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -478,7 +479,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "src",
-                            "c_var": "src"
+                            "c_var": "src",
+                            "f_intent": "IN"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -754,7 +756,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "s",
-                            "c_var": "s"
+                            "c_var": "s",
+                            "f_intent": "INOUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4234,7 +4237,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "IN"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4457,7 +4461,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4681,7 +4686,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "INOUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4902,7 +4908,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "IN"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5120,7 +5127,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "INOUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5341,7 +5349,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5583,7 +5592,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "INOUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5626,7 +5636,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "nlen",
-                            "c_var": "nlen"
+                            "c_var": "nlen",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5920,7 +5931,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5963,7 +5975,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "nlen",
-                            "c_var": "nlen"
+                            "c_var": "nlen",
+                            "f_intent": "OUT"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6235,7 +6248,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg1",
-                            "c_var": "arg1"
+                            "c_var": "arg1",
+                            "f_intent": "IN"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6822,7 +6836,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "f_intent": "OUT"
                         }
                     }
                 },
@@ -7272,7 +7287,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "dest",
-                            "c_var": "dest"
+                            "c_var": "dest",
+                            "f_intent": "OUT"
                         }
                     },
                     "src": {
@@ -7295,7 +7311,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "src",
-                            "c_var": "src"
+                            "c_var": "src",
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -7569,7 +7586,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "count",
-                            "c_var": "count"
+                            "c_var": "count",
+                            "f_intent": "IN"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -7614,7 +7632,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "f_intent": "INOUT"
                         },
                         "fmtpy": {
                             "array_size": "1",

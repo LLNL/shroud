@@ -132,6 +132,22 @@ declarations:
     function_suffix: _float2d
 
 
+- decl: struct StructAsClass
+  options:
+    wrap_struct_as: class
+- decl: StructAsClass *CreateStructAsClass(void)
+  options:
+    class_ctor: StructAsClass
+
+# XXX - This creates two Fortran wrappers but it also creates a
+#       bind(C) interface for the original routine. Not sure that's needed.
+- decl: long UpdateStructAsClass(StructAsClass *arg, long inew)
+  fortran_generic:
+  - decl: (int inew)
+    function_suffix: _int
+  - decl: (long inew)
+    function_suffix: _long
+
 splicer_code:
   f:
     module_top:

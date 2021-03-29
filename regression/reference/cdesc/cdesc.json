@@ -86,7 +86,8 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "c_var_cdesc2": "Darg"
+                            "c_var_cdesc2": "Darg",
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -433,7 +434,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "f_intent": "IN"
                         }
                     },
                     "value": {
@@ -458,7 +460,8 @@
                         "fmtf": {
                             "F_C_var": "value",
                             "c_var": "value",
-                            "c_var_cdesc2": "Dvalue"
+                            "c_var_cdesc2": "Dvalue",
+                            "f_intent": "IN"
                         }
                     }
                 },

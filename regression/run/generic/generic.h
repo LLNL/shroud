@@ -18,6 +18,11 @@
 #define T_FLOAT   3
 #define T_DOUBLE  4
 
+struct s_StructAsClass {
+    long nfield;
+};
+typedef struct s_StructAsClass StructAsClass;
+
 double GetGlobalDouble(void);
 
 void GenericReal(double arg);
@@ -32,5 +37,8 @@ void SavePointer(void *addr, int type, size_t size);
 void SavePointer2(void *addr, int type, size_t size);
 void GetPointer(void **addr, int *type, size_t *size);
 void GetPointerAsPointer(void **addr, int *type, size_t *size);
+
+StructAsClass *CreateStructAsClass(void);
+long UpdateStructAsClass(StructAsClass *arg, long inew);
 
 #endif // GENERIC_HPP

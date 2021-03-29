@@ -7,6 +7,8 @@
  */
 // generic.c
 
+#include <stdlib.h>
+
 #include "generic.h"
 
 double global_double;
@@ -93,4 +95,17 @@ void GetPointerAsPointer(void **addr, int *type, size_t *size)
   *addr = global_void;
   *type = global_type;
   *size = global_size;
+}
+
+StructAsClass *CreateStructAsClass(void)
+{
+    StructAsClass *rv = malloc(sizeof(StructAsClass));
+    rv->nfield = 5;
+    return rv;
+}
+
+long UpdateStructAsClass(StructAsClass *arg, long inew)
+{
+    arg->nfield = inew;
+    return inew;
 }

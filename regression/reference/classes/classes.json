@@ -956,7 +956,8 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "flag",
-                                    "c_var": "flag"
+                                    "c_var": "flag",
+                                    "f_intent": "IN"
                                 }
                             },
                             "name": {
@@ -979,7 +980,8 @@
                                 },
                                 "fmtf": {
                                     "F_C_var": "name",
-                                    "c_var": "name"
+                                    "c_var": "name",
+                                    "f_intent": "IN"
                                 }
                             }
                         },

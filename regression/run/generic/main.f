@@ -22,6 +22,7 @@ program tester
   call test_assumed_rank
   call test_scalar_array
   call test_database
+  call test_struct
 
   call fruit_summary
   call fruit_finalize
@@ -138,5 +139,18 @@ contains
     call assert_true(size(var1) == isize, "size of var1")
 
   end subroutine test_database
+
+  subroutine test_struct
+    type(StructAsClass) stru1
+    integer(C_LONG) ll
+    
+    call set_case_name("test_struct")
+
+    stru1 = StructAsClass()
+    ll = update_struct_as_class(stru1, 10_C_INT)
+    call assert_true(ll .eq. 10_C_INT, "update_struct_as_class int")
+    ll = update_struct_as_class(stru1, 20_C_LONG)
+    call assert_true(ll .eq. 20_C_INT, "update_struct_as_class long")
+  end subroutine test_struct
 
 end program tester

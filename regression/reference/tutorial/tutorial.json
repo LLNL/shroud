@@ -1390,7 +1390,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "f_intent": "IN"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2652,7 +2653,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "arg2",
-                            "c_var": "arg2"
+                            "c_var": "arg2",
+                            "f_intent": "IN"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2708,7 +2710,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "name",
-                            "c_var": "name"
+                            "c_var": "name",
+                            "f_intent": "IN"
                         },
                         "fmtl": {
                             "LUA_index": 1,

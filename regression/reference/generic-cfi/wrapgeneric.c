@@ -366,3 +366,89 @@ void GEN_get_pointer_as_pointer_float2d_bufferify(
     // splicer end function.get_pointer_as_pointer_float2d_bufferify
 }
 #endif  // if 0
+
+// ----------------------------------------
+// Function:  StructAsClass * CreateStructAsClass
+// Attrs:     +intent(function)
+// Requested: c_function_shadow_*
+// Match:     c_function_shadow
+void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv)
+{
+    // splicer begin function.create_struct_as_class
+    StructAsClass * SHCXX_rv = CreateStructAsClass();
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
+    // splicer end function.create_struct_as_class
+}
+
+// ----------------------------------------
+// Function:  long UpdateStructAsClass
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  StructAsClass * arg
+// Attrs:     +intent(inout)
+// Requested: c_inout_shadow_*
+// Match:     c_inout_shadow
+// ----------------------------------------
+// Argument:  long inew +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
+{
+    // splicer begin function.update_struct_as_class
+    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    return SHC_rv;
+    // splicer end function.update_struct_as_class
+}
+
+// ----------------------------------------
+// Function:  long UpdateStructAsClass
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  StructAsClass * arg
+// Attrs:     +intent(inout)
+// Requested: c_inout_shadow_*
+// Match:     c_inout_shadow
+// ----------------------------------------
+// Argument:  int inew +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
+{
+    // splicer begin function.update_struct_as_class_int
+    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    return SHC_rv;
+    // splicer end function.update_struct_as_class_int
+}
+
+// ----------------------------------------
+// Function:  long UpdateStructAsClass
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  StructAsClass * arg
+// Attrs:     +intent(inout)
+// Requested: c_inout_shadow_*
+// Match:     c_inout_shadow
+// ----------------------------------------
+// Argument:  long inew +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+long GEN_update_struct_as_class_long(GEN_StructAsClass * arg, long inew)
+{
+    // splicer begin function.update_struct_as_class_long
+    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    return SHC_rv;
+    // splicer end function.update_struct_as_class_long
+}

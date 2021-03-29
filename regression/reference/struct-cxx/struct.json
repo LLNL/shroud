@@ -2151,7 +2151,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
-                            "c_var": "outbuf"
+                            "c_var": "outbuf",
+                            "f_intent": "OUT"
                         }
                     },
                     "s1": {
@@ -2174,7 +2175,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "s1",
-                            "c_var": "s1"
+                            "c_var": "s1",
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -3103,7 +3105,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "d",
-                            "c_var": "d"
+                            "c_var": "d",
+                            "f_intent": "IN"
                         }
                     },
                     "i": {
@@ -3126,7 +3129,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "i",
-                            "c_var": "i"
+                            "c_var": "i",
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -3467,7 +3471,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "d",
-                            "c_var": "d"
+                            "c_var": "d",
+                            "f_intent": "IN"
                         }
                     },
                     "i": {
@@ -3490,7 +3495,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "i",
-                            "c_var": "i"
+                            "c_var": "i",
+                            "f_intent": "IN"
                         }
                     },
                     "outbuf": {
@@ -3513,7 +3519,8 @@
                         },
                         "fmtf": {
                             "F_C_var": "outbuf",
-                            "c_var": "outbuf"
+                            "c_var": "outbuf",
+                            "f_intent": "OUT"
                         }
                     }
                 },
