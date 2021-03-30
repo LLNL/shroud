@@ -490,6 +490,7 @@ if __name__ == "__main__":
         TestDesc("strings-cfi", yaml="strings",
                  cmdline=[
                      "--option", "F_CFI=true",
+                     "--option", "wrap_python=false",
                  ]),
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
