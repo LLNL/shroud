@@ -1476,7 +1476,7 @@ the library function will be copied.
 
 Finally, the ``std::vector`` is released based on the value of ``idtor``:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+.. literalinclude:: ../regression/reference/vectors/utilvectors.cpp
    :language: c
    :start-after: start release allocated memory
    :end-before: end release allocated memory

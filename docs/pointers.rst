@@ -264,7 +264,7 @@ user does not directly access the derived type.
 
 A typical destructor function would look like:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+.. literalinclude:: ../regression/reference/tutorial/utilTutorial.cpp
    :language: c++
    :start-after: start release allocated memory
    :end-before: end release allocated memory
