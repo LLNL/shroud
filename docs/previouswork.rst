@@ -134,6 +134,21 @@ portable way, and CNF is a set of functions to handle the difference
 between FORTRAN and C character strings, logical values and pointers
 to dynamically allocated memory.
 
+h2m-AutoFortran
+---------------
+
+https://github.com/Kaiveria/h2m-Autofortran-Tool
+
+The h2m-AutoFortran tool is designed to allow easy calls to C
+routines from Fortran programs. Given a header file in standard C,
+h2m will produce a Fortran module providing function interfaces
+which maintain interoperability with C. Features for which there
+are no Fortran equivalents will not be translated and warnings 
+will be written to standard error.
+The h2m-AutoFortran tool is built into Clang, the LLVM C compiler.
+During translation, the Clang abstract syntax tree (AST) is used to 
+assemble information about the header file. 
+
 
 Links
 -----
