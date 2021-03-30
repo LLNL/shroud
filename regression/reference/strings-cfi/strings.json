@@ -55,8 +55,7 @@
                 "wrap": {
                     "c": true,
                     "f_c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "status": {
@@ -89,26 +88,6 @@
                             "stmt1": "f_in_char_scalar",
                             "stmtc0": "c_in_char_scalar",
                             "stmtc1": "c_in_char_scalar"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "status",
-                            "ctor_expr": "status",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&status",
-                            "cxx_type": "char",
-                            "cxx_var": "status",
-                            "data_var": "SHData_status",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_status",
-                            "pytmp_var": "SHTPy_status",
-                            "size_var": "SHSize_status",
-                            "stmt0": "py_in_char_scalar",
-                            "stmt1": "py_in_char_scalar",
-                            "value_var": "SHValue_status"
                         }
                     }
                 },
@@ -127,7 +106,6 @@
                     "F_name_generic": "pass_char",
                     "F_name_impl": "pass_char",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_passChar",
                     "function_name": "passChar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -265,8 +243,7 @@
                 "wrap": {
                     "c": true,
                     "f_c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_return_char",
@@ -283,7 +260,6 @@
                     "F_name_impl": "return_char",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_returnChar",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "returnChar",
                     "underscore_name": "return_char"
@@ -317,23 +293,6 @@
                         "stmt1": "f_function",
                         "stmtc0": "c_function_char_scalar",
                         "stmtc1": "c_function_char_scalar"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "char",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INTP",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_char_scalar",
-                        "stmt1": "py_function_char_scalar",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -410,8 +369,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -436,27 +394,6 @@
                             "F_C_var": "dest",
                             "c_var": "dest",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "dest",
-                            "charlen": "40",
-                            "ctor_expr": "dest",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "dest",
-                            "cxx_type": "char",
-                            "cxx_var": "dest",
-                            "data_var": "SHData_dest",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_dest",
-                            "size_var": "SHSize_dest",
-                            "stmt0": "py_out_char_*_charlen",
-                            "stmt1": "py_out_char_*_charlen",
-                            "value_var": "SHValue_dest"
                         }
                     },
                     "src": {
@@ -481,26 +418,6 @@
                             "F_C_var": "src",
                             "c_var": "src",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "src",
-                            "ctor_expr": "*src",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
-                            "cxx_type": "char",
-                            "cxx_var": "src",
-                            "data_var": "SHData_src",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_src",
-                            "size_var": "SHSize_src",
-                            "stmt0": "py_in_char_*",
-                            "stmt1": "py_in_char_*",
-                            "value_var": "SHValue_src"
                         }
                     }
                 },
@@ -519,7 +436,6 @@
                     "F_name_generic": "pass_char_ptr",
                     "F_name_impl": "pass_char_ptr",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_passCharPtr",
                     "function_name": "passCharPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -741,8 +657,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "s": {
@@ -767,26 +682,6 @@
                             "F_C_var": "s",
                             "c_var": "s",
                             "f_intent": "INOUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "s",
-                            "ctor_expr": "s",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s",
-                            "cxx_type": "char",
-                            "cxx_var": "s",
-                            "data_var": "SHData_s",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_s",
-                            "size_var": "SHSize_s",
-                            "stmt0": "py_inout_char_*",
-                            "stmt1": "py_inout_char_*",
-                            "value_var": "SHValue_s"
                         }
                     }
                 },
@@ -805,7 +700,6 @@
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -956,8 +850,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr1",
@@ -975,7 +868,6 @@
                     "F_name_impl": "get_char_ptr1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getCharPtr1",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1",
                     "underscore_name": "get_char_ptr1"
@@ -1009,24 +901,6 @@
                         "stmt1": "f_function_char_*_cfi_allocatable",
                         "stmtc0": "c_function_char_*_cfi_allocatable",
                         "stmtc1": "c_function_char_*_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
-                        "cxx_type": "char",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INTP",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_char_*",
-                        "stmt1": "py_function_char_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -1147,8 +1021,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr2",
@@ -1166,7 +1039,6 @@
                     "F_name_impl": "get_char_ptr2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getCharPtr2",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr2",
                     "underscore_name": "get_char_ptr2"
@@ -1199,24 +1071,6 @@
                         "stmt1": "f_function_char_*_cfi",
                         "stmtc0": "c_function_char_*_cfi_copy",
                         "stmtc1": "c_function_char_*_cfi"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
-                        "cxx_type": "char",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INTP",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_char_*",
-                        "stmt1": "py_function_char_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -1331,8 +1185,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "python": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_char_ptr3",
@@ -1343,7 +1196,6 @@
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_string_result_as_arg": "output",
-                    "PY_name_impl": "PY_getCharPtr3",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr3",
                     "underscore_name": "get_char_ptr3"
@@ -1369,24 +1221,6 @@
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
-                        "cxx_type": "char",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INTP",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_char_*",
-                        "stmt1": "py_function_char_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -1704,8 +1538,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_const_string_result_cfi",
@@ -1716,7 +1549,6 @@
                     "F_name_impl": "get_const_string_result",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringResult",
                     "function_name": "getConstStringResult",
                     "underscore_name": "get_const_string_result"
                 },
@@ -1733,23 +1565,6 @@
                         "stmt1": "f_function_string_scalar_cfi_allocatable",
                         "stmtc0": "c_function_string_scalar_cfi_allocatable",
                         "stmtc1": "c_function_string_scalar_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_scalar",
-                        "stmt1": "py_function_string_scalar",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -1861,8 +1676,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_const_string_len_cfi",
@@ -1873,7 +1687,6 @@
                     "F_name_impl": "get_const_string_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringLen",
                     "function_name": "getConstStringLen",
                     "underscore_name": "get_const_string_len"
                 },
@@ -1890,23 +1703,6 @@
                         "stmt1": "f_function_string_scalar_cfi",
                         "stmtc0": "c_function_string_scalar_cfi_copy",
                         "stmtc1": "c_function_string_scalar_cfi"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_scalar",
-                        "stmt1": "py_function_string_scalar",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -2012,33 +1808,11 @@
                 "options": {
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "python": true
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "F_string_result_as_arg": "output",
-                    "PY_name_impl": "PY_getConstStringAsArg",
                     "function_name": "getConstStringAsArg",
                     "underscore_name": "get_const_string_as_arg"
-                },
-                "zz_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_scalar",
-                        "stmt1": "py_function_string_scalar",
-                        "value_var": "SHValue_rv"
-                    }
                 }
             },
             {
@@ -2262,8 +2036,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_const_string_alloc_cfi",
@@ -2274,7 +2047,6 @@
                     "F_name_impl": "get_const_string_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringAlloc",
                     "function_name": "getConstStringAlloc",
                     "underscore_name": "get_const_string_alloc"
                 },
@@ -2291,23 +2063,6 @@
                         "stmt1": "f_function_string_scalar_cfi_allocatable",
                         "stmtc0": "c_function_string_scalar_cfi_allocatable",
                         "stmtc1": "c_function_string_scalar_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_scalar",
-                        "stmt1": "py_function_string_scalar",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -2417,8 +2172,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_pure",
@@ -2436,7 +2190,6 @@
                     "F_name_impl": "get_const_string_ref_pure",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringRefPure",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure",
                     "underscore_name": "get_const_string_ref_pure"
@@ -2471,24 +2224,6 @@
                         "stmt1": "f_function_string_&_cfi_allocatable",
                         "stmtc0": "c_function_string_&_cfi_allocatable",
                         "stmtc1": "c_function_string_&_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -2610,8 +2345,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len",
@@ -2629,7 +2363,6 @@
                     "F_name_impl": "get_const_string_ref_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringRefLen",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen",
                     "underscore_name": "get_const_string_ref_len"
@@ -2664,24 +2397,6 @@
                         "stmt1": "f_function_string_&_cfi",
                         "stmtc0": "c_function_string_&_cfi_copy",
                         "stmtc1": "c_function_string_&_cfi"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -2798,8 +2513,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "python": true
+                    "c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_as_arg",
@@ -2810,7 +2524,6 @@
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_string_result_as_arg": "output",
-                    "PY_name_impl": "PY_getConstStringRefAsArg",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
                     "underscore_name": "get_const_string_ref_as_arg"
@@ -2837,24 +2550,6 @@
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "character(*)"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -3093,8 +2788,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_empty",
@@ -3112,7 +2806,6 @@
                     "F_name_impl": "get_const_string_ref_len_empty",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringRefLenEmpty",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty",
                     "underscore_name": "get_const_string_ref_len_empty"
@@ -3147,24 +2840,6 @@
                         "stmt1": "f_function_string_&_cfi",
                         "stmtc0": "c_function_string_&_cfi_copy",
                         "stmtc1": "c_function_string_&_cfi"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -3281,8 +2956,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc",
@@ -3300,7 +2974,6 @@
                     "F_name_impl": "get_const_string_ref_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringRefAlloc",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc",
                     "underscore_name": "get_const_string_ref_alloc"
@@ -3335,24 +3008,6 @@
                         "stmt1": "f_function_string_&_cfi_allocatable",
                         "stmtc0": "c_function_string_&_cfi_allocatable",
                         "stmtc1": "c_function_string_&_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -3476,8 +3131,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_len",
@@ -3495,7 +3149,6 @@
                     "F_name_impl": "get_const_string_ptr_len",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringPtrLen",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
                     "underscore_name": "get_const_string_ptr_len"
@@ -3530,24 +3183,6 @@
                         "stmt1": "f_function_string_*_cfi",
                         "stmtc0": "c_function_string_*_cfi_copy",
                         "stmtc1": "c_function_string_*_cfi"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_*",
-                        "stmt1": "py_function_string_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -3674,8 +3309,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
@@ -3693,7 +3327,6 @@
                     "F_name_impl": "get_const_string_ptr_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringPtrAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
                     "underscore_name": "get_const_string_ptr_alloc"
@@ -3728,24 +3361,6 @@
                         "stmt1": "f_function_string_*_cfi_allocatable",
                         "stmtc0": "c_function_string_*_cfi_allocatable",
                         "stmtc1": "c_function_string_*_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_*",
-                        "stmt1": "py_function_string_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -3864,8 +3479,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
@@ -3883,7 +3497,6 @@
                     "F_name_impl": "get_const_string_ptr_owns_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
@@ -3918,24 +3531,6 @@
                         "stmt1": "f_function_string_*_cfi_allocatable",
                         "stmtc0": "c_function_string_*_cfi_allocatable",
                         "stmtc1": "c_function_string_*_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_*",
-                        "stmt1": "py_function_string_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -4058,8 +3653,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
@@ -4077,7 +3671,6 @@
                     "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
@@ -4112,24 +3705,6 @@
                         "stmt1": "f_function_string_*_cfi_allocatable",
                         "stmtc0": "c_function_string_*_cfi_allocatable",
                         "stmtc1": "c_function_string_*_cfi_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_*",
-                        "stmt1": "py_function_string_*",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -4263,8 +3838,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -4289,26 +3863,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "const ",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_in_string_&",
-                            "stmt1": "py_in_string_&",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -4327,7 +3881,6 @@
                     "F_name_generic": "accept_string_const_reference",
                     "F_name_impl": "accept_string_const_reference",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringConstReference",
                     "function_name": "acceptStringConstReference",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -4493,8 +4046,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -4519,26 +4071,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_out_string_&",
-                            "stmt1": "py_out_string_&",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -4557,7 +4089,6 @@
                     "F_name_generic": "accept_string_reference_out",
                     "F_name_impl": "accept_string_reference_out",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringReferenceOut",
                     "function_name": "acceptStringReferenceOut",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -4721,8 +4252,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -4747,26 +4277,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_inout_string_&",
-                            "stmt1": "py_inout_string_&",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -4785,7 +4295,6 @@
                     "F_name_generic": "accept_string_reference",
                     "F_name_impl": "accept_string_reference",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringReference",
                     "function_name": "acceptStringReference",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -4948,8 +4457,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -4974,26 +4482,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(arg1)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_in_string_*",
-                            "stmt1": "py_in_string_*",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -5012,7 +4500,6 @@
                     "F_name_generic": "accept_string_pointer_const",
                     "F_name_impl": "accept_string_pointer_const",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringPointerConst",
                     "function_name": "acceptStringPointerConst",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -5173,8 +4660,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5199,26 +4685,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_inout_string_*",
-                            "stmt1": "py_inout_string_*",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -5237,7 +4703,6 @@
                     "F_name_generic": "accept_string_pointer",
                     "F_name_impl": "accept_string_pointer",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringPointer",
                     "function_name": "acceptStringPointer",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -5401,8 +4866,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5427,26 +4891,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_out_string_*",
-                            "stmt1": "py_out_string_*",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -5465,7 +4909,6 @@
                     "F_name_generic": "fetch_string_pointer",
                     "F_name_impl": "fetch_string_pointer",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_fetchStringPointer",
                     "function_name": "fetchStringPointer",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -5648,8 +5091,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5674,26 +5116,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_inout_string_*",
-                            "stmt1": "py_inout_string_*",
-                            "value_var": "SHValue_arg1"
                         }
                     },
                     "nlen": {
@@ -5718,26 +5140,6 @@
                             "F_C_var": "nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "nlen",
-                            "ctor_expr": "nlen",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nlen",
-                            "cxx_type": "int",
-                            "cxx_var": "nlen",
-                            "data_var": "SHData_nlen",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_nlen",
-                            "size_var": "SHSize_nlen",
-                            "stmt0": "py_out_native_*",
-                            "stmt1": "py_out_native_*",
-                            "value_var": "SHValue_nlen"
                         }
                     }
                 },
@@ -5756,7 +5158,6 @@
                     "F_name_generic": "accept_string_pointer_len",
                     "F_name_impl": "accept_string_pointer_len",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_acceptStringPointerLen",
                     "function_name": "acceptStringPointerLen",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -5993,8 +5394,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6019,26 +5419,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_out_string_*",
-                            "stmt1": "py_out_string_*",
-                            "value_var": "SHValue_arg1"
                         }
                     },
                     "nlen": {
@@ -6063,26 +5443,6 @@
                             "F_C_var": "nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "nlen",
-                            "ctor_expr": "nlen",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "nlen",
-                            "cxx_type": "int",
-                            "cxx_var": "nlen",
-                            "data_var": "SHData_nlen",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_nlen",
-                            "size_var": "SHSize_nlen",
-                            "stmt0": "py_out_native_*",
-                            "stmt1": "py_out_native_*",
-                            "value_var": "SHValue_nlen"
                         }
                     }
                 },
@@ -6101,7 +5461,6 @@
                     "F_name_generic": "fetch_string_pointer_len",
                     "F_name_impl": "fetch_string_pointer_len",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_fetchStringPointerLen",
                     "function_name": "fetchStringPointerLen",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -6314,8 +5673,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6340,25 +5698,6 @@
                             "F_C_var": "arg1",
                             "c_var": "arg1",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_in_string_scalar",
-                            "stmt1": "py_in_string_scalar",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -6379,7 +5718,6 @@
                     "F_name_impl": "accept_string_instance",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_acceptStringInstance",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance",
                     "underscore_name": "accept_string_instance"
@@ -6413,23 +5751,6 @@
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_native_scalar",
-                        "stmt1": "py_default",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -6624,57 +5945,8 @@
                     "wrap_c": false,
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "python": true
-                },
-                "zz_fmtargs": {
-                    "arg1": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg1",
-                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg1",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_out_string_&",
-                            "stmt1": "py_out_string_&",
-                            "value_var": "SHValue_arg1"
-                        }
-                    },
-                    "arg2": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "arg2",
-                            "ctor_expr": "SH_arg2.data(),\t SH_arg2.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg2",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_arg2",
-                            "data_var": "SHData_arg2",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg2",
-                            "size_var": "SHSize_arg2",
-                            "stmt0": "py_out_string_&",
-                            "stmt1": "py_out_string_&",
-                            "value_var": "SHValue_arg2"
-                        }
-                    }
-                },
+                "wrap": {},
                 "zz_fmtdict": {
-                    "PY_name_impl": "PY_returnStrings",
                     "function_name": "returnStrings",
                     "underscore_name": "return_strings"
                 }
@@ -6781,8 +6053,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -6807,26 +6078,6 @@
                             "F_C_var": "name",
                             "c_var": "name",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "ctor_expr": "*name",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name",
-                            "cxx_type": "char",
-                            "cxx_var": "name",
-                            "data_var": "SHData_name",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_name",
-                            "size_var": "SHSize_name",
-                            "stmt0": "py_in_char_*",
-                            "stmt1": "py_in_char_*",
-                            "value_var": "SHValue_name"
                         }
                     }
                 },
@@ -6846,7 +6097,6 @@
                     "F_name_generic": "explicit1",
                     "F_name_impl": "explicit1",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_explicit1",
                     "function_name": "explicit1",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -7208,8 +6458,7 @@
                 "wrap": {
                     "c": true,
                     "f_c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "status": {
@@ -7242,26 +6491,6 @@
                             "stmt1": "f_in_char_scalar",
                             "stmtc0": "c_in_char_scalar",
                             "stmtc1": "c_in_char_scalar"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "status",
-                            "ctor_expr": "status",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&status",
-                            "cxx_type": "char",
-                            "cxx_var": "status",
-                            "data_var": "SHData_status",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_status",
-                            "pytmp_var": "SHTPy_status",
-                            "size_var": "SHSize_status",
-                            "stmt0": "py_in_char_scalar",
-                            "stmt1": "py_in_char_scalar",
-                            "value_var": "SHValue_status"
                         }
                     }
                 },
@@ -7280,7 +6509,6 @@
                     "F_name_generic": "cpass_char",
                     "F_name_impl": "cpass_char",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_CpassChar",
                     "function_name": "CpassChar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -7316,8 +6544,7 @@
                 "wrap": {
                     "c": true,
                     "f_c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtdict": {
                     "C_name": "CreturnChar",
@@ -7334,7 +6561,6 @@
                     "F_name_impl": "creturn_char",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_CreturnChar",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "CreturnChar",
                     "underscore_name": "creturn_char"
@@ -7368,23 +6594,6 @@
                         "stmt1": "f_function",
                         "stmtc0": "c_function_char_scalar",
                         "stmtc1": "c_function_char_scalar"
-                    },
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "char",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INTP",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_char_scalar",
-                        "stmt1": "py_function_char_scalar",
-                        "value_var": "SHValue_rv"
                     }
                 }
             },
@@ -7767,8 +6976,7 @@
                 },
                 "wrap": {
                     "c": true,
-                    "fortran": true,
-                    "python": true
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "count": {
@@ -7793,28 +7001,6 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "f_intent": "IN"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "count",
-                            "ctor_expr": "*count",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
-                            "cxx_type": "int",
-                            "cxx_var": "count",
-                            "data_var": "SHData_count",
-                            "hnamefunc0": "SHROUD_get_from_object_int_list",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_count",
-                            "pytmp_var": "SHTPy_count",
-                            "size_var": "SHSize_count",
-                            "stmt0": "py_in_native_*_pointer_list",
-                            "stmt1": "py_in_native_*_pointer_list",
-                            "value_var": "SHValue_count"
                         }
                     },
                     "name": {
@@ -7839,26 +7025,6 @@
                             "F_C_var": "name",
                             "c_var": "name",
                             "f_intent": "INOUT"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "name",
-                            "ctor_expr": "SH_name.data(),\t SH_name.size()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&name",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SH_name",
-                            "data_var": "SHData_name",
-                            "numpy_type": null,
-                            "py_var": "SHPy_name",
-                            "size_var": "SHSize_name",
-                            "stmt0": "py_inout_string_&",
-                            "stmt1": "py_inout_string_&",
-                            "value_var": "SHValue_name"
                         }
                     }
                 },
@@ -7877,7 +7043,6 @@
                     "F_name_generic": "post_declare",
                     "F_name_impl": "post_declare",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_PostDeclare",
                     "function_name": "PostDeclare",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
@@ -8054,8 +7219,7 @@
         ],
         "wrap": {
             "c": true,
-            "fortran": true,
-            "python": true
+            "fortran": true
         }
     }
 }

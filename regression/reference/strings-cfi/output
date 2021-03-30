@@ -3,6 +3,3 @@ Wrote wrapstrings.cpp
 Wrote wrapfstrings.f
 Wrote utilstrings.cpp
 Wrote typesstrings.h
-Wrote pystringsmodule.cpp
-Wrote pystringsmodule.hpp
-Wrote setup.py
