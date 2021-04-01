@@ -57,6 +57,10 @@ void STR_get_char_ptr3_bufferify(char *output, int SHT_output_len);
 
 const char * STR_get_char_ptr4(void);
 
+const char * STR_get_char_ptr5(void);
+
+void STR_get_char_ptr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
+
 void STR_get_const_string_result_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 

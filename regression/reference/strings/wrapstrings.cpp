@@ -409,6 +409,46 @@ const char * STR_get_char_ptr4(void)
 }
 
 /**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_char_*_pointer
+// Match:     c_function_char_*
+const char * STR_get_char_ptr5(void)
+{
+    // splicer begin function.get_char_ptr5
+    const char * SHC_rv = getCharPtr5();
+    return SHC_rv;
+    // splicer end function.get_char_ptr5
+}
+
+/**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Requested: c_function_char_*_cdesc_pointer
+// Match:     c_function_char_*_cdesc
+void STR_get_char_ptr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.get_char_ptr5_bufferify
+    const char * SHC_rv = getCharPtr5();
+    SHT_rv_cdesc->cxx.addr = const_cast<char *>(SHC_rv);
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.ccharp = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
+    SHT_rv_cdesc->size = 1;
+    SHT_rv_cdesc->rank = 0;
+    // splicer end function.get_char_ptr5_bufferify
+}
+
+/**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
  */

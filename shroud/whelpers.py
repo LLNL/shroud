@@ -255,6 +255,32 @@ integer(C_SIZE_T), value :: c_var_size
     )
 
     ########################################
+    name = "pointer_string"
+    # Set Fortran POINTER to string.
+    # Must be a function (or a F2008 BLOCK) since fptr must
+    # be declared after the string length is known.
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_pointer_string", fmt)
+    FHelpers[name] = dict(
+        dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
+        source=wformat(
+            """
+! helper {hname}
+! Assign context to an assumed-length character pointer
+subroutine {hnamefunc}(context, var)+
+use iso_c_binding, only : c_f_pointer, C_PTR
+implicit none
+type({F_array_type}), intent(IN) :: context
+character(len=:), pointer, intent(OUT) :: var
+character(len=context%elem_len), pointer :: fptr
+call c_f_pointer(context%base_addr, fptr)
+var => fptr
+-end subroutine {hnamefunc}""",
+            fmt,
+        ),
+    )
+    
+    ########################################
     name = "ShroudStrToArray"
     fmt.hname = name
     if literalinclude:

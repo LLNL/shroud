@@ -395,6 +395,56 @@ const char * STR_get_char_ptr4(void)
 }
 
 /**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_char_*_pointer
+// Match:     c_function_char_*
+const char * STR_get_char_ptr5(void)
+{
+    // splicer begin function.get_char_ptr5
+    const char * SHC_rv = getCharPtr5();
+    return SHC_rv;
+    // splicer end function.get_char_ptr5
+}
+
+/**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_char_*_cfi_pointer
+void STR_get_char_ptr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.get_char_ptr5_CFI
+    const char * SHC_rv = getCharPtr5();
+    int SHC_rv_err;
+    if (SHC_rv == nullptr) {
+        SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
+    } else {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<char *>(SHC_rv);
+        size_t SHC_rv_len = std::strlen(SHC_rv);
+        SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
+            nullptr);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHT_rv_cfi->elem_len = SHC_rv_cdesc->elem_len;
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                nullptr);
+        }
+    }
+    // splicer end function.get_char_ptr5_CFI
+}
+
+/**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
  */

@@ -456,3 +456,18 @@ interface
     end subroutine LIB_SHROUD_copy_string_and_free
 end interface
 ##### end copy_string interface
+
+##### start pointer_string source
+
+! helper copy_string
+! Assign context to an assumed-length character pointer
+subroutine LIB_SHROUD_pointer_string(context, var)
+    use iso_c_binding, only : c_f_pointer, C_PTR
+    implicit none
+    type(LIB_SHROUD_array), intent(IN) :: context
+    character(len=:), pointer, intent(OUT) :: var
+    character(len=context%elem_len), pointer :: fptr
+    call c_f_pointer(context%base_addr, fptr)
+    var => fptr
+end subroutine LIB_SHROUD_pointer_string
+##### end pointer_string source

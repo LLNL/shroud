@@ -1193,6 +1193,25 @@ fc_statements = [
     ),
 
     dict(
+        name="c_function_char_*_cdesc",
+        mixin=["c_mixin_function_cdesc"],
+        c_helper="ShroudTypeDefines",
+        # Copy address of result into c_var and save length.
+        # When returning a std::string (and not a reference or pointer)
+        # an intermediate object is created to save the results
+        # which will be passed to copy_string
+        post_call=[
+            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;",
+        ],
+    ),
+    dict(
+        # YYY replaced by above
         name="c_function_char_*_cdesc_allocatable",
         mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines",
@@ -1263,6 +1282,27 @@ fc_statements = [
             "allocate(character(len={c_var_cdesc}%elem_len):: {f_var})",
             "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)",
         ],
+    ),
+    dict(
+        # f_function_char_scalar_cdesc_pointer
+        # f_function_char_*_cdesc_pointer
+        name="f_function_char_scalar/*_cdesc_pointer",
+        mixin=["f_mixin_function_cdesc"],
+        f_helper="pointer_string array_context",
+        arg_decl=[
+            "character(len=:), pointer :: {f_var}",
+        ],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        post_call=[
+            # BLOCK is Fortran 2008
+            #"block+",
+            #"character(len={c_var_cdesc}%elem_len), pointer :: {c_local_s}",
+            #"call c_f_pointer({c_var_cdesc}%base_addr, {c_local_s})",
+            #"{f_var} => {c_local_s}",
+            #"-end block",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})",
+        ],
+        local=["s"],
     ),
 
     dict(
@@ -2069,6 +2109,17 @@ fc_statements = [
         ],
         arg_c_call=["{f_var}"],  # Pass result as an argument.
     ),
+    dict(
+        # Add allocatable attribute to declaration.
+        # f_function_char_scalar_cfi_allocatable
+        # f_function_char_*_cfi_allocatable
+        name="f_function_char_scalar/*_cfi_pointer",
+        need_wrapper=True,
+        arg_decl=[
+            "character(len=:), pointer :: {f_var}",
+        ],
+        arg_c_call=["{f_var}"],  # Pass result as an argument.
+    ),
     
     dict(
         # XXX - needs a better name. function/arg
@@ -2212,6 +2263,45 @@ fc_statements = [
             "-}}",
             "-}}",
         ],
+    ),
+    dict(
+        name="c_function_char_*_cfi_pointer",
+        mixin=[
+            "c_mixin_function_character",
+        ],
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
+        f_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), pointer :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        pre_call=[],         # replace mixin
+        post_call=[
+# CFI_index_t nbar[1] = {3};
+#  CFI_CDESC_T(1) c_p;
+#  CFI_establish((CFI_cdesc_t* )&c_p, bar, CFI_attribute_pointer, CFI_type_int,
+#                nbar[0]*sizeof(int), 1, nbar);
+#  CFI_setpointer(f_p, (CFI_cdesc_t *)&c_p, NULL);
+
+            # CFI_index_t nbar[1] = {3};
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
+            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+            "\t CFI_attribute_pointer,\t CFI_type_char,"
+            "\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",  # set assumed-length
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}",            
+        ],
+        local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
     
     ########################################

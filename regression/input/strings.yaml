@@ -91,6 +91,13 @@ declarations:
   options:
     wrap_python: False
 
+- decl: const char * getCharPtr5() +deref(pointer)
+  doxygen:
+    brief: return a 'const char *' as character(:) pointer
+  options:
+    wrap_python: False
+#    literalinclude: True
+
 ########################################
 # return std::string
 

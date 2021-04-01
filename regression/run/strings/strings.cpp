@@ -91,6 +91,12 @@ const char * getCharPtr4()
 }
 // end getCharPtr4
 
+
+const char * getCharPtr5()
+{
+    return static_char;
+}
+
 //----------------------------------------
 
 // start getConstStringRefPure

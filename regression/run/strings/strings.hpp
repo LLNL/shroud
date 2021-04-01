@@ -24,6 +24,7 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 const char * getCharPtr4();
+const char * getCharPtr5();
 
 const std::string getConstStringResult();
 const std::string getConstStringLen();
