@@ -8,7 +8,6 @@ root
         * -- c_function_char_*
           buf -- c_function_char_*_buf
           cdesc -- c_function_char_*_cdesc
-            allocatable -- c_function_char_*_cdesc_allocatable
           cfi -- c_function_char_*_cfi
             allocatable -- c_function_char_*_cfi_allocatable
             pointer -- c_function_char_*_cfi_pointer
@@ -410,30 +409,6 @@ c_function_char_*_cdesc:
   - '{F_array_type}'
   intent: function
   name: c_function_char_*_cdesc
-  owner: library
-  post_call:
-  - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->cxx.idtor = {idtor};'
-  - '{c_var_cdesc}->addr.ccharp = {cxx_var};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  return_type: void
-  temps:
-  - cdesc
-c_function_char_*_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper: ShroudTypeDefines
-  f_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {c_var}'
-  f_c_arg_names:
-  - '{c_var}'
-  f_import:
-  - '{F_array_type}'
-  intent: function
-  name: c_function_char_*_cdesc_allocatable
   owner: library
   post_call:
   - '{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};'

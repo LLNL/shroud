@@ -210,7 +210,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_char_*_cdesc_allocatable
+    ! Requested: c_function_char_*_cdesc_allocatable
+    ! Match:     c_function_char_*_cdesc
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(SHT_rv) &
@@ -1340,7 +1341,8 @@ contains
     ! Attrs:     +deref(allocatable)+intent(function)
     ! Exact:     f_function_char_*_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-    ! Exact:     c_function_char_*_cdesc_allocatable
+    ! Requested: c_function_char_*_cdesc_allocatable
+    ! Match:     c_function_char_*_cdesc
     !>
     !! \brief return a 'const char *' as character(*)
     !!

@@ -294,7 +294,8 @@ const char * STR_get_char_ptr1(void)
 // ----------------------------------------
 // Function:  const char * getCharPtr1
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_char_*_cdesc_allocatable
+// Requested: c_function_char_*_cdesc_allocatable
+// Match:     c_function_char_*_cdesc
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {

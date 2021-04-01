@@ -1193,26 +1193,8 @@ fc_statements = [
     ),
 
     dict(
+        # Used with both deref allocatable and pointer.
         name="c_function_char_*_cdesc",
-        mixin=["c_mixin_function_cdesc"],
-        c_helper="ShroudTypeDefines",
-        # Copy address of result into c_var and save length.
-        # When returning a std::string (and not a reference or pointer)
-        # an intermediate object is created to save the results
-        # which will be passed to copy_string
-        post_call=[
-            "{c_var_cdesc}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->cxx.idtor = {idtor};",
-            "{c_var_cdesc}->addr.ccharp = {cxx_var};",
-            "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{c_var_cdesc}->size = 1;",
-            "{c_var_cdesc}->rank = 0;",
-        ],
-    ),
-    dict(
-        # YYY replaced by above
-        name="c_function_char_*_cdesc_allocatable",
         mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.

@@ -999,7 +999,7 @@
                         "stmt0": "f_function_char_*_cdesc_allocatable",
                         "stmt1": "f_function_char_*_cdesc_allocatable",
                         "stmtc0": "c_function_char_*_cdesc_allocatable",
-                        "stmtc1": "c_function_char_*_cdesc_allocatable"
+                        "stmtc1": "c_function_char_*_cdesc"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1086,7 +1086,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_char_*_cdesc_allocatable",
-                        "stmt1": "c_function_char_*_cdesc_allocatable"
+                        "stmt1": "c_function_char_*_cdesc"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
