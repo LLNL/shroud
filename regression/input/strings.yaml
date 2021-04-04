@@ -211,6 +211,7 @@ declarations:
 
 
 ########################################
+# std::string argument
 
 - decl: void acceptStringConstReference(const std::string & arg1)
   doxygen:
@@ -352,6 +353,12 @@ declarations:
       The std::string in py_string_inout must be declared before the
       goto added by py_native_*_in_pointer_list to avoid
       "jump to label 'fail' crosses initialization of" error.
+
+- decl: int CpassCharPtrNotrim(const char *src)
+  doxygen:
+    brief: Do not NULL terminate input string in Fortran
+  options:
+    wrap_python: False
 
 ########################################
 patterns:

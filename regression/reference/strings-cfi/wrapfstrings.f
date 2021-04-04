@@ -1184,6 +1184,47 @@ module strings_mod
         end subroutine post_declare
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrNotrim
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_char_*
+    ! Match:     c_default
+    interface
+        function c_cpass_char_ptr_notrim(src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_notrim")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT) :: SHT_rv
+        end function c_cpass_char_ptr_notrim
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrNotrim
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_char_*_cfi
+    interface
+        function cpass_char_ptr_notrim(src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_notrim_CFI")
+            use iso_c_binding, only : C_INT
+            implicit none
+            character(len=*), intent(IN) :: src
+            integer(C_INT) :: SHT_rv
+        end function cpass_char_ptr_notrim
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

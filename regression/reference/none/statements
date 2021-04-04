@@ -56,6 +56,7 @@ root
     in
       char
         *
+          buf -- c_in_char_*_buf
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
           buf -- c_in_char_**_buf
@@ -249,6 +250,8 @@ root
     in
       bool -- f_in_bool
       char
+        *
+          buf -- f_in/out_char_*_buf
         **
           buf -- f_in_char_**_buf
         scalar -- f_in_char_scalar
@@ -313,7 +316,7 @@ root
       bool -- f_out_bool
       char
         *
-          buf -- f_out_char_*_buf
+          buf -- f_in/out_char_*_buf
       native
         *
           allocatable -- f_out_native_*_allocatable
@@ -1130,6 +1133,31 @@ c_in_char_**_buf:
   temps:
   - size
   - len
+c_in_char_*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper: ShroudStrAlloc ShroudStrFree
+  cxx_local_var: pointer
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {c_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {c_var_len}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  f_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: c_in_char_*_buf
+  owner: library
+  post_call:
+  - ShroudStrFree({cxx_var});
+  pre_call:
+  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t -1);"
+  temps:
+  - len
 c_in_char_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -1186,7 +1214,7 @@ c_in_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: in
   name: c_in_native_*_cdesc
   owner: library
   pre_call:
@@ -1218,7 +1246,7 @@ c_in_shadow:
   f_c_arg_names:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
-  intent: in/inout
+  intent: in
   name: c_in_shadow
   owner: library
   pre_call:
@@ -1391,7 +1419,7 @@ c_in_string_scalar_cfi:
   - cfi
 c_in_struct:
   cxx_local_var: pointer
-  intent: in/out/inout
+  intent: in
   name: c_in_struct
   owner: library
   pre_call:
@@ -1477,7 +1505,7 @@ c_in_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: in
   name: c_in_void_*_cdesc
   owner: library
   pre_call:
@@ -1542,7 +1570,7 @@ c_inout_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: inout
   name: c_inout_native_*_cdesc
   owner: library
   pre_call:
@@ -1558,7 +1586,7 @@ c_inout_shadow:
   f_c_arg_names:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
-  intent: in/inout
+  intent: inout
   name: c_inout_shadow
   owner: library
   pre_call:
@@ -1687,7 +1715,7 @@ c_inout_string_*_cfi:
   - cfi
 c_inout_struct:
   cxx_local_var: pointer
-  intent: in/out/inout
+  intent: inout
   name: c_inout_struct
   owner: library
   pre_call:
@@ -1789,7 +1817,7 @@ c_inout_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: inout
   name: c_inout_void_*_cdesc
   owner: library
   pre_call:
@@ -2070,7 +2098,7 @@ c_out_native_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: out
   name: c_out_native_*_cdesc
   owner: library
   pre_call:
@@ -2195,7 +2223,7 @@ c_out_string_*_cfi:
   - cfi
 c_out_struct:
   cxx_local_var: pointer
-  intent: in/out/inout
+  intent: out
   name: c_out_struct
   owner: library
   pre_call:
@@ -2279,7 +2307,7 @@ c_out_void_*_cdesc:
   - '{c_var_cdesc}'
   f_import:
   - '{F_array_type}'
-  intent: in/out/inout
+  intent: out
   name: c_out_void_*_cdesc
   owner: library
   pre_call:
@@ -2881,6 +2909,16 @@ f_in_char_**_buf:
   intent: in
   name: f_in_char_**_buf
   need_wrapper: true
+f_in_char_*_buf:
+  arg_c_call:
+  - '{f_var}'
+  - len({f_var}, kind=C_INT)
+  f_module:
+    iso_c_binding:
+    - C_INT
+  intent: in
+  name: f_in_char_*_buf
+  need_wrapper: true
 f_in_char_scalar:
   arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
@@ -2897,7 +2935,7 @@ f_in_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: in
   name: f_in_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -2995,7 +3033,7 @@ f_in_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: in
   name: f_in_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -3035,7 +3073,7 @@ f_inout_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: inout
   name: f_inout_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -3127,7 +3165,7 @@ f_inout_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: inout
   name: f_inout_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -3288,7 +3326,7 @@ f_out_native_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: out
   name: f_out_native_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -3383,7 +3421,7 @@ f_out_void_*_cdesc:
   f_module:
     iso_c_binding:
     - C_LOC
-  intent: in/out/inout
+  intent: out
   name: f_out_void_*_cdesc
   pre_call:
   - '{c_var_cdesc}%base_addr = C_LOC({f_var})'

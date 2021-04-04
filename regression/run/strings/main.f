@@ -20,6 +20,7 @@ program tester
   call test_charargs_c
   call test_functions
   call test_explicit
+  call char_functions
 
   call fruit_summary
   call fruit_finalize
@@ -290,5 +291,12 @@ contains
     call assert_equals("a", name(1:1))
     
   end subroutine test_explicit
+
+  subroutine char_functions
+    call set_case_name("test_explicit")
+
+    call assert_equals(4, cpass_char_ptr_notrim("tree"), "CpassCharPtrNotrim")
+    
+  end subroutine char_functions
 
 end program tester

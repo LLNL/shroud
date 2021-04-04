@@ -1593,4 +1593,50 @@ void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi)
     // splicer end function.post_declare_CFI
 }
 
+/**
+ * \brief Do not NULL terminate input string in Fortran
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+int STR_cpass_char_ptr_notrim(const char * src)
+{
+    // splicer begin function.cpass_char_ptr_notrim
+    int SHC_rv = CpassCharPtrNotrim(src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim
+}
+
+/**
+ * \brief Do not NULL terminate input string in Fortran
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_char_*_cfi
+int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi)
+{
+    // splicer begin function.cpass_char_ptr_notrim_CFI
+    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, -1);
+    int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
+    ShroudStrFree(SHCXX_src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim_CFI
+}
+
 }  // extern "C"

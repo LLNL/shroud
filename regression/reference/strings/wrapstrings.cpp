@@ -1526,4 +1526,26 @@ void STR_post_declare_bufferify(int * count, char *name,
     // splicer end function.post_declare_bufferify
 }
 
+/**
+ * \brief Do not NULL terminate input string in Fortran
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+int STR_cpass_char_ptr_notrim(const char * src)
+{
+    // splicer begin function.cpass_char_ptr_notrim
+    int SHC_rv = CpassCharPtrNotrim(src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim
+}
+
 }  // extern "C"

@@ -299,3 +299,8 @@ void PostDeclare(int *count, std::string &name)
 }
 
 //----------------------------------------
+
+int CpassCharPtrNotrim(const char *src)
+{
+    return strlen(src);
+}

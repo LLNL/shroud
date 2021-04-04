@@ -178,6 +178,8 @@ void STR_post_declare(int * count, char * name);
 void STR_post_declare_bufferify(int * count, char *name,
     int SHT_name_len);
 
+int STR_cpass_char_ptr_notrim(const char * src);
+
 #ifdef __cplusplus
 }
 #endif

@@ -1261,6 +1261,27 @@ module strings_mod
         end subroutine c_post_declare_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrNotrim
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_char_*
+    ! Match:     c_default
+    interface
+        function c_cpass_char_ptr_notrim(src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_notrim")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT) :: SHT_rv
+        end function c_cpass_char_ptr_notrim
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -2171,6 +2192,28 @@ contains
             len(name, kind=C_INT))
         ! splicer end function.post_declare
     end subroutine post_declare
+
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrNotrim
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    !>
+    !! \brief Do not NULL terminate input string in Fortran
+    !!
+    !<
+    function cpass_char_ptr_notrim(src) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: src
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.cpass_char_ptr_notrim
+        SHT_rv = c_cpass_char_ptr_notrim(trim(src)//C_NULL_CHAR)
+        ! splicer end function.cpass_char_ptr_notrim
+    end function cpass_char_ptr_notrim
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
