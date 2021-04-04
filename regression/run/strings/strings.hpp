@@ -81,6 +81,7 @@ extern "C" {
 
 void PostDeclare(int *count, std::string &name);
 int CpassCharPtrNotrim(const char *src);
+int CpassCharPtrCAPI(void *addr, const char *src);
 
 
 #endif // STRINGS_HPP

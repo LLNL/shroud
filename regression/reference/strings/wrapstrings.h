@@ -182,6 +182,8 @@ int STR_cpass_char_ptr_notrim(const char * src);
 
 int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len);
 
+int STR_cpass_char_ptr_capi(void * addr, const char * src);
+
 #ifdef __cplusplus
 }
 #endif

@@ -168,6 +168,10 @@ int STR_cpass_char_ptr_notrim(const char * src);
 
 int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi);
 
+int STR_cpass_char_ptr_capi(void * addr, const char * src);
+
+int STR_cpass_char_ptr_capi_CFI(void * addr, CFI_cdesc_t *SHT_src_cfi);
+
 #ifdef __cplusplus
 }
 #endif

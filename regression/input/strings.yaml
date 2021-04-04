@@ -356,9 +356,22 @@ declarations:
 
 - decl: int CpassCharPtrNotrim(const char *src)
   doxygen:
-    brief: Do not NULL terminate input string in Fortran
+    brief: NULL terminate input string in C, not in Fortran.
   options:
     F_trim_char_in: False
+    wrap_python: False
+
+- decl: int CpassCharPtrCAPI(void *addr, const char *src)
+  doxygen:
+    brief: Do not NULL terminate input string
+    description: |
+      The C library function should get the same address
+      for addr and src.
+      Used when the C function needs the true address of the argument.
+      Skips null-termination. Useful to create an interface for
+      a function which is already callable by Fortran.
+      For example, the length is passed explicitly.
+  options:
     wrap_python: False
 
 ########################################

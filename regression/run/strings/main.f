@@ -293,9 +293,13 @@ contains
   end subroutine test_explicit
 
   subroutine char_functions
-    call set_case_name("test_explicit")
+    character(20), target :: str
+    
+!    call set_case_name("test_explicit")
 
     call assert_equals(4, cpass_char_ptr_notrim("tree"), "CpassCharPtrNotrim")
+
+!    call assert_equals(1, cpass_char_ptr_capi(c_loc(str), str))
     
   end subroutine char_functions
 

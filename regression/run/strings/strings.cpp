@@ -304,3 +304,14 @@ int CpassCharPtrNotrim(const char *src)
 {
     return strlen(src);
 }
+
+//----------------------------------------
+
+int CpassCharPtrCAPI(void *addr, const char *src)
+{
+    if (addr == const_cast<char *>(src)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}

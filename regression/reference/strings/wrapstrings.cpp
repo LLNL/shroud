@@ -1527,7 +1527,7 @@ void STR_post_declare_bufferify(int * count, char *name,
 }
 
 /**
- * \brief Do not NULL terminate input string in Fortran
+ * \brief NULL terminate input string in C, not in Fortran.
  *
  */
 // ----------------------------------------
@@ -1549,7 +1549,7 @@ int STR_cpass_char_ptr_notrim(const char * src)
 }
 
 /**
- * \brief Do not NULL terminate input string in Fortran
+ * \brief NULL terminate input string in C, not in Fortran.
  *
  */
 // ----------------------------------------
@@ -1569,6 +1569,39 @@ int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
     ShroudStrFree(SHCXX_src);
     return SHC_rv;
     // splicer end function.cpass_char_ptr_notrim_bufferify
+}
+
+/**
+ * \brief Do not NULL terminate input string
+ *
+ * The C library function should get the same address
+ * for addr and src.
+ * Used when the C function needs the true address of the argument.
+ * Skips null-termination. Useful to create an interface for
+ * a function which is already callable by Fortran.
+ * For example, the length is passed explicitly.
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  void * addr +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+int STR_cpass_char_ptr_capi(void * addr, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi
+    int SHC_rv = CpassCharPtrCAPI(addr, src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi
 }
 
 }  // extern "C"

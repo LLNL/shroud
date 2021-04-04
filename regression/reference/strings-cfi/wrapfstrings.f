@@ -1225,6 +1225,59 @@ module strings_mod
         end function cpass_char_ptr_notrim
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrCAPI
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_void_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_char_*
+    ! Match:     c_default
+    interface
+        function c_cpass_char_ptr_capi(addr, src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_capi")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: addr
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT) :: SHT_rv
+        end function c_cpass_char_ptr_capi
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrCAPI
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_void_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_char_*_cfi
+    interface
+        function cpass_char_ptr_capi(addr, src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_capi_CFI")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: addr
+            character(len=*), intent(IN) :: src
+            integer(C_INT) :: SHT_rv
+        end function cpass_char_ptr_capi
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

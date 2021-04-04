@@ -1594,7 +1594,7 @@ void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi)
 }
 
 /**
- * \brief Do not NULL terminate input string in Fortran
+ * \brief NULL terminate input string in C, not in Fortran.
  *
  */
 // ----------------------------------------
@@ -1616,7 +1616,7 @@ int STR_cpass_char_ptr_notrim(const char * src)
 }
 
 /**
- * \brief Do not NULL terminate input string in Fortran
+ * \brief NULL terminate input string in C, not in Fortran.
  *
  */
 // ----------------------------------------
@@ -1637,6 +1637,74 @@ int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi)
     ShroudStrFree(SHCXX_src);
     return SHC_rv;
     // splicer end function.cpass_char_ptr_notrim_CFI
+}
+
+/**
+ * \brief Do not NULL terminate input string
+ *
+ * The C library function should get the same address
+ * for addr and src.
+ * Used when the C function needs the true address of the argument.
+ * Skips null-termination. Useful to create an interface for
+ * a function which is already callable by Fortran.
+ * For example, the length is passed explicitly.
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  void * addr +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+int STR_cpass_char_ptr_capi(void * addr, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi
+    int SHC_rv = CpassCharPtrCAPI(addr, src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi
+}
+
+/**
+ * \brief Do not NULL terminate input string
+ *
+ * The C library function should get the same address
+ * for addr and src.
+ * Used when the C function needs the true address of the argument.
+ * Skips null-termination. Useful to create an interface for
+ * a function which is already callable by Fortran.
+ * For example, the length is passed explicitly.
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  void * addr +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_char_*_cfi
+int STR_cpass_char_ptr_capi_CFI(void * addr, CFI_cdesc_t *SHT_src_cfi)
+{
+    // splicer begin function.cpass_char_ptr_capi_CFI
+    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, -1);
+    int SHC_rv = CpassCharPtrCAPI(addr, SHCXX_src);
+    ShroudStrFree(SHCXX_src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi_CFI
 }
 
 }  // extern "C"
