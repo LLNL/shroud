@@ -484,7 +484,7 @@ class VerifyAttrs(object):
             # char *arg+intent(in)
             # Add terminating NULL in Fortran wrapper.
             # Avoid a C wrapper just to do the NULL terminate.
-            arg.ftrim_char_in = True
+            arg.ftrim_char_in = options.F_trim_char_in
 
         if node:
             if arg.init is not None:

@@ -7622,6 +7622,7 @@
                     "brief": "Do not NULL terminate input string in Fortran"
                 },
                 "options": {
+                    "F_trim_char_in": false,
                     "wrap_fortran": false,
                     "wrap_python": false
                 },
@@ -7752,6 +7753,7 @@
                     "brief": "Do not NULL terminate input string in Fortran"
                 },
                 "options": {
+                    "F_trim_char_in": false,
                     "wrap_fortran": false,
                     "wrap_python": false
                 },

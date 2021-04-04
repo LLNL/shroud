@@ -1548,4 +1548,27 @@ int STR_cpass_char_ptr_notrim(const char * src)
     // splicer end function.cpass_char_ptr_notrim
 }
 
+/**
+ * \brief Do not NULL terminate input string in Fortran
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(buf)+intent(in)
+// Exact:     c_in_char_*_buf
+int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
+{
+    // splicer begin function.cpass_char_ptr_notrim_bufferify
+    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, -1);
+    int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
+    ShroudStrFree(SHCXX_src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim_bufferify
+}
+
 }  // extern "C"

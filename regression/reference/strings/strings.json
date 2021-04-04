@@ -8188,6 +8188,10 @@
             },
             {
                 "<FUNCTION>": "41 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "77",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrNotrim",
@@ -8207,7 +8211,6 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "metaattrs": {
                                 "intent": "in"
                             },
@@ -8228,11 +8231,11 @@
                     "brief": "Do not NULL terminate input string in Fortran"
                 },
                 "options": {
+                    "F_trim_char_in": false,
                     "wrap_python": false
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -8257,11 +8260,7 @@
                         "fmtf": {
                             "F_C_var": "src",
                             "c_var": "src",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -8271,11 +8270,11 @@
                     "C_prototype": "const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "src",
-                    "F_C_call": "c_cpass_char_ptr_notrim",
+                    "F_C_call": "c_cpass_char_ptr_notrim_bufferify",
                     "F_C_name": "c_cpass_char_ptr_notrim",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "trim(src)//C_NULL_CHAR",
+                    "F_arg_c_call": "src,\t len(src, kind=C_INT)",
                     "F_arguments": "src",
                     "F_name_function": "cpass_char_ptr_notrim",
                     "F_name_generic": "cpass_char_ptr_notrim",
@@ -8315,6 +8314,132 @@
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "77 ****************************************",
+                "_PTR_C_CXX_index": "41",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "CpassCharPtrNotrim",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "const": true,
+                            "declarator": {
+                                "name": "src",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int CpassCharPtrNotrim(const char *src)",
+                "declgen": "int CpassCharPtrNotrim(const char * src)",
+                "doxygen": {
+                    "brief": "Do not NULL terminate input string in Fortran"
+                },
+                "options": {
+                    "F_trim_char_in": false,
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "src": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "char",
+                            "c_var": "src",
+                            "c_var_len": "SHT_src_len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
+                            "cxx_type": "char",
+                            "cxx_var": "SHCXX_src",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_in_char_*_buf",
+                            "stmt1": "c_in_char_*_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "src",
+                            "c_var": "src",
+                            "c_var_len": "SHT_src_len",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "src",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_in_char_*_buf",
+                            "stmt1": "f_in_char_*_buf",
+                            "stmtc0": "c_in_char_*_buf",
+                            "stmtc1": "c_in_char_*_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_src",
+                    "C_name": "STR_cpass_char_ptr_notrim_bufferify",
+                    "C_prototype": "char *src,\t int SHT_src_len",
+                    "C_return_type": "int",
+                    "F_C_arguments": "src,\t SHT_src_len",
+                    "F_C_name": "c_cpass_char_ptr_notrim_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "CpassCharPtrNotrim",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cpass_char_ptr_notrim"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             }

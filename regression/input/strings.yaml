@@ -358,6 +358,7 @@ declarations:
   doxygen:
     brief: Do not NULL terminate input string in Fortran
   options:
+    F_trim_char_in: False
     wrap_python: False
 
 ########################################

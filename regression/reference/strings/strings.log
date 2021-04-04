@@ -71,6 +71,7 @@ C void CpassCharPtr(char * dest +intent(out), const char * src)  +intent(subrout
 C void PostDeclare(int * count +intent(in)+rank(1), std::string & name)  +intent(subroutine)
 C void PostDeclare(int * count +intent(in)+rank(1), std::string & name)  +intent(subroutine)
 C int CpassCharPtrNotrim(const char * src)  +intent(function)
+C int CpassCharPtrNotrim(const char * src)  +intent(function)
 Close wrapstrings.h
 Close wrapstrings.cpp
 Fortran void passChar(char status +value)  +intent(subroutine)
@@ -180,6 +181,7 @@ C-interface void CpassCharPtr(char * dest +intent(out), const char * src)  +inte
 C-interface void CpassCharPtr(char * dest +intent(out), const char * src)  +intent(subroutine)
 C-interface void PostDeclare(int * count +intent(in)+rank(1), std::string & name)  +intent(subroutine)
 C-interface void PostDeclare(int * count +intent(in)+rank(1), std::string & name)  +intent(subroutine)
+C-interface int CpassCharPtrNotrim(const char * src)  +intent(function)
 C-interface int CpassCharPtrNotrim(const char * src)  +intent(function)
 Close wrapfstrings.f
 Close utilstrings.cpp
