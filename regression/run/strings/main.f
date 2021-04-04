@@ -294,6 +294,7 @@ contains
 
   subroutine char_functions
     character(20), target :: str
+    character(20) :: str1, str2
     
     call set_case_name("test_explicit")
 
@@ -302,6 +303,10 @@ contains
     ! CpassCharPtrCAPI should get two equal pointers.
     str = " "
     call assert_equals(1, cpass_char_ptr_capi(c_loc(str), str), "CpassCharPtrCAPI")
+
+    str1 = "sample string"
+    str2 = str1
+    call assert_equals(1, cpass_char_ptr_capi2(str1, str2))
     
   end subroutine char_functions
 

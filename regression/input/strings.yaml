@@ -376,6 +376,12 @@ declarations:
   options:
     wrap_python: False
 
+- decl: int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
+  doxygen:
+    brief: Mix api(buf) and api(capi)
+  options:
+    wrap_python: False
+
 ########################################
 patterns:
     C_invalid_name: |

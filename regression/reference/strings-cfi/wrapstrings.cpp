@@ -1674,4 +1674,61 @@ int STR_cpass_char_ptr_capi(void * addr, const char * src)
     // splicer end function.cpass_char_ptr_capi
 }
 
+/**
+ * \brief Mix api(buf) and api(capi)
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI2
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * in
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src +api(capi)
+// Attrs:     +api(capi)+intent(in)
+// Requested: c_in_char_*_capi
+// Match:     c_default
+int STR_cpass_char_ptr_capi2(const char * in, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi2
+    int SHC_rv = CpassCharPtrCAPI2(in, src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi2
+}
+
+/**
+ * \brief Mix api(buf) and api(capi)
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI2
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * in
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_char_*_cfi
+// ----------------------------------------
+// Argument:  const char * src +api(capi)
+// Attrs:     +api(capi)+intent(in)
+// Requested: c_in_char_*_capi
+// Match:     c_default
+int STR_cpass_char_ptr_capi2_CFI(CFI_cdesc_t *SHT_in_cfi,
+    const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi2_CFI
+    char *in = static_cast<char *>(SHT_in_cfi->base_addr);
+    char *SHCXX_in = ShroudStrAlloc(in, SHT_in_cfi->elem_len, -1);
+    int SHC_rv = CpassCharPtrCAPI2(SHCXX_in, src);
+    ShroudStrFree(SHCXX_in);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi2_CFI
+}
+
 }  // extern "C"

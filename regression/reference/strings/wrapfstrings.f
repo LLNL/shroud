@@ -1330,6 +1330,33 @@ module strings_mod
         end function cpass_char_ptr_capi
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrCAPI2
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const char * in
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_char_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * src +api(capi)
+    ! Attrs:     +api(capi)+intent(in)
+    ! Requested: c_in_char_*_capi
+    ! Match:     c_default
+    interface
+        function c_cpass_char_ptr_capi2(in, src) &
+                result(SHT_rv) &
+                bind(C, name="STR_cpass_char_ptr_capi2")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: in(*)
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT) :: SHT_rv
+        end function c_cpass_char_ptr_capi2
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -2270,6 +2297,37 @@ contains
             len(src, kind=C_INT))
         ! splicer end function.cpass_char_ptr_notrim
     end function cpass_char_ptr_notrim
+
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrCAPI2
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const char * src +api(capi)
+    ! Attrs:     +api(capi)+intent(in)
+    ! Requested: f_in_char_*_capi
+    ! Match:     f_default
+    ! Attrs:     +api(capi)+intent(in)
+    ! Requested: c_in_char_*_capi
+    ! Match:     c_default
+    !>
+    !! \brief Mix api(buf) and api(capi)
+    !!
+    !<
+    function cpass_char_ptr_capi2(in, src) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: in
+        character(len=*), intent(IN) :: src
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.cpass_char_ptr_capi2
+        SHT_rv = c_cpass_char_ptr_capi2(trim(in)//C_NULL_CHAR, src)
+        ! splicer end function.cpass_char_ptr_capi2
+    end function cpass_char_ptr_capi2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

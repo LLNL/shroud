@@ -315,3 +315,17 @@ int CpassCharPtrCAPI(void *addr, const char *src)
         return 0;
     }
 }
+
+//----------------------------------------
+// Check if strings compare, but only in is null terminated.
+
+int CpassCharPtrCAPI2(const char *in, const char *src)
+{
+    size_t n = strlen(in);
+    if (strncmp(in, src, n) == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
