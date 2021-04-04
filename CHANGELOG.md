@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Create a generic interface using scalar and each rank.
 - Started adding support for Futher Interoperability with C.
   Used when option *F_CFI* is True (C/Fortran Interoperability).
+- Support *deref(pointer)* for ``char *`` functions.
+  Requires at least gfortran 6.1.0
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

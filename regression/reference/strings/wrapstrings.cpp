@@ -294,7 +294,8 @@ const char * STR_get_char_ptr1(void)
 // ----------------------------------------
 // Function:  const char * getCharPtr1
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Exact:     c_function_char_*_cdesc_allocatable
+// Requested: c_function_char_*_cdesc_allocatable
+// Match:     c_function_char_*_cdesc
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -406,6 +407,46 @@ const char * STR_get_char_ptr4(void)
     const char * SHC_rv = getCharPtr4();
     return SHC_rv;
     // splicer end function.get_char_ptr4
+}
+
+/**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_char_*_pointer
+// Match:     c_function_char_*
+const char * STR_get_char_ptr5(void)
+{
+    // splicer begin function.get_char_ptr5
+    const char * SHC_rv = getCharPtr5();
+    return SHC_rv;
+    // splicer end function.get_char_ptr5
+}
+
+/**
+ * \brief return a 'const char *' as character(:) pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr5 +deref(pointer)
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Requested: c_function_char_*_cdesc_pointer
+// Match:     c_function_char_*_cdesc
+void STR_get_char_ptr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.get_char_ptr5_bufferify
+    const char * SHC_rv = getCharPtr5();
+    SHT_rv_cdesc->cxx.addr = const_cast<char *>(SHC_rv);
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.ccharp = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
+    SHT_rv_cdesc->size = 1;
+    SHT_rv_cdesc->rank = 0;
+    // splicer end function.get_char_ptr5_bufferify
 }
 
 /**
@@ -878,6 +919,33 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 3);
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify
+}
+
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_string_*_pointer
+// Match:     c_function_string_*
+const char * STR_get_const_string_ptr_pointer(void)
+{
+    // splicer begin function.get_const_string_ptr_pointer
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    const char * SHC_rv = SHCXX_rv->c_str();
+    return SHC_rv;
+    // splicer end function.get_const_string_ptr_pointer
+}
+
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Exact:     c_function_string_*_cdesc_pointer
+void STR_get_const_string_ptr_pointer_bufferify(
+    STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.get_const_string_ptr_pointer_bufferify
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
+    // splicer end function.get_const_string_ptr_pointer_bufferify
 }
 
 /**

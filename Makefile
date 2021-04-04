@@ -43,6 +43,7 @@ include $(top)/regression/run/Makefile
 # For development:
 # make virtualenv
 # make develop
+# module load gcc/6.1.0   or newer
 
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).

@@ -91,6 +91,12 @@ const char * getCharPtr4()
 }
 // end getCharPtr4
 
+
+const char * getCharPtr5()
+{
+    return static_char;
+}
+
 //----------------------------------------
 
 // start getConstStringRefPure
@@ -170,6 +176,19 @@ const std::string * getConstStringPtrOwnsAllocPattern()
 {
     // +owner(caller) +pattern
     std::string * rv = new std::string("getConstStringPtrOwnsAllocPattern");
+    return rv;
+}
+
+const std::string * getConstStringPtrPointer()
+{
+    // +deref(pointer) +owner(library)
+    return &static_str;
+}
+
+const std::string * getConstStringPtrOwnsPointer()
+{
+    // +deref(pointer) +owner(caller)
+    std::string * rv = new std::string("getConstStringPtrOwnsPointer");
     return rv;
 }
 
