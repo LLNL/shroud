@@ -113,6 +113,7 @@ class VerifyAttrs(object):
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
+                "api",
                 "allocatable",  # return a Fortran ALLOCATABLE
                 "cdesc",
                 "deref",  # How to dereference pointer
@@ -300,6 +301,17 @@ class VerifyAttrs(object):
         ntypemap = ast.typemap
         is_ptr = ast.is_indirect()
 
+        # api
+        api = attrs["api"]
+        if api is None:
+            pass
+        elif api not in ["capi", "buf", "cfi"]:
+                raise RuntimeError(
+                    "'api' attribute must 'capi', 'buf', or 'cfi'"
+                )
+        else:
+            meta["api"] = api
+
         # dimension
         dimension = attrs["dimension"]
         rank = attrs["rank"]
@@ -394,6 +406,7 @@ class VerifyAttrs(object):
             if attr[0] == "_":  # Shroud internal attribute.
                 continue
             if attr not in [
+                "api",
                 "allocatable",
                 "assumedtype",
                 "capsule",
@@ -475,11 +488,14 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if (
+        if meta["api"]:  # User set
+            pass
+        elif (
             options.F_CFI is False and
             intent == "in" and
             is_ptr == 1 and
-            arg_typemap.name == "char"):
+            arg_typemap.name == "char"
+        ):
             # const char *arg
             # char *arg+intent(in)
             # Add terminating NULL in Fortran wrapper.
@@ -1547,7 +1563,10 @@ class GenFunctions(object):
         for arg in ast.params:
             cfi_args[arg.name] = False
             arg_typemap = arg.typemap
-            if arg.metaattrs["assumed-rank"]:
+            if arg.metaattrs["api"]:
+                # API explicitly set by user.
+                continue
+            elif arg.metaattrs["assumed-rank"]:
                 cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "string":
                     cfi_args[arg.name] = True
@@ -1705,7 +1724,10 @@ class GenFunctions(object):
         for arg in ast.params:
             has_buf_arg = None
             arg_typemap = arg.typemap
-            if arg.attrs["cdesc"]:
+            if arg.metaattrs["api"]:
+                # API explicitly set by user.
+                continue
+            elif arg.attrs["cdesc"]:
                 # User requested cdesc.
                 has_buf_arg = "cdesc"
             elif arg_typemap.sgroup == "string":

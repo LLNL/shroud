@@ -295,11 +295,13 @@ contains
   subroutine char_functions
     character(20), target :: str
     
-!    call set_case_name("test_explicit")
+    call set_case_name("test_explicit")
 
     call assert_equals(4, cpass_char_ptr_notrim("tree"), "CpassCharPtrNotrim")
 
-!    call assert_equals(1, cpass_char_ptr_capi(c_loc(str), str))
+    ! CpassCharPtrCAPI should get two equal pointers.
+    str = " "
+    call assert_equals(1, cpass_char_ptr_capi(c_loc(str), str), "CpassCharPtrCAPI")
     
   end subroutine char_functions
 

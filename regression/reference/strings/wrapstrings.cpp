@@ -1580,6 +1580,8 @@ int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
  * Skips null-termination. Useful to create an interface for
  * a function which is already callable by Fortran.
  * For example, the length is passed explicitly.
+ * This example will not create a Fortran wrapper since C can be
+ * called directly.
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI
@@ -1592,9 +1594,9 @@ int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
 // Requested: c_in_void_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * src
-// Attrs:     +intent(in)
-// Requested: c_in_char_*
+// Argument:  const char * src +api(capi)
+// Attrs:     +api(capi)+intent(in)
+// Requested: c_in_char_*_capi
 // Match:     c_default
 int STR_cpass_char_ptr_capi(void * addr, const char * src)
 {

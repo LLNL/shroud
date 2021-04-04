@@ -8475,6 +8475,9 @@
                             "typemap_name": "void"
                         },
                         {
+                            "attrs": {
+                                "api": "capi"
+                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -8484,8 +8487,8 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "metaattrs": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -8499,11 +8502,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int CpassCharPtrCAPI(void *addr, const char *src)",
-                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src)",
+                "decl": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src +api(capi))",
                 "doxygen": {
                     "brief": "Do not NULL terminate input string",
-                    "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\n"
+                    "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"
                 },
                 "options": {
                     "wrap_python": false
@@ -8560,7 +8563,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_char_*",
+                            "stmt0": "c_in_char_*_capi",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -8570,7 +8573,11 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_in_char_*_capi",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_char_*_capi",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -8581,10 +8588,10 @@
                     "C_return_type": "int",
                     "F_C_arguments": "addr,\t src",
                     "F_C_call": "c_cpass_char_ptr_capi",
-                    "F_C_name": "c_cpass_char_ptr_capi",
+                    "F_C_name": "cpass_char_ptr_capi",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "addr,\t trim(src)//C_NULL_CHAR",
+                    "F_arg_c_call": "addr,\t src",
                     "F_arguments": "addr,\t src",
                     "F_name_function": "cpass_char_ptr_capi",
                     "F_name_generic": "cpass_char_ptr_capi",

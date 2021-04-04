@@ -287,6 +287,39 @@ a default argument may include a plus symbol:
 
 .. While parsing, attribute values are saved by finding a balanced paren.
 
+api
+^^^
+
+Controls the API used by the C wrapper.  The values are *capi*,
+*buf*, and *cfi*.  Normally, this attribute is determined by Shroud
+internally.  Scalar native types such as ``int`` and ``double`` will
+use *capi* since the argument can be passed directly to C using the
+*interoperability with C* feature of Fortran.
+
+A 'bufferify' wrapper can also be created.  Pointers to native and
+``char`` use additional metadata extracted by the Fortran wrapper via
+intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
+will be copied and null-terminated.  This uses *api(buf)*.
+
+The option *F_CFI*, will use the *Further interoperability with C*
+features and pass ``CFI_cdesc_t`` arguments to the C where where the
+metadata is extracted.  This uses *api(cfi)*.
+
+There is currently one useful case where the user would want to set
+this attribute. To avoid creating a wrapper which copies and null
+terminates a ``char *`` argument the user can set *api(capi)*.  The
+address of the formal parameter will be passed to the user's library.
+This is useful when null termination does not make sense. For example,
+when the argument is a large buffer to be written to a file.  The C
+library must have some other way of determining the length of the
+argument such as another argument with the explicit length.
+
+.. tested by strings.yaml CpassCharPtrCAPI
+
+.. In the future a user settable api might be useful to do custom
+   actions in the wrappers.
+
+   
 assumedtype
 ^^^^^^^^^^^
 

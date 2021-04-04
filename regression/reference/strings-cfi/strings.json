@@ -7838,10 +7838,6 @@
             },
             {
                 "<FUNCTION>": "42 ****************************************",
-                "C_generated_path": [
-                    "arg_to_cfi"
-                ],
-                "_PTR_F_C_index": "80",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrCAPI",
@@ -7872,6 +7868,9 @@
                             "typemap_name": "void"
                         },
                         {
+                            "attrs": {
+                                "api": "capi"
+                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -7882,6 +7881,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "capi",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -7895,18 +7895,18 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int CpassCharPtrCAPI(void *addr, const char *src)",
-                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src)",
+                "decl": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src +api(capi))",
                 "doxygen": {
                     "brief": "Do not NULL terminate input string",
-                    "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\n"
+                    "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"
                 },
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -7931,7 +7931,14 @@
                         "fmtf": {
                             "F_C_var": "addr",
                             "c_var": "addr",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "addr",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "f_in_void_*",
+                            "stmt1": "f_in_void_*",
+                            "stmtc0": "c_in_void_*",
+                            "stmtc1": "c_default"
                         }
                     },
                     "src": {
@@ -7949,13 +7956,21 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_char_*",
+                            "stmt0": "c_in_char_*_capi",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
                             "F_C_var": "src",
                             "c_var": "src",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "src",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_in_char_*_capi",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_char_*_capi",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
@@ -7965,8 +7980,8 @@
                     "C_prototype": "void * addr,\t const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "addr,\t src",
-                    "F_C_call": "c_cpass_char_ptr_capi_cfi",
-                    "F_C_name": "c_cpass_char_ptr_capi",
+                    "F_C_call": "c_cpass_char_ptr_capi",
+                    "F_C_name": "cpass_char_ptr_capi",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "addr,\t src",
@@ -8009,184 +8024,6 @@
                         "stmt1": "f_function",
                         "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_function"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "80 ****************************************",
-                "_PTR_C_CXX_index": "42",
-                "_generated": "arg_to_cfi",
-                "ast": {
-                    "declarator": {
-                        "name": "CpassCharPtrCAPI",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "addr",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "src",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cfi",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int CpassCharPtrCAPI(void *addr, const char *src)",
-                "declgen": "int CpassCharPtrCAPI(void * addr +value, const char * src)",
-                "doxygen": {
-                    "brief": "Do not NULL terminate input string",
-                    "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\n"
-                },
-                "options": {
-                    "wrap_fortran": false,
-                    "wrap_python": false
-                },
-                "splicer_group": "cfi",
-                "wrap": {
-                    "c": true,
-                    "f_c": true
-                },
-                "zz_fmtargs": {
-                    "addr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "void",
-                            "c_var": "addr",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
-                            "cxx_type": "void",
-                            "cxx_var": "addr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_in_void_*",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "addr",
-                            "c_var": "addr",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "addr",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "f_in_void_*",
-                            "stmt1": "f_in_void_*",
-                            "stmtc0": "c_in_void_*",
-                            "stmtc1": "c_default"
-                        }
-                    },
-                    "src": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "char",
-                            "c_var": "src",
-                            "c_var_cfi": "SHT_src_cfi",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
-                            "cxx_type": "char",
-                            "cxx_var": "SHCXX_src",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_char_*_cfi",
-                            "stmt1": "c_in_char_*_cfi"
-                        },
-                        "fmtf": {
-                            "F_C_var": "src",
-                            "c_var": "src",
-                            "c_var_cfi": "SHT_src_cfi",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_char_*_cfi",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_in_char_*_cfi",
-                            "stmtc1": "c_in_char_*_cfi"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_call_list": "addr,\t SHCXX_src",
-                    "C_name": "STR_cpass_char_ptr_capi_CFI",
-                    "C_prototype": "void * addr,\t CFI_cdesc_t *SHT_src_cfi",
-                    "C_return_type": "int",
-                    "F_C_arguments": "addr,\t src",
-                    "F_C_name": "cpass_char_ptr_capi",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrCAPI",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "cpass_char_ptr_capi"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_scalar",
-                        "stmt1": "c_function"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
                     }
                 }
             }

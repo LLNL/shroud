@@ -361,7 +361,7 @@ declarations:
     F_trim_char_in: False
     wrap_python: False
 
-- decl: int CpassCharPtrCAPI(void *addr, const char *src)
+- decl: int CpassCharPtrCAPI(void *addr, const char *src +api(capi))
   doxygen:
     brief: Do not NULL terminate input string
     description: |
@@ -371,6 +371,8 @@ declarations:
       Skips null-termination. Useful to create an interface for
       a function which is already callable by Fortran.
       For example, the length is passed explicitly.
+      This example will not create a Fortran wrapper since C can be
+      called directly.
   options:
     wrap_python: False
 

@@ -1314,12 +1314,12 @@ module strings_mod
     ! Requested: c_in_void_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * src
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
+    ! Argument:  const char * src +api(capi)
+    ! Attrs:     +api(capi)+intent(in)
+    ! Requested: c_in_char_*_capi
     ! Match:     c_default
     interface
-        function c_cpass_char_ptr_capi(addr, src) &
+        function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
                 bind(C, name="STR_cpass_char_ptr_capi")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
@@ -1327,7 +1327,7 @@ module strings_mod
             type(C_PTR), value, intent(IN) :: addr
             character(kind=C_CHAR), intent(IN) :: src(*)
             integer(C_INT) :: SHT_rv
-        end function c_cpass_char_ptr_capi
+        end function cpass_char_ptr_capi
     end interface
 
     interface
@@ -2270,42 +2270,6 @@ contains
             len(src, kind=C_INT))
         ! splicer end function.cpass_char_ptr_notrim
     end function cpass_char_ptr_notrim
-
-    ! ----------------------------------------
-    ! Function:  int CpassCharPtrCAPI
-    ! Attrs:     +intent(function)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
-    ! Attrs:     +intent(function)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
-    ! ----------------------------------------
-    ! Argument:  void * addr +value
-    ! Attrs:     +intent(in)
-    ! Exact:     f_in_void_*
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_void_*
-    ! Match:     c_default
-    !>
-    !! \brief Do not NULL terminate input string
-    !!
-    !! The C library function should get the same address
-    !! for addr and src.
-    !! Used when the C function needs the true address of the argument.
-    !! Skips null-termination. Useful to create an interface for
-    !! a function which is already callable by Fortran.
-    !! For example, the length is passed explicitly.
-    !<
-    function cpass_char_ptr_capi(addr, src) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR, C_PTR
-        type(C_PTR), intent(IN) :: addr
-        character(len=*), intent(IN) :: src
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.cpass_char_ptr_capi
-        SHT_rv = c_cpass_char_ptr_capi(addr, trim(src)//C_NULL_CHAR)
-        ! splicer end function.cpass_char_ptr_capi
-    end function cpass_char_ptr_capi
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
