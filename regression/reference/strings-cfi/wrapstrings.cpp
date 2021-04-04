@@ -940,6 +940,49 @@ void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_CFI
 }
 
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_string_*_pointer
+// Match:     c_function_string_*
+const char * STR_get_const_string_ptr_pointer(void)
+{
+    // splicer begin function.get_const_string_ptr_pointer
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    const char * SHC_rv = SHCXX_rv->c_str();
+    return SHC_rv;
+    // splicer end function.get_const_string_ptr_pointer
+}
+
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_string_*_cfi_pointer
+void STR_get_const_string_ptr_pointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.get_const_string_ptr_pointer_CFI
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    int SHC_rv_err;
+    if (SHCXX_rv == nullptr) {
+        SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
+    } else {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<char *>(SHCXX_rv->data());
+        size_t SHC_rv_len = SHCXX_rv->length();
+        SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
+            nullptr);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHT_rv_cfi->elem_len = SHC_rv_cdesc->elem_len;
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                nullptr);
+        }
+    }
+    // splicer end function.get_const_string_ptr_pointer_CFI
+}
+
 /**
  * \brief Accept a const string reference
  *

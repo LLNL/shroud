@@ -107,6 +107,10 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     CFI_cdesc_t *SHT_rv_cfi);
 
+const char * STR_get_const_string_ptr_pointer(void);
+
+void STR_get_const_string_ptr_pointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
+
 void STR_accept_string_const_reference(const char * arg1);
 
 void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHT_arg1_cfi);

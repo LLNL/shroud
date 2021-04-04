@@ -921,6 +921,33 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify
 }
 
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +deref(pointer)+intent(function)
+// Requested: c_function_string_*_pointer
+// Match:     c_function_string_*
+const char * STR_get_const_string_ptr_pointer(void)
+{
+    // splicer begin function.get_const_string_ptr_pointer
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    const char * SHC_rv = SHCXX_rv->c_str();
+    return SHC_rv;
+    // splicer end function.get_const_string_ptr_pointer
+}
+
+// ----------------------------------------
+// Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
+// Exact:     c_function_string_*_cdesc_pointer
+void STR_get_const_string_ptr_pointer_bufferify(
+    STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.get_const_string_ptr_pointer_bufferify
+    const std::string * SHCXX_rv = getConstStringPtrPointer();
+    ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
+    // splicer end function.get_const_string_ptr_pointer_bufferify
+}
+
 /**
  * \brief Accept a const string reference
  *

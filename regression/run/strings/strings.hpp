@@ -42,6 +42,9 @@ const std::string * getConstStringPtrAlloc();
 const std::string * getConstStringPtrOwnsAlloc();
 const std::string * getConstStringPtrOwnsAllocPattern();
 
+const std::string * getConstStringPtrPointer();
+const std::string * getConstStringPtrOwnsPointer();
+
 void acceptName_instance(std::string arg1);
 
 void acceptStringConstReference(const std::string & arg1);

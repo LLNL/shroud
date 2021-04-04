@@ -25,15 +25,18 @@ root
         & -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
           cdesc
-            allocatable -- c_function_string_*/&_cdesc_allocatable
+            allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
+            pointer -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi -- c_function_string_scalar/*/&_cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
         * -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
           cdesc
-            allocatable -- c_function_string_*/&_cdesc_allocatable
+            allocatable -- c_function_string_*/&_cdesc_allocatable/pointer
+            pointer -- c_function_string_*/&_cdesc_allocatable/pointer
           cfi -- c_function_string_scalar/*/&_cfi
             allocatable -- c_function_string_*/&_cfi_allocatable
+            pointer -- c_function_string_*_cfi_pointer
         scalar -- c_function_string_scalar/*/&
           buf -- c_function_string_scalar/*/&_buf
           cdesc
@@ -178,7 +181,7 @@ root
           buf -- f_function_char_*_buf
           cdesc
             allocatable -- f_function_char_scalar/*_cdesc_allocatable
-            pointer -- f_function_char_scalar/*_cdesc_pointer
+            pointer -- f_function_char/string_scalar/*_cdesc_pointer
           cfi -- f_function_char_*_cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
             pointer -- f_function_char_scalar/*_cfi_pointer
@@ -186,7 +189,7 @@ root
         scalar
           cdesc
             allocatable -- f_function_char_scalar/*_cdesc_allocatable
-            pointer -- f_function_char_scalar/*_cdesc_pointer
+            pointer -- f_function_char/string_scalar/*_cdesc_pointer
           cfi
             allocatable -- f_function_char_scalar/*_cfi_allocatable
             pointer -- f_function_char_scalar/*_cfi_pointer
@@ -212,18 +215,23 @@ root
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+            pointer -- f_function_string_scalar/*/&_cfi_pointer
         *
           buf -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
+            pointer -- f_function_char/string_scalar/*_cdesc_pointer
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+            pointer -- f_function_string_scalar/*/&_cfi_pointer
         scalar
           buf -- f_function_string_scalar/*/&_buf
           cdesc
             allocatable -- f_function_string_scalar/*/&_cdesc_allocatable
+            pointer -- f_function_char/string_scalar/*_cdesc_pointer
           cfi -- f_function_string_scalar/*/&_cfi
             allocatable -- f_function_string_scalar/*/&_cfi_allocatable
+            pointer -- f_function_string_scalar/*/&_cfi_pointer
       struct
         *
           buf
@@ -676,6 +684,24 @@ c_function_string_&_cdesc_allocatable:
   return_type: void
   temps:
   - cdesc
+c_function_string_&_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_&_cdesc_pointer
+  owner: library
+  post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  return_type: void
+  temps:
+  - cdesc
 c_function_string_&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -775,6 +801,24 @@ c_function_string_*_cdesc_allocatable:
   return_type: void
   temps:
   - cdesc
+c_function_string_*_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudStrToArray
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_import:
+  - '{F_array_type}'
+  intent: function
+  name: c_function_string_*_cdesc_pointer
+  owner: library
+  post_call:
+  - "ShroudStrToArray(\t{c_var_cdesc},\t {cxx_addr}{cxx_var},\t {idtor});"
+  return_type: void
+  temps:
+  - cdesc
 c_function_string_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -818,6 +862,43 @@ c_function_string_*_cfi_allocatable:
     \ 0, \t{cxx_var}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
   - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - -}}
+  return_type: void
+  temps:
+  - cfi
+c_function_string_*_cfi_pointer:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  f_arg_decl:
+  - 'character(len=:), intent({f_intent}), pointer :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  name: c_function_string_*_cfi_pointer
+  owner: library
+  post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
+  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
   - -}}
   return_type: void
   temps:
@@ -2313,8 +2394,6 @@ f_function_char_*_cdesc_pointer:
     iso_c_binding:
     - c_f_pointer
   intent: function
-  local:
-  - s
   name: f_function_char_*_cdesc_pointer
   need_wrapper: true
   post_call:
@@ -2377,8 +2456,6 @@ f_function_char_scalar_cdesc_pointer:
     iso_c_binding:
     - c_f_pointer
   intent: function
-  local:
-  - s
   name: f_function_char_scalar_cdesc_pointer
   need_wrapper: true
   post_call:
@@ -2569,6 +2646,14 @@ f_function_string_&_cfi_allocatable:
   intent: function
   name: f_function_string_&_cfi_allocatable
   need_wrapper: true
+f_function_string_&_cfi_pointer:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  intent: function
+  name: f_function_string_&_cfi_pointer
+  need_wrapper: true
 f_function_string_*_buf:
   arg_c_call:
   - '{f_var}'
@@ -2596,6 +2681,24 @@ f_function_string_*_cdesc_allocatable:
   - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   temps:
   - cdesc
+f_function_string_*_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: pointer_string array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: function
+  name: f_function_string_*_cdesc_pointer
+  need_wrapper: true
+  post_call:
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  temps:
+  - cdesc
 f_function_string_*_cfi:
   arg_c_call:
   - '{f_var}'
@@ -2609,6 +2712,14 @@ f_function_string_*_cfi_allocatable:
   - 'character(len=:), allocatable :: {f_var}'
   intent: function
   name: f_function_string_*_cfi_allocatable
+  need_wrapper: true
+f_function_string_*_cfi_pointer:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  intent: function
+  name: f_function_string_*_cfi_pointer
   need_wrapper: true
 f_function_string_scalar_buf:
   arg_c_call:
@@ -2637,6 +2748,24 @@ f_function_string_scalar_cdesc_allocatable:
   - "call {hnamefunc0}({c_var_cdesc},\t {f_var},\t {c_var_cdesc}%elem_len)"
   temps:
   - cdesc
+f_function_string_scalar_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: pointer_string array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: function
+  name: f_function_string_scalar_cdesc_pointer
+  need_wrapper: true
+  post_call:
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})"
+  temps:
+  - cdesc
 f_function_string_scalar_cfi:
   arg_c_call:
   - '{f_var}'
@@ -2650,6 +2779,14 @@ f_function_string_scalar_cfi_allocatable:
   - 'character(len=:), allocatable :: {f_var}'
   intent: function
   name: f_function_string_scalar_cfi_allocatable
+  need_wrapper: true
+f_function_string_scalar_cfi_pointer:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  intent: function
+  name: f_function_string_scalar_cfi_pointer
   need_wrapper: true
 f_function_struct_*_buf_pointer:
   arg_decl:

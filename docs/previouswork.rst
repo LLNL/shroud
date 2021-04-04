@@ -88,9 +88,14 @@ to 12.12.
 
 https://trilinos.github.io/ForTrilinos/files/ForTrilinos_Design_Document.pdf
 
+SWIG
+----
+
 The custom version of swig available at https://github.com/swig-fortran/swig
 
 .. The custom version of swig available at https://github.com/sethrj/swig
+
+http://www.icl.utk.edu/~luszczek/conf/2019/siam_cse/siam-cse-johnsonsr.pdf
 
 MPICH
 -----

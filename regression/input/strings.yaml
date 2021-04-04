@@ -61,6 +61,7 @@ declarations:
       For Python, return a new string since strings are immutable.
 
 ########################################
+# char * function
 
 - decl: const char * getCharPtr1()
 #  C_error_pattern: C_invalid_name
@@ -194,6 +195,19 @@ declarations:
       Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
   fattrs:
     free_pattern: C_string_free
+
+- decl: const std::string * getConstStringPtrPointer()
+            +deref(pointer)+owner(library)
+  options:
+    wrap_python: False
+
+#- decl: const std::string * getConstStringPtrOwnsPointer()
+#            +deref(pointer)+owner(library)
+#  doxygen:
+#    description: |
+#      Add an extra capsule argument to control allocation of memory.
+#  options:
+#    wrap_python: False
 
 
 ########################################

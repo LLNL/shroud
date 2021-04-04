@@ -139,7 +139,7 @@ contains
     call assert_true(len(pstr) == 4, "get_char_ptr5 len")
     call assert_true(pstr == "bird", "get_char_ptr5")
     
-!--------------------------------------------------
+    !--------------------------------------------------
 
     ! character(:), allocatable function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -160,7 +160,7 @@ contains
     str = get_const_string_alloc()
     call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
  
-!--------------------------------------------------
+    !--------------------------------------------------
 
     ! problem with pgi
     ! character(*) function
@@ -187,7 +187,7 @@ contains
     str = get_const_string_ref_alloc()
     call assert_true( str == static_str, "getConstStringRefAlloc")
 
-!--------------------------------------------------
+    !--------------------------------------------------
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_len()
@@ -201,14 +201,27 @@ contains
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_owns_alloc()
-    call assert_true( str == "getConstStringPtrOwnsAlloc", "getConstStringPtrOwnsAlloc")
+    call assert_true( str == "getConstStringPtrOwnsAlloc", &
+         "getConstStringPtrOwnsAlloc")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_owns_alloc_pattern()
     call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
          "getConstStringPtrOwnsAllocPattern")
 
-!--------------------------------------------------
+    !--------------------------------------------------
+    ! POINTER result
+
+    nullify(pstr)
+    pstr => get_const_string_ptr_pointer()
+    call assert_true(associated(pstr), "getConstStringPtrPointer associate")
+    call assert_true(pstr == static_str, "getConstStringPtrPointer")
+
+!    pstr => get_const_string_ptr_owns_pointer()
+!    call assert_true( str == "getConstStringPtrOwnsPointer", &
+!         "getConstStringPtrOwnsPointer")
+    
+    !--------------------------------------------------
 
     call accept_string_const_reference("cat")
 !    check global_str == "cat"

@@ -117,6 +117,11 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 
+const char * STR_get_const_string_ptr_pointer(void);
+
+void STR_get_const_string_ptr_pointer_bufferify(
+    STR_SHROUD_array *SHT_rv_cdesc);
+
 void STR_accept_string_const_reference(const char * arg1);
 
 void STR_accept_string_const_reference_bufferify(char *arg1,

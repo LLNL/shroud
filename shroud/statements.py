@@ -1268,7 +1268,9 @@ fc_statements = [
     dict(
         # f_function_char_scalar_cdesc_pointer
         # f_function_char_*_cdesc_pointer
-        name="f_function_char_scalar/*_cdesc_pointer",
+        # f_function_string_scalar_cdesc_pointer
+        # f_function_string_*_cdesc_pointer
+        name="f_function_char/string_scalar/*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
         f_helper="pointer_string array_context",
         arg_decl=[
@@ -1284,7 +1286,6 @@ fc_statements = [
             #"-end block",
             "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var})",
         ],
-        local=["s"],
     ),
 
     dict(
@@ -1472,7 +1473,9 @@ fc_statements = [
     dict(
         # c_function_string_*_cdesc_allocatable
         # c_function_string_&_cdesc_allocatable
-        name="c_function_string_*/&_cdesc_allocatable",
+        # c_function_string_*_cdesc_pointer
+        # c_function_string_&_cdesc_pointer
+        name="c_function_string_*/&_cdesc_allocatable/pointer",
         mixin=["c_mixin_function_cdesc"],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -2400,6 +2403,40 @@ fc_statements = [
             "-}}",
         ],
     ),
+    # XXX - consolidate with c_function_*_cfi_pointer?
+    # XXX - via a helper to get address and length of string
+    dict(
+        name="c_function_string_*_cfi_pointer",
+        mixin=[
+            "c_mixin_function_character",
+        ],
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
+        f_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), pointer :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        pre_call=[],         # replace mixin
+        post_call=[
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());",
+            "size_t {c_local_len} = {cxx_var}{cxx_member}length();",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+            "\t CFI_attribute_pointer,\t CFI_type_char,"
+            "\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",  # set assumed-length
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}",            
+        ],
+        local=["cptr", "fptr", "cdesc", "len", "err"],
+    ),
 
     # std::string & function()
     dict(
@@ -2451,6 +2488,20 @@ fc_statements = [
         need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
+        ],
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        # f_function_string_scalar_cfi_pointer
+        # f_function_string_*_cfi_pointer
+        # f_function_string_&_cfi_pointer
+        name="f_function_string_scalar/*/&_cfi_pointer",
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an pointer, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        need_wrapper=True,
+        arg_decl=[
+            "character(len=:), pointer :: {f_var}",
         ],
         arg_c_call=["{f_var}"],
     ),
