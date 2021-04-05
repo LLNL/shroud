@@ -55,6 +55,7 @@
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,
+            "F_trim_char_in": true,
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg",
             "LUA_ctor_name_template": "{cxx_class}",
             "LUA_header_filename_template": "lua{library}module.{LUA_header_filename_suffix}",

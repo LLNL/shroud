@@ -164,6 +164,17 @@ void STR_post_declare(int * count, char * name);
 
 void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi);
 
+int STR_cpass_char_ptr_notrim(const char * src);
+
+int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi);
+
+int STR_cpass_char_ptr_capi(void * addr, const char * src);
+
+int STR_cpass_char_ptr_capi2(const char * in, const char * src);
+
+int STR_cpass_char_ptr_capi2_CFI(CFI_cdesc_t *SHT_in_cfi,
+    const char * src);
+
 #ifdef __cplusplus
 }
 #endif

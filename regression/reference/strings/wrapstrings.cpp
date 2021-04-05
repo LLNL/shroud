@@ -1526,4 +1526,111 @@ void STR_post_declare_bufferify(int * count, char *name,
     // splicer end function.post_declare_bufferify
 }
 
+/**
+ * \brief NULL terminate input string in C, not in Fortran.
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+int STR_cpass_char_ptr_notrim(const char * src)
+{
+    // splicer begin function.cpass_char_ptr_notrim
+    int SHC_rv = CpassCharPtrNotrim(src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim
+}
+
+/**
+ * \brief NULL terminate input string in C, not in Fortran.
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrNotrim
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(buf)+intent(in)
+// Exact:     c_in_char_*_buf
+int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
+{
+    // splicer begin function.cpass_char_ptr_notrim_bufferify
+    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, -1);
+    int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
+    ShroudStrFree(SHCXX_src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_notrim_bufferify
+}
+
+/**
+ * \brief Do not NULL terminate input string
+ *
+ * The C library function should get the same address
+ * for addr and src.
+ * Used when the C function needs the true address of the argument.
+ * Skips null-termination. Useful to create an interface for
+ * a function which is already callable by Fortran.
+ * For example, the length is passed explicitly.
+ * This example will not create a Fortran wrapper since C can be
+ * called directly.
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  void * addr +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src +api(capi)
+// Attrs:     +api(capi)+intent(in)
+// Requested: c_in_char_*_capi
+// Match:     c_default
+int STR_cpass_char_ptr_capi(void * addr, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi
+    int SHC_rv = CpassCharPtrCAPI(addr, src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi
+}
+
+/**
+ * \brief Mix api(buf) and api(capi)
+ *
+ */
+// ----------------------------------------
+// Function:  int CpassCharPtrCAPI2
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const char * in
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src +api(capi)
+// Attrs:     +api(capi)+intent(in)
+// Requested: c_in_char_*_capi
+// Match:     c_default
+int STR_cpass_char_ptr_capi2(const char * in, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_capi2
+    int SHC_rv = CpassCharPtrCAPI2(in, src);
+    return SHC_rv;
+    // splicer end function.cpass_char_ptr_capi2
+}
+
 }  // extern "C"

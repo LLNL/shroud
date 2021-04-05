@@ -155,11 +155,11 @@ def compute_stmt_permutations(out, parts):
     """Expand parts which have multiple values
 
     Ex: parts = 
-      [['c'], ['native'], ['*'], ['in', 'out', 'inout'], ['cfi']]
+      [['c'], ['in', 'out', 'inout'], ['native'], ['*'], ['cfi']]
     Three entries will be appended to out:
-      ['c', 'native', '*', 'in', 'cfi']
-      ['c', 'native', '*', 'out', 'cfi']
-      ['c', 'native', '*', 'inout', 'cfi']
+      ['c', 'in', 'native', '*', 'cfi']
+      ['c', 'out', 'native', '*', 'cfi']
+      ['c', 'inout', 'native', '*', 'cfi']
 
     Parameters
     ----------
@@ -239,22 +239,22 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
     This additional layer of indirection is needed to implement base.
 
     stmts = [
-       {name="c_native_in",}           # value1
-       {name="c_native_out",}          # value2
-       {name="c_native_pointer_out",}  # value3
-       {name="c_string_in",}           # value4
+       {name="c_in_native",}           # value1
+       {name="c_out_native",}          # value2
+       {name="c_out_native_pointer",}  # value3
+       {name="c_in_string",}           # value4
     ]
     tree = {
       "c": {
-         "native": {
-           "in": {"_node":value1},
-           "out":{"_node":value2},
+        "in": {
+           "native": {"_node":value1},
+           "string": {"_node":value4},
+         },
+         "out": {
+           "native":{"_node":value2},
            "pointer":{
              "out":{"_node":value3},
            },
-         },
-         "string":{
-           "in": {"_node":value4},
          },
       },
     }
@@ -297,7 +297,7 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
                 raise RuntimeError("Duplicate key in statements: {}".
                                    format(name))
             stmt = add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
-            stmt.intent = steps[1]
+            stmt.intent = namelst[1]
 
             # check for consistency
             if key[0] == "c":
@@ -1128,20 +1128,25 @@ fc_statements = [
         name="c_function_char_*",
         return_cptr=True,
     ),
-#    dict(
-#        name="c_XXXin_char_*_buf",
-#        cxx_local_var="pointer",
-#        c_helper="ShroudStrAlloc ShroudStrFree",
-#        pre_call=[
-#            "char * {cxx_var} = ShroudStrAlloc(\t"
-#            "{c_var},\t {c_var_trim},\t {c_var_trim});",
-#        ],
-#        post_call=[
-#            "ShroudStrFree({cxx_var});"
-#        ],
-#    ),
     dict(
-        name="f_out_char_*_buf",
+        # NULL terminate the input string.
+        # Skipped if ftrim_char_in, the terminate is done in Fortran.
+        name="c_in_char_*_buf",
+        mixin=["c_mixin_in_character_buf"],
+        cxx_local_var="pointer",
+        c_helper="ShroudStrAlloc ShroudStrFree",
+        pre_call=[
+            "char * {cxx_var} = ShroudStrAlloc(\t"
+            "{c_var},\t {c_var_len},\t -1);",
+        ],
+        post_call=[
+            "ShroudStrFree({cxx_var});"
+        ],
+    ),
+    dict(
+        # f_in_char_*_buf
+        # f_out_char_*_buf
+        name="f_in/out_char_*_buf",
         mixin=["f_mixin_in_character_buf"],
     ),
     dict(

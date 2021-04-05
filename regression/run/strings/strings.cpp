@@ -299,3 +299,33 @@ void PostDeclare(int *count, std::string &name)
 }
 
 //----------------------------------------
+
+int CpassCharPtrNotrim(const char *src)
+{
+    return strlen(src);
+}
+
+//----------------------------------------
+
+int CpassCharPtrCAPI(void *addr, const char *src)
+{
+    if (addr == const_cast<char *>(src)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+//----------------------------------------
+// Check if strings compare, but only in is null terminated.
+
+int CpassCharPtrCAPI2(const char *in, const char *src)
+{
+    size_t n = strlen(in);
+    if (strncmp(in, src, n) == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+

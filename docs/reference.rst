@@ -389,6 +389,16 @@ F_return_fortran_pointer
   a pointer to a class instance.
   Defaults to *true*.
 
+F_trim_char_in
+  Controls code generation for ``const char *`` arguments.
+  If *True*, Fortran perform a ``TRIM`` and concatenates
+  ``C_NULL_CHAR``.  If *False*, it will be done in C.  If the only
+  need for the C wrapper is to null-terminate a string (wrapping a c
+  library and no other argument requires a wrapper), then the C
+  wrapper can be avoid by moving the null-termination action to
+  Fortran.
+  Default is *True*.
+
 .. XXX how to decide length of pointer
 
 literalinclude
