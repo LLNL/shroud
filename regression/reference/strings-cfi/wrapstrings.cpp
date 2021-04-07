@@ -40,12 +40,15 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return nullptr;
    }
+   char *rv = (char *) std::malloc(nsrc + 1);
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }
@@ -81,7 +84,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     std::free(src);
+   }
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -196,7 +201,7 @@ void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     // splicer begin function.pass_char_ptr_CFI
     char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, -1);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 0);
     passCharPtr(SHCXX_dest, SHCXX_src);
     ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
     ShroudStrFree(SHCXX_src);
@@ -244,7 +249,7 @@ void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHT_s_cfi)
 {
     // splicer begin function.pass_char_ptr_in_out_CFI
     char *s = static_cast<char *>(SHT_s_cfi->base_addr);
-    char *SHCXX_s = ShroudStrAlloc(s, SHT_s_cfi->elem_len, -1);
+    char *SHCXX_s = ShroudStrAlloc(s, SHT_s_cfi->elem_len, 0);
     passCharPtrInOut(SHCXX_s);
     ShroudStrCopy(s, SHT_s_cfi->elem_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
@@ -1463,7 +1468,7 @@ void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit1_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
-    char *SHCXX_name = ShroudStrAlloc(name, SHT_name_cfi->elem_len, -1);
+    char *SHCXX_name = ShroudStrAlloc(name, SHT_name_cfi->elem_len, 0);
     explicit1(SHCXX_name);
     ShroudStrFree(SHCXX_name);
     // splicer end function.explicit1_CFI
@@ -1508,6 +1513,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
  * extern "C"
+ * If src is a blank string, pass a NULL pointer to C library function.
  */
 // ----------------------------------------
 // Function:  void CpassCharPtr
@@ -1518,7 +1524,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 // Attrs:     +api(cfi)+intent(out)
 // Exact:     c_out_char_*_cfi
 // ----------------------------------------
-// Argument:  const char * src
+// Argument:  const char * src +blanknull
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_char_*_cfi
 void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
@@ -1527,11 +1533,65 @@ void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     // splicer begin function.cpass_char_ptr_CFI
     char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, -1);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 1);
     CpassCharPtr(SHCXX_dest, SHCXX_src);
     ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
     ShroudStrFree(SHCXX_src);
     // splicer end function.cpass_char_ptr_CFI
+}
+
+/**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+void STR_cpass_char_ptr_blank(char * dest, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_blank
+    CpassCharPtrBlank(dest, src);
+    // splicer end function.cpass_char_ptr_blank
+}
+
+/**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +api(cfi)+intent(out)
+// Exact:     c_out_char_*_cfi
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_char_*_cfi
+void STR_cpass_char_ptr_blank_CFI(CFI_cdesc_t *SHT_dest_cfi,
+    CFI_cdesc_t *SHT_src_cfi)
+{
+    // splicer begin function.cpass_char_ptr_blank_CFI
+    char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
+    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 1);
+    CpassCharPtrBlank(SHCXX_dest, SHCXX_src);
+    ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
+    ShroudStrFree(SHCXX_src);
+    // splicer end function.cpass_char_ptr_blank_CFI
 }
 
 /**
@@ -1632,7 +1692,7 @@ int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 {
     // splicer begin function.cpass_char_ptr_notrim_CFI
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, -1);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
     ShroudStrFree(SHCXX_src);
     return SHC_rv;
@@ -1724,7 +1784,7 @@ int STR_cpass_char_ptr_capi2_CFI(CFI_cdesc_t *SHT_in_cfi,
 {
     // splicer begin function.cpass_char_ptr_capi2_CFI
     char *in = static_cast<char *>(SHT_in_cfi->base_addr);
-    char *SHCXX_in = ShroudStrAlloc(in, SHT_in_cfi->elem_len, -1);
+    char *SHCXX_in = ShroudStrAlloc(in, SHT_in_cfi->elem_len, 0);
     int SHC_rv = CpassCharPtrCAPI2(SHCXX_in, src);
     ShroudStrFree(SHCXX_in);
     return SHC_rv;

@@ -286,10 +286,31 @@ extern "C" char CreturnChar()
 }
 
 //----------------------------------------
+// Check for NULL pointer
+// dest is assumed to be long enough.
+// attribute +blanknull
 
 extern "C" void CpassCharPtr(char *dest, const char *src)
 {
-    std::strcpy(dest, src);
+    if (src == NULL) {
+        std::strcpy(dest, "NULL");
+    } else {
+        std::strcpy(dest, src);
+    }
+}
+
+//----------------------------------------
+// Check for NULL pointer
+// dest is assumed to be long enough.
+// option F_blanknull
+
+void CpassCharPtrBlank(char *dest, const char *src)
+{
+    if (src == NULL) {
+        std::strcpy(dest, "NULL");
+    } else {
+        std::strcpy(dest, src);
+    }
 }
 
 //----------------------------------------

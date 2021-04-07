@@ -1137,7 +1137,7 @@ fc_statements = [
         c_helper="ShroudStrAlloc ShroudStrFree",
         pre_call=[
             "char * {cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_len},\t -1);",
+            "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         post_call=[
             "ShroudStrFree({cxx_var});"
@@ -1168,7 +1168,7 @@ fc_statements = [
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
         pre_call=[
             "char * {cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_len},\t -1);",
+            "{c_var},\t {c_var_len},\t {c_blanknull});",
         ],
         post_call=[
             # nsrc=-1 will call strlen({cxx_var})
@@ -2155,7 +2155,7 @@ fc_statements = [
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "char *{cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_cfi}->elem_len,\t -1);",
+            "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         post_call=[
             "ShroudStrFree({cxx_var});",
@@ -2182,7 +2182,7 @@ fc_statements = [
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "char *{cxx_var} = ShroudStrAlloc(\t"
-            "{c_var},\t {c_var_cfi}->elem_len,\t -1);",
+            "{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});",
         ],
         post_call=[
             # nsrc=-1 will call strlen({cxx_var})

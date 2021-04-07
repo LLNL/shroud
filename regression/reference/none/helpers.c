@@ -44,13 +44,15 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-// if ntrim is -1, call ShroudLenTrim.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return NULL;
    }
+   char *rv = malloc(nsrc + 1);
    if (ntrim > 0) {
      memcpy(rv, src, ntrim);
    }
@@ -63,12 +65,15 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return nullptr;
    }
+   char *rv = (char *) std::malloc(nsrc + 1);
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }
@@ -211,7 +216,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     free(src);
+   }
 }
 ##### end ShroudStrFree c_source
 
@@ -221,7 +228,9 @@ static void ShroudStrFree(char *src)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     std::free(src);
+   }
 }
 ##### end ShroudStrFree cxx_source
 

@@ -541,6 +541,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_CFI=False,    # TS29113 C Fortran Interoperability
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
+            F_blanknull=False,
             F_flatten_namespace=False,
             F_line_length=72,
             F_string_len_trim=True,
@@ -728,6 +729,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             F_capsule_delete_function="SHROUD_capsule_delete",
 
+            c_blanknull="0",     # Argument to helper ShroudStrAlloc.
             c_array_shape="",
             c_array_size="1",
 

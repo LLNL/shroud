@@ -330,6 +330,11 @@ F_assumed_rank_max
   Maximum rank of argument with assumed-rank.
   Defaults to 7.
 
+F_blanknull
+  Default value of attribute *+blanknull* for ``const char *``
+  arguments.  This attribute will convert blank Fortran strings
+  to a ``NULL`` pointer.
+
 F_CFI
   Use the C Fortran Interface provided by *Futher Interoperability with C*
   from Fortran 2018 (initially defined in TS29113 2012).
@@ -1237,6 +1242,13 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_blanknull
+   Used as argument to ``ShroudStrAlloc`` to determine if a
+   blank string, trimmed length is 0, should be a NULL pointer
+   instead of an empty C string -- ``'\0'``.
+   Set via attribute *+blanknull* on a ``const char *`` argument.
+   Should be ``0`` or ``1``.
+
 c_const
     ``const`` if argument has the *const* attribute.
 
@@ -1247,17 +1259,19 @@ c_deref
 c_var
     The C name of the argument.
 
-c_var_len
+.. XXX these fields are creatd by the *temps* or *local* statements field.
+    
+.. c_var_len
     Function argument generated from the *len* annotation.
     Used with char/string arguments.
     Set from option **C_var_len_template**.
 
-c_var_size
+.. c_var_size
     Function argument generated from the *size* annotation.
     Used with array/std::vector arguments.
     Set from option **C_var_size_template**.
 
-c_var_trim
+.. c_var_trim    c_local_trim
     Function argument generated from the *len_trim* annotation.
     Used with char/string arguments.
     Set from option **C_var_trim_template**.

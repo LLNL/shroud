@@ -330,6 +330,13 @@ defaults to pass-by-reference, the argument will be passed to C as a
 determine the type of the argument before dereferencing the pointer.
 Note that *assumed-type* is part of Fortran 2018.
 
+blanknull
+^^^^^^^^^
+
+Used with ``const char *`` arguments to convert a blank string to a
+``NULL`` pointer instead of an empty C string (``'\0'``).
+Can be applied to all arguments with the option **F_blanknull**.
+
 capsule
 ^^^^^^^
 
@@ -571,11 +578,11 @@ input arguments to the function but are returned as values.
 len
 ^^^
 
-For a string argument, pass an additional argument to the
-C wrapper with the result of the Fortran intrinsic ``len``.
-If a value for the attribute is provided it will be the name
-of the extra argument.  If no value is provided then the
-argument name defaults to option *C_var_len_template*.
+.. XXX For a string argument, pass an additional argument to the
+   C wrapper with the result of the Fortran intrinsic ``len``.
+   If a value for the attribute is provided it will be the name
+   of the extra argument.  If no value is provided then the
+   argument name defaults to option *C_var_len_template*.
 
 When used with a function, it will be the length of the return
 value of the function using the declaration:
@@ -584,14 +591,12 @@ value of the function using the declaration:
 
      character(kind=C_CHAR, len={c_var_len}) :: {F_result}
 
-len_trim
-^^^^^^^^
-
-For a string argument, pass an additional argument to the
-C wrapper with the result of the Fortran intrinsic ``len_trim``.
-If a value for the attribute is provided it will be the name
-of the extra argument.  If no value is provided then the
-argument name defaults to option *C_var_trim_template*.
+.. XXX len_trim
+   For a string argument, pass an additional argument to the
+   C wrapper with the result of the Fortran intrinsic ``len_trim``.
+   If a value for the attribute is provided it will be the name
+   of the extra argument.  If no value is provided then the
+   argument name defaults to option *C_var_trim_template*.
 
 .. mold - The *mold* argument is similar to the *mold* argument in the Fortran
    ``allocate`` statement, it will allocate the argument as the same shape as

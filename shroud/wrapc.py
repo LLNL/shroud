@@ -730,6 +730,9 @@ class Wrapc(util.WrapperMixin):
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.idtor = "0"
+            if ast.blanknull:
+                # Argument to helper ShroudStrAlloc via attr[blanknull].
+                fmt.c_blanknull = "1"
         
         attrs = ast.attrs
         statements.assign_buf_variable_names(attrs, ast.metaattrs, fcn.options, fmt, rootname)

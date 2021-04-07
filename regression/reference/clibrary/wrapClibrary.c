@@ -11,6 +11,7 @@
 // cxx_header
 #include "clibrary.h"
 // shroud
+#include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -33,13 +34,15 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-// if ntrim is -1, call ShroudLenTrim.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return NULL;
    }
+   char *rv = malloc(nsrc + 1);
    if (ntrim > 0) {
      memcpy(rv, src, ntrim);
    }
@@ -75,7 +78,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     free(src);
+   }
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -143,7 +148,7 @@ void CLI_function4a_bufferify(char *SHC_rv, int SHT_rv_len,
 void CLI_pass_char_ptr_in_out_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, -1);
+    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHCXX_s);
     ShroudStrCopy(s, SHT_s_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);

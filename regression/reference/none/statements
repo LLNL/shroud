@@ -1155,7 +1155,7 @@ c_in_char_*_buf:
   post_call:
   - ShroudStrFree({cxx_var});
   pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t -1);"
+  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   temps:
   - len
 c_in_char_*_cfi:
@@ -1175,7 +1175,7 @@ c_in_char_*_cfi:
   - ShroudStrFree({cxx_var});
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t -1);"
+  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
   temps:
   - cfi
 c_in_char_scalar:
@@ -1535,7 +1535,7 @@ c_inout_char_*_buf:
   - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
   - ShroudStrFree({cxx_var});
   pre_call:
-  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t -1);"
+  - "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   temps:
   - len
 c_inout_char_*_cfi:
@@ -1557,7 +1557,7 @@ c_inout_char_*_cfi:
   - ShroudStrFree({cxx_var});
   pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t -1);"
+  - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
   temps:
   - cfi
 c_inout_native_*_cdesc:

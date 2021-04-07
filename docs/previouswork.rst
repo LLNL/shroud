@@ -96,6 +96,7 @@ The custom version of swig available at https://github.com/swig-fortran/swig
 .. The custom version of swig available at https://github.com/sethrj/swig
 
 http://www.icl.utk.edu/~luszczek/conf/2019/siam_cse/siam-cse-johnsonsr.pdf
+https://info.ornl.gov/sites/publications/Files/Pub127965.pdf
 
 MPICH
 -----
