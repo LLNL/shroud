@@ -1137,6 +1137,53 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void CpassCharPtrBlank
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char * dest +intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_char_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_char_*
+    ! Match:     c_default
+    interface
+        subroutine c_cpass_char_ptr_blank(dest, src) &
+                bind(C, name="STR_cpass_char_ptr_blank")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: dest(*)
+            character(kind=C_CHAR), intent(IN) :: src(*)
+        end subroutine c_cpass_char_ptr_blank
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void CpassCharPtrBlank
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char * dest +intent(out)
+    ! Attrs:     +api(cfi)+intent(out)
+    ! Exact:     c_out_char_*_cfi
+    ! ----------------------------------------
+    ! Argument:  const char * src
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_char_*_cfi
+    interface
+        subroutine cpass_char_ptr_blank(dest, src) &
+                bind(C, name="STR_cpass_char_ptr_blank_CFI")
+            implicit none
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine cpass_char_ptr_blank
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void PostDeclare
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar

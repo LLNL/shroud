@@ -160,6 +160,11 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
 void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
+void STR_cpass_char_ptr_blank(char * dest, const char * src);
+
+void STR_cpass_char_ptr_blank_CFI(CFI_cdesc_t *SHT_dest_cfi,
+    CFI_cdesc_t *SHT_src_cfi);
+
 void STR_post_declare(int * count, char * name);
 
 void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi);

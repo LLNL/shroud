@@ -1541,6 +1541,60 @@ void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 }
 
 /**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+void STR_cpass_char_ptr_blank(char * dest, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_blank
+    CpassCharPtrBlank(dest, src);
+    // splicer end function.cpass_char_ptr_blank
+}
+
+/**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +api(cfi)+intent(out)
+// Exact:     c_out_char_*_cfi
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_char_*_cfi
+void STR_cpass_char_ptr_blank_CFI(CFI_cdesc_t *SHT_dest_cfi,
+    CFI_cdesc_t *SHT_src_cfi)
+{
+    // splicer begin function.cpass_char_ptr_blank_CFI
+    char *SHCXX_dest = static_cast<char *>(SHT_dest_cfi->base_addr);
+    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHT_src_cfi->elem_len, 1);
+    CpassCharPtrBlank(SHCXX_dest, SHCXX_src);
+    ShroudStrBlankFill(SHCXX_dest, SHT_dest_cfi->elem_len);
+    ShroudStrFree(SHCXX_src);
+    // splicer end function.cpass_char_ptr_blank_CFI
+}
+
+/**
  * Test post_declare.
  * The std::string in py_string_inout must be declared before the
  * goto added by py_native_*_in_pointer_list to avoid

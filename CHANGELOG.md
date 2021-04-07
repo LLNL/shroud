@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added attribute *+blanknull* to convert a blank Fortran string into
   a NULL pointer instead of a 1-d buffer with ``'/0'``.
   Used with ``const char *`` arguments.
+  This can be default to True with the *F_blanknull* option.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

@@ -345,6 +345,14 @@ declarations:
       extern "C"
       If src is a blank string, pass a NULL pointer to C library function.
 
+- decl: void CpassCharPtrBlank(char * dest+intent(out), const char *src)
+  doxygen:
+    brief: Test F_blanknull option
+  options:
+    wrap_python: False
+    wrap_lua: False
+    F_blanknull: True
+
 - decl: void PostDeclare(int *count +rank(1)+intent(in), std::string &name)
   options:
     PY_array_arg: list

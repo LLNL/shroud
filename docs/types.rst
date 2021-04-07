@@ -113,7 +113,8 @@ string before being passed to the C library.  i.e. ``" "`` in Fortran
 is converted to ``'\0'`` in C. This behavior can be changed to convert
 the empty string into a ``NULL`` pointer by setting the *+blanknull*
 attribute. This is often more natural for the C library to indicate the
-absence of a value.
+absence of a value. The option *F_blanknull* can be used to make this the
+default for all ``const char *`` arguments.
 
 On some occasions the copy and null terminate behavior is not wanted.
 For example, to avoid copying a large buffer or the memory must be

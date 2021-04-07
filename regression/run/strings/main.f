@@ -85,8 +85,15 @@ contains
     call assert_true( str == "bird")
 
     ! Test passing a blank string, treat as NULL pointer.
+    ! +blanknull
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call cpass_char_ptr(dest=str, src=" ")
+    call assert_true( str == "NULL", "blank string")
+
+    ! Test passing a blank string, treat as NULL pointer.
+    ! options.F_blanknull
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call cpass_char_ptr_blank(dest=str, src=" ")
     call assert_true( str == "NULL", "blank string")
 
     ! call C version directly via the interface

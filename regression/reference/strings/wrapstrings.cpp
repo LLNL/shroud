@@ -1476,6 +1476,58 @@ void STR_cpass_char_ptr_bufferify(char *dest, int SHT_dest_len,
 }
 
 /**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+void STR_cpass_char_ptr_blank(char * dest, const char * src)
+{
+    // splicer begin function.cpass_char_ptr_blank
+    CpassCharPtrBlank(dest, src);
+    // splicer end function.cpass_char_ptr_blank
+}
+
+/**
+ * \brief Test F_blanknull option
+ *
+ */
+// ----------------------------------------
+// Function:  void CpassCharPtrBlank
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  char * dest +intent(out)
+// Attrs:     +api(buf)+intent(out)
+// Exact:     c_out_char_*_buf
+// ----------------------------------------
+// Argument:  const char * src
+// Attrs:     +api(buf)+intent(in)
+// Exact:     c_in_char_*_buf
+void STR_cpass_char_ptr_blank_bufferify(char *dest, int SHT_dest_len,
+    char *src, int SHT_src_len)
+{
+    // splicer begin function.cpass_char_ptr_blank_bufferify
+    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 1);
+    CpassCharPtrBlank(dest, SHCXX_src);
+    ShroudStrBlankFill(dest, SHT_dest_len);
+    ShroudStrFree(SHCXX_src);
+    // splicer end function.cpass_char_ptr_blank_bufferify
+}
+
+/**
  * Test post_declare.
  * The std::string in py_string_inout must be declared before the
  * goto added by py_native_*_in_pointer_list to avoid

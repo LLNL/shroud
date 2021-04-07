@@ -541,6 +541,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_CFI=False,    # TS29113 C Fortran Interoperability
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
+            F_blanknull=False,
             F_flatten_namespace=False,
             F_line_length=72,
             F_string_len_trim=True,
