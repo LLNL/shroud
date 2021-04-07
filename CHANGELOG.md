@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Python hello-world-python example for a simple library in examples/
+- Python hello-world-python example for a simple library in examples directory.
 - Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
   Python uses `PyTypeObject.tp_base` field.
 - Ability to treat a struct as a class.
@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Requires at least gfortran 6.1.0
 - Added option F_trim_char_in. Controls where ``CHARACTER`` arguments
   are NULL terminated. If *True* then in Fortran else in C.
+- Added attribute *+blanknull* to convert a blank Fortran string into
+  a NULL pointer instead of a 1-d buffer with ``'/0'``.
+  Used with ``const char *`` arguments.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

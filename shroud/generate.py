@@ -286,7 +286,6 @@ class VerifyAttrs(object):
             pass
         elif spointer in ["**", "*&"] and intent == "out":
             meta["deref"] = "pointer"
-        
             
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
@@ -409,9 +408,10 @@ class VerifyAttrs(object):
                 "api",
                 "allocatable",
                 "assumedtype",
+                "blanknull",   # Treat blank string as NULL pointer.
                 "capsule",
                 "cdesc",
-                "charlen",
+                "charlen",   # Assumed length of intent(out) char *.
                 "external",
                 "deref",
                 "dimension",
@@ -488,13 +488,17 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
+        if attrs["blanknull"]:
+            arg.blanknull = True
+
         if meta["api"]:  # User set
             pass
         elif (
             options.F_CFI is False and
             intent == "in" and
             is_ptr == 1 and
-            arg_typemap.name == "char"
+            arg_typemap.name == "char" and
+            attrs["blanknull"] is None
         ):
             # const char *arg
             # char *arg+intent(in)

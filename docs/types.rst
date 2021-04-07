@@ -73,60 +73,73 @@ Any C++ function which has ``char`` or ``std::string`` arguments or
 result will create an additional C function which include additional
 arguments for the length of the strings.  Most Fortran compiler use
 this convention when passing ``CHARACTER`` arguments. Shroud makes
-this convention explicit for three reasons:
+this convention explicit for two reasons:
 
 * It allows an interface to be used.  Functions with an interface will
   not pass the hidden, non-standard length argument, depending on compiler.
-* It may pass the result of ``len`` and/or ``len_trim``.
-  The convention just passes the length.
 * Returning character argument from C to Fortran is non-portable.
 
-Arguments with the *intent(in)* annotation are given the *len_trim*
-annotation.  The assumption is that the trailing blanks are not part
-of the data but only padding.  Return values and *intent(out)*
-arguments add a *len* annotation with the assumption that the wrapper
-will copy the result and blank fill the argument so it need to know
-the declared length.
+The C wrapper will create a NULL terminated copy a string with the
+*intent(in)* attribute.  The assumption is that the trailing blanks
+are not part of the data but only padding.  Return values and
+*intent(out)* arguments add a *len* annotation with the assumption
+that the wrapper will copy the result and blank fill the argument so
+it need to know the declared length.
 
-The additional function will be named the same as the original
+A buffer for *intent(out)* arguments is also create which is one
+longer than the Fortran string length. This allows space for a C
+terminating NULL. This buffer is passed to the C library which will
+copy into it.  Upon return, the buffer is copied and blank filled into
+the user's argument and the intermediate buffer released.
+
+The bufferify function will be named the same as the original
 function with the option **C_bufferify_suffix** appended to the end.
 The Fortran wrapper will use the original function name, but call the
-C function which accepts the length arguments.
+C wrapper which accepts the length arguments.
+
+Python wrappers may need an additional attribute for *intent(out)*
+strings to let Shroud know how much space to pass to the function. A
+function may pass a ``char *`` argument which the C library will copy
+into.  While this is not a recommened practice since it's easy to
+overwrite memory, Shoud can deal with it by setting the *+charlen(n)*
+attribute where *n* is the number of character in the array passed to
+the function. This is required for Python since strings are inmutable.
+The buffer will be converted into a Python str object then returned to
+the user. This is not an issue in Fortran since the output buffer is
+passed in by the caller and will have a known size.
+
+By default, a Fortran blank input string will be converted to an empty
+string before being passed to the C library.  i.e. ``" "`` in Fortran
+is converted to ``'\0'`` in C. This behavior can be changed to convert
+the empty string into a ``NULL`` pointer by setting the *+blanknull*
+attribute. This is often more natural for the C library to indicate the
+absence of a value.
+
+On some occasions the copy and null terminate behavior is not wanted.
+For example, to avoid copying a large buffer or the memory must be
+operated on directly.  In this case using the attribute *+api(capi)*
+will use the native C API instead of the bufferify API for the
+argument.  The library will need some way to determine the length of
+the string since it will not be passed to the C wrapper.  As an
+alternative the bufferify function can be avoided altogether by
+setting the **F_create_bufferify_function** option to *false*.
+
 
 The character type maps use the **c_statements** section to define
-code which will be inserted into the C wrapper. *intent_in*,
-*intent_out*, and *result* subsections add actions for the C wrapper.
-*intent_in_buf*, *intent_out_buf*, and *result_buf* are used for
-arguments with the *len* and *len_trim* annotations in the additional
-C wrapper.
+code which will be inserted into the C wrapper.  These actions vary
+depending on the intent of *in*, *out*, *inout* and *result*.
 
-There are occasions when the *bufferify* wrapper is not needed.  For
-example, when using ``char *`` to pass a large buffer.  It is better
-to just pass the address of the argument instead of creating a copy
-and appending a ``NULL``.  The **F_create_bufferify_function** options
-can set to *false* to turn off this feature.
+.. option F_trim_char_in
 
-Char
-^^^^
-
-``Ndest`` is the declared length of argument ``dest`` and ``Lsrc`` is
-the trimmed length of argument ``src``.  These generated names must
-not conflict with any other arguments.  There are two ways to set the
-names.  First by using the options **C_var_len_template** and
-**C_var_trim_template**. This can be used to control how the names are
-generated for all functions if set globally or just a single function
-if set in the function's options.  The other is by explicitly setting
-the *len* and *len_trim* annotations which only effect a single
-declaration.
-
-The pre_call code creates space for the C strings by allocating
-buffers with space for an additional character (the ``NULL``).  The
-*intent(in)* string copies the data and adds an explicit terminating
-``NULL``.  The function is called then the post_call section copies
-the result back into the ``dest`` argument and deletes the scratch
-space.  ``ShroudStrCopy`` is a function provided by Shroud which
-copies character into the destination up to ``Ndest`` characters, then
-blank fills any remaining space.
+.. ``Ndest`` is the declared length of argument ``dest`` and ``Lsrc``
+   is the trimmed length of argument ``src``.  These generated names must
+   not conflict with any other arguments.  There are two ways to set the
+   names.  First by using the options **C_var_len_template** and
+   **C_var_trim_template**. This can be used to control how the names are
+   generated for all functions if set globally or just a single function
+   if set in the function's options.  The other is by explicitly setting
+   the *len* and *len_trim* annotations which only effect a single
+   declaration.
 
 
 MPI_Comm

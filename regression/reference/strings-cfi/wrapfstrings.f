@@ -1100,7 +1100,7 @@ module strings_mod
     ! Requested: c_out_char_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
     ! Requested: c_in_char_*
     ! Match:     c_default
@@ -1124,7 +1124,7 @@ module strings_mod
     ! Attrs:     +api(cfi)+intent(out)
     ! Exact:     c_out_char_*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char * src +blanknull
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_char_*_cfi
     interface

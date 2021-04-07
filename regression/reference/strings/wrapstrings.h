@@ -171,7 +171,7 @@ void STR_explicit2(char * name);
 void STR_explicit2_bufferify(char *name, int SHT_name_len);
 
 void STR_cpass_char_ptr_bufferify(char *dest, int SHT_dest_len,
-    const char * src);
+    char *src, int SHT_src_len);
 
 void STR_post_declare(int * count, char * name);
 

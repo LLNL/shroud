@@ -7574,6 +7574,10 @@
                             "typemap_name": "char"
                         },
                         {
+                            "attrs": {
+                                "blanknull": true
+                            },
+                            "blanknull": true,
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -7583,7 +7587,6 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "metaattrs": {
                                 "intent": "in"
                             },
@@ -7598,11 +7601,11 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src)",
+                "decl": "void CpassCharPtr(char * dest+intent(out), const char *src+blanknull)",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +blanknull)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
-                    "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
+                    "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\nIf src is a blank string, pass a NULL pointer to C library function.\n"
                 },
                 "options": {
                     "C_extern_C": true,
@@ -7641,6 +7644,7 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -7672,7 +7676,7 @@
                     "F_C_call": "c_cpass_char_ptr_bufferify",
                     "F_C_name": "c_cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
+                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t src,\t len(src, kind=C_INT)",
                     "F_arguments": "dest,\t src",
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
@@ -7721,6 +7725,10 @@
                             "typemap_name": "char"
                         },
                         {
+                            "attrs": {
+                                "blanknull": true
+                            },
+                            "blanknull": true,
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -7730,8 +7738,8 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "metaattrs": {
+                                "api": "buf",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -7745,11 +7753,11 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src)",
+                "decl": "void CpassCharPtr(char * dest+intent(out), const char *src+blanknull)",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +blanknull)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
-                    "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
+                    "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\nIf src is a blank string, pass a NULL pointer to C library function.\n"
                 },
                 "options": {
                     "C_extern_C": true,
@@ -7799,38 +7807,45 @@
                     "src": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_blanknull": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "src",
+                            "c_var_len": "SHT_src_len",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
+                            "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
                             "cxx_type": "char",
-                            "cxx_var": "src",
+                            "cxx_var": "SHCXX_src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_char_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_in_char_*_buf",
+                            "stmt1": "c_in_char_*_buf"
                         },
                         "fmtf": {
                             "F_C_var": "src",
                             "c_var": "src",
+                            "c_var_len": "SHT_src_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_in_char_*_buf",
+                            "stmt1": "f_in_char_*_buf",
+                            "stmtc0": "c_in_char_*_buf",
+                            "stmtc1": "c_in_char_*_buf"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "dest,\t src",
+                    "C_call_list": "dest,\t SHCXX_src",
                     "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_prototype": "char *dest,\t int SHT_dest_len,\t const char * src",
+                    "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                     "C_return_type": "void",
-                    "F_C_arguments": "dest,\t SHT_dest_len,\t src",
+                    "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
                     "F_C_name": "c_cpass_char_ptr_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "CpassCharPtr",

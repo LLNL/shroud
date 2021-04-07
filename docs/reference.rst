@@ -1237,6 +1237,13 @@ underscore_name
 Argument
 ^^^^^^^^
 
+c_blanknull
+   Used as argument to ``ShroudStrAlloc`` to determine if a
+   blank string, trimmed length is 0, should be a NULL pointer
+   instead of an empty C string -- ``'\0'``.
+   Set via attribute *+blanknull* on a ``const char *`` argument.
+   Should be ``0`` or ``1``.
+
 c_const
     ``const`` if argument has the *const* attribute.
 

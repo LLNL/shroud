@@ -1173,7 +1173,7 @@ module strings_mod
     ! Requested: c_out_char_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char * src +blanknull
     ! Attrs:     +intent(in)
     ! Requested: c_in_char_*
     ! Match:     c_default
@@ -1197,18 +1197,19 @@ module strings_mod
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
     ! ----------------------------------------
-    ! Argument:  const char * src
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_char_*
-    ! Match:     c_default
+    ! Argument:  const char * src +blanknull
+    ! Attrs:     +api(buf)+intent(in)
+    ! Exact:     c_in_char_*_buf
     interface
-        subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src) &
+        subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
+                SHT_src_len) &
                 bind(C, name="STR_cpass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
             integer(C_INT), value, intent(IN) :: SHT_dest_len
             character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT), value, intent(IN) :: SHT_src_len
         end subroutine c_cpass_char_ptr_bufferify
     end interface
 
@@ -2214,20 +2215,27 @@ contains
     ! Exact:     f_out_char_*_buf
     ! Attrs:     +api(buf)+intent(out)
     ! Exact:     c_out_char_*_buf
+    ! ----------------------------------------
+    ! Argument:  const char * src +blanknull
+    ! Attrs:     +intent(in)
+    ! Exact:     f_in_char_*_buf
+    ! Attrs:     +api(buf)+intent(in)
+    ! Exact:     c_in_char_*_buf
     !>
     !! \brief strcpy like behavior
     !!
     !! dest is marked intent(OUT) to override the intent(INOUT) default
     !! This avoid a copy-in on dest.
     !! extern "C"
+    !! If src is a blank string, pass a NULL pointer to C library function.
     !<
     subroutine cpass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.cpass_char_ptr
         call c_cpass_char_ptr_bufferify(dest, len(dest, kind=C_INT), &
-            trim(src)//C_NULL_CHAR)
+            src, len(src, kind=C_INT))
         ! splicer end function.cpass_char_ptr
     end subroutine cpass_char_ptr
 

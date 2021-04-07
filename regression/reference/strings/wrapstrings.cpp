@@ -41,12 +41,15 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return nullptr;
    }
+   char *rv = (char *) std::malloc(nsrc + 1);
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }
@@ -82,7 +85,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     std::free(src);
+   }
 }
 
 // start helper ShroudStrToArray
@@ -261,7 +266,7 @@ void STR_pass_char_ptr_in_out(char * s)
 void STR_pass_char_ptr_in_out_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, -1);
+    char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHCXX_s);
     ShroudStrCopy(s, SHT_s_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
@@ -1445,6 +1450,7 @@ void STR_explicit2_bufferify(char *name, int SHT_name_len)
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
  * extern "C"
+ * If src is a blank string, pass a NULL pointer to C library function.
  */
 // ----------------------------------------
 // Function:  void CpassCharPtr
@@ -1455,16 +1461,17 @@ void STR_explicit2_bufferify(char *name, int SHT_name_len)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
 // ----------------------------------------
-// Argument:  const char * src
-// Attrs:     +intent(in)
-// Requested: c_in_char_*
-// Match:     c_default
+// Argument:  const char * src +blanknull
+// Attrs:     +api(buf)+intent(in)
+// Exact:     c_in_char_*_buf
 void STR_cpass_char_ptr_bufferify(char *dest, int SHT_dest_len,
-    const char * src)
+    char *src, int SHT_src_len)
 {
     // splicer begin function.cpass_char_ptr_bufferify
-    CpassCharPtr(dest, src);
+    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 1);
+    CpassCharPtr(dest, SHCXX_src);
     ShroudStrBlankFill(dest, SHT_dest_len);
+    ShroudStrFree(SHCXX_src);
     // splicer end function.cpass_char_ptr_bufferify
 }
 
@@ -1564,7 +1571,7 @@ int STR_cpass_char_ptr_notrim(const char * src)
 int STR_cpass_char_ptr_notrim_bufferify(char *src, int SHT_src_len)
 {
     // splicer begin function.cpass_char_ptr_notrim_bufferify
-    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, -1);
+    char * SHCXX_src = ShroudStrAlloc(src, SHT_src_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHCXX_src);
     ShroudStrFree(SHCXX_src);
     return SHC_rv;

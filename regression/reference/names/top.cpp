@@ -40,12 +40,15 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
-static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
 {
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim == -1) {
-      ntrim = ShroudLenTrim(src, nsrc);
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return nullptr;
    }
+   char *rv = (char *) std::malloc(nsrc + 1);
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }
@@ -73,7 +76,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
-   free(src);
+   if (src != NULL) {
+     std::free(src);
+   }
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -105,7 +110,7 @@ void TES_get_name(char * name)
 void TES_get_name_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.get_name_bufferify
-    char * ARG_name = ShroudStrAlloc(name, SHT_name_len, -1);
+    char * ARG_name = ShroudStrAlloc(name, SHT_name_len, 0);
     getName(ARG_name);
     ShroudStrCopy(name, SHT_name_len, ARG_name, -1);
     ShroudStrFree(ARG_name);

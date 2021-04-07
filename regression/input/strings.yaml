@@ -330,7 +330,7 @@ declarations:
 ########################################
 # char * argument
 
-- decl: void CpassCharPtr(char * dest+intent(out), const char *src)
+- decl: void CpassCharPtr(char * dest+intent(out), const char *src+blanknull)
   options:
     C_extern_C: true
     # This copies into 'dest' which must be allocated first
@@ -343,6 +343,7 @@ declarations:
       dest is marked intent(OUT) to override the intent(INOUT) default
       This avoid a copy-in on dest.
       extern "C"
+      If src is a blank string, pass a NULL pointer to C library function.
 
 - decl: void PostDeclare(int *count +rank(1)+intent(in), std::string &name)
   options:

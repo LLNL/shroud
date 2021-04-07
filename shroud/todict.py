@@ -92,7 +92,10 @@ class ToDict(visitor.Visitor):
                 metaattrs["dimension"] = self.visit(metaattrs["dimension"])
             d["metaattrs"] = metaattrs
         
-        add_true_fields(node, d, ["const", "func_const", "volatile"])
+        add_true_fields(node, d, [
+            "const", "func_const", "volatile",
+            "ftrim_char_in", "blanknull",
+        ])
         if node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
@@ -109,8 +112,6 @@ class ToDict(visitor.Visitor):
             for tp in node.template_arguments:
                 lst.append(self.visit(tp))
             d["template_arguments"] = lst
-        if node.ftrim_char_in:
-            d["ftrim_char_in"] = node.ftrim_char_in
         return d
 
     def visit_Identifier(self, node):

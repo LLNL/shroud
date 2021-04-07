@@ -728,6 +728,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             F_capsule_delete_function="SHROUD_capsule_delete",
 
+            c_blanknull="0",     # Argument to helper ShroudStrAlloc.
             c_array_shape="",
             c_array_size="1",
 
