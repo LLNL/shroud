@@ -257,3 +257,45 @@ distclean:
 .PHONY : test-clean
 .PHONY : do-test do-test-replace print-debug
 .PHONY : distclean
+
+########################################################################
+
+# ANSI color codes
+none    := \033[0m
+red     := \033[0;31m
+green   := \033[0;32m
+yellow  := \033[0;33m
+blue    := \033[0;34m
+magenta := \033[0;35m
+cyan    := \033[0;36m
+all_colors := none red green yellow blue magenta cyan
+export $(all_colors) all_colors
+
+# Shell command to unset the exported colors, when not on terminal.
+setcolors = { [ -t 1 ] || unset $${all_colors}; }
+
+# Macro cprint to be used in rules.
+# Example: $(call cprint,"$${red}warning: %s$${none}\n" "a is not defined")
+cprint = $(setcolors) && printf $(1)
+
+# Macro cprint2 to be used in rules generated with $(eval ), i.e. expanded twice
+# $(1) - Text to print, $(2) - color-name (optional)
+cprint2 = $(setcolors) && \
+  printf "$(if $(2),$$$${$(2)},$$$${green})%s$$$${none}\n" '$(1)'
+
+.PHONY: printvars print-%
+# Print the value of a variable named "foo".
+# Usage: make print-foo
+print-%:
+	@$(call cprint,"%s is $${green}%s$${none} ($${cyan}%s$${none})\
+	  (from $${magenta}%s$${none})\n" '$*' '$($*)' '$(value $*)'\
+	  '$(origin $*)')
+
+# Print the value of (nearly) all the variables.
+# Usage: make printvars
+printvars:
+	@:;$(foreach V,$(sort $(.VARIABLES)),\
+	$(if $(filter-out environ% default automatic,$(origin $V)),\
+	$(info $(V)=$($V) ($(value $(V))))))
+	@:
+

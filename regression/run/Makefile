@@ -11,19 +11,25 @@
 compiler = gcc
 export compiler
 
+# build/temp-
+#             run/$(testdir)/prob
+# relrunpath- relative directory, allow multiple compiler builds
+testdir = .
+relrunpath = $(tempdir)/run/$(testdir)
+
 include $(top)/regression/run/defaults.mk
 
 ######################################################################
 # Compile a Fortran test
-fortran-% : $(tempdir)/run/%/.. phony_explicit
+fortran-% : $(relrunpath)/%/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$* \
+	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) $*
 
 # Run a Fortran test
 test-fortran-% : fortran-%
-	$(tempdir)/run/$*/$*
+	$(relrunpath)/$*/$*
 
 # Run the Fortran tests
 test-fortran : \
@@ -59,16 +65,16 @@ test-cfi : \
 
 ######################################################################
 # Compile a C test
-c-% : $(tempdir)/run/%/.. phony_explicit
+c-% : $(relrunpath)/%/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$* \
+	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) testc
 
 
 # Run the C tests
 test-c-% : c-%
-	$(tempdir)/run/$*/testc
+	$(relrunpath)/$*/testc
 
 # Compile C tests
 test-c : \
@@ -98,15 +104,15 @@ test-c : \
 
 ######################################################################
 # Compile a C++ test
-cpp-% : $(tempdir)/run/%/.. phony_explicit
+cpp-% : $(relrunpath)/%/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$* \
+	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) maincpp
 
 # Run a C++ test
 test-cpp-% : cpp-%
-	$(tempdir)/run/$*/maincpp
+	$(relrunpath)/$*/maincpp
 
 test-cpp : \
   cpp-tutorial \
@@ -115,15 +121,15 @@ test-cpp : \
 
 ######################################################################
 # Compile the generated Python wrapper
-pymod-% : $(tempdir)/run/%/python/.. phony_explicit
+pymod-% : $(relrunpath)/%/python/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$(subst pymod-,,$@)/python \
-	    -f $(top)/regression/run/$(subst pymod-,,$@)/python/Makefile \
+	    -C $(relrunpath)/$*/python \
+	    -f $(top)/regression/run/$*/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
 test-python-% : pymod-%
-	export PYTHONPATH=$(top)/$(tempdir)/run/$*/python; \
+	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
 	$(python.exe) $(top)/regression/run/$*/python/test.py
 
 test-python : \
@@ -156,16 +162,16 @@ test-python : \
 
 ######################################################################
 # Compile the generated Lua wrapper
-compile-lua-% : $(tempdir)/run/%/lua/.. phony_explicit
+compile-lua-% : $(relrunpath)/%/lua/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$*/lua \
+	    -C $(relrunpath)/$*/lua \
 	    -f $(top)/regression/run/$*/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
 # Run the Lua test
 test-lua-% : compile-lua-%
-#	export LUA_PATH=$(top)/$(tempdir)/run/tutorial/lua;
-	cd $(top)/$(tempdir)/run/$*/lua; \
+#	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
+	cd $(top)/$(relrunpath)/$*/lua; \
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua
 
 test-lua : \
@@ -206,59 +212,62 @@ phony_explicit:
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
 .SECONDARY: \
-    $(tempdir)/run/ccomplex/.. \
-    $(tempdir)/run/ccomplex/python/.. \
-    $(tempdir)/run/cdesc/.. \
-    $(tempdir)/run/classes/.. \
-    $(tempdir)/run/classes/lua/.. \
-    $(tempdir)/run/classes/python/.. \
-    $(tempdir)/run/clibrary/.. \
-    $(tempdir)/run/clibrary/python/.. \
-    $(tempdir)/run/cxxlibrary/.. \
-    $(tempdir)/run/cxxlibrary/python/.. \
-    $(tempdir)/run/enum-c/.. \
-    $(tempdir)/run/enum-c/python/.. \
-    $(tempdir)/run/forward/.. \
-    $(tempdir)/run/generic/.. \
-    $(tempdir)/run/generic-cfi/.. \
-    $(tempdir)/run/namespace/.. \
-    $(tempdir)/run/namespace/python/.. \
-    $(tempdir)/run/ownership/.. \
-    $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/pointers-c/..\
-    $(tempdir)/run/pointers-cxx/..\
-    $(tempdir)/run/pointers-numpy-cxx/python/.. \
-    $(tempdir)/run/pointers-list-cxx/python/.. \
-    $(tempdir)/run/pointers-numpy-c/python/.. \
-    $(tempdir)/run/pointers-list-c/python/.. \
-    $(tempdir)/run/preprocess/..\
-    $(tempdir)/run/preprocess/python/.. \
-    $(tempdir)/run/preprocess/.. \
-    $(tempdir)/run/arrayclass/.. \
-    $(tempdir)/run/arrayclass/python/.. \
-    $(tempdir)/run/scope/.. \
-    $(tempdir)/run/statement/.. \
-    $(tempdir)/run/strings/.. \
-    $(tempdir)/run/strings/python/.. \
-    $(tempdir)/run/strings-cfi/.. \
-    $(tempdir)/run/struct-c/.. \
-    $(tempdir)/run/struct-cxx/.. \
-    $(tempdir)/run/struct-numpy-c/python/.. \
-    $(tempdir)/run/struct-numpy-cxx/python/.. \
-    $(tempdir)/run/struct-class-c/python/.. \
-    $(tempdir)/run/struct-class-cxx/python/.. \
-    $(tempdir)/run/struct-list-c/python/.. \
-    $(tempdir)/run/structlist/python/.. \
-    $(tempdir)/run/struct-py-c/python/.. \
-    $(tempdir)/run/struct-py-cxx/python/.. \
-    $(tempdir)/run/templates/.. \
-    $(tempdir)/run/templates/python/.. \
-    $(tempdir)/run/tutorial/..\
-    $(tempdir)/run/tutorial/lua/.. \
-    $(tempdir)/run/tutorial/python/.. \
-    $(tempdir)/run/types/..\
-    $(tempdir)/run/types/python/..\
-    $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors-list/python/.. \
-    $(tempdir)/run/vectors-numpy/python/..
+    $(relrunpath)/ccomplex/.. \
+    $(relrunpath)/ccomplex/python/.. \
+    $(relrunpath)/cdesc/.. \
+    $(relrunpath)/classes/.. \
+    $(relrunpath)/classes/lua/.. \
+    $(relrunpath)/classes/python/.. \
+    $(relrunpath)/clibrary/.. \
+    $(relrunpath)/clibrary/python/.. \
+    $(relrunpath)/cxxlibrary/.. \
+    $(relrunpath)/cxxlibrary/python/.. \
+    $(relrunpath)/enum-c/.. \
+    $(relrunpath)/enum-c/python/.. \
+    $(relrunpath)/forward/.. \
+    $(relrunpath)/generic/.. \
+    $(relrunpath)/generic-cfi/.. \
+    $(relrunpath)/namespace/.. \
+    $(relrunpath)/namespace/python/.. \
+    $(relrunpath)/ownership/.. \
+    $(relrunpath)/ownership/python/.. \
+    $(relrunpath)/pointers-c/..\
+    $(relrunpath)/pointers-cxx/..\
+    $(relrunpath)/pointers-numpy-cxx/python/.. \
+    $(relrunpath)/pointers-list-cxx/python/.. \
+    $(relrunpath)/pointers-numpy-c/python/.. \
+    $(relrunpath)/pointers-list-c/python/.. \
+    $(relrunpath)/preprocess/..\
+    $(relrunpath)/preprocess/python/.. \
+    $(relrunpath)/preprocess/.. \
+    $(relrunpath)/arrayclass/.. \
+    $(relrunpath)/arrayclass/python/.. \
+    $(relrunpath)/scope/.. \
+    $(relrunpath)/statement/.. \
+    $(relrunpath)/strings/.. \
+    $(relrunpath)/strings/python/.. \
+    $(relrunpath)/strings-cfi/.. \
+    $(relrunpath)/struct-c/.. \
+    $(relrunpath)/struct-cxx/.. \
+    $(relrunpath)/struct-numpy-c/python/.. \
+    $(relrunpath)/struct-numpy-cxx/python/.. \
+    $(relrunpath)/struct-class-c/python/.. \
+    $(relrunpath)/struct-class-cxx/python/.. \
+    $(relrunpath)/struct-list-c/python/.. \
+    $(relrunpath)/structlist/python/.. \
+    $(relrunpath)/struct-py-c/python/.. \
+    $(relrunpath)/struct-py-cxx/python/.. \
+    $(relrunpath)/templates/.. \
+    $(relrunpath)/templates/python/.. \
+    $(relrunpath)/tutorial/..\
+    $(relrunpath)/tutorial/lua/.. \
+    $(relrunpath)/tutorial/python/.. \
+    $(relrunpath)/types/..\
+    $(relrunpath)/types/python/..\
+    $(relrunpath)/vectors/..\
+    $(relrunpath)/vectors-list/python/.. \
+    $(relrunpath)/vectors-numpy/python/..
 
+test-clean-testdir :
+	rm -rf $(relrunpath)
+.PHONY : test-clean-testdir
