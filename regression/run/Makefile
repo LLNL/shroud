@@ -19,6 +19,14 @@ relrunpath = $(tempdir)/run/$(testdir)
 
 include $(top)/regression/run/defaults.mk
 
+# ( directory, command )
+# Save output to file and record PASS/FAIL
+ifeq ($(LOGOUTPUT),1)
+run-command = cd $1 && rm -f PASS FAIL ; { $2 >| out 2>&1; } && touch PASS || touch FAIL
+else
+run-command = cd $1 && $2
+endif
+
 ######################################################################
 # Compile a Fortran test
 fortran-% : $(relrunpath)/%/.. phony_explicit
@@ -29,7 +37,7 @@ fortran-% : $(relrunpath)/%/.. phony_explicit
 
 # Run a Fortran test
 test-fortran-% : fortran-%
-	$(relrunpath)/$*/$*
+	$(call run-command, $(relrunpath)/$*, ./$*)
 
 # Run the Fortran tests
 test-fortran : \
@@ -74,7 +82,7 @@ c-% : $(relrunpath)/%/.. phony_explicit
 
 # Run the C tests
 test-c-% : c-%
-	$(relrunpath)/$*/testc
+	$(call run-command, $(relrunpath)/$*, ./testc)
 
 # Compile C tests
 test-c : \
@@ -112,7 +120,7 @@ cpp-% : $(relrunpath)/%/.. phony_explicit
 
 # Run a C++ test
 test-cpp-% : cpp-%
-	$(relrunpath)/$*/maincpp
+	$(call run-command, $(relrunpath)/$*, ./maincpp)
 
 test-cpp : \
   cpp-tutorial \
@@ -130,7 +138,8 @@ pymod-% : $(relrunpath)/%/python/.. phony_explicit
 # Run the Python tests
 test-python-% : pymod-%
 	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
-	$(python.exe) $(top)/regression/run/$*/python/test.py
+	$(call run-command, $(relrunpath)/$*/python, \
+	$(python.exe) $(top)/regression/run/$*/python/test.py)
 
 test-python : \
   test-python-tutorial \
@@ -171,8 +180,8 @@ compile-lua-% : $(relrunpath)/%/lua/.. phony_explicit
 # Run the Lua test
 test-lua-% : compile-lua-%
 #	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
-	cd $(top)/$(relrunpath)/$*/lua; \
-	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua
+	$(call run-command, $(relrunpath)/$*/lua, \
+	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
 
 test-lua : \
     test-lua-tutorial \

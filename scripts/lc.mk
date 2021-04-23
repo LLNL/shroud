@@ -8,7 +8,10 @@ gccdir = /usr/tce/packages/gcc
 inteldir = /usr/tce/packages/intel
 pgidir = /usr/tce/packages/pgi
 
-target = test-fortran-tutorial
+target = test-fortran-strings
+#target = test-all
+# Flags for all uses of $(MAKE)
+makeargs = LOGOUTPUT=1 $(target)
 
 all : gcc intel pgi
 .PHONY : all
@@ -27,7 +30,7 @@ gcc : \
 .PHONY : gcc
 
 gcc-% :
-	$(MAKE) $(target) testdir=$@ compiler=gcc \
+	$(MAKE) $(makeargs) testdir=$@ compiler=gcc \
 	CC=$(gccdir)/$@/bin/gcc \
 	CXX=$(gccdir)/$@/bin/g++ \
 	FC=$(gccdir)/$@/bin/gfortran
@@ -43,7 +46,7 @@ intel : \
   intel-2021.2
 
 intel-% :
-	$(MAKE) $(target) testdir=$@ compiler=intel \
+	$(MAKE) $(makeargs) testdir=$@ compiler=intel \
 	CC=$(inteldir)/$@/bin/icc \
 	CXX=$(inteldir)/$@/bin/icpc \
 	FC=$(inteldir)/$@/bin/ifort
@@ -57,7 +60,7 @@ pgi : \
  pgi-21.1 \
 
 pgi-% :
-	$(MAKE) $(target) testdir=$@ compiler=pgi \
+	$(MAKE) $(makeargs) testdir=$@ compiler=pgi \
 	CC=$(pgidir)/$@/bin/pgcc \
 	CXX=$(pgidir)/$@/bin/pgc++ \
 	FC=$(pgidir)/$@/bin/pgf90
