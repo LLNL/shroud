@@ -40,7 +40,7 @@ clean :
 
 cdesc.o : cdesc.hpp
 wrapcdesc.o : wrapcdesc.h cdesc.hpp
-main.o : wrapfcdesc.o
+main.o : fruit.o wrapfcdesc.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapcdesc.o cdesc.o

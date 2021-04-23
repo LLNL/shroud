@@ -41,7 +41,7 @@ clean :
 
 ownership.o : ownership.hpp
 wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
+main.o : fruit.o wrapfownership.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o ownership.o

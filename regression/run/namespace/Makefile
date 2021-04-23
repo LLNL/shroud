@@ -43,7 +43,7 @@ clean :
 namespace.o : namespace.hpp
 wrapns.o : namespace.hpp
 wrapns_outer.o : namespace.hpp
-main.o : wrapfns.o wrapfns_outer.o
+main.o : fruit.o wrapfns.o wrapfns_outer.o
 
 testc.o : testc.c wrapns.h wrapns_outer.h
 testc : testc.o $(C_OBJS)

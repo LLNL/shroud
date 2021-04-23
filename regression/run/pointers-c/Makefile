@@ -32,4 +32,4 @@ pointers-c : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod pointers
 
-main.o : wrapfpointers.o
+main.o : fruit.o wrapfpointers.o

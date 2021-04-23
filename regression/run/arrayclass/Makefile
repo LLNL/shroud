@@ -33,4 +33,4 @@ arrayclass : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod arrayclass
 
-main.o : wrapfarrayclass.o
+main.o : fruit.o wrapfarrayclass.o

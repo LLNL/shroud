@@ -37,4 +37,4 @@ clean :
 
 struct.o : struct.h
 wrapstruct.o : wrapstruct.h struct.h
-main.o : wrapfstruct.o
+main.o : fruit.o wrapfstruct.o

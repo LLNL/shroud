@@ -31,4 +31,4 @@ clibrary : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod clibrary
 
-main.o : wrapfclibrary.o
+main.o : fruit.o wrapfclibrary.o

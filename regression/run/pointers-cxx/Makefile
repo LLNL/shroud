@@ -34,7 +34,7 @@ pointers.cpp : $(top)/regression/run/pointers/pointers.c
 	cp $^ $@
 main.f : $(top)/regression/run/pointers/main.f
 	cp $< $@
-main.o : main.f
+main.o : main.f fruit.o wrapfpointers.o
 pointers.o : pointers.cpp
 
 clean :

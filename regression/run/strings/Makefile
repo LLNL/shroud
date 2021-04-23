@@ -34,4 +34,4 @@ strings : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod strings
 
-main.o : wrapfstrings.o
+main.o : fruit.o wrapfstrings.o

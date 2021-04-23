@@ -40,7 +40,7 @@ clean :
 
 tutorial.o : tutorial.hpp
 wrapTutorial.o : wrapTutorial.h tutorial.hpp
-main.o : wrapftutorial.o
+main.o : fruit.o wrapftutorial.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapTutorial.o tutorial.o

@@ -36,4 +36,4 @@ clean :
 
 wrappreprocess.o : preprocess.hpp
 wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h
-main.o : wrapfpreprocess.o wrappreprocess.o
+main.o : fruit.o wrapfpreprocess.o wrappreprocess.o

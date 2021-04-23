@@ -39,7 +39,7 @@ clean :
 
 statement.o : statement.hpp
 wrapstatement.o : wrapstatement.h statement.hpp
-main.o : wrapfstatement.o
+main.o : fruit.o wrapfstatement.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapStatement.o wrapClass1.o wrapSingleton.o statement.o
