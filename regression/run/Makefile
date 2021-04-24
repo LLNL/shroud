@@ -8,6 +8,12 @@
 #
 #  Compile and test generated wrappers.
 #
+# Initialization
+# 3.80 for order-only dependency.
+need := 3.80
+ok := $(filter $(need),$(firstword $(sort $(MAKE_VERSION) $(need))))
+$(if $(ok),,$(error version $(need) of gmake or greater is required))
+
 compiler = gcc
 export compiler
 
@@ -53,7 +59,7 @@ fortran-test-list = \
   test-fortran-templates
 
 # Compile a Fortran test
-fortran-% : $(relrunpath)/%/..
+fortran-% : | $(relrunpath)/%/..
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
@@ -61,7 +67,7 @@ fortran-% : $(relrunpath)/%/..
 
 # Run a Fortran test
 .PHONY : $(fortran-test-list)
-$(fortran-test-list) : test-fortran-% : fortran-%
+$(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
 	$(call run-command, $(relrunpath)/$*, ./$*)
 
 # Run the Fortran tests
@@ -88,7 +94,7 @@ c-test-list = \
   test-c-templates
 
 # Compile a C test
-c-% : $(relrunpath)/%/..
+c-% : | $(relrunpath)/%/..
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
@@ -96,7 +102,7 @@ c-% : $(relrunpath)/%/..
 
 # Run the C tests
 .PHONY : $(c-test-list)
-$(c-test-list) : test-c-% : c-%
+$(c-test-list) : test-c-% : c-% | $(relrunpath)/%/..
 	$(call run-command, $(relrunpath)/$*, ./testc)
 
 # Compile C tests
@@ -126,7 +132,7 @@ cpp-test-list = \
   test-cpp-scope
 
 # Compile a C++ test
-cpp-% : $(relrunpath)/%/..
+cpp-% : | $(relrunpath)/%/..
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
@@ -134,7 +140,7 @@ cpp-% : $(relrunpath)/%/..
 
 # Run a C++ test
 .PHONY : $(cpp-test-list)
-$(cpp-test-list) : test-cpp-% : cpp-%
+$(cpp-test-list) : test-cpp-% : cpp-% | $(relrunpath)/%/..
 	$(call run-command, $(relrunpath)/$*, ./maincpp)
 
 .PHONY : test-cpp
@@ -169,7 +175,7 @@ python-test-list = \
   test-python-templates
 
 # Compile the generated Python wrapper
-pymod-% : $(relrunpath)/%/python/..
+pymod-% : | $(relrunpath)/%/python/..
 	$(MAKE) \
 	    -C $(relrunpath)/$*/python \
 	    -f $(top)/regression/run/$*/python/Makefile \
@@ -177,7 +183,7 @@ pymod-% : $(relrunpath)/%/python/..
 
 # Run the Python tests
 .PHONY : $(python-test-list)
-$(python-test-list) : test-python-% : pymod-%
+$(python-test-list) : test-python-% : pymod-% | $(relrunpath)/%/python/..
 	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
 	$(call run-command, $(relrunpath)/$*/python, \
 	$(python.exe) $(top)/regression/run/$*/python/test.py)
@@ -194,7 +200,7 @@ lua-test-list = \
     test-lua-classes
 
 # Compile the generated Lua wrapper
-compile-lua-% : $(relrunpath)/%/lua/..
+compile-lua-% : | $(relrunpath)/%/lua/..
 	$(MAKE) \
 	    -C $(relrunpath)/$*/lua \
 	    -f $(top)/regression/run/$*/lua/Makefile \
@@ -202,7 +208,7 @@ compile-lua-% : $(relrunpath)/%/lua/..
 
 # Run the Lua test
 .PHONY : $(lua-test-list)
-$(lua-test-list) : test-lua-% : compile-lua-%
+$(lua-test-list) : test-lua-% : compile-lua-% | $(relrunpath)/%/lua/..
 #	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
 	$(call run-command, $(relrunpath)/$*/lua, \
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
@@ -233,65 +239,6 @@ test-struct : \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
   test-python-struct-class-cxx
-
-# Avoid deleting directories created to run tests.
-# They are created via pattern rules.
-.SECONDARY: \
-    $(relrunpath)/ccomplex/.. \
-    $(relrunpath)/ccomplex/python/.. \
-    $(relrunpath)/cdesc/.. \
-    $(relrunpath)/classes/.. \
-    $(relrunpath)/classes/lua/.. \
-    $(relrunpath)/classes/python/.. \
-    $(relrunpath)/clibrary/.. \
-    $(relrunpath)/clibrary/python/.. \
-    $(relrunpath)/cxxlibrary/.. \
-    $(relrunpath)/cxxlibrary/python/.. \
-    $(relrunpath)/enum-c/.. \
-    $(relrunpath)/enum-c/python/.. \
-    $(relrunpath)/forward/.. \
-    $(relrunpath)/generic/.. \
-    $(relrunpath)/generic-cfi/.. \
-    $(relrunpath)/namespace/.. \
-    $(relrunpath)/namespace/python/.. \
-    $(relrunpath)/ownership/.. \
-    $(relrunpath)/ownership/python/.. \
-    $(relrunpath)/pointers-c/..\
-    $(relrunpath)/pointers-cxx/..\
-    $(relrunpath)/pointers-numpy-cxx/python/.. \
-    $(relrunpath)/pointers-list-cxx/python/.. \
-    $(relrunpath)/pointers-numpy-c/python/.. \
-    $(relrunpath)/pointers-list-c/python/.. \
-    $(relrunpath)/preprocess/..\
-    $(relrunpath)/preprocess/python/.. \
-    $(relrunpath)/preprocess/.. \
-    $(relrunpath)/arrayclass/.. \
-    $(relrunpath)/arrayclass/python/.. \
-    $(relrunpath)/scope/.. \
-    $(relrunpath)/statement/.. \
-    $(relrunpath)/strings/.. \
-    $(relrunpath)/strings/python/.. \
-    $(relrunpath)/strings-cfi/.. \
-    $(relrunpath)/struct-c/.. \
-    $(relrunpath)/struct-cxx/.. \
-    $(relrunpath)/struct-numpy-c/python/.. \
-    $(relrunpath)/struct-numpy-cxx/python/.. \
-    $(relrunpath)/struct-class-c/python/.. \
-    $(relrunpath)/struct-class-cxx/python/.. \
-    $(relrunpath)/struct-list-c/python/.. \
-    $(relrunpath)/structlist/python/.. \
-    $(relrunpath)/struct-py-c/python/.. \
-    $(relrunpath)/struct-py-cxx/python/.. \
-    $(relrunpath)/templates/.. \
-    $(relrunpath)/templates/python/.. \
-    $(relrunpath)/tutorial/..\
-    $(relrunpath)/tutorial/lua/.. \
-    $(relrunpath)/tutorial/python/.. \
-    $(relrunpath)/types/..\
-    $(relrunpath)/types/python/..\
-    $(relrunpath)/vectors/..\
-    $(relrunpath)/vectors-list/python/.. \
-    $(relrunpath)/vectors-numpy/python/..
 
 test-clean-testdir :
 	rm -rf $(relrunpath)
