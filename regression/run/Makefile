@@ -28,19 +28,7 @@ run-command = cd $1 && $2
 endif
 
 ######################################################################
-# Compile a Fortran test
-fortran-% : $(relrunpath)/%/.. phony_explicit
-	$(MAKE) \
-	    -C $(relrunpath)/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) $*
-
-# Run a Fortran test
-test-fortran-% : fortran-%
-	$(call run-command, $(relrunpath)/$*, ./$*)
-
-# Run the Fortran tests
-test-fortran : \
+fortran-test-list = \
   test-fortran-tutorial \
   test-fortran-types \
   test-fortran-classes \
@@ -64,28 +52,33 @@ test-fortran : \
   test-fortran-statement \
   test-fortran-templates
 
+# Compile a Fortran test
+fortran-% : $(relrunpath)/%/..
+	$(MAKE) \
+	    -C $(relrunpath)/$* \
+	    -f $(top)/regression/run/$*/Makefile \
+	    top=$(top) $*
+
+# Run a Fortran test
+.PHONY : $(fortran-test-list)
+$(fortran-test-list) : test-fortran-% : fortran-%
+	$(call run-command, $(relrunpath)/$*, ./$*)
+
+# Run the Fortran tests
+.PHONY : test-fortran
+test-fortran : $(fortran-test-list)
+
 # Futher Interoperability with C
 # gfortran 9.1
 # intel 16.0.3
+.PHONY : test-cfi
 test-cfi : \
   test-fortran-strings-cfi \
   test-fortran-generic-cfi
 
 ######################################################################
-# Compile a C test
-c-% : $(relrunpath)/%/.. phony_explicit
-	$(MAKE) \
-	    -C $(relrunpath)/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) testc
 
-
-# Run the C tests
-test-c-% : c-%
-	$(call run-command, $(relrunpath)/$*, ./testc)
-
-# Compile C tests
-test-c : \
+c-test-list = \
   test-c-types \
   test-c-classes \
   test-c-enum-c \
@@ -94,6 +87,21 @@ test-c : \
   test-c-statement \
   test-c-templates
 
+# Compile a C test
+c-% : $(relrunpath)/%/..
+	$(MAKE) \
+	    -C $(relrunpath)/$* \
+	    -f $(top)/regression/run/$*/Makefile \
+	    top=$(top) testc
+
+# Run the C tests
+.PHONY : $(c-test-list)
+$(c-test-list) : test-c-% : c-%
+	$(call run-command, $(relrunpath)/$*, ./testc)
+
+# Compile C tests
+.PHONY : test-c
+test-c : $(c-test-list)
 
 ##  test-c-tutorial 
 ##  test-c-types 
@@ -111,37 +119,30 @@ test-c : \
 
 
 ######################################################################
+
+cpp-test-list = \
+  test-cpp-tutorial \
+  test-cpp-templates \
+  test-cpp-scope
+
 # Compile a C++ test
-cpp-% : $(relrunpath)/%/.. phony_explicit
+cpp-% : $(relrunpath)/%/..
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) maincpp
 
 # Run a C++ test
-test-cpp-% : cpp-%
+.PHONY : $(cpp-test-list)
+$(cpp-test-list) : test-cpp-% : cpp-%
 	$(call run-command, $(relrunpath)/$*, ./maincpp)
 
-test-cpp : \
-  cpp-tutorial \
-  cpp-templates \
-  test-cpp-scope
+.PHONY : test-cpp
+test-cpp : $(cpp-test-list)
 
 ######################################################################
-# Compile the generated Python wrapper
-pymod-% : $(relrunpath)/%/python/.. phony_explicit
-	$(MAKE) \
-	    -C $(relrunpath)/$*/python \
-	    -f $(top)/regression/run/$*/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
 
-# Run the Python tests
-test-python-% : pymod-%
-	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
-	$(call run-command, $(relrunpath)/$*/python, \
-	$(python.exe) $(top)/regression/run/$*/python/test.py)
-
-test-python : \
+python-test-list = \
   test-python-tutorial \
   test-python-types \
   test-python-classes \
@@ -167,30 +168,54 @@ test-python : \
   test-python-ownership \
   test-python-templates
 
+# Compile the generated Python wrapper
+pymod-% : $(relrunpath)/%/python/..
+	$(MAKE) \
+	    -C $(relrunpath)/$*/python \
+	    -f $(top)/regression/run/$*/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
+# Run the Python tests
+.PHONY : $(python-test-list)
+$(python-test-list) : test-python-% : pymod-%
+	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
+	$(call run-command, $(relrunpath)/$*/python, \
+	$(python.exe) $(top)/regression/run/$*/python/test.py)
+
+.PHONY : test-python
+test-python : $(python-test-list)
+
 # test-python-templates
 
 ######################################################################
+
+lua-test-list = \
+    test-lua-tutorial \
+    test-lua-classes
+
 # Compile the generated Lua wrapper
-compile-lua-% : $(relrunpath)/%/lua/.. phony_explicit
+compile-lua-% : $(relrunpath)/%/lua/..
 	$(MAKE) \
 	    -C $(relrunpath)/$*/lua \
 	    -f $(top)/regression/run/$*/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
 # Run the Lua test
-test-lua-% : compile-lua-%
+.PHONY : $(lua-test-list)
+$(lua-test-list) : test-lua-% : compile-lua-%
 #	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
 	$(call run-command, $(relrunpath)/$*/lua, \
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
 
-test-lua : \
-    test-lua-tutorial \
-    test-lua-classes
+.PHONY : test-lua
+test-lua : $(lua-test-list)
 
 ######################################################################
+.PHONY : test-all
 test-all : test-c test-fortran test-python test-lua
 
 # test specific yaml files
+.PHONY : test-pointers
 test-pointers : \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
@@ -199,6 +224,7 @@ test-pointers : \
   test-python-pointers-list-c \
   test-python-pointers-list-cxx
 
+.PHONY : test-struct
 test-struct : \
   test-c-struct-cxx \
   test-fortran-struct-c \
@@ -207,16 +233,6 @@ test-struct : \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
   test-python-struct-class-cxx
-
-.PHONY : test-c
-.PHONY : test-fortran
-.PHONY : test-python
-.PHONY : test-lua
-.PHONY : test-all
-.PHONY : test-struct
-
-.PHONY: phony_explicit
-phony_explicit: 
 
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
