@@ -34,6 +34,28 @@ run-command = cd $1 && $2
 endif
 
 ######################################################################
+#
+# Several tests compile the test code with both C and C++.
+# Copy the .c suffix to a .cpp suffix file to compile as C++.
+# Done as an order-only dependency since the referrence file will not
+# change during the compilation test.
+#
+c-to-cxx = \
+  regression/run/struct/struct.c
+
+
+.PHONY : sync-cxx
+sync-cxx : \
+  $(relrunpath)/cxx/pointers.cpp \
+  $(relrunpath)/cxx/struct.cpp
+
+$(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
+	cp $< $@
+
+
+######################################################################
 fortran-test-list = \
   test-fortran-tutorial \
   test-fortran-types \
@@ -59,7 +81,7 @@ fortran-test-list = \
   test-fortran-templates
 
 # Compile a Fortran test
-fortran-% : | $(relrunpath)/%/..
+fortran-% : | $(relrunpath)/%/.. sync-cxx
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
@@ -94,7 +116,7 @@ c-test-list = \
   test-c-templates
 
 # Compile a C test
-c-% : | $(relrunpath)/%/..
+c-% : | $(relrunpath)/%/.. sync-cxx
 	$(MAKE) \
 	    -C $(relrunpath)/$* \
 	    -f $(top)/regression/run/$*/Makefile \
@@ -175,7 +197,7 @@ python-test-list = \
   test-python-templates
 
 # Compile the generated Python wrapper
-pymod-% : | $(relrunpath)/%/python/..
+pymod-% : | $(relrunpath)/%/python/.. sync-cxx
 	$(MAKE) \
 	    -C $(relrunpath)/$*/python \
 	    -f $(top)/regression/run/$*/python/Makefile \

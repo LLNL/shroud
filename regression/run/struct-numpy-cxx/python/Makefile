@@ -16,7 +16,9 @@ INCLUDE = \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/struct-numpy-cxx
+    $(top)/regression/reference/struct-numpy-cxx \
+    $(top)/regression/run/struct \
+    ../../cxx
 
 OBJS = \
     struct.o \
@@ -27,14 +29,11 @@ CXXFLAGS += $(SHARED)
 
 all : cstruct.so
 
-# Convert C++ file to C
-struct.cpp : $(top)/regression/run/struct/struct.c
-	cp $^ $@
-
 cstruct.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
-struct.o : struct.cpp
+struct.o : struct.cpp struct.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 clean :
 	rm -f *.so *.o
