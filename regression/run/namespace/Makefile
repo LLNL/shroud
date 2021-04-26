@@ -30,7 +30,7 @@ C_OBJS = \
     wrapns.o \
     wrapns_outer.o
 F_OBJS= \
-    wrapfns.f \
+    wrapfns.o \
     fruit.o \
     main.o
 

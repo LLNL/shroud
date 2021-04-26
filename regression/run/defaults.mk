@@ -26,14 +26,14 @@ CC = gcc
 # -Wextra
 # -O3 generates additional warnings
 CXXWARNINGS = -O3
-CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
+LOCAL_CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
 # silence warning in enum.yaml test
-CFLAGS += -Wno-enum-compare
+LOCAL_CFLAGS += -Wno-enum-compare
 CLIBS = -lstdc++
 CXX = g++
-CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
+LOCAL_CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
 FC = gfortran
-FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
+LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
 #FFLAGS += -std=f2003
 FLIBS = -lstdc++
 SHARED = -fPIC
@@ -42,12 +42,13 @@ endif
 
 ifeq ($(compiler),intel)
 CC = icc
-CFLAGS = -g -std=c99
+LOCAL_CFLAGS = -g -std=c99
 CLIBS = -lstdc++
 CXX = icpc
-CXXFLAGS = -g -std=c++11
+LOCAL_CXXFLAGS = -g -std=c++11
+#LOCAL_CXXFLAGS += 
 FC = ifort
-FFLAGS = -g -fpp -free -check all
+LOCAL_FFLAGS = -g -fpp -free -check all
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
@@ -55,12 +56,12 @@ endif
 
 ifeq ($(compiler),pgi)
 CC = pgcc
-CFLAGS = -g
+LOCAL_CFLAGS = -g
 CLIBS = -lstdc++
 CXX = pgc++
-CXXFLAGS = -g -std=c++11
+LOCAL_CXXFLAGS = -g -std=c++11
 FC = pgf90
-FFLAGS = -g -Mfree -Mstandard -cpp
+LOCAL_FFLAGS = -g -Mfree -Mstandard -cpp
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
@@ -71,12 +72,12 @@ ifeq ($(compiler),ibm)
 TCE = /usr/tce/packages/xl/xl-2019.08.20/
 TCE = /usr/tce/packages/xl/xl-2020.11.12/
 CC = xlc
-CFLAGS = -g
+LOCAL_CFLAGS = -g
 CLIBS = -lstdc++
 CXX = xlC
-CXXFLAGS = -g -std=c++0x 
+LOCAL_CXXFLAGS = -g -std=c++0x 
 FC = xlf2003
-FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
+LOCAL_FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
 # -qlanglvl=2003std
 FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 SHARED = -fPIC
@@ -86,11 +87,11 @@ endif
 # BG/Q with clang and xlf
 ifeq ($(compiler),bgq)
 CC = /collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/r284961-stable/llnl/bin/mpiclang
-CFLAGS = -g
+LOCAL_CFLAGS = -g
 CXX = /collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/r284961-stable/llnl/bin/mpiclang++
-CXXFLAGS = -g -std=c++0x 
+LOCAL_CXXFLAGS = -g -std=c++0x 
 FC = /opt/ibmcmp/xlf/bg/14.1/bin/bgxlf2003
-FFLAGS = -g -qfree=f90
+LOCAL_FFLAGS = -g -qfree=f90
 FLIBS = \
   -L/usr/apps/gnu/bgclang/r284961-stable/libc++/lib \
   -L/collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/toolchain-4.7.2-fixup/lib \
@@ -99,6 +100,11 @@ FLIBS = \
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
+
+# Prefix local flags to user flags.
+LOCAL_CFLAGS += $(CFLAGS)
+LOCAL_CXXFLAGS += $(CXXFLAGS)
+LOCAL_FFLAGS += $(FFLAGS)
 
 ifdef PYTHON
 # Simple string functions, to reduce the clutter below.
@@ -142,13 +148,13 @@ LUA_LIB = -L$(LUA_PREFIX)/lib -llua -ldl
 endif
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CC) $(LOCAL_CFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f
-	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(LOCAL_FFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f90
-	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(LOCAL_FFLAGS) $(INCLUDE) -c -o $*.o $<

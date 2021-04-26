@@ -25,12 +25,12 @@ relrunpath = $(tempdir)/run/$(testdir)
 
 include $(top)/regression/run/defaults.mk
 
-# ( directory, command )
+# ( prefix, directory, command )
 # Save output to file and record PASS/FAIL
 ifeq ($(LOGOUTPUT),1)
-run-command = cd $1 && rm -f PASS FAIL ; { $2 >| out 2>&1; } && touch PASS || touch FAIL
+run-command = cd $2 && rm -f $1.PASS $1.FAIL ; { $3 >| $1.out 2>&1; } && touch $1.PASS || touch $1.FAIL
 else
-run-command = cd $1 && $2
+run-command = cd $2 && $3
 endif
 
 ######################################################################
@@ -82,15 +82,13 @@ fortran-test-list = \
 
 # Compile a Fortran test
 fortran-% : | $(relrunpath)/%/.. sync-cxx
-	$(MAKE) \
-	    -C $(relrunpath)/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) $*
+	$(call run-command,build,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) $*)
 
 # Run a Fortran test
 .PHONY : $(fortran-test-list)
 $(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
-	$(call run-command, $(relrunpath)/$*, ./$*)
+	$(call run-command,test,$(relrunpath)/$*,./$*)
 
 # Run the Fortran tests
 .PHONY : test-fortran
@@ -117,15 +115,13 @@ c-test-list = \
 
 # Compile a C test
 c-% : | $(relrunpath)/%/.. sync-cxx
-	$(MAKE) \
-	    -C $(relrunpath)/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) testc
+	$(call run-command,build,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) testc)
 
 # Run the C tests
 .PHONY : $(c-test-list)
 $(c-test-list) : test-c-% : c-% | $(relrunpath)/%/..
-	$(call run-command, $(relrunpath)/$*, ./testc)
+	$(call run-command,test,$(relrunpath)/$*,./testc)
 
 # Compile C tests
 .PHONY : test-c
@@ -155,15 +151,13 @@ cpp-test-list = \
 
 # Compile a C++ test
 cpp-% : | $(relrunpath)/%/..
-	$(MAKE) \
-	    -C $(relrunpath)/$* \
-	    -f $(top)/regression/run/$*/Makefile \
-	    top=$(top) maincpp
+	$(call run-command,build,$(relrunpath)/$*,\
+	$(MAKE) -f $(top)/regression/run/$*/Makefile top=$(top) maincpp)
 
 # Run a C++ test
 .PHONY : $(cpp-test-list)
 $(cpp-test-list) : test-cpp-% : cpp-% | $(relrunpath)/%/..
-	$(call run-command, $(relrunpath)/$*, ./maincpp)
+	$(call run-command,test,$(relrunpath)/$*,./maincpp)
 
 .PHONY : test-cpp
 test-cpp : $(cpp-test-list)
@@ -198,16 +192,15 @@ python-test-list = \
 
 # Compile the generated Python wrapper
 pymod-% : | $(relrunpath)/%/python/.. sync-cxx
-	$(MAKE) \
-	    -C $(relrunpath)/$*/python \
-	    -f $(top)/regression/run/$*/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
+	$(call run-command,build,$(relrunpath)/$*/python,\
+	$(MAKE) -f $(top)/regression/run/$*/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all)
 
 # Run the Python tests
 .PHONY : $(python-test-list)
 $(python-test-list) : test-python-% : pymod-% | $(relrunpath)/%/python/..
 	export PYTHONPATH=$(top)/$(relrunpath)/$*/python; \
-	$(call run-command, $(relrunpath)/$*/python, \
+	$(call run-command,test,$(relrunpath)/$*/python, \
 	$(python.exe) $(top)/regression/run/$*/python/test.py)
 
 .PHONY : test-python
@@ -223,16 +216,15 @@ lua-test-list = \
 
 # Compile the generated Lua wrapper
 compile-lua-% : | $(relrunpath)/%/lua/..
-	$(MAKE) \
-	    -C $(relrunpath)/$*/lua \
-	    -f $(top)/regression/run/$*/lua/Makefile \
-	    LUA=$(LUA) top=$(top) all
+	$(call run-command,build,$(relrunpath)/$*/lua,\
+	$(MAKE) -f $(top)/regression/run/$*/lua/Makefile \
+	    LUA=$(LUA) top=$(top) all)
 
 # Run the Lua test
 .PHONY : $(lua-test-list)
 $(lua-test-list) : test-lua-% : compile-lua-% | $(relrunpath)/%/lua/..
 #	export LUA_PATH=$(top)/$(relrunpath)/tutorial/lua;
-	$(call run-command, $(relrunpath)/$*/lua, \
+	$(call run-command,test,$(relrunpath)/$*/lua, \
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua)
 
 .PHONY : test-lua
