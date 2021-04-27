@@ -33,7 +33,7 @@ cstruct.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 struct.o : struct.cpp struct.h
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 clean :
 	rm -f *.so *.o

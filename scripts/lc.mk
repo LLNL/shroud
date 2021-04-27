@@ -9,23 +9,30 @@
 gccdir = /usr/tce/packages/gcc
 inteldir = /usr/tce/packages/intel
 pgidir = /usr/tce/packages/pgi
+pythondir = /usr/tce/packages/python
+
+tempdir = build/regression
 
 target = test-fortran-strings
 #target = test-all
 # Flags for all uses of $(MAKE)
-makeargs = LOGOUTPUT=1 $(target)
+makeargs = LOGOUTPUT=1
+# Location of build directory.
+makeargs += tempdir=$(tempdir)
 # Keep going if a test fails.
 makeargs += --ignore-errors
 # Run each compiler serially to avoid too many tasks
 # and to keep output in the same order.
 makeargs += -j 1
+makeargs += $(target)
 
-all : gcc intel pgi
+
 .PHONY : all
+all : gcc intel pgi
 
-clean :
-	$(MAKE) test-clean
 .PHONY : clean
+clean :
+	rm -rf $(tempdir)
 
 ######################################################################
 gcc-list = \
@@ -104,3 +111,30 @@ $(pgi-list) : pgi-% :
 	CXX=$(pgidir)/$@/bin/pgc++ \
 	FC=$(pgidir)/$@/bin/pgf90
 
+######################################################################
+
+python-list = \
+  python-2.7.16 \
+  python-3.5.1 \
+  python-3.6.4 \
+  python-3.7.2 \
+  python-3.8.2
+
+python-compiler = \
+  compiler=gcc \
+  CC=$(gccdir)/gcc-8.3.1/bin/gcc \
+  CXX=$(gccdir)/gcc-8.3.1/bin/g++
+
+python-exe-2.7.16 = $(pythondir)/python-2.7.16/bin/python2
+python-exe-3.5.1  = $(pythondir)/python-3.5.1/bin/python3
+python-exe-3.6.4  = $(pythondir)/python-3.6.4/bin/python3
+python-exe-3.7.2  = $(pythondir)/python-3.7.2/bin/python3
+python-exe-3.8.2  = $(pythondir)/python-3.8.2/bin/python3
+
+.PHONY : python
+python : $(python-list)
+
+.PHONY : $(python-list)
+$(python-list) : python-% :
+	$(MAKE) $(makeargs) testdir=$@ \
+	PYTHON=$(python-exe-$*) $(python-compiler)

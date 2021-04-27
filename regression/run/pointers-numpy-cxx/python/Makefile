@@ -30,7 +30,7 @@ LOCAL_CXXFLAGS += $(SHARED)
 all : pointers.so simple
 
 pointers.o : pointers.cpp pointers.h
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 pointers.so : $(OBJS)
 	$(CXX) $(LD_SHARED) $^ -o $@ $(LIBS)

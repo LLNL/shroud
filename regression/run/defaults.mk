@@ -116,6 +116,8 @@ python.libpl   = $(eval python.libpl := $$(call shell,$(python.exe) \
   -c $(call sf_01,LIBPL) 2>&1))$(python.libpl)
 python.libs    = $(eval python.libs := $$(call shell,$(python.exe) \
   -c $(call sf_01,LIBS) 2>&1))$(python.libs)
+python.ldflags = $(eval python.ldflags := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LDFLAGS) 2>&1))$(python.ldflags)
 python.bldlibrary  = $(eval python.bldlibrary := $$(call shell,$(python.exe) \
   -c $(call sf_01,BLDLIBRARY) 2>&1))$(python.bldlibrary)
 python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
@@ -137,7 +139,7 @@ PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_pref
 PYTHON_NUMPY := $(shell $(PYTHON) -c "import sys, numpy;sys.stdout.write(numpy.get_include())")
 
 PYTHON_INC := -I$(python.incdir) -I$(PYTHON_NUMPY)
-PYTHON_LIB := -L$(python.libpl) $(python.bldlibrary) $(python.libs)
+PYTHON_LIB := -L$(python.libpl) $(python.ldflags) $(python.bldlibrary) $(python.libs)
 endif
 
 ifdef LUA
