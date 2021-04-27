@@ -26,7 +26,7 @@ OBJS = \
     pyUser1type.o \
     pyUser2type.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : preprocess.so
 

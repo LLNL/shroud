@@ -22,7 +22,7 @@ OBJS = \
     ccomplex.o \
     pyccomplexmodule.o
 
-CFLAGS += $(SHARED)
+LOCAL_CFLAGS += $(SHARED)
 
 all : ccomplex.so simple
 

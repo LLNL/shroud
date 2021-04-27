@@ -30,7 +30,7 @@ OBJS = \
     pyownershipmodule.o \
     pyownershiputil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : ownership.so simple
 

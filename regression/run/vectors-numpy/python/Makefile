@@ -25,7 +25,7 @@ OBJS = \
     pyvectorsmodule.o \
     pyvectorsutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : vectors.so #simple
 

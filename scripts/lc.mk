@@ -16,6 +16,9 @@ target = test-fortran-strings
 makeargs = LOGOUTPUT=1 $(target)
 # Keep going if a test fails.
 makeargs += --ignore-errors
+# Run each compiler serially to avoid too many tasks
+# and to keep output in the same order.
+makeargs += -j 1
 
 all : gcc intel pgi
 .PHONY : all

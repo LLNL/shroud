@@ -24,7 +24,7 @@ OBJS = \
     pointers.o \
     pypointersmodule.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : pointers.so
 # simple

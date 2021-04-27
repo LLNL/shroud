@@ -30,7 +30,7 @@ OBJS = \
     pyCstruct_numpytype.o \
     pyArrays1type.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cstruct.so
 

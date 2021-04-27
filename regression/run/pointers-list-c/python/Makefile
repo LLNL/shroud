@@ -24,7 +24,7 @@ OBJS = \
     pointers.o \
     pypointersmodule.o
 
-CFLAGS += $(SHARED)
+LOCAL_CFLAGS += $(SHARED)
 
 all : pointers.so
 

@@ -25,7 +25,7 @@ OBJS = \
     pystructutil.o \
     pyArrays1type.o
 
-CFLAGS += $(SHARED)
+LOCAL_CFLAGS += $(SHARED)
 
 all : cstruct.so
 

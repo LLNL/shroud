@@ -34,7 +34,7 @@ OBJS = \
     pystd_vector_inttype.o
 
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : templates.so simple
 

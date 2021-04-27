@@ -26,7 +26,7 @@ OBJS = \
     pycxxlibrary_structnsmodule.o \
     pycxxlibraryutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cxxlibrary.so
 

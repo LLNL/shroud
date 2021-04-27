@@ -25,7 +25,7 @@ OBJS = \
     pyarrayclassutil.o \
     pyArrayWrappertype.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : arrayclass.so
 

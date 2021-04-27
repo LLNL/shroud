@@ -24,7 +24,7 @@ OBJS = \
     strings.o \
     pystringsmodule.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : strings.so simple
 

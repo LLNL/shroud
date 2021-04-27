@@ -22,7 +22,7 @@ OBJS = \
     clibrary.o \
     pyClibrarymodule.o
 
-CFLAGS += $(SHARED)
+LOCAL_CFLAGS += $(SHARED)
 
 all : clibrary.so simple
 

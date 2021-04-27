@@ -30,7 +30,7 @@ OBJS = \
     pyCircletype.o \
     pyclassesutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : classes.so simple
 

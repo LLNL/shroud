@@ -22,7 +22,7 @@ VPATH = \
 OBJS = \
     pyenummodule.o
 
-CFLAGS += $(SHARED)
+LOCAL_CFLAGS += $(SHARED)
 
 all : cenum.so
 

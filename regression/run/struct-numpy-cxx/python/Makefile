@@ -25,7 +25,7 @@ OBJS = \
     pystructmodule.o \
     pystructutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cstruct.so
 
