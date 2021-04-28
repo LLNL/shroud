@@ -16,7 +16,9 @@ INCLUDE = \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/struct-py-cxx
+    $(top)/regression/reference/struct-py-cxx \
+    $(top)/regression/run/struct \
+    ../../cxx
 
 OBJS = \
     struct.o \
@@ -24,18 +26,15 @@ OBJS = \
     pyCstruct_as_classtype.o \
     pystructutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : cstruct.so
-
-# Convert C++ file to C
-struct.cpp : $(top)/regression/run/struct/struct.c
-	cp $^ $@
 
 cstruct.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
-struct.o : struct.cpp
+struct.o : struct.cpp struct.h
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 clean :
 	rm -f *.so *.o

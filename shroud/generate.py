@@ -488,30 +488,28 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        const_char_in = (
-            intent == "in" and
+        char_ptr_in = (
             is_ptr == 1 and
+            intent == "in" and
             arg_typemap.name == "char")
             
         blanknull = attrs["blanknull"]
         if blanknull is not None:
-            if not const_char_in:
+            if not char_ptr_in:
                 raise RuntimeError(
                     "blanknull attribute can only be "
                     "used on intent(in) 'char *'"
                 )
             else:
                 arg.blanknull = blanknull
-        elif const_char_in:
+        elif char_ptr_in:
             arg.blanknull = options.F_blanknull
 
         if meta["api"]:  # User set
             pass
         elif (
             options.F_CFI is False and
-            intent == "in" and
-            is_ptr == 1 and
-            arg_typemap.name == "char" and
+            char_ptr_in and
             arg.blanknull is False
         ):
             # const char *arg

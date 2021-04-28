@@ -49,7 +49,7 @@ wrapuser_int.o : wrapuser_int.cpp wrapuser_int.h typestemplates.h templates.hpp
 wraptemplates.o : wraptemplates.cpp wraptemplates.h typestemplates.h templates.hpp
 wrapstructAsClass_int.o : wrapstructAsClass_int.h
 wrapstructAsClass_double.o : wrapstructAsClass_double.h
-main.o : main.f wrapftemplates.o
+main.o : main.f fruit.o wrapftemplates.o
 maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code

@@ -16,6 +16,8 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/pointers-cxx \
+    ../cxx \
+    $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
 OBJS = \
@@ -28,14 +30,9 @@ OBJS = \
 pointers-cxx : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
-# Copy all source files from run/pointers, need to avoid VPATH.
-# Convert C file to C++
-pointers.cpp : $(top)/regression/run/pointers/pointers.c
-	cp $^ $@
-main.f : $(top)/regression/run/pointers/main.f
-	cp $< $@
-main.o : main.f
-pointers.o : pointers.cpp
+main.o : main.f fruit.o wrapfpointers.o
+pointers.o : pointers.cpp pointers.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 clean :
 	rm -f $(OBJS) *.mod pointers main.f pointers.cpp

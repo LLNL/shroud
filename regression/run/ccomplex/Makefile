@@ -31,4 +31,4 @@ ccomplex : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod ccomplex
 
-main.o : wrapfccomplex.o
+main.o : fruit.o wrapfccomplex.o

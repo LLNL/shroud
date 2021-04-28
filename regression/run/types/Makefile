@@ -35,7 +35,7 @@ clean :
 
 types.o : types.hpp
 wraptypes.o : wraptypes.h types.hpp
-main.o : wrapftypes.o types.o
+main.o : fruit.o wrapftypes.o types.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wraptypes.o types.o

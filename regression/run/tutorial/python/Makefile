@@ -24,7 +24,7 @@ OBJS = \
     tutorial.o \
     pyTutorialmodule.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : tutorial.so simple
 

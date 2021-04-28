@@ -36,7 +36,7 @@ clean :
 
 vectors.o : vectors.hpp
 wrapvectors.o : wrapvectors.h vectors.hpp
-main.o : wrapfvectors.o
+main.o : fruit.o wrapfvectors.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapvectors.o vectors.o

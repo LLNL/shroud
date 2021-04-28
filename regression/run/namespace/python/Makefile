@@ -25,7 +25,7 @@ OBJS = \
     pyns_nsworkmodule.o \
     pynsutil.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : ns.so
 

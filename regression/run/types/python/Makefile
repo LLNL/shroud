@@ -23,7 +23,7 @@ OBJS = \
     types.o \
     pytypesmodule.o
 
-CXXFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
 
 all : shtypes.so #simple
 

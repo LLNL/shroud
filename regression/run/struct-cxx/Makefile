@@ -17,7 +17,9 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/struct-cxx \
+    ../cxx \
     $(top)/regression/run/struct-cxx \
+    $(top)/regression/run/struct \
     $(top)/regression/run/fruit
 
 C_OBJS = \
@@ -30,24 +32,16 @@ F_OBJS = \
     fruit.o \
     main.o
 
-struct-cxx : main.f struct.h struct.cpp $(C_OBJS) $(F_OBJS)
+struct-cxx : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $(C_OBJS) $(F_OBJS) -o $@ $(FLIBS)
-
-# Copy all source files from run/struct, need to avoid VPATH.
-# "convert" to c++
-struct.cpp : $(top)/regression/run/struct/struct.c
-	cp $< $@
-struct.h : $(top)/regression/run/struct/struct.h
-	cp $< $@
-main.f : $(top)/regression/run/struct/main.f
-	cp $< $@
 
 clean :
 	rm -f $(OBJS) *.mod struct-cxx
 
-struct.o : struct.h
+struct.o : struct.cpp struct.h
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 wrapstruct.o : wrapstruct.h struct.h
-main.o : wrapfstruct.o
+main.o : fruit.o wrapfstruct.o
 
 testc.o : testc.c wrapstruct.h struct.h
 testc : testc.o $(C_OBJS)

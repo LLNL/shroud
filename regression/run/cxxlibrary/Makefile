@@ -38,4 +38,4 @@ clean :
 
 cxxlibrary.o : cxxlibrary.hpp
 wrapcxxlibrary.o : wrapcxxlibrary.h cxxlibrary.hpp
-main.o : wrapfcxxlibrary.o
+main.o : fruit.o wrapfcxxlibrary.o

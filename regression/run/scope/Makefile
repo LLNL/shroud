@@ -39,7 +39,7 @@ clean :
 
 scope.o : scope.hpp
 wrapScope.o : wrapscope.h scope.hpp
-main.o : wrapfscope.o
+main.o : fruit.o wrapfscope.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapscope.o

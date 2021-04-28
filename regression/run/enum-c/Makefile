@@ -35,7 +35,7 @@ enum-c : $(C_OBJS) $(F_OBJS)
 clean :
 	rm -f $(OBJS) *.mod enum-c
 
-main.o : wrapfenum.o
+main.o : fruit.o wrapfenum.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o 

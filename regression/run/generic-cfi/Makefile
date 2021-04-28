@@ -36,6 +36,6 @@ clean :
 helper.o : generic.h typesgeneric.h
 generic.o : generic.h
 wrapgeneric.o : generic.h
-main.o : wrapfgeneric.o
+main.o : fruit.o wrapfgeneric.o
 
 
