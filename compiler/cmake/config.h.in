@@ -1,2 +1,4 @@
 
 #cmakedefine HAVE_ASSUMED_TYPE @HAVE_ASSUMED_TYPE@
+
+#cmakedefine HAVE_TS29113 @HAVE_TS29113@
