@@ -10,7 +10,8 @@ copyright:
 #
 
 library: strings
-cxx_header: strings.hpp
+cxx_header: strings.hpp shroud/features.h
+fortran_header: shroud/features.h
 
 options:
   debug: True
@@ -97,6 +98,7 @@ declarations:
     brief: return a 'const char *' as character(:) pointer
   options:
     wrap_python: False
+  cpp_if: ifdef HAVE_CHARACTER_POINTER_FUNCTION
 #    literalinclude: True
 
 ########################################
@@ -200,6 +202,7 @@ declarations:
             +deref(pointer)+owner(library)
   options:
     wrap_python: False
+  cpp_if: ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 #- decl: const std::string * getConstStringPtrOwnsPointer()
 #            +deref(pointer)+owner(library)

@@ -57,9 +57,13 @@ void STR_get_char_ptr3_bufferify(char *output, int SHT_output_len);
 
 const char * STR_get_char_ptr4(void);
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 const char * STR_get_char_ptr5(void);
+#endif
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void STR_get_char_ptr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc);
+#endif
 
 void STR_get_const_string_result_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
@@ -117,10 +121,14 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 const char * STR_get_const_string_ptr_pointer(void);
+#endif
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void STR_get_const_string_ptr_pointer_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
+#endif
 
 void STR_accept_string_const_reference(const char * arg1);
 

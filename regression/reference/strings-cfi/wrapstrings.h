@@ -58,9 +58,13 @@ void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHT_output_cfi);
 
 const char * STR_get_char_ptr4(void);
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 const char * STR_get_char_ptr5(void);
+#endif
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void STR_get_char_ptr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
+#endif
 
 void STR_get_const_string_result_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
@@ -107,9 +111,13 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     CFI_cdesc_t *SHT_rv_cfi);
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 const char * STR_get_const_string_ptr_pointer(void);
+#endif
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void STR_get_const_string_ptr_pointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
+#endif
 
 void STR_accept_string_const_reference(const char * arg1);
 

@@ -50,7 +50,6 @@ def print_pass_fail(rootDir):
 
 
 if __name__ == "__main__":
-    print("HERE", sys.argv)
     if len(sys.argv) < 2:
         print("usage: {} directory".format(sys.argv[0]))
         raise SystemExit

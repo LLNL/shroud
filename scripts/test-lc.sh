@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run from home directory
+# Run from root directory
 # scripts/test-lc.sh
 
 date
@@ -13,9 +13,8 @@ srun make -f scripts/lc.mk target=test-fortran all -j
 # Compile Python tests with gcc
 srun make -f scripts/lc.mk target=test-python python -j
 
+# Create summary
 scripts/summary.py build/regression/run
 
 date
-
-# Create summary
 

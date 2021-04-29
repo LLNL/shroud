@@ -13,6 +13,7 @@
 
 // cxx_header
 #include "strings.hpp"
+#include "shroud/features.h"
 
 // splicer begin header.include
 // splicer end header.include

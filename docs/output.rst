@@ -327,6 +327,11 @@ which reference the type.
 This is used for files which are not part of the library but which contain code
 which helps map C++ constants to C constants
 
+A global *fortran_header* field will insert ``#include`` lines to be
+used with the Fortran preprocessor (typically a variant of the C
+preprocessor).  This will work with the ``cpp_if`` lines in
+declarations which will conditionally compile a wrapper.
+
 .. FILL IN MORE
 
 Local Variable
@@ -441,6 +446,8 @@ the first example since ``mpi.h`` should only be included when
 When using ``cpp_if``, it is useful to set the option
 ``F_filename_suffix`` to ``F``. This will cause most compilers to
 process the Fortran souce with ``cpp`` before compilation.
+The ``fortran_header`` field can be added to the YAML file to
+insert ``#include`` directives at the top of the Fortran source files.
 
 The ``typemaps`` field can only appear at the outermost layer
 and is used to augment existing typemaps.

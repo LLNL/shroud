@@ -364,6 +364,7 @@ class LibraryNode(AstNode, NamespaceMixin):
     def __init__(
         self,
         cxx_header="",
+        fortran_header="",
         namespace=None,
         format=None,
         language="c++",
@@ -393,6 +394,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         # From arguments
         self.parent = None
         self.cxx_header = cxx_header.split()
+        self.fortran_header = fortran_header.split()
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
             raise RuntimeError("language must be 'c' or 'c++'")
