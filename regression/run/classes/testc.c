@@ -23,6 +23,12 @@ void test_class(void)
   flag = CLA_Class1_method1(&c1);
   assert(flag == 0 && "CLA_class1_method1");
 
+  // passClassByValue sets global_flag
+  CLA_set_global_flag(-1);
+  CLA_pass_class_by_value(&c1);
+  flag = CLA_get_global_flag();
+  assert(flag == 0 && "CLA_pass_class_by_value");
+
 }
 
 int main(int argc, char *argv[])

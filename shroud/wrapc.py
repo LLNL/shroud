@@ -977,12 +977,6 @@ class Wrapc(util.WrapperMixin):
 
         self.set_fmt_fields(cls, node, ast, result_typemap, fmt_result, True)
 
-        self.build_proto_list(
-            fmt_result,
-            ast,
-            result_blk,
-            proto_list,
-        )
         #    c_var      - argument to C function  (wrapper function)
         #    c_var_trim - variable with trimmed length of c_var
         #    c_var_len  - variable with length of c_var
@@ -1141,6 +1135,13 @@ class Wrapc(util.WrapperMixin):
         #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
+        self.build_proto_list(
+            fmt_result,
+            ast,
+            result_blk,
+            proto_list,
+        )
+        
         if call_list:
             fmt_func.C_call_list = ",\t ".join(call_list)
 

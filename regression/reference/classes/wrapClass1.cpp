@@ -87,7 +87,7 @@ void CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // Requested: c_in_native_scalar
 // Match:     c_default
 // start CLA_Class1_ctor_flag
-void CLA_Class1_ctor_flag(CLA_Class1 * SHC_rv, int flag)
+void CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
@@ -200,8 +200,8 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Requested: c_in_bool_scalar
 // Match:     c_default
 // start CLA_Class1_return_this_buffer
-void CLA_Class1_return_this_buffer(CLA_Class1 * self,
-    CLA_Class1 * SHC_rv, char * name, bool flag)
+void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
+    bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -235,7 +235,7 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
 void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    CLA_Class1 * SHC_rv, char *name, int SHT_name_len, bool flag)
+    char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);

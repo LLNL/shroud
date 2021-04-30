@@ -554,7 +554,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "SHT_rv_cdesc,\t arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT)",
+                    "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT),\t SHT_rv_cdesc",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -757,9 +757,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "TUT_SHROUD_array *SHT_rv_cdesc,\t char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len",
+                    "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len",
+                    "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv",
                     "F_C_name": "c_concatenate_strings_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",

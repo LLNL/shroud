@@ -173,7 +173,7 @@ void CLA_get_class_reference(CLA_Class1 * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void CLA_get_class_copy(CLA_Class1 * SHC_rv, int flag)
+void CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_copy
     classes::Class1 * SHCXX_rv = new classes::Class1;

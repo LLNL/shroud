@@ -43,8 +43,8 @@ void TUT_no_return_no_arguments(void);
 
 double TUT_pass_by_value(double arg1, int arg2);
 
-void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHT_rv_cdesc,
-    char *arg1, int SHT_arg1_len, char *arg2, int SHT_arg2_len);
+void TUT_concatenate_strings_bufferify(char *arg1, int SHT_arg1_len,
+    char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc);
 
 double TUT_use_default_arguments(void);
 

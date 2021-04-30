@@ -122,8 +122,8 @@ double CLI_pass_by_value_macro(int arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_char_*
 // Match:     c_default
-void CLI_function4a_bufferify(char *SHC_rv, int SHT_rv_len,
-    const char * arg1, const char * arg2)
+void CLI_function4a_bufferify(const char * arg1, const char * arg2,
+    char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.function4a_bufferify
     char * SHCXX_rv = Function4a(arg1, arg2);

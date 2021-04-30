@@ -236,15 +236,15 @@ module clibrary_mod
     ! Requested: c_in_char_*
     ! Match:     c_default
     interface
-        subroutine c_function4a_bufferify(SHT_rv, SHT_rv_len, arg1, &
-                arg2) &
+        subroutine c_function4a_bufferify(arg1, arg2, SHT_rv, &
+                SHT_rv_len) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_len
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             character(kind=C_CHAR), intent(IN) :: arg2(*)
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_function4a_bufferify
     end interface
 
@@ -1011,8 +1011,8 @@ contains
         character(len=*), intent(IN) :: arg2
         character(len=30) :: SHT_rv
         ! splicer begin function.function4a
-        call c_function4a_bufferify(SHT_rv, len(SHT_rv, kind=C_INT), &
-            trim(arg1)//C_NULL_CHAR, trim(arg2)//C_NULL_CHAR)
+        call c_function4a_bufferify(trim(arg1)//C_NULL_CHAR, &
+            trim(arg2)//C_NULL_CHAR, SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
 

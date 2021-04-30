@@ -116,8 +116,8 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void OWN_return_int_ptr_dim_pointer_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc, int * len)
+void OWN_return_int_ptr_dim_pointer_bufferify(int * len,
+    OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_pointer_bufferify
     int * SHC_rv = ReturnIntPtrDimPointer(len);
@@ -160,8 +160,8 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void OWN_return_int_ptr_dim_alloc_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc, int * len)
+void OWN_return_int_ptr_dim_alloc_bufferify(int * len,
+    OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_alloc_bufferify
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
@@ -204,8 +204,8 @@ int * OWN_return_int_ptr_dim_default(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void OWN_return_int_ptr_dim_default_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc, int * len)
+void OWN_return_int_ptr_dim_default_bufferify(int * len,
+    OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_default_bufferify
     int * SHC_rv = ReturnIntPtrDimDefault(len);
@@ -266,8 +266,8 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void OWN_return_int_ptr_dim_pointer_new_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc, int * len)
+void OWN_return_int_ptr_dim_pointer_new_bufferify(int * len,
+    OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_pointer_new_bufferify
     int * SHC_rv = ReturnIntPtrDimPointerNew(len);
@@ -328,8 +328,8 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void OWN_return_int_ptr_dim_default_new_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc, int * len)
+void OWN_return_int_ptr_dim_default_new_bufferify(int * len,
+    OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_default_new_bufferify
     int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
@@ -388,7 +388,7 @@ void OWN_get_class_static(OWN_Class1 * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void OWN_get_class_new(OWN_Class1 * SHC_rv, int flag)
+void OWN_get_class_new(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);

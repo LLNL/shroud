@@ -650,14 +650,14 @@ module struct_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_create__cstruct_as_class_args(SHT_rv, x, y) &
+        subroutine c_create__cstruct_as_class_args(x, y, SHT_rv) &
                 bind(C, name="STR_create__cstruct_as_class_args")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_create__cstruct_as_class_args
 
         ! ----------------------------------------
@@ -700,15 +700,15 @@ module struct_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_create__cstruct_as_subclass_args(SHT_rv, x, y, z) &
+        subroutine c_create__cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 bind(C, name="STR_create__cstruct_as_subclass_args")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
             integer(C_INT), value, intent(IN) :: z
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_create__cstruct_as_subclass_args
 
         ! splicer begin additional_interfaces
@@ -1034,9 +1034,9 @@ contains
     function return_struct_ptr1(i, d) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
-        type(cstruct1), pointer :: SHT_rv
         integer(C_INT), value, intent(IN) :: i
         real(C_DOUBLE), value, intent(IN) :: d
+        type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr1
         type(C_PTR) :: SHC_rv_ptr
         SHC_rv_ptr = c_return_struct_ptr1_bufferify(i, d)
@@ -1082,10 +1082,10 @@ contains
     function return_struct_ptr2(i, d, outbuf) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
-        type(cstruct1), pointer :: SHT_rv
         integer(C_INT), value, intent(IN) :: i
         real(C_DOUBLE), value, intent(IN) :: d
         character(len=*), intent(OUT) :: outbuf
+        type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr2
         type(C_PTR) :: SHC_rv_ptr
         SHC_rv_ptr = c_return_struct_ptr2_bufferify(i, d, outbuf, &
@@ -1162,7 +1162,7 @@ contains
         integer(C_INT), value, intent(IN) :: y
         type(cstruct_as_class) :: SHT_rv
         ! splicer begin function.create__cstruct_as_class_args
-        call c_create__cstruct_as_class_args(SHT_rv%cxxmem, x, y)
+        call c_create__cstruct_as_class_args(x, y, SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_class_args
     end function create__cstruct_as_class_args
 
@@ -1232,7 +1232,7 @@ contains
         integer(C_INT), value, intent(IN) :: z
         type(cstruct_as_subclass) :: SHT_rv
         ! splicer begin function.create__cstruct_as_subclass_args
-        call c_create__cstruct_as_subclass_args(SHT_rv%cxxmem, x, y, z)
+        call c_create__cstruct_as_subclass_args(x, y, z, SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_subclass_args
     end function create__cstruct_as_subclass_args
 

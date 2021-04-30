@@ -416,8 +416,8 @@ void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void STR_create__cstruct_as_class_args(STR_Cstruct_as_class * SHC_rv,
-    int x, int y)
+void STR_create__cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.create__cstruct_as_class_args
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
@@ -466,8 +466,8 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void STR_create__cstruct_as_subclass_args(
-    STR_Cstruct_as_subclass * SHC_rv, int x, int y, int z)
+void STR_create__cstruct_as_subclass_args(int x, int y, int z,
+    STR_Cstruct_as_subclass * SHC_rv)
 {
     // splicer begin function.create__cstruct_as_subclass_args
     Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,

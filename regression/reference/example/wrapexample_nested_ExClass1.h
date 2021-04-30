@@ -35,11 +35,11 @@ extern "C" {
 void AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHC_rv);
 
-void AA_example_nested_ExClass1_ctor_1(
-    AA_example_nested_ExClass1 * SHC_rv, const char * name);
+void AA_example_nested_ExClass1_ctor_1(const char * name,
+    AA_example_nested_ExClass1 * SHC_rv);
 
-void AA_example_nested_ExClass1_ctor_1_bufferify(
-    AA_example_nested_ExClass1 * SHC_rv, char *name, int SHT_name_len);
+void AA_example_nested_ExClass1_ctor_1_bufferify(char *name,
+    int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv);
 
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self);
 

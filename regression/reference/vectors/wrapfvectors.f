@@ -261,13 +261,13 @@ module vectors_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_return_vector_alloc_bufferify(SHT_rv, n) &
+        subroutine c_return_vector_alloc_bufferify(n, SHT_rv) &
                 bind(C, name="VEC_return_vector_alloc_bufferify")
             use iso_c_binding, only : C_INT
             import :: VEC_SHROUD_array
             implicit none
-            type(VEC_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: n
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_vector_alloc_bufferify
     end interface
 
@@ -622,11 +622,11 @@ contains
     function return_vector_alloc(n) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_INT), allocatable :: SHT_rv(:)
         integer(C_INT), value, intent(IN) :: n
+        integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_vector_alloc
         type(VEC_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_vector_alloc_bufferify(SHT_rv_cdesc, n)
+        call c_return_vector_alloc_bufferify(n, SHT_rv_cdesc)
         allocate(SHT_rv(SHT_rv_cdesc%size))
         call VEC_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
             size(SHT_rv,kind=C_SIZE_T))

@@ -180,13 +180,13 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_*
-        subroutine c_exclass1_ctor_1(SHT_rv, name) &
+        subroutine c_exclass1_ctor_1(name, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
             use iso_c_binding, only : C_CHAR
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_exclass1_ctor_1
 
         ! ----------------------------------------
@@ -197,15 +197,15 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        subroutine c_exclass1_ctor_1_bufferify(SHT_rv, name, &
-                SHT_name_len) &
+        subroutine c_exclass1_ctor_1_bufferify(name, SHT_name_len, &
+                SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_exclass1_ctor_1_bufferify
 
         ! ----------------------------------------
@@ -390,13 +390,13 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_*
-        subroutine c_exclass2_ctor(SHT_rv, name) &
+        subroutine c_exclass2_ctor(name, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
             use iso_c_binding, only : C_CHAR
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_ctor
 
         ! ----------------------------------------
@@ -407,14 +407,14 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        subroutine c_exclass2_ctor_bufferify(SHT_rv, name, SHT_name_len) &
+        subroutine c_exclass2_ctor_bufferify(name, SHT_name_len, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_ctor_bufferify
 
         ! ----------------------------------------
@@ -566,13 +566,13 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_shadow_*
         ! Match:     c_in_shadow
-        subroutine c_exclass2_get_class1(self, SHT_rv, in) &
+        subroutine c_exclass2_get_class1(self, in, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(AA_SHROUD_capsule_data), intent(IN) :: in
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_get_class1
 
         ! ----------------------------------------
@@ -1340,8 +1340,8 @@ contains
         character(len=*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
-        call c_exclass1_ctor_1_bufferify(SHT_rv%cxxmem, name, &
-            len(name, kind=C_INT))
+        call c_exclass1_ctor_1_bufferify(name, len(name, kind=C_INT), &
+            SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 
@@ -1574,8 +1574,8 @@ contains
         character(len=*), intent(IN) :: name
         type(exclass2) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
-        call c_exclass2_ctor_bufferify(SHT_rv%cxxmem, name, &
-            len(name, kind=C_INT))
+        call c_exclass2_ctor_bufferify(name, len(name, kind=C_INT), &
+            SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
     end function exclass2_ctor
 
@@ -1720,7 +1720,7 @@ contains
         type(exclass1), intent(IN) :: in
         type(exclass1) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
-        call c_exclass2_get_class1(obj%cxxmem, SHT_rv%cxxmem, in%cxxmem)
+        call c_exclass2_get_class1(obj%cxxmem, in%cxxmem, SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_class1
     end function exclass2_get_class1
 

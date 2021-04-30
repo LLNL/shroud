@@ -1916,8 +1916,8 @@ contains
     function return_address2(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
-        type(C_PTR) :: SHT_rv
         integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_rv
         ! splicer begin function.return_address2
         SHT_rv = c_return_address2(flag)
         ! splicer end function.return_address2
@@ -2051,8 +2051,8 @@ contains
     function return_int_raw_with_args(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
-        type(C_PTR) :: SHT_rv
         character(len=*), intent(IN) :: name
+        type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args
         SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
         ! splicer end function.return_int_raw_with_args

@@ -86,17 +86,17 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, &
-                SHT_arg1_len, arg2, SHT_arg2_len) &
+        subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
+                arg2, SHT_arg2_len, SHT_rv) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
             implicit none
-            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: SHT_arg1_len
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: SHT_arg2_len
+            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -467,13 +467,14 @@ contains
     function concatenate_strings(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(len=:), allocatable :: SHT_rv
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin function.concatenate_strings
         type(TUT_SHROUD_array) :: SHT_rv_cdesc
-        call c_concatenate_strings_bufferify(SHT_rv_cdesc, arg1, &
-            len(arg1, kind=C_INT), arg2, len(arg2, kind=C_INT))
+        call c_concatenate_strings_bufferify(arg1, &
+            len(arg1, kind=C_INT), arg2, len(arg2, kind=C_INT), &
+            SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call TUT_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
