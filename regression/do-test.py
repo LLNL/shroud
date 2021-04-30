@@ -361,6 +361,13 @@ if __name__ == "__main__":
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
                  ]),
+        TestDesc("pointers-cfi", yaml="pointers",
+                 cmdline=[
+                     "--option", "F_CFI=true",
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                 ]),
         TestDesc("pointers-numpy-cxx", yaml="pointers",
                  cmdline=[
                      # Create literal blocks for documentation
