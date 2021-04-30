@@ -10,7 +10,11 @@
             ""
         ],
         "cxx_header": [
-            "strings.hpp"
+            "strings.hpp",
+            "shroud/features.h"
+        ],
+        "fortran_header": [
+            "shroud/features.h"
         ],
         "functions": [
             {

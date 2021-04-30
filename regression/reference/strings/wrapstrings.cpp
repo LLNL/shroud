@@ -10,6 +10,7 @@
 
 // cxx_header
 #include "strings.hpp"
+#include "shroud/features.h"
 // typemap
 #include <string>
 // shroud
@@ -418,6 +419,7 @@ const char * STR_get_char_ptr4(void)
  * \brief return a 'const char *' as character(:) pointer
  *
  */
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
 // Attrs:     +deref(pointer)+intent(function)
@@ -430,11 +432,13 @@ const char * STR_get_char_ptr5(void)
     return SHC_rv;
     // splicer end function.get_char_ptr5
 }
+#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 /**
  * \brief return a 'const char *' as character(:) pointer
  *
  */
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
@@ -453,6 +457,7 @@ void STR_get_char_ptr5_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
     SHT_rv_cdesc->rank = 0;
     // splicer end function.get_char_ptr5_bufferify
 }
+#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
@@ -926,6 +931,7 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify
 }
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
 // Attrs:     +deref(pointer)+intent(function)
@@ -939,7 +945,9 @@ const char * STR_get_const_string_ptr_pointer(void)
     return SHC_rv;
     // splicer end function.get_const_string_ptr_pointer
 }
+#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
@@ -952,6 +960,7 @@ void STR_get_const_string_ptr_pointer_bufferify(
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
     // splicer end function.get_const_string_ptr_pointer_bufferify
 }
+#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 /**
  * \brief Accept a const string reference

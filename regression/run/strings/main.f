@@ -7,6 +7,8 @@
 !
 ! Test Fortran API generated from strings.yaml.
 !
+#include "shroud/features.h"
+
 program tester
   use fruit
   use iso_c_binding
@@ -141,12 +143,14 @@ contains
          raw_str(3) == "r" .and. &
          raw_str(4) == "d", "get_char_ptr4")
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
     nullify(pstr)
     pstr => get_char_ptr5()
     call assert_true(associated(pstr), "get_char_ptr5 associated")
     call assert_true(len(pstr) == 4, "get_char_ptr5 len")
     call assert_true(pstr == "bird", "get_char_ptr5")
-    
+#endif
+
     !--------------------------------------------------
 
     ! character(:), allocatable function
@@ -220,10 +224,12 @@ contains
     !--------------------------------------------------
     ! POINTER result
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
     nullify(pstr)
     pstr => get_const_string_ptr_pointer()
     call assert_true(associated(pstr), "getConstStringPtrPointer associate")
     call assert_true(pstr == static_str, "getConstStringPtrPointer")
+#endif
 
 !    pstr => get_const_string_ptr_owns_pointer()
 !    call assert_true( str == "getConstStringPtrOwnsPointer", &

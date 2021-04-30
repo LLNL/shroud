@@ -220,7 +220,9 @@ class ToDict(visitor.Visitor):
 
     def visit_LibraryNode(self, node):
         d = dict()
-        add_true_fields(node, d, ["copyright", "cxx_header", "language", "scope"])
+        add_true_fields(node, d, [
+            "copyright", "cxx_header", "fortran_header",
+            "language", "scope"])
         self.add_visit_fields( # TEMP  deal with wrap_namespace
             node, d, [ "fmtdict", "options", "scope_file", ])
         node = node.wrap_namespace   # XXXX TEMP kludge

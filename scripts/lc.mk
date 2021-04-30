@@ -26,6 +26,8 @@ makeargs += --ignore-errors
 makeargs += -j 1
 makeargs += $(target)
 
+CMAKE = /usr/tce/packages/cmake/cmake-3.14.5/bin/cmake
+#CMAKE = /usr/tce/packages/cmake/cmake-3.18.0/bin/cmake
 
 .PHONY : all
 all : gcc intel pgi
@@ -35,6 +37,8 @@ clean :
 	rm -rf $(tempdir)
 
 ######################################################################
+# gcc
+
 gcc-list = \
   gcc-4.9.3 \
   gcc-6.1.0 \
@@ -43,19 +47,24 @@ gcc-list = \
   gcc-9.3.1 \
   gcc-10.2.1
 
+$(foreach v,$(gcc-list),$(eval cc-$v=$(gccdir)/$v/bin/gcc))
+$(foreach v,$(gcc-list),$(eval cxx-$v=$(gccdir)/$v/bin/g++))
+$(foreach v,$(gcc-list),$(eval fc-$v=$(gccdir)/$v/bin/gfortran))
+
 .PHONY : gcc
 gcc : $(gcc-list)
 
 .PHONY : $(gcc-list)
 $(gcc-list) : gcc-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=gcc \
-	CC=$(gccdir)/$@/bin/gcc \
-	CXX=$(gccdir)/$@/bin/g++ \
-	FC=$(gccdir)/$@/bin/gfortran
+	CC=$(cc-$@) \
+	CXX=$(cxx-$@) \
+	FC=$(fc-$@)
 
 ######################################################################
-#  intel-14.0.3
+# Intel
 
+#  intel-14.0.3
 intel-list = \
   intel-15.0.6 \
   intel-16.0.4 \
@@ -64,20 +73,27 @@ intel-list = \
   intel-19.1.2 \
   intel-2021.2
 
-
 # Match up gcc stdlib with intel compiler.
-gccbin-14.0.3 = $(gccdir)/gcc-4.9.3/bin
-gccbin-15.0.6 = $(gccdir)/gcc-4.9.3/bin
-gccbin-16.0.4 = $(gccdir)/gcc-4.9.3/bin
-gccbin-17.0.2 = $(gccdir)/gcc-4.9.3/bin
-gccbin-18.0.2 = $(gccdir)/gcc-8.3.1/bin
-gccbin-19.1.2 = $(gccdir)/gcc-8.3.1/bin
-gccbin-2021.2 = $(gccdir)/gcc-8.3.1/bin
+gccbin-intel-14.0.3 = $(gccdir)/gcc-4.9.3/bin
+gccbin-intel-15.0.6 = $(gccdir)/gcc-4.9.3/bin
+gccbin-intel-16.0.4 = $(gccdir)/gcc-4.9.3/bin
+gccbin-intel-17.0.2 = $(gccdir)/gcc-4.9.3/bin
+gccbin-intel-18.0.2 = $(gccdir)/gcc-8.3.1/bin
+gccbin-intel-19.1.2 = $(gccdir)/gcc-8.3.1/bin
+gccbin-intel-2021.2 = $(gccdir)/gcc-8.3.1/bin
+
+$(foreach v,$(intel-list),$(eval cc-$v=$(inteldir)/$v/bin/icc))
+$(foreach v,$(intel-list),$(eval cxx-$v=$(inteldir)/$v/bin/icpc))
+$(foreach v,$(intel-list),$(eval fc-$v=$(inteldir)/$v/bin/ifort))
+
+$(foreach v,$(intel-list),$(eval cflags-$v=-gcc-name=$(gccbin-$v)/gcc))
+$(foreach v,$(intel-list),$(eval cxxflags-$v=-gxx-name=$(gccbin-$v)/g++))
+$(foreach v,$(intel-list),$(eval fflags-$v=-gcc-name=$(gccbin-$v)/gcc))
 
 #intel-14.0.3-cxxflags = -std=gnu++98 -Dnullptr=NULL
 
 # Add F2003 feature.
-intel-15.0.6-fflags = -assume realloc_lhs
+fflags-intel-15.0.6 += -assume realloc_lhs
 
 .PHONY : intel
 intel : $(intel-list)
@@ -85,14 +101,16 @@ intel : $(intel-list)
 .PHONY : $(intel-list)
 $(intel-list) : intel-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=intel \
-	CC=$(inteldir)/$@/bin/icc \
-	CXX=$(inteldir)/$@/bin/icpc \
-	FC=$(inteldir)/$@/bin/ifort \
-	CFLAGS=-gcc-name=$(gccbin-$*)/gcc \
-	CXXFLAGS=-gxx-name=$(gccbin-$*)/g++ \
-	FFLAGS="-gcc-name=$(gccbin-$*)/gcc $($@-fflags)"
+	CC=$(cc-$@) \
+	CXX=$(cxx-$@) \
+	FC=$(fc-$@)
+	CFLAGS="$(cflags-$@)" \
+	CXXFLAGS="$(cxxflags-$@)" \
+	FFLAGS="$(fflags-$@)"
 
 ######################################################################
+# pgi
+
 #  pgi-16.9  missing -cpp flag
 pgi-list = \
  pgi-17.10 \
@@ -101,17 +119,22 @@ pgi-list = \
  pgi-20.1 \
  pgi-21.1 \
 
+$(foreach v,$(pgi-list),$(eval cc-$v=$(pgidir)/$v/bin/pgcc))
+$(foreach v,$(pgi-list),$(eval cxx-$v=$(pgidir)/$v/bin/pgc++))
+$(foreach v,$(pgi-list),$(eval fc-$v=$(pgidir)/$v/bin/pgf90))
+
 .PHONY : pgi
 pgi : $(pgi-list)
 
 .PHONY : $(pgi-list)
 $(pgi-list) : pgi-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=pgi \
-	CC=$(pgidir)/$@/bin/pgcc \
-	CXX=$(pgidir)/$@/bin/pgc++ \
-	FC=$(pgidir)/$@/bin/pgf90
+	CC=$(cc-$@) \
+	CXX=$(cxx-$@) \
+	FC=$(fc-$@)
 
 ######################################################################
+# Python
 
 python-list = \
   python-2.7.16 \
@@ -138,3 +161,66 @@ python : $(python-list)
 $(python-list) : python-% :
 	$(MAKE) $(makeargs) testdir=$@ \
 	PYTHON=$(python-exe-$*) $(python-compiler)
+
+######################################################################
+# CMake
+
+cmake-list = $(foreach v,$(gcc-list) $(intel-list) $(pgi-list),cmake-$v)
+
+.PHONY : cmake
+cmake : $(cmake-list)
+
+.PHONY : $(cmake-list)
+$(cmake-list) : cmake-% :
+	mkdir -p build/cmake/$* && cd build/cmake/$* && \
+	$(CMAKE) ../../../compiler/cmake \
+	-DCMAKE_C_COMPILER=$(cc-$*) \
+	-DCMAKE_Fortran_COMPILER=$(fc-$*) \
+	-DCMAKE_C_FLAGS="$(cflags-$*)"  \
+	-DCMAKE_Fortran_FLAGS="$(fflags-$*)"
+
+#	-DCMAKE_CXX_COMPILER=$(cxx-$*)
+#       -DCMAKE_CXX_FLAGS="$(cxxflags-$*)"
+
+
+########################################################################
+
+# ANSI color codes
+none    := \033[0m
+red     := \033[0;31m
+green   := \033[0;32m
+yellow  := \033[0;33m
+blue    := \033[0;34m
+magenta := \033[0;35m
+cyan    := \033[0;36m
+all_colors := none red green yellow blue magenta cyan
+export $(all_colors) all_colors
+
+# Shell command to unset the exported colors, when not on terminal.
+setcolors = { [ -t 1 ] || unset $${all_colors}; }
+
+# Macro cprint to be used in rules.
+# Example: $(call cprint,"$${red}warning: %s$${none}\n" "a is not defined")
+cprint = $(setcolors) && printf $(1)
+
+# Macro cprint2 to be used in rules generated with $(eval ), i.e. expanded twice
+# $(1) - Text to print, $(2) - color-name (optional)
+cprint2 = $(setcolors) && \
+  printf "$(if $(2),$$$${$(2)},$$$${green})%s$$$${none}\n" '$(1)'
+
+.PHONY: printvars print-%
+# Print the value of a variable named "foo".
+# Usage: make print-foo
+print-%:
+	@$(call cprint,"%s is $${green}%s$${none} ($${cyan}%s$${none})\
+	  (from $${magenta}%s$${none})\n" '$*' '$($*)' '$(value $*)'\
+	  '$(origin $*)')
+
+# Print the value of (nearly) all the variables.
+# Usage: make printvars
+printvars:
+	@:;$(foreach V,$(sort $(.VARIABLES)),\
+	$(if $(filter-out environ% default automatic,$(origin $V)),\
+	$(info $(V)=$($V) ($(value $(V))))))
+	@:
+

@@ -30,30 +30,116 @@ RESET = "\033[0;0m"
 BOLD    = "\033[;1m"
 REVERSE = "\033[;7m"
 
+FAILBUILD = CYAN + "FAIL" + RESET
 FAIL = RED + "FAIL" + RESET
 PASS = GREEN + "PASS" + RESET
  
 
-def print_pass_fail(rootDir):
+def collect_pass_fail(rootDir):
+    """Traverse directory tree and look for pass/fail.
+
+    summary
+      fortran
+        compiler-version
+      python
+        python-version
+
+    """
     os.chdir(rootDir)
+    summary = dict(
+        fortran={},
+        python={},
+    )
+    
     for dirName, subdirList, fileList in os.walk('.'):
+        if dirName == '.':
+            continue
         dirName = dirName[2:]  # Remove leading ./
+        dirs = dirName.split("/")
+        if len(dirs) == 1:
+            continue
+        # intel-16.0.4/ownership
+        # python-2.7.16/enum-c/python
+        if dirName.startswith("python"):
+            work = summary["python"]
+        else:
+            work = summary["fortran"]
+        work = work.setdefault(dirs[0], {})
+        work = work.setdefault(dirs[1], {})
         if 'build.FAIL' in fileList:
-            print(f'build {FAIL} {dirName}')
+            work['status'] = FAILBUILD
         elif 'build.PASS' in fileList:
             if 'test.FAIL' in fileList:
-                print(f'test {FAIL} {dirName}')
+                work['status'] = FAIL
             elif 'test.PASS' in fileList:
-                print(f'test {PASS} {dirName}')
+                work['status'] = PASS
             else:
-                print(f'missing PASS/FAIL {dirName}')
+                work['status'] = 'missing PASS/FAIL'
+    return summary
+
+def print_summary(dct, indent=0):
+    for key in sorted(dct.keys()):
+        value = dct[key]
+        if isinstance(value, dict):
+            print("  " * indent, key)
+            print_summary(dct[key], indent + 2)
+        else:
+            print("  " * indent, value)
+
+def print_legend():
+    print(f"{FAILBUILD}  build failed")
+    print(f"{FAIL}  test failed")
+    print(f"{PASS}  test passed")
+
+def print_table(dct):
+    """
+    dct["gcc-"]["test"]["status"]
+    """
+
+    all_compilers = sorted(dct.keys())
+
+    # Gather all tests (all compilers may not have all tests)
+    work = {}
+    for compiler in all_compilers:
+        work.update(dct[compiler])
+    del work['cxx']
+    all_tests = sorted(work.keys())
+
+    # Find width of test names
+    test_width = -1
+    for test in all_tests:
+        if len(test) > test_width:
+            test_width = len(test)
+
+    for family in ['gcc', 'intel', 'pgi', 'python']:
+        subset_compilers = [x for x in all_compilers if x.startswith(family)]
+        if not subset_compilers:
+            continue
+        print()
+        print("Compiler ", family)
+    
+        line = "| ".join(str(x[len(family)+1:]).ljust(8) for x in subset_compilers)
+        print(" ".ljust(test_width), "|", line)
+
+        # Transpose table
+        for test in all_tests:
+            cline = []
+            for compiler in subset_compilers:
+                cline.append(dct[compiler][test].get("status", "---"))
+            print(test.ljust(test_width), "|",
+                  "    | ".join(str(x) for x in cline))
+        
 
 
 if __name__ == "__main__":
-    print("HERE", sys.argv)
     if len(sys.argv) < 2:
         print("usage: {} directory".format(sys.argv[0]))
         raise SystemExit
-    print_pass_fail(sys.argv[1])
+    summary = collect_pass_fail(sys.argv[1])
+#    print_summary(summary)
+
+    print_legend()
+    print_table(summary["fortran"])
+    print_table(summary["python"])
 
     

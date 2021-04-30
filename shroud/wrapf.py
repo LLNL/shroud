@@ -2112,6 +2112,14 @@ rv = .false.
 
         fileinfo.finish()
         output = []
+
+        # Added headers used with Fortran preprocessor.
+        for hdr in self.newlibrary.fortran_header:
+            if hdr[0] == "<":
+                output.append("#include %s" % hdr)
+            else:
+                output.append('#include "%s"' % hdr)
+
         self.gather_helper_code(fileinfo)
 
         if options.doxygen:
