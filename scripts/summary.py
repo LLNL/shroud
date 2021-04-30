@@ -111,7 +111,7 @@ def print_table(dct):
         if len(test) > test_width:
             test_width = len(test)
 
-    for family in ['gcc', 'intel', 'pgi', 'python']:
+    for family in ['gcc', 'intel', 'pgi', 'xl', 'python']:
         subset_compilers = [x for x in all_compilers if x.startswith(family)]
         if not subset_compilers:
             continue
