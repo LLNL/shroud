@@ -170,13 +170,13 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_ctor_flag
     interface
-        subroutine c_class1_ctor_flag(SHT_rv, flag) &
+        subroutine c_class1_ctor_flag(flag, SHT_rv) &
                 bind(C, name="CLA_Class1_ctor_flag")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_class1_ctor_flag
     end interface
     ! end c_class1_ctor_flag
@@ -273,15 +273,15 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_return_this_buffer
     interface
-        subroutine c_class1_return_this_buffer(self, SHT_rv, name, flag) &
+        subroutine c_class1_return_this_buffer(self, name, flag, SHT_rv) &
                 bind(C, name="CLA_Class1_return_this_buffer")
             use iso_c_binding, only : C_BOOL, C_CHAR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_class1_return_this_buffer
     end interface
     ! end c_class1_return_this_buffer
@@ -302,17 +302,17 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_return_this_buffer_bufferify
     interface
-        subroutine c_class1_return_this_buffer_bufferify(self, SHT_rv, &
-                name, SHT_name_len, flag) &
+        subroutine c_class1_return_this_buffer_bufferify(self, name, &
+                SHT_name_len, flag, SHT_rv) &
                 bind(C, name="CLA_Class1_return_this_buffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
             logical(C_BOOL), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_class1_return_this_buffer_bufferify
     end interface
     ! end c_class1_return_this_buffer_bufferify
@@ -723,13 +723,13 @@ module classes_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_get_class_copy(SHT_rv, flag) &
+        subroutine c_get_class_copy(flag, SHT_rv) &
                 bind(C, name="CLA_get_class_copy")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_get_class_copy
     end interface
 
@@ -869,7 +869,7 @@ contains
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.ctor_flag
-        call c_class1_ctor_flag(SHT_rv%cxxmem, flag)
+        call c_class1_ctor_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_flag
     end function class1_ctor_flag
     ! end class1_ctor_flag
@@ -1004,8 +1004,8 @@ contains
         ! splicer begin class.Class1.method.return_this_buffer
         logical(C_BOOL) SH_flag
         SH_flag = flag  ! coerce to C_BOOL
-        call c_class1_return_this_buffer_bufferify(obj%cxxmem, &
-            SHT_rv%cxxmem, name, len(name, kind=C_INT), SH_flag)
+        call c_class1_return_this_buffer_bufferify(obj%cxxmem, name, &
+            len(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer
@@ -1535,7 +1535,7 @@ contains
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_copy
-        call c_get_class_copy(SHT_rv%cxxmem, flag)
+        call c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 

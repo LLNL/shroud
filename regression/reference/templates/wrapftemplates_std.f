@@ -328,8 +328,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T, c_f_pointer
         class(vector_int) :: obj
-        integer(C_INT), pointer :: SHT_rv
         integer(C_SIZE_T), value, intent(IN) :: n
+        integer(C_INT), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_int.method.at
         type(C_PTR) :: SHC_rv_ptr
         SHC_rv_ptr = c_vector_int_at_bufferify(obj%cxxmem, n)
@@ -434,8 +434,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, C_SIZE_T, c_f_pointer
         class(vector_double) :: obj
-        real(C_DOUBLE), pointer :: SHT_rv
         integer(C_SIZE_T), value, intent(IN) :: n
+        real(C_DOUBLE), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_double.method.at
         type(C_PTR) :: SHC_rv_ptr
         SHC_rv_ptr = c_vector_double_at_bufferify(obj%cxxmem, n)

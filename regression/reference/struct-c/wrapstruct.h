@@ -31,12 +31,12 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv);
 
-void STR_create__cstruct_as_class_args(STR_Cstruct_as_class * SHC_rv,
-    int x, int y);
+void STR_create__cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHC_rv);
 
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
 
-void STR_create__cstruct_as_subclass_args(
-    STR_Cstruct_as_subclass * SHC_rv, int x, int y, int z);
+void STR_create__cstruct_as_subclass_args(int x, int y, int z,
+    STR_Cstruct_as_subclass * SHC_rv);
 
 #endif  // WRAPSTRUCT_H

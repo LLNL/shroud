@@ -2167,7 +2167,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_return_vector_alloc_bufferify",
-                    "F_arg_c_call": "SHT_rv_cdesc,\t n",
+                    "F_arg_c_call": "n,\t SHT_rv_cdesc",
                     "F_arguments": "n",
                     "F_name_function": "return_vector_alloc",
                     "F_name_generic": "return_vector_alloc",
@@ -2296,9 +2296,9 @@
                 "zz_fmtdict": {
                     "C_call_list": "n",
                     "C_name": "VEC_return_vector_alloc_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *SHT_rv_cdesc,\t int n",
+                    "C_prototype": "int n,\t VEC_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv,\t n",
+                    "F_C_arguments": "n,\t SHT_rv",
                     "F_C_name": "c_return_vector_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",

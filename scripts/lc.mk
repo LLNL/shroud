@@ -150,7 +150,7 @@ $(foreach v,$(ibm-list),$(eval fc-$v=$(ibmdir)/$v/bin/xlf2003))
 ibm : $(ibm-list)
 
 .PHONY : $(ibm-list)
-$(ibm-list) : ibm-% :
+$(ibm-list) : xl-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=ibm \
 	CC=$(cc-$@) \
 	CXX=$(cxx-$@) \

@@ -42,7 +42,7 @@ void CLA_get_const_class_reference(CLA_Class1 * SHC_rv);
 
 void CLA_get_class_reference(CLA_Class1 * SHC_rv);
 
-void CLA_get_class_copy(CLA_Class1 * SHC_rv, int flag);
+void CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv);
 
 void CLA_set_global_flag(int arg);
 

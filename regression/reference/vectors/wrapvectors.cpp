@@ -331,8 +331,8 @@ int VEC_vector_string_count_bufferify(const char *arg,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHT_rv_cdesc,
-    int n)
+void VEC_return_vector_alloc_bufferify(int n,
+    VEC_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_vector_alloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;

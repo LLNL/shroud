@@ -108,8 +108,8 @@ void AA_example_nested_ExClass1_ctor_0(
 // Argument:  const string * name
 // Attrs:     +intent(in)
 // Exact:     c_in_string_*
-void AA_example_nested_ExClass1_ctor_1(
-    AA_example_nested_ExClass1 * SHC_rv, const char * name)
+void AA_example_nested_ExClass1_ctor_1(const char * name,
+    AA_example_nested_ExClass1 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
     const std::string SHCXX_name(name);
@@ -137,8 +137,8 @@ void AA_example_nested_ExClass1_ctor_1(
 // Argument:  const string * name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_*_buf
-void AA_example_nested_ExClass1_ctor_1_bufferify(
-    AA_example_nested_ExClass1 * SHC_rv, char *name, int SHT_name_len)
+void AA_example_nested_ExClass1_ctor_1_bufferify(char *name,
+    int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
     const std::string SHCXX_name(name,

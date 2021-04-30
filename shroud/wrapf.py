@@ -1165,17 +1165,6 @@ rv = .false.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
-        self.build_arg_list_interface(
-            node, fileinfo,
-            fmt_result,
-            ast,
-            c_result_blk,
-            modules,
-            imports,
-            arg_c_names,
-            arg_c_decl,
-        )
-
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.params:
             # default argument's intent
@@ -1226,6 +1215,17 @@ rv = .false.
                 arg_c_decl,
             )
         # --- End loop over function parameters
+
+        self.build_arg_list_interface(
+            node, fileinfo,
+            fmt_result,
+            ast,
+            c_result_blk,
+            modules,
+            imports,
+            arg_c_names,
+            arg_c_decl,
+        )
 
         # Filter out non-pure functions.
         if result_typemap.base == "shadow":
@@ -1646,22 +1646,6 @@ rv = .false.
                     wformat("{F_this}%{F_derived_member}", fmt_func)
                 )
 
-        # Add function result argument.
-        need_wrapper = self.build_arg_list_impl(
-            fileinfo,
-            fmt_result,
-            C_node.ast,
-            ast,
-            result_typemap,
-            f_result_blk,
-            modules,
-            imports,
-            arg_c_call,
-            need_wrapper,
-        )
-        found_arg_decl_ret = self.add_stmt_declaration(
-            f_result_blk, arg_f_decl, arg_f_names, fmt_result)
-
         # Fortran and C arguments may have different types (fortran generic)
         #
         # f_var - argument to Fortran function (wrapper function)
@@ -1873,6 +1857,22 @@ rv = .false.
             )
         # --- End loop over function parameters
         #####
+
+        # Add function result argument.
+        need_wrapper = self.build_arg_list_impl(
+            fileinfo,
+            fmt_result,
+            C_node.ast,
+            ast,
+            result_typemap,
+            f_result_blk,
+            modules,
+            imports,
+            arg_c_call,
+            need_wrapper,
+        )
+        found_arg_decl_ret = self.add_stmt_declaration(
+            f_result_blk, arg_f_decl, arg_f_names, fmt_result)
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value
