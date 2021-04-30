@@ -111,15 +111,14 @@ def print_table(dct):
         if len(test) > test_width:
             test_width = len(test)
 
-    for family in ['gcc', 'intel', 'pgi', 'python']:
+    for family in ['gcc', 'intel', 'pgi', 'xl', 'python']:
         subset_compilers = [x for x in all_compilers if x.startswith(family)]
         if not subset_compilers:
             continue
         print()
-        print("Compiler ", family)
     
         line = "| ".join(str(x[len(family)+1:]).ljust(8) for x in subset_compilers)
-        print(" ".ljust(test_width), "|", line)
+        print(family.ljust(test_width), "|", line)
 
         # Transpose table
         for test in all_tests:

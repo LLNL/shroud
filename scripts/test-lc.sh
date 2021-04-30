@@ -18,3 +18,5 @@ scripts/summary.py build/regression/run
 
 date
 
+# rzansel
+#srun make -f scripts/lc.mk target=test-fortran ibm -j

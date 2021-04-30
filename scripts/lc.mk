@@ -9,6 +9,7 @@
 gccdir = /usr/tce/packages/gcc
 inteldir = /usr/tce/packages/intel
 pgidir = /usr/tce/packages/pgi
+ibmdir = /usr/tce/packages/xl
 pythondir = /usr/tce/packages/python
 
 tempdir = build/regression
@@ -129,6 +130,28 @@ pgi : $(pgi-list)
 .PHONY : $(pgi-list)
 $(pgi-list) : pgi-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=pgi \
+	CC=$(cc-$@) \
+	CXX=$(cxx-$@) \
+	FC=$(fc-$@)
+
+######################################################################
+# ibm
+# -qversion
+# xl-2021.03.31 - 16.01
+
+ibm-list = \
+ xl-2021.03.31
+
+$(foreach v,$(ibm-list),$(eval cc-$v=$(ibmdir)/$v/bin/xlc))
+$(foreach v,$(ibm-list),$(eval cxx-$v=$(ibmdir)/$v/bin/xlC))
+$(foreach v,$(ibm-list),$(eval fc-$v=$(ibmdir)/$v/bin/xlf2003))
+
+.PHONY : ibm
+ibm : $(ibm-list)
+
+.PHONY : $(ibm-list)
+$(ibm-list) : ibm-% :
+	$(MAKE) $(makeargs) testdir=$@ compiler=ibm \
 	CC=$(cc-$@) \
 	CXX=$(cxx-$@) \
 	FC=$(fc-$@)
