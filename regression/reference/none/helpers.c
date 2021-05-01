@@ -40,6 +40,20 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 ##### end ShroudLenTrim source
 
+##### start ShroudSizeCFI source
+
+// helper ShroudSizeCFI
+// Compute number of items in CFI_cdesc_t
+size_t ShroudSizeCFI(CFI_cdesc_t *desc)
+{
+    size_t nitems = 1;
+    for (int i = 0; i < desc->rank; i++) {
+        nitems *= desc->dim[i].extent;
+    }
+    return nitems;
+}
+##### end ShroudSizeCFI source
+
 ##### start ShroudStrAlloc c_source
 
 // helper ShroudStrAlloc

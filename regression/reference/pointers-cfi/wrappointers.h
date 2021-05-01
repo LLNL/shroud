@@ -67,7 +67,7 @@ int POI_accumulate(const int * arr, size_t len);
 
 int POI_accept_char_array_in(char **names);
 
-int POI_accept_char_array_in_CFI(char **names);
+int POI_accept_char_array_in_CFI(CFI_cdesc_t *SHT_names_cfi);
 
 void POI_set_global_int(int value);
 

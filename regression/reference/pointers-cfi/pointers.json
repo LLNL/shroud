@@ -2656,19 +2656,25 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "names",
+                            "c_var_cfi": "SHT_names_cfi",
+                            "c_var_len": "SHT_names_len",
+                            "c_var_size": "SHT_names_size",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "names",
+                            "cxx_nonconst_ptr": "SHCXX_names",
                             "cxx_type": "char",
-                            "cxx_var": "names",
+                            "cxx_var": "SHCXX_names",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_char_**_cfi",
-                            "stmt1": "c_in_char_**"
+                            "stmt1": "c_in_char_**_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "names",
                             "c_var": "names",
+                            "c_var_cfi": "SHT_names_cfi",
+                            "c_var_len": "SHT_names_len",
+                            "c_var_size": "SHT_names_size",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -2681,14 +2687,14 @@
                             "stmt0": "f_in_char_**_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_in_char_**_cfi",
-                            "stmtc1": "c_in_char_**"
+                            "stmtc1": "c_in_char_**_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "names",
+                    "C_call_list": "SHCXX_names",
                     "C_name": "POI_accept_char_array_in_CFI",
-                    "C_prototype": "char **names",
+                    "C_prototype": "CFI_cdesc_t *SHT_names_cfi",
                     "C_return_type": "int",
                     "F_C_arguments": "names",
                     "F_C_name": "accept_char_array_in",

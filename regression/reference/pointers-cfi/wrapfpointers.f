@@ -485,16 +485,15 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +api(cfi)+intent(in)
-    ! Requested: c_in_char_**_cfi
-    ! Match:     c_in_char_**
+    ! Exact:     c_in_char_**_cfi
     ! start accept_char_array_in
     interface
         function accept_char_array_in(names) &
                 result(SHT_rv) &
                 bind(C, name="POI_accept_char_array_in_CFI")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             implicit none
-            type(C_PTR), intent(IN) :: names(*)
+            character(len=*), intent(IN) :: names(:)
             integer(C_INT) :: SHT_rv
         end function accept_char_array_in
     end interface

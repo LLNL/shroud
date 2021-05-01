@@ -2151,6 +2151,7 @@ fc_statements = [
             "c_mixin_arg_character_cfi",
         ],
         # Null terminate string.
+        c_helper="ShroudStrAlloc ShroudStrFree",
         pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -2294,6 +2295,33 @@ fc_statements = [
         local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
     
+    ########################################
+    # char **
+    dict(
+        name='c_in_char_**_cfi',
+        mixin=[
+            "c_mixin_arg_character_cfi",
+        ],
+        f_arg_decl=[
+            "character(len=*), intent({f_intent}) :: {c_var}(:)",
+        ],
+        pre_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_var_len} = {c_var_cfi}->elem_len;",
+            "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
+            "char **{cxx_var} = ShroudStrArrayAlloc("
+            "{c_var},\t {c_var_size},\t {c_var_len});",
+        ],
+        temps=["cfi", "len", "size"],
+
+        c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
+        cxx_local_var="pointer",
+        post_call=[
+            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+        ],
+    ),
+
     ########################################
     # std::string
     dict(

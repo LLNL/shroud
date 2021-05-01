@@ -10,12 +10,87 @@
 
 // cxx_header
 #include "pointers.h"
+// shroud
+#include <cstdlib>
+#include <cstring>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 
 extern "C" {
 
+
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
+// helper ShroudStrAlloc
+// Copy src into new memory and null terminate.
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudStrAlloc(const char *src, int nsrc, int blanknull)
+{
+   int ntrim = ShroudLenTrim(src, nsrc);
+   if (ntrim == 0 && blanknull == 1) {
+     return nullptr;
+   }
+   char *rv = (char *) std::malloc(nsrc + 1);
+   if (ntrim > 0) {
+     std::memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\0';
+   return rv;
+}
+
+// helper ShroudStrArrayAlloc
+// Copy src into new memory and null terminate.
+// char **src +size(nsrc) +len(len)
+// CHARACTER(len) src(nsrc)
+static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
+{
+   char **rv = static_cast<char **>(std::malloc(sizeof(char *) * nsrc));
+   const char *src0 = src;
+   for(int i=0; i < nsrc; ++i) {
+      int ntrim = ShroudLenTrim(src0, len);
+      char *tgt = static_cast<char *>(std::malloc(ntrim+1));
+      std::memcpy(tgt, src0, ntrim);
+      tgt[ntrim] = '\0';
+      rv[i] = tgt;
+      src0 += len;
+   }
+   return rv;
+}
+
+// helper ShroudStrArrayFree
+// Release memory allocated by ShroudStrArrayAlloc
+static void ShroudStrArrayFree(char **src, int nsrc)
+{
+   for(int i=0; i < nsrc; ++i) {
+       std::free(src[i]);
+   }
+   std::free(src);
+}
+
+// helper ShroudStrFree
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
+{
+   if (src != NULL) {
+     std::free(src);
+   }
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -433,13 +508,18 @@ int POI_accept_char_array_in(char **names)
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(cfi)+intent(in)
-// Requested: c_in_char_**_cfi
-// Match:     c_in_char_**
+// Exact:     c_in_char_**_cfi
 // start POI_accept_char_array_in_CFI
-int POI_accept_char_array_in_CFI(char **names)
+int POI_accept_char_array_in_CFI(CFI_cdesc_t *SHT_names_cfi)
 {
     // splicer begin function.accept_char_array_in_CFI
-    int SHC_rv = acceptCharArrayIn(names);
+    char *names = static_cast<char *>(SHT_names_cfi->base_addr);
+    size_t SHT_names_len = SHT_names_cfi->elem_len;
+    size_t SHT_names_size = SHT_names_cfi->dim[0].extent;
+    char **SHCXX_names = ShroudStrArrayAlloc(names, SHT_names_size,
+        SHT_names_len);
+    int SHC_rv = acceptCharArrayIn(SHCXX_names);
+    ShroudStrArrayFree(SHCXX_names, SHT_names_size);
     return SHC_rv;
     // splicer end function.accept_char_array_in_CFI
 }

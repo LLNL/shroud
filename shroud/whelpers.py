@@ -1572,6 +1572,23 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 }""",
     ),
     ########################################
+    # Find size of CFI array
+    ShroudSizeCFI=dict(
+        c_include=["<stddef.h>"],
+        cxx_include=["<cstddef>"],
+        source="""
+// helper ShroudSizeCFI
+// Compute number of items in CFI_cdesc_t
+size_t ShroudSizeCFI(CFI_cdesc_t *desc)
+{
+    size_t nitems = 1;
+    for (int i = 0; i < desc->rank; i++) {
+        nitems *= desc->dim[i].extent;
+    }
+    return nitems;
+}""",
+    ),
+    ########################################
 )   # end CHelpers
 
 
