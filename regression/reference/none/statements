@@ -92,8 +92,11 @@ root
           buf -- c_inout_char_*_buf
           cfi -- c_inout_char_*_cfi
       native
+        &
+          hidden -- c_out/inout_native_&_hidden
         *
           cdesc -- c_in/out/inout_native_*_cdesc
+          hidden -- c_out/inout_native_*_hidden
       shadow -- c_in/inout_shadow
       string
         & -- c_inout_string_*/&
@@ -141,8 +144,11 @@ root
           buf -- c_out_char_*_buf
           cfi -- c_out_char_*_cfi
       native
+        &
+          hidden -- c_out/inout_native_&_hidden
         *
           cdesc -- c_in/out/inout_native_*_cdesc
+          hidden -- c_out/inout_native_*_hidden
         *&
           cdesc -- c_out_native_*&_cdesc
         **
@@ -1587,6 +1593,14 @@ c_inout_char_*_cfi:
   - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
   temps:
   - cfi
+c_inout_native_&_hidden:
+  arg_call:
+  - '{cxx_var}'
+  intent: inout
+  name: c_inout_native_&_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_inout_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1604,6 +1618,14 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   temps:
   - cdesc
+c_inout_native_*_hidden:
+  arg_call:
+  - '&{cxx_var}'
+  intent: inout
+  name: c_inout_native_*_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_inout_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -2061,6 +2083,14 @@ c_out_char_*_cfi:
   - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   temps:
   - cfi
+c_out_native_&_hidden:
+  arg_call:
+  - '{cxx_var}'
+  intent: out
+  name: c_out_native_&_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_out_native_*&_cdesc:
   arg_call:
   - '{cxx_var}'
@@ -2132,6 +2162,14 @@ c_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   temps:
   - cdesc
+c_out_native_*_hidden:
+  arg_call:
+  - '&{cxx_var}'
+  intent: out
+  name: c_out_native_*_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_out_string_&:
   cxx_local_var: scalar
   impl_header:
@@ -2602,7 +2640,7 @@ f_function_native_*_cdesc_allocatable:
   name: f_function_native_*_cdesc_allocatable
   need_wrapper: true
   post_call:
-  - allocate({f_var}({f_array_allocate}))
+  - allocate({f_var}{f_array_allocate})
   - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))"
   temps:
   - cdesc

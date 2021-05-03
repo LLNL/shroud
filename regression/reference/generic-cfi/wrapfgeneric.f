@@ -677,26 +677,13 @@ module generic_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * type +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  size_t * size +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     interface
         subroutine c_get_pointer_as_pointer_float1d_bufferify( &
-                SHT_addr_cdesc, type, size) &
+                SHT_addr_cdesc) &
                 bind(C, name="GEN_get_pointer_as_pointer_float1d_bufferify")
-            use iso_c_binding, only : C_INT, C_SIZE_T
             import :: GEN_SHROUD_array
             implicit none
             type(GEN_SHROUD_array), intent(OUT) :: SHT_addr_cdesc
-            integer(C_INT), intent(OUT) :: type
-            integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer_float1d_bufferify
     end interface
 #endif
@@ -712,26 +699,13 @@ module generic_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * type +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  size_t * size +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     interface
         subroutine c_get_pointer_as_pointer_float2d_bufferify( &
-                SHT_addr_cdesc, type, size) &
+                SHT_addr_cdesc) &
                 bind(C, name="GEN_get_pointer_as_pointer_float2d_bufferify")
-            use iso_c_binding, only : C_INT, C_SIZE_T
             import :: GEN_SHROUD_array
             implicit none
             type(GEN_SHROUD_array), intent(OUT) :: SHT_addr_cdesc
-            integer(C_INT), intent(OUT) :: type
-            integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer_float2d_bufferify
     end interface
 #endif
@@ -1396,31 +1370,12 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * type +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  size_t * size +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_FLOAT, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
-        integer(C_INT) :: type
-        integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
         type(GEN_SHROUD_array) :: SHT_addr_cdesc
-        call c_get_pointer_as_pointer_float1d_bufferify(SHT_addr_cdesc, &
-            type, size)
+        call c_get_pointer_as_pointer_float1d_bufferify(SHT_addr_cdesc)
         call c_f_pointer(SHT_addr_cdesc%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
@@ -1441,31 +1396,12 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * type +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  size_t * size +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_FLOAT, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
-        integer(C_INT) :: type
-        integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
         type(GEN_SHROUD_array) :: SHT_addr_cdesc
-        call c_get_pointer_as_pointer_float2d_bufferify(SHT_addr_cdesc, &
-            type, size)
+        call c_get_pointer_as_pointer_float2d_bufferify(SHT_addr_cdesc)
         call c_f_pointer(SHT_addr_cdesc%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d

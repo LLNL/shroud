@@ -840,7 +840,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "len,\t SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_pointer",
                     "F_name_generic": "return_int_ptr_dim_pointer",
@@ -874,7 +874,7 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(len)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -995,8 +995,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1005,20 +1005,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
+                    "C_call_list": "&len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_bufferify",
-                    "C_prototype": "int * len,\t OWN_SHROUD_array *SHT_rv_cdesc",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "len,\t SHT_rv",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1029,7 +1025,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
@@ -1177,7 +1173,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "len,\t SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_alloc",
                     "F_name_generic": "return_int_ptr_dim_alloc",
@@ -1211,7 +1207,7 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(len)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -1332,8 +1328,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1342,20 +1338,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
+                    "C_call_list": "&len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_bufferify",
-                    "C_prototype": "int * len,\t OWN_SHROUD_array *SHT_rv_cdesc",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "len,\t SHT_rv",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1366,7 +1358,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
@@ -1513,7 +1505,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "len,\t SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_default",
                     "F_name_generic": "return_int_ptr_dim_default",
@@ -1547,7 +1539,7 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(len)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -1667,8 +1659,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -1677,20 +1669,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
+                    "C_call_list": "&len",
                     "C_name": "OWN_return_int_ptr_dim_default_bufferify",
-                    "C_prototype": "int * len,\t OWN_SHROUD_array *SHT_rv_cdesc",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "len,\t SHT_rv",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -1701,7 +1689,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
@@ -1980,7 +1968,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "len,\t SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
@@ -2016,7 +2004,7 @@
                         "c_var_capsule": "CSHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(len)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -2139,8 +2127,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -2149,20 +2137,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
+                    "C_call_list": "&len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_new_bufferify",
-                    "C_prototype": "int * len,\t OWN_SHROUD_array *SHT_rv_cdesc",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "len,\t SHT_rv",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -2173,7 +2157,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",
@@ -2495,7 +2479,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "len,\t SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_default_new",
                     "F_name_generic": "return_int_ptr_dim_default_new",
@@ -2531,7 +2515,7 @@
                         "c_var_capsule": "CSHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(len)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -2653,8 +2637,8 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "len",
@@ -2663,20 +2647,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len",
+                    "C_call_list": "&len",
                     "C_name": "OWN_return_int_ptr_dim_default_new_bufferify",
-                    "C_prototype": "int * len,\t OWN_SHROUD_array *SHT_rv_cdesc",
+                    "C_prototype": "OWN_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "len,\t SHT_rv",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
@@ -2687,7 +2667,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = *len;",
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
                         "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
                         "c_type": "int",

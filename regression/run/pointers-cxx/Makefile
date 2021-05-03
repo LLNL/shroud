@@ -17,23 +17,28 @@ INCLUDE = \
 VPATH = \
     $(top)/regression/reference/pointers-cxx \
     ../cxx \
+    $(top)/regression/run/pointers-cxx \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     pointers.o \
+    wrappointers.o
+F_OBJS = \
     wrapfpointers.o \
-    wrappointers.o \
     fruit.o \
     main.o
 
-pointers-cxx : $(OBJS)
+pointers-cxx : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 main.o : main.f fruit.o wrapfpointers.o
 pointers.o : pointers.cpp pointers.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
+testc.o : testc.c wrappointers.h
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
 clean :
 	rm -f $(OBJS) *.mod pointers main.f pointers.cpp
 

@@ -118,6 +118,7 @@ c-test-list = \
   test-c-classes \
   test-c-enum-c \
   test-c-namespace \
+  test-c-pointers-cxx \
   test-c-struct-cxx \
   test-c-statement \
   test-c-templates

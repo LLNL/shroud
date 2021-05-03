@@ -700,22 +700,22 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // start POI_get_ptr_to_dynamic_array_bufferify
 void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount)
+    POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_array_bufferify
     int *count;
-    getPtrToDynamicArray(&count, ncount);
+    int ncount;
+    getPtrToDynamicArray(&count, &ncount);
     SHT_count_cdesc->cxx.addr  = count;
     SHT_count_cdesc->cxx.idtor = 0;
     SHT_count_cdesc->addr.base = count;
     SHT_count_cdesc->type = SH_TYPE_INT;
     SHT_count_cdesc->elem_len = sizeof(int);
     SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = *ncount;
+    SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_array_bufferify
 }
@@ -904,22 +904,22 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // start POI_get_ptr_to_dynamic_const_array_bufferify
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount)
+    POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
     const int *count;
-    getPtrToDynamicConstArray(&count, ncount);
+    int ncount;
+    getPtrToDynamicConstArray(&count, &ncount);
     SHT_count_cdesc->cxx.addr  = const_cast<int *>(count);
     SHT_count_cdesc->cxx.idtor = 0;
     SHT_count_cdesc->addr.base = count;
     SHT_count_cdesc->type = SH_TYPE_INT;
     SHT_count_cdesc->elem_len = sizeof(int);
     SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = *ncount;
+    SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_const_array_bufferify
 }

@@ -165,7 +165,7 @@ contains
   end subroutine test_char_arrays
 
   subroutine test_out_ptrs
-    integer(C_INT) :: ivalue
+    integer(C_INT) :: ivalue, narray
     integer(C_INT), target :: ivalue1, ivalue2
     integer(C_INT), pointer :: iscalar, irvscalar
     integer(C_INT), pointer :: iarray(:), irvarray(:)
@@ -197,6 +197,12 @@ contains
     call assert_true(associated(iarray))
     call assert_true(size(iarray) == 10)
 
+    ! Call C version directly.
+    cptr_array = C_NULL_PTR
+    call c_get_ptr_to_dynamic_array(cptr_array, narray)
+    call assert_true(c_associated(cptr_array))
+    call assert_true(narray == 10)
+
     ! Returns global_array in pointers.c.
     nullify(iarray)
     call get_ptr_to_func_array(iarray)
@@ -213,11 +219,13 @@ contains
     ! associated with global_int in pointers.c
     call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), "getRawPtrToScalarForce")
 
+    cptr_array = C_NULL_PTR
     call get_raw_ptr_to_fixed_array(cptr_array)
     call assert_true(c_associated(cptr_array), "getRawPtrToFixedArray")
     ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)), "getRawPtrToFixedArray")
 
+    cptr_array = C_NULL_PTR
     call get_raw_ptr_to_fixed_array_force(cptr_array)
     call assert_true(c_associated(cptr_array), "getRawPtrToFixedArrayForce")
     ! associated with global_fixed_array in pointers.c

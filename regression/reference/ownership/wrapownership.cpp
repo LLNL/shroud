@@ -114,20 +114,20 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
-void OWN_return_int_ptr_dim_pointer_bufferify(int * len,
+// Exact:     c_out_native_*_hidden
+void OWN_return_int_ptr_dim_pointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_pointer_bufferify
-    int * SHC_rv = ReturnIntPtrDimPointer(len);
+    int len;
+    int * SHC_rv = ReturnIntPtrDimPointer(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = *len;
+    SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_pointer_bufferify
 }
@@ -158,20 +158,20 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
-void OWN_return_int_ptr_dim_alloc_bufferify(int * len,
+// Exact:     c_out_native_*_hidden
+void OWN_return_int_ptr_dim_alloc_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_alloc_bufferify
-    int * SHC_rv = ReturnIntPtrDimAlloc(len);
+    int len;
+    int * SHC_rv = ReturnIntPtrDimAlloc(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = *len;
+    SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_alloc_bufferify
 }
@@ -202,20 +202,20 @@ int * OWN_return_int_ptr_dim_default(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
-void OWN_return_int_ptr_dim_default_bufferify(int * len,
+// Exact:     c_out_native_*_hidden
+void OWN_return_int_ptr_dim_default_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_default_bufferify
-    int * SHC_rv = ReturnIntPtrDimDefault(len);
+    int len;
+    int * SHC_rv = ReturnIntPtrDimDefault(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = *len;
+    SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_default_bufferify
 }
@@ -264,20 +264,20 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
-void OWN_return_int_ptr_dim_pointer_new_bufferify(int * len,
+// Exact:     c_out_native_*_hidden
+void OWN_return_int_ptr_dim_pointer_new_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_pointer_new_bufferify
-    int * SHC_rv = ReturnIntPtrDimPointerNew(len);
+    int len;
+    int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 2;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = *len;
+    SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_pointer_new_bufferify
 }
@@ -326,20 +326,20 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
-void OWN_return_int_ptr_dim_default_new_bufferify(int * len,
+// Exact:     c_out_native_*_hidden
+void OWN_return_int_ptr_dim_default_new_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_dim_default_new_bufferify
-    int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
+    int len;
+    int * SHC_rv = ReturnIntPtrDimDefaultNew(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 2;
     SHT_rv_cdesc->addr.base = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = *len;
+    SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_default_new_bufferify
 }

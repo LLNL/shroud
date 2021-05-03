@@ -1003,6 +1003,7 @@ class Wrapc(util.WrapperMixin):
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
+            sapi = c_meta["api"]
 
             if c_meta["is_result"]:
                 # This argument is the C function result
@@ -1014,7 +1015,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", "function", sgroup, spointer,
-                    c_meta["api"], return_deref_attr,
+                    sapi, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg.name
@@ -1045,8 +1046,10 @@ class Wrapc(util.WrapperMixin):
                 # regular argument (not function result)
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
+                if c_attrs["hidden"] and node._generated:
+                    sapi = "hidden"
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
-                         c_meta["api"], c_meta["deref"]] + specialize
+                         sapi, c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
                 fmt_arg.c_var = arg.name
                 # XXX - order issue - c_var must be set before name_temp_vars,
@@ -1089,12 +1092,13 @@ class Wrapc(util.WrapperMixin):
                 self.document_stmts(
                     stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
 
-            self.build_proto_list(
-                fmt_arg,
-                arg,
-                intent_blk,
-                proto_list,
-            )
+            if sapi != "hidden":
+                self.build_proto_list(
+                    fmt_arg,
+                    arg,
+                    intent_blk,
+                    proto_list,
+                )
 
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
@@ -1532,7 +1536,7 @@ class Wrapc(util.WrapperMixin):
 ######################################################################
 
 class ToDimension(todict.PrintNode):
-    """Convert dimension expression to Fortran wrapper code.
+    """Convert dimension expression to C wrapper code.
 
     expression has already been checked for errors by generate.check_implied.
     Convert functions:
@@ -1586,10 +1590,15 @@ class ToDimension(todict.PrintNode):
         else:
             deref = ''
             arg = self.fcn.ast.find_arg_by_name(argname)
-            if arg and arg.is_indirect():
-                # If argument is a pointer, then dereference it.
-                # i.e.  int *len +intent(out)
-                deref = '*'
+            if arg:
+                if arg.attrs["hidden"]:
+                    # (int *arg +intent(out)+hidden)
+                    # c_out_native_*_hidden creates a local scalar.
+                    deref = ''
+                elif arg.is_indirect():
+                    # If argument is a pointer, then dereference it.
+                    # i.e.  (int *arg +intent(out))
+                    deref = '*'
             if node.args is None:
                 return deref + argname  # variable
             else:

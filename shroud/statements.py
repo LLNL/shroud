@@ -884,6 +884,29 @@ fc_statements = [
         ],
     ),
 
+    ##### hidden
+    # Hidden argument will not be added for Fortran
+    # or C buffer wrapper. Instead it is a local variable
+    # in the C wrapper and passed to library function.
+    dict(
+        # c_out_native_*_hidden
+        # c_inout_native_*_hidden
+        name="c_out/inout_native_*_hidden",
+        pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        # c_out_native_&_hidden
+        # c_inout_native_&_hidden
+        name="c_out/inout_native_&_hidden",
+        pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        arg_call=["{cxx_var}"],
+    ),
+    
 ########################################
 # void *
     dict(
@@ -1003,7 +1026,7 @@ fc_statements = [
         ],
         post_call=[
             # XXX - allocate scalar
-            "allocate({f_var}({f_array_allocate}))",
+            "allocate({f_var}{f_array_allocate})",
             "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),

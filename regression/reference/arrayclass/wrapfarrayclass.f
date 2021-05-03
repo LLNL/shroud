@@ -307,20 +307,13 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Requested: c_out_native_**_cdesc_pointer
         ! Match:     c_out_native_**_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * isize +hidden
-        ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
-                SHT_array_cdesc, isize) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_bufferify")
-            use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
             type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
-            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_bufferify
 
         ! ----------------------------------------
@@ -358,20 +351,13 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Requested: c_out_native_*&_cdesc_pointer
         ! Match:     c_out_native_*&_cdesc
-        ! ----------------------------------------
-        ! Argument:  int & isize +hidden
-        ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_&
-        ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
-                SHT_array_cdesc, isize) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref_bufferify")
-            use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
             type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
-            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_bufferify
 
         ! ----------------------------------------
@@ -410,20 +396,13 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Requested: c_out_native_**_cdesc_pointer
         ! Match:     c_out_native_**_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * isize +hidden
-        ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_*
-        ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
-                SHT_array_cdesc, isize) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_const_bufferify")
-            use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
             type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
-            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_const_bufferify
 
         ! ----------------------------------------
@@ -462,20 +441,13 @@ module arrayclass_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
         ! Requested: c_out_native_*&_cdesc_pointer
         ! Match:     c_out_native_*&_cdesc
-        ! ----------------------------------------
-        ! Argument:  int & isize +hidden
-        ! Attrs:     +intent(inout)
-        ! Requested: c_inout_native_&
-        ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
-                SHT_array_cdesc, isize) &
+                SHT_array_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref_const_bufferify")
-            use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
             type(ARR_SHROUD_array), intent(OUT) :: SHT_array_cdesc
-            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_const_bufferify
 
         ! ----------------------------------------
@@ -758,23 +730,14 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * isize +hidden
-    ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr(obj, array)
-        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
-        integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ptr
         type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ptr_bufferify(obj%cxxmem, &
-            SHT_array_cdesc, isize)
+            SHT_array_cdesc)
         call c_f_pointer(SHT_array_cdesc%base_addr, array, &
             SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ptr
@@ -794,23 +757,14 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_*&_cdesc_pointer
     ! Match:     c_out_native_*&_cdesc
-    ! ----------------------------------------
-    ! Argument:  int & isize +hidden
-    ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_&
-    ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_&
-    ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref(obj, array)
-        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
-        integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ref
         type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ref_bufferify(obj%cxxmem, &
-            SHT_array_cdesc, isize)
+            SHT_array_cdesc)
         call c_f_pointer(SHT_array_cdesc%base_addr, array, &
             SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ref
@@ -830,23 +784,14 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * isize +hidden
-    ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr_const(obj, array)
-        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
-        integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
         type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ptr_const_bufferify(obj%cxxmem, &
-            SHT_array_cdesc, isize)
+            SHT_array_cdesc)
         call c_f_pointer(SHT_array_cdesc%base_addr, array, &
             SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ptr_const
@@ -866,23 +811,14 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_*&_cdesc_pointer
     ! Match:     c_out_native_*&_cdesc
-    ! ----------------------------------------
-    ! Argument:  int & isize +hidden
-    ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_&
-    ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_&
-    ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref_const(obj, array)
-        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
-        integer(C_INT) :: isize
         ! splicer begin class.ArrayWrapper.method.fetch_array_ref_const
         type(ARR_SHROUD_array) :: SHT_array_cdesc
         call c_arraywrapper_fetch_array_ref_const_bufferify(obj%cxxmem, &
-            SHT_array_cdesc, isize)
+            SHT_array_cdesc)
         call c_f_pointer(SHT_array_cdesc%base_addr, array, &
             SHT_array_cdesc%shape(1:1))
         ! splicer end class.ArrayWrapper.method.fetch_array_ref_const

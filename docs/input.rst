@@ -467,7 +467,17 @@ Used to define the dimension of pointer arguments with *intent(out)*
 and function results.
 A dimension without any value is an error -- ``+dimension``.
 
-The expression is evaluated in a C/C++ context.
+The expression is evaluated in the C wrapper.  It can be passed back
+to the Fortran wrapper via a cdesc argument of type *F_array_type*
+when the attribute *deref* is set to *allocatable* or *pointer*.  This
+allows the shape to be used in an ``ALLOCATE`` statement or a call to
+``C_F_POINTER``.
+
+For *Futher interoperability with C*, set with option *F_CFI*,
+the shape is used directly in the C wrapper in a call to
+``CFI_allocate`` or ``CFI_establish``.
+
+.. can also set attribute *cdesc* explicitly.
 
 .. Sets the Fortran DIMENSION attribute.
    Pointer argument should be passed through since it is an array.
@@ -527,14 +537,34 @@ hidden
 ^^^^^^
 
 The argument will not appear in the Fortran API.
-But it will be passed to the C wrapper.
-This allows the value to be used in the C wrapper.
+
+For the native C API it will appear as a regular argument.
+For the bufferify C API, it will be a local variable which
+is passed to the C++ function.
+
+It is useful for a function which returns the length of another
+pointer arguments.  This value is save in the *F_array_type* argument
+or the CFI_cdesc_t struct.
+
+.. statements for native pointer and reference.
+   See c_out_native_*_hidden
+   Used in the Fortran wrapper when fmt.c_var_cdesc is defined.
+
 For example, setting the shape of a pointer function:
 
 .. code-block:: text
 
-      int * ReturnIntPtr(int *len+intent(out)+hidden +dimension(len))
+    int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)+deref(pointer)
 
+ Will create a Fortran wrapper which returns a ``POINTER`` which
+ is ``len`` long but does not have an argument for the length.
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: rv(:)
+    rv = return_int_ptr()
+    ! size(rv)  is argument len
+ 
 .. assumed intent(out)
 
 

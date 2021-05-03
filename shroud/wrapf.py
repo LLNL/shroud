@@ -617,7 +617,7 @@ rv = .false.
          Usually the same node unless it is a generated.
 
         The C wrapper will not be the same as the Fortran wrapper when
-        their are generated function involved.
+        there are generated function involved.
         """
         C_node = node
         generated = []
@@ -1181,6 +1181,8 @@ rv = .false.
             
             attrs = arg.attrs
             meta = arg.metaattrs
+            if attrs["hidden"] and node._generated:
+                continue
             intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
@@ -1514,6 +1516,9 @@ rv = .false.
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "c_var_cdesc"):
                     # XXX kludge, name is assumed to be c_var_cdesc.
+                    fmt.f_array_allocate = "(" + ",".join(
+                        ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
+                         for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
 
@@ -1779,9 +1784,8 @@ rv = .false.
                     continue
                 elif hidden:
                     # Argument is not passed into Fortran.
-                    # hidden value is returned from C++.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
-                    need_wrapper = True
+                    # hidden value is used in C wrapper.
+                    continue
                 elif f_intent_blk.arg_decl:
                     # Explicit declarations from fc_statements.
                     self.add_stmt_declaration(

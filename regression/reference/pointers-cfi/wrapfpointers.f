@@ -658,21 +658,13 @@ module pointers_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc, &
-                ncount) &
+        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
                 bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
-            use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-            integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_array_bufferify
@@ -841,21 +833,14 @@ module pointers_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
-                SHT_count_cdesc, ncount) &
+                SHT_count_cdesc) &
                 bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
-            use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-            integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_const_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_const_array_bufferify
@@ -1655,14 +1640,6 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length of
     !! the argument ncount.
@@ -1671,11 +1648,9 @@ contains
     subroutine get_ptr_to_dynamic_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc, &
-            ncount)
+        call c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc)
         call c_f_pointer(SHT_count_cdesc%base_addr, count, &
             SHT_count_cdesc%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_array
@@ -1781,23 +1756,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_const_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_const_array_bufferify(SHT_count_cdesc, &
-            ncount)
+        call c_get_ptr_to_dynamic_const_array_bufferify(SHT_count_cdesc)
         call c_f_pointer(SHT_count_cdesc%base_addr, count, &
             SHT_count_cdesc%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_const_array

@@ -3313,7 +3313,7 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
-                            "f_array_allocate": "(10)",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3487,7 +3487,7 @@
                     "F_C_call": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_count_cdesc,\t ncount",
+                    "F_arg_c_call": "SHT_count_cdesc",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
@@ -3587,7 +3587,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nSHT_count_cdesc->shape[0] = *ncount;",
+                            "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
                             "c_const": "",
                             "c_deref": "*",
@@ -3610,7 +3610,7 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
-                            "f_array_allocate": "(ncount)",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -3641,8 +3641,8 @@
                             "cxx_var": "ncount",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "ncount",
@@ -3651,20 +3651,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "ncount",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&count,\t ncount",
+                    "C_call_list": "&count,\t &ncount",
                     "C_name": "POI_get_ptr_to_dynamic_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *SHT_count_cdesc,\t int * ncount",
+                    "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_count_cdesc,\t ncount",
+                    "F_C_arguments": "SHT_count_cdesc",
                     "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicArray",
@@ -3875,7 +3871,7 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
-                            "f_array_allocate": "(getLen())",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4313,7 +4309,7 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
-                            "f_array_allocate": "(10)",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4485,7 +4481,7 @@
                     "F_C_call": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SHT_count_cdesc,\t ncount",
+                    "F_arg_c_call": "SHT_count_cdesc",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
@@ -4583,7 +4579,7 @@
                     "count": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_array_shape": "\nSHT_count_cdesc->shape[0] = *ncount;",
+                            "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
                             "c_array_size": "SHT_count_cdesc->shape[0]",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -4606,7 +4602,7 @@
                             "F_C_var": "count",
                             "c_var": "count",
                             "c_var_cdesc": "SHT_count_cdesc",
-                            "f_array_allocate": "(ncount)",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
                             "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
@@ -4637,8 +4633,8 @@
                             "cxx_var": "ncount",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_out_native_*_hidden",
+                            "stmt1": "c_out_native_*_hidden"
                         },
                         "fmtf": {
                             "F_C_var": "ncount",
@@ -4647,20 +4643,16 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "ncount",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_native_*",
-                            "stmtc1": "c_default"
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&count,\t ncount",
+                    "C_call_list": "&count,\t &ncount",
                     "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *SHT_count_cdesc,\t int * ncount",
+                    "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_count_cdesc,\t ncount",
+                    "F_C_arguments": "SHT_count_cdesc",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicConstArray",
@@ -6234,7 +6226,7 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(10)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -6570,7 +6562,7 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(10)",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
                         "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",

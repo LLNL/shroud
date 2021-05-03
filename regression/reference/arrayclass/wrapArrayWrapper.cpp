@@ -278,22 +278,22 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*_hidden
 void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *SHT_array_cdesc, int * isize)
+    ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ptr_bufferify
     double *array;
-    SH_this->fetchArrayPtr(&array, isize);
+    int isize;
+    SH_this->fetchArrayPtr(&array, &isize);
     SHT_array_cdesc->cxx.addr  = array;
     SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
     SHT_array_cdesc->rank = 1;
-    SHT_array_cdesc->shape[0] = *isize;
+    SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
     // splicer end class.ArrayWrapper.method.fetch_array_ptr_bufferify
 }
@@ -333,22 +333,22 @@ void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_&
-// Match:     c_default
+// Exact:     c_inout_native_&_hidden
 void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *SHT_array_cdesc, int * isize)
+    ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ref_bufferify
     double *array;
-    SH_this->fetchArrayRef(array, *isize);
+    int isize;
+    SH_this->fetchArrayRef(array, isize);
     SHT_array_cdesc->cxx.addr  = array;
     SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
     SHT_array_cdesc->rank = 1;
-    SHT_array_cdesc->shape[0] = *isize;
+    SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
     // splicer end class.ArrayWrapper.method.fetch_array_ref_bufferify
 }
@@ -388,23 +388,22 @@ void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  int * isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Exact:     c_inout_native_*_hidden
 void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
-    ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc,
-    int * isize)
+    ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
     const double *array;
-    SH_this->fetchArrayPtrConst(&array, isize);
+    int isize;
+    SH_this->fetchArrayPtrConst(&array, &isize);
     SHT_array_cdesc->cxx.addr  = const_cast<double *>(array);
     SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
     SHT_array_cdesc->rank = 1;
-    SHT_array_cdesc->shape[0] = *isize;
+    SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
     // splicer end class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
 }
@@ -444,23 +443,22 @@ void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Argument:  int & isize +hidden
 // Attrs:     +intent(inout)
-// Requested: c_inout_native_&
-// Match:     c_default
+// Exact:     c_inout_native_&_hidden
 void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
-    ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc,
-    int * isize)
+    ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_array_ref_const_bufferify
     const double *array;
-    SH_this->fetchArrayRefConst(array, *isize);
+    int isize;
+    SH_this->fetchArrayRefConst(array, isize);
     SHT_array_cdesc->cxx.addr  = const_cast<double *>(array);
     SHT_array_cdesc->cxx.idtor = 0;
     SHT_array_cdesc->addr.base = array;
     SHT_array_cdesc->type = SH_TYPE_DOUBLE;
     SHT_array_cdesc->elem_len = sizeof(double);
     SHT_array_cdesc->rank = 1;
-    SHT_array_cdesc->shape[0] = *isize;
+    SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
     // splicer end class.ArrayWrapper.method.fetch_array_ref_const_bufferify
 }

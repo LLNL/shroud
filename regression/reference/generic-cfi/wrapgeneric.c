@@ -306,19 +306,19 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // ----------------------------------------
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_bufferify
     float *addr;
-    GetPointerAsPointer(&addr, type, size);
+    int type;
+    size_t size;
+    GetPointerAsPointer(&addr, &type, &size);
     SHT_addr_cdesc->cxx.addr  = addr;
     SHT_addr_cdesc->cxx.idtor = 0;
     SHT_addr_cdesc->addr.base = addr;
@@ -343,19 +343,19 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // ----------------------------------------
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_bufferify
     float *addr;
-    GetPointerAsPointer(&addr, type, size);
+    int type;
+    size_t size;
+    GetPointerAsPointer(&addr, &type, &size);
     SHT_addr_cdesc->cxx.addr  = addr;
     SHT_addr_cdesc->cxx.idtor = 0;
     SHT_addr_cdesc->addr.base = addr;
