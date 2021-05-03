@@ -729,6 +729,7 @@ class Wrapc(util.WrapperMixin):
             fmt.c_type = ntypemap.c_type
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
+            fmt.cfi_type = ntypemap.cfi_type
             fmt.idtor = "0"
             if ast.blanknull:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
@@ -871,6 +872,7 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
+            fmt_result.cfi_type = result_typemap.cfi_type
             if ast.template_arguments:
                 template_typemap = ast.template_arguments[0].typemap
                 fmt_result.cxx_T = template_typemap.name

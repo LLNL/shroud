@@ -508,6 +508,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_as_class",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_class",
             "f_c_module": {
                 "--import--": [
@@ -540,6 +541,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_as_numpy",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_numpy",
             "f_c_module": {
                 "--import--": [
