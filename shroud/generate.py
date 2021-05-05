@@ -572,10 +572,29 @@ class VerifyAttrs(object):
         dim = attrs["dimension"]
         if dim:
             try:
-                declast.check_dimension(dim, metaattrs)
+                check_dimension(dim, metaattrs)
             except RuntimeError:
                 raise RuntimeError("Unable to parse dimension: {} at line {}"
                                    .format(dim, node.linenumber))
+
+
+def check_dimension(dim, meta, trace=False):
+    """Return AST of dim and assumed_rank flag.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    meta : dict
+    trace : boolean
+    """
+    if dim == "..":
+        meta["dimension"] = declast.AssumedRank()
+        meta["assumed-rank"] = True
+    else:
+        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 
 class GenFunctions(object):
@@ -1187,6 +1206,9 @@ class GenFunctions(object):
         and set the rank for assumed-rank argument.
         Each argument with assumed-rank is give the same rank.
 
+        This routine is not called with F_CFI since assumed-rank can
+        be used directly without the need for generic functions.
+
         Parameters
         ----------
         node : ast.FunctionNode
@@ -1200,9 +1222,10 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 if decl.metaattrs["assumed-rank"]:
-                    # Replace dimension with rank.
+                    # Replace dimension(..) with rank(n).
                     decl.attrs["dimension"] = None
                     decl.attrs["rank"] = rank
+                    decl.metaattrs["assumed-rank"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1212,6 +1235,7 @@ class GenFunctions(object):
         for decl in params:
             if decl.metaattrs["assumed-rank"]:
                 decl.attrs["dimension"] = None
+                decl.metaattrs["assumed-rank"] = None
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):

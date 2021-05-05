@@ -510,8 +510,12 @@ but will not be part of the wrapped API since it is *hidden*.
 .. XXX ``+dimension(size(in))`` is similar to ``mold(in)``, but works
    better with multiple dimensions to avoid ``+dimension(size(in,1), size(in,2))
 
-The dimension may also be assumed-rank, *dimemsion(..)*, to allow
-scalar or any rank.
+The dimension may also be assumed-rank, *dimension(..)*, to allow
+scalar or any rank.  If option *F_CFI* is *true*, then assumed-rank
+will be added to the function interface and the C wrapper will extract
+the rank from the ``CFI_cdesc_t`` argument. Otherwise, a generic
+function will be created for each rank requested by options
+*F_assumed_rank_min* and "*F_assumed_rank_max*.
 
 .. XXX - See Fortran.rst
 

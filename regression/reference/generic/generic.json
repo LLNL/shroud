@@ -1060,7 +1060,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
@@ -1115,7 +1114,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
                                     },
@@ -1162,7 +1160,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
                                     },
@@ -1209,7 +1206,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
                                     },
@@ -1370,7 +1366,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
@@ -1472,7 +1467,6 @@
                         "fmtf": {
                             "F_C_var": "values",
                             "c_var": "values",
-                            "f_c_dimension": "(..)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1575,7 +1569,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },
@@ -1781,7 +1774,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
                                 },

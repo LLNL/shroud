@@ -2174,9 +2174,6 @@ fc_statements = [
         mixin=[
             "c_mixin_arg_native_cfi",
         ],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
-        ],
         pre_call=[
             "{cxx_type} *{cxx_var} = "
             "{cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};",

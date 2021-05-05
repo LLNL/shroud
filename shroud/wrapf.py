@@ -1497,7 +1497,8 @@ rv = .false.
         rank = f_attrs["rank"]
         if f_ast.metaattrs["assumed-rank"]:
             fmt.f_c_dimension = "(..)"
-        if rank is not None:
+            fmt.f_assumed_shape = "(..)"
+        elif rank is not None:
             fmt.rank = str(rank)
             if rank == 0:
                 fmt.size = "1"

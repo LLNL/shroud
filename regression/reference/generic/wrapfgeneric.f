@@ -216,7 +216,7 @@ module generic_mod
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -243,7 +243,7 @@ module generic_mod
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -270,7 +270,7 @@ module generic_mod
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -297,7 +297,7 @@ module generic_mod
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -1153,10 +1153,10 @@ contains
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(0)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -1193,10 +1193,10 @@ contains
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
@@ -1233,10 +1233,10 @@ contains
     ! Match:     c_function
     ! ----------------------------------------
     ! Argument:  const int * values +rank(2)
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +assumed-rank+intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------

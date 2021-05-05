@@ -26,7 +26,7 @@
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(0)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
@@ -53,7 +53,7 @@ int GEN_sum_values_0d(const int * values, int nvalues)
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
@@ -80,7 +80,7 @@ int GEN_sum_values_1d(const int * values, int nvalues)
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(2)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------

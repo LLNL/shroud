@@ -1325,6 +1325,8 @@ f_assumed_shape
    Set when *rank* attribute is set to the corresponding shape.
    ``rank=1`` sets to ``(:)``,
    ``rank=2`` sets to ``(:,:)``, etc.
+   May also be set to ``(..)`` when attribute *+dimension(..)* is used
+   and option *F_CFI* is True.
 
 f_c_dimension
     Dimension used in ``bind(C)`` interface.
