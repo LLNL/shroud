@@ -529,6 +529,10 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "44",
                 "ast": {
                     "declarator": {
                         "name": "cos_doubles",
@@ -621,10 +625,11 @@
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -650,6 +655,218 @@
                         "fmtf": {
                             "F_C_var": "in",
                             "c_var": "in",
+                            "f_intent": "IN"
+                        }
+                    },
+                    "out": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "out",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out",
+                            "cxx_type": "double",
+                            "cxx_var": "out",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_out_native_*_allocatable",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "out",
+                            "c_var": "out",
+                            "f_intent": "OUT"
+                        }
+                    },
+                    "sizein": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "sizein",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&sizein",
+                            "cxx_type": "int",
+                            "cxx_var": "sizein",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "sizein",
+                            "c_var": "sizein",
+                            "f_intent": "IN"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "in,\t out,\t sizein",
+                    "C_name": "POI_cos_doubles",
+                    "C_prototype": "double * in,\t double * out,\t int sizein",
+                    "C_return_type": "void",
+                    "F_C_arguments": "in,\t out,\t sizein",
+                    "F_C_call": "c_cos_doubles_cfi",
+                    "F_C_name": "c_cos_doubles",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
+                    "F_arguments": "in,\t out",
+                    "F_name_function": "cos_doubles",
+                    "F_name_generic": "cos_doubles",
+                    "F_name_impl": "cos_doubles",
+                    "F_subprogram": "subroutine",
+                    "function_name": "cos_doubles",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "cos_doubles"
+                }
+            },
+            {
+                "<FUNCTION>": "44 ****************************************",
+                "_PTR_C_CXX_index": "4",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "cos_doubles",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(in)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "sizein",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "doxygen": {
+                    "brief": "compute cos of IN and save in OUT",
+                    "description": "allocate OUT same type as IN implied size of array"
+                },
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "in",
+                            "c_var_cfi": "SHT_in_cfi",
+                            "c_var_extents": "SHT_in_extents",
+                            "c_var_lower": "SHT_in_lower",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_in",
+                            "cxx_type": "double",
+                            "cxx_var": "SHCXX_in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in",
+                            "c_var": "in",
+                            "c_var_cfi": "SHT_in_cfi",
+                            "c_var_extents": "SHT_in_extents",
+                            "c_var_lower": "SHT_in_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -659,10 +876,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
-                            "stmt0": "f_in_native_*",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
                         }
                     },
                     "out": {
@@ -734,30 +951,26 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "in,\t out,\t sizein",
-                    "C_name": "POI_cos_doubles",
-                    "C_prototype": "double * in,\t double * out,\t int sizein",
+                    "C_call_list": "SHCXX_in,\t out,\t sizein",
+                    "C_name": "POI_cos_doubles_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t double * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
-                    "F_C_call": "c_cos_doubles",
-                    "F_C_name": "c_cos_doubles",
+                    "F_C_name": "c_cos_doubles_cfi",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "in,\t out,\t SH_sizein",
-                    "F_arguments": "in,\t out",
-                    "F_name_function": "cos_doubles",
-                    "F_name_generic": "cos_doubles",
-                    "F_name_impl": "cos_doubles",
-                    "F_subprogram": "subroutine",
                     "function_name": "cos_doubles",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "cos_doubles"
                 }
             },
             {
                 "<FUNCTION>": "5 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "45",
                 "ast": {
                     "declarator": {
                         "name": "truncate_to_int",
@@ -850,10 +1063,11 @@
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -879,6 +1093,218 @@
                         "fmtf": {
                             "F_C_var": "in",
                             "c_var": "in",
+                            "f_intent": "IN"
+                        }
+                    },
+                    "out": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "out",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out",
+                            "cxx_type": "int",
+                            "cxx_var": "out",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_*_allocatable",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "out",
+                            "c_var": "out",
+                            "f_intent": "OUT"
+                        }
+                    },
+                    "sizein": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "sizein",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&sizein",
+                            "cxx_type": "int",
+                            "cxx_var": "sizein",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "sizein",
+                            "c_var": "sizein",
+                            "f_intent": "IN"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "in,\t out,\t sizein",
+                    "C_name": "POI_truncate_to_int",
+                    "C_prototype": "double * in,\t int * out,\t int sizein",
+                    "C_return_type": "void",
+                    "F_C_arguments": "in,\t out,\t sizein",
+                    "F_C_call": "c_truncate_to_int_cfi",
+                    "F_C_name": "c_truncate_to_int",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
+                    "F_arguments": "in,\t out",
+                    "F_name_function": "truncate_to_int",
+                    "F_name_generic": "truncate_to_int",
+                    "F_name_impl": "truncate_to_int",
+                    "F_subprogram": "subroutine",
+                    "function_name": "truncate_to_int",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "truncate_to_int"
+                }
+            },
+            {
+                "<FUNCTION>": "45 ****************************************",
+                "_PTR_C_CXX_index": "5",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "truncate_to_int",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": "size(in)",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "args": [
+                                            {
+                                                "name": "in"
+                                            }
+                                        ],
+                                        "name": "size"
+                                    }
+                                ],
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(in)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "sizein",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "doxygen": {
+                    "brief": "truncate IN argument and save in OUT",
+                    "description": "allocate OUT different type as IN\nimplied size of array\n"
+                },
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "in",
+                            "c_var_cfi": "SHT_in_cfi",
+                            "c_var_extents": "SHT_in_extents",
+                            "c_var_lower": "SHT_in_lower",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_in",
+                            "cxx_type": "double",
+                            "cxx_var": "SHCXX_in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in",
+                            "c_var": "in",
+                            "c_var_cfi": "SHT_in_cfi",
+                            "c_var_extents": "SHT_in_extents",
+                            "c_var_lower": "SHT_in_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -888,10 +1314,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
-                            "stmt0": "f_in_native_*",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
                         }
                     },
                     "out": {
@@ -963,25 +1389,17 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "in,\t out,\t sizein",
-                    "C_name": "POI_truncate_to_int",
-                    "C_prototype": "double * in,\t int * out,\t int sizein",
+                    "C_call_list": "SHCXX_in,\t out,\t sizein",
+                    "C_name": "POI_truncate_to_int_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t int * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
-                    "F_C_call": "c_truncate_to_int",
-                    "F_C_name": "c_truncate_to_int",
+                    "F_C_name": "c_truncate_to_int_cfi",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "in,\t out,\t SH_sizein",
-                    "F_arguments": "in,\t out",
-                    "F_name_function": "truncate_to_int",
-                    "F_name_generic": "truncate_to_int",
-                    "F_name_impl": "truncate_to_int",
-                    "F_subprogram": "subroutine",
                     "function_name": "truncate_to_int",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "truncate_to_int"
                 }
             },
@@ -1663,6 +2081,10 @@
             },
             {
                 "<FUNCTION>": "10 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
                         "name": "Sum",
@@ -1739,12 +2161,201 @@
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
                 "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
                 "options": {
+                    "wrap_fortran": false,
                     "wrap_lua": false
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "c_var": "len",
+                            "f_intent": "IN"
+                        }
+                    },
+                    "result": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "result",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "result",
+                            "cxx_type": "int",
+                            "cxx_var": "result",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "result",
+                            "c_var": "result",
+                            "f_intent": "OUT"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "values",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(values)",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "values",
+                            "c_var": "values",
+                            "f_intent": "IN"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "len,\t values,\t result",
+                    "C_name": "POI_sum",
+                    "C_prototype": "int len,\t const int * values,\t int * result",
+                    "C_return_type": "void",
+                    "F_C_arguments": "len,\t values,\t result",
+                    "F_C_call": "c_sum_cfi",
+                    "F_C_name": "c_sum",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_len,\t values,\t result",
+                    "F_arguments": "values,\t result",
+                    "F_name_function": "sum",
+                    "F_name_generic": "sum",
+                    "F_name_impl": "sum",
+                    "F_subprogram": "subroutine",
+                    "function_name": "Sum",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "sum"
+                }
+            },
+            {
+                "<FUNCTION>": "46 ****************************************",
+                "_PTR_C_CXX_index": "10",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "Sum",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "implied": "size(values)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "rank": 1
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "result",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
+                "options": {
+                    "wrap_fortran": false,
+                    "wrap_lua": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -1818,20 +2429,26 @@
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "values",
+                            "c_var_cfi": "SHT_values_cfi",
+                            "c_var_extents": "SHT_values_extents",
+                            "c_var_lower": "SHT_values_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<int *>\t(values)",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_values)",
                             "cxx_type": "int",
-                            "cxx_var": "values",
+                            "cxx_var": "SHCXX_values",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "values",
                             "c_var": "values",
+                            "c_var_cfi": "SHT_values_cfi",
+                            "c_var_extents": "SHT_values_extents",
+                            "c_var_lower": "SHT_values_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -1841,33 +2458,25 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(values)",
-                            "stmt0": "f_in_native_*",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "len,\t values,\t result",
-                    "C_name": "POI_sum",
-                    "C_prototype": "int len,\t const int * values,\t int * result",
+                    "C_call_list": "len,\t SHCXX_values,\t result",
+                    "C_name": "POI_sum_CFI",
+                    "C_prototype": "int len,\t CFI_cdesc_t *SHT_values_cfi,\t int * result",
                     "C_return_type": "void",
                     "F_C_arguments": "len,\t values,\t result",
-                    "F_C_call": "c_sum",
-                    "F_C_name": "c_sum",
+                    "F_C_name": "c_sum_cfi",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "SH_len,\t values,\t result",
-                    "F_arguments": "values,\t result",
-                    "F_name_function": "sum",
-                    "F_name_generic": "sum",
-                    "F_name_impl": "sum",
-                    "F_subprogram": "subroutine",
                     "function_name": "Sum",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "sum"
                 }
             },
@@ -1989,6 +2598,10 @@
             },
             {
                 "<FUNCTION>": "12 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
                         "name": "incrementIntArray",
@@ -2047,10 +2660,11 @@
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2076,6 +2690,158 @@
                         "fmtf": {
                             "F_C_var": "array",
                             "c_var": "array",
+                            "f_intent": "INOUT"
+                        }
+                    },
+                    "sizein": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "sizein",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&sizein",
+                            "cxx_type": "int",
+                            "cxx_var": "sizein",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "sizein",
+                            "c_var": "sizein",
+                            "f_intent": "IN"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "array,\t sizein",
+                    "C_name": "POI_increment_int_array",
+                    "C_prototype": "int * array,\t int sizein",
+                    "C_return_type": "void",
+                    "F_C_arguments": "array,\t sizein",
+                    "F_C_call": "c_increment_int_array_cfi",
+                    "F_C_name": "c_increment_int_array",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "array,\t SH_sizein",
+                    "F_arguments": "array",
+                    "F_name_function": "increment_int_array",
+                    "F_name_generic": "increment_int_array",
+                    "F_name_impl": "increment_int_array",
+                    "F_subprogram": "subroutine",
+                    "function_name": "incrementIntArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "increment_int_array"
+                }
+            },
+            {
+                "<FUNCTION>": "47 ****************************************",
+                "_PTR_C_CXX_index": "12",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "incrementIntArray",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "array",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(array)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "sizein",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
+                "doxygen": {
+                    "description": "Increment array in place using intent(INOUT).\n"
+                },
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "array": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "array",
+                            "c_var_cfi": "SHT_array_cfi",
+                            "c_var_extents": "SHT_array_extents",
+                            "c_var_lower": "SHT_array_lower",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_array",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_array",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_inout_native_*_cfi",
+                            "stmt1": "c_inout_native_*_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "array",
+                            "c_var": "array",
+                            "c_var_cfi": "SHT_array_cfi",
+                            "c_var_extents": "SHT_array_extents",
+                            "c_var_lower": "SHT_array_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "INOUT",
@@ -2085,10 +2851,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(array)",
-                            "stmt0": "f_inout_native_*",
+                            "stmt0": "f_inout_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_inout_native_*_cfi",
+                            "stmtc1": "c_inout_native_*_cfi"
                         }
                     },
                     "sizein": {
@@ -2123,30 +2889,26 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "array,\t sizein",
-                    "C_name": "POI_increment_int_array",
-                    "C_prototype": "int * array,\t int sizein",
+                    "C_call_list": "SHCXX_array,\t sizein",
+                    "C_name": "POI_increment_int_array_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_array_cfi,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "array,\t sizein",
-                    "F_C_call": "c_increment_int_array",
-                    "F_C_name": "c_increment_int_array",
+                    "F_C_name": "c_increment_int_array_cfi",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "array,\t SH_sizein",
-                    "F_arguments": "array",
-                    "F_name_function": "increment_int_array",
-                    "F_name_generic": "increment_int_array",
-                    "F_name_impl": "increment_int_array",
-                    "F_subprogram": "subroutine",
                     "function_name": "incrementIntArray",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "increment_int_array"
                 }
             },
             {
                 "<FUNCTION>": "13 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "name": "fill_with_zeros",
@@ -2201,10 +2963,11 @@
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
                 "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2230,6 +2993,154 @@
                         "fmtf": {
                             "F_C_var": "x",
                             "c_var": "x",
+                            "f_intent": "INOUT"
+                        }
+                    },
+                    "x_length": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "x_length",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x_length",
+                            "cxx_type": "int",
+                            "cxx_var": "x_length",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "x_length",
+                            "c_var": "x_length",
+                            "f_intent": "IN"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "x,\t x_length",
+                    "C_name": "POI_fill_with_zeros",
+                    "C_prototype": "double * x,\t int x_length",
+                    "C_return_type": "void",
+                    "F_C_arguments": "x,\t x_length",
+                    "F_C_call": "c_fill_with_zeros_cfi",
+                    "F_C_name": "c_fill_with_zeros",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "x,\t SH_x_length",
+                    "F_arguments": "x",
+                    "F_name_function": "fill_with_zeros",
+                    "F_name_generic": "fill_with_zeros",
+                    "F_name_impl": "fill_with_zeros",
+                    "F_subprogram": "subroutine",
+                    "function_name": "fill_with_zeros",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "fill_with_zeros"
+                }
+            },
+            {
+                "<FUNCTION>": "48 ****************************************",
+                "_PTR_C_CXX_index": "13",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "fill_with_zeros",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(x)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x_length",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "x",
+                            "c_var_cfi": "SHT_x_cfi",
+                            "c_var_extents": "SHT_x_extents",
+                            "c_var_lower": "SHT_x_lower",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_x",
+                            "cxx_type": "double",
+                            "cxx_var": "SHCXX_x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_inout_native_*_cfi",
+                            "stmt1": "c_inout_native_*_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "x",
+                            "c_var": "x",
+                            "c_var_cfi": "SHT_x_cfi",
+                            "c_var_extents": "SHT_x_extents",
+                            "c_var_lower": "SHT_x_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "INOUT",
@@ -2239,10 +3150,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(x)",
-                            "stmt0": "f_inout_native_*",
+                            "stmt0": "f_inout_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_inout_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_inout_native_*_cfi",
+                            "stmtc1": "c_inout_native_*_cfi"
                         }
                     },
                     "x_length": {
@@ -2277,30 +3188,26 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "x,\t x_length",
-                    "C_name": "POI_fill_with_zeros",
-                    "C_prototype": "double * x,\t int x_length",
+                    "C_call_list": "SHCXX_x,\t x_length",
+                    "C_name": "POI_fill_with_zeros_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_x_cfi,\t int x_length",
                     "C_return_type": "void",
                     "F_C_arguments": "x,\t x_length",
-                    "F_C_call": "c_fill_with_zeros",
-                    "F_C_name": "c_fill_with_zeros",
+                    "F_C_name": "c_fill_with_zeros_cfi",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "x,\t SH_x_length",
-                    "F_arguments": "x",
-                    "F_name_function": "fill_with_zeros",
-                    "F_name_generic": "fill_with_zeros",
-                    "F_name_impl": "fill_with_zeros",
-                    "F_subprogram": "subroutine",
                     "function_name": "fill_with_zeros",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "fill_with_zeros"
                 }
             },
             {
                 "<FUNCTION>": "14 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "name": "accumulate",
@@ -2356,10 +3263,11 @@
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
                 "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2385,19 +3293,7 @@
                         "fmtf": {
                             "F_C_var": "arr",
                             "c_var": "arr",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arr",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arr)",
-                            "stmt0": "f_in_native_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_default"
+                            "f_intent": "IN"
                         }
                     },
                     "len": {
@@ -2422,12 +3318,7 @@
                         "fmtf": {
                             "F_C_var": "len",
                             "c_var": "len",
-                            "f_intent": "IN",
-                            "f_kind": "C_SIZE_T",
-                            "f_type": "integer(C_SIZE_T)",
-                            "f_var": "len",
-                            "pre_call_intent": "size(arr,kind=C_SIZE_T)",
-                            "sh_type": "SH_TYPE_SIZE_T"
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -2437,7 +3328,7 @@
                     "C_prototype": "const int * arr,\t size_t len",
                     "C_return_type": "int",
                     "F_C_arguments": "arr,\t len",
-                    "F_C_call": "c_accumulate",
+                    "F_C_call": "c_accumulate_cfi",
                     "F_C_name": "c_accumulate",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -2486,11 +3377,193 @@
                 }
             },
             {
+                "<FUNCTION>": "49 ****************************************",
+                "_PTR_C_CXX_index": "14",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "accumulate",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "rank": 1
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(arr)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "arr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arr",
+                            "c_var_cfi": "SHT_arr_cfi",
+                            "c_var_extents": "SHT_arr_extents",
+                            "c_var_lower": "SHT_arr_lower",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_arr)",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arr",
+                            "c_var": "arr",
+                            "c_var_cfi": "SHT_arr_cfi",
+                            "c_var_extents": "SHT_arr_extents",
+                            "c_var_lower": "SHT_arr_lower",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arr)",
+                            "stmt0": "f_in_native_*_cfi",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
+                        }
+                    },
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "size_t",
+                            "c_var": "len",
+                            "cfi_type": "CFI_type_size_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "size_t",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "c_var": "len",
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "len",
+                            "pre_call_intent": "size(arr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_arr,\t len",
+                    "C_name": "POI_accumulate_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_arr_cfi,\t size_t len",
+                    "C_return_type": "int",
+                    "F_C_arguments": "arr,\t len",
+                    "F_C_name": "c_accumulate_cfi",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "accumulate",
+                    "function_suffix": "_CFI",
+                    "underscore_name": "accumulate"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
+                    }
+                }
+            },
+            {
                 "<FUNCTION>": "15 ****************************************",
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "44",
+                "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -2624,7 +3697,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "50 ****************************************",
                 "_PTR_C_CXX_index": "15",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -2947,7 +4020,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "45",
+                "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -3048,7 +4121,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "51 ****************************************",
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3171,7 +4244,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "46",
+                "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -3281,7 +4354,7 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "52 ****************************************",
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3420,7 +4493,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "47",
+                "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -3576,7 +4649,7 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
+                "<FUNCTION>": "53 ****************************************",
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3765,7 +4838,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "48",
+                "_PTR_F_C_index": "54",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -3876,7 +4949,7 @@
                 }
             },
             {
-                "<FUNCTION>": "48 ****************************************",
+                "<FUNCTION>": "54 ****************************************",
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4016,7 +5089,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "49",
+                "_PTR_F_C_index": "55",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -4118,7 +5191,7 @@
                 }
             },
             {
-                "<FUNCTION>": "49 ****************************************",
+                "<FUNCTION>": "55 ****************************************",
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4242,7 +5315,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "50",
+                "_PTR_F_C_index": "56",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -4350,7 +5423,7 @@
                 }
             },
             {
-                "<FUNCTION>": "50 ****************************************",
+                "<FUNCTION>": "56 ****************************************",
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4487,7 +5560,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "51",
+                "_PTR_F_C_index": "57",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -4641,7 +5714,7 @@
                 }
             },
             {
-                "<FUNCTION>": "51 ****************************************",
+                "<FUNCTION>": "57 ****************************************",
                 "_PTR_C_CXX_index": "24",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -6026,6 +7099,10 @@
             },
             {
                 "<FUNCTION>": "35 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
+                "_PTR_F_C_index": "58",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -6068,11 +7145,11 @@
                 "declgen": "int VoidPtrArray(void * * addr +rank(1))",
                 "options": {
                     "F_force_wrapper": true,
+                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -6098,18 +7175,7 @@
                         "fmtf": {
                             "F_C_var": "addr",
                             "c_var": "addr",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "addr",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "size": "size(addr)",
-                            "stmt0": "f_in_void_**",
-                            "stmt1": "f_in_void_**",
-                            "stmtc0": "c_in_void_**",
-                            "stmtc1": "c_in_void_**"
+                            "f_intent": "IN"
                         }
                     }
                 },
@@ -6119,7 +7185,7 @@
                     "C_prototype": "void **addr",
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
-                    "F_C_call": "c_void_ptr_array",
+                    "F_C_call": "c_void_ptr_array_cfi",
                     "F_C_name": "c_void_ptr_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -6168,11 +7234,143 @@
                 }
             },
             {
+                "<FUNCTION>": "58 ****************************************",
+                "_PTR_C_CXX_index": "35",
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "VoidPtrArray",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int VoidPtrArray(void **addr+rank(1))",
+                "declgen": "int VoidPtrArray(void * * addr +rank(1))",
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_fortran": false,
+                    "wrap_python": false
+                },
+                "splicer_group": "cfi",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "void",
+                            "c_var": "addr",
+                            "cfi_type": "CFI_type_intptr_t",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "c_in_void_**_cfi",
+                            "stmt1": "c_in_void_**"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "addr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "size": "size(addr)",
+                            "stmt0": "f_in_void_**_cfi",
+                            "stmt1": "f_in_void_**",
+                            "stmtc0": "c_in_void_**_cfi",
+                            "stmtc1": "c_in_void_**"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "addr",
+                    "C_name": "POI_void_ptr_array_CFI",
+                    "C_prototype": "void **addr",
+                    "C_return_type": "int",
+                    "F_C_arguments": "addr",
+                    "F_C_name": "c_void_ptr_array_cfi",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "VoidPtrArray",
+                    "function_suffix": "_CFI",
+                    "underscore_name": "void_ptr_array"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
+                    }
+                }
+            },
+            {
                 "<FUNCTION>": "36 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "52",
+                "_PTR_F_C_index": "59",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -6253,7 +7451,7 @@
                 }
             },
             {
-                "<FUNCTION>": "52 ****************************************",
+                "<FUNCTION>": "59 ****************************************",
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6327,7 +7525,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "53",
+                "_PTR_F_C_index": "60",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -6423,7 +7621,7 @@
                 }
             },
             {
-                "<FUNCTION>": "53 ****************************************",
+                "<FUNCTION>": "60 ****************************************",
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6509,7 +7707,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "54",
+                "_PTR_F_C_index": "61",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6591,7 +7789,7 @@
                 }
             },
             {
-                "<FUNCTION>": "54 ****************************************",
+                "<FUNCTION>": "61 ****************************************",
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -6666,7 +7864,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "55",
+                "_PTR_F_C_index": "62",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -6763,7 +7961,7 @@
                 }
             },
             {
-                "<FUNCTION>": "55 ****************************************",
+                "<FUNCTION>": "62 ****************************************",
                 "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -7022,7 +8220,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "56",
+                "_PTR_F_C_index": "63",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -7159,7 +8357,7 @@
                 }
             },
             {
-                "<FUNCTION>": "56 ****************************************",
+                "<FUNCTION>": "63 ****************************************",
                 "_PTR_C_CXX_index": "42",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7299,7 +8497,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "57",
+                "_PTR_F_C_index": "64",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
@@ -7388,7 +8586,7 @@
                 }
             },
             {
-                "<FUNCTION>": "57 ****************************************",
+                "<FUNCTION>": "64 ****************************************",
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_buffer",
                 "ast": {

@@ -7853,6 +7853,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "api": "cfi",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -7907,20 +7908,26 @@
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "count",
+                            "c_var_cfi": "SHT_count_cfi",
+                            "c_var_extents": "SHT_count_extents",
+                            "c_var_lower": "SHT_count_lower",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "count",
+                            "cxx_nonconst_ptr": "SHCXX_count",
                             "cxx_type": "int",
-                            "cxx_var": "count",
+                            "cxx_var": "SHCXX_count",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_native_*",
-                            "stmt1": "c_default"
+                            "stmt0": "c_in_native_*_cfi",
+                            "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "count",
                             "c_var": "count",
+                            "c_var_cfi": "SHT_count_cfi",
+                            "c_var_extents": "SHT_count_extents",
+                            "c_var_lower": "SHT_count_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",
@@ -7930,10 +7937,10 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmt0": "f_in_native_*",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_in_native_*_cfi",
+                            "stmtc1": "c_in_native_*_cfi"
                         }
                     },
                     "name": {
@@ -7975,9 +7982,9 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "count,\t SHCXX_name",
+                    "C_call_list": "SHCXX_count,\t SHCXX_name",
                     "C_name": "STR_post_declare_CFI",
-                    "C_prototype": "int * count,\t CFI_cdesc_t *SHT_name_cfi",
+                    "C_prototype": "CFI_cdesc_t *SHT_count_cfi,\t CFI_cdesc_t *SHT_name_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name",
                     "F_C_name": "post_declare",

@@ -178,6 +178,38 @@ module pointers_mod
     ! end c_cos_doubles
 
     ! ----------------------------------------
+    ! Function:  void cos_doubles
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double * in +intent(in)+rank(1)
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Requested: c_out_native_*_allocatable
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_cos_doubles_cfi
+    interface
+        subroutine c_cos_doubles_cfi(in, out, sizein) &
+                bind(C, name="POI_cos_doubles_CFI")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: in(:)
+            real(C_DOUBLE), intent(OUT) :: out(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_cos_doubles_cfi
+    end interface
+    ! end c_cos_doubles_cfi
+
+    ! ----------------------------------------
     ! Function:  void truncate_to_int
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -209,6 +241,38 @@ module pointers_mod
         end subroutine c_truncate_to_int
     end interface
     ! end c_truncate_to_int
+
+    ! ----------------------------------------
+    ! Function:  void truncate_to_int
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double * in +intent(in)+rank(1)
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Requested: c_out_native_*_allocatable
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_truncate_to_int_cfi
+    interface
+        subroutine c_truncate_to_int_cfi(in, out, sizein) &
+                bind(C, name="POI_truncate_to_int_CFI")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: in(:)
+            integer(C_INT), intent(OUT) :: out(*)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_truncate_to_int_cfi
+    end interface
+    ! end c_truncate_to_int_cfi
 
     ! ----------------------------------------
     ! Function:  void get_values
@@ -352,6 +416,38 @@ module pointers_mod
     ! end c_sum
 
     ! ----------------------------------------
+    ! Function:  void Sum
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int len +implied(size(values))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +rank(1)
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  int * result +intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
+    ! Match:     c_default
+    ! start c_sum_cfi
+    interface
+        subroutine c_sum_cfi(len, values, result) &
+                bind(C, name="POI_sum_CFI")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT), intent(IN) :: values(:)
+            integer(C_INT), intent(OUT) :: result
+        end subroutine c_sum_cfi
+    end interface
+    ! end c_sum_cfi
+
+    ! ----------------------------------------
     ! Function:  void fillIntArray
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -400,6 +496,32 @@ module pointers_mod
     ! end c_increment_int_array
 
     ! ----------------------------------------
+    ! Function:  void incrementIntArray
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int * array +intent(inout)+rank(1)
+    ! Attrs:     +api(cfi)+intent(inout)
+    ! Exact:     c_inout_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(array))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_increment_int_array_cfi
+    interface
+        subroutine c_increment_int_array_cfi(array, sizein) &
+                bind(C, name="POI_increment_int_array_CFI")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(INOUT) :: array(:)
+            integer(C_INT), value, intent(IN) :: sizein
+        end subroutine c_increment_int_array_cfi
+    end interface
+    ! end c_increment_int_array_cfi
+
+    ! ----------------------------------------
     ! Function:  void fill_with_zeros
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
@@ -425,6 +547,32 @@ module pointers_mod
         end subroutine c_fill_with_zeros
     end interface
     ! end c_fill_with_zeros
+
+    ! ----------------------------------------
+    ! Function:  void fill_with_zeros
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  double * x +rank(1)
+    ! Attrs:     +api(cfi)+intent(inout)
+    ! Exact:     c_inout_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  int x_length +implied(size(x))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_fill_with_zeros_cfi
+    interface
+        subroutine c_fill_with_zeros_cfi(x, x_length) &
+                bind(C, name="POI_fill_with_zeros_CFI")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(INOUT) :: x(:)
+            integer(C_INT), value, intent(IN) :: x_length
+        end subroutine c_fill_with_zeros_cfi
+    end interface
+    ! end c_fill_with_zeros_cfi
 
     ! ----------------------------------------
     ! Function:  int accumulate
@@ -454,6 +602,34 @@ module pointers_mod
         end function c_accumulate
     end interface
     ! end c_accumulate
+
+    ! ----------------------------------------
+    ! Function:  int accumulate
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  const int * arr +rank(1)
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
+    ! ----------------------------------------
+    ! Argument:  size_t len +implied(size(arr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_accumulate_cfi
+    interface
+        function c_accumulate_cfi(arr, len) &
+                result(SHT_rv) &
+                bind(C, name="POI_accumulate_CFI")
+            use iso_c_binding, only : C_INT, C_SIZE_T
+            implicit none
+            integer(C_INT), intent(IN) :: arr(:)
+            integer(C_SIZE_T), value, intent(IN) :: len
+            integer(C_INT) :: SHT_rv
+        end function c_accumulate_cfi
+    end interface
+    ! end c_accumulate_cfi
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
@@ -1067,11 +1243,34 @@ module pointers_mod
                 bind(C, name="POI_void_ptr_array")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(IN) :: addr(*)
+            type(C_PTR), intent(IN) :: addr
             integer(C_INT) :: SHT_rv
         end function c_void_ptr_array
     end interface
     ! end c_void_ptr_array
+
+    ! ----------------------------------------
+    ! Function:  int VoidPtrArray
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  void * * addr +rank(1)
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Requested: c_in_void_**_cfi
+    ! Match:     c_in_void_**
+    ! start c_void_ptr_array_cfi
+    interface
+        function c_void_ptr_array_cfi(addr) &
+                result(SHT_rv) &
+                bind(C, name="POI_void_ptr_array_CFI")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(IN) :: addr(*)
+            integer(C_INT) :: SHT_rv
+        end function c_void_ptr_array_cfi
+    end interface
+    ! end c_void_ptr_array_cfi
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
@@ -1327,6 +1526,7 @@ module pointers_mod
 
 contains
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  void cos_doubles
     ! Attrs:     +intent(subroutine)
@@ -1336,11 +1536,10 @@ contains
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
+    ! Requested: f_in_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
@@ -1362,11 +1561,12 @@ contains
         ! splicer begin function.cos_doubles
         allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
-        call c_cos_doubles(in, out, SH_sizein)
+        call c_cos_doubles_cfi(in, out, SH_sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
     ! end cos_doubles
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  void truncate_to_int
     ! Attrs:     +intent(subroutine)
@@ -1376,11 +1576,10 @@ contains
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
+    ! Requested: f_in_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Attrs:     +deref(allocatable)+intent(out)
@@ -1403,7 +1602,7 @@ contains
         ! splicer begin function.truncate_to_int
         allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
-        call c_truncate_to_int(in, out, SH_sizein)
+        call c_truncate_to_int_cfi(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
@@ -1441,6 +1640,7 @@ contains
     end subroutine iota_allocatable
     ! end iota_allocatable
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  void Sum
     ! Attrs:     +intent(subroutine)
@@ -1450,11 +1650,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
+    ! Requested: f_in_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
@@ -1471,11 +1670,12 @@ contains
         integer(C_INT), intent(OUT) :: result
         ! splicer begin function.sum
         SH_len = size(values,kind=C_INT)
-        call c_sum(SH_len, values, result)
+        call c_sum_cfi(SH_len, values, result)
         ! splicer end function.sum
     end subroutine sum
     ! end sum
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  void incrementIntArray
     ! Attrs:     +intent(subroutine)
@@ -1485,11 +1685,10 @@ contains
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
+    ! Requested: f_inout_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(inout)
+    ! Exact:     c_inout_native_*_cfi
     !>
     !! Increment array in place using intent(INOUT).
     !<
@@ -1500,11 +1699,12 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.increment_int_array
         SH_sizein = size(array,kind=C_INT)
-        call c_increment_int_array(array, SH_sizein)
+        call c_increment_int_array_cfi(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
     ! end increment_int_array
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
     ! Attrs:     +intent(subroutine)
@@ -1514,11 +1714,10 @@ contains
     ! ----------------------------------------
     ! Argument:  double * x +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_native_*
+    ! Requested: f_inout_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(inout)
-    ! Requested: c_inout_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(inout)
+    ! Exact:     c_inout_native_*_cfi
     ! start fill_with_zeros
     subroutine fill_with_zeros(x)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1526,11 +1725,12 @@ contains
         integer(C_INT) :: SH_x_length
         ! splicer begin function.fill_with_zeros
         SH_x_length = size(x,kind=C_INT)
-        call c_fill_with_zeros(x, SH_x_length)
+        call c_fill_with_zeros_cfi(x, SH_x_length)
         ! splicer end function.fill_with_zeros
     end subroutine fill_with_zeros
     ! end fill_with_zeros
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int accumulate
     ! Attrs:     +intent(function)
@@ -1542,11 +1742,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_native_*
+    ! Requested: f_in_native_*_cfi
     ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
     ! start accumulate
     function accumulate(arr) &
             result(SHT_rv)
@@ -1556,7 +1755,7 @@ contains
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accumulate
         SH_len = size(arr,kind=C_SIZE_T)
-        SHT_rv = c_accumulate(arr, SH_len)
+        SHT_rv = c_accumulate_cfi(arr, SH_len)
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
@@ -1669,6 +1868,7 @@ contains
     end function return_address2
     ! end return_address2
 
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
     ! Attrs:     +intent(function)
@@ -1680,9 +1880,11 @@ contains
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Attrs:     +intent(in)
-    ! Exact:     f_in_void_**
-    ! Attrs:     +intent(in)
-    ! Exact:     c_in_void_**
+    ! Requested: f_in_void_**_cfi
+    ! Match:     f_in_void_**
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Requested: c_in_void_**_cfi
+    ! Match:     c_in_void_**
     ! start void_ptr_array
     function void_ptr_array(addr) &
             result(SHT_rv)
@@ -1690,7 +1892,7 @@ contains
         type(C_PTR), intent(IN) :: addr(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.void_ptr_array
-        SHT_rv = c_void_ptr_array(addr)
+        SHT_rv = c_void_ptr_array_cfi(addr)
         ! splicer end function.void_ptr_array
     end function void_ptr_array
     ! end void_ptr_array

@@ -45,7 +45,13 @@ void POI_intargs(const int argin, int * arginout, int * argout);
 
 void POI_cos_doubles(double * in, double * out, int sizein);
 
+void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
+    int sizein);
+
 void POI_truncate_to_int(double * in, int * out, int sizein);
+
+void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int * out,
+    int sizein);
 
 void POI_get_values(int * nvalues, int * values);
 
@@ -57,13 +63,22 @@ void POI_iota_dimension(int nvar, int * values);
 
 void POI_sum(int len, const int * values, int * result);
 
+void POI_sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result);
+
 void POI_fill_int_array(int * out);
 
 void POI_increment_int_array(int * array, int sizein);
 
+void POI_increment_int_array_CFI(CFI_cdesc_t *SHT_array_cfi,
+    int sizein);
+
 void POI_fill_with_zeros(double * x, int x_length);
 
+void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length);
+
 int POI_accumulate(const int * arr, size_t len);
+
+int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len);
 
 int POI_accept_char_array_in(char **names);
 
@@ -123,6 +138,8 @@ void * POI_return_address2(int flag);
 void POI_fetch_void_ptr(void * * addr);
 
 int POI_void_ptr_array(void **addr);
+
+int POI_void_ptr_array_CFI(void **addr);
 
 int * POI_return_int_ptr_to_scalar(void);
 

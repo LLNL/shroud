@@ -1223,9 +1223,8 @@ module strings_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_*
-    ! Match:     c_default
+    ! Attrs:     +api(cfi)+intent(in)
+    ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +api(cfi)+intent(inout)
@@ -1235,7 +1234,7 @@ module strings_mod
                 bind(C, name="STR_post_declare_CFI")
             use iso_c_binding, only : C_INT
             implicit none
-            integer(C_INT), intent(IN) :: count(*)
+            integer(C_INT), intent(IN) :: count(:)
             character(len=*), intent(INOUT) :: name
         end subroutine post_declare
     end interface

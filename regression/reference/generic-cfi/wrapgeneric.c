@@ -98,20 +98,20 @@ void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * to +rank(1)
-// Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Attrs:     +api(cfi)+intent(inout)
+// Exact:     c_inout_native_*_cfi
 // ----------------------------------------
 // Argument:  int nto +value
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
-    int nto)
+void GEN_assign_values_broadcast_CFI(const int * from, int nfrom,
+    CFI_cdesc_t *SHT_to_cfi, int nto)
 {
-    // splicer begin function.assign_values_broadcast
-    AssignValues(from, nfrom, to, nto);
-    // splicer end function.assign_values_broadcast
+    // splicer begin function.assign_values_broadcast_CFI
+    int *SHCXX_to = (int *) SHT_to_cfi->base_addr;
+    AssignValues(from, nfrom, SHCXX_to, nto);
+    // splicer end function.assign_values_broadcast_CFI
 }
 
 /**
@@ -124,9 +124,8 @@ void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * from +rank(1)
-// Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int nfrom +value
 // Attrs:     +intent(in)
@@ -134,20 +133,21 @@ void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * to +rank(1)
-// Attrs:     +intent(inout)
-// Requested: c_inout_native_*
-// Match:     c_default
+// Attrs:     +api(cfi)+intent(inout)
+// Exact:     c_inout_native_*_cfi
 // ----------------------------------------
 // Argument:  int nto +value
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_copy(const int * from, int nfrom, int * to,
-    int nto)
+void GEN_assign_values_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
+    CFI_cdesc_t *SHT_to_cfi, int nto)
 {
-    // splicer begin function.assign_values_copy
-    AssignValues(from, nfrom, to, nto);
-    // splicer end function.assign_values_copy
+    // splicer begin function.assign_values_copy_CFI
+    int *SHCXX_from = (int *) SHT_from_cfi->base_addr;
+    int *SHCXX_to = (int *) SHT_to_cfi->base_addr;
+    AssignValues(SHCXX_from, nfrom, SHCXX_to, nto);
+    // splicer end function.assign_values_copy_CFI
 }
 
 #if 1
@@ -157,9 +157,9 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
-// Match:     c_default
+// Attrs:     +api(cfi)+deref(raw)+intent(in)
+// Requested: c_in_native_*_cfi_raw
+// Match:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
@@ -170,11 +170,13 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float1d(float * addr, int type, size_t size)
+void GEN_save_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+    size_t size)
 {
-    // splicer begin function.save_pointer_float1d
-    SavePointer(addr, type, size);
-    // splicer end function.save_pointer_float1d
+    // splicer begin function.save_pointer_float1d_CFI
+    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
+    SavePointer(SHCXX_addr, type, size);
+    // splicer end function.save_pointer_float1d_CFI
 }
 #endif  // if 1
 
@@ -185,9 +187,9 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
-// Match:     c_default
+// Attrs:     +api(cfi)+deref(raw)+intent(in)
+// Requested: c_in_native_*_cfi_raw
+// Match:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
@@ -198,11 +200,13 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float2d(float * addr, int type, size_t size)
+void GEN_save_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+    size_t size)
 {
-    // splicer begin function.save_pointer_float2d
-    SavePointer(addr, type, size);
-    // splicer end function.save_pointer_float2d
+    // splicer begin function.save_pointer_float2d_CFI
+    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
+    SavePointer(SHCXX_addr, type, size);
+    // splicer end function.save_pointer_float2d_CFI
 }
 #endif  // if 1
 
@@ -241,9 +245,9 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
-// Match:     c_default
+// Attrs:     +api(cfi)+deref(raw)+intent(in)
+// Requested: c_in_native_*_cfi_raw
+// Match:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
@@ -254,14 +258,16 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
+void GEN_save_pointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+    size_t size)
 {
-    // splicer begin function.save_pointer2_float1d
+    // splicer begin function.save_pointer2_float1d_CFI
+    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
     // Test adding a blank line below.
 
     type = convert_type(type);
-    SavePointer2(addr, type, size);
-    // splicer end function.save_pointer2_float1d
+    SavePointer2(SHCXX_addr, type, size);
+    // splicer end function.save_pointer2_float1d_CFI
 }
 
 // ----------------------------------------
@@ -270,9 +276,9 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
-// Match:     c_default
+// Attrs:     +api(cfi)+deref(raw)+intent(in)
+// Requested: c_in_native_*_cfi_raw
+// Match:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
@@ -283,14 +289,16 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
+void GEN_save_pointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+    size_t size)
 {
-    // splicer begin function.save_pointer2_float2d
+    // splicer begin function.save_pointer2_float2d_CFI
+    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
     // Test adding a blank line below.
 
     type = convert_type(type);
-    SavePointer2(addr, type, size);
-    // splicer end function.save_pointer2_float2d
+    SavePointer2(SHCXX_addr, type, size);
+    // splicer end function.save_pointer2_float2d_CFI
 }
 
 #if 0

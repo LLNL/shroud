@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 rundir = ../../../run
-python.exe = ../../../../build/temp.linux-x86_64-2.7/venv/bin/python
+python.exe = ../../../../build/temp.linux-x86_64-3.7/venv/bin/python
 
 swig-fortran = $(HOME)/local/swig-fortran/bin/swig
 

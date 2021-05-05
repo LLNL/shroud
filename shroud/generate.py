@@ -1608,6 +1608,8 @@ class GenFunctions(object):
                 continue
             elif arg.metaattrs["assumed-rank"]:
                 cfi_args[arg.name] = True
+            elif arg.attrs["rank"]:
+                cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "string":
                     cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "char":

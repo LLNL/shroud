@@ -213,6 +213,40 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // end POI_cos_doubles
 
 /**
+ * \brief compute cos of IN and save in OUT
+ *
+ * allocate OUT same type as IN implied size of array
+ */
+// ----------------------------------------
+// Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  double * in +intent(in)+rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
+// ----------------------------------------
+// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
+// Requested: c_out_native_*_allocatable
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int sizein +implied(size(in))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start POI_cos_doubles_CFI
+void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
+    int sizein)
+{
+    // splicer begin function.cos_doubles_CFI
+    double *SHCXX_in = static_cast<double *>(SHT_in_cfi->base_addr);
+    cos_doubles(SHCXX_in, out, sizein);
+    // splicer end function.cos_doubles_CFI
+}
+// end POI_cos_doubles_CFI
+
+/**
  * \brief truncate IN argument and save in OUT
  *
  * allocate OUT different type as IN
@@ -245,6 +279,41 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
     // splicer end function.truncate_to_int
 }
 // end POI_truncate_to_int
+
+/**
+ * \brief truncate IN argument and save in OUT
+ *
+ * allocate OUT different type as IN
+ * implied size of array
+ */
+// ----------------------------------------
+// Function:  void truncate_to_int
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  double * in +intent(in)+rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
+// ----------------------------------------
+// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
+// Requested: c_out_native_*_allocatable
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int sizein +implied(size(in))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start POI_truncate_to_int_CFI
+void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int * out,
+    int sizein)
+{
+    // splicer begin function.truncate_to_int_CFI
+    double *SHCXX_in = static_cast<double *>(SHT_in_cfi->base_addr);
+    truncate_to_int(SHCXX_in, out, sizein);
+    // splicer end function.truncate_to_int_CFI
+}
+// end POI_truncate_to_int_CFI
 
 /**
  * \brief fill values into array
@@ -380,6 +449,34 @@ void POI_sum(int len, const int * values, int * result)
 }
 // end POI_sum
 
+// ----------------------------------------
+// Function:  void Sum
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  int len +implied(size(values))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * values +rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
+// ----------------------------------------
+// Argument:  int * result +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
+// Match:     c_default
+// start POI_sum_CFI
+void POI_sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result)
+{
+    // splicer begin function.sum_CFI
+    int *SHCXX_values = static_cast<int *>(SHT_values_cfi->base_addr);
+    Sum(len, SHCXX_values, result);
+    // splicer end function.sum_CFI
+}
+// end POI_sum_CFI
+
 /**
  * Return three values into memory the user provides.
  */
@@ -427,6 +524,32 @@ void POI_increment_int_array(int * array, int sizein)
 }
 // end POI_increment_int_array
 
+/**
+ * Increment array in place using intent(INOUT).
+ */
+// ----------------------------------------
+// Function:  void incrementIntArray
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  int * array +intent(inout)+rank(1)
+// Attrs:     +api(cfi)+intent(inout)
+// Exact:     c_inout_native_*_cfi
+// ----------------------------------------
+// Argument:  int sizein +implied(size(array))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start POI_increment_int_array_CFI
+void POI_increment_int_array_CFI(CFI_cdesc_t *SHT_array_cfi, int sizein)
+{
+    // splicer begin function.increment_int_array_CFI
+    int *SHCXX_array = static_cast<int *>(SHT_array_cfi->base_addr);
+    incrementIntArray(SHCXX_array, sizein);
+    // splicer end function.increment_int_array_CFI
+}
+// end POI_increment_int_array_CFI
+
 // ----------------------------------------
 // Function:  void fill_with_zeros
 // Attrs:     +intent(subroutine)
@@ -449,6 +572,29 @@ void POI_fill_with_zeros(double * x, int x_length)
     // splicer end function.fill_with_zeros
 }
 // end POI_fill_with_zeros
+
+// ----------------------------------------
+// Function:  void fill_with_zeros
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  double * x +rank(1)
+// Attrs:     +api(cfi)+intent(inout)
+// Exact:     c_inout_native_*_cfi
+// ----------------------------------------
+// Argument:  int x_length +implied(size(x))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start POI_fill_with_zeros_CFI
+void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length)
+{
+    // splicer begin function.fill_with_zeros_CFI
+    double *SHCXX_x = static_cast<double *>(SHT_x_cfi->base_addr);
+    fill_with_zeros(SHCXX_x, x_length);
+    // splicer end function.fill_with_zeros_CFI
+}
+// end POI_fill_with_zeros_CFI
 
 // ----------------------------------------
 // Function:  int accumulate
@@ -474,6 +620,31 @@ int POI_accumulate(const int * arr, size_t len)
     // splicer end function.accumulate
 }
 // end POI_accumulate
+
+// ----------------------------------------
+// Function:  int accumulate
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  const int * arr +rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
+// ----------------------------------------
+// Argument:  size_t len +implied(size(arr))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+// start POI_accumulate_CFI
+int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
+{
+    // splicer begin function.accumulate_CFI
+    int *SHCXX_arr = static_cast<int *>(SHT_arr_cfi->base_addr);
+    int SHC_rv = accumulate(SHCXX_arr, len);
+    return SHC_rv;
+    // splicer end function.accumulate_CFI
+}
+// end POI_accumulate_CFI
 
 /**
  * Return strlen of the first index as a check.
@@ -1187,6 +1358,26 @@ int POI_void_ptr_array(void **addr)
     // splicer end function.void_ptr_array
 }
 // end POI_void_ptr_array
+
+// ----------------------------------------
+// Function:  int VoidPtrArray
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  void * * addr +rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Requested: c_in_void_**_cfi
+// Match:     c_in_void_**
+// start POI_void_ptr_array_CFI
+int POI_void_ptr_array_CFI(void **addr)
+{
+    // splicer begin function.void_ptr_array_CFI
+    int SHC_rv = VoidPtrArray(addr);
+    return SHC_rv;
+    // splicer end function.void_ptr_array_CFI
+}
+// end POI_void_ptr_array_CFI
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar

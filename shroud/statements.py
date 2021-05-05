@@ -2170,7 +2170,9 @@ fc_statements = [
     ########################################
 
     dict(
-        name="c_in_native_*_cfi",
+        # c_in_native_*_cfi
+        # c_inout_native_*_cfi
+        name="c_in/inout_native_*_cfi",
         mixin=[
             "c_mixin_arg_native_cfi",
         ],
