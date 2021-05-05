@@ -3864,7 +3864,9 @@ py_statements = [
     ),
 
     dict(
-        name="py_out_native_*_pointer_numpy",
+        # py_out_native_*_allocatable_numpy
+        # py_out_native_*_pointer_numpy
+        name="py_out_native_*_allocatable/pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
@@ -3907,7 +3909,9 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_native_*_pointer_numpy",
+        # py_function_native_*_pointer_numpy
+        # py_function_native_&_pointer_numpy
+        name="py_function_native_*/&_pointer_numpy",
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -3928,10 +3932,6 @@ py_statements = [
         declare_capsule=declare_capsule,
         post_call_capsule=post_call_capsule,
         fail_capsule=fail_capsule,
-    ),
-    dict(
-        name="py_function_native_&_pointer_numpy",
-        base="py_function_native_*_pointer_numpy",
     ),
     dict(
         name="py_function_native_*_allocatable_numpy",
@@ -4028,7 +4028,9 @@ py_statements = [
     ),
 
     dict(
-        name="py_out_native_*_pointer_list",
+        # py_out_native_*_allocatable_list
+        # py_out_native_*_pointer_list
+        name="py_out_native_*_allocatable/pointer_list",
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4073,17 +4075,6 @@ py_statements = [
         arg_call=["&{cxx_var}"],
     ),
     
-########################################
-## allocatable
-    dict(
-        name="py_out_native_*_allocatable_list",
-        base="py_out_native_*_pointer_list",
-    ),
-    dict(
-        name="py_out_native_*_allocatable_numpy",
-        base="py_out_native_*_pointer_numpy",
-    ),
-
 ########################################
 ## raw
     dict(

@@ -1,0 +1,23 @@
+copyright:
+- Copyright (c) 2017-2021, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test decl which should report errors.
+
+library: errors
+
+declarations:
+- decl: void cos_doubles(double * in     +intent(in)  +rank(1),
+                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                         int      sizein +implied(size(in)))
+  doxygen:
+    brief: compute cos of IN and save in OUT
+    description:
+      OUT must already be allocated since it is an intent(out).
+      The C routine assigs to existing memory in Fortran wrapper.
+      The Python wrapper, must allocate the array first it is not
+      passed in as an argument.
