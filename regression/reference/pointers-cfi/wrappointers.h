@@ -75,39 +75,32 @@ int POI_sum_fixed_array(void);
 
 void POI_get_ptr_to_scalar(int * * nitems);
 
-void POI_get_ptr_to_scalar_bufferify(
-    POI_SHROUD_array *SHT_nitems_cdesc);
+void POI_get_ptr_to_scalar_CFI(CFI_cdesc_t *SHT_nitems_cfi);
 
 void POI_get_ptr_to_fixed_array(int * * count);
 
-void POI_get_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_ptr_to_fixed_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
 
-void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_ptr_to_dynamic_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void POI_get_ptr_to_func_array(int * * count);
 
-void POI_get_ptr_to_func_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_ptr_to_func_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void POI_get_ptr_to_const_scalar(const int * * nitems);
 
-void POI_get_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *SHT_nitems_cdesc);
+void POI_get_ptr_to_const_scalar_CFI(CFI_cdesc_t *SHT_nitems_cfi);
 
 void POI_get_ptr_to_fixed_const_array(const int * * count);
 
-void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_ptr_to_fixed_const_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void POI_get_ptr_to_dynamic_const_array(const int * * count,
     int * ncount);
 
-void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_ptr_to_dynamic_const_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void POI_get_raw_ptr_to_scalar(int * * nitems);
 

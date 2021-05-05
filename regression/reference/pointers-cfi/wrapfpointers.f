@@ -565,19 +565,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_scalar_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_scalar
     interface
-        subroutine c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc) &
-                bind(C, name="POI_get_ptr_to_scalar_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_scalar(nitems) &
+                bind(C, name="POI_get_ptr_to_scalar_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
-        end subroutine c_get_ptr_to_scalar_bufferify
+            integer(C_INT), intent(OUT), pointer :: nitems
+        end subroutine get_ptr_to_scalar
     end interface
-    ! end c_get_ptr_to_scalar_bufferify
+    ! end get_ptr_to_scalar
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
@@ -607,19 +606,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_fixed_array_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_fixed_array
     interface
-        subroutine c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_fixed_array_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_fixed_array(count) &
+                bind(C, name="POI_get_ptr_to_fixed_array_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-        end subroutine c_get_ptr_to_fixed_array_bufferify
+            integer(C_INT), intent(OUT), pointer :: count(:)
+        end subroutine get_ptr_to_fixed_array
     end interface
-    ! end c_get_ptr_to_fixed_array_bufferify
+    ! end get_ptr_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
@@ -655,19 +653,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_dynamic_array_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_dynamic_array
     interface
-        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_dynamic_array(count) &
+                bind(C, name="POI_get_ptr_to_dynamic_array_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-        end subroutine c_get_ptr_to_dynamic_array_bufferify
+            integer(C_INT), intent(OUT), pointer :: count(:)
+        end subroutine get_ptr_to_dynamic_array
     end interface
-    ! end c_get_ptr_to_dynamic_array_bufferify
+    ! end get_ptr_to_dynamic_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
@@ -697,19 +694,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_func_array_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_func_array
     interface
-        subroutine c_get_ptr_to_func_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_func_array_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_func_array(count) &
+                bind(C, name="POI_get_ptr_to_func_array_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-        end subroutine c_get_ptr_to_func_array_bufferify
+            integer(C_INT), intent(OUT), pointer :: count(:)
+        end subroutine get_ptr_to_func_array
     end interface
-    ! end c_get_ptr_to_func_array_bufferify
+    ! end get_ptr_to_func_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
@@ -739,19 +735,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_const_scalar_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_const_scalar
     interface
-        subroutine c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc) &
-                bind(C, name="POI_get_ptr_to_const_scalar_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_const_scalar(nitems) &
+                bind(C, name="POI_get_ptr_to_const_scalar_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
-        end subroutine c_get_ptr_to_const_scalar_bufferify
+            integer(C_INT), intent(OUT), pointer :: nitems
+        end subroutine get_ptr_to_const_scalar
     end interface
-    ! end c_get_ptr_to_const_scalar_bufferify
+    ! end get_ptr_to_const_scalar
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
@@ -781,20 +776,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_fixed_const_array_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_fixed_const_array
     interface
-        subroutine c_get_ptr_to_fixed_const_array_bufferify( &
-                SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_fixed_const_array_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_fixed_const_array(count) &
+                bind(C, name="POI_get_ptr_to_fixed_const_array_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-        end subroutine c_get_ptr_to_fixed_const_array_bufferify
+            integer(C_INT), intent(OUT), pointer :: count(:)
+        end subroutine get_ptr_to_fixed_const_array
     end interface
-    ! end c_get_ptr_to_fixed_const_array_bufferify
+    ! end get_ptr_to_fixed_const_array
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
@@ -830,20 +823,18 @@ module pointers_mod
     ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start c_get_ptr_to_dynamic_const_array_bufferify
+    ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
+    ! Exact:     c_out_native_**_cfi_pointer
+    ! start get_ptr_to_dynamic_const_array
     interface
-        subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
-                SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
-            import :: POI_SHROUD_array
+        subroutine get_ptr_to_dynamic_const_array(count) &
+                bind(C, name="POI_get_ptr_to_dynamic_const_array_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-        end subroutine c_get_ptr_to_dynamic_const_array_bufferify
+            integer(C_INT), intent(OUT), pointer :: count(:)
+        end subroutine get_ptr_to_dynamic_const_array
     end interface
-    ! end c_get_ptr_to_dynamic_const_array_bufferify
+    ! end get_ptr_to_dynamic_const_array
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
@@ -1569,205 +1560,6 @@ contains
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToScalar
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * nitems +intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start get_ptr_to_scalar
-    subroutine get_ptr_to_scalar(nitems)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: nitems
-        ! splicer begin function.get_ptr_to_scalar
-        type(POI_SHROUD_array) :: SHT_nitems_cdesc
-        call c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc)
-        call c_f_pointer(SHT_nitems_cdesc%base_addr, nitems)
-        ! splicer end function.get_ptr_to_scalar
-    end subroutine get_ptr_to_scalar
-    ! end get_ptr_to_scalar
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToFixedArray
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    !>
-    !! Return a Fortran pointer to an array which is always the same length.
-    !<
-    ! start get_ptr_to_fixed_array
-    subroutine get_ptr_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_ptr_to_fixed_array
-        type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc)
-        call c_f_pointer(SHT_count_cdesc%base_addr, count, &
-            SHT_count_cdesc%shape(1:1))
-        ! splicer end function.get_ptr_to_fixed_array
-    end subroutine get_ptr_to_fixed_array
-    ! end get_ptr_to_fixed_array
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToDynamicArray
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    !>
-    !! Return a Fortran pointer to an array which is the length of
-    !! the argument ncount.
-    !<
-    ! start get_ptr_to_dynamic_array
-    subroutine get_ptr_to_dynamic_array(count)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_ptr_to_dynamic_array
-        type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc)
-        call c_f_pointer(SHT_count_cdesc%base_addr, count, &
-            SHT_count_cdesc%shape(1:1))
-        ! splicer end function.get_ptr_to_dynamic_array
-    end subroutine get_ptr_to_dynamic_array
-    ! end get_ptr_to_dynamic_array
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToFuncArray
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int * * count +dimension(getLen())+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    !>
-    !! Return a Fortran pointer to an array which is the length
-    !! is computed by C++ function getLen.
-    !! getLen will be called from C/C++ to compute the shape.
-    !<
-    ! start get_ptr_to_func_array
-    subroutine get_ptr_to_func_array(count)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_ptr_to_func_array
-        type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_func_array_bufferify(SHT_count_cdesc)
-        call c_f_pointer(SHT_count_cdesc%base_addr, count, &
-            SHT_count_cdesc%shape(1:1))
-        ! splicer end function.get_ptr_to_func_array
-    end subroutine get_ptr_to_func_array
-    ! end get_ptr_to_func_array
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToConstScalar
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * nitems +intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start get_ptr_to_const_scalar
-    subroutine get_ptr_to_const_scalar(nitems)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: nitems
-        ! splicer begin function.get_ptr_to_const_scalar
-        type(POI_SHROUD_array) :: SHT_nitems_cdesc
-        call c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc)
-        call c_f_pointer(SHT_nitems_cdesc%base_addr, nitems)
-        ! splicer end function.get_ptr_to_const_scalar
-    end subroutine get_ptr_to_const_scalar
-    ! end get_ptr_to_const_scalar
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToFixedConstArray
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * count +dimension(10)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start get_ptr_to_fixed_const_array
-    subroutine get_ptr_to_fixed_const_array(count)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_ptr_to_fixed_const_array
-        type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_fixed_const_array_bufferify(SHT_count_cdesc)
-        call c_f_pointer(SHT_count_cdesc%base_addr, count, &
-            SHT_count_cdesc%shape(1:1))
-        ! splicer end function.get_ptr_to_fixed_const_array
-    end subroutine get_ptr_to_fixed_const_array
-    ! end get_ptr_to_fixed_const_array
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getPtrToDynamicConstArray
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  const int * * count +dimension(ncount)+intent(out)
-    ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     f_out_native_**_cdesc_pointer
-    ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-    ! Requested: c_out_native_**_cdesc_pointer
-    ! Match:     c_out_native_**_cdesc
-    ! start get_ptr_to_dynamic_const_array
-    subroutine get_ptr_to_dynamic_const_array(count)
-        use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT), intent(OUT), pointer :: count(:)
-        ! splicer begin function.get_ptr_to_dynamic_const_array
-        type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_const_array_bufferify(SHT_count_cdesc)
-        call c_f_pointer(SHT_count_cdesc%base_addr, count, &
-            SHT_count_cdesc%shape(1:1))
-        ! splicer end function.get_ptr_to_dynamic_const_array
-    end subroutine get_ptr_to_dynamic_const_array
-    ! end get_ptr_to_dynamic_const_array
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce

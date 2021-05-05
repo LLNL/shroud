@@ -300,9 +300,8 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -311,22 +310,25 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc)
+void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
-    // splicer begin function.get_pointer_as_pointer_float1d_bufferify
-    float *addr;
+    // splicer begin function.get_pointer_as_pointer_float1d_CFI
+    float * SHCXX_addr;
     int type;
     size_t size;
-    GetPointerAsPointer(&addr, &type, &size);
-    SHT_addr_cdesc->cxx.addr  = addr;
-    SHT_addr_cdesc->cxx.idtor = 0;
-    SHT_addr_cdesc->addr.base = addr;
-    SHT_addr_cdesc->type = SH_TYPE_FLOAT;
-    SHT_addr_cdesc->elem_len = sizeof(float);
-    SHT_addr_cdesc->rank = 0;
-    SHT_addr_cdesc->size = 1;
-    // splicer end function.get_pointer_as_pointer_float1d_bufferify
+    GetPointerAsPointer(&SHCXX_addr, &type, &size);
+    {
+        CFI_CDESC_T(0) SHC_addr_fptr;
+        CFI_cdesc_t *SHC_addr_cdesc = (CFI_cdesc_t *) &SHC_addr_fptr;
+        void *SHC_addr_cptr = const_cast<float *>(SHCXX_addr);
+        int SHC_addr_err = CFI_establish(SHC_addr_cdesc, SHC_addr_cptr,
+            CFI_attribute_pointer, CFI_type_float, 0, 0, NULL);
+        if (SHC_addr_err == CFI_SUCCESS) {
+            SHC_addr_err = CFI_setpointer(SHT_addr_cfi, SHC_addr_cdesc,
+                NULL);
+        }
+    }
+    // splicer end function.get_pointer_as_pointer_float1d_CFI
 }
 #endif  // if 0
 
@@ -337,9 +339,8 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
@@ -348,22 +349,25 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc)
+void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
-    // splicer begin function.get_pointer_as_pointer_float2d_bufferify
-    float *addr;
+    // splicer begin function.get_pointer_as_pointer_float2d_CFI
+    float * SHCXX_addr;
     int type;
     size_t size;
-    GetPointerAsPointer(&addr, &type, &size);
-    SHT_addr_cdesc->cxx.addr  = addr;
-    SHT_addr_cdesc->cxx.idtor = 0;
-    SHT_addr_cdesc->addr.base = addr;
-    SHT_addr_cdesc->type = SH_TYPE_FLOAT;
-    SHT_addr_cdesc->elem_len = sizeof(float);
-    SHT_addr_cdesc->rank = 0;
-    SHT_addr_cdesc->size = 1;
-    // splicer end function.get_pointer_as_pointer_float2d_bufferify
+    GetPointerAsPointer(&SHCXX_addr, &type, &size);
+    {
+        CFI_CDESC_T(0) SHC_addr_fptr;
+        CFI_cdesc_t *SHC_addr_cdesc = (CFI_cdesc_t *) &SHC_addr_fptr;
+        void *SHC_addr_cptr = const_cast<float *>(SHCXX_addr);
+        int SHC_addr_err = CFI_establish(SHC_addr_cdesc, SHC_addr_cptr,
+            CFI_attribute_pointer, CFI_type_float, 0, 0, NULL);
+        if (SHC_addr_err == CFI_SUCCESS) {
+            SHC_addr_err = CFI_setpointer(SHT_addr_cfi, SHC_addr_cdesc,
+                NULL);
+        }
+    }
+    // splicer end function.get_pointer_as_pointer_float2d_CFI
 }
 #endif  // if 0
 

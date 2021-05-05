@@ -125,6 +125,8 @@ contains
     real(C_DOUBLE) zero(10)
     integer(C_INT) sum, count(5)
 
+    call set_case_name("test_swig")
+
     call fill_with_zeros(zero)
 
     count = [1, 2, 3, 4, 5]
@@ -168,13 +170,19 @@ contains
     integer(C_INT) :: ivalue, narray
     integer(C_INT), target :: ivalue1, ivalue2
     integer(C_INT), pointer :: iscalar, irvscalar
-    integer(C_INT), pointer :: iarray(:), irvarray(:)
+    integer(C_INT), pointer :: iarray(:)
+    integer(C_INT), pointer :: irvarray(:)
     type(C_PTR) :: cptr_scalar, cptr_array
     type(C_PTR) :: void
     type(C_PTR) :: cptr_arrays(2)
 
+    call set_case_name("test_out_ptrs")
+
     call set_global_int(0)
+
+    nullify(iscalar)
     call get_ptr_to_scalar(iscalar)
+    call assert_true(associated(iscalar))
     call assert_equals(0, iscalar)
 
     ! iscalar points to global_int in pointers.c.
@@ -183,13 +191,20 @@ contains
 
     nullify(iarray)
     call get_ptr_to_fixed_array(iarray)
+    call assert_true(associated(iarray))
     call assert_equals(10, size(iarray))
+    call assert_true(lbound(iarray,1) == 1, &
+         "getPtrToFixedArray - lbound")
+    call assert_true(ubound(iarray,1) == 10, &
+         "getPtrToFixedArray - ubound")
     iarray = 0
-    call assert_equals(0, sum_fixed_array())
+    call assert_equals(0, sum_fixed_array(), &
+         "sumFixedArray - initial")
     ! Make sure we're assigning to global_array.
     iarray(1) = 1
     iarray(10) = 2
-    call assert_equals(3, sum_fixed_array())
+    call assert_equals(3, sum_fixed_array(), &
+         "sumFixedArray - changes")
 
     ! Returns global_array in pointers.c.
     nullify(iarray)
@@ -204,32 +219,43 @@ contains
     call assert_true(narray == 10)
 
     ! Returns global_array in pointers.c.
+    ! iarray is used later for deref(raw) tests. Do not reset.
     nullify(iarray)
     call get_ptr_to_func_array(iarray)
     call assert_true(associated(iarray))
     call assert_true(size(iarray) == 10)
+    call assert_true(lbound(iarray,1) == 1)
+    call assert_true(ubound(iarray,1) == 10)
 
     call get_raw_ptr_to_scalar(cptr_scalar)
-    call assert_true(c_associated(cptr_scalar), "getRawPtrToScalar")
+    call assert_true(c_associated(cptr_scalar), &
+         "getRawPtrToScalar - c_associated")
     ! associated with global_int in pointers.c
-    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), "getRawPtrToScalar")
+    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), &
+         "getRawPtrToScalar - c_associated(iscalar)")
 
     call get_raw_ptr_to_scalar_force(cptr_scalar)
-    call assert_true(c_associated(cptr_scalar), "getRawPtrToScalarForce")
+    call assert_true(c_associated(cptr_scalar), &
+         "getRawPtrToScalarForce - c_associated")
     ! associated with global_int in pointers.c
-    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), "getRawPtrToScalarForce")
+    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), &
+         "getRawPtrToScalarForce - c_associated(iscalar)")
 
     cptr_array = C_NULL_PTR
     call get_raw_ptr_to_fixed_array(cptr_array)
-    call assert_true(c_associated(cptr_array), "getRawPtrToFixedArray")
+    call assert_true(c_associated(cptr_array), &
+         "getRawPtrToFixedArray - c_associated")
     ! associated with global_fixed_array in pointers.c
-    call assert_true(c_associated(cptr_array, c_loc(iarray)), "getRawPtrToFixedArray")
+    call assert_true(c_associated(cptr_array, c_loc(iarray(1))), &
+         "getRawPtrToFixedArray - c_associated(iarray)")
 
     cptr_array = C_NULL_PTR
     call get_raw_ptr_to_fixed_array_force(cptr_array)
-    call assert_true(c_associated(cptr_array), "getRawPtrToFixedArrayForce")
+    call assert_true(c_associated(cptr_array), &
+         "getRawPtrToFixedArrayForce - c_associated")
     ! associated with global_fixed_array in pointers.c
-    call assert_true(c_associated(cptr_array, c_loc(iarray)), "getRawPtrToFixedArrayForce")
+    call assert_true(c_associated(cptr_array, c_loc(iarray(1))), &
+         "getRawPtrToFixedArrayForce - c_associated(iarray)")
 
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface
@@ -305,6 +331,8 @@ contains
     integer(C_INT), pointer :: row1(:), row2(:)
     integer total
     
+    call set_case_name("test_nested_ptrs")
+
     addr = C_NULL_PTR
     call get_raw_ptr_to_int2d(addr)
     call assert_equals(15, check_int2d(addr), "getRawPtrToInt2d")
@@ -326,6 +354,8 @@ contains
     ! Test +dimension(10,20) +intent(in)  together.
 !    integer(C_INT) arg(2,3)
     integer(C_INT) arg2(20,30)
+
+    call set_case_name("test_dimension")
 
     ! gcc Warning: Actual argument contains too few elements for dummy argument 'arg'
     ! intel error #7983: The storage extent of the dummy argument exceeds that of the actual argument.   [ARG]

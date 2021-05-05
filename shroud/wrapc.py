@@ -761,7 +761,21 @@ class Wrapc(util.WrapperMixin):
                             fmt.c_var_cdesc, i, dim))
                     fmt.c_array_shape = "\n" + "\n".join(fmtdim)
                     if fmtsize:
+                        # Multiply extents together to get size.
                         fmt.c_array_size = "*\t".join(fmtsize)
+                if hasattr(fmt, "c_var_extents"):
+                    # Used with CFI_establish
+                    fmt.c_temp_extents_decl = (
+                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
+                        format(fmt.c_var_extents, fmt.rank,
+                               ",".join(visitor.shape)))
+                    # Used with CFI_setpointer to set lower bound to 1.
+                    fmt.c_temp_lower_decl = (
+                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
+                        format(fmt.c_var_lower, fmt.rank,
+                               ",".join(["1" for x in range(visitor.rank)])))
+                    fmt.c_temp_extents_use = fmt.c_var_extents
+                    fmt.c_temp_lower_use = fmt.c_var_lower
 
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.

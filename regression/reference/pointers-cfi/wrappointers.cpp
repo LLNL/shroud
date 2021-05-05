@@ -585,25 +585,30 @@ void POI_get_ptr_to_scalar(int * * nitems)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_scalar_bufferify
-void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
+// start POI_get_ptr_to_scalar_CFI
+void POI_get_ptr_to_scalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
-    // splicer begin function.get_ptr_to_scalar_bufferify
-    int *nitems;
-    getPtrToScalar(&nitems);
-    SHT_nitems_cdesc->cxx.addr  = nitems;
-    SHT_nitems_cdesc->cxx.idtor = 0;
-    SHT_nitems_cdesc->addr.base = nitems;
-    SHT_nitems_cdesc->type = SH_TYPE_INT;
-    SHT_nitems_cdesc->elem_len = sizeof(int);
-    SHT_nitems_cdesc->rank = 0;
-    SHT_nitems_cdesc->size = 1;
-    // splicer end function.get_ptr_to_scalar_bufferify
+    // splicer begin function.get_ptr_to_scalar_CFI
+    int * SHCXX_nitems;
+    getPtrToScalar(&SHCXX_nitems);
+    {
+        CFI_CDESC_T(0) SHC_nitems_fptr;
+        CFI_cdesc_t *SHC_nitems_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_nitems_fptr);
+        void *SHC_nitems_cptr = const_cast<int *>(SHCXX_nitems);
+        int SHC_nitems_err = CFI_establish(SHC_nitems_cdesc,
+            SHC_nitems_cptr, CFI_attribute_pointer, CFI_type_int, 0, 0,
+            NULL);
+        if (SHC_nitems_err == CFI_SUCCESS) {
+            SHC_nitems_err = CFI_setpointer(SHT_nitems_cfi,
+                SHC_nitems_cdesc, NULL);
+        }
+    }
+    // splicer end function.get_ptr_to_scalar_CFI
 }
-// end POI_get_ptr_to_scalar_bufferify
+// end POI_get_ptr_to_scalar_CFI
 
 /**
  * Return a Fortran pointer to an array which is always the same length.
@@ -635,27 +640,32 @@ void POI_get_ptr_to_fixed_array(int * * count)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_fixed_array_bufferify
-void POI_get_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
+// start POI_get_ptr_to_fixed_array_CFI
+void POI_get_ptr_to_fixed_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_fixed_array_bufferify
-    int *count;
-    getPtrToFixedArray(&count);
-    SHT_count_cdesc->cxx.addr  = count;
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = 10;
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_fixed_array_bufferify
+    // splicer begin function.get_ptr_to_fixed_array_CFI
+    int * SHCXX_count;
+    getPtrToFixedArray(&SHCXX_count);
+    {
+        CFI_CDESC_T(1) SHC_count_fptr;
+        CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_count_fptr);
+        void *SHC_count_cptr = const_cast<int *>(SHCXX_count);
+        CFI_index_t SHT_count_extents[1] = {10};
+        CFI_index_t SHT_count_lower[1] = {1};
+        int SHC_count_err = CFI_establish(SHC_count_cdesc,
+            SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
+            SHT_count_extents);
+        if (SHC_count_err == CFI_SUCCESS) {
+            SHC_count_err = CFI_setpointer(SHT_count_cfi,
+                SHC_count_cdesc, SHT_count_lower);
+        }
+    }
+    // splicer end function.get_ptr_to_fixed_array_CFI
 }
-// end POI_get_ptr_to_fixed_array_bufferify
+// end POI_get_ptr_to_fixed_array_CFI
 
 /**
  * Return a Fortran pointer to an array which is the length of
@@ -694,32 +704,37 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-// start POI_get_ptr_to_dynamic_array_bufferify
-void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// start POI_get_ptr_to_dynamic_array_CFI
+void POI_get_ptr_to_dynamic_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_dynamic_array_bufferify
-    int *count;
+    // splicer begin function.get_ptr_to_dynamic_array_CFI
+    int * SHCXX_count;
     int ncount;
-    getPtrToDynamicArray(&count, &ncount);
-    SHT_count_cdesc->cxx.addr  = count;
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = ncount;
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_dynamic_array_bufferify
+    getPtrToDynamicArray(&SHCXX_count, &ncount);
+    {
+        CFI_CDESC_T(1) SHC_count_fptr;
+        CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_count_fptr);
+        void *SHC_count_cptr = const_cast<int *>(SHCXX_count);
+        CFI_index_t SHT_count_extents[1] = {ncount};
+        CFI_index_t SHT_count_lower[1] = {1};
+        int SHC_count_err = CFI_establish(SHC_count_cdesc,
+            SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
+            SHT_count_extents);
+        if (SHC_count_err == CFI_SUCCESS) {
+            SHC_count_err = CFI_setpointer(SHT_count_cfi,
+                SHC_count_cdesc, SHT_count_lower);
+        }
+    }
+    // splicer end function.get_ptr_to_dynamic_array_CFI
 }
-// end POI_get_ptr_to_dynamic_array_bufferify
+// end POI_get_ptr_to_dynamic_array_CFI
 
 /**
  * Return a Fortran pointer to an array which is the length
@@ -755,27 +770,32 @@ void POI_get_ptr_to_func_array(int * * count)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_func_array_bufferify
-void POI_get_ptr_to_func_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
+// start POI_get_ptr_to_func_array_CFI
+void POI_get_ptr_to_func_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_func_array_bufferify
-    int *count;
-    getPtrToFuncArray(&count);
-    SHT_count_cdesc->cxx.addr  = count;
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = getLen();
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_func_array_bufferify
+    // splicer begin function.get_ptr_to_func_array_CFI
+    int * SHCXX_count;
+    getPtrToFuncArray(&SHCXX_count);
+    {
+        CFI_CDESC_T(1) SHC_count_fptr;
+        CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_count_fptr);
+        void *SHC_count_cptr = const_cast<int *>(SHCXX_count);
+        CFI_index_t SHT_count_extents[1] = {getLen()};
+        CFI_index_t SHT_count_lower[1] = {1};
+        int SHC_count_err = CFI_establish(SHC_count_cdesc,
+            SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
+            SHT_count_extents);
+        if (SHC_count_err == CFI_SUCCESS) {
+            SHC_count_err = CFI_setpointer(SHT_count_cfi,
+                SHC_count_cdesc, SHT_count_lower);
+        }
+    }
+    // splicer end function.get_ptr_to_func_array_CFI
 }
-// end POI_get_ptr_to_func_array_bufferify
+// end POI_get_ptr_to_func_array_CFI
 
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
@@ -801,26 +821,30 @@ void POI_get_ptr_to_const_scalar(const int * * nitems)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_const_scalar_bufferify
-void POI_get_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *SHT_nitems_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
+// start POI_get_ptr_to_const_scalar_CFI
+void POI_get_ptr_to_const_scalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
-    // splicer begin function.get_ptr_to_const_scalar_bufferify
-    const int *nitems;
-    getPtrToConstScalar(&nitems);
-    SHT_nitems_cdesc->cxx.addr  = const_cast<int *>(nitems);
-    SHT_nitems_cdesc->cxx.idtor = 0;
-    SHT_nitems_cdesc->addr.base = nitems;
-    SHT_nitems_cdesc->type = SH_TYPE_INT;
-    SHT_nitems_cdesc->elem_len = sizeof(int);
-    SHT_nitems_cdesc->rank = 0;
-    SHT_nitems_cdesc->size = 1;
-    // splicer end function.get_ptr_to_const_scalar_bufferify
+    // splicer begin function.get_ptr_to_const_scalar_CFI
+    const int * SHCXX_nitems;
+    getPtrToConstScalar(&SHCXX_nitems);
+    {
+        CFI_CDESC_T(0) SHC_nitems_fptr;
+        CFI_cdesc_t *SHC_nitems_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_nitems_fptr);
+        void *SHC_nitems_cptr = const_cast<int *>(SHCXX_nitems);
+        int SHC_nitems_err = CFI_establish(SHC_nitems_cdesc,
+            SHC_nitems_cptr, CFI_attribute_pointer, CFI_type_int, 0, 0,
+            NULL);
+        if (SHC_nitems_err == CFI_SUCCESS) {
+            SHC_nitems_err = CFI_setpointer(SHT_nitems_cfi,
+                SHC_nitems_cdesc, NULL);
+        }
+    }
+    // splicer end function.get_ptr_to_const_scalar_CFI
 }
-// end POI_get_ptr_to_const_scalar_bufferify
+// end POI_get_ptr_to_const_scalar_CFI
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
@@ -846,27 +870,32 @@ void POI_get_ptr_to_fixed_const_array(const int * * count)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_fixed_const_array_bufferify
-void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
+// start POI_get_ptr_to_fixed_const_array_CFI
+void POI_get_ptr_to_fixed_const_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_fixed_const_array_bufferify
-    const int *count;
-    getPtrToFixedConstArray(&count);
-    SHT_count_cdesc->cxx.addr  = const_cast<int *>(count);
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = 10;
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_fixed_const_array_bufferify
+    // splicer begin function.get_ptr_to_fixed_const_array_CFI
+    const int * SHCXX_count;
+    getPtrToFixedConstArray(&SHCXX_count);
+    {
+        CFI_CDESC_T(1) SHC_count_fptr;
+        CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_count_fptr);
+        void *SHC_count_cptr = const_cast<int *>(SHCXX_count);
+        CFI_index_t SHT_count_extents[1] = {10};
+        CFI_index_t SHT_count_lower[1] = {1};
+        int SHC_count_err = CFI_establish(SHC_count_cdesc,
+            SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
+            SHT_count_extents);
+        if (SHC_count_err == CFI_SUCCESS) {
+            SHC_count_err = CFI_setpointer(SHT_count_cfi,
+                SHC_count_cdesc, SHT_count_lower);
+        }
+    }
+    // splicer end function.get_ptr_to_fixed_const_array_CFI
 }
-// end POI_get_ptr_to_fixed_const_array_bufferify
+// end POI_get_ptr_to_fixed_const_array_CFI
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
@@ -898,32 +927,37 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(out)
-// Requested: c_out_native_**_cdesc_pointer
-// Match:     c_out_native_**_cdesc
+// Attrs:     +api(cfi)+deref(pointer)+intent(out)
+// Exact:     c_out_native_**_cfi_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-// start POI_get_ptr_to_dynamic_const_array_bufferify
-void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// start POI_get_ptr_to_dynamic_const_array_CFI
+void POI_get_ptr_to_dynamic_const_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
-    const int *count;
+    // splicer begin function.get_ptr_to_dynamic_const_array_CFI
+    const int * SHCXX_count;
     int ncount;
-    getPtrToDynamicConstArray(&count, &ncount);
-    SHT_count_cdesc->cxx.addr  = const_cast<int *>(count);
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = ncount;
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_dynamic_const_array_bufferify
+    getPtrToDynamicConstArray(&SHCXX_count, &ncount);
+    {
+        CFI_CDESC_T(1) SHC_count_fptr;
+        CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_count_fptr);
+        void *SHC_count_cptr = const_cast<int *>(SHCXX_count);
+        CFI_index_t SHT_count_extents[1] = {ncount};
+        CFI_index_t SHT_count_lower[1] = {1};
+        int SHC_count_err = CFI_establish(SHC_count_cdesc,
+            SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
+            SHT_count_extents);
+        if (SHC_count_err == CFI_SUCCESS) {
+            SHC_count_err = CFI_setpointer(SHT_count_cfi,
+                SHC_count_cdesc, SHT_count_lower);
+        }
+    }
+    // splicer end function.get_ptr_to_dynamic_const_array_CFI
 }
-// end POI_get_ptr_to_dynamic_const_array_bufferify
+// end POI_get_ptr_to_dynamic_const_array_CFI
 
 /**
  * Called directly via an interface in Fortran.

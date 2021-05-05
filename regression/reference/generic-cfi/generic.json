@@ -4663,7 +4663,7 @@
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "29",
@@ -4754,13 +4754,15 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
-                    "F_arg_c_call": "SHT_addr_cdesc",
+                    "F_C_call": "c_get_pointer_as_pointer_float1d_cfi",
+                    "F_arg_c_call": "addr",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -4779,7 +4781,7 @@
                 "<FUNCTION>": "29 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "24",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4808,7 +4810,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -4867,8 +4869,10 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4879,39 +4883,50 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_cdesc": "SHC_addr_cdesc",
+                            "c_local_cptr": "SHC_addr_cptr",
+                            "c_local_err": "SHC_addr_err",
+                            "c_local_fptr": "SHC_addr_fptr",
                             "c_member": "->",
                             "c_type": "float",
                             "c_var": "addr",
-                            "c_var_cdesc": "SHT_addr_cdesc",
+                            "c_var_cfi": "SHT_addr_cfi",
+                            "c_var_extents": "SHT_addr_extents",
+                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
+                            "cxx_nonconst_ptr": "SHCXX_addr",
                             "cxx_type": "float",
-                            "cxx_var": "addr",
+                            "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_out_native_**_cdesc_pointer",
-                            "stmt1": "c_out_native_**_cdesc"
+                            "stmt0": "c_out_native_**_cfi_pointer",
+                            "stmt1": "c_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
+                            "c_local_cdesc": "SHC_addr_cdesc",
+                            "c_local_cptr": "SHC_addr_cptr",
+                            "c_local_err": "SHC_addr_err",
+                            "c_local_fptr": "SHC_addr_fptr",
                             "c_var": "addr",
-                            "c_var_cdesc": "SHT_addr_cdesc",
+                            "c_var_cfi": "SHT_addr_cfi",
+                            "c_var_extents": "SHT_addr_extents",
+                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "OUT",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
-                            "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_out_native_**_cdesc_pointer",
-                            "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc"
+                            "stmt0": "f_out_native_**_cfi_pointer",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_out_native_**_cfi_pointer",
+                            "stmtc1": "c_out_native_**_cfi_pointer"
                         }
                     },
                     "size": {
@@ -4974,15 +4989,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&addr,\t &type,\t &size",
-                    "C_name": "GEN_get_pointer_as_pointer_float1d_bufferify",
-                    "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
+                    "C_call_list": "&SHCXX_addr,\t &type,\t &size",
+                    "C_name": "GEN_get_pointer_as_pointer_float1d_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_addr_cdesc",
-                    "F_C_name": "c_get_pointer_as_pointer_float1d_bufferify",
+                    "F_C_arguments": "addr",
+                    "F_C_name": "c_get_pointer_as_pointer_float1d_cfi",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float1d_bufferify",
+                    "function_suffix": "_float1d_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"
@@ -4993,7 +5008,7 @@
                 "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_C_CXX_index": "10",
                 "_PTR_F_C_index": "30",
@@ -5084,13 +5099,15 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
-                    "F_arg_c_call": "SHT_addr_cdesc",
+                    "F_C_call": "c_get_pointer_as_pointer_float2d_cfi",
+                    "F_arg_c_call": "addr",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -5109,7 +5126,7 @@
                 "<FUNCTION>": "30 ****************************************",
                 "C_force_wrapper": "True",
                 "_PTR_C_CXX_index": "25",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5138,7 +5155,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "api": "cdesc",
+                                "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out"
                             },
@@ -5197,8 +5214,10 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5209,39 +5228,50 @@
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
+                            "c_local_cdesc": "SHC_addr_cdesc",
+                            "c_local_cptr": "SHC_addr_cptr",
+                            "c_local_err": "SHC_addr_err",
+                            "c_local_fptr": "SHC_addr_fptr",
                             "c_member": "->",
                             "c_type": "float",
                             "c_var": "addr",
-                            "c_var_cdesc": "SHT_addr_cdesc",
+                            "c_var_cfi": "SHT_addr_cfi",
+                            "c_var_extents": "SHT_addr_extents",
+                            "c_var_lower": "SHT_addr_lower",
                             "cfi_type": "CFI_type_float",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "addr",
+                            "cxx_nonconst_ptr": "SHCXX_addr",
                             "cxx_type": "float",
-                            "cxx_var": "addr",
+                            "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_out_native_**_cdesc_pointer",
-                            "stmt1": "c_out_native_**_cdesc"
+                            "stmt0": "c_out_native_**_cfi_pointer",
+                            "stmt1": "c_out_native_**_cfi_pointer"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
+                            "c_local_cdesc": "SHC_addr_cdesc",
+                            "c_local_cptr": "SHC_addr_cptr",
+                            "c_local_err": "SHC_addr_err",
+                            "c_local_fptr": "SHC_addr_fptr",
                             "c_var": "addr",
-                            "c_var_cdesc": "SHT_addr_cdesc",
+                            "c_var_cfi": "SHT_addr_cfi",
+                            "c_var_extents": "SHT_addr_extents",
+                            "c_var_lower": "SHT_addr_lower",
                             "f_assumed_shape": "(:,:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "OUT",
                             "f_kind": "C_FLOAT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
-                            "hnamefunc0": "array_context",
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_out_native_**_cdesc_pointer",
-                            "stmt1": "f_out_native_**_cdesc_pointer",
-                            "stmtc0": "c_out_native_**_cdesc_pointer",
-                            "stmtc1": "c_out_native_**_cdesc"
+                            "stmt0": "f_out_native_**_cfi_pointer",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_out_native_**_cfi_pointer",
+                            "stmtc1": "c_out_native_**_cfi_pointer"
                         }
                     },
                     "size": {
@@ -5304,15 +5334,15 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "&addr,\t &type,\t &size",
-                    "C_name": "GEN_get_pointer_as_pointer_float2d_bufferify",
-                    "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
+                    "C_call_list": "&SHCXX_addr,\t &type,\t &size",
+                    "C_name": "GEN_get_pointer_as_pointer_float2d_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHT_addr_cdesc",
-                    "F_C_name": "c_get_pointer_as_pointer_float2d_bufferify",
+                    "F_C_arguments": "addr",
+                    "F_C_name": "c_get_pointer_as_pointer_float2d_cfi",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
-                    "function_suffix": "_float2d_bufferify",
+                    "function_suffix": "_float2d_CFI",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine",
                     "underscore_name": "get_pointer_as_pointer"

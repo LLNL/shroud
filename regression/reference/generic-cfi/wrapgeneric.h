@@ -50,13 +50,11 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size);
 void GEN_save_pointer2_float2d(float * addr, int type, size_t size);
 
 #if 0
-void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc);
+void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
 #if 0
-void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc);
+void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
 void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv);

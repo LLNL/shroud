@@ -2166,6 +2166,25 @@ fc_statements = [
         ],
         temps=["cfi"],
     ),
+    dict(
+        # Character argument which use CFI_desc_t.
+        name="c_mixin_arg_native_cfi",
+        iface_header=["ISO_Fortran_binding.h"],
+        cxx_local_var="pointer",
+        c_arg_decl=[
+            "CFI_cdesc_t *{c_var_cfi}",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+        f_module_line="iso_c_binding:{f_kind}",
+        f_c_arg_names=["{c_var}"],
+#        pre_call=[
+#            "{c_type} *{cxx_var} = "
+#            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
+#        ],
+        temps=["cfi", "extents", "lower"],
+    ),
 
     ########################################
     dict(
@@ -2562,6 +2581,56 @@ fc_statements = [
         arg_c_call=["{f_var}"],
     ),
     
+    ########################################
+    # native
+    dict(
+        # Allocate argument before calling function.
+        name="c_out_native_*_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+        ],
+        pre_call=[
+            "CFI_index_t xxx[1] = {{1}};",
+            "CFI_index_t yyy[1] = {{10}};",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \txxx, yyy, \t0);",
+        ],
+    ),
+    dict(
+        name="f_out_native_*_cfi_allocatable",
+    ),
+    dict(
+        # Set Fortran pointer to point to cxx_var
+        name="c_out_native_**_cfi_pointer",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
+        ],
+
+        # set pointer on fortran declaration
+        pre_call=[
+            "{c_const}{c_type} * {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "{{+",
+            "CFI_CDESC_T({rank}) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});",
+#            "CFI_index_t {c_local_extents}[{rank}] = {{10}};",
+            "{c_temp_extents_decl}"
+            "{c_temp_lower_decl}"
+            "int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+            "\t CFI_attribute_pointer,\t {cfi_type},"
+            "\t 0,\t {rank},\t {c_temp_extents_use});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});",
+            "-}}",
+            "-}}",
+        ],
+        local=["cptr", "fptr", "cdesc", "err"],
+    ),
 
     
 ]

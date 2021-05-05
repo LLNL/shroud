@@ -319,6 +319,10 @@ argument such as another argument with the explicit length.
 .. In the future a user settable api might be useful to do custom
    actions in the wrappers.
 
+.. Set internally to api(cdesc) with +cdesc or
+   deref set to allocatable or pointer.
+   api(buf) adds extra arguments for metadata like LEN or SIZE.
+   api(cdesc) replaces argument with F_array_type.
    
 assumedtype
 ^^^^^^^^^^^
@@ -510,6 +514,11 @@ The dimension may also be assumed-rank, *dimemsion(..)*, to allow
 scalar or any rank.
 
 .. XXX - See Fortran.rst
+
+.. info is passed to statements via fmt fields.
+   cdesc - c_array_shape, c_array_size
+   CFI - c_temp_extents_decl, c_temp_extents_use
+         c_temp_lower_decl, c_temp_lower_use
 
 
 external

@@ -1454,7 +1454,7 @@ class GenFunctions(object):
         issues at the cost of copying data.
 
         The original function will still be wrapped in C but returns a
-        type(C_PTR) where the use must call c_f_pointer themselves.
+        type(C_PTR) where the user must call c_f_pointer themselves.
         """
         return ordered_functions # XXX - do nothing for now
         options = node.options
@@ -1589,6 +1589,8 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "char":
                 if arg.is_indirect():
                     cfi_args[arg.name] = True
+            elif arg.metaattrs["deref"] in ["pointer"]:
+                cfi_args[arg.name] = True
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
