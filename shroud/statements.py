@@ -2090,25 +2090,6 @@ fc_statements = [
     
     ########################################
     # CFI - Further Interoperability with C
-    # c_var will be CFI_cdesc_t *.
-    dict(
-        name="c_in_native_*_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var}",
-        ],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
-        ],
-        f_c_arg_names=["{c_var}"],
-        f_module_line="iso_c_binding:{f_kind}",
-        pre_call=[
-            "{cxx_type} *{cxx_var} = "
-            "{cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};",
-        ],
-    ),
-
     ########################################
     # char arg
     dict(
@@ -2167,7 +2148,7 @@ fc_statements = [
         temps=["cfi"],
     ),
     dict(
-        # Character argument which use CFI_desc_t.
+        # Native argument which use CFI_desc_t.
         name="c_mixin_arg_native_cfi",
         iface_header=["ISO_Fortran_binding.h"],
         cxx_local_var="pointer",
@@ -2186,6 +2167,22 @@ fc_statements = [
         temps=["cfi", "extents", "lower"],
     ),
 
+    ########################################
+
+    dict(
+        name="c_in_native_*_cfi",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
+        ],
+        pre_call=[
+            "{cxx_type} *{cxx_var} = "
+            "{cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
+        ],
+    ),
+    
     ########################################
     dict(
         name="c_in_char_*_cfi",

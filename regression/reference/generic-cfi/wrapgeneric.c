@@ -33,10 +33,10 @@
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
+int GEN_sum_values_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 {
     // splicer begin function.sum_values_CFI
-    int *SHCXX_values = (int *) values->base_addr;
+    int *SHCXX_values = (int *) SHT_values_cfi->base_addr;
     int SHC_rv = SumValues(SHCXX_values, nvalues);
     return SHC_rv;
     // splicer end function.sum_values_CFI

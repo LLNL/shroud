@@ -24,7 +24,7 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues);
+int GEN_sum_values_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
 
 void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
     int nto);
