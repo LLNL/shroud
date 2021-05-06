@@ -159,6 +159,7 @@ root
         **
           cdesc -- c_out_native_**_cdesc
           cfi
+            allocatable -- c_out_native_**_cfi_allocatable
             pointer -- c_out_native_**_cfi_pointer
       string
         & -- c_out_string_*/&
@@ -2198,6 +2199,36 @@ c_out_native_**_cdesc:
   - '{c_const}{cxx_type} *{cxx_var};'
   temps:
   - cdesc
+c_out_native_**_cfi_allocatable:
+  arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: pointer
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: out
+  name: c_out_native_**_cfi_allocatable
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  pre_call:
+  - '{c_const}{c_type} * {cxx_var};'
+  temps:
+  - cfi
+  - extents
+  - lower
 c_out_native_**_cfi_pointer:
   arg_call:
   - '&{cxx_var}'

@@ -2625,6 +2625,32 @@ fc_statements = [
     ),
     dict(
         # Set Fortran pointer to point to cxx_var
+        name="c_out_native_**_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
+        ],
+         pre_call=[
+            "{c_const}{c_type} * {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+        post_call=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}"
+            "{c_temp_extents_decl}"
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use},"
+            " \t{c_temp_extents_use}, \t0);",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+#XXX            "{C_memory_dtor_function}({cxx_var});",
+            "-}}",
+            "-}}",
+        ],
+    ),
+    dict(
+        # Set Fortran pointer to point to cxx_var
         name="c_out_native_**_cfi_pointer",
         mixin=[
             "c_mixin_arg_native_cfi",
@@ -2643,7 +2669,6 @@ fc_statements = [
             "CFI_CDESC_T({rank}) {c_local_fptr};",
             "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
             "void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});",
-#            "CFI_index_t {c_local_extents}[{rank}] = {{10}};",
             "{c_temp_extents_decl}"
             "{c_temp_lower_decl}"
             "int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"

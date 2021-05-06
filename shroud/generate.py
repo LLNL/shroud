@@ -1635,7 +1635,7 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "char":
                 if arg.is_indirect():
                     cfi_args[arg.name] = True
-            elif arg.metaattrs["deref"] in ["pointer"]:
+            elif arg.metaattrs["deref"] in ["allocatable", "pointer"]:
                 cfi_args[arg.name] = True
         has_cfi_arg = any(cfi_args.values())
 

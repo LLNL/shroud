@@ -1289,27 +1289,27 @@ void POI_get_alloc_to_fixed_array(int * * count)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Requested: c_out_native_**_cdesc_allocatable
-// Match:     c_out_native_**_cdesc
-// start POI_get_alloc_to_fixed_array_bufferify
-void POI_get_alloc_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// Attrs:     +api(cfi)+deref(allocatable)+intent(out)
+// Exact:     c_out_native_**_cfi_allocatable
+// start POI_get_alloc_to_fixed_array_CFI
+void POI_get_alloc_to_fixed_array_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_alloc_to_fixed_array_bufferify
-    int *count;
-    getAllocToFixedArray(&count);
-    SHT_count_cdesc->cxx.addr  = count;
-    SHT_count_cdesc->cxx.idtor = 0;
-    SHT_count_cdesc->addr.base = count;
-    SHT_count_cdesc->type = SH_TYPE_INT;
-    SHT_count_cdesc->elem_len = sizeof(int);
-    SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = 10;
-    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_alloc_to_fixed_array_bufferify
+    // splicer begin function.get_alloc_to_fixed_array_CFI
+    int * SHCXX_count;
+    getAllocToFixedArray(&SHCXX_count);
+    if (SHCXX_count != nullptr) {
+        CFI_index_t SHT_count_lower[1] = {1};
+        CFI_index_t SHT_count_extents[1] = {10};
+        int SH_ret = CFI_allocate(SHT_count_cfi, SHT_count_lower, 
+            SHT_count_extents, 0);
+        if (SH_ret == CFI_SUCCESS) {
+            std::memcpy(SHT_count_cfi->base_addr, SHCXX_count, 
+                SHT_count_cfi->elem_len);
+        }
+    }
+    // splicer end function.get_alloc_to_fixed_array_CFI
 }
-// end POI_get_alloc_to_fixed_array_bufferify
+// end POI_get_alloc_to_fixed_array_CFI
 
 // ----------------------------------------
 // Function:  void * returnAddress1

@@ -131,8 +131,7 @@ void POI_dimension_in(const int * arg);
 
 void POI_get_alloc_to_fixed_array(int * * count);
 
-void POI_get_alloc_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_get_alloc_to_fixed_array_CFI(CFI_cdesc_t *SHT_count_cfi);
 
 void * POI_return_address1(int flag);
 
