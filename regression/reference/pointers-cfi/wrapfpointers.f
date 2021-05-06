@@ -155,9 +155,9 @@ module pointers_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -187,9 +187,9 @@ module pointers_mod
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -220,9 +220,9 @@ module pointers_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  int * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -252,9 +252,9 @@ module pointers_mod
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  int * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -327,33 +327,6 @@ module pointers_mod
         end subroutine get_values2
     end interface
     ! end get_values2
-
-    ! ----------------------------------------
-    ! Function:  void iota_allocatable
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
-    ! Match:     c_default
-    ! start c_iota_allocatable
-    interface
-        subroutine c_iota_allocatable(nvar, values) &
-                bind(C, name="POI_iota_allocatable")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value, intent(IN) :: nvar
-            integer(C_INT), intent(OUT) :: values(*)
-        end subroutine c_iota_allocatable
-    end interface
-    ! end c_iota_allocatable
 
     ! ----------------------------------------
     ! Function:  void iota_dimension
@@ -1487,9 +1460,8 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_pointer
-    ! Match:     c_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_native_**
     ! start c_return_raw_ptr_to_int2d
     interface
         function c_return_raw_ptr_to_int2d() &
@@ -1501,23 +1473,6 @@ module pointers_mod
         end function c_return_raw_ptr_to_int2d
     end interface
     ! end c_return_raw_ptr_to_int2d
-
-    ! ----------------------------------------
-    ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_buf_pointer
-    ! Match:     c_function_native_**
-    ! start c_return_raw_ptr_to_int2d_bufferify
-    interface
-        function c_return_raw_ptr_to_int2d_bufferify() &
-                result(SHT_rv) &
-                bind(C, name="POI_return_raw_ptr_to_int2d_bufferify")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_raw_ptr_to_int2d_bufferify
-    end interface
-    ! end c_return_raw_ptr_to_int2d_bufferify
 
     interface
         ! splicer begin additional_interfaces
@@ -1541,11 +1496,11 @@ contains
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief compute cos of IN and save in OUT
@@ -1556,10 +1511,9 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        real(C_DOUBLE), intent(OUT) :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin function.cos_doubles
-        allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_cos_doubles_cfi(in, out, SH_sizein)
         ! splicer end function.cos_doubles
@@ -1581,11 +1535,11 @@ contains
     ! Attrs:     +api(cfi)+intent(in)
     ! Exact:     c_in_native_*_cfi
     ! ----------------------------------------
-    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  int * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief truncate IN argument and save in OUT
@@ -1597,48 +1551,14 @@ contains
     subroutine truncate_to_int(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
-        integer(C_INT), intent(OUT), allocatable :: out(:)
+        integer(C_INT), intent(OUT) :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin function.truncate_to_int
-        allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_truncate_to_int_cfi(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
-
-    ! ----------------------------------------
-    ! Function:  void iota_allocatable
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
-    ! Match:     c_default
-    ! start iota_allocatable
-    subroutine iota_allocatable(nvar, values)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), value, intent(IN) :: nvar
-        integer(C_INT), intent(OUT), allocatable :: values(:)
-        ! splicer begin function.iota_allocatable
-        allocate(values(nvar))
-        call c_iota_allocatable(nvar, values)
-        ! splicer end function.iota_allocatable
-    end subroutine iota_allocatable
-    ! end iota_allocatable
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
@@ -1657,8 +1577,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
@@ -1983,15 +1902,12 @@ contains
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_**_buf_pointer
-    ! Match:     f_function_native_**
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_buf_pointer
-    ! Match:     c_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     f_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_native_**
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d
@@ -2002,7 +1918,7 @@ contains
         use iso_c_binding, only : C_INT
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_raw_ptr_to_int2d
-        SHT_rv = c_return_raw_ptr_to_int2d_bufferify()
+        SHT_rv = c_return_raw_ptr_to_int2d()
         ! splicer end function.return_raw_ptr_to_int2d
     end function return_raw_ptr_to_int2d
     ! end return_raw_ptr_to_int2d

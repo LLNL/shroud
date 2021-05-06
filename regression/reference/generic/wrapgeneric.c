@@ -210,9 +210,9 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
@@ -238,9 +238,9 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
@@ -294,9 +294,9 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
@@ -323,9 +323,9 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value

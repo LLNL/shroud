@@ -156,10 +156,9 @@ void GEN_assign_values_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +api(cfi)+deref(raw)+intent(in)
-// Requested: c_in_native_*_cfi_raw
-// Match:     c_in_native_*_cfi
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
@@ -186,10 +185,9 @@ void GEN_save_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +api(cfi)+deref(raw)+intent(in)
-// Requested: c_in_native_*_cfi_raw
-// Match:     c_in_native_*_cfi
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
 // Attrs:     +intent(in)
@@ -244,10 +242,9 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +api(cfi)+deref(raw)+intent(in)
-// Requested: c_in_native_*_cfi_raw
-// Match:     c_in_native_*_cfi
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)
@@ -275,10 +272,9 @@ void GEN_save_pointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +api(cfi)+deref(raw)+intent(in)
-// Requested: c_in_native_*_cfi_raw
-// Match:     c_in_native_*_cfi
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
 // Attrs:     +intent(in)

@@ -399,8 +399,10 @@ This value is implied by C++ default argument syntax.
 deref
 ^^^^^
 
-List how to dereference pointer arguments or function results.
+Define how to dereference function results and pointers
+which are returned via an argument.
 This may be used in conjunction with *dimension* to create arrays.
+For example, ``int **out +intent(out)+deref(pointer)+dimension(10)``.
 
 allocatable
 
@@ -428,6 +430,15 @@ pointer
     which is used to release the memory.
 
     For Python, create a list or NumPy array.
+
+    .. Python intent(out) arguments are returned by the wrapper.
+       The default is +deref(pointer).
+       +deref(allocatable) is the same as +deref(pointer).
+       The C++ library is being passed a pointer to an existing array
+       (which will be allocated by the wrapper).
+       The arugment must also have the dimension attribute so that
+       the correct array size can be allocated.
+       intent(inout) will write into an existing array.
 
     .. code-block:: yaml
 

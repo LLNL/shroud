@@ -10,9 +10,13 @@ copyright:
 
 library: errors
 
+options:
+  debug: True
+  wrap_python: true
+
 declarations:
 - decl: void cos_doubles(double * in     +intent(in)  +rank(1),
-                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                         double * out    +intent(out) +dimension(size(in)),
                          int      sizein +implied(size(in)))
   doxygen:
     brief: compute cos of IN and save in OUT

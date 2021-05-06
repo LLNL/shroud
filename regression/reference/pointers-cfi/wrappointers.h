@@ -57,8 +57,6 @@ void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
 
-void POI_iota_allocatable(int nvar, int * values);
-
 void POI_iota_dimension(int nvar, int * values);
 
 void POI_sum(int len, const int * values, int * result);
@@ -168,8 +166,6 @@ int * POI_return_int_raw_with_args(const char * name);
 int * POI_return_int_raw_with_args_CFI(CFI_cdesc_t *SHT_name_cfi);
 
 int * * POI_return_raw_ptr_to_int2d(void);
-
-int * * POI_return_raw_ptr_to_int2d_bufferify(void);
 
 #ifdef __cplusplus
 }

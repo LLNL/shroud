@@ -505,9 +505,9 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)+value
@@ -538,9 +538,9 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)+value
@@ -601,9 +601,9 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
@@ -632,9 +632,9 @@ module generic_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+value
@@ -1433,12 +1433,12 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: f_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -1462,12 +1462,12 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: f_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -1490,12 +1490,12 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: f_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -1517,12 +1517,12 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: f_in_native_*_raw
+    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
     ! Match:     f_default
-    ! Attrs:     +deref(raw)+intent(in)
-    ! Requested: c_in_native_*_raw
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T

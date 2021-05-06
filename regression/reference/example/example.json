@@ -10813,7 +10813,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "deref": "allocatable",
                                                 "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
@@ -10826,7 +10825,6 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "deref": "allocatable",
                                                 "dimension": [
                                                     {
                                                         "args": [
@@ -10867,8 +10865,8 @@
                                     ],
                                     "typemap_name": "void"
                                 },
-                                "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +deref(allocatable)+dimension(shape(in)), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)",
+                                "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +dimension(shape(in)), int      sizein +implied(size(in)))",
+                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },
@@ -10972,7 +10970,7 @@
                                             "idtor": "0",
                                             "rank": "1",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt0": "c_out_native_*_allocatable",
+                                            "stmt0": "c_out_native_*",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
@@ -10986,9 +10984,9 @@
                                             "f_var": "out",
                                             "rank": "1",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt0": "f_out_native_*_allocatable",
-                                            "stmt1": "f_out_native_*_allocatable",
-                                            "stmtc0": "c_out_native_*_allocatable",
+                                            "stmt0": "f_out_native_*",
+                                            "stmt1": "f_out_native_*",
+                                            "stmtc0": "c_out_native_*",
                                             "stmtc1": "c_default"
                                         },
                                         "fmtl": {
@@ -11025,8 +11023,8 @@
                                             "py_var": "SHPy_out",
                                             "rank": "1",
                                             "size_var": "SHSize_out",
-                                            "stmt0": "py_out_native_*_allocatable_numpy",
-                                            "stmt1": "py_out_native_*_allocatable_numpy",
+                                            "stmt0": "py_out_native_*_pointer_numpy",
+                                            "stmt1": "py_out_native_*_pointer_numpy",
                                             "value_var": "SHValue_out"
                                         }
                                     },

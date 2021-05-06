@@ -756,6 +756,14 @@ fc_statements = [
         need_wrapper=True
     ),
 
+    ##########
+    # native
+    dict(
+        name="f_out_native_*",
+        arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
+        ],
+    ),
     dict(
         # double * out +intent(out) +deref(allocatable)+dimension(size(in)),
         # Allocate array then pass to C wrapper.

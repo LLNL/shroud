@@ -194,9 +194,9 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_out_native_*_allocatable
+// Argument:  double * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
@@ -226,9 +226,9 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_native_*_cfi
 // ----------------------------------------
-// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_out_native_*_allocatable
+// Argument:  double * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
@@ -262,9 +262,9 @@ void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_out_native_*_allocatable
+// Argument:  int * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
@@ -295,9 +295,9 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Attrs:     +api(cfi)+intent(in)
 // Exact:     c_in_native_*_cfi
 // ----------------------------------------
-// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_out_native_*_allocatable
+// Argument:  int * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Requested: c_out_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
@@ -374,29 +374,6 @@ void POI_get_values2(int * arg1, int * arg2)
     // splicer end function.get_values2
 }
 // end POI_get_values2
-
-// ----------------------------------------
-// Function:  void iota_allocatable
-// Attrs:     +intent(subroutine)
-// Exact:     c_subroutine
-// ----------------------------------------
-// Argument:  int nvar +value
-// Attrs:     +intent(in)
-// Requested: c_in_native_scalar
-// Match:     c_default
-// ----------------------------------------
-// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_out_native_*_allocatable
-// Match:     c_default
-// start POI_iota_allocatable
-void POI_iota_allocatable(int nvar, int * values)
-{
-    // splicer begin function.iota_allocatable
-    iota_allocatable(nvar, values);
-    // splicer end function.iota_allocatable
-}
-// end POI_iota_allocatable
 
 // ----------------------------------------
 // Function:  void iota_dimension
@@ -1603,9 +1580,8 @@ int * POI_return_int_raw_with_args_CFI(CFI_cdesc_t *SHT_name_cfi)
  */
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
-// Attrs:     +deref(pointer)+intent(function)
-// Requested: c_function_native_**_pointer
-// Match:     c_function_native_**
+// Attrs:     +intent(function)
+// Exact:     c_function_native_**
 // start POI_return_raw_ptr_to_int2d
 int * * POI_return_raw_ptr_to_int2d(void)
 {
@@ -1615,24 +1591,5 @@ int * * POI_return_raw_ptr_to_int2d(void)
     // splicer end function.return_raw_ptr_to_int2d
 }
 // end POI_return_raw_ptr_to_int2d
-
-/**
- * Test multiple layers of indirection.
- * # getRawPtrToInt2d
- */
-// ----------------------------------------
-// Function:  int * * returnRawPtrToInt2d
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_**_buf_pointer
-// Match:     c_function_native_**
-// start POI_return_raw_ptr_to_int2d_bufferify
-int * * POI_return_raw_ptr_to_int2d_bufferify(void)
-{
-    // splicer begin function.return_raw_ptr_to_int2d_bufferify
-    int * * SHC_rv = returnRawPtrToInt2d();
-    return SHC_rv;
-    // splicer end function.return_raw_ptr_to_int2d_bufferify
-}
-// end POI_return_raw_ptr_to_int2d_bufferify
 
 }  // extern "C"

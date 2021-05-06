@@ -1233,9 +1233,9 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_*
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
-        ! Attrs:     +deref(allocatable)+intent(out)
-        ! Requested: c_out_native_*_allocatable
+        ! Argument:  double * out +dimension(shape(in))+intent(out)
+        ! Attrs:     +intent(out)
+        ! Requested: c_out_native_*
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int sizein +implied(size(in))+value
@@ -2488,11 +2488,11 @@ contains
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(shape(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief Test multidimensional arrays with allocatable
@@ -2501,10 +2501,9 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:,:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        real(C_DOUBLE), intent(OUT) :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin namespace.example::nested.function.cos_doubles
-        allocate(out(shape(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end namespace.example::nested.function.cos_doubles

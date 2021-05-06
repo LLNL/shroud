@@ -703,9 +703,9 @@ PP_verylongfunctionname2(
 // Attrs:     +intent(in)
 // Exact:     py_in_native_*_pointer_numpy
 // ----------------------------------------
-// Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_out_native_*_allocatable_numpy
+// Argument:  double * out +dimension(shape(in))+intent(out)
+// Attrs:     +intent(out)
+// Exact:     py_out_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default

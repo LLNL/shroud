@@ -38,9 +38,8 @@ contains
 
   subroutine test_functions
     integer(c_int) iargin, iarginout, iargout
-    real(c_double) :: in_double(5)
-    real(c_double), allocatable :: out_double(:)
-    integer(c_int), allocatable :: out_int(:)
+    real(c_double) :: in_double(5), out_double(5)
+    integer(c_int) :: out_int(4)
     integer(c_int) :: nvalues, values1(3), values2(3)
 
     call set_case_name("test_functions")
@@ -65,17 +64,14 @@ contains
     call assert_true(iarginout == 1)
     call assert_true(iargout   == 2)
 
-    call assert_false(allocated(out_double))
     in_double = [0.0*pi, 0.5*pi, pi, 1.5*pi, 2.0*pi]
+    out_double = 0.0
     call cos_doubles(in_double, out_double)
-    call assert_true(allocated(out_double))
     call assert_true(all(abs(out_double - cos(in_double)) < 1.e-08 ))
 
-    call assert_false(allocated(out_int))
+    out_int = 0
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
-    call assert_true(allocated(out_int))
     call assert_true(all(out_int == [1, 2, 3, 4]))
-    deallocate(out_int)
 
     values1 = 0
     call get_values(nvalues, values1)
@@ -87,13 +83,6 @@ contains
     call get_values2(values1, values2)
     call assert_true(all(values1(1:3) == [1, 2, 3]))
     call assert_true(all(values2(1:3) == [11, 12, 13]))
-
-    call assert_false(allocated(out_int), "iot_allocatable")
-    call iota_allocatable(nvalues, out_int)
-    call assert_equals(3, nvalues, "iota_allocatable")
-    call assert_true(allocated(out_int), "iota_allocatable")
-    call assert_true(all(out_int(1:3) == [1, 2, 3]), "iota_allocatable")
-    deallocate(out_int)
 
     values1 = 0
     call iota_dimension(nvalues, values1)

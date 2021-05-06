@@ -332,7 +332,7 @@ root
         *
           buf -- f_in/out_char_*_buf
       native
-        *
+        * -- f_out_native_*
           allocatable -- f_out_native_*_allocatable
           cdesc -- f_in/out/inout_native_*_cdesc
           cfi
@@ -3442,6 +3442,11 @@ f_out_char_*_buf:
   intent: out
   name: f_out_char_*_buf
   need_wrapper: true
+f_out_native_*:
+  arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  intent: out
+  name: f_out_native_*
 f_out_native_*&_cdesc_pointer:
   arg_c_call:
   - '{c_var_cdesc}'

@@ -418,7 +418,6 @@
                         },
                         {
                             "attrs": {
-                                "deref": "allocatable",
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
@@ -431,7 +430,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -472,8 +470,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -530,8 +528,8 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_out_native_*_allocatable_list",
-                            "stmt1": "py_out_native_*_allocatable_list",
+                            "stmt0": "py_out_native_*_pointer_list",
+                            "stmt1": "py_out_native_*_pointer_list",
                             "value_var": "SHValue_out"
                         }
                     },
@@ -596,7 +594,6 @@
                         },
                         {
                             "attrs": {
-                                "deref": "allocatable",
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
@@ -609,7 +606,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -650,8 +646,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
+                "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -708,8 +704,8 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt0": "py_out_native_*_allocatable_list",
-                            "stmt1": "py_out_native_*_allocatable_list",
+                            "stmt0": "py_out_native_*_pointer_list",
+                            "stmt1": "py_out_native_*_pointer_list",
                             "value_var": "SHValue_out"
                         }
                     },
@@ -1018,130 +1014,6 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "iota_allocatable",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nvar",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "deref": "allocatable",
-                                "dimension": "nvar",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "dimension": [
-                                    {
-                                        "name": "nvar"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
-                "declgen": "void iota_allocatable(int nvar +value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
-                "options": {},
-                "wrap": {
-                    "python": true
-                },
-                "zz_fmtargs": {
-                    "nvar": {
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "nvar",
-                            "ctor_expr": "nvar",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&nvar",
-                            "cxx_type": "int",
-                            "cxx_var": "nvar",
-                            "data_var": "SHData_nvar",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_nvar",
-                            "size_var": "SHSize_nvar",
-                            "stmt0": "py_in_native_scalar",
-                            "stmt1": "py_default",
-                            "value_var": "SHValue_nvar"
-                        }
-                    },
-                    "values": {
-                        "fmtpy": {
-                            "array_size": "nvar",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "values",
-                            "ctor_expr": "*values",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "values",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "data_var": "SHData_values",
-                            "hnamefunc0": "SHROUD_to_PyList_int",
-                            "npy_dims_var": "SHD_values",
-                            "npy_intp_asgn": "SHD_values[0] = nvar;\n",
-                            "npy_intp_decl": "npy_intp SHD_values[1];\n",
-                            "npy_rank": "1",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_values",
-                            "rank": "1",
-                            "size_var": "SHSize_values",
-                            "stmt0": "py_out_native_*_allocatable_list",
-                            "stmt1": "py_out_native_*_allocatable_list",
-                            "value_var": "SHValue_values"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "PY_name_impl": "PY_iota_allocatable",
-                    "function_name": "iota_allocatable",
-                    "underscore_name": "iota_allocatable"
-                }
-            },
-            {
-                "<FUNCTION>": "9 ****************************************",
-                "ast": {
-                    "declarator": {
                         "name": "iota_dimension",
                         "pointer": []
                     },
@@ -1261,7 +1133,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Sum",
@@ -1418,7 +1290,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fillIntArray",
@@ -1506,7 +1378,7 @@
                 }
             },
             {
-                "<FUNCTION>": "12 ****************************************",
+                "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "incrementIntArray",
@@ -1623,7 +1495,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fill_with_zeros",
@@ -1736,7 +1608,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "accumulate",
@@ -1868,7 +1740,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -1969,7 +1841,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "setGlobalInt",
@@ -2037,7 +1909,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "sumFixedArray",
@@ -2087,7 +1959,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -2139,7 +2011,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -2231,7 +2103,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -2366,7 +2238,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -2459,7 +2331,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -2512,7 +2384,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -2602,7 +2474,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -2735,7 +2607,7 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalar",
@@ -2816,7 +2688,7 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalarForce",
@@ -2873,7 +2745,7 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArray",
@@ -2954,7 +2826,7 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArrayForce",
@@ -3011,7 +2883,7 @@
                 }
             },
             {
-                "<FUNCTION>": "29 ****************************************",
+                "<FUNCTION>": "28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToInt2d",
@@ -3068,7 +2940,7 @@
                 }
             },
             {
-                "<FUNCTION>": "30 ****************************************",
+                "<FUNCTION>": "29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "checkInt2d",
@@ -3122,7 +2994,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "DimensionIn",
@@ -3183,7 +3055,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress1",
@@ -3275,7 +3147,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress2",
@@ -3369,7 +3241,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchVoidPtr",
@@ -3445,7 +3317,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -3497,7 +3369,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -3551,7 +3423,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3618,7 +3490,7 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3673,7 +3545,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3741,7 +3613,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "scalar"
@@ -3797,7 +3669,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3835,7 +3707,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3893,7 +3765,7 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
@@ -3907,7 +3779,6 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer",
                         "intent": "function"
                     },
                     "params": [],

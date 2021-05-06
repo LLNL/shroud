@@ -325,9 +325,9 @@ PY_intargs(
 // Attrs:     +intent(in)
 // Exact:     py_in_native_*_pointer_numpy
 // ----------------------------------------
-// Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_out_native_*_allocatable_numpy
+// Argument:  double * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Exact:     py_out_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default
@@ -406,9 +406,9 @@ fail:
 // Attrs:     +intent(in)
 // Exact:     py_in_native_*_pointer_numpy
 // ----------------------------------------
-// Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_out_native_*_allocatable_numpy
+// Argument:  int * out +dimension(size(in))+intent(out)
+// Attrs:     +intent(out)
+// Exact:     py_out_native_*_pointer_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default
@@ -610,63 +610,6 @@ fail:
     Py_XDECREF(SHPy_arg2);
     return NULL;
 // splicer end function.get_values2
-}
-
-// ----------------------------------------
-// Function:  void iota_allocatable
-// Attrs:     +intent(subroutine)
-// Exact:     py_default
-// ----------------------------------------
-// Argument:  int nvar +value
-// Attrs:     +intent(in)
-// Requested: py_in_native_scalar
-// Match:     py_default
-// ----------------------------------------
-// Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_out_native_*_allocatable_numpy
-static char PY_iota_allocatable__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_iota_allocatable(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.iota_allocatable
-    int nvar;
-    int * values;
-    npy_intp SHD_values[1];
-    PyArrayObject * SHPy_values = NULL;
-    char *SHT_kwlist[] = {
-        "nvar",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_allocatable",
-        SHT_kwlist, &nvar))
-        return NULL;
-
-    // post_parse
-    SHD_values[0] = nvar;
-    SHPy_values = (PyArrayObject *) PyArray_SimpleNew(1, SHD_values, NPY_INT);
-    if (SHPy_values == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "values must be a 1-D array of int");
-        goto fail;
-    }
-
-    // pre_call
-    values = PyArray_DATA(SHPy_values);
-
-    iota_allocatable(nvar, values);
-    return (PyObject *) SHPy_values;
-
-fail:
-    Py_XDECREF(SHPy_values);
-    return NULL;
-// splicer end function.iota_allocatable
 }
 
 // ----------------------------------------
@@ -1714,8 +1657,6 @@ static PyMethodDef PY_methods[] = {
     PY_get_values__doc__},
 {"get_values2", (PyCFunction)PY_get_values2, METH_NOARGS,
     PY_get_values2__doc__},
-{"iota_allocatable", (PyCFunction)PY_iota_allocatable,
-    METH_VARARGS|METH_KEYWORDS, PY_iota_allocatable__doc__},
 {"iota_dimension", (PyCFunction)PY_iota_dimension,
     METH_VARARGS|METH_KEYWORDS, PY_iota_dimension__doc__},
 {"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},

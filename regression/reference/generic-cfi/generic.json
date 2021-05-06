@@ -2982,7 +2982,6 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 1
                                 },
@@ -2995,7 +2994,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw",
                                     "intent": "in"
                                 },
                                 "specifier": [
@@ -3039,13 +3037,12 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1)+deref(raw)+intent(in),    int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(1)+intent(in),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 2
                                 },
@@ -3058,7 +3055,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw",
                                     "intent": "in"
                                 },
                                 "specifier": [
@@ -3102,7 +3098,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2)+deref(raw)+intent(in),  int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(2)+intent(in),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "options": {},
@@ -3222,7 +3218,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -3235,7 +3230,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -3284,7 +3278,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3325,7 +3319,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -3339,7 +3332,6 @@
                             },
                             "metaattrs": {
                                 "api": "cfi",
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -3388,7 +3380,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3417,7 +3409,7 @@
                             "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_in_native_*_cfi_raw",
+                            "stmt0": "c_in_native_*_cfi",
                             "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
@@ -3435,9 +3427,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_in_native_*_cfi_raw",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*_cfi_raw",
+                            "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
                     },
@@ -3539,7 +3531,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -3552,7 +3543,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -3601,7 +3591,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3642,7 +3632,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -3656,7 +3645,6 @@
                             },
                             "metaattrs": {
                                 "api": "cfi",
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -3705,7 +3693,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3734,7 +3722,7 @@
                             "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_in_native_*_cfi_raw",
+                            "stmt0": "c_in_native_*_cfi",
                             "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
@@ -3752,9 +3740,9 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_in_native_*_cfi_raw",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*_cfi_raw",
+                            "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
                     },
@@ -3913,7 +3901,6 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 1
                                 },
@@ -3926,7 +3913,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw",
                                     "intent": "in"
                                 },
                                 "specifier": [
@@ -3970,13 +3956,12 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1)+deref(raw)+intent(in))"
+                        "generic": "(float *addr+rank(1)+intent(in))"
                     },
                     {
                         "decls": [
                             {
                                 "attrs": {
-                                    "deref": "raw",
                                     "intent": "in",
                                     "rank": 2
                                 },
@@ -3989,7 +3974,6 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw",
                                     "intent": "in"
                                 },
                                 "specifier": [
@@ -4033,7 +4017,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2)+deref(raw)+intent(in))"
+                        "generic": "(float *addr+rank(2)+intent(in))"
                     }
                 ],
                 "fstatements": {
@@ -4163,7 +4147,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -4176,7 +4159,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -4225,7 +4207,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
@@ -4276,7 +4258,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -4290,7 +4271,6 @@
                             },
                             "metaattrs": {
                                 "api": "cfi",
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -4339,7 +4319,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
@@ -4378,7 +4358,7 @@
                             "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_in_native_*_cfi_raw",
+                            "stmt0": "c_in_native_*_cfi",
                             "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
@@ -4396,9 +4376,9 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_in_native_*_cfi_raw",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*_cfi_raw",
+                            "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
                     },
@@ -4500,7 +4480,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -4513,7 +4492,6 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -4562,7 +4540,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
@@ -4613,7 +4591,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "raw",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -4627,7 +4604,6 @@
                             },
                             "metaattrs": {
                                 "api": "cfi",
-                                "deref": "raw",
                                 "intent": "in"
                             },
                             "specifier": [
@@ -4676,7 +4652,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
+                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)",
                 "fstatements": {
                     "c": {
                         "c_helper": "ShroudTypeDefines",
@@ -4715,7 +4691,7 @@
                             "cxx_var": "SHCXX_addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt0": "c_in_native_*_cfi_raw",
+                            "stmt0": "c_in_native_*_cfi",
                             "stmt1": "c_in_native_*_cfi"
                         },
                         "fmtf": {
@@ -4733,9 +4709,9 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt0": "f_in_native_*_cfi_raw",
+                            "stmt0": "f_in_native_*_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_native_*_cfi_raw",
+                            "stmtc0": "c_in_native_*_cfi",
                             "stmtc1": "c_in_native_*_cfi"
                         }
                     },
@@ -4964,7 +4940,7 @@
                             "f_var": "size",
                             "sh_type": "SH_TYPE_SIZE_T",
                             "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
@@ -4997,7 +4973,7 @@
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }

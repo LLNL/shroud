@@ -205,6 +205,7 @@ class VerifyAttrs(object):
         deref = attrs["deref"]
         mderef = None
         ntypemap = ast.typemap
+        nindirect = ast.is_indirect()
         if ast.get_subprogram() == "subroutine":
             pass
         if ntypemap.sgroup == "void":
@@ -229,7 +230,12 @@ class VerifyAttrs(object):
                 mderef = deref
             else:
                 mderef = "allocatable"
-        elif ast.is_indirect():
+        elif nindirect > 1:
+            if deref:
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on function which returns multiple indirections in {}".
+                    format(node.decl))
+        elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref:
                 mderef = deref
@@ -250,13 +256,14 @@ class VerifyAttrs(object):
             )
         ast.metaattrs["deref"] = mderef
         
-    def check_deref_attr_var(self, ast):
+    def check_deref_attr_var(self, node, ast):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
 
         Parameters
         ----------
+        node - ast.FunctionNode or ast.FortranGeneric
         ast : declast.Declaration
         """
         attrs = ast.attrs
@@ -272,9 +279,22 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
-            if not ast.is_indirect():
+            nindirect = ast.is_indirect()
+            if ntypemap.sgroup == "vector":
+                if deref:
+                    mderef = deref
+                else:
+                    # Copy vector to new array.
+                    mderef = "allocatable"
+            elif nindirect != 2:
                 raise RuntimeError(
-                    "Cannot have attribute 'deref' on non-pointer")
+                    "Can only have attribute 'deref' on arguments which"
+                    " return a pointer:"
+                    " '{}' at line {}".format(ast.name, node.linenumber))
+            elif meta["intent"] == "in":
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on intent(in) argument:"
+                    " '{}' at line".format(ast.name, node.linenumber))
             meta["deref"] = attrs["deref"]
             return
 
@@ -443,7 +463,7 @@ class VerifyAttrs(object):
             )
 
         intent = self.check_intent_attr(node, arg)
-        self.check_deref_attr_var(arg)
+        self.check_deref_attr_var(node, arg)
         self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
