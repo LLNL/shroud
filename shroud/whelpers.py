@@ -179,11 +179,11 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     CHelpers[name] = dict(
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
-        c_include=["<string.h>"],
-        cxx_include=["<cstring>"],
+        c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
+        cxx_include=["<cstring>", "<cstddef>"],
         # Create a single C routine which is called from Fortran
         # via an interface for each cxx_type.
-        cxx_source=wformat(
+        source=wformat(
                 """
 {lstart}// helper {hname}
 // Copy std::vector into array c_var(c_var_size).

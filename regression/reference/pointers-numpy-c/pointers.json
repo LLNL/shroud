@@ -3038,6 +3038,68 @@
                 "<FUNCTION>": "31 ****************************************",
                 "ast": {
                     "declarator": {
+                        "name": "getAllocToFixedArray",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
+                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "getAllocToFixedArray",
+                    "underscore_name": "get_alloc_to_fixed_array"
+                }
+            },
+            {
+                "<FUNCTION>": "32 ****************************************",
+                "ast": {
+                    "declarator": {
                         "name": "returnAddress1",
                         "pointer": [
                             {
@@ -3127,7 +3189,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress2",
@@ -3221,7 +3283,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchVoidPtr",
@@ -3297,7 +3359,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -3349,7 +3411,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -3402,7 +3464,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3468,7 +3530,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3522,7 +3584,7 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3589,7 +3651,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "scalar"
@@ -3645,7 +3707,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3683,7 +3745,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3741,7 +3803,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",

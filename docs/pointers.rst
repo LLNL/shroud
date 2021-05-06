@@ -69,6 +69,12 @@ Shroud treats the argument similar to a function which returns a
 pointer: it adds the *deref(pointer)* attribute to treats it as a
 ``POINTER`` to a scalar.  The *dimension* attribute can be used to
 create an array similar to a function result.
+If the *deref(allocatable)* attribute is added, then a Fortran array
+will be allocated to the size of *dimension* attribute and the
+argument will be copied into the Fortran memory.
+
+.. If *owner(caller)*, then the memory will be released.
+   The Fortran ``ALLOCATABLE`` array will need to be released by the user.
 
 A function which returns multiple layers of indirection will return
 a ``type(C_PTR)``.  This is also true for function arguments beyond

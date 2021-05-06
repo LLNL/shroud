@@ -309,6 +309,13 @@ void DimensionIn(const int *arg)
 {
 }
 
+//----------------------------------------------------------------------
+// allocatable
+
+void getAllocToFixedArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
 
 //----------------------------------------------------------------------
 

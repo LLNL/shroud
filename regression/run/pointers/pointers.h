@@ -61,6 +61,10 @@ int checkInt2d(int **arg);
 
 void DimensionIn(const int *arg);
 
+// allocatable
+void getAllocToFixedArray(int **nitems);
+
+
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
 void fetchVoidPtr(void **addr);

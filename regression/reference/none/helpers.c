@@ -341,7 +341,7 @@ struct s_LIB_SHROUD_capsule_data {
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 ##### end capsule_data_helper source
 
-##### start copy_array cxx_source
+##### start copy_array source
 
 // helper copy_array
 // Copy std::vector into array c_var(c_var_size).
@@ -356,7 +356,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
     std::memcpy(c_var, cxx_var, n);
     LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
-##### end copy_array cxx_source
+##### end copy_array source
 
 ##### start copy_string source
 

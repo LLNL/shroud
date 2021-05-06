@@ -23,13 +23,14 @@ VPATH = \
 
 C_OBJS = \
     pointers.o \
-    wrappointers.o
+    wrappointers.o \
+    utilpointers.o
 F_OBJS = \
-    wrapfpointers.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpointers.o
 
-pointers-cxx : $(C_OBJS) $(F_OBJS)
+pointers-cxx : $(F_OBJS) $(C_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 main.o : main.f fruit.o wrapfpointers.o

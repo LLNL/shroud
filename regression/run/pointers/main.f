@@ -23,6 +23,7 @@ program tester
   call test_swig
   call test_char_arrays
   call test_out_ptrs
+  call test_out_alloc
   call test_nested_ptrs
   call test_dimension
 
@@ -313,6 +314,166 @@ contains
     call assert_true(c_associated(void, c_loc(iscalar)))
     
   end subroutine test_out_ptrs
+
+  subroutine test_out_alloc
+    !-- XXX - copied from test_out_ptrs, need to fill in.
+!-    integer(C_INT) :: ivalue, narray
+!-    integer(C_INT), target :: ivalue1, ivalue2
+!-    integer(C_INT), pointer :: iscalar, irvscalar
+    integer(C_INT), allocatable :: iarray(:)
+!-    integer(C_INT), pointer :: irvarray(:)
+!-    type(C_PTR) :: cptr_scalar, cptr_array
+!-    type(C_PTR) :: void
+!-    type(C_PTR) :: cptr_arrays(2)
+
+    call set_case_name("test_out_alloc")
+
+!-    call set_global_int(0)
+!-
+!-    nullify(iscalar)
+!-    call get_ptr_to_scalar(iscalar)
+!-    call assert_true(associated(iscalar))
+!-    call assert_equals(0, iscalar)
+!-
+!-    ! iscalar points to global_int in pointers.c.
+!-    call set_global_int(5)
+!-    call assert_equals(5, iscalar)
+!-
+!-    nullify(iarray)
+    call get_alloc_to_fixed_array(iarray)
+    call assert_true(allocated(iarray))
+    call assert_equals(10, size(iarray))
+    call assert_true(lbound(iarray,1) == 1, &
+         "getPtrToFixedArray - lbound")
+    call assert_true(ubound(iarray,1) == 10, &
+         "getPtrToFixedArray - ubound")
+    iarray = 0
+!-    call assert_equals(0, sum_fixed_array(), &
+!-         "sumFixedArray - initial")
+!-    ! Make sure we're assigning to global_array.
+!-    iarray(1) = 1
+!-    iarray(10) = 2
+!-    call assert_equals(3, sum_fixed_array(), &
+!-         "sumFixedArray - changes")
+!-
+!-    ! Returns global_array in pointers.c.
+!-    nullify(iarray)
+!-    call get_ptr_to_dynamic_array(iarray)
+!-    call assert_true(associated(iarray))
+!-    call assert_true(size(iarray) == 10)
+!-
+!-    ! Call C version directly.
+!-    cptr_array = C_NULL_PTR
+!-    call c_get_ptr_to_dynamic_array(cptr_array, narray)
+!-    call assert_true(c_associated(cptr_array))
+!-    call assert_true(narray == 10)
+!-
+!-    ! Returns global_array in pointers.c.
+!-    ! iarray is used later for deref(raw) tests. Do not reset.
+!-    nullify(iarray)
+!-    call get_ptr_to_func_array(iarray)
+!-    call assert_true(associated(iarray))
+!-    call assert_true(size(iarray) == 10)
+!-    call assert_true(lbound(iarray,1) == 1)
+!-    call assert_true(ubound(iarray,1) == 10)
+!-
+!-    call get_raw_ptr_to_scalar(cptr_scalar)
+!-    call assert_true(c_associated(cptr_scalar), &
+!-         "getRawPtrToScalar - c_associated")
+!-    ! associated with global_int in pointers.c
+!-    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), &
+!-         "getRawPtrToScalar - c_associated(iscalar)")
+!-
+!-    call get_raw_ptr_to_scalar_force(cptr_scalar)
+!-    call assert_true(c_associated(cptr_scalar), &
+!-         "getRawPtrToScalarForce - c_associated")
+!-    ! associated with global_int in pointers.c
+!-    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), &
+!-         "getRawPtrToScalarForce - c_associated(iscalar)")
+!-
+!-    cptr_array = C_NULL_PTR
+!-    call get_raw_ptr_to_fixed_array(cptr_array)
+!-    call assert_true(c_associated(cptr_array), &
+!-         "getRawPtrToFixedArray - c_associated")
+!-    ! associated with global_fixed_array in pointers.c
+!-    call assert_true(c_associated(cptr_array, c_loc(iarray(1))), &
+!-         "getRawPtrToFixedArray - c_associated(iarray)")
+!-
+!-    cptr_array = C_NULL_PTR
+!-    call get_raw_ptr_to_fixed_array_force(cptr_array)
+!-    call assert_true(c_associated(cptr_array), &
+!-         "getRawPtrToFixedArrayForce - c_associated")
+!-    ! associated with global_fixed_array in pointers.c
+!-    call assert_true(c_associated(cptr_array, c_loc(iarray(1))), &
+!-         "getRawPtrToFixedArrayForce - c_associated(iarray)")
+!-
+!-    ! Return pointer to global_int as a type(C_PTR).
+!-    ! via interface
+!-    void = C_NULL_PTR
+!-    void = return_address1(1)
+!-    call assert_true(c_associated(void, cptr_scalar))
+!-    ! via wrapper
+!-    void = C_NULL_PTR
+!-    void = return_address2(1)
+!-    call assert_true(c_associated(void, cptr_scalar))
+!-    ! via argument
+!-    void = C_NULL_PTR
+!-    call fetch_void_ptr(void)
+!-    call assert_true(c_associated(void, cptr_scalar))
+!-
+!-    ! Pass array of pointers  (void **)
+!-    ivalue1 = 10
+!-    ivalue2 = 4
+!-    cptr_arrays(1) = c_loc(ivalue1)
+!-    cptr_arrays(2) = c_loc(ivalue2)
+!-    call assert_equals(14, void_ptr_array(cptr_arrays))
+!-
+!-    ! ***** Non-const results
+!-    ! Return pointer to global_int as a fortran pointer.
+!-    nullify(irvscalar)
+!-    irvscalar => return_int_ptr_to_scalar()
+!-    call assert_true(associated(irvscalar, iscalar))
+!-    call set_global_int(7)
+!-    call assert_equals(7, irvscalar)
+!-
+!-    ! ivalue is not a pointer.
+!-    call set_global_int(8)
+!-    ivalue = return_int_scalar()
+!-    call assert_equals(8, ivalue)
+!-
+!-    ! Return pointer to global_fixed_int as a fortran pointer.
+!-    nullify(irvarray)
+!-    irvarray => return_int_ptr_to_fixed_array()
+!-    call assert_true(associated(irvarray))
+!-    call assert_true(size(irvarray) == 10)
+!-    call assert_true(associated(irvscalar, iscalar))
+!-
+!-    ! ***** const results
+!-    ! Return pointer to global_int as a fortran pointer.
+!-    nullify(irvscalar)
+!-    irvscalar => return_int_ptr_to_const_scalar()
+!-    call assert_true(associated(irvscalar, iscalar))
+!-
+!-    ! Return pointer to global_fixed_int as a fortran pointer.
+!-    nullify(irvarray)
+!-    irvarray => return_int_ptr_to_fixed_const_array()
+!-    call assert_true(associated(irvarray))
+!-    call assert_true(size(irvarray) == 10)
+!-    call assert_true(associated(irvscalar, iscalar))
+!-
+!-    ! +deref(scalar)
+!-    ivalue = return_int_scalar()
+!-
+!-    ! Return pointer to global_int.
+!-    void = return_int_raw()
+!-    call assert_true(c_associated(void, c_loc(irvscalar)))
+!-    call assert_true(c_associated(void, c_loc(iscalar)))
+!-
+!-    void = return_int_raw_with_args("with args")
+!-    call assert_true(c_associated(void, c_loc(irvscalar)))
+!-    call assert_true(c_associated(void, c_loc(iscalar)))
+    
+  end subroutine test_out_alloc
 
   subroutine test_nested_ptrs
     type(C_PTR) addr, rvaddr

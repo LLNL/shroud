@@ -339,9 +339,11 @@ root
             allocatable -- f_out_native_*_cfi_allocatable
         *&
           cdesc
+            allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
         **
           cdesc
+            allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
           raw -- f_out_native_**_raw
       string
@@ -3447,6 +3449,25 @@ f_out_native_*:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
   intent: out
   name: f_out_native_*
+f_out_native_*&_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array_int
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: out
+  name: f_out_native_*&_cdesc_allocatable
+  post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
+  temps:
+  - cdesc
 f_out_native_*&_cdesc_pointer:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3462,6 +3483,25 @@ f_out_native_*&_cdesc_pointer:
   name: f_out_native_*&_cdesc_pointer
   post_call:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  temps:
+  - cdesc
+f_out_native_**_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array_int
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: out
+  name: f_out_native_**_cdesc_allocatable
+  post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
   temps:
   - cdesc
 f_out_native_**_cdesc_pointer:

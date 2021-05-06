@@ -817,11 +817,32 @@ fc_statements = [
         arg_call=["{cxx_var}"],
     ),
     dict(
+        # deref(allocatable)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer.
+        # f_out_native_**_cdesc_allocatable
+        # f_out_native_*&_cdesc_allocatable
+        name="f_out_native_**/*&_cdesc_allocatable",
+        mixin=["f_mixin_out_array_cdesc"],
+        c_helper="copy_array",
+        f_helper="copy_array_int",
+#XXX        f_helper="copy_array_{c_type}",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        post_call=[
+            # intent(out) ensure that it is already deallocated.
+            "allocate({f_var}{f_array_allocate})",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+        ],
+    ),
+    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_out_native_**_buf_pointer
-        # f_out_native_*&_buf_pointer
+        # f_out_native_**_cdesc_pointer
+        # f_out_native_*&_cdesc_pointer
         name="f_out_native_**/*&_cdesc_pointer",
         mixin=["f_mixin_out_array_cdesc"],
         arg_decl=[

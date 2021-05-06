@@ -211,6 +211,17 @@ declarations:
     wrap_python: False
 
 ######################################################################
+# Allocatable
+
+- decl: void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is always the same length.
+  options:
+    # XXX - update py_statements
+    wrap_python: False
+
+######################################################################
 # Return a pointer directly.
 
 - decl: void *returnAddress1(int flag)

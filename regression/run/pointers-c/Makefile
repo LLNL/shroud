@@ -20,11 +20,12 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
-    pointers.o \
-    wrapfpointers.o \
-    wrappointers.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpointers.o \
+    pointers.o \
+    wrappointers.o \
+    utilpointers.o
 
 pointers-c : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)

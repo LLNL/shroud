@@ -301,6 +301,37 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 }
 // end POI_get_ptr_to_dynamic_const_array_bufferify
 
+/**
+ * Return a Fortran pointer to an array which is always the same length.
+ */
+// ----------------------------------------
+// Function:  void getAllocToFixedArray
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Requested: c_out_native_**_cdesc_allocatable
+// Match:     c_out_native_**_cdesc
+// start POI_get_alloc_to_fixed_array_bufferify
+void POI_get_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc)
+{
+    // splicer begin function.get_alloc_to_fixed_array_bufferify
+    int *count;
+    getAllocToFixedArray(&count);
+    SHT_count_cdesc->cxx.addr  = count;
+    SHT_count_cdesc->cxx.idtor = 0;
+    SHT_count_cdesc->addr.base = count;
+    SHT_count_cdesc->type = SH_TYPE_INT;
+    SHT_count_cdesc->elem_len = sizeof(int);
+    SHT_count_cdesc->rank = 1;
+    SHT_count_cdesc->shape[0] = 10;
+    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
+    // splicer end function.get_alloc_to_fixed_array_bufferify
+}
+// end POI_get_alloc_to_fixed_array_bufferify
+
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)

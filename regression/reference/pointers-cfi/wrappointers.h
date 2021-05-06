@@ -129,6 +129,11 @@ int POI_check_int2d(int **arg);
 
 void POI_dimension_in(const int * arg);
 
+void POI_get_alloc_to_fixed_array(int * * count);
+
+void POI_get_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc);
+
 void * POI_return_address1(int flag);
 
 void * POI_return_address2(int flag);

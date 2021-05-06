@@ -2322,7 +2322,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "43",
+                "_PTR_F_C_index": "44",
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -2454,7 +2454,7 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "44 ****************************************",
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2773,7 +2773,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "44",
+                "_PTR_F_C_index": "45",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -2873,7 +2873,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "45 ****************************************",
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2984,7 +2984,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "45",
+                "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -3092,7 +3092,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "46 ****************************************",
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3217,7 +3217,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "46",
+                "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -3371,7 +3371,7 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "47 ****************************************",
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3546,7 +3546,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "47",
+                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -3655,7 +3655,7 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
+                "<FUNCTION>": "48 ****************************************",
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3781,7 +3781,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "48",
+                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -3882,7 +3882,7 @@
                 }
             },
             {
-                "<FUNCTION>": "48 ****************************************",
+                "<FUNCTION>": "49 ****************************************",
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3994,7 +3994,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "49",
+                "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -4100,7 +4100,7 @@
                 }
             },
             {
-                "<FUNCTION>": "49 ****************************************",
+                "<FUNCTION>": "50 ****************************************",
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4223,7 +4223,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "50",
+                "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -4375,7 +4375,7 @@
                 }
             },
             {
-                "<FUNCTION>": "50 ****************************************",
+                "<FUNCTION>": "51 ****************************************",
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -5373,6 +5373,245 @@
             },
             {
                 "<FUNCTION>": "31 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "52",
+                "ast": {
+                    "declarator": {
+                        "name": "getAllocToFixedArray",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
+                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_**_allocatable",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count",
+                            "c_var": "count",
+                            "f_intent": "OUT"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "count",
+                    "C_name": "POI_get_alloc_to_fixed_array",
+                    "C_prototype": "int * * count",
+                    "C_return_type": "void",
+                    "F_C_arguments": "count",
+                    "F_C_call": "c_get_alloc_to_fixed_array_bufferify",
+                    "F_C_name": "c_get_alloc_to_fixed_array",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_count_cdesc",
+                    "F_arguments": "count",
+                    "F_name_function": "get_alloc_to_fixed_array",
+                    "F_name_generic": "get_alloc_to_fixed_array",
+                    "F_name_impl": "get_alloc_to_fixed_array",
+                    "F_subprogram": "subroutine",
+                    "function_name": "getAllocToFixedArray",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "get_alloc_to_fixed_array"
+                }
+            },
+            {
+                "<FUNCTION>": "52 ****************************************",
+                "_PTR_C_CXX_index": "31",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getAllocToFixedArray",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "allocatable",
+                                "dimension": "10",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
+                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
+                "doxygen": {
+                    "description": "Return a Fortran pointer to an array which is always the same length.\n"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
+                            "c_array_size": "SHT_count_cdesc->shape[0]",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "c_var_cdesc": "SHT_count_cdesc",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_out_native_**_cdesc_allocatable",
+                            "stmt1": "c_out_native_**_cdesc"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count",
+                            "c_var": "count",
+                            "c_var_cdesc": "SHT_count_cdesc",
+                            "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                            "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "hnamefunc0": "POI_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_out_native_**_cdesc_allocatable",
+                            "stmt1": "f_out_native_**_cdesc_allocatable",
+                            "stmtc0": "c_out_native_**_cdesc_allocatable",
+                            "stmtc1": "c_out_native_**_cdesc"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "&count",
+                    "C_name": "POI_get_alloc_to_fixed_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_count_cdesc",
+                    "F_C_name": "c_get_alloc_to_fixed_array_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "getAllocToFixedArray",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
+                    "underscore_name": "get_alloc_to_fixed_array"
+                }
+            },
+            {
+                "<FUNCTION>": "32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress1",
@@ -5505,7 +5744,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress2",
@@ -5640,7 +5879,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchVoidPtr",
@@ -5745,7 +5984,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -5888,11 +6127,11 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "51",
+                "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -5973,8 +6212,8 @@
                 }
             },
             {
-                "<FUNCTION>": "51 ****************************************",
-                "_PTR_C_CXX_index": "35",
+                "<FUNCTION>": "53 ****************************************",
+                "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -6043,11 +6282,11 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "52",
+                "_PTR_F_C_index": "54",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -6143,8 +6382,8 @@
                 }
             },
             {
-                "<FUNCTION>": "52 ****************************************",
-                "_PTR_C_CXX_index": "36",
+                "<FUNCTION>": "54 ****************************************",
+                "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -6225,11 +6464,11 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "53",
+                "_PTR_F_C_index": "55",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -6311,8 +6550,8 @@
                 }
             },
             {
-                "<FUNCTION>": "53 ****************************************",
-                "_PTR_C_CXX_index": "37",
+                "<FUNCTION>": "55 ****************************************",
+                "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "const": true,
@@ -6382,11 +6621,11 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "54",
+                "_PTR_F_C_index": "56",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -6483,8 +6722,8 @@
                 }
             },
             {
-                "<FUNCTION>": "54 ****************************************",
-                "_PTR_C_CXX_index": "38",
+                "<FUNCTION>": "56 ****************************************",
+                "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -6566,7 +6805,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "scalar"
@@ -6649,7 +6888,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -6738,7 +6977,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -6880,7 +7119,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
