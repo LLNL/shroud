@@ -2170,6 +2170,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -2197,6 +2198,7 @@
                             "c_var": "s1",
                             "f_intent": "IN",
                             "f_type": "type(cstruct1)",
+                            "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT"
                         }
                     }
@@ -2431,6 +2433,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }
@@ -3146,6 +3149,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE"
                         }
                     },
@@ -3174,6 +3178,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_var": "i",
                             "sh_type": "SH_TYPE_INT"
                         }
                     }
@@ -3405,6 +3410,7 @@
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
@@ -3525,6 +3531,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_var": "d",
                             "sh_type": "SH_TYPE_DOUBLE"
                         }
                     },
@@ -3553,6 +3560,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_var": "i",
                             "sh_type": "SH_TYPE_INT"
                         }
                     },
@@ -3581,6 +3589,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -3869,6 +3878,7 @@
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
@@ -4024,6 +4034,7 @@
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct_list)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
                     }
                 }

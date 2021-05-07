@@ -797,6 +797,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -1409,6 +1410,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtl": {
@@ -2682,6 +2684,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
+                            "f_var": "arg2",
                             "sh_type": "SH_TYPE_DOUBLE"
                         },
                         "fmtl": {
@@ -2743,6 +2746,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtl": {
@@ -6055,6 +6059,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }

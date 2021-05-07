@@ -645,9 +645,8 @@ rv = .false.
         Parameters
         ----------
         cls : ClassNode or None
-        node : list of ast.FunctionNode
+        functions : list of ast.FunctionNode
         fileinfo : ModuleInfo
-
         """
 
         # Find which C functions are called.
@@ -1108,12 +1107,14 @@ rv = .false.
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.c_var = fmt_func.F_result
+            fmt_result.f_var = fmt_func.F_result
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
                                       fmt_func.F_result, result_typemap,
                                       "function")
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1177,8 +1178,10 @@ rv = .false.
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
+            fmt_arg.f_var = arg.name
             fmt_arg.F_C_var = arg.name
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
+            self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             
             attrs = arg.attrs
             meta = arg.metaattrs
@@ -1474,6 +1477,10 @@ rv = .false.
             c_ast - declast.Declaration - C argument
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
+        modules
+        fileinfo
+        subprogram
+        ntypemap
         """
         c_attrs = c_ast.attrs
         c_meta = c_ast.metaattrs
@@ -1495,7 +1502,21 @@ rv = .false.
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
                                       ntypemap, subprogram)
-                
+        self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
+        return ntypemap
+
+    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
+        """Set fmt fields based on dimension attribute.
+
+        f_assumed_shape is used in both implementation and interface.
+
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration
+        fmt: util.Scope
+        """
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
@@ -1505,6 +1526,7 @@ rv = .false.
         elif rank is not None:
             fmt.rank = str(rank)
             if rank == 0:
+                # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
             else:
                 fmt.size = wformat("size({f_var})", fmt)
@@ -1527,7 +1549,6 @@ rv = .false.
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
 
-        return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.

@@ -730,9 +730,13 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                "f_array_allocate": "(obj->getSize())",
+                                "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE"
                             }
                         }
@@ -952,9 +956,13 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                "f_array_allocate": "(obj->getSize())",
+                                "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE"
                             }
                         }
@@ -1173,9 +1181,13 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                "f_array_allocate": "(obj->getSize())",
+                                "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE"
                             }
                         }
@@ -1397,9 +1409,13 @@
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
+                                "f_array_allocate": "(obj->getSize())",
+                                "f_assumed_shape": "(:)",
                                 "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE"
                             }
                         }
@@ -1507,9 +1523,13 @@
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "c_var": "array",
+                                    "f_array_allocate": "(isize)",
+                                    "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE"
                                 },
                                 "fmtpy": {
@@ -1563,6 +1583,7 @@
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT"
                                 },
                                 "fmtpy": {
@@ -1889,9 +1910,13 @@
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "c_var": "array",
+                                    "f_array_allocate": "(isize)",
+                                    "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE"
                                 },
                                 "fmtpy": {
@@ -1945,6 +1970,7 @@
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT"
                                 },
                                 "fmtpy": {
@@ -2272,9 +2298,13 @@
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "c_var": "array",
+                                    "f_array_allocate": "(isize)",
+                                    "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE"
                                 },
                                 "fmtpy": {
@@ -2328,6 +2358,7 @@
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT"
                                 },
                                 "fmtpy": {
@@ -2656,9 +2687,13 @@
                                 "fmtf": {
                                     "F_C_var": "array",
                                     "c_var": "array",
+                                    "f_array_allocate": "(isize)",
+                                    "f_assumed_shape": "(:)",
                                     "f_intent": "OUT",
                                     "f_kind": "C_DOUBLE",
                                     "f_type": "real(C_DOUBLE)",
+                                    "f_var": "array",
+                                    "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE"
                                 },
                                 "fmtpy": {
@@ -2712,6 +2747,7 @@
                                     "f_intent": "INOUT",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
+                                    "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT"
                                 },
                                 "fmtpy": {

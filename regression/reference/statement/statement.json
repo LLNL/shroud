@@ -268,6 +268,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }

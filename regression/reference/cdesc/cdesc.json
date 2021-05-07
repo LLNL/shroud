@@ -88,10 +88,15 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "c_var_cdesc2": "Darg",
+                            "f_assumed_shape": "(:,:)",
+                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "sh_type": "SH_TYPE_INT"
+                            "f_var": "arg",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)"
                         }
                     }
                 },
@@ -444,6 +449,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -473,7 +479,10 @@
                             "c_var_cdesc2": "Dvalue",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
-                            "sh_type": "SH_TYPE_CPTR"
+                            "f_var": "value",
+                            "rank": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "size": "1"
                         }
                     }
                 },

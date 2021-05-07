@@ -967,6 +967,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
+                                    "f_var": "flag",
                                     "sh_type": "SH_TYPE_BOOL"
                                 }
                             },
@@ -995,6 +996,7 @@
                                     "f_intent": "IN",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
+                                    "f_var": "name",
                                     "sh_type": "SH_TYPE_OTHER"
                                 }
                             }
@@ -1242,6 +1244,7 @@
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
                                 "f_type": "type(class1)",
+                                "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER"
                             }
                         }
@@ -1567,6 +1570,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
+                                "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER"
                             }
                         }
@@ -2183,6 +2187,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
+                                "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER"
                             }
                         }
@@ -2708,6 +2713,7 @@
                                 "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
+                                "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER"
                             }
                         }
@@ -4846,6 +4852,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }

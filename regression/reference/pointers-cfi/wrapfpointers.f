@@ -1257,7 +1257,7 @@ module pointers_mod
                 bind(C, name="POI_void_ptr_array")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(IN) :: addr
+            type(C_PTR), intent(IN) :: addr(*)
             integer(C_INT) :: SHT_rv
         end function c_void_ptr_array
     end interface

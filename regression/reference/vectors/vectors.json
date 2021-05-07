@@ -239,6 +239,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }
@@ -1991,6 +1992,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }
@@ -2345,9 +2347,14 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_assumed_shape": "(:)",
+                        "f_c_dimension": "(*)",
                         "f_intent": "OUT",
                         "f_type": null,
-                        "sh_type": "SH_TYPE_OTHER"
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "size": "size(SHT_rv)"
                     }
                 }
             }

@@ -446,6 +446,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -495,6 +496,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -778,6 +780,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -1119,6 +1122,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -1314,6 +1318,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -1388,6 +1393,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
@@ -1868,6 +1874,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -2024,6 +2031,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -2183,6 +2191,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -2575,6 +2584,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -2769,6 +2779,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -2966,6 +2977,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -3041,6 +3053,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     },
                     "fmtpy": {
@@ -3447,6 +3460,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -3631,6 +3645,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -3840,6 +3855,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -4030,6 +4046,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -4226,6 +4243,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -4424,6 +4442,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -4600,6 +4619,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER"
                     }
                 }
@@ -4681,6 +4701,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -4910,6 +4931,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -5140,6 +5162,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -5367,6 +5390,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -5591,6 +5615,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -5818,6 +5843,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -6066,6 +6092,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -6114,6 +6141,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
@@ -6415,6 +6443,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -6463,6 +6492,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_var": "nlen",
                             "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
@@ -6742,6 +6772,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -6960,6 +6991,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }
@@ -7340,6 +7372,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -7801,6 +7834,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -7830,6 +7864,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -8124,6 +8159,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     },
@@ -8153,6 +8189,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -8438,10 +8475,15 @@
                         "fmtf": {
                             "F_C_var": "count",
                             "c_var": "count",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "sh_type": "SH_TYPE_INT"
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(count)"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -8491,6 +8533,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -8777,6 +8820,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER"
                         }
                     }
@@ -8961,6 +9005,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }

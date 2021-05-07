@@ -430,6 +430,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -990,6 +991,7 @@
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "rv",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -1206,6 +1208,7 @@
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT"
                     }
                 }
@@ -1373,6 +1376,7 @@
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
+                            "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
@@ -1421,6 +1425,7 @@
                             "f_intent": "OUT",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_var": "value",
                             "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
