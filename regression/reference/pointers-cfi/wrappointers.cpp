@@ -1425,18 +1425,27 @@ int * POI_return_int_ptr_to_scalar(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*
-// start POI_return_int_ptr_to_scalar_bufferify
-int * POI_return_int_ptr_to_scalar_bufferify(void)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_native_*_cfi_pointer
+// start POI_return_int_ptr_to_scalar_CFI
+void POI_return_int_ptr_to_scalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_scalar_bufferify
-    int * SHC_rv = returnIntPtrToScalar();
-    return SHC_rv;
-    // splicer end function.return_int_ptr_to_scalar_bufferify
+    // splicer begin function.return_int_ptr_to_scalar_CFI
+    int * SHCXX_rv = returnIntPtrToScalar();
+    {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_rv);
+        int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_int, 0, 0, NULL);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc, NULL);
+        }
+    }
+    // splicer end function.return_int_ptr_to_scalar_CFI
 }
-// end POI_return_int_ptr_to_scalar_bufferify
+// end POI_return_int_ptr_to_scalar_CFI
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -1455,26 +1464,30 @@ int * POI_return_int_ptr_to_fixed_array(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
-// start POI_return_int_ptr_to_fixed_array_bufferify
-void POI_return_int_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_native_*_cfi_pointer
+// start POI_return_int_ptr_to_fixed_array_CFI
+void POI_return_int_ptr_to_fixed_array_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_fixed_array_bufferify
-    int * SHC_rv = returnIntPtrToFixedArray();
-    SHT_rv_cdesc->cxx.addr  = SHC_rv;
-    SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHC_rv;
-    SHT_rv_cdesc->type = SH_TYPE_INT;
-    SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = 10;
-    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_to_fixed_array_bufferify
+    // splicer begin function.return_int_ptr_to_fixed_array_CFI
+    int * SHCXX_rv = returnIntPtrToFixedArray();
+    {
+        CFI_CDESC_T(1) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_rv);
+        CFI_index_t SHT_rv_extents[1] = {10};
+        CFI_index_t SHT_rv_lower[1] = {1};
+        int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_int, 0, 1, SHT_rv_extents);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                SHT_rv_lower);
+        }
+    }
+    // splicer end function.return_int_ptr_to_fixed_array_CFI
 }
-// end POI_return_int_ptr_to_fixed_array_bufferify
+// end POI_return_int_ptr_to_fixed_array_CFI
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
@@ -1493,18 +1506,27 @@ const int * POI_return_int_ptr_to_const_scalar(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Attrs:     +api(buf)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_buf_pointer
-// Match:     c_function_native_*
-// start POI_return_int_ptr_to_const_scalar_bufferify
-const int * POI_return_int_ptr_to_const_scalar_bufferify(void)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_native_*_cfi_pointer
+// start POI_return_int_ptr_to_const_scalar_CFI
+void POI_return_int_ptr_to_const_scalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_const_scalar_bufferify
-    const int * SHC_rv = returnIntPtrToConstScalar();
-    return SHC_rv;
-    // splicer end function.return_int_ptr_to_const_scalar_bufferify
+    // splicer begin function.return_int_ptr_to_const_scalar_CFI
+    const int * SHCXX_rv = returnIntPtrToConstScalar();
+    {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_rv);
+        int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_int, 0, 0, NULL);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc, NULL);
+        }
+    }
+    // splicer end function.return_int_ptr_to_const_scalar_CFI
 }
-// end POI_return_int_ptr_to_const_scalar_bufferify
+// end POI_return_int_ptr_to_const_scalar_CFI
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
@@ -1523,26 +1545,31 @@ const int * POI_return_int_ptr_to_fixed_const_array(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Attrs:     +api(cdesc)+deref(pointer)+intent(function)
-// Requested: c_function_native_*_cdesc_pointer
-// Match:     c_function_native_*_cdesc
-// start POI_return_int_ptr_to_fixed_const_array_bufferify
-void POI_return_int_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc)
+// Attrs:     +api(cfi)+deref(pointer)+intent(function)
+// Exact:     c_function_native_*_cfi_pointer
+// start POI_return_int_ptr_to_fixed_const_array_CFI
+void POI_return_int_ptr_to_fixed_const_array_CFI(
+    CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
-    const int * SHC_rv = returnIntPtrToFixedConstArray();
-    SHT_rv_cdesc->cxx.addr  = const_cast<int *>(SHC_rv);
-    SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SHC_rv;
-    SHT_rv_cdesc->type = SH_TYPE_INT;
-    SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->rank = 1;
-    SHT_rv_cdesc->shape[0] = 10;
-    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
+    // splicer begin function.return_int_ptr_to_fixed_const_array_CFI
+    const int * SHCXX_rv = returnIntPtrToFixedConstArray();
+    {
+        CFI_CDESC_T(1) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_rv);
+        CFI_index_t SHT_rv_extents[1] = {10};
+        CFI_index_t SHT_rv_lower[1] = {1};
+        int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_int, 0, 1, SHT_rv_extents);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                SHT_rv_lower);
+        }
+    }
+    // splicer end function.return_int_ptr_to_fixed_const_array_CFI
 }
-// end POI_return_int_ptr_to_fixed_const_array_bufferify
+// end POI_return_int_ptr_to_fixed_const_array_CFI
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)

@@ -2689,5 +2689,30 @@ fc_statements = [
         arg_call=["&{cxx_var}"],
     ),
 
+    dict(
+        # Pass result as an argument to C wrapper.
+        name="f_function_native_*_cfi_pointer",
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
+        pre_call=[
+            "nullify({f_var})",
+        ],
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        # Convert to subroutine and pass result as an argument.
+        name="c_function_native_*_cfi_pointer",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_pointer_cfi",  # post_call
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
+        ],
+
+        cxx_local_var="result",
+        return_type="void",  # Convert to function.
+    ),
     
 ]

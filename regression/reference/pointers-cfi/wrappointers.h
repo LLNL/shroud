@@ -145,21 +145,20 @@ int POI_void_ptr_array_CFI(void **addr);
 
 int * POI_return_int_ptr_to_scalar(void);
 
-int * POI_return_int_ptr_to_scalar_bufferify(void);
+void POI_return_int_ptr_to_scalar_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 int * POI_return_int_ptr_to_fixed_array(void);
 
-void POI_return_int_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc);
+void POI_return_int_ptr_to_fixed_array_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const int * POI_return_int_ptr_to_const_scalar(void);
 
-const int * POI_return_int_ptr_to_const_scalar_bufferify(void);
+void POI_return_int_ptr_to_const_scalar_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const int * POI_return_int_ptr_to_fixed_const_array(void);
 
-void POI_return_int_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc);
+void POI_return_int_ptr_to_fixed_const_array_CFI(
+    CFI_cdesc_t *SHT_rv_cfi);
 
 int POI_return_int_scalar(void);
 

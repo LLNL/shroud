@@ -17,6 +17,8 @@ root
         & -- c_function_native_*/&/**
         * -- c_function_native_*/&/**
           cdesc -- c_function_native_*_cdesc
+          cfi
+            pointer -- c_function_native_*_cfi_pointer
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
       shadow -- c_function_shadow
@@ -223,6 +225,8 @@ root
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
               caller -- f_function_native_*_cdesc_pointer_caller
+          cfi
+            pointer -- f_function_native_*_cfi_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
@@ -615,6 +619,41 @@ c_function_native_*_cdesc:
   return_type: void
   temps:
   - cdesc
+c_function_native_*_cfi_pointer:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: result
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  local:
+  - cptr
+  - fptr
+  - cdesc
+  - err
+  name: c_function_native_*_cfi_pointer
+  owner: library
+  post_call:
+  - '{{+'
+  - CFI_CDESC_T({rank}) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
+    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - -}}
+  - -}}
+  return_type: void
+  temps:
+  - cfi
+  - extents
+  - lower
 c_function_native_*_scalar:
   f_module_line: iso_c_binding:{f_kind}
   f_result_decl:
@@ -2854,6 +2893,15 @@ f_function_native_*_cdesc_pointer_caller:
   - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
   temps:
   - cdesc
+f_function_native_*_cfi_pointer:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  intent: function
+  name: f_function_native_*_cfi_pointer
+  pre_call:
+  - nullify({f_var})
 f_function_native_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'

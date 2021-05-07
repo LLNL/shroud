@@ -7613,7 +7613,7 @@
             {
                 "<FUNCTION>": "36 ****************************************",
                 "C_generated_path": [
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_F_C_index": "60",
                 "ast": {
@@ -7637,7 +7637,9 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -7647,10 +7649,11 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_scalar_bufferify",
+                    "F_C_call": "c_return_int_ptr_to_scalar_cfi",
                     "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
@@ -7680,7 +7683,6 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
@@ -7688,17 +7690,17 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_buf_pointer",
-                        "stmt1": "f_function_native_*_buf_pointer",
-                        "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*"
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "60 ****************************************",
                 "_PTR_C_CXX_index": "36",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -7709,7 +7711,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "buf",
+                        "api": "cfi",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -7721,45 +7723,60 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_scalar_bufferify",
-                    "C_prototype": "void",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "",
-                    "F_C_name": "c_return_int_ptr_to_scalar_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "cxx_rv_decl": "int * SHC_rv",
+                    "C_name": "POI_return_int_ptr_to_scalar_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
+                    "F_C_name": "c_return_int_ptr_to_scalar_cfi",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntPtrToScalar",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_int_ptr_to_scalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_get_value": "",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt0": "c_function_native_*_cfi_pointer",
+                        "stmt1": "c_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7771,7 +7788,7 @@
             {
                 "<FUNCTION>": "37 ****************************************",
                 "C_generated_path": [
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_F_C_index": "61",
                 "ast": {
@@ -7803,7 +7820,9 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -7813,11 +7832,11 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
+                    "F_C_call": "c_return_int_ptr_to_fixed_array_cfi",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
@@ -7849,29 +7868,26 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cdesc_pointer",
-                        "stmt1": "f_function_native_*_cdesc_pointer",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "61 ****************************************",
                 "_PTR_C_CXX_index": "37",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -7885,7 +7901,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "cdesc",
+                        "api": "cfi",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -7902,49 +7918,65 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
+                    "C_name": "POI_return_int_ptr_to_fixed_array_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
-                    "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
+                    "F_C_name": "c_return_int_ptr_to_fixed_array_cfi",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "int * SHC_rv",
+                    "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntPtrToFixedArray",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
+                        "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1] = {10};\n",
+                        "c_temp_extents_use": "SHT_rv_extents",
+                        "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
+                        "c_temp_lower_use": "SHT_rv_lower",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt0": "c_function_native_*_cfi_pointer",
+                        "stmt1": "c_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
@@ -7959,7 +7991,7 @@
             {
                 "<FUNCTION>": "38 ****************************************",
                 "C_generated_path": [
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_F_C_index": "62",
                 "ast": {
@@ -7984,7 +8016,9 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -7994,10 +8028,11 @@
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_const_scalar_bufferify",
+                    "F_C_call": "c_return_int_ptr_to_const_scalar_cfi",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
@@ -8027,7 +8062,6 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_local_ptr": "SHC_rv_ptr",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
@@ -8035,17 +8069,17 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_buf_pointer",
-                        "stmt1": "f_function_native_*_buf_pointer",
-                        "stmtc0": "c_function_native_*_buf_pointer",
-                        "stmtc1": "c_function_native_*"
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "62 ****************************************",
                 "_PTR_C_CXX_index": "38",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8057,7 +8091,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "buf",
+                        "api": "cfi",
                         "deref": "pointer",
                         "intent": "function"
                     },
@@ -8069,45 +8103,60 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_const_scalar_bufferify",
-                    "C_prototype": "void",
-                    "C_return_type": "const int *",
-                    "F_C_arguments": "",
-                    "F_C_name": "c_return_int_ptr_to_const_scalar_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "cxx_rv_decl": "const int * SHC_rv",
+                    "C_name": "POI_return_int_ptr_to_const_scalar_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
+                    "F_C_name": "c_return_int_ptr_to_const_scalar_cfi",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "const int * SHCXX_rv",
                     "function_name": "returnIntPtrToConstScalar",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_int_ptr_to_const_scalar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
-                        "c_get_value": "",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<int *>\t(SHC_rv)",
+                        "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_rv)",
                         "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_buf_pointer",
-                        "stmt1": "c_function_native_*"
+                        "stmt0": "c_function_native_*_cfi_pointer",
+                        "stmt1": "c_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_var": "SHT_rv",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -8119,7 +8168,7 @@
             {
                 "<FUNCTION>": "39 ****************************************",
                 "C_generated_path": [
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_F_C_index": "63",
                 "ast": {
@@ -8152,7 +8201,9 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -8162,11 +8213,11 @@
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
+                    "F_C_call": "c_return_int_ptr_to_fixed_const_array_cfi",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
@@ -8198,29 +8249,26 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cdesc_pointer",
-                        "stmt1": "f_function_native_*_cdesc_pointer",
-                        "stmtc0": "c_function_native_*_cdesc_pointer",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmt0": "f_function_native_*_cfi_pointer",
+                        "stmt1": "f_function_native_*_cfi_pointer",
+                        "stmtc0": "c_function_native_*_cfi_pointer",
+                        "stmtc1": "c_function_native_*_cfi_pointer"
                     }
                 }
             },
             {
                 "<FUNCTION>": "63 ****************************************",
                 "_PTR_C_CXX_index": "39",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -8235,7 +8283,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "cdesc",
+                        "api": "cfi",
                         "deref": "pointer",
                         "dimension": [
                             {
@@ -8252,49 +8300,65 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "options": {},
-                "splicer_group": "buf",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
+                    "C_name": "POI_return_int_ptr_to_fixed_const_array_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
-                    "F_C_name": "c_return_int_ptr_to_fixed_const_array_bufferify",
+                    "F_C_name": "c_return_int_ptr_to_fixed_const_array_cfi",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "const int * SHC_rv",
+                    "cxx_rv_decl": "const int * SHCXX_rv",
                     "function_name": "returnIntPtrToFixedConstArray",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "const ",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
+                        "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1] = {10};\n",
+                        "c_temp_extents_use": "SHT_rv_extents",
+                        "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
+                        "c_temp_lower_use": "SHT_rv_lower",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "const_cast<int *>\t(SHC_rv)",
+                        "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_rv)",
                         "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_cdesc_pointer",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt0": "c_function_native_*_cfi_pointer",
+                        "stmt1": "c_function_native_*_cfi_pointer"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
+                        "c_local_cdesc": "SHC_rv_cdesc",
+                        "c_local_cptr": "SHC_rv_cptr",
+                        "c_local_err": "SHC_rv_err",
+                        "c_local_fptr": "SHC_rv_fptr",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",

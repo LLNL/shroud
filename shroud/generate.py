@@ -1659,6 +1659,8 @@ class GenFunctions(object):
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
+        elif meta["deref"] in ["pointer"]:
+            need_buf_result   = "cfi"
 
         if not (need_buf_result or
                 has_cfi_arg):
