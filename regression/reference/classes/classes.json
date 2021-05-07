@@ -964,7 +964,10 @@
                                 "fmtf": {
                                     "F_C_var": "flag",
                                     "c_var": "flag",
-                                    "f_intent": "IN"
+                                    "f_intent": "IN",
+                                    "f_kind": "C_BOOL",
+                                    "f_type": "logical",
+                                    "sh_type": "SH_TYPE_BOOL"
                                 }
                             },
                             "name": {
@@ -989,7 +992,10 @@
                                 "fmtf": {
                                     "F_C_var": "name",
                                     "c_var": "name",
-                                    "f_intent": "IN"
+                                    "f_intent": "IN",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)",
+                                    "sh_type": "SH_TYPE_OTHER"
                                 }
                             }
                         },
@@ -1235,7 +1241,8 @@
                                 "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_intent": "OUT",
-                                "f_type": "type(class1)"
+                                "f_type": "type(class1)",
+                                "sh_type": "SH_TYPE_OTHER"
                             }
                         }
                     },
@@ -1558,7 +1565,9 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "character(*)"
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "sh_type": "SH_TYPE_OTHER"
                             }
                         }
                     },
@@ -2172,7 +2181,9 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "character(*)"
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "sh_type": "SH_TYPE_OTHER"
                             }
                         }
                     },
@@ -2695,7 +2706,9 @@
                                 "c_var": "SHT_rv",
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "f_intent": "OUT",
-                                "f_type": "character(*)"
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "sh_type": "SH_TYPE_OTHER"
                             }
                         }
                     }
@@ -4831,7 +4844,9 @@
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             }

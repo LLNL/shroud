@@ -844,7 +844,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_LONG)"
+                        "f_kind": "C_LONG",
+                        "f_type": "integer(C_LONG)",
+                        "sh_type": "SH_TYPE_LONG"
                     }
                 }
             },
@@ -1266,7 +1268,10 @@
                         "fmtf": {
                             "F_C_var": "nvalues",
                             "c_var": "nvalues",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "values": {
@@ -1291,7 +1296,10 @@
                         "fmtf": {
                             "F_C_var": "values",
                             "c_var": "values",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -1329,7 +1337,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -2293,7 +2303,10 @@
                         "fmtf": {
                             "F_C_var": "from",
                             "c_var": "from",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "nfrom": {
@@ -2318,7 +2331,10 @@
                         "fmtf": {
                             "F_C_var": "nfrom",
                             "c_var": "nfrom",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "nto": {
@@ -2343,7 +2359,10 @@
                         "fmtf": {
                             "F_C_var": "nto",
                             "c_var": "nto",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "to": {
@@ -2368,7 +2387,10 @@
                         "fmtf": {
                             "F_C_var": "to",
                             "c_var": "to",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -3411,7 +3433,9 @@
                         "fmtf": {
                             "F_C_var": "addr",
                             "c_var": "addr",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "size": {
@@ -3436,7 +3460,10 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "c_var": "size",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -3461,7 +3488,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -4134,7 +4164,9 @@
                         "fmtf": {
                             "F_C_var": "addr",
                             "c_var": "addr",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "size": {
@@ -4159,7 +4191,10 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "c_var": "size",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -4184,7 +4219,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -5115,7 +5153,9 @@
                         "fmtf": {
                             "F_C_var": "addr",
                             "c_var": "addr",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "size": {
@@ -5140,7 +5180,10 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "c_var": "size",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
                         }
                     },
                     "type": {
@@ -5165,7 +5208,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -6088,7 +6134,9 @@
                             "c_var": "arg",
                             "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
                             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_type": "type(structasclass)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "inew": {
@@ -6113,7 +6161,10 @@
                         "fmtf": {
                             "F_C_var": "inew",
                             "c_var": "inew",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_LONG",
+                            "f_type": "integer(C_LONG)",
+                            "sh_type": "SH_TYPE_LONG"
                         }
                     }
                 },
@@ -6151,7 +6202,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_LONG)"
+                        "f_kind": "C_LONG",
+                        "f_type": "integer(C_LONG)",
+                        "sh_type": "SH_TYPE_LONG"
                     }
                 }
             },

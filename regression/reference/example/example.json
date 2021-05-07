@@ -220,7 +220,10 @@
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "c_var": "name",
-                                                    "f_intent": "IN"
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_CHAR",
+                                                    "f_type": "character(*)",
+                                                    "sh_type": "SH_TYPE_OTHER"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -472,7 +475,8 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass1)"
+                                                "f_type": "type(exclass1)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -941,7 +945,9 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -1018,7 +1024,9 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2067,7 +2075,10 @@
                                                 "fmtf": {
                                                     "F_C_var": "name",
                                                     "c_var": "name",
-                                                    "f_intent": "IN"
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_CHAR",
+                                                    "f_type": "character(*)",
+                                                    "sh_type": "SH_TYPE_OTHER"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -2321,7 +2332,8 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass2)"
+                                                "f_type": "type(exclass2)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -2593,7 +2605,9 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "SHT_rv_len",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -2796,7 +2810,9 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -3000,7 +3016,9 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -3201,7 +3219,9 @@
                                                 "c_var": "SHT_rv",
                                                 "c_var_cdesc": "SHT_rv_cdesc",
                                                 "f_intent": "OUT",
-                                                "f_type": "character(*)"
+                                                "f_kind": "C_CHAR",
+                                                "f_type": "character(*)",
+                                                "sh_type": "SH_TYPE_OTHER"
                                             }
                                         }
                                     },
@@ -6354,7 +6374,10 @@
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "c_var": "name",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_CHAR",
+                                            "f_type": "character(*)",
+                                            "sh_type": "SH_TYPE_OTHER"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6606,7 +6629,9 @@
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "f_intent": "OUT",
-                                        "f_type": "logical"
+                                        "f_kind": "C_BOOL",
+                                        "f_type": "logical",
+                                        "sh_type": "SH_TYPE_BOOL"
                                     }
                                 }
                             },
@@ -6791,7 +6816,10 @@
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "c_var": "name",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_CHAR",
+                                            "f_type": "character(*)",
+                                            "sh_type": "SH_TYPE_OTHER"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7049,7 +7077,10 @@
                                         "fmtf": {
                                             "F_C_var": "flag",
                                             "c_var": "flag",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_INT",
+                                            "f_type": "integer(C_INT)",
+                                            "sh_type": "SH_TYPE_INT"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -7107,7 +7138,10 @@
                                         "fmtf": {
                                             "F_C_var": "name",
                                             "c_var": "name",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_CHAR",
+                                            "f_type": "character(*)",
+                                            "sh_type": "SH_TYPE_OTHER"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,

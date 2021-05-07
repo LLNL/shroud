@@ -88,7 +88,10 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "c_var_cdesc2": "Darg",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -438,7 +441,10 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "value": {
@@ -465,7 +471,9 @@
                             "F_C_var": "value",
                             "c_var": "value",
                             "c_var_cdesc2": "Dvalue",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     }
                 },

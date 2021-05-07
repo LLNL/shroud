@@ -427,7 +427,10 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -984,7 +987,10 @@
                         "fmtf": {
                             "F_C_var": "rv",
                             "c_var": "rv",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1198,7 +1204,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -1362,7 +1370,10 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1407,7 +1418,10 @@
                         "fmtf": {
                             "F_C_var": "value",
                             "c_var": "value",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "array_size": "1",

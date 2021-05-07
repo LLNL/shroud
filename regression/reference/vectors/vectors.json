@@ -237,7 +237,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -1987,7 +1989,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -2342,7 +2346,8 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": null
+                        "f_type": null,
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             }

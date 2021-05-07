@@ -1110,7 +1110,10 @@
                         "fmtf": {
                             "F_C_var": "arg1",
                             "c_var": "arg1",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1155,7 +1158,10 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1421,7 +1427,9 @@
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
@@ -1623,7 +1631,10 @@
                         "fmtf": {
                             "F_C_var": "s",
                             "c_var": "s",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1854,7 +1865,10 @@
                         "fmtf": {
                             "F_C_var": "name1",
                             "c_var": "name1",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2108,7 +2122,10 @@
                         "fmtf": {
                             "F_C_var": "name1",
                             "c_var": "name1",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2154,7 +2171,10 @@
                         "fmtf": {
                             "F_C_var": "name2",
                             "c_var": "name2",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2460,7 +2480,10 @@
                         "fmtf": {
                             "F_C_var": "ltext",
                             "c_var": "ltext",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2503,7 +2526,10 @@
                         "fmtf": {
                             "F_C_var": "text",
                             "c_var": "text",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3783,7 +3809,10 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -4424,7 +4453,9 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -4449,7 +4480,10 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -4681,7 +4715,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -5381,7 +5417,9 @@
                         "fmtf": {
                             "F_C_var": "in",
                             "c_var": "in",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "incr": {
@@ -5406,7 +5444,9 @@
                         "fmtf": {
                             "F_C_var": "incr",
                             "c_var": "incr",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -5431,7 +5471,10 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "type": {
@@ -5456,7 +5499,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },

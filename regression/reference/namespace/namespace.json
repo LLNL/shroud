@@ -190,7 +190,9 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },

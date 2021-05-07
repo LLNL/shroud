@@ -3088,7 +3088,10 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_SIZE_T",
+                                            "f_type": "integer(C_SIZE_T)",
+                                            "sh_type": "SH_TYPE_SIZE_T"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -3315,7 +3318,9 @@
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "f_intent": "OUT",
-                                        "f_type": "integer(C_INT)"
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "sh_type": "SH_TYPE_INT"
                                     }
                                 }
                             }
@@ -3862,7 +3867,10 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
-                                            "f_intent": "IN"
+                                            "f_intent": "IN",
+                                            "f_kind": "C_SIZE_T",
+                                            "f_type": "integer(C_SIZE_T)",
+                                            "sh_type": "SH_TYPE_SIZE_T"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -4089,7 +4097,9 @@
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "f_intent": "OUT",
-                                        "f_type": "real(C_DOUBLE)"
+                                        "f_kind": "C_DOUBLE",
+                                        "f_type": "real(C_DOUBLE)",
+                                        "sh_type": "SH_TYPE_DOUBLE"
                                     }
                                 }
                             }

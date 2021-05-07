@@ -1112,7 +1112,8 @@ rv = .false.
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
-                                      fmt_func.F_result, "function")
+                                      fmt_func.F_result, result_typemap,
+                                      "function")
 
         if cls:
             is_static = "static" in ast.storage
@@ -1177,7 +1178,7 @@ rv = .false.
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
-            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name)
+            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
             
             attrs = arg.attrs
             meta = arg.metaattrs
@@ -1419,7 +1420,7 @@ rv = .false.
         return need_wrapper
 
     def set_fmt_fields_iface(self, fcn, ast, fmt, rootname,
-                             subprogram=None):
+                             ntypemap, subprogram=None):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
@@ -1430,6 +1431,9 @@ rv = .false.
         ast : declast.Declaration
         fmt : util.Scope
         rootname : str
+        ntypemap : typemap.Typemap
+            The typemap has already resolved template arguments.
+            For example, std::vector<int>.  ntypemap will be 'int'.
         subprogram : str
             "function" or "subroutine" or None
         """
@@ -1445,7 +1449,10 @@ rv = .false.
             if fmt.f_intent == "SETTER":
                 fmt.f_intent = "IN"
         
-        ntypemap = ast.typemap
+        fmt.f_type = ntypemap.f_type
+        fmt.sh_type = ntypemap.sh_type
+        if ntypemap.f_kind:
+            fmt.f_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
@@ -1486,11 +1493,8 @@ rv = .false.
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ntypemap.name
         if subprogram != "subroutine":
-            fmt.f_type = ntypemap.f_type
-            fmt.sh_type = ntypemap.sh_type
-            if ntypemap.f_kind:
-                fmt.f_kind = ntypemap.f_kind
-            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname, subprogram)
+            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
+                                      ntypemap, subprogram)
                 
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]

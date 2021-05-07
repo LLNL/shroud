@@ -795,7 +795,9 @@
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
@@ -1404,7 +1406,10 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2674,7 +2679,10 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "sh_type": "SH_TYPE_DOUBLE"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2732,7 +2740,10 @@
                         "fmtf": {
                             "F_C_var": "name",
                             "c_var": "name",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -6042,7 +6053,9 @@
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             }
