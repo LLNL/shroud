@@ -1898,7 +1898,11 @@ rv = .false.
                     ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True)
                 )
 
-            self.update_f_module(modules, imports, result_typemap.f_module)
+            if ast.is_indirect() < 2:
+                # If more than one level of indirection, will return
+                # a type(C_PTR).  i.e. int ** same as void *.
+                # So do not add type's f_module.
+                self.update_f_module(modules, imports, result_typemap.f_module)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).

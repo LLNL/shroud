@@ -2042,7 +2042,7 @@ contains
     ! start return_raw_ptr_to_int2d
     function return_raw_ptr_to_int2d() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_raw_ptr_to_int2d
         SHT_rv = c_return_raw_ptr_to_int2d()
