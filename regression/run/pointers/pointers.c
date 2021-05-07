@@ -384,6 +384,13 @@ int **returnRawPtrToInt2d(void)
 }
 
 //----------------------------------------------------------------------
+
+int *returnIntAllocToFixedArray(void)
+{
+    return (int *) &global_fixed_array;
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

@@ -321,7 +321,7 @@ contains
 !-    integer(C_INT), target :: ivalue1, ivalue2
 !-    integer(C_INT), pointer :: iscalar, irvscalar
     integer(C_INT), allocatable :: iarray(:)
-!-    integer(C_INT), pointer :: irvarray(:)
+    integer(C_INT), allocatable :: irvarray(:)
 !-    type(C_PTR) :: cptr_scalar, cptr_array
 !-    type(C_PTR) :: void
 !-    type(C_PTR) :: cptr_arrays(2)
@@ -440,14 +440,15 @@ contains
 !-    call set_global_int(8)
 !-    ivalue = return_int_scalar()
 !-    call assert_equals(8, ivalue)
-!-
-!-    ! Return pointer to global_fixed_int as a fortran pointer.
-!-    nullify(irvarray)
-!-    irvarray => return_int_ptr_to_fixed_array()
-!-    call assert_true(associated(irvarray))
-!-    call assert_true(size(irvarray) == 10)
-!-    call assert_true(associated(irvscalar, iscalar))
-!-
+
+    ! Return copy of global_fixed_int as a fortran allocatable.
+    call assert_false(allocated(irvarray))
+    irvarray = return_int_alloc_to_fixed_array()
+    call assert_true(allocated(irvarray))
+    call assert_true(size(irvarray) == 10)
+!-  XXX - check values of irvarray
+    deallocate(irvarray)
+
 !-    ! ***** const results
 !-    ! Return pointer to global_int as a fortran pointer.
 !-    nullify(irvscalar)

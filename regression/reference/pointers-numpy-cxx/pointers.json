@@ -3839,6 +3839,47 @@
                     "function_name": "returnRawPtrToInt2d",
                     "underscore_name": "return_raw_ptr_to_int2d"
                 }
+            },
+            {
+                "<FUNCTION>": "44 ****************************************",
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable",
+                        "dimension": "10"
+                    },
+                    "declarator": {
+                        "name": "returnIntAllocToFixedArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ],
+                        "intent": "function"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
+                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "returnIntAllocToFixedArray",
+                    "underscore_name": "return_int_alloc_to_fixed_array"
+                }
             }
         ],
         "language": "cxx",

@@ -79,6 +79,8 @@ int *returnIntRaw(void);
 int *returnIntRawWithArgs(const char *name);
 int **returnRawPtrToInt2d(void);
 
+int *returnIntAllocToFixedArray(void);
+
 //void getPtrToArray(int **count+intent(out));
 
 #endif // POINTERS_HPP

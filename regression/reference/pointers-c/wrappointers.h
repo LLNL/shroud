@@ -56,4 +56,7 @@ void POI_return_int_ptr_to_fixed_const_array_bufferify(
 
 int POI_return_int_scalar(void);
 
+void POI_return_int_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_rv_cdesc);
+
 #endif  // WRAPPOINTERS_H

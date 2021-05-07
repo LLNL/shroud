@@ -532,7 +532,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "44",
+                "_PTR_F_C_index": "45",
                 "ast": {
                     "declarator": {
                         "name": "cos_doubles",
@@ -751,7 +751,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "45 ****************************************",
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -985,7 +985,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "45",
+                "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
                         "name": "truncate_to_int",
@@ -1204,7 +1204,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "46 ****************************************",
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -1950,7 +1950,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "46",
+                "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
                         "name": "Sum",
@@ -2151,7 +2151,7 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "47 ****************************************",
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -2483,7 +2483,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "47",
+                "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
                         "name": "incrementIntArray",
@@ -2637,7 +2637,7 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
+                "<FUNCTION>": "48 ****************************************",
                 "_PTR_C_CXX_index": "11",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -2802,7 +2802,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "48",
+                "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
                         "name": "fill_with_zeros",
@@ -2952,7 +2952,7 @@
                 }
             },
             {
-                "<FUNCTION>": "48 ****************************************",
+                "<FUNCTION>": "49 ****************************************",
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3113,7 +3113,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "49",
+                "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
                         "name": "accumulate",
@@ -3295,7 +3295,7 @@
                 }
             },
             {
-                "<FUNCTION>": "49 ****************************************",
+                "<FUNCTION>": "50 ****************************************",
                 "_PTR_C_CXX_index": "13",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3484,7 +3484,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "50",
+                "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -3626,7 +3626,7 @@
                 }
             },
             {
-                "<FUNCTION>": "50 ****************************************",
+                "<FUNCTION>": "51 ****************************************",
                 "_PTR_C_CXX_index": "14",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -3952,7 +3952,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "51",
+                "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -4057,7 +4057,7 @@
                 }
             },
             {
-                "<FUNCTION>": "51 ****************************************",
+                "<FUNCTION>": "52 ****************************************",
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4180,7 +4180,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "52",
+                "_PTR_F_C_index": "53",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -4297,7 +4297,7 @@
                 }
             },
             {
-                "<FUNCTION>": "52 ****************************************",
+                "<FUNCTION>": "53 ****************************************",
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4436,7 +4436,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "53",
+                "_PTR_F_C_index": "54",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -4603,7 +4603,7 @@
                 }
             },
             {
-                "<FUNCTION>": "53 ****************************************",
+                "<FUNCTION>": "54 ****************************************",
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -4792,7 +4792,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "54",
+                "_PTR_F_C_index": "55",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -4910,7 +4910,7 @@
                 }
             },
             {
-                "<FUNCTION>": "54 ****************************************",
+                "<FUNCTION>": "55 ****************************************",
                 "_PTR_C_CXX_index": "20",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5050,7 +5050,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "55",
+                "_PTR_F_C_index": "56",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -5156,7 +5156,7 @@
                 }
             },
             {
-                "<FUNCTION>": "55 ****************************************",
+                "<FUNCTION>": "56 ****************************************",
                 "_PTR_C_CXX_index": "21",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5280,7 +5280,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "56",
+                "_PTR_F_C_index": "57",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -5395,7 +5395,7 @@
                 }
             },
             {
-                "<FUNCTION>": "56 ****************************************",
+                "<FUNCTION>": "57 ****************************************",
                 "_PTR_C_CXX_index": "22",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -5532,7 +5532,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "57",
+                "_PTR_F_C_index": "58",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -5697,7 +5697,7 @@
                 }
             },
             {
-                "<FUNCTION>": "57 ****************************************",
+                "<FUNCTION>": "58 ****************************************",
                 "_PTR_C_CXX_index": "23",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -6712,7 +6712,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "58",
+                "_PTR_F_C_index": "59",
                 "ast": {
                     "declarator": {
                         "name": "getAllocToFixedArray",
@@ -6831,7 +6831,7 @@
                 }
             },
             {
-                "<FUNCTION>": "58 ****************************************",
+                "<FUNCTION>": "59 ****************************************",
                 "_PTR_C_CXX_index": "31",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7337,7 +7337,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "59",
+                "_PTR_F_C_index": "60",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -7476,7 +7476,7 @@
                 }
             },
             {
-                "<FUNCTION>": "59 ****************************************",
+                "<FUNCTION>": "60 ****************************************",
                 "_PTR_C_CXX_index": "35",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7615,7 +7615,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "60",
+                "_PTR_F_C_index": "61",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -7698,7 +7698,7 @@
                 }
             },
             {
-                "<FUNCTION>": "60 ****************************************",
+                "<FUNCTION>": "61 ****************************************",
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7790,7 +7790,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "61",
+                "_PTR_F_C_index": "62",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -7885,7 +7885,7 @@
                 }
             },
             {
-                "<FUNCTION>": "61 ****************************************",
+                "<FUNCTION>": "62 ****************************************",
                 "_PTR_C_CXX_index": "37",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -7993,7 +7993,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "62",
+                "_PTR_F_C_index": "63",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8077,7 +8077,7 @@
                 }
             },
             {
-                "<FUNCTION>": "62 ****************************************",
+                "<FUNCTION>": "63 ****************************************",
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8170,7 +8170,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "63",
+                "_PTR_F_C_index": "64",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -8266,7 +8266,7 @@
                 }
             },
             {
-                "<FUNCTION>": "63 ****************************************",
+                "<FUNCTION>": "64 ****************************************",
                 "_PTR_C_CXX_index": "39",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8547,7 +8547,7 @@
                 "C_generated_path": [
                     "arg_to_cfi"
                 ],
-                "_PTR_F_C_index": "64",
+                "_PTR_F_C_index": "65",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -8688,7 +8688,7 @@
                 }
             },
             {
-                "<FUNCTION>": "64 ****************************************",
+                "<FUNCTION>": "65 ****************************************",
                 "_PTR_C_CXX_index": "42",
                 "_generated": "arg_to_cfi",
                 "ast": {
@@ -8912,6 +8912,200 @@
                         "stmt1": "f_function_native_**",
                         "stmtc0": "c_function_native_**",
                         "stmtc1": "c_function_native_**"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "44 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "66",
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable",
+                        "dimension": "10"
+                    },
+                    "declarator": {
+                        "name": "returnIntAllocToFixedArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ],
+                        "intent": "function"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
+                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "POI_return_int_alloc_to_fixed_array",
+                    "C_prototype": "void",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "",
+                    "F_C_call": "c_return_int_alloc_to_fixed_array_bufferify",
+                    "F_C_name": "c_return_int_alloc_to_fixed_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_alloc_to_fixed_array",
+                    "F_name_generic": "return_int_alloc_to_fixed_array",
+                    "F_name_impl": "return_int_alloc_to_fixed_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntAllocToFixedArray",
+                    "underscore_name": "return_int_alloc_to_fixed_array"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_*_allocatable",
+                        "stmt1": "c_function_native_*"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "int",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "hnamefunc0": "POI_SHROUD_copy_array_int",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_*_cdesc_allocatable",
+                        "stmt1": "f_function_native_*_cdesc_allocatable",
+                        "stmtc0": "c_function_native_*_cdesc_allocatable",
+                        "stmtc1": "c_function_native_*_cdesc"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "66 ****************************************",
+                "_PTR_C_CXX_index": "44",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable",
+                        "dimension": "10"
+                    },
+                    "declarator": {
+                        "name": "returnIntAllocToFixedArray",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "cdesc",
+                        "deref": "allocatable",
+                        "dimension": [
+                            {
+                                "constant": "10"
+                            }
+                        ],
+                        "intent": "function"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
+                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "options": {
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "POI_return_int_alloc_to_fixed_array_bufferify",
+                    "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
+                    "F_C_name": "c_return_int_alloc_to_fixed_array_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntAllocToFixedArray",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_int_alloc_to_fixed_array"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_const": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_*_cdesc_allocatable",
+                        "stmt1": "c_function_native_*_cdesc"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_array_allocate": "(10)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             }

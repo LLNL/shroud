@@ -160,6 +160,11 @@ int * POI_return_int_raw_with_args(const char * name);
 
 int * * POI_return_raw_ptr_to_int2d(void);
 
+int * POI_return_int_alloc_to_fixed_array(void);
+
+void POI_return_int_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_rv_cdesc);
+
 #ifdef __cplusplus
 }
 #endif

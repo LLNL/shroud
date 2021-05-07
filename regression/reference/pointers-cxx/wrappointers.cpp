@@ -1364,4 +1364,42 @@ int * * POI_return_raw_ptr_to_int2d(void)
 }
 // end POI_return_raw_ptr_to_int2d
 
+// ----------------------------------------
+// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Attrs:     +deref(allocatable)+intent(function)
+// Requested: c_function_native_*_allocatable
+// Match:     c_function_native_*
+// start POI_return_int_alloc_to_fixed_array
+int * POI_return_int_alloc_to_fixed_array(void)
+{
+    // splicer begin function.return_int_alloc_to_fixed_array
+    int * SHC_rv = returnIntAllocToFixedArray();
+    return SHC_rv;
+    // splicer end function.return_int_alloc_to_fixed_array
+}
+// end POI_return_int_alloc_to_fixed_array
+
+// ----------------------------------------
+// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Requested: c_function_native_*_cdesc_allocatable
+// Match:     c_function_native_*_cdesc
+// start POI_return_int_alloc_to_fixed_array_bufferify
+void POI_return_int_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.return_int_alloc_to_fixed_array_bufferify
+    int * SHC_rv = returnIntAllocToFixedArray();
+    SHT_rv_cdesc->cxx.addr  = SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = 10;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    // splicer end function.return_int_alloc_to_fixed_array_bufferify
+}
+// end POI_return_int_alloc_to_fixed_array_bufferify
+
 }  // extern "C"

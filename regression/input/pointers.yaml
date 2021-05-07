@@ -211,7 +211,7 @@ declarations:
     wrap_python: False
 
 ######################################################################
-# Allocatable
+# Allocatable argument
 
 - decl: void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))
   doxygen:
@@ -268,4 +268,11 @@ declarations:
       # getRawPtrToInt2d
   options:
     F_force_wrapper: True
+    wrap_python: False
+
+######################################################################
+# Allocatable function
+
+- decl: int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)
+  options:
     wrap_python: False
