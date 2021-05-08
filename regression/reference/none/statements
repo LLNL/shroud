@@ -18,6 +18,7 @@ root
         * -- c_function_native_*/&/**
           cdesc -- c_function_native_*_cdesc
           cfi
+            allocatable -- c_function_native_*_cfi_allocatable
             pointer -- c_function_native_*_cfi_pointer
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
@@ -137,6 +138,8 @@ root
         array
           cdesc -- c_mixin_inout_array_cdesc
       native
+        allocatable
+          cfi -- c_mixin_native_allocatable_cfi
         pointer
           cfi -- c_mixin_native_pointer_cfi
       noargs -- c_mixin_noargs
@@ -226,6 +229,7 @@ root
             pointer -- f_function_native_*_cdesc_pointer
               caller -- f_function_native_*_cdesc_pointer_caller
           cfi
+            allocatable -- f_function_native_*_cfi_allocatable
             pointer -- f_function_native_*_cfi_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
@@ -619,6 +623,33 @@ c_function_native_*_cdesc:
   return_type: void
   temps:
   - cdesc
+c_function_native_*_cfi_allocatable:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: result
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_native_*_cfi_allocatable
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  return_type: void
+  temps:
+  - cfi
+  - extents
+  - lower
 c_function_native_*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -2093,6 +2124,18 @@ c_mixin_inout_array_cdesc:
   temps:
   - size
   - cdesc
+c_mixin_native_allocatable_cfi:
+  intent: mixin
+  name: c_mixin_native_allocatable_cfi
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
 c_mixin_native_pointer_cfi:
   intent: mixin
   local:
@@ -2893,6 +2936,13 @@ f_function_native_*_cdesc_pointer_caller:
   - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
   temps:
   - cdesc
+f_function_native_*_cfi_allocatable:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  intent: function
+  name: f_function_native_*_cfi_allocatable
 f_function_native_*_cfi_pointer:
   arg_c_call:
   - '{f_var}'
