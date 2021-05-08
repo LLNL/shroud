@@ -2199,7 +2199,7 @@ fc_statements = [
 
     dict(
         # Allocate copy of C pointer (requires +dimension)
-        name="c_mixin_native_allocatable_cfi",
+        name="c_mixin_native_cfi_allocatable",
         post_call=[
             "if ({cxx_var} != {nullptr}) {{+",
             "{c_temp_lower_decl}"
@@ -2215,7 +2215,7 @@ fc_statements = [
     ),
     dict(
         # Convert C pointer to Fortran pointer
-        name="c_mixin_native_pointer_cfi",
+        name="c_mixin_native_cfi_pointer",
         post_call=[
             "{{+",
             "CFI_CDESC_T({rank}) {c_local_fptr};",
@@ -2647,18 +2647,6 @@ fc_statements = [
     ########################################
     # native
     dict(
-        # Allocate argument before calling function.
-        name="c_out_native_*_cfi_allocatable",
-        mixin=[
-            "c_mixin_arg_native_cfi",
-        ],
-        pre_call=[
-            "CFI_index_t xxx[1] = {{1}};",
-            "CFI_index_t yyy[1] = {{10}};",
-            "int SH_ret = CFI_allocate({c_var_cfi}, \txxx, yyy, \t0);",
-        ],
-    ),
-    dict(
         name="f_out_native_*_cfi_allocatable",
     ),
     dict(
@@ -2666,7 +2654,7 @@ fc_statements = [
         name="c_out_native_**_cfi_allocatable",
         mixin=[
             "c_mixin_arg_native_cfi",
-            "c_mixin_native_allocatable_cfi",
+            "c_mixin_native_cfi_allocatable",
         ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
@@ -2681,7 +2669,7 @@ fc_statements = [
         name="c_out_native_**_cfi_pointer",
         mixin=[
             "c_mixin_arg_native_cfi",
-            "c_mixin_native_pointer_cfi",
+            "c_mixin_native_cfi_pointer",
         ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
@@ -2708,7 +2696,7 @@ fc_statements = [
         name="c_function_native_*_cfi_allocatable",
         mixin=[
             "c_mixin_arg_native_cfi",
-            "c_mixin_native_allocatable_cfi",  # post_call
+            "c_mixin_native_cfi_allocatable",  # post_call
         ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
@@ -2735,7 +2723,7 @@ fc_statements = [
         name="c_function_native_*_cfi_pointer",
         mixin=[
             "c_mixin_arg_native_cfi",
-            "c_mixin_native_pointer_cfi",  # post_call
+            "c_mixin_native_cfi_pointer",  # post_call
         ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",

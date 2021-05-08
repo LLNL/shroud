@@ -1463,24 +1463,23 @@ rv = .false.
             fmt.f_c_module_line = f_c_module_line
         statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
     
-    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
+    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
                        ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
-        Args:
-            cls   - ast.ClassNode or None of enclosing class.
-            fcn   - ast.FunctionNode of calling function.
-            f_ast - declast.Declaration - Fortran argument
-            c_ast - declast.Declaration - C argument
-                  Abstract Syntax Tree of argument or result
-            fmt - format dictionary
-        modules
-        fileinfo
-        subprogram
-        ntypemap
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration - Fortran argument
+        c_ast : declast.Declaration - C argument
+              Abstract Syntax Tree of argument or result
+        fmt : format dictionary
+        subprogram : str
+        ntypemap : typemap.Typemap
         """
         c_attrs = c_ast.attrs
         c_meta = c_ast.metaattrs
@@ -1634,7 +1633,7 @@ rv = .false.
 
         self.name_temp_vars(fmt_func.C_result, f_result_blk, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
-                            modules, fileinfo, subprogram, result_typemap)
+                            subprogram, result_typemap)
 
         if options.debug:
             stmts_comments.append(
@@ -1751,7 +1750,7 @@ rv = .false.
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             self.name_temp_vars(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
-                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
+                cls, C_node, f_arg, c_arg, fmt_arg)
 
             if is_f_arg:
                 implied = f_attrs["implied"]
