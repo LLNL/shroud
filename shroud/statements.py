@@ -2198,6 +2198,22 @@ fc_statements = [
     ),
 
     dict(
+        # Allocate copy of C pointer (requires +dimension)
+        name="c_mixin_native_allocatable_cfi",
+        post_call=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}"
+            "{c_temp_extents_decl}"
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use},"
+            " \t{c_temp_extents_use}, \t0);",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+#XXX            "{C_memory_dtor_function}({cxx_var});",
+            "-}}",
+            "-}}",
+        ],
+    ),
+    dict(
         # Convert C pointer to Fortran pointer
         name="c_mixin_native_pointer_cfi",
         post_call=[
@@ -2650,26 +2666,15 @@ fc_statements = [
         name="c_out_native_**_cfi_allocatable",
         mixin=[
             "c_mixin_arg_native_cfi",
+            "c_mixin_native_allocatable_cfi",
         ],
         f_arg_decl=[
             "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
         ],
-         pre_call=[
+        pre_call=[
             "{c_const}{c_type} * {cxx_var};",
         ],
         arg_call=["&{cxx_var}"],
-        post_call=[
-            "if ({cxx_var} != {nullptr}) {{+",
-            "{c_temp_lower_decl}"
-            "{c_temp_extents_decl}"
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use},"
-            " \t{c_temp_extents_use}, \t0);",
-            "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
-#XXX            "{C_memory_dtor_function}({cxx_var});",
-            "-}}",
-            "-}}",
-        ],
     ),
     dict(
         # Set Fortran pointer to point to cxx_var
@@ -2691,6 +2696,30 @@ fc_statements = [
 
     dict(
         # Pass result as an argument to C wrapper.
+        name="f_function_native_*_cfi_allocatable",
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        # Convert to subroutine and pass result as an argument.
+        # Return an allocated copy of data.
+        name="c_function_native_*_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_allocatable_cfi",  # post_call
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
+        ],
+
+        cxx_local_var="result",
+        return_type="void",  # Convert to function.
+    ),
+
+    dict(
+        # Pass result as an argument to C wrapper.
         name="f_function_native_*_cfi_pointer",
         arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
@@ -2702,6 +2731,7 @@ fc_statements = [
     ),
     dict(
         # Convert to subroutine and pass result as an argument.
+        # Return Fortran pointer to data.
         name="c_function_native_*_cfi_pointer",
         mixin=[
             "c_mixin_arg_native_cfi",

@@ -65,7 +65,7 @@ C int * returnIntRawWithArgs(const char * name) +deref(raw)  +deref(raw)+intent(
 C int * returnIntRawWithArgs(const char * name) +deref(raw)  +deref(raw)+intent(function)
 C int * * returnRawPtrToInt2d(void)  +intent(function)
 C int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +deref(allocatable)+intent(function)
-C int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +api(cdesc)+deref(allocatable)+intent(function)
+C int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +api(cfi)+deref(allocatable)+intent(function)
 Close wrappointers.h
 Close wrappointers.cpp
 Fortran void intargs_in(const int * arg)  +intent(subroutine)
@@ -179,7 +179,7 @@ C-interface int * returnIntRawWithArgs(const char * name) +deref(raw)  +deref(ra
 C-interface int * returnIntRawWithArgs(const char * name) +deref(raw)  +deref(raw)+intent(function)
 C-interface int * * returnRawPtrToInt2d(void)  +intent(function)
 C-interface int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +deref(allocatable)+intent(function)
-C-interface int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +api(cdesc)+deref(allocatable)+intent(function)
+C-interface int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)  +api(cfi)+deref(allocatable)+intent(function)
 Close wrapfpointers.f
 Close utilpointers.cpp
 Close typespointers.h

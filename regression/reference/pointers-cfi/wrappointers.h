@@ -172,8 +172,7 @@ int * * POI_return_raw_ptr_to_int2d(void);
 
 int * POI_return_int_alloc_to_fixed_array(void);
 
-void POI_return_int_alloc_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_rv_cdesc);
+void POI_return_int_alloc_to_fixed_array_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 #ifdef __cplusplus
 }

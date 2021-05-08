@@ -8918,7 +8918,7 @@
             {
                 "<FUNCTION>": "44 ****************************************",
                 "C_generated_path": [
-                    "arg_to_buffer"
+                    "arg_to_cfi"
                 ],
                 "_PTR_F_C_index": "66",
                 "ast": {
@@ -8952,6 +8952,7 @@
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "options": {
+                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -8963,11 +8964,11 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_alloc_to_fixed_array_bufferify",
+                    "F_C_call": "c_return_int_alloc_to_fixed_array_cfi",
                     "F_C_name": "c_return_int_alloc_to_fixed_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_alloc_to_fixed_array",
                     "F_name_generic": "return_int_alloc_to_fixed_array",
@@ -8999,29 +9000,26 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
                         "cxx_type": "int",
-                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "POI_SHROUD_copy_array_int",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_function_native_*_cdesc_allocatable",
-                        "stmt1": "f_function_native_*_cdesc_allocatable",
-                        "stmtc0": "c_function_native_*_cdesc_allocatable",
-                        "stmtc1": "c_function_native_*_cdesc"
+                        "stmt0": "f_function_native_*_cfi_allocatable",
+                        "stmt1": "f_function_native_*_cfi_allocatable",
+                        "stmtc0": "c_function_native_*_cfi_allocatable",
+                        "stmtc1": "c_function_native_*_cfi_allocatable"
                     }
                 }
             },
             {
                 "<FUNCTION>": "66 ****************************************",
                 "_PTR_C_CXX_index": "44",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "deref": "allocatable",
@@ -9036,7 +9034,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "cdesc",
+                        "api": "cfi",
                         "deref": "allocatable",
                         "dimension": [
                             {
@@ -9054,50 +9052,57 @@
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "options": {
+                    "wrap_fortran": false,
                     "wrap_python": false
                 },
-                "splicer_group": "buf",
+                "splicer_group": "cfi",
                 "wrap": {
                     "c": true,
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_alloc_to_fixed_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
+                    "C_name": "POI_return_int_alloc_to_fixed_array_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
-                    "F_C_name": "c_return_int_alloc_to_fixed_array_bufferify",
+                    "F_C_name": "c_return_int_alloc_to_fixed_array_cfi",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "int * SHC_rv",
+                    "cxx_rv_decl": "int * SHCXX_rv",
                     "function_name": "returnIntAllocToFixedArray",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_int_alloc_to_fixed_array"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                        "c_array_size": "SHT_rv_cdesc->shape[0]",
                         "c_const": "",
+                        "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1] = {10};\n",
+                        "c_temp_extents_use": "SHT_rv_extents",
+                        "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
+                        "c_temp_lower_use": "SHT_rv_lower",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
                         "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "c_function_native_*_cdesc_allocatable",
-                        "stmt1": "c_function_native_*_cdesc"
+                        "stmt0": "c_function_native_*_cfi_allocatable",
+                        "stmt1": "c_function_native_*_cfi_allocatable"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "c_var_cfi": "SHT_rv_cfi",
+                        "c_var_extents": "SHT_rv_extents",
+                        "c_var_lower": "SHT_rv_lower",
                         "f_array_allocate": "(10)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
