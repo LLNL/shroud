@@ -1049,7 +1049,8 @@ fc_statements = [
     ),
 
     dict(
-        # pointer to scalar
+        # Pointer to scalar.
+        # type(C_PTR) is returned instead of a cdesc argument.
         name="f_function_native_*_buf_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         arg_decl=[
