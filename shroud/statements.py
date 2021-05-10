@@ -764,18 +764,6 @@ fc_statements = [
             "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
-    dict(
-        # double * out +intent(out) +deref(allocatable)+dimension(size(in)),
-        # Allocate array then pass to C wrapper.
-        name="f_out_native_*_allocatable",
-        arg_decl=[
-            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
-        ],
-        pre_call=[
-            # XXX - allocate on pre_call, should be 'cdesc'?
-            "allocate({f_var}{f_array_allocate})",
-        ],
-    ),
     
     dict(
         # Any array of pointers.  Assumed to be non-contiguous memory.
