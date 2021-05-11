@@ -20,6 +20,7 @@ CXXLIBS = -lstdc++
 
 FC = gfortran
 FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
+FLIBS = -lstdc++
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $<
