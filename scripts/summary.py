@@ -111,7 +111,7 @@ def print_table(dct):
         if len(test) > test_width:
             test_width = len(test)
 
-    for family in ['gcc', 'intel', 'pgi', 'xl', 'python']:
+    for family in ['gcc', 'intel', 'pgi', 'xl', 'cray', 'python']:
         subset_compilers = [x for x in all_compilers if x.startswith(family)]
         if not subset_compilers:
             continue
@@ -124,7 +124,10 @@ def print_table(dct):
         for test in all_tests:
             cline = []
             for compiler in subset_compilers:
-                cline.append(dct[compiler][test].get("status", "---"))
+                if test in dct[compiler]:
+                    cline.append(dct[compiler][test].get("status", "----"))
+                else:
+                    cline.append("    ")
             print(test.ljust(test_width), "|",
                   "    | ".join(str(x) for x in cline))
         

@@ -1,3 +1,4 @@
+#if 0
 /*
  * Define compiler features that are available
  *
@@ -5,9 +6,13 @@
  *
  * Used with Fortran too, must use C style comments.
  */
+#endif
 
+
+#if 0
 /* Assume this works for all compilers. */
-#define HAVE_CHARACTER_POINTER_FUNCTION
+#endif
+#define HAVE_CHARACTER_POINTER_FUNCTION 1
 
 #ifdef __INTEL_COMPILER
 /* Check intel before __GNUC__, since intel also definds __GNUC__ */
@@ -18,6 +23,11 @@
 
 #elif defined(__PGI)
 /* __PGIC__  __PGIC_MINOR__  __PGIC_PATCHLEVEL__ */
+
+#elif defined(__ibmxl__)
+#if 0
+/* __ibmxl_vrm__   compiler version */
+#endif
 
 #elif defined(__GNUC__)
 /*  __GNUC__  __GNUC_MINOR__ __GNUC_PATCHLEVEL__ */

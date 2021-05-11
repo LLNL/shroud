@@ -10,6 +10,7 @@ gccdir = /usr/tce/packages/gcc
 inteldir = /usr/tce/packages/intel
 pgidir = /usr/tce/packages/pgi
 ibmdir = /usr/tce/packages/xl
+craydir = /opt/cray/pe/craype
 pythondir = /usr/tce/packages/python
 
 tempdir = build/regression
@@ -152,6 +153,29 @@ ibm : $(ibm-list)
 .PHONY : $(ibm-list)
 $(ibm-list) : xl-% :
 	$(MAKE) $(makeargs) testdir=$@ compiler=ibm \
+	CC=$(cc-$@) \
+	CXX=$(cxx-$@) \
+	FC=$(fc-$@)
+
+######################################################################
+# cray
+
+cray-list = \
+ cray-2.7.1 \
+ cray-2.7.6
+
+cray-ver = $(patsubst cray-%,%,$(cray-list))
+
+$(foreach v,$(cray-ver),$(eval cc-cray-$v=$(craydir)/$v/bin/cc))
+$(foreach v,$(cray-ver),$(eval cxx-cray-$v=$(craydir)/$v/bin/CC))
+$(foreach v,$(cray-ver),$(eval fc-cray-$v=$(craydir)/$v/bin/ftn))
+
+.PHONY : cray
+cray : $(cray-list)
+
+.PHONY : $(cray-list)
+$(cray-list) : cray-% :
+	$(MAKE) $(makeargs) testdir=$@ compiler=cray \
 	CC=$(cc-$@) \
 	CXX=$(cxx-$@) \
 	FC=$(fc-$@)

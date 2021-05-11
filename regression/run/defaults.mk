@@ -75,16 +75,29 @@ endif
 
 ifeq ($(compiler),ibm)
 # rzansel
-TCE = /usr/tce/packages/xl/xl-2019.08.20/
-TCE = /usr/tce/packages/xl/xl-2020.11.12/
+TCE = /usr/tce/packages/xl/xl-2019.08.20
+TCE = /usr/tce/packages/xl/xl-2020.11.12
+TCE = /usr/tce/packages/xl/xl-2021.03.11
+CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
 CC = xlc
 LOCAL_CFLAGS = -g
+LOCAL_CFLAGS += $(CFI_INCLUDE)
 CLIBS = -lstdc++
 CXX = xlC
 LOCAL_CXXFLAGS = -g -std=c++0x 
+LOCAL_CXXFLAGS += $(CFI_INCLUDE)
 FC = xlf2003
-LOCAL_FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
+FC = xlf
+LOCAL_FFLAGS = -g -qfree=f90
+LOCAL_FFLAGS += -qlanglvl=ts
 # -qlanglvl=2003std
+LOCAL_FFLAGS += -qcheck=all
+# The #line directive is not permitted by the Fortran TS29113 standard.
+# -P  Inhibit generation of linemarkers 
+LOCAL_FFLAGS += -qpreprocess -WF,-P
+# keep preprocessor output
+#LOCAL_FFLAGS += -d
+# -qsuffix=cpp=f
 FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
