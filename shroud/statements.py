@@ -901,6 +901,7 @@ fc_statements = [
         ],
     ),
 
+    ########################################
     ##### hidden
     # Hidden argument will not be added for Fortran
     # or C buffer wrapper. Instead it is a local variable
@@ -924,8 +925,8 @@ fc_statements = [
         arg_call=["{cxx_var}"],
     ),
     
-########################################
-# void *
+    ########################################
+    # void *
     dict(
         name="f_in_void_*",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -953,8 +954,8 @@ fc_statements = [
         base="f_in_native_*_cdesc",
     ),    
 
-########################################
-# void **
+    ########################################
+    # void **
     dict(
         # Treat as an assumed length array in Fortran interface.
         name='c_in_void_**',
