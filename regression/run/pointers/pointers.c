@@ -309,6 +309,13 @@ void DimensionIn(const int *arg)
 {
 }
 
+//----------------------------------------------------------------------
+// allocatable
+
+void getAllocToFixedArray(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
 
 //----------------------------------------------------------------------
 
@@ -374,6 +381,13 @@ int *returnIntRawWithArgs(const char *name)
 int **returnRawPtrToInt2d(void)
 {
     return (int **) global_int2d;
+}
+
+//----------------------------------------------------------------------
+
+int *returnIntAllocToFixedArray(void)
+{
+    return (int *) &global_fixed_array;
 }
 
 //----------------------------------------------------------------------

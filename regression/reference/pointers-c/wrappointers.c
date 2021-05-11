@@ -159,22 +159,22 @@ void POI_get_ptr_to_fixed_array_bufferify(
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // start POI_get_ptr_to_dynamic_array_bufferify
 void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount)
+    POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_array_bufferify
     int *count;
-    getPtrToDynamicArray(&count, ncount);
+    int ncount;
+    getPtrToDynamicArray(&count, &ncount);
     SHT_count_cdesc->cxx.addr  = count;
     SHT_count_cdesc->cxx.idtor = 0;
     SHT_count_cdesc->addr.base = count;
     SHT_count_cdesc->type = SH_TYPE_INT;
     SHT_count_cdesc->elem_len = sizeof(int);
     SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = *ncount;
+    SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_array_bufferify
 }
@@ -280,26 +280,57 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // start POI_get_ptr_to_dynamic_const_array_bufferify
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount)
+    POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
     const int *count;
-    getPtrToDynamicConstArray(&count, ncount);
+    int ncount;
+    getPtrToDynamicConstArray(&count, &ncount);
     SHT_count_cdesc->cxx.addr  = (int *) count;
     SHT_count_cdesc->cxx.idtor = 0;
     SHT_count_cdesc->addr.base = count;
     SHT_count_cdesc->type = SH_TYPE_INT;
     SHT_count_cdesc->elem_len = sizeof(int);
     SHT_count_cdesc->rank = 1;
-    SHT_count_cdesc->shape[0] = *ncount;
+    SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_const_array_bufferify
 }
 // end POI_get_ptr_to_dynamic_const_array_bufferify
+
+/**
+ * Return a Fortran pointer to an array which is always the same length.
+ */
+// ----------------------------------------
+// Function:  void getAllocToFixedArray
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+// Requested: c_out_native_**_cdesc_allocatable
+// Match:     c_out_native_**_cdesc
+// start POI_get_alloc_to_fixed_array_bufferify
+void POI_get_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc)
+{
+    // splicer begin function.get_alloc_to_fixed_array_bufferify
+    int *count;
+    getAllocToFixedArray(&count);
+    SHT_count_cdesc->cxx.addr  = count;
+    SHT_count_cdesc->cxx.idtor = 0;
+    SHT_count_cdesc->addr.base = count;
+    SHT_count_cdesc->type = SH_TYPE_INT;
+    SHT_count_cdesc->elem_len = sizeof(int);
+    SHT_count_cdesc->rank = 1;
+    SHT_count_cdesc->shape[0] = 10;
+    SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
+    // splicer end function.get_alloc_to_fixed_array_bufferify
+}
+// end POI_get_alloc_to_fixed_array_bufferify
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -360,3 +391,26 @@ int POI_return_int_scalar(void)
     // splicer end function.return_int_scalar
 }
 // end POI_return_int_scalar
+
+// ----------------------------------------
+// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+// Requested: c_function_native_*_cdesc_allocatable
+// Match:     c_function_native_*_cdesc
+// start POI_return_int_alloc_to_fixed_array_bufferify
+void POI_return_int_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.return_int_alloc_to_fixed_array_bufferify
+    int * SHC_rv = returnIntAllocToFixedArray();
+    SHT_rv_cdesc->cxx.addr  = SHC_rv;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SHC_rv;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = 10;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    // splicer end function.return_int_alloc_to_fixed_array_bufferify
+}
+// end POI_return_int_alloc_to_fixed_array_bufferify

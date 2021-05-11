@@ -56,7 +56,9 @@ $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpa
 
 
 ######################################################################
-fortran-test-list = \
+# Fortran
+
+fortran-test-list-std = \
   test-fortran-tutorial \
   test-fortran-types \
   test-fortran-classes \
@@ -80,6 +82,13 @@ fortran-test-list = \
   test-fortran-statement \
   test-fortran-templates
 
+fortran-test-list-cfi = \
+  test-fortran-pointers-cfi \
+  test-fortran-strings-cfi \
+  test-fortran-generic-cfi
+
+fortran-test-list = $(fortran-test-list-std) $(fortran-test-list-cfi)
+
 # Compile a Fortran test
 fortran-% : | $(relrunpath)/%/.. sync-cxx
 	$(call run-command,build,$(relrunpath)/$*,\
@@ -92,23 +101,24 @@ $(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
 
 # Run the Fortran tests
 .PHONY : test-fortran
-test-fortran : $(fortran-test-list)
+test-fortran : $(fortran-test-list-std)
 
 # Futher Interoperability with C
 # gfortran 9.1
 # intel 16.0.3
 .PHONY : test-cfi
-test-cfi : \
-  test-fortran-strings-cfi \
-  test-fortran-generic-cfi
+test-cfi : $(fortran-test-list-cfi)
+
 
 ######################################################################
+# C
 
 c-test-list = \
   test-c-types \
   test-c-classes \
   test-c-enum-c \
   test-c-namespace \
+  test-c-pointers-cxx \
   test-c-struct-cxx \
   test-c-statement \
   test-c-templates
@@ -143,6 +153,7 @@ test-c : $(c-test-list)
 
 
 ######################################################################
+# C++
 
 cpp-test-list = \
   test-cpp-tutorial \
@@ -163,6 +174,7 @@ $(cpp-test-list) : test-cpp-% : cpp-% | $(relrunpath)/%/..
 test-cpp : $(cpp-test-list)
 
 ######################################################################
+# Python
 
 python-test-list = \
   test-python-tutorial \
@@ -209,6 +221,7 @@ test-python : $(python-test-list)
 # test-python-templates
 
 ######################################################################
+# Lua
 
 lua-test-list = \
     test-lua-tutorial \

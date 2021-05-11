@@ -3278,6 +3278,7 @@
                 "struct.h"
             ],
             "c_type": "Arrays1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
             "f_c_module": {
                 "--import--": [
@@ -3310,6 +3311,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct1",
             "f_c_module": {
                 "--import--": [
@@ -3416,6 +3418,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_list",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_list",
             "f_c_module": {
                 "--import--": [
@@ -3448,6 +3451,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_numpy",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_numpy",
             "f_c_module": {
                 "--import--": [
@@ -3480,6 +3484,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_ptr",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_ptr",
             "f_c_module": {
                 "--import--": [

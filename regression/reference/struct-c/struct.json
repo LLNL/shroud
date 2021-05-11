@@ -677,6 +677,7 @@
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "int",
@@ -757,6 +758,7 @@
                                     "c_member": ".",
                                     "c_type": "int",
                                     "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -868,6 +870,7 @@
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "int",
@@ -948,6 +951,7 @@
                                     "c_member": ".",
                                     "c_type": "int",
                                     "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -1153,6 +1157,7 @@
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "int",
@@ -1233,6 +1238,7 @@
                                     "c_member": ".",
                                     "c_type": "int",
                                     "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -1344,6 +1350,7 @@
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "int",
@@ -1424,6 +1431,7 @@
                                     "c_member": ".",
                                     "c_type": "int",
                                     "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -1535,6 +1543,7 @@
                                 "c_const": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_type": "int",
@@ -1615,6 +1624,7 @@
                                     "c_member": ".",
                                     "c_type": "int",
                                     "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -1852,6 +1862,7 @@
                             "c_member": ".",
                             "c_type": "Cstruct1",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1903,6 +1914,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -1983,6 +1995,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(Cstruct1 *) arg",
@@ -2034,6 +2047,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2139,6 +2153,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -2152,7 +2167,11 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "s1": {
@@ -2163,6 +2182,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "s1",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(Cstruct1 *) s1",
@@ -2176,7 +2196,10 @@
                         "fmtf": {
                             "F_C_var": "s1",
                             "c_var": "s1",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct1)",
+                            "f_var": "s1",
+                            "sh_type": "SH_TYPE_STRUCT"
                         }
                     }
                 },
@@ -2207,6 +2230,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2313,6 +2337,7 @@
                             "c_type": "char",
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -2346,6 +2371,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "s1",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(Cstruct1 *) s1",
@@ -2390,6 +2416,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2404,7 +2431,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -2462,6 +2492,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -2513,6 +2544,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2628,6 +2660,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -2659,6 +2692,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -2691,6 +2725,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -2793,6 +2828,7 @@
                             "c_member": "->",
                             "c_type": "Cstruct1",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -2906,6 +2942,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -2938,6 +2975,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -2990,6 +3028,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -3093,6 +3132,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -3106,7 +3146,11 @@
                         "fmtf": {
                             "F_C_var": "d",
                             "c_var": "d",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "d",
+                            "sh_type": "SH_TYPE_DOUBLE"
                         }
                     },
                     "i": {
@@ -3117,6 +3161,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -3130,7 +3175,11 @@
                         "fmtf": {
                             "F_C_var": "i",
                             "c_var": "i",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "i",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     }
                 },
@@ -3161,6 +3210,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3265,6 +3315,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -3297,6 +3348,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -3342,6 +3394,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3356,7 +3409,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "type(cstruct1)"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
             },
@@ -3459,6 +3514,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -3472,7 +3528,11 @@
                         "fmtf": {
                             "F_C_var": "d",
                             "c_var": "d",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "d",
+                            "sh_type": "SH_TYPE_DOUBLE"
                         }
                     },
                     "i": {
@@ -3483,6 +3543,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -3496,7 +3557,11 @@
                         "fmtf": {
                             "F_C_var": "i",
                             "c_var": "i",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "i",
+                            "sh_type": "SH_TYPE_INT"
                         }
                     },
                     "outbuf": {
@@ -3507,6 +3572,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3520,7 +3586,11 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -3551,6 +3621,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3677,6 +3748,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "d",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&d",
@@ -3709,6 +3781,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "i",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&i",
@@ -3742,6 +3815,7 @@
                             "c_type": "char",
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3788,6 +3862,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct1",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3802,7 +3877,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "type(cstruct1)"
+                        "f_type": "type(cstruct1)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
             },
@@ -3863,6 +3940,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct_list",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3940,6 +4018,7 @@
                         "c_get_value": "",
                         "c_type": "Cstruct_list",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_struct",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -3954,7 +4033,9 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "type(cstruct_list)"
+                        "f_type": "type(cstruct_list)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_STRUCT"
                     }
                 }
             },
@@ -4015,6 +4096,7 @@
                         "c_const": "",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -4115,6 +4197,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "x",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&x",
@@ -4147,6 +4230,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "y",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&y",
@@ -4198,6 +4282,7 @@
                         "c_const": "",
                         "c_type": "STR_Cstruct_as_class",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -4283,6 +4368,7 @@
                             "c_member": "->",
                             "c_type": "STR_Cstruct_as_class",
                             "c_var": "point",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(Cstruct_as_class *) SHCXX_point",
@@ -4336,6 +4422,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -4451,6 +4538,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "x",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&x",
@@ -4483,6 +4571,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "y",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&y",
@@ -4515,6 +4604,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "z",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&z",
@@ -4566,6 +4656,7 @@
                         "c_const": "",
                         "c_type": "STR_Cstruct_as_subclass",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -4614,6 +4705,7 @@
                 "struct.h"
             ],
             "c_type": "Arrays1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
             "f_c_module": {
                 "--import--": [
@@ -4641,6 +4733,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct1",
             "f_c_module": {
                 "--import--": [
@@ -4742,6 +4835,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_list",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_list",
             "f_c_module": {
                 "--import--": [
@@ -4769,6 +4863,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_numpy",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_numpy",
             "f_c_module": {
                 "--import--": [
@@ -4796,6 +4891,7 @@
                 "struct.h"
             ],
             "c_type": "Cstruct_ptr",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_ptr",
             "f_c_module": {
                 "--import--": [

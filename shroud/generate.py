@@ -205,6 +205,7 @@ class VerifyAttrs(object):
         deref = attrs["deref"]
         mderef = None
         ntypemap = ast.typemap
+        nindirect = ast.is_indirect()
         if ast.get_subprogram() == "subroutine":
             pass
         if ntypemap.sgroup == "void":
@@ -229,7 +230,12 @@ class VerifyAttrs(object):
                 mderef = deref
             else:
                 mderef = "allocatable"
-        elif ast.is_indirect():
+        elif nindirect > 1:
+            if deref:
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on function which returns multiple indirections in {}".
+                    format(node.decl))
+        elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref:
                 mderef = deref
@@ -250,13 +256,14 @@ class VerifyAttrs(object):
             )
         ast.metaattrs["deref"] = mderef
         
-    def check_deref_attr_var(self, ast):
+    def check_deref_attr_var(self, node, ast):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
 
         Parameters
         ----------
+        node - ast.FunctionNode or ast.FortranGeneric
         ast : declast.Declaration
         """
         attrs = ast.attrs
@@ -272,9 +279,22 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
-            if not ast.is_indirect():
+            nindirect = ast.is_indirect()
+            if ntypemap.sgroup == "vector":
+                if deref:
+                    mderef = deref
+                else:
+                    # Copy vector to new array.
+                    mderef = "allocatable"
+            elif nindirect != 2:
                 raise RuntimeError(
-                    "Cannot have attribute 'deref' on non-pointer")
+                    "Can only have attribute 'deref' on arguments which"
+                    " return a pointer:"
+                    " '{}' at line {}".format(ast.name, node.linenumber))
+            elif meta["intent"] == "in":
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on intent(in) argument:"
+                    " '{}' at line".format(ast.name, node.linenumber))
             meta["deref"] = attrs["deref"]
             return
 
@@ -443,7 +463,7 @@ class VerifyAttrs(object):
             )
 
         intent = self.check_intent_attr(node, arg)
-        self.check_deref_attr_var(arg)
+        self.check_deref_attr_var(node, arg)
         self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
@@ -572,10 +592,29 @@ class VerifyAttrs(object):
         dim = attrs["dimension"]
         if dim:
             try:
-                declast.check_dimension(dim, metaattrs)
+                check_dimension(dim, metaattrs)
             except RuntimeError:
                 raise RuntimeError("Unable to parse dimension: {} at line {}"
                                    .format(dim, node.linenumber))
+
+
+def check_dimension(dim, meta, trace=False):
+    """Return AST of dim and assumed_rank flag.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    meta : dict
+    trace : boolean
+    """
+    if dim == "..":
+        meta["dimension"] = declast.AssumedRank()
+        meta["assumed-rank"] = True
+    else:
+        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
 
 
 class GenFunctions(object):
@@ -1187,6 +1226,9 @@ class GenFunctions(object):
         and set the rank for assumed-rank argument.
         Each argument with assumed-rank is give the same rank.
 
+        This routine is not called with F_CFI since assumed-rank can
+        be used directly without the need for generic functions.
+
         Parameters
         ----------
         node : ast.FunctionNode
@@ -1200,9 +1242,10 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 if decl.metaattrs["assumed-rank"]:
-                    # Replace dimension with rank.
+                    # Replace dimension(..) with rank(n).
                     decl.attrs["dimension"] = None
                     decl.attrs["rank"] = rank
+                    decl.metaattrs["assumed-rank"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1212,6 +1255,7 @@ class GenFunctions(object):
         for decl in params:
             if decl.metaattrs["assumed-rank"]:
                 decl.attrs["dimension"] = None
+                decl.metaattrs["assumed-rank"] = None
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
@@ -1454,7 +1498,7 @@ class GenFunctions(object):
         issues at the cost of copying data.
 
         The original function will still be wrapped in C but returns a
-        type(C_PTR) where the use must call c_f_pointer themselves.
+        type(C_PTR) where the user must call c_f_pointer themselves.
         """
         return ordered_functions # XXX - do nothing for now
         options = node.options
@@ -1584,11 +1628,15 @@ class GenFunctions(object):
                 continue
             elif arg.metaattrs["assumed-rank"]:
                 cfi_args[arg.name] = True
+            elif arg.attrs["rank"]:
+                cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "string":
                     cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "char":
                 if arg.is_indirect():
                     cfi_args[arg.name] = True
+            elif arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                cfi_args[arg.name] = True
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
@@ -1611,6 +1659,8 @@ class GenFunctions(object):
             need_buf_result   = "cfi"
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
+        elif meta["deref"] in ["allocatable", "pointer"]:
+            need_buf_result   = "cfi"
 
         if not (need_buf_result or
                 has_cfi_arg):

@@ -34,6 +34,7 @@ typemap:
       LUA_push: PUSH
       sgroup: unknown
       sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: bool
     fields:
       flat_name: bool
@@ -58,6 +59,7 @@ typemap:
       LUA_push: lua_pushboolean({LUA_state_var}, {push_arg})
       sgroup: bool
       sh_type: SH_TYPE_BOOL
+      cfi_type: CFI_type_Bool
   - type: char
     fields:
       flat_name: char
@@ -80,6 +82,7 @@ typemap:
       LUA_push: lua_pushstring({LUA_state_var}, {push_arg})
       sgroup: char
       sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: double
     fields:
       flat_name: double
@@ -102,6 +105,7 @@ typemap:
       LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_DOUBLE
+      cfi_type: CFI_type_double
   - type: double_complex
     fields:
       flat_name: double_complex
@@ -134,6 +138,7 @@ typemap:
       LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_DOUBLE_COMPLEX
+      cfi_type: CFI_type_double_Complex
   - type: float
     fields:
       flat_name: float
@@ -156,6 +161,7 @@ typemap:
       LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_FLOAT
+      cfi_type: CFI_type_float
   - type: float_complex
     fields:
       flat_name: float_complex
@@ -188,6 +194,7 @@ typemap:
       LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_FLOAT_COMPLEX
+      cfi_type: CFI_type_float_Complex
   - type: int
     fields:
       flat_name: int
@@ -210,6 +217,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT
+      cfi_type: CFI_type_int
   - type: int16_t
     fields:
       flat_name: int16_t
@@ -236,6 +244,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT16_T
+      cfi_type: CFI_type_int16_t
   - type: int32_t
     fields:
       flat_name: int32_t
@@ -262,6 +271,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT32_T
+      cfi_type: CFI_type_int32_t
   - type: int64_t
     fields:
       flat_name: int64_t
@@ -288,6 +298,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT64_T
+      cfi_type: CFI_type_int64_t
   - type: int8_t
     fields:
       flat_name: int8_t
@@ -314,6 +325,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT8_T
+      cfi_type: CFI_type_int8_t
   - type: long
     fields:
       flat_name: long
@@ -336,6 +348,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_LONG
+      cfi_type: CFI_type_long
   - type: long_long
     fields:
       flat_name: long_long
@@ -356,6 +369,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_LONG_LONG
+      cfi_type: CFI_type_long_long
   - type: short
     fields:
       flat_name: short
@@ -378,6 +392,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_SHORT
+      cfi_type: CFI_type_short
   - type: size_t
     fields:
       flat_name: size_t
@@ -402,6 +417,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_SIZE_T
+      cfi_type: CFI_type_size_t
   - type: std::string
     fields:
       flat_name: std_string
@@ -428,6 +444,7 @@ typemap:
       LUA_push: lua_pushstring({LUA_state_var}, {push_arg})
       sgroup: string
       sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: std::vector
     fields:
       flat_name: std_vector_{cxx_T}
@@ -445,6 +462,7 @@ typemap:
       LUA_push: PUSH
       sgroup: vector
       sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: uint16_t
     fields:
       flat_name: uint16_t
@@ -471,6 +489,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT16_T
+      cfi_type: CFI_type_int16_t
   - type: uint32_t
     fields:
       flat_name: uint32_t
@@ -497,6 +516,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT32_T
+      cfi_type: CFI_type_int32_t
   - type: uint64_t
     fields:
       flat_name: uint64_t
@@ -523,6 +543,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT64_T
+      cfi_type: CFI_type_int64_t
   - type: uint8_t
     fields:
       flat_name: uint8_t
@@ -549,6 +570,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT8_T
+      cfi_type: CFI_type_int8_t
   - type: unsigned_int
     fields:
       flat_name: unsigned_int
@@ -571,6 +593,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_INT
+      cfi_type: CFI_type_int
   - type: unsigned_long
     fields:
       flat_name: unsigned_long
@@ -593,6 +616,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_LONG
+      cfi_type: CFI_type_long
   - type: unsigned_long_long
     fields:
       flat_name: unsigned_long_long
@@ -613,6 +637,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_LONG_LONG
+      cfi_type: CFI_type_long_long
   - type: unsigned_short
     fields:
       flat_name: unsigned_short
@@ -635,6 +660,7 @@ typemap:
       LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_SHORT
+      cfi_type: CFI_type_short
   - type: void
     fields:
       flat_name: void
@@ -654,3 +680,4 @@ typemap:
       LUA_push: PUSH
       sgroup: void
       sh_type: SH_TYPE_CPTR
+      cfi_type: CFI_type_intptr_t

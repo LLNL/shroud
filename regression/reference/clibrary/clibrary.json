@@ -193,6 +193,7 @@
                             "c_member": ".",
                             "c_type": "double",
                             "c_var": "arg1",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -244,6 +245,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg2",
@@ -316,6 +318,7 @@
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_double",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -436,6 +439,7 @@
                             "c_member": "->",
                             "c_type": "double",
                             "c_var": "arg1",
+                            "cfi_type": "CFI_type_double",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -488,6 +492,7 @@
                             "c_member": "->",
                             "c_type": "int",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg2",
@@ -507,7 +512,7 @@
                             "f_var": "arg2",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_out_native_*",
-                            "stmt1": "f_default",
+                            "stmt1": "f_out_native_*",
                             "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         },
@@ -613,6 +618,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg2",
@@ -685,6 +691,7 @@
                         "c_get_value": "",
                         "c_type": "double",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_double",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -825,6 +832,7 @@
                             "c_member": ".",
                             "c_type": "bool",
                             "c_var": "arg1",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "(bool *) &arg1",
@@ -878,6 +886,7 @@
                             "c_member": "->",
                             "c_type": "bool",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg2",
@@ -931,6 +940,7 @@
                             "c_member": "->",
                             "c_type": "bool",
                             "c_var": "arg3",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg3",
@@ -1086,6 +1096,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) arg1",
@@ -1099,7 +1110,11 @@
                         "fmtf": {
                             "F_C_var": "arg1",
                             "c_var": "arg1",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1130,6 +1145,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) arg2",
@@ -1143,7 +1159,11 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "c_var": "arg2",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "arg2",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1194,6 +1214,7 @@
                         "c_const": "",
                         "c_type": "char",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -1321,6 +1342,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) arg1",
@@ -1349,6 +1371,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "arg2",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) arg2",
@@ -1390,6 +1413,7 @@
                         "c_type": "char",
                         "c_var": "SHC_rv",
                         "c_var_len": "SHT_rv_len",
+                        "cfi_type": "CFI_type_other",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -1405,7 +1429,10 @@
                         "c_var": "SHT_rv",
                         "c_var_len": "SHT_rv_len",
                         "f_intent": "OUT",
-                        "f_type": "character(*)"
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER"
                     }
                 }
             },
@@ -1465,6 +1492,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) name",
@@ -1592,6 +1620,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "s",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "s",
@@ -1605,7 +1634,11 @@
                         "fmtf": {
                             "F_C_var": "s",
                             "c_var": "s",
-                            "f_intent": "INOUT"
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "s",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1715,6 +1748,7 @@
                             "c_type": "char",
                             "c_var": "s",
                             "c_var_len": "SHT_s_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -1821,6 +1855,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name1",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -1834,7 +1869,11 @@
                         "fmtf": {
                             "F_C_var": "name1",
                             "c_var": "name1",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name1",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1948,6 +1987,7 @@
                             "c_type": "char",
                             "c_var": "name1",
                             "c_var_len": "SHT_name1_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -2073,6 +2113,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name1",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -2086,7 +2127,11 @@
                         "fmtf": {
                             "F_C_var": "name1",
                             "c_var": "name1",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name1",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2118,6 +2163,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "name2",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name2",
@@ -2131,7 +2177,11 @@
                         "fmtf": {
                             "F_C_var": "name2",
                             "c_var": "name2",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name2",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2265,6 +2315,7 @@
                             "c_type": "char",
                             "c_var": "name1",
                             "c_var_len": "SHT_name1_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name1",
@@ -2299,6 +2350,7 @@
                             "c_type": "char",
                             "c_var": "name2",
                             "c_var_len": "SHT_name2_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name2",
@@ -2421,6 +2473,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "ltext",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ltext",
@@ -2434,7 +2487,11 @@
                         "fmtf": {
                             "F_C_var": "ltext",
                             "c_var": "ltext",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "ltext",
+                            "sh_type": "SH_TYPE_INT"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2463,6 +2520,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "text",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "text",
@@ -2476,7 +2534,11 @@
                         "fmtf": {
                             "F_C_var": "text",
                             "c_var": "text",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "text",
+                            "sh_type": "SH_TYPE_OTHER"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2605,6 +2667,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "ltext",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ltext",
@@ -2635,6 +2698,7 @@
                             "c_type": "char",
                             "c_var": "text",
                             "c_var_len": "SHT_text_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "text",
@@ -2770,6 +2834,7 @@
                             "c_member": ".",
                             "c_type": "bool",
                             "c_var": "flag",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -2818,6 +2883,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "ltext",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ltext",
@@ -2865,6 +2931,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "text",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) text",
@@ -2934,6 +3001,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -3071,6 +3139,7 @@
                             "c_member": ".",
                             "c_type": "bool",
                             "c_var": "flag",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -3119,6 +3188,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "ltext",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ltext",
@@ -3166,6 +3236,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "text",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) text",
@@ -3235,6 +3306,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -3333,6 +3405,7 @@
                             "c_member": ".",
                             "c_type": "bool",
                             "c_var": "flag",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -3402,6 +3475,7 @@
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_Bool",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -3501,6 +3575,7 @@
                             "c_member": ".",
                             "c_type": "bool",
                             "c_var": "flag",
+                            "cfi_type": "CFI_type_Bool",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -3570,6 +3645,7 @@
                         "c_get_value": "",
                         "c_type": "bool",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_Bool",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -3728,6 +3804,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3741,7 +3818,11 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -3832,6 +3913,7 @@
                             "c_type": "char",
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -3959,6 +4041,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -3990,6 +4073,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "out",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "out",
@@ -4098,6 +4182,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -4145,6 +4230,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -4232,6 +4318,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -4362,6 +4449,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -4375,7 +4463,10 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -4386,6 +4477,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -4399,7 +4491,11 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -4430,6 +4526,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -4539,6 +4636,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "arg",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -4567,6 +4665,7 @@
                             "c_type": "char",
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -4613,6 +4712,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -4627,7 +4727,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -4713,6 +4816,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&incr",
@@ -4740,6 +4844,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "type",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&type",
@@ -4872,6 +4977,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&incr",
@@ -4899,6 +5005,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "type",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&type",
@@ -5062,6 +5169,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -5089,6 +5197,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&incr",
@@ -5116,6 +5225,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "type",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&type",
@@ -5306,6 +5416,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -5319,7 +5430,10 @@
                         "fmtf": {
                             "F_C_var": "in",
                             "c_var": "in",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "incr": {
@@ -5330,6 +5444,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&incr",
@@ -5343,7 +5458,10 @@
                         "fmtf": {
                             "F_C_var": "incr",
                             "c_var": "incr",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "outbuf": {
@@ -5354,6 +5472,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "outbuf",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -5367,7 +5486,11 @@
                         "fmtf": {
                             "F_C_var": "outbuf",
                             "c_var": "outbuf",
-                            "f_intent": "OUT"
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     },
                     "type": {
@@ -5378,6 +5501,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "type",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) type",
@@ -5391,7 +5515,11 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
-                            "f_intent": "IN"
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_OTHER"
                         }
                     }
                 },
@@ -5560,6 +5688,7 @@
                             "c_member": "->",
                             "c_type": "void",
                             "c_var": "in",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -5587,6 +5716,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "incr",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&incr",
@@ -5615,6 +5745,7 @@
                             "c_type": "char",
                             "c_var": "outbuf",
                             "c_var_len": "SHT_outbuf_len",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -5648,6 +5779,7 @@
                             "c_member": "->",
                             "c_type": "char",
                             "c_var": "type",
+                            "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(char *) type",
@@ -5822,6 +5954,7 @@
                             "c_member": ".",
                             "c_type": "void",
                             "c_var": "alloc",
+                            "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&alloc",
@@ -5849,6 +5982,7 @@
                             "c_member": "->",
                             "c_type": "array_info",
                             "c_var": "arr",
+                            "cfi_type": "CFI_type_struct",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arr",
@@ -5880,6 +6014,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "tc",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&tc",
@@ -6000,6 +6135,7 @@
                 "clibrary.h"
             ],
             "c_type": "array_info",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "array_info",
             "f_c_module": {
                 "--import--": [

@@ -505,6 +505,7 @@
             "PY_to_object_idtor": "PP_Cstruct_as_class_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct_as_class",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_class",
             "f_c_module": {
                 "--import--": [
@@ -534,6 +535,7 @@
             "PY_to_object_idtor": "PP_Cstruct_as_numpy_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct_as_numpy",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_as_numpy",
             "f_c_module": {
                 "--import--": [

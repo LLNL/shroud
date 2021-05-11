@@ -329,24 +329,6 @@ def check_expr(expr, trace=False):
     a = ExprParser(expr, trace=trace).expression()
     return a
 
-def check_dimension(dim, attrs, trace=False):
-    """Return AST of dim and assumed_rank flag.
-
-    Look for assumed-rank, "..", first.
-    Else a comma delimited list of expressions.
-
-    Parameters
-    ----------
-    dim : str
-    attrs : dict
-    trace : boolean
-    """
-    if dim == "..":
-        attrs["dimension"] = AssumedRank()
-        attrs["assumed-rank"] = True
-    else:
-        attrs["dimension"] = ExprParser(dim, trace=trace).dimension_shape()
-
 ######################################################################
 
 

@@ -202,6 +202,10 @@
             "c_array_size": "1",
             "c_blanknull": "0",
             "c_temp": "SHT_",
+            "c_temp_extents_decl": "",
+            "c_temp_extents_use": "NULL",
+            "c_temp_lower_decl": "",
+            "c_temp_lower_use": "NULL",
             "cast1": ">\t(",
             "cast2": ")",
             "cast_const": "const_cast<",
@@ -267,6 +271,7 @@
                 "<stdbool.h>"
             ],
             "c_type": "bool",
+            "cfi_type": "CFI_type_Bool",
             "cxx_type": "bool",
             "f_c_type": "logical(C_BOOL)",
             "f_kind": "C_BOOL",
@@ -310,6 +315,7 @@
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
             "c_type": "double",
+            "cfi_type": "CFI_type_double",
             "cxx_type": "double",
             "f_cast": "real({f_var}, C_DOUBLE)",
             "f_kind": "C_DOUBLE",
@@ -336,6 +342,7 @@
                 "<complex.h>"
             ],
             "c_type": "double complex",
+            "cfi_type": "CFI_type_double_Complex",
             "cxx_header": [
                 "<complex>"
             ],
@@ -365,6 +372,7 @@
             "PY_format": "f",
             "PY_get": "PyFloat_AsDouble({py_var})",
             "c_type": "float",
+            "cfi_type": "CFI_type_float",
             "cxx_type": "float",
             "f_cast": "real({f_var}, C_FLOAT)",
             "f_kind": "C_FLOAT",
@@ -391,6 +399,7 @@
                 "<complex.h>"
             ],
             "c_type": "float complex",
+            "cfi_type": "CFI_type_float_Complex",
             "cxx_header": [
                 "<complex>"
             ],
@@ -420,6 +429,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "int",
+            "cfi_type": "CFI_type_int",
             "cxx_type": "int",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -445,6 +455,7 @@
                 "<stdint.h>"
             ],
             "c_type": "int16_t",
+            "cfi_type": "CFI_type_int16_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -473,6 +484,7 @@
                 "<stdint.h>"
             ],
             "c_type": "int32_t",
+            "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -501,6 +513,7 @@
                 "<stdint.h>"
             ],
             "c_type": "int64_t",
+            "cfi_type": "CFI_type_int64_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -529,6 +542,7 @@
                 "<stdint.h>"
             ],
             "c_type": "int8_t",
+            "cfi_type": "CFI_type_int8_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -554,6 +568,7 @@
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "long",
+            "cfi_type": "CFI_type_long",
             "cxx_type": "long",
             "f_cast": "int({f_var}, C_LONG)",
             "f_kind": "C_LONG",
@@ -574,6 +589,7 @@
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
             "c_type": "long long",
+            "cfi_type": "CFI_type_long_long",
             "cxx_type": "long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
             "f_kind": "C_LONG_LONG",
@@ -596,6 +612,7 @@
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "short",
+            "cfi_type": "CFI_type_short",
             "cxx_type": "short",
             "f_cast": "int({f_var}, C_SHORT)",
             "f_kind": "C_SHORT",
@@ -619,6 +636,7 @@
                 "<stddef.h>"
             ],
             "c_type": "size_t",
+            "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
@@ -685,6 +703,7 @@
                 "<stdint.h>"
             ],
             "c_type": "uint16_t",
+            "cfi_type": "CFI_type_int16_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -713,6 +732,7 @@
                 "<stdint.h>"
             ],
             "c_type": "uint32_t",
+            "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -741,6 +761,7 @@
                 "<stdint.h>"
             ],
             "c_type": "uint64_t",
+            "cfi_type": "CFI_type_int64_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -769,6 +790,7 @@
                 "<stdint.h>"
             ],
             "c_type": "uint8_t",
+            "cfi_type": "CFI_type_int8_t",
             "cxx_header": [
                 "<cstdint>"
             ],
@@ -794,6 +816,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "unsigned int",
+            "cfi_type": "CFI_type_int",
             "cxx_type": "unsigned int",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
@@ -816,6 +839,7 @@
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "unsigned long",
+            "cfi_type": "CFI_type_long",
             "cxx_type": "unsigned long",
             "f_cast": "int({f_var}, C_LONG)",
             "f_kind": "C_LONG",
@@ -836,6 +860,7 @@
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
             "c_type": "unsigned long long",
+            "cfi_type": "CFI_type_long_long",
             "cxx_type": "unsigned long long",
             "f_cast": "int({f_var}, C_LONG_LONG)",
             "f_kind": "C_LONG_LONG",
@@ -858,6 +883,7 @@
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
             "c_type": "unsigned short",
+            "cfi_type": "CFI_type_short",
             "cxx_type": "unsigned short",
             "f_cast": "int({f_var}, C_SHORT)",
             "f_kind": "C_SHORT",
@@ -875,6 +901,7 @@
             "PY_ctor": "PyCapsule_New({ctor_expr}, NULL, NULL)",
             "base": "void",
             "c_type": "void",
+            "cfi_type": "CFI_type_intptr_t",
             "cxx_type": "void",
             "f_c_module": {
                 "iso_c_binding": [

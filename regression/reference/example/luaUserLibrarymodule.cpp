@@ -1127,7 +1127,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
     // splicer end function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)
+// void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)
 // ----------------------------------------
 // Function:  void cos_doubles
 // Attrs:     +intent(subroutine)
@@ -1138,8 +1138,8 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // Requested: lua_in_native_*
 // Match:     lua_default
 // ----------------------------------------
-// Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
-// Attrs:     +deref(allocatable)+intent(out)
+// Argument:  double * out +dimension(shape(in))+intent(out)
+// Attrs:     +intent(out)
 // Requested: lua_out_native_*
 // Match:     lua_default
 // ----------------------------------------

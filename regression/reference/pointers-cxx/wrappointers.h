@@ -50,8 +50,6 @@ void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
 
-void POI_iota_allocatable(int nvar, int * values);
-
 void POI_iota_dimension(int nvar, int * values);
 
 void POI_sum(int len, const int * values, int * result);
@@ -86,7 +84,7 @@ void POI_get_ptr_to_fixed_array_bufferify(
 void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
 
 void POI_get_ptr_to_dynamic_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount);
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_get_ptr_to_func_array(int * * count);
 
@@ -107,7 +105,7 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
     int * ncount);
 
 void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc, int * ncount);
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void POI_get_raw_ptr_to_scalar(int * * nitems);
 
@@ -122,6 +120,11 @@ void POI_get_raw_ptr_to_int2d(int * * * arg);
 int POI_check_int2d(int **arg);
 
 void POI_dimension_in(const int * arg);
+
+void POI_get_alloc_to_fixed_array(int * * count);
+
+void POI_get_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc);
 
 void * POI_return_address1(int flag);
 
@@ -157,7 +160,10 @@ int * POI_return_int_raw_with_args(const char * name);
 
 int * * POI_return_raw_ptr_to_int2d(void);
 
-int * * POI_return_raw_ptr_to_int2d_bufferify(void);
+int * POI_return_int_alloc_to_fixed_array(void);
+
+void POI_return_int_alloc_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHT_rv_cdesc);
 
 #ifdef __cplusplus
 }

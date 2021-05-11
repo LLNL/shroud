@@ -40,31 +40,31 @@ int * OWN_return_int_ptr_dim_raw(int * len);
 
 int * OWN_return_int_ptr_dim_pointer(int * len);
 
-void OWN_return_int_ptr_dim_pointer_bufferify(int * len,
+void OWN_return_int_ptr_dim_pointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
 int * OWN_return_int_ptr_dim_alloc(int * len);
 
-void OWN_return_int_ptr_dim_alloc_bufferify(int * len,
+void OWN_return_int_ptr_dim_alloc_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
 int * OWN_return_int_ptr_dim_default(int * len);
 
-void OWN_return_int_ptr_dim_default_bufferify(int * len,
+void OWN_return_int_ptr_dim_default_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
 int * OWN_return_int_ptr_dim_raw_new(int * len);
 
 int * OWN_return_int_ptr_dim_pointer_new(int * len);
 
-void OWN_return_int_ptr_dim_pointer_new_bufferify(int * len,
+void OWN_return_int_ptr_dim_pointer_new_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
 int * OWN_return_int_ptr_dim_alloc_new(int * len);
 
 int * OWN_return_int_ptr_dim_default_new(int * len);
 
-void OWN_return_int_ptr_dim_default_new_bufferify(int * len,
+void OWN_return_int_ptr_dim_default_new_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
 void OWN_create_class_static(int flag);

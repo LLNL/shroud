@@ -7,7 +7,7 @@
 from __future__ import print_function
 
 from shroud import ast
-from shroud import declast
+from shroud import generate
 from shroud import util
 from shroud import wrapp
 
@@ -72,7 +72,7 @@ struct Cstruct_list {
         #####
         var = map['ivalue']
         # done in generate.VerifyAttrs.parse_attrs
-        declast.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
+        generate.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."
@@ -84,7 +84,7 @@ struct Cstruct_list {
         #####
         var = map['dvalue']
         # done in generate.VerifyAttrs.parse_attrs
-        declast.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
+        generate.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."

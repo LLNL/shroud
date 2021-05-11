@@ -169,6 +169,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -221,6 +222,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -235,7 +237,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -390,6 +395,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -651,6 +657,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -889,6 +896,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1094,6 +1102,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1300,6 +1309,7 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1493,6 +1503,7 @@
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
+                            "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1691,6 +1702,7 @@
                             "c_type": "double",
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
+                            "cfi_type": "CFI_type_double",
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -1906,6 +1918,7 @@
                             "c_var": "arg",
                             "c_var_len": "SHT_arg_len",
                             "c_var_size": "SHT_arg_size",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -1962,6 +1975,7 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -1976,7 +1990,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT"
                     }
                 }
             },
@@ -2268,6 +2285,7 @@
                             "c_member": ".",
                             "c_type": "int",
                             "c_var": "n",
+                            "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&n",
@@ -2313,6 +2331,7 @@
                         "c_type": null,
                         "c_var": "SHC_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_other",
                         "cxx_T": "int",
                         "cxx_addr": "",
                         "cxx_member": "->",
@@ -2328,8 +2347,14 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_assumed_shape": "(:)",
+                        "f_c_dimension": "(*)",
                         "f_intent": "OUT",
-                        "f_type": null
+                        "f_type": null,
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "size": "size(SHT_rv)"
                     }
                 }
             }

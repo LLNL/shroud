@@ -147,6 +147,7 @@ class Typemap(object):
         ("LUA_statements", {}),
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
+        ("cfi_type", "CFI_type_other"),
         ("__line__", None),
     )
 
@@ -320,6 +321,7 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
+            cfi_type="CFI_type_intptr_t",
             base="void",
             sgroup="void",
         ),
@@ -340,6 +342,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_SHORT",
+            cfi_type="CFI_type_short",
         ),
         int=Typemap(
             "int",
@@ -358,6 +361,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT",
+            cfi_type="CFI_type_int",
         ),
         long=Typemap(
             "long",
@@ -376,6 +380,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_LONG",
+            cfi_type="CFI_type_long",
         ),
         long_long=Typemap(
             "long_long",
@@ -393,6 +398,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_LONG_LONG",
+            cfi_type="CFI_type_long_long",
         ),
         unsigned_short=Typemap(
             "unsigned_short",
@@ -411,6 +417,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_SHORT",
+            cfi_type="CFI_type_short",
         ),
         unsigned_int=Typemap(
             "unsigned_int",
@@ -429,6 +436,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_INT",
+            cfi_type="CFI_type_int",
         ),
         unsigned_long=Typemap(
             "unsigned_long",
@@ -447,6 +455,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_LONG",
+            cfi_type="CFI_type_long",
         ),
         unsigned_long_long=Typemap(
             "unsigned_long_long",
@@ -464,6 +473,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_LONG_LONG",
+            cfi_type="CFI_type_long_long",
         ),
         size_t=Typemap(
             "size_t",
@@ -482,6 +492,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_SIZE_T",
+            cfi_type="CFI_type_size_t",
         ),
         # XXX- sized based types for Python
         int8_t=Typemap(
@@ -503,6 +514,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT8_T",
+            cfi_type="CFI_type_int8_t",
         ),
         int16_t=Typemap(
             "int16_t",
@@ -523,6 +535,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT16_T",
+            cfi_type="CFI_type_int16_t",
         ),
         int32_t=Typemap(
             "int32_t",
@@ -543,6 +556,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT32_T",
+            cfi_type="CFI_type_int32_t",
         ),
         int64_t=Typemap(
             "int64_t",
@@ -563,6 +577,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT64_T",
+            cfi_type="CFI_type_int64_t",
         ),
         # XXX- sized based types for Python
         uint8_t=Typemap(
@@ -584,6 +599,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT8_T",
+            cfi_type="CFI_type_int8_t",
         ),
         uint16_t=Typemap(
             "uint16_t",
@@ -604,6 +620,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT16_T",
+            cfi_type="CFI_type_int16_t",
         ),
         uint32_t=Typemap(
             "uint32_t",
@@ -624,6 +641,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT32_T",
+            cfi_type="CFI_type_int32_t",
         ),
         uint64_t=Typemap(
             "uint64_t",
@@ -644,6 +662,7 @@ def initialize():
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT64_T",
+            cfi_type="CFI_type_int64_t",
         ),
         float=Typemap(
             "float",
@@ -662,6 +681,7 @@ def initialize():
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_FLOAT",
+            cfi_type="CFI_type_float",
         ),
         double=Typemap(
             "double",
@@ -680,6 +700,7 @@ def initialize():
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_DOUBLE",
+            cfi_type="CFI_type_double",
         ),
         float_complex=Typemap(   # _Complex
             "float_complex",
@@ -706,6 +727,7 @@ def initialize():
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_FLOAT_COMPLEX",
+            cfi_type="CFI_type_float_Complex",
         ),
         double_complex=Typemap(   # _Complex
             "double_complex",
@@ -736,6 +758,7 @@ def initialize():
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_DOUBLE_COMPLEX",
+            cfi_type="CFI_type_double_Complex",
         ),
         bool=Typemap(
             "bool",
@@ -759,6 +782,7 @@ def initialize():
             base="bool",
             sgroup="bool",
             sh_type="SH_TYPE_BOOL",
+            cfi_type="CFI_type_Bool",
         ),
         # implies null terminated string
         char=Typemap(
@@ -947,6 +971,7 @@ def create_class_typemap(node, fields=None):
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
         sh_type="SH_TYPE_OTHER",
+        cfi_type="CFI_type_other",
     )
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
@@ -1080,6 +1105,7 @@ def create_struct_typemap(node, fields=None):
         f_c_module={"--import--": [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
+        cfi_type="CFI_type_struct",
     )
     if fields is not None:
         ntypemap.update(fields)

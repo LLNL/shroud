@@ -10,6 +10,8 @@ make -f scripts/lc.mk clean
 
 srun make -f scripts/lc.mk target=test-fortran all -j
 
+#srun make -f scripts/lc.mk target=test-cfi intel -j
+
 # Compile Python tests with gcc
 srun make -f scripts/lc.mk target=test-python python -j
 

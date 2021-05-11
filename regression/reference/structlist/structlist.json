@@ -307,6 +307,7 @@
                 "struct.h"
             ],
             "c_type": "Arrays1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
             "f_c_module": {
                 "--import--": [

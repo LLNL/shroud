@@ -155,9 +155,9 @@ module pointers_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -188,9 +188,9 @@ module pointers_mod
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  int * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+value
@@ -263,33 +263,6 @@ module pointers_mod
         end subroutine get_values2
     end interface
     ! end get_values2
-
-    ! ----------------------------------------
-    ! Function:  void iota_allocatable
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
-    ! Match:     c_default
-    ! start c_iota_allocatable
-    interface
-        subroutine c_iota_allocatable(nvar, values) &
-                bind(C, name="iota_allocatable")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value, intent(IN) :: nvar
-            integer(C_INT), intent(OUT) :: values(*)
-        end subroutine c_iota_allocatable
-    end interface
-    ! end c_iota_allocatable
 
     ! ----------------------------------------
     ! Function:  void iota_dimension
@@ -661,21 +634,13 @@ module pointers_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
-        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc, &
-                ncount) &
+        subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
                 bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
-            use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-            integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_array_bufferify
@@ -844,21 +809,14 @@ module pointers_mod
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
-                SHT_count_cdesc, ncount) &
+                SHT_count_cdesc) &
                 bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
-            use iso_c_binding, only : C_INT
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
-            integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_const_array_bufferify
     end interface
     ! end c_get_ptr_to_dynamic_const_array_bufferify
@@ -1010,6 +968,48 @@ module pointers_mod
         end subroutine c_dimension_in
     end interface
     ! end c_dimension_in
+
+    ! ----------------------------------------
+    ! Function:  void getAllocToFixedArray
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Requested: c_out_native_**_allocatable
+    ! Match:     c_default
+    ! start c_get_alloc_to_fixed_array
+    interface
+        subroutine c_get_alloc_to_fixed_array(count) &
+                bind(C, name="getAllocToFixedArray")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+        end subroutine c_get_alloc_to_fixed_array
+    end interface
+    ! end c_get_alloc_to_fixed_array
+
+    ! ----------------------------------------
+    ! Function:  void getAllocToFixedArray
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Requested: c_out_native_**_cdesc_allocatable
+    ! Match:     c_out_native_**_cdesc
+    ! start c_get_alloc_to_fixed_array_bufferify
+    interface
+        subroutine c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc) &
+                bind(C, name="POI_get_alloc_to_fixed_array_bufferify")
+            import :: POI_SHROUD_array
+            implicit none
+            type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
+        end subroutine c_get_alloc_to_fixed_array_bufferify
+    end interface
+    ! end c_get_alloc_to_fixed_array_bufferify
 
     ! ----------------------------------------
     ! Function:  void * returnAddress1
@@ -1293,9 +1293,8 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_pointer
-    ! Match:     c_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_native_**
     ! start c_return_raw_ptr_to_int2d
     interface
         function c_return_raw_ptr_to_int2d() &
@@ -1309,25 +1308,54 @@ module pointers_mod
     ! end c_return_raw_ptr_to_int2d
 
     ! ----------------------------------------
-    ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_buf_pointer
-    ! Match:     c_function_native_**
-    ! start c_return_raw_ptr_to_int2d_bufferify
+    ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Requested: c_function_native_*_allocatable
+    ! Match:     c_function_native_*
+    ! start c_return_int_alloc_to_fixed_array
     interface
-        function c_return_raw_ptr_to_int2d_bufferify() &
+        function c_return_int_alloc_to_fixed_array() &
                 result(SHT_rv) &
-                bind(C, name="returnRawPtrToInt2d")
+                bind(C, name="returnIntAllocToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
-        end function c_return_raw_ptr_to_int2d_bufferify
+        end function c_return_int_alloc_to_fixed_array
     end interface
-    ! end c_return_raw_ptr_to_int2d_bufferify
+    ! end c_return_int_alloc_to_fixed_array
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Requested: c_function_native_*_cdesc_allocatable
+    ! Match:     c_function_native_*_cdesc
+    ! start c_return_int_alloc_to_fixed_array_bufferify
+    interface
+        subroutine c_return_int_alloc_to_fixed_array_bufferify(SHT_rv) &
+                bind(C, name="POI_return_int_alloc_to_fixed_array_bufferify")
+            import :: POI_SHROUD_array
+            implicit none
+            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_alloc_to_fixed_array_bufferify
+    end interface
+    ! end c_return_int_alloc_to_fixed_array_bufferify
 
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
+    end interface
+
+    interface
+        ! helper copy_array_int
+        ! Copy contents of context into c_var.
+        subroutine POI_SHROUD_copy_array_int(context, c_var, c_var_size) &
+            bind(C, name="POI_ShroudCopyArray")
+            use iso_c_binding, only : C_INT, C_SIZE_T
+            import POI_SHROUD_array
+            type(POI_SHROUD_array), intent(IN) :: context
+            integer(C_INT), intent(OUT) :: c_var(*)
+            integer(C_SIZE_T), value :: c_var_size
+        end subroutine POI_SHROUD_copy_array_int
     end interface
 
 contains
@@ -1347,11 +1375,11 @@ contains
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  double * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief compute cos of IN and save in OUT
@@ -1362,10 +1390,9 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        real(C_DOUBLE), intent(OUT) :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin function.cos_doubles
-        allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end function.cos_doubles
@@ -1387,11 +1414,11 @@ contains
     ! Requested: c_in_native_*
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
+    ! Argument:  int * out +dimension(size(in))+intent(out)
+    ! Attrs:     +intent(out)
+    ! Exact:     f_out_native_*
+    ! Attrs:     +intent(out)
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! \brief truncate IN argument and save in OUT
@@ -1403,48 +1430,14 @@ contains
     subroutine truncate_to_int(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
-        integer(C_INT), intent(OUT), allocatable :: out(:)
+        integer(C_INT), intent(OUT) :: out(:)
         integer(C_INT) :: SH_sizein
         ! splicer begin function.truncate_to_int
-        allocate(out(size(in)))
         SH_sizein = size(in,kind=C_INT)
         call c_truncate_to_int(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
-
-    ! ----------------------------------------
-    ! Function:  void iota_allocatable
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     f_subroutine
-    ! Attrs:     +intent(subroutine)
-    ! Exact:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  int nvar +value
-    ! Attrs:     +intent(in)
-    ! Requested: f_in_native_scalar
-    ! Match:     f_default
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Exact:     f_out_native_*_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_out_native_*_allocatable
-    ! Match:     c_default
-    ! start iota_allocatable
-    subroutine iota_allocatable(nvar, values)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), value, intent(IN) :: nvar
-        integer(C_INT), intent(OUT), allocatable :: values(:)
-        ! splicer begin function.iota_allocatable
-        allocate(values(nvar))
-        call c_iota_allocatable(nvar, values)
-        ! splicer end function.iota_allocatable
-    end subroutine iota_allocatable
-    ! end iota_allocatable
 
     ! ----------------------------------------
     ! Function:  void Sum
@@ -1463,8 +1456,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
@@ -1667,14 +1659,6 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length of
     !! the argument ncount.
@@ -1683,11 +1667,9 @@ contains
     subroutine get_ptr_to_dynamic_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc, &
-            ncount)
+        call c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc)
         call c_f_pointer(SHT_count_cdesc%base_addr, count, &
             SHT_count_cdesc%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_array
@@ -1793,23 +1775,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(out)
     ! Requested: c_out_native_**_cdesc_pointer
     ! Match:     c_out_native_**_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * ncount +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_const_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
-        call c_get_ptr_to_dynamic_const_array_bufferify(SHT_count_cdesc, &
-            ncount)
+        call c_get_ptr_to_dynamic_const_array_bufferify(SHT_count_cdesc)
         call c_f_pointer(SHT_count_cdesc%base_addr, count, &
             SHT_count_cdesc%shape(1:1))
         ! splicer end function.get_ptr_to_dynamic_const_array
@@ -1896,6 +1868,37 @@ contains
         ! splicer end function.dimension_in
     end subroutine dimension_in
     ! end dimension_in
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void getAllocToFixedArray
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Exact:     f_out_native_**_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
+    ! Requested: c_out_native_**_cdesc_allocatable
+    ! Match:     c_out_native_**_cdesc
+    !>
+    !! Return a Fortran pointer to an array which is always the same length.
+    !<
+    ! start get_alloc_to_fixed_array
+    subroutine get_alloc_to_fixed_array(count)
+        use iso_c_binding, only : C_INT, C_SIZE_T
+        integer(C_INT), intent(OUT), allocatable :: count(:)
+        ! splicer begin function.get_alloc_to_fixed_array
+        type(POI_SHROUD_array) :: SHT_count_cdesc
+        call c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc)
+        allocate(count(SHT_count_cdesc%shape(1)))
+        call POI_SHROUD_copy_array_int(SHT_count_cdesc, count, &
+            SHT_count_cdesc%size)
+        ! splicer end function.get_alloc_to_fixed_array
+    end subroutine get_alloc_to_fixed_array
+    ! end get_alloc_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
@@ -2059,15 +2062,12 @@ contains
     end function return_int_raw_with_args
     ! end return_int_raw_with_args
 
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Attrs:     +deref(pointer)+intent(function)
-    ! Requested: f_function_native_**_buf_pointer
-    ! Match:     f_function_native_**
-    ! Attrs:     +api(buf)+deref(pointer)+intent(function)
-    ! Requested: c_function_native_**_buf_pointer
-    ! Match:     c_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     f_function_native_**
+    ! Attrs:     +intent(function)
+    ! Exact:     c_function_native_**
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d
@@ -2075,13 +2075,36 @@ contains
     ! start return_raw_ptr_to_int2d
     function return_raw_ptr_to_int2d() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_raw_ptr_to_int2d
-        SHT_rv = c_return_raw_ptr_to_int2d_bufferify()
+        SHT_rv = c_return_raw_ptr_to_int2d()
         ! splicer end function.return_raw_ptr_to_int2d
     end function return_raw_ptr_to_int2d
     ! end return_raw_ptr_to_int2d
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Exact:     f_function_native_*_cdesc_allocatable
+    ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
+    ! Requested: c_function_native_*_cdesc_allocatable
+    ! Match:     c_function_native_*_cdesc
+    ! start return_int_alloc_to_fixed_array
+    function return_int_alloc_to_fixed_array() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), allocatable :: SHT_rv(:)
+        ! splicer begin function.return_int_alloc_to_fixed_array
+        type(POI_SHROUD_array) :: SHT_rv_cdesc
+        call c_return_int_alloc_to_fixed_array_bufferify(SHT_rv_cdesc)
+        allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
+        call POI_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
+            size(SHT_rv, kind=C_SIZE_T))
+        ! splicer end function.return_int_alloc_to_fixed_array
+    end function return_int_alloc_to_fixed_array
+    ! end return_int_alloc_to_fixed_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

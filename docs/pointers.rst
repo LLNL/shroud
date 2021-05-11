@@ -69,8 +69,14 @@ Shroud treats the argument similar to a function which returns a
 pointer: it adds the *deref(pointer)* attribute to treats it as a
 ``POINTER`` to a scalar.  The *dimension* attribute can be used to
 create an array similar to a function result.
+If the *deref(allocatable)* attribute is added, then a Fortran array
+will be allocated to the size of *dimension* attribute and the
+argument will be copied into the Fortran memory.
 
-Function which return multiple layers of indirection will return
+.. If *owner(caller)*, then the memory will be released.
+   The Fortran ``ALLOCATABLE`` array will need to be released by the user.
+
+A function which returns multiple layers of indirection will return
 a ``type(C_PTR)``.  This is also true for function arguments beyond
 ``int **arg +intent(out)``.
 This pointer can represent non-contiguous memory and Shroud
@@ -82,24 +88,26 @@ common idiom and can be processed since the length of each string can
 be found with ``strlen``.
 See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-Shroud can be made to allocate an array before the C++ library is
-called using ``deref(allocatable)``.  For example, ``int **arg
-+intent(out)+deref(allocatable)+dimension(n)``.  The value of the
-*dimension* attribute is used to define the shape of the array and
-must be know before the library function is called.  The *dimension*
-attribute can include the Fortran intrinsic ``size`` to define the
-shape in terms of another array.  This is more useful in Python since
-*intent(out)* arguments are not used in the function call and instead
-they are returned by the function.  In Fortran, it is easier to pass
-in the array and allow the C++ library function to fill it directly.
+In Python wrappers, Shroud will allocate *intent(out)* arguments
+before calling the function. This requires the dimension attribute
+which defines the shape and must be known before the function is
+called.  The argument will then be returned by the function along with
+the function result and other *intent(out)* arguments.  For example,
+``int **arg +intent(out)+dimension(n)``.  The value of the *dimension*
+attribute is used to define the shape of the array and must be known
+before the library function is called.  The *dimension* attribute can
+include the Fortran intrinsic ``size`` to define the shape in terms of
+another array.
 
-Python wrappers add some additional requirements on attributes.
-Python will create NumPy arrays for *intent(out)* arguments but
-require an explicit shape using *dimension* attribute. Fortran passes
-in an argument for *intent(out)* arguments which will be filled by the
-C++ library.  However, Python will need to create the NumPy array
-before calling the C++ function.
-For example, using ``+intent(out)+rank(1)`` will have problems.
+.. XXX - If no dimension, return as capsule?
+
+.. Python wrappers add some additional requirements on attributes.
+   Python will create NumPy arrays for *intent(out)* arguments but
+   require an explicit shape using *dimension* attribute. Fortran passes
+   in an argument for *intent(out)* arguments which will be filled by the
+   C++ library.  However, Python will need to create the NumPy array
+   before calling the C++ function.  For example, using
+   ``+intent(out)+rank(1)`` will have problems.
 
 ``char *`` functions are treated differently.  By default *deref*
 attribute will be set to *allocatable*.  After the C++ function
@@ -147,6 +155,8 @@ responsibility to ``deallocate`` the Fortran array. However, Fortran
 will release the array automatically under some conditions when the
 caller function returns. If *owner(library)* is set, the Fortran
 caller never needs to release the memory.
+
+.. XXX - std::vector defaults to deref(allocatable) to copy data out of vector.
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
 

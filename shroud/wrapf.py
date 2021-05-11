@@ -617,7 +617,7 @@ rv = .false.
          Usually the same node unless it is a generated.
 
         The C wrapper will not be the same as the Fortran wrapper when
-        their are generated function involved.
+        there are generated function involved.
         """
         C_node = node
         generated = []
@@ -645,9 +645,8 @@ rv = .false.
         Parameters
         ----------
         cls : ClassNode or None
-        node : list of ast.FunctionNode
+        functions : list of ast.FunctionNode
         fileinfo : ModuleInfo
-
         """
 
         # Find which C functions are called.
@@ -1108,11 +1107,14 @@ rv = .false.
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.c_var = fmt_func.F_result
+            fmt_result.f_var = fmt_func.F_result
             fmt_result.F_C_var = fmt_func.F_result
             fmt_result.f_intent = "OUT"
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, fmt_result,
-                                      fmt_func.F_result, "function")
+                                      fmt_func.F_result, result_typemap,
+                                      "function")
+            self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
         if cls:
             is_static = "static" in ast.storage
@@ -1176,11 +1178,15 @@ rv = .false.
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.c_var = arg.name
+            fmt_arg.f_var = arg.name
             fmt_arg.F_C_var = arg.name
-            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name)
+            self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
+            self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             
             attrs = arg.attrs
             meta = arg.metaattrs
+            if attrs["hidden"] and node._generated:
+                continue
             intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
@@ -1417,7 +1423,7 @@ rv = .false.
         return need_wrapper
 
     def set_fmt_fields_iface(self, fcn, ast, fmt, rootname,
-                             subprogram=None):
+                             ntypemap, subprogram=None):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
@@ -1428,6 +1434,9 @@ rv = .false.
         ast : declast.Declaration
         fmt : util.Scope
         rootname : str
+        ntypemap : typemap.Typemap
+            The typemap has already resolved template arguments.
+            For example, std::vector<int>.  ntypemap will be 'int'.
         subprogram : str
             "function" or "subroutine" or None
         """
@@ -1443,7 +1452,10 @@ rv = .false.
             if fmt.f_intent == "SETTER":
                 fmt.f_intent = "IN"
         
-        ntypemap = ast.typemap
+        fmt.f_type = ntypemap.f_type
+        fmt.sh_type = ntypemap.sh_type
+        if ntypemap.f_kind:
+            fmt.f_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
@@ -1451,20 +1463,23 @@ rv = .false.
             fmt.f_c_module_line = f_c_module_line
         statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
     
-    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
+    def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
                        ntypemap=None):
         """
         Set format fields for ast.
         Used with arguments and results.
 
-        Args:
-            cls   - ast.ClassNode or None of enclosing class.
-            fcn   - ast.FunctionNode of calling function.
-            f_ast - declast.Declaration - Fortran argument
-            c_ast - declast.Declaration - C argument
-                  Abstract Syntax Tree of argument or result
-            fmt - format dictionary
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration - Fortran argument
+        c_ast : declast.Declaration - C argument
+              Abstract Syntax Tree of argument or result
+        fmt : format dictionary
+        subprogram : str
+        ntypemap : typemap.Typemap
         """
         c_attrs = c_ast.attrs
         c_meta = c_ast.metaattrs
@@ -1484,20 +1499,33 @@ rv = .false.
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ntypemap.name
         if subprogram != "subroutine":
-            fmt.f_type = ntypemap.f_type
-            fmt.sh_type = ntypemap.sh_type
-            if ntypemap.f_kind:
-                fmt.f_kind = ntypemap.f_kind
-            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname, subprogram)
-                
+            self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
+                                      ntypemap, subprogram)
+        self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
+        return ntypemap
+
+    def set_fmt_fields_dimension(self, cls, fcn, f_ast, fmt):
+        """Set fmt fields based on dimension attribute.
+
+        f_assumed_shape is used in both implementation and interface.
+
+        Parameters
+        ----------
+        cls : ast.ClassNode or None of enclosing class.
+        fcn : ast.FunctionNode of calling function.
+        f_ast : declast.Declaration
+        fmt: util.Scope
+        """
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
         if f_ast.metaattrs["assumed-rank"]:
             fmt.f_c_dimension = "(..)"
-        if rank is not None:
+            fmt.f_assumed_shape = "(..)"
+        elif rank is not None:
             fmt.rank = str(rank)
             if rank == 0:
+                # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
             else:
                 fmt.size = wformat("size({f_var})", fmt)
@@ -1514,10 +1542,12 @@ rv = .false.
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "c_var_cdesc"):
                     # XXX kludge, name is assumed to be c_var_cdesc.
+                    fmt.f_array_allocate = "(" + ",".join(
+                        ["{0}%shape({1})".format(fmt.c_var_cdesc, r)
+                         for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {c_var_cdesc}%shape(1:{rank})", fmt)
 
-        return ntypemap
 
     def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
@@ -1603,7 +1633,7 @@ rv = .false.
 
         self.name_temp_vars(fmt_func.C_result, f_result_blk, fmt_result)
         self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
-                            modules, fileinfo, subprogram, result_typemap)
+                            subprogram, result_typemap)
 
         if options.debug:
             stmts_comments.append(
@@ -1720,7 +1750,7 @@ rv = .false.
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             self.name_temp_vars(arg_name, f_intent_blk, fmt_arg)
             arg_typemap = self.set_fmt_fields(
-                cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
+                cls, C_node, f_arg, c_arg, fmt_arg)
 
             if is_f_arg:
                 implied = f_attrs["implied"]
@@ -1779,9 +1809,8 @@ rv = .false.
                     continue
                 elif hidden:
                     # Argument is not passed into Fortran.
-                    # hidden value is returned from C++.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
-                    need_wrapper = True
+                    # hidden value is used in C wrapper.
+                    continue
                 elif f_intent_blk.arg_decl:
                     # Explicit declarations from fc_statements.
                     self.add_stmt_declaration(
@@ -1889,7 +1918,11 @@ rv = .false.
                     ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True)
                 )
 
-            self.update_f_module(modules, imports, result_typemap.f_module)
+            if ast.is_indirect() < 2:
+                # If more than one level of indirection, will return
+                # a type(C_PTR).  i.e. int ** same as void *.
+                # So do not add type's f_module.
+                self.update_f_module(modules, imports, result_typemap.f_module)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).

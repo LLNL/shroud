@@ -196,16 +196,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
@@ -236,16 +234,14 @@ contains
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default

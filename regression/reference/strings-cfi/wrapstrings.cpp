@@ -1643,20 +1643,21 @@ void STR_post_declare(int * count, char * name)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
-// Attrs:     +intent(in)
-// Requested: c_in_native_*
-// Match:     c_default
+// Attrs:     +api(cfi)+intent(in)
+// Exact:     c_in_native_*_cfi
 // ----------------------------------------
 // Argument:  std::string & name
 // Attrs:     +api(cfi)+intent(inout)
 // Exact:     c_inout_string_&_cfi
-void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi)
+void STR_post_declare_CFI(CFI_cdesc_t *SHT_count_cfi,
+    CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.post_declare_CFI
+    int *SHCXX_count = static_cast<int *>(SHT_count_cfi->base_addr);
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     size_t SHC_name_trim = ShroudLenTrim(name, SHT_name_cfi->elem_len);
     std::string SHCXX_name(name, SHC_name_trim);
-    PostDeclare(count, SHCXX_name);
+    PostDeclare(SHCXX_count, SHCXX_name);
     ShroudStrCopy(name, SHT_name_cfi->elem_len, SHCXX_name.data(),
         SHCXX_name.size());
     // splicer end function.post_declare_CFI

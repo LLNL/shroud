@@ -319,6 +319,10 @@ argument such as another argument with the explicit length.
 .. In the future a user settable api might be useful to do custom
    actions in the wrappers.
 
+.. Set internally to api(cdesc) with +cdesc or
+   deref set to allocatable or pointer.
+   api(buf) adds extra arguments for metadata like LEN or SIZE.
+   api(cdesc) replaces argument with F_array_type.
    
 assumedtype
 ^^^^^^^^^^^
@@ -395,8 +399,10 @@ This value is implied by C++ default argument syntax.
 deref
 ^^^^^
 
-List how to dereference pointer arguments or function results.
+Define how to dereference function results and pointers
+which are returned via an argument.
 This may be used in conjunction with *dimension* to create arrays.
+For example, ``int **out +intent(out)+deref(pointer)+dimension(10)``.
 
 allocatable
 
@@ -424,6 +430,15 @@ pointer
     which is used to release the memory.
 
     For Python, create a list or NumPy array.
+
+    .. Python intent(out) arguments are returned by the wrapper.
+       The default is +deref(pointer).
+       +deref(allocatable) is the same as +deref(pointer).
+       The C++ library is being passed a pointer to an existing array
+       (which will be allocated by the wrapper).
+       The arugment must also have the dimension attribute so that
+       the correct array size can be allocated.
+       intent(inout) will write into an existing array.
 
     .. code-block:: yaml
 
@@ -467,7 +482,17 @@ Used to define the dimension of pointer arguments with *intent(out)*
 and function results.
 A dimension without any value is an error -- ``+dimension``.
 
-The expression is evaluated in a C/C++ context.
+The expression is evaluated in the C wrapper.  It can be passed back
+to the Fortran wrapper via a cdesc argument of type *F_array_type*
+when the attribute *deref* is set to *allocatable* or *pointer*.  This
+allows the shape to be used in an ``ALLOCATE`` statement or a call to
+``C_F_POINTER``.
+
+For *Futher interoperability with C*, set with option *F_CFI*,
+the shape is used directly in the C wrapper in a call to
+``CFI_allocate`` or ``CFI_establish``.
+
+.. can also set attribute *cdesc* explicitly.
 
 .. Sets the Fortran DIMENSION attribute.
    Pointer argument should be passed through since it is an array.
@@ -496,10 +521,19 @@ but will not be part of the wrapped API since it is *hidden*.
 .. XXX ``+dimension(size(in))`` is similar to ``mold(in)``, but works
    better with multiple dimensions to avoid ``+dimension(size(in,1), size(in,2))
 
-The dimension may also be assumed-rank, *dimemsion(..)*, to allow
-scalar or any rank.
+The dimension may also be assumed-rank, *dimension(..)*, to allow
+scalar or any rank.  If option *F_CFI* is *true*, then assumed-rank
+will be added to the function interface and the C wrapper will extract
+the rank from the ``CFI_cdesc_t`` argument. Otherwise, a generic
+function will be created for each rank requested by options
+*F_assumed_rank_min* and "*F_assumed_rank_max*.
 
 .. XXX - See Fortran.rst
+
+.. info is passed to statements via fmt fields.
+   cdesc - c_array_shape, c_array_size
+   CFI - c_temp_extents_decl, c_temp_extents_use
+         c_temp_lower_decl, c_temp_lower_use
 
 
 external
@@ -527,14 +561,34 @@ hidden
 ^^^^^^
 
 The argument will not appear in the Fortran API.
-But it will be passed to the C wrapper.
-This allows the value to be used in the C wrapper.
+
+For the native C API it will appear as a regular argument.
+For the bufferify C API, it will be a local variable which
+is passed to the C++ function.
+
+It is useful for a function which returns the length of another
+pointer arguments.  This value is save in the *F_array_type* argument
+or the CFI_cdesc_t struct.
+
+.. statements for native pointer and reference.
+   See c_out_native_*_hidden
+   Used in the Fortran wrapper when fmt.c_var_cdesc is defined.
+
 For example, setting the shape of a pointer function:
 
 .. code-block:: text
 
-      int * ReturnIntPtr(int *len+intent(out)+hidden +dimension(len))
+    int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)+deref(pointer)
 
+ Will create a Fortran wrapper which returns a ``POINTER`` which
+ is ``len`` long but does not have an argument for the length.
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: rv(:)
+    rv = return_int_ptr()
+    ! size(rv)  is argument len
+ 
 .. assumed intent(out)
 
 

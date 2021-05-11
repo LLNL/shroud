@@ -175,7 +175,8 @@ void STR_cpass_char_ptr_blank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 
 void STR_post_declare(int * count, char * name);
 
-void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHT_name_cfi);
+void STR_post_declare_CFI(CFI_cdesc_t *SHT_count_cfi,
+    CFI_cdesc_t *SHT_name_cfi);
 
 int STR_cpass_char_ptr_notrim(const char * src);
 

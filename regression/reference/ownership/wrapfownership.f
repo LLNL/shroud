@@ -200,17 +200,10 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_return_int_ptr_dim_pointer_bufferify(len, SHT_rv) &
+        subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_bufferify")
-            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            integer(C_INT), intent(OUT) :: len
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_int_ptr_dim_pointer_bufferify
 
@@ -238,17 +231,10 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Requested: c_function_native_*_cdesc_allocatable
         ! Match:     c_function_native_*_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_return_int_ptr_dim_alloc_bufferify(len, SHT_rv) &
+        subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
-            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            integer(C_INT), intent(OUT) :: len
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_int_ptr_dim_alloc_bufferify
 
@@ -276,17 +262,10 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_return_int_ptr_dim_default_bufferify(len, SHT_rv) &
+        subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_bufferify")
-            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            integer(C_INT), intent(OUT) :: len
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_int_ptr_dim_default_bufferify
 
@@ -333,18 +312,10 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_return_int_ptr_dim_pointer_new_bufferify(len, &
-                SHT_rv) &
+        subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_new_bufferify")
-            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            integer(C_INT), intent(OUT) :: len
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_int_ptr_dim_pointer_new_bufferify
 
@@ -391,18 +362,10 @@ module ownership_mod
         ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
-        ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
-        ! Attrs:     +intent(out)
-        ! Requested: c_out_native_*
-        ! Match:     c_default
-        subroutine c_return_int_ptr_dim_default_new_bufferify(len, &
-                SHT_rv) &
+        subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_new_bufferify")
-            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            integer(C_INT), intent(OUT) :: len
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_return_int_ptr_dim_default_new_bufferify
 
@@ -569,22 +532,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_cdesc_pointer
     ! Match:     c_function_native_*_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * len +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_pointer
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_pointer_bufferify(len, SHT_rv_cdesc)
+        call c_return_int_ptr_dim_pointer_bufferify(SHT_rv_cdesc)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer
@@ -598,23 +552,14 @@ contains
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Requested: c_function_native_*_cdesc_allocatable
     ! Match:     c_function_native_*_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * len +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        integer(C_INT) :: len
         integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_alloc
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_alloc_bufferify(len, SHT_rv_cdesc)
-        allocate(SHT_rv((len)))
+        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc)
+        allocate(SHT_rv(SHT_rv_cdesc%shape(1)))
         call OWN_SHROUD_copy_array_int(SHT_rv_cdesc, SHT_rv, &
             size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_int_ptr_dim_alloc
@@ -628,22 +573,13 @@ contains
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_cdesc_pointer
     ! Match:     c_function_native_*_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * len +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_default
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_default_bufferify(len, SHT_rv_cdesc)
+        call c_return_int_ptr_dim_default_bufferify(SHT_rv_cdesc)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default
@@ -657,24 +593,14 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_cdesc_pointer
     ! Match:     c_function_native_*_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * len +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         ! splicer begin function.return_int_ptr_dim_pointer_new
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_pointer_new_bufferify(len, &
-            SHT_rv_cdesc)
+        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_cdesc)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
         Crv%mem = SHT_rv_cdesc%cxx
@@ -689,24 +615,14 @@ contains
     ! Attrs:     +api(cdesc)+capsule+deref(pointer)+intent(function)
     ! Requested: c_function_native_*_cdesc_pointer
     ! Match:     c_function_native_*_cdesc
-    ! ----------------------------------------
-    ! Argument:  int * len +hidden+intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
-    ! Attrs:     +intent(out)
-    ! Requested: c_out_native_*
-    ! Match:     c_default
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         ! splicer begin function.return_int_ptr_dim_default_new
         type(OWN_SHROUD_array) :: SHT_rv_cdesc
-        call c_return_int_ptr_dim_default_new_bufferify(len, &
-            SHT_rv_cdesc)
+        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_cdesc)
         call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
             SHT_rv_cdesc%shape(1:1))
         Crv%mem = SHT_rv_cdesc%cxx

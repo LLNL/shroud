@@ -756,16 +756,12 @@ fc_statements = [
         need_wrapper=True
     ),
 
+    ##########
+    # native
     dict(
-        # double * out +intent(out) +deref(allocatable)+dimension(size(in)),
-        # Allocate array then pass to C wrapper.
-        name="f_out_native_*_allocatable",
+        name="f_out_native_*",
         arg_decl=[
-            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
-        ],
-        pre_call=[
-            # XXX - allocate on pre_call, should be 'cdesc'?
-            "allocate({f_var}{f_array_allocate})",
+            "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
     
@@ -809,11 +805,32 @@ fc_statements = [
         arg_call=["{cxx_var}"],
     ),
     dict(
+        # deref(allocatable)
+        # A C function with a 'int **' argument associates it
+        # with a Fortran pointer.
+        # f_out_native_**_cdesc_allocatable
+        # f_out_native_*&_cdesc_allocatable
+        name="f_out_native_**/*&_cdesc_allocatable",
+        mixin=["f_mixin_out_array_cdesc"],
+        c_helper="copy_array",
+        f_helper="copy_array_int",
+#XXX        f_helper="copy_array_{c_type}",
+        arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        post_call=[
+            # intent(out) ensure that it is already deallocated.
+            "allocate({f_var}{f_array_allocate})",
+            "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"#size({f_var},kind=C_SIZE_T))",
+        ],
+    ),
+    dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        # f_out_native_**_buf_pointer
-        # f_out_native_*&_buf_pointer
+        # f_out_native_**_cdesc_pointer
+        # f_out_native_*&_cdesc_pointer
         name="f_out_native_**/*&_cdesc_pointer",
         mixin=["f_mixin_out_array_cdesc"],
         arg_decl=[
@@ -884,8 +901,32 @@ fc_statements = [
         ],
     ),
 
-########################################
-# void *
+    ########################################
+    ##### hidden
+    # Hidden argument will not be added for Fortran
+    # or C buffer wrapper. Instead it is a local variable
+    # in the C wrapper and passed to library function.
+    dict(
+        # c_out_native_*_hidden
+        # c_inout_native_*_hidden
+        name="c_out/inout_native_*_hidden",
+        pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        # c_out_native_&_hidden
+        # c_inout_native_&_hidden
+        name="c_out/inout_native_&_hidden",
+        pre_call=[
+            "{cxx_type} {cxx_var};",
+        ],
+        arg_call=["{cxx_var}"],
+    ),
+    
+    ########################################
+    # void *
     dict(
         name="f_in_void_*",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -913,8 +954,8 @@ fc_statements = [
         base="f_in_native_*_cdesc",
     ),    
 
-########################################
-# void **
+    ########################################
+    # void **
     dict(
         # Treat as an assumed length array in Fortran interface.
         name='c_in_void_**',
@@ -1003,13 +1044,14 @@ fc_statements = [
         ],
         post_call=[
             # XXX - allocate scalar
-            "allocate({f_var}({f_array_allocate}))",
+            "allocate({f_var}{f_array_allocate})",
             "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
     dict(
-        # pointer to scalar
+        # Pointer to scalar.
+        # type(C_PTR) is returned instead of a cdesc argument.
         name="f_function_native_*_buf_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         arg_decl=[
@@ -1063,6 +1105,7 @@ fc_statements = [
         # int **func(void)
         # regardless of deref value.
         name="f_function_native_**",
+        f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
@@ -2067,25 +2110,6 @@ fc_statements = [
     
     ########################################
     # CFI - Further Interoperability with C
-    # c_var will be CFI_cdesc_t *.
-    dict(
-        name="c_in_native_*_cfi",
-        iface_header=["ISO_Fortran_binding.h"],
-        cxx_local_var="pointer",
-        c_arg_decl=[
-            "CFI_cdesc_t *{c_var}",
-        ],
-        f_arg_decl=[
-            "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
-        ],
-        f_c_arg_names=["{c_var}"],
-        f_module_line="iso_c_binding:{f_kind}",
-        pre_call=[
-            "{cxx_type} *{cxx_var} = "
-            "{cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};",
-        ],
-    ),
-
     ########################################
     # char arg
     dict(
@@ -2143,7 +2167,78 @@ fc_statements = [
         ],
         temps=["cfi"],
     ),
+    dict(
+        # Native argument which use CFI_desc_t.
+        name="c_mixin_arg_native_cfi",
+        iface_header=["ISO_Fortran_binding.h"],
+        cxx_local_var="pointer",
+        c_arg_decl=[
+            "CFI_cdesc_t *{c_var_cfi}",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}",
+        ],
+        f_module_line="iso_c_binding:{f_kind}",
+        f_c_arg_names=["{c_var}"],
+#        pre_call=[
+#            "{c_type} *{cxx_var} = "
+#            "{cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
+#        ],
+        temps=["cfi", "extents", "lower"],
+    ),
 
+    dict(
+        # Allocate copy of C pointer (requires +dimension)
+        name="c_mixin_native_cfi_allocatable",
+        post_call=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}"
+            "{c_temp_extents_decl}"
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use},"
+            " \t{c_temp_extents_use}, \t0);",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+#XXX            "{C_memory_dtor_function}({cxx_var});",
+            "-}}",
+            "-}}",
+        ],
+    ),
+    dict(
+        # Convert C pointer to Fortran pointer
+        name="c_mixin_native_cfi_pointer",
+        post_call=[
+            "{{+",
+            "CFI_CDESC_T({rank}) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});",
+            "{c_temp_extents_decl}"
+            "{c_temp_lower_decl}"
+            "int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},"
+            "\t CFI_attribute_pointer,\t {cfi_type},"
+            "\t 0,\t {rank},\t {c_temp_extents_use});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});",
+            "-}}",
+            "-}}",
+        ],
+        local=["cptr", "fptr", "cdesc", "err"],
+    ),
+    
+    ########################################
+
+    dict(
+        # c_in_native_*_cfi
+        # c_inout_native_*_cfi
+        name="c_in/inout_native_*_cfi",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+        ],
+        pre_call=[
+            "{cxx_type} *{cxx_var} = "
+            "{cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};",
+        ],
+    ),
+    
     ########################################
     dict(
         name="c_in_char_*_cfi",
@@ -2151,6 +2246,7 @@ fc_statements = [
             "c_mixin_arg_character_cfi",
         ],
         # Null terminate string.
+        c_helper="ShroudStrAlloc ShroudStrFree",
         pre_call=[
             "char *{c_var} = "
             "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -2294,6 +2390,33 @@ fc_statements = [
         local=["cptr", "fptr", "cdesc", "len", "err"],
     ),
     
+    ########################################
+    # char **
+    dict(
+        name='c_in_char_**_cfi',
+        mixin=[
+            "c_mixin_arg_character_cfi",
+        ],
+        f_arg_decl=[
+            "character(len=*), intent({f_intent}) :: {c_var}(:)",
+        ],
+        pre_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "size_t {c_var_len} = {c_var_cfi}->elem_len;",
+            "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
+            "char **{cxx_var} = ShroudStrArrayAlloc("
+            "{c_var},\t {c_var_size},\t {c_var_len});",
+        ],
+        temps=["cfi", "len", "size"],
+
+        c_helper="ShroudStrArrayAlloc ShroudStrArrayFree",
+        cxx_local_var="pointer",
+        post_call=[
+            "ShroudStrArrayFree({cxx_var}, {c_var_size});",
+        ],
+    ),
+
     ########################################
     # std::string
     dict(
@@ -2511,6 +2634,93 @@ fc_statements = [
         arg_c_call=["{f_var}"],
     ),
     
+    ########################################
+    # native
+    dict(
+        name="f_out_native_*_cfi_allocatable",
+    ),
+    dict(
+        # Set Fortran pointer to point to cxx_var
+        name="c_out_native_**_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_allocatable",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
+        ],
+        pre_call=[
+            "{c_const}{c_type} * {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        # Set Fortran pointer to point to cxx_var
+        name="c_out_native_**_cfi_pointer",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_pointer",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
+        ],
 
+        # set pointer on fortran declaration
+        pre_call=[
+            "{c_const}{c_type} * {cxx_var};",
+        ],
+        arg_call=["&{cxx_var}"],
+    ),
+
+    dict(
+        # Pass result as an argument to C wrapper.
+        name="f_function_native_*_cfi_allocatable",
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        # Convert to subroutine and pass result as an argument.
+        # Return an allocated copy of data.
+        name="c_function_native_*_cfi_allocatable",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_allocatable",  # post_call
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}",
+        ],
+
+        cxx_local_var="result",
+        return_type="void",  # Convert to function.
+    ),
+
+    dict(
+        # Pass result as an argument to C wrapper.
+        name="f_function_native_*_cfi_pointer",
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
+        pre_call=[
+            "nullify({f_var})",
+        ],
+        arg_c_call=["{f_var}"],
+    ),
+    dict(
+        # Convert to subroutine and pass result as an argument.
+        # Return Fortran pointer to data.
+        name="c_function_native_*_cfi_pointer",
+        mixin=[
+            "c_mixin_arg_native_cfi",
+            "c_mixin_native_cfi_pointer",  # post_call
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}",
+        ],
+
+        cxx_local_var="result",
+        return_type="void",  # Convert to function.
+    ),
     
 ]

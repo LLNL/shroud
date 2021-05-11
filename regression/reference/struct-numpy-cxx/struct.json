@@ -2242,6 +2242,7 @@
             "PY_to_object_idtor": "PP_Arrays1_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_arrays1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Arrays1",
             "f_c_module": {
                 "--import--": [
@@ -2271,6 +2272,7 @@
             "PY_to_object_idtor": "PP_Cstruct1_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct1",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct1",
             "f_c_module": {
                 "--import--": [
@@ -2374,6 +2376,7 @@
             "PY_to_object_idtor": "PP_Cstruct_list_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct_list",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_list",
             "f_c_module": {
                 "--import--": [
@@ -2403,6 +2406,7 @@
             "PY_to_object_idtor": "PP_Cstruct_numpy_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct_numpy",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_numpy",
             "f_c_module": {
                 "--import--": [
@@ -2432,6 +2436,7 @@
             "PY_to_object_idtor": "PP_Cstruct_ptr_to_Object_idtor",
             "base": "struct",
             "c_type": "STR_cstruct_ptr",
+            "cfi_type": "CFI_type_struct",
             "cxx_type": "Cstruct_ptr",
             "f_c_module": {
                 "--import--": [

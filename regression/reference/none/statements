@@ -17,6 +17,9 @@ root
         & -- c_function_native_*/&/**
         * -- c_function_native_*/&/**
           cdesc -- c_function_native_*_cdesc
+          cfi
+            allocatable -- c_function_native_*_cfi_allocatable
+            pointer -- c_function_native_*_cfi_pointer
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
       shadow -- c_function_shadow
@@ -60,11 +63,12 @@ root
           cfi -- c_in_char_*_cfi
         ** -- c_in_char_**
           buf -- c_in_char_**_buf
+          cfi -- c_in_char_**_cfi
         scalar -- c_in_char_scalar
       native
         *
           cdesc -- c_in/out/inout_native_*_cdesc
-          cfi -- c_in_native_*_cfi
+          cfi -- c_in/inout_native_*_cfi
         ** -- c_in_native_**
       shadow -- c_in/inout_shadow
       string
@@ -91,8 +95,12 @@ root
           buf -- c_inout_char_*_buf
           cfi -- c_inout_char_*_cfi
       native
+        &
+          hidden -- c_out/inout_native_&_hidden
         *
           cdesc -- c_in/out/inout_native_*_cdesc
+          cfi -- c_in/inout_native_*_cfi
+          hidden -- c_out/inout_native_*_hidden
       shadow -- c_in/inout_shadow
       string
         & -- c_inout_string_*/&
@@ -113,6 +121,8 @@ root
       arg
         character
           cfi -- c_mixin_arg_character_cfi
+        native
+          cfi -- c_mixin_arg_native_cfi
       function
         cdesc -- c_mixin_function_cdesc
         character -- c_mixin_function_character
@@ -127,6 +137,10 @@ root
       inout
         array
           cdesc -- c_mixin_inout_array_cdesc
+      native
+        cfi
+          allocatable -- c_mixin_native_cfi_allocatable
+          pointer -- c_mixin_native_cfi_pointer
       noargs -- c_mixin_noargs
       out
         array
@@ -140,12 +154,18 @@ root
           buf -- c_out_char_*_buf
           cfi -- c_out_char_*_cfi
       native
+        &
+          hidden -- c_out/inout_native_&_hidden
         *
           cdesc -- c_in/out/inout_native_*_cdesc
+          hidden -- c_out/inout_native_*_hidden
         *&
           cdesc -- c_out_native_*&_cdesc
         **
           cdesc -- c_out_native_**_cdesc
+          cfi
+            allocatable -- c_out_native_**_cfi_allocatable
+            pointer -- c_out_native_**_cfi_pointer
       string
         & -- c_out_string_*/&
           buf -- c_out_string_*/&_buf
@@ -205,6 +225,9 @@ root
             allocatable -- f_function_native_*_cdesc_allocatable
             pointer -- f_function_native_*_cdesc_pointer
               caller -- f_function_native_*_cdesc_pointer_caller
+          cfi
+            allocatable -- f_function_native_*_cfi_allocatable
+            pointer -- f_function_native_*_cfi_pointer
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
@@ -318,14 +341,17 @@ root
         *
           buf -- f_in/out_char_*_buf
       native
-        *
-          allocatable -- f_out_native_*_allocatable
+        * -- f_out_native_*
           cdesc -- f_in/out/inout_native_*_cdesc
+          cfi
+            allocatable -- f_out_native_*_cfi_allocatable
         *&
           cdesc
+            allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
         **
           cdesc
+            allocatable -- f_out_native_**/*&_cdesc_allocatable
             pointer -- f_out_native_**/*&_cdesc_pointer
           raw -- f_out_native_**_raw
       string
@@ -593,6 +619,68 @@ c_function_native_*_cdesc:
   return_type: void
   temps:
   - cdesc
+c_function_native_*_cfi_allocatable:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: result
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: c_function_native_*_cfi_allocatable
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  return_type: void
+  temps:
+  - cfi
+  - extents
+  - lower
+c_function_native_*_cfi_pointer:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: result
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  local:
+  - cptr
+  - fptr
+  - cdesc
+  - err
+  name: c_function_native_*_cfi_pointer
+  owner: library
+  post_call:
+  - '{{+'
+  - CFI_CDESC_T({rank}) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
+    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - -}}
+  - -}}
+  return_type: void
+  temps:
+  - cfi
+  - extents
+  - lower
 c_function_native_*_scalar:
   f_module_line: iso_c_binding:{f_kind}
   f_result_decl:
@@ -1133,6 +1221,31 @@ c_in_char_**_buf:
   temps:
   - size
   - len
+c_in_char_**_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrArrayAlloc ShroudStrArrayFree
+  cxx_local_var: pointer
+  f_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {c_var}(:)'
+  f_c_arg_names:
+  - '{c_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: in
+  name: c_in_char_**_cfi
+  owner: library
+  post_call:
+  - ShroudStrArrayFree({cxx_var}, {c_var_size});
+  pre_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - size_t {c_var_size} = {c_var_cfi}->dim[0].extent;
+  - "char **{cxx_var} = ShroudStrArrayAlloc({c_var},\t {c_var_size},\t {c_var_len});"
+  temps:
+  - cfi
+  - len
+  - size
 c_in_char_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -1161,6 +1274,7 @@ c_in_char_*_buf:
 c_in_char_*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_helper: ShroudStrAlloc ShroudStrFree
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {c_var}'
@@ -1223,10 +1337,10 @@ c_in_native_*_cdesc:
   - cdesc
 c_in_native_*_cfi:
   c_arg_decl:
-  - CFI_cdesc_t *{c_var}
+  - CFI_cdesc_t *{c_var_cfi}
   cxx_local_var: pointer
   f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}'
+  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
   f_c_arg_names:
   - '{c_var}'
   f_module_line: iso_c_binding:{f_kind}
@@ -1236,7 +1350,11 @@ c_in_native_*_cfi:
   name: c_in_native_*_cfi
   owner: library
   pre_call:
-  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};'
+  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  temps:
+  - cfi
+  - extents
+  - lower
 c_in_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -1560,6 +1678,14 @@ c_inout_char_*_cfi:
   - "char *{cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
   temps:
   - cfi
+c_inout_native_&_hidden:
+  arg_call:
+  - '{cxx_var}'
+  intent: inout
+  name: c_inout_native_&_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_inout_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1577,6 +1703,34 @@ c_inout_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   temps:
   - cdesc
+c_inout_native_*_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: pointer
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: inout
+  name: c_inout_native_*_cfi
+  owner: library
+  pre_call:
+  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  temps:
+  - cfi
+  - extents
+  - lower
+c_inout_native_*_hidden:
+  arg_call:
+  - '&{cxx_var}'
+  intent: inout
+  name: c_inout_native_*_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_inout_shadow:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -1841,6 +1995,24 @@ c_mixin_arg_character_cfi:
   - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   temps:
   - cfi
+c_mixin_arg_native_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: pointer
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: mixin
+  name: c_mixin_arg_native_cfi
+  owner: library
+  temps:
+  - cfi
+  - extents
+  - lower
 c_mixin_function_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -1948,6 +2120,38 @@ c_mixin_inout_array_cdesc:
   temps:
   - size
   - cdesc
+c_mixin_native_cfi_allocatable:
+  intent: mixin
+  name: c_mixin_native_cfi_allocatable
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+c_mixin_native_cfi_pointer:
+  intent: mixin
+  local:
+  - cptr
+  - fptr
+  - cdesc
+  - err
+  name: c_mixin_native_cfi_pointer
+  owner: library
+  post_call:
+  - '{{+'
+  - CFI_CDESC_T({rank}) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
+    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - -}}
+  - -}}
 c_mixin_noargs:
   intent: mixin
   name: c_mixin_noargs
@@ -2034,6 +2238,14 @@ c_out_char_*_cfi:
   - char *{cxx_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   temps:
   - cfi
+c_out_native_&_hidden:
+  arg_call:
+  - '{cxx_var}'
+  intent: out
+  name: c_out_native_&_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_out_native_*&_cdesc:
   arg_call:
   - '{cxx_var}'
@@ -2088,6 +2300,74 @@ c_out_native_**_cdesc:
   - '{c_const}{cxx_type} *{cxx_var};'
   temps:
   - cdesc
+c_out_native_**_cfi_allocatable:
+  arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: pointer
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: out
+  name: c_out_native_**_cfi_allocatable
+  owner: library
+  post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  pre_call:
+  - '{c_const}{c_type} * {cxx_var};'
+  temps:
+  - cfi
+  - extents
+  - lower
+c_out_native_**_cfi_pointer:
+  arg_call:
+  - '&{cxx_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  cxx_local_var: pointer
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), pointer :: {c_var}{f_assumed_shape}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: iso_c_binding:{f_kind}
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: out
+  local:
+  - cptr
+  - fptr
+  - cdesc
+  - err
+  name: c_out_native_**_cfi_pointer
+  owner: library
+  post_call:
+  - '{{+'
+  - CFI_CDESC_T({rank}) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
+    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - -}}
+  - -}}
+  pre_call:
+  - '{c_const}{c_type} * {cxx_var};'
+  temps:
+  - cfi
+  - extents
+  - lower
 c_out_native_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2105,6 +2385,14 @@ c_out_native_*_cdesc:
   - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->addr.base));"
   temps:
   - cdesc
+c_out_native_*_hidden:
+  arg_call:
+  - '&{cxx_var}'
+  intent: out
+  name: c_out_native_*_hidden
+  owner: library
+  pre_call:
+  - '{cxx_type} {cxx_var};'
 c_out_string_&:
   cxx_local_var: scalar
   impl_header:
@@ -2543,6 +2831,9 @@ f_function_native_&_buf_pointer:
 f_function_native_**:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   intent: function
   name: f_function_native_**
 f_function_native_*_buf_pointer:
@@ -2575,7 +2866,7 @@ f_function_native_*_cdesc_allocatable:
   name: f_function_native_*_cdesc_allocatable
   need_wrapper: true
   post_call:
-  - allocate({f_var}({f_array_allocate}))
+  - allocate({f_var}{f_array_allocate})
   - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))"
   temps:
   - cdesc
@@ -2619,6 +2910,22 @@ f_function_native_*_cdesc_pointer_caller:
   - '{c_var_capsule}%mem = {c_var_cdesc}%cxx'
   temps:
   - cdesc
+f_function_native_*_cfi_allocatable:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  intent: function
+  name: f_function_native_*_cfi_allocatable
+f_function_native_*_cfi_pointer:
+  arg_c_call:
+  - '{f_var}'
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  intent: function
+  name: f_function_native_*_cfi_pointer
+  pre_call:
+  - nullify({f_var})
 f_function_native_*_raw:
   arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -3266,6 +3573,30 @@ f_out_char_*_buf:
   intent: out
   name: f_out_char_*_buf
   need_wrapper: true
+f_out_native_*:
+  arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  intent: out
+  name: f_out_native_*
+f_out_native_*&_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array_int
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: out
+  name: f_out_native_*&_cdesc_allocatable
+  post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
+  temps:
+  - cdesc
 f_out_native_*&_cdesc_pointer:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3281,6 +3612,25 @@ f_out_native_*&_cdesc_pointer:
   name: f_out_native_*&_cdesc_pointer
   post_call:
   - call c_f_pointer({c_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  temps:
+  - cdesc
+f_out_native_**_cdesc_allocatable:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
+  c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: copy_array_int
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: out
+  name: f_out_native_**_cdesc_allocatable
+  post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t {c_var_cdesc}%size)"
   temps:
   - cdesc
 f_out_native_**_cdesc_pointer:
@@ -3308,13 +3658,6 @@ f_out_native_**_raw:
     - C_PTR
   intent: out
   name: f_out_native_**_raw
-f_out_native_*_allocatable:
-  arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable :: {f_var}{f_assumed_shape}'
-  intent: out
-  name: f_out_native_*_allocatable
-  pre_call:
-  - allocate({f_var}{f_array_allocate})
 f_out_native_*_cdesc:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3337,6 +3680,9 @@ f_out_native_*_cdesc:
   - '{c_var_cdesc}%shape(1:{rank}) = shape({f_var})'
   temps:
   - cdesc
+f_out_native_*_cfi_allocatable:
+  intent: out
+  name: f_out_native_*_cfi_allocatable
 f_out_string_&_buf:
   arg_c_call:
   - '{f_var}'
@@ -3490,13 +3836,13 @@ root
       native
         &
           pointer
-            numpy -- py_function_native_&_pointer_numpy
+            numpy -- py_function_native_*/&_pointer_numpy
         *
           allocatable
             numpy -- py_function_native_*_allocatable_numpy
           pointer
             list -- py_function_native_*_pointer_list
-            numpy -- py_function_native_*_pointer_numpy
+            numpy -- py_function_native_*/&_pointer_numpy
       shadow
         & -- py_function_shadow_&
         * -- py_function_shadow_*
@@ -3587,11 +3933,11 @@ root
         & -- py_out_native_&
         * -- py_out_native_*
           allocatable
-            list -- py_out_native_*_allocatable_list
-            numpy -- py_out_native_*_allocatable_numpy
+            list -- py_out_native_*_allocatable/pointer_list
+            numpy -- py_out_native_*_allocatable/pointer_numpy
           pointer
-            list -- py_out_native_*_pointer_list
-            numpy -- py_out_native_*_pointer_numpy
+            list -- py_out_native_*_allocatable/pointer_list
+            numpy -- py_out_native_*_allocatable/pointer_numpy
         *&
           pointer
             numpy -- py_out_native_*&_pointer_numpy

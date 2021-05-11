@@ -61,6 +61,10 @@ int checkInt2d(int **arg);
 
 void DimensionIn(const int *arg);
 
+// allocatable
+void getAllocToFixedArray(int **nitems);
+
+
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
 void fetchVoidPtr(void **addr);
@@ -74,6 +78,8 @@ int *returnIntScalar(void);
 int *returnIntRaw(void);
 int *returnIntRawWithArgs(const char *name);
 int **returnRawPtrToInt2d(void);
+
+int *returnIntAllocToFixedArray(void);
 
 //void getPtrToArray(int **count+intent(out));
 

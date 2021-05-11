@@ -11,9 +11,6 @@
 #ifndef TYPESGENERIC_H
 #define TYPESGENERIC_H
 
-// shroud
-#include <stddef.h>
-
 /* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1
@@ -55,36 +52,19 @@
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
 
-// helper capsule_data_helper
-struct s_GEN_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
-
-// start array_context
-// helper array_context
-struct s_GEN_SHROUD_array {
-    GEN_SHROUD_capsule_data cxx;      /* address of C++ memory */
-    union {
-        const void * base;
-        const char * ccharp;
-    } addr;
-    int type;        /* type of element */
-    size_t elem_len; /* bytes-per-item or character len in c++ */
-    size_t size;     /* size of data in c++ */
-    int rank;        /* number of dimensions, 0=scalar */
-    long shape[7];
-};
-typedef struct s_GEN_SHROUD_array GEN_SHROUD_array;
-// end array_context
-
 // helper capsule_GEN_StructAsClass
 struct s_GEN_StructAsClass {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_GEN_StructAsClass GEN_StructAsClass;
+
+// helper capsule_data_helper
+struct s_GEN_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap);
 

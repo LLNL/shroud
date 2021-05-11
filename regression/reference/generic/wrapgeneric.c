@@ -26,7 +26,7 @@
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(0)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
@@ -53,7 +53,7 @@ int GEN_sum_values_0d(const int * values, int nvalues)
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
@@ -80,7 +80,7 @@ int GEN_sum_values_1d(const int * values, int nvalues)
 // Match:     c_function
 // ----------------------------------------
 // Argument:  const int * values +rank(2)
-// Attrs:     +assumed-rank+intent(in)
+// Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
@@ -210,9 +210,9 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
@@ -238,9 +238,9 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)+value
@@ -294,9 +294,9 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(1)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(1)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
@@ -323,9 +323,9 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
-// Argument:  float * addr +deref(raw)+intent(in)+rank(2)
-// Attrs:     +deref(raw)+intent(in)
-// Requested: c_in_native_*_raw
+// Argument:  float * addr +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+value
@@ -360,19 +360,19 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // ----------------------------------------
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 void GEN_get_pointer_as_pointer_float1d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_bufferify
     float *addr;
-    GetPointerAsPointer(&addr, type, size);
+    int type;
+    size_t size;
+    GetPointerAsPointer(&addr, &type, &size);
     SHT_addr_cdesc->cxx.addr  = addr;
     SHT_addr_cdesc->cxx.idtor = 0;
     SHT_addr_cdesc->addr.base = addr;
@@ -397,19 +397,19 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // ----------------------------------------
 // Argument:  int * type +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 // ----------------------------------------
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_native_*
-// Match:     c_default
+// Exact:     c_out_native_*_hidden
 void GEN_get_pointer_as_pointer_float2d_bufferify(
-    GEN_SHROUD_array *SHT_addr_cdesc, int * type, size_t * size)
+    GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_bufferify
     float *addr;
-    GetPointerAsPointer(&addr, type, size);
+    int type;
+    size_t size;
+    GetPointerAsPointer(&addr, &type, &size);
     SHT_addr_cdesc->cxx.addr  = addr;
     SHT_addr_cdesc->cxx.idtor = 0;
     SHT_addr_cdesc->addr.base = addr;

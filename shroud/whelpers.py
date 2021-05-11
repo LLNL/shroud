@@ -179,11 +179,11 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     CHelpers[name] = dict(
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
-        c_include=["<string.h>"],
-        cxx_include=["<cstring>"],
+        c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
+        cxx_include=["<cstring>", "<cstddef>"],
         # Create a single C routine which is called from Fortran
         # via an interface for each cxx_type.
-        cxx_source=wformat(
+        source=wformat(
                 """
 {lstart}// helper {hname}
 // Copy std::vector into array c_var(c_var_size).
@@ -1569,6 +1569,23 @@ static void ShroudStrArrayFree(char **src, int nsrc)
        std::free(src[i]);
    }
    std::free(src);
+}""",
+    ),
+    ########################################
+    # Find size of CFI array
+    ShroudSizeCFI=dict(
+        c_include=["<stddef.h>"],
+        cxx_include=["<cstddef>"],
+        source="""
+// helper ShroudSizeCFI
+// Compute number of items in CFI_cdesc_t
+size_t ShroudSizeCFI(CFI_cdesc_t *desc)
+{
+    size_t nitems = 1;
+    for (int i = 0; i < desc->rank; i++) {
+        nitems *= desc->dim[i].extent;
+    }
+    return nitems;
 }""",
     ),
     ########################################

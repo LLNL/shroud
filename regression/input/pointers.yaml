@@ -34,7 +34,7 @@ declarations:
                             int * argout   +intent(out))
 
 - decl: void cos_doubles(double * in     +intent(in)  +rank(1),
-                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                         double * out    +intent(out) +dimension(size(in)),
                          int      sizein +implied(size(in)))
   doxygen:
     brief: compute cos of IN and save in OUT
@@ -43,7 +43,7 @@ declarations:
       implied size of array
 
 - decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
-                             int *    out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                             int *    out    +intent(out) +dimension(size(in)),
                              int      sizein +implied(size(in)))
   doxygen:
     brief: truncate IN argument and save in OUT
@@ -71,9 +71,6 @@ declarations:
 ## test +allocatable(3)
 ## test +allocatable(nvar)
 
-- decl: void iota_allocatable
-            (int nvar,
-             int *values+intent(out)+deref(allocatable)+dimension(nvar))
 - decl: void iota_dimension
             (int nvar, int *values+intent(out)+dimension(nvar))
 
@@ -214,6 +211,17 @@ declarations:
     wrap_python: False
 
 ######################################################################
+# Allocatable argument
+
+- decl: void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is always the same length.
+  options:
+    # XXX - update py_statements
+    wrap_python: False
+
+######################################################################
 # Return a pointer directly.
 
 - decl: void *returnAddress1(int flag)
@@ -260,4 +268,11 @@ declarations:
       # getRawPtrToInt2d
   options:
     F_force_wrapper: True
+    wrap_python: False
+
+######################################################################
+# Allocatable function
+
+- decl: int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)
+  options:
     wrap_python: False

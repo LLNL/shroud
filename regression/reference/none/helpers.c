@@ -40,6 +40,20 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 ##### end ShroudLenTrim source
 
+##### start ShroudSizeCFI source
+
+// helper ShroudSizeCFI
+// Compute number of items in CFI_cdesc_t
+size_t ShroudSizeCFI(CFI_cdesc_t *desc)
+{
+    size_t nitems = 1;
+    for (int i = 0; i < desc->rank; i++) {
+        nitems *= desc->dim[i].extent;
+    }
+    return nitems;
+}
+##### end ShroudSizeCFI source
+
 ##### start ShroudStrAlloc c_source
 
 // helper ShroudStrAlloc
@@ -327,7 +341,7 @@ struct s_LIB_SHROUD_capsule_data {
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 ##### end capsule_data_helper source
 
-##### start copy_array cxx_source
+##### start copy_array source
 
 // helper copy_array
 // Copy std::vector into array c_var(c_var_size).
@@ -342,7 +356,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
     std::memcpy(c_var, cxx_var, n);
     LIB_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
-##### end copy_array cxx_source
+##### end copy_array source
 
 ##### start copy_string source
 

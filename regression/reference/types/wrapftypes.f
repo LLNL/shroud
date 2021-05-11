@@ -523,8 +523,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_native_*
-    ! Match:     f_default
+    ! Exact:     f_out_native_*
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
