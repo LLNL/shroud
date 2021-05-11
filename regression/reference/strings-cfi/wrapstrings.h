@@ -16,7 +16,6 @@
 #define WRAPSTRINGS_H
 
 // shroud
-#include "ISO_Fortran_binding.h"
 #include "typesstrings.h"
 
 // splicer begin CXX_declarations
@@ -25,6 +24,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// shroud
+#include "ISO_Fortran_binding.h"
 
 // splicer begin C_declarations
 // splicer end C_declarations

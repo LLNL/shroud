@@ -18,8 +18,10 @@
 // typemap
 #include <stddef.h>
 // shroud
-#include "ISO_Fortran_binding.h"
 #include "typesgeneric.h"
+
+// shroud
+#include "ISO_Fortran_binding.h"
 
 // splicer begin C_declarations
 // splicer end C_declarations

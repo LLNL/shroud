@@ -70,9 +70,14 @@ iface_header
 ^^^^^^^^^^^^
 
 List of header files which will be included in the generated header
-for the C wrapper.  These headers must be C only.
+for the C wrapper.  These headers must be C only and will be
+included after ``ifdef __cplusplus``.
 Used for headers needed for declarations in *c_arg_decl*.
 Can contain headers required for the generated prototypes.
+
+For example, ``ISO_Fortran_binding.h`` is C only.
+
+.. The Cray ftn compiler requires extern "C".
 
 .. note that typemaps will also add c_headers.
 

@@ -398,7 +398,7 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        headers = self.header_iface
+        headers = util.Header(self.newlibrary)
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
         headers.write_headers(output)
@@ -408,6 +408,9 @@ class Wrapc(util.WrapperMixin):
             if self._create_splicer("CXX_declarations", output):
                 write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+
+        # ISO_Fortran_binding.h needs to be in extern "C" block.
+        self.header_iface.write_headers(output)
 
         if self.enum_impl:
             write_file = True

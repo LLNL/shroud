@@ -107,6 +107,26 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
+ifeq ($(compiler),cray)
+CC = cc
+LOCAL_CFLAGS = -g -std=c99
+CLIBS = -lstdc++
+CXX = CC
+LOCAL_CXXFLAGS = -g -std=c++11
+#LOCAL_CXXFLAGS += 
+FC = ftn
+LOCAL_FFLAGS = -g -e F -f free
+# test-fortran-pointers-cfi
+# forrtl: severe (194): Run-Time Check Failure.
+# The variable 'test_out_ptrs$ISCALAR$_276' is being used in 'main.f(177,10)' without being defined
+# This runtime check seems wrong since iscalar is passed as intent(OUT), pointer
+# which will nullify the pointer in the subroutine.
+#LOCAL_FFLAGS += -check all,nopointers
+FLIBS = -lstdc++
+SHARED = -fPIC
+LD_SHARED = -shared
+endif
+
 # Prefix local flags to user flags.
 LOCAL_CFLAGS += $(CFLAGS)
 LOCAL_CXXFLAGS += $(CXXFLAGS)
