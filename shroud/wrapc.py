@@ -768,10 +768,14 @@ class Wrapc(util.WrapperMixin):
                         fmt.c_array_size = "*\t".join(fmtsize)
                 if hasattr(fmt, "c_var_extents"):
                     # Used with CFI_establish
+                    fmtdim = []
+                    for i, dim in enumerate(visitor.shape):
+                        fmtdim.append("{}[{}] = {};\n".format(
+                            fmt.c_var_extents, i, dim))
                     fmt.c_temp_extents_decl = (
-                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
+                        "CFI_index_t {0}[{1}];\n{2}".
                         format(fmt.c_var_extents, fmt.rank,
-                               ",".join(visitor.shape)))
+                               "".join(fmtdim)))
                     # Used with CFI_setpointer to set lower bound to 1.
                     fmt.c_temp_lower_decl = (
                         "CFI_index_t {0}[{1}] = {{{2}}};\n".
