@@ -116,8 +116,12 @@ def print_table(dct):
         if not subset_compilers:
             continue
         print()
+
+        versions = [x[len(family)+1:] for x in subset_compilers]
+        versions.sort(key=lambda s: [int(u) for u in s.split('.')])
+        subset_compilers = [family + '-' + version for version in versions]
     
-        line = "| ".join(str(x[len(family)+1:]).ljust(8) for x in subset_compilers)
+        line = "| ".join(x.ljust(8) for x in versions)
         print(family.ljust(test_width), "|", line)
 
         # Transpose table
