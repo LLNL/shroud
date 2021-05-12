@@ -35,7 +35,7 @@ void STR_pass_char(char status);
 
 void STR_pass_char_force(char status);
 
-char STR_return_char(void);
+void STR_return_char(char *SHC_rv);
 
 void STR_pass_char_ptr(char * dest, const char * src);
 
@@ -166,6 +166,8 @@ void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);
 void STR_explicit2(char * name);
 
 void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
+
+void STR_creturn_char(char *SHC_rv);
 
 void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);

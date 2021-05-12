@@ -79,7 +79,7 @@ contains
     call cpass_char("w")
 
     ch = creturn_char()
-    call assert_true( ch == "w")
+    call assert_equals("w", ch, "CreturnChar")
 
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

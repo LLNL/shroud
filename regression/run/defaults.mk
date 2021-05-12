@@ -194,6 +194,9 @@ endif
 %.o : %.cpp
 	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
+%.o : %.cxx
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+
 %.o %.mod  : %.f
 	$(FC) $(LOCAL_FFLAGS) $(INCLUDE) -c -o $*.o $<
 

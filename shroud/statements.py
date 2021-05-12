@@ -1149,12 +1149,35 @@ fc_statements = [
             "character, value, intent(IN) :: {f_var}",
         ],
     ),
+
+#    dict(
+#        name="c_function_char_scalar",
+#        f_result_decl=[
+#            "character(kind=C_CHAR) :: {c_var}",
+#        ],
+#        f_module=dict(iso_c_binding=["C_CHAR"]),
+#    ),
     dict(
+        name="f_function_char_scalar",
+        arg_c_call=["{c_var}"],  # Pass result as an argument.
+    ),
+    dict(
+        # Pass result as an argument.
+        # pgi and cray compilers have problems with functions which
+        # return a scalar char.
         name="c_function_char_scalar",
-        f_result_decl=[
-            "character(kind=C_CHAR) :: {c_var}",
+        call=[
+            "*{c_var} = {function_name}({C_call_list});",
         ],
+        c_arg_decl=[
+            "char *{c_var}",
+        ],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(OUT) :: {c_var}",
+        ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_CHAR"]),
+        return_type="void",  # Convert to function.
     ),
 #    dict(
 #        # Blank fill result.

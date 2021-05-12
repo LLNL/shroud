@@ -1210,6 +1210,7 @@ class Wrapc(util.WrapperMixin):
 
         if result_blk.call:
             raw_call_code = result_blk.call
+            need_wrapper = True
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
                 "{CXX_this_call}{function_name}"

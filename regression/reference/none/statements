@@ -207,7 +207,7 @@ root
             allocatable -- f_function_char_scalar/*_cfi_allocatable
             pointer -- f_function_char_scalar/*_cfi_pointer
           raw -- f_function_char_*_raw
-        scalar
+        scalar -- f_function_char_scalar
           cdesc
             allocatable -- f_function_char_scalar/*_cdesc_allocatable
             pointer -- f_function_char/string_scalar/*_cdesc_pointer
@@ -539,14 +539,21 @@ c_function_char_*_cfi_pointer:
   temps:
   - cfi
 c_function_char_scalar:
+  c_arg_decl:
+  - char *{c_var}
+  call:
+  - '*{c_var} = {function_name}({C_call_list});'
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
   f_module:
     iso_c_binding:
     - C_CHAR
-  f_result_decl:
-  - 'character(kind=C_CHAR) :: {c_var}'
   intent: function
   name: c_function_char_scalar
   owner: library
+  return_type: void
 c_function_char_scalar_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -2743,6 +2750,11 @@ f_function_char_*_raw:
   - 'type(C_PTR) :: {f_var}'
   intent: function
   name: f_function_char_*_raw
+f_function_char_scalar:
+  arg_c_call:
+  - '{c_var}'
+  intent: function
+  name: f_function_char_scalar
 f_function_char_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'

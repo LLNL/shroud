@@ -238,6 +238,8 @@ Code to call function.  This is usually generated.
 An exception which require explicit call code are constructors
 and destructors for shadow types.
 
+.. sets need_wrapper
+
 post_call
 ^^^^^^^^^
 

@@ -270,6 +270,13 @@ wrapped differently.
     Works with Fortran 90.
     See example :ref:`getCharPtr3 <example_getCharPtr3>`.
 
+
+.. XXX returning a scalar char will pass the result to the C wrapper
+   as an ``char *`` argument.  pgi and cray compilers had issues with
+   bind(C) functions which returned CHARACTER(len=1,kind=C_CHAR)
+   valgrind reported uninitialized variables when calling the Fortran
+   wrapper.  i.e.  CHARACTER is not considered a scalar type.
+
 string functions
 ----------------
 
