@@ -1911,13 +1911,6 @@ fc_statements = [
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
     dict(
-        name="f_mixin_shadow",
-        arg_c_call=[
-            "{f_var}%{F_derived_member}",
-        ],
-        need_wrapper=True,
-    ),
-    dict(
         name="c_mixin_shadow",
         c_arg_decl=[
             "{c_type} * {c_var}",
@@ -1931,7 +1924,13 @@ fc_statements = [
     
     dict(
         name="f_in_shadow",
-        mixin=["f_mixin_shadow"],
+        arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
     ),
     dict(
         # c_in_shadow
@@ -1976,7 +1975,13 @@ fc_statements = [
     ),
     dict(
         name="f_function_shadow",
-        mixin=["f_mixin_shadow"],
+        arg_decl=[
+            "{f_type} :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
     ),
     dict(
         name="f_dtor",
@@ -1996,7 +2001,7 @@ fc_statements = [
     ),
     dict(
         name="f_ctor",
-        mixin=["f_mixin_shadow"],
+        mixin=["f_function_shadow"],
     ),
     dict(
         # NULL in stddef.h

@@ -334,7 +334,6 @@ root
       out
         array
           cdesc -- f_mixin_out_array_cdesc
-      shadow -- f_mixin_shadow
     out
       bool -- f_out_bool
       char
@@ -2665,6 +2664,8 @@ f_XXXin_string_scalar:
 f_ctor:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
   intent: ctor
   name: f_ctor
   need_wrapper: true
@@ -2949,6 +2950,8 @@ f_function_native_*_scalar:
 f_function_shadow:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
   intent: function
   name: f_function_shadow
   need_wrapper: true
@@ -3268,6 +3271,8 @@ f_in_native_*_cdesc:
 f_in_shadow:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
   intent: in
   name: f_in_shadow
   need_wrapper: true
@@ -3563,12 +3568,6 @@ f_mixin_out_array_cdesc:
   name: f_mixin_out_array_cdesc
   temps:
   - cdesc
-f_mixin_shadow:
-  arg_c_call:
-  - '{f_var}%{F_derived_member}'
-  intent: mixin
-  name: f_mixin_shadow
-  need_wrapper: true
 f_out_bool:
   c_local_var: true
   intent: out

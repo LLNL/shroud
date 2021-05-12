@@ -1501,6 +1501,9 @@ rv = .false.
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
                                       ntypemap, subprogram)
+            if c_attrs["pass"]:
+                # Used with wrap_struct_as=class for passed-object dummy argument.
+                fmt.f_type = ntypemap.f_class
         self.set_fmt_fields_dimension(cls, fcn, f_ast, fmt)
         return ntypemap
 

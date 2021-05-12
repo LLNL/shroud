@@ -1414,7 +1414,7 @@ contains
     !!
     !<
     subroutine pass_class_by_value(arg)
-        type(class1), value, intent(IN) :: arg
+        type(class1), intent(IN) :: arg
         ! splicer begin function.pass_class_by_value
         call c_pass_class_by_value(arg%cxxmem)
         ! splicer end function.pass_class_by_value
