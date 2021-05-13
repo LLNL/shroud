@@ -1166,6 +1166,8 @@ fc_statements = [
     ),
 
 #    dict(
+#        This simpler version had to be replace for pgi and cray.
+#        See below.
 #        name="c_function_char_scalar",
 #        f_result_decl=[
 #            "character(kind=C_CHAR) :: {c_var}",
