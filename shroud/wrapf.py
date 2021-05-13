@@ -1116,6 +1116,9 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
+        result_api = ast.metaattrs["api"]
+        sintent = ast.metaattrs["intent"]
+
         if cls:
             is_static = "static" in ast.storage
             if is_ctor or is_static:
@@ -1123,15 +1126,14 @@ rv = .false.
             else:
                 # Add 'this' argument
                 arg_c_names.append(fmt_func.C_this)
-                append_format(
-                    arg_c_decl,
-                    "type({F_capsule_data_type}), intent(IN) :: {C_this}",
-                    fmt_func,
-                )
+                if sintent == "dtor":
+                    # dtor will modify C_this to set addr to nullptr.
+                    line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
+                else:
+                    line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
+                append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
-        result_api = ast.metaattrs["api"]
-        sintent = ast.metaattrs["intent"]
         # ctor and dtor are not valid for bind(C) interfaces.
         if sintent == "ctor":
             sintent = "function"

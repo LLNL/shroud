@@ -192,7 +192,7 @@ module classes_mod
                 bind(C, name="CLA_Class1_delete")
             import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_class1_delete
     end interface
     ! end c_class1_delete

@@ -89,7 +89,7 @@ module forward_mod
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data
             implicit none
-            type(FOR_SHROUD_capsule_data), intent(IN) :: self
+            type(FOR_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_class2_dtor
 
         ! ----------------------------------------

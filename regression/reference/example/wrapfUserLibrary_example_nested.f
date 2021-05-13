@@ -217,7 +217,7 @@ module userlibrary_example_nested_mod
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(IN) :: self
+            type(AA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_exclass1_dtor
 
         ! ----------------------------------------
@@ -426,7 +426,7 @@ module userlibrary_example_nested_mod
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
             implicit none
-            type(AA_SHROUD_capsule_data), intent(IN) :: self
+            type(AA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_exclass2_dtor
 
         ! ----------------------------------------
