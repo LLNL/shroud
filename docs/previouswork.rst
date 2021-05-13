@@ -168,6 +168,7 @@ Links
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
   * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
   * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
+  * `C, Fortran, and single-character strings <https://lwn.net/Articles/791393/>`_
 
 ..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf
 

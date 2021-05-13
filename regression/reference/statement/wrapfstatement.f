@@ -82,8 +82,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=get_name_length()) :: SHT_rv
         ! splicer begin function.get_name_error_pattern
-        call c_get_name_error_pattern_bufferify(SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_get_name_error_pattern_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.get_name_error_pattern
     end function get_name_error_pattern
 

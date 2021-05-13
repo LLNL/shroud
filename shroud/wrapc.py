@@ -398,7 +398,7 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        headers = self.header_iface
+        headers = util.Header(self.newlibrary)
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
         headers.write_headers(output)
@@ -408,6 +408,9 @@ class Wrapc(util.WrapperMixin):
             if self._create_splicer("CXX_declarations", output):
                 write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+
+        # ISO_Fortran_binding.h needs to be in extern "C" block.
+        self.header_iface.write_headers(output)
 
         if self.enum_impl:
             write_file = True
@@ -765,10 +768,14 @@ class Wrapc(util.WrapperMixin):
                         fmt.c_array_size = "*\t".join(fmtsize)
                 if hasattr(fmt, "c_var_extents"):
                     # Used with CFI_establish
+                    fmtdim = []
+                    for i, dim in enumerate(visitor.shape):
+                        fmtdim.append("{}[{}] = {};\n".format(
+                            fmt.c_var_extents, i, dim))
                     fmt.c_temp_extents_decl = (
-                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
+                        "CFI_index_t {0}[{1}];\n{2}".
                         format(fmt.c_var_extents, fmt.rank,
-                               ",".join(visitor.shape)))
+                               "".join(fmtdim)))
                     # Used with CFI_setpointer to set lower bound to 1.
                     fmt.c_temp_lower_decl = (
                         "CFI_index_t {0}[{1}] = {{{2}}};\n".
@@ -1203,6 +1210,7 @@ class Wrapc(util.WrapperMixin):
 
         if result_blk.call:
             raw_call_code = result_blk.call
+            need_wrapper = True
         elif CXX_subprogram == "subroutine":
             raw_call_code = [
                 "{CXX_this_call}{function_name}"

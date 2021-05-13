@@ -6,6 +6,7 @@
 #
 
 include ../../defaults.mk
+include $(rundir)/defaults.mk
 
 INCLUDE = \
     -I$(rundir)/classes \

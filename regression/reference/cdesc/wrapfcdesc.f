@@ -288,14 +288,16 @@ contains
         character(len=*), intent(IN) :: name
         integer(C_INT), intent(OUT), target :: value
         ! splicer begin function.get_scalar1_0
+        integer(C_INT) SHT_name_len
         type(CDE_SHROUD_array) :: SHT_value_cdesc
+        SHT_name_len = len(name, kind=C_INT)
         SHT_value_cdesc%base_addr = C_LOC(value)
         SHT_value_cdesc%type = SH_TYPE_INT
         ! SHT_value_cdesc%elem_len = C_SIZEOF()
         SHT_value_cdesc%size = 1
         SHT_value_cdesc%rank = 0
         SHT_value_cdesc%shape(1:0) = shape(value)
-        call c_get_scalar1_0_bufferify(name, len(name, kind=C_INT), &
+        call c_get_scalar1_0_bufferify(name, SHT_name_len, &
             SHT_value_cdesc)
         ! splicer end function.get_scalar1_0
     end subroutine get_scalar1_0
@@ -336,14 +338,16 @@ contains
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), intent(OUT), target :: value
         ! splicer begin function.get_scalar1_1
+        integer(C_INT) SHT_name_len
         type(CDE_SHROUD_array) :: SHT_value_cdesc
+        SHT_name_len = len(name, kind=C_INT)
         SHT_value_cdesc%base_addr = C_LOC(value)
         SHT_value_cdesc%type = SH_TYPE_DOUBLE
         ! SHT_value_cdesc%elem_len = C_SIZEOF()
         SHT_value_cdesc%size = 1
         SHT_value_cdesc%rank = 0
         SHT_value_cdesc%shape(1:0) = shape(value)
-        call c_get_scalar1_1_bufferify(name, len(name, kind=C_INT), &
+        call c_get_scalar1_1_bufferify(name, SHT_name_len, &
             SHT_value_cdesc)
         ! splicer end function.get_scalar1_1
     end subroutine get_scalar1_1
@@ -422,6 +426,8 @@ contains
         character(len=*), intent(IN) :: name
         integer(C_INT), intent(OUT) :: value
         ! splicer begin function.get_scalar2_0
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         value = c_get_data_int()
         ! splicer end function.get_scalar2_0
     end subroutine get_scalar2_0
@@ -458,6 +464,8 @@ contains
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), intent(OUT) :: value
         ! splicer begin function.get_scalar2_1
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         value = c_get_data_double()
         ! splicer end function.get_scalar2_1
     end subroutine get_scalar2_1

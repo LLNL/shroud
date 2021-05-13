@@ -1011,8 +1011,10 @@ contains
         character(len=*), intent(IN) :: arg2
         character(len=30) :: SHT_rv
         ! splicer begin function.function4a
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
         call c_function4a_bufferify(trim(arg1)//C_NULL_CHAR, &
-            trim(arg2)//C_NULL_CHAR, SHT_rv, len(SHT_rv, kind=C_INT))
+            trim(arg2)//C_NULL_CHAR, SHT_rv, SHT_rv_len)
         ! splicer end function.function4a
     end function function4a
 
@@ -1055,7 +1057,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
-        call c_pass_char_ptr_in_out_bufferify(s, len(s, kind=C_INT))
+        integer(C_INT) SHT_s_len
+        SHT_s_len = len(s, kind=C_INT)
+        call c_pass_char_ptr_in_out_bufferify(s, SHT_s_len)
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
 
@@ -1084,7 +1088,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name1
         ! splicer begin function.return_one_name
-        call c_return_one_name_bufferify(name1, len(name1, kind=C_INT))
+        integer(C_INT) SHT_name1_len
+        SHT_name1_len = len(name1, kind=C_INT)
+        call c_return_one_name_bufferify(name1, SHT_name1_len)
         ! splicer end function.return_one_name
     end subroutine return_one_name
     ! end return_one_name
@@ -1120,8 +1126,12 @@ contains
         character(len=*), intent(OUT) :: name1
         character(len=*), intent(OUT) :: name2
         ! splicer begin function.return_two_names
-        call c_return_two_names_bufferify(name1, len(name1, kind=C_INT), &
-            name2, len(name2, kind=C_INT))
+        integer(C_INT) SHT_name1_len
+        integer(C_INT) SHT_name2_len
+        SHT_name1_len = len(name1, kind=C_INT)
+        SHT_name2_len = len(name2, kind=C_INT)
+        call c_return_two_names_bufferify(name1, SHT_name1_len, name2, &
+            SHT_name2_len)
         ! splicer end function.return_two_names
     end subroutine return_two_names
 
@@ -1148,9 +1158,10 @@ contains
         character(len=*), intent(OUT) :: text
         integer(C_INT) :: SH_ltext
         ! splicer begin function.implied_text_len
+        integer(C_INT) SHT_text_len
+        SHT_text_len = len(text, kind=C_INT)
         SH_ltext = len(text,kind=C_INT)
-        call c_implied_text_len_bufferify(text, len(text, kind=C_INT), &
-            SH_ltext)
+        call c_implied_text_len_bufferify(text, SHT_text_len, SH_ltext)
         ! splicer end function.implied_text_len
     end subroutine implied_text_len
     ! end implied_text_len
@@ -1281,7 +1292,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.bind_c2
-        call c_bind_c2_bufferify(outbuf, len(outbuf, kind=C_INT))
+        integer(C_INT) SHT_outbuf_len
+        SHT_outbuf_len = len(outbuf, kind=C_INT)
+        call c_bind_c2_bufferify(outbuf, SHT_outbuf_len)
         ! splicer end function.bind_c2
     end subroutine Fortran_bindC2a
 
@@ -1314,8 +1327,10 @@ contains
         character(len=*), intent(OUT) :: outbuf
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_assumed_type_buf
+        integer(C_INT) SHT_outbuf_len
+        SHT_outbuf_len = len(outbuf, kind=C_INT)
         SHT_rv = c_pass_assumed_type_buf_bufferify(arg, outbuf, &
-            len(outbuf, kind=C_INT))
+            SHT_outbuf_len)
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
 
@@ -1431,8 +1446,10 @@ contains
         external :: incr
         character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.callback3
+        integer(C_INT) SHT_outbuf_len
+        SHT_outbuf_len = len(outbuf, kind=C_INT)
         call c_callback3_bufferify(trim(type)//C_NULL_CHAR, in, incr, &
-            outbuf, len(outbuf, kind=C_INT))
+            outbuf, SHT_outbuf_len)
         ! splicer end function.callback3
     end subroutine callback3
 

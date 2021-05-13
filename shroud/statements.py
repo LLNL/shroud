@@ -707,10 +707,25 @@ fc_statements = [
     dict(
         name="f_mixin_in_character_buf",
         # Do not use arg_decl here since it does not understand +len(30) on functions.
-        arg_c_call=[
-            "{f_var}",
-            "len({f_var}, kind=C_INT)",
+
+        temps=["len"],
+        declare=[
+            "integer(C_INT) {c_var_len}",
         ],
+        pre_call=[
+            "{c_var_len} = len({f_var}, kind=C_INT)",
+        ],
+        arg_c_call=["{f_var}", "{c_var_len}"],
+
+        # statements.yaml getNameErrorPattern pgi reports an error
+        # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
+        # By breaking it out as an explicit assign, the error goes away.
+        # Only difference from other uses is setting
+        # function attribute +len(get_name_length())
+#        arg_c_call=[
+#            "{f_var}",
+#            "len({f_var}, kind=C_INT)",
+#        ],
         f_module=dict(iso_c_binding=["C_INT"]),
         need_wrapper=True,
     ),
@@ -1149,12 +1164,37 @@ fc_statements = [
             "character, value, intent(IN) :: {f_var}",
         ],
     ),
+
+#    dict(
+#        This simpler version had to be replace for pgi and cray.
+#        See below.
+#        name="c_function_char_scalar",
+#        f_result_decl=[
+#            "character(kind=C_CHAR) :: {c_var}",
+#        ],
+#        f_module=dict(iso_c_binding=["C_CHAR"]),
+#    ),
     dict(
+        name="f_function_char_scalar",
+        arg_c_call=["{c_var}"],  # Pass result as an argument.
+    ),
+    dict(
+        # Pass result as an argument.
+        # pgi and cray compilers have problems with functions which
+        # return a scalar char.
         name="c_function_char_scalar",
-        f_result_decl=[
-            "character(kind=C_CHAR) :: {c_var}",
+        call=[
+            "*{c_var} = {function_name}({C_call_list});",
         ],
+        c_arg_decl=[
+            "char *{c_var}",
+        ],
+        f_arg_decl=[
+            "character(kind=C_CHAR), intent(OUT) :: {c_var}",
+        ],
+        f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_CHAR"]),
+        return_type="void",  # Convert to function.
     ),
 #    dict(
 #        # Blank fill result.
@@ -1888,13 +1928,6 @@ fc_statements = [
     # Extract pointer to C++ instance.
     # convert C argument into a pointer to C++ type.
     dict(
-        name="f_mixin_shadow",
-        arg_c_call=[
-            "{f_var}%{F_derived_member}",
-        ],
-        need_wrapper=True,
-    ),
-    dict(
         name="c_mixin_shadow",
         c_arg_decl=[
             "{c_type} * {c_var}",
@@ -1908,7 +1941,13 @@ fc_statements = [
     
     dict(
         name="f_in_shadow",
-        mixin=["f_mixin_shadow"],
+        arg_decl=[
+            "{f_type}, intent({f_intent}) :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
     ),
     dict(
         # c_in_shadow
@@ -1953,7 +1992,13 @@ fc_statements = [
     ),
     dict(
         name="f_function_shadow",
-        mixin=["f_mixin_shadow"],
+        arg_decl=[
+            "{f_type} :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
     ),
     dict(
         name="f_dtor",
@@ -1973,7 +2018,7 @@ fc_statements = [
     ),
     dict(
         name="f_ctor",
-        mixin=["f_mixin_shadow"],
+        mixin=["f_function_shadow"],
     ),
     dict(
         # NULL in stddef.h

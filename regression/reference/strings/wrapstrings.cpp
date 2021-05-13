@@ -159,11 +159,10 @@ void STR_pass_char_force(char status)
 // Function:  char returnChar
 // Attrs:     +intent(function)
 // Exact:     c_function_char_scalar
-char STR_return_char(void)
+void STR_return_char(char *SHC_rv)
 {
     // splicer begin function.return_char
-    char SHC_rv = returnChar();
-    return SHC_rv;
+    *SHC_rv = returnChar();
     // splicer end function.return_char
 }
 
@@ -1451,6 +1450,21 @@ void STR_explicit2_bufferify(char *name, int SHT_name_len)
     explicit2(name);
     ShroudStrBlankFill(name, SHT_name_len);
     // splicer end function.explicit2_bufferify
+}
+
+/**
+ * \brief return a char argument (non-pointer), extern "C"
+ *
+ */
+// ----------------------------------------
+// Function:  char CreturnChar
+// Attrs:     +intent(function)
+// Exact:     c_function_char_scalar
+void STR_creturn_char(char *SHC_rv)
+{
+    // splicer begin function.creturn_char
+    *SHC_rv = CreturnChar();
+    // splicer end function.creturn_char
 }
 
 /**

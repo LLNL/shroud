@@ -44,11 +44,11 @@ contains
 
     call pass_char("w")
     ch = return_char()
-    call assert_true(ch == "w", "passChar/returnChar")
+    call assert_equals("w", ch, "passChar/returnChar")
 
     call pass_char_force("x")
     ch = return_char()
-    call assert_true(ch == "x", "passCharForce/returnChar")
+    call assert_equals("x", ch, "passCharForce/returnChar")
 
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -79,7 +79,7 @@ contains
     call cpass_char("w")
 
     ch = creturn_char()
-    call assert_true( ch == "w")
+    call assert_equals("w", ch, "CreturnChar")
 
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

@@ -75,16 +75,29 @@ endif
 
 ifeq ($(compiler),ibm)
 # rzansel
-TCE = /usr/tce/packages/xl/xl-2019.08.20/
-TCE = /usr/tce/packages/xl/xl-2020.11.12/
+TCE = /usr/tce/packages/xl/xl-2019.08.20
+TCE = /usr/tce/packages/xl/xl-2020.11.12
+TCE = /usr/tce/packages/xl/xl-2021.03.11
+CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
 CC = xlc
 LOCAL_CFLAGS = -g
+LOCAL_CFLAGS += $(CFI_INCLUDE)
 CLIBS = -lstdc++
 CXX = xlC
 LOCAL_CXXFLAGS = -g -std=c++0x 
+LOCAL_CXXFLAGS += $(CFI_INCLUDE)
 FC = xlf2003
-LOCAL_FFLAGS = -g -qfree=f90 -qsuffix=cpp=f
+FC = xlf
+LOCAL_FFLAGS = -g -qfree=f90
+LOCAL_FFLAGS += -qlanglvl=ts
 # -qlanglvl=2003std
+LOCAL_FFLAGS += -qcheck=all
+# The #line directive is not permitted by the Fortran TS29113 standard.
+# -P  Inhibit generation of linemarkers 
+LOCAL_FFLAGS += -qpreprocess -WF,-P
+# keep preprocessor output
+#LOCAL_FFLAGS += -d
+# -qsuffix=cpp=f
 FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
@@ -103,6 +116,26 @@ FLIBS = \
   -L/collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/toolchain-4.7.2-fixup/lib \
   -L/usr/local/tools/toolchain-4.7.2/V1R2M2_4.7.2-efix014/gnu-linux-4.7.2-efix014/powerpc64-bgq-linux/lib \
   -lc++ -lstdc++
+SHARED = -fPIC
+LD_SHARED = -shared
+endif
+
+ifeq ($(compiler),cray)
+CC = cc
+LOCAL_CFLAGS = -g -std=c99
+CLIBS = -lstdc++
+CXX = CC
+LOCAL_CXXFLAGS = -g -std=c++11
+#LOCAL_CXXFLAGS += 
+FC = ftn
+LOCAL_FFLAGS = -g -e F -f free
+# test-fortran-pointers-cfi
+# forrtl: severe (194): Run-Time Check Failure.
+# The variable 'test_out_ptrs$ISCALAR$_276' is being used in 'main.f(177,10)' without being defined
+# This runtime check seems wrong since iscalar is passed as intent(OUT), pointer
+# which will nullify the pointer in the subroutine.
+#LOCAL_FFLAGS += -check all,nopointers
+FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
@@ -159,6 +192,9 @@ endif
 	$(CC) $(LOCAL_CFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cpp
+	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+
+%.o : %.cxx
 	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f

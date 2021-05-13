@@ -89,7 +89,7 @@ module templates_std_mod
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            type(TEM_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_vector_int_dtor
 
         ! ----------------------------------------
@@ -176,7 +176,7 @@ module templates_std_mod
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            type(TEM_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_vector_double_dtor
 
         ! ----------------------------------------

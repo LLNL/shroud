@@ -9,31 +9,32 @@ include ../../defaults.mk
 include $(rundir)/defaults.mk
 
 INCLUDE = \
-    -I$(rundir)/pointers \
+    -I$(rundir) \
+    -I$(rundir)/strings \
     -I$(rundir)/fruit
 
 VPATH = \
-    $(rundir)/pointers \
+    $(rundir)/strings \
     $(rundir)/fruit
 
 OBJS = \
-    pointers.o \
-    pointers_mod.o \
-    pointers_wrap.o \
+    strings.o \
+    strings_mod.o \
+    strings_wrap.o \
     fruit.o \
     main.o
 
-pointers : $(OBJS)
+strings : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 swig:
-#	swig -fortran -o swigpointers_module.c pointers.i
-	$(swig-fortran)  -fortran pointers.i
+#	swig -fortran -o swigstrings_module.c strings.i
+	$(swig-fortran)  -fortran -c++ strings.i
 
 test:
-	./pointers
+	./strings
 
 clean :
-	rm -f $(OBJS) *.mod pointers *~
+	rm -f $(OBJS) *.mod strings *~
 
 .PHONY : swig test clean

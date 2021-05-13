@@ -86,7 +86,7 @@ module ownership_mod
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data
             implicit none
-            type(OWN_SHROUD_capsule_data), intent(IN) :: self
+            type(OWN_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_class1_dtor
 
         ! ----------------------------------------

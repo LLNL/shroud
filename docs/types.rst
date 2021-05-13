@@ -92,6 +92,12 @@ terminating NULL. This buffer is passed to the C library which will
 copy into it.  Upon return, the buffer is copied and blank filled into
 the user's argument and the intermediate buffer released.
 
+Library functions which return a scalar ``char`` have a wrapper generated
+which pass a ``char *`` argument to the C wrapper where the first
+element is assigned ( ``*arg`` a.k.a ``arg[0]``). Returning a ``char``
+proved to be non-portable while passing the result by reference works
+on the tested compilers.
+
 The bufferify function will be named the same as the original
 function with the option **C_bufferify_suffix** appended to the end.
 The Fortran wrapper will use the original function name, but call the

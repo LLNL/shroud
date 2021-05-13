@@ -557,7 +557,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT),\t arg2,\t len(arg2, kind=C_INT),\t SHT_rv_cdesc",
+                    "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -1458,7 +1458,7 @@
                     "F_C_call": "c_overloaded_function_from_name_bufferify",
                     "F_C_name": "c_overloaded_function_from_name",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
+                    "F_arg_c_call": "name,\t SHT_name_len",
                     "F_arguments": "name",
                     "F_name_function": "overloaded_function_from_name",
                     "F_name_generic": "overloaded_function",
@@ -2877,7 +2877,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t arg2",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -3113,7 +3113,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t arg2",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -5910,7 +5910,7 @@
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
                     "F_arguments": "",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
@@ -5945,6 +5945,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",

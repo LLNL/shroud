@@ -192,7 +192,7 @@ module classes_mod
                 bind(C, name="CLA_Class1_delete")
             import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_class1_delete
     end interface
     ! end c_class1_delete
@@ -1002,10 +1002,12 @@ contains
         logical, value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.return_this_buffer
+        integer(C_INT) SHT_name_len
         logical(C_BOOL) SH_flag
+        SHT_name_len = len(name, kind=C_INT)
         SH_flag = flag  ! coerce to C_BOOL
         call c_class1_return_this_buffer_bufferify(obj%cxxmem, name, &
-            len(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
+            SHT_name_len, SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer
@@ -1196,8 +1198,9 @@ contains
         class(class1) :: obj
         character(len=*), intent(IN) :: val
         ! splicer begin class.Class1.method.set_m_name
-        call c_class1_set_m_name_bufferify(obj%cxxmem, val, &
-            len(val, kind=C_INT))
+        integer(C_INT) SHT_val_len
+        SHT_val_len = len(val, kind=C_INT)
+        call c_class1_set_m_name_bufferify(obj%cxxmem, val, SHT_val_len)
         ! splicer end class.Class1.method.set_m_name
     end subroutine class1_set_m_name
     ! end class1_set_m_name
@@ -1414,7 +1417,7 @@ contains
     !!
     !<
     subroutine pass_class_by_value(arg)
-        type(class1), value, intent(IN) :: arg
+        type(class1), intent(IN) :: arg
         ! splicer begin function.pass_class_by_value
         call c_pass_class_by_value(arg%cxxmem)
         ! splicer end function.pass_class_by_value
@@ -1553,8 +1556,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=30) :: SHT_rv
         ! splicer begin function.last_function_called
-        call c_last_function_called_bufferify(SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_last_function_called_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.last_function_called
     end function last_function_called
 
