@@ -1054,8 +1054,9 @@ contains
         character(len=*), intent(OUT) :: outbuf
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_struct2
-        SHT_rv = c_pass_struct2_bufferify(s1, outbuf, &
-            len(outbuf, kind=C_INT))
+        integer(C_INT) SHT_outbuf_len
+        SHT_outbuf_len = len(outbuf, kind=C_INT)
+        SHT_rv = c_pass_struct2_bufferify(s1, outbuf, SHT_outbuf_len)
         ! splicer end function.pass_struct2
     end function pass_struct2
 
@@ -1144,9 +1145,11 @@ contains
         character(len=*), intent(OUT) :: outbuf
         type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr2
+        integer(C_INT) SHT_outbuf_len
         type(C_PTR) :: SHC_rv_ptr
+        SHT_outbuf_len = len(outbuf, kind=C_INT)
         SHC_rv_ptr = c_return_struct_ptr2_bufferify(i, d, outbuf, &
-            len(outbuf, kind=C_INT))
+            SHT_outbuf_len)
         call c_f_pointer(SHC_rv_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2

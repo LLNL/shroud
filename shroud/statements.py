@@ -707,10 +707,25 @@ fc_statements = [
     dict(
         name="f_mixin_in_character_buf",
         # Do not use arg_decl here since it does not understand +len(30) on functions.
-        arg_c_call=[
-            "{f_var}",
-            "len({f_var}, kind=C_INT)",
+
+        temps=["len"],
+        declare=[
+            "integer(C_INT) {c_var_len}",
         ],
+        pre_call=[
+            "{c_var_len} = len({f_var}, kind=C_INT)",
+        ],
+        arg_c_call=["{f_var}", "{c_var_len}"],
+
+        # statements.yaml getNameErrorPattern pgi reports an error
+        # Argument number 2 to c_get_name_error_pattern_bufferify: kind mismatch 
+        # By breaking it out as an explicit assign, the error goes away.
+        # Only difference from other uses is setting
+        # function attribute +len(get_name_length())
+#        arg_c_call=[
+#            "{f_var}",
+#            "len({f_var}, kind=C_INT)",
+#        ],
         f_module=dict(iso_c_binding=["C_INT"]),
         need_wrapper=True,
     ),

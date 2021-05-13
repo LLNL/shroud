@@ -602,7 +602,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_scalar1_0_bufferify",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_value_cdesc",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
@@ -911,7 +911,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_get_scalar1_1_bufferify",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t SHT_value_cdesc",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t SHT_value_cdesc",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
@@ -1693,7 +1693,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
@@ -1799,6 +1799,7 @@
                     "name": {
                         "fmtf": {
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -1923,7 +1924,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT),\t value",
+                    "F_arg_c_call": "name,\t SHT_name_len,\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
@@ -2029,6 +2030,7 @@
                     "name": {
                         "fmtf": {
                             "c_var": "name",
+                            "c_var_len": "SHT_name_len",
                             "f_intent": "IN",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",

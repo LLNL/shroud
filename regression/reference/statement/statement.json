@@ -148,7 +148,7 @@
                     "F_C_name": "c_get_name_error_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
                     "F_arguments": "",
                     "F_name_function": "get_name_error_pattern",
                     "F_name_generic": "get_name_error_pattern",
@@ -180,6 +180,7 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",

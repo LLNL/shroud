@@ -2652,15 +2652,21 @@ c_subroutine:
 f_XXXin_string_scalar:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
   arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: XXXin
   name: f_XXXin_string_scalar
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_ctor:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
@@ -2682,13 +2688,19 @@ f_function_bool:
 f_function_char_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: function
   name: f_function_char_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_function_char_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -2958,13 +2970,19 @@ f_function_shadow:
 f_function_string_&_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: function
   name: f_function_string_&_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_function_string_&_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3007,13 +3025,19 @@ f_function_string_&_cfi_pointer:
 f_function_string_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: function
   name: f_function_string_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_function_string_*_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3074,13 +3098,19 @@ f_function_string_*_cfi_pointer:
 f_function_string_scalar_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: function
   name: f_function_string_scalar_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_function_string_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3234,13 +3264,19 @@ f_in_char_**_buf:
 f_in_char_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: in
   name: f_in_char_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_in_char_scalar:
   arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
@@ -3279,35 +3315,53 @@ f_in_shadow:
 f_in_string_&_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: in
   name: f_in_string_&_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_in_string_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: in
   name: f_in_string_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_in_string_scalar_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
   arg_decl:
   - 'character(len=*), intent({f_intent}) :: {f_var}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: in
   name: f_in_string_scalar_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_in_vector_buf:
   arg_c_call:
   - '{f_var}'
@@ -3379,13 +3433,19 @@ f_inout_bool:
 f_inout_char_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: inout
   name: f_inout_char_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_inout_native_*_cdesc:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3411,23 +3471,35 @@ f_inout_native_*_cdesc:
 f_inout_string_&_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: inout
   name: f_inout_string_&_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_inout_string_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: inout
   name: f_inout_string_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_inout_vector_buf_string:
   arg_c_call:
   - '{f_var}'
@@ -3524,13 +3596,19 @@ f_mixin_in_array_buf:
 f_mixin_in_character_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: mixin
   name: f_mixin_in_character_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_mixin_in_string_array_buf:
   arg_c_call:
   - '{f_var}'
@@ -3577,13 +3655,19 @@ f_out_bool:
 f_out_char_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: out
   name: f_out_char_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_out_native_*:
   arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
@@ -3697,23 +3781,35 @@ f_out_native_*_cfi_allocatable:
 f_out_string_&_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: out
   name: f_out_string_&_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_out_string_*_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: out
   name: f_out_string_*_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_out_vector_buf_string:
   arg_c_call:
   - '{f_var}'
@@ -3800,13 +3896,19 @@ f_setter_native:
 f_setter_string_scalar_buf:
   arg_c_call:
   - '{f_var}'
-  - len({f_var}, kind=C_INT)
+  - '{c_var_len}'
+  declare:
+  - integer(C_INT) {c_var_len}
   f_module:
     iso_c_binding:
     - C_INT
   intent: setter
   name: f_setter_string_scalar_buf
   need_wrapper: true
+  pre_call:
+  - '{c_var_len} = len({f_var}, kind=C_INT)'
+  temps:
+  - len
 f_subroutine:
   intent: subroutine
   name: f_subroutine

@@ -832,10 +832,13 @@ contains
         character(len=*), intent(IN) :: arg2
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.concatenate_strings
+        integer(C_INT) SHT_arg1_len
+        integer(C_INT) SHT_arg2_len
         type(TUT_SHROUD_array) :: SHT_rv_cdesc
-        call c_concatenate_strings_bufferify(arg1, &
-            len(arg1, kind=C_INT), arg2, len(arg2, kind=C_INT), &
-            SHT_rv_cdesc)
+        SHT_arg1_len = len(arg1, kind=C_INT)
+        SHT_arg2_len = len(arg2, kind=C_INT)
+        call c_concatenate_strings_bufferify(arg1, SHT_arg1_len, arg2, &
+            SHT_arg2_len, SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call TUT_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
@@ -947,8 +950,10 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         ! splicer begin function.overloaded_function_from_name
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         call c_overloaded_function_from_name_bufferify(name, &
-            len(name, kind=C_INT))
+            SHT_name_len)
         ! splicer end function.overloaded_function_from_name
     end subroutine overloaded_function_from_name
 
@@ -1094,8 +1099,10 @@ contains
         character(len=*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_float
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         call c_fortran_generic_overloaded_1_float_bufferify(name, &
-            len(name, kind=C_INT), arg2)
+            SHT_name_len, arg2)
         ! splicer end function.fortran_generic_overloaded_1_float
     end subroutine fortran_generic_overloaded_1_float
 
@@ -1125,8 +1132,10 @@ contains
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_double
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         call c_fortran_generic_overloaded_1_double_bufferify(name, &
-            len(name, kind=C_INT), arg2)
+            SHT_name_len, arg2)
         ! splicer end function.fortran_generic_overloaded_1_double
     end subroutine fortran_generic_overloaded_1_double
 
@@ -1386,8 +1395,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=30) :: SHT_rv
         ! splicer begin function.last_function_called
-        call c_last_function_called_bufferify(SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_last_function_called_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.last_function_called
     end function last_function_called
 

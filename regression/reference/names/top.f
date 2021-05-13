@@ -548,7 +548,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: name
         ! splicer begin function.get_name
-        call c_get_name_bufferify(name, len(name, kind=C_INT))
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
+        call c_get_name_bufferify(name, SHT_name_len)
         ! splicer end function.get_name
     end subroutine get_name
 
@@ -641,7 +643,9 @@ contains
         character(len=*), intent(IN) :: rv
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
-        SHT_rv = yyy_tes_function4_bufferify(rv, len(rv, kind=C_INT))
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(rv, kind=C_INT)
+        SHT_rv = yyy_tes_function4_bufferify(rv, SHT_rv_len)
         ! splicer end function.function4
     end function testnames_function4
 

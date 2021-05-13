@@ -1340,7 +1340,9 @@ contains
         character(len=*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
-        call c_exclass1_ctor_1_bufferify(name, len(name, kind=C_INT), &
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
+        call c_exclass1_ctor_1_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
@@ -1431,8 +1433,10 @@ contains
         class(exclass1) :: obj
         character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
         call c_exclass1_get_name_arg_bufferify(obj%cxxmem, name, &
-            len(name, kind=C_INT))
+            SHT_name_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
 
@@ -1574,7 +1578,9 @@ contains
         character(len=*), intent(IN) :: name
         type(exclass2) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
-        call c_exclass2_ctor_bufferify(name, len(name, kind=C_INT), &
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
+        call c_exclass2_ctor_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
     end function exclass2_ctor
@@ -1611,8 +1617,10 @@ contains
         class(exclass2) :: obj
         character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
         call c_exclass2_get_name_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+            SHT_rv_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name
     end function exclass2_get_name
 
@@ -2082,7 +2090,9 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         ! splicer begin namespace.example::nested.function.test_names
-        call c_test_names_bufferify(name, len(name, kind=C_INT))
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
+        call c_test_names_bufferify(name, SHT_name_len)
         ! splicer end namespace.example::nested.function.test_names
     end subroutine test_names
 
@@ -2112,8 +2122,9 @@ contains
         character(len=*), intent(IN) :: name
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin namespace.example::nested.function.test_names_flag
-        call c_test_names_flag_bufferify(name, len(name, kind=C_INT), &
-            flag)
+        integer(C_INT) SHT_name_len
+        SHT_name_len = len(name, kind=C_INT)
+        call c_test_names_flag_bufferify(name, SHT_name_len, flag)
         ! splicer end namespace.example::nested.function.test_names_flag
     end subroutine test_names_flag
 
