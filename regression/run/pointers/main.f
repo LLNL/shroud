@@ -261,6 +261,9 @@ contains
     call fetch_void_ptr(void)
     call assert_true(c_associated(void, cptr_scalar))
 
+    call update_void_ptr(void)
+    call assert_true(c_associated(void, cptr_scalar))
+
     ! Pass array of pointers  (void **)
     ivalue1 = 10
     ivalue2 = 4

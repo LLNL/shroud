@@ -458,8 +458,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_out_void_**
-        ! Match:     c_default
+        ! Exact:     c_out_void_**
         subroutine c_arraywrapper_fetch_void_ptr(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetch_void_ptr")
             use iso_c_binding, only : C_PTR
@@ -835,8 +834,7 @@ contains
     ! Attrs:     +intent(out)
     ! Exact:     f_out_void_**
     ! Attrs:     +intent(out)
-    ! Requested: c_out_void_**
-    ! Match:     c_default
+    ! Exact:     c_out_void_**
     subroutine arraywrapper_fetch_void_ptr(obj, array)
         use iso_c_binding, only : C_PTR
         class(arraywrapper) :: obj

@@ -3362,6 +3362,58 @@
                 "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
+                        "name": "updateVoidPtr",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void updateVoidPtr(void **addr+intent(inout))",
+                "declgen": "void updateVoidPtr(void * * addr +intent(inout))",
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "updateVoidPtr",
+                    "underscore_name": "update_void_ptr"
+                }
+            },
+            {
+                "<FUNCTION>": "36 ****************************************",
+                "ast": {
+                    "declarator": {
                         "name": "VoidPtrArray",
                         "pointer": []
                     },
@@ -3411,7 +3463,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -3464,7 +3516,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3530,7 +3582,7 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -3584,7 +3636,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "attrs": {
                         "dimension": "10"
@@ -3651,7 +3703,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "scalar"
@@ -3707,7 +3759,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3745,7 +3797,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -3803,7 +3855,7 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "44 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
@@ -3841,7 +3893,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "45 ****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "allocatable",

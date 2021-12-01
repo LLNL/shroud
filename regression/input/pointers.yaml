@@ -231,6 +231,10 @@ declarations:
   options:
     F_force_wrapper: True
 - decl: void fetchVoidPtr(void **addr+intent(out))
+- decl: void updateVoidPtr(void **addr+intent(inout))
+  options:
+    F_force_wrapper: True
+    wrap_python: False
 - decl: int VoidPtrArray(void **addr+rank(1))
   options:
     F_force_wrapper: True

@@ -626,8 +626,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_void_**
-    ! Match:     c_default
+    ! Exact:     c_out_void_**
     ! start pass_void_star_star
     interface
         subroutine pass_void_star_star(in, out) &

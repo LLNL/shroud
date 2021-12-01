@@ -4951,7 +4951,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_out_void_**",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_void_**"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -4963,7 +4963,7 @@
                             "stmt0": "f_out_void_**",
                             "stmt1": "f_out_void_**",
                             "stmtc0": "c_out_void_**",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_void_**"
                         }
                     },
                     "size": {
@@ -5036,7 +5036,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointer",
-                    "C_prototype": "void * * addr,\t int * type,\t size_t * size",
+                    "C_prototype": "void **addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
                     "F_C_call": "c_get_pointer",
@@ -5313,7 +5313,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_out_void_**",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_void_**"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -5386,7 +5386,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointerAsPointer",
-                    "C_prototype": "void * * addr,\t int * type,\t size_t * size",
+                    "C_prototype": "void **addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
                     "F_C_name": "c_get_pointer_as_pointer",
