@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Order of header files in *cxx_header* is preserved in the generated code.
 - Struct in an inner namespace using Py_struct_arg=numpy is now properly wrapped.
 - Support an array of pointers - ``void **addr+rank(1)``.
+- Fix Fortran wrapper for ``intent(INOUT)`` for ``void **``.
 - Create generic interface even if only one *decl* in *fortran_generic* list.
 - Promote wrap options (ex wrap_fortran) up to container when True
   (library, class, namespace). This allows wrap_fortran to be False at

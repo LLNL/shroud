@@ -3039,7 +3039,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
                                     "stmt0": "c_out_void_**",
-                                    "stmt1": "c_default"
+                                    "stmt1": "c_out_void_**"
                                 },
                                 "fmtf": {
                                     "F_C_var": "array",
@@ -3051,7 +3051,7 @@
                                     "stmt0": "f_out_void_**",
                                     "stmt1": "f_out_void_**",
                                     "stmtc0": "c_out_void_**",
-                                    "stmtc1": "c_default"
+                                    "stmtc1": "c_out_void_**"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3078,7 +3078,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "array",
                             "C_name": "ARR_ArrayWrapper_fetch_void_ptr",
-                            "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array",
                             "F_C_call": "c_arraywrapper_fetch_void_ptr",

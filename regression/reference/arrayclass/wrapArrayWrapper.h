@@ -89,7 +89,7 @@ void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc);
 
 void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
-    void * * array);
+    void **array);
 
 void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
     void * * array);

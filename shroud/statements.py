@@ -973,29 +973,21 @@ fc_statements = [
     # void **
     dict(
         # Treat as an assumed length array in Fortran interface.
-        name='c_in_void_**',
+        name='c_in/out/inout_void_**',
         c_arg_decl=[
             "void **{c_var}",
         ],
         f_arg_decl=[
-            "type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}",
+            "type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}",
         ],
         f_c_arg_names=["{c_var}"],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        name="f_in_void_**",
+        name="f_in/out/inout_void_**",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
-            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_shape}",
-        ],
-    ),
-    dict(
-        # XXX - intent as a format string
-        name="f_out_void_**",
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
-            "type(C_PTR), intent(OUT) :: {f_var}",
+            "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}",
         ],
     ),
     

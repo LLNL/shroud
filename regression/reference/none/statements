@@ -88,7 +88,7 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
-        ** -- c_in_void_**
+        ** -- c_in/out/inout_void_**
     inout
       char
         *
@@ -117,6 +117,7 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
+        ** -- c_in/out/inout_void_**
     mixin
       arg
         character
@@ -181,6 +182,7 @@ root
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
+        ** -- c_in/out/inout_void_**
     setter -- c_setter
       arg -- c_setter_arg
       native
@@ -295,7 +297,7 @@ root
       void
         * -- f_in_void_*
           cdesc -- f_in/out/inout_void_*_cdesc
-        ** -- f_in_void_**
+        ** -- f_in/out/inout_void_**
     inout
       bool -- f_inout_bool
       char
@@ -317,6 +319,7 @@ root
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
+        ** -- f_in/out/inout_void_**
     mixin
       function
         cdesc -- f_mixin_function_cdesc
@@ -366,7 +369,7 @@ root
       void
         *
           cdesc -- f_in/out/inout_void_*_cdesc
-        ** -- f_out_void_**
+        ** -- f_in/out/inout_void_**
     setter -- f_setter
       native -- f_setter_native
       string
@@ -1610,7 +1613,7 @@ c_in_void_**:
   c_arg_decl:
   - void **{c_var}
   f_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}'
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
   f_c_arg_names:
   - '{c_var}'
   f_module:
@@ -1967,6 +1970,19 @@ c_inout_vector_cdesc:
   temps:
   - size
   - cdesc
+c_inout_void_**:
+  c_arg_decl:
+  - void **{c_var}
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: inout
+  name: c_inout_void_**
+  owner: library
 c_inout_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -2591,6 +2607,19 @@ c_out_vector_cdesc:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
   temps:
   - cdesc
+c_out_void_**:
+  c_arg_decl:
+  - void **{c_var}
+  f_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {c_var}{f_c_dimension}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: out
+  name: c_out_void_**
+  owner: library
 c_out_void_*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
@@ -3394,7 +3423,7 @@ f_in_void_*:
   name: f_in_void_*
 f_in_void_**:
   arg_decl:
-  - 'type(C_PTR), intent(IN) :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -3550,6 +3579,14 @@ f_inout_vector_cdesc_allocatable:
   - "call {hnamefunc0}(\t{c_var_cdesc},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
   temps:
   - cdesc
+f_inout_void_**:
+  arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: inout
+  name: f_inout_void_**
 f_inout_void_*_cdesc:
   arg_c_call:
   - '{c_var_cdesc}'
@@ -3857,7 +3894,7 @@ f_out_vector_cdesc_allocatable:
   - cdesc
 f_out_void_**:
   arg_decl:
-  - 'type(C_PTR), intent(OUT) :: {f_var}'
+  - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR

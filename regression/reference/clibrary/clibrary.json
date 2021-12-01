@@ -4083,7 +4083,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "c_out_void_**",
-                            "stmt1": "c_default"
+                            "stmt1": "c_out_void_**"
                         },
                         "fmtf": {
                             "F_C_var": "out",
@@ -4095,14 +4095,14 @@
                             "stmt0": "f_out_void_**",
                             "stmt1": "f_out_void_**",
                             "stmtc0": "c_out_void_**",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_out_void_**"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "in,\t out",
                     "C_name": "passVoidStarStar",
-                    "C_prototype": "void * in,\t void * * out",
+                    "C_prototype": "void * in,\t void **out",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out",
                     "F_C_call": "c_pass_void_star_star",

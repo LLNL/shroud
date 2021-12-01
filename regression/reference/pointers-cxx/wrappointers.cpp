@@ -1124,16 +1124,32 @@ void * POI_return_address2(int flag)
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_void_**
-// Match:     c_default
+// Exact:     c_out_void_**
 // start POI_fetch_void_ptr
-void POI_fetch_void_ptr(void * * addr)
+void POI_fetch_void_ptr(void **addr)
 {
     // splicer begin function.fetch_void_ptr
     fetchVoidPtr(addr);
     // splicer end function.fetch_void_ptr
 }
 // end POI_fetch_void_ptr
+
+// ----------------------------------------
+// Function:  void updateVoidPtr
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  void * * addr +intent(inout)
+// Attrs:     +intent(inout)
+// Exact:     c_inout_void_**
+// start POI_update_void_ptr
+void POI_update_void_ptr(void **addr)
+{
+    // splicer begin function.update_void_ptr
+    updateVoidPtr(addr);
+    // splicer end function.update_void_ptr
+}
+// end POI_update_void_ptr
 
 // ----------------------------------------
 // Function:  int VoidPtrArray

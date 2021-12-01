@@ -130,7 +130,9 @@ void * POI_return_address1(int flag);
 
 void * POI_return_address2(int flag);
 
-void POI_fetch_void_ptr(void * * addr);
+void POI_fetch_void_ptr(void **addr);
+
+void POI_update_void_ptr(void **addr);
 
 int POI_void_ptr_array(void **addr);
 

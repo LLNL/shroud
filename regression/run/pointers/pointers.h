@@ -67,6 +67,7 @@ void getAllocToFixedArray(int **nitems);
 
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
+void updateVoidPtr(void **addr);
 void fetchVoidPtr(void **addr);
 int VoidPtrArray(void **addr);
 

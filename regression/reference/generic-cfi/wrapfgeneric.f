@@ -584,8 +584,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_void_**
-    ! Match:     c_default
+    ! Exact:     c_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
     ! Attrs:     +intent(out)
@@ -616,8 +615,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_out_void_**
-    ! Match:     c_default
+    ! Exact:     c_out_void_**
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)

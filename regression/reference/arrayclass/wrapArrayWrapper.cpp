@@ -470,10 +470,9 @@ void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_out_void_**
-// Match:     c_default
+// Exact:     c_out_void_**
 void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
-    void * * array)
+    void **array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetch_void_ptr
