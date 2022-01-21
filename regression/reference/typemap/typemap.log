@@ -1,0 +1,9 @@
+Read yaml typemap.yaml
+C void passIndex(int32_t i1 +value)  +intent(subroutine)
+Close wraptypemap.h
+Close wraptypemap.cpp
+Fortran void passIndex(int32_t i1 +value)  +intent(subroutine)
+C-interface void passIndex(int32_t i1 +value)  +intent(subroutine)
+Close wrapftypemap.f
+Close utiltypemap.cpp
+Close typestypemap.h
