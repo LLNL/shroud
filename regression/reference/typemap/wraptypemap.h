@@ -30,6 +30,11 @@ extern "C" {
 #endif
 
 // splicer begin C_declarations
+#if defined(USE_64BIT_INDEXTYPE)
+typedef int64_t IndexType;
+#else
+typedef int32_t IndexType;
+#endif
 // splicer end C_declarations
 
 void TYP_pass_index(int32_t i1);

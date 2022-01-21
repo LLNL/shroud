@@ -14,10 +14,16 @@
 ! splicer end file_top
 module typemap_mod
     ! splicer begin module_use
+    use iso_c_binding, only : C_INT32_T, C_INT64_T
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
+#if defined(USE_64BIT_INDEXTYPE)
+    integer, parameter :: INDEXTYPE = C_INT64_T
+#else
+    integer, parameter :: INDEXTYPE = C_INT32_T
+#endif
     ! splicer end module_top
 
     interface
