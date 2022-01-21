@@ -41,7 +41,7 @@ contains
 
 #if defined(USE_64BIT_INDEXTYPE)
     indx64 = 0
-    call pass_index(indx64)
+!    call pass_index(indx64)
 #else
     indx32 = 0
     call pass_index(indx32)
