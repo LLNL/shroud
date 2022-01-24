@@ -18,7 +18,7 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-void TYP_pass_index(int32_t i1)
+void TYP_pass_index(IndexType i1)
 {
     // splicer begin function.pass_index
     passIndex(i1);

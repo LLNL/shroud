@@ -9,17 +9,31 @@ copyright:
 library: typemap
 cxx_header: typemap.hpp
 
-#typemap:
-#- type: IndexType
-#  fields:
-#    base: 
+typemap:
+# IndexType may be 32 or 64 bits depending on USE_64BIT_INDEXTYPE
+- type: IndexType
+  fields:
+    base: integer
+#    cxx_type: YYYcxx_type
+#    c_type: YYYc_type
+    c_header: <stdint.h>
+    cxx_header: <cstdint>
+#    f_type: integer(INDEXTYPE)
+    f_kind: INDEXTYPE
+#    f_module:
+#      iso_c_binding:
+#      - C_INT32_T
+#      - C_INT64_T
+    f_module:
+      --import--:
+      - INDEXTYPE
+#    f_cast: int({f_var}, INDEXTYPE)
 #cpp_if: ifdef USE_MPI
 
 declarations:
 #- decl: IndexType i1
 
-#- decl: void passIndex(IndexType i1)
-- decl: void passIndex(int32_t i1)
+- decl: void passIndex(IndexType i1)
 
 ######################################################################
 splicer_code:

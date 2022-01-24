@@ -30,9 +30,9 @@ module typemap_mod
 
         subroutine pass_index(i1) &
                 bind(C, name="TYP_pass_index")
-            use iso_c_binding, only : C_INT32_T
+            import :: INDEXTYPE
             implicit none
-            integer(C_INT32_T), value, intent(IN) :: i1
+            integer(INDEXTYPE), value, intent(IN) :: i1
         end subroutine pass_index
 
         ! splicer begin additional_interfaces

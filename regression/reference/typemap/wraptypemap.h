@@ -37,7 +37,7 @@ typedef int32_t IndexType;
 #endif
 // splicer end C_declarations
 
-void TYP_pass_index(int32_t i1);
+void TYP_pass_index(IndexType i1);
 
 #ifdef __cplusplus
 }

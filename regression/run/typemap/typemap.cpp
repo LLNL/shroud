@@ -9,7 +9,7 @@
 
 #include "typemap.hpp"
 
-void passIndex(int32_t i1)
+void passIndex(IndexType i1)
 {
 }
 

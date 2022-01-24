@@ -29,11 +29,11 @@ program tester
 contains
 
   subroutine test_indextype
-    integer :: indx
+    integer(INDEXTYPE) :: indx
 #if defined(USE_64BIT_INDEXTYPE)
-    integer(C_INT64_t) :: indx64
+    integer(C_INT64_T) :: indx64
 #else
-    integer(C_INT32_t) :: indx32
+    integer(C_INT32_T) :: indx32
 #endif
 
     indx = 0
@@ -41,7 +41,7 @@ contains
 
 #if defined(USE_64BIT_INDEXTYPE)
     indx64 = 0
-!    call pass_index(indx64)
+    call pass_index(indx64)
 #else
     indx32 = 0
     call pass_index(indx32)

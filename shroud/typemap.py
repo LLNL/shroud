@@ -40,7 +40,10 @@ def flatten_modules_to_line(modules):
         return None
     line = []
     for mname, symbols in modules.items():
-        line.append("{}:{}".format(mname, ",".join(symbols)))
+        if mname == "__line__":
+            continue
+        symbolslst = ",".join(symbols)
+        line.append("{}:{}".format(mname, symbolslst))
     return ";".join(line)
 
 class Typemap(object):
@@ -870,6 +873,74 @@ def initialize():
     set_global_types(def_types)
 
     return def_types
+
+
+def create_integer_typemap_from_fields(cxx_name, fields, library):
+    """Create a typemap from fields.
+    Used when creating typemap from YAML. (from regression/forward.yaml)
+
+        typemap:
+        - type: indextype
+          fields:
+            base: integer
+            f_kind: INDEXTYPE
+
+    Parameters:
+    -----------
+    cxx_name : str
+    fields : dictionary object.
+    library : ast.LibraryNode.
+    """
+    fmt = library.fmtdict
+    ntypemap = Typemap(
+        cxx_name,
+#        base="integer", sgroup="integer",
+        cxx_type=cxx_name,
+        c_type=cxx_name,
+        f_kind="missing-f_kind",
+        f_cast=None,  # Override Typemap default
+#        f_capsule_data_type="missing-f_capsule_data_type",
+#        f_derived_type=cxx_name,
+    )
+    ntypemap.update(fields)
+#    if ntypemap.f_module_name is None:
+#        raise RuntimeError(
+#            "typemap {} requires field f_module_name".format(cxx_name)
+#        )
+#    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+#    ntypemap.f_c_module = {
+#        ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
+#    }
+    fill_integer_typemap_defaults(ntypemap, fmt)
+    ntypemap.finalize()
+    register_type(cxx_name, ntypemap)
+    library.add_typedef_by_name(cxx_name, ntypemap)
+#    library.add_shadow_typemap(ntypemap)
+#    import pprint
+#    pp = pprint.PrettyPrinter(indent=4)
+#    pp.pprint( dict or tuple )
+    return ntypemap
+
+
+def fill_integer_typemap_defaults(ntypemap, fmt):
+    """Add some defaults to integer typemap.
+    When dumping typemaps to a file, only a subset is written
+    since the rest are boilerplate.  This function restores
+    the boilerplate.
+
+    Some fields can be derived from f_kind.
+
+    Parameters
+    ----------
+    ntypemap : typemap.Typemap.
+    fmt : util.Scope
+    """
+    if ntypemap.base != "integer":
+        return
+    if ntypemap.f_type is None:
+        ntypemap.f_type = "integer({})".format(ntypemap.f_kind)
+    if ntypemap.f_cast is None:
+        ntypemap.f_cast = "int({{f_var}}, {})".format(ntypemap.f_kind)
 
 
 def create_enum_typemap(node):

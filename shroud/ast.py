@@ -2295,7 +2295,7 @@ def create_library_from_dictionary(node):
         # list of dictionaries
         for subnode in node["typemap"]:
             # Update fields for a type. For example, set cpp_if
-            key = subnode["type"]
+            key = subnode["type"]  # XXX make sure fields exist
             fields = subnode["fields"]
             def_types = typemap.get_global_types()
             ntypemap = def_types.get(key, None)
@@ -2310,6 +2310,10 @@ def create_library_from_dictionary(node):
                     )
                 elif base == "struct":
                     typemap.create_struct_typemap_from_fields(
+                        key, fields, library
+                    )
+                elif base == "integer":
+                    typemap.create_integer_typemap_from_fields(
                         key, fields, library
                     )
                 else:
