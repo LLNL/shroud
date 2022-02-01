@@ -15,6 +15,12 @@
 #ifndef TOP_H
 #define TOP_H
 
+// file_code
+#ifdef __cplusplus
+#include "cxxfoo.hpp"
+#else
+#include "cfoo.h"
+#endif
 // shroud
 #include "typestestnames.hh"
 

@@ -436,6 +436,17 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.copyright = kwargs.get("copyright", [])
         self.patterns = kwargs.get("patterns", [])
 
+        # Convert file_code into typemaps to use in class util.Headers.
+        # This feels like a kludge and should be refined.
+        self.file_code = {}
+        if "file_code" in kwargs:
+            for fname, values in kwargs["file_code"].items():
+                if fname == "__line__":
+                    continue
+                ntypemap = typemap.Typemap(fname)
+                ntypemap.update(values)
+                self.file_code[fname] = ntypemap
+
         self.default_format(format, kwargs)
 
         # Create default namespace
@@ -998,6 +1009,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
+        self.file_code = {}     # Only used for LibraryNode.
 
         if self.options.flatten_namespace:
             self.classes = parent.classes

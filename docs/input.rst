@@ -1020,6 +1020,30 @@ The splicer comments can be eliminated by setting the option
 eliminate the clutter of the splicer comments.
 
 
+file_code
+---------
+
+The ``file_code`` section allows the user to add some additional code
+to the wrapper which may conflict with code automatically added by
+Shroud.  While splicer are simple text insertation, ``file_code``
+inserts code semantically.
+
+For C wrappers, including header files may duplicate headers added by
+typemaps or helper functions. By listing them in a ``file_code``
+section Shroud is able to manage all header files.
+
+For Fortran wrappers, ``USE`` statements are managed collectively to
+avoid ``USE`` statments.
+
+.. example from typemap.yaml
+
+.. code-block:: yaml
+
+    file_code:
+      wraptypemap.h:
+        c_header: <stdint.h>
+        cxx_header: <cstdint>
+                
 
 
 

@@ -16,8 +16,8 @@ typemap:
     base: integer
 #    cxx_type: YYYcxx_type
 #    c_type: YYYc_type
-    c_header: <stdint.h>
-    cxx_header: <cstdint>
+#    c_header: <stdint.h>
+#    cxx_header: <cstdint>
 #    f_type: integer(INDEXTYPE)
     f_kind: INDEXTYPE
 #    f_module:
@@ -59,3 +59,7 @@ splicer_code:
       typedef int32_t IndexType;
       #endif
 
+file_code:
+  wraptypemap.h:
+    c_header: <stdint.h>
+    cxx_header: <cstdint>

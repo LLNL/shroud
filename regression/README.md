@@ -25,3 +25,8 @@ Uses assumed type in a test.  Does not work with PGI.
 
 Test C++ specific features.
 Pass struct by reference since struct.yaml on tests C/C++ compatible features.
+
+### names
+
+Test name generation and splicer.
+Does not have a directory under ``run``.

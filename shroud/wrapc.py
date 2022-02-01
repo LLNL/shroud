@@ -371,7 +371,7 @@ class Wrapc(util.WrapperMixin):
         The header file can be used by C or C++.
 
         Args:
-            library - ast.LibraryNode.
+            library - ast.LibraryNode, ast.NamespaceNode
             cls - ast.ClassNode.
             fname -
         """
@@ -401,6 +401,7 @@ class Wrapc(util.WrapperMixin):
         headers = util.Header(self.newlibrary)
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
+        headers.add_file_code_header(fname, library)
         headers.write_headers(output)
         
         if self.language == "cxx":

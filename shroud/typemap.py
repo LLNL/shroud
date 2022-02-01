@@ -52,14 +52,15 @@ class Typemap(object):
        i.attr vs d['attr']
     It also initializes default values to avoid  d.get('attr', default)
 
-    c_header and cxx_header are used for interface. For example,
-    size_t uses <stddef.h> and <cstddef>.
+    c_header and cxx_header are used for interface and are written into 
+    a header file for use by C or C++.
+    For example, size_t uses <stddef.h> and <cstddef>.
+
+    wrap_header is used for generated wrappers for shadow classes.
 
     impl_header is used for implementation, i.e. the wrap.cpp file.
     For example, std::string uses <string>. <string> should not be in
     the interface since the wrapper is a C API.
-
-    wrap_header is used for generated wrappers for shadow classes.
 
     A new typemap is created for each class and struct
 
