@@ -382,6 +382,8 @@ class WrapperMixin(object):
         for line in lines:
             if isinstance(line, int):
                 self.indent += int(line)
+            elif isinstance(line, dict):
+                raise RuntimeError("Found unexpeced dictionary in input:\n%s" % line)
             else:
                 for subline in line.split("\n"):
                     if len(subline) == 0:

@@ -290,6 +290,7 @@ splicer_code:
      namespace:
        ns0::inner:
           file_top:
+          # necessary to quote line to avoid creating a dictionary with the : metacharacter.
           -  "! top of ns0::inner"
      function:
        test_multiline_splicer:

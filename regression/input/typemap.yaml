@@ -14,21 +14,10 @@ typemap:
 - type: IndexType
   fields:
     base: integer
-#    cxx_type: YYYcxx_type
-#    c_type: YYYc_type
-#    c_header: <stdint.h>
-#    cxx_header: <cstdint>
-#    f_type: integer(INDEXTYPE)
     f_kind: INDEXTYPE
-#    f_module:
-#      iso_c_binding:
-#      - C_INT32_T
-#      - C_INT64_T
     f_module:
       typemap_mod:
       - INDEXTYPE
-#    f_cast: int({f_var}, INDEXTYPE)
-#cpp_if: ifdef USE_MPI
 
 declarations:
 #- decl: IndexType i1
@@ -44,11 +33,6 @@ splicer_code:
       #else
       integer, parameter :: INDEXTYPE = C_INT32_T
       #endif
-#    - #if defined(USE_64BIT_INDEXTYPE)
-#    - integer, parameter :: INDEXTYPE = C_INT64_T
-#    - #else
-#    - integer, parameter :: INDEXTYPE = C_INT32_T
-#    - #endif
   c:
     C_declarations: |
       #if defined(USE_64BIT_INDEXTYPE)
@@ -57,6 +41,8 @@ splicer_code:
       typedef int32_t IndexType;
       #endif
 
+# Add code which will be integrated with other include and use statements
+# added by typemaps and statements.
 file_code:
   wraptypemap.h:
     c_header: <stdint.h>

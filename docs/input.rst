@@ -91,6 +91,16 @@ required since single braces are used for variable expansion.
 However, using the pipe, it is not necessary to quote lines that
 contain other YAML meta characters such as colon and curly braces.
 
+For example, YAML will get confused by the ``::`` characters and try
+to create a dictionary with the key ``integer, parameter :``.
+
+.. code-block:: yaml
+
+    splicer_code:
+      f:
+        module_top:
+        - integer, parameter :: INDEXTYPE = 5
+
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a
 continuation if necessary.  A formfeed, ``/f``, will force a
