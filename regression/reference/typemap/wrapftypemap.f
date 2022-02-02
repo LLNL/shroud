@@ -13,8 +13,8 @@
 ! splicer begin file_top
 ! splicer end file_top
 module typemap_mod
-    ! splicer begin module_use
     use iso_c_binding, only : C_INT32_T, C_INT64_T
+    ! splicer begin module_use
     ! splicer end module_use
     implicit none
 

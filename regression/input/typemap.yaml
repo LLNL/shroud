@@ -25,7 +25,7 @@ typemap:
 #      - C_INT32_T
 #      - C_INT64_T
     f_module:
-      --import--:
+      typemap_mod:
       - INDEXTYPE
 #    f_cast: int({f_var}, INDEXTYPE)
 #cpp_if: ifdef USE_MPI
@@ -38,8 +38,6 @@ declarations:
 ######################################################################
 splicer_code:
   f:
-    module_use: |
-      use iso_c_binding, only : C_INT32_T, C_INT64_T
     module_top: |
       #if defined(USE_64BIT_INDEXTYPE)
       integer, parameter :: INDEXTYPE = C_INT64_T
@@ -63,3 +61,9 @@ file_code:
   wraptypemap.h:
     c_header: <stdint.h>
     cxx_header: <cstdint>
+  wrapftypemap.f:
+    f_module:
+      iso_c_binding:
+      - C_INT32_T
+      - C_INT64_T
+

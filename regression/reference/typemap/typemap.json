@@ -77,7 +77,7 @@
                         "fmtf": {
                             "F_C_var": "i1",
                             "c_var": "i1",
-                            "f_c_module_line": "--import--:INDEXTYPE",
+                            "f_c_module_line": "typemap_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
                             "f_type": "integer(INDEXTYPE)",

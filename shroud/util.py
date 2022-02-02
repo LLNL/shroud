@@ -553,10 +553,9 @@ class Header(object):
         ----------
         node : ast.LibraryNode, ast.NamespaceNode
         """
-        file_code = library.file_code.get(fname)
-        if not file_code:
-            return
-        self.file_code[fname] = file_code
+        ntypemap = library.file_code.get(fname)
+        if ntypemap:
+            self.file_code[fname] = ntypemap
             
     def add_typemap_list(self, lst):
         """Append list of headers."""

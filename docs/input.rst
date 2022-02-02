@@ -1033,7 +1033,7 @@ typemaps or helper functions. By listing them in a ``file_code``
 section Shroud is able to manage all header files.
 
 For Fortran wrappers, ``USE`` statements are managed collectively to
-avoid ``USE`` statments.
+avoid redundant ``USE`` statements.
 
 .. example from typemap.yaml
 
@@ -1043,6 +1043,11 @@ avoid ``USE`` statments.
       wraptypemap.h:
         c_header: <stdint.h>
         cxx_header: <cstdint>
+      wrapftypemap.f:
+        f_module:
+          iso_c_binding:
+          - C_INT32_T
+          - C_INT64_T
                 
 
 
