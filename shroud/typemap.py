@@ -57,6 +57,7 @@ class Typemap(object):
     For example, size_t uses <stddef.h> and <cstddef>.
 
     wrap_header is used for generated wrappers for shadow classes.
+    Contains struct definitions for capsules from Fortran.
 
     impl_header is used for implementation, i.e. the wrap.cpp file.
     For example, std::string uses <string>. <string> should not be in
