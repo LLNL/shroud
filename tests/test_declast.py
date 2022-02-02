@@ -1297,11 +1297,11 @@ class CheckTypedef(unittest.TestCase):
         library.add_declaration("typedef int TD2;")
         self.assertIn("TD2", library.symbols)
 
-        typedef = typemap.lookup_type("TD2")
-        self.assertIsNotNone(typedef)
-        self.assertEqual("TD2", typedef.name)
-        self.assertEqual("TD2", typedef.cxx_type)
-        self.assertEqual("int", typedef.typedef)
+        ntypemap = typemap.lookup_typemap("TD2")
+        self.assertIsNotNone(ntypemap)
+        self.assertEqual("TD2", ntypemap.name)
+        self.assertEqual("TD2", ntypemap.cxx_type)
+        self.assertEqual("int", ntypemap.typedef)
 
     def test_typedef_errors(self):
         with self.assertRaises(RuntimeError) as context:
@@ -1396,11 +1396,11 @@ class CheckClass(unittest.TestCase):
         self.assertIn("Class1", library.symbols)
         self.assertIsInstance(library.symbols["Class1"], ast.ClassNode)
 
-        typedef = typemap.lookup_type("Class1")
-        self.assertIsNotNone(typedef)
-        self.assertEqual("Class1", typedef.name)
-        self.assertEqual("Class1", typedef.cxx_type)
-        self.assertEqual("shadow", typedef.base)
+        ntypemap = typemap.lookup_typemap("Class1")
+        self.assertIsNotNone(ntypemap)
+        self.assertEqual("Class1", ntypemap.name)
+        self.assertEqual("Class1", ntypemap.cxx_type)
+        self.assertEqual("shadow", ntypemap.base)
 
     def test_class2_node(self):
         """Add a class with declarations to a library"""
@@ -1421,10 +1421,10 @@ class CheckClass(unittest.TestCase):
         self.assertIn("Class2", ns.symbols)
         self.assertIsInstance(ns.symbols["Class2"], ast.ClassNode)
 
-        typedef = typemap.lookup_type("ns::Class2")
-        self.assertIsNotNone(typedef)
-        self.assertEqual("ns::Class2", typedef.name)
-        self.assertEqual("ns::Class2", typedef.cxx_type)
+        ntypemap = typemap.lookup_typemap("ns::Class2")
+        self.assertIsNotNone(ntypemap)
+        self.assertEqual("ns::Class2", ntypemap.name)
+        self.assertEqual("ns::Class2", ntypemap.cxx_type)
 
 
 if __name__ == "__main__":

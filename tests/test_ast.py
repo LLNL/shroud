@@ -22,7 +22,7 @@ class Namespace(unittest.TestCase):
 
         # The Typemap must be created before the TypedefNode.
         ntypemap = typemap.Typemap("foo")
-        typemap.register_type("foo", ntypemap)
+        typemap.register_typemap("foo", ntypemap)
 
         # typedef foo;
         # foo var;

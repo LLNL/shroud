@@ -120,7 +120,7 @@ def add_all_helpers():
     fmt = util.Scope(_newlibrary.fmtdict)
     add_external_helpers()
     add_capsule_helper()
-    for ntypemap in typemap.get_global_types().values():
+    for ntypemap in typemap.get_global_typemaps().values():
         if ntypemap.sgroup == "native":
             add_copy_array_helper(fmt, ntypemap)
             add_to_PyList_helper(fmt, ntypemap)
@@ -420,7 +420,7 @@ return 1;
     ##########
     # 'char *' needs a custom handler because of the nature
     # of NULL terminated strings.
-    ntypemap = typemap.lookup_type("char")
+    ntypemap = typemap.lookup_typemap("char")
     fmt.fcn_suffix = "char"
     fmt.fcn_type = "string"
     fmt.c_type = "char *"

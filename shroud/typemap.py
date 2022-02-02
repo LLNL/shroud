@@ -293,31 +293,31 @@ class Typemap(object):
 
 
 # Manage collection of typemaps
-shared_typedict = {}  # dictionary of registered types
+shared_typemaps = {}  # dictionary of registered types
 
 
-def set_global_types(typedict):
-    global shared_typedict
-    shared_typedict = typedict
+def set_global_typemaps(typemaps):
+    global shared_typemaps
+    shared_typemaps = typemaps
 
 
-def get_global_types():
-    return shared_typedict
+def get_global_typemaps():
+    return shared_typemaps
 
 
-def register_type(name, intypemap):
+def register_typemap(name, ntypemap):
     """Register a typemap"""
-    shared_typedict[name] = intypemap
+    shared_typemaps[name] = ntypemap
 
 
-def lookup_type(name):
+def lookup_typemap(name):
     """Lookup name in registered types."""
-    outtypemap = shared_typedict.get(name)
-    return outtypemap
+    ntypemap = shared_typemaps.get(name)
+    return ntypemap
 
 
 def initialize():
-    set_global_types({})
+    set_global_typemaps({})
     def_types = dict(
         void=Typemap(
             "void",
@@ -874,7 +874,7 @@ def initialize():
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
 
-    set_global_types(def_types)
+    set_global_typemaps(def_types)
 
     return def_types
 
@@ -915,7 +915,7 @@ def create_integer_typemap_from_fields(cxx_name, fields, library):
         )
     fill_integer_typemap_defaults(ntypemap, fmt)
     ntypemap.finalize()
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     library.add_typedef_by_name(cxx_name, ntypemap)
     return ntypemap
 
@@ -953,9 +953,9 @@ def create_enum_typemap(node):
     fmt_enum = node.fmtdict
     type_name = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
 
-    ntypemap = lookup_type(type_name)
+    ntypemap = lookup_typemap(type_name)
     if ntypemap is None:
-        inttypemap = lookup_type("int")
+        inttypemap = lookup_typemap("int")
         ntypemap = inttypemap.clone_as(type_name)
         ntypemap.cxx_type = util.wformat(
             "{namespace_scope}{enum_name}", fmt_enum
@@ -965,7 +965,7 @@ def create_enum_typemap(node):
         )
         ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
         ntypemap.compute_flat_name()
-        register_type(type_name, ntypemap)
+        register_typemap(type_name, ntypemap)
     return ntypemap
 
 
@@ -1003,7 +1003,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     }
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
     return ntypemap
 
@@ -1023,7 +1023,7 @@ def create_class_typemap(node, fields=None):
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
     cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
-    ntypemap = lookup_type(cxx_name)
+    ntypemap = lookup_typemap(cxx_name)
     # unname = util.un_camel(name)
     f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
@@ -1051,7 +1051,7 @@ def create_class_typemap(node, fields=None):
         ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1144,7 +1144,7 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
 # XXX - Set defaults while being created above.
 #    fill_struct_typemap_defaults(node, ntypemap)
 
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
     return ntypemap
 
@@ -1181,7 +1181,7 @@ def create_struct_typemap(node, fields=None):
     if fields is not None:
         ntypemap.update(fields)
     fill_struct_typemap_defaults(node, ntypemap)
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1267,14 +1267,14 @@ def create_fcnptr_typemap(node, fields=None):
     
     if fields is not None:
         ntypemap.update(fields)
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     return ntypemap
 
 
 def return_shadow_types():
     """Return a dictionary of user defined types."""
     dct = {}
-    for key, ntypemap in shared_typedict.items():
+    for key, ntypemap in shared_typemaps.items():
         if ntypemap.sgroup in ["shadow", "struct", "template"]:
             dct[key] = ntypemap
     return dct
