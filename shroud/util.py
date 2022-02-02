@@ -690,14 +690,14 @@ class Header(object):
         wrap_headers = OrderedDict()
 
         # Collect headers for c and c++.
-        for typedef in typemaps.values():
-            for hdr in typedef.c_header:
-                c_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.cxx_header:
-                cxx_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.wrap_header:
+        for ntypemap in typemaps.values():
+            for hdr in ntypemap.c_header:
+                c_headers.setdefault(hdr, []).append(ntypemap)
+            for hdr in ntypemap.cxx_header:
+                cxx_headers.setdefault(hdr, []).append(ntypemap)
+            for hdr in ntypemap.wrap_header:
                 if hdr != fmt.C_header_utility:
-                    wrap_headers.setdefault(hdr, []).append(typedef)
+                    wrap_headers.setdefault(hdr, []).append(ntypemap)
 
         # Find which headers are always included.
         both = {}
@@ -729,7 +729,7 @@ class Header(object):
         """
         Parameters
         ----------
-        headers : [hdr] = [ typemap, None, ... ]
+        headers : Dict/OrderedDict. [hdr] = [ typemap, None, ... ]
                None from helper files
         output : append lines of code.
         found : dictionary of headers which have already be #included..

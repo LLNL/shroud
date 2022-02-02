@@ -152,6 +152,7 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("export", False),      # If True, export to YAML file.
         ("__line__", None),
     )
 
@@ -276,6 +277,7 @@ class Typemap(object):
                     "base",
                     "cxx_header",
                     "c_header",
+                    "f_kind",
                 ]
             order.extend([
 #                "cxx_type",  # same as the dict key
@@ -898,28 +900,22 @@ def create_integer_typemap_from_fields(cxx_name, fields, library):
 #        base="integer", sgroup="integer",
         cxx_type=cxx_name,
         c_type=cxx_name,
-        f_kind="missing-f_kind",
         f_cast=None,  # Override Typemap default
-#        f_capsule_data_type="missing-f_capsule_data_type",
-#        f_derived_type=cxx_name,
     )
     ntypemap.update(fields)
-#    if ntypemap.f_module_name is None:
-#        raise RuntimeError(
-#            "typemap {} requires field f_module_name".format(cxx_name)
-#        )
-#    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-#    ntypemap.f_c_module = {
-#        ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
-#    }
+    missing = []
+    if ntypemap.f_kind is None:
+        missing.append("f_kind")
+    if ntypemap.f_module_name is None:
+        missing.append("f_module_name")
+    if missing:
+        raise RuntimeError(
+            "typemap {} requires field(s) {}".format(cxx_name, ", ".join(missing))
+        )
     fill_integer_typemap_defaults(ntypemap, fmt)
     ntypemap.finalize()
     register_type(cxx_name, ntypemap)
     library.add_typedef_by_name(cxx_name, ntypemap)
-#    library.add_shadow_typemap(ntypemap)
-#    import pprint
-#    pp = pprint.PrettyPrinter(indent=4)
-#    pp.pprint( dict or tuple )
     return ntypemap
 
 
@@ -942,6 +938,8 @@ def fill_integer_typemap_defaults(ntypemap, fmt):
         ntypemap.f_type = "integer({})".format(ntypemap.f_kind)
     if ntypemap.f_cast is None:
         ntypemap.f_cast = "int({{f_var}}, {})".format(ntypemap.f_kind)
+    if ntypemap.f_module is None:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
 def create_enum_typemap(node):

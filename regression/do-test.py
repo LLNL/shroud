@@ -337,6 +337,7 @@ if __name__ == "__main__":
                      "--option", "wrap_lua=False",
                  ]),
         TestDesc("types"),
+        TestDesc("typemap"),
         TestDesc("classes"),
 
         # enum

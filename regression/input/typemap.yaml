@@ -15,9 +15,7 @@ typemap:
   fields:
     base: integer
     f_kind: INDEXTYPE
-    f_module:
-      typemap_mod:
-      - INDEXTYPE
+    f_module_name: typemap_mod
 
 declarations:
 #- decl: IndexType i1

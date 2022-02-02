@@ -102,6 +102,7 @@ Adding a regression test
 * Run the test ``make do-test do-test-args=newtest``
 * Look for errors in ``$(tempdir)/regression/log.test``
   ``make print-tempdir``.
+* Add a call to TestDesc in ``regression/do-test.py`` to run *newtest*.
 * ``mkdir regression/run/newtest``
 * Create files ``Makefile``, ``newtest.cpp`` and ``newtest.hpp``
 

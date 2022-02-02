@@ -1,4 +1,5 @@
 Read yaml typemap.yaml
+Close typemap_types.yaml
 C void passIndex(IndexType i1 +value)  +intent(subroutine)
 Close wraptypemap.h
 Close wraptypemap.cpp

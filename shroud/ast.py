@@ -2325,9 +2325,10 @@ def create_library_from_dictionary(node):
                         key, fields, library
                     )
                 elif base == "integer":
-                    typemap.create_integer_typemap_from_fields(
+                    ntypemap = typemap.create_integer_typemap_from_fields(
                         key, fields, library
                     )
+                    ntypemap.export = True
                 else:
                     raise RuntimeError("base must be 'shadow' or 'struct'"
                                        " otherwise use a typedef")

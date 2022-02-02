@@ -108,6 +108,10 @@ class TypeOut(util.WrapperMixin):
         top = {}
         #        get_namespaces(newlibrary.wrap_namespace, top)
         self._get_namespaces(newlibrary, top)
+        # Write out typemaps from YAML file.
+        for key, ntypemap in typemap.get_global_types().items():
+            if ntypemap.export:
+                top[key] = ntypemap
 
         output = []
         self.splitup(top, output, "class")
