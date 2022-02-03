@@ -20,6 +20,9 @@
 #else
 #include <stdint.h>
 #endif
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 #include "typestypemap.h"
 
 // splicer begin CXX_declarations
@@ -37,7 +40,7 @@ typedef int32_t IndexType;
 #endif
 // splicer end C_declarations
 
-void TYP_pass_index(IndexType i1);
+bool TYP_pass_index(IndexType i1, IndexType * i2);
 
 #ifdef __cplusplus
 }

@@ -28,18 +28,33 @@ module typemap_mod
 
     interface
 
-        subroutine pass_index(i1) &
+        function c_pass_index(i1, i2) &
+                result(SHT_rv) &
                 bind(C, name="TYP_pass_index")
+            use iso_c_binding, only : C_BOOL
             import :: INDEXTYPE
             implicit none
             integer(INDEXTYPE), value, intent(IN) :: i1
-        end subroutine pass_index
+            integer(INDEXTYPE), intent(OUT) :: i2
+            logical(C_BOOL) :: SHT_rv
+        end function c_pass_index
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
 contains
+
+    function pass_index(i1, i2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL
+        integer(INDEXTYPE), value, intent(IN) :: i1
+        integer(INDEXTYPE), intent(OUT) :: i2
+        logical :: SHT_rv
+        ! splicer begin function.pass_index
+        SHT_rv = c_pass_index(i1, i2)
+        ! splicer end function.pass_index
+    end function pass_index
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

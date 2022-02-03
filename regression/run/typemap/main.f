@@ -30,21 +30,25 @@ contains
 
   subroutine test_indextype
     integer(INDEXTYPE) :: indx
-#if defined(USE_64BIT_INDEXTYPE)
-    integer(C_INT64_T) :: indx64
-#else
     integer(C_INT32_T) :: indx32
-#endif
+    integer(C_INT64_T) :: indx64
 
     indx = 0
-    call pass_index(indx)
+!    call pass_index(indx)
 
+    ! Match files with C.
+    indx32 = 2
+    indx64 = 2_C_INT64_T**34
 #if defined(USE_64BIT_INDEXTYPE)
-    indx64 = 0
-    call pass_index(indx64)
+    call assert_equals(INDEXTYPE, C_INT64_T)
+    call assert_false(pass_index(indx64 - 1, indx))
+    call assert_true(pass_index(indx64, indx))
+    call assert_true(indx == indx64)
 #else
-    indx32 = 0
-    call pass_index(indx32)
+    call assert_equals(INDEXTYPE, C_INT32_T)
+    call assert_false(pass_index(indx32 - 1, indx))
+    call assert_true(pass_index(indx32, indx))
+    call assert_true(indx == indx32)
 #endif
 
   end subroutine test_indextype

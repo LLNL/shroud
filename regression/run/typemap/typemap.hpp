@@ -14,4 +14,4 @@ using IndexType = std::int64_t;
 using IndexType = std::int32_t;
 #endif
 
-void passIndex(IndexType i1);
+bool passIndex(IndexType i1, IndexType *i2);

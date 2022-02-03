@@ -18,10 +18,11 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-void TYP_pass_index(IndexType i1)
+bool TYP_pass_index(IndexType i1, IndexType * i2)
 {
     // splicer begin function.pass_index
-    passIndex(i1);
+    bool SHC_rv = passIndex(i1, i2);
+    return SHC_rv;
     // splicer end function.pass_index
 }
 

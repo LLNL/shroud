@@ -21,7 +21,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "subroutine"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -39,15 +39,35 @@
                                 "IndexType"
                             ],
                             "typemap_name": "IndexType"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "i2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "IndexType"
+                            ],
+                            "typemap_name": "IndexType"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "bool"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "bool"
                 },
-                "decl": "void passIndex(IndexType i1)",
-                "declgen": "void passIndex(IndexType i1 +value)",
+                "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
+                "declgen": "bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -88,29 +108,94 @@
                             "stmtc0": "c_in_unknown_scalar",
                             "stmtc1": "c_default"
                         }
+                    },
+                    "i2": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "IndexType",
+                            "c_var": "i2",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "i2",
+                            "cxx_type": "IndexType",
+                            "cxx_var": "i2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_out_unknown_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "i2",
+                            "c_var": "i2",
+                            "f_c_module_line": "typemap_mod:INDEXTYPE",
+                            "f_intent": "OUT",
+                            "f_kind": "INDEXTYPE",
+                            "f_type": "integer(INDEXTYPE)",
+                            "f_var": "i2",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_out_unknown_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_out_unknown_*",
+                            "stmtc1": "c_default"
+                        }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "i1",
+                    "C_call_list": "i1,\t i2",
                     "C_name": "TYP_pass_index",
-                    "C_prototype": "IndexType i1",
-                    "C_return_type": "void",
-                    "F_C_arguments": "i1",
+                    "C_prototype": "IndexType i1,\t IndexType * i2",
+                    "C_return_type": "bool",
+                    "F_C_arguments": "i1,\t i2",
                     "F_C_call": "c_pass_index",
-                    "F_C_name": "pass_index",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "i1",
-                    "F_arguments": "i1",
+                    "F_C_name": "c_pass_index",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "i1,\t i2",
+                    "F_arguments": "i1,\t i2",
                     "F_name_function": "pass_index",
                     "F_name_generic": "pass_index",
                     "F_name_impl": "pass_index",
-                    "F_subprogram": "subroutine",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_index"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "bool",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_Bool",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "c_function_bool_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "bool",
+                        "f_intent": "OUT",
+                        "f_kind": "C_BOOL",
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "f_function_bool_scalar",
+                        "stmt1": "f_function_bool",
+                        "stmtc0": "c_function_bool_scalar",
+                        "stmtc1": "c_function"
+                    }
                 }
             }
         ],

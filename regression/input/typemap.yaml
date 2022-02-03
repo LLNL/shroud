@@ -20,7 +20,7 @@ typemap:
 declarations:
 #- decl: IndexType i1
 
-- decl: void passIndex(IndexType i1)
+- decl: bool passIndex(IndexType i1, IndexType *i2+intent(out))
 
 ######################################################################
 splicer_code:
