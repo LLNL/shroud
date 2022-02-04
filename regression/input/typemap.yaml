@@ -17,10 +17,18 @@ typemap:
     f_kind: INDEXTYPE
     f_module_name: typemap_mod
 
+- type: FloatType
+  fields:
+    base: real
+    f_kind: FLOATTYPE
+    f_module_name: typemap_mod
+
 declarations:
 #- decl: IndexType i1
 
 - decl: bool passIndex(IndexType i1, IndexType *i2+intent(out))
+
+- decl: void passFloat(FloatType f1);
 
 ######################################################################
 splicer_code:
@@ -31,12 +39,24 @@ splicer_code:
       #else
       integer, parameter :: INDEXTYPE = C_INT32_T
       #endif
+
+      #if defined(USE_64BIT_FLOAT)
+      integer, parameter :: FLOATTYPE = C_DOUBLE
+      #else
+      integer, parameter :: FLOATTYPE = C_FLOAT
+      #endif
   c:
     C_declarations: |
       #if defined(USE_64BIT_INDEXTYPE)
       typedef int64_t IndexType;
       #else
       typedef int32_t IndexType;
+      #endif
+
+      #if defined(USE_64BIT_FLOAT)
+      typedef double FloatType;
+      #else
+      typedef float FloatType;
       #endif
 
 # Add code which will be integrated with other include and use statements
@@ -48,6 +68,8 @@ file_code:
   wrapftypemap.f:
     f_module:
       iso_c_binding:
+      - C_FLOAT
+      - C_DOUBLE
       - C_INT32_T
       - C_INT64_T
 

@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module typemap_mod
-    use iso_c_binding, only : C_INT32_T, C_INT64_T
+    use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT32_T, C_INT64_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -23,6 +23,12 @@ module typemap_mod
     integer, parameter :: INDEXTYPE = C_INT64_T
 #else
     integer, parameter :: INDEXTYPE = C_INT32_T
+#endif
+
+#if defined(USE_64BIT_FLOAT)
+    integer, parameter :: FLOATTYPE = C_DOUBLE
+#else
+    integer, parameter :: FLOATTYPE = C_FLOAT
 #endif
     ! splicer end module_top
 
@@ -38,6 +44,13 @@ module typemap_mod
             integer(INDEXTYPE), intent(OUT) :: i2
             logical(C_BOOL) :: SHT_rv
         end function c_pass_index
+
+        subroutine pass_float(f1) &
+                bind(C, name="TYP_pass_float")
+            import :: FLOATTYPE
+            implicit none
+            real(FLOATTYPE), value, intent(IN) :: f1
+        end subroutine pass_float
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

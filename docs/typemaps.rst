@@ -38,8 +38,8 @@ base
 
 The base type of *type-name*.
 This is used to generalize operations for several types.
-The base types that Shroud uses are **bool**, **string**, **vector**, 
-**struct** or **shadow**.
+The base types that Shroud uses are **bool**, **integer**, **real**,
+**string**, **vector**, **struct** or **shadow**.
 
 cpp_if
 ^^^^^^

@@ -879,7 +879,7 @@ def initialize():
     return def_types
 
 
-def create_integer_typemap_from_fields(cxx_name, fields, library):
+def create_native_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
     Used when creating typemap from YAML. (from regression/forward.yaml)
 
@@ -888,6 +888,7 @@ def create_integer_typemap_from_fields(cxx_name, fields, library):
           fields:
             base: integer
             f_kind: INDEXTYPE
+            f_module_name: typemap_mod
 
     Parameters:
     -----------
@@ -898,7 +899,7 @@ def create_integer_typemap_from_fields(cxx_name, fields, library):
     fmt = library.fmtdict
     ntypemap = Typemap(
         cxx_name,
-#        base="integer", sgroup="integer",
+        sgroup="native",
         cxx_type=cxx_name,
         c_type=cxx_name,
         f_cast=None,  # Override Typemap default
@@ -913,15 +914,15 @@ def create_integer_typemap_from_fields(cxx_name, fields, library):
         raise RuntimeError(
             "typemap {} requires field(s) {}".format(cxx_name, ", ".join(missing))
         )
-    fill_integer_typemap_defaults(ntypemap, fmt)
+    fill_native_typemap_defaults(ntypemap, fmt)
     ntypemap.finalize()
     register_typemap(cxx_name, ntypemap)
     library.add_typedef_by_name(cxx_name, ntypemap)
     return ntypemap
 
 
-def fill_integer_typemap_defaults(ntypemap, fmt):
-    """Add some defaults to integer typemap.
+def fill_native_typemap_defaults(ntypemap, fmt):
+    """Add some defaults to integer or real typemap.
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
@@ -933,12 +934,10 @@ def fill_integer_typemap_defaults(ntypemap, fmt):
     ntypemap : typemap.Typemap.
     fmt : util.Scope
     """
-    if ntypemap.base != "integer":
-        return
     if ntypemap.f_type is None:
-        ntypemap.f_type = "integer({})".format(ntypemap.f_kind)
+        ntypemap.f_type = "{}({})".format(ntypemap.base, ntypemap.f_kind)
     if ntypemap.f_cast is None:
-        ntypemap.f_cast = "int({{f_var}}, {})".format(ntypemap.f_kind)
+        ntypemap.f_cast = "{}({{f_var}}, {})".format(ntypemap.base, ntypemap.f_kind)
     if ntypemap.f_module is None:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 

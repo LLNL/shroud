@@ -38,9 +38,17 @@ typedef int64_t IndexType;
 #else
 typedef int32_t IndexType;
 #endif
+
+#if defined(USE_64BIT_FLOAT)
+typedef double FloatType;
+#else
+typedef float FloatType;
+#endif
 // splicer end C_declarations
 
 bool TYP_pass_index(IndexType i1, IndexType * i2);
+
+void TYP_pass_float(FloatType f1);
 
 #ifdef __cplusplus
 }

@@ -26,4 +26,11 @@ bool TYP_pass_index(IndexType i1, IndexType * i2)
     // splicer end function.pass_index
 }
 
+void TYP_pass_float(FloatType f1)
+{
+    // splicer begin function.pass_float
+    passFloat(f1);
+    // splicer end function.pass_float
+}
+
 }  // extern "C"

@@ -51,6 +51,14 @@ contains
     call assert_true(indx == indx32)
 #endif
 
+#if defined(USE_64BIT_FLOAT)
+    call assert_equals(FLOATTYPE, C_DOUBLE)
+    call pass_float(1.0_C_DOUBLE)
+#else
+    call assert_equals(FLOATTYPE, C_FLOAT)
+    call pass_float(1.0_C_FLOAT)
+#endif
+
   end subroutine test_indextype
 end program tester
   

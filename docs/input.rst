@@ -1035,12 +1035,12 @@ file_code
 
 The ``file_code`` section allows the user to add some additional code
 to the wrapper which may conflict with code automatically added by
-Shroud.  While splicer are simple text insertation, ``file_code``
-inserts code semantically.
+Shroud for typemaps, statements or helpers.  While splicer are simple
+text insertation, ``file_code`` inserts code semantically.
 
-For C wrappers, including header files may duplicate headers added by
-typemaps or helper functions. By listing them in a ``file_code``
-section Shroud is able to manage all header files.
+For C wrappers, including header files may duplicate headers added when
+creating the wrapper. By listing them in a ``file_code``
+section instead of a splicer Shroud is able to manage all header files.
 
 For Fortran wrappers, ``USE`` statements are managed collectively to
 avoid redundant ``USE`` statements.

@@ -91,7 +91,7 @@
                             "cxx_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_unknown_scalar",
+                            "stmt0": "c_in_native_scalar",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -103,9 +103,9 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_in_unknown_scalar",
+                            "stmt0": "f_in_native_scalar",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_unknown_scalar",
+                            "stmtc0": "c_in_native_scalar",
                             "stmtc1": "c_default"
                         }
                     },
@@ -125,7 +125,7 @@
                             "cxx_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_out_unknown_*",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -137,9 +137,9 @@
                             "f_type": "integer(INDEXTYPE)",
                             "f_var": "i2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_out_unknown_*",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_out_unknown_*",
+                            "stmt0": "f_out_native_*",
+                            "stmt1": "f_out_native_*",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -196,6 +196,106 @@
                         "stmtc0": "c_function_bool_scalar",
                         "stmtc1": "c_function"
                     }
+                }
+            },
+            {
+                "<FUNCTION>": "1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "passFloat",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "f1",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "FloatType"
+                            ],
+                            "typemap_name": "FloatType"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passFloat(FloatType f1);",
+                "declgen": "void passFloat(FloatType f1 +value)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "f1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "FloatType",
+                            "c_var": "f1",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&f1",
+                            "cxx_type": "FloatType",
+                            "cxx_var": "f1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "f1",
+                            "c_var": "f1",
+                            "f_c_module_line": "typemap_mod:FLOATTYPE",
+                            "f_intent": "IN",
+                            "f_kind": "FLOATTYPE",
+                            "f_type": "real(FLOATTYPE)",
+                            "f_var": "f1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "f1",
+                    "C_name": "TYP_pass_float",
+                    "C_prototype": "FloatType f1",
+                    "C_return_type": "void",
+                    "F_C_arguments": "f1",
+                    "F_C_call": "c_pass_float",
+                    "F_C_name": "pass_float",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "f1",
+                    "F_arguments": "f1",
+                    "F_name_function": "pass_float",
+                    "F_name_generic": "pass_float",
+                    "F_name_impl": "pass_float",
+                    "F_subprogram": "subroutine",
+                    "function_name": "passFloat",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_subroutine",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
+                    "underscore_name": "pass_float"
                 }
             }
         ],

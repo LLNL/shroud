@@ -2324,8 +2324,8 @@ def create_library_from_dictionary(node):
                     typemap.create_struct_typemap_from_fields(
                         key, fields, library
                     )
-                elif base == "integer":
-                    ntypemap = typemap.create_integer_typemap_from_fields(
+                elif base in ["integer", "real"]:
+                    ntypemap = typemap.create_native_typemap_from_fields(
                         key, fields, library
                     )
                     ntypemap.export = True

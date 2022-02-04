@@ -21,3 +21,6 @@ bool passIndex(IndexType i1, IndexType *i2)
 #endif
 }
 
+void passFloat(FloatType f1)
+{
+}

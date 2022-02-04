@@ -37,6 +37,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   a NULL pointer instead of a 1-d buffer with ``'/0'``.
   Used with ``const char *`` arguments.
   This can be default to True with the *F_blanknull* option.
+- Added ``file_code`` dictionary to input YAML file. It contains
+  directives to add header file and ``USE`` statements into generated files.
+  These are collated with headers and ``USE`` statements added by typemaps,
+  statements and helpers to avoid duplication.
+- Allow typemaps with *base* as *integer* and *real*to be added to the
+  input YAML file. This allows kind parameters to be defined via splicers
+  then used by a typemap.  i.e. ``integer(INDEXTYPE)``
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml
