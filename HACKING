@@ -71,8 +71,6 @@ cd $WORK/build/temp.linux-x86_64-3.7/regression/classes
 $WORK/build/temp.linux-x86_64-3.7/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
 
 
-
-
 Test generated code
 -------------------
 
@@ -83,17 +81,35 @@ tests.  These tests are in tests/run and contains a small library
 which is wrapped by the corresponding yaml file
 (i.e. tests/tutorial.yaml wraps run/tutorial)
 
-regression/run/default.mk has compiler flags
+``regression/run/Makfile`` is top level makefile.
+``regression/run/default.mk`` has compiler flags.
 
 Compile a single test
 
     fortran-XXX        compile wrappers for XXX.yaml
     test-fortran-XXX   run test for XXX.yaml
     test-fortran       All Fortran tests
+    test-cfi           Fortran tests with C-Fortran-Interface
 
     py-XXX             compile module for XXX.yaml
     test-python-XXX    run Python test for XXX.yaml
     test-python        All Python tests
+
+Adding a regression test
+------------------------
+
+* Add a file ``regression/input/newtest.yaml``.
+* Run the test ``make do-test do-test-args=newtest``
+* Look for errors in ``$(tempdir)/regression/log.test``
+  ``make print-tempdir``.
+* Add a call to TestDesc in ``regression/do-test.py`` to run *newtest*.
+* ``mkdir regression/run/newtest``
+* Create files ``Makefile``, ``newtest.cpp`` and ``newtest.hpp``
+
+* Add to variable *fortran-test-list-std* in
+  ``regression/run/Makefile`` to run as part of ``test-all`` target.
+  Try ``make -n test-fortran-newtest`` to see commands which will be
+  run.
 
 file dependency
 ---------------

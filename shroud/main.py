@@ -108,6 +108,10 @@ class TypeOut(util.WrapperMixin):
         top = {}
         #        get_namespaces(newlibrary.wrap_namespace, top)
         self._get_namespaces(newlibrary, top)
+        # Write out typemaps from YAML file.
+        for key, ntypemap in typemap.get_global_typemaps().items():
+            if ntypemap.export:
+                top[key] = ntypemap
 
         output = []
         self.splitup(top, output, "class")
@@ -183,8 +187,8 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
 
     if config.yaml_types:
         # Dump types if requested.
-        def_types = typemap.get_global_types()
-        out["types"] = todict.to_dict(def_types)
+        typemaps = typemap.get_global_typemaps()
+        out["types"] = todict.to_dict(typemaps)
     elif newlibrary.options.debug_testsuite:
         # Add user defined types for debugging.
         user_types = typemap.return_shadow_types()

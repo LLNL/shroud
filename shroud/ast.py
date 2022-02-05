@@ -233,7 +233,7 @@ class NamespaceMixin(object):
             ntypemap.compute_flat_name()
             if fields:
                 ntypemap.update(fields)
-            typemap.register_type(ntypemap.name, ntypemap)
+            typemap.register_typemap(ntypemap.name, ntypemap)
         return ntypemap
 
     def add_enum(self, decl, ast=None, **kwargs):
@@ -436,6 +436,17 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.copyright = kwargs.get("copyright", [])
         self.patterns = kwargs.get("patterns", [])
 
+        # Convert file_code into typemaps to use in class util.Headers.
+        # This feels like a kludge and should be refined.
+        self.file_code = {}
+        if "file_code" in kwargs:
+            for fname, values in kwargs["file_code"].items():
+                if fname == "__line__":
+                    continue
+                ntypemap = typemap.Typemap(fname)
+                ntypemap.update(values)
+                self.file_code[fname] = ntypemap
+
         self.default_format(format, kwargs)
 
         # Create default namespace
@@ -453,7 +464,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             self.using_directive("std")
 
         # Create typemaps once.
-        if not typemap.get_global_types():
+        if not typemap.get_global_typemaps():
             typemap.initialize()
         statements.update_statements_for_language(self.language)
 
@@ -998,6 +1009,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
+        self.file_code = {}     # Only used for LibraryNode.
 
         if self.options.flatten_namespace:
             self.classes = parent.classes
@@ -1243,7 +1255,7 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_type="cxx_T",
             f_type="f_T",
         )
-        typemap.register_type(ntypemap.name, ntypemap)
+        typemap.register_typemap(ntypemap.name, ntypemap)
 
         self.add_typedef_by_name(name, ntypemap=ntypemap)
 
@@ -1820,7 +1832,7 @@ class TypedefNode(AstNode):
         # Add to namespace
         if ntypemap is None:
             typename = self.parent.scope + self.name
-            self.typemap = typemap.lookup_type(typename)
+            self.typemap = typemap.lookup_typemap(typename)
         else:
             self.typemap = ntypemap
 
@@ -2295,10 +2307,10 @@ def create_library_from_dictionary(node):
         # list of dictionaries
         for subnode in node["typemap"]:
             # Update fields for a type. For example, set cpp_if
-            key = subnode["type"]
+            key = subnode["type"]  # XXX make sure fields exist
             fields = subnode["fields"]
-            def_types = typemap.get_global_types()
-            ntypemap = def_types.get(key, None)
+            typemaps = typemap.get_global_typemaps()
+            ntypemap = typemaps.get(key, None)
             if ntypemap:
                 ntypemap.update(fields)
             else:
@@ -2312,6 +2324,11 @@ def create_library_from_dictionary(node):
                     typemap.create_struct_typemap_from_fields(
                         key, fields, library
                     )
+                elif base in ["integer", "real"]:
+                    ntypemap = typemap.create_native_typemap_from_fields(
+                        key, fields, library
+                    )
+                    ntypemap.export = True
                 else:
                     raise RuntimeError("base must be 'shadow' or 'struct'"
                                        " otherwise use a typedef")

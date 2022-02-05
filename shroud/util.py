@@ -382,6 +382,8 @@ class WrapperMixin(object):
         for line in lines:
             if isinstance(line, int):
                 self.indent += int(line)
+            elif isinstance(line, dict):
+                raise RuntimeError("Found unexpeced dictionary in input:\n%s" % line)
             else:
                 for subline in line.split("\n"):
                     if len(subline) == 0:
@@ -511,6 +513,16 @@ class Header(object):
     (via OrderedDict).
     Each header is only included once.
 
+    Headers are defined from several categories.
+    cxx_header: The YAML cxx_header variable.
+                Headers for the library which is being wrapped.
+    file_code: file_code from YAML file.
+               Headers which are explicitly added by the user.
+    typemap: Headers from typemaps: cxx_header, c_header, impl_header.
+    shroud:
+        Headers from helper functions: c_include, cxx_include.
+        Headers from statements.
+
     A label is printed before each category when options.debug is True.
     """
     def __init__(self, newlibrary):
@@ -518,24 +530,48 @@ class Header(object):
         self.options = newlibrary.options
         self.header_impl_include_order = dict(
             typemap=OrderedDict(),
+            file_code=OrderedDict(),
             cxx_header=OrderedDict(),
             shroud=OrderedDict(),
         )
-        self.typemaps = {}
+        self.typemaps = {}          # typemaps used by this header.
         self.typemap_field = None
+        self.file_code = {}         # file_code from YAML file.
 
     def add_cxx_header(self, node):
-        """Add the headers from cxx_header."""
+        """Add the headers from cxx_header in YAML file.
+
+        Parameters
+        ----------
+        node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
+        """
         for name in node.find_header():
             self.header_impl_include_order["cxx_header"][name] = True
 
+    def add_file_code_header(self, fname, library):
+        """Add the headers from file_code for fname.
+
+        Parameters
+        ----------
+        node : ast.LibraryNode, ast.NamespaceNode
+        """
+        ntypemap = library.file_code.get(fname)
+        if ntypemap:
+            self.file_code[fname] = ntypemap
+            
     def add_typemap_list(self, lst):
         """Append list of headers."""
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
     def add_typemaps_xxx(self, dct, field=None):
-        """Update dictionary of typemaps."""
+        """Update dictionary of typemaps.
+
+        Parameters
+        ----------
+        dct :
+        field : "impl_header"
+        """
         # Save reference to dictionary, update does not preserved order prior to Python 3.6.
 #        self.typemaps.update(dct)
         self.typemaps = dct
@@ -588,13 +624,15 @@ class Header(object):
         debug = self.newlibrary.options.debug
         blank = True
         found = {} # dictionary of header files found.
-        for category in ["cxx_header", "typemap", "shroud"]:
+        for category in ["cxx_header", "file_code", "typemap", "shroud"]:
             lines = []
-            if category == "typemap":
+            if category == "file_code":
+                self.write_includes_for_header(self.file_code, lines, found)
+            elif category == "typemap":
                 if self.typemap_field:
                     self.write_headers_nodes(lines, found)
                 else:
-                    self.write_includes_for_header(lines, found)
+                    self.write_includes_for_header(self.typemaps, lines, found)
             for header in headers[category].keys():
                 if header in found:
                     continue
@@ -614,7 +652,7 @@ class Header(object):
                 output.extend(lines)
 
     def write_headers_nodes(self, output, skip):
-        """Write out headers required by types
+        """Write out headers required by typemaps.
 
         Args:
             output - append lines of code.
@@ -631,19 +669,17 @@ class Header(object):
 
         self.write_include_group(headers, output, skip)
 
-    def write_includes_for_header(self, output, skip):
+    def write_includes_for_header(self, typemaps, output, found):
         """
-        Write the include statements for headers required for
-        arguments in wrapper declarations.
+        Write the headers required by typemaps.
 
         Write include files for C or C++.
 
-        Args:
-            output - append lines of code.
-            skip - dictionary of headers to ignore.
-
-        headers[hdr] [ typedef, None, ... ]
-        None from helper files
+        Parameters
+        ----------
+        typemaps : list of typemap.Typemap
+        output : append lines of code.
+        found : dictionary of headers which have already be #included..
         """
         fmt = self.newlibrary.fmtdict
         
@@ -654,14 +690,14 @@ class Header(object):
         wrap_headers = OrderedDict()
 
         # Collect headers for c and c++.
-        for typedef in self.typemaps.values():
-            for hdr in typedef.c_header:
-                c_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.cxx_header:
-                cxx_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.wrap_header:
+        for ntypemap in typemaps.values():
+            for hdr in ntypemap.c_header:
+                c_headers.setdefault(hdr, []).append(ntypemap)
+            for hdr in ntypemap.cxx_header:
+                cxx_headers.setdefault(hdr, []).append(ntypemap)
+            for hdr in ntypemap.wrap_header:
                 if hdr != fmt.C_header_utility:
-                    wrap_headers.setdefault(hdr, []).append(typedef)
+                    wrap_headers.setdefault(hdr, []).append(ntypemap)
 
         # Find which headers are always included.
         both = {}
@@ -673,37 +709,46 @@ class Header(object):
             del c_headers[hdr]
             del cxx_headers[hdr]
 
-        self.write_include_group(wrap_headers, output)
-        self.write_include_group(always, output)
+        self.write_include_group(wrap_headers, output, found)
+        self.write_include_group(always, output, found)
         if self.newlibrary.language == "c":
-            self.write_include_group(c_headers, output)
+            self.write_include_group(c_headers, output, found)
         elif cxx_headers:
             output.append("#ifdef __cplusplus")
-            self.write_include_group(cxx_headers, output)
+            self.write_include_group(cxx_headers, output, found)
             if c_headers:
                 output.append("#else")
-                self.write_include_group(c_headers, output)
+                self.write_include_group(c_headers, output, found)
             output.append("#endif")
         elif c_headers:
             output.append("#ifndef __cplusplus")
-            self.write_include_group(c_headers, output)
+            self.write_include_group(c_headers, output, found)
             output.append("#endif")
 
-    def write_include_group(self, headers, output, skip={}):
+    def write_include_group(self, headers, output, found):
+        """
+        Parameters
+        ----------
+        headers : Dict/OrderedDict. [hdr] = [ typemap, None, ... ]
+               None from helper files
+        output : append lines of code.
+        found : dictionary of headers which have already be #included..
+        """
         for hdr in headers:
-            if hdr in skip:
+            if hdr in found:
                 continue
+            found[hdr] = True
             if len(headers[hdr]) == 1:
                 # Only one type uses the include, check for if_cpp.
                 # For example, add conditional around mpi.h.
-                typedef = headers[hdr][0]
-                if typedef and typedef.cpp_if:
-                    output.append("#" + typedef.cpp_if)
+                ntypemap = headers[hdr][0]
+                if ntypemap and ntypemap.cpp_if:
+                    output.append("#" + ntypemap.cpp_if)
                 if hdr[0] == "<":
                     output.append("#include %s" % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
-                if typedef and typedef.cpp_if:
+                if ntypemap and ntypemap.cpp_if:
                     output.append("#endif")
             else:
                 # XXX - unclear how to mix header and cpp_if
@@ -712,7 +757,6 @@ class Header(object):
                     output.append("#include %s" % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
-
         
 
 class Scope(object):

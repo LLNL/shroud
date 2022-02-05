@@ -1,0 +1,13 @@
+Read yaml typemap.yaml
+Close typemap_types.yaml
+C bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))  +intent(function)
+C void passFloat(FloatType f1 +value)  +intent(subroutine)
+Close wraptypemap.h
+Close wraptypemap.cpp
+Fortran bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))  +intent(function)
+Fortran void passFloat(FloatType f1 +value)  +intent(subroutine)
+C-interface bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))  +intent(function)
+C-interface void passFloat(FloatType f1 +value)  +intent(subroutine)
+Close wrapftypemap.f
+Close utiltypemap.cpp
+Close typestypemap.h

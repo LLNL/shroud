@@ -8,6 +8,11 @@
 #
 # shroud/regression/run/defaults.mk
 
+# Defined in regression/run/*/Makefile:
+# TEST_CFLAGS   - Test specific C flags.
+# TEST_CXXFLAGS - Test specific C++ flags.
+# TEST_FFLAGS   - Test specific Fortran flags.
+
 # The fortran flags turn on preprocessing.
 
 #compiler = gcc
@@ -189,16 +194,16 @@ LUA_LIB = -L$(LUA_PREFIX)/lib -llua -ldl
 endif
 
 %.o : %.c
-	$(CC) $(LOCAL_CFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CC) $(LOCAL_CFLAGS) $(TEST_CFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cpp
-	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(LOCAL_CXXFLAGS) $(TEST_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cxx
-	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(LOCAL_CXXFLAGS) $(TEST_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f
-	$(FC) $(LOCAL_FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(LOCAL_FFLAGS) $(TEST_FFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f90
-	$(FC) $(LOCAL_FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(LOCAL_FFLAGS) $(TEST_FFLAGS) $(INCLUDE) -c -o $*.o $<

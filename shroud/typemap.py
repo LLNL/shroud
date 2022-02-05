@@ -40,7 +40,10 @@ def flatten_modules_to_line(modules):
         return None
     line = []
     for mname, symbols in modules.items():
-        line.append("{}:{}".format(mname, ",".join(symbols)))
+        if mname == "__line__":
+            continue
+        symbolslst = ",".join(symbols)
+        line.append("{}:{}".format(mname, symbolslst))
     return ";".join(line)
 
 class Typemap(object):
@@ -49,14 +52,16 @@ class Typemap(object):
        i.attr vs d['attr']
     It also initializes default values to avoid  d.get('attr', default)
 
-    c_header and cxx_header are used for interface. For example,
-    size_t uses <stddef.h> and <cstddef>.
+    c_header and cxx_header are used for interface and are written into 
+    a header file for use by C or C++.
+    For example, size_t uses <stddef.h> and <cstddef>.
+
+    wrap_header is used for generated wrappers for shadow classes.
+    Contains struct definitions for capsules from Fortran.
 
     impl_header is used for implementation, i.e. the wrap.cpp file.
     For example, std::string uses <string>. <string> should not be in
     the interface since the wrapper is a C API.
-
-    wrap_header is used for generated wrappers for shadow classes.
 
     A new typemap is created for each class and struct
 
@@ -148,6 +153,7 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("export", False),      # If True, export to YAML file.
         ("__line__", None),
     )
 
@@ -272,6 +278,7 @@ class Typemap(object):
                     "base",
                     "cxx_header",
                     "c_header",
+                    "f_kind",
                 ]
             order.extend([
 #                "cxx_type",  # same as the dict key
@@ -286,31 +293,31 @@ class Typemap(object):
 
 
 # Manage collection of typemaps
-shared_typedict = {}  # dictionary of registered types
+shared_typemaps = {}  # dictionary of registered types
 
 
-def set_global_types(typedict):
-    global shared_typedict
-    shared_typedict = typedict
+def set_global_typemaps(typemaps):
+    global shared_typemaps
+    shared_typemaps = typemaps
 
 
-def get_global_types():
-    return shared_typedict
+def get_global_typemaps():
+    return shared_typemaps
 
 
-def register_type(name, intypemap):
+def register_typemap(name, ntypemap):
     """Register a typemap"""
-    shared_typedict[name] = intypemap
+    shared_typemaps[name] = ntypemap
 
 
-def lookup_type(name):
+def lookup_typemap(name):
     """Lookup name in registered types."""
-    outtypemap = shared_typedict.get(name)
-    return outtypemap
+    ntypemap = shared_typemaps.get(name)
+    return ntypemap
 
 
 def initialize():
-    set_global_types({})
+    set_global_typemaps({})
     def_types = dict(
         void=Typemap(
             "void",
@@ -867,9 +874,72 @@ def initialize():
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
 
-    set_global_types(def_types)
+    set_global_typemaps(def_types)
 
     return def_types
+
+
+def create_native_typemap_from_fields(cxx_name, fields, library):
+    """Create a typemap from fields.
+    Used when creating typemap from YAML. (from regression/forward.yaml)
+
+        typemap:
+        - type: indextype
+          fields:
+            base: integer
+            f_kind: INDEXTYPE
+            f_module_name: typemap_mod
+
+    Parameters:
+    -----------
+    cxx_name : str
+    fields : dictionary object.
+    library : ast.LibraryNode.
+    """
+    fmt = library.fmtdict
+    ntypemap = Typemap(
+        cxx_name,
+        sgroup="native",
+        cxx_type=cxx_name,
+        c_type=cxx_name,
+        f_cast=None,  # Override Typemap default
+    )
+    ntypemap.update(fields)
+    missing = []
+    if ntypemap.f_kind is None:
+        missing.append("f_kind")
+    if ntypemap.f_module_name is None:
+        missing.append("f_module_name")
+    if missing:
+        raise RuntimeError(
+            "typemap {} requires field(s) {}".format(cxx_name, ", ".join(missing))
+        )
+    fill_native_typemap_defaults(ntypemap, fmt)
+    ntypemap.finalize()
+    register_typemap(cxx_name, ntypemap)
+    library.add_typedef_by_name(cxx_name, ntypemap)
+    return ntypemap
+
+
+def fill_native_typemap_defaults(ntypemap, fmt):
+    """Add some defaults to integer or real typemap.
+    When dumping typemaps to a file, only a subset is written
+    since the rest are boilerplate.  This function restores
+    the boilerplate.
+
+    Some fields can be derived from f_kind.
+
+    Parameters
+    ----------
+    ntypemap : typemap.Typemap.
+    fmt : util.Scope
+    """
+    if ntypemap.f_type is None:
+        ntypemap.f_type = "{}({})".format(ntypemap.base, ntypemap.f_kind)
+    if ntypemap.f_cast is None:
+        ntypemap.f_cast = "{}({{f_var}}, {})".format(ntypemap.base, ntypemap.f_kind)
+    if ntypemap.f_module is None:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
 def create_enum_typemap(node):
@@ -882,9 +952,9 @@ def create_enum_typemap(node):
     fmt_enum = node.fmtdict
     type_name = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
 
-    ntypemap = lookup_type(type_name)
+    ntypemap = lookup_typemap(type_name)
     if ntypemap is None:
-        inttypemap = lookup_type("int")
+        inttypemap = lookup_typemap("int")
         ntypemap = inttypemap.clone_as(type_name)
         ntypemap.cxx_type = util.wformat(
             "{namespace_scope}{enum_name}", fmt_enum
@@ -894,7 +964,7 @@ def create_enum_typemap(node):
         )
         ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
         ntypemap.compute_flat_name()
-        register_type(type_name, ntypemap)
+        register_typemap(type_name, ntypemap)
     return ntypemap
 
 
@@ -932,7 +1002,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     }
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
     return ntypemap
 
@@ -952,7 +1022,7 @@ def create_class_typemap(node, fields=None):
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
     cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
-    ntypemap = lookup_type(cxx_name)
+    ntypemap = lookup_typemap(cxx_name)
     # unname = util.un_camel(name)
     f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
@@ -980,7 +1050,7 @@ def create_class_typemap(node, fields=None):
         ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1073,7 +1143,7 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
 # XXX - Set defaults while being created above.
 #    fill_struct_typemap_defaults(node, ntypemap)
 
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
     return ntypemap
 
@@ -1110,7 +1180,7 @@ def create_struct_typemap(node, fields=None):
     if fields is not None:
         ntypemap.update(fields)
     fill_struct_typemap_defaults(node, ntypemap)
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1196,14 +1266,14 @@ def create_fcnptr_typemap(node, fields=None):
     
     if fields is not None:
         ntypemap.update(fields)
-    register_type(cxx_name, ntypemap)
+    register_typemap(cxx_name, ntypemap)
     return ntypemap
 
 
 def return_shadow_types():
     """Return a dictionary of user defined types."""
     dct = {}
-    for key, ntypemap in shared_typedict.items():
+    for key, ntypemap in shared_typemaps.items():
         if ntypemap.sgroup in ["shadow", "struct", "template"]:
             dct[key] = ntypemap
     return dct

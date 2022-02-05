@@ -91,6 +91,16 @@ required since single braces are used for variable expansion.
 However, using the pipe, it is not necessary to quote lines that
 contain other YAML meta characters such as colon and curly braces.
 
+For example, YAML will get confused by the ``::`` characters and try
+to create a dictionary with the key ``integer, parameter :``.
+
+.. code-block:: yaml
+
+    splicer_code:
+      f:
+        module_top:
+        - integer, parameter :: INDEXTYPE = 5
+
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a
 continuation if necessary.  A formfeed, ``/f``, will force a
@@ -1020,6 +1030,35 @@ The splicer comments can be eliminated by setting the option
 eliminate the clutter of the splicer comments.
 
 
+file_code
+---------
+
+The ``file_code`` section allows the user to add some additional code
+to the wrapper which may conflict with code automatically added by
+Shroud for typemaps, statements or helpers.  While splicer are simple
+text insertation, ``file_code`` inserts code semantically.
+
+For C wrappers, including header files may duplicate headers added when
+creating the wrapper. By listing them in a ``file_code``
+section instead of a splicer Shroud is able to manage all header files.
+
+For Fortran wrappers, ``USE`` statements are managed collectively to
+avoid redundant ``USE`` statements.
+
+.. example from typemap.yaml
+
+.. code-block:: yaml
+
+    file_code:
+      wraptypemap.h:
+        c_header: <stdint.h>
+        cxx_header: <cstdint>
+      wrapftypemap.f:
+        f_module:
+          iso_c_binding:
+          - C_INT32_T
+          - C_INT64_T
+                
 
 
 

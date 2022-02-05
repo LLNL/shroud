@@ -61,6 +61,8 @@ $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpa
 fortran-test-list-std = \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-typemap32 \
+  test-fortran-typemap64 \
   test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \

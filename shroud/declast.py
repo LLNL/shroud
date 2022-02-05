@@ -449,7 +449,7 @@ class Parser(ExprParser):
             node.attrs["_name"] = "dtor"
             node.attrs["_destructor"] = tok.value
             #node.typemap = self.namespace.typemap # The class' typemap
-            node.typemap = typemap.lookup_type("void")
+            node.typemap = typemap.lookup_typemap("void")
             found_type = True
             more = False
 
@@ -656,14 +656,14 @@ class Parser(ExprParser):
             return
         typename = "_".join(decl.specifier)
         typename = canonical_typemap.get(typename, typename)
-        ntypemap = typemap.lookup_type(typename)
+        ntypemap = typemap.lookup_typemap(typename)
 # XXX - incorporate pointer into typemap
 #        nptr = decl.is_pointer()
 #        if nptr == 0:
-#            ntypemap = typemap.lookup_type(typename)
+#            ntypemap = typemap.lookup_typemap(typename)
 #        else:
 #            for i in range(nptr, -1, -1):
-#                ntypemap = typemap.lookup_type(typename + "***"[0:i])
+#                ntypemap = typemap.lookup_typemap(typename + "***"[0:i])
 #                if ntypemap is not None:
 #                    break
         if ntypemap is None:
@@ -1216,7 +1216,7 @@ class Declaration(Node):
     def set_return_to_void(self):
         """Change function to void"""
         self.specifier = ["void"]
-        self.typemap = typemap.lookup_type("void")
+        self.typemap = typemap.lookup_typemap("void")
         self.const = False
         self.volatile = False
         self.declarator.pointer = []

@@ -84,9 +84,11 @@ class Wrapf(util.WrapperMixin):
     def wrap_namespace(self, node, fileinfo, top=False):
         """Wrap a library or namespace.
 
-        Args:
-            node - ast.LibraryNode, ast.NamespaceNode
-            top  - True if library module, else namespace module.
+        Parameters
+        ----------
+        node : ast.LibraryNode, ast.NamespaceNode
+        fileinfo : ModuleInfo
+        top  : True if library module, else namespace module.
         """
         options = node.options
         self.wrap_class_method_option(node.functions, fileinfo)
@@ -1259,7 +1261,7 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:
                 # Return type changed by user.
-                ntypemap = typemap.lookup_type(c_result_blk.return_type)
+                ntypemap = typemap.lookup_typemap(c_result_blk.return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
@@ -2166,6 +2168,11 @@ rv = .false.
 
         output.append("module %s" % module_name)
         output.append(1)
+
+        ntypemap = self.newlibrary.file_code.get(fname)
+        if ntypemap:
+            self.update_f_module(fileinfo.module_use, {},
+                                 ntypemap.f_module)
 
         # Write use statments (classes use iso_c_binding C_PTR)
         arg_f_use = self.sort_module_info(fileinfo.module_use, module_name)
