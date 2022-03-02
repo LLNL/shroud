@@ -47,6 +47,7 @@ splicer_code:
       #endif
   c:
     C_declarations: |
+      #ifndef __cplusplus
       #if defined(USE_64BIT_INDEXTYPE)
       typedef int64_t IndexType;
       #else
@@ -57,6 +58,7 @@ splicer_code:
       typedef double FloatType;
       #else
       typedef float FloatType;
+      #endif
       #endif
 
 # Add code which will be integrated with other include and use statements

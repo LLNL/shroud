@@ -271,6 +271,13 @@ test-struct : \
   test-python-struct-class-c \
   test-python-struct-class-cxx
 
+.PHONY : test-typemap
+test-typemap : \
+  test-c-typemap32 \
+  test-c-typemap64 \
+  test-fortran-typemap32 \
+  test-fortran-typemap64 \
+
 test-clean-testdir :
 	rm -rf $(relrunpath)
 .PHONY : test-clean-testdir
