@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wraplibrary_outer1.h"
 
 // cxx_header
 #include "outer1.hpp"
+// shroud
+#include "wraplibrary_outer1.h"
 
 
 extern "C" {

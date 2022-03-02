@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapownership.h"
 
 // cxx_header
 #include "ownership.hpp"
+// shroud
+#include "wrapownership.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

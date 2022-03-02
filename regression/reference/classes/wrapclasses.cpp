@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapclasses.h"
 
 // cxx_header
 #include "classes.hpp"
@@ -14,6 +13,7 @@
 #include <string>
 // shroud
 #include <cstring>
+#include "wrapclasses.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

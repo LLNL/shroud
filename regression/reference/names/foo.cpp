@@ -6,6 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
+// shroud
 #include "foo.h"
 
 // splicer begin namespace.ns0.class.Names.CXX_definitions

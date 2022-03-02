@@ -7,10 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #ifdef USE_USER2
-#include "wrapUser2.h"
 
 // cxx_header
 #include "User2.hpp"
+// shroud
+#include "wrapUser2.h"
 
 // splicer begin class.User2.CXX_definitions
 // splicer end class.User2.CXX_definitions

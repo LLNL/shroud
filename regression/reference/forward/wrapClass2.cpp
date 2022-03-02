@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapClass2.h"
 
 // cxx_header
 #include "forward.hpp"
@@ -15,6 +14,7 @@
 #include "header2.hpp"
 // shroud
 #include <cstddef>
+#include "wrapClass2.h"
 
 // splicer begin class.Class2.CXX_definitions
 // splicer end class.Class2.CXX_definitions

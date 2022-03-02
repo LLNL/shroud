@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapouter1_class0.h"
 
 // cxx_header
 #include "outer1.hpp"
+// shroud
+#include "wrapouter1_class0.h"
 
 
 extern "C" {
