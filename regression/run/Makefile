@@ -117,6 +117,8 @@ test-cfi : $(fortran-test-list-cfi)
 
 c-test-list = \
   test-c-types \
+  test-c-typemap32 \
+  test-c-typemap64 \
   test-c-classes \
   test-c-enum-c \
   test-c-namespace \
