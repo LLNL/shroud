@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapforward.h"
 
 // cxx_header
 #include "forward.hpp"
+// shroud
+#include "wrapforward.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

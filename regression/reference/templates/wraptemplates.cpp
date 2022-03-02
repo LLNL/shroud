@@ -6,13 +6,14 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wraptemplates.h"
 
 // cxx_header
 #include "templates.hpp"
 // typemap
 #include "implworker1.hpp"
 #include "implworker2.hpp"
+// shroud
+#include "wraptemplates.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

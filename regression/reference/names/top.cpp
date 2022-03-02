@@ -6,13 +6,13 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "top.h"
 
 // typemap
 #include <string>
 // shroud
 #include <cstring>
 #include <cstdlib>
+#include "top.h"
 
 // splicer begin CXX_definitions
 // Add some text from splicer

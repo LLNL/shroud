@@ -6,9 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wraptypemap.h"
 
 #include "typemap.hpp"
+#include "wraptypemap.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapstructAsClass_double.h"
 
 // cxx_header
 #include "templates.hpp"
+// shroud
+#include "wrapstructAsClass_double.h"
 
 // splicer begin class.structAsClass.CXX_definitions
 // splicer end class.structAsClass.CXX_definitions

@@ -6,12 +6,13 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapvectors.h"
 
 // cxx_header
 #include "vectors.hpp"
 // typemap
 #include <vector>
+// shroud
+#include "wrapvectors.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

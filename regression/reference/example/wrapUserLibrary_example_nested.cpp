@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapUserLibrary_example_nested.h"
 
 // typemap
 #include <string>
+// shroud
+#include "wrapUserLibrary_example_nested.h"
 
 // splicer begin namespace.example::nested.CXX_definitions
 // splicer end namespace.example::nested.CXX_definitions

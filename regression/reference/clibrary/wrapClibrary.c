@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapClibrary.h"
 
 // cxx_header
 #include "clibrary.h"
@@ -14,6 +13,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include "wrapClibrary.h"
 
 
 // helper ShroudLenTrim

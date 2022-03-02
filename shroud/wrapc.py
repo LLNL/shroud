@@ -474,13 +474,12 @@ class Wrapc(util.WrapperMixin):
         if cls and cls.cpp_if:
             output.append("#" + node.cpp_if)
 
-        if hname:
-            output.append('#include "%s"' % hname)
-
         # Use headers from implementation
         self.header_impl.add_cxx_header(node)
         self.header_impl.add_shroud_dict(self.helper_include["file"])
         self.header_impl.add_typemaps_xxx(self.impl_typedef_nodes, "impl_header")
+        if hname:
+            self.header_impl.add_shroud_file(hname)
         self.header_impl.write_headers(output)
 
         if self.language == "cxx":

@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapcxxlibrary_structns.h"
 
 // cxx_header
 #include "cxxlibrary.hpp"
+// shroud
+#include "wrapcxxlibrary_structns.h"
 
 // splicer begin namespace.structns.CXX_definitions
 // splicer end namespace.structns.CXX_definitions

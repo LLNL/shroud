@@ -6,6 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
+// shroud
 #include "wrapwrapped_inner1.h"
 
 // splicer begin namespace.inner1.CXX_definitions

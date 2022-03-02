@@ -6,10 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wraptypes.h"
 
 // cxx_header
 #include "types.hpp"
+// shroud
+#include "wraptypes.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

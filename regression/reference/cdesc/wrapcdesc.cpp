@@ -6,12 +6,13 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "wrapcdesc.h"
 
 // cxx_header
 #include "cdesc.hpp"
 // typemap
 #include <string>
+// shroud
+#include "wrapcdesc.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

@@ -6,6 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
+// shroud
 #include "wraptestnames_ns1.hh"
 
 // splicer begin namespace.ns1.CXX_definitions
