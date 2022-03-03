@@ -599,7 +599,7 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
+                "<FUNCTION>": "7 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -683,7 +683,7 @@
             {
                 "<FUNCTION>": "4 ****************************************",
                 "_default_funcs": [
-                    6
+                    7
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -873,7 +873,7 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "8 ****************************************",
                 "C_generated_path": [
                     "has_default_arg"
                 ],
@@ -1086,7 +1086,7 @@
             {
                 "<FUNCTION>": "5 ****************************************",
                 "_default_funcs": [
-                    7
+                    8
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -1430,6 +1430,639 @@
                     "stmtc1": "c_subroutine",
                     "underscore_name": "default_args_in_out"
                 }
+            },
+            {
+                "<FUNCTION>": "6 ****************************************",
+                "_overloaded": true,
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getGroupName",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "copy",
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "idx",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        }
+                    ],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& getGroupName(long idx) +len(30)",
+                "declgen": "const std::string & getGroupName(long idx +value) +len(30)",
+                "doxygen": {
+                    "brief": "String reference function with scalar generic args"
+                },
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "idx",
+                                    "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
+                        "function_suffix": "_int32_t",
+                        "generic": "(int32_t idx)"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "idx",
+                                    "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
+                        "function_suffix": "_int64_t",
+                        "generic": "(int64_t idx)"
+                    }
+                ],
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "idx": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "long",
+                            "c_var": "idx",
+                            "cfi_type": "CFI_type_long",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&idx",
+                            "cxx_type": "long",
+                            "cxx_var": "idx",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_LONG",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "idx",
+                            "c_var": "idx",
+                            "f_intent": "IN",
+                            "f_kind": "C_LONG",
+                            "f_type": "integer(C_LONG)",
+                            "f_var": "idx",
+                            "sh_type": "SH_TYPE_LONG"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "idx",
+                    "C_name": "CXX_get_group_name",
+                    "C_prototype": "long idx",
+                    "C_return_type": "const char *",
+                    "F_C_arguments": "idx",
+                    "F_C_name": "c_get_group_name",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "getGroupName",
+                    "underscore_name": "get_group_name"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_rv_decl": "const char * SHC_rv",
+                        "c_type": "char",
+                        "c_val": "SHCXX_rv.c_str()",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_string_&_copy",
+                        "stmt1": "c_function_string_&"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "9 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
+                "_PTR_C_CXX_index": "6",
+                "_PTR_F_C_index": "11",
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getGroupName",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "copy",
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "idx",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int32_t"
+                            ],
+                            "typemap_name": "int32_t"
+                        }
+                    ],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& getGroupName(long idx) +len(30)",
+                "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
+                "doxygen": {
+                    "brief": "String reference function with scalar generic args"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_get_group_name_int32_t_bufferify",
+                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "idx",
+                    "F_name_function": "get_group_name_int32_t",
+                    "F_name_generic": "get_group_name",
+                    "F_name_impl": "get_group_name_int32_t",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "getGroupName",
+                    "function_suffix": "_int32_t",
+                    "underscore_name": "get_group_name"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "11 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "9",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getGroupName",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "buf",
+                        "deref": "copy",
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "idx",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int32_t"
+                            ],
+                            "typemap_name": "int32_t"
+                        }
+                    ],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& getGroupName(long idx) +len(30)",
+                "declgen": "const std::string & getGroupName(int32_t idx +value) +len(30)",
+                "doxygen": {
+                    "brief": "String reference function with scalar generic args"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "idx": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int32_t",
+                            "c_var": "idx",
+                            "cfi_type": "CFI_type_int32_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&idx",
+                            "cxx_type": "int32_t",
+                            "cxx_var": "idx",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "idx",
+                            "c_var": "idx",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT32_T",
+                            "f_type": "integer(C_INT32_T)",
+                            "f_var": "idx",
+                            "sh_type": "SH_TYPE_INT32_T",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "idx",
+                    "C_name": "CXX_get_group_name_int32_t_bufferify",
+                    "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
+                    "C_return_type": "void",
+                    "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_C_name": "c_get_group_name_int32_t_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "getGroupName",
+                    "function_suffix": "_int32_t_bufferify",
+                    "underscore_name": "get_group_name"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_type": "char",
+                        "c_var": "SHC_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "10 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
+                "_PTR_C_CXX_index": "6",
+                "_PTR_F_C_index": "12",
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getGroupName",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "copy",
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "idx",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int64_t"
+                            ],
+                            "typemap_name": "int64_t"
+                        }
+                    ],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& getGroupName(long idx) +len(30)",
+                "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
+                "doxygen": {
+                    "brief": "String reference function with scalar generic args"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_get_group_name_int64_t_bufferify",
+                    "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_arguments": "idx",
+                    "F_name_function": "get_group_name_int64_t",
+                    "F_name_generic": "get_group_name",
+                    "F_name_impl": "get_group_name_int64_t",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "getGroupName",
+                    "function_suffix": "_int64_t",
+                    "underscore_name": "get_group_name"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cxx_type": "std::string",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_string_&_buf_copy",
+                        "stmt1": "f_function_string_&_buf",
+                        "stmtc0": "c_function_string_&_buf_copy",
+                        "stmtc1": "c_function_string_&_buf"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "12 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "10",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getGroupName",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "buf",
+                        "deref": "copy",
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "idx",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int64_t"
+                            ],
+                            "typemap_name": "int64_t"
+                        }
+                    ],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& getGroupName(long idx) +len(30)",
+                "declgen": "const std::string & getGroupName(int64_t idx +value) +len(30)",
+                "doxygen": {
+                    "brief": "String reference function with scalar generic args"
+                },
+                "options": {
+                    "wrap_python": false
+                },
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "idx": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int64_t",
+                            "c_var": "idx",
+                            "cfi_type": "CFI_type_int64_t",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&idx",
+                            "cxx_type": "int64_t",
+                            "cxx_var": "idx",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT64_T",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "idx",
+                            "c_var": "idx",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT64_T",
+                            "f_type": "integer(C_INT64_T)",
+                            "f_var": "idx",
+                            "sh_type": "SH_TYPE_INT64_T",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "idx",
+                    "C_name": "CXX_get_group_name_int64_t_bufferify",
+                    "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
+                    "C_return_type": "void",
+                    "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                    "F_C_name": "c_get_group_name_int64_t_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "getGroupName",
+                    "function_suffix": "_int64_t_bufferify",
+                    "underscore_name": "get_group_name"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_type": "char",
+                        "c_var": "SHC_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                        "cxx_type": "std::string",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_string_&_buf_copy",
+                        "stmt1": "c_function_string_&_buf"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_len": "SHT_rv_len",
+                        "f_intent": "OUT",
+                        "f_kind": "C_CHAR",
+                        "f_type": "character(*)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER"
+                    }
+                }
             }
         ],
         "language": "cxx",
@@ -1534,7 +2167,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "8 ****************************************",
+                        "<FUNCTION>": "13 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReference",
@@ -1711,7 +2344,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "9 ****************************************",
+                        "<FUNCTION>": "14 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceIn",
@@ -1889,7 +2522,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "10 ****************************************",
+                        "<FUNCTION>": "15 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceInout",
@@ -2018,7 +2651,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "11 ****************************************",
+                        "<FUNCTION>": "16 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceOut",
