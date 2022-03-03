@@ -20,6 +20,7 @@ options:
 
 declarations:
 
+########################################
 # Create a generic interface for two functions.
 # XXX - F_force_wrapper is required since the generic interface is using
 #       MODULE PROCEDURE and Shroud is not creating a function since no
@@ -35,9 +36,9 @@ declarations:
   format:
     F_name_generic: update_real
 
-
 - decl: double GetGlobalDouble(void)
 
+########################################
 - decl: void GenericReal(double arg)
   options:
     literalinclude: True
@@ -49,6 +50,7 @@ declarations:
   - decl: (double arg)
     function_suffix: _double
 
+########################################
 - decl: long GenericReal2(long arg1, long arg2)
   doxygen:
     brief: Two argument generic
@@ -68,6 +70,7 @@ declarations:
   options:
     F_assumed_rank_max: 2
 
+########################################
 # Test Fortran Generic and rank.
 # Also creates several bind(C) interfaces to the same function.
 - decl: void AssignValues(const int *from, int nfrom, int *to, int nto)
@@ -83,6 +86,7 @@ declarations:
   - decl: (const int *from+rank(1), int *to+rank(1))
     function_suffix: _copy
 
+########################################
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
   # cannot use size as an dummy argument name
   # Add deref(raw) attribute to Fortan function.
@@ -99,6 +103,7 @@ declarations:
 #  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
+########################################
 - decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
   fstatements:
     c:
@@ -117,6 +122,7 @@ declarations:
 #  - decl: (double *addr+rank(2), int type+implied(T_DOUBLE))
 
 
+########################################
 - decl: void GetPointer(void **addr+intent(out),
                         int *type+intent(out),
                         size_t *size+intent(out))
@@ -139,6 +145,7 @@ declarations:
   options:
     class_ctor: StructAsClass
 
+########################################
 # XXX - This creates two Fortran wrappers but it also creates a
 #       bind(C) interface for the original routine. Not sure that's needed.
 - decl: long UpdateStructAsClass(StructAsClass *arg, long inew)
