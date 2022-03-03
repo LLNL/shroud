@@ -17,6 +17,7 @@ program tester
 
   call test_struct
   call test_default_args
+  call test_generic
 
   call fruit_summary
   call fruit_finalize
@@ -75,5 +76,22 @@ contains
     call assert_equals(20, out2, "defaultArgsInOut")
     
   end subroutine test_default_args
+
+  subroutine test_generic
+    use cxxlibrary_mod
+    character(30) rv
+
+    rv = get_group_name(1)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_LONG)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT32_T)
+    call assert_equals("global-string", rv, "getGroupName");
+    rv = get_group_name(1_C_INT64_T)
+    call assert_equals("global-string", rv, "getGroupName");
+    
+  end subroutine test_generic
   
 end program tester

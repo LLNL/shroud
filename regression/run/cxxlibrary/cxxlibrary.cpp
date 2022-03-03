@@ -12,6 +12,7 @@
 #include "cxxlibrary.hpp"
 
 static Cstruct1_cls global_Cstruct1_cls;
+static std::string global_string("global-string");
 
 //----------------------------------------------------------------------
 namespace structns {
@@ -99,4 +100,11 @@ void defaultArgsInOut(int in1, int *out1, int *out2, bool flag)
 
 void accept_complex(std::complex<double> *arg1)
 {
+}
+
+//----------------------------------------------------------------------
+
+const std::string& getGroupName(long idx)
+{
+    return global_string;
 }

@@ -1320,8 +1320,11 @@ class GenFunctions(object):
             # Try to call original C function if possible.
             # All arguments are native scalar.
             need_wrapper = False
+            if new.ast.is_indirect():
+                need_wrapper = True
+            
             for arg in new.ast.params:
-                if arg.is_pointer():
+                if arg.is_indirect():
                     need_wrapper = True
                     break
                 elif arg.typemap.sgroup == "native":

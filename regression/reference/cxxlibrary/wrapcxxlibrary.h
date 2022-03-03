@@ -16,8 +16,11 @@
 #define WRAPCXXLIBRARY_H
 
 // typemap
-#ifndef __cplusplus
+#ifdef __cplusplus
+#include <cstdint>
+#else
 #include <stdbool.h>
+#include <stdint.h>
 #endif
 // shroud
 #include "typescxxlibrary.h"
@@ -40,6 +43,14 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2);
 
 void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     bool flag);
+
+const char * CXX_get_group_name(long idx);
+
+void CXX_get_group_name_int32_t_bufferify(int32_t idx, char *SHC_rv,
+    int SHT_rv_len);
+
+void CXX_get_group_name_int64_t_bufferify(int64_t idx, char *SHC_rv,
+    int SHT_rv_len);
 
 #ifdef __cplusplus
 }

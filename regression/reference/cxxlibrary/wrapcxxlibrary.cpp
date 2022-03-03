@@ -9,7 +9,10 @@
 
 // cxx_header
 #include "cxxlibrary.hpp"
+// typemap
+#include <string>
 // shroud
+#include <cstring>
 #include "wrapcxxlibrary.h"
 
 // splicer begin CXX_definitions
@@ -17,6 +20,22 @@
 
 extern "C" {
 
+
+// helper ShroudStrCopy
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
+{
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -107,6 +126,85 @@ void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     // splicer begin function.default_args_in_out_1
     defaultArgsInOut(in1, out1, out2, flag);
     // splicer end function.default_args_in_out_1
+}
+
+/**
+ * \brief String reference function with scalar generic args
+ *
+ */
+// ----------------------------------------
+// Function:  const std::string & getGroupName +len(30)
+// Attrs:     +deref(copy)+intent(function)
+// Requested: c_function_string_&_copy
+// Match:     c_function_string_&
+// ----------------------------------------
+// Argument:  long idx +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+const char * CXX_get_group_name(long idx)
+{
+    // splicer begin function.get_group_name
+    const std::string & SHCXX_rv = getGroupName(idx);
+    const char * SHC_rv = SHCXX_rv.c_str();
+    return SHC_rv;
+    // splicer end function.get_group_name
+}
+
+/**
+ * \brief String reference function with scalar generic args
+ *
+ */
+// ----------------------------------------
+// Function:  const std::string & getGroupName +len(30)
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_string_&_buf_copy
+// Match:     c_function_string_&_buf
+// ----------------------------------------
+// Argument:  int32_t idx +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+void CXX_get_group_name_int32_t_bufferify(int32_t idx, char *SHC_rv,
+    int SHT_rv_len)
+{
+    // splicer begin function.get_group_name_int32_t_bufferify
+    const std::string & SHCXX_rv = getGroupName(idx);
+    if (SHCXX_rv.empty()) {
+        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+    } else {
+        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+            SHCXX_rv.size());
+    }
+    // splicer end function.get_group_name_int32_t_bufferify
+}
+
+/**
+ * \brief String reference function with scalar generic args
+ *
+ */
+// ----------------------------------------
+// Function:  const std::string & getGroupName +len(30)
+// Attrs:     +api(buf)+deref(copy)+intent(function)
+// Requested: c_function_string_&_buf_copy
+// Match:     c_function_string_&_buf
+// ----------------------------------------
+// Argument:  int64_t idx +value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+void CXX_get_group_name_int64_t_bufferify(int64_t idx, char *SHC_rv,
+    int SHT_rv_len)
+{
+    // splicer begin function.get_group_name_int64_t_bufferify
+    const std::string & SHCXX_rv = getGroupName(idx);
+    if (SHCXX_rv.empty()) {
+        ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+    } else {
+        ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
+            SHCXX_rv.size());
+    }
+    // splicer end function.get_group_name_int64_t_bufferify
 }
 
 }  // extern "C"

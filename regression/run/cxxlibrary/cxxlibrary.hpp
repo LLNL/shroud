@@ -53,5 +53,9 @@ void defaultArgsInOut(int in1, int *out1, int *out2, bool flag = false);
 
 void accept_complex(std::complex<double> *arg1);
 
+//----------------------------------------------------------------------
+
+const std::string& getGroupName(long idx);
+
 #endif // CXXLIBRARY_H
 
