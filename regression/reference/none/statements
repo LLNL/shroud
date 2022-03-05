@@ -408,10 +408,14 @@ c_function:
   name: c_function
   owner: library
 c_function_char_*:
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_char_*
   owner: library
-  return_cptr: true
 c_function_char_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -624,7 +628,6 @@ c_function_native_*_cdesc:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
-  return_cptr: true
   return_type: void
   temps:
   - cdesc
@@ -733,12 +736,16 @@ c_function_shadow_scalar:
   - '{cxx_type} * {cxx_var} = new {cxx_type};'
   return_type: void
 c_function_string_&:
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_&
   owner: library
   ret:
   - return {c_var};
-  return_cptr: true
 c_function_string_&_buf:
   c_arg_decl:
   - char *{c_var}
@@ -850,12 +857,16 @@ c_function_string_&_cfi_allocatable:
   temps:
   - cfi
 c_function_string_*:
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_*
   owner: library
   ret:
   - return {c_var};
-  return_cptr: true
 c_function_string_*_buf:
   c_arg_decl:
   - char *{c_var}
@@ -1004,12 +1015,16 @@ c_function_string_*_cfi_pointer:
   temps:
   - cfi
 c_function_string_scalar:
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_result_decl:
+  - type(C_PTR) {c_var}
   intent: function
   name: c_function_string_scalar
   owner: library
   ret:
   - return {c_var};
-  return_cptr: true
 c_function_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}

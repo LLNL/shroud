@@ -288,14 +288,6 @@ pointer value is assigned to a subroutine argument which holds the
 pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
 would be return by the C wrapper is unneeded by the Fortran wrapper.
    
-
-return_cptr
-^^^^^^^^^^^
-
-If *true*, the function will return a C pointer. This will be
-used by the Fortran interface to declare the function as
-``type(C_PTR)``.
-
  
 destructor_name
 ^^^^^^^^^^^^^^^

@@ -1256,9 +1256,6 @@ rv = .false.
                 for arg in c_result_blk.f_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
                 self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
-            elif c_result_blk.return_cptr:
-                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:
                 # Return type changed by user.
                 ntypemap = typemap.lookup_typemap(c_result_blk.return_type)

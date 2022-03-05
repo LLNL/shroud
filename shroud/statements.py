@@ -1039,7 +1039,6 @@ fc_statements = [
             "{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};",
         ],
-        return_cptr=True,
     ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
@@ -1201,7 +1200,10 @@ fc_statements = [
     
     dict(
         name="c_function_char_*",
-        return_cptr=True,
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL terminate the input string.
@@ -1467,7 +1469,10 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        return_cptr=True,
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # No need to allocate a local copy since the string is copied
