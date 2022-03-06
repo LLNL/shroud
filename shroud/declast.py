@@ -937,7 +937,7 @@ class Ptr(Node):
 
 class Declarator(Node):
     """
-    If both name and func are are None, then this is an abstract
+    If both name and func are None, then this is an abstract
     declarator: ex. 'int *' in 'void foo(int *)'.
     """
 
@@ -1464,9 +1464,11 @@ class Declaration(Node):
 
         if self.declarator is None:
             # XXX - used with constructor but seems wrong for abstract arguments
-            # The C wrapper wants a pointer to the type.
             declarator = Declarator()
             declarator.name = self.name
+            if self.attrs["_constructor"] and lang == "c_type":
+                # The C wrapper wants a pointer to the type.
+                declarator.pointer.append(Ptr("*"))
         else:
             declarator = self.declarator
 
