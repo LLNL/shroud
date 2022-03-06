@@ -439,6 +439,7 @@
                             "F_C_arguments": "self",
                             "F_C_call": "c_class1_delete",
                             "F_C_name": "c_class1_delete",
+                            "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",

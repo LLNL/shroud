@@ -72,7 +72,8 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  Class2
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         subroutine c_class2_ctor(SHT_rv) &
                 bind(C, name="FOR_Class2_ctor")
             import :: FOR_SHROUD_capsule_data
@@ -83,8 +84,8 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  ~Class2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data

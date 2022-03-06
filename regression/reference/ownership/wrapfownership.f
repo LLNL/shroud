@@ -80,8 +80,8 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  ~Class1
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data

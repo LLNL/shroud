@@ -134,7 +134,8 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         subroutine c_structasclass_int_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
             import :: TEM_SHROUD_capsule_data
@@ -216,7 +217,8 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         subroutine c_structasclass_double_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
             import :: TEM_SHROUD_capsule_data

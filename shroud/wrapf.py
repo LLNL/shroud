@@ -1136,11 +1136,6 @@ rv = .false.
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
-        # ctor and dtor are not valid for bind(C) interfaces.
-        if sintent == "ctor":
-            sintent = "function"
-        elif sintent == "dtor":
-            sintent = "subroutine"
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,

@@ -147,7 +147,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_function_shadow_scalar
+    ! Requested: c_ctor_shadow_scalar
+    ! Match:     c_ctor
     ! start c_class1_ctor_default
     interface
         subroutine c_class1_ctor_default(SHT_rv) &
@@ -162,7 +163,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_function_shadow_scalar
+    ! Requested: c_ctor_shadow_scalar
+    ! Match:     c_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -184,8 +186,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
+    ! Requested: c_dtor_void_scalar
+    ! Match:     c_dtor
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -549,7 +551,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_function_shadow_scalar
+    ! Requested: c_ctor_shadow_scalar
+    ! Match:     c_ctor
     interface
         subroutine c_shape_ctor(SHT_rv) &
                 bind(C, name="CLA_Shape_ctor")
@@ -582,7 +585,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_function_shadow_scalar
+    ! Requested: c_ctor_shadow_scalar
+    ! Match:     c_ctor
     interface
         subroutine c_circle_ctor(SHT_rv) &
                 bind(C, name="CLA_Circle_ctor")

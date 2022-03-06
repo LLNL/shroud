@@ -164,7 +164,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         subroutine c_exclass1_ctor_0(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
             import :: AA_SHROUD_capsule_data
@@ -175,7 +176,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
@@ -192,7 +194,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
@@ -211,8 +214,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass1
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
@@ -385,7 +388,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
@@ -402,7 +406,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
+        ! Requested: c_ctor_shadow_scalar
+        ! Match:     c_ctor
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
@@ -420,8 +425,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_exclass2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
