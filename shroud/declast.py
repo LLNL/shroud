@@ -1834,6 +1834,7 @@ def create_struct_ctor(cls):
     ast.attrs["_constructor"] = True
     ast.attrs["name"] = name
 ##        _name="ctor",
+    ast.metaattrs["intent"] = "ctor"
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
     ast.params = []

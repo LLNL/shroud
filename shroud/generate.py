@@ -130,7 +130,12 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
-        ast.metaattrs["intent"] = ast.get_subprogram()
+        if ast.is_ctor():
+            ast.metaattrs["intent"] = "ctor"
+        elif ast.is_dtor():
+            ast.metaattrs["intent"] = "dtor"
+        else:
+            ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
@@ -2156,10 +2161,7 @@ class TemplateTypemap(visitor.Visitor):
             self.visit(cls)
         for fcn in node.functions:
             if fcn.ast.is_ctor():
-                fcn.ast.metaattrs["intent"] = "ctor"
                 fcn.ast.typemap = node.typemap
-            elif fcn.ast.is_dtor():
-                fcn.ast.metaattrs["intent"] = "dtor"
             self.visit(fcn)
         for var in node.variables:
             self.visit(var)
