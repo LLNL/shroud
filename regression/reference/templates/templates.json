@@ -471,9 +471,9 @@
                                 "f_type": "type(structasclass_int)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             }
                         }
@@ -1064,9 +1064,9 @@
                                 "f_type": "type(structasclass_double)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             }
                         }
@@ -2702,9 +2702,9 @@
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "f_ctor",
+                                        "stmt0": "f_ctor_shadow_scalar_capsule",
                                         "stmt1": "f_ctor",
-                                        "stmtc0": "c_ctor",
+                                        "stmtc0": "c_ctor_shadow_scalar_capsule",
                                         "stmtc1": "c_ctor"
                                     },
                                     "fmtpy": {
@@ -3485,9 +3485,9 @@
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "f_ctor",
+                                        "stmt0": "f_ctor_shadow_scalar_capsule",
                                         "stmt1": "f_ctor",
-                                        "stmtc0": "c_ctor",
+                                        "stmtc0": "c_ctor_shadow_scalar_capsule",
                                         "stmtc1": "c_ctor"
                                     },
                                     "fmtpy": {

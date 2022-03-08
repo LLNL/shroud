@@ -103,9 +103,11 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function names_defaultctor() &
             result(SHT_rv)
         type(FNames) :: SHT_rv

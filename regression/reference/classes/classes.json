@@ -168,9 +168,9 @@
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             },
                             "fmtl": {
@@ -370,9 +370,9 @@
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             },
                             "fmtl": {
@@ -1860,10 +1860,10 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_function_native_scalar",
-                                "stmt1": "f_function",
-                                "stmtc0": "c_function_native_scalar",
-                                "stmtc1": "c_function"
+                                "stmt0": "f_getter_native_scalar",
+                                "stmt1": "f_getter",
+                                "stmtc0": "c_getter_native_scalar",
+                                "stmtc1": "c_getter_native_scalar"
                             }
                         }
                     },
@@ -1944,10 +1944,10 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_INT",
-                                "stmt0": "f_function_native_scalar",
-                                "stmt1": "f_function",
-                                "stmtc0": "c_function_native_scalar",
-                                "stmtc1": "c_function"
+                                "stmt0": "f_getter_native_scalar",
+                                "stmt1": "f_getter",
+                                "stmtc0": "c_getter_native_scalar",
+                                "stmtc1": "c_getter_native_scalar"
                             }
                         }
                     },
@@ -2114,10 +2114,10 @@
                                 "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
                                 "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_function_string_scalar_cdesc_allocatable",
-                                "stmt1": "f_function_string_scalar_cdesc_allocatable",
-                                "stmtc0": "c_function_string_scalar_cdesc_allocatable",
-                                "stmtc1": "c_function_string_scalar_cdesc_allocatable"
+                                "stmt0": "f_getter_string_scalar_cdesc_allocatable",
+                                "stmt1": "f_getter_string_scalar_cdesc_allocatable",
+                                "stmtc0": "c_getter_string_scalar_cdesc_allocatable",
+                                "stmtc1": "c_getter_string_scalar_cdesc"
                             }
                         }
                     },
@@ -3002,9 +3002,9 @@
                                 "f_type": "type(shape)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             },
                             "fmtl": {
@@ -3288,9 +3288,9 @@
                                 "f_type": "type(circle)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
+                                "stmt0": "f_ctor_shadow_scalar_capsule",
                                 "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
+                                "stmtc0": "c_ctor_shadow_scalar_capsule",
                                 "stmtc1": "c_ctor"
                             },
                             "fmtl": {

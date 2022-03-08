@@ -262,9 +262,11 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function vector_int_ctor() &
             result(SHT_rv)
         type(vector_int) :: SHT_rv
@@ -368,9 +370,11 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function vector_double_ctor() &
             result(SHT_rv)
         type(vector_double) :: SHT_rv

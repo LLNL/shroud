@@ -839,9 +839,11 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -855,9 +857,11 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1098,11 +1102,10 @@ contains
     ! ----------------------------------------
     ! Function:  int getM_flag
     ! Attrs:     +intent(getter)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
     ! Attrs:     +intent(getter)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_getter_native_scalar
     ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
@@ -1119,11 +1122,10 @@ contains
     ! ----------------------------------------
     ! Function:  int getTest
     ! Attrs:     +intent(getter)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
     ! Attrs:     +intent(getter)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_getter_native_scalar
     ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
@@ -1165,9 +1167,10 @@ contains
     ! ----------------------------------------
     ! Function:  std::string getM_name
     ! Attrs:     +deref(allocatable)+intent(getter)
-    ! Exact:     f_function_string_scalar_cdesc_allocatable
+    ! Exact:     f_getter_string_scalar_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
-    ! Exact:     c_function_string_scalar_cdesc_allocatable
+    ! Requested: c_getter_string_scalar_cdesc_allocatable
+    ! Match:     c_getter_string_scalar_cdesc
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
@@ -1330,9 +1333,11 @@ contains
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function shape_ctor() &
             result(SHT_rv)
         type(shape) :: SHT_rv
@@ -1388,9 +1393,11 @@ contains
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function circle_ctor() &
             result(SHT_rv)
         type(circle) :: SHT_rv

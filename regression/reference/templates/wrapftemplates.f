@@ -487,9 +487,11 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
         type(structasclass_int) :: SHT_rv
@@ -611,9 +613,11 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)
         type(structasclass_double) :: SHT_rv

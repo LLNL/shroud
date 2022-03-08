@@ -1345,6 +1345,9 @@ rv = .false.
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
+        elif stmts_blk.intent == "getter":
+            # Functions do not pass arguments by default.
+            pass
         else:
             # Attributes   None=skip, True=use default, else use value
             if arg_typemap.f_to_c:
@@ -1604,18 +1607,14 @@ rv = .false.
             fmt_result.c_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            sintent = ast.metaattrs["intent"]
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]
-            if is_ctor:
-                f_stmts = ["f", sintent]
-                c_stmts = ["c", sintent]
-            else:
-                sintent = "function"
-                f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                           return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
-                           return_deref_attr]
+            f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
+                       return_deref_attr, ast.attrs["owner"]]
+            c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
+                       return_deref_attr]
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)

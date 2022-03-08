@@ -1307,9 +1307,11 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function exclass1_ctor_0() &
             result(SHT_rv)
         type(exclass1) :: SHT_rv
@@ -1322,9 +1324,11 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Attrs:     +intent(in)
@@ -1564,9 +1568,11 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass2
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Attrs:     +intent(in)

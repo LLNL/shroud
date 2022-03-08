@@ -464,11 +464,10 @@ contains
     ! ----------------------------------------
     ! Function:  int getFlag
     ! Attrs:     +intent(getter)
-    ! Requested: f_function_native_scalar
-    ! Match:     f_function
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
     ! Attrs:     +intent(getter)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_function
+    ! Exact:     c_getter_native_scalar
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

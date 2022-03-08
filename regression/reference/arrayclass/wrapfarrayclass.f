@@ -540,9 +540,11 @@ contains
     ! ----------------------------------------
     ! Function:  ArrayWrapper
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor
+    ! Requested: f_ctor_shadow_scalar_capsule
+    ! Match:     f_ctor
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor
+    ! Requested: c_ctor_shadow_scalar_capsule
+    ! Match:     c_ctor
     function arraywrapper_ctor() &
             result(SHT_rv)
         type(arraywrapper) :: SHT_rv
