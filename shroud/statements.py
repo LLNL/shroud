@@ -1971,7 +1971,7 @@ fc_statements = [
     ),
     # Return a C_capsule_data_type.
     dict(
-        name="c_function_shadow_*/&",
+        name="c_function_shadow_*/&_capsule",
         mixin=["c_mixin_shadow"],
         cxx_local_var="result",
         post_call=[
@@ -1981,7 +1981,7 @@ fc_statements = [
         return_type="void",
     ),
     dict(
-        name="c_function_shadow_scalar",
+        name="c_function_shadow_scalar_capsule",
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
@@ -1998,10 +1998,6 @@ fc_statements = [
             "{c_var}->idtor = {idtor};",
         ],
         return_type="void",
-    ),
-    dict(
-        name="f_function_shadow_scalar/*/&",
-        mixin=["f_mixin_function_shadow_capsule"],
     ),
     dict(
         name="f_function_shadow_scalar/*/&_capsule",

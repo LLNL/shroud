@@ -87,8 +87,8 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 // start STR_create__cstruct_as_class
 void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 {
@@ -102,8 +102,8 @@ void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
@@ -146,8 +146,8 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)

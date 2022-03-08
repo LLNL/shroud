@@ -25,8 +25,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  user<int> returnUserType
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_scalar
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_scalar_capsule
 void TEM_return_user_type(TEM_user_int * SHC_rv)
 {
     // splicer begin function.return_user_type

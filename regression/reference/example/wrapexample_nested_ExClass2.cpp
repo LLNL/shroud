@@ -300,8 +300,8 @@ int AA_example_nested_ExClass2_get_name_length(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 // ----------------------------------------
 // Argument:  const ExClass1 * in
 // Attrs:     +intent(in)

@@ -297,8 +297,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_scalar_capsule
         subroutine c_return_user_type(SHT_rv) &
                 bind(C, name="TEM_return_user_type")
             import :: TEM_SHROUD_capsule_data
@@ -732,10 +732,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_shadow_scalar
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_scalar
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_scalar_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_scalar_capsule
     function return_user_type() &
             result(SHT_rv)
         type(user_int) :: SHT_rv

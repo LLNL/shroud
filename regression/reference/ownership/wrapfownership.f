@@ -388,8 +388,8 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         subroutine c_get_class_static(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
             import :: OWN_SHROUD_capsule_data
@@ -399,8 +399,8 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
@@ -628,11 +628,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getClassStatic +owner(library)
-    ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*_library
-    ! Match:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Requested: f_function_shadow_*_capsule_library
+    ! Match:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -643,11 +643,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getClassNew +owner(caller)
-    ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*_caller
-    ! Match:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Requested: f_function_shadow_*_capsule_caller
+    ! Match:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)

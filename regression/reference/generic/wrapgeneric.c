@@ -424,8 +424,8 @@ void GEN_get_pointer_as_pointer_float2d_bufferify(
 
 // ----------------------------------------
 // Function:  StructAsClass * CreateStructAsClass
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.create_struct_as_class

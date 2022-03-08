@@ -363,8 +363,8 @@ void OWN_create_class_static(int flag)
 
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 void OWN_get_class_static(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_static
@@ -380,8 +380,8 @@ void OWN_get_class_static(OWN_Class1 * SHC_rv)
  */
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
-// Attrs:     +intent(function)
-// Exact:     c_function_shadow_*
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)

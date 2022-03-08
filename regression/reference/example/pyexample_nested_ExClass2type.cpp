@@ -331,7 +331,7 @@ PP_GetNameLength(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Attrs:     +intent(function)
+// Attrs:     +api(capsule)+intent(function)
 // Exact:     py_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in

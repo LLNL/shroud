@@ -1601,6 +1601,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "capsule",
                         "intent": "function"
                     },
                     "params": [],
@@ -1661,8 +1662,8 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "5",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_shadow_scalar",
-                        "stmt1": "c_function_shadow_scalar"
+                        "stmt0": "c_function_shadow_scalar_capsule",
+                        "stmt1": "c_function_shadow_scalar_capsule"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -1674,10 +1675,10 @@
                         "f_type": "type(user_int)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_shadow_scalar",
-                        "stmt1": "f_function_shadow_scalar",
-                        "stmtc0": "c_function_shadow_scalar",
-                        "stmtc1": "c_function_shadow_scalar"
+                        "stmt0": "f_function_shadow_scalar_capsule",
+                        "stmt1": "f_function_shadow_scalar_capsule",
+                        "stmtc0": "c_function_shadow_scalar_capsule",
+                        "stmtc1": "c_function_shadow_scalar_capsule"
                     }
                 }
             },

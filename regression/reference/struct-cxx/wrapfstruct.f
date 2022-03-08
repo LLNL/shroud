@@ -623,8 +623,8 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class * Create_Cstruct_as_class
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         ! start c_create__cstruct_as_class
         subroutine c_create__cstruct_as_class(SHT_rv) &
                 bind(C, name="STR_create__cstruct_as_class")
@@ -636,8 +636,8 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  int x +value
         ! Attrs:     +intent(in)
@@ -680,8 +680,8 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  int x +value
         ! Attrs:     +intent(in)
@@ -1110,10 +1110,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     ! start create__cstruct_as_class
     function create__cstruct_as_class() &
             result(SHT_rv)
@@ -1126,10 +1126,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -1185,10 +1185,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)

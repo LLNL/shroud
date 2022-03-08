@@ -130,9 +130,12 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
+        if ast.typemap is None:
+            print("XXXXXX typemap is None")
+        if ast.typemap.sgroup == "shadow":
+            ast.metaattrs["api"] = "capsule"
         if ast.is_ctor():
             ast.metaattrs["intent"] = "ctor"
-            ast.metaattrs["api"] = "capsule"
         elif ast.is_dtor():
             ast.metaattrs["intent"] = "dtor"
         else:
@@ -140,8 +143,6 @@ class VerifyAttrs(object):
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
-        if ast.typemap is None:
-            print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 

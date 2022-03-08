@@ -177,7 +177,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +intent(function)
+// Attrs:     +api(capsule)+intent(function)
 // Exact:     py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"

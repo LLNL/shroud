@@ -407,7 +407,7 @@ static int l_example_nested_ExClass2_get_name_length(lua_State *L)
 // ExClass1 * get_class1(const ExClass1 * in)
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Attrs:     +intent(function)
+// Attrs:     +api(capsule)+intent(function)
 // Exact:     lua_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in

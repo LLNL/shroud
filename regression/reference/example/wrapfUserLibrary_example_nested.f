@@ -558,8 +558,8 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
-        ! Attrs:     +intent(function)
-        ! Exact:     c_function_shadow_*
+        ! Attrs:     +api(capsule)+intent(function)
+        ! Exact:     c_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  const ExClass1 * in
         ! Attrs:     +intent(in)
@@ -1707,10 +1707,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
-    ! Attrs:     +intent(function)
-    ! Exact:     f_function_shadow_*
-    ! Attrs:     +intent(function)
-    ! Exact:     c_function_shadow_*
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  const ExClass1 * in
     ! Attrs:     +intent(in)
