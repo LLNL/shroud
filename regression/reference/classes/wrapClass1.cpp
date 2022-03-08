@@ -63,8 +63,7 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 // start CLA_Class1_ctor_default
 void CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 {
@@ -79,8 +78,7 @@ void CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -188,8 +186,7 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_*
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
@@ -222,8 +219,7 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_*
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
@@ -256,8 +252,7 @@ void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_*
 // start CLA_Class1_getclass3
 void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv)
 {

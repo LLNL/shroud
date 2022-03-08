@@ -572,6 +572,18 @@ fc_statements = [
         need_wrapper=True,
     ),
 
+    dict(
+        # Pass function result as a capsule argument from Fortran to C.
+        name="f_mixin_function_shadow_capsule",
+        arg_decl=[
+            "{f_type} :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
+    ),
+    
     ##########
     # array
     dict(
@@ -1959,7 +1971,7 @@ fc_statements = [
     ),
     # Return a C_capsule_data_type.
     dict(
-        name="c_function_shadow",
+        name="c_function_shadow_*/&",
         mixin=["c_mixin_shadow"],
         cxx_local_var="result",
         post_call=[
@@ -1988,21 +2000,19 @@ fc_statements = [
         return_type="void",
     ),
     dict(
-        name="f_function_shadow",
-        arg_decl=[
-            "{f_type} :: {f_var}",
-        ],
-        arg_c_call=[
-            "{f_var}%{F_derived_member}",
-        ],
-        need_wrapper=True,
+        name="f_function_shadow_scalar/*/&",
+        mixin=["f_mixin_function_shadow_capsule"],
+    ),
+    dict(
+        name="f_function_shadow_scalar/*/&_capsule",
+        mixin=["f_mixin_function_shadow_capsule"],
     ),
     dict(
         name="f_dtor",
         arg_c_call=[],
     ),
     dict(
-        name="c_ctor",
+        name="c_ctor_shadow_scalar_capsule",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         call=[
@@ -2014,8 +2024,8 @@ fc_statements = [
         owner="caller",
     ),
     dict(
-        name="f_ctor",
-        mixin=["f_function_shadow"],
+        name="f_ctor_shadow_scalar_capsule",
+        mixin=["f_mixin_function_shadow_capsule"],
     ),
     dict(
         # NULL in stddef.h

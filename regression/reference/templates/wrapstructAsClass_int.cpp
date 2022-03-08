@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void TEM_structAsClass_int_ctor(TEM_structAsClass_int * SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor

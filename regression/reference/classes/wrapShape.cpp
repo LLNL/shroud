@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Shape
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {
     // splicer begin class.Shape.method.ctor

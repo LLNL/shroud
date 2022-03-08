@@ -1,7 +1,10 @@
 ***** Fortran/C
 root
   c
-    ctor -- c_ctor
+    ctor
+      shadow
+        scalar
+          capsule -- c_ctor_shadow_scalar_capsule
     dtor -- c_dtor
     function -- c_function
       char
@@ -22,7 +25,9 @@ root
             pointer -- c_function_native_*_cfi_pointer
           scalar -- c_function_native_*_scalar
         ** -- c_function_native_*/&/**
-      shadow -- c_function_shadow
+      shadow
+        & -- c_function_shadow_*/&
+        * -- c_function_shadow_*/&
         scalar -- c_function_shadow_scalar
       string
         & -- c_function_string_scalar/*/&
@@ -195,7 +200,10 @@ root
     XXXin
       string
         scalar -- f_XXXin_string_scalar
-    ctor -- f_ctor
+    ctor
+      shadow
+        scalar
+          capsule -- f_ctor_shadow_scalar_capsule
     dtor -- f_dtor
     function -- f_function
       bool -- f_function_bool
@@ -233,7 +241,13 @@ root
           raw -- f_function_native_*_raw
           scalar -- f_function_native_*_scalar
         ** -- f_function_native_**
-      shadow -- f_function_shadow
+      shadow
+        & -- f_function_shadow_scalar/*/&
+          capsule -- f_function_shadow_scalar/*/&_capsule
+        * -- f_function_shadow_scalar/*/&
+          capsule -- f_function_shadow_scalar/*/&_capsule
+        scalar -- f_function_shadow_scalar/*/&
+          capsule -- f_function_shadow_scalar/*/&_capsule
       string
         &
           buf -- f_function_string_scalar/*/&_buf
@@ -323,6 +337,8 @@ root
     mixin
       function
         cdesc -- f_mixin_function_cdesc
+        shadow
+          capsule -- f_mixin_function_shadow_capsule
       in
         array
           buf -- f_mixin_in_array_buf
@@ -376,7 +392,7 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
-c_ctor:
+c_ctor_shadow_scalar_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   call:
@@ -390,7 +406,7 @@ c_ctor:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: ctor
-  name: c_ctor
+  name: c_ctor_shadow_scalar_capsule
   owner: caller
   return_type: void
 c_dtor:
@@ -700,7 +716,7 @@ c_function_native_*_scalar:
   intent: function
   name: c_function_native_*_scalar
   owner: library
-c_function_shadow:
+c_function_shadow_&:
   c_arg_decl:
   - '{c_type} * {c_var}'
   cxx_local_var: result
@@ -710,7 +726,23 @@ c_function_shadow:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
   intent: function
-  name: c_function_shadow
+  name: c_function_shadow_&
+  owner: library
+  post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  return_type: void
+c_function_shadow_*:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  cxx_local_var: result
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module_line: '{f_c_module_line}'
+  intent: function
+  name: c_function_shadow_*
   owner: library
   post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
@@ -2711,13 +2743,13 @@ f_XXXin_string_scalar:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   temps:
   - len
-f_ctor:
+f_ctor_shadow_scalar_capsule:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
   arg_decl:
   - '{f_type} :: {f_var}'
   intent: ctor
-  name: f_ctor
+  name: f_ctor_shadow_scalar_capsule
   need_wrapper: true
 f_dtor:
   intent: dtor
@@ -3003,13 +3035,53 @@ f_function_native_*_raw:
 f_function_native_*_scalar:
   intent: function
   name: f_function_native_*_scalar
-f_function_shadow:
+f_function_shadow_&:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
   arg_decl:
   - '{f_type} :: {f_var}'
   intent: function
-  name: f_function_shadow
+  name: f_function_shadow_&
+  need_wrapper: true
+f_function_shadow_&_capsule:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: function
+  name: f_function_shadow_&_capsule
+  need_wrapper: true
+f_function_shadow_*:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: function
+  name: f_function_shadow_*
+  need_wrapper: true
+f_function_shadow_*_capsule:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: function
+  name: f_function_shadow_*_capsule
+  need_wrapper: true
+f_function_shadow_scalar:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: function
+  name: f_function_shadow_scalar
+  need_wrapper: true
+f_function_shadow_scalar_capsule:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: function
+  name: f_function_shadow_scalar_capsule
   need_wrapper: true
 f_function_string_&_buf:
   arg_c_call:
@@ -3635,6 +3707,14 @@ f_mixin_function_cdesc:
   need_wrapper: true
   temps:
   - cdesc
+f_mixin_function_shadow_capsule:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  intent: mixin
+  name: f_mixin_function_shadow_capsule
+  need_wrapper: true
 f_mixin_in_array_buf:
   arg_c_call:
   - '{f_var}'

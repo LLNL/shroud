@@ -123,7 +123,7 @@
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor"
+                                "stmt1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -136,9 +136,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor",
+                                "stmt1": "f_ctor_shadow_scalar_capsule",
                                 "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor"
+                                "stmtc1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",

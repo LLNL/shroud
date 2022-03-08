@@ -134,8 +134,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_structasclass_int_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
             import :: TEM_SHROUD_capsule_data
@@ -217,8 +216,7 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  structAsClass
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_structasclass_double_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
             import :: TEM_SHROUD_capsule_data
@@ -487,11 +485,9 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function structasclass_int_ctor() &
             result(SHT_rv)
         type(structasclass_int) :: SHT_rv
@@ -613,11 +609,9 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function structasclass_double_ctor() &
             result(SHT_rv)
         type(structasclass_double) :: SHT_rv
@@ -739,8 +733,7 @@ contains
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_scalar
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_shadow_scalar
     function return_user_type() &

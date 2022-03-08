@@ -72,8 +72,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_vector_int_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
             import :: TEM_SHROUD_capsule_data
@@ -160,8 +159,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  vector
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_vector_double_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
             import :: TEM_SHROUD_capsule_data
@@ -262,11 +260,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function vector_int_ctor() &
             result(SHT_rv)
         type(vector_int) :: SHT_rv
@@ -370,11 +366,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function vector_double_ctor() &
             result(SHT_rv)
         type(vector_double) :: SHT_rv

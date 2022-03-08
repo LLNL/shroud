@@ -106,8 +106,7 @@ int CLA_useclass(CLA_Class1 * arg)
 // ----------------------------------------
 // Function:  const Class1 * getclass2
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_*
 void CLA_getclass2(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2
@@ -120,8 +119,7 @@ void CLA_getclass2(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_*
 void CLA_getclass3(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3
@@ -134,8 +132,7 @@ void CLA_getclass3(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 & getConstClassReference
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_&
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_&
 void CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_const_class_reference
@@ -149,8 +146,7 @@ void CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 & getClassReference
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_&
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_&
 void CLA_get_class_reference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_reference

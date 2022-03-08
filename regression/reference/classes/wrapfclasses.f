@@ -147,8 +147,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! start c_class1_ctor_default
     interface
         subroutine c_class1_ctor_default(SHT_rv) &
@@ -163,8 +162,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -262,8 +260,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
@@ -291,8 +288,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
@@ -322,8 +318,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! start c_class1_getclass3
     interface
         subroutine c_class1_getclass3(self, SHT_rv) &
@@ -534,8 +529,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     interface
         subroutine c_singleton_get_reference(SHT_rv) &
                 bind(C, name="CLA_Singleton_get_reference")
@@ -551,8 +545,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     interface
         subroutine c_shape_ctor(SHT_rv) &
                 bind(C, name="CLA_Shape_ctor")
@@ -585,8 +578,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     interface
         subroutine c_circle_ctor(SHT_rv) &
                 bind(C, name="CLA_Circle_ctor")
@@ -664,8 +656,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     interface
         subroutine c_getclass2(SHT_rv) &
                 bind(C, name="CLA_getclass2")
@@ -678,8 +669,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     interface
         subroutine c_getclass3(SHT_rv) &
                 bind(C, name="CLA_getclass3")
@@ -692,8 +682,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     interface
         subroutine c_get_const_class_reference(SHT_rv) &
                 bind(C, name="CLA_get_const_class_reference")
@@ -706,8 +695,7 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     interface
         subroutine c_get_class_reference(SHT_rv) &
                 bind(C, name="CLA_get_class_reference")
@@ -839,11 +827,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -857,11 +843,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -978,11 +962,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
@@ -1023,11 +1005,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     !>
     !! \brief Test const method
     !!
@@ -1291,11 +1271,9 @@ contains
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_&
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_&
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     function singleton_get_reference() &
             result(SHT_rv)
         type(singleton) :: SHT_rv
@@ -1333,11 +1311,9 @@ contains
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function shape_ctor() &
             result(SHT_rv)
         type(shape) :: SHT_rv
@@ -1393,11 +1369,9 @@ contains
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function circle_ctor() &
             result(SHT_rv)
         type(circle) :: SHT_rv
@@ -1463,11 +1437,9 @@ contains
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     function getclass2() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1479,11 +1451,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     function getclass3() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1495,11 +1465,9 @@ contains
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_&
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_&
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     function get_const_class_reference() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1511,11 +1479,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_&
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_&
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_&
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_&
     function get_class_reference() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -1527,8 +1493,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_scalar
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_scalar
     ! Attrs:     +intent(function)
     ! Exact:     c_function_shadow_scalar
     ! ----------------------------------------

@@ -54,8 +54,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine xxx_tes_names_defaultctor(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
             import :: TES_SHROUD_capsule_data
@@ -103,11 +102,9 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function names_defaultctor() &
             result(SHT_rv)
         type(FNames) :: SHT_rv

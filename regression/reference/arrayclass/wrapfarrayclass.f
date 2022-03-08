@@ -85,8 +85,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  ArrayWrapper
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_arraywrapper_ctor(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
             import :: ARR_SHROUD_capsule_data
@@ -540,11 +539,9 @@ contains
     ! ----------------------------------------
     ! Function:  ArrayWrapper
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function arraywrapper_ctor() &
             result(SHT_rv)
         type(arraywrapper) :: SHT_rv

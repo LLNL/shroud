@@ -389,8 +389,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
         ! Attrs:     +intent(function)
-        ! Requested: c_function_shadow_*
-        ! Match:     c_function_shadow
+        ! Exact:     c_function_shadow_*
         subroutine c_get_class_static(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
             import :: OWN_SHROUD_capsule_data
@@ -401,8 +400,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
         ! Attrs:     +intent(function)
-        ! Requested: c_function_shadow_*
-        ! Match:     c_function_shadow
+        ! Exact:     c_function_shadow_*
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
@@ -632,10 +630,9 @@ contains
     ! Function:  Class1 * getClassStatic +owner(library)
     ! Attrs:     +intent(function)
     ! Requested: f_function_shadow_*_library
-    ! Match:     f_function_shadow
+    ! Match:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -648,10 +645,9 @@ contains
     ! Function:  Class1 * getClassNew +owner(caller)
     ! Attrs:     +intent(function)
     ! Requested: f_function_shadow_*_caller
-    ! Match:     f_function_shadow
+    ! Match:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)

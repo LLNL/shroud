@@ -156,7 +156,7 @@
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor"
+                                "stmt1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -169,9 +169,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor",
+                                "stmt1": "f_ctor_shadow_scalar_capsule",
                                 "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor"
+                                "stmtc1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -358,7 +358,7 @@
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor"
+                                "stmt1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -371,9 +371,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor",
+                                "stmt1": "f_ctor_shadow_scalar_capsule",
                                 "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor"
+                                "stmtc1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -1043,7 +1043,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_function_shadow_*",
-                                "stmt1": "c_function_shadow"
+                                "stmt1": "c_function_shadow_*"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1056,9 +1056,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_*",
-                                "stmt1": "f_function_shadow",
+                                "stmt1": "f_function_shadow_*",
                                 "stmtc0": "c_function_shadow_*",
-                                "stmtc1": "c_function_shadow"
+                                "stmtc1": "c_function_shadow_*"
                             }
                         }
                     },
@@ -1238,7 +1238,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_function_shadow_*",
-                                "stmt1": "c_function_shadow"
+                                "stmt1": "c_function_shadow_*"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1326,7 +1326,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_function_shadow_*",
-                                "stmt1": "c_function_shadow"
+                                "stmt1": "c_function_shadow_*"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -1339,9 +1339,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_*",
-                                "stmt1": "f_function_shadow",
+                                "stmt1": "f_function_shadow_*",
                                 "stmtc0": "c_function_shadow_*",
-                                "stmtc1": "c_function_shadow"
+                                "stmtc1": "c_function_shadow_*"
                             },
                             "fmtpy": {
                                 "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -2841,7 +2841,7 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_function_shadow_&",
-                                "stmt1": "c_function_shadow"
+                                "stmt1": "c_function_shadow_&"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -2854,9 +2854,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_function_shadow_&",
-                                "stmt1": "f_function_shadow",
+                                "stmt1": "f_function_shadow_&",
                                 "stmtc0": "c_function_shadow_&",
-                                "stmtc1": "c_function_shadow"
+                                "stmtc1": "c_function_shadow_&"
                             },
                             "fmtpy": {
                                 "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
@@ -2990,7 +2990,7 @@
                                 "idtor": "2",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor"
+                                "stmt1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -3003,9 +3003,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor",
+                                "stmt1": "f_ctor_shadow_scalar_capsule",
                                 "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor"
+                                "stmtc1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -3276,7 +3276,7 @@
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor"
+                                "stmt1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -3289,9 +3289,9 @@
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor",
+                                "stmt1": "f_ctor_shadow_scalar_capsule",
                                 "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor"
+                                "stmtc1": "c_ctor_shadow_scalar_capsule"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -3958,7 +3958,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_shadow_*",
-                        "stmt1": "c_function_shadow"
+                        "stmt1": "c_function_shadow_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -3971,9 +3971,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*",
-                        "stmt1": "f_function_shadow",
+                        "stmt1": "f_function_shadow_*",
                         "stmtc0": "c_function_shadow_*",
-                        "stmtc1": "c_function_shadow"
+                        "stmtc1": "c_function_shadow_*"
                     }
                 }
             },
@@ -4043,7 +4043,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_shadow_*",
-                        "stmt1": "c_function_shadow"
+                        "stmt1": "c_function_shadow_*"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4056,9 +4056,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*",
-                        "stmt1": "f_function_shadow",
+                        "stmt1": "f_function_shadow_*",
                         "stmtc0": "c_function_shadow_*",
-                        "stmtc1": "c_function_shadow"
+                        "stmtc1": "c_function_shadow_*"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -4149,7 +4149,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_shadow_&",
-                        "stmt1": "c_function_shadow"
+                        "stmt1": "c_function_shadow_&"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4162,9 +4162,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_&",
-                        "stmt1": "f_function_shadow",
+                        "stmt1": "f_function_shadow_&",
                         "stmtc0": "c_function_shadow_&",
-                        "stmtc1": "c_function_shadow"
+                        "stmtc1": "c_function_shadow_&"
                     }
                 }
             },
@@ -4234,7 +4234,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "c_function_shadow_&",
-                        "stmt1": "c_function_shadow"
+                        "stmt1": "c_function_shadow_&"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -4247,9 +4247,9 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_&",
-                        "stmt1": "f_function_shadow",
+                        "stmt1": "f_function_shadow_&",
                         "stmtc0": "c_function_shadow_&",
-                        "stmtc1": "c_function_shadow"
+                        "stmtc1": "c_function_shadow_&"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -4404,7 +4404,7 @@
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_scalar",
-                        "stmt1": "f_function_shadow",
+                        "stmt1": "f_function_shadow_scalar",
                         "stmtc0": "c_function_shadow_scalar",
                         "stmtc1": "c_function_shadow_scalar"
                     }

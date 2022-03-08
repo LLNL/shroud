@@ -164,8 +164,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         subroutine c_exclass1_ctor_0(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
             import :: AA_SHROUD_capsule_data
@@ -176,8 +175,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
@@ -194,8 +192,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
@@ -388,8 +385,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
@@ -406,8 +402,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass2
         ! Attrs:     +api(capsule)+intent(ctor)
-        ! Requested: c_ctor_shadow_scalar_capsule
-        ! Match:     c_ctor
+        ! Exact:     c_ctor_shadow_scalar_capsule
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
@@ -564,8 +559,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
         ! Attrs:     +intent(function)
-        ! Requested: c_function_shadow_*
-        ! Match:     c_function_shadow
+        ! Exact:     c_function_shadow_*
         ! ----------------------------------------
         ! Argument:  const ExClass1 * in
         ! Attrs:     +intent(in)
@@ -1307,11 +1301,9 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     function exclass1_ctor_0() &
             result(SHT_rv)
         type(exclass1) :: SHT_rv
@@ -1324,11 +1316,9 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Attrs:     +intent(in)
@@ -1568,11 +1558,9 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass2
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: f_ctor_shadow_scalar_capsule
-    ! Match:     f_ctor
+    ! Exact:     f_ctor_shadow_scalar_capsule
     ! Attrs:     +api(capsule)+intent(ctor)
-    ! Requested: c_ctor_shadow_scalar_capsule
-    ! Match:     c_ctor
+    ! Exact:     c_ctor_shadow_scalar_capsule
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Attrs:     +intent(in)
@@ -1720,11 +1708,9 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  const ExClass1 * in
     ! Attrs:     +intent(in)

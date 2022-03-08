@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor

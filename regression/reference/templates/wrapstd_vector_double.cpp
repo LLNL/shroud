@@ -24,8 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor

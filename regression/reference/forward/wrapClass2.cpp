@@ -27,8 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor

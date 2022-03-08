@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Attrs:     +api(capsule)+intent(ctor)
-// Requested: c_ctor_shadow_scalar_capsule
-// Match:     c_ctor
+// Exact:     c_ctor_shadow_scalar_capsule
 void ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor

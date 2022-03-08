@@ -672,8 +672,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! start c_create__cstruct_as_class
     interface
         subroutine c_create__cstruct_as_class(SHT_rv) &
@@ -688,8 +687,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -737,8 +735,7 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -1171,11 +1168,9 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! start create__cstruct_as_class
     function create__cstruct_as_class() &
             result(SHT_rv)
@@ -1189,11 +1184,9 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)
@@ -1250,11 +1243,9 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     ! ----------------------------------------
     ! Argument:  int x +value
     ! Attrs:     +intent(in)

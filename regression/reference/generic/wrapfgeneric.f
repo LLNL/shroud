@@ -766,8 +766,7 @@ module generic_mod
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     interface
         subroutine c_create_struct_as_class(SHT_rv) &
                 bind(C, name="GEN_create_struct_as_class")
@@ -1589,11 +1588,9 @@ contains
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
     ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
+    ! Exact:     f_function_shadow_*
     ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Exact:     c_function_shadow_*
     function create_struct_as_class() &
             result(SHT_rv)
         type(structasclass) :: SHT_rv

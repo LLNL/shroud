@@ -23,8 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  static Singleton & getReference
 // Attrs:     +intent(function)
-// Requested: c_function_shadow_&
-// Match:     c_function_shadow
+// Exact:     c_function_shadow_&
 void CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
 {
     // splicer begin class.Singleton.method.get_reference
