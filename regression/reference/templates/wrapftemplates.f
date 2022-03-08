@@ -133,8 +133,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_structasclass_int_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
@@ -216,8 +216,8 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_structasclass_double_ctor(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
@@ -486,9 +486,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
@@ -610,9 +610,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)

@@ -151,7 +151,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capsule)+intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)

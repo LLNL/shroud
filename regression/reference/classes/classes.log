@@ -2,8 +2,8 @@ Read yaml classes.yaml
 Skipping std::string, unable to create C wrapper for function returning getM_name instance (must return a pointer or reference). Bufferify version will still be created.
 Close classes_types.yaml
 class Class1
-C Class1(void)  +intent(ctor)
-C Class1(int flag +value)  +intent(ctor)
+C Class1(void)  +api(capsule)+intent(ctor)
+C Class1(int flag +value)  +api(capsule)+intent(ctor)
 C ~Class1(void) +name(delete)  +intent(dtor)
 C int Method1(void)  +intent(function)
 C bool equivalent(const Class1 & obj2) const  +intent(function)
@@ -31,12 +31,12 @@ C static Singleton & getReference(void)  +intent(function)
 Close wrapSingleton.h
 Close wrapSingleton.cpp
 class Shape
-C Shape(void)  +intent(ctor)
+C Shape(void)  +api(capsule)+intent(ctor)
 C int get_ivar(void) const  +intent(function)
 Close wrapShape.h
 Close wrapShape.cpp
 class Circle
-C Circle(void)  +intent(ctor)
+C Circle(void)  +api(capsule)+intent(ctor)
 Close wrapCircle.h
 Close wrapCircle.cpp
 C Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)  +intent(function)
@@ -54,8 +54,8 @@ C const std::string & LastFunctionCalled(void) +len(30)  +api(buf)+deref(copy)+i
 Close wrapclasses.h
 Close wrapclasses.cpp
 class Class1
-Fortran Class1(void)  +intent(ctor)
-Fortran Class1(int flag +value)  +intent(ctor)
+Fortran Class1(void)  +api(capsule)+intent(ctor)
+Fortran Class1(int flag +value)  +api(capsule)+intent(ctor)
 Fortran ~Class1(void) +name(delete)  +intent(dtor)
 Fortran int Method1(void)  +intent(function)
 Fortran bool equivalent(const Class1 & obj2) const  +intent(function)
@@ -69,8 +69,8 @@ Fortran int getTest(void)  +intent(getter)
 Fortran void setTest(int val +intent(in)+value)  +intent(setter)
 Fortran std::string getM_name(void)  +deref(allocatable)+intent(getter)
 Fortran void setM_name(std::string val +intent(in))  +intent(setter)
-C-interface Class1(void)  +intent(ctor)
-C-interface Class1(int flag +value)  +intent(ctor)
+C-interface Class1(void)  +api(capsule)+intent(ctor)
+C-interface Class1(int flag +value)  +api(capsule)+intent(ctor)
 C-interface ~Class1(void) +name(delete)  +intent(dtor)
 C-interface int Method1(void)  +intent(function)
 C-interface bool equivalent(const Class1 & obj2) const  +intent(function)
@@ -94,13 +94,13 @@ class Singleton
 Fortran static Singleton & getReference(void)  +intent(function)
 C-interface static Singleton & getReference(void)  +intent(function)
 class Shape
-Fortran Shape(void)  +intent(ctor)
+Fortran Shape(void)  +api(capsule)+intent(ctor)
 Fortran int get_ivar(void) const  +intent(function)
-C-interface Shape(void)  +intent(ctor)
+C-interface Shape(void)  +api(capsule)+intent(ctor)
 C-interface int get_ivar(void) const  +intent(function)
 class Circle
-Fortran Circle(void)  +intent(ctor)
-C-interface Circle(void)  +intent(ctor)
+Fortran Circle(void)  +api(capsule)+intent(ctor)
+C-interface Circle(void)  +api(capsule)+intent(ctor)
 Fortran Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)  +intent(function)
 Fortran void passClassByValue(Class1 arg +value)  +intent(subroutine)
 Fortran int useclass(const Class1 * arg)  +intent(function)

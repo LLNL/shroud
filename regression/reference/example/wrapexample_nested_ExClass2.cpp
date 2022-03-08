@@ -82,8 +82,8 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
@@ -107,8 +107,8 @@ void AA_example_nested_ExClass2_ctor(const char * name,
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)

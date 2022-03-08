@@ -407,6 +407,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
+                                "api": "capsule",
                                 "intent": "ctor"
                             },
                             "params": [],
@@ -457,7 +458,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_ctor_shadow_scalar",
+                                "stmt0": "c_ctor_shadow_scalar_capsule",
                                 "stmt1": "c_ctor"
                             },
                             "fmtf": {
@@ -999,6 +1000,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
+                                "api": "capsule",
                                 "intent": "ctor"
                             },
                             "params": [],
@@ -1049,7 +1051,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "4",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_ctor_shadow_scalar",
+                                "stmt0": "c_ctor_shadow_scalar_capsule",
                                 "stmt1": "c_ctor"
                             },
                             "fmtf": {
@@ -2632,6 +2634,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
+                                        "api": "capsule",
                                         "intent": "ctor"
                                     },
                                     "params": [],
@@ -2686,7 +2689,7 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "c_ctor_shadow_scalar",
+                                        "stmt0": "c_ctor_shadow_scalar_capsule",
                                         "stmt1": "c_ctor"
                                     },
                                     "fmtf": {
@@ -3414,6 +3417,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
+                                        "api": "capsule",
                                         "intent": "ctor"
                                     },
                                     "params": [],
@@ -3468,7 +3472,7 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "c_ctor_shadow_scalar",
+                                        "stmt0": "c_ctor_shadow_scalar_capsule",
                                         "stmt1": "c_ctor"
                                     },
                                     "fmtf": {

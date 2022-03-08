@@ -23,8 +23,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 {

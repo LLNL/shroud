@@ -53,8 +53,8 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine xxx_tes_names_defaultctor(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -102,9 +102,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function names_defaultctor() &
             result(SHT_rv)

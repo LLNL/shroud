@@ -39,7 +39,7 @@ PY_Shape_tp_del (PY_Shape *self)
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capsule)+intent(ctor)
 // Exact:     py_default
 static int
 PY_Shape_tp_init(

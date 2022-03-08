@@ -71,8 +71,8 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_vector_int_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
@@ -159,8 +159,8 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_vector_double_ctor(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
@@ -261,9 +261,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function vector_int_ctor() &
             result(SHT_rv)
@@ -367,9 +367,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function vector_double_ctor() &
             result(SHT_rv)

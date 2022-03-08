@@ -71,8 +71,8 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_class2_ctor(SHT_rv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -191,9 +191,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function class2_ctor() &
             result(SHT_rv)

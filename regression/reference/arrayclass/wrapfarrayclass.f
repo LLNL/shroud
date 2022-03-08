@@ -84,8 +84,8 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Attrs:     +intent(ctor)
-        ! Requested: c_ctor_shadow_scalar
+        ! Attrs:     +api(capsule)+intent(ctor)
+        ! Requested: c_ctor_shadow_scalar_capsule
         ! Match:     c_ctor
         subroutine c_arraywrapper_ctor(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
@@ -539,9 +539,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function arraywrapper_ctor() &
             result(SHT_rv)

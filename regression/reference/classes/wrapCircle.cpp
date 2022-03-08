@@ -22,8 +22,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void CLA_Circle_ctor(CLA_Circle * SHC_rv)
 {

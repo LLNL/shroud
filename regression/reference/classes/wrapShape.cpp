@@ -22,8 +22,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {

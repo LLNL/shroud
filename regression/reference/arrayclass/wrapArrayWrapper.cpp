@@ -22,8 +22,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 {

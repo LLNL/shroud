@@ -146,8 +146,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(ctor)
-    ! Requested: c_ctor_shadow_scalar
+    ! Attrs:     +api(capsule)+intent(ctor)
+    ! Requested: c_ctor_shadow_scalar_capsule
     ! Match:     c_ctor
     ! start c_class1_ctor_default
     interface
@@ -162,8 +162,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(ctor)
-    ! Requested: c_ctor_shadow_scalar
+    ! Attrs:     +api(capsule)+intent(ctor)
+    ! Requested: c_ctor_shadow_scalar_capsule
     ! Match:     c_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
@@ -550,8 +550,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +intent(ctor)
-    ! Requested: c_ctor_shadow_scalar
+    ! Attrs:     +api(capsule)+intent(ctor)
+    ! Requested: c_ctor_shadow_scalar_capsule
     ! Match:     c_ctor
     interface
         subroutine c_shape_ctor(SHT_rv) &
@@ -584,8 +584,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +intent(ctor)
-    ! Requested: c_ctor_shadow_scalar
+    ! Attrs:     +api(capsule)+intent(ctor)
+    ! Requested: c_ctor_shadow_scalar_capsule
     ! Match:     c_ctor
     interface
         subroutine c_circle_ctor(SHT_rv) &
@@ -838,9 +838,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     ! start class1_ctor_default
     function class1_ctor_default() &
@@ -854,9 +854,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
@@ -1329,9 +1329,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function shape_ctor() &
             result(SHT_rv)
@@ -1387,9 +1387,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
+    ! Attrs:     +api(capsule)+intent(ctor)
     ! Exact:     c_ctor
     function circle_ctor() &
             result(SHT_rv)

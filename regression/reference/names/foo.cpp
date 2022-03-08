@@ -22,8 +22,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 {

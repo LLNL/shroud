@@ -26,8 +26,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {

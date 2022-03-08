@@ -22,8 +22,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  structAsClass
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
+// Attrs:     +api(capsule)+intent(ctor)
+// Requested: c_ctor_shadow_scalar_capsule
 // Match:     c_ctor
 void TEM_structAsClass_int_ctor(TEM_structAsClass_int * SHC_rv)
 {
