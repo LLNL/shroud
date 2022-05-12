@@ -246,6 +246,17 @@ C_line_length
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
 
+C_shadow_result
+  If *true*, the api for the function result will be set to *capptr*,
+  otherwise it will be set to *capsule*.  In both cases, the result is
+  passed from Fortran to the C api as an additional argument. With
+  *C_shadow_result* true, a pointer to the capsule is returned as the
+  function result.  If *false*, the C wrapper is a ``void`` function.
+  *capptr* acts more like C library functions such as ``strcpy`` which
+  return a pointer to the result. *capsule* makes for a simpler
+  Fortran wrapper implementation since the function result is not used
+  since it is identical to the result argument.
+
 class_baseclass
   Used to define a baseclass for a struct for *wrap_struct_as=class*".
   The baseclase must already be defined earlier in the YAML file.
@@ -875,6 +886,12 @@ F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
     It defaults to *SHT_rv*  (Shroud temporary return value).
+
+F_result_ptr
+    The name of the variable used with api *capptr* for the
+    function result for arguments which create a shadow type.
+    Defaults to ``SHT_prv``, pointer to return value.
+    Used by option *C_shadow_result*.
 
 F_string_result_as_arg
     The name of the output argument.

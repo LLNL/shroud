@@ -4,6 +4,7 @@ root
     ctor
       shadow
         scalar
+          capptr -- c_ctor_shadow_scalar_capptr
           capsule -- c_ctor_shadow_scalar_capsule
     dtor -- c_dtor
     function -- c_function
@@ -27,10 +28,13 @@ root
         ** -- c_function_native_*/&/**
       shadow
         &
+          capptr -- c_function_shadow_*/&_capptr
           capsule -- c_function_shadow_*/&_capsule
         *
+          capptr -- c_function_shadow_*/&_capptr
           capsule -- c_function_shadow_*/&_capsule
         scalar
+          capptr -- c_function_shadow_scalar_capptr
           capsule -- c_function_shadow_scalar_capsule
       string
         & -- c_function_string_scalar/*/&
@@ -206,6 +210,7 @@ root
     ctor
       shadow
         scalar
+          capptr -- f_ctor_shadow_scalar_capptr
           capsule -- f_ctor_shadow_scalar_capsule
     dtor -- f_dtor
     function -- f_function
@@ -246,10 +251,13 @@ root
         ** -- f_function_native_**
       shadow
         &
+          capptr -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
         *
+          capptr -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
         scalar
+          capptr -- f_function_shadow_scalar/*/&_capptr
           capsule -- f_function_shadow_scalar/*/&_capsule
       string
         &
@@ -341,6 +349,7 @@ root
       function
         cdesc -- f_mixin_function_cdesc
         shadow
+          capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
       in
         array
@@ -395,6 +404,30 @@ root
         scalar
           buf -- f_setter_string_scalar_buf
     subroutine -- f_subroutine
+c_ctor_shadow_scalar_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_module_line: '{f_c_module_line}'
+  f_result_decl:
+  - type(C_PTR) {F_result_ptr}
+  f_result_var: '{F_result_ptr}'
+  intent: ctor
+  name: c_ctor_shadow_scalar_capptr
+  owner: caller
+  ret:
+  - return {c_var};
 c_ctor_shadow_scalar_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -719,6 +752,30 @@ c_function_native_*_scalar:
   intent: function
   name: c_function_native_*_scalar
   owner: library
+c_function_shadow_&_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_local_var: pointer
+  cxx_local_var: result
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_module_line: '{f_c_module_line}'
+  f_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_&_capptr
+  owner: library
+  post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  ret:
+  - return {c_var};
 c_function_shadow_&_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -735,6 +792,30 @@ c_function_shadow_&_capsule:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   return_type: void
+c_function_shadow_*_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_local_var: pointer
+  cxx_local_var: result
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_module_line: '{f_c_module_line}'
+  f_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_*_capptr
+  owner: library
+  post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  ret:
+  - return {c_var};
 c_function_shadow_*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -751,6 +832,33 @@ c_function_shadow_*_capsule:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   return_type: void
+c_function_shadow_scalar_capptr:
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_local_var: pointer
+  cxx_local_var: pointer
+  f_arg_decl:
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_module_line: '{f_c_module_line}'
+  f_result_decl:
+  - 'type(C_PTR) :: {F_result_ptr}'
+  f_result_var: '{F_result_ptr}'
+  intent: function
+  name: c_function_shadow_scalar_capptr
+  owner: caller
+  post_call:
+  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  pre_call:
+  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  ret:
+  - return {c_var};
+  return_type: '{c_type} *'
 c_function_shadow_scalar_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
@@ -2746,6 +2854,19 @@ f_XXXin_string_scalar:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   temps:
   - len
+f_ctor_shadow_scalar_capptr:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  c_result_var: '{F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: ctor
+  name: f_ctor_shadow_scalar_capptr
+  need_wrapper: true
 f_ctor_shadow_scalar_capsule:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
@@ -3038,6 +3159,19 @@ f_function_native_*_raw:
 f_function_native_*_scalar:
   intent: function
   name: f_function_native_*_scalar
+f_function_shadow_&_capptr:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  c_result_var: '{F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: function
+  name: f_function_shadow_&_capptr
+  need_wrapper: true
 f_function_shadow_&_capsule:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
@@ -3046,6 +3180,19 @@ f_function_shadow_&_capsule:
   intent: function
   name: f_function_shadow_&_capsule
   need_wrapper: true
+f_function_shadow_*_capptr:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  c_result_var: '{F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: function
+  name: f_function_shadow_*_capptr
+  need_wrapper: true
 f_function_shadow_*_capsule:
   arg_c_call:
   - '{f_var}%{F_derived_member}'
@@ -3053,6 +3200,19 @@ f_function_shadow_*_capsule:
   - '{f_type} :: {f_var}'
   intent: function
   name: f_function_shadow_*_capsule
+  need_wrapper: true
+f_function_shadow_scalar_capptr:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  c_result_var: '{F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: function
+  name: f_function_shadow_scalar_capptr
   need_wrapper: true
 f_function_shadow_scalar_capsule:
   arg_c_call:
@@ -3686,6 +3846,19 @@ f_mixin_function_cdesc:
   need_wrapper: true
   temps:
   - cdesc
+f_mixin_function_shadow_capptr:
+  arg_c_call:
+  - '{f_var}%{F_derived_member}'
+  arg_decl:
+  - '{f_type} :: {f_var}'
+  - 'type(C_PTR) :: {F_result_ptr}'
+  c_result_var: '{F_result_ptr}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  intent: mixin
+  name: f_mixin_function_shadow_capptr
+  need_wrapper: true
 f_mixin_function_shadow_capsule:
   arg_c_call:
   - '{f_var}%{F_derived_member}'

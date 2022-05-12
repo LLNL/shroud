@@ -133,7 +133,10 @@ class VerifyAttrs(object):
         if ast.typemap is None:
             print("XXXXXX typemap is None")
         if ast.typemap.sgroup == "shadow":
-            ast.metaattrs["api"] = "capsule"
+            if options.C_shadow_result:
+                ast.metaattrs["api"] = "capptr"
+            else:
+                ast.metaattrs["api"] = "capsule"
         if ast.is_ctor():
             ast.metaattrs["intent"] = "ctor"
         elif ast.is_dtor():
