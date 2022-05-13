@@ -13,7 +13,7 @@ Structs and Classes
     another level of indirection.
     --- David Wheeler
 
-Classes are wrapped by a shadow derived-type with methods implemented
+Classes are wrapped by a derived-type with methods implemented
 as type-bound procedures in Fortran and an extension type in Python.
 
 
@@ -21,9 +21,12 @@ Class
 -----
 
 Each class in the input file will create a struct which acts as a
-shadow class for the C++ class.  A pointer to an instance is saved in
-the shadow class. This pointer is then passed down to the C++ routines
-to be used as the *this* instance.
+container for the C++ class.  Shroud referes to this
+as a capsule, inspired by the Python capsule object.  A pointer to an
+instance is saved in the capsule along with memory management
+information. A pointer to the capsule is passed down to the C wrapper
+which passes the address of the instance to the C++ routines to be
+used as the *this* instance.
 
 Using the tutorial as an example, a simple class is defined in the C++
 header as:
@@ -49,10 +52,10 @@ Fortran
 ^^^^^^^
 
 The Fortran interface will create two derived types.  The first is
-used to interact with the C wrapper and uses ``bind(C)``. The C
-wrapper creates a corresponding struct.  It contains a pointer to an
-instance of the class and index used to release the instance.
-The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
+used to interact with the C wrapper via the capsule and uses
+``bind(C)``. It contains a pointer to an instance of the class and
+index used to release the instance.  The ``idtor`` argument is
+described in :ref:`MemoryManagementAnchor`.
 
 :file:`wrapfclasses.f`
 
@@ -69,7 +72,7 @@ The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
    :start-after: start struct CLA_Class1
    :end-before: end struct CLA_Class1
 
-The capsule is added to the Fortran shadow class.  This derived type
+The capsule is added to a Fortran shadow class.  This derived type
 can contain type-bound procedures and may not use the ``bind(C)``
 attribute.
 
@@ -87,7 +90,12 @@ in by the function.  The function will return a ``type(C_PTR)`` which
 contains the address of the *F_capsule_data_type* argument.  The
 interface/prototype for the C wrapper function allows it to be used in
 expressions similar to the way that ``strcpy`` returns its destination
-argument.
+argument.  The option *C_shadow_result* can be set to *False* to change
+the function to return `void` instead.
+
+C++ functions which return `const` pointers will not create a `const`
+C wrapper. This is because the C wapper will return a pointer to the
+capsule and not the instance.
 
 A generic interface with the same name as the class is created to call
 the constructors for the class.  The constructor will initialize the
@@ -99,7 +107,7 @@ Fortran derived type.
     var = class1()       ! Allocate C++ class instance.
 
 When the constructor is wrapped the destructor should also be wrapper or
-some other method is provided to release the memory.
+some other method should be provided to release the memory.
 
 Some other type-bound precedures are created to allow the user
 to get and set the address of the C++ memory directly.

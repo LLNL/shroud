@@ -1189,6 +1189,12 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, as_scalar=True, params=None, continuation=True
             )
+        elif result_typemap.sgroup == "shadow":
+            # The const does not apply to the capsule.
+            fmt_func.C_return_type = ast.gen_arg_as_c(
+                name=None, params=None, continuation=True,
+                remove_const=True
+            )
         else:
             fmt_func.C_return_type = ast.gen_arg_as_c(
                 name=None, params=None, continuation=True
