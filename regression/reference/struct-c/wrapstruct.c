@@ -87,23 +87,25 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // start STR_create__cstruct_as_class
-void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
+STR_Cstruct_as_class * STR_create__cstruct_as_class(
+    STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.create__cstruct_as_class
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end function.create__cstruct_as_class
 }
 // end STR_create__cstruct_as_class
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
@@ -114,13 +116,14 @@ void STR_create__cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void STR_create__cstruct_as_class_args(int x, int y,
+STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.create__cstruct_as_class_args
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end function.create__cstruct_as_class_args
 }
 
@@ -146,8 +149,8 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  int x +value
 // Attrs:     +intent(in)
@@ -163,13 +166,14 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void STR_create__cstruct_as_subclass_args(int x, int y, int z,
-    STR_Cstruct_as_subclass * SHC_rv)
+STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
+    int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
     // splicer begin function.create__cstruct_as_subclass_args
     Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,
         y, z);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end function.create__cstruct_as_subclass_args
 }

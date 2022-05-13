@@ -22,14 +22,15 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  static Singleton & getReference
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_&_capsule
-void CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_&_capptr
+CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
 {
     // splicer begin class.Singleton.method.get_reference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
     SHC_rv->addr = &SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end class.Singleton.method.get_reference
 }
 

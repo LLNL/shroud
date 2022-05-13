@@ -2,7 +2,7 @@ Read yaml names.yaml
 Close testnames_types.yaml
 Close wraptestnames_ns0_inner.cc
 class Names
-C Names(void) +name(defaultctor)  +api(capsule)+intent(ctor)
+C Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
 C void method1(void)  +intent(subroutine)
 C void method2(void)  +intent(subroutine)
 Close foo.h
@@ -79,10 +79,10 @@ C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subr
 C-interface int UseImplWorker(void)  +intent(function)
 C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
 class Names
-Fortran Names(void) +name(defaultctor)  +api(capsule)+intent(ctor)
+Fortran Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
 Fortran void method1(void)  +intent(subroutine)
 Fortran void method2(void)  +intent(subroutine)
-C-interface Names(void) +name(defaultctor)  +api(capsule)+intent(ctor)
+C-interface Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
 C-interface void method1(void)  +intent(subroutine)
 C-interface void method2(void)  +intent(subroutine)
 Close wrapftestnames_ns0_inner.F

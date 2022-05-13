@@ -1,7 +1,7 @@
 Read yaml arrayclass.yaml
 Close arrayclass_types.yaml
 class ArrayWrapper
-C ArrayWrapper(void)  +api(capsule)+intent(ctor)
+C ArrayWrapper(void)  +api(capptr)+intent(ctor)
 C void setSize(int size +value)  +intent(subroutine)
 C int getSize(void) const  +intent(function)
 C void fillSize(int & size +intent(out))  +intent(subroutine)
@@ -29,7 +29,7 @@ C double sumArray(void)  +intent(function)
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 class ArrayWrapper
-Fortran ArrayWrapper(void)  +api(capsule)+intent(ctor)
+Fortran ArrayWrapper(void)  +api(capptr)+intent(ctor)
 Fortran void setSize(int size +value)  +intent(subroutine)
 Fortran int getSize(void) const  +intent(function)
 Fortran void fillSize(int & size +intent(out))  +intent(subroutine)
@@ -46,7 +46,7 @@ Fortran void fetchVoidPtr(void * * array +intent(out))  +intent(subroutine)
 Fortran void fetchVoidRef(void * & array +intent(out))  +intent(subroutine)
 Fortran bool checkPtr(void * array +value)  +intent(function)
 Fortran double sumArray(void)  +intent(function)
-C-interface ArrayWrapper(void)  +api(capsule)+intent(ctor)
+C-interface ArrayWrapper(void)  +api(capptr)+intent(ctor)
 C-interface void setSize(int size +value)  +intent(subroutine)
 C-interface int getSize(void) const  +intent(function)
 C-interface void fillSize(int & size +intent(out))  +intent(subroutine)

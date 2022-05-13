@@ -63,7 +63,8 @@ void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
-void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv);
+GEN_StructAsClass * GEN_create_struct_as_class(
+    GEN_StructAsClass * SHC_rv);
 
 long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew);
 

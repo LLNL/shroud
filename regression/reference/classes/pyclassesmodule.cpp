@@ -160,7 +160,7 @@ PY_useclass(
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"
@@ -185,7 +185,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_&
 static char PY_getClassReference__doc__[] =
 "documentation"

@@ -378,14 +378,16 @@ void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 
 // ----------------------------------------
 // Function:  StructAsClass * CreateStructAsClass
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
-void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv)
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
+GEN_StructAsClass * GEN_create_struct_as_class(
+    GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.create_struct_as_class
     StructAsClass * SHCXX_rv = CreateStructAsClass();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end function.create_struct_as_class
 }
 

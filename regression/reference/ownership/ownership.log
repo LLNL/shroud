@@ -23,8 +23,8 @@ C int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatabl
 C int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)  +capsule+deref(pointer)+intent(function)
 C int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)  +api(cdesc)+capsule+deref(pointer)+intent(function)
 C void createClassStatic(int flag +value)  +intent(subroutine)
-C Class1 * getClassStatic(void) +owner(library)  +api(capsule)+intent(function)
-C Class1 * getClassNew(int flag +value) +owner(caller)  +api(capsule)+intent(function)
+C Class1 * getClassStatic(void) +owner(library)  +api(capptr)+intent(function)
+C Class1 * getClassNew(int flag +value) +owner(caller)  +api(capptr)+intent(function)
 Close wrapownership.h
 Close wrapownership.cpp
 class Class1
@@ -40,8 +40,8 @@ Fortran int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(l
 Fortran int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)  +capsule+deref(pointer)+intent(function)
 Fortran int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)  +capsule+deref(pointer)+intent(function)
 Fortran void createClassStatic(int flag +value)  +intent(subroutine)
-Fortran Class1 * getClassStatic(void) +owner(library)  +api(capsule)+intent(function)
-Fortran Class1 * getClassNew(int flag +value) +owner(caller)  +api(capsule)+intent(function)
+Fortran Class1 * getClassStatic(void) +owner(library)  +api(capptr)+intent(function)
+Fortran Class1 * getClassNew(int flag +value) +owner(caller)  +api(capptr)+intent(function)
 C-interface int * ReturnIntPtrRaw(void) +deref(raw)  +deref(raw)+intent(function)
 C-interface int * ReturnIntPtrScalar(void) +deref(scalar)  +deref(scalar)+intent(function)
 C-interface int * ReturnIntPtrPointer(void) +deref(pointer)  +deref(pointer)+intent(function)
@@ -60,8 +60,8 @@ C-interface int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(
 C-interface int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)  +capsule+deref(pointer)+intent(function)
 C-interface int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)  +api(cdesc)+capsule+deref(pointer)+intent(function)
 C-interface void createClassStatic(int flag +value)  +intent(subroutine)
-C-interface Class1 * getClassStatic(void) +owner(library)  +api(capsule)+intent(function)
-C-interface Class1 * getClassNew(int flag +value) +owner(caller)  +api(capsule)+intent(function)
+C-interface Class1 * getClassStatic(void) +owner(library)  +api(capptr)+intent(function)
+C-interface Class1 * getClassNew(int flag +value) +owner(caller)  +api(capptr)+intent(function)
 Close wrapfownership.f
 Close utilownership.cpp
 Close typesownership.h

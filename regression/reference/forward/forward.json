@@ -64,7 +64,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "api": "capsule",
+                                "api": "capptr",
                                 "intent": "ctor"
                             },
                             "params": [],
@@ -88,17 +88,18 @@
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_ctor",
                             "C_prototype": "FOR_Class2 * SHC_rv",
-                            "C_return_type": "void",
+                            "C_return_type": "FOR_Class2 *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_class2_ctor",
                             "F_C_name": "c_class2_ctor",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
+                            "F_C_result_clause": "\fresult(SHT_prv)",
+                            "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
                             "F_name_generic": "class2",
                             "F_name_impl": "class2_ctor",
+                            "F_result": "SHT_prv",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "LUA_name": "ctor",
@@ -122,10 +123,11 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_ctor_shadow_scalar_capsule",
-                                "stmt1": "c_ctor_shadow_scalar_capsule"
+                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                "stmt1": "c_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
+                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "forward::Class2",
@@ -135,10 +137,10 @@
                                 "f_type": "type(class2)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor_shadow_scalar_capsule",
-                                "stmt1": "f_ctor_shadow_scalar_capsule",
-                                "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                "stmtc1": "c_ctor_shadow_scalar_capsule"
+                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                             },
                             "fmtl": {
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",

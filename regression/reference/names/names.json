@@ -2640,7 +2640,7 @@
                                         "name": "defaultctor"
                                     },
                                     "metaattrs": {
-                                        "api": "capsule",
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "params": [],
@@ -2663,17 +2663,18 @@
                                 "zz_fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_defaultctor",
                                     "C_prototype": "TES_ns0_Names * SHC_rv",
-                                    "C_return_type": "void",
+                                    "C_return_type": "TES_ns0_Names *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "xxx_tes_names_defaultctor",
                                     "F_C_name": "xxx_tes_names_defaultctor",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "defaultctor",
                                     "F_name_generic": "FNames",
                                     "F_name_impl": "names_defaultctor",
+                                    "F_result": "SHT_prv",
                                     "F_result_clause": "\fresult(SHT_rv)",
                                     "F_subprogram": "function",
                                     "PY_name_impl": "PY_Names_tp_init",
@@ -2695,10 +2696,11 @@
                                         "cxx_var": "ARG_rv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "c_ctor_shadow_scalar_capsule",
-                                        "stmt1": "c_ctor_shadow_scalar_capsule"
+                                        "stmt0": "c_ctor_shadow_scalar_capptr",
+                                        "stmt1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
+                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
@@ -2708,10 +2710,10 @@
                                         "f_type": "type(FNames)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "f_ctor_shadow_scalar_capsule",
-                                        "stmt1": "f_ctor_shadow_scalar_capsule",
-                                        "stmtc0": "c_ctor_shadow_scalar_capsule",
-                                        "stmtc1": "c_ctor_shadow_scalar_capsule"
+                                        "stmt0": "f_ctor_shadow_scalar_capptr",
+                                        "stmt1": "f_ctor_shadow_scalar_capptr",
+                                        "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                        "stmtc1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtpy": {
                                         "PY_build_format": "O",

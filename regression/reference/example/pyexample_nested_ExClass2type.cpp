@@ -151,7 +151,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
@@ -331,7 +331,7 @@ PP_GetNameLength(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in

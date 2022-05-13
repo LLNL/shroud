@@ -22,14 +22,15 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +api(capsule)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capsule
-void CLA_Shape_ctor(CLA_Shape * SHC_rv)
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
+CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {
     // splicer begin class.Shape.method.ctor
     classes::Shape *SHCXX_rv = new classes::Shape();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    return SHC_rv;
     // splicer end class.Shape.method.ctor
 }
 

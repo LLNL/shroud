@@ -84,14 +84,17 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Attrs:     +api(capsule)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capsule
-        subroutine c_arraywrapper_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_arraywrapper_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
+            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_arraywrapper_ctor
+            type(C_PTR) SHT_prv
+        end function c_arraywrapper_ctor
 
         ! ----------------------------------------
         ! Function:  void setSize
@@ -538,15 +541,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function arraywrapper_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(arraywrapper) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.ArrayWrapper.method.ctor
-        call c_arraywrapper_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_arraywrapper_ctor(SHT_rv%cxxmem)
         ! splicer end class.ArrayWrapper.method.ctor
     end function arraywrapper_ctor
 

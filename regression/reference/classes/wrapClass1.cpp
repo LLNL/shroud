@@ -62,35 +62,37 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capsule)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capsule
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
 // start CLA_Class1_ctor_default
-void CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    return SHC_rv;
     // splicer end class.Class1.method.ctor_default
 }
 // end CLA_Class1_ctor_default
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capsule)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capsule
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
 // start CLA_Class1_ctor_flag
-void CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    return SHC_rv;
     // splicer end class.Class1.method.ctor_flag
 }
 // end CLA_Class1_ctor_flag
@@ -166,7 +168,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
  */
 // ----------------------------------------
 // Function:  void returnThis
-// Attrs:     +api(capsule)+intent(subroutine)
+// Attrs:     +api(capptr)+intent(subroutine)
 // Exact:     c_subroutine
 // start CLA_Class1_return_this
 void CLA_Class1_return_this(CLA_Class1 * self)
@@ -185,8 +187,8 @@ void CLA_Class1_return_this(CLA_Class1 * self)
  */
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +intent(in)
@@ -197,8 +199,8 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Requested: c_in_bool_scalar
 // Match:     c_default
 // start CLA_Class1_return_this_buffer
-void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
-    bool flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
+    char * name, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -208,6 +210,7 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
         flag);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer
 }
 // end CLA_Class1_return_this_buffer
@@ -218,8 +221,8 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
  */
 // ----------------------------------------
 // Function:  Class1 * returnThisBuffer
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Attrs:     +api(buf)+intent(in)
@@ -230,7 +233,7 @@ void CLA_Class1_return_this_buffer(CLA_Class1 * self, char * name,
 // Requested: c_in_bool_scalar
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
-void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
+CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
@@ -241,6 +244,7 @@ void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
         flag);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer_bufferify
 }
 // end CLA_Class1_return_this_buffer_bufferify
@@ -251,10 +255,11 @@ void CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
  */
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +api(capsule)+intent(function)
-// Exact:     c_function_shadow_*_capsule
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
 // start CLA_Class1_getclass3
-void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
+    CLA_Class1 * SHC_rv)
 {
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
@@ -262,6 +267,7 @@ void CLA_Class1_getclass3(const CLA_Class1 * self, CLA_Class1 * SHC_rv)
     classes::Class1 * SHCXX_rv = SH_this->getclass3();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end class.Class1.method.getclass3
 }
 // end CLA_Class1_getclass3

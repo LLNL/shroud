@@ -30,10 +30,10 @@ C Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +char
 C Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))  +api(buf)+deref(pointer)+intent(function)
 C Cstruct_list * get_global_struct_list(void)  +deref(pointer)+intent(function)
 C Cstruct_list * get_global_struct_list(void)  +api(buf)+deref(pointer)+intent(function)
-C Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capsule)+intent(function)
-C Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capsule)+intent(function)
+C Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capptr)+intent(function)
+C Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capptr)+intent(function)
 C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
-C Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capsule)+intent(function)
+C Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capptr)+intent(function)
 Close wrapstruct.h
 Close wrapstruct.c
 class Cstruct1
@@ -73,10 +73,10 @@ Fortran Cstruct1 returnStructByValue(int i +value, double d +value)  +intent(fun
 Fortran Cstruct1 * returnStructPtr1(int i +value, double d +value)  +deref(pointer)+intent(function)
 Fortran Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))  +deref(pointer)+intent(function)
 Fortran Cstruct_list * get_global_struct_list(void)  +deref(pointer)+intent(function)
-Fortran Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capsule)+intent(function)
-Fortran Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capsule)+intent(function)
+Fortran Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capptr)+intent(function)
+Fortran Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capptr)+intent(function)
 Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
-Fortran Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capsule)+intent(function)
+Fortran Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capptr)+intent(function)
 C-interface int passStructByValue(Cstruct1 arg +value)  +intent(function)
 C-interface int passStruct1(const Cstruct1 * arg)  +intent(function)
 C-interface int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))  +intent(function)
@@ -91,10 +91,10 @@ C-interface Cstruct1 * returnStructPtr2(int i +value, double d +value, char * ou
 C-interface Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))  +api(buf)+deref(pointer)+intent(function)
 C-interface Cstruct_list * get_global_struct_list(void)  +deref(pointer)+intent(function)
 C-interface Cstruct_list * get_global_struct_list(void)  +api(buf)+deref(pointer)+intent(function)
-C-interface Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capsule)+intent(function)
-C-interface Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capsule)+intent(function)
+C-interface Cstruct_as_class * Create_Cstruct_as_class(void)  +api(capptr)+intent(function)
+C-interface Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)  +api(capptr)+intent(function)
 C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
-C-interface Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capsule)+intent(function)
+C-interface Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)  +api(capptr)+intent(function)
 Close wrapfstruct.f
 Close utilstruct.c
 Close typesstruct.h

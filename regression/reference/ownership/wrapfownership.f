@@ -388,32 +388,37 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
-        ! Attrs:     +api(capsule)+intent(function)
-        ! Exact:     c_function_shadow_*_capsule
-        subroutine c_get_class_static(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(function)
+        ! Exact:     c_function_shadow_*_capptr
+        function c_get_class_static(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="OWN_get_class_static")
+            use iso_c_binding, only : C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_static
+            type(C_PTR) :: SHT_prv
+        end function c_get_class_static
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
-        ! Attrs:     +api(capsule)+intent(function)
-        ! Exact:     c_function_shadow_*_capsule
+        ! Attrs:     +api(capptr)+intent(function)
+        ! Exact:     c_function_shadow_*_capptr
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_get_class_new(flag, SHT_rv) &
+        function c_get_class_new(flag, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="OWN_get_class_new")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_new
+            type(C_PTR) :: SHT_prv
+        end function c_get_class_new
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -628,26 +633,28 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getClassStatic +owner(library)
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Requested: f_function_shadow_*_capsule_library
-    ! Match:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Requested: f_function_shadow_*_capptr_library
+    ! Match:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     function get_class_static() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_static
-        call c_get_class_static(SHT_rv%cxxmem)
+        SHT_prv = c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
     end function get_class_static
 
     ! ----------------------------------------
     ! Function:  Class1 * getClassNew +owner(caller)
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Requested: f_function_shadow_*_capsule_caller
-    ! Match:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Requested: f_function_shadow_*_capptr_caller
+    ! Match:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -662,11 +669,12 @@ contains
     !<
     function get_class_new(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_new
-        call c_get_class_new(flag, SHT_rv%cxxmem)
+        SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
 

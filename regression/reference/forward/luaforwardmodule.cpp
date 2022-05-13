@@ -36,7 +36,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 // Class2(void)
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 static int l_Class2_ctor(lua_State *L)

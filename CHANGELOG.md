@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   directives to add header file and ``USE`` statements into generated files.
   These are collated with headers and ``USE`` statements added by typemaps,
   statements and helpers to avoid duplication.
-- Allow typemaps with *base* as *integer* and *real*to be added to the
+- Allow typemaps with *base* as *integer* and *real* to be added to the
   input YAML file. This allows kind parameters to be defined via splicers
   then used by a typemap.  i.e. ``integer(INDEXTYPE)``
 - Added option *C_shadow_result*. If true, the C wrapper will return a pointer

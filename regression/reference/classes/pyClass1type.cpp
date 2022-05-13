@@ -39,7 +39,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 static int
 PY_Class1_tp_init_default(
@@ -60,7 +60,7 @@ PY_Class1_tp_init_default(
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value
@@ -177,7 +177,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"

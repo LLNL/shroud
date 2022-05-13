@@ -597,7 +597,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
             ),
-            C_shadow_result=False, #True,               # Return pointer to capsule
+            C_shadow_result=True,               # Return pointer to capsule
             C_var_capsule_template="C{c_var}",  # capsule argument
             C_var_context_template="D{c_var}",  # context argument
 #            C_var_len_template="N{c_var}",  # argument for result of len(arg)

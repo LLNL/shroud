@@ -2,7 +2,7 @@ Read yaml forward.yaml
 Close forward_types.yaml
 class Class3
 class Class2
-C Class2(void)  +api(capsule)+intent(ctor)
+C Class2(void)  +api(capptr)+intent(ctor)
 C ~Class2(void)  +intent(dtor)
 C void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
 C void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
@@ -13,11 +13,11 @@ Close wrapforward.h
 Close wrapforward.cpp
 class Class3
 class Class2
-Fortran Class2(void)  +api(capsule)+intent(ctor)
+Fortran Class2(void)  +api(capptr)+intent(ctor)
 Fortran ~Class2(void)  +intent(dtor)
 Fortran void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
 Fortran void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)
-C-interface Class2(void)  +api(capsule)+intent(ctor)
+C-interface Class2(void)  +api(capptr)+intent(ctor)
 C-interface ~Class2(void)  +intent(dtor)
 C-interface void func1(tutorial::Class1 * arg +intent(in))  +intent(subroutine)
 C-interface void acceptClass3(Class3 * arg +intent(in))  +intent(subroutine)

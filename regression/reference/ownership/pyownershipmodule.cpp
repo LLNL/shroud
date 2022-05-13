@@ -356,7 +356,7 @@ PY_createClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_*
 static char PY_getClassStatic__doc__[] =
 "documentation"
@@ -381,7 +381,7 @@ PY_getClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     py_function_shadow_*
 // ----------------------------------------
 // Argument:  int flag +value

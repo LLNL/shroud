@@ -26,12 +26,12 @@ extern "C" {
 // ExClass1(const string * name)
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 // ----------------------------------------
@@ -273,7 +273,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 // ExClass2(const string * name +len_trim(trim_name))
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 // ----------------------------------------
@@ -407,7 +407,7 @@ static int l_example_nested_ExClass2_get_name_length(lua_State *L)
 // ExClass1 * get_class1(const ExClass1 * in)
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Attrs:     +api(capsule)+intent(function)
+// Attrs:     +api(capptr)+intent(function)
 // Exact:     lua_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in

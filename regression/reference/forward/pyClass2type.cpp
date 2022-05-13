@@ -39,7 +39,7 @@ PY_Class2_tp_del (PY_Class2 *self)
 
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 static int
 PY_Class2_tp_init(

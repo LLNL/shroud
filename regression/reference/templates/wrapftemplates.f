@@ -133,14 +133,17 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +api(capsule)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capsule
-        subroutine c_structasclass_int_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_structasclass_int_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_int_ctor")
+            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_structasclass_int_ctor
+            type(C_PTR) SHT_prv
+        end function c_structasclass_int_ctor
 
         ! ----------------------------------------
         ! Function:  void set_npts
@@ -215,14 +218,17 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +api(capsule)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capsule
-        subroutine c_structasclass_double_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_structasclass_double_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="TEM_structAsClass_double_ctor")
+            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_structasclass_double_ctor
+            type(C_PTR) SHT_prv
+        end function c_structasclass_double_ctor
 
         ! ----------------------------------------
         ! Function:  void set_npts
@@ -297,14 +303,17 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
-        ! Attrs:     +api(capsule)+intent(function)
-        ! Exact:     c_function_shadow_scalar_capsule
-        subroutine c_return_user_type(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(function)
+        ! Exact:     c_function_shadow_scalar_capptr
+        function c_return_user_type(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="TEM_return_user_type")
+            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_return_user_type
+            type(C_PTR) :: SHT_prv
+        end function c_return_user_type
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
@@ -484,15 +493,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function structasclass_int_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(structasclass_int) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.structAsClass_int.method.ctor
-        call c_structasclass_int_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_structasclass_int_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_int.method.ctor
     end function structasclass_int_ctor
 
@@ -608,15 +619,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function structasclass_double_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(structasclass_double) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.structAsClass_double.method.ctor
-        call c_structasclass_double_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_structasclass_double_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_double.method.ctor
     end function structasclass_double_ctor
 
@@ -732,15 +745,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_scalar_capptr
     function return_user_type() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(user_int) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.return_user_type
-        call c_return_user_type(SHT_rv%cxxmem)
+        SHT_prv = c_return_user_type(SHT_rv%cxxmem)
         ! splicer end function.return_user_type
     end function return_user_type
 

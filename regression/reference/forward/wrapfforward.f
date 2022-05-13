@@ -71,14 +71,17 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Attrs:     +api(capsule)+intent(ctor)
-        ! Exact:     c_ctor_shadow_scalar_capsule
-        subroutine c_class2_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_class2_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
+            use iso_c_binding, only : C_PTR
             import :: FOR_SHROUD_capsule_data
             implicit none
             type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class2_ctor
+            type(C_PTR) SHT_prv
+        end function c_class2_ctor
 
         ! ----------------------------------------
         ! Function:  ~Class2
@@ -190,15 +193,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function class2_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class2) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class2.method.ctor
-        call c_class2_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_class2_ctor(SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 

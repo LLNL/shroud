@@ -69,9 +69,9 @@ void OWN_return_int_ptr_dim_default_new_bufferify(
 
 void OWN_create_class_static(int flag);
 
-void OWN_get_class_static(OWN_Class1 * SHC_rv);
+OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv);
 
-void OWN_get_class_new(int flag, OWN_Class1 * SHC_rv);
+OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv);
 
 #ifdef __cplusplus
 }

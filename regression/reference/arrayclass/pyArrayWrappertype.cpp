@@ -43,7 +43,7 @@ PY_ArrayWrapper_tp_del (PY_ArrayWrapper *self)
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Attrs:     +api(capsule)+intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 static int
 PY_ArrayWrapper_tp_init(

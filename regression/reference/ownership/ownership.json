@@ -3604,7 +3604,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [],
@@ -3627,17 +3627,18 @@
                 "zz_fmtdict": {
                     "C_name": "OWN_get_class_static",
                     "C_prototype": "OWN_Class1 * SHC_rv",
-                    "C_return_type": "void",
+                    "C_return_type": "OWN_Class1 *",
                     "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_get_class_static",
                     "F_C_name": "c_get_class_static",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_prv)",
+                    "F_C_subprogram": "function",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_class_static",
                     "F_name_generic": "get_class_static",
                     "F_name_impl": "get_class_static",
+                    "F_result": "SHT_prv",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassStatic",
@@ -3658,10 +3659,11 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_shadow_*_capsule",
-                        "stmt1": "c_function_shadow_*_capsule"
+                        "stmt0": "c_function_shadow_*_capptr",
+                        "stmt1": "c_function_shadow_*_capptr"
                     },
                     "fmtf": {
+                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
@@ -3671,10 +3673,10 @@
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_shadow_*_capsule_library",
-                        "stmt1": "f_function_shadow_*_capsule",
-                        "stmtc0": "c_function_shadow_*_capsule",
-                        "stmtc1": "c_function_shadow_*_capsule"
+                        "stmt0": "f_function_shadow_*_capptr_library",
+                        "stmt1": "f_function_shadow_*_capptr",
+                        "stmtc0": "c_function_shadow_*_capptr",
+                        "stmtc1": "c_function_shadow_*_capptr"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -3714,7 +3716,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [
@@ -3812,17 +3814,18 @@
                     "C_call_list": "flag",
                     "C_name": "OWN_get_class_new",
                     "C_prototype": "int flag,\t OWN_Class1 * SHC_rv",
-                    "C_return_type": "void",
+                    "C_return_type": "OWN_Class1 *",
                     "F_C_arguments": "flag,\t SHT_rv",
                     "F_C_call": "c_get_class_new",
                     "F_C_name": "c_get_class_new",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_prv)",
+                    "F_C_subprogram": "function",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                     "F_arguments": "flag",
                     "F_name_function": "get_class_new",
                     "F_name_generic": "get_class_new",
                     "F_name_impl": "get_class_new",
+                    "F_result": "SHT_prv",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getClassNew",
@@ -3843,10 +3846,11 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_shadow_*_capsule",
-                        "stmt1": "c_function_shadow_*_capsule"
+                        "stmt0": "c_function_shadow_*_capptr",
+                        "stmt1": "c_function_shadow_*_capptr"
                     },
                     "fmtf": {
+                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "Class1",
@@ -3856,10 +3860,10 @@
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_shadow_*_capsule_caller",
-                        "stmt1": "f_function_shadow_*_capsule",
-                        "stmtc0": "c_function_shadow_*_capsule",
-                        "stmtc1": "c_function_shadow_*_capsule"
+                        "stmt0": "f_function_shadow_*_capptr_caller",
+                        "stmt1": "f_function_shadow_*_capptr",
+                        "stmtc0": "c_function_shadow_*_capptr",
+                        "stmtc1": "c_function_shadow_*_capptr"
                     },
                     "fmtpy": {
                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",

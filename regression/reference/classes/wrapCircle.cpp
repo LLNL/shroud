@@ -22,14 +22,15 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +api(capsule)+intent(ctor)
-// Exact:     c_ctor_shadow_scalar_capsule
-void CLA_Circle_ctor(CLA_Circle * SHC_rv)
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
+CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
 {
     // splicer begin class.Circle.method.ctor
     classes::Circle *SHCXX_rv = new classes::Circle();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
+    return SHC_rv;
     // splicer end class.Circle.method.ctor
 }
 

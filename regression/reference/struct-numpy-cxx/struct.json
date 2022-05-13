@@ -2002,7 +2002,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [],
@@ -2036,7 +2036,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [
@@ -2153,7 +2153,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [

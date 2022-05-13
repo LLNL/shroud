@@ -6099,7 +6099,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "api": "capsule",
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [],
@@ -6121,17 +6121,18 @@
                 "zz_fmtdict": {
                     "C_name": "GEN_create_struct_as_class",
                     "C_prototype": "GEN_StructAsClass * SHC_rv",
-                    "C_return_type": "void",
+                    "C_return_type": "GEN_StructAsClass *",
                     "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_create_struct_as_class",
                     "F_C_name": "c_create_struct_as_class",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_prv)",
+                    "F_C_subprogram": "function",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "create_struct_as_class",
                     "F_name_generic": "StructAsClass",
                     "F_name_impl": "create_struct_as_class",
+                    "F_result": "SHT_prv",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "StructAsClass * SHCXX_rv",
@@ -6151,10 +6152,11 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_shadow_*_capsule",
-                        "stmt1": "c_function_shadow_*_capsule"
+                        "stmt0": "c_function_shadow_*_capptr",
+                        "stmt1": "c_function_shadow_*_capptr"
                     },
                     "fmtf": {
+                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "StructAsClass",
@@ -6164,10 +6166,10 @@
                         "f_type": "type(structasclass)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_shadow_*_capsule",
-                        "stmt1": "f_function_shadow_*_capsule",
-                        "stmtc0": "c_function_shadow_*_capsule",
-                        "stmtc1": "c_function_shadow_*_capsule"
+                        "stmt0": "f_function_shadow_*_capptr",
+                        "stmt1": "f_function_shadow_*_capptr",
+                        "stmtc0": "c_function_shadow_*_capptr",
+                        "stmtc1": "c_function_shadow_*_capptr"
                     }
                 }
             },

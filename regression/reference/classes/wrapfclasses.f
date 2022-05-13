@@ -146,23 +146,26 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     ! start c_class1_ctor_default
     interface
-        subroutine c_class1_ctor_default(SHT_rv) &
+        function c_class1_ctor_default(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Class1_ctor_default")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class1_ctor_default
+            type(C_PTR) SHT_prv
+        end function c_class1_ctor_default
     end interface
     ! end c_class1_ctor_default
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -170,14 +173,16 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_ctor_flag
     interface
-        subroutine c_class1_ctor_flag(flag, SHT_rv) &
+        function c_class1_ctor_flag(flag, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Class1_ctor_flag")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class1_ctor_flag
+            type(C_PTR) SHT_prv
+        end function c_class1_ctor_flag
     end interface
     ! end c_class1_ctor_flag
 
@@ -243,8 +248,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void returnThis
-    ! Attrs:     +api(capsule)+intent(subroutine)
-    ! Requested: c_subroutine_void_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_capptr
     ! Match:     c_subroutine
     ! start c_class1_return_this
     interface
@@ -259,8 +264,8 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
@@ -272,23 +277,25 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_return_this_buffer
     interface
-        subroutine c_class1_return_this_buffer(self, name, flag, SHT_rv) &
+        function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Class1_return_this_buffer")
-            use iso_c_binding, only : C_BOOL, C_CHAR
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class1_return_this_buffer
+            type(C_PTR) :: SHT_prv
+        end function c_class1_return_this_buffer
     end interface
     ! end c_class1_return_this_buffer
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +api(buf)+intent(in)
@@ -300,10 +307,11 @@ module classes_mod
     ! Match:     c_default
     ! start c_class1_return_this_buffer_bufferify
     interface
-        subroutine c_class1_return_this_buffer_bufferify(self, name, &
+        function c_class1_return_this_buffer_bufferify(self, name, &
                 SHT_name_len, flag, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Class1_return_this_buffer_bufferify")
-            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
@@ -311,23 +319,27 @@ module classes_mod
             integer(C_INT), value, intent(IN) :: SHT_name_len
             logical(C_BOOL), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class1_return_this_buffer_bufferify
+            type(C_PTR) :: SHT_prv
+        end function c_class1_return_this_buffer_bufferify
     end interface
     ! end c_class1_return_this_buffer_bufferify
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     ! start c_class1_getclass3
     interface
-        subroutine c_class1_getclass3(self, SHT_rv) &
+        function c_class1_getclass3(self, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Class1_getclass3")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class1_getclass3
+            type(C_PTR) :: SHT_prv
+        end function c_class1_getclass3
     end interface
     ! end c_class1_getclass3
 
@@ -528,15 +540,18 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     interface
-        subroutine c_singleton_get_reference(SHT_rv) &
+        function c_singleton_get_reference(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Singleton_get_reference")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_singleton_get_reference
+            type(C_PTR) :: SHT_prv
+        end function c_singleton_get_reference
     end interface
 
     ! splicer begin class.Singleton.additional_interfaces
@@ -544,15 +559,18 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     interface
-        subroutine c_shape_ctor(SHT_rv) &
+        function c_shape_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Shape_ctor")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_shape_ctor
+            type(C_PTR) SHT_prv
+        end function c_shape_ctor
     end interface
 
     ! ----------------------------------------
@@ -577,15 +595,18 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     interface
-        subroutine c_circle_ctor(SHT_rv) &
+        function c_circle_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_Circle_ctor")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_circle_ctor
+            type(C_PTR) SHT_prv
+        end function c_circle_ctor
     end interface
 
     ! splicer begin class.Circle.additional_interfaces
@@ -655,74 +676,88 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     interface
-        subroutine c_getclass2(SHT_rv) &
+        function c_getclass2(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_getclass2")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_getclass2
+            type(C_PTR) :: SHT_prv
+        end function c_getclass2
     end interface
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     interface
-        subroutine c_getclass3(SHT_rv) &
+        function c_getclass3(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_getclass3")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_getclass3
+            type(C_PTR) :: SHT_prv
+        end function c_getclass3
     end interface
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     interface
-        subroutine c_get_const_class_reference(SHT_rv) &
+        function c_get_const_class_reference(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_get_const_class_reference")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_const_class_reference
+            type(C_PTR) :: SHT_prv
+        end function c_get_const_class_reference
     end interface
 
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     interface
-        subroutine c_get_class_reference(SHT_rv) &
+        function c_get_class_reference(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_get_class_reference")
+            use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_reference
+            type(C_PTR) :: SHT_prv
+        end function c_get_class_reference
     end interface
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_get_class_copy(flag, SHT_rv) &
+        function c_get_class_copy(flag, SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="CLA_get_class_copy")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_copy
+            type(C_PTR) :: SHT_prv
+        end function c_get_class_copy
     end interface
 
     ! ----------------------------------------
@@ -826,26 +861,28 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.ctor_default
-        call c_class1_ctor_default(SHT_rv%cxxmem)
+        SHT_prv = c_class1_ctor_default(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_default
     end function class1_ctor_default
     ! end class1_ctor_default
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -857,11 +894,12 @@ contains
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.ctor_flag
-        call c_class1_ctor_flag(flag, SHT_rv%cxxmem)
+        SHT_prv = c_class1_ctor_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_flag
     end function class1_ctor_flag
     ! end class1_ctor_flag
@@ -941,9 +979,9 @@ contains
     ! Generated by return_this
     ! ----------------------------------------
     ! Function:  void returnThis
-    ! Attrs:     +api(capsule)+intent(subroutine)
+    ! Attrs:     +api(capptr)+intent(subroutine)
     ! Exact:     f_subroutine
-    ! Attrs:     +api(capsule)+intent(subroutine)
+    ! Attrs:     +api(capptr)+intent(subroutine)
     ! Exact:     c_subroutine
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
@@ -961,10 +999,10 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
@@ -986,28 +1024,29 @@ contains
     ! start class1_return_this_buffer
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_BOOL, C_INT, C_PTR
         class(class1) :: obj
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.return_this_buffer
         integer(C_INT) SHT_name_len
         logical(C_BOOL) SH_flag
         SHT_name_len = len(name, kind=C_INT)
         SH_flag = flag  ! coerce to C_BOOL
-        call c_class1_return_this_buffer_bufferify(obj%cxxmem, name, &
-            SHT_name_len, SH_flag, SHT_rv%cxxmem)
+        SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
+            name, SHT_name_len, SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     !>
     !! \brief Test const method
     !!
@@ -1015,10 +1054,12 @@ contains
     ! start class1_getclass3
     function class1_getclass3(obj) &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         class(class1) :: obj
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.getclass3
-        call c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
+        SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.getclass3
     end function class1_getclass3
     ! end class1_getclass3
@@ -1270,15 +1311,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_&_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_&_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     function singleton_get_reference() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(singleton) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Singleton.method.get_reference
-        call c_singleton_get_reference(SHT_rv%cxxmem)
+        SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
 
@@ -1310,15 +1353,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function shape_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(shape) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Shape.method.ctor
-        call c_shape_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_shape_ctor(SHT_rv%cxxmem)
         ! splicer end class.Shape.method.ctor
     end function shape_ctor
 
@@ -1368,15 +1413,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     f_ctor_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(ctor)
-    ! Exact:     c_ctor_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function circle_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(circle) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Circle.method.ctor
-        call c_circle_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_circle_ctor(SHT_rv%cxxmem)
         ! splicer end class.Circle.method.ctor
     end function circle_ctor
 
@@ -1436,66 +1483,74 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     function getclass2() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.getclass2
-        call c_getclass2(SHT_rv%cxxmem)
+        SHT_prv = c_getclass2(SHT_rv%cxxmem)
         ! splicer end function.getclass2
     end function getclass2
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_*_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_*_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     function getclass3() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.getclass3
-        call c_getclass3(SHT_rv%cxxmem)
+        SHT_prv = c_getclass3(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_&_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_&_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     function get_const_class_reference() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_const_class_reference
-        call c_get_const_class_reference(SHT_rv%cxxmem)
+        SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)
         ! splicer end function.get_const_class_reference
     end function get_const_class_reference
 
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_&_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_&_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_&_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_&_capptr
     function get_class_reference() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_reference
-        call c_get_class_reference(SHT_rv%cxxmem)
+        SHT_prv = c_get_class_reference(SHT_rv%cxxmem)
         ! splicer end function.get_class_reference
     end function get_class_reference
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     f_function_shadow_scalar_capsule
-    ! Attrs:     +api(capsule)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capsule
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -1510,11 +1565,12 @@ contains
     !<
     function get_class_copy(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_copy
-        call c_get_class_copy(flag, SHT_rv%cxxmem)
+        SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 
