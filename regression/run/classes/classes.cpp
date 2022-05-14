@@ -54,6 +54,18 @@ Class1 * getclass3()
     return const_cast<Class1 *>(global_class1);
 }
 
+const Class1 * getclass2_void()
+{
+    last_function_called = "getclass2_void";
+    return global_class1;
+}
+
+Class1 * getclass3_void()
+{
+    last_function_called = "getclass3_void";
+    return const_cast<Class1 *>(global_class1);
+}
+
 const Class1 &getConstClassReference()
 {
     last_function_called = "getConstClassReference";

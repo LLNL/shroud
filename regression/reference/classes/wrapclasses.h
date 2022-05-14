@@ -38,6 +38,10 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv);
 
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv);
 
+void CLA_getclass2_void(CLA_Class1 * SHC_rv);
+
+void CLA_getclass3_void(CLA_Class1 * SHC_rv);
+
 CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv);
 
 CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv);

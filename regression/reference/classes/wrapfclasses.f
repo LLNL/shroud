@@ -707,6 +707,32 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const Class1 * getclass2_void
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
+    interface
+        subroutine c_getclass2_void(SHT_rv) &
+                bind(C, name="CLA_getclass2_void")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_getclass2_void
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 * getclass3_void
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
+    interface
+        subroutine c_getclass3_void(SHT_rv) &
+                bind(C, name="CLA_getclass3_void")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_getclass3_void
+    end interface
+
+    ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_&_capptr
@@ -1487,6 +1513,10 @@ contains
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_*_capptr
+    !>
+    !! \brief Return const class pointer
+    !!
+    !<
     function getclass2() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1503,6 +1533,10 @@ contains
     ! Exact:     f_function_shadow_*_capptr
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_*_capptr
+    !>
+    !! \brief Return class pointer
+    !!
+    !<
     function getclass3() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1512,6 +1546,42 @@ contains
         SHT_prv = c_getclass3(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
+
+    ! ----------------------------------------
+    ! Function:  const Class1 * getclass2_void
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
+    !>
+    !! \brief C wrapper will return void
+    !!
+    !<
+    function getclass2_void() &
+            result(SHT_rv)
+        type(class1) :: SHT_rv
+        ! splicer begin function.getclass2_void
+        call c_getclass2_void(SHT_rv%cxxmem)
+        ! splicer end function.getclass2_void
+    end function getclass2_void
+
+    ! ----------------------------------------
+    ! Function:  Class1 * getclass3_void
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     f_function_shadow_*_capsule
+    ! Attrs:     +api(capsule)+intent(function)
+    ! Exact:     c_function_shadow_*_capsule
+    !>
+    !! \brief C wrapper will return void
+    !!
+    !<
+    function getclass3_void() &
+            result(SHT_rv)
+        type(class1) :: SHT_rv
+        ! splicer begin function.getclass3_void
+        call c_getclass3_void(SHT_rv%cxxmem)
+        ! splicer end function.getclass3_void
+    end function getclass3_void
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference

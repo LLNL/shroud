@@ -107,20 +107,43 @@ declarations:
     wrap_lua: False
   
 # parser does not recognized **
-#- decl: void getclass(const Class1 **arg1) 
+#- decl: void getclass(const Class1 **arg1)
+#  doxygen:
+#    brief:  Return class pointer via argument
 #  options:
 #    wrap_python: False
 #    wrap_lua: False
   
 - decl: const Class1 *getclass2() 
+  doxygen:
+    brief:  Return const class pointer
   options:
     # const issues with python
     wrap_python: False
     wrap_lua: False
   
 - decl: Class1 *getclass3() 
+  doxygen:
+    brief:  Return class pointer
   options:
 #  wrap_python: False
+    wrap_lua: False
+
+- decl: const Class1 *getclass2_void() 
+  doxygen:
+    brief:  C wrapper will return void
+  options:
+    C_shadow_result: False
+    # const issues with python
+    wrap_python: False
+    wrap_lua: False
+  
+- decl: Class1 *getclass3_void() 
+  doxygen:
+    brief:  C wrapper will return void
+  options:
+    C_shadow_result: False
+    wrap_python: False
     wrap_lua: False
 
 - decl: const Class1 &getConstClassReference()

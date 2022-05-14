@@ -103,6 +103,10 @@ int CLA_useclass(CLA_Class1 * arg)
     // splicer end function.useclass
 }
 
+/**
+ * \brief Return const class pointer
+ *
+ */
 // ----------------------------------------
 // Function:  const Class1 * getclass2
 // Attrs:     +api(capptr)+intent(function)
@@ -117,6 +121,10 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
     // splicer end function.getclass2
 }
 
+/**
+ * \brief Return class pointer
+ *
+ */
 // ----------------------------------------
 // Function:  Class1 * getclass3
 // Attrs:     +api(capptr)+intent(function)
@@ -129,6 +137,40 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getclass3
+}
+
+/**
+ * \brief C wrapper will return void
+ *
+ */
+// ----------------------------------------
+// Function:  const Class1 * getclass2_void
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
+void CLA_getclass2_void(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getclass2_void
+    const classes::Class1 * SHCXX_rv = classes::getclass2_void();
+    SHC_rv->addr = const_cast<classes::Class1 *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    // splicer end function.getclass2_void
+}
+
+/**
+ * \brief C wrapper will return void
+ *
+ */
+// ----------------------------------------
+// Function:  Class1 * getclass3_void
+// Attrs:     +api(capsule)+intent(function)
+// Exact:     c_function_shadow_*_capsule
+void CLA_getclass3_void(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getclass3_void
+    classes::Class1 * SHCXX_rv = classes::getclass3_void();
+    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->idtor = 0;
+    // splicer end function.getclass3_void
 }
 
 // ----------------------------------------

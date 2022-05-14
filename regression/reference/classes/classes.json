@@ -3937,6 +3937,9 @@
                 },
                 "decl": "const Class1 *getclass2()",
                 "declgen": "const Class1 * getclass2(void)",
+                "doxygen": {
+                    "brief": "Return const class pointer"
+                },
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -4024,6 +4027,9 @@
                 },
                 "decl": "Class1 *getclass3()",
                 "declgen": "Class1 * getclass3(void)",
+                "doxygen": {
+                    "brief": "Return class pointer"
+                },
                 "options": {
                     "wrap_lua": false
                 },
@@ -4115,6 +4121,185 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "name": "getclass2_void",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "capsule",
+                        "intent": "function"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "classes::Class1"
+                },
+                "decl": "const Class1 *getclass2_void()",
+                "declgen": "const Class1 * getclass2_void(void)",
+                "doxygen": {
+                    "brief": "C wrapper will return void"
+                },
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "CLA_getclass2_void",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_getclass2_void",
+                    "F_C_name": "c_getclass2_void",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "getclass2_void",
+                    "F_name_generic": "getclass2_void",
+                    "F_name_impl": "getclass2_void",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "const classes::Class1 * SHCXX_rv",
+                    "function_name": "getclass2_void",
+                    "underscore_name": "getclass2_void"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_type": "CLA_Class1",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(SHCXX_rv)",
+                        "cxx_type": "classes::Class1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_shadow_*_capsule",
+                        "stmt1": "c_function_shadow_*_capsule"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
+                        "f_intent": "OUT",
+                        "f_type": "type(class1)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_shadow_*_capsule",
+                        "stmt1": "f_function_shadow_*_capsule",
+                        "stmtc0": "c_function_shadow_*_capsule",
+                        "stmtc1": "c_function_shadow_*_capsule"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "32 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "getclass3_void",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "capsule",
+                        "intent": "function"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "classes::Class1"
+                },
+                "decl": "Class1 *getclass3_void()",
+                "declgen": "Class1 * getclass3_void(void)",
+                "doxygen": {
+                    "brief": "C wrapper will return void"
+                },
+                "options": {
+                    "C_shadow_result": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "CLA_getclass3_void",
+                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
+                    "F_C_call": "c_getclass3_void",
+                    "F_C_name": "c_getclass3_void",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "getclass3_void",
+                    "F_name_generic": "getclass3_void",
+                    "F_name_impl": "getclass3_void",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
+                    "function_name": "getclass3_void",
+                    "underscore_name": "getclass3_void"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "CLA_Class1",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_other",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "classes::Class1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "c_function_shadow_*_capsule",
+                        "stmt1": "c_function_shadow_*_capsule"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "classes::Class1",
+                        "f_c_module_line": "--import--:CLA_SHROUD_capsule_data",
+                        "f_capsule_data_type": "CLA_SHROUD_capsule_data",
+                        "f_intent": "OUT",
+                        "f_type": "type(class1)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_function_shadow_*_capsule",
+                        "stmt1": "f_function_shadow_*_capsule",
+                        "stmtc0": "c_function_shadow_*_capsule",
+                        "stmtc1": "c_function_shadow_*_capsule"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "33 ****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
                         "name": "getConstClassReference",
                         "pointer": [
                             {
@@ -4199,7 +4384,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -4308,7 +4493,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassCopy",
@@ -4447,7 +4632,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -4590,7 +4775,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -4698,11 +4883,11 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "37",
+                "_PTR_F_C_index": "39",
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -4822,8 +5007,8 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
-                "_PTR_C_CXX_index": "36",
+                "<FUNCTION>": "39 ****************************************",
+                "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {

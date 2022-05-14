@@ -166,6 +166,10 @@ static char PY_getclass3__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Return class pointer
+ *
+ */
 static PyObject *
 PY_getclass3(
   PyObject *SHROUD_UNUSED(self),
