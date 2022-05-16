@@ -657,7 +657,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_in_shadow_&",
-                                    "stmt1": "c_in_shadow"
+                                    "stmt1": "c_in_shadow_&"
                                 },
                                 "fmtf": {
                                     "F_C_var": "obj2",
@@ -671,7 +671,7 @@
                                     "stmt0": "f_in_shadow_&",
                                     "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_&",
-                                    "stmtc1": "c_in_shadow"
+                                    "stmtc1": "c_in_shadow_&"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -3670,7 +3670,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_shadow_scalar",
-                            "stmt1": "c_in_shadow"
+                            "stmt1": "c_in_shadow_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3684,7 +3684,7 @@
                             "stmt0": "f_in_shadow_scalar",
                             "stmt1": "f_in_shadow",
                             "stmtc0": "c_in_shadow_scalar",
-                            "stmtc1": "c_in_shadow"
+                            "stmtc1": "c_in_shadow_scalar"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -3799,7 +3799,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_shadow_*",
-                            "stmt1": "c_in_shadow"
+                            "stmt1": "c_in_shadow_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -3813,7 +3813,7 @@
                             "stmt0": "f_in_shadow_*",
                             "stmt1": "f_in_shadow",
                             "stmtc0": "c_in_shadow_*",
-                            "stmtc1": "c_in_shadow"
+                            "stmtc1": "c_in_shadow_*"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",

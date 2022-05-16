@@ -1975,9 +1975,22 @@ fc_statements = [
         need_wrapper=True,
     ),
     dict(
-        # c_in_shadow
-        # c_inout_shadow
-        name="c_in/inout_shadow",
+        # c_in_shadow_scalar
+        # c_inout_shadow_scalar  # XXX inout by value makes no sense.
+        name="c_in/inout_shadow_scalar",
+        mixin=["c_mixin_shadow"],
+        cxx_local_var="pointer",
+        pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
+        ],
+    ),
+    dict(
+        # c_in_shadow_*
+        # c_in_shadow_&
+        # c_inout_shadow_*
+        # c_inout_shadow_&
+        name="c_in/inout_shadow_*/&",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         pre_call=[

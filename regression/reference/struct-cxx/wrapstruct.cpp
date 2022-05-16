@@ -435,8 +435,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_*
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_*
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum

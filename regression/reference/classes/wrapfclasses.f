@@ -229,8 +229,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_&
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_&
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -641,8 +640,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_scalar
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_scalar
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
@@ -660,8 +658,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -983,8 +980,7 @@ contains
     ! Requested: f_in_shadow_&
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_&
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_&
     !>
     !! \brief Pass in reference to instance
     !!
@@ -1468,8 +1464,7 @@ contains
     ! Requested: f_in_shadow_scalar
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_scalar
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_scalar
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -1495,8 +1490,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

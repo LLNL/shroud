@@ -2506,7 +2506,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_shadow_*",
-                            "stmt1": "c_in_shadow"
+                            "stmt1": "c_in_shadow_*"
                         },
                         "fmtf": {
                             "F_C_var": "point",
@@ -2520,7 +2520,7 @@
                             "stmt0": "f_in_shadow_*",
                             "stmt1": "f_in_shadow",
                             "stmtc0": "c_in_shadow_*",
-                            "stmtc1": "c_in_shadow"
+                            "stmtc1": "c_in_shadow_*"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",

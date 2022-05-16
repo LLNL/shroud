@@ -103,8 +103,7 @@ module forward_mod
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -122,8 +121,7 @@ module forward_mod
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
             import :: FOR_SHROUD_capsule_data
@@ -232,8 +230,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
@@ -255,8 +252,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
         type(class3), intent(IN) :: arg

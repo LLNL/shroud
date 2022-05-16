@@ -300,7 +300,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_in_shadow_*",
-                                    "stmt1": "c_in_shadow"
+                                    "stmt1": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -314,7 +314,7 @@
                                     "stmt0": "f_in_shadow_*",
                                     "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
-                                    "stmtc1": "c_in_shadow"
+                                    "stmtc1": "c_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -455,7 +455,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt0": "c_in_shadow_*",
-                                    "stmt1": "c_in_shadow"
+                                    "stmt1": "c_in_shadow_*"
                                 },
                                 "fmtf": {
                                     "F_C_var": "arg",
@@ -469,7 +469,7 @@
                                     "stmt0": "f_in_shadow_*",
                                     "stmt1": "f_in_shadow",
                                     "stmtc0": "c_in_shadow_*",
-                                    "stmtc1": "c_in_shadow"
+                                    "stmtc1": "c_in_shadow_*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,

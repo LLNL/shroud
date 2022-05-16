@@ -42,8 +42,7 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // ----------------------------------------
 // Argument:  three::Class1 * c2
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);

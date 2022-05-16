@@ -72,8 +72,7 @@ int CLA_direction_func(int arg)
 // ----------------------------------------
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_scalar
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_scalar
 void CLA_pass_class_by_value(CLA_Class1 * arg)
 {
     // splicer begin function.pass_class_by_value
@@ -91,8 +90,7 @@ void CLA_pass_class_by_value(CLA_Class1 * arg)
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_*
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_*
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass

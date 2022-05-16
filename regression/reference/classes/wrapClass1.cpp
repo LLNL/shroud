@@ -146,8 +146,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_&
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_&
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {

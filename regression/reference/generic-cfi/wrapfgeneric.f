@@ -702,8 +702,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
@@ -730,8 +729,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
@@ -758,8 +756,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
@@ -1397,8 +1394,7 @@ contains
     ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
@@ -1433,8 +1429,7 @@ contains
     ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)

@@ -573,8 +573,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  const ExClass1 * in
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         function c_exclass2_get_class1(self, in, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
@@ -1734,8 +1733,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

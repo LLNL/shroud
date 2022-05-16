@@ -307,8 +307,7 @@ int AA_example_nested_ExClass2_get_name_length(
 // ----------------------------------------
 // Argument:  const ExClass1 * in
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_*
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv)

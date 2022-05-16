@@ -399,8 +399,7 @@ GEN_StructAsClass * GEN_create_struct_as_class(
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)
@@ -423,8 +422,7 @@ long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  int inew +value
 // Attrs:     +intent(in)
@@ -447,8 +445,7 @@ long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)

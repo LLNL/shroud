@@ -6147,7 +6147,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_shadow_*",
-                            "stmt1": "c_inout_shadow"
+                            "stmt1": "c_inout_shadow_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -6314,7 +6314,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_shadow_*",
-                            "stmt1": "c_inout_shadow"
+                            "stmt1": "c_inout_shadow_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -6328,7 +6328,7 @@
                             "stmt0": "f_inout_shadow_*",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_shadow_*",
-                            "stmtc1": "c_inout_shadow"
+                            "stmtc1": "c_inout_shadow_*"
                         }
                     },
                     "inew": {
@@ -6503,7 +6503,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_inout_shadow_*",
-                            "stmt1": "c_inout_shadow"
+                            "stmt1": "c_inout_shadow_*"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -6517,7 +6517,7 @@
                             "stmt0": "f_inout_shadow_*",
                             "stmt1": "f_default",
                             "stmtc0": "c_inout_shadow_*",
-                            "stmtc1": "c_inout_shadow"
+                            "stmtc1": "c_inout_shadow_*"
                         }
                     },
                     "inew": {

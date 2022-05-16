@@ -342,8 +342,7 @@ int TES_use_impl_worker_instantiation3(void)
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
-// Requested: c_in_shadow_*
-// Match:     c_in_shadow
+// Exact:     c_in_shadow_*
 int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum
