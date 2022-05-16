@@ -646,6 +646,9 @@ If the argument is ``const``, the default is ``in``.
 In Python, *intent(out)* arguments are not used as
 input arguments to the function but are returned as values.
 
+Internally, Shroud also assigns the values of *function*,
+*ctor* and *dtor*.
+
 len
 ^^^
 

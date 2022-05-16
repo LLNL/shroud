@@ -32,6 +32,19 @@ void test_class(void)
   assert(flag == 0 && "CLA_pass_class_by_value");
 }
 
+void test_class_by_value(void)
+{
+    CLA_Class1 obj0;
+    CLA_Class1_ctor_default(&obj0);
+
+    CLA_set_global_flag(0);
+    CLA_Class1_set_test(&obj0, 13);
+    CLA_pass_class_by_value(&obj0);
+    int iflag = CLA_get_global_flag();
+    assert(iflag == 13 && "passClassByValue");
+    CLA_Class1_delete(&obj0);
+}
+
 void test_class_setup(void)
 {
     int flag;
@@ -76,6 +89,7 @@ void test_class_void(void)
 int main(int argc, char *argv[])
 {
   test_class();
+  test_class_by_value();
   test_class_setup();
   test_class_func();
   test_class_void();

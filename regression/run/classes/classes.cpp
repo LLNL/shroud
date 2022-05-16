@@ -26,6 +26,7 @@ void passClassByValue(Class1 arg)
 {
     last_function_called = "passClassByValue";
     global_flag = arg.m_test;
+    arg.m_test += 10;  // No effect to caller since pass by value.
     return;
 }
 
