@@ -71,20 +71,23 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
-        subroutine c_vector_int_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_vector_int_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="TEM_vector_int_ctor")
+            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_vector_int_ctor
+            type(C_PTR) SHT_prv
+        end function c_vector_int_ctor
 
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -158,20 +161,23 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
-        subroutine c_vector_double_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_vector_double_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="TEM_vector_double_ctor")
+            use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_vector_double_ctor
+            type(C_PTR) SHT_prv
+        end function c_vector_double_ctor
 
         ! ----------------------------------------
         ! Function:  ~vector
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
             import :: TEM_SHROUD_capsule_data
@@ -259,15 +265,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function vector_int_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(vector_int) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_int.method.ctor
-        call c_vector_int_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.ctor
     end function vector_int_ctor
 
@@ -365,15 +373,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function vector_double_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(vector_double) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin namespace.std.class.vector_double.method.ctor
-        call c_vector_double_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.ctor
     end function vector_double_ctor
 

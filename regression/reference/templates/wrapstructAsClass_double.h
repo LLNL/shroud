@@ -28,7 +28,8 @@ extern "C" {
 // splicer begin class.structAsClass.C_declarations
 // splicer end class.structAsClass.C_declarations
 
-void TEM_structAsClass_double_ctor(TEM_structAsClass_double * SHC_rv);
+TEM_structAsClass_double * TEM_structAsClass_double_ctor(
+    TEM_structAsClass_double * SHC_rv);
 
 void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
     int n);

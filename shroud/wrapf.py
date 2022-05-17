@@ -1136,11 +1136,6 @@ rv = .false.
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
-        # ctor and dtor are not valid for bind(C) interfaces.
-        if sintent == "ctor":
-            sintent = "function"
-        elif sintent == "dtor":
-            sintent = "subroutine"
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
@@ -1169,6 +1164,10 @@ rv = .false.
             # Change a subroutine into function
             # or change the return type.
             fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+        if c_result_blk.f_result_var:
+            fmt_func.F_result = wformat(
+                c_result_blk.f_result_var, fmt_func)
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1256,9 +1255,6 @@ rv = .false.
                 for arg in c_result_blk.f_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
                 self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
-            elif c_result_blk.return_cptr:
-                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:
                 # Return type changed by user.
                 ntypemap = typemap.lookup_typemap(c_result_blk.return_type)
@@ -1351,6 +1347,9 @@ rv = .false.
             for arg in stmts_blk.arg_c_call:
                 append_format(arg_c_call, arg, fmt)
         elif stmts_blk.intent == "function":
+            # Functions do not pass arguments by default.
+            pass
+        elif stmts_blk.intent == "getter":
             # Functions do not pass arguments by default.
             pass
         else:
@@ -1612,18 +1611,14 @@ rv = .false.
             fmt_result.c_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
+            sintent = ast.metaattrs["intent"]
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]
-            if is_ctor:
-                f_stmts = ["f", sintent]
-                c_stmts = ["c", sintent]
-            else:
-                sintent = "function"
-                f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                           return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
-                           return_deref_attr]
+            f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
+                       return_deref_attr, ast.attrs["owner"]]
+            c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
+                       return_deref_attr]
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)
@@ -1858,8 +1853,7 @@ rv = .false.
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 
-            have_c_local_var = f_intent_blk.c_local_var
-            if have_c_local_var:
+            if f_intent_blk.c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 declare.append(
                     "{} {}".format(
@@ -1995,7 +1989,12 @@ rv = .false.
         elif f_result_blk.call:
             call_list = f_result_blk.call
         elif C_subprogram == "function":
-            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
+            if f_result_blk.c_result_var:
+                fmt_result.C_result = wformat(
+                    f_result_blk.c_result_var, fmt_result)
+                call_list = ["{C_result} = {F_C_call}({F_arg_c_call})"]
+            else:
+                call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
         else:
             call_list = ["call {F_C_call}({F_arg_c_call})"]
 

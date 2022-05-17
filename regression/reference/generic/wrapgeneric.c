@@ -424,15 +424,16 @@ void GEN_get_pointer_as_pointer_float2d_bufferify(
 
 // ----------------------------------------
 // Function:  StructAsClass * CreateStructAsClass
-// Attrs:     +intent(function)
-// Requested: c_function_shadow_*
-// Match:     c_function_shadow
-void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv)
+// Attrs:     +api(capptr)+intent(function)
+// Exact:     c_function_shadow_*_capptr
+GEN_StructAsClass * GEN_create_struct_as_class(
+    GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.create_struct_as_class
     StructAsClass * SHCXX_rv = CreateStructAsClass();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
+    return SHC_rv;
     // splicer end function.create_struct_as_class
 }
 
@@ -444,8 +445,7 @@ void GEN_create_struct_as_class(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)
@@ -468,8 +468,7 @@ long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  int inew +value
 // Attrs:     +intent(in)
@@ -492,8 +491,7 @@ long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
 // ----------------------------------------
 // Argument:  StructAsClass * arg
 // Attrs:     +intent(inout)
-// Requested: c_inout_shadow_*
-// Match:     c_inout_shadow
+// Exact:     c_inout_shadow_*
 // ----------------------------------------
 // Argument:  long inew +value
 // Attrs:     +intent(in)

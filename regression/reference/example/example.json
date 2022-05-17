@@ -33,6 +33,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "params": [],
@@ -56,17 +57,18 @@
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_ctor_0",
                                             "C_prototype": "AA_example_nested_ExClass1 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "SHT_rv",
                                             "F_C_call": "c_exclass1_ctor_0",
                                             "F_C_name": "c_exclass1_ctor_0",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
                                             "F_arguments": "",
                                             "F_name_function": "ctor_0",
                                             "F_name_generic": "exclass1",
                                             "F_name_impl": "exclass1_ctor_0",
+                                            "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
                                             "LUA_name": "ctor",
@@ -91,10 +93,11 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor"
+                                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                                "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
@@ -104,10 +107,10 @@
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor",
-                                                "stmt1": "f_ctor",
-                                                "stmtc0": "c_ctor",
-                                                "stmtc1": "c_ctor"
+                                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -154,6 +157,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "params": [
@@ -266,17 +270,18 @@
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "name,\t SHT_rv",
                                             "F_C_call": "c_exclass1_ctor_1_bufferify",
                                             "F_C_name": "c_exclass1_ctor_1",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
                                             "F_name_generic": "exclass1",
                                             "F_name_impl": "exclass1_ctor_1",
+                                            "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
@@ -299,10 +304,11 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor"
+                                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                                "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
@@ -312,10 +318,10 @@
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor",
-                                                "stmt1": "f_ctor",
-                                                "stmtc0": "c_ctor",
-                                                "stmtc1": "c_ctor"
+                                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -360,6 +366,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "params": [
@@ -444,12 +451,13 @@
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
                                             "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass1 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_name_generic": "exclass1",
+                                            "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1_bufferify",
@@ -467,8 +475,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "1",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor"
+                                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                                "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -519,6 +527,7 @@
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_exclass1_dtor",
                                             "F_C_name": "c_exclass1_dtor",
+                                            "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -2012,6 +2021,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "params": [
@@ -2125,17 +2135,18 @@
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_arguments": "name,\t SHT_rv",
                                             "F_C_call": "c_exclass2_ctor_bufferify",
                                             "F_C_name": "c_exclass2_ctor",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
                                             "F_name_generic": "exclass2",
                                             "F_name_impl": "exclass2_ctor",
+                                            "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
                                             "LUA_name": "ctor",
@@ -2159,10 +2170,11 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor"
+                                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                                "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
@@ -2172,10 +2184,10 @@
                                                 "f_type": "type(exclass2)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor",
-                                                "stmt1": "f_ctor",
-                                                "stmtc0": "c_ctor",
-                                                "stmtc1": "c_ctor"
+                                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
@@ -2220,6 +2232,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "ctor"
                                             },
                                             "params": [
@@ -2305,12 +2318,13 @@
                                             "C_call_list": "&SHCXX_name",
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
                                             "C_prototype": "char *name,\t int SHT_name_len,\t AA_example_nested_ExClass2 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_arguments": "name,\t SHT_name_len,\t SHT_rv",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_name_generic": "exclass2",
+                                            "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_bufferify",
@@ -2328,8 +2342,8 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "2",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor"
+                                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                                "stmt1": "c_ctor_shadow_scalar_capptr"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2379,6 +2393,7 @@
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_dtor",
                                             "F_C_name": "c_exclass2_dtor",
+                                            "F_C_result_clause": "",
                                             "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
@@ -3371,6 +3386,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "api": "capptr",
                                                 "intent": "function"
                                             },
                                             "params": [
@@ -3426,7 +3442,7 @@
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "c_in_shadow_*",
-                                                    "stmt1": "c_in_shadow"
+                                                    "stmt1": "c_in_shadow_*"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "in",
@@ -3440,7 +3456,7 @@
                                                     "stmt0": "f_in_shadow_*",
                                                     "stmt1": "f_in_shadow",
                                                     "stmtc0": "c_in_shadow_*",
-                                                    "stmtc1": "c_in_shadow"
+                                                    "stmtc1": "c_in_shadow_*"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -3486,17 +3502,18 @@
                                             "C_call_list": "SHCXX_in",
                                             "C_name": "AA_example_nested_ExClass2_get_class1",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHC_rv",
-                                            "C_return_type": "void",
+                                            "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_arguments": "self,\t in,\t SHT_rv",
                                             "F_C_call": "c_exclass2_get_class1",
                                             "F_C_name": "c_exclass2_get_class1",
-                                            "F_C_result_clause": "",
-                                            "F_C_subprogram": "subroutine",
+                                            "F_C_result_clause": "\fresult(SHT_prv)",
+                                            "F_C_subprogram": "function",
                                             "F_arg_c_call": "obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem",
                                             "F_arguments": "obj,\t in",
                                             "F_name_function": "get_class1",
                                             "F_name_generic": "get_class1",
                                             "F_name_impl": "exclass2_get_class1",
+                                            "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
                                             "LUA_name": "get_class1",
@@ -3523,10 +3540,11 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "c_function_shadow_*",
-                                                "stmt1": "c_function_shadow"
+                                                "stmt0": "c_function_shadow_*_capptr",
+                                                "stmt1": "c_function_shadow_*_capptr"
                                             },
                                             "fmtf": {
+                                                "C_result": "SHT_prv",
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
@@ -3536,10 +3554,10 @@
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_function_shadow_*",
-                                                "stmt1": "f_function_shadow",
-                                                "stmtc0": "c_function_shadow_*",
-                                                "stmtc1": "c_function_shadow"
+                                                "stmt0": "f_function_shadow_*_capptr",
+                                                "stmt1": "f_function_shadow_*_capptr",
+                                                "stmtc0": "c_function_shadow_*_capptr",
+                                                "stmtc1": "c_function_shadow_*_capptr"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<void *>(\tSHCXX_rv)",

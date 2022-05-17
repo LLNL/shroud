@@ -680,16 +680,18 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
-    ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     interface
-        subroutine c_create_struct_as_class(SHT_rv) &
+        function c_create_struct_as_class(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="GEN_create_struct_as_class")
+            use iso_c_binding, only : C_PTR
             import :: GEN_SHROUD_capsule_data
             implicit none
             type(GEN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_create_struct_as_class
+            type(C_PTR) :: SHT_prv
+        end function c_create_struct_as_class
     end interface
 
     ! ----------------------------------------
@@ -700,8 +702,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
@@ -728,8 +729,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
@@ -756,8 +756,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)
@@ -1366,17 +1365,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  StructAsClass * CreateStructAsClass
-    ! Attrs:     +intent(function)
-    ! Requested: f_function_shadow_*
-    ! Match:     f_function_shadow
-    ! Attrs:     +intent(function)
-    ! Requested: c_function_shadow_*
-    ! Match:     c_function_shadow
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     f_function_shadow_*_capptr
+    ! Attrs:     +api(capptr)+intent(function)
+    ! Exact:     c_function_shadow_*_capptr
     function create_struct_as_class() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(structasclass) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.create_struct_as_class
-        call c_create_struct_as_class(SHT_rv%cxxmem)
+        SHT_prv = c_create_struct_as_class(SHT_rv%cxxmem)
         ! splicer end function.create_struct_as_class
     end function create_struct_as_class
 
@@ -1395,8 +1394,7 @@ contains
     ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  int inew +value
     ! Attrs:     +intent(in)
@@ -1431,8 +1429,7 @@ contains
     ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     ! ----------------------------------------
     ! Argument:  long inew +value
     ! Attrs:     +intent(in)

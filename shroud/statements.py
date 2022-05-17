@@ -466,13 +466,14 @@ CStmts = util.Scope(
     ret=[],
     destructor_name=None,
     owner="library",
-    return_type=None, return_cptr=False,
+    return_type=None,
 
     c_arg_decl=None,
     f_c_arg_names=None,
     f_arg_decl=None,
 
     f_result_decl=None,
+    f_result_var=None,
     f_module=None,
     f_module_line=None,
     f_import=None,
@@ -487,6 +488,7 @@ FStmts = util.Scope(
     intent=None,
     c_helper="",
     c_local_var=None,
+    c_result_var=None,
     f_helper="",
     f_module=None,
     f_module_line=None,
@@ -572,6 +574,32 @@ fc_statements = [
         need_wrapper=True,
     ),
 
+    dict(
+        # Pass function result as a capsule argument from Fortran to C.
+        name="f_mixin_function_shadow_capsule",
+        arg_decl=[
+            "{f_type} :: {f_var}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        need_wrapper=True,
+    ),
+    dict(
+        # Pass function result as a capsule argument from Fortran to C.
+        name="f_mixin_function_shadow_capptr",
+        arg_decl=[
+            "{f_type} :: {f_var}",
+            "type(C_PTR) :: {F_result_ptr}",
+        ],
+        arg_c_call=[
+            "{f_var}%{F_derived_member}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        c_result_var="{F_result_ptr}",
+        need_wrapper=True,
+    ),
+    
     ##########
     # array
     dict(
@@ -1039,7 +1067,6 @@ fc_statements = [
             "{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};",
         ],
-        return_cptr=True,
     ),
     dict(
         name="f_function_native_*_cdesc_allocatable",
@@ -1201,7 +1228,10 @@ fc_statements = [
     
     dict(
         name="c_function_char_*",
-        return_cptr=True,
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # NULL terminate the input string.
@@ -1467,7 +1497,10 @@ fc_statements = [
         ret=[
             "return {c_var};",
         ],
-        return_cptr=True,
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         # No need to allocate a local copy since the string is copied
@@ -1942,9 +1975,28 @@ fc_statements = [
         need_wrapper=True,
     ),
     dict(
-        # c_in_shadow
-        # c_inout_shadow
-        name="c_in/inout_shadow",
+        # c_in_shadow_scalar
+        # c_inout_shadow_scalar  # XXX inout by value makes no sense.
+        name="c_in/inout_shadow_scalar",
+        mixin=["c_mixin_shadow"],
+        c_arg_decl=[
+            "{c_type} {c_var}",
+        ],
+        f_arg_decl=[
+            "type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}",
+        ],
+        cxx_local_var="pointer",
+        pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} =\t "
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};",
+        ],
+    ),
+    dict(
+        # c_in_shadow_*
+        # c_in_shadow_&
+        # c_inout_shadow_*
+        # c_inout_shadow_&
+        name="c_in/inout_shadow_*/&",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         pre_call=[
@@ -1952,9 +2004,12 @@ fc_statements = [
             "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
         ],
     ),
+
     # Return a C_capsule_data_type.
     dict(
-        name="c_function_shadow",
+        # c_function_shadow_*_capsule
+        # c_function_shadow_&_capsule
+        name="c_function_shadow_*/&_capsule",
         mixin=["c_mixin_shadow"],
         cxx_local_var="result",
         post_call=[
@@ -1964,7 +2019,7 @@ fc_statements = [
         return_type="void",
     ),
     dict(
-        name="c_function_shadow_scalar",
+        name="c_function_shadow_scalar_capsule",
         # Return a instance by value.
         # Create memory in pre_call so it will survive the return.
         # owner="caller" sets idtor flag to release the memory.
@@ -1982,22 +2037,58 @@ fc_statements = [
         ],
         return_type="void",
     ),
+    
+    # Return a C_capsule_data_type.
     dict(
-        name="f_function_shadow",
-        arg_decl=[
-            "{f_type} :: {f_var}",
+        # c_function_shadow_*_capptr
+        # c_function_shadow_&_capptr
+        name="c_function_shadow_*/&_capptr",
+        mixin=["c_mixin_shadow", "c_function_shadow_*_capsule"],
+        c_local_var="pointer",
+        return_type=None,
+        ret=[
+            "return {c_var};",
         ],
-        arg_c_call=[
-            "{f_var}%{F_derived_member}",
+        f_result_var="{F_result_ptr}",
+        f_result_decl=[
+            "type(C_PTR) :: {F_result_ptr}",
         ],
-        need_wrapper=True,
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="c_function_shadow_scalar_capptr",
+        mixin=["c_mixin_shadow", "c_function_shadow_scalar_capsule"],
+        return_type="{c_type} *",
+        ret=[
+            "return {c_var};",
+        ],
+        f_result_var="{F_result_ptr}",
+        f_result_decl=[
+            "type(C_PTR) :: {F_result_ptr}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    
+    dict(
+        # f_function_shadow_scalar_capsule
+        # f_function_shadow_*_capsule
+        # f_function_shadow_&_capsule
+        name="f_function_shadow_scalar/*/&_capsule",
+        mixin=["f_mixin_function_shadow_capsule"],
+    ),
+    dict(
+        # f_function_shadow_scalar_capptr
+        # f_function_shadow_*_capptr
+        # f_function_shadow_&_capptr
+        name="f_function_shadow_scalar/*/&_capptr",
+        mixin=["f_mixin_function_shadow_capptr"],
     ),
     dict(
         name="f_dtor",
         arg_c_call=[],
     ),
     dict(
-        name="c_ctor",
+        name="c_ctor_shadow_scalar_capsule",
         mixin=["c_mixin_shadow"],
         cxx_local_var="pointer",
         call=[
@@ -2009,8 +2100,25 @@ fc_statements = [
         owner="caller",
     ),
     dict(
-        name="f_ctor",
-        mixin=["f_function_shadow"],
+        name="c_ctor_shadow_scalar_capptr",
+        mixin=["c_mixin_shadow", "c_ctor_shadow_scalar_capsule"],
+        return_type=None,
+        ret=[
+            "return {c_var};",
+        ],
+        f_result_var="{F_result_ptr}",
+        f_result_decl=[
+            "type(C_PTR) {F_result_ptr}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="f_ctor_shadow_scalar_capsule",
+        mixin=["f_mixin_function_shadow_capsule"],
+    ),
+    dict(
+        name="f_ctor_shadow_scalar_capptr",
+        mixin=["f_mixin_function_shadow_capptr"],
     ),
     dict(
         # NULL in stddef.h

@@ -68,8 +68,7 @@ module library_mod
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)
-        ! Requested: c_inout_shadow_*
-        ! Match:     c_inout_shadow
+        ! Exact:     c_inout_shadow_*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: LIB_SHROUD_capsule_data
@@ -115,8 +114,7 @@ contains
     ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_inout_shadow_*
-    ! Match:     c_inout_shadow
+    ! Exact:     c_inout_shadow_*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

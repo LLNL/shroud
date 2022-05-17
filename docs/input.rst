@@ -301,7 +301,7 @@ api
 ^^^
 
 Controls the API used by the C wrapper.  The values are *capi*,
-*buf*, and *cfi*.  Normally, this attribute is determined by Shroud
+*buf*, *capsule*, *capptr* and *cfi*.  Normally, this attribute is determined by Shroud
 internally.  Scalar native types such as ``int`` and ``double`` will
 use *capi* since the argument can be passed directly to C using the
 *interoperability with C* feature of Fortran.
@@ -314,6 +314,13 @@ will be copied and null-terminated.  This uses *api(buf)*.
 The option *F_CFI*, will use the *Further interoperability with C*
 features and pass ``CFI_cdesc_t`` arguments to the C where where the
 metadata is extracted.  This uses *api(cfi)*.
+
+The *capsule* and *capptr* APIs are used by the capsule created by
+shadow types created for C++ classes.  In both cases the result is
+passed from Fortran to C as an extra argument for function which
+return a class. With *capptr*, the C wrapper will return a pointer to
+the capsule argument while *capsule* will not not return a value for
+the function. This is controlled by the *C_shadow_result* option.
 
 There is currently one useful case where the user would want to set
 this attribute. To avoid creating a wrapper which copies and null
@@ -638,6 +645,9 @@ If the argument is ``const``, the default is ``in``.
 
 In Python, *intent(out)* arguments are not used as
 input arguments to the function but are returned as values.
+
+Internally, Shroud also assigns the values of *function*,
+*ctor* and *dtor*.
 
 len
 ^^^

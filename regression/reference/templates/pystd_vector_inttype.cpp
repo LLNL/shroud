@@ -43,7 +43,7 @@ PY_vector_int_tp_del (PY_vector_int *self)
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Exact:     py_default
 static int
 PY_vector_int_tp_init(

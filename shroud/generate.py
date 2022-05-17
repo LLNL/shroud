@@ -130,12 +130,22 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
-        ast.metaattrs["intent"] = ast.get_subprogram()
+        if ast.typemap is None:
+            print("XXXXXX typemap is None")
+        if ast.typemap.sgroup == "shadow":
+            if options.C_shadow_result:
+                ast.metaattrs["api"] = "capptr"
+            else:
+                ast.metaattrs["api"] = "capsule"
+        if ast.is_ctor():
+            ast.metaattrs["intent"] = "ctor"
+        elif ast.is_dtor():
+            ast.metaattrs["intent"] = "dtor"
+        else:
+            ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
-        if ast.typemap is None:
-            print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 
@@ -1730,7 +1740,7 @@ class GenFunctions(object):
 
         This includes functions with string or vector arguments.
         If found then create a new C function that
-        sets metaattr["api"] to 'buf'. This will find groups in
+        sets metaattrs["api"] to 'buf'. This will find groups in
         fc_statements which will add arguments bufferify arguments
         (typically a buffer and length).
 
@@ -2156,10 +2166,7 @@ class TemplateTypemap(visitor.Visitor):
             self.visit(cls)
         for fcn in node.functions:
             if fcn.ast.is_ctor():
-                fcn.ast.metaattrs["intent"] = "ctor"
                 fcn.ast.typemap = node.typemap
-            elif fcn.ast.is_dtor():
-                fcn.ast.metaattrs["intent"] = "dtor"
             self.visit(fcn)
         for var in node.variables:
             self.visit(var)

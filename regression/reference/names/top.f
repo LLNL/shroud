@@ -373,8 +373,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="TES_cstruct_as_class_sum")
@@ -802,8 +801,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

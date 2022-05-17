@@ -71,20 +71,23 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Attrs:     +intent(ctor)
-        ! Exact:     c_function_shadow_scalar
-        subroutine c_class2_ctor(SHT_rv) &
+        ! Attrs:     +api(capptr)+intent(ctor)
+        ! Exact:     c_ctor_shadow_scalar_capptr
+        function c_class2_ctor(SHT_rv) &
+                result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
+            use iso_c_binding, only : C_PTR
             import :: FOR_SHROUD_capsule_data
             implicit none
             type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_class2_ctor
+            type(C_PTR) SHT_prv
+        end function c_class2_ctor
 
         ! ----------------------------------------
         ! Function:  ~Class2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_subroutine_void_scalar
-        ! Match:     c_subroutine
+        ! Requested: c_dtor_void_scalar
+        ! Match:     c_dtor
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data
@@ -100,8 +103,7 @@ module forward_mod
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -119,8 +121,7 @@ module forward_mod
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
         ! Attrs:     +intent(in)
-        ! Requested: c_in_shadow_*
-        ! Match:     c_in_shadow
+        ! Exact:     c_in_shadow_*
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
             import :: FOR_SHROUD_capsule_data
@@ -190,15 +191,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor
-    ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
     function class2_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(class2) :: SHT_rv
+        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class2.method.ctor
-        call c_class2_ctor(SHT_rv%cxxmem)
+        SHT_prv = c_class2_ctor(SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 
@@ -227,8 +230,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
@@ -250,8 +252,7 @@ contains
     ! Requested: f_in_shadow_*
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
-    ! Requested: c_in_shadow_*
-    ! Match:     c_in_shadow
+    ! Exact:     c_in_shadow_*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
         type(class3), intent(IN) :: arg

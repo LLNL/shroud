@@ -22,15 +22,16 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  structAsClass
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
-// Match:     c_ctor
-void TEM_structAsClass_double_ctor(TEM_structAsClass_double * SHC_rv)
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
+TEM_structAsClass_double * TEM_structAsClass_double_ctor(
+    TEM_structAsClass_double * SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor
     structAsClass<double> *SHCXX_rv = new structAsClass<double>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 4;
+    return SHC_rv;
     // splicer end class.structAsClass.method.ctor
 }
 

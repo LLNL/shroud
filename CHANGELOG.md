@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support *deref(pointer)* for ``char *`` and ``std::string`` functions.
   Requires at least gfortran 6.1.0
 - Added option F_trim_char_in. Controls where ``CHARACTER`` arguments
-  are NULL terminated. If *True* then in Fortran else in C.
+  are NULL terminated. If *True* then terminated in Fortran else in C.
 - Added attribute *+blanknull* to convert a blank Fortran string into
   a NULL pointer instead of a 1-d buffer with ``'/0'``.
   Used with ``const char *`` arguments.
@@ -41,9 +41,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   directives to add header file and ``USE`` statements into generated files.
   These are collated with headers and ``USE`` statements added by typemaps,
   statements and helpers to avoid duplication.
-- Allow typemaps with *base* as *integer* and *real*to be added to the
+- Allow typemaps with *base* as *integer* and *real* to be added to the
   input YAML file. This allows kind parameters to be defined via splicers
   then used by a typemap.  i.e. ``integer(INDEXTYPE)``
+- Added option *C_shadow_result*. If true, the C wrapper will return a pointer
+  to the capsule holding the function result. The capsule is also passed
+  as an argument.  If false the function is ``void``.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

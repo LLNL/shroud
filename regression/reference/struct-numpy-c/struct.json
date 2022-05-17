@@ -2002,6 +2002,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [],
@@ -2035,6 +2036,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [
@@ -2151,6 +2153,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [

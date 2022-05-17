@@ -166,6 +166,7 @@ contains
     iflag = useclass(obj0)
     call assert_equals(iflag, 0, "useclass")
 
+    ! C wrapper returns a pointer to the capsule
     obj0a = getclass2()
     ptr = obj0a%get_instance()
     call assert_true(c_associated(ptr), "getclass2 obj0a")
@@ -176,6 +177,17 @@ contains
     call assert_true(c_associated(ptr), "getclass3 obj0a")
     call assert_true(obj0 .eq. obj0a, "getclass3 - obj0 .eq. obj0a")
 
+    ! C wrapper does not return a pointer to the capsule
+    obj0a = getclass2_void()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass2 obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass2 - obj0 .eq. obj0a")
+
+    obj0a = getclass3_void()
+    ptr = obj0a%get_instance()
+    call assert_true(c_associated(ptr), "getclass3 obj0a")
+    call assert_true(obj0 .eq. obj0a, "getclass3 - obj0 .eq. obj0a")
+    
     obj0a = get_const_class_reference()
     ptr = obj0a%get_instance()
     call assert_true(c_associated(ptr), "getConstClassReference obj0a")

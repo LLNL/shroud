@@ -407,6 +407,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
+                                "api": "capptr",
                                 "intent": "ctor"
                             },
                             "params": [],
@@ -428,17 +429,18 @@
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_int_ctor",
                             "C_prototype": "TEM_structAsClass_int * SHC_rv",
-                            "C_return_type": "void",
+                            "C_return_type": "TEM_structAsClass_int *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_structasclass_int_ctor",
                             "F_C_name": "c_structasclass_int_ctor",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
+                            "F_C_result_clause": "\fresult(SHT_prv)",
+                            "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
                             "F_name_generic": "structasclass_int",
                             "F_name_impl": "structasclass_int_ctor",
+                            "F_result": "SHT_prv",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "cxx_rv_decl": "structAsClass<int> SHCXX_rv",
@@ -457,10 +459,11 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_ctor_shadow_scalar",
-                                "stmt1": "c_ctor"
+                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                "stmt1": "c_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
+                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<int>",
@@ -470,10 +473,10 @@
                                 "f_type": "type(structasclass_int)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
-                                "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
-                                "stmtc1": "c_ctor"
+                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                             }
                         }
                     },
@@ -999,6 +1002,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
+                                "api": "capptr",
                                 "intent": "ctor"
                             },
                             "params": [],
@@ -1020,17 +1024,18 @@
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_double_ctor",
                             "C_prototype": "TEM_structAsClass_double * SHC_rv",
-                            "C_return_type": "void",
+                            "C_return_type": "TEM_structAsClass_double *",
                             "F_C_arguments": "SHT_rv",
                             "F_C_call": "c_structasclass_double_ctor",
                             "F_C_name": "c_structasclass_double_ctor",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
+                            "F_C_result_clause": "\fresult(SHT_prv)",
+                            "F_C_subprogram": "function",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
                             "F_name_generic": "structasclass_double",
                             "F_name_impl": "structasclass_double_ctor",
+                            "F_result": "SHT_prv",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "cxx_rv_decl": "structAsClass<double> SHCXX_rv",
@@ -1049,10 +1054,11 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "4",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "c_ctor_shadow_scalar",
-                                "stmt1": "c_ctor"
+                                "stmt0": "c_ctor_shadow_scalar_capptr",
+                                "stmt1": "c_ctor_shadow_scalar_capptr"
                             },
                             "fmtf": {
+                                "C_result": "SHT_prv",
                                 "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "structAsClass<double>",
@@ -1062,10 +1068,10 @@
                                 "f_type": "type(structasclass_double)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_ctor",
-                                "stmt1": "f_ctor",
-                                "stmtc0": "c_ctor",
-                                "stmtc1": "c_ctor"
+                                "stmt0": "f_ctor_shadow_scalar_capptr",
+                                "stmt1": "f_ctor_shadow_scalar_capptr",
+                                "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                "stmtc1": "c_ctor_shadow_scalar_capptr"
                             }
                         }
                     },
@@ -1599,6 +1605,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "api": "capptr",
                         "intent": "function"
                     },
                     "params": [],
@@ -1628,17 +1635,18 @@
                 "zz_fmtdict": {
                     "C_name": "TEM_return_user_type",
                     "C_prototype": "TEM_user_int * SHC_rv",
-                    "C_return_type": "void",
+                    "C_return_type": "TEM_user_int *",
                     "F_C_arguments": "SHT_rv",
                     "F_C_call": "c_return_user_type",
                     "F_C_name": "c_return_user_type",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_prv)",
+                    "F_C_subprogram": "function",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "return_user_type",
                     "F_name_generic": "return_user_type",
                     "F_name_impl": "return_user_type",
+                    "F_result": "SHT_prv",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "*SHCXX_rv",
@@ -1659,10 +1667,11 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "5",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_shadow_scalar",
-                        "stmt1": "c_function_shadow_scalar"
+                        "stmt0": "c_function_shadow_scalar_capptr",
+                        "stmt1": "c_function_shadow_scalar_capptr"
                     },
                     "fmtf": {
+                        "C_result": "SHT_prv",
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "user<int>",
@@ -1672,10 +1681,10 @@
                         "f_type": "type(user_int)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_shadow_scalar",
-                        "stmt1": "f_function_shadow",
-                        "stmtc0": "c_function_shadow_scalar",
-                        "stmtc1": "c_function_shadow_scalar"
+                        "stmt0": "f_function_shadow_scalar_capptr",
+                        "stmt1": "f_function_shadow_scalar_capptr",
+                        "stmtc0": "c_function_shadow_scalar_capptr",
+                        "stmtc1": "c_function_shadow_scalar_capptr"
                     }
                 }
             },
@@ -2632,6 +2641,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "params": [],
@@ -2654,17 +2664,18 @@
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_int_ctor",
                                     "C_prototype": "TEM_vector_int * SHC_rv",
-                                    "C_return_type": "void",
+                                    "C_return_type": "TEM_vector_int *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "c_vector_int_ctor",
                                     "F_C_name": "c_vector_int_ctor",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
                                     "F_name_generic": "vector_int",
                                     "F_name_impl": "vector_int_ctor",
+                                    "F_result": "SHT_prv",
                                     "F_result_clause": "\fresult(SHT_rv)",
                                     "F_subprogram": "function",
                                     "PY_name_impl": "PY_vector_int_tp_init",
@@ -2686,10 +2697,11 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "c_ctor_shadow_scalar",
-                                        "stmt1": "c_ctor"
+                                        "stmt0": "c_ctor_shadow_scalar_capptr",
+                                        "stmt1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
+                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
@@ -2699,10 +2711,10 @@
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "f_ctor",
-                                        "stmt1": "f_ctor",
-                                        "stmtc0": "c_ctor",
-                                        "stmtc1": "c_ctor"
+                                        "stmt0": "f_ctor_shadow_scalar_capptr",
+                                        "stmt1": "f_ctor_shadow_scalar_capptr",
+                                        "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                        "stmtc1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtpy": {
                                         "PY_build_format": "O",
@@ -2760,6 +2772,7 @@
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_vector_int_dtor",
                                     "F_C_name": "c_vector_int_dtor",
+                                    "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
@@ -3413,6 +3426,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
+                                        "api": "capptr",
                                         "intent": "ctor"
                                     },
                                     "params": [],
@@ -3435,17 +3449,18 @@
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_double_ctor",
                                     "C_prototype": "TEM_vector_double * SHC_rv",
-                                    "C_return_type": "void",
+                                    "C_return_type": "TEM_vector_double *",
                                     "F_C_arguments": "SHT_rv",
                                     "F_C_call": "c_vector_double_ctor",
                                     "F_C_name": "c_vector_double_ctor",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
+                                    "F_C_result_clause": "\fresult(SHT_prv)",
+                                    "F_C_subprogram": "function",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
                                     "F_name_generic": "vector_double",
                                     "F_name_impl": "vector_double_ctor",
+                                    "F_result": "SHT_prv",
                                     "F_result_clause": "\fresult(SHT_rv)",
                                     "F_subprogram": "function",
                                     "PY_name_impl": "PY_vector_double_tp_init",
@@ -3467,10 +3482,11 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "c_ctor_shadow_scalar",
-                                        "stmt1": "c_ctor"
+                                        "stmt0": "c_ctor_shadow_scalar_capptr",
+                                        "stmt1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtf": {
+                                        "C_result": "SHT_prv",
                                         "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
@@ -3480,10 +3496,10 @@
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt0": "f_ctor",
-                                        "stmt1": "f_ctor",
-                                        "stmtc0": "c_ctor",
-                                        "stmtc1": "c_ctor"
+                                        "stmt0": "f_ctor_shadow_scalar_capptr",
+                                        "stmt1": "f_ctor_shadow_scalar_capptr",
+                                        "stmtc0": "c_ctor_shadow_scalar_capptr",
+                                        "stmtc1": "c_ctor_shadow_scalar_capptr"
                                     },
                                     "fmtpy": {
                                         "PY_build_format": "O",
@@ -3541,6 +3557,7 @@
                                     "F_C_arguments": "self",
                                     "F_C_call": "c_vector_double_dtor",
                                     "F_C_name": "c_vector_double_dtor",
+                                    "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",

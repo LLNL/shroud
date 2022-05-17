@@ -40,8 +40,9 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
 
 Where
 F_C_clause =
-F_C_arguments =   f_c_arg_names
-arg_c_decl = f_arg_decl
+F_C_arguments     = f_c_arg_names
+arg_c_decl        = f_arg_decl, f_result_decl
+F_C_result_clause = f_result_var
     
 c_statements
 ------------
@@ -125,7 +126,9 @@ If a local C++ variable is created for an argument by pre_call,
 *cxx_local_var*
 indicates if the local variable is a **pointer** or **scalar**.
 .. This sets *cxx_var* is set to ``SH_{c_var}``.
-This in turns will set the format fields *cxx_member*.
+This will properly dereference the variable when passed to the
+C++ function.
+It will also set the format fields *cxx_member*.
 For example, a ``std::string`` argument is created for the C++ function
 from the ``char *`` argument passed into the C API wrapper.
 
@@ -288,14 +291,6 @@ pointer value is assigned to a subroutine argument which holds the
 pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
 would be return by the C wrapper is unneeded by the Fortran wrapper.
    
-
-return_cptr
-^^^^^^^^^^^
-
-If *true*, the function will return a C pointer. This will be
-used by the Fortran interface to declare the function as
-``type(C_PTR)``.
-
  
 destructor_name
 ^^^^^^^^^^^^^^^

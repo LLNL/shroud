@@ -28,12 +28,12 @@ extern "C" {
 // Class1(int flag +value)
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 // ----------------------------------------
@@ -209,7 +209,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // Shape(void)
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 static int l_Shape_ctor(lua_State *L)
@@ -255,7 +255,7 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // Circle(void)
 // ----------------------------------------
 // Function:  Circle
-// Attrs:     +intent(ctor)
+// Attrs:     +api(capptr)+intent(ctor)
 // Requested: lua_ctor_scalar
 // Match:     lua_ctor
 static int l_Circle_ctor(lua_State *L)

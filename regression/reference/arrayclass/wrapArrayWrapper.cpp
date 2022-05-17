@@ -22,15 +22,15 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Attrs:     +intent(ctor)
-// Requested: c_ctor_shadow_scalar
-// Match:     c_ctor
-void ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
+// Attrs:     +api(capptr)+intent(ctor)
+// Exact:     c_ctor_shadow_scalar_capptr
+ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    return SHC_rv;
     // splicer end class.ArrayWrapper.method.ctor
 }
 
