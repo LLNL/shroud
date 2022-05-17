@@ -30,3 +30,8 @@ Pass struct by reference since struct.yaml on tests C/C++ compatible features.
 
 Test name generation and splicer.
 Does not have a directory under ``run``.
+
+### names2
+
+Test name generation when there is a top level namespace
+

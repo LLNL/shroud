@@ -44,6 +44,7 @@ C void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
 C void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
 C int UseImplWorker(void)  +intent(function)
 C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
 Close top.h
 Close top.cpp
 class Names2
@@ -63,6 +64,7 @@ Fortran void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subroutine)
 Fortran void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
 Fortran int UseImplWorker(void)  +intent(function)
 Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+Fortran void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
 C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
 C-interface void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
 C-interface void function1(void)  +intent(subroutine)
@@ -78,6 +80,7 @@ C-interface void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subrouti
 C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
 C-interface int UseImplWorker(void)  +intent(function)
 C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(function)
+C-interface void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)  +intent(subroutine)
 class Names
 Fortran Names(void) +name(defaultctor)  +api(capptr)+intent(ctor)
 Fortran void method1(void)  +intent(subroutine)

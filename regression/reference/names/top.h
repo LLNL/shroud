@@ -72,6 +72,11 @@ int TES_use_impl_worker_instantiation3(void);
 
 int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point);
 
+void TES_external_funcs(const char * rdbase, const char * pkg,
+    const char * name, void ( * alloc)(double * arr, int * err),
+    void ( * afree)(double * arr), void ( * assoc)(double * arr,
+    int * err));
+
 #ifdef __cplusplus
 }
 #endif
