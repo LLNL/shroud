@@ -857,7 +857,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
         self.assertEqual("Class1 ctor(void)", r.gen_arg_as_cxx())
-        self.assertEqual("CC_Class1 ctor", r.gen_arg_as_c(params=None))
+        self.assertEqual("CC_Class1 * ctor", r.gen_arg_as_c(params=None))
 
     def test_decl09b(self):
         """Test constructor +name
@@ -881,7 +881,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_reference())
         self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 new", r.gen_arg_as_cxx(params=None))
-        self.assertEqual("CC_Class1 new(void)", r.gen_arg_as_c())
+        self.assertEqual("CC_Class1 * new(void)", r.gen_arg_as_c())
 
     def test_decl09c(self):
         """Test destructor
