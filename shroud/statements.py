@@ -1979,10 +1979,16 @@ fc_statements = [
         # c_inout_shadow_scalar  # XXX inout by value makes no sense.
         name="c_in/inout_shadow_scalar",
         mixin=["c_mixin_shadow"],
+        c_arg_decl=[
+            "{c_type} {c_var}",
+        ],
+        f_arg_decl=[
+            "type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}",
+        ],
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};",
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};",
         ],
     ),
     dict(

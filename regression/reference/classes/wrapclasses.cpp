@@ -73,11 +73,11 @@ int CLA_direction_func(int arg)
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
 // Exact:     c_in_shadow_scalar
-void CLA_pass_class_by_value(CLA_Class1 * arg)
+void CLA_pass_class_by_value(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value
     classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
-        (arg->addr);
+        (arg.addr);
     classes::passClassByValue(*SHCXX_arg);
     // splicer end function.pass_class_by_value
 }

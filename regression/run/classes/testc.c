@@ -17,21 +17,15 @@ void *addr = NULL;
 
 void test_class(void)
 {
-  int flag;
-  CLA_Class1 c1;
+    CLA_Class1 c1;
 
-  CLA_Class1_ctor_default(&c1);
+    CLA_Class1_ctor_default(&c1);
 
-  flag = CLA_Class1_method1(&c1);
-  assert(flag == 0 && "CLA_class1_method1");
-
-  // passClassByValue sets global_flag
-  CLA_set_global_flag(-1);
-  CLA_pass_class_by_value(&c1);
-  flag = CLA_get_global_flag();
-  assert(flag == 0 && "CLA_pass_class_by_value");
+    int flag = CLA_Class1_method1(&c1);
+    assert(flag == 0 && "CLA_class1_method1");
 }
 
+// passClassByValue sets global_flag
 void test_class_by_value(void)
 {
     CLA_Class1 obj0;
@@ -39,7 +33,7 @@ void test_class_by_value(void)
 
     CLA_set_global_flag(0);
     CLA_Class1_set_test(&obj0, 13);
-    CLA_pass_class_by_value(&obj0);
+    CLA_pass_class_by_value(obj0);
     int iflag = CLA_get_global_flag();
     assert(iflag == 13 && "passClassByValue");
     CLA_Class1_delete(&obj0);
