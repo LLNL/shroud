@@ -447,7 +447,8 @@ module top_module
                 assoc) &
                 bind(C, name="TES_external_funcs")
             use iso_c_binding, only : C_CHAR
-            import :: external_funcs_afree, external_funcs_alloc, external_funcs_assoc
+            import :: external_funcs_afree, external_funcs_alloc, &
+                external_funcs_assoc
             implicit none
             character(kind=C_CHAR), intent(IN) :: rdbase(*)
             character(kind=C_CHAR), intent(IN) :: pkg(*)
