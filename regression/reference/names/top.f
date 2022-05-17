@@ -108,6 +108,30 @@ module top_module
         module procedure cstruct_as_subclass_ne
     end interface
 
+    abstract interface
+
+        subroutine external_funcs_afree(arr) bind(C)
+            use iso_c_binding, only : C_DOUBLE
+            implicit none
+            real(C_DOUBLE), intent(INOUT) :: arr
+        end subroutine external_funcs_afree
+
+        subroutine external_funcs_alloc(arr, err) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(INOUT) :: arr
+            integer(C_INT), intent(OUT) :: err
+        end subroutine external_funcs_alloc
+
+        subroutine external_funcs_assoc(arr, err) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: arr
+            integer(C_INT), intent(OUT) :: err
+        end subroutine external_funcs_assoc
+
+    end interface
+
     interface
 
         ! splicer begin class.Names2.additional_interfaces
@@ -383,6 +407,56 @@ module top_module
             type(TES_SHROUD_capsule_data), intent(IN) :: point
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_class_sum
+
+        ! ----------------------------------------
+        ! Function:  void external_funcs
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
+        ! ----------------------------------------
+        ! Argument:  const char * rdbase
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_char_*
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const char * pkg
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_char_*
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const char * name
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_char_*
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_void_scalar
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void ( * afree)(double * arr +intent(inout)) +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_void_scalar
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_void_scalar
+        ! Match:     c_default
+        subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
+                assoc) &
+                bind(C, name="TES_external_funcs")
+            use iso_c_binding, only : C_CHAR
+            import :: external_funcs_afree, external_funcs_alloc, &
+                external_funcs_assoc
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: rdbase(*)
+            character(kind=C_CHAR), intent(IN) :: pkg(*)
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            procedure(external_funcs_alloc) :: alloc
+            procedure(external_funcs_afree) :: afree
+            procedure(external_funcs_assoc) :: assoc
+        end subroutine c_external_funcs
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -811,6 +885,27 @@ contains
         SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
         ! splicer end function.cstruct_as_class_sum
     end function cstruct_as_class_sum
+
+    ! ----------------------------------------
+    ! Function:  void external_funcs
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    subroutine external_funcs(rdbase, pkg, name, alloc, afree, assoc)
+        use iso_c_binding, only : C_NULL_CHAR
+        character(len=*), intent(IN) :: rdbase
+        character(len=*), intent(IN) :: pkg
+        character(len=*), intent(IN) :: name
+        procedure(external_funcs_alloc) :: alloc
+        procedure(external_funcs_afree) :: afree
+        procedure(external_funcs_assoc) :: assoc
+        ! splicer begin function.external_funcs
+        call c_external_funcs(trim(rdbase)//C_NULL_CHAR, &
+            trim(pkg)//C_NULL_CHAR, trim(name)//C_NULL_CHAR, alloc, &
+            afree, assoc)
+        ! splicer end function.external_funcs
+    end subroutine external_funcs
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -257,6 +257,17 @@ declarations:
     class_method: Cstruct_as_class
 
 ########################################
+# Continuation of IMPORT statement
+
+- decl: void external_funcs(const char *rdbase, const char *pkg,
+                            const char *name,
+                            void (*alloc)(double *arr+intent(inout), int *err+intent(out)),
+                            void (*afree)(double *arr+intent(inout)),
+                            void (*assoc)(double *arr+intent(in), int *err+intent(out)))
+  options:
+    wrap_python: False
+
+########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

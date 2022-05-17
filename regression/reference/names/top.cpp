@@ -353,4 +353,48 @@ int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
     // splicer end function.cstruct_as_class_sum
 }
 
+// ----------------------------------------
+// Function:  void external_funcs
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  const char * rdbase
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * pkg
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * name
+// Attrs:     +intent(in)
+// Requested: c_in_char_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_scalar
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void ( * afree)(double * arr +intent(inout)) +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_scalar
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value
+// Attrs:     +intent(in)
+// Requested: c_in_void_scalar
+// Match:     c_default
+void TES_external_funcs(const char * rdbase, const char * pkg,
+    const char * name, void ( * alloc)(double * arr, int * err),
+    void ( * afree)(double * arr), void ( * assoc)(double * arr,
+    int * err))
+{
+    // splicer begin function.external_funcs
+    external_funcs(rdbase, pkg, name, alloc, afree, assoc);
+    // splicer end function.external_funcs
+}
+
 }  // extern "C"

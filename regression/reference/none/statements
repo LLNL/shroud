@@ -1558,10 +1558,10 @@ c_in_shadow_*:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_in_shadow_scalar:
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} {c_var}'
   cxx_local_var: pointer
   f_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
@@ -1569,7 +1569,7 @@ c_in_shadow_scalar:
   name: c_in_shadow_scalar
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
 c_in_string_&:
   cxx_local_var: scalar
   intent: in
@@ -1962,10 +1962,10 @@ c_inout_shadow_*:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
 c_inout_shadow_scalar:
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} {c_var}'
   cxx_local_var: pointer
   f_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {c_var}'
+  - 'type({f_capsule_data_type}), intent({f_intent}), value :: {c_var}'
   f_c_arg_names:
   - '{c_var}'
   f_module_line: '{f_c_module_line}'
@@ -1973,7 +1973,7 @@ c_inout_shadow_scalar:
   name: c_inout_shadow_scalar
   owner: library
   pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
 c_inout_string_&:
   cxx_local_var: scalar
   impl_header:

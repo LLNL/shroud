@@ -972,7 +972,7 @@ rv = .false.
                 arg_f_use = self.sort_module_info(modules, None)
                 iface.extend(arg_f_use)
                 if imports:
-                    iface.append("import :: " + ", ".join(sorted(imports.keys())))
+                    iface.append("import :: " + ",\t ".join(sorted(imports.keys())))
                 iface.append("implicit none")
                 iface.extend(arg_c_decl)
                 iface.append(-1)
@@ -1294,7 +1294,7 @@ rv = .false.
         c_interface.append(1)
         c_interface.extend(arg_f_use)
         if imports:
-            c_interface.append("import :: " + ", ".join(sorted(imports.keys())))
+            c_interface.append("import :: " + ",\t ".join(sorted(imports.keys())))
         c_interface.append("implicit none")
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)

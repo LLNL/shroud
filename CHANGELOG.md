@@ -63,6 +63,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - *generic_function* now creates a C wrapper for each Fortran wrapper.
   This causes each Fortran interface to bind to a different C function which
   fixes a compile error with xlf.
+- Add continuations on Fortran ``IMPORT`` statements.
 
 ### Changed
 - The *C_memory_dtor_function* is now written to the utility file,
