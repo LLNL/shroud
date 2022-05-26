@@ -101,14 +101,8 @@ to create a dictionary with the key ``integer, parameter :``.
         module_top:
         - integer, parameter :: INDEXTYPE = 5
 
-Literal newlines, ``/n``, are respected.  Format strings can use a
-tab, ``/t``, to hint where it would be convenient to add a
-continuation if necessary.  A formfeed, ``/f``, will force a
-continuation.  Lines which start with ``0`` are not indented.  This
-can be used with labels.  A trailing ``+`` will indent then next line
-a level and a leading ``-`` will deindent. Line lengths are controlled
-by the options *C_line_length* and *F_line_length* and default to
-72.:
+Literal newlines, ``/n``, are respected.  Line lengths are controlled
+by the options *C_line_length* and *F_line_length* and default to 72.:
 
 .. code-block:: yaml
 

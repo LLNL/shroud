@@ -798,6 +798,7 @@
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "options": {
+                    "literalinclude": true,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -999,6 +1000,7 @@
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "options": {
+                    "literalinclude": true,
                     "wrap_lua": false
                 },
                 "splicer_group": "buf",
@@ -1145,6 +1147,7 @@
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "options": {
+                    "literalinclude": true,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -1346,6 +1349,7 @@
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "options": {
+                    "literalinclude": true,
                     "wrap_lua": false
                 },
                 "splicer_group": "buf",

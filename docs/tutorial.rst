@@ -73,7 +73,7 @@ And the Fortran version:
     use tutorial_mod
     call no_return_no_arguments
 
-.. note :: rename module to just tutorial.
+.. rename module to just tutorial.
 
 The generated code is listed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
@@ -126,20 +126,32 @@ the ``POINTER`` attribute:
 
     - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
 
-The C++ routine returns a pointer to an array and the length of the array
-in argument ``len``.  The Fortran API does not need to pass the argument
-since the returned pointer will know its length.
-The *hidden* attribute will cause ``len`` to be omitted from the Fortran API,
-but still passed to the C API.
+The C++ routine returns a pointer to an array and the length of the
+array in argument ``len``.  The Fortran API does not need to pass the
+*len* argument since the returned pointer will know its length.  The
+*hidden* attribute will cause ``len`` to be omitted from the Fortran
+API, but still passed to the C wrapper.
 
 It can be used as:
 
 .. code-block:: fortran
 
     integer(C_INT), pointer :: intp(:)
+    integer len
 
-    intp => return_int_ptr()
+    intp => return_int_ptr_dim_pointer()
+    len = size(intp)
 
+The generated code is listed at :ref:`returnIntPtrDimPointer <example_returnIntPtrDimPointer>`.
+
+A numeric pointer may also be processed differently by setting the
+*deref* attribute.  Possible values are *pointer*, the default, for a
+Fortran pointer.  *allocatable* to create a Fortran allocatable array
+and copy the data into it.  *raw* returns a ``type(C_PTR)``. In this
+case, the *len* argument should not be hidden so it can be used from
+Fortran.  And *scalar* can be used when returning a pointer to a
+scalar. In this case, the *len* argument would be ignored.
+ 
 
 Pointer arguments
 -----------------
@@ -191,11 +203,15 @@ expression ``size(values)``. This uses the Fortran intrinsic ``size``
 to compute the total number of elements in the array.  It then passes
 this value to the C wrapper:
 
+Fortran usage:
+
 .. code-block:: fortran
 
     use tutorial_mod
     integer(C_INT) result
     call sum([1,2,3,4,5], result)
+
+Python usage. Since *result* is *intent(out)* it will be returned by the function.
 
 .. code-block:: python
 
@@ -329,10 +345,11 @@ The generated code is listed at
 Overloaded Functions
 --------------------
 
-C++ allows function names to be overloaded.  Fortran supports this
-by using a ``generic`` interface.  The C and Fortran wrappers will
-generated a wrapper for each C++ function but must mangle the name to
-distinguish the names.
+C++ allows function names to be overloaded.  Fortran supports this by
+using a generic interface.  The C and Fortran wrappers will generated
+a wrapper for each C++ function but must explicitly mangle the name to
+distinguish the functions. The C++ compiler will mangle the names for
+you.
 
 C++:
 

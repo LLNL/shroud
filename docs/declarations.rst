@@ -17,9 +17,10 @@ to Shroud in order to implement the desired semantic.
 No Arguments
 ------------
 
-A function with no arguments and which does not return a value, can be
-"wrapped" by creating a Fortran interface which allows the function to 
-be called directly.
+A C function with no arguments and which does not return a value, can
+be "wrapped" by creating a Fortran interface which allows the function
+to be called directly. A C++ function will require an ``extern C``
+function to create an C wrapper to deal with the C++ name mangling.
 
 An example is detailed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
@@ -122,13 +123,23 @@ Numeric Functions
     See example :ref:`returnIntPtrToScalar <example_returnIntPtrToScalar>`.
 
 ``int *func() +dimension(10)``
-    Return a Fortran ``POINTER`` to a array.
+    Return a Fortran ``POINTER`` to an array with a fixed length.
     See example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`.
 
 ``int *func() +deref(scalar)``
     Return a scalar.
     See example :ref:`returnIntScalar <example_returnIntScalar>`.
 
+``int *ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +dimension(len) +deref(pointer)``
+    Return a Fortran ``POINTER`` to an array with a variable length.
+    The length is returned in the argument *len*.
+    It is marked *hidden* since it is not required for the Fortran or Python API.
+    The returned array will know its length.
+    See example :ref:`ReturnIntPtrDimPointer <example_ReturnIntPtrDimPointer>`
+    The *deref* attribute can be changed to return a ``type(C_PTR)``, ``ALLOCATABLE`` or
+    a scalar.
+    See example :ref:`ReturnIntPtrDimAlloc <example_ReturnIntPtrDimAlloc>`
+    
 
 Bool
 ----
