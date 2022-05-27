@@ -40,6 +40,16 @@ typemap:
         f_derived_type: class2
         f_capsule_data_type: CLA_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
+    - type: Data
+      fields:
+        base: shadow
+        wrap_header:
+        - typesclasses.h
+        c_type: CLA_Data
+        f_module_name: classes_mod
+        f_derived_type: data
+        f_capsule_data_type: CLA_SHROUD_capsule_data
+        f_to_c: "{f_var}%cxxmem"
     - type: Shape
       fields:
         base: shadow

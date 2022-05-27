@@ -1523,7 +1523,7 @@ rv = .false.
         fmt: util.Scope
         """
         f_attrs = f_ast.attrs
-        dim = f_attrs["dimension"]
+        dim = f_ast.metaattrs["dimension"]
         rank = f_attrs["rank"]
         if f_ast.metaattrs["assumed-rank"]:
             fmt.f_c_dimension = "(..)"
@@ -1539,7 +1539,7 @@ rv = .false.
                 fmt.f_c_dimension = "(*)"
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
-            visitor.visit(f_ast.metaattrs["dimension"])
+            visitor.visit(dim)
             rank = visitor.rank
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
@@ -1611,7 +1611,6 @@ rv = .false.
             fmt_result.c_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            sintent = ast.metaattrs["intent"]
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]

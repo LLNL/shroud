@@ -107,6 +107,15 @@ struct s_CLA_Class2 {
 };
 typedef struct s_CLA_Class2 CLA_Class2;
 
+// start struct CLA_Data
+// helper capsule_CLA_Data
+struct s_CLA_Data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Data CLA_Data;
+// end struct CLA_Data
+
 // helper capsule_CLA_Shape
 struct s_CLA_Shape {
     void *addr;     /* address of C++ memory */

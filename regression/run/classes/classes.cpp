@@ -150,6 +150,23 @@ Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 
 //----------------------------------------------------------------------
 
+void Data::allocate(int n)
+{
+    nitems = n;
+    items = new int[n];
+    for (int i = 0; i < n; ++i)
+    {
+        items[i] = i + 1;
+    }
+}
+void Data::free(void)
+{
+    nitems = 0;
+    delete [] items;
+}
+    
+//----------------------------------------------------------------------
+
 void set_global_flag(int arg)
 {
   global_flag = arg;

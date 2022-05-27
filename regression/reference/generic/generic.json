@@ -1291,6 +1291,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
@@ -1302,6 +1303,7 @@
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT"
                         }
                     }
@@ -1474,6 +1476,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
@@ -1677,6 +1680,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*",
                             "stmt1": "c_default"
@@ -1882,6 +1886,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
+                            "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_native_*",
                             "stmt1": "c_default"

@@ -231,6 +231,8 @@ These functions names are controlled by format fields *F_name_associated*,
 *F_name_instance_get* and *F_name_instance_set*.
 If the names are blank, the functions will not be created.
 
+The `.eq.` operator is also defined.
+
 .. F_name_assign  F_name_final
 
 A full example is at 
@@ -264,6 +266,58 @@ The ``idtor`` argument is used to release memory and described at
 to be added by the developer which may be used in function wrappers.
 
 Additional fields can be added to the splicer for custom behavior.
+
+Chained functions
+-----------------
+
+C++ allows function calls to be chained by returning the ``this`` argument.
+Several functions can be called in succession on the same object.
+
+.. code-block:: c++
+
+    auto var = Class1()->returnThis()
+
+The *return_this* field indicates that the function may be chained
+so the wrapper can generate appropriate code.
+    
+.. literalinclude:: ../regression/input/classes.yaml
+   :language: yaml
+   :start-after: start returnThis
+   :end-before: end returnThis
+
+C
+^
+
+The C wrapper returns ``void`` instead of a pointer to the *this* argument.
+
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
+   :language: c++
+   :start-after: start CLA_Class1_return_this
+   :end-before: end CLA_Class1_return_this
+
+                
+Fortran
+^^^^^^^
+         
+Fortran does not permit his behavior.
+The function is treated as a ``subroutine``.
+
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
+   :language: fortran
+   :start-after: start class1_return_this
+   :end-before: end class1_return_this
+   :dedent: 4
+
+The chaining must be done as a sequence of calls.
+
+.. code-block:: fortran
+
+   use classes_mod
+   type(class1) var
+
+   var = class1()
+   call var%return_this()
+
 
 Class static methods
 --------------------
@@ -338,6 +392,10 @@ keyword.  Only single inheritance is supported.
     type, extends(shape) :: circle
     end type circle
 
+Python
+^^^^^^
+
+Python uses the ``PyTypeObject.tp_base`` field.
 
 Forward Declaration
 -------------------
@@ -433,6 +491,30 @@ descriptors.  This is helpful when using a naming convention like
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
 
+Pointers to native types can return a Fortran pointer if they are given
+the *dimension* attribute.
+
+.. code-block :: yaml
+
+    - decl: class Data
+      declarations:
+      - decl: int nitems;
+      - decl: int *items  +dimension(nitems);
+
+Notice that the *dimension* uses another field in the class.
+This will create a getter which can be called from Fortran.
+
+.. code-block :: fortran
+
+    type(Data) var
+    integer(C_INT) :: nitems
+    integer(C_INT), pointer :: items(:)
+
+    var = Data()
+    nitems = var%get_nitems()
+    items => var%get_items()
+
+     
 .. XXX array members in struct
    char name[20]    s.name = None   will add set to '\0'
    int  count[10]   s.count = 0     will broadcast
@@ -540,6 +622,8 @@ NumPy array contains a pointer to the C++ memory.
 The descriptor is created in the wrapper
 :ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
 
+.. _TypesSandC-ObjectOrientedC:
+     
 Object-oriented C
 -----------------
 

@@ -45,8 +45,10 @@ declarations:
        # Need to fix fmt.cxx_deref
        wrap_lua: False
 
+# start returnThis
   - decl: Class1 * returnThis();
     return_this: True
+# end returnThis
     doxygen:
        brief: Return pointer to 'this' to allow chaining calls
     options:
@@ -190,6 +192,27 @@ declarations:
   declarations:
   - decl: Circle()
 
+##################################################
+# test getters with pointers
+
+- decl: class Data
+  options:
+    wrap_lua: false
+    wrap_python: false
+    literalinclude: true
+  format:
+    # Remove these methods to make documentation less cluttered.
+    F_name_associated:
+    F_name_instance_get:
+    F_name_instance_set:
+  declarations:
+  - decl: int nitems;
+  - decl: int *items  +dimension(nitems)+readonly;
+  - decl: void allocate(int n);
+  - decl: void free();
+  - decl: Data()
+  - decl: ~Data()
+    
 ##################################################
 # Used with testing
 - decl: void set_global_flag(int arg)

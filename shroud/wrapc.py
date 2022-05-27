@@ -741,8 +741,7 @@ class Wrapc(util.WrapperMixin):
         attrs = ast.attrs
         statements.assign_buf_variable_names(attrs, ast.metaattrs, fcn.options, fmt, rootname)
         
-        dim = attrs["dimension"]
-        if dim:
+        if ast.metaattrs["dimension"]:
             if cls is not None:
                 cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)

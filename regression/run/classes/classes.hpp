@@ -117,6 +117,18 @@ public:
     double m_radius;
 };
 
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Test getters with pointers
+
+class Data {
+public:
+    int nitems;
+    int *items;
+    void allocate(int n);
+    void free();
+};
+
 } /* end namespace classes */
 
 

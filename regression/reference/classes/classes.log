@@ -39,6 +39,16 @@ class Circle
 C Circle(void)  +api(capptr)+intent(ctor)
 Close wrapCircle.h
 Close wrapCircle.cpp
+class Data
+C void allocate(int n +value)  +intent(subroutine)
+C void free(void)  +intent(subroutine)
+C Data(void)  +api(capptr)+intent(ctor)
+C ~Data(void)  +intent(dtor)
+C int getNitems(void)  +intent(getter)
+C void setNitems(int val +intent(in)+value)  +intent(setter)
+C int * getItems(void)  +api(cdesc)+deref(pointer)+intent(getter)
+Close wrapData.h
+Close wrapData.cpp
 C Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)  +intent(function)
 C void passClassByValue(Class1 arg +value)  +intent(subroutine)
 C int useclass(const Class1 * arg)  +intent(function)
@@ -103,6 +113,21 @@ C-interface int get_ivar(void) const  +intent(function)
 class Circle
 Fortran Circle(void)  +api(capptr)+intent(ctor)
 C-interface Circle(void)  +api(capptr)+intent(ctor)
+class Data
+Fortran void allocate(int n +value)  +intent(subroutine)
+Fortran void free(void)  +intent(subroutine)
+Fortran Data(void)  +api(capptr)+intent(ctor)
+Fortran ~Data(void)  +intent(dtor)
+Fortran int getNitems(void)  +intent(getter)
+Fortran void setNitems(int val +intent(in)+value)  +intent(setter)
+Fortran int * getItems(void)  +deref(pointer)+intent(getter)
+C-interface void allocate(int n +value)  +intent(subroutine)
+C-interface void free(void)  +intent(subroutine)
+C-interface Data(void)  +api(capptr)+intent(ctor)
+C-interface ~Data(void)  +intent(dtor)
+C-interface int getNitems(void)  +intent(getter)
+C-interface void setNitems(int val +intent(in)+value)  +intent(setter)
+C-interface int * getItems(void)  +api(cdesc)+deref(pointer)+intent(getter)
 Fortran Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)  +intent(function)
 Fortran void passClassByValue(Class1 arg +value)  +intent(subroutine)
 Fortran int useclass(const Class1 * arg)  +intent(function)

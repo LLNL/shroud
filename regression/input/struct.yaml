@@ -31,7 +31,7 @@ options:
 format:
   # Avoid conflict with builtin module
   PY_module_name: cstruct
-  # Remove these methods to make documentation simpler.
+  # Remove these methods to make documentation less cluttered.
   F_name_associated:
   F_name_instance_get:
   F_name_instance_set:

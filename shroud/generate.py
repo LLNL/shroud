@@ -113,7 +113,7 @@ class VerifyAttrs(object):
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
-                "api",
+                "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
                 "cdesc",
                 "deref",  # How to dereference pointer
@@ -632,6 +632,24 @@ class GenFunctions(object):
     Generate Typemap from class.
     Generate functions based on overload/template/generic/attributes
     Computes fmt.function_suffix.
+
+    gen_library
+      instantiate_all_classes
+        instantiate_classes
+          add_struct_ctor
+          process_class
+            add_var_getter_setter
+            define_function_suffix
+              has_default_args
+              template_function
+              define_result_as_arg_functions
+              define_fortran_generic_functions
+              define_bufferify_functions
+                arg_to_CFI
+                arg_to_buffer
+      update_templated_typemaps
+      gen_namespace
+        define_function_suffix
     """
 
     def __init__(self, newlibrary, config):
@@ -1597,7 +1615,7 @@ class GenFunctions(object):
         """Look for functions which can use TS29113
         Futher interoperability with C.
 
-        If a function requires CFI_cdesc, clone the function and set
+        If a function requires CFI_cdesc_t, clone the function and set
         arg.metaattrs["api"] to "cfi" to use the correct statements.  The
         new function will be called by Fortran directly via the
         bind(C) interface.  The original function no longer needs to
@@ -1879,7 +1897,7 @@ class GenFunctions(object):
             need_buf_result = "cdesc"
         elif result_is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
-                if attrs["dimension"]:
+                if meta["dimension"]:
                     # int *get_array() +deref(pointer)+dimension(10)
                     need_buf_result = "cdesc"
                 else:
