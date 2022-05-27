@@ -114,12 +114,14 @@ struct s_CLA_Shape {
 };
 typedef struct s_CLA_Shape CLA_Shape;
 
+// start struct CLA_Singleton
 // helper capsule_CLA_Singleton
 struct s_CLA_Singleton {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Singleton CLA_Singleton;
+// end struct CLA_Singleton
 
 void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap);
 

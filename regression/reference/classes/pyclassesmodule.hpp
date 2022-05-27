@@ -65,6 +65,7 @@ extern PyTypeObject PY_Singleton_Type;
 // splicer begin class.Singleton.C_declaration
 // splicer end class.Singleton.C_declaration
 
+// start object PY_Singleton
 typedef struct {
 PyObject_HEAD
     classes::Singleton * obj;
@@ -72,6 +73,7 @@ PyObject_HEAD
     // splicer begin class.Singleton.C_object
     // splicer end class.Singleton.C_object
 } PY_Singleton;
+// end object PY_Singleton
 
 extern const char *PY_Singleton_capsule_name;
 PyObject *PP_Singleton_to_Object_idtor(classes::Singleton *addr,

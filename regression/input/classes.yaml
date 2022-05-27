@@ -169,6 +169,12 @@ declarations:
 - decl: class Singleton
   options:
     wrap_lua: false
+    literalinclude: True
+  format:
+    # Avoid this clutter in the documentation (literalinclude)
+    F_name_instance_get:
+    F_name_instance_set:
+    F_name_associated:
   declarations:
 #  - decl: static Singleton* instancePtr()
   - decl: static Singleton& getReference()

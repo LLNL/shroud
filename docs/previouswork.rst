@@ -99,7 +99,7 @@ The custom version of swig available at https://github.com/swig-fortran/swig
 * http://www.icl.utk.edu/~luszczek/conf/2019/siam_cse/siam-cse-johnsonsr.pdf
 * https://info.ornl.gov/sites/publications/Files/Pub127965.pdf
 * `Documenting automated Fortran-C++ bindings with SWIG <https://www.osti.gov/biblio/1557490>`_
-
+* `IDEAS-ECP Webinar: Automated Fortran-C++ Bindings for Large-Scale Scientific Applications <https://www.youtube.com/watch?v=mC67NVuz6WI>`_
 
 MPICH
 -----
@@ -111,10 +111,11 @@ http://git.mpich.org/mpich.git/blob/HEAD:/src/binding/fortran/use_mpi/buildiface
 GTK
 ---
 
-gtk-fortran uses a python script which grep the C source to generate the Fortran.
+gtk-fortran uses a python script which parse the C header files to generate the Fortran.
 
 https://github.com/jerryd/gtk-fortran/blob/master/src/cfwrapper.py
 https://github.com/vmagnin/gtk-fortran/wiki
+https://github.com/vmagnin/gtk-fortran/wiki/How-gtk-fortran-is-generated
 
 CDI
 ---
@@ -169,6 +170,7 @@ Links
   * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
   * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
   * `C, Fortran, and single-character strings <https://lwn.net/Articles/791393/>`_
+  * `Emulating Multiple Inheritance in Fortran 2003/2008 <https://www.hindawi.com/journals/sp/2015/126069/>`_
 
 ..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf
 

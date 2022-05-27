@@ -13,7 +13,7 @@ Shroud will create code to map between C and Fortran pointers.  The
 *interoperability with C* features of Fortran 2003 and the
 call-by-reference feature of Fortran provides most of the features
 necessary to pass arrays to C++ libraries. Shroud can also provide
-additional semantic information.  Adding the ``+rank(n)`` attribute
+additional semantic information.  Adding the *rank* attribute
 will declare the argument as an assumed-shape array with the given
 rank: ``+rank(2)`` creates ``arg(:,:)``.  The ``+dimension(n)`` attribute
 will instead give an explicit dimension: ``+dimension(10,20)`` creates
@@ -45,17 +45,20 @@ function interface
 The result of the the Fortran function directly accesses the memory
 returned from the C++ library.
 
-An array can be returned by adding the attribute ``+dimension(n)`` to
+An array can be returned by adding the *dimension* attribute to
 the function.  The dimension expression will be used to provide the
 ``shape`` argument to ``c_f_pointer``.  The arguments to *dimension*
 are C++ expressions which are evaluated after the C++ function is
-called and can be the name of another argument to the function or call
+called and can be the name of another argument to the function or a call
 another C++ function.  As a simple example, this declaration returns a
 pointer to a constant sized array.
 
 .. code-block:: yaml
 
     - decl: int *returnIntPtrToFixedArray(void) +dimension(10)
+
+Example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`
+shows the generated code.
 
 If the dimension is unknown when the function returns, a ``type(C_PTR)``
 can be returned with ``+deref(raw)``.  This will allow the user

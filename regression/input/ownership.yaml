@@ -67,19 +67,26 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
+# deref(pointer) is the default
+# start ReturnIntPtrDimPointer
 - decl: int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)
   fattrs:
     deref: pointer
     dimension: len
+# end ReturnIntPtrDimPointer
   options:
     wrap_lua: False
+    literalinclude: True
 
+# start ReturnIntPtrDimAlloc
 - decl: int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)
   fattrs:
     deref: allocatable
     dimension: len
+# end ReturnIntPtrDimAlloc
   options:
     wrap_lua: False
+    literalinclude: True
 
 - decl: int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)
   fattrs:
@@ -87,6 +94,7 @@ declarations:
   options:
     wrap_lua: False
   # deref("pointer") will be defaulted, return as a Fortran POINTER.
+  # same as ReturnIntPtrDimPointer, but will fail if the default changes.
 
 ########################################
 # return dimension(len) owner(caller)

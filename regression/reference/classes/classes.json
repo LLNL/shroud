@@ -2901,6 +2901,7 @@
                 ],
                 "name": "Singleton",
                 "options": {
+                    "literalinclude": true,
                     "wrap_lua": false
                 },
                 "parse_keyword": "class",
@@ -2918,6 +2919,9 @@
                     "C_name_scope": "Singleton_",
                     "C_type_name": "CLA_Singleton",
                     "F_derived_name": "singleton",
+                    "F_name_associated": null,
+                    "F_name_instance_get": null,
+                    "F_name_instance_set": null,
                     "F_name_scope": "singleton_",
                     "PY_PyObject": "PY_Singleton",
                     "PY_PyTypeObject": "PY_Singleton_Type",

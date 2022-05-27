@@ -261,6 +261,9 @@ Example usage:
     integer(c_int), allocatable :: out_int(:)
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
 
+Numeric Pointers
+----------------
+
 .. ############################################################
 
 .. _example_getRawPtrToFixedArray:
@@ -664,7 +667,125 @@ Example usage:
 
 .. code-block:: fortran
 
+    integer :: ivalue
     ivalue = return_int_scalar()
+
+.. ############################################################
+
+.. _example_ReturnIntPtrDimPointer:
+
+returnIntPtrDimPointer
+^^^^^^^^^^^^^^^^^^^^^^
+
+Return a Fortran pointer to an array.
+The length of the array is returned from C++ in the *len* argument.
+This argument sets the *hidden* attribute since it is not needed in
+the Fortran wrapper. It will be used in the ``c_f_pointer`` call to
+set the length of the array.
+
+..    - decl: int *ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +deref(pointer)
+
+The input is in file :file:`ownership.yaml`.
+
+.. literalinclude:: ../regression/input/ownership.yaml
+   :language: yaml
+   :start-after: start ReturnIntPtrDimPointer
+   :end-before: end ReturnIntPtrDimPointer
+
+The C wrapper calls the C++ function from an ``extern C`` wrapper.
+In does not hide the *len* argument.
+This function does not use the *deref* attribute.
+      
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_return_int_ptr_dim_pointer
+   :end-before: end OWN_return_int_ptr_dim_pointer
+
+The bufferify function passes an argument to contain the meta data of the array.
+It is written to :file:`wrapownership.cpp`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_return_int_ptr_dim_pointer_bufferify
+   :end-before: end OWN_return_int_ptr_dim_pointer_bufferify
+
+Fortran calls the bufferify function in :file:`wrapfownership.f`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapfownership.f
+   :language: fortran
+   :start-after: start return_int_ptr_dim_pointer
+   :end-before: end return_int_ptr_dim_pointer
+   :dedent: 4
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: ivalue(:)
+    integer len
+
+    ivalue => return_int_ptr_dim_pointer()
+    len = size(ivalue)
+
+.. ############################################################
+
+.. _example_ReturnIntPtrDimAlloc:
+
+returnIntPtrDimAlloc
+^^^^^^^^^^^^^^^^^^^^
+
+Convert a pointer returned from C++ into a Fortran allocatable array.
+To do this, memory is allocated in Fortran then the C++ values are copied
+into it.
+The advantage is that the user does not have to worry about releasing the
+C++ memory.
+The length of the array is returned from C++ in the *len* argument.
+This argument sets the *hidden* attribute since it is not needed in
+the Fortran wrapper.
+
+..    - decl: int *ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +deref(allocatable)
+
+The input is in file :file:`ownership.yaml`.
+
+.. literalinclude:: ../regression/input/ownership.yaml
+   :language: yaml
+   :start-after: start ReturnIntPtrDimAlloc
+   :end-before: end ReturnIntPtrDimAlloc
+
+The C wrapper calls the C++ function from an ``extern C`` wrapper.
+In does not hide the *len* argument.
+This function does not use the *deref* attribute.
+      
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_return_int_ptr_dim_alloc
+   :end-before: end OWN_return_int_ptr_dim_alloc
+
+The bufferify function passes an argument to contain the meta data of the array.
+It is written to :file:`wrapownership.cpp`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
+   :language: c++
+   :start-after: start OWN_return_int_ptr_dim_alloc_bufferify
+   :end-before: end OWN_return_int_ptr_dim_alloc_bufferify
+
+Fortran calls the bufferify function in :file:`wrapfownership.f`.
+
+.. literalinclude:: ../regression/reference/ownership/wrapfownership.f
+   :language: fortran
+   :start-after: start return_int_ptr_dim_alloc
+   :end-before: end return_int_ptr_dim_alloc
+   :dedent: 4
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), allocatable :: ivalue(:)
+    integer len
+
+    ivalue = return_int_ptr_dim_alloc()
+    len = size(ivalue)
 
 Bool
 ----
@@ -999,7 +1120,9 @@ This is a C file which provides the bufferify function.
    :start-after: start POI_accept_char_array_in_bufferify
    :end-before: end POI_accept_char_array_in_bufferify
 
-Most of the work is done by the helper function:
+Most of the work is done by the helper function.
+This converts the Fortran array into NULL terminated strings by
+copying all of the values:
 
 .. literalinclude:: ../regression/reference/none/helpers.c
    :language: c

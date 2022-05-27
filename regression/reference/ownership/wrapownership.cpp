@@ -99,6 +99,7 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
+// start OWN_return_int_ptr_dim_pointer
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
     // splicer begin function.return_int_ptr_dim_pointer
@@ -106,6 +107,7 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
     return SHC_rv;
     // splicer end function.return_int_ptr_dim_pointer
 }
+// end OWN_return_int_ptr_dim_pointer
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
@@ -116,6 +118,7 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
+// start OWN_return_int_ptr_dim_pointer_bufferify
 void OWN_return_int_ptr_dim_pointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
@@ -132,6 +135,7 @@ void OWN_return_int_ptr_dim_pointer_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_pointer_bufferify
 }
+// end OWN_return_int_ptr_dim_pointer_bufferify
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
@@ -143,6 +147,7 @@ void OWN_return_int_ptr_dim_pointer_bufferify(
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
+// start OWN_return_int_ptr_dim_alloc
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
     // splicer begin function.return_int_ptr_dim_alloc
@@ -150,6 +155,7 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
     return SHC_rv;
     // splicer end function.return_int_ptr_dim_alloc
 }
+// end OWN_return_int_ptr_dim_alloc
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
@@ -160,6 +166,7 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
+// start OWN_return_int_ptr_dim_alloc_bufferify
 void OWN_return_int_ptr_dim_alloc_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
@@ -176,6 +183,7 @@ void OWN_return_int_ptr_dim_alloc_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_dim_alloc_bufferify
 }
+// end OWN_return_int_ptr_dim_alloc_bufferify
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +dimension(len)
