@@ -36,7 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added attribute *+blanknull* to convert a blank Fortran string into
   a NULL pointer instead of a 1-d buffer with ``'/0'``.
   Used with ``const char *`` arguments.
-  This can be default to True with the *F_blanknull* option.
+  This can be defaulted to True with the *F_blanknull* option.
 - Added ``file_code`` dictionary to input YAML file. It contains
   directives to add header file and ``USE`` statements into generated files.
   These are collated with headers and ``USE`` statements added by typemaps,
@@ -47,6 +47,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added option *C_shadow_result*. If true, the C wrapper will return a pointer
   to the capsule holding the function result. The capsule is also passed
   as an argument.  If false the function is ``void``.
+- The getter for a class member function will return a Fortran pointer if
+  the *dimension* attribute is added to the declaration.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml
@@ -70,10 +72,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   *C_impl_utility*.  This function contains code to delete memory from
   shadow classes. Previously it was written file *C_impl_filename*.
   This may require changes to Makefiles.
-- C wrappers which return a non-native type such as a pointer or a struct
-  are now ``void`` functions.  The return value continues to be passed in
-  as an argument which will be filled in by the C wrapper. The return
-  value was redundant.
 - Class instance arguments which are passed by value will now pass the
   shadow type by reference. This allows the addr and idtor fields to be
   changed if necessary by the C wrapper.

@@ -362,7 +362,7 @@ F_create_bufferify_function
 F_create_generic
   Controls creation of a generic interface.  It defaults to *true* for
   most cases but will be set to *False* if a function is templated on
-  the return type since Fortran does not distiuguish generics based on
+  the return type since Fortran does not distinguish generics based on
   return type (similar to overloaded functions based on return type in
   C++).
 
@@ -739,7 +739,7 @@ Library
 ^^^^^^^
 
 C_array_type
-    Name of structure used to store information about an array
+    Name of structure used to store metadata about an array
     such as its address and size.
     Defaults to *{C_prefix}SHROUD_array*.
 
@@ -820,7 +820,7 @@ CXX_this
     Defaults to ``SH_this``.
 
 F_array_type
-    Name of derived type used to store information about an array
+    Name of derived type used to store metadata about an array
     such as its address and size.
     Default value from option *F_array_type_template* which 
     defaults to *{C_prefix}SHROUD_array*.

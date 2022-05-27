@@ -1103,7 +1103,9 @@ fc_statements = [
         local=["ptr"],
     ),
     dict(
-        name="f_function_native_*_cdesc_pointer",
+        # f_function_native_*_cdesc_pointer
+        # f_getter_native_*_cdesc_pointer
+        name="f_function/getter_native_*_cdesc_pointer",
         mixin=["f_mixin_function_cdesc"],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
         arg_decl=[
@@ -2200,7 +2202,9 @@ fc_statements = [
     ),
 
     dict(
-        name="c_getter_native_scalar",
+        # c_getter_native_scalar
+        # c_getter_native_*
+        name="c_getter_native_scalar/*",
         base="c_getter",
         ret=[
             "return {CXX_this}->{field_name};",
@@ -2218,7 +2222,22 @@ fc_statements = [
             "{CXX_this}->{field_name} = val;",
         ],
     ),
-
+    dict(
+        # Similar to calling a function, but save field pointer instead.
+        name="c_getter_native_*_cdesc",
+        mixin=["c_getter", "c_mixin_function_cdesc"],
+        c_helper="ShroudTypeDefines array_context",
+        post_call=[
+            "{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->cxx.idtor = {idtor};",
+            "{c_var_cdesc}->addr.base = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};"
+            "{c_array_shape}",
+            "{c_var_cdesc}->size = {c_array_size};",
+        ],
+    ),
     #####
     dict(
         # Return meta data to Fortran.

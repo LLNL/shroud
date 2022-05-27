@@ -64,7 +64,9 @@ root
         cdesc -- c_function_vector_cdesc
     getter -- c_getter
       native
-        scalar -- c_getter_native_scalar
+        * -- c_getter_native_scalar/*
+          cdesc -- c_getter_native_*_cdesc
+        scalar -- c_getter_native_scalar/*
       string
         scalar
           cdesc -- c_getter_string_scalar_cdesc
@@ -247,7 +249,7 @@ root
             pointer -- f_function_native_*_buf_pointer
           cdesc
             allocatable -- f_function_native_*_cdesc_allocatable
-            pointer -- f_function_native_*_cdesc_pointer
+            pointer -- f_function/getter_native_*_cdesc_pointer
               caller -- f_function_native_*_cdesc_pointer_caller
           cfi
             allocatable -- f_function_native_*_cfi_allocatable
@@ -299,6 +301,10 @@ root
       void
         * -- f_function_void_*
     getter -- f_getter
+      native
+        *
+          cdesc
+            pointer -- f_function/getter_native_*_cdesc_pointer
       string
         scalar
           cdesc
@@ -1325,6 +1331,40 @@ c_getter:
   intent: getter
   name: c_getter
   owner: library
+c_getter_native_*:
+  call:
+  - // skip call c_getter
+  intent: getter
+  name: c_getter_native_*
+  owner: library
+  ret:
+  - return {CXX_this}->{field_name};
+c_getter_native_*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper: ShroudTypeDefines array_context
+  call:
+  - // skip call c_getter
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_c_arg_names:
+  - '{c_var}'
+  f_import:
+  - '{F_array_type}'
+  intent: getter
+  name: c_getter_native_*_cdesc
+  owner: library
+  post_call:
+  - '{c_var_cdesc}->cxx.addr  = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->cxx.idtor = {idtor};'
+  - '{c_var_cdesc}->addr.base = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  return_type: void
+  temps:
+  - cdesc
 c_getter_native_scalar:
   call:
   - // skip call c_getter
@@ -3543,6 +3583,24 @@ f_function_void_*:
 f_getter:
   intent: getter
   name: f_getter
+f_getter_native_*_cdesc_pointer:
+  arg_c_call:
+  - '{c_var_cdesc}'
+  arg_decl:
+  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  declare:
+  - 'type({F_array_type}) :: {c_var_cdesc}'
+  f_helper: array_context
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  intent: getter
+  name: f_getter_native_*_cdesc_pointer
+  need_wrapper: true
+  post_call:
+  - call c_f_pointer({c_var_cdesc}%base_addr, {F_result}{f_array_shape})
+  temps:
+  - cdesc
 f_getter_string_scalar_cdesc_allocatable:
   arg_c_call:
   - '{c_var_cdesc}'

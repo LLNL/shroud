@@ -31,6 +31,7 @@ C_OBJS = \
     wrapSingleton.o \
     wrapShape.o \
     wrapCircle.o \
+    wrapData.o \
     utilclasses.o
 F_OBJS = \
     wrapfclasses.o \
@@ -48,6 +49,7 @@ wrapClasses.o : wrapClasses.h classes.hpp
 wrapClass1.o : wrapClass1.h classes.hpp
 wrapClass2.o : wrapClass2.h classes.hpp
 wrapSingleton.o : wrapSingleton.h classes.hpp
+wrapData.o : wrapData.h wrapData.cpp
 main.o : fruit.o wrapfclasses.o
 
 # useful to isolate load error with just C++ code

@@ -295,15 +295,22 @@ api
 ^^^
 
 Controls the API used by the C wrapper.  The values are *capi*,
-*buf*, *capsule*, *capptr* and *cfi*.  Normally, this attribute is determined by Shroud
+*buf*, *capsule*, *capptr*, *cdesc* and *cfi*.
+Normally, this attribute is determined by Shroud
 internally.  Scalar native types such as ``int`` and ``double`` will
 use *capi* since the argument can be passed directly to C using the
 *interoperability with C* feature of Fortran.
 
-A 'bufferify' wrapper can also be created.  Pointers to native and
+Otherwise a 'bufferify' wrapper will also be created.  Pointers to native and
 ``char`` use additional metadata extracted by the Fortran wrapper via
 intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
 will be copied and null-terminated.  This uses *api(buf)*.
+
+*cdesc* will pass down a pointer to a struct which contains metadata
+for the argument instead of passing additional fields. The advantage
+is the struct can also be used to return metadata from the C wrapper
+to the Fortran wrapper.  The struct is named by the format fields
+*C_array_type* and *F_array_type*.
 
 The option *F_CFI*, will use the *Further interoperability with C*
 features and pass ``CFI_cdesc_t`` arguments to the C where where the
@@ -313,7 +320,7 @@ The *capsule* and *capptr* APIs are used by the capsule created by
 shadow types created for C++ classes.  In both cases the result is
 passed from Fortran to C as an extra argument for function which
 return a class. With *capptr*, the C wrapper will return a pointer to
-the capsule argument while *capsule* will not not return a value for
+the capsule argument while *capsule* will not return a value for
 the function. This is controlled by the *C_shadow_result* option.
 
 There is currently one useful case where the user would want to set
@@ -490,7 +497,8 @@ A list of array extents for pointer or reference variables.
 All arrays use the language's default lower-bound
 (1 for Fortran and 0 for Python).
 Used to define the dimension of pointer arguments with *intent(out)*
-and function results.
+and function results. It can also be used with class member variables
+to create a getter which returns a Fortran pointer.
 A dimension without any value is an error -- ``+dimension``.
 
 The expression is evaluated in the C wrapper.  It can be passed back
@@ -723,7 +731,7 @@ as a class by defining option ``wrap_struct_as=class``.  Other
 functions can be associated with the class by setting option
 ``class_method`` to the name of the struct.
 
-.. XXX See detail at ...
+See detail at :ref:`Object-Oriented C <TypesSandC-ObjectOrientedC>`
 
 rank
 ^^^^

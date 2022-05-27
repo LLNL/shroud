@@ -9,6 +9,8 @@ Wrote wrapShape.h
 Wrote wrapShape.cpp
 Wrote wrapCircle.h
 Wrote wrapCircle.cpp
+Wrote wrapData.h
+Wrote wrapData.cpp
 Wrote wrapclasses.h
 Wrote wrapclasses.cpp
 Wrote wrapfclasses.f

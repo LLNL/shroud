@@ -127,12 +127,30 @@ module classes_mod
         ! splicer end class.Circle.type_bound_procedure_part
     end type circle
 
+    ! start derived-type data
+    type data
+        type(CLA_SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Data.component_part
+        ! splicer end class.Data.component_part
+    contains
+        procedure :: allocate => data_allocate
+        procedure :: free => data_free
+        procedure :: dtor => data_dtor
+        procedure :: get_nitems => data_get_nitems
+        procedure :: set_nitems => data_set_nitems
+        procedure :: get_items => data_get_items
+        ! splicer begin class.Data.type_bound_procedure_part
+        ! splicer end class.Data.type_bound_procedure_part
+    end type data
+    ! end derived-type data
+
     interface operator (.eq.)
         module procedure class1_eq
         module procedure class2_eq
         module procedure singleton_eq
         module procedure shape_eq
         module procedure circle_eq
+        module procedure data_eq
     end interface
 
     interface operator (.ne.)
@@ -141,6 +159,7 @@ module classes_mod
         module procedure singleton_ne
         module procedure shape_ne
         module procedure circle_ne
+        module procedure data_ne
     end interface
 
     ! ----------------------------------------
@@ -613,6 +632,139 @@ module classes_mod
     ! splicer end class.Circle.additional_interfaces
 
     ! ----------------------------------------
+    ! Function:  void allocate
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int n +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start c_data_allocate
+    interface
+        subroutine c_data_allocate(self, n) &
+                bind(C, name="CLA_Data_allocate")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: n
+        end subroutine c_data_allocate
+    end interface
+    ! end c_data_allocate
+
+    ! ----------------------------------------
+    ! Function:  void free
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! start c_data_free
+    interface
+        subroutine c_data_free(self) &
+                bind(C, name="CLA_Data_free")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+        end subroutine c_data_free
+    end interface
+    ! end c_data_free
+
+    ! ----------------------------------------
+    ! Function:  Data
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! start c_data_ctor
+    interface
+        function c_data_ctor(SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="CLA_Data_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) SHT_prv
+        end function c_data_ctor
+    end interface
+    ! end c_data_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Data
+    ! Attrs:     +intent(dtor)
+    ! Requested: c_dtor_void_scalar
+    ! Match:     c_dtor
+    ! start c_data_dtor
+    interface
+        subroutine c_data_dtor(self) &
+                bind(C, name="CLA_Data_dtor")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_data_dtor
+    end interface
+    ! end c_data_dtor
+
+    ! ----------------------------------------
+    ! Function:  int getNitems
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    ! start c_data_get_nitems
+    interface
+        function c_data_get_nitems(self) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Data_get_nitems")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_data_get_nitems
+    end interface
+    ! end c_data_get_nitems
+
+    ! ----------------------------------------
+    ! Function:  void setNitems
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
+    ! start c_data_set_nitems
+    interface
+        subroutine c_data_set_nitems(self, val) &
+                bind(C, name="CLA_Data_set_nitems")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_data_set_nitems
+    end interface
+    ! end c_data_set_nitems
+
+    ! ----------------------------------------
+    ! Function:  int * getItems
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! start c_data_get_items_bufferify
+    interface
+        subroutine c_data_get_items_bufferify(self, SHT_rv) &
+                bind(C, name="CLA_Data_get_items_bufferify")
+            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_data_get_items_bufferify
+    end interface
+    ! end c_data_get_items_bufferify
+
+    ! splicer begin class.Data.additional_interfaces
+    ! splicer end class.Data.additional_interfaces
+
+    ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
@@ -863,6 +1015,12 @@ module classes_mod
         module procedure class1_ctor_flag
     end interface class1
     ! end generic interface class1
+
+    ! start generic interface data
+    interface data
+        module procedure data_ctor
+    end interface data
+    ! end generic interface data
 
     interface shape
         module procedure shape_ctor
@@ -1433,6 +1591,150 @@ contains
     ! splicer end class.Circle.additional_functions
 
     ! ----------------------------------------
+    ! Function:  void allocate
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  int n +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! start data_allocate
+    subroutine data_allocate(obj, n)
+        use iso_c_binding, only : C_INT
+        class(data) :: obj
+        integer(C_INT), value, intent(IN) :: n
+        ! splicer begin class.Data.method.allocate
+        call c_data_allocate(obj%cxxmem, n)
+        ! splicer end class.Data.method.allocate
+    end subroutine data_allocate
+    ! end data_allocate
+
+    ! ----------------------------------------
+    ! Function:  void free
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! start data_free
+    subroutine data_free(obj)
+        class(data) :: obj
+        ! splicer begin class.Data.method.free
+        call c_data_free(obj%cxxmem)
+        ! splicer end class.Data.method.free
+    end subroutine data_free
+    ! end data_free
+
+    ! ----------------------------------------
+    ! Function:  Data
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     f_ctor_shadow_scalar_capptr
+    ! Attrs:     +api(capptr)+intent(ctor)
+    ! Exact:     c_ctor_shadow_scalar_capptr
+    ! start data_ctor
+    function data_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(data) :: SHT_rv
+        type(C_PTR) :: SHT_prv
+        ! splicer begin class.Data.method.ctor
+        SHT_prv = c_data_ctor(SHT_rv%cxxmem)
+        ! splicer end class.Data.method.ctor
+    end function data_ctor
+    ! end data_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Data
+    ! Attrs:     +intent(dtor)
+    ! Exact:     f_dtor
+    ! Attrs:     +intent(dtor)
+    ! Exact:     c_dtor
+    ! start data_dtor
+    subroutine data_dtor(obj)
+        class(data) :: obj
+        ! splicer begin class.Data.method.dtor
+        call c_data_dtor(obj%cxxmem)
+        ! splicer end class.Data.method.dtor
+    end subroutine data_dtor
+    ! end data_dtor
+
+    ! Generated by getter/setter
+    ! ----------------------------------------
+    ! Function:  int getNitems
+    ! Attrs:     +intent(getter)
+    ! Requested: f_getter_native_scalar
+    ! Match:     f_getter
+    ! Attrs:     +intent(getter)
+    ! Exact:     c_getter_native_scalar
+    ! start data_get_nitems
+    function data_get_nitems(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(data) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Data.method.get_nitems
+        SHT_rv = c_data_get_nitems(obj%cxxmem)
+        ! splicer end class.Data.method.get_nitems
+    end function data_get_nitems
+    ! end data_get_nitems
+
+    ! Generated by getter/setter
+    ! ----------------------------------------
+    ! Function:  void setNitems
+    ! Attrs:     +intent(setter)
+    ! Exact:     f_setter
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(setter)
+    ! Requested: f_setter_native_scalar
+    ! Match:     f_setter_native
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_scalar
+    ! start data_set_nitems
+    subroutine data_set_nitems(obj, val)
+        use iso_c_binding, only : C_INT
+        class(data) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Data.method.set_nitems
+        call c_data_set_nitems(obj%cxxmem, val)
+        ! splicer end class.Data.method.set_nitems
+    end subroutine data_set_nitems
+    ! end data_set_nitems
+
+    ! Generated by getter/setter - arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  int * getItems
+    ! Attrs:     +deref(pointer)+intent(getter)
+    ! Exact:     f_getter_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! start data_get_items
+    function data_get_items(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, c_f_pointer
+        class(data) :: obj
+        integer(C_INT), pointer :: SHT_rv(:)
+        ! splicer begin class.Data.method.get_items
+        type(CLA_SHROUD_array) :: SHT_rv_cdesc
+        call c_data_get_items_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        ! splicer end class.Data.method.get_items
+    end function data_get_items
+    ! end data_get_items
+
+    ! splicer begin class.Data.additional_functions
+    ! splicer end class.Data.additional_functions
+
+    ! ----------------------------------------
     ! Function:  void passClassByValue
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
@@ -1750,5 +2052,27 @@ contains
             rv = .false.
         endif
     end function circle_ne
+
+    function data_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(data), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function data_eq
+
+    function data_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(data), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function data_ne
 
 end module classes_mod

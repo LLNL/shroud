@@ -23,6 +23,7 @@ program tester
   call test_class1
   call test_singleton
   call test_subclass
+  call test_getter
 
   call fruit_summary
   call fruit_finalize
@@ -241,5 +242,27 @@ contains
     call assert_true(circle1%associated(), "subclass instance associated")
     
   end subroutine test_subclass
+
+  subroutine test_getter
+    type(Data) var
+    integer(C_INT) :: nitems
+    integer(C_INT), pointer :: items(:)
+
+    var = Data()
+    call var%allocate(10)
+
+    nitems = var%get_nitems()
+    call assert_equals(nitems, 10, "Data get_nitems")
+
+    ! get the 'int *' field and convert to pointer
+    nullify(items)
+    items => var%get_items()
+    call assert_true(associated(items), "Data items associated")
+    call assert_equals(size(items), 10, "Data items size")
+    call assert_true(all(items(:) .eq. [1,2,3,4,5,6,7,8,9,10]), "Data items values")
+    call var%free()
+
+    call var%dtor()
+  end subroutine test_getter
 
 end program tester

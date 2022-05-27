@@ -35,3 +35,8 @@ Does not have a directory under ``run``.
 
 Test name generation when there is a top level namespace
 
+### none
+
+Parse an empty file.  This test also uses some additional flags to
+Shroud to dump some debugging files. It produces a summary of types,
+helpers and statements
