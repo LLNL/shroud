@@ -732,9 +732,14 @@ class GenFunctions(object):
         Do not wrap for Python since descriptors are created for
         class member variables.
 
+        The getter is a function of the same type as var
+        with no arguments.
+        The setter is a void function with a single argument
+        the same type as var.
+
         Args:
-            cls -
-            var -
+            cls - ast.ClassNode
+            var - ast.VariableNode
         """
         options = var.options
         if options.wrap_fortran is False and options.wrap_c is False:
@@ -778,8 +783,10 @@ class GenFunctions(object):
         fattrs = {}
 
         fcn = cls.add_function(decl, format=fmt_func, fattrs=fattrs)
-        fcn.ast.metaattrs["intent"] = "getter"
-        fcn.ast.metaattrs["deref"] = deref
+        meta = fcn.ast.metaattrs
+        meta.update(ast.metaattrs)
+        meta["intent"] = "getter"
+        meta["deref"] = deref
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
@@ -802,7 +809,9 @@ class GenFunctions(object):
         fcn = cls.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
         fcn.ast.metaattrs["intent"] = "setter"
-        fcn.ast.params[0].metaattrs["intent"] = "setter"
+        meta = fcn.ast.params[0].metaattrs
+        meta.update(ast.metaattrs)
+        meta["intent"] = "setter"
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
