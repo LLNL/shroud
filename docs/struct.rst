@@ -13,20 +13,18 @@ Structs and Classes
     another level of indirection.
     --- David Wheeler
 
-Classes are wrapped by a derived-type with methods implemented
-as type-bound procedures in Fortran and an extension type in Python.
+While structs and classes are very similar in C++, Shroud wraps them
+much differently.  Shroud treats structs as they are in C and creates
+a corresponding derived type for the struct. Shroud wraps classes by
+creating a shadow class which holds a pointer to the instance
+then uses Fortran type bound procedures to implement methods.
 
 
 Class
 -----
 
-Each class in the input file will create a struct which acts as a
-container for the C++ class.  Shroud referes to this
-as a capsule, inspired by the Python capsule object.  A pointer to an
-instance is saved in the capsule along with memory management
-information. A pointer to the capsule is passed down to the C wrapper
-which passes the address of the instance to the C++ routines to be
-used as the *this* instance.
+Classes are wrapped by creating a *shadow class* for the C++ class.
+A pointer to an instances is saved along with a memory management flag.
 
 Using the tutorial as an example, a simple class is defined in the C++
 header as:
@@ -47,17 +45,101 @@ And is wrapped in the YAML as:
     - decl: class Class1
       declarations:
       - decl: int Method1()
+      - decl: Class1()
+        format:
+          function_suffix: _default
+      - decl: Class1(int flag)
+        format:
+          function_suffix: _flag
+      - decl: ~Class1()        +name(delete)
+
+While C++ will provide a default constructor and destructor, they must
+be listed explicitly to wrap them.  They are not assumed since they
+may be private.  The default name of the constructor is ``ctor``.  The
+name can be specified with the *name* attribute.  If the constructor
+is overloaded, each constructor must be given the same *name*
+attribute.
+
+The *function_suffix* is added to distinguish overloaded constructors.
+The default is to have a sequential numeric suffix.  The
+*function_suffix* must not be explicitly set to blank since the name
+is used by the Fortran ``generic`` interface.
+
+If no constructor is wrapped, then some other factory method
+should be available to create instances of the class. There is no way
+to create it directly from Fortran.
+
+When the constructor is wrapped the destructor should also be wrapper
+or some other method should be wrapped to release the memory.
+
+C
+^
+
+Each class in the YAML file will create a struct in the C wrapper.
+All of these structs are identical but are named after the class.
+This is intended to provide some level of type safety by making it
+harder to accidently use the wrong class with a method.
+Shroud refers to this as a capsule.
+
+.. literalinclude:: ../regression/reference/classes/typesclasses.h
+   :language: c
+   :start-after: start struct CLA_Class1
+   :end-before: end struct CLA_Class1
+
+The C wrapper will extract the address of the instance then call the
+method.
+
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
+   :language: c++
+   :start-after: start CLA_Class1_method1
+   :end-before: end CLA_Class1_method1
+                
+All constructors are very similar. They call the C++ constructor then
+saves the pointer to the instance.  The *idtor* field is the index of
+the destructor maintained by Shroud to destroy the instance.
+
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
+   :language: c++
+   :start-after: start CLA_Class1_ctor_flag
+   :end-before: end CLA_Class1_ctor_flag
+
+Finally the wrapper for the destructor.
+The *addr* field is cleared to avoid a dangling pointer.
+
+.. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
+   :language: c++
+   :start-after: start CLA_Class1_delete
+   :end-before: end CLA_Class1_delete
+
+A function which returns a class, including constructors, is passed a
+pointer to a *F_capsule_data_type*.  The argument's members are filled
+in by the function.  The function will return a ``type(C_PTR)`` which
+contains the address of the *F_capsule_data_type* argument.  The
+prototype for the C wrapper function allows it to be used in
+expressions similar to the way that ``strcpy`` returns its destination
+argument.  The option *C_shadow_result* can be set to *False* to
+change the function to return `void` instead.
+The Fortran wrapper API will be uneffected.
+
+C++ functions which return `const` pointers will not create a `const`
+C wrapper. This is because the C wapper will return a pointer to the
+capsule and not the instance.
 
 Fortran
 ^^^^^^^
 
-The Fortran interface will create two derived types.  The first is
-used to interact with the C wrapper via the capsule and uses
-``bind(C)``. It contains a pointer to an instance of the class and
-index used to release the instance.  The ``idtor`` argument is
-described in :ref:`MemoryManagementAnchor`.
+.. name of derived type
 
-:file:`wrapfclasses.f`
+The Fortran wrapper uses the object-oriented features added in
+Fortran 2003.  There is one derived type for each library which is
+used for the capsule.  This derived type uses ``bind(C)`` since it is
+passed to the C wrapper. Each class uses the same capsule derived type
+since it is considered an implementation detail and the user should
+not access it.  Then each class creates an additional derived type as
+the *shadow* class which contains a capsule and has type-bound
+procedures associated with it.
+
+.. :file:`wrapfclasses.f`
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
@@ -65,14 +147,7 @@ described in :ref:`MemoryManagementAnchor`.
    :end-before: end helper capsule_data_helper
    :dedent: 4
 
-:file:`typeclasses.h`
-
-.. literalinclude:: ../regression/reference/classes/typesclasses.h
-   :language: c
-   :start-after: start struct CLA_Class1
-   :end-before: end struct CLA_Class1
-
-The capsule is added to a Fortran shadow class.  This derived type
+The capsule is added to the Fortran shadow class.  This derived type
 can contain type-bound procedures and may not use the ``bind(C)``
 attribute.
 
@@ -81,51 +156,65 @@ attribute.
     type class1
         type(SHROUD_CLA_capsule_data) :: cxxmem
     contains
+        procedure :: delete => class1_delete
         procedure :: method1 => class1_method1
     end type class1
 
-A function which returns a class, including constructors, is passed a
-pointer to a *F_capsule_data_type*.  The argument's members are filled
-in by the function.  The function will return a ``type(C_PTR)`` which
-contains the address of the *F_capsule_data_type* argument.  The
-interface/prototype for the C wrapper function allows it to be used in
-expressions similar to the way that ``strcpy`` returns its destination
-argument.  The option *C_shadow_result* can be set to *False* to change
-the function to return `void` instead.
+The wrapper for the method passes the object as the first argument.
+The argument uses the format field *F_this* to name the variable and
+defaults to ``obj``.  It can be renamed if it conflicts with
+another argument.
 
-C++ functions which return `const` pointers will not create a `const`
-C wrapper. This is because the C wapper will return a pointer to the
-capsule and not the instance.
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
+   :language: fortran
+   :start-after: start class1_method1
+   :end-before: end class1_method1
+   :dedent: 4
 
 A generic interface with the same name as the class is created to call
 the constructors for the class.  The constructor will initialize the
-Fortran derived type.
+Fortran shadow class.
 
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
+   :language: fortran
+   :start-after: start generic interface class1
+   :end-before: end generic interface class1
+   :dedent: 4
+
+The Fortran wrapped class can be used very similar to its C++ counterpart.
+            
 .. code-block:: fortran
 
+    use classes_mod
     type(class1) var     ! Create Fortran variable.
+    integer(C_INT) i
     var = class1()       ! Allocate C++ class instance.
+    i = var%method1()
+    call var%delete
 
-When the constructor is wrapped the destructor should also be wrapper or
-some other method should be provided to release the memory.
-
-Some other type-bound precedures are created to allow the user
-to get and set the address of the C++ memory directly.
-This can be used when the address of the instance is created in some
-other manner (perhaps a C++ module in the application) and it
-needs to be used in Fortran without being created in Fortran.
-There is no way to free this memory and must be released outside of Fortran.
+Some additional type-bound procedures are created to allow the user to
+get and set the address of the C++ memory directly.  This can be used
+when the address of the instance is created in some other manner and
+it needs to be used in Fortran.  There is no way to free this memory
+and it must be released outside of Fortran.
 
 .. XXX unless idtor is set properly
 
+For example, a C++ function creates an instance then passes the
+address of it to Fortran function ``worker``. The shadow class is
+initialized with the address and can then be used in an object-oriented
+fashion:
+
 .. code-block:: fortran
 
+    subroutine worker(addr) bind(C)
+    use classes_mod
+    type(C_PTR), intent(IN) :: addr
     type(class1) var
-    type(C_PTR) addr
+    integer(C_INT) i
 
-    addr = var%get_instance()
-    ! addr will not be c_associated
-    call var%set_instance(caddr)    ! caddr contains address of an instance
+    call var%set_instance(addr)
+    i = var%method1()
    
 Two instances of the class can be compared using the ``associated`` method.
 
@@ -138,24 +227,15 @@ Two instances of the class can be compared using the ``associated`` method.
         print *, "Identical instances"
     endif
 
+These functions names are controlled by format fields *F_name_associated*,
+*F_name_instance_get* and *F_name_instance_set*.
+If the names are blank, the functions will not be created.
+
+.. F_name_assign  F_name_final
 
 A full example is at 
 :ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 
-Inheritance is implemented using the ``EXTENDS`` Fortran keyword.
-Only single inheritance is supported.
-
-.. code-block:: fortran
-
-    type shape
-        type(CLA_SHROUD_capsule_data) :: cxxmem
-    contains
-        procedure :: get_ivar => shape_get_ivar
-    end type shape
-
-    type, extends(shape) :: circle
-    end type circle
-                
 ..
  The *f_to_c* field uses the
  generated ``get_instance`` function to return the pointer which will
@@ -171,7 +251,8 @@ Only single inheritance is supported.
 Python
 ^^^^^^
 
-An struct is created for each C++ class.
+An PyObject is created for each C++ class.
+It constains the same values as the capsule.
 
 .. literalinclude:: ../regression/reference/classes/pyclassesmodule.hpp
    :language: c
@@ -182,8 +263,84 @@ The ``idtor`` argument is used to release memory and described at
 :ref:`MemoryManagementAnchor`.  The splicer allows additional fields
 to be added by the developer which may be used in function wrappers.
 
+Additional fields can be added to the splicer for custom behavior.
+
+Class static methods
+--------------------
+
+To wrap the method:
+
+.. code-block:: c++
+
+    class Singleton {
+        static Singleton& getReference();
+    };
+
+Use the YAML input:
+
+.. code-block:: yaml
+
+    - decl: class Singleton
+      declarations:
+      - decl: static Singleton& getReference()
+
+Fortran
+^^^^^^^
+
+Class static methods are supported using the ``NOPASS`` keyword in Fortran.
+
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
+   :language: fortran
+   :start-after: start derived-type singleton
+   :end-before: end derived-type singleton
+   :dedent: 4
+
+Called from Fortran as:
+
+.. code-block:: fortran
+
+    type(singleton) obj0
+    obj0 = obj0%get_reference()
+
+Note that *obj0* is not assigned a value before the function ``get_reference`` is called.
+            
+Class Inheritance
+-----------------
+
+Class inheritance is supported.
+
+.. code-block:: yaml
+
+    - decl: class Shape
+      declarations:
+      - decl: Shape()
+      - decl: int get_ivar() const
+
+    - decl: "class Circle : public Shape"
+      declarations:
+      - decl: Circle()
+
+
+Fortran
+^^^^^^^
+
+Inheritance is implemented using the ``EXTENDS`` Fortran
+keyword.  Only single inheritance is supported.
+
+.. code-block:: fortran
+
+    type shape
+        type(CLA_SHROUD_capsule_data) :: cxxmem
+    contains
+        procedure :: get_ivar => shape_get_ivar
+    end type shape
+
+    type, extends(shape) :: circle
+    end type circle
+
+
 Forward Declaration
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 A class may be forward declared by omitting ``declarations``.
 All other fields, such as ``format`` and ``options`` must be provided
@@ -228,60 +385,17 @@ The class's declarations can be added later:
  show above with the remainder set to default values by Shroud.
 
 
-Constructor and Destructor
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The constructor and destuctor methods may also be exposed to Fortran.
-
-The class example from the tutorial is:
-
-.. code-block:: yaml
-
-    declarations:
-    - decl: class Class1
-      declarations:
-      - decl: Class1()         +name(new)
-        format:
-          function_suffix: _default
-      - decl: Class1(int flag) +name(new)
-        format:
-        function_suffix: _flag
-      - decl: ~Class1() +name(delete)
-
-
-The default name of the constructor is ``ctor``.  The name can 
-be specified with the **name** attribute.
-If the constructor is overloaded, each constructor must be given the
-same **name** attribute.
-The *function_suffix* must not be explicitly set to blank since the name
-is used by the ``generic`` interface.
-
-The constructor and destructor will only be wrapped if explicitly added
-to the YAML file to avoid wrapping ``private`` constructors and destructors.
-
-The Fortran wrapped class can be used very similar to its C++ counterpart.
-
-.. code-block:: fortran
-
-    use tutorial_mod
-    type(class1) obj
-    integer(C_INT) i
-
-    obj = class1_new()
-    i = obj%method1()
-    call obj%delete
-
-For wrapping details see 
-:ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 
 ..  chained function calls
 
 Member Variables
-^^^^^^^^^^^^^^^^
+----------------
 
 For each member variable of a C++ class a C and Fortran wrapper
 function will be created to get or set the value.  The Python wrapper
-will create a descriptor:
+will create a descriptor. It is not necessary to list all members of
+the class, only the one which are to be exposed in the wrapper.
+``private`` members cannot be wrapped.
 
 .. code-block:: c++
 
@@ -301,7 +415,7 @@ It is added to the YAML file as:
       - decl: int m_flag +readonly;
       - decl: int m_test +name(test);
 
-The *readonly* attribute will not write the setter function or descriptor.
+The *readonly* attribute will not create the setter function or descriptor.
 Python will report:
 
 .. code-block:: python
@@ -319,18 +433,40 @@ descriptors.  This is helpful when using a naming convention like
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
 
+.. XXX array members in struct
+   char name[20]    s.name = None   will add set to '\0'
+   int  count[10]   s.count = 0     will broadcast
+
 Struct
 ------
 
-Shroud supports both structs and classes. But it treats them much
-differently.  Whereas in C++ a struct and class are essentially the
-same thing, Shroud treats structs as a C style struct.  They do not
-have associated methods.  This allows them to be mapped to a Fortran
-derived type with the ``bind(C)`` attribute and a Python NumPy array.
+.. Shroud supports both structs and classes. But it treats them much
+   differently.  Whereas in C++ a struct and class are essentially the
+   same thing, Shroud treats structs as a C style struct.  They do not
+   have associated methods.  This allows them to be mapped to a Fortran
+   derived type with the ``bind(C)`` attribute and a Python NumPy array.
 
-A struct is defined the same as a class with a *declarations* field
-for struct members.
-In addition, a struct can be defined in a single ``decl`` in the YAML file.
+.. A struct is defined the same as a class with a *declarations* field
+   for struct members.
+   In addition, a struct can be defined in a single ``decl`` in the YAML file.
+
+For wrapping purposes, a struct is a C++ class without a vtable. It
+will contain POD types.  Unlike classes where all member functions do
+not need to be wrapped, a struct should be fully defined. This is
+necessary to allow an array of structs to be created in the wrapper
+language then passed to C++.
+   
+A struct is defined in the yaml file as:
+
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1
+      declarations:
+      - decl: int ifield;
+      - decl: double dfield;
+
+It can also be defined as one decl entry:
 
 .. code-block:: yaml
 
@@ -364,11 +500,8 @@ All creation and access of members can be done using Fortran.
     st(2)%ifield = 2_C_INT
     st(2)%dfield = 2.6_C_DOUBLE
 
-The option *wrap_struct_as* can be set to *class* to create a shadow type
-identical to how classes are wrapped.  This is useful when wrapping C
-code which does not support ``class`` directly.
-*wrap_struct_as* defaults to *struct* which will create a derived type.
-*wrap_class_as* also exists and defaults to *class*.
+.. *wrap_class_as* also exists and defaults to *class*.
+
 
 Python
 ^^^^^^
@@ -378,7 +511,7 @@ Python can treat a struct in several different ways by setting option
 First, treat it the same as a class.  An extension type is created with
 descriptors for the field methods. Second, as a numpy descriptor.
 This allows an array of structs to be used easily.
-Finally, as a tuple of Python types.
+Finally, as a tuple of Python objects.
 
 .. PY_struct_arg *class*, *numpy*, *list*
 
@@ -407,7 +540,68 @@ NumPy array contains a pointer to the C++ memory.
 The descriptor is created in the wrapper
 :ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
 
+Object-oriented C
+-----------------
 
-.. XXX array members in struct
-   char name[20]    s.name = None   will add set to '\0'
-   int  count[10]   s.count = 0     will broadcast
+Object oriented programing is a model and not a language feature.
+This model has been used for years in C by creating a struct for the
+object, then functions for the methods. C++ will implicitly pass the
+``this`` argument. C methods explicitly pass the struct as an
+argument. Fortran and Python both pass an explicit object then wrap it
+in syntacatic sugar to allow a ``self.method()`` syntax to be used.
+Shroud allows a struct and collection of functions to be treated as a
+class.
+
+First, define a struct and set the *wrap_struct_as* options to *class*.
+
+.. literalinclude:: ../regression/input/struct.yaml
+   :language: yaml
+   :start-after: start Cstruct_as_class
+   :end-before: end Cstruct_as_class
+
+Create a constructor function.
+The *class_ctor* options associates this with the struct.
+
+.. literalinclude:: ../regression/input/struct.yaml
+   :language: yaml
+   :start-after: start Create_Cstruct_as_class
+   :end-before: end Create_Cstruct_as_class
+
+Then add methods.  The *class_method* option associates this with the
+struct.  The format field *F_name_function* is used to name the
+method.  The default method name is the same as the function name.
+But since this name will be used in the context of the object, it can
+be much shorter.  The *pass* attribute marks this as the 'object'.
+
+.. literalinclude:: ../regression/input/struct.yaml
+   :language: yaml
+   :start-after: start Cstruct_as_class_sum
+   :end-before: end Cstruct_as_class_sum
+
+Fortran
+^^^^^^^
+
+A *shadow* class is created for the struct.
+This is the same as wrapping a C++ class.
+Getters and setters are created for the member variable.
+And the ``sum`` method is added.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start derived-type cstruct_as_class
+   :end-before: end derived-type cstruct_as_class
+   :dedent: 4
+
+Now the struct is treated as a class in the Fortran wrapper.
+
+.. code-block:: fortran
+
+    use struct_mod
+    type(cstruct_as_class) var     ! Create Fortran variable.
+    integer(C_INT) i
+    var = cstruct_as_class()       ! Create struct in C++.
+    i = var%sum()
+
+A full example is at 
+:ref:`Struct as a Class <example_struct_as_class>`.
+    

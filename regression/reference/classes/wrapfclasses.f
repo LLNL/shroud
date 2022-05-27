@@ -94,18 +94,17 @@ module classes_mod
         ! splicer end class.Class2.type_bound_procedure_part
     end type class2
 
+    ! start derived-type singleton
     type singleton
         type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
         procedure, nopass :: get_reference => singleton_get_reference
-        procedure :: get_instance => singleton_get_instance
-        procedure :: set_instance => singleton_set_instance
-        procedure :: associated => singleton_associated
         ! splicer begin class.Singleton.type_bound_procedure_part
         ! splicer end class.Singleton.type_bound_procedure_part
     end type singleton
+    ! end derived-type singleton
 
     type shape
         type(CLA_SHROUD_capsule_data) :: cxxmem
@@ -541,6 +540,7 @@ module classes_mod
     ! Function:  static Singleton & getReference
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_&_capptr
+    ! start c_singleton_get_reference
     interface
         function c_singleton_get_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -552,6 +552,7 @@ module classes_mod
             type(C_PTR) :: SHT_prv
         end function c_singleton_get_reference
     end interface
+    ! end c_singleton_get_reference
 
     ! splicer begin class.Singleton.additional_interfaces
     ! splicer end class.Singleton.additional_interfaces
@@ -1337,6 +1338,7 @@ contains
     ! Exact:     f_function_shadow_&_capptr
     ! Attrs:     +api(capptr)+intent(function)
     ! Exact:     c_function_shadow_&_capptr
+    ! start singleton_get_reference
     function singleton_get_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1346,29 +1348,7 @@ contains
         SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
-
-    ! Return pointer to C++ memory.
-    function singleton_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(singleton), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function singleton_get_instance
-
-    subroutine singleton_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(singleton), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine singleton_set_instance
-
-    function singleton_associated(obj) result (rv)
-        use iso_c_binding, only: c_associated
-        class(singleton), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function singleton_associated
+    ! end singleton_get_reference
 
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions

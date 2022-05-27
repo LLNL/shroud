@@ -819,32 +819,6 @@ Python usage:
     obj = tutorial.Class1()
     obj.method1()
 
+For more details see :ref:`Structs and Classes <TypesSandC>`.
 
-Class static methods
-^^^^^^^^^^^^^^^^^^^^
 
-Class static methods are supported using the ``NOPASS`` keyword in Fortran.
-To wrap the method:
-
-.. code-block:: c++
-
-    class Singleton {
-        static Singleton& getReference();
-    };
-
-Use the YAML input:
-
-.. code-block:: yaml
-
-    - decl: class Singleton
-      declarations:
-      - decl: static Singleton& getReference()
-
-Called from Fortran as:
-
-.. code-block:: fortran
-
-    type(singleton) obj0
-    obj0 = obj0%get_reference()
-
-Note that obj0 is not assigned a value before the function ``get_reference`` is called.

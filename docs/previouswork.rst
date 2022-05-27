@@ -170,6 +170,7 @@ Links
   * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
   * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
   * `C, Fortran, and single-character strings <https://lwn.net/Articles/791393/>`_
+  * `Emulating Multiple Inheritance in Fortran 2003/2008 <https://www.hindawi.com/journals/sp/2015/126069/>`_
 
 ..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf
 
