@@ -207,7 +207,7 @@ declarations:
     F_name_instance_set:
   declarations:
   - decl: int nitems;
-  - decl: int *items  +dimension(nitems)+readonly;
+  - decl: int *items  +dimension(nitems);
   - decl: void allocate(int n);
   - decl: void free();
   - decl: Data()

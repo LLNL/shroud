@@ -2216,7 +2216,9 @@ fc_statements = [
         # f_setter is intended for the function, this is for an argument.
     ),
     dict(
-        name="c_setter_native_scalar",
+        # c_setter_native_scalar
+        # c_setter_native_*
+        name="c_setter_native_scalar/*",
         base="c_setter_arg",
         post_call=[
             "{CXX_this}->{field_name} = val;",

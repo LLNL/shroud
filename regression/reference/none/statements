@@ -206,7 +206,8 @@ root
     setter -- c_setter
       arg -- c_setter_arg
       native
-        scalar -- c_setter_native_scalar
+        * -- c_setter_native_scalar/*
+        scalar -- c_setter_native_scalar/*
       string
         scalar
           buf -- c_setter_string_scalar_buf
@@ -2907,6 +2908,12 @@ c_setter_arg:
   intent: setter
   name: c_setter_arg
   owner: library
+c_setter_native_*:
+  intent: setter
+  name: c_setter_native_*
+  owner: library
+  post_call:
+  - '{CXX_this}->{field_name} = val;'
 c_setter_native_scalar:
   intent: setter
   name: c_setter_native_scalar

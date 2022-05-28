@@ -514,6 +514,8 @@ This will create a getter which can be called from Fortran.
     nitems = var%get_nitems()
     items => var%get_items()
 
+Likewise, the setter will require an argument of the same rank as
+the *dimension* attribute.
      
 .. XXX array members in struct
    char name[20]    s.name = None   will add set to '\0'

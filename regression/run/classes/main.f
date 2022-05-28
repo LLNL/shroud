@@ -247,8 +247,11 @@ contains
     type(Data) var
     integer(C_INT) :: nitems
     integer(C_INT), pointer :: items(:)
+    integer(C_INT), target :: local(5) = [10,11,12,13,14]
 
     var = Data()
+
+    ! set nitems and items
     call var%allocate(10)
 
     nitems = var%get_nitems()
@@ -261,6 +264,17 @@ contains
     call assert_equals(size(items), 10, "Data items size")
     call assert_true(all(items(:) .eq. [1,2,3,4,5,6,7,8,9,10]), "Data items values")
     call var%free()
+
+    ! set nitems and items
+    call var%set_nitems(size(local))
+    call var%set_items(local)
+
+    nullify(items)
+    items => var%get_items()
+    call assert_true(associated(items), "Data items associated local")
+    call assert_true(associated(items,local), "Data items associated local")
+    call assert_equals(size(items), size(local), "Data items size local")
+    call assert_true(all(items(:) .eq. local(:)), "Data items values local")
 
     call var%dtor()
   end subroutine test_getter

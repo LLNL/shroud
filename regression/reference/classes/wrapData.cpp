@@ -143,4 +143,23 @@ void CLA_Data_get_items_bufferify(CLA_Data * self,
 }
 // end CLA_Data_get_items_bufferify
 
+// ----------------------------------------
+// Function:  void setItems
+// Attrs:     +intent(setter)
+// Exact:     c_setter
+// ----------------------------------------
+// Argument:  int * val +intent(in)+rank(1)
+// Attrs:     +intent(setter)
+// Exact:     c_setter_native_*
+// start CLA_Data_set_items
+void CLA_Data_set_items(CLA_Data * self, int * val)
+{
+    classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
+    // splicer begin class.Data.method.set_items
+    // skip call c_setter
+    SH_this->items = val;
+    // splicer end class.Data.method.set_items
+}
+// end CLA_Data_set_items
+
 }  // extern "C"

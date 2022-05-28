@@ -3884,7 +3884,7 @@
                             "getter/setter",
                             "arg_to_buffer"
                         ],
-                        "_PTR_F_C_index": "33",
+                        "_PTR_F_C_index": "34",
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
@@ -3952,7 +3952,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "33 ****************************************",
+                        "<FUNCTION>": "34 ****************************************",
                         "_PTR_C_CXX_index": "32",
                         "_generated": "arg_to_buffer",
                         "ast": {
@@ -4039,6 +4039,129 @@
                                 "sh_type": "SH_TYPE_INT"
                             }
                         }
+                    },
+                    {
+                        "<FUNCTION>": "33 ****************************************",
+                        "C_generated_path": [
+                            "getter/setter"
+                        ],
+                        "_generated": "getter/setter",
+                        "ast": {
+                            "declarator": {
+                                "name": "setItems",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "setter"
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
+                                        "intent": "setter"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setItems(int * val)",
+                        "declgen": "void setItems(int * val +intent(in)+rank(1))",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_type": "int",
+                                    "c_var": "val",
+                                    "cfi_type": "CFI_type_int",
+                                    "cxx_addr": "",
+                                    "cxx_member": "->",
+                                    "cxx_nonconst_ptr": "val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "c_setter_native_*",
+                                    "stmt1": "c_setter_native_*"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "val",
+                                    "c_var": "val",
+                                    "f_assumed_shape": "(:)",
+                                    "f_c_dimension": "(*)",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "rank": "1",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "size": "size(val)",
+                                    "stmt0": "f_setter_native_*",
+                                    "stmt1": "f_setter_native",
+                                    "stmtc0": "c_setter_native_*",
+                                    "stmtc1": "c_setter_native_*"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "CLA_Data_set_items",
+                            "C_prototype": "CLA_Data * self,\t int * val",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
+                            "F_C_call": "c_data_set_items",
+                            "F_C_name": "c_data_set_items",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_items",
+                            "F_name_generic": "set_items",
+                            "F_name_impl": "data_set_items",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "field_name": "items",
+                            "function_name": "setItems",
+                            "stmt0": "f_setter",
+                            "stmt1": "f_setter",
+                            "stmtc0": "c_setter",
+                            "stmtc1": "c_setter",
+                            "underscore_name": "set_items"
+                        }
                     }
                 ],
                 "name": "Data",
@@ -4082,8 +4205,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "attrs": {
-                                "dimension": "nitems",
-                                "readonly": true
+                                "dimension": "nitems"
                             },
                             "declarator": {
                                 "name": "items",
@@ -4158,7 +4280,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "directionFunc",
@@ -4359,7 +4481,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passClassByValue",
@@ -4489,7 +4611,7 @@
                 }
             },
             {
-                "<FUNCTION>": "36 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "useclass",
@@ -4667,7 +4789,7 @@
                 }
             },
             {
-                "<FUNCTION>": "37 ****************************************",
+                "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4758,7 +4880,7 @@
                 }
             },
             {
-                "<FUNCTION>": "38 ****************************************",
+                "<FUNCTION>": "39 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3",
@@ -4870,7 +4992,7 @@
                 }
             },
             {
-                "<FUNCTION>": "39 ****************************************",
+                "<FUNCTION>": "40 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -4960,7 +5082,7 @@
                 }
             },
             {
-                "<FUNCTION>": "40 ****************************************",
+                "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3_void",
@@ -5049,7 +5171,7 @@
                 }
             },
             {
-                "<FUNCTION>": "41 ****************************************",
+                "<FUNCTION>": "42 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5137,7 +5259,7 @@
                 }
             },
             {
-                "<FUNCTION>": "42 ****************************************",
+                "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -5246,7 +5368,7 @@
                 }
             },
             {
-                "<FUNCTION>": "43 ****************************************",
+                "<FUNCTION>": "44 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassCopy",
@@ -5385,7 +5507,7 @@
                 }
             },
             {
-                "<FUNCTION>": "44 ****************************************",
+                "<FUNCTION>": "45 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -5528,7 +5650,7 @@
                 }
             },
             {
-                "<FUNCTION>": "45 ****************************************",
+                "<FUNCTION>": "46 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -5636,11 +5758,11 @@
                 }
             },
             {
-                "<FUNCTION>": "46 ****************************************",
+                "<FUNCTION>": "47 ****************************************",
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "47",
+                "_PTR_F_C_index": "48",
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -5760,8 +5882,8 @@
                 }
             },
             {
-                "<FUNCTION>": "47 ****************************************",
-                "_PTR_C_CXX_index": "46",
+                "<FUNCTION>": "48 ****************************************",
+                "_PTR_C_CXX_index": "47",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
