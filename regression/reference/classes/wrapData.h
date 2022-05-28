@@ -43,6 +43,8 @@ void CLA_Data_set_nitems(CLA_Data * self, int val);
 void CLA_Data_get_items_bufferify(CLA_Data * self,
     CLA_SHROUD_array *SHT_rv_cdesc);
 
+void CLA_Data_set_items(CLA_Data * self, int * val);
+
 #ifdef __cplusplus
 }
 #endif

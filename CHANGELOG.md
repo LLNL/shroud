@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   as an argument.  If false the function is ``void``.
 - The getter for a class member function will return a Fortran pointer if
   the *dimension* attribute is added to the declaration.
+  Likewise, the setter will expect an array of the same rank as *dimension*.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

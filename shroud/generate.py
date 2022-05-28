@@ -5,6 +5,8 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 """
+Check attributes in delcaration.
+Set meta attributes.
 Generate additional functions required to create wrappers.
 """
 from __future__ import print_function
@@ -27,11 +29,11 @@ wformat = util.wformat
 
 class VerifyAttrs(object):
     """
-    Check attributes and set some defaults.
+    Check attributes and set some defaults in metaattrs.
     Generate types for classes.
 
     check order:
-      indent - check_intent_attr
+      intent - check_intent_attr
       deref - check_deref_attr_func / check_deref_attr_var
     """
 
@@ -86,7 +88,7 @@ class VerifyAttrs(object):
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable '{}' at line {}".format(
                         attr, ast.name, node.linenumber
-                    )
+                    ) + "\nonly 'name', 'readonly', and 'dimension' are allowed on variables"
                 )
 
         is_ptr = ast.is_indirect()
@@ -609,7 +611,7 @@ class VerifyAttrs(object):
 
 
 def check_dimension(dim, meta, trace=False):
-    """Return AST of dim and assumed_rank flag.
+    """Assign AST of dim and assumed_rank flag to meta.
 
     Look for assumed-rank, "..", first.
     Else a comma delimited list of expressions.
@@ -823,6 +825,9 @@ class GenFunctions(object):
                 value=value,
             )
         )
+        dim = ast.metaattrs["dimension"]
+        if dim:
+            attrs["val"]["rank"] = len(dim)
 
         fcn = cls.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
