@@ -20,6 +20,10 @@ namespace ns1 {
     BLUE,
     WHITE
   };
+  struct DataPointer {
+    int nitems;
+    int *items;
+  };
 };
 
 namespace ns2 {
@@ -28,6 +32,10 @@ namespace ns2 {
     BLUE,
     WHITE
   };
+  struct DataPointer {
+    int nitems;
+    int *items;
+  };
 };
 
 namespace ns3 {
@@ -35,6 +43,10 @@ namespace ns3 {
     RED = 70,
     BLUE,
     WHITE
+  };
+  struct DataPointer {
+    int nitems;
+    int *items;
   };
 };
 

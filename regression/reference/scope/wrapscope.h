@@ -46,8 +46,20 @@ enum SCO_ColorEnum {
     SCO_ColorEnum_WHITE
 };
 
+
+struct s_SCO_datapointer {
+    int nitems;
+    int * items;
+};
+typedef struct s_SCO_datapointer SCO_datapointer;
+
 // splicer begin C_declarations
 // splicer end C_declarations
+
+void SCO_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
+    SCO_SHROUD_array *SHT_rv_cdesc);
+
+void SCO_data_pointer_set_items(SCO_datapointer * SH_this, int * val);
 
 #ifdef __cplusplus
 }

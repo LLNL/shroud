@@ -36,6 +36,11 @@ declarations:
           BLUE,
           WHITE
         };
+  - decl: struct DataPointer
+    declarations:
+    - decl: int nitems;
+    - decl: int *items +dimension(nitems);
+
 - decl: namespace ns2
   declarations:
   - decl: |
@@ -44,6 +49,11 @@ declarations:
           BLUE,
           WHITE
         };
+  - decl: struct DataPointer
+    declarations:
+    - decl: int nitems;
+    - decl: int *items +dimension(nitems);
+
 - decl: namespace ns3
   options:
     flatten_namespace: True
@@ -54,6 +64,10 @@ declarations:
           BLUE,
           WHITE
         };
+  - decl: struct DataPointer
+    declarations:
+    - decl: int nitems;
+    - decl: int *items +dimension(nitems);
 
 ########################################
 # Same enum in two classes
