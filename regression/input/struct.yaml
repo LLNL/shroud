@@ -119,6 +119,7 @@ declarations:
           double *dvalue  +dimension(nitems);
         };
   options:
+    F_struct_getter_setter: False
     PY_array_arg: numpy
 
 ######################################################################

@@ -35,7 +35,7 @@ void OWN_Class1_dtor(OWN_Class1 * self)
 }
 
 // ----------------------------------------
-// Function:  int getFlag
+// Function:  int get_flag
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 int OWN_Class1_get_flag(OWN_Class1 * self)

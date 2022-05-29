@@ -107,6 +107,23 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
 STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv);
 
+const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
+    STR_cstruct_ptr * SH_this);
+
+void STR_cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
+    const double * val);
+
+void STR_cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
+    STR_SHROUD_array *SHT_rv_cdesc);
+
+void STR_cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val);
+
+void STR_cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
+    STR_SHROUD_array *SHT_rv_cdesc);
+
+void STR_cstruct_list_set_dvalue(STR_cstruct_list * SH_this,
+    double * val);
+
 #ifdef __cplusplus
 }
 #endif

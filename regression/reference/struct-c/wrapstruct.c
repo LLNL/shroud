@@ -176,3 +176,138 @@ STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
     return SHC_rv;
     // splicer end function.create__cstruct_as_subclass_args
 }
+
+// ----------------------------------------
+// Function:  const double * Cstruct_ptr_get_const_dvalue
+// Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
+// Requested: c_getter_native_*_buf_pointer
+// Match:     c_getter_native_*
+// ----------------------------------------
+// Argument:  Cstruct_ptr * SH_this
+// Attrs:     +intent(in)+struct(Cstruct_ptr)
+// Requested: c_in_struct_*
+// Match:     c_in_struct
+const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
+    Cstruct_ptr * SH_this)
+{
+    // splicer begin function.cstruct_ptr_get_const_dvalue_bufferify
+    // skip call c_getter
+    return SH_this->const_dvalue;
+    // splicer end function.cstruct_ptr_get_const_dvalue_bufferify
+}
+
+// ----------------------------------------
+// Function:  void Cstruct_ptr_set_const_dvalue
+// Attrs:     +intent(setter)
+// Exact:     c_setter
+// ----------------------------------------
+// Argument:  Cstruct_ptr * SH_this
+// Attrs:     +intent(inout)+struct(Cstruct_ptr)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
+// ----------------------------------------
+// Argument:  const double * val +intent(in)
+// Attrs:     +intent(setter)
+// Exact:     c_setter_native_*
+void STR_cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
+    const double * val)
+{
+    // splicer begin function.cstruct_ptr_set_const_dvalue
+    // skip call c_setter
+    SH_this->const_dvalue = val;
+    // splicer end function.cstruct_ptr_set_const_dvalue
+}
+
+// ----------------------------------------
+// Function:  int * Cstruct_list_get_ivalue
+// Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+// Requested: c_getter_native_*_cdesc_pointer
+// Match:     c_getter_native_*_cdesc
+// ----------------------------------------
+// Argument:  Cstruct_list * SH_this
+// Attrs:     +intent(in)+struct(Cstruct_list)
+// Requested: c_in_struct_*
+// Match:     c_in_struct
+void STR_cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
+    STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.cstruct_list_get_ivalue_bufferify
+    // skip call c_getter
+    SHT_rv_cdesc->cxx.addr  = SH_this->ivalue;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SH_this->ivalue;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
+    SHT_rv_cdesc->elem_len = sizeof(int);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = SH_this->nitems+SH_this->nitems;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    // splicer end function.cstruct_list_get_ivalue_bufferify
+}
+
+// ----------------------------------------
+// Function:  void Cstruct_list_set_ivalue
+// Attrs:     +intent(setter)
+// Exact:     c_setter
+// ----------------------------------------
+// Argument:  Cstruct_list * SH_this
+// Attrs:     +intent(inout)+struct(Cstruct_list)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
+// ----------------------------------------
+// Argument:  int * val +intent(in)+rank(1)
+// Attrs:     +intent(setter)
+// Exact:     c_setter_native_*
+void STR_cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
+{
+    // splicer begin function.cstruct_list_set_ivalue
+    // skip call c_setter
+    SH_this->ivalue = val;
+    // splicer end function.cstruct_list_set_ivalue
+}
+
+// ----------------------------------------
+// Function:  double * Cstruct_list_get_dvalue
+// Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+// Requested: c_getter_native_*_cdesc_pointer
+// Match:     c_getter_native_*_cdesc
+// ----------------------------------------
+// Argument:  Cstruct_list * SH_this
+// Attrs:     +intent(in)+struct(Cstruct_list)
+// Requested: c_in_struct_*
+// Match:     c_in_struct
+void STR_cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
+    STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.cstruct_list_get_dvalue_bufferify
+    // skip call c_getter
+    SHT_rv_cdesc->cxx.addr  = SH_this->dvalue;
+    SHT_rv_cdesc->cxx.idtor = 0;
+    SHT_rv_cdesc->addr.base = SH_this->dvalue;
+    SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
+    SHT_rv_cdesc->elem_len = sizeof(double);
+    SHT_rv_cdesc->rank = 1;
+    SHT_rv_cdesc->shape[0] = SH_this->nitems*TWO;
+    SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
+    // splicer end function.cstruct_list_get_dvalue_bufferify
+}
+
+// ----------------------------------------
+// Function:  void Cstruct_list_set_dvalue
+// Attrs:     +intent(setter)
+// Exact:     c_setter
+// ----------------------------------------
+// Argument:  Cstruct_list * SH_this
+// Attrs:     +intent(inout)+struct(Cstruct_list)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
+// ----------------------------------------
+// Argument:  double * val +intent(in)+rank(1)
+// Attrs:     +intent(setter)
+// Exact:     c_setter_native_*
+void STR_cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val)
+{
+    // splicer begin function.cstruct_list_set_dvalue
+    // skip call c_setter
+    SH_this->dvalue = val;
+    // splicer end function.cstruct_list_set_dvalue
+}

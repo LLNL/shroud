@@ -414,6 +414,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+        self.class_map = {}   # indexed by Typemap.flat_name, holds AST (not typemap).
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
 
@@ -561,6 +562,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
             F_standard=2003,
+            F_struct_getter_setter=True,
             F_trim_char_in=True,
             F_auto_reference_count=False,
             F_create_bufferify_function=True,
@@ -697,6 +699,13 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
+
+            # Functions created by Shroud
+            SH_class_getter_template="get_{wrapped_name}",
+            SH_class_setter_template="set_{wrapped_name}",
+            SH_struct_getter_template="{struct_name}_get_{wrapped_name}",
+            SH_struct_setter_template="{struct_name}_set_{wrapped_name}",
+            
         )
         return def_options
 

@@ -488,35 +488,51 @@ The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
+The names of these functions are controlled by the options
+*SH_class_getter_template* and *SH_class_setter_template*.
+They are added as additional methods on the class.
+
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
 
-Pointers to native types can return a Fortran pointer if they are given
-the *dimension* attribute.
+The getter and setter for a member which is a pointer to a native type
+can use a Fortran pointer if the member is given the *dimension*
+attribute.
 
 .. code-block :: yaml
 
-    - decl: class Data
+    - decl: class PointerData
       declarations:
       - decl: int nitems;
       - decl: int *items  +dimension(nitems);
 
 Notice that the *dimension* uses another field in the class.
 This will create a getter which can be called from Fortran.
+Likewise, the setter will require an argument of the same rank as
+the *dimension* attribute.
 
 .. code-block :: fortran
 
-    type(Data) var
+    type(PointerData) var
     integer(C_INT) :: nitems
     integer(C_INT), pointer :: items(:)
+    integer(C_INT) :: updated(10)
 
-    var = Data()
+    var = PointerData()
     nitems = var%get_nitems()
     items => var%get_items()
 
-Likewise, the setter will require an argument of the same rank as
-the *dimension* attribute.
-     
+    call var%set_items(updated)
+    var%nitems = size(updated)    ! keep nitems and items consistent
+
+The user must be consistent in the use of the getter and setter.  For
+example, ``item`` is ``nitems`` long, but if the setter assigns an
+array which is shorter, the next call to the getter will still create
+a Fortran pointer which is ``nitems`` long.
+
+Another point to note is that the variable ``updated`` should have the
+``TARGET`` attribute since we're saving its address in ``var``.
+
 .. XXX array members in struct
    char name[20]    s.name = None   will add set to '\0'
    int  count[10]   s.count = 0     will broadcast
@@ -623,6 +639,44 @@ NumPy array contains a pointer to the C++ memory.
 
 The descriptor is created in the wrapper
 :ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+Generally, getter and setter functions are not required since Fortran
+can directly access the member fields.  But when the member is a
+pointer it is more convient to have a getter and setter which works
+with Fortran pointers.
+
+.. code-block:: c++
+
+    struct PointerData
+    {
+       int nitems;
+       int *items;
+    };
+
+The generated getter and setter are not type-bound functions and must
+be passed the struct variable:
+
+.. code-block :: fortran
+
+    type(PointerData) var
+    integer(C_INT) :: nitems
+    integer(C_INT) :: items(10)
+    integer(C_INT), pointer :: out(:)
+
+    var%nitems = 10
+    call pointerdata_set_items(var, items)
+    
+    out => pointerdata_get_items(var)
+
+The names of these functions are controlled by the options
+*SH_struct_getter_template* and *SH_struct_setter_template*.
+They are added to the same scope as the struct.
+    
+Option *F_struct_getter_setter* can be set to *false* to avoid
+creating the getter and setter functions.
 
 .. _TypesSandC-ObjectOrientedC:
      

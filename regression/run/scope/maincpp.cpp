@@ -21,6 +21,22 @@ void check(bool expr, const std::string &msg)
   }
 }
 
+int check_struct(void)
+{
+    ns1::DataPointer p1;
+    ns2::DataPointer p2;
+    ns3::DataPointer p3;
+
+    p1.nitems = 2;
+    p2.nitems = 3;
+    p3.nitems = 4;
+
+    if (p1.nitems + p2.nitems + p3.nitems != 9)
+        return 1;
+    
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -50,5 +66,7 @@ int main(int argc, char *argv[])
         static_cast<int>(ColorEnum::RED),
         "class enum");
 
-  return 0;
+  int err = check_struct();
+
+  return err;
 }

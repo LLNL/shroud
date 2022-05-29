@@ -1001,6 +1001,9 @@ fc_statements = [
     # void **
     dict(
         # Treat as an assumed length array in Fortran interface.
+        # c_in_void_**
+        # c_out_void_**
+        # c_inout_void_**
         name='c_in/out/inout_void_**',
         c_arg_decl=[
             "void **{c_var}",
@@ -2138,6 +2141,9 @@ fc_statements = [
     dict(
         # Used with in, out, inout
         # C pointer -> void pointer -> C++ pointer
+        # c_in_struct
+        # c_out_struct
+        # c_inout_struct
         name="c_in/out/inout_struct",
         cxx_cxx_local_var="pointer", # cxx_local_var only used with C++
         cxx_pre_call=[

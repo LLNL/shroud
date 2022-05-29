@@ -225,6 +225,8 @@ class ToDict(visitor.Visitor):
             "language", "scope"])
         self.add_visit_fields( # TEMP  deal with wrap_namespace
             node, d, [ "fmtdict", "options", "scope_file", ])
+        if node.class_map:
+            d["class_map"] = list(node.class_map.keys())
         node = node.wrap_namespace   # XXXX TEMP kludge
         self.add_visit_fields(
             node,

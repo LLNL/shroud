@@ -21,7 +21,7 @@ extern "C" {
 // splicer end class.Cstruct_as_class.C_definitions
 
 // ----------------------------------------
-// Function:  int getX1
+// Function:  int get_x1
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start STR_Cstruct_as_class_get_x1
@@ -37,7 +37,7 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 // end STR_Cstruct_as_class_get_x1
 
 // ----------------------------------------
-// Function:  void setX1
+// Function:  void set_x1
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -57,7 +57,7 @@ void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 // end STR_Cstruct_as_class_set_x1
 
 // ----------------------------------------
-// Function:  int getY1
+// Function:  int get_y1
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start STR_Cstruct_as_class_get_y1
@@ -73,7 +73,7 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 // end STR_Cstruct_as_class_get_y1
 
 // ----------------------------------------
-// Function:  void setY1
+// Function:  void set_y1
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

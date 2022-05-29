@@ -86,7 +86,7 @@ void CLA_Data_dtor(CLA_Data * self)
 // end CLA_Data_dtor
 
 // ----------------------------------------
-// Function:  int getNitems
+// Function:  int get_nitems
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start CLA_Data_get_nitems
@@ -101,7 +101,7 @@ int CLA_Data_get_nitems(CLA_Data * self)
 // end CLA_Data_get_nitems
 
 // ----------------------------------------
-// Function:  void setNitems
+// Function:  void set_nitems
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -120,7 +120,7 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 // end CLA_Data_set_nitems
 
 // ----------------------------------------
-// Function:  int * getItems
+// Function:  int * get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)
 // Requested: c_getter_native_*_cdesc_pointer
 // Match:     c_getter_native_*_cdesc
@@ -144,7 +144,7 @@ void CLA_Data_get_items_bufferify(CLA_Data * self,
 // end CLA_Data_get_items_bufferify
 
 // ----------------------------------------
-// Function:  void setItems
+// Function:  void set_items
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

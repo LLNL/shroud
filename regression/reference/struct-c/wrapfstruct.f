@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module struct_mod
-    use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -29,6 +29,25 @@ module struct_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type STR_SHROUD_capsule_data
     ! end helper capsule_data_helper
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: STR_SHROUD_array
+        ! address of C++ memory
+        type(STR_SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type STR_SHROUD_array
+    ! end array_context
 
 
     ! start derived-type cstruct1
@@ -108,7 +127,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_x1
@@ -126,7 +145,7 @@ module struct_mod
     ! end c_cstruct_as_class_get_x1
 
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -148,7 +167,7 @@ module struct_mod
     ! end c_cstruct_as_class_set_x1
 
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_y1
@@ -166,7 +185,7 @@ module struct_mod
     ! end c_cstruct_as_class_get_y1
 
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -191,7 +210,7 @@ module struct_mod
     ! splicer end class.Cstruct_as_class.additional_interfaces
 
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_x1
@@ -209,7 +228,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_x1
 
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -231,7 +250,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_set_x1
 
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_y1
@@ -249,7 +268,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_y1
 
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -271,7 +290,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_set_y1
 
     ! ----------------------------------------
-    ! Function:  int getZ1
+    ! Function:  int get_z1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_z1
@@ -289,7 +308,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_z1
 
     ! ----------------------------------------
-    ! Function:  void setZ1
+    ! Function:  void set_z1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -770,6 +789,143 @@ module struct_mod
         end function c_create__cstruct_as_subclass_args
     end interface
 
+    ! ----------------------------------------
+    ! Function:  const double * Cstruct_ptr_get_const_dvalue
+    ! Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
+    ! Requested: c_getter_native_*_buf_pointer
+    ! Match:     c_getter_native_*
+    ! ----------------------------------------
+    ! Argument:  Cstruct_ptr * SH_this
+    ! Attrs:     +intent(in)+struct(Cstruct_ptr)
+    ! Requested: c_in_struct_*
+    ! Match:     c_in_struct
+    interface
+        function cstruct_ptr_get_const_dvalue(SH_this) &
+                result(SHT_rv) &
+                bind(C, name="STR_cstruct_ptr_get_const_dvalue_bufferify")
+            use iso_c_binding, only : C_DOUBLE
+            import :: cstruct_ptr
+            implicit none
+            type(cstruct_ptr), intent(IN) :: SH_this
+            real(C_DOUBLE) :: SHT_rv
+        end function cstruct_ptr_get_const_dvalue
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void Cstruct_ptr_set_const_dvalue
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
+    ! ----------------------------------------
+    ! Argument:  Cstruct_ptr * SH_this
+    ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
+    ! Requested: c_inout_struct_*
+    ! Match:     c_inout_struct
+    ! ----------------------------------------
+    ! Argument:  const double * val +intent(in)
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_*
+    interface
+        subroutine cstruct_ptr_set_const_dvalue(SH_this, val) &
+                bind(C, name="STR_cstruct_ptr_set_const_dvalue")
+            use iso_c_binding, only : C_DOUBLE
+            import :: cstruct_ptr
+            implicit none
+            type(cstruct_ptr), intent(INOUT) :: SH_this
+            real(C_DOUBLE), intent(IN) :: val
+        end subroutine cstruct_ptr_set_const_dvalue
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int * Cstruct_list_get_ivalue
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: c_in_struct_*
+    ! Match:     c_in_struct
+    interface
+        subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv) &
+                bind(C, name="STR_cstruct_list_get_ivalue_bufferify")
+            import :: STR_SHROUD_array, cstruct_list
+            implicit none
+            type(cstruct_list), intent(IN) :: SH_this
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_cstruct_list_get_ivalue_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void Cstruct_list_set_ivalue
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(inout)+struct(Cstruct_list)
+    ! Requested: c_inout_struct_*
+    ! Match:     c_inout_struct
+    ! ----------------------------------------
+    ! Argument:  int * val +intent(in)+rank(1)
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_*
+    interface
+        subroutine cstruct_list_set_ivalue(SH_this, val) &
+                bind(C, name="STR_cstruct_list_set_ivalue")
+            use iso_c_binding, only : C_INT
+            import :: cstruct_list
+            implicit none
+            type(cstruct_list), intent(INOUT) :: SH_this
+            integer(C_INT), intent(IN) :: val(*)
+        end subroutine cstruct_list_set_ivalue
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  double * Cstruct_list_get_dvalue
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: c_in_struct_*
+    ! Match:     c_in_struct
+    interface
+        subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv) &
+                bind(C, name="STR_cstruct_list_get_dvalue_bufferify")
+            import :: STR_SHROUD_array, cstruct_list
+            implicit none
+            type(cstruct_list), intent(IN) :: SH_this
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_cstruct_list_get_dvalue_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void Cstruct_list_set_dvalue
+    ! Attrs:     +intent(setter)
+    ! Requested: c_setter_void_scalar
+    ! Match:     c_setter
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(inout)+struct(Cstruct_list)
+    ! Requested: c_inout_struct_*
+    ! Match:     c_inout_struct
+    ! ----------------------------------------
+    ! Argument:  double * val +intent(in)+rank(1)
+    ! Attrs:     +intent(setter)
+    ! Exact:     c_setter_native_*
+    interface
+        subroutine cstruct_list_set_dvalue(SH_this, val) &
+                bind(C, name="STR_cstruct_list_set_dvalue")
+            use iso_c_binding, only : C_DOUBLE
+            import :: cstruct_list
+            implicit none
+            type(cstruct_list), intent(INOUT) :: SH_this
+            real(C_DOUBLE), intent(IN) :: val(*)
+        end subroutine cstruct_list_set_dvalue
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -790,7 +946,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -810,7 +966,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -835,7 +991,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -855,7 +1011,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -883,7 +1039,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -903,7 +1059,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -928,7 +1084,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -948,7 +1104,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -973,7 +1129,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getZ1
+    ! Function:  int get_z1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -993,7 +1149,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setZ1
+    ! Function:  void set_z1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -1291,6 +1447,64 @@ contains
             SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_subclass_args
     end function create__cstruct_as_subclass_args
+
+    ! Generated by getter/setter - arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  int * Cstruct_list_get_ivalue
+    ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Exact:     f_getter_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: f_in_struct_*
+    ! Match:     f_default
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: c_in_struct_*
+    ! Match:     c_in_struct
+    function cstruct_list_get_ivalue(SH_this) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, c_f_pointer
+        type(cstruct_list), intent(IN) :: SH_this
+        integer(C_INT), pointer :: SHT_rv(:)
+        ! splicer begin function.cstruct_list_get_ivalue
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        ! splicer end function.cstruct_list_get_ivalue
+    end function cstruct_list_get_ivalue
+
+    ! Generated by getter/setter - arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  double * Cstruct_list_get_dvalue
+    ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Exact:     f_getter_native_*_cdesc_pointer
+    ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
+    ! Requested: c_getter_native_*_cdesc_pointer
+    ! Match:     c_getter_native_*_cdesc
+    ! ----------------------------------------
+    ! Argument:  Cstruct_list * SH_this
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: f_in_struct_*
+    ! Match:     f_default
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
+    ! Requested: c_in_struct_*
+    ! Match:     c_in_struct
+    function cstruct_list_get_dvalue(SH_this) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
+        type(cstruct_list), intent(IN) :: SH_this
+        real(C_DOUBLE), pointer :: SHT_rv(:)
+        ! splicer begin function.cstruct_list_get_dvalue
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv_cdesc)
+        call c_f_pointer(SHT_rv_cdesc%base_addr, SHT_rv, &
+            SHT_rv_cdesc%shape(1:1))
+        ! splicer end function.cstruct_list_get_dvalue
+    end function cstruct_list_get_dvalue
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

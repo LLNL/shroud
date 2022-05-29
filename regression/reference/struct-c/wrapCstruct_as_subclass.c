@@ -16,7 +16,7 @@
 // splicer end class.Cstruct_as_subclass.C_definitions
 
 // ----------------------------------------
-// Function:  int getX1
+// Function:  int get_x1
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start STR_Cstruct_as_subclass_get_x1
@@ -31,7 +31,7 @@ int STR_Cstruct_as_subclass_get_x1(STR_Cstruct_as_subclass * self)
 // end STR_Cstruct_as_subclass_get_x1
 
 // ----------------------------------------
-// Function:  void setX1
+// Function:  void set_x1
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -51,7 +51,7 @@ void STR_Cstruct_as_subclass_set_x1(STR_Cstruct_as_subclass * self,
 // end STR_Cstruct_as_subclass_set_x1
 
 // ----------------------------------------
-// Function:  int getY1
+// Function:  int get_y1
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start STR_Cstruct_as_subclass_get_y1
@@ -66,7 +66,7 @@ int STR_Cstruct_as_subclass_get_y1(STR_Cstruct_as_subclass * self)
 // end STR_Cstruct_as_subclass_get_y1
 
 // ----------------------------------------
-// Function:  void setY1
+// Function:  void set_y1
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -86,7 +86,7 @@ void STR_Cstruct_as_subclass_set_y1(STR_Cstruct_as_subclass * self,
 // end STR_Cstruct_as_subclass_set_y1
 
 // ----------------------------------------
-// Function:  int getZ1
+// Function:  int get_z1
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start STR_Cstruct_as_subclass_get_z1
@@ -101,7 +101,7 @@ int STR_Cstruct_as_subclass_get_z1(STR_Cstruct_as_subclass * self)
 // end STR_Cstruct_as_subclass_get_z1
 
 // ----------------------------------------
-// Function:  void setZ1
+// Function:  void set_z1
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

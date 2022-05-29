@@ -389,6 +389,14 @@ F_standard
   The fortran standard.  Defaults to *2003*.
   This effects the ``mold`` argument of the ``allocate`` statement.
 
+F_return_fortran_pointer
+  Use ``c_f_pointer`` in the Fortran wrapper to return 
+  a Fortran pointer instead of a ``type(C_PTR)``
+  in routines which return a pointer.
+  It does not apply to ``char *``, ``void *``, and routines which return
+  a pointer to a class instance.
+  Defaults to *true*.
+
 F_string_len_trim
   For each function with a ``std::string`` argument, create another C
   function which accepts a buffer and length.  The C wrapper will call
@@ -397,13 +405,12 @@ F_string_len_trim
   copying the string in the Fortran wrapper.
   Defaults to *true*.
 
-F_return_fortran_pointer
-  Use ``c_f_pointer`` in the Fortran wrapper to return 
-  a Fortran pointer instead of a ``type(C_PTR)``
-  in routines which return a pointer
-  It does not apply to ``char *``, ``void *``, and routines which return
-  a pointer to a class instance.
-  Defaults to *true*.
+F_struct_getter_setter
+  If true, a getter and setter will be created for struct members
+  which are a pointer to native type. This allows a Fortran pointer
+  to be used with the field instead of having to deal with the
+  ``type(C_PTR)`` directly.
+  Default to *true*
 
 F_trim_char_in
   Controls code generation for ``const char *`` arguments.
@@ -506,7 +513,7 @@ Option Templates
 ^^^^^^^^^^^^^^^^
 
 Templates are set in options then expanded to assign to the format 
-dictionary.
+dictionary to create names in the generated code.
 
 C_enum_template
     Name of enumeration in C wrapper.
@@ -567,7 +574,6 @@ F_capsule_data_type_template
 
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``
-  
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
@@ -722,6 +728,26 @@ PY_type_impl_template
 PY_use_numpy
     Allow NumPy arrays to be used in the module.
     For example, when assigning to a struct-as-class member.
+
+SH_class_getter_template
+    Name of generated getter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``get_{wrapped_name}``.
+
+SH_class_setter_template
+    Name of generated setter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``set_{wrapped_name}``.
+
+SH_struct_getter_template
+    Name of generated getter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_get_{wrapped_name}``.
+
+SH_struct_setter_template
+    Name of generated setter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_set_{wrapped_name}``.
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename
