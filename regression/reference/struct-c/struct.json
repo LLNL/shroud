@@ -2079,7 +2079,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "24",
+                "_PTR_F_C_index": "34",
                 "ast": {
                     "declarator": {
                         "name": "passStruct2",
@@ -2258,7 +2258,7 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3059,7 +3059,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "25",
+                "_PTR_F_C_index": "35",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr1",
@@ -3238,7 +3238,7 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3420,7 +3420,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "26",
+                "_PTR_F_C_index": "36",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr2",
@@ -3649,7 +3649,7 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -3888,7 +3888,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "27",
+                "_PTR_F_C_index": "37",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -3968,7 +3968,7 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "37 ****************************************",
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -4691,6 +4691,2005 @@
                         "stmtc0": "c_function_shadow_*_capptr",
                         "stmtc1": "c_function_shadow_*_capptr"
                     }
+                }
+            },
+            {
+                "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "38",
+                "_generated": "getter/setter",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "Cstruct_ptr_getConst_dvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "getter",
+                        "struct": "Cstruct_ptr"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_ptr"
+                            ],
+                            "typemap_name": "Cstruct_ptr"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr *SH_this)",
+                "declgen": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr * SH_this)",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_cstruct_ptr_get_const_dvalue_bufferify",
+                    "F_arg_c_call": "SH_this",
+                    "F_arguments": "SH_this",
+                    "F_name_function": "cstruct_ptr_get_const_dvalue",
+                    "F_name_generic": "cstruct_ptr_get_const_dvalue",
+                    "F_name_impl": "cstruct_ptr_get_const_dvalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "field_name": "const_dvalue",
+                    "function_name": "Cstruct_ptr_getConst_dvalue",
+                    "underscore_name": "cstruct_ptr_get_const_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "cxx_type": "double",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "f_getter_native_*_buf_pointer",
+                        "stmt1": "f_getter",
+                        "stmtc0": "c_getter_native_*_buf_pointer",
+                        "stmtc1": "c_getter_native_*"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "38 ****************************************",
+                "_PTR_C_CXX_index": "24",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "Cstruct_ptr_getConst_dvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "buf",
+                        "deref": "pointer",
+                        "intent": "getter",
+                        "struct": "Cstruct_ptr"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_ptr"
+                            ],
+                            "typemap_name": "Cstruct_ptr"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr *SH_this)",
+                "declgen": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr * SH_this)",
+                "options": {},
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_ptr",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_ptr",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_ptr)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "STR_cstruct_ptr_get_const_dvalue_bufferify",
+                    "C_prototype": "Cstruct_ptr * SH_this",
+                    "C_return_type": "const double *",
+                    "F_C_arguments": "SH_this",
+                    "F_C_name": "cstruct_ptr_get_const_dvalue",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "const double * SHC_rv",
+                    "field_name": "const_dvalue",
+                    "function_name": "Cstruct_ptr_getConst_dvalue",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cstruct_ptr_get_const_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_type": "double",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_double",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "double",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "c_getter_native_*_buf_pointer",
+                        "stmt1": "c_getter_native_*"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_DOUBLE"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "25 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_ptr_setConst_dvalue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "setter"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_ptr"
+                            ],
+                            "typemap_name": "Cstruct_ptr"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "val",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "setter"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Cstruct_ptr_setConst_dvalue(Cstruct_ptr *SH_this,const double * val)",
+                "declgen": "void Cstruct_ptr_setConst_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_ptr",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_ptr",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_ptr)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(double *) val",
+                            "cxx_type": "double",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_setter_native_*",
+                            "stmt1": "c_setter_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "val",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native",
+                            "stmtc0": "c_setter_native_*",
+                            "stmtc1": "c_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "STR_cstruct_ptr_set_const_dvalue",
+                    "C_prototype": "Cstruct_ptr * SH_this,\t const double * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_cstruct_ptr_set_const_dvalue",
+                    "F_C_name": "cstruct_ptr_set_const_dvalue",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_function": "cstruct_ptr_set_const_dvalue",
+                    "F_name_generic": "cstruct_ptr_set_const_dvalue",
+                    "F_name_impl": "cstruct_ptr_set_const_dvalue",
+                    "F_subprogram": "subroutine",
+                    "field_name": "const_dvalue",
+                    "function_name": "Cstruct_ptr_setConst_dvalue",
+                    "stmt0": "f_setter",
+                    "stmt1": "f_setter",
+                    "stmtc0": "c_setter",
+                    "stmtc1": "c_setter",
+                    "underscore_name": "cstruct_ptr_set_const_dvalue"
+                }
+            },
+            {
+                "<FUNCTION>": "26 ****************************************",
+                "C_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "39",
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_getIvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "left": {
+                                    "name": "nitems"
+                                },
+                                "op": "+",
+                                "right": {
+                                    "name": "nitems"
+                                }
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_list"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * Cstruct_list_getIvalue(Cstruct_list *SH_this)",
+                "declgen": "int * Cstruct_list_getIvalue(Cstruct_list * SH_this)",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_cstruct_list_get_ivalue_bufferify",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
+                    "F_name_function": "cstruct_list_get_ivalue",
+                    "F_name_generic": "cstruct_list_get_ivalue",
+                    "F_name_impl": "cstruct_list_get_ivalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_list_getIvalue",
+                    "underscore_name": "cstruct_list_get_ivalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "int",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "39 ****************************************",
+                "_PTR_C_CXX_index": "26",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_getIvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "cdesc",
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "left": {
+                                    "name": "nitems"
+                                },
+                                "op": "+",
+                                "right": {
+                                    "name": "nitems"
+                                }
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_list"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * Cstruct_list_getIvalue(Cstruct_list *SH_this)",
+                "declgen": "int * Cstruct_list_getIvalue(Cstruct_list * SH_this)",
+                "options": {},
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_list",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_list)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "STR_cstruct_list_get_ivalue_bufferify",
+                    "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_name": "c_cstruct_list_get_ivalue_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_list_getIvalue",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cstruct_list_get_ivalue"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems+SH_this->nitems;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_const": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_getter_native_*_cdesc_pointer",
+                        "stmt1": "c_getter_native_*_cdesc"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_array_allocate": "(nitems+nitems)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "27 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_setIvalue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "setter"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "val",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "name": "nitems"
+                                        }
+                                    }
+                                ],
+                                "intent": "setter"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Cstruct_list_setIvalue(Cstruct_list *SH_this,int * val)",
+                "declgen": "void Cstruct_list_setIvalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_list",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_list)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "int",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_setter_native_*",
+                            "stmt1": "c_setter_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "val",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(val)",
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native",
+                            "stmtc0": "c_setter_native_*",
+                            "stmtc1": "c_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "STR_cstruct_list_set_ivalue",
+                    "C_prototype": "Cstruct_list * SH_this,\t int * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_cstruct_list_set_ivalue",
+                    "F_C_name": "cstruct_list_set_ivalue",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_function": "cstruct_list_set_ivalue",
+                    "F_name_generic": "cstruct_list_set_ivalue",
+                    "F_name_impl": "cstruct_list_set_ivalue",
+                    "F_subprogram": "subroutine",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_list_setIvalue",
+                    "stmt0": "f_setter",
+                    "stmt1": "f_setter",
+                    "stmtc0": "c_setter",
+                    "stmtc1": "c_setter",
+                    "underscore_name": "cstruct_list_set_ivalue"
+                }
+            },
+            {
+                "<FUNCTION>": "28 ****************************************",
+                "C_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "40",
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_getDvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "left": {
+                                    "name": "nitems"
+                                },
+                                "op": "*",
+                                "right": {
+                                    "name": "TWO"
+                                }
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_list"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "double * Cstruct_list_getDvalue(Cstruct_list *SH_this)",
+                "declgen": "double * Cstruct_list_getDvalue(Cstruct_list * SH_this)",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_cstruct_list_get_dvalue_bufferify",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
+                    "F_name_function": "cstruct_list_get_dvalue",
+                    "F_name_generic": "cstruct_list_get_dvalue",
+                    "F_name_impl": "cstruct_list_get_dvalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_list_getDvalue",
+                    "underscore_name": "cstruct_list_get_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "double",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "40 ****************************************",
+                "_PTR_C_CXX_index": "28",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_getDvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "cdesc",
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "left": {
+                                    "name": "nitems"
+                                },
+                                "op": "*",
+                                "right": {
+                                    "name": "TWO"
+                                }
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_list"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "double * Cstruct_list_getDvalue(Cstruct_list *SH_this)",
+                "declgen": "double * Cstruct_list_getDvalue(Cstruct_list * SH_this)",
+                "options": {},
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_list",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_list)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "STR_cstruct_list_get_dvalue_bufferify",
+                    "C_prototype": "Cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_name": "c_cstruct_list_get_dvalue_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "double * SHC_rv",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_list_getDvalue",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cstruct_list_get_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems*TWO;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_const": "",
+                        "c_type": "double",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_double",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "double",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "c_getter_native_*_cdesc_pointer",
+                        "stmt1": "c_getter_native_*_cdesc"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_array_allocate": "(nitems*TWO)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "29 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_list_setDvalue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "setter"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_list"
+                            ],
+                            "typemap_name": "Cstruct_list"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "val",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "left": {
+                                            "name": "nitems"
+                                        },
+                                        "op": "*",
+                                        "right": {
+                                            "name": "TWO"
+                                        }
+                                    }
+                                ],
+                                "intent": "setter"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Cstruct_list_setDvalue(Cstruct_list *SH_this,double * val)",
+                "declgen": "void Cstruct_list_setDvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_list",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_list",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_list)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "double",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_setter_native_*",
+                            "stmt1": "c_setter_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "val",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(val)",
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native",
+                            "stmtc0": "c_setter_native_*",
+                            "stmtc1": "c_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "STR_cstruct_list_set_dvalue",
+                    "C_prototype": "Cstruct_list * SH_this,\t double * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_cstruct_list_set_dvalue",
+                    "F_C_name": "cstruct_list_set_dvalue",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_function": "cstruct_list_set_dvalue",
+                    "F_name_generic": "cstruct_list_set_dvalue",
+                    "F_name_impl": "cstruct_list_set_dvalue",
+                    "F_subprogram": "subroutine",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_list_setDvalue",
+                    "stmt0": "f_setter",
+                    "stmt1": "f_setter",
+                    "stmtc0": "c_setter",
+                    "stmtc1": "c_setter",
+                    "underscore_name": "cstruct_list_set_dvalue"
+                }
+            },
+            {
+                "<FUNCTION>": "30 ****************************************",
+                "C_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "41",
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_getIvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "nitems"
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_numpy"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * Cstruct_numpy_getIvalue(Cstruct_numpy *SH_this)",
+                "declgen": "int * Cstruct_numpy_getIvalue(Cstruct_numpy * SH_this)",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_cstruct_numpy_get_ivalue_bufferify",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
+                    "F_name_function": "cstruct_numpy_get_ivalue",
+                    "F_name_generic": "cstruct_numpy_get_ivalue",
+                    "F_name_impl": "cstruct_numpy_get_ivalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_numpy_getIvalue",
+                    "underscore_name": "cstruct_numpy_get_ivalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "int",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "41 ****************************************",
+                "_PTR_C_CXX_index": "30",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_getIvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "cdesc",
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "nitems"
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_numpy"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * Cstruct_numpy_getIvalue(Cstruct_numpy *SH_this)",
+                "declgen": "int * Cstruct_numpy_getIvalue(Cstruct_numpy * SH_this)",
+                "options": {},
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_numpy",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_numpy",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_numpy)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "STR_cstruct_numpy_get_ivalue_bufferify",
+                    "C_prototype": "Cstruct_numpy * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_name": "c_cstruct_numpy_get_ivalue_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_numpy_getIvalue",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cstruct_numpy_get_ivalue"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_const": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_getter_native_*_cdesc_pointer",
+                        "stmt1": "c_getter_native_*_cdesc"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_array_allocate": "(nitems)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "31 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_setIvalue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "setter"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "val",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ],
+                                "intent": "setter"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Cstruct_numpy_setIvalue(Cstruct_numpy *SH_this,int * val)",
+                "declgen": "void Cstruct_numpy_setIvalue(Cstruct_numpy * SH_this, int * val +intent(in)+rank(1))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_numpy",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_numpy",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_numpy)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "int",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_setter_native_*",
+                            "stmt1": "c_setter_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "val",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(val)",
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native",
+                            "stmtc0": "c_setter_native_*",
+                            "stmtc1": "c_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "STR_cstruct_numpy_set_ivalue",
+                    "C_prototype": "Cstruct_numpy * SH_this,\t int * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_cstruct_numpy_set_ivalue",
+                    "F_C_name": "cstruct_numpy_set_ivalue",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_function": "cstruct_numpy_set_ivalue",
+                    "F_name_generic": "cstruct_numpy_set_ivalue",
+                    "F_name_impl": "cstruct_numpy_set_ivalue",
+                    "F_subprogram": "subroutine",
+                    "field_name": "ivalue",
+                    "function_name": "Cstruct_numpy_setIvalue",
+                    "stmt0": "f_setter",
+                    "stmt1": "f_setter",
+                    "stmtc0": "c_setter",
+                    "stmtc1": "c_setter",
+                    "underscore_name": "cstruct_numpy_set_ivalue"
+                }
+            },
+            {
+                "<FUNCTION>": "32 ****************************************",
+                "C_generated_path": [
+                    "getter/setter",
+                    "arg_to_buffer"
+                ],
+                "_PTR_F_C_index": "42",
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_getDvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "nitems"
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_numpy"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "double * Cstruct_numpy_getDvalue(Cstruct_numpy *SH_this)",
+                "declgen": "double * Cstruct_numpy_getDvalue(Cstruct_numpy * SH_this)",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_cstruct_numpy_get_dvalue_bufferify",
+                    "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                    "F_arguments": "SH_this",
+                    "F_name_function": "cstruct_numpy_get_dvalue",
+                    "F_name_generic": "cstruct_numpy_get_dvalue",
+                    "F_name_impl": "cstruct_numpy_get_dvalue",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_numpy_getDvalue",
+                    "underscore_name": "cstruct_numpy_get_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cxx_type": "double",
+                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "f_getter_native_*_cdesc_pointer",
+                        "stmt1": "f_getter_native_*_cdesc_pointer",
+                        "stmtc0": "c_getter_native_*_cdesc_pointer",
+                        "stmtc1": "c_getter_native_*_cdesc"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "42 ****************************************",
+                "_PTR_C_CXX_index": "32",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_getDvalue",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "api": "cdesc",
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "nitems"
+                            }
+                        ],
+                        "intent": "getter",
+                        "struct": "Cstruct_numpy"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "double * Cstruct_numpy_getDvalue(Cstruct_numpy *SH_this)",
+                "declgen": "double * Cstruct_numpy_getDvalue(Cstruct_numpy * SH_this)",
+                "options": {},
+                "splicer_group": "buf",
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_numpy",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_numpy",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_numpy)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this",
+                    "C_name": "STR_cstruct_numpy_get_dvalue_bufferify",
+                    "C_prototype": "Cstruct_numpy * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t SHT_rv",
+                    "F_C_name": "c_cstruct_numpy_get_dvalue_bufferify",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "double * SHC_rv",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_numpy_getDvalue",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "cstruct_numpy_get_dvalue"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
+                        "c_array_size": "SHT_rv_cdesc->shape[0]",
+                        "c_const": "",
+                        "c_type": "double",
+                        "c_var": "SHC_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "cfi_type": "CFI_type_double",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "double",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE",
+                        "stmt0": "c_getter_native_*_cdesc_pointer",
+                        "stmt1": "c_getter_native_*_cdesc"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "c_var_cdesc": "SHT_rv_cdesc",
+                        "f_array_allocate": "(nitems)",
+                        "f_assumed_shape": "(:)",
+                        "f_intent": "OUT",
+                        "f_kind": "C_DOUBLE",
+                        "f_type": "real(C_DOUBLE)",
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_DOUBLE"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "33 ****************************************",
+                "C_generated_path": [
+                    "getter/setter"
+                ],
+                "_generated": "getter/setter",
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_numpy_setDvalue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "setter"
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "SH_this",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "Cstruct_numpy"
+                            ],
+                            "typemap_name": "Cstruct_numpy"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "val",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "name": "nitems"
+                                    }
+                                ],
+                                "intent": "setter"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Cstruct_numpy_setDvalue(Cstruct_numpy *SH_this,double * val)",
+                "declgen": "void Cstruct_numpy_setDvalue(Cstruct_numpy * SH_this, double * val +intent(in)+rank(1))",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "SH_this": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "Cstruct_numpy",
+                            "c_var": "SH_this",
+                            "cfi_type": "CFI_type_struct",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SH_this",
+                            "cxx_type": "Cstruct_numpy",
+                            "cxx_var": "SH_this",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_in_struct_*",
+                            "stmt1": "c_in_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SH_this",
+                            "c_var": "SH_this",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_numpy)",
+                            "f_var": "SH_this",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_in_struct_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_struct_*",
+                            "stmtc1": "c_in_struct"
+                        }
+                    },
+                    "val": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "double",
+                            "c_var": "val",
+                            "cfi_type": "CFI_type_double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "val",
+                            "cxx_type": "double",
+                            "cxx_var": "val",
+                            "idtor": "0",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_setter_native_*",
+                            "stmt1": "c_setter_native_*"
+                        },
+                        "fmtf": {
+                            "F_C_var": "val",
+                            "c_var": "val",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "val",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(val)",
+                            "stmt0": "f_setter_native_*",
+                            "stmt1": "f_setter_native",
+                            "stmtc0": "c_setter_native_*",
+                            "stmtc1": "c_setter_native_*"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SH_this,\t val",
+                    "C_name": "STR_cstruct_numpy_set_dvalue",
+                    "C_prototype": "Cstruct_numpy * SH_this,\t double * val",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SH_this,\t val",
+                    "F_C_call": "c_cstruct_numpy_set_dvalue",
+                    "F_C_name": "cstruct_numpy_set_dvalue",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "SH_this,\t val",
+                    "F_arguments": "SH_this,\t val",
+                    "F_name_function": "cstruct_numpy_set_dvalue",
+                    "F_name_generic": "cstruct_numpy_set_dvalue",
+                    "F_name_impl": "cstruct_numpy_set_dvalue",
+                    "F_subprogram": "subroutine",
+                    "field_name": "dvalue",
+                    "function_name": "Cstruct_numpy_setDvalue",
+                    "stmt0": "f_setter",
+                    "stmt1": "f_setter",
+                    "stmtc0": "c_setter",
+                    "stmtc1": "c_setter",
+                    "underscore_name": "cstruct_numpy_set_dvalue"
                 }
             }
         ],

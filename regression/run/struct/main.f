@@ -22,6 +22,7 @@ program tester
   call test_struct
   call test_struct2
   call test_struct_array
+  call test_cstruct_list
   call test_struct_class
 
   call fruit_summary
@@ -107,6 +108,8 @@ contains
   subroutine test_struct_array
     type(arrays1) str1
 
+    call set_case_name("test_struct_array")
+    
     str1%name = " "
     str1%count = 0
 
@@ -116,11 +119,65 @@ contains
     
   end subroutine test_struct_array
 
+  subroutine test_cstruct_list
+    type(Cstruct_list), pointer :: global
+    type(Cstruct_list) :: local
+    integer, parameter :: nitems = 2
+    integer(C_INT), pointer :: ivalue(:)
+    real(C_DOUBLE), pointer :: dvalue(:)
+    integer(C_INT), target :: ivalue0(nitems+nitems)
+    real(C_DOUBLE), target :: dvalue0(nitems*2)
+
+    call set_case_name("test_cstruct_list")
+    
+    nullify(global)
+    global => get_global_struct_list()
+    call assert_true(associated(global), "get_global_struct_list")
+    call assert_equals(4, global%nitems, "test_struct_array")
+
+    ! int *ivalue     +dimension(nitems+nitems);
+    nullify(ivalue)
+    ivalue => cstruct_list_get_ivalue(global)
+    call assert_true(associated(ivalue), "C_struct_list associated")
+    call assert_equals(8, size(ivalue), "Cstruct_list size")
+    call assert_true(all(ivalue(:) .eq. [0,1,2,3,4,5,6,7]), "Cstruct_list ivalue values")
+
+    ! double *dvalue  +dimension(nitems*TWO);
+
+    ! Set ivalue in a local struct
+    local%nitems = nitems
+    local%svalue = C_NULL_PTR
+    ivalue0 = [ 10,11,12,13]
+    ! set with setter
+    call cstruct_list_set_ivalue(local, ivalue0)
+    ! set with c_loc
+    dvalue0 = [ 10.d0,11.d0,12.d0,13.d0]
+    local%dvalue = c_loc(dvalue0)
+
+    ! Now get it back and make sure it compares
+    nullify(ivalue)
+    ivalue => cstruct_list_get_ivalue(local)
+    call assert_true(associated(ivalue), "ivalue get2 associated")
+    call assert_true(associated(ivalue,ivalue0), "ivalue get2 associated with local")
+    call assert_equals(size(ivalue), size(ivalue0), "ivalue get2 size")
+    call assert_true(all(ivalue(:) .eq. ivalue0(:)), "ivalue get2 values")
+
+    nullify(dvalue)
+    dvalue => cstruct_list_get_dvalue(local)
+    call assert_true(associated(dvalue), "dvalue get2 associated")
+    call assert_true(associated(dvalue,dvalue0), "dvalue get2 associated with local")
+    call assert_equals(size(dvalue), size(dvalue0), "dvalue get2 size")
+    call assert_true(all(dvalue(:) .eq. dvalue0(:)), "dvalue get2 values")
+    
+  end subroutine test_cstruct_list
+  
   subroutine test_struct_class
     ! start main.f test_struct_class
     type(cstruct_as_class) point1, point2
     type(cstruct_as_subclass) subpoint1
 
+    call set_case_name("test_struct_class")
+    
     ! F_name_associated is blank so the associated function is not created.
     ! Instead look at pointer directly.
     ! call assert_false(point1%associated())

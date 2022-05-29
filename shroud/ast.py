@@ -414,6 +414,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+        self.class_map = {}   # indexed by Typemap.flat_name, holds AST (not typemap).
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
 

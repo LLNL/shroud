@@ -672,13 +672,14 @@ class GenFunctions(object):
         whelpers.add_all_helpers()
 
         self.function_index = newlibrary.function_index
+        self.class_map = newlibrary.class_map
 
         self.instantiate_all_classes(newlibrary.wrap_namespace)
         self.update_templated_typemaps(newlibrary.wrap_namespace)
         self.gen_namespace(newlibrary.wrap_namespace)
 
     def gen_namespace(self, node):
-        """Process functions which are not in classes
+        """Process functions which are not in a class.
 
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
@@ -710,6 +711,8 @@ class GenFunctions(object):
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
+
+        self.function index is the LibraryNode.function_index.
 
         Args:
             node -
@@ -745,7 +748,7 @@ class GenFunctions(object):
 
         return added
 
-    def add_var_getter_setter(self, cls, var):
+    def add_var_getter_setter(self, parent, cls, var):
         """Create getter/setter functions for class variables.
         This allows wrappers to access class members.
 
@@ -757,23 +760,53 @@ class GenFunctions(object):
         The setter is a void function with a single argument
         the same type as var.
 
-        Args:
-            cls - ast.ClassNode
-            var - ast.VariableNode
+        Generated functions are added to the parent node.
+        For a class, they're added to the class.
+        For a struct, they're added to the struct container (Library, Namespace)
+
+        Must explicitly set metaattrs for arguments since that was
+        done earlier when validating attributes.
+
+        Parameters
+        ----------
+        parent : ast.LibraryNode, ast.ClassNode
+        cls : ast.ClassNode
+        var : ast.VariableNode
+
         """
         options = var.options
         if options.wrap_fortran is False and options.wrap_c is False:
             return
+
         ast = var.ast
         arg_typemap = ast.typemap
         fieldname = ast.name  # attrs["name"]
+        sgroup = ast.typemap.sgroup
+
+        is_struct = cls.wrap_as == "struct"
+        if is_struct:
+            if var.ast.is_pointer() != 1:
+                # Skip scalar and char**.
+                return
+            if sgroup in ["char", "string"]:
+                # No strings for now.
+                return
+            prefix = cls.name + '_'
+            # Explicity add the 'this' argument. Added automatically for classes.
+            typename = cls.typemap.name
+            this_get = "{} *{}".format(typename, cls.fmtdict.CXX_this)
+            this_set = this_get + ","
+        else:
+            prefix = ""
+            this_get = ""
+            this_set = ""
+
         if self.language == "c":
             lang = "c_type"
         else:
             lang = "cxx_type"
 
         deref = None
-        sgroup = var.ast.typemap.sgroup
         if sgroup in ["char", "string"]:
             value = None
             deref = "allocatable"
@@ -787,7 +820,6 @@ class GenFunctions(object):
             value = True
             deref = None
 
-
         fmt = util.Scope(var.fmtdict)
         fmt_func = dict(
             # Use variable's field_name for the generated functions.
@@ -796,17 +828,21 @@ class GenFunctions(object):
 
         ##########
         # getter
-        funcname = "get" + fieldname.capitalize()
+        funcname = prefix + "get" + fieldname.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
-        decl = "{}()".format(argdecl)
+        decl = "{}({})".format(argdecl, this_get)
 
         fattrs = {}
 
-        fcn = cls.add_function(decl, format=fmt_func, fattrs=fattrs)
+        fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
         meta = fcn.ast.metaattrs
         meta.update(ast.metaattrs)
         meta["intent"] = "getter"
         meta["deref"] = deref
+        if is_struct:
+            meta["struct"] = cls.typemap.flat_name
+            meta = fcn.ast.params[0].metaattrs
+            meta["intent"] = "in"
         fcn.wrap.lua = False
         fcn.wrap.python = False
         fcn._generated = "getter/setter"
@@ -815,9 +851,9 @@ class GenFunctions(object):
         # setter
         if ast.attrs["readonly"]:
             return
-        funcname = "set" + ast.name.capitalize()
+        funcname = prefix + "set" + ast.name.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
-        decl = "void {}({})".format(funcname, argdecl)
+        decl = "void {}({}{})".format(funcname, this_set, argdecl)
 
         attrs = dict(
             val=dict(
@@ -829,10 +865,15 @@ class GenFunctions(object):
         if dim:
             attrs["val"]["rank"] = len(dim)
 
-        fcn = cls.add_function(decl, attrs=attrs, format=fmt_func)
+        fcn = parent.add_function(decl, attrs=attrs, format=fmt_func)
         # XXX - The function is not processed like other, so set intent directly.
         fcn.ast.metaattrs["intent"] = "setter"
-        meta = fcn.ast.params[0].metaattrs
+        iarg = 0
+        if is_struct:
+            meta = fcn.ast.params[0].metaattrs
+            meta["intent"] = "in"
+            iarg = 1
+        meta = fcn.ast.params[iarg].metaattrs
         meta.update(ast.metaattrs)
         meta["intent"] = "setter"
         fcn.wrap.lua = False
@@ -871,6 +912,7 @@ class GenFunctions(object):
                 options = cls.options
                 if cls.wrap.python and options.PY_struct_arg == "class":
                     self.add_struct_ctor(cls)
+                self.process_class(node, cls)
             elif cls.template_arguments:
                 orig_typemap = cls.typemap
                 if orig_typemap.cxx_instantiation is None:
@@ -943,11 +985,11 @@ class GenFunctions(object):
                     orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
 
                     self.push_instantiate_scope(newcls, targs)
-                    self.process_class(newcls)
+                    self.process_class(newcls, newcls)
                     self.pop_instantiate_scope()
             else:
                 clslist.append(cls)
-                self.process_class(cls)
+                self.process_class(cls, cls)
 
         node.classes = clslist
 
@@ -960,7 +1002,7 @@ class GenFunctions(object):
         return visitor.visit(node)
         
     def add_struct_ctor(self, cls):
-        """Add a constructor function for a struct when
+        """Add a Python constructor function for a struct when
         it will be treated like a class.
 
         Args:
@@ -984,16 +1026,20 @@ class GenFunctions(object):
         node.declgen = node.ast.gen_decl()
         node._generated = "struct_as_class_ctor"
 
-    def process_class(self, cls):
-        """Process variables and functions for a class.
-        Create getter/setter functions for class variables.
+    def process_class(self, parent, cls):
+        """Process variables and functions for a class/struct.
+        Create getter/setter functions for member variables.
 
         Parameters
         ----------
+        parent : ast.LibraryNode, ast.ClassNode
         cls : ast.ClassNode
         """
+        if cls.typemap.flat_name in self.class_map:
+            raise RuntimeError("process_class: class already exists in class_map")
+        self.class_map[cls.typemap.flat_name] = cls
         for var in cls.variables:
-            self.add_var_getter_setter(cls, var)
+            self.add_var_getter_setter(parent, cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
 
     def define_result_as_arg_functions(self, functions):
@@ -1084,10 +1130,12 @@ class GenFunctions(object):
             if function.template_arguments:
                 continue
             if function.have_template_args:
-                # Stuff like push_back which is in a templated class, is not an overload
+                # Stuff like push_back which is in a templated class, is not an overload.
                 # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
             if function.ast.is_ctor():
+                if not function.wrap.fortran:
+                    continue
                 # Always create generic interface for class derived type.
                 fmt = function.fmtdict
                 name = fmt.F_derived_name

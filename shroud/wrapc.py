@@ -743,11 +743,18 @@ class Wrapc(util.WrapperMixin):
         
         if ast.metaattrs["dimension"]:
             if cls is not None:
+                parent = cls
                 cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
+            elif fcn.ast.metaattrs["struct"]:
+                # metaattr set in add_var_getter_setter
+                parent = self.newlibrary.class_map[fcn.ast.metaattrs["struct"]]
+                parent.create_node_map()
+                class_context = wformat("{CXX_this}->", fmt)
             else:
+                parent = None
                 class_context = ""
-            visitor = ToDimension(cls, fcn, fmt, class_context)
+            visitor = ToDimension(parent, fcn, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
@@ -1574,6 +1581,10 @@ class ToDimension(todict.PrintNode):
 
     def __init__(self, cls, fcn, fmt, context):
         """
+        cls is the class which contains fcn.  It may also be the
+        struct associated with a getter.  It will be used to find
+        variable names used in dimension expression.
+
         Args:
             cls  - ast.ClassNode or None
             fcn  - ast.FunctionNode of calling function.
@@ -1581,6 +1592,7 @@ class ToDimension(todict.PrintNode):
             context - how to access Identifiers in cls.
                       Different for function arguments and
                       class/struct members.
+
         """
         super(ToDimension, self).__init__()
         self.cls = cls

@@ -7,7 +7,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "****************************************",
+                        "<FUNCTION>": "0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
                             "attrs": {
