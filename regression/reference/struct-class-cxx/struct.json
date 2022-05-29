@@ -1241,6 +1241,7 @@
                 ],
                 "name": "Cstruct_numpy",
                 "options": {
+                    "F_struct_getter_setter": false,
                     "PY_array_arg": "numpy"
                 },
                 "parse_keyword": "struct",

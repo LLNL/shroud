@@ -785,6 +785,8 @@ class GenFunctions(object):
 
         is_struct = cls.wrap_as == "struct"
         if is_struct:
+            if not options.F_struct_getter_setter:
+                return
             if var.ast.is_pointer() != 1:
                 # Skip scalar and char**.
                 return

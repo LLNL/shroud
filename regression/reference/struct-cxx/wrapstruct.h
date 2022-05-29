@@ -124,18 +124,6 @@ void STR_cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
 void STR_cstruct_list_set_dvalue(STR_cstruct_list * SH_this,
     double * val);
 
-void STR_cstruct_numpy_get_ivalue_bufferify(STR_cstruct_numpy * SH_this,
-    STR_SHROUD_array *SHT_rv_cdesc);
-
-void STR_cstruct_numpy_set_ivalue(STR_cstruct_numpy * SH_this,
-    int * val);
-
-void STR_cstruct_numpy_get_dvalue_bufferify(STR_cstruct_numpy * SH_this,
-    STR_SHROUD_array *SHT_rv_cdesc);
-
-void STR_cstruct_numpy_set_dvalue(STR_cstruct_numpy * SH_this,
-    double * val);
-
 #ifdef __cplusplus
 }
 #endif

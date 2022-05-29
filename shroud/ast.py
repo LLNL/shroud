@@ -562,6 +562,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
             F_standard=2003,
+            F_struct_getter_setter=True,
             F_trim_char_in=True,
             F_auto_reference_count=False,
             F_create_bufferify_function=True,

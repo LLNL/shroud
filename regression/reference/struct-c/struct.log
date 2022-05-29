@@ -40,10 +40,6 @@ C int * Cstruct_list_getIvalue(Cstruct_list * SH_this)  +api(cdesc)+deref(pointe
 C void Cstruct_list_setIvalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 C double * Cstruct_list_getDvalue(Cstruct_list * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
 C void Cstruct_list_setDvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
-C int * Cstruct_numpy_getIvalue(Cstruct_numpy * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-C void Cstruct_numpy_setIvalue(Cstruct_numpy * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-C double * Cstruct_numpy_getDvalue(Cstruct_numpy * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-C void Cstruct_numpy_setDvalue(Cstruct_numpy * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
 Close wrapstruct.h
 Close wrapstruct.c
 class Cstruct1
@@ -93,10 +89,6 @@ Fortran int * Cstruct_list_getIvalue(Cstruct_list * SH_this)  +deref(pointer)+in
 Fortran void Cstruct_list_setIvalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 Fortran double * Cstruct_list_getDvalue(Cstruct_list * SH_this)  +deref(pointer)+intent(getter)+struct(Cstruct_list)
 Fortran void Cstruct_list_setDvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
-Fortran int * Cstruct_numpy_getIvalue(Cstruct_numpy * SH_this)  +deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-Fortran void Cstruct_numpy_setIvalue(Cstruct_numpy * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-Fortran double * Cstruct_numpy_getDvalue(Cstruct_numpy * SH_this)  +deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-Fortran void Cstruct_numpy_setDvalue(Cstruct_numpy * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
 C-interface int passStructByValue(Cstruct1 arg +value)  +intent(function)
 C-interface int passStruct1(const Cstruct1 * arg)  +intent(function)
 C-interface int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))  +intent(function)
@@ -121,10 +113,6 @@ C-interface int * Cstruct_list_getIvalue(Cstruct_list * SH_this)  +api(cdesc)+de
 C-interface void Cstruct_list_setIvalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
 C-interface double * Cstruct_list_getDvalue(Cstruct_list * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
 C-interface void Cstruct_list_setDvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
-C-interface int * Cstruct_numpy_getIvalue(Cstruct_numpy * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-C-interface void Cstruct_numpy_setIvalue(Cstruct_numpy * SH_this, int * val +intent(in)+rank(1))  +intent(setter)
-C-interface double * Cstruct_numpy_getDvalue(Cstruct_numpy * SH_this)  +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_numpy)
-C-interface void Cstruct_numpy_setDvalue(Cstruct_numpy * SH_this, double * val +intent(in)+rank(1))  +intent(setter)
 Close wrapfstruct.f
 Close utilstruct.c
 Close typesstruct.h

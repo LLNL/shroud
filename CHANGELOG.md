@@ -51,7 +51,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   the *dimension* attribute is added to the declaration.
   Likewise, the setter will expect an array of the same rank as *dimension*.
   Getter and setters will also be generated for struct fields which are pointers
-  to native types.
+  to native types. Option *F_struct_getter_setter* can be used to control their
+  creation.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml

@@ -667,6 +667,9 @@ be passed the struct variable:
     
     out => pointerdata_get_items(var)
 
+Option *F_struct_getter_setter* can be set to *false* to avoid
+creating the getter and setter functions.
+
 .. _TypesSandC-ObjectOrientedC:
      
 Object-oriented C
