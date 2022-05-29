@@ -19,7 +19,7 @@ extern "C" {
 // splicer end namespace.ns1.C_definitions
 
 // ----------------------------------------
-// Function:  int * DataPointer_getItems
+// Function:  int * DataPointer_get_items
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(ns1_DataPointer)
 // Requested: c_getter_native_*_cdesc_pointer
 // Match:     c_getter_native_*_cdesc
@@ -47,7 +47,7 @@ void SCO_ns1_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
 }
 
 // ----------------------------------------
-// Function:  void DataPointer_setItems
+// Function:  void DataPointer_set_items
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

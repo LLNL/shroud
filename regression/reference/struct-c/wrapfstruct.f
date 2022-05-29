@@ -127,7 +127,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_x1
@@ -145,7 +145,7 @@ module struct_mod
     ! end c_cstruct_as_class_get_x1
 
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -167,7 +167,7 @@ module struct_mod
     ! end c_cstruct_as_class_set_x1
 
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_class_get_y1
@@ -185,7 +185,7 @@ module struct_mod
     ! end c_cstruct_as_class_get_y1
 
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -210,7 +210,7 @@ module struct_mod
     ! splicer end class.Cstruct_as_class.additional_interfaces
 
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_x1
@@ -228,7 +228,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_x1
 
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -250,7 +250,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_set_x1
 
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_y1
@@ -268,7 +268,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_y1
 
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -290,7 +290,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_set_y1
 
     ! ----------------------------------------
-    ! Function:  int getZ1
+    ! Function:  int get_z1
     ! Attrs:     +intent(getter)
     ! Exact:     c_getter_native_scalar
     ! start c_cstruct_as_subclass_get_z1
@@ -308,7 +308,7 @@ module struct_mod
     ! end c_cstruct_as_subclass_get_z1
 
     ! ----------------------------------------
-    ! Function:  void setZ1
+    ! Function:  void set_z1
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -790,7 +790,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const double * Cstruct_ptr_getConst_dvalue
+    ! Function:  const double * Cstruct_ptr_get_const_dvalue
     ! Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
     ! Requested: c_getter_native_*_buf_pointer
     ! Match:     c_getter_native_*
@@ -812,7 +812,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void Cstruct_ptr_setConst_dvalue
+    ! Function:  void Cstruct_ptr_set_const_dvalue
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -837,7 +837,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  int * Cstruct_list_getIvalue
+    ! Function:  int * Cstruct_list_get_ivalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Requested: c_getter_native_*_cdesc_pointer
     ! Match:     c_getter_native_*_cdesc
@@ -857,7 +857,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void Cstruct_list_setIvalue
+    ! Function:  void Cstruct_list_set_ivalue
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -882,7 +882,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  double * Cstruct_list_getDvalue
+    ! Function:  double * Cstruct_list_get_dvalue
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Requested: c_getter_native_*_cdesc_pointer
     ! Match:     c_getter_native_*_cdesc
@@ -902,7 +902,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void Cstruct_list_setDvalue
+    ! Function:  void Cstruct_list_set_dvalue
     ! Attrs:     +intent(setter)
     ! Requested: c_setter_void_scalar
     ! Match:     c_setter
@@ -946,7 +946,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -966,7 +966,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -991,7 +991,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -1011,7 +1011,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -1039,7 +1039,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getX1
+    ! Function:  int get_x1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -1059,7 +1059,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setX1
+    ! Function:  void set_x1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -1084,7 +1084,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getY1
+    ! Function:  int get_y1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -1104,7 +1104,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setY1
+    ! Function:  void set_y1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -1129,7 +1129,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int getZ1
+    ! Function:  int get_z1
     ! Attrs:     +intent(getter)
     ! Requested: f_getter_native_scalar
     ! Match:     f_getter
@@ -1149,7 +1149,7 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  void setZ1
+    ! Function:  void set_z1
     ! Attrs:     +intent(setter)
     ! Exact:     f_setter
     ! Attrs:     +intent(setter)
@@ -1450,7 +1450,7 @@ contains
 
     ! Generated by getter/setter - arg_to_buffer
     ! ----------------------------------------
-    ! Function:  int * Cstruct_list_getIvalue
+    ! Function:  int * Cstruct_list_get_ivalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
@@ -1479,7 +1479,7 @@ contains
 
     ! Generated by getter/setter - arg_to_buffer
     ! ----------------------------------------
-    ! Function:  double * Cstruct_list_getDvalue
+    ! Function:  double * Cstruct_list_get_dvalue
     ! Attrs:     +deref(pointer)+intent(getter)+struct(Cstruct_list)
     ! Exact:     f_getter_native_*_cdesc_pointer
     ! Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)

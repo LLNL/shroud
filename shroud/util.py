@@ -23,6 +23,8 @@ OrderedDict = collections.OrderedDict
 
 fmt = string.Formatter()
 
+# See AstNode.eval_template for updating AST node fmtdict.
+
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat
     assert template is not None

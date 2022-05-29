@@ -178,7 +178,7 @@ STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
 }
 
 // ----------------------------------------
-// Function:  const double * Cstruct_ptr_getConst_dvalue
+// Function:  const double * Cstruct_ptr_get_const_dvalue
 // Attrs:     +api(buf)+deref(pointer)+intent(getter)+struct(Cstruct_ptr)
 // Requested: c_getter_native_*_buf_pointer
 // Match:     c_getter_native_*
@@ -197,7 +197,7 @@ const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
 }
 
 // ----------------------------------------
-// Function:  void Cstruct_ptr_setConst_dvalue
+// Function:  void Cstruct_ptr_set_const_dvalue
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -219,7 +219,7 @@ void STR_cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 }
 
 // ----------------------------------------
-// Function:  int * Cstruct_list_getIvalue
+// Function:  int * Cstruct_list_get_ivalue
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
 // Requested: c_getter_native_*_cdesc_pointer
 // Match:     c_getter_native_*_cdesc
@@ -245,7 +245,7 @@ void STR_cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
 }
 
 // ----------------------------------------
-// Function:  void Cstruct_list_setIvalue
+// Function:  void Cstruct_list_set_ivalue
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -266,7 +266,7 @@ void STR_cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 }
 
 // ----------------------------------------
-// Function:  double * Cstruct_list_getDvalue
+// Function:  double * Cstruct_list_get_dvalue
 // Attrs:     +api(cdesc)+deref(pointer)+intent(getter)+struct(Cstruct_list)
 // Requested: c_getter_native_*_cdesc_pointer
 // Match:     c_getter_native_*_cdesc
@@ -292,7 +292,7 @@ void STR_cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
 }
 
 // ----------------------------------------
-// Function:  void Cstruct_list_setDvalue
+// Function:  void Cstruct_list_set_dvalue
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

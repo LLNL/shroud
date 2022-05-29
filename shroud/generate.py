@@ -779,9 +779,15 @@ class GenFunctions(object):
             return
 
         ast = var.ast
-        arg_typemap = ast.typemap
-        fieldname = ast.name  # attrs["name"]
         sgroup = ast.typemap.sgroup
+
+        fmt = util.Scope(var.fmtdict)
+        fmt_func = dict(
+            # Use variable's field_name for the generated functions.
+            field_name=var.fmtdict.field_name, # Name of member variable
+            wrapped_name=ast.name,             # Using name attribute
+            struct_name=cls.fmtdict.cxx_type,
+        )
 
         is_struct = cls.wrap_as == "struct"
         if is_struct:
@@ -793,15 +799,17 @@ class GenFunctions(object):
             if sgroup in ["char", "string"]:
                 # No strings for now.
                 return
-            prefix = cls.name + '_'
             # Explicity add the 'this' argument. Added automatically for classes.
             typename = cls.typemap.name
             this_get = "{} *{}".format(typename, cls.fmtdict.CXX_this)
             this_set = this_get + ","
+            funcname_get = wformat(options.SH_struct_getter_template, fmt_func)
+            funcname_set = wformat(options.SH_struct_setter_template, fmt_func)
         else:
-            prefix = ""
             this_get = ""
             this_set = ""
+            funcname_get = wformat(options.SH_class_getter_template, fmt_func)
+            funcname_set = wformat(options.SH_class_setter_template, fmt_func)
 
         if self.language == "c":
             lang = "c_type"
@@ -822,16 +830,9 @@ class GenFunctions(object):
             value = True
             deref = None
 
-        fmt = util.Scope(var.fmtdict)
-        fmt_func = dict(
-            # Use variable's field_name for the generated functions.
-            field_name=var.fmtdict.field_name,
-        )
-
         ##########
         # getter
-        funcname = prefix + "get" + fieldname.capitalize()
-        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
         decl = "{}({})".format(argdecl, this_get)
 
         fattrs = {}
@@ -853,9 +854,8 @@ class GenFunctions(object):
         # setter
         if ast.attrs["readonly"]:
             return
-        funcname = prefix + "set" + ast.name.capitalize()
         argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
-        decl = "void {}({}{})".format(funcname, this_set, argdecl)
+        decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
         attrs = dict(
             val=dict(

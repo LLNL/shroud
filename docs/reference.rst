@@ -513,7 +513,7 @@ Option Templates
 ^^^^^^^^^^^^^^^^
 
 Templates are set in options then expanded to assign to the format 
-dictionary.
+dictionary to create names in the generated code.
 
 C_enum_template
     Name of enumeration in C wrapper.
@@ -574,7 +574,6 @@ F_capsule_data_type_template
 
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``
-  
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
@@ -729,6 +728,26 @@ PY_type_impl_template
 PY_use_numpy
     Allow NumPy arrays to be used in the module.
     For example, when assigning to a struct-as-class member.
+
+SH_class_getter_template
+    Name of generated getter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``get_{wrapped_name}``.
+
+SH_class_setter_template
+    Name of generated setter function for class members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``set_{wrapped_name}``.
+
+SH_struct_getter_template
+    Name of generated getter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_get_{wrapped_name}``.
+
+SH_struct_setter_template
+    Name of generated setter function for struct members.
+    The wrapped name will be mangled futher to distinguish scope.
+    Defaults to ``{struct_name}_set_{wrapped_name}``.
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename

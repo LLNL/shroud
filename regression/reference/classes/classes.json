@@ -1813,7 +1813,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getM_flag",
+                                "name": "get_m_flag",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1825,8 +1825,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getM_flag()",
-                        "declgen": "int getM_flag(void)",
+                        "decl": "int get_m_flag()",
+                        "declgen": "int get_m_flag(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1855,8 +1855,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_flag",
-                            "function_name": "getM_flag",
-                            "underscore_name": "get_m_flag"
+                            "function_name": "get_m_flag",
+                            "struct_name": "Class1",
+                            "underscore_name": "get_m_flag",
+                            "wrapped_name": "m_flag"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1897,7 +1899,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getTest",
+                                "name": "get_test",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1909,8 +1911,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getTest()",
-                        "declgen": "int getTest(void)",
+                        "decl": "int get_test()",
+                        "declgen": "int get_test(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1939,8 +1941,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_test",
-                            "function_name": "getTest",
-                            "underscore_name": "get_test"
+                            "function_name": "get_test",
+                            "struct_name": "Class1",
+                            "underscore_name": "get_test",
+                            "wrapped_name": "test"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1981,7 +1985,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setTest",
+                                "name": "set_test",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -2011,8 +2015,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setTest(int val)",
-                        "declgen": "void setTest(int val +intent(in)+value)",
+                        "decl": "void set_test(int val)",
+                        "declgen": "void set_test(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2074,12 +2078,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "m_test",
-                            "function_name": "setTest",
+                            "function_name": "set_test",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_test"
+                            "struct_name": "Class1",
+                            "underscore_name": "set_test",
+                            "wrapped_name": "test"
                         }
                     },
                     {
@@ -2092,7 +2098,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getM_name",
+                                "name": "get_m_name",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -2105,8 +2111,8 @@
                             ],
                             "typemap_name": "std::string"
                         },
-                        "decl": "std::string getM_name()",
-                        "declgen": "std::string getM_name(void)",
+                        "decl": "std::string get_m_name()",
+                        "declgen": "std::string get_m_name(void)",
                         "options": {},
                         "wrap": {
                             "fortran": true
@@ -2121,8 +2127,10 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "field_name": "m_name",
-                            "function_name": "getM_name",
-                            "underscore_name": "get_m_name"
+                            "function_name": "get_m_name",
+                            "struct_name": "Class1",
+                            "underscore_name": "get_m_name",
+                            "wrapped_name": "m_name"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
@@ -2149,7 +2157,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "getM_name",
+                                "name": "get_m_name",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -2163,8 +2171,8 @@
                             ],
                             "typemap_name": "std::string"
                         },
-                        "decl": "std::string getM_name()",
-                        "declgen": "std::string getM_name(void)",
+                        "decl": "std::string get_m_name()",
+                        "declgen": "std::string get_m_name(void)",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -2185,9 +2193,11 @@
                             "c_var": "self",
                             "cxx_rv_decl": "std::string SHCXX_rv",
                             "field_name": "m_name",
-                            "function_name": "getM_name",
+                            "function_name": "get_m_name",
                             "function_suffix": "_bufferify",
-                            "underscore_name": "get_m_name"
+                            "struct_name": "Class1",
+                            "underscore_name": "get_m_name",
+                            "wrapped_name": "m_name"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2227,7 +2237,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setM_name",
+                                "name": "set_m_name",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -2256,8 +2266,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setM_name(std::string val)",
-                        "declgen": "void setM_name(std::string val +intent(in))",
+                        "decl": "void set_m_name(std::string val)",
+                        "declgen": "void set_m_name(std::string val +intent(in))",
                         "options": {},
                         "wrap": {
                             "fortran": true
@@ -2271,12 +2281,14 @@
                             "F_name_impl": "class1_set_m_name",
                             "F_subprogram": "subroutine",
                             "field_name": "m_name",
-                            "function_name": "setM_name",
+                            "function_name": "set_m_name",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_m_name"
+                            "struct_name": "Class1",
+                            "underscore_name": "set_m_name",
+                            "wrapped_name": "m_name"
                         }
                     },
                     {
@@ -2285,7 +2297,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "setM_name",
+                                "name": "set_m_name",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -2315,8 +2327,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setM_name(std::string val)",
-                        "declgen": "void setM_name(std::string val +intent(in))",
+                        "decl": "void set_m_name(std::string val)",
+                        "declgen": "void set_m_name(std::string val +intent(in))",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -2373,11 +2385,13 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "m_name",
-                            "function_name": "setM_name",
+                            "function_name": "set_m_name",
                             "function_suffix": "_bufferify",
                             "stmt0": "c_setter",
                             "stmt1": "c_setter",
-                            "underscore_name": "set_m_name"
+                            "struct_name": "Class1",
+                            "underscore_name": "set_m_name",
+                            "wrapped_name": "m_name"
                         }
                     }
                 ],
@@ -3701,7 +3715,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getNitems",
+                                "name": "get_nitems",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -3713,8 +3727,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getNitems()",
-                        "declgen": "int getNitems(void)",
+                        "decl": "int get_nitems()",
+                        "declgen": "int get_nitems(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3743,8 +3757,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "nitems",
-                            "function_name": "getNitems",
-                            "underscore_name": "get_nitems"
+                            "function_name": "get_nitems",
+                            "struct_name": "Data",
+                            "underscore_name": "get_nitems",
+                            "wrapped_name": "nitems"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3785,7 +3801,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setNitems",
+                                "name": "set_nitems",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -3815,8 +3831,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setNitems(int val)",
-                        "declgen": "void setNitems(int val +intent(in)+value)",
+                        "decl": "void set_nitems(int val)",
+                        "declgen": "void set_nitems(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3878,12 +3894,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "nitems",
-                            "function_name": "setNitems",
+                            "function_name": "set_nitems",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_nitems"
+                            "struct_name": "Data",
+                            "underscore_name": "set_nitems",
+                            "wrapped_name": "nitems"
                         }
                     },
                     {
@@ -3896,7 +3914,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getItems",
+                                "name": "get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -3918,8 +3936,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * getItems()",
-                        "declgen": "int * getItems(void)",
+                        "decl": "int * get_items()",
+                        "declgen": "int * get_items(void)",
                         "options": {},
                         "wrap": {
                             "fortran": true
@@ -3934,8 +3952,10 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "field_name": "items",
-                            "function_name": "getItems",
-                            "underscore_name": "get_items"
+                            "function_name": "get_items",
+                            "struct_name": "Data",
+                            "underscore_name": "get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
@@ -3965,7 +3985,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "getItems",
+                                "name": "get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -3988,8 +4008,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * getItems()",
-                        "declgen": "int * getItems(void)",
+                        "decl": "int * get_items()",
+                        "declgen": "int * get_items(void)",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -4010,9 +4030,11 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int * SHC_rv",
                             "field_name": "items",
-                            "function_name": "getItems",
+                            "function_name": "get_items",
                             "function_suffix": "_bufferify",
-                            "underscore_name": "get_items"
+                            "struct_name": "Data",
+                            "underscore_name": "get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -4056,7 +4078,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setItems",
+                                "name": "set_items",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -4095,8 +4117,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setItems(int * val)",
-                        "declgen": "void setItems(int * val +intent(in)+rank(1))",
+                        "decl": "void set_items(int * val)",
+                        "declgen": "void set_items(int * val +intent(in)+rank(1))",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -4163,12 +4185,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "items",
-                            "function_name": "setItems",
+                            "function_name": "set_items",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_items"
+                            "struct_name": "Data",
+                            "underscore_name": "set_items",
+                            "wrapped_name": "items"
                         }
                     }
                 ],

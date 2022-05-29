@@ -341,7 +341,7 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 // end CLA_Class1_direction_func
 
 // ----------------------------------------
-// Function:  int getM_flag
+// Function:  int get_m_flag
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start CLA_Class1_get_m_flag
@@ -357,7 +357,7 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
 // end CLA_Class1_get_m_flag
 
 // ----------------------------------------
-// Function:  int getTest
+// Function:  int get_test
 // Attrs:     +intent(getter)
 // Exact:     c_getter_native_scalar
 // start CLA_Class1_get_test
@@ -373,7 +373,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // end CLA_Class1_get_test
 
 // ----------------------------------------
-// Function:  void setTest
+// Function:  void set_test
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------
@@ -393,7 +393,7 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
 // end CLA_Class1_set_test
 
 // ----------------------------------------
-// Function:  std::string getM_name
+// Function:  std::string get_m_name
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(getter)
 // Requested: c_getter_string_scalar_cdesc_allocatable
 // Match:     c_getter_string_scalar_cdesc
@@ -414,7 +414,7 @@ void CLA_Class1_get_m_name_bufferify(CLA_Class1 * self,
 // end CLA_Class1_get_m_name_bufferify
 
 // ----------------------------------------
-// Function:  void setM_name
+// Function:  void set_m_name
 // Attrs:     +intent(setter)
 // Exact:     c_setter
 // ----------------------------------------

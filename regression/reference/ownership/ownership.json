@@ -78,7 +78,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getFlag",
+                                "name": "get_flag",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -90,8 +90,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getFlag()",
-                        "declgen": "int getFlag(void)",
+                        "decl": "int get_flag()",
+                        "declgen": "int get_flag(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -120,8 +120,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "m_flag",
-                            "function_name": "getFlag",
-                            "underscore_name": "get_flag"
+                            "function_name": "get_flag",
+                            "struct_name": "Class1",
+                            "underscore_name": "get_flag",
+                            "wrapped_name": "flag"
                         },
                         "zz_fmtresult": {
                             "fmtc": {

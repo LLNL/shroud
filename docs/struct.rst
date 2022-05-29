@@ -488,6 +488,10 @@ The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
+The names of these functions are controlled by the options
+*SH_class_getter_template* and *SH_class_setter_template*.
+They are added as additional methods on the class.
+
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
 
@@ -667,6 +671,10 @@ be passed the struct variable:
     
     out => pointerdata_get_items(var)
 
+The names of these functions are controlled by the options
+*SH_struct_getter_template* and *SH_struct_setter_template*.
+They are added to the same scope as the struct.
+    
 Option *F_struct_getter_setter* can be set to *false* to avoid
 creating the getter and setter functions.
 

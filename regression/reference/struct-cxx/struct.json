@@ -637,7 +637,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getX1",
+                                "name": "get_x1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -649,8 +649,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getX1()",
-                        "declgen": "int getX1(void)",
+                        "decl": "int get_x1()",
+                        "declgen": "int get_x1(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -679,8 +679,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "x1",
-                            "function_name": "getX1",
-                            "underscore_name": "get_x1"
+                            "function_name": "get_x1",
+                            "struct_name": "Cstruct_as_class",
+                            "underscore_name": "get_x1",
+                            "wrapped_name": "x1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -721,7 +723,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setX1",
+                                "name": "set_x1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -751,8 +753,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setX1(int val)",
-                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "decl": "void set_x1(int val)",
+                        "declgen": "void set_x1(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -814,12 +816,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "x1",
-                            "function_name": "setX1",
+                            "function_name": "set_x1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_x1"
+                            "struct_name": "Cstruct_as_class",
+                            "underscore_name": "set_x1",
+                            "wrapped_name": "x1"
                         }
                     },
                     {
@@ -830,7 +834,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getY1",
+                                "name": "get_y1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -842,8 +846,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getY1()",
-                        "declgen": "int getY1(void)",
+                        "decl": "int get_y1()",
+                        "declgen": "int get_y1(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -872,8 +876,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "y1",
-                            "function_name": "getY1",
-                            "underscore_name": "get_y1"
+                            "function_name": "get_y1",
+                            "struct_name": "Cstruct_as_class",
+                            "underscore_name": "get_y1",
+                            "wrapped_name": "y1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -914,7 +920,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setY1",
+                                "name": "set_y1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -944,8 +950,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setY1(int val)",
-                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "decl": "void set_y1(int val)",
+                        "declgen": "void set_y1(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1007,12 +1013,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "y1",
-                            "function_name": "setY1",
+                            "function_name": "set_y1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_y1"
+                            "struct_name": "Cstruct_as_class",
+                            "underscore_name": "set_y1",
+                            "wrapped_name": "y1"
                         }
                     }
                 ],
@@ -1117,7 +1125,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getX1",
+                                "name": "get_x1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1129,8 +1137,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getX1()",
-                        "declgen": "int getX1(void)",
+                        "decl": "int get_x1()",
+                        "declgen": "int get_x1(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1159,8 +1167,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "x1",
-                            "function_name": "getX1",
-                            "underscore_name": "get_x1"
+                            "function_name": "get_x1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "get_x1",
+                            "wrapped_name": "x1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1201,7 +1211,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setX1",
+                                "name": "set_x1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1231,8 +1241,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setX1(int val)",
-                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "decl": "void set_x1(int val)",
+                        "declgen": "void set_x1(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1294,12 +1304,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "x1",
-                            "function_name": "setX1",
+                            "function_name": "set_x1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_x1"
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "set_x1",
+                            "wrapped_name": "x1"
                         }
                     },
                     {
@@ -1310,7 +1322,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getY1",
+                                "name": "get_y1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1322,8 +1334,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getY1()",
-                        "declgen": "int getY1(void)",
+                        "decl": "int get_y1()",
+                        "declgen": "int get_y1(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1352,8 +1364,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "y1",
-                            "function_name": "getY1",
-                            "underscore_name": "get_y1"
+                            "function_name": "get_y1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "get_y1",
+                            "wrapped_name": "y1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1394,7 +1408,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setY1",
+                                "name": "set_y1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1424,8 +1438,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setY1(int val)",
-                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "decl": "void set_y1(int val)",
+                        "declgen": "void set_y1(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1487,12 +1501,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "y1",
-                            "function_name": "setY1",
+                            "function_name": "set_y1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_y1"
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "set_y1",
+                            "wrapped_name": "y1"
                         }
                     },
                     {
@@ -1503,7 +1519,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "getZ1",
+                                "name": "get_z1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1515,8 +1531,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getZ1()",
-                        "declgen": "int getZ1(void)",
+                        "decl": "int get_z1()",
+                        "declgen": "int get_z1(void)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1545,8 +1561,10 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "field_name": "z1",
-                            "function_name": "getZ1",
-                            "underscore_name": "get_z1"
+                            "function_name": "get_z1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "get_z1",
+                            "wrapped_name": "z1"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1587,7 +1605,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "setZ1",
+                                "name": "set_z1",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1617,8 +1635,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void setZ1(int val)",
-                        "declgen": "void setZ1(int val +intent(in)+value)",
+                        "decl": "void set_z1(int val)",
+                        "declgen": "void set_z1(int val +intent(in)+value)",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1680,12 +1698,14 @@
                             "c_member": "->",
                             "c_var": "self",
                             "field_name": "z1",
-                            "function_name": "setZ1",
+                            "function_name": "set_z1",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "set_z1"
+                            "struct_name": "Cstruct_as_subclass",
+                            "underscore_name": "set_z1",
+                            "wrapped_name": "z1"
                         }
                     }
                 ],
@@ -4714,7 +4734,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "Cstruct_ptr_getConst_dvalue",
+                        "name": "Cstruct_ptr_get_const_dvalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -4750,8 +4770,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr *SH_this)",
-                "declgen": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr * SH_this)",
+                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -4766,8 +4786,10 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "field_name": "const_dvalue",
-                    "function_name": "Cstruct_ptr_getConst_dvalue",
-                    "underscore_name": "cstruct_ptr_get_const_dvalue"
+                    "function_name": "Cstruct_ptr_get_const_dvalue",
+                    "struct_name": "Cstruct_ptr",
+                    "underscore_name": "cstruct_ptr_get_const_dvalue",
+                    "wrapped_name": "const_dvalue"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -4792,7 +4814,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "Cstruct_ptr_getConst_dvalue",
+                        "name": "Cstruct_ptr_get_const_dvalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -4829,8 +4851,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr *SH_this)",
-                "declgen": "const double * Cstruct_ptr_getConst_dvalue(Cstruct_ptr * SH_this)",
+                "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
+                "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -4882,9 +4904,11 @@
                     "F_C_subprogram": "function",
                     "cxx_rv_decl": "const double * SHC_rv",
                     "field_name": "const_dvalue",
-                    "function_name": "Cstruct_ptr_getConst_dvalue",
+                    "function_name": "Cstruct_ptr_get_const_dvalue",
                     "function_suffix": "_bufferify",
-                    "underscore_name": "cstruct_ptr_get_const_dvalue"
+                    "struct_name": "Cstruct_ptr",
+                    "underscore_name": "cstruct_ptr_get_const_dvalue",
+                    "wrapped_name": "const_dvalue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4920,7 +4944,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_ptr_setConst_dvalue",
+                        "name": "Cstruct_ptr_set_const_dvalue",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -4971,8 +4995,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Cstruct_ptr_setConst_dvalue(Cstruct_ptr *SH_this,const double * val)",
-                "declgen": "void Cstruct_ptr_setConst_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
+                "decl": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,const double * val)",
+                "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5062,12 +5086,14 @@
                     "F_name_impl": "cstruct_ptr_set_const_dvalue",
                     "F_subprogram": "subroutine",
                     "field_name": "const_dvalue",
-                    "function_name": "Cstruct_ptr_setConst_dvalue",
+                    "function_name": "Cstruct_ptr_set_const_dvalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
-                    "underscore_name": "cstruct_ptr_set_const_dvalue"
+                    "struct_name": "Cstruct_ptr",
+                    "underscore_name": "cstruct_ptr_set_const_dvalue",
+                    "wrapped_name": "const_dvalue"
                 }
             },
             {
@@ -5080,7 +5106,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_getIvalue",
+                        "name": "Cstruct_list_get_ivalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -5127,8 +5153,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * Cstruct_list_getIvalue(Cstruct_list *SH_this)",
-                "declgen": "int * Cstruct_list_getIvalue(Cstruct_list * SH_this)",
+                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -5143,8 +5169,10 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "field_name": "ivalue",
-                    "function_name": "Cstruct_list_getIvalue",
-                    "underscore_name": "cstruct_list_get_ivalue"
+                    "function_name": "Cstruct_list_get_ivalue",
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_get_ivalue",
+                    "wrapped_name": "ivalue"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -5174,7 +5202,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_getIvalue",
+                        "name": "Cstruct_list_get_ivalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -5222,8 +5250,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * Cstruct_list_getIvalue(Cstruct_list *SH_this)",
-                "declgen": "int * Cstruct_list_getIvalue(Cstruct_list * SH_this)",
+                "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
+                "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -5275,9 +5303,11 @@
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "int * SHC_rv",
                     "field_name": "ivalue",
-                    "function_name": "Cstruct_list_getIvalue",
+                    "function_name": "Cstruct_list_get_ivalue",
                     "function_suffix": "_bufferify",
-                    "underscore_name": "cstruct_list_get_ivalue"
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_get_ivalue",
+                    "wrapped_name": "ivalue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5321,7 +5351,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_setIvalue",
+                        "name": "Cstruct_list_set_ivalue",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -5383,8 +5413,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Cstruct_list_setIvalue(Cstruct_list *SH_this,int * val)",
-                "declgen": "void Cstruct_list_setIvalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
+                "decl": "void Cstruct_list_set_ivalue(Cstruct_list *SH_this,int * val)",
+                "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5479,12 +5509,14 @@
                     "F_name_impl": "cstruct_list_set_ivalue",
                     "F_subprogram": "subroutine",
                     "field_name": "ivalue",
-                    "function_name": "Cstruct_list_setIvalue",
+                    "function_name": "Cstruct_list_set_ivalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
-                    "underscore_name": "cstruct_list_set_ivalue"
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_set_ivalue",
+                    "wrapped_name": "ivalue"
                 }
             },
             {
@@ -5497,7 +5529,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_getDvalue",
+                        "name": "Cstruct_list_get_dvalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -5544,8 +5576,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double * Cstruct_list_getDvalue(Cstruct_list *SH_this)",
-                "declgen": "double * Cstruct_list_getDvalue(Cstruct_list * SH_this)",
+                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -5560,8 +5592,10 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "field_name": "dvalue",
-                    "function_name": "Cstruct_list_getDvalue",
-                    "underscore_name": "cstruct_list_get_dvalue"
+                    "function_name": "Cstruct_list_get_dvalue",
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_get_dvalue",
+                    "wrapped_name": "dvalue"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -5591,7 +5625,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_getDvalue",
+                        "name": "Cstruct_list_get_dvalue",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -5639,8 +5673,8 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double * Cstruct_list_getDvalue(Cstruct_list *SH_this)",
-                "declgen": "double * Cstruct_list_getDvalue(Cstruct_list * SH_this)",
+                "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
+                "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -5692,9 +5726,11 @@
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "double * SHC_rv",
                     "field_name": "dvalue",
-                    "function_name": "Cstruct_list_getDvalue",
+                    "function_name": "Cstruct_list_get_dvalue",
                     "function_suffix": "_bufferify",
-                    "underscore_name": "cstruct_list_get_dvalue"
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_get_dvalue",
+                    "wrapped_name": "dvalue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5738,7 +5774,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_setDvalue",
+                        "name": "Cstruct_list_set_dvalue",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -5800,8 +5836,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Cstruct_list_setDvalue(Cstruct_list *SH_this,double * val)",
-                "declgen": "void Cstruct_list_setDvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
+                "decl": "void Cstruct_list_set_dvalue(Cstruct_list *SH_this,double * val)",
+                "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5896,12 +5932,14 @@
                     "F_name_impl": "cstruct_list_set_dvalue",
                     "F_subprogram": "subroutine",
                     "field_name": "dvalue",
-                    "function_name": "Cstruct_list_setDvalue",
+                    "function_name": "Cstruct_list_set_dvalue",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
-                    "underscore_name": "cstruct_list_set_dvalue"
+                    "struct_name": "Cstruct_list",
+                    "underscore_name": "cstruct_list_set_dvalue",
+                    "wrapped_name": "dvalue"
                 }
             }
         ],

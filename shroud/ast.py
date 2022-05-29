@@ -699,6 +699,13 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
+
+            # Functions created by Shroud
+            SH_class_getter_template="get_{wrapped_name}",
+            SH_class_setter_template="set_{wrapped_name}",
+            SH_struct_getter_template="{struct_name}_get_{wrapped_name}",
+            SH_struct_setter_template="{struct_name}_set_{wrapped_name}",
+            
         )
         return def_options
 

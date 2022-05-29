@@ -503,7 +503,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "DataPointer_getItems",
+                        "name": "DataPointer_get_items",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -544,8 +544,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * DataPointer_getItems(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_getItems(ns3::DataPointer * SH_this)",
+                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -560,8 +560,10 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "field_name": "items",
-                    "function_name": "DataPointer_getItems",
-                    "underscore_name": "data_pointer_get_items"
+                    "function_name": "DataPointer_get_items",
+                    "struct_name": "DataPointer",
+                    "underscore_name": "data_pointer_get_items",
+                    "wrapped_name": "items"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -590,7 +592,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "DataPointer_getItems",
+                        "name": "DataPointer_get_items",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -632,8 +634,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * DataPointer_getItems(ns3::DataPointer *SH_this)",
-                "declgen": "int * DataPointer_getItems(ns3::DataPointer * SH_this)",
+                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
+                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -685,9 +687,11 @@
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "int * SHC_rv",
                     "field_name": "items",
-                    "function_name": "DataPointer_getItems",
+                    "function_name": "DataPointer_get_items",
                     "function_suffix": "_bufferify",
-                    "underscore_name": "data_pointer_get_items"
+                    "struct_name": "DataPointer",
+                    "underscore_name": "data_pointer_get_items",
+                    "wrapped_name": "items"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -731,7 +735,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "DataPointer_setItems",
+                        "name": "DataPointer_set_items",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -787,8 +791,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void DataPointer_setItems(ns3::DataPointer *SH_this,int * val)",
-                "declgen": "void DataPointer_setItems(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
+                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -883,12 +887,14 @@
                     "F_name_impl": "data_pointer_set_items",
                     "F_subprogram": "subroutine",
                     "field_name": "items",
-                    "function_name": "DataPointer_setItems",
+                    "function_name": "DataPointer_set_items",
                     "stmt0": "f_setter",
                     "stmt1": "f_setter",
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
-                    "underscore_name": "data_pointer_set_items"
+                    "struct_name": "DataPointer",
+                    "underscore_name": "data_pointer_set_items",
+                    "wrapped_name": "items"
                 }
             }
         ],
@@ -1070,7 +1076,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_getItems",
+                                "name": "DataPointer_get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1111,8 +1117,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_getItems(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_getItems(ns1::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "options": {},
                         "wrap": {
                             "fortran": true
@@ -1127,8 +1133,10 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "field_name": "items",
-                            "function_name": "DataPointer_getItems",
-                            "underscore_name": "data_pointer_get_items"
+                            "function_name": "DataPointer_get_items",
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
@@ -1158,7 +1166,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_getItems",
+                                "name": "DataPointer_get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1200,8 +1208,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_getItems(ns1::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_getItems(ns1::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -1253,9 +1261,11 @@
                             "F_C_subprogram": "subroutine",
                             "cxx_rv_decl": "int * SHC_rv",
                             "field_name": "items",
-                            "function_name": "DataPointer_getItems",
+                            "function_name": "DataPointer_get_items",
                             "function_suffix": "_bufferify",
-                            "underscore_name": "data_pointer_get_items"
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1299,7 +1309,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_setItems",
+                                "name": "DataPointer_set_items",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1355,8 +1365,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void DataPointer_setItems(ns1::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_setItems(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
+                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1451,12 +1461,14 @@
                             "F_name_impl": "data_pointer_set_items",
                             "F_subprogram": "subroutine",
                             "field_name": "items",
-                            "function_name": "DataPointer_setItems",
+                            "function_name": "DataPointer_set_items",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "data_pointer_set_items"
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_set_items",
+                            "wrapped_name": "items"
                         }
                     }
                 ],
@@ -1663,7 +1675,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_getItems",
+                                "name": "DataPointer_get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1704,8 +1716,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_getItems(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_getItems(ns2::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "options": {},
                         "wrap": {
                             "fortran": true
@@ -1720,8 +1732,10 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "field_name": "items",
-                            "function_name": "DataPointer_getItems",
-                            "underscore_name": "data_pointer_get_items"
+                            "function_name": "DataPointer_get_items",
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtf": {
@@ -1751,7 +1765,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_getItems",
+                                "name": "DataPointer_get_items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1793,8 +1807,8 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_getItems(ns2::DataPointer *SH_this)",
-                        "declgen": "int * DataPointer_getItems(ns2::DataPointer * SH_this)",
+                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
+                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -1846,9 +1860,11 @@
                             "F_C_subprogram": "subroutine",
                             "cxx_rv_decl": "int * SHC_rv",
                             "field_name": "items",
-                            "function_name": "DataPointer_getItems",
+                            "function_name": "DataPointer_get_items",
                             "function_suffix": "_bufferify",
-                            "underscore_name": "data_pointer_get_items"
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_get_items",
+                            "wrapped_name": "items"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1892,7 +1908,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_setItems",
+                                "name": "DataPointer_set_items",
                                 "pointer": []
                             },
                             "metaattrs": {
@@ -1948,8 +1964,8 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void DataPointer_setItems(ns2::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_setItems(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))",
+                        "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
+                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2044,12 +2060,14 @@
                             "F_name_impl": "data_pointer_set_items",
                             "F_subprogram": "subroutine",
                             "field_name": "items",
-                            "function_name": "DataPointer_setItems",
+                            "function_name": "DataPointer_set_items",
                             "stmt0": "f_setter",
                             "stmt1": "f_setter",
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
-                            "underscore_name": "data_pointer_set_items"
+                            "struct_name": "DataPointer",
+                            "underscore_name": "data_pointer_set_items",
+                            "wrapped_name": "items"
                         }
                     }
                 ],
