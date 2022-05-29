@@ -767,9 +767,10 @@ class GenFunctions(object):
         Must explicitly set metaattrs for arguments since that was
         done earlier when validating attributes.
 
-        The 'struct' meta attribute is set on the getter so dimension
-        attribute can be looked up. And set on the 'this' argument to
-        help set CXX_this properly in the C wrapper.
+        The 'struct' meta attribute is set on the getter so member
+        names in the dimension attribute can be looked up. And set on
+        the 'this' argument to help set CXX_this properly in the C
+        wrapper.
 
         Parameters
         ----------
@@ -878,7 +879,7 @@ class GenFunctions(object):
         iarg = 0
         if is_struct:
             meta = fcn.ast.params[0].metaattrs
-            meta["intent"] = "in"  # out
+            meta["intent"] = "inout"
             meta["struct"] = cls.typemap.flat_name
             iarg = 1
         meta = fcn.ast.params[iarg].metaattrs

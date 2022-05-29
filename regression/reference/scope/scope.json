@@ -755,7 +755,7 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in",
+                                "intent": "inout",
                                 "struct": "ns3_DataPointer"
                             },
                             "specifier": [
@@ -820,20 +820,20 @@
                             "cxx_var": "SHCXX_SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_in_struct_*",
-                            "stmt1": "c_in_struct"
+                            "stmt0": "c_inout_struct_*",
+                            "stmt1": "c_inout_struct"
                         },
                         "fmtf": {
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
-                            "f_intent": "IN",
+                            "f_intent": "INOUT",
                             "f_type": "type(datapointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_in_struct_*",
+                            "stmt0": "f_inout_struct_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_in_struct_*",
-                            "stmtc1": "c_in_struct"
+                            "stmtc0": "c_inout_struct_*",
+                            "stmtc1": "c_inout_struct"
                         }
                     },
                     "val": {
@@ -1334,7 +1334,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in",
+                                        "intent": "inout",
                                         "struct": "ns1_DataPointer"
                                     },
                                     "specifier": [
@@ -1399,20 +1399,20 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct"
+                                    "stmt0": "c_inout_struct_*",
+                                    "stmt1": "c_inout_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_in_struct_*",
+                                    "stmt0": "f_inout_struct_*",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_in_struct_*",
-                                    "stmtc1": "c_in_struct"
+                                    "stmtc0": "c_inout_struct_*",
+                                    "stmtc1": "c_inout_struct"
                                 }
                             },
                             "val": {
@@ -1938,7 +1938,7 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in",
+                                        "intent": "inout",
                                         "struct": "ns2_DataPointer"
                                     },
                                     "specifier": [
@@ -2003,20 +2003,20 @@
                                     "cxx_var": "SHCXX_SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "c_in_struct_*",
-                                    "stmt1": "c_in_struct"
+                                    "stmt0": "c_inout_struct_*",
+                                    "stmt1": "c_inout_struct"
                                 },
                                 "fmtf": {
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt0": "f_in_struct_*",
+                                    "stmt0": "f_inout_struct_*",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_in_struct_*",
-                                    "stmtc1": "c_in_struct"
+                                    "stmtc0": "c_inout_struct_*",
+                                    "stmtc1": "c_inout_struct"
                                 }
                             },
                             "val": {

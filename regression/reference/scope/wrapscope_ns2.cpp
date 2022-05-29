@@ -52,9 +52,9 @@ void SCO_ns2_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  ns2::DataPointer * SH_this
-// Attrs:     +intent(in)+struct(ns2_DataPointer)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Attrs:     +intent(inout)+struct(ns2_DataPointer)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)

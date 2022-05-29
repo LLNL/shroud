@@ -504,9 +504,9 @@ const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
-// Attrs:     +intent(in)+struct(Cstruct_ptr)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Attrs:     +intent(inout)+struct(Cstruct_ptr)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
 // ----------------------------------------
 // Argument:  const double * val +intent(in)
 // Attrs:     +intent(setter)
@@ -556,9 +556,9 @@ void STR_cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)+struct(Cstruct_list)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Attrs:     +intent(inout)+struct(Cstruct_list)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
 // ----------------------------------------
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
@@ -607,9 +607,9 @@ void STR_cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)+struct(Cstruct_list)
-// Requested: c_in_struct_*
-// Match:     c_in_struct
+// Attrs:     +intent(inout)+struct(Cstruct_list)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
 // ----------------------------------------
 // Argument:  double * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)

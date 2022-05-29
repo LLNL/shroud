@@ -758,9 +758,9 @@ module struct_mod
         ! Match:     c_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this
-        ! Attrs:     +intent(in)+struct(Cstruct_ptr)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Attrs:     +intent(inout)+struct(Cstruct_ptr)
+        ! Requested: c_inout_struct_*
+        ! Match:     c_inout_struct
         ! ----------------------------------------
         ! Argument:  const double * val +intent(in)
         ! Attrs:     +intent(setter)
@@ -770,7 +770,7 @@ module struct_mod
             use iso_c_binding, only : C_DOUBLE
             import :: cstruct_ptr
             implicit none
-            type(cstruct_ptr), intent(IN) :: SH_this
+            type(cstruct_ptr), intent(INOUT) :: SH_this
             real(C_DOUBLE), intent(IN) :: val
         end subroutine cstruct_ptr_set_const_dvalue
 
@@ -799,9 +799,9 @@ module struct_mod
         ! Match:     c_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
-        ! Attrs:     +intent(in)+struct(Cstruct_list)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Attrs:     +intent(inout)+struct(Cstruct_list)
+        ! Requested: c_inout_struct_*
+        ! Match:     c_inout_struct
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -811,7 +811,7 @@ module struct_mod
             use iso_c_binding, only : C_INT
             import :: cstruct_list
             implicit none
-            type(cstruct_list), intent(IN) :: SH_this
+            type(cstruct_list), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)
         end subroutine cstruct_list_set_ivalue
 
@@ -840,9 +840,9 @@ module struct_mod
         ! Match:     c_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
-        ! Attrs:     +intent(in)+struct(Cstruct_list)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Attrs:     +intent(inout)+struct(Cstruct_list)
+        ! Requested: c_inout_struct_*
+        ! Match:     c_inout_struct
         ! ----------------------------------------
         ! Argument:  double * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -852,7 +852,7 @@ module struct_mod
             use iso_c_binding, only : C_DOUBLE
             import :: cstruct_list
             implicit none
-            type(cstruct_list), intent(IN) :: SH_this
+            type(cstruct_list), intent(INOUT) :: SH_this
             real(C_DOUBLE), intent(IN) :: val(*)
         end subroutine cstruct_list_set_dvalue
 

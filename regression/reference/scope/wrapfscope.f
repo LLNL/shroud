@@ -142,9 +142,9 @@ module scope_mod
         ! Match:     c_setter
         ! ----------------------------------------
         ! Argument:  ns3::DataPointer * SH_this
-        ! Attrs:     +intent(in)+struct(ns3_DataPointer)
-        ! Requested: c_in_struct_*
-        ! Match:     c_in_struct
+        ! Attrs:     +intent(inout)+struct(ns3_DataPointer)
+        ! Requested: c_inout_struct_*
+        ! Match:     c_inout_struct
         ! ----------------------------------------
         ! Argument:  int * val +intent(in)+rank(1)
         ! Attrs:     +intent(setter)
@@ -154,7 +154,7 @@ module scope_mod
             use iso_c_binding, only : C_INT
             import :: datapointer
             implicit none
-            type(datapointer), intent(IN) :: SH_this
+            type(datapointer), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)
         end subroutine data_pointer_set_items
 
