@@ -25,7 +25,7 @@ extern "C" {
 // Match:     c_getter_native_*_cdesc
 // ----------------------------------------
 // Argument:  ns1::DataPointer * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(ns1_DataPointer)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 void SCO_ns1_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
@@ -35,9 +35,9 @@ void SCO_ns1_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
     ns1::DataPointer * SHCXX_SH_this = static_cast<ns1::DataPointer *>
         (static_cast<void *>(SH_this));
     // skip call c_getter
-    SHT_rv_cdesc->cxx.addr  = SH_this->items;
+    SHT_rv_cdesc->cxx.addr  = SHCXX_SH_this->items;
     SHT_rv_cdesc->cxx.idtor = 0;
-    SHT_rv_cdesc->addr.base = SH_this->items;
+    SHT_rv_cdesc->addr.base = SHCXX_SH_this->items;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->rank = 1;
@@ -52,7 +52,7 @@ void SCO_ns1_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  ns1::DataPointer * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(ns1_DataPointer)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 // ----------------------------------------
@@ -66,7 +66,7 @@ void SCO_ns1_data_pointer_set_items(SCO_datapointer * SH_this,
     ns1::DataPointer * SHCXX_SH_this = static_cast<ns1::DataPointer *>
         (static_cast<void *>(SH_this));
     // skip call c_setter
-    SH_this->items = val;
+    SHCXX_SH_this->items = val;
     // splicer end namespace.ns1.function.data_pointer_set_items
 }
 

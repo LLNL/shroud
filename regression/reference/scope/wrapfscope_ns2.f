@@ -64,7 +64,7 @@ module scope_ns2_mod
         ! Match:     c_getter_native_*_cdesc
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
-        ! Attrs:     +intent(in)
+        ! Attrs:     +intent(in)+struct(ns2_DataPointer)
         ! Requested: c_in_struct_*
         ! Match:     c_in_struct
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
@@ -82,7 +82,7 @@ module scope_ns2_mod
         ! Match:     c_setter
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
-        ! Attrs:     +intent(in)
+        ! Attrs:     +intent(in)+struct(ns2_DataPointer)
         ! Requested: c_in_struct_*
         ! Match:     c_in_struct
         ! ----------------------------------------
@@ -114,10 +114,10 @@ contains
     ! Match:     c_getter_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(ns2_DataPointer)
     ! Requested: f_in_struct_*
     ! Match:     f_default
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(ns2_DataPointer)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     function data_pointer_get_items(SH_this) &

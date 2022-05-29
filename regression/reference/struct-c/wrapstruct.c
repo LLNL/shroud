@@ -184,7 +184,7 @@ STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
 // Match:     c_getter_native_*
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_ptr)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
@@ -202,7 +202,7 @@ const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_ptr)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 // ----------------------------------------
@@ -225,7 +225,7 @@ void STR_cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 // Match:     c_getter_native_*_cdesc
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 void STR_cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
@@ -250,7 +250,7 @@ void STR_cstruct_list_get_ivalue_bufferify(Cstruct_list * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 // ----------------------------------------
@@ -272,7 +272,7 @@ void STR_cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 // Match:     c_getter_native_*_cdesc
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 void STR_cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
@@ -297,7 +297,7 @@ void STR_cstruct_list_get_dvalue_bufferify(Cstruct_list * SH_this,
 // Exact:     c_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Attrs:     +intent(in)
+// Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
 // ----------------------------------------

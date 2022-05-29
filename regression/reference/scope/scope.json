@@ -531,7 +531,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "ns3_DataPointer"
                             },
                             "specifier": [
                                 "ns3::DataPointer"
@@ -621,7 +622,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "ns3_DataPointer"
                             },
                             "specifier": [
                                 "ns3::DataPointer"
@@ -677,6 +679,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this",
                     "C_name": "SCO_data_pointer_get_items_bufferify",
                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -752,7 +755,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "ns3_DataPointer"
                             },
                             "specifier": [
                                 "ns3::DataPointer"
@@ -872,6 +876,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this,\t val",
                     "C_name": "SCO_data_pointer_set_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1104,7 +1109,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns1_DataPointer"
                                     },
                                     "specifier": [
                                         "ns1::DataPointer"
@@ -1195,7 +1201,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns1_DataPointer"
                                     },
                                     "specifier": [
                                         "ns1::DataPointer"
@@ -1251,6 +1258,7 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this",
                             "C_name": "SCO_ns1_data_pointer_get_items_bufferify",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -1326,7 +1334,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns1_DataPointer"
                                     },
                                     "specifier": [
                                         "ns1::DataPointer"
@@ -1446,6 +1455,7 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this,\t val",
                             "C_name": "SCO_ns1_data_pointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
@@ -1703,7 +1713,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns2_DataPointer"
                                     },
                                     "specifier": [
                                         "ns2::DataPointer"
@@ -1794,7 +1805,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns2_DataPointer"
                                     },
                                     "specifier": [
                                         "ns2::DataPointer"
@@ -1850,6 +1862,7 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this",
                             "C_name": "SCO_ns2_data_pointer_get_items_bufferify",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
@@ -1925,7 +1938,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "in",
+                                        "struct": "ns2_DataPointer"
                                     },
                                     "specifier": [
                                         "ns2::DataPointer"
@@ -2045,6 +2059,7 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this,\t val",
                             "C_name": "SCO_ns2_data_pointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",

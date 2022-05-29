@@ -880,7 +880,7 @@ class Wrapc(util.WrapperMixin):
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
-            # intent will be "subroutine" or "dtor".
+            # intent will be "subroutine", "dtor", "setter"
             stmts = ["c", sintent]
             result_blk = statements.lookup_fc_stmts(stmts)
         else:
@@ -889,7 +889,7 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = ast.get_indirect_stmt()
-            # intent will be "function" or "ctor".
+            # intent will be "function", "ctor", "getter"
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
                      result_api, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
@@ -1001,6 +1001,7 @@ class Wrapc(util.WrapperMixin):
                         "{cast_static}{c_const}{namespace_scope}{cxx_type} *{cast1}{c_var}->addr{cast2};",
                         fmt_func,
                     )
+        # end if cls
 
         self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
@@ -1109,7 +1110,12 @@ class Wrapc(util.WrapperMixin):
                         pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
                     )
                 compute_cxx_deref(arg, cxx_local_var, fmt_arg)
-            
+
+            if c_meta["struct"]:
+                # This is a getter/setter 'this' argument.
+                # Need to use variable name for CXX_this to use with statements.
+                fmt_func.CXX_this = fmt_arg.cxx_var
+                
             # Useful for debugging.  Requested and found path.
             fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name

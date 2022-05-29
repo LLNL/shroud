@@ -796,7 +796,7 @@ module struct_mod
     ! Match:     c_getter_native_*
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_ptr)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     interface
@@ -818,7 +818,7 @@ module struct_mod
     ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_ptr)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     ! ----------------------------------------
@@ -843,7 +843,7 @@ module struct_mod
     ! Match:     c_getter_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     interface
@@ -863,7 +863,7 @@ module struct_mod
     ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     ! ----------------------------------------
@@ -888,7 +888,7 @@ module struct_mod
     ! Match:     c_getter_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     interface
@@ -908,7 +908,7 @@ module struct_mod
     ! Match:     c_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     ! ----------------------------------------
@@ -1458,10 +1458,10 @@ contains
     ! Match:     c_getter_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: f_in_struct_*
     ! Match:     f_default
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     function cstruct_list_get_ivalue(SH_this) &
@@ -1487,10 +1487,10 @@ contains
     ! Match:     c_getter_native_*_cdesc
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: f_in_struct_*
     ! Match:     f_default
-    ! Attrs:     +intent(in)
+    ! Attrs:     +intent(in)+struct(Cstruct_list)
     ! Requested: c_in_struct_*
     ! Match:     c_in_struct
     function cstruct_list_get_dvalue(SH_this) &

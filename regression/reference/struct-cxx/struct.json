@@ -4757,7 +4757,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_ptr"
                             },
                             "specifier": [
                                 "Cstruct_ptr"
@@ -4838,7 +4839,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_ptr"
                             },
                             "specifier": [
                                 "Cstruct_ptr"
@@ -4894,6 +4896,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this",
                     "C_name": "STR_cstruct_ptr_get_const_dvalue_bufferify",
                     "C_prototype": "STR_cstruct_ptr * SH_this",
@@ -4961,7 +4964,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_ptr"
                             },
                             "specifier": [
                                 "Cstruct_ptr"
@@ -5071,6 +5075,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this,\t val",
                     "C_name": "STR_cstruct_ptr_set_const_dvalue",
                     "C_prototype": "STR_cstruct_ptr * SH_this,\t const double * val",
@@ -5140,7 +5145,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5237,7 +5243,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5293,6 +5300,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this",
                     "C_name": "STR_cstruct_list_get_ivalue_bufferify",
                     "C_prototype": "STR_cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
@@ -5368,7 +5376,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5494,6 +5503,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this,\t val",
                     "C_name": "STR_cstruct_list_set_ivalue",
                     "C_prototype": "STR_cstruct_list * SH_this,\t int * val",
@@ -5563,7 +5573,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5660,7 +5671,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5716,6 +5728,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this",
                     "C_name": "STR_cstruct_list_get_dvalue_bufferify",
                     "C_prototype": "STR_cstruct_list * SH_this,\t STR_SHROUD_array *SHT_rv_cdesc",
@@ -5791,7 +5804,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "struct": "Cstruct_list"
                             },
                             "specifier": [
                                 "Cstruct_list"
@@ -5917,6 +5931,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this,\t val",
                     "C_name": "STR_cstruct_list_set_dvalue",
                     "C_prototype": "STR_cstruct_list * SH_this,\t double * val",
