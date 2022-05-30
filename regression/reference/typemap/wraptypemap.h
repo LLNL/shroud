@@ -20,7 +20,8 @@
 #else
 #include <stdint.h>
 #endif
-#ifndef __cplusplus
+#ifdef __cplusplus
+#else
 #include <stdbool.h>
 #endif
 #include "typestypemap.h"
@@ -49,6 +50,12 @@ typedef float FloatType;
 // splicer end C_declarations
 
 bool TYP_pass_index(IndexType i1, IndexType * i2);
+
+bool TYP_pass_index_32(int32_t i1, IndexType * i2);
+
+bool TYP_pass_index_64(int64_t i1, IndexType * i2);
+
+void TYP_pass_index2(IndexType i1);
 
 void TYP_pass_float(FloatType f1);
 

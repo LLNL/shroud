@@ -26,6 +26,29 @@ bool TYP_pass_index(IndexType i1, IndexType * i2)
     // splicer end function.pass_index
 }
 
+bool TYP_pass_index_32(int32_t i1, IndexType * i2)
+{
+    // splicer begin function.pass_index_32
+    bool SHC_rv = passIndex(i1, i2);
+    return SHC_rv;
+    // splicer end function.pass_index_32
+}
+
+bool TYP_pass_index_64(int64_t i1, IndexType * i2)
+{
+    // splicer begin function.pass_index_64
+    bool SHC_rv = passIndex(i1, i2);
+    return SHC_rv;
+    // splicer end function.pass_index_64
+}
+
+void TYP_pass_index2(IndexType i1)
+{
+    // splicer begin function.pass_index2
+    passIndex2(i1);
+    // splicer end function.pass_index2
+}
+
 void TYP_pass_float(FloatType f1)
 {
     // splicer begin function.pass_float

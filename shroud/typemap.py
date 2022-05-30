@@ -921,6 +921,12 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
     return ntypemap
 
 
+# Map base type to fortran intrinsic function.
+base_cast = dict(
+    integer='int',
+    real='real',
+)
+
 def fill_native_typemap_defaults(ntypemap, fmt):
     """Add some defaults to integer or real typemap.
     When dumping typemaps to a file, only a subset is written
@@ -937,7 +943,7 @@ def fill_native_typemap_defaults(ntypemap, fmt):
     if ntypemap.f_type is None:
         ntypemap.f_type = "{}({})".format(ntypemap.base, ntypemap.f_kind)
     if ntypemap.f_cast is None:
-        ntypemap.f_cast = "{}({{f_var}}, {})".format(ntypemap.base, ntypemap.f_kind)
+        ntypemap.f_cast = "{}({{f_var}}, {})".format(base_cast[ntypemap.base], ntypemap.f_kind)
     if ntypemap.f_module is None:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
