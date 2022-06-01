@@ -11,10 +11,28 @@
 #ifndef TYPESTYPEMAP_H
 #define TYPESTYPEMAP_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// splicer begin types.C_declarations
+#ifndef __cplusplus
+#if defined(USE_64BIT_INDEXTYPE)
+typedef int64_t IndexType;
+#else
+typedef int32_t IndexType;
+#endif
+
+#if defined(USE_64BIT_FLOAT)
+typedef double FloatType;
+#else
+typedef float FloatType;
+#endif
+#endif
+// splicer end types.C_declarations
 
 // helper capsule_data_helper
 struct s_TYP_SHROUD_capsule_data {

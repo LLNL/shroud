@@ -11,10 +11,15 @@
 #ifndef TYPESCXXLIBRARY_H
 #define TYPESCXXLIBRARY_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// splicer begin types.C_declarations
+// splicer end types.C_declarations
 
 // helper capsule_data_helper
 struct s_CXX_SHROUD_capsule_data {

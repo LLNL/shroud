@@ -11,6 +11,9 @@
 #ifndef TYPESCLIBRARY_H
 #define TYPESCLIBRARY_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
+
 // helper capsule_data_helper
 struct s_CLI_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

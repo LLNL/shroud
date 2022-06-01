@@ -11,10 +11,15 @@
 #ifndef TYPESTEMPLATES_H
 #define TYPESTEMPLATES_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// splicer begin types.C_declarations
+// splicer end types.C_declarations
 
 // helper capsule_TEM_Worker
 struct s_TEM_Worker {

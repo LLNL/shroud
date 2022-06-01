@@ -16,6 +16,7 @@
 extern "C" {
 #endif
 
+
 // helper capsule_LIB_Class2
 struct s_LIB_Class2 {
     void *addr;     /* address of C++ memory */

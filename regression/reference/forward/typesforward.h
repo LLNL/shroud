@@ -11,10 +11,15 @@
 #ifndef TYPESFORWARD_H
 #define TYPESFORWARD_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// splicer begin types.C_declarations
+// splicer end types.C_declarations
 
 // helper capsule_FOR_Class2
 struct s_FOR_Class2 {

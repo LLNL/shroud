@@ -345,11 +345,14 @@ class Wrapc(util.WrapperMixin):
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
         headers.write_headers(output)
 
+        output.append("")
+        self._push_splicer("types")
+        self._create_splicer('CXX_declarations', output)
+        
         if self.language == "cxx":
-            output.append("")
-            #            if self._create_splicer('CXX_declarations', output):
-            #                write_file = True
             output.extend(["", "#ifdef __cplusplus", 'extern "C" {', "#endif"])
+            output.append("")
+            self._create_splicer('C_declarations', output)
 
         output.extend(self.helper_source["cwrap_include"])
 
@@ -360,6 +363,7 @@ class Wrapc(util.WrapperMixin):
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
 
         output.extend(["", "#endif  // " + guard])
+        self._pop_splicer("util")
 
         self.config.cfiles.append(
             os.path.join(self.config.c_fortran_dir, fname)

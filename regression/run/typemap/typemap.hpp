@@ -15,6 +15,7 @@ using IndexType = std::int32_t;
 #endif
 
 bool passIndex(IndexType i1, IndexType *i2);
+void passIndex2(IndexType i1);
 
 #if defined(USE_64BIT_FLOAT)
 using FloatType = double;
