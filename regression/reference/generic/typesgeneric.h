@@ -14,6 +14,9 @@
 // shroud
 #include <stddef.h>
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
+
 /* helper ShroudTypeDefines */
 /* Shroud type defines */
 #define SH_TYPE_SIGNED_CHAR 1

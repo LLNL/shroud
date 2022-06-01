@@ -11,6 +11,9 @@
 #ifndef TYPESCCOMPLEX_H
 #define TYPESCCOMPLEX_H
 
+// splicer begin types.CXX_declarations
+// splicer end types.CXX_declarations
+
 // helper capsule_data_helper
 struct s_CCO_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

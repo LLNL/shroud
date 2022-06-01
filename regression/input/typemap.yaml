@@ -65,20 +65,21 @@ splicer_code:
       integer, parameter :: FLOATTYPE = C_FLOAT
       #endif
   c:
-    C_declarations: |
-      #ifndef __cplusplus
-      #if defined(USE_64BIT_INDEXTYPE)
-      typedef int64_t IndexType;
-      #else
-      typedef int32_t IndexType;
-      #endif
+    types:
+      C_declarations: |
+        #ifndef __cplusplus
+        #if defined(USE_64BIT_INDEXTYPE)
+        typedef int64_t IndexType;
+        #else
+        typedef int32_t IndexType;
+        #endif
 
-      #if defined(USE_64BIT_FLOAT)
-      typedef double FloatType;
-      #else
-      typedef float FloatType;
-      #endif
-      #endif
+        #if defined(USE_64BIT_FLOAT)
+        typedef double FloatType;
+        #else
+        typedef float FloatType;
+        #endif
+        #endif
 
 # Add code which will be integrated with other include and use statements
 # added by typemaps and statements.
