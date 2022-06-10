@@ -29,8 +29,8 @@ VPATH = \
 
 C_OBJS = \
     overload.o \
-    utilOverload.o \
-    wrapOverload.o
+    utiloverload.o \
+    wrapoverload.o
 F_OBJS = \
     wrapfoverload.o \
     fruit.o \
@@ -50,6 +50,6 @@ main.o : fruit.o wrapfoverload.o
 maincpp : maincpp.o overload.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
-testc.o : testc.c wrapOverload.h overload.hpp
+testc.o : testc.c wrapoverload.h overload.hpp
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
