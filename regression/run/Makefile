@@ -162,6 +162,8 @@ test-c : $(c-test-list)
 cpp-test-list = \
   test-cpp-tutorial \
   test-cpp-templates \
+  test-cpp-overload32 \
+  test-cpp-overload64 \
   test-cpp-scope
 
 # Compile a C++ test

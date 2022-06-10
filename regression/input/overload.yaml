@@ -1,0 +1,24 @@
+copyright:
+- Copyright (c) 2017-2022, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test overloading functions
+
+library: overload
+cxx_header: overload.hpp
+#namespace: tutorial
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: True
+  literalinclude2: True
+
+
+declarations:
+- decl: void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+- decl: void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
