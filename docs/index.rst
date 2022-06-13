@@ -39,6 +39,7 @@ Contents
    types
    namespaces
    struct
+   defaultargs
    templates
    declarations
    output
@@ -55,6 +56,7 @@ Contents
    futurework
    appendix-A
    appendix-PY
+   glossary
 
 
 Indices and tables

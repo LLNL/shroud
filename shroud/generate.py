@@ -1457,6 +1457,7 @@ class GenFunctions(object):
           void func()
           void func(int i)
           void func(int i, int j)
+        In Fortran, these are added to a generic interface.
 
         Args:
             node -
@@ -1464,6 +1465,8 @@ class GenFunctions(object):
         """
         # Need to create individual routines for Fortran and C
         if node.wrap.fortran == False and node.wrap.c == False:
+            return
+        if node.options.F_default_args != "generic":
             return
         default_funcs = []
 

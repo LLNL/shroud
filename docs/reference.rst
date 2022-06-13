@@ -369,6 +369,19 @@ F_create_generic
 .. XXX should also be set to false when the templated argument in
    cxx_template is part of the implementation and not the interface.
 
+F_default_args
+  Decide how to handle C++ default argument functions.
+  See :ref:`DefaultArguments`.
+
+  generic
+      Create a wrapper for each variation from all arguments
+      to no arguments defaulted.  In Fortran, create a generic
+      interface.
+  optional
+      Make each default argument as a Fortran ``OPTIONAL`` argument.
+  require
+      Require all arguments to be provided to the wrapper.
+
 F_line_length
   Control length of output line for generated Fortran.
   This is not an exact line width, but is instead a hint of where
@@ -561,7 +574,7 @@ F_abstract_interface_subprogram_template
    The name of the abstract interface subprogram which represents a
    function pointer.
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
-   see :ref:`DeclAnchor_Function_Pointers`.
+   See :ref:`DeclAnchor_Function_Pointers`.
 
 F_array_type_template
    ``{C_prefix}SHROUD_array``
