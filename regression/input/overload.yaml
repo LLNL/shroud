@@ -34,6 +34,10 @@ declarations:
     cxx_to_c : static_cast<int>({cxx_var})
 
 
+# When F_default_args="generic" and USE_64BIT_INDEXTYPE is not defined, this reports:
+# Ambiguous interfaces 'apply_type_nelems_offset' and
+#                      'apply_nelems_offset_stride' in generic interface 'apply' 
+
 - decl: void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
   default_arg_suffix:
   -  _nelems
