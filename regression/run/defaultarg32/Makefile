@@ -13,6 +13,10 @@ endif
 
 include $(top)/regression/run/defaults.mk
 
+TEST_CFLAGS   = -DINDEXTYPE_SIZE=32
+TEST_CXXFLAGS = -DINDEXTYPE_SIZE=32
+TEST_FFLAGS   = -DINDEXTYPE_SIZE=32
+
 INCLUDE = \
     -I$(top)/regression/reference/defaultarg \
     -I$(top)/regression/run/defaultarg \

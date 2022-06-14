@@ -17,7 +17,7 @@ options:
   literalinclude2: True
 
 typemap:
-# IndexType may be 32 or 64 bits depending on USE_64BIT_INDEXTYPE
+# IndexType may be 32 or 64 bits depending on INDEXTYPE_SIZE
 - type: IndexType
   fields:
     base: integer
@@ -33,7 +33,7 @@ declarations:
     cxx_to_c : static_cast<int>({cxx_var})
 
 
-# When F_default_args="generic" and USE_64BIT_INDEXTYPE is not defined, this reports:
+# When F_default_args="generic" and INDEXTYPE_SIZE=64 is not defined, this reports:
 # Ambiguous interfaces 'apply_type_nelems_offset' and
 #                      'apply_nelems_offset_stride' in generic interface 'apply' 
 
@@ -53,7 +53,7 @@ declarations:
 splicer_code:
   f:
     module_top: |
-      #if defined(USE_64BIT_INDEXTYPE)
+      #if INDEXTYPE_SIZE == 64
       integer, parameter :: INDEXTYPE = C_INT64_T
       #else
       integer, parameter :: INDEXTYPE = C_INT32_T
@@ -62,7 +62,7 @@ splicer_code:
     types:
       C_declarations: |
         #ifndef __cplusplus
-        #if defined(USE_64BIT_INDEXTYPE)
+        #if INDEXTYPE_SIZE == 64
         typedef int64_t IndexType;
         #else
         typedef int32_t IndexType;

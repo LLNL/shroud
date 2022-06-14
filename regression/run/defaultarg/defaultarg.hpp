@@ -23,10 +23,12 @@ enum DataTypeId
 };
 using TypeID = DataTypeId;
 
-#if defined(USE_64BIT_INDEXTYPE)
+#if INDEXTYPE_SIZE == 64
 using IndexType = std::int64_t;
-#else
+#elif INDEXTYPE_SIZE == 32
 using IndexType = std::int32_t;
+#else
+#error INDEXTYPE_SIZE must be 32 or 64
 #endif
 
 void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);

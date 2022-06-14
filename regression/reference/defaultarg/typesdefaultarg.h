@@ -20,7 +20,7 @@ extern "C" {
 
 // splicer begin types.C_declarations
 #ifndef __cplusplus
-#if defined(USE_64BIT_INDEXTYPE)
+#if INDEXTYPE_SIZE == 64
 typedef int64_t IndexType;
 #else
 typedef int32_t IndexType;

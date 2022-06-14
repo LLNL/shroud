@@ -19,7 +19,7 @@ module defaultarg_mod
     implicit none
 
     ! splicer begin module_top
-#if defined(USE_64BIT_INDEXTYPE)
+#if INDEXTYPE_SIZE == 64
     integer, parameter :: INDEXTYPE = C_INT64_T
 #else
     integer, parameter :: INDEXTYPE = C_INT32_T

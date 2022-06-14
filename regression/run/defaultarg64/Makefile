@@ -13,9 +13,9 @@ endif
 
 include $(top)/regression/run/defaults.mk
 
-TEST_CFLAGS   = -DUSE_64BIT_INDEXTYPE
-TEST_CXXFLAGS = -DUSE_64BIT_INDEXTYPE
-TEST_FFLAGS   = -DUSE_64BIT_INDEXTYPE
+TEST_CFLAGS   = -DINDEXTYPE_SIZE=64
+TEST_CXXFLAGS = -DINDEXTYPE_SIZE=64
+TEST_FFLAGS   = -DINDEXTYPE_SIZE=64
 
 INCLUDE = \
     -I$(top)/regression/reference/defaultarg \
