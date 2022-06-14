@@ -6,11 +6,10 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Test overloading functions
+# Test default arguments
 
-library: overload
-cxx_header: overload.hpp
-#namespace: tutorial
+library: defaultarg
+cxx_header: defaultarg.hpp
 
 options:
   debug: True
@@ -23,7 +22,7 @@ typemap:
   fields:
     base: integer
     f_kind: INDEXTYPE
-    f_module_name: overload_mod
+    f_module_name: defaultarg_mod
 
 declarations:
 
@@ -73,11 +72,11 @@ splicer_code:
 # Add code which will be integrated with other include and use statements
 # added by typemaps and statements.
 file_code:
-#  wrapoverload.h:
-  typesoverload.h:
+#  wrapdefaultarg.h:
+  typesdefaultarg.h:
     c_header: <stdint.h>
     cxx_header: <cstdint>
-  wrapfoverload.f:
+  wrapfdefaultarg.f:
     f_module:
       iso_c_binding:
       - C_INT32_T

@@ -503,7 +503,7 @@ if __name__ == "__main__":
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
-        TestDesc("overload"),
+        TestDesc("defaultarg"),
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),

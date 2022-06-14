@@ -1,9 +1,9 @@
 
 
-# Test overloading functions
+# Test default arguments
 
-    void apply(IndexType num_elems, IndexType offset, IndexType stride);
-    void apply(TypeID type, IndexType num_elems, IndexType offset, IndexType stride);
+    void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+    void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 
 
 In C++, the overload can be distinguished because TypeID is distinct from IndexType.

@@ -5,10 +5,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
 //
-// Tests for overload.cpp
+// Tests for defaultarg.cpp
 //
 
-#include "overload.hpp"
+#include "defaultarg.hpp"
 
 
 int main(int argc, char *argv[])

@@ -5,19 +5,19 @@
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
 !
-! Test Fortran API generated from overload.yaml.
+! Test Fortran API generated from defaultarg.yaml.
 !
 
 program tester
   use fruit
   use iso_c_binding
-  use overload_mod
+  use defaultarg_mod
   implicit none
   logical ok
 
   call init_fruit
 
-  call test_overload
+  call test_defaultarg
 
   call fruit_summary
   call fruit_finalize
@@ -29,8 +29,8 @@ program tester
 
 contains
 
-  subroutine test_overload
+  subroutine test_defaultarg
 
-  end subroutine test_overload
+  end subroutine test_defaultarg
 
 end program tester

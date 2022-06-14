@@ -4,11 +4,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-// tutorial.hpp - wrapped routines
+// defaultargl.hpp - wrapped routines
 //
 
-#ifndef OVERLOAD_HPP
-#define OVERLOAD_HPP
+#ifndef DEFAULTARG_HPP
+#define DEFAULTARG_HPP
 
 // C/C++ includes
 #include <cstdint>  // for c++11 fixed with types
@@ -33,5 +33,5 @@ void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 
 
-#endif // OVERLOAD_HPP
+#endif // DEFAULTARG_HPP
 

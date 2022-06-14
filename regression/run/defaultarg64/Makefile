@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# run/overload64
+# run/defaultarg64
 #
 ifeq ($(top),)
 top := ../../..
@@ -18,38 +18,38 @@ TEST_CXXFLAGS = -DUSE_64BIT_INDEXTYPE
 TEST_FFLAGS   = -DUSE_64BIT_INDEXTYPE
 
 INCLUDE = \
-    -I$(top)/regression/reference/overload \
-    -I$(top)/regression/run/overload \
+    -I$(top)/regression/reference/defaultarg \
+    -I$(top)/regression/run/defaultarg \
     -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/regression/reference/overload \
-    $(top)/regression/run/overload \
+    $(top)/regression/reference/defaultarg \
+    $(top)/regression/run/defaultarg \
     $(top)/regression/run/fruit
 
 C_OBJS = \
-    overload.o \
-    utiloverload.o \
-    wrapoverload.o
+    defaultarg.o \
+    utildefaultarg.o \
+    wrapdefaultarg.o
 F_OBJS = \
-    wrapfoverload.o \
+    wrapfdefaultarg.o \
     fruit.o \
     main.o
 
-overload64 : $(C_OBJS) $(F_OBJS)
+defaultarg64 : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod overload
+	rm -f $(OBJS) *.mod defaultarg
 
-overload.o : overload.cpp overload.hpp
-wrapoverload.o : wrapoverload.h overload.hpp
-main.o : fruit.o wrapfoverload.o
+defaultarg.o : defaultarg.cpp defaultarg.hpp
+wrapdefaultarg.o : wrapdefaultarg.h defaultarg.hpp
+main.o : fruit.o wrapfdefaultarg.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o overload.o
+maincpp : maincpp.o defaultarg.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
-testc.o : testc.c wrapoverload.h overload.hpp
+testc.o : testc.c wrapdefaultarg.h defaultarg.hpp
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
