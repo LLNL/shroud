@@ -28,26 +28,39 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void DEF_apply_nelems(IndexType num_elems);
+void DEF_apply_generic_nelems(IndexType num_elems);
 
-void DEF_apply_nelems_offset(IndexType num_elems, IndexType offset);
+void DEF_apply_generic_nelems_offset(IndexType num_elems,
+    IndexType offset);
 
-void DEF_apply_nelems_offset_stride(IndexType num_elems,
+void DEF_apply_generic_nelems_offset_stride(IndexType num_elems,
     IndexType offset, IndexType stride);
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_type_nelems(int type, IndexType num_elems);
+void DEF_apply_generic_type_nelems(int type, IndexType num_elems);
 #endif
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_type_nelems_offset(int type, IndexType num_elems,
+void DEF_apply_generic_type_nelems_offset(int type, IndexType num_elems,
     IndexType offset);
 #endif
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_type_nelems_offset_stride(int type, IndexType num_elems,
-    IndexType offset, IndexType stride);
+void DEF_apply_generic_type_nelems_offset_stride(int type,
+    IndexType num_elems, IndexType offset, IndexType stride);
 #endif
+
+void DEF_apply_require_0(IndexType num_elems, IndexType offset,
+    IndexType stride);
+
+void DEF_apply_require_1(int type, IndexType num_elems,
+    IndexType offset, IndexType stride);
+
+void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
+    IndexType stride);
+
+void DEF_apply_optional_1(int type, IndexType num_elems,
+    IndexType offset, IndexType stride);
 
 #ifdef __cplusplus
 }

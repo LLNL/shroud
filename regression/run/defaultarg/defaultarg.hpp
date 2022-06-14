@@ -31,8 +31,14 @@ using IndexType = std::int32_t;
 #error INDEXTYPE_SIZE must be 32 or 64
 #endif
 
-void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
-void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+
+void apply_require(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+
+void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
 
 
 #endif // DEFAULTARG_HPP

@@ -27,7 +27,7 @@ module defaultarg_mod
     ! splicer end module_top
 
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
@@ -37,16 +37,16 @@ module defaultarg_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_apply_nelems(num_elems) &
-                bind(C, name="DEF_apply_nelems")
+        subroutine c_apply_generic_nelems(num_elems) &
+                bind(C, name="DEF_apply_generic_nelems")
             import :: INDEXTYPE
             implicit none
             integer(INDEXTYPE), value, intent(IN) :: num_elems
-        end subroutine c_apply_nelems
+        end subroutine c_apply_generic_nelems
     end interface
 
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
@@ -61,17 +61,17 @@ module defaultarg_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_apply_nelems_offset(num_elems, offset) &
-                bind(C, name="DEF_apply_nelems_offset")
+        subroutine c_apply_generic_nelems_offset(num_elems, offset) &
+                bind(C, name="DEF_apply_generic_nelems_offset")
             import :: INDEXTYPE
             implicit none
             integer(INDEXTYPE), value, intent(IN) :: num_elems
             integer(INDEXTYPE), value, intent(IN) :: offset
-        end subroutine c_apply_nelems_offset
+        end subroutine c_apply_generic_nelems_offset
     end interface
 
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
@@ -91,109 +91,110 @@ module defaultarg_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_apply_nelems_offset_stride(num_elems, offset, &
-                stride) &
-                bind(C, name="DEF_apply_nelems_offset_stride")
-            import :: INDEXTYPE
-            implicit none
-            integer(INDEXTYPE), value, intent(IN) :: num_elems
-            integer(INDEXTYPE), value, intent(IN) :: offset
-            integer(INDEXTYPE), value, intent(IN) :: stride
-        end subroutine c_apply_nelems_offset_stride
-    end interface
-
-#if INDETYPE_SIZE == 64
-    ! ----------------------------------------
-    ! Function:  void apply
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  TypeID type +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType num_elems +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    interface
-        subroutine c_apply_type_nelems(type, num_elems) &
-                bind(C, name="DEF_apply_type_nelems")
-            use iso_c_binding, only : C_INT
-            import :: INDEXTYPE
-            implicit none
-            integer(C_INT), value, intent(IN) :: type
-            integer(INDEXTYPE), value, intent(IN) :: num_elems
-        end subroutine c_apply_type_nelems
-    end interface
-#endif
-
-#if INDETYPE_SIZE == 64
-    ! ----------------------------------------
-    ! Function:  void apply
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  TypeID type +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType num_elems +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType offset=0 +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    interface
-        subroutine c_apply_type_nelems_offset(type, num_elems, offset) &
-                bind(C, name="DEF_apply_type_nelems_offset")
-            use iso_c_binding, only : C_INT
-            import :: INDEXTYPE
-            implicit none
-            integer(C_INT), value, intent(IN) :: type
-            integer(INDEXTYPE), value, intent(IN) :: num_elems
-            integer(INDEXTYPE), value, intent(IN) :: offset
-        end subroutine c_apply_type_nelems_offset
-    end interface
-#endif
-
-#if INDETYPE_SIZE == 64
-    ! ----------------------------------------
-    ! Function:  void apply
-    ! Attrs:     +intent(subroutine)
-    ! Requested: c_subroutine_void_scalar
-    ! Match:     c_subroutine
-    ! ----------------------------------------
-    ! Argument:  TypeID type +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType num_elems +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType offset=0 +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  IndexType stride=1 +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_in_native_scalar
-    ! Match:     c_default
-    interface
-        subroutine c_apply_type_nelems_offset_stride(type, num_elems, &
+        subroutine c_apply_generic_nelems_offset_stride(num_elems, &
                 offset, stride) &
-                bind(C, name="DEF_apply_type_nelems_offset_stride")
+                bind(C, name="DEF_apply_generic_nelems_offset_stride")
+            import :: INDEXTYPE
+            implicit none
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+            integer(INDEXTYPE), value, intent(IN) :: stride
+        end subroutine c_apply_generic_nelems_offset_stride
+    end interface
+
+#if INDETYPE_SIZE == 64
+    ! ----------------------------------------
+    ! Function:  void apply_generic
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_generic_type_nelems(type, num_elems) &
+                bind(C, name="DEF_apply_generic_type_nelems")
+            use iso_c_binding, only : C_INT
+            import :: INDEXTYPE
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+        end subroutine c_apply_generic_type_nelems
+    end interface
+#endif
+
+#if INDETYPE_SIZE == 64
+    ! ----------------------------------------
+    ! Function:  void apply_generic
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_generic_type_nelems_offset(type, num_elems, &
+                offset) &
+                bind(C, name="DEF_apply_generic_type_nelems_offset")
+            use iso_c_binding, only : C_INT
+            import :: INDEXTYPE
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+        end subroutine c_apply_generic_type_nelems_offset
+    end interface
+#endif
+
+#if INDETYPE_SIZE == 64
+    ! ----------------------------------------
+    ! Function:  void apply_generic
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_generic_type_nelems_offset_stride(type, &
+                num_elems, offset, stride) &
+                bind(C, name="DEF_apply_generic_type_nelems_offset_stride")
             use iso_c_binding, only : C_INT
             import :: INDEXTYPE
             implicit none
@@ -201,35 +202,183 @@ module defaultarg_mod
             integer(INDEXTYPE), value, intent(IN) :: num_elems
             integer(INDEXTYPE), value, intent(IN) :: offset
             integer(INDEXTYPE), value, intent(IN) :: stride
-        end subroutine c_apply_type_nelems_offset_stride
+        end subroutine c_apply_generic_type_nelems_offset_stride
     end interface
 #endif
+
+    ! ----------------------------------------
+    ! Function:  void apply_require
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_require_0(num_elems, offset, stride) &
+                bind(C, name="DEF_apply_require_0")
+            import :: INDEXTYPE
+            implicit none
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+            integer(INDEXTYPE), value, intent(IN) :: stride
+        end subroutine c_apply_require_0
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void apply_require
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_require_1(type, num_elems, offset, stride) &
+                bind(C, name="DEF_apply_require_1")
+            use iso_c_binding, only : C_INT
+            import :: INDEXTYPE
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+            integer(INDEXTYPE), value, intent(IN) :: stride
+        end subroutine c_apply_require_1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void apply_optional
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_optional_0(num_elems, offset, stride) &
+                bind(C, name="DEF_apply_optional_0")
+            import :: INDEXTYPE
+            implicit none
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+            integer(INDEXTYPE), value, intent(IN) :: stride
+        end subroutine c_apply_optional_0
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void apply_optional
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        subroutine c_apply_optional_1(type, num_elems, offset, stride) &
+                bind(C, name="DEF_apply_optional_1")
+            use iso_c_binding, only : C_INT
+            import :: INDEXTYPE
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            integer(INDEXTYPE), value, intent(IN) :: num_elems
+            integer(INDEXTYPE), value, intent(IN) :: offset
+            integer(INDEXTYPE), value, intent(IN) :: stride
+        end subroutine c_apply_optional_1
+    end interface
 
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
-    interface apply
-        module procedure apply_nelems
-        module procedure apply_nelems_offset
-        module procedure apply_nelems_offset_stride
+    interface apply_generic
+        module procedure apply_generic_nelems
+        module procedure apply_generic_nelems_offset
+        module procedure apply_generic_nelems_offset_stride
 #if INDETYPE_SIZE == 64
-        module procedure apply_type_nelems
+        module procedure apply_generic_type_nelems
 #endif
 #if INDETYPE_SIZE == 64
-        module procedure apply_type_nelems_offset
+        module procedure apply_generic_type_nelems_offset
 #endif
 #if INDETYPE_SIZE == 64
-        module procedure apply_type_nelems_offset_stride
+        module procedure apply_generic_type_nelems_offset_stride
 #endif
-    end interface apply
+    end interface apply_generic
+
+    interface apply_optional
+        module procedure apply_optional_0
+        module procedure apply_optional_1
+    end interface apply_optional
+
+    interface apply_require
+        module procedure apply_require_0
+        module procedure apply_require_1
+    end interface apply_require
 
 contains
 
     ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -242,16 +391,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_nelems(num_elems)
+    subroutine apply_generic_nelems(num_elems)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
-        ! splicer begin function.apply_nelems
-        call c_apply_nelems(num_elems)
-        ! splicer end function.apply_nelems
-    end subroutine apply_nelems
+        ! splicer begin function.apply_generic_nelems
+        call c_apply_generic_nelems(num_elems)
+        ! splicer end function.apply_generic_nelems
+    end subroutine apply_generic_nelems
 
     ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -272,16 +421,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_nelems_offset(num_elems, offset)
+    subroutine apply_generic_nelems_offset(num_elems, offset)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
-        ! splicer begin function.apply_nelems_offset
-        call c_apply_nelems_offset(num_elems, offset)
-        ! splicer end function.apply_nelems_offset
-    end subroutine apply_nelems_offset
+        ! splicer begin function.apply_generic_nelems_offset
+        call c_apply_generic_nelems_offset(num_elems, offset)
+        ! splicer end function.apply_generic_nelems_offset
+    end subroutine apply_generic_nelems_offset
 
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -310,19 +459,21 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_nelems_offset_stride(num_elems, offset, stride)
+    subroutine apply_generic_nelems_offset_stride(num_elems, offset, &
+            stride)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
         integer(INDEXTYPE), value, intent(IN) :: stride
-        ! splicer begin function.apply_nelems_offset_stride
-        call c_apply_nelems_offset_stride(num_elems, offset, stride)
-        ! splicer end function.apply_nelems_offset_stride
-    end subroutine apply_nelems_offset_stride
+        ! splicer begin function.apply_generic_nelems_offset_stride
+        call c_apply_generic_nelems_offset_stride(num_elems, offset, &
+            stride)
+        ! splicer end function.apply_generic_nelems_offset_stride
+    end subroutine apply_generic_nelems_offset_stride
 
 #if INDETYPE_SIZE == 64
     ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -343,20 +494,20 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_type_nelems(type, num_elems)
+    subroutine apply_generic_type_nelems(type, num_elems)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
-        ! splicer begin function.apply_type_nelems
-        call c_apply_type_nelems(type, num_elems)
-        ! splicer end function.apply_type_nelems
-    end subroutine apply_type_nelems
+        ! splicer begin function.apply_generic_type_nelems
+        call c_apply_generic_type_nelems(type, num_elems)
+        ! splicer end function.apply_generic_type_nelems
+    end subroutine apply_generic_type_nelems
 #endif
 
 #if INDETYPE_SIZE == 64
     ! Generated by has_default_arg
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -385,20 +536,20 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_type_nelems_offset(type, num_elems, offset)
+    subroutine apply_generic_type_nelems_offset(type, num_elems, offset)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
-        ! splicer begin function.apply_type_nelems_offset
-        call c_apply_type_nelems_offset(type, num_elems, offset)
-        ! splicer end function.apply_type_nelems_offset
-    end subroutine apply_type_nelems_offset
+        ! splicer begin function.apply_generic_type_nelems_offset
+        call c_apply_generic_type_nelems_offset(type, num_elems, offset)
+        ! splicer end function.apply_generic_type_nelems_offset
+    end subroutine apply_generic_type_nelems_offset
 #endif
 
 #if INDETYPE_SIZE == 64
     ! ----------------------------------------
-    ! Function:  void apply
+    ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
@@ -435,19 +586,195 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine apply_type_nelems_offset_stride(type, num_elems, offset, &
-            stride)
+    subroutine apply_generic_type_nelems_offset_stride(type, num_elems, &
+            offset, stride)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
         integer(INDEXTYPE), value, intent(IN) :: offset
         integer(INDEXTYPE), value, intent(IN) :: stride
-        ! splicer begin function.apply_type_nelems_offset_stride
-        call c_apply_type_nelems_offset_stride(type, num_elems, offset, &
-            stride)
-        ! splicer end function.apply_type_nelems_offset_stride
-    end subroutine apply_type_nelems_offset_stride
+        ! splicer begin function.apply_generic_type_nelems_offset_stride
+        call c_apply_generic_type_nelems_offset_stride(type, num_elems, &
+            offset, stride)
+        ! splicer end function.apply_generic_type_nelems_offset_stride
+    end subroutine apply_generic_type_nelems_offset_stride
 #endif
+
+    ! ----------------------------------------
+    ! Function:  void apply_require
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    subroutine apply_require_0(num_elems, offset, stride)
+        integer(INDEXTYPE), value, intent(IN) :: num_elems
+        integer(INDEXTYPE), value, intent(IN) :: offset
+        integer(INDEXTYPE), value, intent(IN) :: stride
+        ! splicer begin function.apply_require_0
+        call c_apply_require_0(num_elems, offset, stride)
+        ! splicer end function.apply_require_0
+    end subroutine apply_require_0
+
+    ! ----------------------------------------
+    ! Function:  void apply_require
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    subroutine apply_require_1(type, num_elems, offset, stride)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        integer(INDEXTYPE), value, intent(IN) :: num_elems
+        integer(INDEXTYPE), value, intent(IN) :: offset
+        integer(INDEXTYPE), value, intent(IN) :: stride
+        ! splicer begin function.apply_require_1
+        call c_apply_require_1(type, num_elems, offset, stride)
+        ! splicer end function.apply_require_1
+    end subroutine apply_require_1
+
+    ! ----------------------------------------
+    ! Function:  void apply_optional
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    subroutine apply_optional_0(num_elems, offset, stride)
+        integer(INDEXTYPE), value, intent(IN) :: num_elems
+        integer(INDEXTYPE), value, intent(IN) :: offset
+        integer(INDEXTYPE), value, intent(IN) :: stride
+        ! splicer begin function.apply_optional_0
+        call c_apply_optional_0(num_elems, offset, stride)
+        ! splicer end function.apply_optional_0
+    end subroutine apply_optional_0
+
+    ! ----------------------------------------
+    ! Function:  void apply_optional
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
+    ! Exact:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType num_elems +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType offset=0 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  IndexType stride=1 +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_scalar
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    subroutine apply_optional_1(type, num_elems, offset, stride)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        integer(INDEXTYPE), value, intent(IN) :: num_elems
+        integer(INDEXTYPE), value, intent(IN) :: offset
+        integer(INDEXTYPE), value, intent(IN) :: stride
+        ! splicer begin function.apply_optional_1
+        call c_apply_optional_1(type, num_elems, offset, stride)
+        ! splicer end function.apply_optional_1
+    end subroutine apply_optional_1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

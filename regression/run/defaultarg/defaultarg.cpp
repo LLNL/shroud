@@ -10,11 +10,31 @@
 #include "defaultarg.hpp"
 
 
-void apply(IndexType num_elems, IndexType offset, IndexType stride)
+void apply_generic(IndexType num_elems, IndexType offset, IndexType stride)
 {
 }
 
-void apply(TypeID type, IndexType num_elems, IndexType offset, IndexType stride)
+void apply_generic(TypeID type, IndexType num_elems, IndexType offset, IndexType stride)
+{
+}
+
+//----------------------------------------------------------------------
+
+void apply_require(IndexType num_elems, IndexType offset, IndexType stride)
+{
+}
+
+void apply_require(TypeID type, IndexType num_elems, IndexType offset, IndexType stride)
+{
+}
+
+//----------------------------------------------------------------------
+
+void apply_optional(IndexType num_elems, IndexType offset, IndexType stride)
+{
+}
+
+void apply_optional(TypeID type, IndexType num_elems, IndexType offset, IndexType stride)
 {
 }
 

@@ -39,21 +39,61 @@ declarations:
 # Ambiguous interfaces 'apply_type_nelems_offset' and
 #                      'apply_nelems_offset_stride' in generic interface 'apply' 
 
-- decl: void apply(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+- decl: void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
   default_arg_suffix:
   -  _nelems
   -  _nelems_offset
   -  _nelems_offset_stride
-  option:
-    F_default_arg: generic
-- decl: void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  options:
+    F_default_args: generic
+- decl: void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
   default_arg_suffix:
   -  _type_nelems
   -  _type_nelems_offset
   -  _type_nelems_offset_stride
-  option:
-    F_default_arg: generic
+  options:
+    F_default_args: generic
   cpp_if: if INDETYPE_SIZE == 64
+
+
+########################################
+# F_default_arg=require
+#
+
+- decl: void apply_require(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _nelems
+#  -  _nelems_offset
+  -  _nelems_offset_stride
+  options:
+    F_default_args: require
+- decl: void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _type_nelems
+#  -  _type_nelems_offset
+  -  _type_nelems_offset_stride
+  options:
+    F_default_args: require
+
+
+########################################
+# F_default_arg=optional
+#
+
+- decl: void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _nelems
+#  -  _nelems_offset
+  -  _nelems_offset_stride
+  options:
+    F_default_args: optional
+- decl: void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _type_nelems
+#  -  _type_nelems_offset
+  -  _type_nelems_offset_stride
+  options:
+    F_default_args: optional
 
 
 ######################################################################
