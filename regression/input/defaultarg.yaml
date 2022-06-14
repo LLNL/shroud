@@ -32,7 +32,9 @@ declarations:
     c_to_cxx : static_cast<TypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
-
+########################################
+# F_default_arg=generic
+#
 # When F_default_args="generic" and INDEXTYPE_SIZE=64 is not defined, this reports:
 # Ambiguous interfaces 'apply_type_nelems_offset' and
 #                      'apply_nelems_offset_stride' in generic interface 'apply' 
@@ -42,11 +44,16 @@ declarations:
   -  _nelems
   -  _nelems_offset
   -  _nelems_offset_stride
+  option:
+    F_default_arg: generic
 - decl: void apply(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
   default_arg_suffix:
   -  _type_nelems
   -  _type_nelems_offset
   -  _type_nelems_offset_stride
+  option:
+    F_default_arg: generic
+  cpp_if: if INDETYPE_SIZE == 64
 
 
 ######################################################################

@@ -84,6 +84,7 @@ void DEF_apply_nelems_offset_stride(IndexType num_elems,
     // splicer end function.apply_nelems_offset_stride
 }
 
+#if INDETYPE_SIZE == 64
 // ----------------------------------------
 // Function:  void apply
 // Attrs:     +intent(subroutine)
@@ -105,7 +106,9 @@ void DEF_apply_type_nelems(int type, IndexType num_elems)
     apply(SHCXX_type, num_elems);
     // splicer end function.apply_type_nelems
 }
+#endif  // if INDETYPE_SIZE == 64
 
+#if INDETYPE_SIZE == 64
 // ----------------------------------------
 // Function:  void apply
 // Attrs:     +intent(subroutine)
@@ -133,7 +136,9 @@ void DEF_apply_type_nelems_offset(int type, IndexType num_elems,
     apply(SHCXX_type, num_elems, offset);
     // splicer end function.apply_type_nelems_offset
 }
+#endif  // if INDETYPE_SIZE == 64
 
+#if INDETYPE_SIZE == 64
 // ----------------------------------------
 // Function:  void apply
 // Attrs:     +intent(subroutine)
@@ -166,5 +171,6 @@ void DEF_apply_type_nelems_offset_stride(int type, IndexType num_elems,
     apply(SHCXX_type, num_elems, offset, stride);
     // splicer end function.apply_type_nelems_offset_stride
 }
+#endif  // if INDETYPE_SIZE == 64
 
 }  // extern "C"

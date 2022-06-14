@@ -35,13 +35,19 @@ void DEF_apply_nelems_offset(IndexType num_elems, IndexType offset);
 void DEF_apply_nelems_offset_stride(IndexType num_elems,
     IndexType offset, IndexType stride);
 
+#if INDETYPE_SIZE == 64
 void DEF_apply_type_nelems(int type, IndexType num_elems);
+#endif
 
+#if INDETYPE_SIZE == 64
 void DEF_apply_type_nelems_offset(int type, IndexType num_elems,
     IndexType offset);
+#endif
 
+#if INDETYPE_SIZE == 64
 void DEF_apply_type_nelems_offset_stride(int type, IndexType num_elems,
     IndexType offset, IndexType stride);
+#endif
 
 #ifdef __cplusplus
 }
