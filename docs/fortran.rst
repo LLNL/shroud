@@ -51,11 +51,14 @@ be controlled directly by the input YAML file:
     contains
 
       {F_subprogram} {F_name_impl}
-        decl_args
+        arg_f_use
+        arg_f_decl
+        ! splicer begin
         declare      ! local variables
         pre_call
         call  {arg_c_call}
         post_call
+        ! splicer end
       end {F_subprogram} {F_name_impl}
 
     end module {F_module_name}

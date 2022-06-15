@@ -1371,6 +1371,18 @@ fmtf
 Format strings used with Fortran wrappers.
 Set for each argument.
 
+c_var
+    The name of the argument passed to the C wrapper.
+    This is initially the same as *f_var* but when the
+    statement field *c_local_var* is true, another name
+    will be generated of the form ``SH_{f_var}``.
+    A declaration will also be added using typemap.f_c_type.
+
+default_value
+    The value of a C++ default value argument.
+
+.. XXX - only defined for native types (integer, real)    
+
 f_array_allocate
     Fortran shape expression used with ``ALLOCATE`` statement when
     *dimension* attribute is set.

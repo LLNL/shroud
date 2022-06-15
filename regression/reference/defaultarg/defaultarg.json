@@ -1770,6 +1770,7 @@
                         "fmtf": {
                             "F_C_var": "offset",
                             "c_var": "offset",
+                            "default_value": 0,
                             "f_c_module_line": "defaultarg_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
@@ -1804,6 +1805,7 @@
                         "fmtf": {
                             "F_C_var": "stride",
                             "c_var": "stride",
+                            "default_value": 1,
                             "f_c_module_line": "defaultarg_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
@@ -1826,7 +1828,7 @@
                     "F_C_call": "c_apply_optional_0",
                     "F_C_name": "c_apply_optional_0",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "num_elems,\t offset,\t stride",
+                    "F_arg_c_call": "num_elems,\t SH_offset,\t SH_stride",
                     "F_arguments": "num_elems,\t offset,\t stride",
                     "F_name_function": "apply_optional_0",
                     "F_name_generic": "apply_optional",
@@ -1996,6 +1998,7 @@
                         "fmtf": {
                             "F_C_var": "offset",
                             "c_var": "offset",
+                            "default_value": 0,
                             "f_c_module_line": "defaultarg_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
@@ -2030,6 +2033,7 @@
                         "fmtf": {
                             "F_C_var": "stride",
                             "c_var": "stride",
+                            "default_value": 1,
                             "f_c_module_line": "defaultarg_mod:INDEXTYPE",
                             "f_intent": "IN",
                             "f_kind": "INDEXTYPE",
@@ -2087,7 +2091,7 @@
                     "F_C_call": "c_apply_optional_1",
                     "F_C_name": "c_apply_optional_1",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t num_elems,\t offset,\t stride",
+                    "F_arg_c_call": "type,\t num_elems,\t SH_offset,\t SH_stride",
                     "F_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_name_function": "apply_optional_1",
                     "F_name_generic": "apply_optional",

@@ -79,6 +79,8 @@ declarations:
 ########################################
 # F_default_arg=optional
 #
+#Ambiguous interfaces in generic interface 'apply_optional' for
+# 'apply_optional_0' at (1) and 'apply_optional_1'
 
 - decl: void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
   default_arg_suffix:
@@ -94,6 +96,7 @@ declarations:
   -  _type_nelems_offset_stride
   options:
     F_default_args: optional
+  cpp_if: if INDETYPE_SIZE == 64
 
 
 ######################################################################

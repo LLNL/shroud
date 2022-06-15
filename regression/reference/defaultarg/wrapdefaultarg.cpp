@@ -261,6 +261,7 @@ void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
     // splicer end function.apply_optional_0
 }
 
+#if INDETYPE_SIZE == 64
 // ----------------------------------------
 // Function:  void apply_optional
 // Attrs:     +intent(subroutine)
@@ -293,5 +294,6 @@ void DEF_apply_optional_1(int type, IndexType num_elems,
     apply_optional(SHCXX_type, num_elems, offset, stride);
     // splicer end function.apply_optional_1
 }
+#endif  // if INDETYPE_SIZE == 64
 
 }  // extern "C"

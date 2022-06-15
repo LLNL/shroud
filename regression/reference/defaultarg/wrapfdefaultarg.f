@@ -306,6 +306,7 @@ module defaultarg_mod
         end subroutine c_apply_optional_0
     end interface
 
+#if INDETYPE_SIZE == 64
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
@@ -343,6 +344,7 @@ module defaultarg_mod
             integer(INDEXTYPE), value, intent(IN) :: stride
         end subroutine c_apply_optional_1
     end interface
+#endif
 
     interface
         ! splicer begin additional_interfaces
@@ -366,7 +368,9 @@ module defaultarg_mod
 
     interface apply_optional
         module procedure apply_optional_0
+#if INDETYPE_SIZE == 64
         module procedure apply_optional_1
+#endif
     end interface apply_optional
 
     interface apply_require
@@ -720,13 +724,26 @@ contains
     ! Match:     c_default
     subroutine apply_optional_0(num_elems, offset, stride)
         integer(INDEXTYPE), value, intent(IN) :: num_elems
-        integer(INDEXTYPE), value, intent(IN) :: offset
-        integer(INDEXTYPE), value, intent(IN) :: stride
+        integer(INDEXTYPE), value, intent(IN), optional :: offset
+        integer(INDEXTYPE), value, intent(IN), optional :: stride
         ! splicer begin function.apply_optional_0
-        call c_apply_optional_0(num_elems, offset, stride)
+        integer(INDEXTYPE) SH_offset
+        integer(INDEXTYPE) SH_stride
+        if (present(offset)) then
+            SH_offset = offset
+        else
+            SH_offset = 0
+        endif
+        if (present(stride)) then
+            SH_stride = stride
+        else
+            SH_stride = 1
+        endif
+        call c_apply_optional_0(num_elems, SH_offset, SH_stride)
         ! splicer end function.apply_optional_0
     end subroutine apply_optional_0
 
+#if INDETYPE_SIZE == 64
     ! ----------------------------------------
     ! Function:  void apply_optional
     ! Attrs:     +intent(subroutine)
@@ -769,12 +786,25 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: type
         integer(INDEXTYPE), value, intent(IN) :: num_elems
-        integer(INDEXTYPE), value, intent(IN) :: offset
-        integer(INDEXTYPE), value, intent(IN) :: stride
+        integer(INDEXTYPE), value, intent(IN), optional :: offset
+        integer(INDEXTYPE), value, intent(IN), optional :: stride
         ! splicer begin function.apply_optional_1
-        call c_apply_optional_1(type, num_elems, offset, stride)
+        integer(INDEXTYPE) SH_offset
+        integer(INDEXTYPE) SH_stride
+        if (present(offset)) then
+            SH_offset = offset
+        else
+            SH_offset = 0
+        endif
+        if (present(stride)) then
+            SH_stride = stride
+        else
+            SH_stride = 1
+        endif
+        call c_apply_optional_1(type, num_elems, SH_offset, SH_stride)
         ! splicer end function.apply_optional_1
     end subroutine apply_optional_1
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

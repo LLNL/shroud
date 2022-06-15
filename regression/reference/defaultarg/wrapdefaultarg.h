@@ -59,8 +59,10 @@ void DEF_apply_require_1(int type, IndexType num_elems,
 void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
     IndexType stride);
 
+#if INDETYPE_SIZE == 64
 void DEF_apply_optional_1(int type, IndexType num_elems,
     IndexType offset, IndexType stride);
+#endif
 
 #ifdef __cplusplus
 }

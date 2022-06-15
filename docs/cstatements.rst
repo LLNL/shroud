@@ -170,7 +170,7 @@ Used when *buf_arg* is ``arg_decl``.
 Defaults to ``{F_C_var}``.
 
 .. note:: *c_arg_decl*, *f_arg_decl*, and *f_c_arg_names* must all
-          exist as a group and be the same length.
+          exist in a group and have the same number of names.
 
 f_result_decl
 ^^^^^^^^^^^^^

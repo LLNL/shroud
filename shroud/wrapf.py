@@ -40,6 +40,12 @@ fortran_ranks = [
     "(:,:,:,:,:,:,:)",
 ]
 
+default_arg_template = """if (present({f_var})) then
++{c_var} = {f_var}-
+else
++{c_var} = {default_value}-
+endif"""
+
 # force : boolean
 #    Create generic interface even if only one function.
 # functions : list
@@ -1591,6 +1597,7 @@ rv = .false.
         arg_f_names = []  # arguments in subprogram statement
         arg_f_decl = []  # Fortran variable declarations
         declare = []
+        optional = []
         pre_call = []
         call = []
         post_call = []
@@ -1699,6 +1706,7 @@ rv = .false.
             c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_meta["intent"]
+            optattr = False
 
             if c_arg.template_arguments:
                 specialize = [c_arg.template_arguments[0].typemap.sgroup]
@@ -1821,7 +1829,10 @@ rv = .false.
                     self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
                     # Generate declaration from argument.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj))
+                    if options.F_default_args == "optional" and c_arg.init is not None:
+                        fmt_arg.default_value = c_arg.init
+                        optattr = True
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                     arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.
@@ -1852,7 +1863,7 @@ rv = .false.
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 
-            if f_intent_blk.c_local_var:
+            if f_intent_blk.c_local_var or optattr:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 declare.append(
                     "{} {}".format(
@@ -1860,6 +1871,9 @@ rv = .false.
                         fmt_arg.c_var,
                     )
                 )
+                if optattr:
+                    # XXX - Reusing c_local_var logic, would have issues with bool
+                    append_format(optional, default_arg_template, fmt_arg)
 
             need_wrapper = self.build_arg_list_impl(
                 fileinfo,
@@ -2060,7 +2074,7 @@ rv = .false.
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
             if F_code is None:
-                F_code = declare + pre_call + call + post_call
+                F_code = declare + optional + pre_call + call + post_call
             self._create_splicer(sname, impl, F_code, F_force)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
