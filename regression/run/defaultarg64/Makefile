@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# run/tutorial
+# run/defaultarg64
 #
 ifeq ($(top),)
 top := ../../..
@@ -13,39 +13,43 @@ endif
 
 include $(top)/regression/run/defaults.mk
 
+TEST_CFLAGS   = -DINDEXTYPE_SIZE=64
+TEST_CXXFLAGS = -DINDEXTYPE_SIZE=64
+TEST_FFLAGS   = -DINDEXTYPE_SIZE=64
+
 INCLUDE = \
-    -I$(top)/regression/reference/tutorial \
-    -I$(top)/regression/run/tutorial \
+    -I$(top)/regression/reference/defaultarg \
+    -I$(top)/regression/run/defaultarg \
     -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/regression/reference/tutorial \
-    $(top)/regression/run/tutorial \
+    $(top)/regression/reference/defaultarg \
+    $(top)/regression/run/defaultarg \
     $(top)/regression/run/fruit
 
 C_OBJS = \
-    tutorial.o \
-    utilTutorial.o \
-    wrapTutorial.o
+    defaultarg.o \
+    utildefaultarg.o \
+    wrapdefaultarg.o
 F_OBJS = \
-    wrapftutorial.o \
+    wrapfdefaultarg.o \
     fruit.o \
     main.o
 
-tutorial : $(C_OBJS) $(F_OBJS)
+defaultarg64 : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod tutorial
+	rm -f $(OBJS) *.mod defaultarg
 
-tutorial.o : tutorial.cpp tutorial.hpp
-wrapTutorial.o : wrapTutorial.cpp wrapTutorial.h tutorial.hpp
-main.o : fruit.o wrapftutorial.o
+defaultarg.o : defaultarg.cpp defaultarg.hpp
+wrapdefaultarg.o : wrapdefaultarg.h defaultarg.hpp
+main.o : fruit.o wrapfdefaultarg.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o tutorial.o
+maincpp : maincpp.o defaultarg.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
-testc.o : testc.c wrapTutorial.h tutorial.hpp
+testc.o : testc.c wrapdefaultarg.h defaultarg.hpp
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

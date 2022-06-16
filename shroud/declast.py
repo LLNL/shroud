@@ -1595,6 +1595,7 @@ class Declaration(Node):
         bindc=False,
         local=False,
         pass_obj=False,
+        optional=False,
         **kwargs
     ):
         """Geneate declaration for Fortran variable.
@@ -1656,6 +1657,8 @@ class Declaration(Node):
             t.append("allocatable")
         if is_pointer:
             t.append("pointer")
+        if optional:
+            t.append("optional")
 
         decl = []
         decl.append(", ".join(t))

@@ -4,7 +4,7 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
-.. _TypesSandC:
+.. _types-s-and-c:
 
 Structs and Classes
 ===================

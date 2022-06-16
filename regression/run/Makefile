@@ -79,6 +79,8 @@ fortran-test-list-std = \
   test-fortran-ccomplex \
   test-fortran-clibrary \
   test-fortran-cxxlibrary \
+  test-fortran-defaultarg32 \
+  test-fortran-defaultarg64 \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
@@ -162,6 +164,8 @@ test-c : $(c-test-list)
 cpp-test-list = \
   test-cpp-tutorial \
   test-cpp-templates \
+  test-cpp-defaultarg32 \
+  test-cpp-defaultarg64 \
   test-cpp-scope
 
 # Compile a C++ test

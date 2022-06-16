@@ -30,7 +30,7 @@ A Fortran wrapper is created out of several segments.
         ! splicer begin
         declare
         pre_call
-        call
+        call {}( {F_arg_c_call} )
         post_call
         ! splicer end
       end {F_subprogram} {F_name_impl}
@@ -78,7 +78,7 @@ arg_name
 ^^^^^^^^
 
 List of name of arguments for Fortran subprogram.
-Will be formated before use to allow ``{f_var}``.
+Will be formatted before being used to expand ``{f_var}``.
 
 Any function result arguments will be added at the end.
 Only added if *arg_decl* is also defined.
@@ -118,11 +118,36 @@ The list can be modified to pass additional arguments or expressions.
             "len({f_var}, kind=C_INT)",
         ],
 
+c_local_var
+^^^^^^^^^^^
+
+If *true* an intermediate variable is created then passed to the C
+wrapper instead of passing *f_var* directly.  The intermediate
+variable can be used when the Fortran argument must be processed
+before passing to C.
+
+For example, the statements for **f_in_bool** convert the type from
+``LOGICAL`` to ``logical(C_BOOL)``. There is no intrinsic function to
+convert logical variables so an assignment statement is required to
+cause the compiler to convert the value.
+
+.. code-block:: yaml
+
+    dict(
+        name="f_in_bool",
+        c_local_var=True,
+        pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
+    ),
+
+.. XXX - maybe use *temps* and *f_c_arg_names* instead as a more general solution.
+
 declare
 ^^^^^^^
 
 A list of declarations needed by *pre_call* or *post_call*.
 Usually a *c_local_var* is sufficient.
+No executable statements should be used since all declarations must be
+grouped together.
 Implies *need_wrapper*.
 Added within the splicer to make it easier to replace in the YAML file.
 

@@ -1,0 +1,133 @@
+copyright:
+- Copyright (c) 2017-2022, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test default arguments
+
+library: defaultarg
+cxx_header: defaultarg.hpp
+
+options:
+  debug: True
+#  wrap_python: True
+  literalinclude2: True
+
+typemap:
+# IndexType may be 32 or 64 bits depending on INDEXTYPE_SIZE
+- type: IndexType
+  fields:
+    base: integer
+    f_kind: INDEXTYPE
+    f_module_name: defaultarg_mod
+
+declarations:
+
+- decl: typedef int TypeID
+  fields:
+    # enum for types
+    c_to_cxx : static_cast<TypeID>({c_var})
+    cxx_to_c : static_cast<int>({cxx_var})
+
+########################################
+# F_default_arg=generic
+#
+# When F_default_args="generic" and INDEXTYPE_SIZE=64 is not defined, this reports:
+# Ambiguous interfaces 'apply_type_nelems_offset' and
+#                      'apply_nelems_offset_stride' in generic interface 'apply' 
+
+- decl: void apply_generic(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+  -  _nelems
+  -  _nelems_offset
+  -  _nelems_offset_stride
+  options:
+    F_default_args: generic
+- decl: void apply_generic(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+  -  _type_nelems
+  -  _type_nelems_offset
+  -  _type_nelems_offset_stride
+  options:
+    F_default_args: generic
+  cpp_if: if INDETYPE_SIZE == 64
+
+
+########################################
+# F_default_arg=require
+#
+
+- decl: void apply_require(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _nelems
+#  -  _nelems_offset
+  -  _nelems_offset_stride
+  options:
+    F_default_args: require
+- decl: void apply_require(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _type_nelems
+#  -  _type_nelems_offset
+  -  _type_nelems_offset_stride
+  options:
+    F_default_args: require
+
+
+########################################
+# F_default_arg=optional
+#
+#Ambiguous interfaces in generic interface 'apply_optional' for
+# 'apply_optional_0' at (1) and 'apply_optional_1'
+
+- decl: void apply_optional(IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _nelems
+#  -  _nelems_offset
+  -  _nelems_offset_stride
+  options:
+    F_default_args: optional
+- decl: void apply_optional(TypeID type, IndexType num_elems, IndexType offset = 0, IndexType stride = 1);
+  default_arg_suffix:
+#  -  _type_nelems
+#  -  _type_nelems_offset
+  -  _type_nelems_offset_stride
+  options:
+    F_default_args: optional
+  cpp_if: if INDETYPE_SIZE == 64
+
+
+######################################################################
+splicer_code:
+  f:
+    module_top: |
+      #if INDEXTYPE_SIZE == 64
+      integer, parameter :: INDEXTYPE = C_INT64_T
+      #else
+      integer, parameter :: INDEXTYPE = C_INT32_T
+      #endif
+  c:
+    types:
+      C_declarations: |
+        #ifndef __cplusplus
+        #if INDEXTYPE_SIZE == 64
+        typedef int64_t IndexType;
+        #else
+        typedef int32_t IndexType;
+        #endif
+        #endif
+
+# Add code which will be integrated with other include and use statements
+# added by typemaps and statements.
+file_code:
+#  wrapdefaultarg.h:
+  typesdefaultarg.h:
+    c_header: <stdint.h>
+    cxx_header: <cstdint>
+  wrapfdefaultarg.f:
+    f_module:
+      iso_c_binding:
+      - C_INT32_T
+      - C_INT64_T

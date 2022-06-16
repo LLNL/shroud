@@ -263,10 +263,10 @@ The function is called as:
            Any reasonable person would just use the concatenation operator in Fortran.
  
 
-Default Value Arguments
-------------------------
+Default Arguments
+-----------------
 
-Each function with default value arguments will create a C and Fortran 
+Each function with default arguments will create a C and Fortran 
 wrapper for each possible prototype.  For Fortran, these functions
 are then wrapped in a generic statement which allows them to be
 called by the original name.
@@ -327,20 +327,9 @@ Python usage:
 The generated code is listed at
 :ref:`UseDefaultArguments <example_UseDefaultArguments>`.
 
-.. note :: Fortran's ``OPTIONAL`` attribute provides similar but
-           different semantics.
-           Creating wrappers for each set of arguments allows
-           C++ to supply the default value.  This is important
-           when the default value does not map directly to Fortran.
-           For example, ``bool`` type or when the default value
-           is created by calling a C++ function.
+There are additional options for dealing with default arguments
+described at :ref:`Default Argumens <DefaultArguments>`.
 
-           Using the ``OPTIONAL`` keyword creates the possibility to
-           call the C++ function in a way which is not supported by
-           the C++ compilers.
-           For example, ``function5(arg2=.false.)``
-
-           Fortran has nothing similar to variadic functions.
 
 Overloaded Functions
 --------------------
@@ -819,6 +808,6 @@ Python usage:
     obj = tutorial.Class1()
     obj.method1()
 
-For more details see :ref:`Structs and Classes <TypesSandC>`.
+For more details see :ref:`Structs and Classes <types-s-and-c>`.
 
 
