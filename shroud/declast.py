@@ -1144,7 +1144,7 @@ class Declaration(Node):
 
     def get_indirect_stmt(self):
         """Return statement field for pointers.
-        'scalar', 'pointer', '**'
+        'scalar', '*', '**'
         """
         out = ''
         if self.declarator is None:

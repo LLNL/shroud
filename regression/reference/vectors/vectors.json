@@ -178,7 +178,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_in_vector_&_buf_native",
+                            "stmt0": "c_in_vector_&_buf_native_scalar",
                             "stmt1": "c_in_vector_buf"
                         },
                         "fmtf": {
@@ -404,7 +404,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt0": "c_out_vector_&_cdesc_native_scalar",
                             "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
@@ -666,7 +666,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt0": "c_out_vector_&_cdesc_native_scalar",
                             "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
@@ -905,7 +905,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt0": "c_out_vector_&_cdesc_native_scalar",
                             "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
@@ -1111,7 +1111,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_out_vector_&_cdesc_allocatable_native",
+                            "stmt0": "c_out_vector_&_cdesc_allocatable_native_scalar",
                             "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
@@ -1318,7 +1318,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_allocatable_native",
+                            "stmt0": "c_inout_vector_&_cdesc_allocatable_native_scalar",
                             "stmt1": "c_inout_vector_cdesc"
                         },
                         "fmtf": {
@@ -1512,7 +1512,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "c_inout_vector_&_cdesc_native",
+                            "stmt0": "c_inout_vector_&_cdesc_native_scalar",
                             "stmt1": "c_inout_vector_cdesc"
                         },
                         "fmtf": {
@@ -1711,7 +1711,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "c_out_vector_&_cdesc_native",
+                            "stmt0": "c_out_vector_&_cdesc_native_scalar",
                             "stmt1": "c_out_vector_cdesc"
                         },
                         "fmtf": {
@@ -1927,7 +1927,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_in_vector_&_buf_string",
+                            "stmt0": "c_in_vector_&_buf_string_scalar",
                             "stmt1": "c_in_vector_buf_string"
                         },
                         "fmtf": {

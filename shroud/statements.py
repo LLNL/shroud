@@ -27,8 +27,12 @@ def lookup_c_statements(arg):
 
     specialize = []
     if arg.template_arguments:
-        arg_typemap = arg.template_arguments[0].typemap
+        # XXX currently only the first template argument is processed.
+        targ = arg.template_arguments[0]
+        arg_typemap = targ.typemap
         specialize.append(arg_typemap.sgroup)
+        spointer = targ.get_indirect_stmt()
+        specialize.append(spointer)
     return arg_typemap, specialize
 
 def lookup_fc_stmts(path):

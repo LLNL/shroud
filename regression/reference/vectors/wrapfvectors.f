@@ -56,7 +56,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
-    ! Requested: c_in_vector_&_buf_native
+    ! Requested: c_in_vector_&_buf_native_scalar
     ! Match:     c_in_vector_buf
     ! start c_vector_sum_bufferify
     interface
@@ -80,7 +80,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_bufferify
     interface
@@ -101,7 +101,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_with_num_bufferify
     interface
@@ -125,7 +125,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_with_num2_bufferify
     interface
@@ -146,7 +146,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_allocatable_native
+    ! Requested: c_out_vector_&_cdesc_allocatable_native_scalar
     ! Match:     c_out_vector_cdesc
     ! start c_vector_iota_out_alloc_bufferify
     interface
@@ -167,7 +167,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_allocatable_native
+    ! Requested: c_inout_vector_&_cdesc_allocatable_native_scalar
     ! Match:     c_inout_vector_cdesc
     ! start c_vector_iota_inout_alloc_bufferify
     interface
@@ -192,7 +192,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +api(cdesc)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_native
+    ! Requested: c_inout_vector_&_cdesc_native_scalar
     ! Match:     c_inout_vector_cdesc
     interface
         subroutine c_vector_increment_bufferify(arg, SHT_arg_size, &
@@ -215,7 +215,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
@@ -234,7 +234,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +api(buf)+intent(in)
-    ! Requested: c_in_vector_&_buf_string
+    ! Requested: c_in_vector_&_buf_string_scalar
     ! Match:     c_in_vector_buf_string
     interface
         function c_vector_string_count_bufferify(arg, SHT_arg_size, &
