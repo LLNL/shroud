@@ -1708,10 +1708,7 @@ rv = .false.
             intent = c_meta["intent"]
             optattr = False
 
-            if c_arg.template_arguments:
-                specialize = [c_arg.template_arguments[0].typemap.sgroup]
-            else:
-                specialize = []
+            junk, specialize = statements.lookup_c_statements(c_arg)
             
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.

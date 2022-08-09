@@ -316,10 +316,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_vector_&_buf_native
+    ! Requested: f_in_vector_&_buf_native_scalar
     ! Match:     f_in_vector_buf
     ! Attrs:     +api(buf)+intent(in)
-    ! Requested: c_in_vector_&_buf_native
+    ! Requested: c_in_vector_&_buf_native_scalar
     ! Match:     c_in_vector_buf
     ! start vector_sum
     function vector_sum(arg) &
@@ -343,10 +343,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_native
+    ! Requested: f_out_vector_&_cdesc_native_scalar
     ! Match:     f_out_vector_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -375,10 +375,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_native
+    ! Requested: f_out_vector_&_cdesc_native_scalar
     ! Match:     f_out_vector_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -412,10 +412,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_native
+    ! Requested: f_out_vector_&_cdesc_native_scalar
     ! Match:     f_out_vector_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -450,10 +450,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_out_vector_&_cdesc_allocatable_native
+    ! Requested: f_out_vector_&_cdesc_allocatable_native_scalar
     ! Match:     f_out_vector_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_allocatable_native
+    ! Requested: c_out_vector_&_cdesc_allocatable_native_scalar
     ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -483,10 +483,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: f_inout_vector_&_cdesc_allocatable_native
+    ! Requested: f_inout_vector_&_cdesc_allocatable_native_scalar
     ! Match:     f_inout_vector_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_allocatable_native
+    ! Requested: c_inout_vector_&_cdesc_allocatable_native_scalar
     ! Match:     c_inout_vector_cdesc
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -518,10 +518,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_inout_vector_&_cdesc_native
+    ! Requested: f_inout_vector_&_cdesc_native_scalar
     ! Match:     f_inout_vector_cdesc
     ! Attrs:     +api(cdesc)+intent(inout)
-    ! Requested: c_inout_vector_&_cdesc_native
+    ! Requested: c_inout_vector_&_cdesc_native_scalar
     ! Match:     c_inout_vector_cdesc
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
@@ -545,10 +545,10 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_out_vector_&_cdesc_native
+    ! Requested: f_out_vector_&_cdesc_native_scalar
     ! Match:     f_out_vector_cdesc
     ! Attrs:     +api(cdesc)+intent(out)
-    ! Requested: c_out_vector_&_cdesc_native
+    ! Requested: c_out_vector_&_cdesc_native_scalar
     ! Match:     c_out_vector_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -577,10 +577,10 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_in_vector_&_buf_string
+    ! Requested: f_in_vector_&_buf_string_scalar
     ! Match:     f_in_vector_buf_string
     ! Attrs:     +api(buf)+intent(in)
-    ! Requested: c_in_vector_&_buf_string
+    ! Requested: c_in_vector_&_buf_string_scalar
     ! Match:     c_in_vector_buf_string
     !>
     !! \brief count number of underscore in vector of strings
