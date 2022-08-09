@@ -489,6 +489,38 @@ class CheckParse(unittest.TestCase):
             },
         )
 
+    def test_type_vector_ptr(self):
+        """Test vector declaration with pointer
+        """
+        r = declast.check_decl("std::vector<int *> var1")
+        s = r.gen_decl()
+        self.assertEqual("std::vector<int * > var1", s)
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                'declarator': {'name': 'var1', 'pointer': []},
+                'specifier': ['std::vector'],
+                'template_arguments': [
+                    { 'declarator': {'pointer': [{'ptr': '*'}]},
+                      'specifier': ['int'],
+                      'typemap_name': 'int'}],
+                'typemap_name': 'std::vector'
+            }
+        )
+        # C
+        s = r.gen_arg_as_c()
+        self.assertEqual("int var1", s)
+        s = r.gen_arg_as_c(force_ptr=True)
+        self.assertEqual("int * var1", s)
+        # CXX
+        s = r.gen_arg_as_cxx()
+        self.assertEqual("int var1", s)
+        s = r.gen_arg_as_cxx(force_ptr=True)
+        self.assertEqual("int * var1", s)
+
+        s = r.gen_arg_as_cxx(force_ptr=True, with_template_args=True)
+        self.assertEqual("std::vector<int * > * var1", s)
+
     def test_template_argument_list(self):
         decl = "<int>"
         parser = declast.Parser(decl, None)

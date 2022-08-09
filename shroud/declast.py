@@ -506,6 +506,7 @@ class Parser(ExprParser):
         """Parse vector parameters.
         vector<T>
         map<Key,T>
+        vector<const double *>
 
         Used while parsing function arguments.
         similar to template_argument_list
@@ -513,9 +514,7 @@ class Parser(ExprParser):
         lst = node.template_arguments
         if self.have("LT"):
             while self.token.typ != "GT":
-                temp = Declaration()
-                self.declaration_specifier(temp)
-                self.get_canonical_typemap(temp)
+                temp = self.declaration()
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
@@ -1799,6 +1798,7 @@ def check_decl(decl, namespace=None, template_types=None, trace=False):
 
     namespace - An ast.AstNode subclass.
     """
+#    trace = True
     if not namespace:
         # grab global namespace if not passed in.
         namespace = global_namespace
