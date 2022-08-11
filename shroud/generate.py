@@ -149,6 +149,9 @@ class VerifyAttrs(object):
         self.check_common_attrs(node.ast)
 
         for arg in ast.params:
+            if arg.declarator is None:
+                raise RuntimeError("Argument must have name in {} at line {}".format(
+                    node.decl, node.linenumber))
             self.check_arg_attrs(node, arg)
 
         if node.fortran_generic:
