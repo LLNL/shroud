@@ -27,6 +27,7 @@ def lookup_c_statements(arg):
 
     specialize = []
     if arg.template_arguments:
+        specialize.append('targ')
         # XXX currently only the first template argument is processed.
         targ = arg.template_arguments[0]
         arg_typemap = targ.typemap
@@ -1664,7 +1665,7 @@ fc_statements = [
     ########################################
     # vector
     dict(
-        name="c_in_vector_buf",
+        name="c_in_vector_buf_targ_native_scalar",
         mixin=["c_mixin_in_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1676,7 +1677,7 @@ fc_statements = [
     ),
     # cxx_var is always a pointer to a vector
     dict(
-        name="c_out_vector_cdesc",
+        name="c_out_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_out_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -1704,7 +1705,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_inout_vector_cdesc",
+        name="c_inout_vector_cdesc_targ_native_scalar",
         mixin=["c_mixin_inout_array_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -1733,7 +1734,7 @@ fc_statements = [
     ),
     # Almost same as intent_out_buf.
     dict(
-        name="c_function_vector_cdesc",
+        name="c_function_vector_scalar_cdesc_targ_native_scalar",
         mixin=["c_mixin_function_cdesc"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
@@ -1777,11 +1778,11 @@ fc_statements = [
     
     # Specialize for vector<string>.
     dict(
-        name="f_in_vector_buf_string",
+        name="f_in_vector_buf_targ_string_scalar",
         mixin=["f_mixin_in_string_array_buf"],
     ),
     dict(
-        name="c_in_vector_buf_string",
+        name="c_in_vector_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
@@ -1803,11 +1804,11 @@ fc_statements = [
     ),
     # XXX untested [cf]_out_vector_buf_string
     dict(
-        name="f_out_vector_buf_string",
+        name="f_out_vector_buf_targ_string_scalar",
         mixin=["f_mixin_in_string_array_buf"],
     ),
     dict(
-        name="c_out_vector_buf_string",
+        name="c_out_vector_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
         c_helper="ShroudLenTrim",
         cxx_local_var="scalar",
@@ -1832,11 +1833,11 @@ fc_statements = [
     ),
     # XXX untested [cf]_inout_vector_buf_string
     dict(
-        name="f_inout_vector_buf_string",
+        name="f_inout_vector_buf_targ_string_scalar",
         mixin=["f_mixin_in_string_array_buf"],
     ),
     dict(
-        name="c_inout_vector_buf_string",
+        name="c_inout_vector_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1885,11 +1886,11 @@ fc_statements = [
     #                    ),
     # copy into user's existing array
     dict(
-        name="f_in_vector_buf",
+        name="f_in_vector_buf_targ_native_scalar",
         mixin=["f_mixin_in_array_buf"],
     ),
     dict(
-        name="f_out_vector_cdesc",
+        name="f_out_vector_cdesc_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1899,7 +1900,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_cdesc",
+        name="f_inout_vector_cdesc_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1910,7 +1911,7 @@ fc_statements = [
     ),
     dict(
         # XXX - This group is not tested
-        name="f_function_vector_cdesc",
+        name="f_function_vector_scalar_cdesc",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
@@ -1920,7 +1921,7 @@ fc_statements = [
     ),
     # copy into allocated array
     dict(
-        name="f_out_vector_cdesc_allocatable",
+        name="f_out_vector_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_out_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1931,7 +1932,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_inout_vector_cdesc_allocatable",
+        name="f_inout_vector_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_inout_array_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
@@ -1944,7 +1945,7 @@ fc_statements = [
     # Similar to f_vector_out_allocatable but must declare result variable.
     # Always return a 1-d array.
     dict(
-        name="f_function_vector_cdesc_allocatable",
+        name="f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
         mixin=["f_mixin_function_cdesc"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",

@@ -70,7 +70,7 @@ template
 ^^^^^^^^
 
 Each template argument is appended to the initial statement name.
-*group* and *pointer*
+``targ``, *group* and *pointer*
     
 c_statements
 ------------

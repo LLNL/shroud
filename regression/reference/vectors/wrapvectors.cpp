@@ -46,8 +46,8 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Requested: c_in_vector_&_buf_native_scalar
-// Match:     c_in_vector_buf
+// Requested: c_in_vector_&_buf_targ_native_scalar
+// Match:     c_in_vector_buf_targ_native_scalar
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 {
@@ -70,8 +70,8 @@ int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_native_scalar
-// Match:     c_out_vector_cdesc
+// Requested: c_out_vector_&_cdesc_targ_native_scalar
+// Match:     c_out_vector_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -104,8 +104,8 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_native_scalar
-// Match:     c_out_vector_cdesc
+// Requested: c_out_vector_&_cdesc_targ_native_scalar
+// Match:     c_out_vector_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -140,8 +140,8 @@ long VEC_vector_iota_out_with_num_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_native_scalar
-// Match:     c_out_vector_cdesc
+// Requested: c_out_vector_&_cdesc_targ_native_scalar
+// Match:     c_out_vector_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -172,8 +172,8 @@ void VEC_vector_iota_out_with_num2_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
-// Requested: c_out_vector_&_cdesc_allocatable_native_scalar
-// Match:     c_out_vector_cdesc
+// Requested: c_out_vector_&_cdesc_allocatable_targ_native_scalar
+// Match:     c_out_vector_cdesc_targ_native_scalar
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -204,8 +204,8 @@ void VEC_vector_iota_out_alloc_bufferify(
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(inout)
-// Requested: c_inout_vector_&_cdesc_allocatable_native_scalar
-// Match:     c_inout_vector_cdesc
+// Requested: c_inout_vector_&_cdesc_allocatable_targ_native_scalar
+// Match:     c_inout_vector_cdesc_targ_native_scalar
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int *arg,
     size_t SHT_arg_size, VEC_SHROUD_array *SHT_arg_cdesc)
@@ -233,8 +233,8 @@ void VEC_vector_iota_inout_alloc_bufferify(int *arg,
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +rank(1)
 // Attrs:     +api(cdesc)+intent(inout)
-// Requested: c_inout_vector_&_cdesc_native_scalar
-// Match:     c_inout_vector_cdesc
+// Requested: c_inout_vector_&_cdesc_targ_native_scalar
+// Match:     c_inout_vector_cdesc_targ_native_scalar
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -264,8 +264,8 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +api(cdesc)+intent(out)
-// Requested: c_out_vector_&_cdesc_native_scalar
-// Match:     c_out_vector_cdesc
+// Requested: c_out_vector_&_cdesc_targ_native_scalar
+// Match:     c_out_vector_cdesc_targ_native_scalar
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -294,8 +294,8 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Requested: c_in_vector_&_buf_string_scalar
-// Match:     c_in_vector_buf_string
+// Requested: c_in_vector_&_buf_targ_string_scalar
+// Match:     c_in_vector_buf_targ_string_scalar
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len)
 {
@@ -325,8 +325,8 @@ int VEC_vector_string_count_bufferify(const char *arg,
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
-// Requested: c_function_vector_scalar_cdesc_allocatable
-// Match:     c_function_vector_cdesc
+// Requested: c_function_vector_scalar_cdesc_allocatable_targ_native_scalar
+// Match:     c_function_vector_scalar_cdesc_targ_native_scalar
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)

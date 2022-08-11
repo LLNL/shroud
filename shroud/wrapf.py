@@ -1142,10 +1142,11 @@ rv = .false.
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
+        junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
-                   ast.metaattrs["deref"]]
+                   ast.metaattrs["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
@@ -1621,10 +1622,11 @@ rv = .false.
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]
+            junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr, ast.attrs["owner"]]
+                       return_deref_attr, ast.attrs["owner"]] + specialize
             c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr]
+                       return_deref_attr] + specialize
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)
