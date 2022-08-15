@@ -104,12 +104,28 @@ root
           cfi -- c_in_string_scalar/*/&_cfi
       struct -- c_in/out/inout_struct
       vector
-        buf
-          targ
-            native
-              scalar -- c_in_vector_buf_targ_native_scalar
-            string
-              scalar -- c_in_vector_buf_targ_string_scalar
+        &
+          buf
+            targ
+              native
+                * -- c_in_vector_&_buf_targ_native_*
+                scalar -- c_in_vector_scalar/*/&_buf_targ_native_scalar
+              string
+                scalar -- c_in_vector_scalar/*/&_buf_targ_string_scalar
+        *
+          buf
+            targ
+              native
+                scalar -- c_in_vector_scalar/*/&_buf_targ_native_scalar
+              string
+                scalar -- c_in_vector_scalar/*/&_buf_targ_string_scalar
+        scalar
+          buf
+            targ
+              native
+                scalar -- c_in_vector_scalar/*/&_buf_targ_native_scalar
+              string
+                scalar -- c_in_vector_scalar/*/&_buf_targ_string_scalar
       void
         *
           cdesc -- c_in/out/inout_void_*_cdesc
@@ -161,6 +177,9 @@ root
         cdesc -- c_mixin_function_cdesc
         character -- c_mixin_function_character
       in
+        2d
+          array
+            buf -- c_mixin_in_2d_array_buf
         array
           buf -- c_mixin_in_array_buf
         character
@@ -355,6 +374,7 @@ root
         buf
           targ
             native
+              * -- f_in_vector_buf_targ_native_*
               scalar -- f_in_vector_buf_targ_native_scalar
             string
               scalar -- f_in_vector_buf_targ_string_scalar
@@ -399,6 +419,9 @@ root
           capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
       in
+        2d
+          array
+            buf -- f_mixin_in_2d_array_buf
         array
           buf -- f_mixin_in_array_buf
         character
@@ -1827,7 +1850,33 @@ c_in_struct:
   pre_call:
   - "{c_const}{cxx_type} * {cxx_var} = \tstatic_cast<{c_const}{cxx_type} *>\t(static_cast<{c_const}void\
     \ *>(\t{c_addr}{c_var}));"
-c_in_vector_buf_targ_native_scalar:
+c_in_vector_&_buf_targ_native_*:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_len}
+  - size_t {c_var_size}
+  cxx_local_var: scalar
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  - '{c_var_size}'
+  f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: in
+  name: c_in_vector_&_buf_targ_native_*
+  owner: library
+  pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - for (int i=0; i < {c_var_size}; ++i) {{+
+  - '{cxx_var}.push_back({c_var} + (c_var_len*i));'
+  - -}}
+  temps:
+  - len
+  - size
+c_in_vector_&_buf_targ_native_scalar:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -1840,13 +1889,13 @@ c_in_vector_buf_targ_native_scalar:
   - '{c_var_size}'
   f_module_line: iso_c_binding:{f_kind},C_SIZE_T
   intent: in
-  name: c_in_vector_buf_targ_native_scalar
+  name: c_in_vector_&_buf_targ_native_scalar
   owner: library
   pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
   temps:
   - size
-c_in_vector_buf_targ_string_scalar:
+c_in_vector_&_buf_targ_string_scalar:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -1867,7 +1916,121 @@ c_in_vector_buf_targ_string_scalar:
   - i
   - n
   - s
-  name: c_in_vector_buf_targ_string_scalar
+  name: c_in_vector_&_buf_targ_string_scalar
+  owner: library
+  pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{{+'
+  - '{c_const}char * {c_local_s} = {c_var};'
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "{cxx_var}.push_back(\tstd::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  temps:
+  - size
+  - len
+c_in_vector_*_buf_targ_native_scalar:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  cxx_local_var: scalar
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: in
+  name: c_in_vector_*_buf_targ_native_scalar
+  owner: library
+  pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  temps:
+  - size
+c_in_vector_*_buf_targ_string_scalar:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper: ShroudLenTrim
+  cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: in
+  local:
+  - i
+  - n
+  - s
+  name: c_in_vector_*_buf_targ_string_scalar
+  owner: library
+  pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{{+'
+  - '{c_const}char * {c_local_s} = {c_var};'
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "{cxx_var}.push_back(\tstd::string({c_local_s},\tShroudLenTrim({c_local_s}, {c_var_len})));"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  temps:
+  - size
+  - len
+c_in_vector_scalar_buf_targ_native_scalar:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  cxx_local_var: scalar
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: in
+  name: c_in_vector_scalar_buf_targ_native_scalar
+  owner: library
+  pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  temps:
+  - size
+c_in_vector_scalar_buf_targ_string_scalar:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper: ShroudLenTrim
+  cxx_local_var: scalar
+  f_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {c_var_len}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_size}'
+  - '{c_var_len}'
+  f_module_line: iso_c_binding:C_CHAR,C_SIZE_T,C_INT
+  intent: in
+  local:
+  - i
+  - n
+  - s
+  name: c_in_vector_scalar_buf_targ_string_scalar
   owner: library
   pre_call:
   - std::vector<{cxx_T}> {cxx_var};
@@ -2367,6 +2530,26 @@ c_mixin_function_character:
   owner: library
   temps:
   - cfi
+c_mixin_in_2d_array_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_len}
+  - size_t {c_var_size}
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {c_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_len}'
+  - 'integer(C_SIZE_T), intent(IN), value :: {c_var_size}'
+  f_c_arg_names:
+  - '{c_var}'
+  - '{c_var_len}'
+  - '{c_var_size}'
+  f_module_line: iso_c_binding:{f_kind},C_SIZE_T
+  intent: mixin
+  name: c_mixin_in_2d_array_buf
+  owner: library
+  temps:
+  - len
+  - size
 c_mixin_in_array_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
@@ -3786,6 +3969,19 @@ f_in_string_scalar_buf:
   - '{c_var_len} = len({f_var}, kind=C_INT)'
   temps:
   - len
+f_in_vector_buf_targ_native_*:
+  arg_c_call:
+  - '{f_var}'
+  - size({f_var}, 1, kind=C_SIZE_T)
+  - size({f_var}, 2, kind=C_SIZE_T)
+  arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: in
+  name: f_in_vector_buf_targ_native_*
+  need_wrapper: true
 f_in_vector_buf_targ_native_scalar:
   arg_c_call:
   - '{f_var}'
@@ -4035,6 +4231,19 @@ f_mixin_function_shadow_capsule:
   - '{f_type} :: {f_var}'
   intent: mixin
   name: f_mixin_function_shadow_capsule
+  need_wrapper: true
+f_mixin_in_2d_array_buf:
+  arg_c_call:
+  - '{f_var}'
+  - size({f_var}, 1, kind=C_SIZE_T)
+  - size({f_var}, 2, kind=C_SIZE_T)
+  arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  intent: mixin
+  name: f_mixin_in_2d_array_buf
   need_wrapper: true
 f_mixin_in_array_buf:
   arg_c_call:

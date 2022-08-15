@@ -179,7 +179,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "c_in_vector_&_buf_targ_native_scalar",
-                            "stmt1": "c_in_vector_buf_targ_native_scalar"
+                            "stmt1": "c_in_vector_&_buf_targ_native_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -198,7 +198,7 @@
                             "stmt0": "f_in_vector_&_buf_targ_native_scalar",
                             "stmt1": "f_in_vector_buf_targ_native_scalar",
                             "stmtc0": "c_in_vector_&_buf_targ_native_scalar",
-                            "stmtc1": "c_in_vector_buf_targ_native_scalar"
+                            "stmtc1": "c_in_vector_&_buf_targ_native_scalar"
                         }
                     }
                 },
@@ -1928,7 +1928,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_in_vector_&_buf_targ_string_scalar",
-                            "stmt1": "c_in_vector_buf_targ_string_scalar"
+                            "stmt1": "c_in_vector_&_buf_targ_string_scalar"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -1951,7 +1951,7 @@
                             "stmt0": "f_in_vector_&_buf_targ_string_scalar",
                             "stmt1": "f_in_vector_buf_targ_string_scalar",
                             "stmtc0": "c_in_vector_&_buf_targ_string_scalar",
-                            "stmtc1": "c_in_vector_buf_targ_string_scalar"
+                            "stmtc1": "c_in_vector_&_buf_targ_string_scalar"
                         }
                     }
                 },

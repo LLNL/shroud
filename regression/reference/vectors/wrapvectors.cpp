@@ -46,8 +46,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Requested: c_in_vector_&_buf_targ_native_scalar
-// Match:     c_in_vector_buf_targ_native_scalar
+// Exact:     c_in_vector_&_buf_targ_native_scalar
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(int *arg, size_t SHT_arg_size)
 {
@@ -294,8 +293,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg +rank(1)
 // Attrs:     +api(buf)+intent(in)
-// Requested: c_in_vector_&_buf_targ_string_scalar
-// Match:     c_in_vector_buf_targ_string_scalar
+// Exact:     c_in_vector_&_buf_targ_string_scalar
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len)
 {
