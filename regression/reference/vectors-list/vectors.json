@@ -698,6 +698,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "const": true,
                                     "declarator": {
                                         "pointer": [
                                             {
@@ -719,10 +720,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void vector_of_pointers(std::vector<double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))",
+                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
+                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
                 "doxygen": {
-                    "brief": "Fortran 2-d array to vector<double *>"
+                    "brief": "Fortran 2-d array to vector<const double *>"
                 },
                 "options": {
                     "wrap_lua": false,

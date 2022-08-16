@@ -1504,10 +1504,10 @@ rv = .false.
         else:
             ntypemap = f_ast.typemap
             rootname = c_ast.name
-        if ntypemap.sgroup == "vector":
-            # If a vector, use its type.
+        if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
+            # XXX - need to add an argument for each template arg
             ntypemap = c_ast.template_arguments[0].typemap
-            fmt.cxx_T = ntypemap.name
+            fmt.cxx_T = ','.join([str(targ) for targ in c_ast.template_arguments])
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
                                       ntypemap, subprogram)

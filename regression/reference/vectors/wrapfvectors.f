@@ -231,7 +231,7 @@ module vectors_mod
     ! Requested: c_subroutine_void_scalar
     ! Match:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<double * > & arg1 +intent(in)+rank(1)
+    ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_*
     interface
@@ -591,14 +591,14 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<double * > & arg1 +intent(in)+rank(1)
+    ! Argument:  std::vector<const double * > & arg1 +intent(in)+rank(1)
     ! Attrs:     +intent(in)
     ! Requested: f_in_vector_&_buf_targ_native_*
     ! Match:     f_in_vector_buf_targ_native_*
     ! Attrs:     +api(buf)+intent(in)
     ! Exact:     c_in_vector_&_buf_targ_native_*
     !>
-    !! \brief Fortran 2-d array to vector<double *>
+    !! \brief Fortran 2-d array to vector<const double *>
     !!
     !<
     subroutine vector_of_pointers(arg1)

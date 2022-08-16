@@ -1346,8 +1346,8 @@ cxx_member
     if *pointer*, then set to ``->``.
 
 cxx_T
-    The template parameter for std::vector arguments.
-    ``std::vector<cxx_T>``
+    The template parameters for templated arguments.
+    ``std::vector<{cxx_T}>``
 
 cxx_type
     The C++ type of the argument.

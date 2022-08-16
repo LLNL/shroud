@@ -24,7 +24,7 @@ void vector_increment(std::vector<int> &arg);
 
 void vector_iota_out_d(std::vector<double> &arg);
 
-void vector_of_pointers(std::vector<double *> &arg1);
+void vector_of_pointers(std::vector<const double *> &arg1);
 
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);

@@ -8,7 +8,7 @@ C void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(o
 C void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))  +intent(subroutine)
 C void vector_increment(std::vector<int> & arg +rank(1))  +intent(subroutine)
 C void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))  +intent(subroutine)
-C void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
+C void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
 C int vector_string_count(const std::vector<std::string> & arg +rank(1))  +intent(function)
 C std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +api(cdesc)+deref(allocatable)+intent(function)
 Close wrapvectors.h
@@ -21,7 +21,7 @@ Fortran void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+in
 Fortran void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))  +intent(subroutine)
 Fortran void vector_increment(std::vector<int> & arg +rank(1))  +intent(subroutine)
 Fortran void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))  +intent(subroutine)
-Fortran void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
+Fortran void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
 Fortran int vector_string_count(const std::vector<std::string> & arg +rank(1))  +intent(function)
 Fortran std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(function)
 C-interface int vector_sum(const std::vector<int> & arg +rank(1))  +intent(function)
@@ -32,7 +32,7 @@ C-interface void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable
 C-interface void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1))  +intent(subroutine)
 C-interface void vector_increment(std::vector<int> & arg +rank(1))  +intent(subroutine)
 C-interface void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))  +intent(subroutine)
-C-interface void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
+C-interface void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))  +intent(subroutine)
 C-interface int vector_string_count(const std::vector<std::string> & arg +rank(1))  +intent(function)
 C-interface std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +api(cdesc)+deref(allocatable)+intent(function)
 Close wrapfvectors.f

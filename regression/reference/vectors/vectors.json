@@ -1787,6 +1787,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "const": true,
                                     "declarator": {
                                         "pointer": [
                                             {
@@ -1808,10 +1809,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void vector_of_pointers(std::vector<double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))",
+                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
+                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
                 "doxygen": {
-                    "brief": "Fortran 2-d array to vector<double *>"
+                    "brief": "Fortran 2-d array to vector<const double *>"
                 },
                 "options": {
                     "wrap_lua": false,
@@ -1871,6 +1872,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "const": true,
                                     "declarator": {
                                         "pointer": [
                                             {
@@ -1892,10 +1894,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void vector_of_pointers(std::vector<double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))",
+                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
+                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
                 "doxygen": {
-                    "brief": "Fortran 2-d array to vector<double *>"
+                    "brief": "Fortran 2-d array to vector<const double *>"
                 },
                 "options": {
                     "wrap_lua": false,
@@ -1918,7 +1920,7 @@
                             "c_var_len": "SHT_arg1_len",
                             "c_var_size": "SHT_arg1_size",
                             "cfi_type": "CFI_type_double",
-                            "cxx_T": "double",
+                            "cxx_T": "const double * ",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -1934,7 +1936,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "c_var_size": "SHT_arg1_size",
-                            "cxx_T": "double",
+                            "cxx_T": "const double * ",
                             "f_assumed_shape": "(:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "IN",

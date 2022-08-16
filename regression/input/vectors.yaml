@@ -123,9 +123,9 @@ declarations:
 ##################################################
 # double *
 
-- decl: void vector_of_pointers(std::vector<double *> &arg1 +intent(in))
+- decl: void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))
   doxygen:
-    brief: Fortran 2-d array to vector<double *>
+    brief: Fortran 2-d array to vector<const double *>
   options:
     wrap_python: False
     wrap_lua: False

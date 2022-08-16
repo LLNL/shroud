@@ -1816,7 +1816,7 @@ fc_statements = [
         mixin=["c_mixin_in_2d_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
-            "std::vector<{cxx_T} *> {cxx_var};",
+            "std::vector<{cxx_T}> {cxx_var};",
             "for (size_t i=0; i < {c_var_size}; ++i) {{+",
             "{cxx_var}.push_back({c_var} + ({c_var_len}*i));",
             "-}}"
