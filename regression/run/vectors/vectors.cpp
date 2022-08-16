@@ -113,6 +113,11 @@ void vector_iota_out_d(std::vector<double> &arg)
 }
 
 //----------------------------------------------------------------------
+void vector_of_pointers(std::vector<double *> &arg1)
+{
+}
+
+//----------------------------------------------------------------------
 // count underscore in strings
 // arg+intent(in)
 

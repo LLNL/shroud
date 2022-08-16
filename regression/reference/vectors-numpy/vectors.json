@@ -673,6 +673,74 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
+                        "name": "vector_of_pointers",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "declarator": {
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void vector_of_pointers(std::vector<double *> &arg1 +intent(in))",
+                "declgen": "void vector_of_pointers(std::vector<double * > & arg1 +intent(in)+rank(1))",
+                "doxygen": {
+                    "brief": "Fortran 2-d array to vector<double *>"
+                },
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "vector_of_pointers",
+                    "underscore_name": "vector_of_pointers"
+                }
+            },
+            {
+                "<FUNCTION>": "9 ****************************************",
+                "ast": {
+                    "declarator": {
                         "name": "vector_string_count",
                         "pointer": []
                     },
@@ -731,7 +799,7 @@
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_fill",
@@ -795,7 +863,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_append",
@@ -858,7 +926,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "attrs": {
                         "rank": 1

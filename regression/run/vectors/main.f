@@ -20,6 +20,7 @@ program tester
 
   call test_vector_int
   call test_vector_double
+  call test_vector_double_ptr
   call test_vector_string
   call test_return
 
@@ -120,6 +121,17 @@ contains
 !    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
   end subroutine test_vector_double
 
+  subroutine test_vector_double_ptr
+    real(C_DOUBLE) datain(3,2)
+
+    call set_case_name("test_vector_double_ptr")
+
+    datain = reshape([1,2,3,4,5,6], shape(datain))
+
+    call vector_of_pointers(datain)
+
+  end subroutine test_vector_double_ptr
+  
   subroutine test_vector_string
     integer irv
     character(10) :: names(3)

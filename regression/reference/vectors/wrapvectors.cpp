@@ -282,6 +282,30 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 }
 
 /**
+ * \brief Fortran 2-d array to vector<double *>
+ *
+ */
+// ----------------------------------------
+// Function:  void vector_of_pointers
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  std::vector<double * > & arg1 +intent(in)+rank(1)
+// Attrs:     +api(buf)+intent(in)
+// Exact:     c_in_vector_&_buf_targ_native_*
+void VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
+    size_t SHT_arg1_size)
+{
+    // splicer begin function.vector_of_pointers_bufferify
+    std::vector<double *> SHCXX_arg1;
+    for (size_t i=0; i < SHT_arg1_size; ++i) {
+        SHCXX_arg1.push_back(arg1 + (SHT_arg1_len*i));
+    }
+    vector_of_pointers(SHCXX_arg1);
+    // splicer end function.vector_of_pointers_bufferify
+}
+
+/**
  * \brief count number of underscore in vector of strings
  *
  */

@@ -1869,9 +1869,9 @@ c_in_vector_&_buf_targ_native_*:
   name: c_in_vector_&_buf_targ_native_*
   owner: library
   pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
-  - for (int i=0; i < {c_var_size}; ++i) {{+
-  - '{cxx_var}.push_back({c_var} + (c_var_len*i));'
+  - std::vector<{cxx_T} *> {cxx_var};
+  - for (size_t i=0; i < {c_var_size}; ++i) {{+
+  - '{cxx_var}.push_back({c_var} + ({c_var_len}*i));'
   - -}}
   temps:
   - len

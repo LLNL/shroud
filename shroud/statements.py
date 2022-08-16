@@ -1695,6 +1695,9 @@ fc_statements = [
     # vector
     # Specialize for std::vector<native>
     dict(
+        # c_in_vector_scalar_buf_targ_native_scalar
+        # c_in_vector_*_buf_targ_native_scalar
+        # c_in_vector_&_buf_targ_native_scalar
         name="c_in_vector_scalar/*/&_buf_targ_native_scalar",
         mixin=["c_mixin_in_array_buf"],
         cxx_local_var="scalar",
@@ -1813,9 +1816,9 @@ fc_statements = [
         mixin=["c_mixin_in_2d_array_buf"],
         cxx_local_var="scalar",
         pre_call=[
-            "std::vector<{cxx_T}> {cxx_var};",
-            "for (int i=0; i < {c_var_size}; ++i) {{+",
-            "{cxx_var}.push_back({c_var} + (c_var_len*i));",
+            "std::vector<{cxx_T} *> {cxx_var};",
+            "for (size_t i=0; i < {c_var_size}; ++i) {{+",
+            "{cxx_var}.push_back({c_var} + ({c_var_len}*i));",
             "-}}"
         ],
     ),
@@ -1830,6 +1833,9 @@ fc_statements = [
         mixin=["f_mixin_in_string_array_buf"],
     ),
     dict(
+        # c_in_vector_scalar_buf_targ_string_scalar
+        # c_in_vector_*_buf_targ_string_scalar
+        # c_in_vector_&_buf_targ_string_scalar
         name="c_in_vector_scalar/*/&_buf_targ_string_scalar",
         mixin=["c_mixin_in_string_array_buf"],
         c_helper="ShroudLenTrim",
