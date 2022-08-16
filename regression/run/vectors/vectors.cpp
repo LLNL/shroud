@@ -113,8 +113,16 @@ void vector_iota_out_d(std::vector<double> &arg)
 }
 
 //----------------------------------------------------------------------
-void vector_of_pointers(std::vector<const double *> &arg1)
+int vector_of_pointers(std::vector<const double *> &arg1, int num)
 {
+    int sum = 0;
+    for (size_t i=0; i < arg1.size(); i++) {
+        const double *array = arg1[i];
+        for (int j=0; j < num; ++j) {
+            sum += array[j];
+        }
+    }
+    return sum;
 }
 
 //----------------------------------------------------------------------

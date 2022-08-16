@@ -1763,7 +1763,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "subroutine"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1802,15 +1802,31 @@
                                 }
                             ],
                             "typemap_name": "std::vector"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "num",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
+                "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
@@ -1823,18 +1839,30 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_vector_of_pointers_bufferify",
-                    "F_arg_c_call": "arg1,\t size(arg1, 1, kind=C_SIZE_T),\t size(arg1, 2, kind=C_SIZE_T)",
-                    "F_arguments": "arg1",
+                    "F_arg_c_call": "arg1,\t size(arg1, 1, kind=C_SIZE_T),\t size(arg1, 2, kind=C_SIZE_T),\t num",
+                    "F_arguments": "arg1,\t num",
                     "F_name_function": "vector_of_pointers",
                     "F_name_generic": "vector_of_pointers",
                     "F_name_impl": "vector_of_pointers",
-                    "F_subprogram": "subroutine",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "function_name": "vector_of_pointers",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_of_pointers"
+                },
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function"
+                    }
                 }
             },
             {
@@ -1847,7 +1875,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "subroutine"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1887,15 +1915,31 @@
                                 }
                             ],
                             "typemap_name": "std::vector"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "num",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
+                "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
@@ -1951,21 +1995,81 @@
                             "stmtc0": "c_in_vector_&_buf_targ_native_*",
                             "stmtc1": "c_in_vector_&_buf_targ_native_*"
                         }
+                    },
+                    "num": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "num",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&num",
+                            "cxx_type": "int",
+                            "cxx_var": "num",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "num",
+                            "c_var": "num",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "num",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_call_list": "SHCXX_arg1",
+                    "C_call_list": "SHCXX_arg1,\t num",
                     "C_name": "VEC_vector_of_pointers_bufferify",
-                    "C_prototype": "double *arg1,\t size_t SHT_arg1_len,\t size_t SHT_arg1_size",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t SHT_arg1_len,\t SHT_arg1_size",
+                    "C_prototype": "double *arg1,\t size_t SHT_arg1_len,\t size_t SHT_arg1_size,\t int num",
+                    "C_return_type": "int",
+                    "F_C_arguments": "arg1,\t SHT_arg1_len,\t SHT_arg1_size,\t num",
                     "F_C_name": "c_vector_of_pointers_bufferify",
-                    "F_C_subprogram": "subroutine",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_of_pointers",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
                     "underscore_name": "vector_of_pointers"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT"
+                    }
                 }
             },
             {

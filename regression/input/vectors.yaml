@@ -123,7 +123,8 @@ declarations:
 ##################################################
 # double *
 
-- decl: void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))
+- decl: int vector_of_pointers(std::vector<const double *> &arg1 +intent(in),
+                               int num)
   doxygen:
     brief: Fortran 2-d array to vector<const double *>
   options:

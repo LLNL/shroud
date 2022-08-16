@@ -122,13 +122,15 @@ contains
   end subroutine test_vector_double
 
   subroutine test_vector_double_ptr
+    integer(C_INT) rvsum
     real(C_DOUBLE) datain(3,2)
 
     call set_case_name("test_vector_double_ptr")
 
     datain = reshape([1,2,3,4,5,6], shape(datain))
 
-    call vector_of_pointers(datain)
+    rvsum = vector_of_pointers(datain, size(datain, 1))
+    call assert_true(sum(datain) == rvsum)
 
   end subroutine test_vector_double_ptr
   

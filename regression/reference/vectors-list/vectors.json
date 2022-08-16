@@ -674,7 +674,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "subroutine"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -713,15 +713,31 @@
                                 }
                             ],
                             "typemap_name": "std::vector"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "num",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void vector_of_pointers(std::vector<const double *> &arg1 +intent(in))",
-                "declgen": "void vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1))",
+                "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
