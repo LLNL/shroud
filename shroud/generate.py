@@ -149,6 +149,9 @@ class VerifyAttrs(object):
         self.check_common_attrs(node.ast)
 
         for arg in ast.params:
+            if arg.declarator is None:
+                raise RuntimeError("Argument must have name in {} at line {}".format(
+                    node.decl, node.linenumber))
             self.check_arg_attrs(node, arg)
 
         if node.fortran_generic:
@@ -2320,11 +2323,12 @@ class CheckImplied(todict.PrintNode):
             return node.name
         elif node.name == "size":
             # size(arg)
-            if len(node.args) != 1:
+            if len(node.args) > 2:
                 raise RuntimeError(
-                    "{}:Too many arguments to 'size': ".format(
+                    "{}:Too many arguments to 'size': {}".format(
                         self.context.linenumber, self.expr)
                 )
+            # isinstance(node.args[0], declalst.Identifier)
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:

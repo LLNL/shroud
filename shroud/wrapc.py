@@ -738,6 +738,10 @@ class Wrapc(util.WrapperMixin):
             fmt.sh_type = ntypemap.sh_type
             fmt.cfi_type = ntypemap.cfi_type
             fmt.idtor = "0"
+
+            if ntypemap.base != "shadow" and ast.template_arguments:
+                fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+            
             if ast.blanknull:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
@@ -894,8 +898,9 @@ class Wrapc(util.WrapperMixin):
 
             spointer = ast.get_indirect_stmt()
             # intent will be "function", "ctor", "getter"
+            junk, specialize = statements.lookup_c_statements(ast)
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                     result_api, ast.metaattrs["deref"]]
+                     result_api, ast.metaattrs["deref"]] + specialize
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -905,9 +910,9 @@ class Wrapc(util.WrapperMixin):
             fmt_result.sh_type = result_typemap.sh_type
             fmt_result.cfi_type = result_typemap.cfi_type
             if ast.template_arguments:
-                template_typemap = ast.template_arguments[0].typemap
-                fmt_result.cxx_T = template_typemap.name
-                header_typedef_nodes[template_typemap.name] = template_typemap
+                fmt_result.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+                for targ in ast.template_arguments:
+                    header_typedef_nodes[targ.typemap.name] = targ.typemap
             else:
                 header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
@@ -1028,9 +1033,6 @@ class Wrapc(util.WrapperMixin):
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
-
-            if arg_typemap.base == "vector":
-                fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
             self.header_impl.add_typemap_list(arg_typemap.impl_header)
                     

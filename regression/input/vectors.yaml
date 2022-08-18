@@ -121,6 +121,17 @@ declarations:
     wrap_lua: False
 
 ##################################################
+# double *
+
+- decl: int vector_of_pointers(std::vector<const double *> &arg1 +intent(in),
+                               int num)
+  doxygen:
+    brief: Fortran 2-d array to vector<const double *>
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+##################################################
   
 - decl: int vector_string_count(const std::vector< std::string > &arg)
   doxygen:
@@ -164,3 +175,8 @@ declarations:
       Implement iota function.
       Return a vector as an ALLOCATABLE array.
       Copy results into the new array.
+
+######################################################################
+# Test implied with two arguments
+- decl: int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))
+# XXX - Not sure how this should work with Python list

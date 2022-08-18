@@ -32,7 +32,7 @@ Run a single unittest:
 
     ../build/temp.linux-x86_64-3.7/venv/bin/python test_declast.py CheckParse.test_inheritance
 
-Running a single Python regression test.
+Running a single Python unit test.
 
     # Use the Python in the virtual environment
     setenv WORK  .../build/temp.linux-x86_64-3.7

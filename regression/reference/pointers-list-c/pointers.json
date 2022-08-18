@@ -483,7 +483,6 @@
                 "zz_fmtargs": {
                     "in": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -499,6 +498,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
+                            "rank": "1",
                             "size_var": "SHSize_in",
                             "stmt0": "py_in_native_*_pointer_list",
                             "stmt1": "py_in_native_*_pointer_list",
@@ -659,7 +659,6 @@
                 "zz_fmtargs": {
                     "in": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -675,6 +674,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
+                            "rank": "1",
                             "size_var": "SHSize_in",
                             "stmt0": "py_in_native_*_pointer_list",
                             "stmt1": "py_in_native_*_pointer_list",
@@ -1260,7 +1260,6 @@
                     },
                     "values": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1276,6 +1275,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
+                            "rank": "1",
                             "size_var": "SHSize_values",
                             "stmt0": "py_in_native_*_pointer_list",
                             "stmt1": "py_in_native_*_pointer_list",
@@ -1444,7 +1444,6 @@
                 "zz_fmtargs": {
                     "array": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1461,6 +1460,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_array",
                             "pytmp_var": "SHTPy_array",
+                            "rank": "1",
                             "size_var": "SHSize_array",
                             "stmt0": "py_inout_native_*_pointer_list",
                             "stmt1": "py_inout_native_*_pointer_list",
@@ -1557,7 +1557,6 @@
                 "zz_fmtargs": {
                     "x": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -1574,6 +1573,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_x",
                             "pytmp_var": "SHTPy_x",
+                            "rank": "1",
                             "size_var": "SHSize_x",
                             "stmt0": "py_inout_native_*_pointer_list",
                             "stmt1": "py_inout_native_*_pointer_list",
@@ -1671,7 +1671,6 @@
                 "zz_fmtargs": {
                     "arr": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "int",
@@ -1687,6 +1686,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arr",
                             "pytmp_var": "SHTPy_arr",
+                            "rank": "1",
                             "size_var": "SHSize_arr",
                             "stmt0": "py_in_native_*_pointer_list",
                             "stmt1": "py_in_native_*_pointer_list",
@@ -1792,7 +1792,6 @@
                 "zz_fmtargs": {
                     "names": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "char",
@@ -1808,6 +1807,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_names",
                             "pytmp_var": "SHTPy_names",
+                            "rank": "1",
                             "size_var": "SHSize_names",
                             "stmt0": "py_in_char_**",
                             "stmt1": "py_in_char_**",

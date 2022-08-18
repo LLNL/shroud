@@ -79,7 +79,7 @@ PY_passStructByReference(
         nullptr));
     if (SHPy_arg == nullptr) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of CXX_cstruct1");
+            "arg must be a 0-D array of CXX_cstruct1");
         goto fail;
     }
 
@@ -143,7 +143,7 @@ PY_passStructByReferenceIn(
         nullptr));
     if (SHPy_arg == nullptr) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of CXX_cstruct1");
+            "arg must be a 0-D array of CXX_cstruct1");
         goto fail;
     }
 
@@ -204,7 +204,7 @@ PY_passStructByReferenceInout(
         nullptr));
     if (SHPy_arg == nullptr) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of CXX_cstruct1");
+            "arg must be a 0-D array of CXX_cstruct1");
         goto fail;
     }
 
@@ -249,7 +249,7 @@ PY_passStructByReferenceOut(
         nullptr, 0, nullptr));
     if (SHPy_arg == nullptr) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of CXX_cstruct1");
+            "arg must be a 0-D array of CXX_cstruct1");
         goto fail;
     }
 

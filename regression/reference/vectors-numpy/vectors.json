@@ -71,7 +71,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": null,
@@ -91,6 +90,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_in_vector_numpy",
                             "stmt1": "py_in_vector_numpy",
@@ -184,7 +184,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": null,
@@ -206,6 +205,7 @@
                             "numpy_type": "NPY_INT",
                             "py_capsule": "SHC_arg",
                             "py_var": "SHPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_out_vector_numpy",
                             "stmt1": "py_out_vector_numpy",
@@ -634,7 +634,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": null,
@@ -656,6 +655,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_capsule": "SHC_arg",
                             "py_var": "SHPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_out_vector_numpy",
                             "stmt1": "py_out_vector_numpy",
@@ -671,6 +671,91 @@
             },
             {
                 "<FUNCTION>": "8 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "vector_of_pointers",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "const": true,
+                                    "declarator": {
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "num",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in)+rank(1), int num +value)",
+                "doxygen": {
+                    "brief": "Fortran 2-d array to vector<const double *>"
+                },
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "vector_of_pointers",
+                    "underscore_name": "vector_of_pointers"
+                }
+            },
+            {
+                "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_count",
@@ -731,7 +816,7 @@
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_fill",
@@ -795,7 +880,7 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_append",
@@ -858,7 +943,7 @@
                 }
             },
             {
-                "<FUNCTION>": "11 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "attrs": {
                         "rank": 1
@@ -960,9 +1045,141 @@
                         "numpy_type": "NPY_INT",
                         "py_capsule": "SHC_SHCXX_rv",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_function_vector_numpy",
+                        "stmt0": "py_function_vector_numpy_targ_native_scalar",
                         "stmt1": "py_function_vector_numpy",
+                        "value_var": "SHValue_rv"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnDim2",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(arg,2)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
+                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)",
+                "options": {},
+                "wrap": {
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "ctor_expr": "*arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "rank": "2",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_in_native_*_pointer_numpy",
+                            "stmt1": "py_in_native_*_pointer_numpy",
+                            "value_var": "SHValue_arg"
+                        }
+                    },
+                    "len": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "ctor_expr": "len",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "data_var": "SHData_len",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "PyArray_DIM(SHPy_arg, (2)-1)",
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len",
+                            "value_var": "SHValue_len"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "PY_name_impl": "PY_returnDim2",
+                    "function_name": "returnDim2",
+                    "underscore_name": "return_dim2"
+                },
+                "zz_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_function_native_scalar",
+                        "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
                 }

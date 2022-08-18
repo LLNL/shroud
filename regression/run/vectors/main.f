@@ -20,8 +20,10 @@ program tester
 
   call test_vector_int
   call test_vector_double
+  call test_vector_double_ptr
   call test_vector_string
   call test_return
+  call test_implied
 
   call fruit_summary
   call fruit_finalize
@@ -120,6 +122,19 @@ contains
 !    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
   end subroutine test_vector_double
 
+  subroutine test_vector_double_ptr
+    integer(C_INT) rvsum
+    real(C_DOUBLE) datain(3,2)
+
+    call set_case_name("test_vector_double_ptr")
+
+    datain = reshape([1,2,3,4,5,6], shape(datain))
+
+    rvsum = vector_of_pointers(datain, size(datain, 1))
+    call assert_true(sum(datain) == rvsum)
+
+  end subroutine test_vector_double_ptr
+  
   subroutine test_vector_string
     integer irv
     character(10) :: names(3)
@@ -158,5 +173,16 @@ contains
     call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]))
     
   end subroutine test_return
+
+  subroutine test_implied
+    integer(C_INT) :: array2d(2,3)
+    integer irv
+
+    call set_case_name("test_implied")
+
+    irv = return_dim2(array2d)
+    call assert_equals(3, irv, "return_dim2")
+    
+  end subroutine test_implied
 
 end program tester

@@ -365,8 +365,8 @@ PY_cos_doubles(
         return nullptr;
 
     // post_parse
-    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
+    SHPy_in = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_in, NPY_DOUBLE, 1, 1));
     if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
@@ -448,8 +448,8 @@ PY_truncate_to_int(
         return nullptr;
 
     // post_parse
-    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
+    SHPy_in = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_in, NPY_DOUBLE, 1, 1));
     if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "in must be a 1-D array of double");
@@ -718,8 +718,8 @@ PY_Sum(
         return nullptr;
 
     // post_parse
-    SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_values, NPY_INT, NPY_ARRAY_IN_ARRAY));
+    SHPy_values = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_values, NPY_INT, 1, 1));
     if (SHPy_values == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "values must be a 1-D array of int");
@@ -947,8 +947,8 @@ PY_accumulate(
         return nullptr;
 
     // post_parse
-    SHPy_arr = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_arr, NPY_INT, NPY_ARRAY_IN_ARRAY));
+    SHPy_arr = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_arr, NPY_INT, 1, 1));
     if (SHPy_arr == nullptr) {
         PyErr_SetString(PyExc_ValueError,
             "arr must be a 1-D array of int");

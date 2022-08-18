@@ -245,8 +245,8 @@ PY_defaultPtrIsNULL_1(
         {
             // post_parse
             SHPy_data = reinterpret_cast<PyArrayObject *>
-                (PyArray_FROM_OTF(SHTPy_data, NPY_DOUBLE,
-                NPY_ARRAY_IN_ARRAY));
+                (PyArray_ContiguousFromObject(SHTPy_data, NPY_DOUBLE, 1,
+                1));
             if (SHPy_data == nullptr) {
                 PyErr_SetString(PyExc_ValueError,
                     "data must be a 1-D array of double");

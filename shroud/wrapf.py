@@ -1142,10 +1142,11 @@ rv = .false.
                 append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_func.F_capsule_data_type] = True
 
+        junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
-                   ast.metaattrs["deref"]]
+                   ast.metaattrs["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
@@ -1503,10 +1504,10 @@ rv = .false.
         else:
             ntypemap = f_ast.typemap
             rootname = c_ast.name
-        if ntypemap.sgroup == "vector":
-            # If a vector, use its type.
+        if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
+            # XXX - need to add an argument for each template arg
             ntypemap = c_ast.template_arguments[0].typemap
-            fmt.cxx_T = ntypemap.name
+            fmt.cxx_T = ','.join([str(targ) for targ in c_ast.template_arguments])
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, fmt, rootname,
                                       ntypemap, subprogram)
@@ -1621,10 +1622,11 @@ rv = .false.
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]
+            junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr, ast.attrs["owner"]]
+                       return_deref_attr, ast.attrs["owner"]] + specialize
             c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr]
+                       return_deref_attr] + specialize
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)
@@ -1708,10 +1710,7 @@ rv = .false.
             intent = c_meta["intent"]
             optattr = False
 
-            if c_arg.template_arguments:
-                specialize = [c_arg.template_arguments[0].typemap.sgroup]
-            else:
-                specialize = []
+            junk, specialize = statements.lookup_c_statements(c_arg)
             
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
@@ -2349,7 +2348,11 @@ class ToImplied(todict.PrintNode):
             self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
-            return "size({},kind={})".format(argname, arg_typemap.f_kind)
+            if len(node.args) > 1:
+                dim = "{},".format(todict.print_node(node.args[1]))
+            else:
+                dim = ""
+            return "size({},{}kind={})".format(argname, dim, arg_typemap.f_kind)
         elif argname == "type":
             # type(arg)
             self.intermediate = True

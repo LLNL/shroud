@@ -892,10 +892,10 @@ return 1;""",
         if typemap.PYN_descr:
             fmt.PYN_descr = typemap.PYN_descr
 
-        if typemap.base == "vector":
+        if ast.template_arguments:
             vtypemap = ast.template_arguments[0].typemap
             fmt.numpy_type = vtypemap.PYN_typenum
-            fmt.cxx_T = ast.template_arguments[0].typemap.name
+            fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
             fmt.npy_rank = "1"
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
@@ -907,11 +907,14 @@ return 1;""",
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = ast.attrs["dimension"]
-        if dimension:
+        dimension = ast.metaattrs["dimension"]
+        rank = ast.attrs["rank"]
+        if rank is not None:
+            fmt.rank = str(rank)
+        elif dimension:
             class_context = "self->{}->".format(fmt.PY_type_obj)
             visitor = ToDimension(cls, fcn, fmt, class_context)
-            visitor.visit(ast.metaattrs["dimension"])
+            visitor.visit(dimension)
             fmt.rank = str(visitor.rank)
 
             fmt.npy_rank = str(visitor.rank)
@@ -1317,7 +1320,8 @@ return 1;""",
             elif arg_typemap.base == "struct":
                 stmts = ["py", intent, sgroup, spointer, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
-                stmts = ["py", intent, sgroup, options.PY_array_arg]
+                specialize = statements.template_stmts(ast)
+                stmts = ["py", intent, sgroup, options.PY_array_arg] + specialize
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", intent, sgroup, spointer,
@@ -1995,7 +1999,8 @@ return 1;""",
         elif result_typemap.base == "struct":
             stmts = ["py", "function", sgroup, options.PY_struct_arg]
         elif result_typemap.base == "vector":
-            stmts = ["py", "function", sgroup, options.PY_array_arg]
+            specialize = statements.template_stmts(ast)
+            stmts = ["py", "function", sgroup, options.PY_array_arg] + specialize
         elif sgroup == "native":
             spointer = ast.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
@@ -3449,7 +3454,11 @@ class ToImplied(todict.PrintNode):
             #            arg = self.func.ast.find_arg_by_name(argname)
             fmt = self.func._fmtargs[argname]["fmtpy"]
             if self.func.options.PY_array_arg == "numpy":
-                return wformat("PyArray_SIZE({py_var})", fmt)
+                if len(node.args) > 1:
+                    return "PyArray_DIM({}, ({})-1)".format(
+                        fmt.py_var, todict.print_node(node.args[1]))
+                else:
+                    return wformat("PyArray_SIZE({py_var})", fmt)
             else:
                 return fmt.size_var
         elif argname == "len":
@@ -3602,7 +3611,7 @@ default_stmts = dict(
 array_error = [
     "if ({py_var} == {nullptr}) {{+",
     "PyErr_SetString(PyExc_ValueError,"
-    '\t "{c_var} must be a 1-D array of {c_type}");',
+    '\t "{c_var} must be a {rank}-D array of {c_type}");',
     "goto fail;",
     "-}}",
 ]
@@ -3817,8 +3826,12 @@ py_statements = [
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject("
+            "\t{pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};",
+            # NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_CARRAY | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
         ] + array_error,
         c_pre_call=[
             "{c_var} = PyArray_DATA({py_var});",

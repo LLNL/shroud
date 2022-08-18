@@ -8489,7 +8489,6 @@
                             "size": "size(count)"
                         },
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "int",
@@ -8505,6 +8504,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_count",
                             "pytmp_var": "SHTPy_count",
+                            "rank": "1",
                             "size_var": "SHSize_count",
                             "stmt0": "py_in_native_*_pointer_list",
                             "stmt1": "py_in_native_*_pointer_list",

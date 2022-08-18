@@ -204,6 +204,7 @@ python-test-list = \
   test-python-struct-py-c \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
+  test-python-vectors-list \
   test-python-ccomplex \
   test-python-clibrary \
   test-python-cxxlibrary \

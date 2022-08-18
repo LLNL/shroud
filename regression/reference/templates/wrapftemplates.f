@@ -304,7 +304,8 @@ module templates_mod
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
         ! Attrs:     +api(capptr)+intent(function)
-        ! Exact:     c_function_shadow_scalar_capptr
+        ! Requested: c_function_shadow_scalar_capptr_targ_native_scalar
+        ! Match:     c_function_shadow_scalar_capptr
         function c_return_user_type(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="TEM_return_user_type")
@@ -746,9 +747,11 @@ contains
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     f_function_shadow_scalar_capptr
+    ! Requested: f_function_shadow_scalar_capptr_targ_native_scalar
+    ! Match:     f_function_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(function)
-    ! Exact:     c_function_shadow_scalar_capptr
+    ! Requested: c_function_shadow_scalar_capptr_targ_native_scalar
+    ! Match:     c_function_shadow_scalar_capptr
     function return_user_type() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

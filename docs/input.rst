@@ -629,6 +629,19 @@ to Fortran or Python wrapper.  Useful with array sizes:
 Several functions will be converted to the corresponding code for
 Python wrappers: ``size``, ``len`` and ``len_trim``.
 
+* size(array[,dim])
+  Determine the extent of **array** along a specified dimension **dim**,
+  or the total number of elements in **array** if **dim** is absent.
+  
+  * **array** name of argument
+  * **dim** rank of array to check. If none, entire array.
+
+* len(string)
+  Returns the length of a character string.
+
+* len_trim(string)
+  Returns the length of a character string, ignoring any trailing blanks.
+
 intent
 ^^^^^^
 

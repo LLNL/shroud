@@ -49,11 +49,16 @@ void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
 
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc);
 
+int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
+    size_t SHT_arg1_size, int num);
+
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len);
 
 void VEC_return_vector_alloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
+
+int VEC_return_dim2(int * arg, int len);
 
 #ifdef __cplusplus
 }

@@ -43,6 +43,34 @@ F_C_clause =
 F_C_arguments     = f_c_arg_names
 arg_c_decl        = f_arg_decl, f_result_decl
 F_C_result_clause = f_result_var
+
+Lookup statements
+-----------------
+
+The statements for an argument are looked up by converting the type
+and attributes into an underscore delimited string.
+
+
+* language - ``c``
+
+* intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
+
+* group from typemap. ``native``
+
+* pointer - ``scalar``, ``*``, ``**``
+
+* api - from attribute
+  ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
+
+* deref - from attribute
+  ``allocatable``, ``pointer``, ``raw``, ``result-as-arg``, ``scalar``
+
+
+template
+^^^^^^^^
+
+Each template argument is appended to the initial statement name.
+``targ``, *group* and *pointer*
     
 c_statements
 ------------

@@ -8,6 +8,9 @@
 //
 #include "pyvectorsmodule.hpp"
 
+// shroud
+#include <cstdlib>
+
 // splicer begin include
 // splicer end include
 
@@ -51,6 +54,54 @@ static int SHROUD_create_from_PyObject_vector_int(PyObject *obj,
     }
     Py_DECREF(seq);
     return 0;
+}
+
+// helper py_capsule_dtor
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void FREE_py_capsule_dtor(PyObject *obj)
+{
+    void *in = PyCapsule_GetPointer(obj, nullptr);
+    if (in != nullptr) {
+        std::free(in);
+    }
+}
+
+// helper get_from_object_int_list
+// Convert list of PyObject to array of int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+static int SHROUD_get_from_object_int_list(PyObject *obj,
+    VEC_SHROUD_converter_value *value)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return 0;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        int cvalue = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int", value->name,
+                (int) i);
+            return 0;
+        }
+        in[i] = cvalue;
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
+    value->data = static_cast<int *>(in);
+    value->size = size;
+    return 1;
 }
 
 // helper to_PyList_vector_double
@@ -220,7 +271,8 @@ fail:
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_vector_list
+// Requested: py_function_vector_list_targ_native_scalar
+// Match:     py_function_vector_list
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
@@ -265,6 +317,70 @@ fail:
     return nullptr;
 // splicer end function.return_vector_alloc
 }
+
+// ----------------------------------------
+// Function:  int returnDim2
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Exact:     py_in_native_*_pointer_list
+// ----------------------------------------
+// Argument:  int len +implied(size(arg,2))+value
+// Exact:     py_default
+static char PY_returnDim2__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnDim2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.return_dim2
+    int * arg = nullptr;
+    PyObject *SHTPy_arg = nullptr;
+    VEC_SHROUD_converter_value SHValue_arg = {NULL, NULL, NULL, NULL, 0};
+    SHValue_arg.name = "arg";
+    Py_ssize_t SHSize_arg;
+    int len;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:returnDim2",
+        const_cast<char **>(SHT_kwlist), &SHTPy_arg))
+        return nullptr;
+
+    // post_parse
+    if (SHROUD_get_from_object_int_list(SHTPy_arg, &SHValue_arg) == 0)
+        goto fail;
+    arg = static_cast<int *>(SHValue_arg.data);
+    SHSize_arg = SHValue_arg.size;
+
+    // pre_call
+    len = SHSize_arg;
+
+    SHCXX_rv = returnDim2(arg, len);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    Py_XDECREF(SHValue_arg.dataobj);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHValue_arg.dataobj);
+    return nullptr;
+// splicer end function.return_dim2
+}
 static PyMethodDef PY_methods[] = {
 {"vector_sum", (PyCFunction)PY_vector_sum, METH_VARARGS|METH_KEYWORDS,
     PY_vector_sum__doc__},
@@ -274,6 +390,8 @@ static PyMethodDef PY_methods[] = {
     PY_vector_iota_out_d__doc__},
 {"ReturnVectorAlloc", (PyCFunction)PY_ReturnVectorAlloc,
     METH_VARARGS|METH_KEYWORDS, PY_ReturnVectorAlloc__doc__},
+{"returnDim2", (PyCFunction)PY_returnDim2, METH_VARARGS|METH_KEYWORDS,
+    PY_returnDim2__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

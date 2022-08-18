@@ -740,11 +740,11 @@ PP_cos_doubles(
         return nullptr;
 
     // post_parse
-    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
+    SHPy_in = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_in, NPY_DOUBLE, 2, 2));
     if (SHPy_in == nullptr) {
         PyErr_SetString(PyExc_ValueError,
-            "in must be a 1-D array of double");
+            "in must be a 2-D array of double");
         goto fail;
     }
     SHD_out[0] = shape(in);

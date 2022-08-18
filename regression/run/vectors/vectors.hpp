@@ -24,11 +24,14 @@ void vector_increment(std::vector<int> &arg);
 
 void vector_iota_out_d(std::vector<double> &arg);
 
+int vector_of_pointers(std::vector<const double *> &arg1, int num);
+
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
 std::vector<int> ReturnVectorAlloc(int i);
 
+int returnDim2(int *arg, int len);
 
 #endif // VECTORS_HPP

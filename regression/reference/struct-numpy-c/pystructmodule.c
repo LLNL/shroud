@@ -78,7 +78,7 @@ PY_passStructByValue(
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
     if (SHPy_arg == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
+            "arg must be a 0-D array of Cstruct1");
         goto fail;
     }
 
@@ -140,7 +140,7 @@ PY_passStruct1(
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
     if (SHPy_arg == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
+            "arg must be a 0-D array of Cstruct1");
         goto fail;
     }
 
@@ -210,7 +210,7 @@ PY_passStruct2(
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
     if (SHPy_s1 == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "s1 must be a 1-D array of Cstruct1");
+            "s1 must be a 0-D array of Cstruct1");
         goto fail;
     }
 
@@ -272,7 +272,7 @@ PY_acceptStructInPtr(
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
     if (SHPy_arg == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
+            "arg must be a 0-D array of Cstruct1");
         goto fail;
     }
 
@@ -346,7 +346,7 @@ PY_acceptStructOutPtr(
         PY_Cstruct1_array_descr, 0, NULL, NULL, NULL, 0, NULL);
     if (SHPy_arg == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
+            "arg must be a 0-D array of Cstruct1");
         goto fail;
     }
 
@@ -398,7 +398,7 @@ PY_acceptStructInOutPtr(
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
     if (SHPy_arg == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
+            "arg must be a 0-D array of Cstruct1");
         goto fail;
     }
 
