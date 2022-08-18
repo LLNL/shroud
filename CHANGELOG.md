@@ -70,6 +70,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This causes each Fortran interface to bind to a different C function which
   fixes a compile error with xlf.
 - Add continuations on Fortran ``IMPORT`` statements.
+- Better support for ``std::vector`` with pointer template arguments.
+  For examples, ``<const double *>``.
 
 ### Changed
 - The *C_memory_dtor_function* is now written to the utility file,
