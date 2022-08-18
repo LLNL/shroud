@@ -779,7 +779,6 @@
                             "stmtc1": "c_default"
                         },
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_type": "double",
@@ -794,6 +793,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_data",
                             "pytmp_var": "SHTPy_data",
+                            "rank": "1",
                             "size_var": "SHSize_data",
                             "stmt0": "py_in_native_*_pointer_numpy",
                             "stmt1": "py_in_native_*_pointer_numpy",

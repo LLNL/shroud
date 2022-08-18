@@ -2348,7 +2348,11 @@ class ToImplied(todict.PrintNode):
             self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
-            return "size({},kind={})".format(argname, arg_typemap.f_kind)
+            if len(node.args) > 1:
+                dim = "{},".format(todict.print_node(node.args[1]))
+            else:
+                dim = ""
+            return "size({},{}kind={})".format(argname, dim, arg_typemap.f_kind)
         elif argname == "type":
             # type(arg)
             self.intermediate = True

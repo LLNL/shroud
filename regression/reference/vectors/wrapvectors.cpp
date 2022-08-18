@@ -378,4 +378,27 @@ void VEC_return_vector_alloc_bufferify(int n,
     // splicer end function.return_vector_alloc_bufferify
 }
 
+// ----------------------------------------
+// Function:  int returnDim2
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
+// Match:     c_function
+// ----------------------------------------
+// Argument:  int * arg +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Requested: c_in_native_*
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int len +implied(size(arg,2))+value
+// Attrs:     +intent(in)
+// Requested: c_in_native_scalar
+// Match:     c_default
+int VEC_return_dim2(int * arg, int len)
+{
+    // splicer begin function.return_dim2
+    int SHC_rv = returnDim2(arg, len);
+    return SHC_rv;
+    // splicer end function.return_dim2
+}
+
 }  // extern "C"

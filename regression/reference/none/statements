@@ -5372,10 +5372,10 @@ py_in_native_*_pointer_numpy:
   - '&{pytmp_var}'
   parse_format: O
   post_parse:
-  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
-    \ {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};"
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject(\t\
+    {pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5468,7 +5468,7 @@ py_in_struct_&_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
     \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5508,7 +5508,7 @@ py_in_struct_*_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
     \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5553,7 +5553,7 @@ py_in_struct_scalar_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
     \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5720,7 +5720,7 @@ py_inout_native_*_pointer_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
     \ {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5790,7 +5790,7 @@ py_inout_struct_&_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
     \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -5829,7 +5829,7 @@ py_inout_struct_*_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
     \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -6025,7 +6025,7 @@ py_out_native_*_allocatable_numpy:
   - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
     {npy_dims_var}, {numpy_type}){cast2};'
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -6078,7 +6078,7 @@ py_out_native_*_pointer_numpy:
   - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
     {npy_dims_var}, {numpy_type}){cast2};'
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -6161,7 +6161,7 @@ py_out_struct_&_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
     \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}
@@ -6208,7 +6208,7 @@ py_out_struct_*_numpy:
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
     \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
   - if ({py_var} == {nullptr}) {{+
-  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
   - -}}

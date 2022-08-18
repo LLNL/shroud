@@ -298,6 +298,33 @@ module vectors_mod
         end subroutine c_return_vector_alloc_bufferify
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int returnDim2
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int * arg +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int len +implied(size(arg,2))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_scalar
+    ! Match:     c_default
+    interface
+        function c_return_dim2(arg, len) &
+                result(SHT_rv) &
+                bind(C, name="VEC_return_dim2")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg(*)
+            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT) :: SHT_rv
+        end function c_return_dim2
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -697,6 +724,34 @@ contains
             size(SHT_rv,kind=C_SIZE_T))
         ! splicer end function.return_vector_alloc
     end function return_vector_alloc
+
+    ! ----------------------------------------
+    ! Function:  int returnDim2
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
+    ! Match:     f_function
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
+    ! Match:     c_function
+    ! ----------------------------------------
+    ! Argument:  int * arg +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
+    ! Requested: f_in_native_*
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_in_native_*
+    ! Match:     c_default
+    function return_dim2(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: arg(:,:)
+        integer(C_INT) :: SH_len
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.return_dim2
+        SH_len = size(arg,2,kind=C_INT)
+        SHT_rv = c_return_dim2(arg, SH_len)
+        ! splicer end function.return_dim2
+    end function return_dim2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

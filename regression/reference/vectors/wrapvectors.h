@@ -58,6 +58,8 @@ int VEC_vector_string_count_bufferify(const char *arg,
 void VEC_return_vector_alloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 
+int VEC_return_dim2(int * arg, int len);
+
 #ifdef __cplusplus
 }
 #endif

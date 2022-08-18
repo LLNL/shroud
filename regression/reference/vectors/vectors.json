@@ -18,7 +18,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "13",
+                "_PTR_F_C_index": "14",
                 "ast": {
                     "declarator": {
                         "name": "vector_sum",
@@ -101,7 +101,7 @@
                 }
             },
             {
-                "<FUNCTION>": "13 ****************************************",
+                "<FUNCTION>": "14 ****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -249,7 +249,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "14",
+                "_PTR_F_C_index": "15",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out",
@@ -323,7 +323,7 @@
                 }
             },
             {
-                "<FUNCTION>": "14 ****************************************",
+                "<FUNCTION>": "15 ****************************************",
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -449,7 +449,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "15",
+                "_PTR_F_C_index": "16",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_with_num",
@@ -555,7 +555,7 @@
                 }
             },
             {
-                "<FUNCTION>": "15 ****************************************",
+                "<FUNCTION>": "16 ****************************************",
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -712,7 +712,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "16",
+                "_PTR_F_C_index": "17",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_with_num2",
@@ -806,7 +806,7 @@
                 }
             },
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "17 ****************************************",
                 "_PTR_C_CXX_index": "3",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -950,7 +950,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "17",
+                "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_alloc",
@@ -1027,7 +1027,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "18 ****************************************",
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1156,7 +1156,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "18",
+                "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
@@ -1233,7 +1233,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "19 ****************************************",
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1364,7 +1364,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "19",
+                "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
                         "name": "vector_increment",
@@ -1434,7 +1434,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "20 ****************************************",
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1558,7 +1558,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "20",
+                "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_d",
@@ -1631,7 +1631,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "21 ****************************************",
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1756,7 +1756,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "21",
+                "_PTR_F_C_index": "22",
                 "ast": {
                     "declarator": {
                         "name": "vector_of_pointers",
@@ -1866,7 +1866,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "22 ****************************************",
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2077,7 +2077,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "22",
+                "_PTR_F_C_index": "23",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_count",
@@ -2163,7 +2163,7 @@
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "23 ****************************************",
                 "_PTR_C_CXX_index": "9",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2450,7 +2450,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "23",
+                "_PTR_F_C_index": "24",
                 "ast": {
                     "attrs": {
                         "rank": 1
@@ -2539,7 +2539,7 @@
                 }
             },
             {
-                "<FUNCTION>": "23 ****************************************",
+                "<FUNCTION>": "24 ****************************************",
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -2676,6 +2676,192 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_OTHER",
                         "size": "size(SHT_rv)"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnDim2",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(arg,2)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
+                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_*",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "c_var": "arg",
+                            "f_assumed_shape": "(:,:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_in_native_*",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_*",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "c_var": "len",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "pre_call_intent": "size(arg,2,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "arg,\t len",
+                    "C_name": "VEC_return_dim2",
+                    "C_prototype": "int * arg,\t int len",
+                    "C_return_type": "int",
+                    "F_C_arguments": "arg,\t len",
+                    "F_C_call": "c_return_dim2",
+                    "F_C_name": "c_return_dim2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "arg,\t SH_len",
+                    "F_arguments": "arg",
+                    "F_name_function": "return_dim2",
+                    "F_name_generic": "return_dim2",
+                    "F_name_impl": "return_dim2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "returnDim2",
+                    "underscore_name": "return_dim2"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function"
                     }
                 }
             }

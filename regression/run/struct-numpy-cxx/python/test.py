@@ -55,7 +55,7 @@ class Struct(unittest.TestCase):
 
         with self.assertRaises(ValueError) as context:
             i = cstruct.passStructByValue((2.0, "two"))
-        self.assertTrue("arg must be a 1-D array of STR_cstruct1" in str(context.exception))
+        self.assertTrue("arg must be a 0-D array of STR_cstruct1" in str(context.exception))
 
     def test_passStruct1(self):
         i = cstruct.passStruct1((12,12.6))

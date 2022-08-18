@@ -1447,6 +1447,13 @@ fmtpy
 
 Format strings used with Python wrappers.
 
+array_size
+    Dimensions multipled together.
+    ``dimension(2,3)`` creates ``(2)*(3)``.
+
+rank
+    Attribute value for *rank*.
+
 
 Result
 ^^^^^^

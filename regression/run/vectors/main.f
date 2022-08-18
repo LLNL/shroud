@@ -23,6 +23,7 @@ program tester
   call test_vector_double_ptr
   call test_vector_string
   call test_return
+  call test_implied
 
   call fruit_summary
   call fruit_finalize
@@ -172,5 +173,16 @@ contains
     call assert_true(all(rv1(:) .eq. [1,2,3,4,5,6,7,8,9,10]))
     
   end subroutine test_return
+
+  subroutine test_implied
+    integer(C_INT) :: array2d(2,3)
+    integer irv
+
+    call set_case_name("test_implied")
+
+    irv = return_dim2(array2d)
+    call assert_equals(3, irv, "return_dim2")
+    
+  end subroutine test_implied
 
 end program tester

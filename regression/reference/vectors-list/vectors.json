@@ -71,7 +71,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "const ",
                             "c_deref": "",
                             "c_type": null,
@@ -92,6 +91,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_in_vector_list",
                             "stmt1": "py_in_vector_list",
@@ -185,7 +185,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": null,
@@ -205,6 +204,7 @@
                             "npy_rank": "1",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_out_vector_list",
                             "stmt1": "py_out_vector_list",
@@ -633,7 +633,6 @@
                 "zz_fmtargs": {
                     "arg": {
                         "fmtpy": {
-                            "array_size": "1",
                             "c_const": "",
                             "c_deref": "",
                             "c_type": null,
@@ -653,6 +652,7 @@
                             "npy_rank": "1",
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg",
+                            "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_out_vector_list",
                             "stmt1": "py_out_vector_list",
@@ -1039,9 +1039,142 @@
                         "npy_rank": "1",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
+                        "rank": "1",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_function_vector_list",
                         "stmt1": "py_function_vector_list",
+                        "value_var": "SHValue_rv"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnDim2",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(arg,2)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
+                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)",
+                "options": {},
+                "wrap": {
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "ctor_expr": "*arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "hnamefunc0": "SHROUD_get_from_object_int_list",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "rank": "2",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_in_native_*_pointer_list",
+                            "stmt1": "py_in_native_*_pointer_list",
+                            "value_var": "SHValue_arg"
+                        }
+                    },
+                    "len": {
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "ctor_expr": "len",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "data_var": "SHData_len",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "SHSize_arg",
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len",
+                            "value_var": "SHValue_len"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "PY_name_impl": "PY_returnDim2",
+                    "function_name": "returnDim2",
+                    "underscore_name": "return_dim2"
+                },
+                "zz_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_function_native_scalar",
+                        "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
                 }

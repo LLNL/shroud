@@ -175,3 +175,8 @@ declarations:
       Implement iota function.
       Return a vector as an ALLOCATABLE array.
       Copy results into the new array.
+
+######################################################################
+# Test implied with two arguments
+- decl: int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))
+# XXX - Not sure how this should work with Python list

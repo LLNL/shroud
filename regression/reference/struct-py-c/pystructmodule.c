@@ -85,7 +85,7 @@ PY_acceptBothStructs(
         NULL);
     if (SHPy_s2 == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "s2 must be a 1-D array of Cstruct_as_numpy");
+            "s2 must be a 0-D array of Cstruct_as_numpy");
         goto fail;
     }
 

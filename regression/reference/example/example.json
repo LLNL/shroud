@@ -11005,7 +11005,6 @@
                                             "stmt1": "lua_default"
                                         },
                                         "fmtpy": {
-                                            "array_size": "1",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_type": "double",
@@ -11020,6 +11019,7 @@
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_in",
                                             "pytmp_var": "SHTPy_in",
+                                            "rank": "2",
                                             "size_var": "SHSize_in",
                                             "stmt0": "py_in_native_*_pointer_numpy",
                                             "stmt1": "py_in_native_*_pointer_numpy",

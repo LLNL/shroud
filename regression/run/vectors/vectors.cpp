@@ -177,3 +177,11 @@ std::vector<int> ReturnVectorAlloc(int n)
   return rv;
 }
 
+//----------------------------------------------------------------------
+// Test implied(size(arg,2))
+
+int returnDim2(int *arg, int len)
+{
+    return len;
+}
+

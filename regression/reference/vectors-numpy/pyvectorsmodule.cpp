@@ -288,6 +288,72 @@ fail:
     return nullptr;
 // splicer end function.return_vector_alloc
 }
+
+// ----------------------------------------
+// Function:  int returnDim2
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(in)+rank(2)
+// Attrs:     +intent(in)
+// Exact:     py_in_native_*_pointer_numpy
+// ----------------------------------------
+// Argument:  int len +implied(size(arg,2))+value
+// Exact:     py_default
+static char PY_returnDim2__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnDim2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.return_dim2
+    int * arg;
+    PyObject * SHTPy_arg;
+    PyArrayObject * SHPy_arg = nullptr;
+    int len;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:returnDim2",
+        const_cast<char **>(SHT_kwlist), &SHTPy_arg))
+        return nullptr;
+
+    // post_parse
+    SHPy_arg = reinterpret_cast<PyArrayObject *>
+        (PyArray_ContiguousFromObject(SHTPy_arg, NPY_INT, 2, 2));
+    if (SHPy_arg == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 2-D array of int");
+        goto fail;
+    }
+
+    // pre_call
+    arg = static_cast<int *>(PyArray_DATA(SHPy_arg));
+    len = PyArray_DIM(SHPy_arg, (2)-1);
+
+    SHCXX_rv = returnDim2(arg, len);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return nullptr;
+// splicer end function.return_dim2
+}
 static PyMethodDef PY_methods[] = {
 {"vector_sum", (PyCFunction)PY_vector_sum, METH_VARARGS|METH_KEYWORDS,
     PY_vector_sum__doc__},
@@ -297,6 +363,8 @@ static PyMethodDef PY_methods[] = {
     PY_vector_iota_out_d__doc__},
 {"ReturnVectorAlloc", (PyCFunction)PY_ReturnVectorAlloc,
     METH_VARARGS|METH_KEYWORDS, PY_ReturnVectorAlloc__doc__},
+{"returnDim2", (PyCFunction)PY_returnDim2, METH_VARARGS|METH_KEYWORDS,
+    PY_returnDim2__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

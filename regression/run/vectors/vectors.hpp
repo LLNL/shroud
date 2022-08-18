@@ -32,5 +32,6 @@ void vector_string_append(std::vector< std::string > &arg);
 
 std::vector<int> ReturnVectorAlloc(int i);
 
+int returnDim2(int *arg, int len);
 
 #endif // VECTORS_HPP
