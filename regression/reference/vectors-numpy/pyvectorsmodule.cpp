@@ -221,7 +221,8 @@ fail:
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_vector_numpy
+// Requested: py_function_vector_numpy_targ_native_scalar
+// Match:     py_function_vector_numpy
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)

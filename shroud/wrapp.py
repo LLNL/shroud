@@ -892,10 +892,10 @@ return 1;""",
         if typemap.PYN_descr:
             fmt.PYN_descr = typemap.PYN_descr
 
-        if typemap.base == "vector":
+        if ast.template_arguments:
             vtypemap = ast.template_arguments[0].typemap
             fmt.numpy_type = vtypemap.PYN_typenum
-            fmt.cxx_T = ast.template_arguments[0].typemap.name
+            fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
             fmt.npy_rank = "1"
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
@@ -1320,7 +1320,8 @@ return 1;""",
             elif arg_typemap.base == "struct":
                 stmts = ["py", intent, sgroup, spointer, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
-                stmts = ["py", intent, sgroup, options.PY_array_arg]
+                specialize = statements.template_stmts(ast)
+                stmts = ["py", intent, sgroup, options.PY_array_arg] + specialize
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", intent, sgroup, spointer,
@@ -1998,7 +1999,8 @@ return 1;""",
         elif result_typemap.base == "struct":
             stmts = ["py", "function", sgroup, options.PY_struct_arg]
         elif result_typemap.base == "vector":
-            stmts = ["py", "function", sgroup, options.PY_array_arg]
+            specialize = statements.template_stmts(ast)
+            stmts = ["py", "function", sgroup, options.PY_array_arg] + specialize
         elif sgroup == "native":
             spointer = ast.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]

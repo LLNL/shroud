@@ -36,6 +36,25 @@ def lookup_c_statements(arg):
         specialize.append(spointer)
     return arg_typemap, specialize
 
+def template_stmts(ast):
+    """Create statement labels for template arguments.
+    targ_int_scalar
+
+    Parameters
+    ----------
+    ast : declast.Declaration
+    """
+    specialize = []
+    if ast.template_arguments:
+        specialize.append('targ')
+        # XXX currently only the first template argument is processed.
+        targ = ast.template_arguments[0]
+        arg_typemap = targ.typemap
+        specialize.append(arg_typemap.sgroup)
+        spointer = targ.get_indirect_stmt()
+        specialize.append(spointer)
+    return specialize
+
 def lookup_fc_stmts(path):
     return lookup_stmts_tree(cf_tree, path)
         

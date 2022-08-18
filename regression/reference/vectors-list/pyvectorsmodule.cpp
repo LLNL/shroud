@@ -271,7 +271,8 @@ fail:
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(function)
-// Exact:     py_function_vector_list
+// Requested: py_function_vector_list_targ_native_scalar
+// Match:     py_function_vector_list
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
