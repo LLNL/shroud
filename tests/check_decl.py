@@ -1,0 +1,90 @@
+# Copyright (c) 2017-2022, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+########################################################################
+"""
+Test parser.
+Useful when changing the grammar to make sure the AST is good.
+
+Use Python from env to get the shroud package.
+../build/temp.linux-x86_64-3.7/venv/bin/python3 check_decl.py
+"""
+
+from shroud import ast
+from shroud import declast
+from shroud import todict
+
+import yaml
+import pprint
+import sys
+
+def test_enum(namespace):
+    out = []
+
+    decl = "enum Color { RED, WHITE, BLUE };"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+    namespace.add_enum(decl, ast)
+
+    decl = "enum Color global;"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+
+    decl = "Color var = RED;"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+
+    yaml.safe_dump(out, sys.stdout)
+
+def test_struct(namespace):
+    """
+    struct Point { int x; int y;};
+    struct Point end;
+    Point start;
+    """
+    out = []
+
+    decl = "struct Point { int x; int y;};"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+    node = namespace.add_struct(decl, ast)
+
+    decl = "struct likeclass"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+
+    decl = "struct Point end;"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+
+    decl = "Point start;"
+    ast = declast.check_decl(decl, namespace, trace=True)
+    asdict = todict.to_dict(ast)
+    asdict["_ast"] = ast.__class__.__name__
+    out.append(asdict)
+
+    yaml.safe_dump(out, sys.stdout)
+    return
+    
+if __name__ == "__main__":
+#    decl = "extern int global;"
+
+    library = ast.LibraryNode()
+
+    test_enum(library)
+    test_struct(library)
+

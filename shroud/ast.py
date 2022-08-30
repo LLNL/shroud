@@ -288,8 +288,7 @@ class NamespaceMixin(object):
         """Add a struct.
 
         A struct is exactly like a class to the C++ compiler.  From
-        the YAML, a struct may be a single ast and a class is broken
-        into parts.
+        the YAML, a struct may be a single ast or broken into parts.
 
         - decl: struct Cstruct1 {
                   int ifield;

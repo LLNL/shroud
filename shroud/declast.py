@@ -562,6 +562,7 @@ class Parser(ExprParser):
             node.declarator = self.declarator()
 
         if self.token.typ == "LPAREN":  # peek
+            # Function parameters.
             node.params = self.parameter_list()
 
             # Look for (void), set to no parameters.
@@ -820,6 +821,11 @@ class Parser(ExprParser):
         return lst
 
     def enum_statement(self):
+        """Creating an enumeration.
+
+        ENUM [ CLASS | STRUCT ] ID {  }
+        ENUM ID
+        """
         self.enter("enum_statement")
         self.mustbe("ENUM")
         if self.have("STRUCT"):
@@ -829,33 +835,56 @@ class Parser(ExprParser):
         else:
             scope = None
         name = self.mustbe("ID")
-        self.mustbe("LCURLY")
-        node = Enum(name.value, scope)
-        members = node.members
-        while self.token.typ != "RCURLY":
-            name = self.mustbe("ID")
-            if self.have("EQUALS"):
-                value = self.expression()
-            else:
-                value = None
-            members.append(EnumValue(name.value, value))
-            if not self.have("COMMA"):
-                break
-        self.mustbe("RCURLY")
-        self.exit("enum_statement", str(members))
+        if self.have("LCURLY"):
+            #        self.mustbe("LCURLY")
+            node = Enum(name.value, scope)
+            members = node.members
+            while self.token.typ != "RCURLY":
+                name = self.mustbe("ID")
+                if self.have("EQUALS"):
+                    value = self.expression()
+                else:
+                    value = None
+                members.append(EnumValue(name.value, value))
+                if not self.have("COMMA"):
+                    break
+            self.mustbe("RCURLY")
+        else:
+            node = Declaration()
+            node.declarator = self.declarator()
+            ns = self.namespace.unqualified_lookup(name.value)
+            if ns is None:
+                raise RuntimeError("Enum %s is not defined" % name.value)
+            node.typemap = ns.typemap
+        self.exit("enum_statement")#, str(members))
         return node
 
     def struct_statement(self):
+        """Creating a struct.
+
+        STRUCT ID {  }
+        STRUCT ID <EOF>    similar to CLASS ID
+        STRUCT ID
+        """
         self.enter("struct_statement")
         self.mustbe("STRUCT")
         name = self.mustbe("ID")
-        node = Struct(name.value)
         if self.have("LCURLY"):
+            node = Struct(name.value)
             members = node.members
             while self.token.typ != "RCURLY":
                 members.append(self.declaration())
                 self.mustbe("SEMICOLON")
             self.mustbe("RCURLY")
+        elif self.have("EOF"):
+            node = Struct(name.value)
+        else:
+            node = Declaration()
+            node.declarator = self.declarator()
+            ns = self.namespace.unqualified_lookup(name.value)
+            if ns is None:
+                raise RuntimeError("Struct %s is not defined" % name.value)
+            node.typemap = ns.typemap
         self.exit("struct_statement")
         return node
 
@@ -1799,7 +1828,7 @@ def check_decl(decl, namespace=None, template_types=None, trace=False):
     namespace - An ast.AstNode subclass.
     """
 #    trace = True
-    if not namespace:
+    if namespace is None:
         # grab global namespace if not passed in.
         namespace = global_namespace
     if template_types:
@@ -1872,4 +1901,3 @@ def find_arg_index_by_name(decls, name):
         if decl.name == name:
             return i
     return -1
-

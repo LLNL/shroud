@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   continue to be declared in a single *decl* field as before.  This
   makes it easier to define opaque structs where the members are not
   listed. Useful with *wrap_struct_as=class*.
+- Added the ability to declare variables using the ``struct`` keyword.
+  ``struct tname vname;``. In this case the semicolon is required
+  to distinguish the *decl* entry from defining a structure.
+- Added the ability to declare variables using the ``enum`` keyword.
+  C++ creates a type for each enumeration.
 - Support `base: struct` in the `typemap` field of the YAML file. This
   allows structs wrapped outside of the current YAML file to be used.
 - Generate generic interface which allows a scalar or array to be

@@ -26,6 +26,11 @@ Uses assumed type in a test.  Does not work with PGI.
 Test C++ specific features.
 Pass struct by reference since struct.yaml on tests C/C++ compatible features.
 
+### enum
+
+Enums compatible with C.
+See *scope* for scoped enums.
+
 ### names
 
 Test name generation and splicer.
@@ -40,3 +45,8 @@ Test name generation when there is a top level namespace
 Parse an empty file.  This test also uses some additional flags to
 Shroud to dump some debugging files. It produces a summary of types,
 helpers and statements
+
+### scope
+
+Test enums in different scopes.
+See *enum* for C enums.

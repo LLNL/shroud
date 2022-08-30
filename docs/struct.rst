@@ -540,18 +540,18 @@ Another point to note is that the variable ``updated`` should have the
 Struct
 ------
 
-.. Shroud supports both structs and classes. But it treats them much
-   differently.  Whereas in C++ a struct and class are essentially the
-   same thing, Shroud treats structs as a C style struct.  They do not
-   have associated methods.  This allows them to be mapped to a Fortran
-   derived type with the ``bind(C)`` attribute and a Python NumPy array.
+Shroud supports both structs and classes. But it treats them much
+differently.  Whereas in C++ a struct and class are essentially the
+same thing, Shroud treats structs as a C style struct.  They do not
+have associated methods.  This allows them to be mapped to a Fortran
+derived type with the ``bind(C)`` attribute and a Python NumPy array.
 
 .. A struct is defined the same as a class with a *declarations* field
    for struct members.
    In addition, a struct can be defined in a single ``decl`` in the YAML file.
 
 For wrapping purposes, a struct is a C++ class without a vtable. It
-will contain POD types.  Unlike classes where all member functions do
+will contain POD types.  Unlike classes where all member variables do
 not need to be wrapped, a struct should be fully defined. This is
 necessary to allow an array of structs to be created in the wrapper
 language then passed to C++.
@@ -574,6 +574,17 @@ It can also be defined as one decl entry:
               int ifield;
               double dfield;
             };
+
+The ``struct`` statement can can also be used to declare a variable of
+a previously defined structure.  This is required for C but is
+optional for C++ where a ``struct`` statement defines a type.  To
+distinguish a variable declaration from a struct declaration, the
+trailing semicolon is required.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1 var;
+
 
 .. _struct_fortran:
 

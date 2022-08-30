@@ -75,10 +75,6 @@ class CheckImplied(unittest.TestCase):
         generate.check_implied(func, "size(array2,1)", decls)
 
         with self.assertRaises(RuntimeError) as context:
-            generate.check_implied(func, "size(array,n2)", decls)
-        self.assertTrue("Too many arguments" in str(context.exception))
-
-        with self.assertRaises(RuntimeError) as context:
             generate.check_implied(func, "size(unknown)", decls)
         self.assertTrue("Unknown argument" in str(context.exception))
 
