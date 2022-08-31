@@ -26,5 +26,7 @@ enum val {
   h1 = 100,
 };
 
+int convert_to_int(enum Color in);
+
 #endif // ENUM_H
 

@@ -20,6 +20,7 @@ VPATH = \
     $(top)/regression/run/enum-c/python
 
 OBJS = \
+    enum.o \
     pyenummodule.o
 
 LOCAL_CFLAGS += $(SHARED)

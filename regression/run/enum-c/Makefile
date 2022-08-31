@@ -23,7 +23,8 @@ VPATH = \
     $(top)/regression/run/enum-c \
     $(top)/regression/run/fruit
 
-C_OBJS =
+C_OBJS = \
+    enum.o
 F_OBJS = \
     wrapfenum.o \
     fruit.o \

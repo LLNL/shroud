@@ -375,7 +375,12 @@ class Parser(ExprParser):
         params = []
         self.next()  # consume LPAREN peeked at in caller
         while self.token.typ != "RPAREN":
-            node = self.declaration()
+            if self.token.typ == "ENUM":
+                node = self.enum_statement()
+            elif self.token.typ == "STRUCT":
+                node = self.struct_statement()
+            else:
+                node = self.declaration()
             params.append(node)
             if self.have("COMMA"):
                 if self.have("VARARG"):

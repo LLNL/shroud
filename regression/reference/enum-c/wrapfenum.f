@@ -38,6 +38,25 @@ module enum_mod
 
     interface
 
+        ! ----------------------------------------
+        ! Function:  int convert_to_int
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
+        ! Match:     c_function
+        ! ----------------------------------------
+        ! Argument:   in +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_in_native_scalar
+        ! Match:     c_default
+        function convert_to_int(in) &
+                result(SHT_rv) &
+                bind(C, name="convert_to_int")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: in
+            integer(C_INT) :: SHT_rv
+        end function convert_to_int
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

@@ -1384,6 +1384,15 @@ class CheckEnum(unittest.TestCase):
             "enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r)
         )
 
+    def test_enum_var1(self):
+        """declare a enum variable"""
+        library = ast.LibraryNode()
+        library.add_declaration("enum Color{RED=1,BLUE,WHITE}")
+        r = declast.check_decl("enum Color var;")
+        self.assertEqual(
+            "int var", todict.print_node(r)
+        )
+
 
 class CheckStruct(unittest.TestCase):
     def test_struct1(self):

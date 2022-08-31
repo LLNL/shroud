@@ -211,6 +211,176 @@
                 }
             }
         ],
+        "functions": [
+            {
+                "<FUNCTION>": "0 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "convert_to_int",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [],
+                            "typemap_name": "Color"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int convert_to_int(enum Color in)",
+                "declgen": "int convert_to_int( in +value)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "enum Color",
+                            "cxx_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in",
+                            "c_var": "in",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "ctor_expr": "in",
+                            "cxx_addr": "&",
+                            "cxx_decl": "enum Color SH_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "enum Color",
+                            "cxx_val": "(enum Color) in",
+                            "cxx_var": "SH_in",
+                            "data_var": "SHData_in",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_in",
+                            "size_var": "SHSize_in",
+                            "stmt0": "py_in_native_scalar",
+                            "stmt1": "py_default",
+                            "value_var": "SHValue_in"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "in",
+                    "C_name": "convert_to_int",
+                    "C_prototype": "int in",
+                    "C_return_type": "int",
+                    "F_C_arguments": "in",
+                    "F_C_call": "c_convert_to_int",
+                    "F_C_name": "convert_to_int",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "in",
+                    "F_arguments": "in",
+                    "F_name_function": "convert_to_int",
+                    "F_name_generic": "convert_to_int",
+                    "F_name_impl": "convert_to_int",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_convert_to_int",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "convert_to_int",
+                    "underscore_name": "convert_to_int"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_function_native_scalar",
+                        "stmt1": "py_default",
+                        "value_var": "SHValue_rv"
+                    }
+                }
+            }
+        ],
         "language": "c",
         "scope_file": [
             "enum"
