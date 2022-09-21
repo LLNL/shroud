@@ -37,7 +37,7 @@ PyObject *PY_error_obj;
 // Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
-// Argument:   in +value
+// Argument:  enum Color in +value
 // Attrs:     +intent(in)
 // Requested: py_in_native_scalar
 // Match:     py_default

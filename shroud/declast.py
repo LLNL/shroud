@@ -829,7 +829,9 @@ class Parser(ExprParser):
         """Creating an enumeration.
 
         ENUM [ CLASS | STRUCT ] ID {  }
+           Add to typemap table as "enum-{name}"
         ENUM ID
+           Lookup enum in typemap table.
         """
         self.enter("enum_statement")
         self.mustbe("ENUM")
@@ -857,10 +859,11 @@ class Parser(ExprParser):
         else:
             node = Declaration()
             node.declarator = self.declarator()
-            ns = self.namespace.unqualified_lookup(name.value)
-            if ns is None:
+            ntypemap = typemap.lookup_typemap("enum-" + name.value)
+            if ntypemap is None:
                 raise RuntimeError("Enum %s is not defined" % name.value)
-            node.typemap = ns.typemap
+            node.typemap = ntypemap
+            node.specifier.append("enum " + name.value)
         self.exit("enum_statement")#, str(members))
         return node
 
@@ -890,6 +893,7 @@ class Parser(ExprParser):
             if ns is None:
                 raise RuntimeError("Struct %s is not defined" % name.value)
             node.typemap = ns.typemap
+#            node.specifier.append(node.typemap.name)
         self.exit("struct_statement")
         return node
 

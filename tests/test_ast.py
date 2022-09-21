@@ -80,7 +80,7 @@ class Namespace(unittest.TestCase):
         typemap.initialize()
         lib = ast.LibraryNode()
         enum1 = lib.add_enum("enum Enum1 {}")
-        self.assertEqual("Enum1", enum1.typemap.name)
+        self.assertEqual("enum-Enum1", enum1.typemap.name)
         self.assertEqual("Enum1::", enum1.scope)
 
         node = lib.qualified_lookup("Enum1")
@@ -88,7 +88,7 @@ class Namespace(unittest.TestCase):
 
         ns = lib.add_namespace("ns1")
         enum2 = ns.add_enum("enum Enum2 {}")
-        self.assertEqual("ns1::Enum2", enum2.typemap.name)
+        self.assertEqual("enum-ns1::Enum2", enum2.typemap.name)
         self.assertEqual("ns1::Enum2::", enum2.scope)
 
         node = ns.unqualified_lookup("Enum1")
@@ -108,7 +108,7 @@ class Namespace(unittest.TestCase):
         # Add enum to class
         class1 = ns.add_class("Class1")
         enum3 = class1.add_enum("enum Enum3 {}")
-        self.assertEqual("ns1::Class1::Enum3", enum3.typemap.name)
+        self.assertEqual("enum-ns1::Class1::Enum3", enum3.typemap.name)
         self.assertEqual("ns1::Class1::Enum3::", enum3.scope)
         node = class1.qualified_lookup("Enum3")
         self.assertEqual(enum3, node)

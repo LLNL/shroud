@@ -44,7 +44,7 @@ module enum_mod
         ! Requested: c_function_native_scalar
         ! Match:     c_function
         ! ----------------------------------------
-        ! Argument:   in +value
+        ! Argument:  enum Color in +value
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default

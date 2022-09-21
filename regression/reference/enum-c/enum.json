@@ -62,7 +62,7 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
-                "typemap_name": "Color",
+                "typemap_name": "enum-Color",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -197,7 +197,7 @@
                 "decl": "enum val {\n  a1,\n  b1 = 3,\n  c1,\n  d1 = b1 - a1,\n  e1 = d1,\n  f1,\n  g1,\n  h1 = 100,\n};\n",
                 "name": "val",
                 "options": {},
-                "typemap_name": "val",
+                "typemap_name": "enum-val",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -234,8 +234,10 @@
                             "metaattrs": {
                                 "intent": "in"
                             },
-                            "specifier": [],
-                            "typemap_name": "Color"
+                            "specifier": [
+                                "enum Color"
+                            ],
+                            "typemap_name": "enum-Color"
                         }
                     ],
                     "specifier": [
@@ -244,7 +246,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int convert_to_int(enum Color in)",
-                "declgen": "int convert_to_int( in +value)",
+                "declgen": "int convert_to_int(enum Color in +value)",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -389,6 +391,58 @@
             "c": true,
             "fortran": true,
             "python": true
+        }
+    },
+    "types": {
+        "enum-Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "(enum Color) {c_var}",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "(int) {cxx_var}",
+            "cxx_type": "enum Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-val": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "(enum val) {c_var}",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "(int) {cxx_var}",
+            "cxx_type": "enum val",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
         }
     }
 }
