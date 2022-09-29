@@ -48,6 +48,11 @@ class Enum(unittest.TestCase):
         self.assertEqual(5, cenum.g1)
         self.assertEqual(100, cenum.h1)
 
+    def test_convert_to_int(self):
+        icol = cenum.convert_to_int(cenum.RED)
+        self.assertEqual(cenum.RED, icol)
+        
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

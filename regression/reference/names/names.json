@@ -353,7 +353,7 @@
                 "options": {
                     "bar": 4
                 },
-                "typemap_name": "Color",
+                "typemap_name": "enum-Color",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -4307,6 +4307,31 @@
             "wrap_header": [
                 "typestestnames.hh"
             ]
+        },
+        "enum-Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
         },
         "internal::ImplWorker1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

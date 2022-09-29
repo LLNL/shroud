@@ -62,7 +62,7 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
-                "typemap_name": "Color",
+                "typemap_name": "enum-Color",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -197,7 +197,7 @@
                 "decl": "enum val {\n  a1,\n  b1 = 3,\n  c1,\n  d1 = b1 - a1,\n  e1 = d1,\n  f1,\n  g1,\n  h1 = 100,\n};\n",
                 "name": "val",
                 "options": {},
-                "typemap_name": "val",
+                "typemap_name": "enum-val",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -211,6 +211,180 @@
                 }
             }
         ],
+        "functions": [
+            {
+                "<FUNCTION>": "0 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "convert_to_int",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "function"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "enum Color"
+                            ],
+                            "typemap_name": "enum-Color"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int convert_to_int(enum Color in)",
+                "declgen": "int convert_to_int(enum Color in +value)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "cfi_type": "CFI_type_int",
+                            "cxx_addr": "&",
+                            "cxx_decl": "Color SHCXX_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_in",
+                            "cxx_type": "Color",
+                            "cxx_val": "static_cast<Color>(in)",
+                            "cxx_var": "SHCXX_in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_in_native_scalar",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in",
+                            "c_var": "in",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_in_native_scalar",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_in_native_scalar",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "in",
+                            "ctor_expr": "in",
+                            "cxx_addr": "&",
+                            "cxx_decl": "Color SH_in",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in",
+                            "cxx_type": "Color",
+                            "cxx_val": "static_cast<Color>(in)",
+                            "cxx_var": "SH_in",
+                            "data_var": "SHData_in",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_in",
+                            "size_var": "SHSize_in",
+                            "stmt0": "py_in_native_scalar",
+                            "stmt1": "py_default",
+                            "value_var": "SHValue_in"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_in",
+                    "C_name": "ENU_convert_to_int",
+                    "C_prototype": "int in",
+                    "C_return_type": "int",
+                    "F_C_arguments": "in",
+                    "F_C_call": "c_convert_to_int",
+                    "F_C_name": "convert_to_int",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "in",
+                    "F_arguments": "in",
+                    "F_name_function": "convert_to_int",
+                    "F_name_generic": "convert_to_int",
+                    "F_name_impl": "convert_to_int",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_convert_to_int",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "convert_to_int",
+                    "underscore_name": "convert_to_int"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cfi_type": "CFI_type_int",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_function_native_scalar",
+                        "stmt1": "c_function"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_function_native_scalar",
+                        "stmt1": "f_function",
+                        "stmtc0": "c_function_native_scalar",
+                        "stmtc1": "c_function"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_function_native_scalar",
+                        "stmt1": "py_default",
+                        "value_var": "SHValue_rv"
+                    }
+                }
+            }
+        ],
         "language": "cxx",
         "scope_file": [
             "enum"
@@ -219,6 +393,58 @@
             "c": true,
             "fortran": true,
             "python": true
+        }
+    },
+    "types": {
+        "enum-Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-val": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<val>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "val",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
         }
     }
 }

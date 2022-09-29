@@ -40,3 +40,6 @@ declarations:
         g1,
         h1 = 100,
       };
+
+
+- decl: int convert_to_int(enum Color in)

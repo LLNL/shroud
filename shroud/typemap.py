@@ -952,23 +952,41 @@ def create_enum_typemap(node):
     """Create a typemap similar to an int.
     C++ enums are converted to a C int.
 
+    C enums are prefixed with 'enum-' to put them in an enum-only
+    namespace and avoid conflicting with any typedef the user creates.
+    Needed with 'enum <name>'.
+
     Args:
         node - EnumNode instance.
     """
     fmt_enum = node.fmtdict
-    type_name = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
-
+    type_name = util.wformat("enum-{namespace_scope}{enum_name}", fmt_enum)
+        
     ntypemap = lookup_typemap(type_name)
     if ntypemap is None:
-        inttypemap = lookup_typemap("int")
+        language = node.get_language()
+
+        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
         ntypemap = inttypemap.clone_as(type_name)
-        ntypemap.cxx_type = util.wformat(
-            "{namespace_scope}{enum_name}", fmt_enum
-        )
-        ntypemap.c_to_cxx = util.wformat(
-            "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
-        )
-        ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
+#        ntypemap.sgroup = "enum"
+        if language == "c":
+#            ntypemap.c_type = "enum {}".format(fmt_enum.enum_name)
+            ntypemap.c_type = "int"
+            ntypemap.cxx_type = util.wformat(
+                "enum {namespace_scope}{enum_name}", fmt_enum
+            )
+            ntypemap.c_to_cxx = util.wformat(
+                "(enum {namespace_scope}{enum_name}) {{c_var}}", fmt_enum
+            )
+            ntypemap.cxx_to_c = "(int) {cxx_var}"
+        else:
+            ntypemap.cxx_type = util.wformat(
+                "{namespace_scope}{enum_name}", fmt_enum
+            )
+            ntypemap.c_to_cxx = util.wformat(
+                "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
+            )
+            ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
         ntypemap.compute_flat_name()
         register_typemap(type_name, ntypemap)
     return ntypemap
@@ -1280,6 +1298,8 @@ def return_shadow_types():
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in shared_typemaps.items():
-        if ntypemap.sgroup in ["shadow", "struct", "template"]:
+        if ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
+            dct[key] = ntypemap
+        elif ntypemap.name.startswith("enum-"):
             dct[key] = ntypemap
     return dct

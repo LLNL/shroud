@@ -30,7 +30,52 @@
 PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
+
+// ----------------------------------------
+// Function:  int convert_to_int
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
+// Match:     py_default
+// ----------------------------------------
+// Argument:  enum Color in +value
+// Attrs:     +intent(in)
+// Requested: py_in_native_scalar
+// Match:     py_default
+static char PY_convert_to_int__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_convert_to_int(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.convert_to_int
+    int in;
+    const char *SHT_kwlist[] = {
+        "in",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:convert_to_int",
+        const_cast<char **>(SHT_kwlist), &in))
+        return nullptr;
+
+    // post_declare
+    Color SH_in = static_cast<Color>(in);
+
+    int SHCXX_rv = convert_to_int(SH_in);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.convert_to_int
+}
 static PyMethodDef PY_methods[] = {
+{"convert_to_int", (PyCFunction)PY_convert_to_int,
+    METH_VARARGS|METH_KEYWORDS, PY_convert_to_int__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

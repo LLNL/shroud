@@ -47,6 +47,8 @@ enum ENU_val {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+int ENU_convert_to_int(int in);
+
 #ifdef __cplusplus
 }
 #endif

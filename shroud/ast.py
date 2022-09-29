@@ -102,6 +102,10 @@ class AstNode(object):
         """Return top of AST tree."""
         return self.parent.get_LibraryNode()
 
+    def get_language(self):
+        """Return language of library: c or c++"""
+        return self.get_LibraryNode().language
+
     def find_header(self):
         """Return most recent cxx_header.
         Return list of headers to preserve order.
@@ -238,10 +242,13 @@ class NamespaceMixin(object):
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
+
+        Add as a type for C++ but not C.
         """
         node = EnumNode(decl, parent=self, ast=ast, **kwargs)
         self.enums.append(node)
-        self.symbols[node.name] = node
+        if self.get_language() == "cxx":
+            self.symbols[node.name] = node
         return node
 
     def add_function(self, decl, ast=None, **kwargs):
@@ -288,8 +295,7 @@ class NamespaceMixin(object):
         """Add a struct.
 
         A struct is exactly like a class to the C++ compiler.  From
-        the YAML, a struct may be a single ast and a class is broken
-        into parts.
+        the YAML, a struct may be a single ast or broken into parts.
 
         - decl: struct Cstruct1 {
                   int ifield;

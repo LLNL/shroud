@@ -160,7 +160,7 @@
                         "decl": "enum Color {\n  RED = 40,\n  BLUE,\n  WHITE\n};\n",
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "Class1::Color",
+                        "typemap_name": "enum-Class1::Color",
                         "wrap": {
                             "c": true,
                             "fortran": true
@@ -252,7 +252,7 @@
                         "decl": "enum Color {\n  RED = 50,\n  BLUE,\n  WHITE\n};\n",
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "Class2::Color",
+                        "typemap_name": "enum-Class2::Color",
                         "wrap": {
                             "c": true,
                             "fortran": true
@@ -350,7 +350,7 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
-                "typemap_name": "Color",
+                "typemap_name": "enum-Color",
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -411,7 +411,7 @@
                 "decl": "enum Color {\n  RED = 70,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
-                "typemap_name": "ns3::Color",
+                "typemap_name": "enum-ns3::Color",
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -479,7 +479,7 @@
                 "decl": "enum class ColorEnum {\n  RED = 60,\n  BLUE,\n  WHITE,\n};\n",
                 "name": "ColorEnum",
                 "options": {},
-                "typemap_name": "ColorEnum",
+                "typemap_name": "enum-ColorEnum",
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -1057,7 +1057,7 @@
                         "decl": "enum Color {\n  RED = 20,\n  BLUE,\n  WHITE\n};\n",
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "ns1::Color",
+                        "typemap_name": "enum-ns1::Color",
                         "wrap": {
                             "c": true,
                             "fortran": true
@@ -1661,7 +1661,7 @@
                         "decl": "enum Color {\n  RED = 30,\n  BLUE,\n  WHITE\n};\n",
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "ns2::Color",
+                        "typemap_name": "enum-ns2::Color",
                         "wrap": {
                             "c": true,
                             "fortran": true
@@ -2192,6 +2192,181 @@
             "wrap_header": [
                 "typesscope.h"
             ]
+        },
+        "enum-Class1::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<Class1::Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "Class1::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-Class2::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<Class2::Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "Class2::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-ColorEnum": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<ColorEnum>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "ColorEnum",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-ns1::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<ns1::Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "ns1::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-ns2::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<ns2::Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "ns2::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
+        },
+        "enum-ns3::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<ns3::Color>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "ns3::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
         },
         "ns1::DataPointer": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
