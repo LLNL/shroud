@@ -41,6 +41,8 @@ This is used to generalize operations for several types.
 The base types that Shroud uses are **bool**, **integer**, **real**,
 **string**, **vector**, **struct** or **shadow**.
 
+.. **template**
+
 cpp_if
 ^^^^^^
 

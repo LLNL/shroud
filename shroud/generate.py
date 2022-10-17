@@ -672,7 +672,7 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
-        whelpers.add_all_helpers()
+        whelpers.add_all_helpers(newlibrary.symtab)
 
         self.function_index = newlibrary.function_index
         self.class_map = newlibrary.class_map
@@ -704,8 +704,7 @@ class GenFunctions(object):
         """
         newscope = util.Scope(self.instantiate_scope)
         for idx, argast in enumerate(targs.asts):
-            scope = getattr(node, "scope", "")  # XXX - ClassNode has scope
-            setattr(newscope, scope + node.template_parameters[idx], argast)
+            setattr(newscope, node.template_parameters[idx], argast)
         self.instantiate_scope = newscope
 
     def pop_instantiate_scope(self):
@@ -1048,7 +1047,8 @@ class GenFunctions(object):
         cls : ast.ClassNode
         """
         if cls.typemap.flat_name in self.class_map:
-            raise RuntimeError("process_class: class already exists in class_map")
+            raise RuntimeError("process_class: class {} already exists in class_map"
+                               .format(cls.typemap.flat_name))
         self.class_map[cls.typemap.flat_name] = cls
         for var in cls.variables:
             self.add_var_getter_setter(parent, cls, var)
@@ -1242,8 +1242,8 @@ class GenFunctions(object):
 
             self.push_instantiate_scope(new, targs)
 
-            if new.ast.typemap.base == "template":
-                iast = getattr(self.instantiate_scope, new.ast.typemap.name)
+            if new.ast.template_argument:
+                iast = getattr(self.instantiate_scope, new.ast.template_argument)
                 new.ast = new.ast.instantiate(node.ast.instantiate(iast))
                 # Generics cannot differentiate on return type
                 new.options.F_create_generic = False
@@ -1252,8 +1252,8 @@ class GenFunctions(object):
             # arg - declast.Declaration
             newparams = []
             for arg in new.ast.params:
-                if arg.typemap.base == "template":
-                    iast = getattr(self.instantiate_scope, arg.typemap.name)
+                if arg.template_argument:
+                    iast = getattr(self.instantiate_scope, arg.template_argument)
                     newparams.append(arg.instantiate(iast))
                 else:
                     newparams.append(arg)
@@ -1299,8 +1299,8 @@ class GenFunctions(object):
 
         #        self.push_instantiate_scope(new, targs)
 
-        if new.ast.typemap.base == "template":
-            iast = getattr(self.instantiate_scope, new.ast.typemap.name)
+        if new.ast.template_argument:
+            iast = getattr(self.instantiate_scope, new.ast.template_argument)
             new.ast = new.ast.instantiate(node.ast.instantiate(iast))
             # Generics cannot differentiate on return type
             new.options.F_create_generic = False
@@ -1308,8 +1308,8 @@ class GenFunctions(object):
         # Replace templated arguments.
         newparams = []
         for arg in new.ast.params:
-            if arg.typemap.base == "template":
-                iast = getattr(self.instantiate_scope, arg.typemap.name)
+            if arg.template_argument:
+                iast = getattr(self.instantiate_scope, arg.template_argument)
                 newparams.append(arg.instantiate(iast))
             else:
                 newparams.append(arg)

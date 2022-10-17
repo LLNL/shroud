@@ -247,6 +247,14 @@
         }
     },
     "types": {
+        "--template-parameter--": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
+        },
         "MPI_Comm": {
             "c_header": [
                 "mpi.h"

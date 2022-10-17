@@ -79,7 +79,7 @@
                                     "specifier": [
                                         "T"
                                     ],
-                                    "typemap_name": "user::T"
+                                    "template_argument": "T"
                                 },
                                 {
                                     "attrs": {
@@ -95,7 +95,7 @@
                                     "specifier": [
                                         "U"
                                     ],
-                                    "typemap_name": "U"
+                                    "template_argument": "U"
                                 }
                             ],
                             "specifier": [
@@ -164,6 +164,7 @@
                                     "specifier": [
                                         "int"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "int"
                                 },
                                 {
@@ -180,6 +181,7 @@
                                     "specifier": [
                                         "double"
                                     ],
+                                    "template_argument": "U",
                                     "typemap_name": "double"
                                 }
                             ],
@@ -699,7 +701,7 @@
                                     "specifier": [
                                         "T"
                                     ],
-                                    "typemap_name": "structAsClass::T"
+                                    "template_argument": "T"
                                 }
                             ],
                             "specifier": [
@@ -746,6 +748,7 @@
                                     "specifier": [
                                         "int"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "int"
                                 }
                             ],
@@ -839,7 +842,7 @@
                             "specifier": [
                                 "T"
                             ],
-                            "typemap_name": "structAsClass::T"
+                            "template_argument": "T"
                         },
                         "decl": "T get_value()",
                         "declgen": "T get_value(void)",
@@ -869,6 +872,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "int"
                         },
                         "decl": "T get_value()",
@@ -1294,7 +1298,7 @@
                                     "specifier": [
                                         "T"
                                     ],
-                                    "typemap_name": "structAsClass::T"
+                                    "template_argument": "T"
                                 }
                             ],
                             "specifier": [
@@ -1341,6 +1345,7 @@
                                     "specifier": [
                                         "double"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "double"
                                 }
                             ],
@@ -1434,7 +1439,7 @@
                             "specifier": [
                                 "T"
                             ],
-                            "typemap_name": "structAsClass::T"
+                            "template_argument": "T"
                         },
                         "decl": "T get_value()",
                         "declgen": "T get_value(void)",
@@ -1464,6 +1469,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "double"
                         },
                         "decl": "T get_value()",
@@ -1724,7 +1730,7 @@
                             "specifier": [
                                 "T"
                             ],
-                            "typemap_name": "T"
+                            "template_argument": "T"
                         },
                         {
                             "attrs": {
@@ -1740,7 +1746,7 @@
                             "specifier": [
                                 "U"
                             ],
-                            "typemap_name": "U"
+                            "template_argument": "U"
                         }
                     ],
                     "specifier": [
@@ -1837,6 +1843,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "int"
                         },
                         {
@@ -1853,6 +1860,7 @@
                             "specifier": [
                                 "long"
                             ],
+                            "template_argument": "U",
                             "typemap_name": "long"
                         }
                     ],
@@ -2076,6 +2084,7 @@
                             "specifier": [
                                 "float"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "float"
                         },
                         {
@@ -2092,6 +2101,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "template_argument": "U",
                             "typemap_name": "double"
                         }
                     ],
@@ -2832,7 +2842,7 @@
                                             "specifier": [
                                                 "T"
                                             ],
-                                            "typemap_name": "std::vector::T"
+                                            "template_argument": "T"
                                         }
                                     ],
                                     "specifier": [
@@ -2884,6 +2894,7 @@
                                             "specifier": [
                                                 "int"
                                             ],
+                                            "template_argument": "T",
                                             "typemap_name": "int"
                                         }
                                     ],
@@ -3021,7 +3032,7 @@
                                     "specifier": [
                                         "T"
                                     ],
-                                    "typemap_name": "std::vector::T"
+                                    "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
                                 "declgen": "T & at(size_type n +value)",
@@ -3075,6 +3086,7 @@
                                     "specifier": [
                                         "int"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
@@ -3255,6 +3267,7 @@
                                     "specifier": [
                                         "int"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
@@ -3617,7 +3630,7 @@
                                             "specifier": [
                                                 "T"
                                             ],
-                                            "typemap_name": "std::vector::T"
+                                            "template_argument": "T"
                                         }
                                     ],
                                     "specifier": [
@@ -3669,6 +3682,7 @@
                                             "specifier": [
                                                 "double"
                                             ],
+                                            "template_argument": "T",
                                             "typemap_name": "double"
                                         }
                                     ],
@@ -3806,7 +3820,7 @@
                                     "specifier": [
                                         "T"
                                     ],
-                                    "typemap_name": "std::vector::T"
+                                    "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
                                 "declgen": "T & at(size_type n +value)",
@@ -3860,6 +3874,7 @@
                                     "specifier": [
                                         "double"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
@@ -4040,6 +4055,7 @@
                                     "specifier": [
                                         "double"
                                     ],
+                                    "template_argument": "T",
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
@@ -4522,14 +4538,6 @@
                 "typestemplates.h"
             ]
         },
-        "std::vector::T": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
-        },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4657,14 +4665,6 @@
                 "typestemplates.h"
             ]
         },
-        "structAsClass::T": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
-        },
         "structAsClass_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4780,14 +4780,6 @@
             "wrap_header": [
                 "typestemplates.h"
             ]
-        },
-        "user::T": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
         },
         "user_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

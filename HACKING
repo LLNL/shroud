@@ -165,3 +165,6 @@ pp.pprint( dict or tuple )
 ```
 
 import pdb; pdb.set_trace()
+
+% yes c | python ... >&! out
+Answer 'c' to all pdb prompts.

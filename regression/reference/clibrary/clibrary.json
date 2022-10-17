@@ -6086,7 +6086,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "TypeID"
                 },
                 "name": "TypeID",
                 "options": {},
@@ -6110,7 +6110,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "EnumTypeID"
                 },
                 "name": "EnumTypeID",
                 "options": {},

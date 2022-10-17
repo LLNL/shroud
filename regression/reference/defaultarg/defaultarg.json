@@ -2125,7 +2125,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "TypeID"
                 },
                 "name": "TypeID",
                 "options": {},

@@ -121,59 +121,46 @@ class AstNode(object):
         # only FunctionNode may have args
         return False
 
-
     def qualified_lookup(self, name):
-        """Look for symbols within a scope.
-
-        A qualified name is a name that appears on the right hand side
-        of the scope resulution operator '::'.  A qualified name may
-        refer to a
-        * class member
-        * namespace member
-        * enumerator
-        """
-        raise NotImplemented  # virtual function
+        """Look for symbols within this AstNode."""
+        return self.ast.qualified_lookup(name)
 
     def unqualified_lookup(self, name):
-        """Look for symbols within a scope.
-
-        An unqualified lookup is a name that does not appear to the
-        right of a scope resolution operator '::'.  This is the current
-        scope, self.symbols, and any scopes added via a 'using' statement.
-        """
-        raise NotImplemented  # virtual function
-
+        """Look for symbols within the Abstract Syntax Tree
+        and its parents."""
+        return self.ast.unqualified_lookup(name)
 
 ######################################################################
 
-
 class NamespaceMixin(object):
-    def add_class(self, name, base=[], template_parameters=None, **kwargs):
+    def add_class(self, decl, ast=None, base=[], template_parameters=None, **kwargs):
         """Add a class.
 
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
 
         Args:
-            name -
+            decl - str declaration ex. 'class cname'
+            ast  - ast.Node of decl
             base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
         """
         node = ClassNode(
-            name, self, base, template_parameters=template_parameters, **kwargs
+            decl, self, ast, base, template_parameters=template_parameters, **kwargs
         )
         self.classes.append(node)
-        self.symbols[name] = node
         return node
 
     def add_declaration(self, decl, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
 
+        Called while reading YAML file.
+
         kwargs -
            cxx_template -
         """
         # parse declaration to find out what it is.
-        fullast = declast.check_decl(decl, namespace=self)
+        fullast = declast.check_decl(decl, self.symtab)
         template_parameters = []
         if isinstance(fullast, declast.Template):
             # Create list of template parameter names
@@ -194,14 +181,20 @@ class NamespaceMixin(object):
         elif isinstance(ast, declast.CXXClass):
             # A Class may already be forward defined.
             # If so, just return it.
-            node = self.symbols.get(ast.name, None)
-            if not node:
+            nodes = [cls for cls in self.classes if cls.name == ast.name]
+            if not nodes:
                 node = self.add_class(
-                    ast.name, base=ast.baseclass,
+                    decl, ast, base=ast.baseclass,
                     template_parameters=template_parameters, **kwargs
                 )
+            else:
+                if len(nodes) != 1:
+                    raise RuntimeError(
+                        "internal: too many nodes with the same name {}"
+                        .format(ast.name))
+                node = nodes[0]
         elif isinstance(ast, declast.Namespace):
-            node = self.add_namespace(ast.name, **kwargs)
+            node = self.add_namespace(decl, ast, **kwargs)
         elif isinstance(ast, declast.Enum):
             node = self.add_enum(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.Struct):
@@ -215,31 +208,6 @@ class NamespaceMixin(object):
             )
         return node
 
-    def create_typedef_typemap(self, node, fields=None):
-        """Create a typemap from a Declarator.
-
-        For simple aliases, clone the original typemap and update fields.
-        """
-        ast = node.ast
-        if ast.declarator.pointer:
-            # typedef int *foo;
-            raise NotImplementedError("Pointers not supported in typedef")
-        elif ast.declarator.func:
-            # typedef int (*incr_type)(int);
-            ntypemap = typemap.create_fcnptr_typemap(node, fields)
-        else:
-            # typedef int TypeID;
-            key = ast.declarator.name
-            orig = ast.typemap
-            ntypemap = orig.clone_as(self.scope + key)
-            ntypemap.typedef = orig.name
-            ntypemap.cxx_type = ntypemap.name
-            ntypemap.compute_flat_name()
-            if fields:
-                ntypemap.update(fields)
-            typemap.register_typemap(ntypemap.name, ntypemap)
-        return ntypemap
-
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
 
@@ -247,8 +215,6 @@ class NamespaceMixin(object):
         """
         node = EnumNode(decl, parent=self, ast=ast, **kwargs)
         self.enums.append(node)
-        if self.get_language() == "cxx":
-            self.symbols[node.name] = node
         return node
 
     def add_function(self, decl, ast=None, **kwargs):
@@ -261,35 +227,19 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, name, expose=True, **kwargs):
+    def add_namespace(self, decl, ast=None, expose=True, **kwargs):
         """Add a namespace.
 
         Args:
-            name - name of namespace
+            decl - str declaration ex. 'namespace name'
+            ast - declast.Node.  None for non-parsed namescopes like std.
             expose - If True, will be wrapped.
                      Otherwise, only used for lookup while parsing.
         """
-        node = NamespaceNode(name, parent=self, **kwargs)
-        self.symbols[name] = node
+        node = NamespaceNode(decl, parent=self, ast=ast, **kwargs)
         if not node.options.flatten_namespace and expose:
             self.namespaces.append(node)
         return node
-
-    def add_namespaces(self, names, expose=True):
-        """Create nested namespaces from list of names.
-
-        Args:
-            name - list of names for namespaces.
-            expose - If True, will be wrapped.
-                     Otherwise, only used for lookup while parsing.
-        """
-        ns = self
-        for name in names:
-            if name in ns.symbols:
-                ns = ns.symbols[name]
-            else:
-                ns = ns.add_namespace(name, expose)
-        return ns
 
     def add_struct(self, decl, ast=None, template_parameters=None, **kwargs):
         """Add a struct.
@@ -307,37 +257,32 @@ class NamespaceMixin(object):
           - decl: const double *const_dvalue;
         """
         if ast is None:
-            ast = declast.check_decl(decl, namespace=self)
+            ast = declast.check_decl(decl, self.symtab)
         name = ast.name
         # XXX - base=... for inheritance
-        node = ClassNode(name, self, parse_keyword="struct",
+        node = ClassNode(name, self, parse_keyword="struct", ast=ast,
                          template_parameters=template_parameters, **kwargs)
         for member in ast.members:
             node.add_variable(str(member), member)
         self.classes.append(node)
-        self.symbols[node.name] = node
         return node
 
-    def add_typedef(self, decl, ast=None, **kwargs):
-        """Add a TypedefNode to the symbol table.
+    def add_typedef(self, decl, ast=None, fields=None, **kwargs):
+        """Add a TypedefNode to the typedefs list.
+
+        This may be the YAML file as a typemap which may have 'fields',
+        or a decl with a typemap.
         """
         if ast is None:
-            ast = declast.check_decl(decl, namespace=self)
+            ast = declast.check_decl(decl, self.symtab)
 
         name = ast.get_name()  # Local name.
         node = TypedefNode(name, parent=self, ast=ast)
-        node.typemap = self.create_typedef_typemap(node, fields=kwargs.get("fields", None))
+        # See enum GGG
+        node.typemap = ast.typemap
+        if fields:
+            node.typemap.update(fields)
         self.typedefs.append(node)
-        self.symbols[name] = node
-        return node
-
-    def add_typedef_by_name(self, name, ntypemap=None):
-        """Add a type name to the symbol table to enable parsing.
-        Used by names which are in typemap.shared_typemap.
-        Also used with generated typemaps for template parameters.
-        """
-        node = TypedefNode(name, parent=self, ntypemap=ntypemap)
-        self.symbols[name] = node
         return node
 
     def add_variable(self, decl, ast=None, **kwargs):
@@ -369,6 +314,7 @@ class LibraryNode(AstNode, NamespaceMixin):
     """
     def __init__(
         self,
+        symtab=None,
         cxx_header="",
         fortran_header="",
         namespace=None,
@@ -379,6 +325,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         **kwargs
     ):
         """Create LibraryNode.
+        Represents the global namespace.
 
         cxx_header = blank delimited list of headers for C++ or C library.
 
@@ -392,10 +339,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         wrap_namespace - Node to start wrapping.  This is the current node but 
             will be changed if the top level "namespace" variable is set.
-
-        symbols - used to look up symbols in nametable.  This includes items which
-            are not wrapped such as the std namespace and types from other files.
-
         """
         # From arguments
         self.parent = None
@@ -403,7 +346,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.fortran_header = fortran_header.split()
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
-            raise RuntimeError("language must be 'c' or 'c++'")
+            raise RuntimeError("language must be 'c' or 'c++', found {}"
+                               .format(self.language))
         if self.language == "c++":
             # Use a form which can be used as a variable name
             self.language = "cxx"
@@ -427,8 +371,6 @@ class LibraryNode(AstNode, NamespaceMixin):
         # namespace
         self.scope = ""
         self.scope_file = [library]
-        self.symbols = {}
-        self.using = []
 
         self.options = self.default_options()
         if options:
@@ -456,23 +398,24 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.default_format(format, kwargs)
 
+        # Create a symbol table and a 'fake' AST node for global.
+        self.symtab = symtab or declast.SymbolTable()
+        self.symtab.create_std_names()  # size_t et al.
+
+        if self.language == "cxx":
+            self.symtab.create_std_namespace()
+            self.symtab.using_directive("std")
+
         # Create default namespace
         if namespace:
             ns = self
             for name in namespace.split():
-                ns = ns.add_namespace(name, skip=True)
+                ns = ns.add_namespace("namespace " + name, skip=True)
             # Any namespaces listed in the "namespace" field are not wrapped.
             self.wrap_namespace = ns
 
-        declast.global_namespace = self
-        self.create_std_names()
-        if self.language == "cxx":
-            create_std_namespace(self)  # add 'std::' to library
-            self.using_directive("std")
+        self.ast = self.symtab.current  # declast.Global
 
-        # Create typemaps once.
-        if not typemap.get_global_typemaps():
-            typemap.initialize()
         statements.update_statements_for_language(self.language)
 
         self.setup = kwargs.get("setup", {}) # for setup.py
@@ -480,65 +423,6 @@ class LibraryNode(AstNode, NamespaceMixin):
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self
-
-    # # # # # namespace behavior
-
-    def create_std_names(self):
-        """Add standard types to the Library."""
-        self.add_typedef_by_name("size_t")
-        self.add_typedef_by_name("int8_t")
-        self.add_typedef_by_name("int16_t")
-        self.add_typedef_by_name("int32_t")
-        self.add_typedef_by_name("int64_t")
-        self.add_typedef_by_name("uint8_t")
-        self.add_typedef_by_name("uint16_t")
-        self.add_typedef_by_name("uint32_t")
-        self.add_typedef_by_name("uint64_t")
-        self.add_typedef_by_name("MPI_Comm")
-
-    def qualified_lookup(self, name):
-        """Look for symbols within class.
-        """
-        return self.symbols.get(name, None)
-
-    def unqualified_lookup(self, name):
-        """Look for symbols within library (global namespace). """
-        if name in self.symbols:
-            return self.symbols[name]
-        for ns in self.using:
-            item = ns.qualified_lookup(name)
-            if item is not None:
-                return item
-        return None
-
-    def using_directive(self, name):
-        """Implement 'using namespace <name>'
-        """
-        ns = self.unqualified_lookup(name)
-        if ns is None:
-            raise RuntimeError("{} not found in namespace".format(name))
-        if ns not in self.using:
-            self.using.append(ns)
-
-    def add_shadow_typemap(self, ntypemap):
-        """Add a shadow or struct typemap into the symbol table.
-        ntypemap is created by create_class_typemap_from_fields
-        using data from the YAML file.
-        Adding to the symbol table allows it to be parsed.
-
-        cxx_name is always fully qualified (namespace1::namespace2::class)
-        Parameters
-        ----------
-        ntypemap : typemap.Typemap
-        """
-        # assert ntypemap.base in ['shadow', 'struct']
-        names = ntypemap.name.split("::")
-        cxx_name = names.pop()
-        ns = self.add_namespaces(names, expose=False)
-
-        node = ClassNode(cxx_name, ns, ntypemap=ntypemap)
-        # node is not added to self.classes
-        ns.symbols[cxx_name] = node
 
     #####
 
@@ -976,6 +860,7 @@ class BlockNode(AstNode, NamespaceMixin):
     def __init__(self, parent, format=None, options=None, **kwargs):
         # From arguments
         self.parent = parent
+        self.symtab = parent.symtab
 
         self.classes = parent.classes
         self.enums = parent.enums
@@ -985,7 +870,6 @@ class BlockNode(AstNode, NamespaceMixin):
         self.variables = parent.variables
         self.scope = parent.scope
         self.scope_file = parent.scope_file
-        self.symbols = parent.symbols
         self.cxx_header = parent.cxx_header
 
         self.options = util.Scope(parent=parent.options)
@@ -996,16 +880,12 @@ class BlockNode(AstNode, NamespaceMixin):
         if format:
             self.fmtdict.update(format, replace=True)
 
-    def unqualified_lookup(self, name):
-        """Look for symbols within parent. """
-        return self.parent.unqualified_lookup(name)
-
 
 ######################################################################
 
 
 class NamespaceNode(AstNode, NamespaceMixin):
-    def __init__(self, name, parent, cxx_header="",
+    def __init__(self, decl, parent, ast=None, cxx_header="",
                  format=None, options=None, skip=False, **kwargs):
         """Create NamespaceNode.
 
@@ -1017,11 +897,21 @@ class NamespaceNode(AstNode, NamespaceMixin):
                    within a declaration.
         """
         # From arguments
-        self.name = name
         self.parent = parent
+        self.symtab = parent.symtab
         self.cxx_header = cxx_header.split()
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
+
+        if not decl:
+            raise RuntimeError("NamespaceNode missing decl");
+        self.decl = decl
+        if ast is None:
+            ast = declast.check_decl(decl, parent.symtab)
+        if not isinstance(ast, declast.Namespace):
+            raise RuntimeError("namespace decl is not a Namespace Node")
+        self.ast = ast
+        self.name = ast.name
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -1047,43 +937,14 @@ class NamespaceNode(AstNode, NamespaceMixin):
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
 
-        # add to symbol table
+        # Create scope
         self.scope = self.parent.scope + self.name + "::"
         if skip:
             self.scope_file = self.parent.scope_file
         else:
             self.scope_file = self.parent.scope_file + [self.name]
-        self.symbols = {}
-        self.using = []
 
         self.default_format(parent, format, skip)
-
-    # # # # # namespace behavior
-
-    def qualified_lookup(self, name):
-        """Look for symbols within class.
-        -- Only enums
-        """
-        return self.symbols.get(name, None)
-
-    def unqualified_lookup(self, name):
-        """Look for symbols within library (global namespace)."""
-        if name in self.symbols:
-            return self.symbols[name]
-        for ns in self.using:
-            item = ns.unqualified_lookup(name)
-            if item is not None:
-                return item
-        return self.parent.unqualified_lookup(name)
-
-    def using_directive(self, name):
-        """Implement 'using namespace <name>'
-        """
-        ns = self.unqualified_lookup(name)
-        if ns is None:
-            raise RuntimeError("{} not found in namespace".format(name))
-        if ns not in self.using:
-            self.using.append(ns)
 
     #####
 
@@ -1152,8 +1013,9 @@ class ClassNode(AstNode, NamespaceMixin):
 
     def __init__(
         self,
-        name,
+        decl,
         parent,
+        ast=None,
         base=[],
         cxx_header="",
         format=None,
@@ -1168,7 +1030,6 @@ class ClassNode(AstNode, NamespaceMixin):
 
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
-        Added to symbol table.
 
         cxx_template - list of TemplateArgument instances
 
@@ -1177,8 +1038,8 @@ class ClassNode(AstNode, NamespaceMixin):
             parse_keyword - keyword from decl - "class" or "struct".
         """
         # From arguments
-        self.name = name
         self.parent = parent
+        self.symtab = parent.symtab
         self.baseclass = base
         self.parse_keyword = parse_keyword
         self.cxx_header = cxx_header.split()
@@ -1199,13 +1060,21 @@ class ClassNode(AstNode, NamespaceMixin):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
+        if not decl:
+            raise RuntimeError("ClassNode missing decl");
+        self.decl = decl
+        if ast is None:
+            ast = declast.check_decl(decl, parent.symtab)
+        self.ast = ast
+        if not (isinstance(ast, declast.CXXClass)
+                or isinstance(ast, declast.Struct)):
+            raise RuntimeError("class decl is not a CXXClass or Struct Node")
+        self.name = ast.name
+
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
 
         self.default_format(parent, format, kwargs)
-
-        # Add to namespace.
-        self.symbols = {}
 
         fields = kwargs.get("fields", None)
         if fields is not None:
@@ -1221,10 +1090,15 @@ class ClassNode(AstNode, NamespaceMixin):
         if ntypemap is not None:
             # From YAML typemap
             self.typemap = ntypemap
+            if ast:
+                # GGG no ast for typemaps from YAML
+                ast.typemap = ntypemap # GGG
         elif self.wrap_as == "struct":
-            self.typemap = typemap.create_struct_typemap(self, fields)
+            self.typemap = ast.typemap
+            typemap.fill_struct_typemap(self, fields)
         elif self.wrap_as == "class":
-            self.typemap = typemap.create_class_typemap(self, fields)
+            self.typemap = ast.typemap
+            typemap.fill_class_typemap(self, fields)
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
             # when in the format dictionary is passed in.
@@ -1234,9 +1108,7 @@ class ClassNode(AstNode, NamespaceMixin):
         if template_parameters is None:
             self.template_parameters = []
         else:
-            self.template_parameters = template_parameters
-            for param_name in template_parameters:
-                self.create_template_parameter_typemap(param_name)
+            self.template_parameters = template_parameters  # GGG _name
 
         # Parse the instantiations.
         # cxx_template = [ TemplateArgument('<int>'),
@@ -1244,51 +1116,9 @@ class ClassNode(AstNode, NamespaceMixin):
         cxx_template = kwargs.get("cxx_template", [])
         self.template_arguments = cxx_template
         for args in cxx_template:
-            args.parse_instantiation(namespace=self)
+            args.parse_instantiation(self.symtab)
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
-
-    # # # # # namespace behavior
-
-    def create_template_parameter_typemap(self, name):
-        """Create a typemap for a template parameter.
-        Use base='template'.
-
-        The real type will be used during template instantiation.
-
-        Ex: template<T> class A
-          fullname = A::T
-
-        Parameters
-        ----------
-        name : str
-           Template parameters name (ex. "T").
-        """
-        fullname = self.scope + name
-        ntypemap = typemap.Typemap(
-            fullname,
-            base="template",
-            sgroup="template",
-            c_type="c_T",
-            cxx_type="cxx_T",
-            f_type="f_T",
-        )
-        typemap.register_typemap(ntypemap.name, ntypemap)
-
-        self.add_typedef_by_name(name, ntypemap=ntypemap)
-
-    def qualified_lookup(self, name):
-        """Look for symbols within class.
-        -- Only enums
-        """
-        return self.symbols.get(name, None)
-
-    def unqualified_lookup(self, name):
-        """Look for name in class or its parents.
-        Nested classes, namespaces, or library."""
-        if name in self.symbols:
-            return self.symbols[name]
-        return self.parent.unqualified_lookup(name)
 
     #####
 
@@ -1486,6 +1316,7 @@ class FunctionNode(AstNode):
         ast - None, declast.Declaration, declast.Template
         """
         self.parent = parent
+        self.symtab = parent.symtab
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
@@ -1539,7 +1370,7 @@ class FunctionNode(AstNode):
 
         self.decl = decl
         if ast is None:
-            ast = declast.check_decl(decl, namespace=parent)
+            ast = declast.check_decl(decl, parent.symtab)
         if isinstance(ast, declast.Template):
             for param in ast.parameters:
                 self.template_parameters.append(param.name)
@@ -1547,7 +1378,7 @@ class FunctionNode(AstNode):
             template_parameters = ast
             ast = ast.decl
             for args in self.template_arguments:
-                args.parse_instantiation(namespace=self)
+                args.parse_instantiation(self.symtab)
 
             # XXX - convert to cxx_template format  { T=['int', 'double'] }
             # XXX - only deals with single template argument  [0]?
@@ -1578,7 +1409,7 @@ class FunctionNode(AstNode):
         # Compute full param list for each generic specification
         # by copying original params then substituting decls from fortran_generic.
         for generic in self.fortran_generic:
-            generic.parse_generic(namespace=self)
+            generic.parse_generic(self.symtab)
             newdecls = copy.deepcopy(ast.params)
             for garg in generic.decls:
                 i = declast.find_arg_index_by_name(newdecls, garg.name)
@@ -1677,10 +1508,6 @@ class FunctionNode(AstNode):
 
         return new
 
-    def unqualified_lookup(self, name):
-        """Look for symbols within parent. """
-        return self.parent.unqualified_lookup(name)
-
     def may_have_args(self):
         # only FunctionNode may have args
         return True
@@ -1713,6 +1540,7 @@ class EnumNode(AstNode):
 
         # From arguments
         self.parent = parent
+        self.symtab = parent.symtab
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
@@ -1728,7 +1556,7 @@ class EnumNode(AstNode):
 
         self.decl = decl
         if ast is None:
-            ast = declast.check_decl(decl)
+            ast = declast.check_decl(decl, self.symtab)
         if not isinstance(ast, declast.Enum):
             raise RuntimeError("Declaration is not an enumeration: " + decl)
         self.ast = ast
@@ -1806,7 +1634,8 @@ class EnumNode(AstNode):
 
         # Add to namespace
         self.scope = self.parent.scope + self.name + "::"
-        self.typemap = typemap.create_enum_typemap(self)
+        self.typemap = ast.typemap
+        typemap.fill_enum_typemap(self)
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1850,7 +1679,7 @@ class TypedefNode(AstNode):
         # Add to namespace
         if ntypemap is None:
             typename = self.parent.scope + self.name
-            self.typemap = typemap.lookup_typemap(typename)
+            self.typemap = parent.symtab.lookup_typemap(typename)
         else:
             self.typemap = ntypemap
 
@@ -1879,6 +1708,7 @@ class VariableNode(AstNode):
 
         # From arguments
         self.parent = parent
+        self.symtab = parent.symtab
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent=parent.options)
@@ -1894,8 +1724,9 @@ class VariableNode(AstNode):
 
         self.decl = decl
         if ast is None:
-            ast = declast.check_decl(decl)
+            ast = declast.check_decl(decl, self.symtab)
         if not isinstance(ast, declast.Declaration):
+            # GGG - only declarations in stucts?
             raise RuntimeError("Declaration is not a structure: " + decl)
         if ast.params is not None:
             # 'void foo()' instead of 'void foo'
@@ -1939,9 +1770,9 @@ class TemplateArgument(object):
         self.options = options
         self.asts = None
 
-    def parse_instantiation(self, namespace):
+    def parse_instantiation(self, symtab):
         """Parse instantiation (ex. <int>) and set list of Declarations."""
-        parser = declast.Parser(self.instantiation, namespace)
+        parser = declast.Parser(self.instantiation, symtab)
         self.asts = parser.template_argument_list()
 
 
@@ -1965,27 +1796,14 @@ class FortranGeneric(object):
         self.linenumber = linenumber
         self.decls = decls
 
-    def parse_generic(self, namespace):
-        """Parse argument list (ex. int arg1, float *arg2) and set list of Declarations."""
-        parser = declast.Parser(self.generic, namespace)
+    def parse_generic(self, symtab):
+        """Parse argument list (ex. int arg1, float *arg2)
+        and set list of Declarations."""
+        parser = declast.Parser(self.generic, symtab)
         self.decls = parser.parameter_list()
 
     def __repr__(self):
         return self.generic
-
-######################################################################
-
-def create_std_namespace(glb):
-    """Create the std namespace and add the types we care about.
-    (string and vector)
-
-    Args:
-        glb: ast.LibraryNode
-    """
-    std = glb.add_namespace("std", expose=False)
-    std.add_typedef_by_name("string")
-    std.add_typedef_by_name("vector")
-    return std
 
 ######################################################################
 
@@ -2255,7 +2073,7 @@ def listify(entry, names):
     return new
 
 
-def add_declarations(parent, node):
+def add_declarations(parent, node, symtab):
     """Add "declarations" from node dictionary.
 
     node is from a YAML file.
@@ -2270,7 +2088,7 @@ def add_declarations(parent, node):
             dct = copy.copy(subnode)
             clean_dictionary(dct)
             blk = BlockNode(parent, **dct)
-            add_declarations(blk, subnode)
+            add_declarations(blk, subnode, symtab)
         elif "decl" in subnode:
             # copy before clean to avoid changing input dict
             dct = copy.copy(subnode)
@@ -2291,8 +2109,11 @@ def add_declarations(parent, node):
                 dct["splicer"] = listify(
                     dct["splicer"],["c", "c_buf", "f", "py"]
                 )
+            old = symtab.save_depth()
             declnode = parent.add_declaration(decl, **dct)
-            add_declarations(declnode, subnode)
+            add_declarations(declnode, subnode, symtab)
+            symtab.restore_depth(old)
+
         else:
             print(subnode)
             raise RuntimeError(
@@ -2301,9 +2122,9 @@ def add_declarations(parent, node):
             )
 
 
-def create_library_from_dictionary(node):
+def create_library_from_dictionary(node, symtab):
     """Create a library and add classes and functions from node.
-    Typically, node is defined via YAML.
+    Typically, node is a dictionary defined via YAML.
 
     library: name
     classes:
@@ -2319,18 +2140,25 @@ def create_library_from_dictionary(node):
         clean_list(node["copyright"])
 
     clean_dictionary(node)
-    library = LibraryNode(**node)
-
+    library = LibraryNode(symtab=symtab, **node)
+####
     if "typemap" in node:
+        symtab.stash_stack()
+        # Add typemaps to SymbolTable.
         # list of dictionaries
+        typemaps = symtab.typemaps
         for subnode in node["typemap"]:
             # Update fields for a type. For example, set cpp_if
+            if "type" not in subnode:
+                raise RuntimeError("typemap must have 'type' member")
             key = subnode["type"]  # XXX make sure fields exist
-            fields = subnode["fields"]
-            typemaps = typemap.get_global_typemaps()
+            fields = subnode.get("fields")
             ntypemap = typemaps.get(key, None)
             if ntypemap:
-                ntypemap.update(fields)
+                if fields:
+                    ntypemap.update(fields)
+            elif not fields:
+                raise RuntimeError("fields must be defined for typemap {}".format(subnode["type"]))
             else:
                 # Create new typemap
                 base = fields.get("base", "")
@@ -2350,8 +2178,9 @@ def create_library_from_dictionary(node):
                 else:
                     raise RuntimeError("base must be 'shadow' or 'struct'"
                                        " otherwise use a typedef")
+        symtab.restore_stack()
 
-    add_declarations(library.wrap_namespace, node)
+    add_declarations(library.wrap_namespace, node, library.symtab)
 
     if "splicer_code" in node: 
         new = {}

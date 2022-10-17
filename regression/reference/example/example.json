@@ -1988,7 +1988,7 @@
                                         "options": {},
                                         "parse_keyword": "class",
                                         "scope": "example::nested::ExClass2::ExClass2Nested::",
-                                        "typemap_name": "example::nested::ExClass2Nested",
+                                        "typemap_name": "example::nested::ExClass2::ExClass2Nested",
                                         "wrap": {
                                             "c": true,
                                             "fortran": true,
@@ -4952,7 +4952,7 @@
                                                     "specifier": [
                                                         "ValueType"
                                                     ],
-                                                    "typemap_name": "ValueType"
+                                                    "template_argument": "ValueType"
                                                 }
                                             ],
                                             "specifier": [
@@ -5057,6 +5057,7 @@
                                                     "specifier": [
                                                         "int"
                                                     ],
+                                                    "template_argument": "ValueType",
                                                     "typemap_name": "int"
                                                 }
                                             ],
@@ -5261,6 +5262,7 @@
                                                     "specifier": [
                                                         "long"
                                                     ],
+                                                    "template_argument": "ValueType",
                                                     "typemap_name": "long"
                                                 }
                                             ],
@@ -5463,6 +5465,7 @@
                                                     "specifier": [
                                                         "float"
                                                     ],
+                                                    "template_argument": "ValueType",
                                                     "typemap_name": "float"
                                                 }
                                             ],
@@ -5665,6 +5668,7 @@
                                                     "specifier": [
                                                         "double"
                                                     ],
+                                                    "template_argument": "ValueType",
                                                     "typemap_name": "double"
                                                 }
                                             ],
@@ -5858,7 +5862,7 @@
                                             "specifier": [
                                                 "ValueType"
                                             ],
-                                            "typemap_name": "ValueType"
+                                            "template_argument": "ValueType"
                                         },
                                         "cxx_template": {
                                             "ValueType": [
@@ -5922,6 +5926,7 @@
                                             "specifier": [
                                                 "int"
                                             ],
+                                            "template_argument": "ValueType",
                                             "typemap_name": "int"
                                         },
                                         "decl": "template<typename ValueType> ValueType getValue()",
@@ -6072,6 +6077,7 @@
                                             "specifier": [
                                                 "double"
                                             ],
+                                            "template_argument": "ValueType",
                                             "typemap_name": "double"
                                         },
                                         "decl": "template<typename ValueType> ValueType getValue()",
@@ -11278,7 +11284,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "long"
+                    "typemap_name": "SidreLength"
                 },
                 "name": "SidreLength",
                 "options": {},
@@ -11303,7 +11309,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "TypeID"
                 },
                 "name": "TypeID",
                 "options": {},
@@ -11410,7 +11416,7 @@
                 "typesUserLibrary.h"
             ]
         },
-        "example::nested::ExClass2Nested": {
+        "example::nested::ExClass2::ExClass2Nested": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",

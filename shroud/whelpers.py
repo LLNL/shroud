@@ -113,20 +113,20 @@ def set_library(library):
     _newlibrary = library
 
 
-def add_all_helpers():
+def add_all_helpers(symtab):
     """Create helper functions.
     Create helpers for all types.
     """
     fmt = util.Scope(_newlibrary.fmtdict)
-    add_external_helpers()
+    add_external_helpers(symtab)
     add_capsule_helper()
-    for ntypemap in typemap.get_global_typemaps().values():
+    for ntypemap in symtab.typemaps.values():
         if ntypemap.sgroup == "native":
             add_copy_array_helper(fmt, ntypemap)
             add_to_PyList_helper(fmt, ntypemap)
             add_to_PyList_helper_vector(fmt, ntypemap)
 
-def add_external_helpers():
+def add_external_helpers(symtab):
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -420,7 +420,7 @@ return 1;
     ##########
     # 'char *' needs a custom handler because of the nature
     # of NULL terminated strings.
-    ntypemap = typemap.lookup_typemap("char")
+    ntypemap = symtab.lookup_typemap("char")
     fmt.fcn_suffix = "char"
     fmt.fcn_type = "string"
     fmt.c_type = "char *"

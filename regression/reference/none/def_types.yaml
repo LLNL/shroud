@@ -8,6 +8,22 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # All types predefined by Shroud
 typemap:
+  - type: --template-parameter--
+    fields:
+      flat_name: cxx_T
+      base: template
+      idtor: 0
+      cxx_type: cxx_T
+      c_type: c_T
+      f_type: f_T
+      f_cast: "{f_var}"
+      PY_format: O
+      LUA_type: LUA_TNONE
+      LUA_pop: POP
+      LUA_push: PUSH
+      sgroup: template
+      sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: MPI_Comm
     fields:
       flat_name: MPI_Comm
