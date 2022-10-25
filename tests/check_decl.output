@@ -1,0 +1,252 @@
+XXXXXXXXXXXXXXXXXXXX
+# variable declarations
+XXXX CODE
+
+int i;
+double d;
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: i
+    pointer: []
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    name: d
+    pointer: []
+  specifier:
+  - double
+  typemap_name: double
+XXXX SymbolTable
+***global***
+XXXXXXXXXXXXXXXXXXXX
+# nested namespace
+XXXX CODE
+namespace ns1 {
+  int i;
+  namespace ns2 {
+    int j;
+  }
+}
+XXXX AST
+stmts:
+- _ast: Namespace
+  name: ns1
+  ~group:
+  - _ast: Declaration
+    declarator:
+      name: i
+      pointer: []
+    specifier:
+    - int
+    typemap_name: int
+  - _ast: Namespace
+    name: ns2
+    ~group:
+    - _ast: Declaration
+      declarator:
+        name: j
+        pointer: []
+      specifier:
+      - int
+      typemap_name: int
+XXXX SymbolTable
+***global***
+  namespace ns1
+    namespace ns2
+XXXXXXXXXXXXXXXXXXXX
+# class in namespace
+XXXX CODE
+namespace ns {
+  class name {
+     int imem;
+  };
+}
+XXXX AST
+stmts:
+- _ast: Namespace
+  name: ns
+  ~group:
+  - _ast: CXXClass
+    name: name
+    ~group:
+    - _ast: Declaration
+      declarator:
+        name: imem
+        pointer: []
+      specifier:
+      - int
+      typemap_name: int
+XXXX SymbolTable
+***global***
+  namespace ns
+    class ns::name::
+XXXXXXXXXXXXXXXXXXXX
+# template
+XXXX CODE
+template<T> class user {
+  template<U> void nested(T arg1, U arg2 );
+};
+user<int> returnUserType(void);
+XXXX AST
+stmts:
+- _ast: Template
+  decl:
+    _ast: CXXClass
+    name: user
+    ~group:
+    - _ast: Template
+      decl:
+        _ast: Declaration
+        declarator:
+          name: nested
+          pointer: []
+        params:
+        - _ast: Declaration
+          declarator:
+            name: arg1
+            pointer: []
+          specifier:
+          - T
+          template_argument: T
+        - _ast: Declaration
+          declarator:
+            name: arg2
+            pointer: []
+          specifier:
+          - U
+          template_argument: U
+        specifier:
+        - void
+        typemap_name: void
+      parameters:
+      - name: U
+  parameters:
+  - name: T
+- _ast: Declaration
+  declarator:
+    name: returnUserType
+    pointer: []
+  params: []
+  specifier:
+  - user
+  template_arguments:
+  - _ast: Declaration
+    specifier:
+    - int
+    typemap_name: int
+  typemap_name: user
+XXXX SymbolTable
+***global***
+  class user::
+XXXXXXXXXXXXXXXXXXXX
+# Structure for C++
+XXXX CODE
+struct Point { int x; int y;};
+struct Point end;
+Point start;
+XXXX AST
+stmts:
+- _ast: Struct
+  members:
+  - _ast: Declaration
+    declarator:
+      name: x
+      pointer: []
+    specifier:
+    - int
+    typemap_name: int
+  - _ast: Declaration
+    declarator:
+      name: y
+      pointer: []
+    specifier:
+    - int
+    typemap_name: int
+  name: Point
+  typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: end
+    pointer: []
+  specifier:
+  - struct Point
+  typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: start
+    pointer: []
+  specifier:
+  - Point
+  typemap_name: Point
+XXXX SymbolTable
+***global***
+  struct Point::
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+#  } listvar;
+XXXX CODE
+struct list_s {
+  struct list_s *next;
+  list_s *prev;
+};
+XXXX AST
+stmts:
+- _ast: Struct
+  members:
+  - _ast: Declaration
+    declarator:
+      name: next
+      pointer:
+      - ptr: '*'
+    specifier:
+    - struct list_s
+    typemap_name: list_s
+  - _ast: Declaration
+    declarator:
+      name: prev
+      pointer:
+      - ptr: '*'
+    specifier:
+    - list_s
+    typemap_name: list_s
+  name: list_s
+  typemap_name: list_s
+XXXX SymbolTable
+***global***
+  struct list_s::
+XXXXXXXXXXXXXXXXXXXX
+# enumerations C++
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+enum Color global;
+Color flag = RED;
+XXXX AST
+stmts:
+- _ast: Enum
+  members:
+  - name: RED
+  - name: WHITE
+  - name: BLUE
+  name: Color
+- _ast: Declaration
+  declarator:
+    name: global
+    pointer: []
+  specifier:
+  - enum Color
+  typemap_name: enum-Color
+- _ast: Declaration
+  declarator:
+    name: flag
+    pointer: []
+  init: RED
+  specifier:
+  - Color
+  typemap_name: enum-Color
+XXXX SymbolTable
+***global***
+  enum Color

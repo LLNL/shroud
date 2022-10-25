@@ -10,6 +10,11 @@ Useful when changing the grammar to make sure the AST is good.
 
 Use Python from env to get the shroud package.
 ../build/temp.linux-x86_64-3.7/venv/bin/python3 check_decl.py
+
+top level:
+make test-decl
+make test-decl-diff
+make test-decl-replace
 """
 
 from shroud import ast
@@ -21,131 +26,94 @@ import yaml
 import pprint
 import sys
 
-def test_enum(namespace):
-    out = []
-
-    decl = "enum Color { RED, WHITE, BLUE };"
-    ast = declast.check_decl(decl, namespace, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-    namespace.add_enum(decl, ast)
-
-    decl = "enum Color global;"
-    ast = declast.check_decl(decl, namespace, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-
-    decl = "Color var = RED;"
-    ast = declast.check_decl(decl, namespace, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-
-    yaml.safe_dump(out, sys.stdout)
-
-def test_struct(library):
-    """
-    struct Point { int x; int y;};
-    struct Point end;
-    Point start;
-    """
-    out = []
-
-    decl = "struct likeclass"
-    ast = declast.check_decl(decl, library, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-    library.symtab.pop_scope()  # Normally done by closing curly brace
-
-    decl = "struct Point { int x; int y;};"
-    ast = declast.check_decl(decl, library, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-
-    decl = "struct Point end;"
-    ast = declast.check_decl(decl, library, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-
-    decl = "Point start;"
-    ast = declast.check_decl(decl, library, trace=True)
-    asdict = todict.to_dict(ast)
-    asdict["_ast"] = ast.__class__.__name__
-    out.append(asdict)
-
-    yaml.safe_dump(out, sys.stdout)
-
-
-def test_code(library):
-
-    decl = """
+lines = """
+# variable declarations
 int i;
 double d;
-"""
-    xdecl = """
+--------------------
+# nested namespace
 namespace ns1 {
   int i;
   namespace ns2 {
     int j;
   }
 }
-"""
-    decl = """
+--------------------
+# class in namespace
 namespace ns {
   class name {
      int imem;
   };
 }
-"""
-    decl = """
+--------------------
+# template
 template<T> class user {
   template<U> void nested(T arg1, U arg2 );
 };
 user<int> returnUserType(void);
-"""
-    decl = """
+--------------------
+# Structure for C++
+struct Point { int x; int y;};
+struct Point end;
+Point start;
+--------------------
+# Recursive structure
 struct list_s {
   struct list_s *next;
   list_s *prev;
 };
-"""
 #  } listvar;
-    xdecl = """
+--------------------
+# enumerations C++
 enum Color {RED, WHITE, BLUE};
-Color flag;
+enum Color global;
+Color flag = RED;
+--------------------
 """
 
+Xlines = """
+# Recursive structure
+struct list_s {
+  struct list_s *next;
+  list_s *prev;
+};
+#  } listvar;
+--------------------
+"""
+
+
+def test_block(comments, code, symtab):
+    print("XXXXXXXXXXXXXXXXXXXX")
+    for cmt in comments:
+        print(f"{cmt}")
     trace = True
-    out = []
-    ast = declast.Parser(decl, library, trace).top_level()
+    trace = False
+    decl = "\n".join(code)
+    print("XXXX CODE")
+    print(decl)
+    symtab = declast.SymbolTable()
+    ast = declast.Parser(decl, symtab, trace).top_level()
     asdict = todict.to_dict(ast, labelast=True)
-    out.append(asdict)
-    print("XXXXXXXXXXXXXXXXXX AST")
-    yaml.safe_dump(out, sys.stdout)
-    print("XXXXXXXXXXXXXXXXXX SymbolTable")
-    todict.print_scope(library.symtab.scope_stack[0])
+    print("XXXX AST")
+    yaml.safe_dump(asdict, sys.stdout)
+    print("XXXX SymbolTable")
+    todict.print_scope(symtab.scope_stack[0])
 
-    
+def test_file():
+    code = []
+    comments = []
+    symtab = None
+    for line in lines.split("\n"):
+        if line.startswith("#"):
+            comments.append(line)
+        elif line.startswith("-----"):
+            test_block(comments, code, symtab)
+            comments = []
+            code = []
+        else:
+            code.append(line)
+                
+
+        
 if __name__ == "__main__":
-#    decl = "extern int global;"
-
-#    if not typemap.get_global_typemaps():
-#        typemap.initialize()
-    
-
-    library = ast.LibraryNode()  # creates library.symtab
-#    import pdb;pdb.set_trace()
-    library.symtab.language = "c"
-#    symtab = declast.SymbolTable()
-#    print("XXXXXXXXXXXX0", symtab)
-
-
-#    test_enum(library)
-#    test_struct(library)
-    test_code(library)
-
+    test_file()
