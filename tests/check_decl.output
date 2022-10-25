@@ -1,3 +1,4 @@
+
 XXXXXXXXXXXXXXXXXXXX
 # variable declarations
 XXXX CODE
@@ -22,6 +23,7 @@ stmts:
   typemap_name: double
 XXXX SymbolTable
 ***global***
+
 XXXXXXXXXXXXXXXXXXXX
 # nested namespace
 XXXX CODE
@@ -57,6 +59,7 @@ XXXX SymbolTable
 ***global***
   namespace ns1
     namespace ns2
+
 XXXXXXXXXXXXXXXXXXXX
 # class in namespace
 XXXX CODE
@@ -84,6 +87,7 @@ XXXX SymbolTable
 ***global***
   namespace ns
     class ns::name::
+
 XXXXXXXXXXXXXXXXXXXX
 # template
 XXXX CODE
@@ -142,6 +146,7 @@ stmts:
 XXXX SymbolTable
 ***global***
   class user::
+
 XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
 XXXX CODE
@@ -185,6 +190,48 @@ stmts:
 XXXX SymbolTable
 ***global***
   struct Point::
+
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+# language=c
+#  } listvar;
+XXXX CODE
+struct list_s {
+  struct list_s *next;
+};
+XXXX AST
+stmts:
+- _ast: Struct
+  members:
+  - _ast: Declaration
+    declarator:
+      name: next
+      pointer:
+      - ptr: '*'
+    specifier:
+    - struct list_s
+    typemap_name: list_s
+  name: list_s
+  typemap_name: list_s
+XXXX SymbolTable
+***global***
+
+XXXXXXXXXXXXXXXXXXXX
+# Recursive structure
+# Error: C does not automatically declare a type for structs
+# language=c
+#  } listvar;
+XXXX CODE
+struct list_s {
+  list_s *prev;
+};
+Parse Error
+struct list_s {
+  list_s *prev;
+};
+   ^
+Expected TYPE_SPECIFIER, found ID 'list_s'
+
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
 #  } listvar;
@@ -218,6 +265,44 @@ stmts:
 XXXX SymbolTable
 ***global***
   struct list_s::
+
+XXXXXXXXXXXXXXXXXXXX
+# enumerations
+# language=c
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+enum Color global;
+XXXX AST
+stmts:
+- _ast: Enum
+  members:
+  - name: RED
+  - name: WHITE
+  - name: BLUE
+  name: Color
+- _ast: Declaration
+  declarator:
+    name: global
+    pointer: []
+  specifier:
+  - enum Color
+  typemap_name: enum-Color
+XXXX SymbolTable
+***global***
+
+XXXXXXXXXXXXXXXXXXXX
+# enumerations
+# Error: C does not automatically declare a type for enums
+# language=c
+XXXX CODE
+enum Color {RED, WHITE, BLUE};
+Color flag = RED;
+Parse Error
+enum Color {RED, WHITE, BLUE};
+Color flag = RED;
+ ^
+Expected TYPE_SPECIFIER, found ID 'Color'
+
 XXXXXXXXXXXXXXXXXXXX
 # enumerations C++
 XXXX CODE

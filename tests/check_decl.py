@@ -58,11 +58,37 @@ struct Point end;
 Point start;
 --------------------
 # Recursive structure
+# language=c
+struct list_s {
+  struct list_s *next;
+};
+#  } listvar;
+--------------------
+# Recursive structure
+# Error: C does not automatically declare a type for structs
+# language=c
+struct list_s {
+  list_s *prev;
+};
+#  } listvar;
+--------------------
+# Recursive structure
 struct list_s {
   struct list_s *next;
   list_s *prev;
 };
 #  } listvar;
+--------------------
+# enumerations
+# language=c
+enum Color {RED, WHITE, BLUE};
+enum Color global;
+--------------------
+# enumerations
+# Error: C does not automatically declare a type for enums
+# language=c
+enum Color {RED, WHITE, BLUE};
+Color flag = RED;
 --------------------
 # enumerations C++
 enum Color {RED, WHITE, BLUE};
@@ -71,35 +97,48 @@ Color flag = RED;
 --------------------
 """
 
+# Run only one test by assigning here and
+# rename Xlines to lines.
 Xlines = """
-# Recursive structure
-struct list_s {
-  struct list_s *next;
-  list_s *prev;
-};
-#  } listvar;
+struct Point { int x; int y;};
+struct Point end;
+Point start;
 --------------------
 """
 
 
 def test_block(comments, code, symtab):
+    """Parse a single block of code.
+    """
+    print("")
     print("XXXXXXXXXXXXXXXXXXXX")
+    language = "cxx"
     for cmt in comments:
+        if cmt.find("language=c++") != -1:
+            language = "cxx"
+        elif cmt.find("language=c") != -1:
+            language = "c"
         print(f"{cmt}")
     trace = True
     trace = False
     decl = "\n".join(code)
     print("XXXX CODE")
     print(decl)
-    symtab = declast.SymbolTable()
-    ast = declast.Parser(decl, symtab, trace).top_level()
-    asdict = todict.to_dict(ast, labelast=True)
-    print("XXXX AST")
-    yaml.safe_dump(asdict, sys.stdout)
-    print("XXXX SymbolTable")
-    todict.print_scope(symtab.scope_stack[0])
+    symtab = declast.SymbolTable(language=language)
+    try:
+        ast = declast.Parser(decl, symtab, trace).top_level()
+        asdict = todict.to_dict(ast, labelast=True)
+        print("XXXX AST")
+        yaml.safe_dump(asdict, sys.stdout)
+        print("XXXX SymbolTable")
+        todict.print_scope(symtab.scope_stack[0])
+    except RuntimeError as err:
+        print(err)
 
 def test_file():
+    """Parse a group of lines
+    which are delimited by dashes lines.
+    """
     code = []
     comments = []
     symtab = None

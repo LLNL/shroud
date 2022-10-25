@@ -239,7 +239,7 @@ test-decl-replace : test-decl-work
 	cp $(decl_path) $(decl_ref)
 
 test-decl-diff :
-	tkdiff $(decl_path) $(decl_ref)
+	tkdiff $(decl_ref) $(decl_path)
 
 ########################################################################
 #

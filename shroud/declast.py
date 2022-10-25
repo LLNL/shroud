@@ -468,6 +468,7 @@ class Parser(ExprParser):
                         more = False
                     # Save fully resolved typename
                     node.typemap = ns.typemap
+                    #self.info("Typemap {}".format(ns.typemap.name))
                     if node.typemap.base == "template":
                         node.template_argument = ns_name
                     found_type = True
@@ -922,8 +923,9 @@ class Parser(ExprParser):
 
         STRUCT ID {  }
            Add to typemap table as "struct-{name}"
-        STRUCT ID <EOF>    similar to CLASS ID
-        STRUCT ID
+        STRUCT ID <EOF>
+           Forward declare
+        STRUCT ID [ Declaration ]
            Lookup struct tag in typemap table.
         """
         self.enter("struct_statement")
@@ -947,6 +949,7 @@ class Parser(ExprParser):
             ntypemap = self.symtab.lookup_typemap("struct-" + name.value)
             if ntypemap is None:
                 raise RuntimeError("Struct tag %s is not defined" % name.value)
+            #self.info("Typemap {}".format(ntypemap.name))
             node.typemap = ntypemap
             node.specifier.append("struct " + name.value)
         self.exit("struct_statement")
@@ -984,7 +987,7 @@ class Node(object):
     def add_symbol(self, name, node):
         """Add symbol to this scope.
 
-        Done as part of SymbolTable.push_scope.
+        Done as part of SymbolTable.add_to_current.
         Call explicilty for non-scope Nodes like Declaration.
         (Actually a function creates a scope, but not one
         we care about since wrapping is not involved with
@@ -1010,7 +1013,8 @@ class Node(object):
             symtab.register_typemap(type_name, ntypemap)
 
     def check_forward_declaration(self, symtab):
-        """Return Node of any previously declared name
+        """Return Node of any previously declared name.
+        Used with CXXClass and Struct.
         If parent already declares name, assume it is a forward
         declaration (both same Python class)
 
@@ -1927,6 +1931,7 @@ class CXXClass(Node):
             symtab.register_typemap(type_name, ntypemap)
             self.newtypemap = ntypemap
             self.typemap = ntypemap
+        symtab.add_to_current(self)
         symtab.push_scope(self)
 
 
@@ -1936,6 +1941,7 @@ class Namespace(Node):
 
     def __init__(self, name, symtab):
         self.name = name
+        symtab.add_to_current(self)
         symtab.push_scope(self)
         self.group = []
 
@@ -1960,7 +1966,8 @@ class Enum(Node):
 #            sgroup="enum",
 #        )
         if symtab.language == "cxx":
-            symtab.register_typemap(type_name, ntypemap) # GGG C++ only
+            symtab.add_to_current(self)
+            symtab.register_typemap(type_name, ntypemap)
         symtab.register_typemap("enum-" + type_name, ntypemap)
         self.typemap = ntypemap
 
@@ -2003,6 +2010,7 @@ class Struct(Node):
                 sgroup="struct",
             )
             if symtab.language == "cxx":
+                symtab.add_to_current(self)
                 symtab.register_typemap(type_name, ntypemap)
             symtab.register_typemap("struct-" + type_name, ntypemap)
             self.newtypemap = ntypemap
@@ -2118,7 +2126,6 @@ class SymbolTable(object):
         """
         # node := Struct
         name = node.name
-        self.current.add_symbol(name, node)
         self.scopename = self.scopename[:self.scope_len[-1]] + name + '::'
         self.scope_len.append(len(self.scopename))
 
@@ -2139,9 +2146,9 @@ class SymbolTable(object):
         node.parent = self.current
         self.current.add_symbol(node.name, node)
             
-    def add_to_current(self, name, node):  # GGG
+    def add_to_current(self, node, name=None):
         """Add symbol to current scope."""
-        self.current.add_symbol(name, node)
+        self.current.add_symbol(name or node.name, node)
 
     def using_directive(self, name):
         """Implement 'using namespace <name>' for current scope
@@ -2169,6 +2176,7 @@ class SymbolTable(object):
             if name in ns.symbols:
                 ns = ns.symbols[name]
                 # GGG make sure it is a Namespace node
+                symtab.add_to_current(ns)
                 symtab.push_scope(ns)
             else:
                 node = Namespace(name, self)
@@ -2251,7 +2259,7 @@ class SymbolTable(object):
             )
 #            ntypemap.compute_flat_name() GGG
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_to_current(name, ast)
+            self.add_to_current(ast, name)
         else:
             # typedef int TypeID;
             # GGG At this point, just creating an alias for type.
@@ -2263,7 +2271,7 @@ class SymbolTable(object):
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_to_current(name, ast)
+            self.add_to_current(ast, name)
         ast.typemap = ntypemap
 
     def add_typedef_by_name(self, name):
