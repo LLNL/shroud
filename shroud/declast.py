@@ -20,7 +20,7 @@ from . import typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
 
-# https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
+# https://docs.python.org/3.10/library/re.html#writing-a-tokenizer
 type_specifier = {
     "void",
     "bool",
@@ -165,9 +165,11 @@ class RecursiveDescent(object):
             self.error_msg("Expected {}, found {}", typ, self.token.typ)
 
     def error_msg(self, format, *args):
-        msg = format.format(*args)
-        ptr = " " * self.token.column + "^"
-        raise RuntimeError("\n".join(["Parse Error", self.decl, ptr, msg]))
+        lines = self.decl.split("\n")
+        lineno = self.token.line
+        msg = "line {}: ".format(lineno) + format.format(*args)
+        ptr = " " * (self.token.column-1) + "^"
+        raise RuntimeError("\n".join(["Parse Error:", lines[lineno-1], ptr, msg]))
 
     def enter(self, name, *args):
         """Print message when entering a function."""

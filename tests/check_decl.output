@@ -225,12 +225,10 @@ XXXX CODE
 struct list_s {
   list_s *prev;
 };
-Parse Error
-struct list_s {
+Parse Error:
   list_s *prev;
-};
-   ^
-Expected TYPE_SPECIFIER, found ID 'list_s'
+  ^
+line 2: Expected TYPE_SPECIFIER, found ID 'list_s'
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -297,11 +295,10 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 enum Color {RED, WHITE, BLUE};
 Color flag = RED;
-Parse Error
-enum Color {RED, WHITE, BLUE};
+Parse Error:
 Color flag = RED;
- ^
-Expected TYPE_SPECIFIER, found ID 'Color'
+^
+line 2: Expected TYPE_SPECIFIER, found ID 'Color'
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations C++
