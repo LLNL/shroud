@@ -641,6 +641,9 @@ class PrintNode(visitor.Visitor):
     def visit_Constant(self, node):
         return node.value
 
+    def visit_Block(self, node):
+        return self.stmt_list(node.stmts)
+
     def visit_CXXClass(self, node):
         s = ["class {}".format(node.name)]
         if node.baseclass:
@@ -679,6 +682,14 @@ class PrintNode(visitor.Visitor):
         return "struct {} {{ {} }};".format(
             node.name, self.stmt_list(node.members)
         )
+
+    def visit_Template(self, node):
+        parms = self.comma_list(node.parameters)
+        decl = self.visit(node.decl)
+        return "template<{}>  {}".format(parms, decl)
+
+    def visit_TemplateParam(self, node):
+        return node.name
 
     # XXX - Add Declaration nodes, similar to gen_decl
 

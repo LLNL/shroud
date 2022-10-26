@@ -5,6 +5,8 @@ XXXX CODE
 
 int i;
 double d;
+XXXX PRINT_NODE
+int i;double d;
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -33,6 +35,8 @@ namespace ns1 {
     int j;
   }
 }
+XXXX PRINT_NODE
+namespace ns1;
 XXXX AST
 stmts:
 - _ast: Namespace
@@ -68,6 +72,8 @@ namespace ns {
      int imem;
   };
 }
+XXXX PRINT_NODE
+namespace ns;
 XXXX AST
 stmts:
 - _ast: Namespace
@@ -95,6 +101,8 @@ template<T> class user {
   template<U> void nested(T arg1, U arg2 );
 };
 user<int> returnUserType(void);
+XXXX PRINT_NODE
+template<T>  class user;;user returnUserType();
 XXXX AST
 stmts:
 - _ast: Template
@@ -153,6 +161,8 @@ XXXX CODE
 struct Point { int x; int y;};
 struct Point end;
 Point start;
+XXXX PRINT_NODE
+struct Point { int x;int y; };;struct Point end;Point start;
 XXXX AST
 stmts:
 - _ast: Struct
@@ -199,6 +209,8 @@ XXXX CODE
 struct list_s {
   struct list_s *next;
 };
+XXXX PRINT_NODE
+struct list_s { struct list_s * next; };;
 XXXX AST
 stmts:
 - _ast: Struct
@@ -238,6 +250,8 @@ struct list_s {
   struct list_s *next;
   list_s *prev;
 };
+XXXX PRINT_NODE
+struct list_s { struct list_s * next;list_s * prev; };;
 XXXX AST
 stmts:
 - _ast: Struct
@@ -270,6 +284,8 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 enum Color {RED, WHITE, BLUE};
 enum Color global;
+XXXX PRINT_NODE
+enum Color { RED, WHITE, BLUE };;enum Color global;
 XXXX AST
 stmts:
 - _ast: Enum
@@ -306,6 +322,8 @@ XXXX CODE
 enum Color {RED, WHITE, BLUE};
 enum Color global;
 Color flag = RED;
+XXXX PRINT_NODE
+enum Color { RED, WHITE, BLUE };;enum Color global;Color flag=RED;
 XXXX AST
 stmts:
 - _ast: Enum

@@ -128,8 +128,14 @@ def test_block(comments, code, symtab):
     try:
         ast = declast.Parser(decl, symtab, trace).top_level()
         asdict = todict.to_dict(ast, labelast=True)
+
+        print("XXXX PRINT_NODE")
+        s = todict.print_node(ast)
+        print(s)
+
         print("XXXX AST")
         yaml.safe_dump(asdict, sys.stdout)
+
         print("XXXX SymbolTable")
         todict.print_scope(symtab.scope_stack[0])
     except RuntimeError as err:
