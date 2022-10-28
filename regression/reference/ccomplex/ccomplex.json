@@ -17,8 +17,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptFloatComplexInoutPtr",
-                        "pointer": []
+                        "name": "acceptFloatComplexInoutPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -120,8 +119,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexInoutPtr",
-                        "pointer": []
+                        "name": "acceptDoubleComplexInoutPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -246,8 +244,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexOutPtr",
-                        "pointer": []
+                        "name": "acceptDoubleComplexOutPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -374,8 +371,7 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexInoutPtrFlag",
-                        "pointer": []
+                        "name": "acceptDoubleComplexInoutPtrFlag"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -496,8 +492,7 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexOutPtrFlag",
-                        "pointer": []
+                        "name": "acceptDoubleComplexOutPtrFlag"
                     },
                     "metaattrs": {
                         "intent": "subroutine"

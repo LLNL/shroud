@@ -21,8 +21,7 @@
                 "_PTR_F_C_index": "14",
                 "ast": {
                     "declarator": {
-                        "name": "vector_sum",
-                        "pointer": []
+                        "name": "vector_sum"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -105,8 +104,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_sum",
-                        "pointer": []
+                        "name": "vector_sum"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -252,8 +250,7 @@
                 "_PTR_F_C_index": "15",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out",
-                        "pointer": []
+                        "name": "vector_iota_out"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -328,8 +325,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out",
-                        "pointer": []
+                        "name": "vector_iota_out"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -452,8 +448,7 @@
                 "_PTR_F_C_index": "16",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num",
-                        "pointer": []
+                        "name": "vector_iota_out_with_num"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -560,8 +555,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num",
-                        "pointer": []
+                        "name": "vector_iota_out_with_num"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -715,8 +709,7 @@
                 "_PTR_F_C_index": "17",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num2",
-                        "pointer": []
+                        "name": "vector_iota_out_with_num2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -811,8 +804,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num2",
-                        "pointer": []
+                        "name": "vector_iota_out_with_num2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -953,8 +945,7 @@
                 "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_alloc",
-                        "pointer": []
+                        "name": "vector_iota_out_alloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1032,8 +1023,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_alloc",
-                        "pointer": []
+                        "name": "vector_iota_out_alloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1159,8 +1149,7 @@
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_inout_alloc",
-                        "pointer": []
+                        "name": "vector_iota_inout_alloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1238,8 +1227,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_inout_alloc",
-                        "pointer": []
+                        "name": "vector_iota_inout_alloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1367,8 +1355,7 @@
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
-                        "name": "vector_increment",
-                        "pointer": []
+                        "name": "vector_increment"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1439,8 +1426,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_increment",
-                        "pointer": []
+                        "name": "vector_increment"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1561,8 +1547,7 @@
                 "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_d",
-                        "pointer": []
+                        "name": "vector_iota_out_d"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1636,8 +1621,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_d",
-                        "pointer": []
+                        "name": "vector_iota_out_d"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1759,8 +1743,7 @@
                 "_PTR_F_C_index": "22",
                 "ast": {
                     "declarator": {
-                        "name": "vector_of_pointers",
-                        "pointer": []
+                        "name": "vector_of_pointers"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1808,8 +1791,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num",
-                                "pointer": []
+                                "name": "num"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1871,8 +1853,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_of_pointers",
-                        "pointer": []
+                        "name": "vector_of_pointers"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1921,8 +1902,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num",
-                                "pointer": []
+                                "name": "num"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2080,8 +2060,7 @@
                 "_PTR_F_C_index": "23",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_count",
-                        "pointer": []
+                        "name": "vector_string_count"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2168,8 +2147,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_count",
-                        "pointer": []
+                        "name": "vector_string_count"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2322,8 +2300,7 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_fill",
-                        "pointer": []
+                        "name": "vector_string_fill"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2386,8 +2363,7 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_append",
-                        "pointer": []
+                        "name": "vector_string_append"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2456,8 +2432,7 @@
                         "rank": 1
                     },
                     "declarator": {
-                        "name": "ReturnVectorAlloc",
-                        "pointer": []
+                        "name": "ReturnVectorAlloc"
                     },
                     "metaattrs": {
                         "deref": "allocatable",
@@ -2469,8 +2444,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "n",
-                                "pointer": []
+                                "name": "n"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2547,8 +2521,7 @@
                         "rank": 1
                     },
                     "declarator": {
-                        "name": "ReturnVectorAlloc",
-                        "pointer": []
+                        "name": "ReturnVectorAlloc"
                     },
                     "metaattrs": {
                         "api": "cdesc",
@@ -2561,8 +2534,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "n",
-                                "pointer": []
+                                "name": "n"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2683,8 +2655,7 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnDim2",
-                        "pointer": []
+                        "name": "returnDim2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2717,8 +2688,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "len",
-                                "pointer": []
+                                "name": "len"
                             },
                             "metaattrs": {
                                 "intent": "in"

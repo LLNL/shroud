@@ -14,8 +14,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "AFunction",
-                        "pointer": []
+                        "name": "AFunction"
                     },
                     "metaattrs": {
                         "intent": "subroutine"

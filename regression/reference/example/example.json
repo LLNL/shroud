@@ -564,8 +564,7 @@
                                         "<FUNCTION>": "3 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "incrementCount",
-                                                "pointer": []
+                                                "name": "incrementCount"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -576,8 +575,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "incr",
-                                                        "pointer": []
+                                                        "name": "incr"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -1082,8 +1080,7 @@
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "declarator": {
-                                                "name": "getNameArg",
-                                                "pointer": []
+                                                "name": "getNameArg"
                                             },
                                             "func_const": true,
                                             "metaattrs": {
@@ -1206,8 +1203,7 @@
                                         "_generated": "arg_to_buffer",
                                         "ast": {
                                             "declarator": {
-                                                "name": "getNameArg",
-                                                "pointer": []
+                                                "name": "getNameArg"
                                             },
                                             "func_const": true,
                                             "metaattrs": {
@@ -1270,8 +1266,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "getValue",
-                                                "pointer": []
+                                                "name": "getValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -1282,8 +1277,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -1471,8 +1465,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "getValue",
-                                                "pointer": []
+                                                "name": "getValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -1483,8 +1476,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -1669,8 +1661,7 @@
                                         "<FUNCTION>": "8 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "hasAddr",
-                                                "pointer": []
+                                                "name": "hasAddr"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -1681,8 +1672,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "in",
-                                                        "pointer": []
+                                                        "name": "in"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -1871,8 +1861,7 @@
                                         "<FUNCTION>": "9 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "SplicerSpecial",
-                                                "pointer": []
+                                                "name": "SplicerSpecial"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -3260,8 +3249,7 @@
                                         "<FUNCTION>": "20 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "GetNameLength",
-                                                "pointer": []
+                                                "name": "GetNameLength"
                                             },
                                             "func_const": true,
                                             "metaattrs": {
@@ -3619,8 +3607,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -3646,8 +3633,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -3662,8 +3648,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -3685,8 +3670,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -3701,8 +3685,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -3733,8 +3716,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -3745,8 +3727,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -3772,8 +3753,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -3788,8 +3768,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -3811,8 +3790,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -3827,8 +3805,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -3917,8 +3894,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -3929,8 +3905,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -3945,8 +3920,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -3998,8 +3972,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4010,8 +3983,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -4026,8 +3998,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -4097,8 +4068,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -4113,8 +4083,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -4141,8 +4110,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -4157,8 +4125,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -4180,8 +4147,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -4196,8 +4162,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -4347,8 +4312,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4359,8 +4323,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -4375,8 +4338,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -4403,8 +4365,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -4419,8 +4380,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -4442,8 +4402,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "type",
-                                                            "pointer": []
+                                                            "name": "type"
                                                         },
                                                         "metaattrs": {
                                                             "intent": "in"
@@ -4458,8 +4417,7 @@
                                                             "value": true
                                                         },
                                                         "declarator": {
-                                                            "name": "len",
-                                                            "pointer": []
+                                                            "name": "len"
                                                         },
                                                         "init": 1,
                                                         "metaattrs": {
@@ -4589,8 +4547,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4601,8 +4558,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -4617,8 +4573,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -4678,8 +4633,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "declare",
-                                                "pointer": []
+                                                "name": "declare"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4690,8 +4644,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "type",
-                                                        "pointer": []
+                                                        "name": "type"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -4706,8 +4659,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "len",
-                                                        "pointer": []
+                                                        "name": "len"
                                                     },
                                                     "init": 1,
                                                     "metaattrs": {
@@ -4752,8 +4704,7 @@
                                         "<FUNCTION>": "23 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "destroyall",
-                                                "pointer": []
+                                                "name": "destroyall"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4813,8 +4764,7 @@
                                         "<FUNCTION>": "24 ****************************************",
                                         "ast": {
                                             "declarator": {
-                                                "name": "getTypeID",
-                                                "pointer": []
+                                                "name": "getTypeID"
                                             },
                                             "func_const": true,
                                             "metaattrs": {
@@ -4931,8 +4881,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "setValue",
-                                                "pointer": []
+                                                "name": "setValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -4943,8 +4892,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -5036,8 +4984,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "setValue",
-                                                "pointer": []
+                                                "name": "setValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -5048,8 +4995,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -5241,8 +5187,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "setValue",
-                                                "pointer": []
+                                                "name": "setValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -5253,8 +5198,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -5444,8 +5388,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "setValue",
-                                                "pointer": []
+                                                "name": "setValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -5456,8 +5399,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -5647,8 +5589,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "setValue",
-                                                "pointer": []
+                                                "name": "setValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "subroutine"
@@ -5659,8 +5600,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "value",
-                                                        "pointer": []
+                                                        "name": "value"
                                                     },
                                                     "metaattrs": {
                                                         "intent": "in"
@@ -5852,8 +5792,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "getValue",
-                                                "pointer": []
+                                                "name": "getValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -5916,8 +5855,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "getValue",
-                                                "pointer": []
+                                                "name": "getValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -6067,8 +6005,7 @@
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
-                                                "name": "getValue",
-                                                "pointer": []
+                                                "name": "getValue"
                                             },
                                             "metaattrs": {
                                                 "intent": "function"
@@ -6280,8 +6217,7 @@
                                 "<FUNCTION>": "45 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "local_function1",
-                                        "pointer": []
+                                        "name": "local_function1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -6340,8 +6276,7 @@
                                 "_PTR_F_C_index": "64",
                                 "ast": {
                                     "declarator": {
-                                        "name": "isNameValid",
-                                        "pointer": []
+                                        "name": "isNameValid"
                                     },
                                     "metaattrs": {
                                         "intent": "function"
@@ -6547,8 +6482,7 @@
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {
-                                        "name": "isNameValid",
-                                        "pointer": []
+                                        "name": "isNameValid"
                                     },
                                     "metaattrs": {
                                         "intent": "function"
@@ -6681,8 +6615,7 @@
                                 "<FUNCTION>": "47 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "isInitialized",
-                                        "pointer": []
+                                        "name": "isInitialized"
                                     },
                                     "metaattrs": {
                                         "intent": "function"
@@ -6795,8 +6728,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "test_names",
-                                        "pointer": []
+                                        "name": "test_names"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -6940,8 +6872,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "test_names",
-                                        "pointer": []
+                                        "name": "test_names"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7041,8 +6972,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "test_names",
-                                        "pointer": []
+                                        "name": "test_names"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7071,8 +7001,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "flag",
-                                                "pointer": []
+                                                "name": "flag"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -7262,8 +7191,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "test_names",
-                                        "pointer": []
+                                        "name": "test_names"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7293,8 +7221,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "flag",
-                                                "pointer": []
+                                                "name": "flag"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -7412,8 +7339,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "testoptional",
-                                        "pointer": []
+                                        "name": "testoptional"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7463,8 +7389,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "testoptional",
-                                        "pointer": []
+                                        "name": "testoptional"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7475,8 +7400,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "i",
-                                                "pointer": []
+                                                "name": "i"
                                             },
                                             "init": 1,
                                             "metaattrs": {
@@ -7574,8 +7498,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "testoptional",
-                                        "pointer": []
+                                        "name": "testoptional"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7586,8 +7509,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "i",
-                                                "pointer": []
+                                                "name": "i"
                                             },
                                             "init": 1,
                                             "metaattrs": {
@@ -7603,8 +7525,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "j",
-                                                "pointer": []
+                                                "name": "j"
                                             },
                                             "init": 2,
                                             "metaattrs": {
@@ -7803,8 +7724,7 @@
                                 "<FUNCTION>": "51 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "test_size_t",
-                                        "pointer": []
+                                        "name": "test_size_t"
                                     },
                                     "metaattrs": {
                                         "intent": "function"
@@ -7912,8 +7832,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "testmpi",
-                                        "pointer": []
+                                        "name": "testmpi"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -7924,8 +7843,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "comm",
-                                                "pointer": []
+                                                "name": "comm"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -8061,8 +7979,7 @@
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
-                                        "name": "testmpi",
-                                        "pointer": []
+                                        "name": "testmpi"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8116,8 +8033,7 @@
                                 "<FUNCTION>": "54 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "FuncPtr1",
-                                        "pointer": []
+                                        "name": "FuncPtr1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8135,8 +8051,7 @@
                                                             "ptr": "*"
                                                         }
                                                     ]
-                                                },
-                                                "pointer": []
+                                                }
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -8263,8 +8178,7 @@
                                 "<FUNCTION>": "55 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "FuncPtr2",
-                                        "pointer": []
+                                        "name": "FuncPtr2"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8413,8 +8327,7 @@
                                 "<FUNCTION>": "56 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "FuncPtr3",
-                                        "pointer": []
+                                        "name": "FuncPtr3"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8432,8 +8345,7 @@
                                                             "ptr": "*"
                                                         }
                                                     ]
-                                                },
-                                                "pointer": []
+                                                }
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -8444,8 +8356,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "i",
-                                                        "pointer": []
+                                                        "name": "i"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8586,8 +8497,7 @@
                                 "<FUNCTION>": "57 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "FuncPtr4",
-                                        "pointer": []
+                                        "name": "FuncPtr4"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8605,8 +8515,7 @@
                                                             "ptr": "*"
                                                         }
                                                     ]
-                                                },
-                                                "pointer": []
+                                                }
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -8717,8 +8626,7 @@
                                 "<FUNCTION>": "58 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "FuncPtr5",
-                                        "pointer": []
+                                        "name": "FuncPtr5"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -8736,8 +8644,7 @@
                                                             "ptr": "*"
                                                         }
                                                     ]
-                                                },
-                                                "pointer": []
+                                                }
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -8748,8 +8655,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname1",
-                                                        "pointer": []
+                                                        "name": "verylongname1"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8761,8 +8667,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname2",
-                                                        "pointer": []
+                                                        "name": "verylongname2"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8774,8 +8679,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname3",
-                                                        "pointer": []
+                                                        "name": "verylongname3"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8787,8 +8691,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname4",
-                                                        "pointer": []
+                                                        "name": "verylongname4"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8800,8 +8703,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname5",
-                                                        "pointer": []
+                                                        "name": "verylongname5"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8813,8 +8715,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname6",
-                                                        "pointer": []
+                                                        "name": "verylongname6"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8826,8 +8727,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname7",
-                                                        "pointer": []
+                                                        "name": "verylongname7"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8839,8 +8739,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname8",
-                                                        "pointer": []
+                                                        "name": "verylongname8"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8852,8 +8751,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname9",
-                                                        "pointer": []
+                                                        "name": "verylongname9"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8865,8 +8763,7 @@
                                                         "value": true
                                                     },
                                                     "declarator": {
-                                                        "name": "verylongname10",
-                                                        "pointer": []
+                                                        "name": "verylongname10"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -8992,8 +8889,7 @@
                                 "<FUNCTION>": "59 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "verylongfunctionname1",
-                                        "pointer": []
+                                        "name": "verylongfunctionname1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -9925,8 +9821,7 @@
                                 "<FUNCTION>": "60 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "verylongfunctionname2",
-                                        "pointer": []
+                                        "name": "verylongfunctionname2"
                                     },
                                     "metaattrs": {
                                         "intent": "function"
@@ -9937,8 +9832,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname1",
-                                                "pointer": []
+                                                "name": "verylongname1"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -9953,8 +9847,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname2",
-                                                "pointer": []
+                                                "name": "verylongname2"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -9969,8 +9862,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname3",
-                                                "pointer": []
+                                                "name": "verylongname3"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -9985,8 +9877,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname4",
-                                                "pointer": []
+                                                "name": "verylongname4"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10001,8 +9892,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname5",
-                                                "pointer": []
+                                                "name": "verylongname5"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10017,8 +9907,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname6",
-                                                "pointer": []
+                                                "name": "verylongname6"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10033,8 +9922,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname7",
-                                                "pointer": []
+                                                "name": "verylongname7"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10049,8 +9937,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname8",
-                                                "pointer": []
+                                                "name": "verylongname8"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10065,8 +9952,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname9",
-                                                "pointer": []
+                                                "name": "verylongname9"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10081,8 +9967,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "verylongname10",
-                                                "pointer": []
+                                                "name": "verylongname10"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -10862,8 +10747,7 @@
                                 "<FUNCTION>": "61 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "cos_doubles",
-                                        "pointer": []
+                                        "name": "cos_doubles"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -10927,8 +10811,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "sizein",
-                                                "pointer": []
+                                                "name": "sizein"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -11275,8 +11158,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "SidreLength",
-                        "pointer": []
+                        "name": "SidreLength"
                     },
                     "specifier": [
                         "long"
@@ -11300,8 +11182,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
-                        "pointer": []
+                        "name": "TypeID"
                     },
                     "specifier": [
                         "int"

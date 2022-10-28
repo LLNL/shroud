@@ -22,8 +22,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems",
-                                "pointer": []
+                                "name": "nitems"
                             },
                             "specifier": [
                                 "int"
@@ -738,8 +737,7 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "DataPointer_set_items",
-                        "pointer": []
+                        "name": "DataPointer_set_items"
                     },
                     "metaattrs": {
                         "intent": "setter"
@@ -921,8 +919,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "nitems",
-                                        "pointer": []
+                                        "name": "nitems"
                                     },
                                     "specifier": [
                                         "int"
@@ -1317,8 +1314,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_set_items",
-                                "pointer": []
+                                "name": "DataPointer_set_items"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -1525,8 +1521,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "nitems",
-                                        "pointer": []
+                                        "name": "nitems"
                                     },
                                     "specifier": [
                                         "int"
@@ -1921,8 +1916,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_set_items",
-                                "pointer": []
+                                "name": "DataPointer_set_items"
                             },
                             "metaattrs": {
                                 "intent": "setter"

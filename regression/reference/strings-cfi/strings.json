@@ -21,8 +21,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passChar",
-                        "pointer": []
+                        "name": "passChar"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -33,8 +32,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "status",
-                                "pointer": []
+                                "name": "status"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -123,8 +121,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passCharForce",
-                        "pointer": []
+                        "name": "passCharForce"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -135,8 +132,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "status",
-                                "pointer": []
+                                "name": "status"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -228,8 +224,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnChar",
-                        "pointer": []
+                        "name": "returnChar"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -310,8 +305,7 @@
                 "_PTR_F_C_index": "45",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtr",
-                        "pointer": []
+                        "name": "passCharPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -466,8 +460,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtr",
-                        "pointer": []
+                        "name": "passCharPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -631,8 +624,7 @@
                 "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut",
-                        "pointer": []
+                        "name": "passCharPtrInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -737,8 +729,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut",
-                        "pointer": []
+                        "name": "passCharPtrInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1268,8 +1259,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getCharPtr3",
-                        "pointer": []
+                        "name": "getCharPtr3"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1393,8 +1383,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getCharPtr3",
-                        "pointer": []
+                        "name": "getCharPtr3"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1746,8 +1735,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringResult",
-                        "pointer": []
+                        "name": "getConstStringResult"
                     },
                     "metaattrs": {
                         "deref": "allocatable",
@@ -1806,8 +1794,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringResult",
-                        "pointer": []
+                        "name": "getConstStringResult"
                     },
                     "metaattrs": {
                         "api": "cfi",
@@ -1888,8 +1875,7 @@
                     },
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringLen",
-                        "pointer": []
+                        "name": "getConstStringLen"
                     },
                     "metaattrs": {
                         "deref": "copy",
@@ -1951,8 +1937,7 @@
                     },
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringLen",
-                        "pointer": []
+                        "name": "getConstStringLen"
                     },
                     "metaattrs": {
                         "api": "cfi",
@@ -2026,8 +2011,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringAsArg",
-                        "pointer": []
+                        "name": "getConstStringAsArg"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2060,8 +2044,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getConstStringAsArg",
-                        "pointer": []
+                        "name": "getConstStringAsArg"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2185,8 +2168,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getConstStringAsArg",
-                        "pointer": []
+                        "name": "getConstStringAsArg"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2257,8 +2239,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringAlloc",
-                        "pointer": []
+                        "name": "getConstStringAlloc"
                     },
                     "metaattrs": {
                         "deref": "allocatable",
@@ -2313,8 +2294,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getConstStringAlloc",
-                        "pointer": []
+                        "name": "getConstStringAlloc"
                     },
                     "metaattrs": {
                         "api": "cfi",
@@ -2818,8 +2798,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getConstStringRefAsArg",
-                        "pointer": []
+                        "name": "getConstStringRefAsArg"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2944,8 +2923,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "getConstStringRefAsArg",
-                        "pointer": []
+                        "name": "getConstStringRefAsArg"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4272,8 +4250,7 @@
                 "_PTR_F_C_index": "68",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringConstReference",
-                        "pointer": []
+                        "name": "acceptStringConstReference"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4376,8 +4353,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringConstReference",
-                        "pointer": []
+                        "name": "acceptStringConstReference"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4484,8 +4460,7 @@
                 "_PTR_F_C_index": "69",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringReferenceOut",
-                        "pointer": []
+                        "name": "acceptStringReferenceOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4590,8 +4565,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringReferenceOut",
-                        "pointer": []
+                        "name": "acceptStringReferenceOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4698,8 +4672,7 @@
                 "_PTR_F_C_index": "70",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringReference",
-                        "pointer": []
+                        "name": "acceptStringReference"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4802,8 +4775,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringReference",
-                        "pointer": []
+                        "name": "acceptStringReference"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4910,8 +4882,7 @@
                 "_PTR_F_C_index": "71",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointerConst",
-                        "pointer": []
+                        "name": "acceptStringPointerConst"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5013,8 +4984,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointerConst",
-                        "pointer": []
+                        "name": "acceptStringPointerConst"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5120,8 +5090,7 @@
                 "_PTR_F_C_index": "72",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointer",
-                        "pointer": []
+                        "name": "acceptStringPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5222,8 +5191,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointer",
-                        "pointer": []
+                        "name": "acceptStringPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5328,8 +5296,7 @@
                 "_PTR_F_C_index": "73",
                 "ast": {
                     "declarator": {
-                        "name": "fetchStringPointer",
-                        "pointer": []
+                        "name": "fetchStringPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5434,8 +5401,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "fetchStringPointer",
-                        "pointer": []
+                        "name": "fetchStringPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5542,8 +5508,7 @@
                 "_PTR_F_C_index": "74",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointerLen",
-                        "pointer": []
+                        "name": "acceptStringPointerLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5694,8 +5659,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringPointerLen",
-                        "pointer": []
+                        "name": "acceptStringPointerLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5854,8 +5818,7 @@
                 "_PTR_F_C_index": "75",
                 "ast": {
                     "declarator": {
-                        "name": "fetchStringPointerLen",
-                        "pointer": []
+                        "name": "fetchStringPointerLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6009,8 +5972,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "fetchStringPointerLen",
-                        "pointer": []
+                        "name": "fetchStringPointerLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6170,8 +6132,7 @@
                 "_PTR_F_C_index": "76",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringInstance",
-                        "pointer": []
+                        "name": "acceptStringInstance"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6182,8 +6143,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -6302,8 +6262,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStringInstance",
-                        "pointer": []
+                        "name": "acceptStringInstance"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6314,8 +6273,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "api": "cfi",
@@ -6430,8 +6388,7 @@
                 "<FUNCTION>": "33 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnStrings",
-                        "pointer": []
+                        "name": "returnStrings"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6502,8 +6459,7 @@
                 "<FUNCTION>": "34 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnMany",
-                        "pointer": []
+                        "name": "returnMany"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6559,8 +6515,7 @@
                 "_PTR_F_C_index": "77",
                 "ast": {
                     "declarator": {
-                        "name": "explicit1",
-                        "pointer": []
+                        "name": "explicit1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6663,8 +6618,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "explicit1",
-                        "pointer": []
+                        "name": "explicit1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6769,8 +6723,7 @@
                 "_PTR_F_C_index": "78",
                 "ast": {
                     "declarator": {
-                        "name": "explicit2",
-                        "pointer": []
+                        "name": "explicit2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6874,8 +6827,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "explicit2",
-                        "pointer": []
+                        "name": "explicit2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6977,8 +6929,7 @@
                 "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "CpassChar",
-                        "pointer": []
+                        "name": "CpassChar"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6989,8 +6940,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "status",
-                                "pointer": []
+                                "name": "status"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -7081,8 +7031,7 @@
                 "<FUNCTION>": "38 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "CreturnChar",
-                        "pointer": []
+                        "name": "CreturnChar"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -7165,8 +7114,7 @@
                 "_PTR_F_C_index": "79",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtr",
-                        "pointer": []
+                        "name": "CpassCharPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -7326,8 +7274,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtr",
-                        "pointer": []
+                        "name": "CpassCharPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -7496,8 +7443,7 @@
                 "_PTR_F_C_index": "80",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrBlank",
-                        "pointer": []
+                        "name": "CpassCharPtrBlank"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -7653,8 +7599,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrBlank",
-                        "pointer": []
+                        "name": "CpassCharPtrBlank"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -7819,8 +7764,7 @@
                 "_PTR_F_C_index": "81",
                 "ast": {
                     "declarator": {
-                        "name": "PostDeclare",
-                        "pointer": []
+                        "name": "PostDeclare"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -7976,8 +7920,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "PostDeclare",
-                        "pointer": []
+                        "name": "PostDeclare"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -8148,8 +8091,7 @@
                 "_PTR_F_C_index": "82",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrNotrim",
-                        "pointer": []
+                        "name": "CpassCharPtrNotrim"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -8284,8 +8226,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrNotrim",
-                        "pointer": []
+                        "name": "CpassCharPtrNotrim"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -8414,8 +8355,7 @@
                 "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrCAPI",
-                        "pointer": []
+                        "name": "CpassCharPtrCAPI"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -8612,8 +8552,7 @@
                 "_PTR_F_C_index": "83",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrCAPI2",
-                        "pointer": []
+                        "name": "CpassCharPtrCAPI2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -8798,8 +8737,7 @@
                 "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
-                        "name": "CpassCharPtrCAPI2",
-                        "pointer": []
+                        "name": "CpassCharPtrCAPI2"
                     },
                     "metaattrs": {
                         "intent": "function"

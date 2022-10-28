@@ -243,8 +243,7 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "func1",
-                                "pointer": []
+                                "name": "func1"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -398,8 +397,7 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "acceptClass3",
-                                "pointer": []
+                                "name": "acceptClass3"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -611,8 +609,7 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1",
-                        "pointer": []
+                        "name": "passStruct1"
                     },
                     "metaattrs": {
                         "intent": "function"

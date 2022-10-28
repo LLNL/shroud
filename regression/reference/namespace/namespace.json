@@ -206,8 +206,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "One",
-                        "pointer": []
+                        "name": "One"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -354,8 +353,7 @@
                                     "params": [
                                         {
                                             "declarator": {
-                                                "name": "ifield",
-                                                "pointer": []
+                                                "name": "ifield"
                                             },
                                             "metaattrs": {
                                                 "intent": "in",
@@ -368,8 +366,7 @@
                                         },
                                         {
                                             "declarator": {
-                                                "name": "dfield",
-                                                "pointer": []
+                                                "name": "dfield"
                                             },
                                             "metaattrs": {
                                                 "intent": "in",
@@ -488,8 +485,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "ifield",
-                                        "pointer": []
+                                        "name": "ifield"
                                     },
                                     "specifier": [
                                         "int"
@@ -519,8 +515,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "dfield",
-                                        "pointer": []
+                                        "name": "dfield"
                                     },
                                     "specifier": [
                                         "double"
@@ -582,8 +577,7 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "One",
-                                "pointer": []
+                                "name": "One"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"

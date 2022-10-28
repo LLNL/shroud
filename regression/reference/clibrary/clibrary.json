@@ -21,8 +21,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "tc",
-                                "pointer": []
+                                "name": "tc"
                             },
                             "specifier": [
                                 "int"
@@ -82,8 +81,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "NoReturnNoArguments",
-                        "pointer": []
+                        "name": "NoReturnNoArguments"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -131,8 +129,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValue",
-                        "pointer": []
+                        "name": "PassByValue"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -143,8 +140,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -159,8 +155,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -369,8 +364,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByReference",
-                        "pointer": []
+                        "name": "PassByReference"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -569,8 +563,7 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValueMacro",
-                        "pointer": []
+                        "name": "PassByValueMacro"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -581,8 +574,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -742,8 +734,7 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "checkBool",
-                        "pointer": []
+                        "name": "checkBool"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -755,8 +746,7 @@
                             },
                             "const": true,
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1444,8 +1434,7 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptName",
-                        "pointer": []
+                        "name": "acceptName"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1570,8 +1559,7 @@
                 "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut",
-                        "pointer": []
+                        "name": "passCharPtrInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1696,8 +1684,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut",
-                        "pointer": []
+                        "name": "passCharPtrInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1802,8 +1789,7 @@
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
-                        "name": "returnOneName",
-                        "pointer": []
+                        "name": "returnOneName"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1932,8 +1918,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "returnOneName",
-                        "pointer": []
+                        "name": "returnOneName"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2041,8 +2026,7 @@
                 "_PTR_F_C_index": "29",
                 "ast": {
                     "declarator": {
-                        "name": "returnTwoNames",
-                        "pointer": []
+                        "name": "returnTwoNames"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2240,8 +2224,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "returnTwoNames",
-                        "pointer": []
+                        "name": "returnTwoNames"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2404,8 +2387,7 @@
                 "_PTR_F_C_index": "30",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedTextLen",
-                        "pointer": []
+                        "name": "ImpliedTextLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2438,8 +2420,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "ltext",
-                                "pointer": []
+                                "name": "ltext"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2597,8 +2578,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedTextLen",
-                        "pointer": []
+                        "name": "ImpliedTextLen"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2632,8 +2612,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "ltext",
-                                "pointer": []
+                                "name": "ltext"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2748,8 +2727,7 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLen",
-                        "pointer": []
+                        "name": "ImpliedLen"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2780,8 +2758,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "ltext",
-                                "pointer": []
+                                "name": "ltext"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2797,8 +2774,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3053,8 +3029,7 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLenTrim",
-                        "pointer": []
+                        "name": "ImpliedLenTrim"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3085,8 +3060,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "ltext",
-                                "pointer": []
+                                "name": "ltext"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3102,8 +3076,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3358,8 +3331,7 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedBoolTrue",
-                        "pointer": []
+                        "name": "ImpliedBoolTrue"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3371,8 +3343,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3528,8 +3499,7 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedBoolFalse",
-                        "pointer": []
+                        "name": "ImpliedBoolFalse"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3541,8 +3511,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3698,8 +3667,7 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "bindC1",
-                        "pointer": []
+                        "name": "bindC1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3753,8 +3721,7 @@
                 "_PTR_F_C_index": "31",
                 "ast": {
                     "declarator": {
-                        "name": "bindC2",
-                        "pointer": []
+                        "name": "bindC2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3859,8 +3826,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "bindC2",
-                        "pointer": []
+                        "name": "bindC2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3964,8 +3930,7 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passVoidStarStar",
-                        "pointer": []
+                        "name": "passVoidStarStar"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4129,8 +4094,7 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedType",
-                        "pointer": []
+                        "name": "passAssumedType"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -4265,8 +4229,7 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeDim",
-                        "pointer": []
+                        "name": "passAssumedTypeDim"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4378,8 +4341,7 @@
                 "_PTR_F_C_index": "32",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeBuf",
-                        "pointer": []
+                        "name": "passAssumedTypeBuf"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -4563,8 +4525,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeBuf",
-                        "pointer": []
+                        "name": "passAssumedTypeBuf"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -4742,8 +4703,7 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback1",
-                        "pointer": []
+                        "name": "callback1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4754,8 +4714,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4778,8 +4737,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4901,8 +4859,7 @@
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback1a",
-                        "pointer": []
+                        "name": "callback1a"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4913,8 +4870,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4937,8 +4893,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5062,8 +5017,7 @@
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback2",
-                        "pointer": []
+                        "name": "callback2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5074,8 +5028,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5118,8 +5071,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5286,8 +5238,7 @@
                 "_PTR_F_C_index": "33",
                 "ast": {
                     "declarator": {
-                        "name": "callback3",
-                        "pointer": []
+                        "name": "callback3"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5345,8 +5296,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5556,8 +5506,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "callback3",
-                        "pointer": []
+                        "name": "callback3"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5615,8 +5564,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5824,8 +5772,7 @@
                 "<FUNCTION>": "25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback_set_alloc",
-                        "pointer": []
+                        "name": "callback_set_alloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5836,8 +5783,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "tc",
-                                "pointer": []
+                                "name": "tc"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5879,8 +5825,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5892,8 +5837,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "tc",
-                                        "pointer": []
+                                        "name": "tc"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -6077,8 +6021,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
-                        "pointer": []
+                        "name": "TypeID"
                     },
                     "specifier": [
                         "int"
@@ -6101,8 +6044,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "EnumTypeID",
-                        "pointer": []
+                        "name": "EnumTypeID"
                     },
                     "specifier": [
                         "int"

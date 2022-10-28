@@ -233,8 +233,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "flag",
-                                        "pointer": []
+                                        "name": "flag"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -485,8 +484,7 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "Method1",
-                                "pointer": []
+                                "name": "Method1"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -601,8 +599,7 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "equivalent",
-                                "pointer": []
+                                "name": "equivalent"
                             },
                             "func_const": true,
                             "metaattrs": {
@@ -830,8 +827,7 @@
                         "_generated": "return_this",
                         "ast": {
                             "declarator": {
-                                "name": "returnThis",
-                                "pointer": []
+                                "name": "returnThis"
                             },
                             "metaattrs": {
                                 "api": "capptr",
@@ -929,8 +925,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "flag",
-                                        "pointer": []
+                                        "name": "flag"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1123,8 +1118,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "flag",
-                                        "pointer": []
+                                        "name": "flag"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1604,8 +1598,7 @@
                         "<FUNCTION>": "9 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "directionFunc",
-                                "pointer": []
+                                "name": "directionFunc"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -1616,8 +1609,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "arg",
-                                        "pointer": []
+                                        "name": "arg"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1813,8 +1805,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_flag",
-                                "pointer": []
+                                "name": "get_m_flag"
                             },
                             "metaattrs": {
                                 "intent": "getter"
@@ -1899,8 +1890,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_test",
-                                "pointer": []
+                                "name": "get_test"
                             },
                             "metaattrs": {
                                 "intent": "getter"
@@ -1985,8 +1975,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_test",
-                                "pointer": []
+                                "name": "set_test"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -1998,8 +1987,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "val",
-                                        "pointer": []
+                                        "name": "val"
                                     },
                                     "metaattrs": {
                                         "intent": "setter"
@@ -2098,8 +2086,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_name",
-                                "pointer": []
+                                "name": "get_m_name"
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
@@ -2157,8 +2144,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_name",
-                                "pointer": []
+                                "name": "get_m_name"
                             },
                             "metaattrs": {
                                 "api": "cdesc",
@@ -2237,8 +2223,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_m_name",
-                                "pointer": []
+                                "name": "set_m_name"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -2249,8 +2234,7 @@
                                         "intent": "in"
                                     },
                                     "declarator": {
-                                        "name": "val",
-                                        "pointer": []
+                                        "name": "val"
                                     },
                                     "metaattrs": {
                                         "intent": "setter"
@@ -2297,8 +2281,7 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "set_m_name",
-                                "pointer": []
+                                "name": "set_m_name"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -2309,8 +2292,7 @@
                                         "intent": "in"
                                     },
                                     "declarator": {
-                                        "name": "val",
-                                        "pointer": []
+                                        "name": "val"
                                     },
                                     "metaattrs": {
                                         "api": "buf",
@@ -2410,8 +2392,7 @@
                                 "readonly": true
                             },
                             "declarator": {
-                                "name": "m_flag",
-                                "pointer": []
+                                "name": "m_flag"
                             },
                             "specifier": [
                                 "int"
@@ -2445,8 +2426,7 @@
                                 "name": "test"
                             },
                             "declarator": {
-                                "name": "m_test",
-                                "pointer": []
+                                "name": "m_test"
                             },
                             "specifier": [
                                 "int"
@@ -2477,8 +2457,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "m_name",
-                                "pointer": []
+                                "name": "m_name"
                             },
                             "specifier": [
                                 "std::string"
@@ -3088,8 +3067,7 @@
                         "<FUNCTION>": "24 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_ivar",
-                                "pointer": []
+                                "name": "get_ivar"
                             },
                             "func_const": true,
                             "metaattrs": {
@@ -3425,8 +3403,7 @@
                         "<FUNCTION>": "26 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "allocate",
-                                "pointer": []
+                                "name": "allocate"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -3437,8 +3414,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "n",
-                                        "pointer": []
+                                        "name": "n"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -3528,8 +3504,7 @@
                         "<FUNCTION>": "27 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "free",
-                                "pointer": []
+                                "name": "free"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -3715,8 +3690,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_nitems",
-                                "pointer": []
+                                "name": "get_nitems"
                             },
                             "metaattrs": {
                                 "intent": "getter"
@@ -3801,8 +3775,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_nitems",
-                                "pointer": []
+                                "name": "set_nitems"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -3814,8 +3787,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "val",
-                                        "pointer": []
+                                        "name": "val"
                                     },
                                     "metaattrs": {
                                         "intent": "setter"
@@ -4078,8 +4050,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_items",
-                                "pointer": []
+                                "name": "set_items"
                             },
                             "metaattrs": {
                                 "intent": "setter"
@@ -4210,8 +4181,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems",
-                                "pointer": []
+                                "name": "nitems"
                             },
                             "specifier": [
                                 "int"
@@ -4315,8 +4285,7 @@
                 "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "directionFunc",
-                        "pointer": []
+                        "name": "directionFunc"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -4327,8 +4296,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4516,8 +4484,7 @@
                 "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passClassByValue",
-                        "pointer": []
+                        "name": "passClassByValue"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4528,8 +4495,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4646,8 +4612,7 @@
                 "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "useclass",
-                        "pointer": []
+                        "name": "useclass"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -5403,8 +5368,7 @@
                 "<FUNCTION>": "44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "getClassCopy",
-                        "pointer": []
+                        "name": "getClassCopy"
                     },
                     "metaattrs": {
                         "api": "capptr",
@@ -5416,8 +5380,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5542,8 +5505,7 @@
                 "<FUNCTION>": "45 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "set_global_flag",
-                        "pointer": []
+                        "name": "set_global_flag"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5554,8 +5516,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -5685,8 +5646,7 @@
                 "<FUNCTION>": "46 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "get_global_flag",
-                        "pointer": []
+                        "name": "get_global_flag"
                     },
                     "metaattrs": {
                         "intent": "function"

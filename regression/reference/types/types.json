@@ -17,8 +17,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "short_func",
-                        "pointer": []
+                        "name": "short_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -29,8 +28,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -185,8 +183,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int_func",
-                        "pointer": []
+                        "name": "int_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -197,8 +194,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -353,8 +349,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_func",
-                        "pointer": []
+                        "name": "long_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -365,8 +360,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -521,8 +515,7 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_long_func",
-                        "pointer": []
+                        "name": "long_long_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -533,8 +526,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -693,8 +685,7 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "short_int_func",
-                        "pointer": []
+                        "name": "short_int_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -705,8 +696,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -863,8 +853,7 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_int_func",
-                        "pointer": []
+                        "name": "long_int_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -875,8 +864,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1033,8 +1021,7 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_long_int_func",
-                        "pointer": []
+                        "name": "long_long_int_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1045,8 +1032,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1207,8 +1193,7 @@
                 "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "unsigned_func",
-                        "pointer": []
+                        "name": "unsigned_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1219,8 +1204,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1375,8 +1359,7 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ushort_func",
-                        "pointer": []
+                        "name": "ushort_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1387,8 +1370,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1545,8 +1527,7 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint_func",
-                        "pointer": []
+                        "name": "uint_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1557,8 +1538,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1715,8 +1695,7 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_func",
-                        "pointer": []
+                        "name": "ulong_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1727,8 +1706,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1885,8 +1863,7 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_long_func",
-                        "pointer": []
+                        "name": "ulong_long_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1897,8 +1874,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2059,8 +2035,7 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_int_func",
-                        "pointer": []
+                        "name": "ulong_int_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2071,8 +2046,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2231,8 +2205,7 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int8_func",
-                        "pointer": []
+                        "name": "int8_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2243,8 +2216,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2399,8 +2371,7 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int16_func",
-                        "pointer": []
+                        "name": "int16_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2411,8 +2382,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2567,8 +2537,7 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int32_func",
-                        "pointer": []
+                        "name": "int32_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2579,8 +2548,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2735,8 +2703,7 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int64_func",
-                        "pointer": []
+                        "name": "int64_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2747,8 +2714,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2903,8 +2869,7 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint8_func",
-                        "pointer": []
+                        "name": "uint8_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2915,8 +2880,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3071,8 +3035,7 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint16_func",
-                        "pointer": []
+                        "name": "uint16_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3083,8 +3046,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3239,8 +3201,7 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint32_func",
-                        "pointer": []
+                        "name": "uint32_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3251,8 +3212,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3407,8 +3367,7 @@
                 "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint64_func",
-                        "pointer": []
+                        "name": "uint64_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3419,8 +3378,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3575,8 +3533,7 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "size_func",
-                        "pointer": []
+                        "name": "size_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3587,8 +3544,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3743,8 +3699,7 @@
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "bool_func",
-                        "pointer": []
+                        "name": "bool_func"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3755,8 +3710,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3914,8 +3868,7 @@
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnBoolAndOthers",
-                        "pointer": []
+                        "name": "returnBoolAndOthers"
                     },
                     "metaattrs": {
                         "intent": "function"

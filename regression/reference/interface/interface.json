@@ -17,8 +17,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Function1",
-                        "pointer": []
+                        "name": "Function1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -62,8 +61,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Function2",
-                        "pointer": []
+                        "name": "Function2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -74,8 +72,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -90,8 +87,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"

@@ -76,8 +76,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "NoReturnNoArguments",
-                        "pointer": []
+                        "name": "NoReturnNoArguments"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -106,8 +105,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValue",
-                        "pointer": []
+                        "name": "PassByValue"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -118,8 +116,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -134,8 +131,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -231,8 +227,7 @@
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "ConcatenateStrings",
-                        "pointer": []
+                        "name": "ConcatenateStrings"
                     },
                     "metaattrs": {
                         "deref": "allocatable",
@@ -366,8 +361,7 @@
                 "_has_default_arg": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseDefaultArguments",
-                        "pointer": []
+                        "name": "UseDefaultArguments"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -378,8 +372,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "init": 3.1415,
                             "metaattrs": {
@@ -395,8 +388,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "init": "true",
                             "metaattrs": {
@@ -503,8 +495,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "OverloadedFunction",
-                        "pointer": []
+                        "name": "OverloadedFunction"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -576,8 +567,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "OverloadedFunction",
-                        "pointer": []
+                        "name": "OverloadedFunction"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -588,8 +578,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "indx",
-                                "pointer": []
+                                "name": "indx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -646,8 +635,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateArgument",
-                        "pointer": []
+                        "name": "TemplateArgument"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -658,8 +646,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -724,8 +711,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateArgument",
-                        "pointer": []
+                        "name": "TemplateArgument"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -736,8 +722,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -825,8 +810,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateArgument",
-                        "pointer": []
+                        "name": "TemplateArgument"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -837,8 +821,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -929,8 +912,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateReturn",
-                        "pointer": []
+                        "name": "TemplateReturn"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -993,8 +975,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateReturn",
-                        "pointer": []
+                        "name": "TemplateReturn"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1055,8 +1036,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "TemplateReturn",
-                        "pointer": []
+                        "name": "TemplateReturn"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1120,8 +1100,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FortranGenericOverloaded",
-                        "pointer": []
+                        "name": "FortranGenericOverloaded"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1150,8 +1129,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FortranGenericOverloaded",
-                        "pointer": []
+                        "name": "FortranGenericOverloaded"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1180,8 +1158,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1225,8 +1202,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
+                                    "name": "arg2"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1265,8 +1241,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
+                                    "name": "arg2"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1345,8 +1320,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseDefaultOverload",
-                        "pointer": []
+                        "name": "UseDefaultOverload"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1357,8 +1331,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num",
-                                "pointer": []
+                                "name": "num"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1373,8 +1346,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1390,8 +1362,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1517,8 +1488,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseDefaultOverload",
-                        "pointer": []
+                        "name": "UseDefaultOverload"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1529,8 +1499,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1545,8 +1514,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num",
-                                "pointer": []
+                                "name": "num"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1561,8 +1529,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1578,8 +1545,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1719,8 +1685,7 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "typefunc",
-                        "pointer": []
+                        "name": "typefunc"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1731,8 +1696,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1806,8 +1770,7 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "enumfunc",
-                        "pointer": []
+                        "name": "enumfunc"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1818,8 +1781,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1895,8 +1857,7 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "colorfunc",
-                        "pointer": []
+                        "name": "colorfunc"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1907,8 +1868,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1984,8 +1944,7 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "getMinMax",
-                        "pointer": []
+                        "name": "getMinMax"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2105,8 +2064,7 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback1",
-                        "pointer": []
+                        "name": "callback1"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2117,8 +2075,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "in",
-                                "pointer": []
+                                "name": "in"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2140,8 +2097,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2251,8 +2207,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
-                        "pointer": []
+                        "name": "TypeID"
                     },
                     "specifier": [
                         "int"
@@ -2273,8 +2228,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "EnumTypeID",
-                        "pointer": []
+                        "name": "EnumTypeID"
                     },
                     "specifier": [
                         "int"
@@ -2297,8 +2251,7 @@
                 "<VARIABLE>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "global_flag",
-                        "pointer": []
+                        "name": "global_flag"
                     },
                     "specifier": [
                         "int"
@@ -2326,8 +2279,7 @@
                 "<VARIABLE>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "tutorial_flag",
-                        "pointer": []
+                        "name": "tutorial_flag"
                     },
                     "specifier": [
                         "int"

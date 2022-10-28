@@ -22,8 +22,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -34,8 +33,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -135,8 +133,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -147,8 +144,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -163,8 +159,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -304,8 +299,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -316,8 +310,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -332,8 +325,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -349,8 +341,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -519,8 +510,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -531,8 +521,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -547,8 +536,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -683,8 +671,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -695,8 +682,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -711,8 +697,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -727,8 +712,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -903,8 +887,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic",
-                        "pointer": []
+                        "name": "apply_generic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -915,8 +898,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -931,8 +913,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -947,8 +928,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -964,8 +944,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1166,8 +1145,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_require",
-                        "pointer": []
+                        "name": "apply_require"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1178,8 +1156,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1194,8 +1171,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1211,8 +1187,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1376,8 +1351,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_require",
-                        "pointer": []
+                        "name": "apply_require"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1388,8 +1362,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1404,8 +1377,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1420,8 +1392,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1437,8 +1408,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1637,8 +1607,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_optional",
-                        "pointer": []
+                        "name": "apply_optional"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1649,8 +1618,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1665,8 +1633,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1682,8 +1649,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -1849,8 +1815,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_optional",
-                        "pointer": []
+                        "name": "apply_optional"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1861,8 +1826,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1877,8 +1841,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "num_elems",
-                                "pointer": []
+                                "name": "num_elems"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1893,8 +1856,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "offset",
-                                "pointer": []
+                                "name": "offset"
                             },
                             "init": 0,
                             "metaattrs": {
@@ -1910,8 +1872,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "stride",
-                                "pointer": []
+                                "name": "stride"
                             },
                             "init": 1,
                             "metaattrs": {
@@ -2116,8 +2077,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID",
-                        "pointer": []
+                        "name": "TypeID"
                     },
                     "specifier": [
                         "int"
