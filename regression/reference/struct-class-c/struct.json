@@ -29,8 +29,7 @@
                             "params": [
                                 {
                                     "declarator": {
-                                        "name": "ifield",
-                                        "pointer": []
+                                        "name": "ifield"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -43,8 +42,7 @@
                                 },
                                 {
                                     "declarator": {
-                                        "name": "dfield",
-                                        "pointer": []
+                                        "name": "dfield"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -165,8 +163,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "ifield",
-                                "pointer": []
+                                "name": "ifield"
                             },
                             "specifier": [
                                 "int"
@@ -194,8 +191,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "dfield",
-                                "pointer": []
+                                "name": "dfield"
                             },
                             "specifier": [
                                 "double"
@@ -529,8 +525,7 @@
                             "params": [
                                 {
                                     "declarator": {
-                                        "name": "nitems",
-                                        "pointer": []
+                                        "name": "nitems"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -814,8 +809,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems",
-                                "pointer": []
+                                "name": "nitems"
                             },
                             "specifier": [
                                 "int"
@@ -1038,8 +1032,7 @@
                             "params": [
                                 {
                                     "declarator": {
-                                        "name": "nitems",
-                                        "pointer": []
+                                        "name": "nitems"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -1252,8 +1245,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems",
-                                "pointer": []
+                                "name": "nitems"
                             },
                             "specifier": [
                                 "int"
@@ -1420,8 +1412,7 @@
                                         }
                                     ],
                                     "declarator": {
-                                        "name": "name",
-                                        "pointer": []
+                                        "name": "name"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -1439,8 +1430,7 @@
                                         }
                                     ],
                                     "declarator": {
-                                        "name": "count",
-                                        "pointer": []
+                                        "name": "count"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -1572,8 +1562,7 @@
                                 }
                             ],
                             "declarator": {
-                                "name": "name",
-                                "pointer": []
+                                "name": "name"
                             },
                             "specifier": [
                                 "char"
@@ -1609,8 +1598,7 @@
                                 }
                             ],
                             "declarator": {
-                                "name": "count",
-                                "pointer": []
+                                "name": "count"
                             },
                             "specifier": [
                                 "int"
@@ -1682,8 +1670,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1",
-                                "pointer": []
+                                "name": "x1"
                             },
                             "specifier": [
                                 "int"
@@ -1706,8 +1693,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1",
-                                "pointer": []
+                                "name": "y1"
                             },
                             "specifier": [
                                 "int"
@@ -1763,8 +1749,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1",
-                                "pointer": []
+                                "name": "x1"
                             },
                             "specifier": [
                                 "int"
@@ -1787,8 +1772,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1",
-                                "pointer": []
+                                "name": "y1"
                             },
                             "specifier": [
                                 "int"
@@ -1811,8 +1795,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "z1",
-                                "pointer": []
+                                "name": "z1"
                             },
                             "specifier": [
                                 "int"
@@ -1867,8 +1850,7 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByValue",
-                        "pointer": []
+                        "name": "passStructByValue"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1879,8 +1861,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1961,8 +1942,7 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1",
-                        "pointer": []
+                        "name": "passStruct1"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2058,8 +2038,7 @@
                 "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct2",
-                        "pointer": []
+                        "name": "passStruct2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2200,8 +2179,7 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInPtr",
-                        "pointer": []
+                        "name": "acceptStructInPtr"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2297,8 +2275,7 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructOutPtr",
-                        "pointer": []
+                        "name": "acceptStructOutPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2329,8 +2306,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2345,8 +2321,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "d",
-                                "pointer": []
+                                "name": "d"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2451,8 +2426,7 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInOutPtr",
-                        "pointer": []
+                        "name": "acceptStructInOutPtr"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2529,8 +2503,7 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnStructByValue",
-                        "pointer": []
+                        "name": "returnStructByValue"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2541,8 +2514,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2557,8 +2529,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "d",
-                                "pointer": []
+                                "name": "d"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2677,8 +2648,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2693,8 +2663,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "d",
-                                "pointer": []
+                                "name": "d"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2815,8 +2784,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2831,8 +2799,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "d",
-                                "pointer": []
+                                "name": "d"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3088,8 +3055,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "x",
-                                "pointer": []
+                                "name": "x"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3104,8 +3070,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "y",
-                                "pointer": []
+                                "name": "y"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3137,8 +3102,7 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_as_class_sum",
-                        "pointer": []
+                        "name": "Cstruct_as_class_sum"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -3205,8 +3169,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "x",
-                                "pointer": []
+                                "name": "x"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3221,8 +3184,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "y",
-                                "pointer": []
+                                "name": "y"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3237,8 +3199,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "z",
-                                "pointer": []
+                                "name": "z"
                             },
                             "metaattrs": {
                                 "intent": "in"

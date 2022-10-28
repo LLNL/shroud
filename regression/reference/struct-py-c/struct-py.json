@@ -24,8 +24,7 @@
                             "params": [
                                 {
                                     "declarator": {
-                                        "name": "x1",
-                                        "pointer": []
+                                        "name": "x1"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -38,8 +37,7 @@
                                 },
                                 {
                                     "declarator": {
-                                        "name": "y1",
-                                        "pointer": []
+                                        "name": "y1"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -160,8 +158,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1",
-                                "pointer": []
+                                "name": "x1"
                             },
                             "specifier": [
                                 "int"
@@ -189,8 +186,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1",
-                                "pointer": []
+                                "name": "y1"
                             },
                             "specifier": [
                                 "int"
@@ -257,8 +253,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x2",
-                                "pointer": []
+                                "name": "x2"
                             },
                             "specifier": [
                                 "int"
@@ -283,8 +278,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y2",
-                                "pointer": []
+                                "name": "y2"
                             },
                             "specifier": [
                                 "int"
@@ -347,8 +341,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptBothStructs",
-                        "pointer": []
+                        "name": "acceptBothStructs"
                     },
                     "metaattrs": {
                         "intent": "function"

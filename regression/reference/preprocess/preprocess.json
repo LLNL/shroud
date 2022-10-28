@@ -14,8 +14,7 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method1",
-                                "pointer": []
+                                "name": "method1"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -66,8 +65,7 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method2",
-                                "pointer": []
+                                "name": "method2"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -123,8 +121,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def",
-                                "pointer": []
+                                "name": "method3def"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -183,8 +180,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def",
-                                "pointer": []
+                                "name": "method3def"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -195,8 +191,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "i",
-                                        "pointer": []
+                                        "name": "i"
                                     },
                                     "init": 0,
                                     "metaattrs": {
@@ -352,8 +347,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc",
-                                "pointer": []
+                                "name": "exfunc"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -406,8 +400,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc",
-                                "pointer": []
+                                "name": "exfunc"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -418,8 +411,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "flag",
-                                        "pointer": []
+                                        "name": "flag"
                                     },
                                     "metaattrs": {
                                         "intent": "in"

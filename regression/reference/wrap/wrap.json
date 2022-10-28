@@ -13,8 +13,7 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "FuncInClass",
-                                "pointer": []
+                                "name": "FuncInClass"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"

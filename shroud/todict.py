@@ -72,7 +72,8 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_Declarator(self, node):
-        d = dict(pointer=self.visit(node.pointer))
+        d = {}
+        self.add_visit_fields(node, d, ["pointer"])
         if node.name:
             d["name"] = node.name
         elif node.func:

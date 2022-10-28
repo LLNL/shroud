@@ -57,8 +57,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "UpdateAsFloat",
-                        "pointer": []
+                        "name": "UpdateAsFloat"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -69,8 +68,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -158,8 +156,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "UpdateAsDouble",
-                        "pointer": []
+                        "name": "UpdateAsDouble"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -170,8 +167,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -259,8 +255,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "GetGlobalDouble",
-                        "pointer": []
+                        "name": "GetGlobalDouble"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -336,8 +331,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal",
-                        "pointer": []
+                        "name": "GenericReal"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -348,8 +342,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -378,8 +371,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg",
-                                    "pointer": []
+                                    "name": "arg"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -400,8 +392,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg",
-                                    "pointer": []
+                                    "name": "arg"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -482,8 +473,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal",
-                        "pointer": []
+                        "name": "GenericReal"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -494,8 +484,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -549,8 +538,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal",
-                        "pointer": []
+                        "name": "GenericReal"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -561,8 +549,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg",
-                                "pointer": []
+                                "name": "arg"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -611,8 +598,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal2",
-                        "pointer": []
+                        "name": "GenericReal2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -623,8 +609,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -639,8 +624,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -670,8 +654,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg1",
-                                    "pointer": []
+                                    "name": "arg1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -686,8 +669,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
+                                    "name": "arg2"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -708,8 +690,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg1",
-                                    "pointer": []
+                                    "name": "arg1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -724,8 +705,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
+                                    "name": "arg2"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -864,8 +844,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal2",
-                        "pointer": []
+                        "name": "GenericReal2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -876,8 +855,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -892,8 +870,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -958,8 +935,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GenericReal2",
-                        "pointer": []
+                        "name": "GenericReal2"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -970,8 +946,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -986,8 +961,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1048,8 +1022,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
+                        "name": "SumValues"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1081,8 +1054,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
+                                "name": "nvalues"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1135,8 +1107,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nvalues",
-                                    "pointer": []
+                                    "name": "nvalues"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1181,8 +1152,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nvalues",
-                                    "pointer": []
+                                    "name": "nvalues"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1227,8 +1197,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nvalues",
-                                    "pointer": []
+                                    "name": "nvalues"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1364,8 +1333,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
+                        "name": "SumValues"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1400,8 +1368,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
+                                "name": "nvalues"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1568,8 +1535,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
+                        "name": "SumValues"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1604,8 +1570,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
+                                "name": "nvalues"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1774,8 +1739,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
+                        "name": "SumValues"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1810,8 +1774,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
+                                "name": "nvalues"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1973,8 +1936,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
+                        "name": "AssignValues"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2003,8 +1965,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
+                                "name": "nfrom"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2036,8 +1997,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nto",
-                                "pointer": []
+                                "name": "nto"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2084,8 +2044,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nfrom",
-                                    "pointer": []
+                                    "name": "nfrom"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2117,8 +2076,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nto",
-                                    "pointer": []
+                                    "name": "nto"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2157,8 +2115,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nfrom",
-                                    "pointer": []
+                                    "name": "nfrom"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2193,8 +2150,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nto",
-                                    "pointer": []
+                                    "name": "nto"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2236,8 +2192,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nfrom",
-                                    "pointer": []
+                                    "name": "nfrom"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2272,8 +2227,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "nto",
-                                    "pointer": []
+                                    "name": "nto"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -2435,8 +2389,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
+                        "name": "AssignValues"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2465,8 +2418,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
+                                "name": "nfrom"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2498,8 +2450,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nto",
-                                "pointer": []
+                                "name": "nto"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2695,8 +2646,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
+                        "name": "AssignValues"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2725,8 +2675,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
+                                "name": "nfrom"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2761,8 +2710,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nto",
-                                "pointer": []
+                                "name": "nto"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2962,8 +2910,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
+                        "name": "AssignValues"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2995,8 +2942,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
+                                "name": "nfrom"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3031,8 +2977,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "nto",
-                                "pointer": []
+                                "name": "nto"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3230,8 +3175,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer",
-                        "pointer": []
+                        "name": "SavePointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3262,8 +3206,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3279,8 +3222,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3328,8 +3270,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "type",
-                                    "pointer": []
+                                    "name": "type"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -3345,8 +3286,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "size",
-                                    "pointer": []
+                                    "name": "size"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -3389,8 +3329,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "type",
-                                    "pointer": []
+                                    "name": "type"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -3406,8 +3345,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "size",
-                                    "pointer": []
+                                    "name": "size"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -3539,8 +3477,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer",
-                        "pointer": []
+                        "name": "SavePointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3573,8 +3510,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3590,8 +3526,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3749,8 +3684,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer",
-                        "pointer": []
+                        "name": "SavePointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3783,8 +3717,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3800,8 +3733,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3953,8 +3885,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer2",
-                        "pointer": []
+                        "name": "SavePointer2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3986,8 +3917,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4003,8 +3933,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4052,8 +3981,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "type",
-                                    "pointer": []
+                                    "name": "type"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -4069,8 +3997,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "size",
-                                    "pointer": []
+                                    "name": "size"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -4113,8 +4040,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "type",
-                                    "pointer": []
+                                    "name": "type"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -4130,8 +4056,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "size",
-                                    "pointer": []
+                                    "name": "size"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -4273,8 +4198,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer2",
-                        "pointer": []
+                        "name": "SavePointer2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4307,8 +4231,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4324,8 +4247,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4493,8 +4415,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SavePointer2",
-                        "pointer": []
+                        "name": "SavePointer2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4527,8 +4448,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "type",
-                                "pointer": []
+                                "name": "type"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4544,8 +4464,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "size",
-                                "pointer": []
+                                "name": "size"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -4706,8 +4625,7 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "GetPointer",
-                        "pointer": []
+                        "name": "GetPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -4918,8 +4836,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetPointerAsPointer",
-                        "pointer": []
+                        "name": "GetPointerAsPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5267,8 +5184,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetPointerAsPointer",
-                        "pointer": []
+                        "name": "GetPointerAsPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5379,8 +5295,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetPointerAsPointer",
-                        "pointer": []
+                        "name": "GetPointerAsPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5597,8 +5512,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetPointerAsPointer",
-                        "pointer": []
+                        "name": "GetPointerAsPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -5709,8 +5623,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetPointerAsPointer",
-                        "pointer": []
+                        "name": "GetPointerAsPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -6005,8 +5918,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UpdateStructAsClass",
-                        "pointer": []
+                        "name": "UpdateStructAsClass"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6034,8 +5946,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "inew",
-                                "pointer": []
+                                "name": "inew"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -6078,8 +5989,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "inew",
-                                    "pointer": []
+                                    "name": "inew"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -6117,8 +6027,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "inew",
-                                    "pointer": []
+                                    "name": "inew"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -6250,8 +6159,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UpdateStructAsClass",
-                        "pointer": []
+                        "name": "UpdateStructAsClass"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6279,8 +6187,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "inew",
-                                "pointer": []
+                                "name": "inew"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -6439,8 +6346,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UpdateStructAsClass",
-                        "pointer": []
+                        "name": "UpdateStructAsClass"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -6468,8 +6374,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "inew",
-                                "pointer": []
+                                "name": "inew"
                             },
                             "metaattrs": {
                                 "intent": "in"

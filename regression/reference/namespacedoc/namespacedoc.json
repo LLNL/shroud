@@ -14,8 +14,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker3",
-                        "pointer": []
+                        "name": "worker3"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -61,8 +60,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker",
-                        "pointer": []
+                        "name": "worker"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -114,8 +112,7 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker",
-                                "pointer": []
+                                "name": "worker"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -195,8 +192,7 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker",
-                                "pointer": []
+                                "name": "worker"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -276,8 +272,7 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker4",
-                                "pointer": []
+                                "name": "worker4"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"

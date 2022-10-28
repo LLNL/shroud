@@ -18,8 +18,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex",
-                        "pointer": []
+                        "name": "passIndex"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -30,8 +29,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -77,8 +75,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "i1",
-                                    "pointer": []
+                                    "name": "i1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -119,8 +116,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "i1",
-                                    "pointer": []
+                                    "name": "i1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -272,8 +268,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex",
-                        "pointer": []
+                        "name": "passIndex"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -284,8 +279,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -463,8 +457,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex",
-                        "pointer": []
+                        "name": "passIndex"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -475,8 +468,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -649,8 +641,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex2",
-                        "pointer": []
+                        "name": "passIndex2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -661,8 +652,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -688,8 +678,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "i1",
-                                    "pointer": []
+                                    "name": "i1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -710,8 +699,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "i1",
-                                    "pointer": []
+                                    "name": "i1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -791,8 +779,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex2",
-                        "pointer": []
+                        "name": "passIndex2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -803,8 +790,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -853,8 +839,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passIndex2",
-                        "pointer": []
+                        "name": "passIndex2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -865,8 +850,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i1",
-                                "pointer": []
+                                "name": "i1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -910,8 +894,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passFloat",
-                        "pointer": []
+                        "name": "passFloat"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -922,8 +905,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "f1",
-                                "pointer": []
+                                "name": "f1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -949,8 +931,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "f1",
-                                    "pointer": []
+                                    "name": "f1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -971,8 +952,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "f1",
-                                    "pointer": []
+                                    "name": "f1"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1052,8 +1032,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passFloat",
-                        "pointer": []
+                        "name": "passFloat"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1064,8 +1043,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "f1",
-                                "pointer": []
+                                "name": "f1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1114,8 +1092,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "passFloat",
-                        "pointer": []
+                        "name": "passFloat"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1126,8 +1103,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "f1",
-                                "pointer": []
+                                "name": "f1"
                             },
                             "metaattrs": {
                                 "intent": "in"

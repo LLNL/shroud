@@ -16,8 +16,7 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method1",
-                                "pointer": []
+                                "name": "method1"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -28,8 +27,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "comm",
-                                        "pointer": []
+                                        "name": "comm"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -121,8 +119,7 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method2",
-                                "pointer": []
+                                "name": "method2"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -274,8 +271,7 @@
                                 "<FUNCTION>": "5 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "function1",
-                                        "pointer": []
+                                        "name": "function1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -384,8 +380,7 @@
                                 "<FUNCTION>": "2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method1",
-                                        "pointer": []
+                                        "name": "method1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -396,8 +391,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "arg1",
-                                                "pointer": []
+                                                "name": "arg1"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -548,8 +542,7 @@
                                 "<FUNCTION>": "3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method",
-                                        "pointer": []
+                                        "name": "method"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -626,8 +619,7 @@
                         "<FUNCTION>": "6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "outer_func",
-                                "pointer": []
+                                "name": "outer_func"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -709,8 +701,7 @@
                                 "<FUNCTION>": "4 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method",
-                                        "pointer": []
+                                        "name": "method"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -787,8 +778,7 @@
                         "<FUNCTION>": "7 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "outer_func",
-                                "pointer": []
+                                "name": "outer_func"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -865,8 +855,7 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "CustomType",
-                        "pointer": []
+                        "name": "CustomType"
                     },
                     "specifier": [
                         "int"

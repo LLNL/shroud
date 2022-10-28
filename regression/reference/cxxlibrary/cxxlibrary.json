@@ -24,8 +24,7 @@
                             "params": [
                                 {
                                     "declarator": {
-                                        "name": "ifield",
-                                        "pointer": []
+                                        "name": "ifield"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -38,8 +37,7 @@
                                 },
                                 {
                                     "declarator": {
-                                        "name": "dfield",
-                                        "pointer": []
+                                        "name": "dfield"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -160,8 +158,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "ifield",
-                                "pointer": []
+                                "name": "ifield"
                             },
                             "specifier": [
                                 "int"
@@ -189,8 +186,7 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "dfield",
-                                "pointer": []
+                                "name": "dfield"
                             },
                             "specifier": [
                                 "double"
@@ -259,8 +255,7 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceCls",
-                        "pointer": []
+                        "name": "passStructByReferenceCls"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -353,8 +348,7 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceInCls",
-                        "pointer": []
+                        "name": "passStructByReferenceInCls"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -451,8 +445,7 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceInoutCls",
-                        "pointer": []
+                        "name": "passStructByReferenceInoutCls"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -529,8 +522,7 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceOutCls",
-                        "pointer": []
+                        "name": "passStructByReferenceOutCls"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -611,8 +603,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultPtrIsNULL",
-                        "pointer": []
+                        "name": "defaultPtrIsNULL"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -697,8 +688,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultPtrIsNULL",
-                        "pointer": []
+                        "name": "defaultPtrIsNULL"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -885,8 +875,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultArgsInOut",
-                        "pointer": []
+                        "name": "defaultArgsInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -897,8 +886,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "in1",
-                                "pointer": []
+                                "name": "in1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1100,8 +1088,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultArgsInOut",
-                        "pointer": []
+                        "name": "defaultArgsInOut"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1112,8 +1099,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "in1",
-                                "pointer": []
+                                "name": "in1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1168,8 +1154,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "init": "false",
                             "metaattrs": {
@@ -1461,8 +1446,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "idx",
-                                "pointer": []
+                                "name": "idx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1491,8 +1475,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "idx",
-                                    "pointer": []
+                                    "name": "idx"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1513,8 +1496,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "idx",
-                                    "pointer": []
+                                    "name": "idx"
                                 },
                                 "metaattrs": {
                                     "intent": "in"
@@ -1642,8 +1624,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "idx",
-                                "pointer": []
+                                "name": "idx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1730,8 +1711,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "idx",
-                                "pointer": []
+                                "name": "idx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1872,8 +1852,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "idx",
-                                "pointer": []
+                                "name": "idx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1960,8 +1939,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "idx",
-                                "pointer": []
+                                "name": "idx"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2089,8 +2067,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "ifield",
-                                        "pointer": []
+                                        "name": "ifield"
                                     },
                                     "specifier": [
                                         "int"
@@ -2117,8 +2094,7 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "dfield",
-                                        "pointer": []
+                                        "name": "dfield"
                                     },
                                     "specifier": [
                                         "double"
@@ -2174,8 +2150,7 @@
                         "<FUNCTION>": "14 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReference",
-                                "pointer": []
+                                "name": "passStructByReference"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -2351,8 +2326,7 @@
                         "<FUNCTION>": "15 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceIn",
-                                "pointer": []
+                                "name": "passStructByReferenceIn"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -2529,8 +2503,7 @@
                         "<FUNCTION>": "16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceInout",
-                                "pointer": []
+                                "name": "passStructByReferenceInout"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -2658,8 +2631,7 @@
                         "<FUNCTION>": "17 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceOut",
-                                "pointer": []
+                                "name": "passStructByReferenceOut"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"

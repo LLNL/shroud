@@ -14,7 +14,6 @@ stmts:
 - _ast: Declaration
   declarator:
     name: i
-    pointer: []
   specifier:
   - int
   typemap_name: int
@@ -22,7 +21,6 @@ stmts:
   const: true
   declarator:
     name: d
-    pointer: []
   specifier:
   - double
   typemap_name: double
@@ -116,14 +114,12 @@ stmts:
     - _ast: Declaration
       declarator:
         name: x
-        pointer: []
       specifier:
       - int
       typemap_name: int
     - _ast: Declaration
       declarator:
         name: y
-        pointer: []
       specifier:
       - int
       typemap_name: int
@@ -135,33 +131,28 @@ stmts:
 - _ast: Declaration
   declarator:
     name: end
-    pointer: []
   specifier:
   - struct Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
     name: start
-    pointer: []
   specifier:
   - Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
     name: func1
-    pointer: []
   params:
   - _ast: Declaration
     declarator:
       name: arg1
-      pointer: []
     specifier:
     - struct Point
     typemap_name: Point
   - _ast: Declaration
     declarator:
       name: arg2
-      pointer: []
     specifier:
     - Point
     typemap_name: Point
@@ -294,7 +285,6 @@ stmts:
 - _ast: Declaration
   declarator:
     name: global
-    pointer: []
   specifier:
   - enum Color
   typemap_name: enum-Color
@@ -342,14 +332,12 @@ stmts:
 - _ast: Declaration
   declarator:
     name: global
-    pointer: []
   specifier:
   - enum Color
   typemap_name: enum-Color
 - _ast: Declaration
   declarator:
     name: flag
-    pointer: []
   init: RED
   specifier:
   - Color
@@ -357,19 +345,16 @@ stmts:
 - _ast: Declaration
   declarator:
     name: func1
-    pointer: []
   params:
   - _ast: Declaration
     declarator:
       name: arg1
-      pointer: []
     specifier:
     - enum Color
     typemap_name: enum-Color
   - _ast: Declaration
     declarator:
       name: arg2
-      pointer: []
     specifier:
     - Color
     typemap_name: enum-Color
@@ -407,19 +392,16 @@ stmts:
           _ast: Declaration
           declarator:
             name: nested
-            pointer: []
           params:
           - _ast: Declaration
             declarator:
               name: arg1
-              pointer: []
             specifier:
             - T
             template_argument: T
           - _ast: Declaration
             declarator:
               name: arg2
-              pointer: []
             specifier:
             - U
             template_argument: U
@@ -437,7 +419,6 @@ stmts:
 - _ast: Declaration
   declarator:
     name: returnUserType
-    pointer: []
   params: []
   specifier:
   - user
@@ -472,7 +453,6 @@ stmts:
   - _ast: Declaration
     declarator:
       name: i
-      pointer: []
     specifier:
     - int
     typemap_name: int
@@ -482,7 +462,6 @@ stmts:
     - _ast: Declaration
       declarator:
         name: j
-        pointer: []
       specifier:
       - int
       typemap_name: int
@@ -514,7 +493,6 @@ stmts:
       - _ast: Declaration
         declarator:
           name: imem
-          pointer: []
         specifier:
         - int
         typemap_name: int

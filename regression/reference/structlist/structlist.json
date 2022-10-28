@@ -28,8 +28,7 @@
                                         }
                                     ],
                                     "declarator": {
-                                        "name": "name",
-                                        "pointer": []
+                                        "name": "name"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -47,8 +46,7 @@
                                         }
                                     ],
                                     "declarator": {
-                                        "name": "count",
-                                        "pointer": []
+                                        "name": "count"
                                     },
                                     "metaattrs": {
                                         "intent": "in",
@@ -181,8 +179,7 @@
                                 }
                             ],
                             "declarator": {
-                                "name": "name",
-                                "pointer": []
+                                "name": "name"
                             },
                             "specifier": [
                                 "char"
@@ -218,8 +215,7 @@
                                 }
                             ],
                             "declarator": {
-                                "name": "count",
-                                "pointer": []
+                                "name": "count"
                             },
                             "specifier": [
                                 "int"

@@ -216,8 +216,7 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "convert_to_int",
-                        "pointer": []
+                        "name": "convert_to_int"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -228,8 +227,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "in",
-                                "pointer": []
+                                "name": "in"
                             },
                             "metaattrs": {
                                 "intent": "in"

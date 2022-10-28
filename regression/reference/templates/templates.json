@@ -58,8 +58,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "nested",
-                                "pointer": []
+                                "name": "nested"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -70,8 +69,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "arg1",
-                                        "pointer": []
+                                        "name": "arg1"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -86,8 +84,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "arg2",
-                                        "pointer": []
+                                        "name": "arg2"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -143,8 +140,7 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "nested",
-                                "pointer": []
+                                "name": "nested"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -155,8 +151,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "arg1",
-                                        "pointer": []
+                                        "name": "arg1"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -172,8 +167,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "arg2",
-                                        "pointer": []
+                                        "name": "arg2"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -496,8 +490,7 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_npts",
-                                "pointer": []
+                                "name": "set_npts"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -508,8 +501,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "n",
-                                        "pointer": []
+                                        "name": "n"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -599,8 +591,7 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_npts",
-                                "pointer": []
+                                "name": "get_npts"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -680,8 +671,7 @@
                         "<FUNCTION>": "5 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_value",
-                                "pointer": []
+                                "name": "set_value"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -692,8 +682,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "v",
-                                        "pointer": []
+                                        "name": "v"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -727,8 +716,7 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "set_value",
-                                "pointer": []
+                                "name": "set_value"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -739,8 +727,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "v",
-                                        "pointer": []
+                                        "name": "v"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -832,8 +819,7 @@
                         "<FUNCTION>": "6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_value",
-                                "pointer": []
+                                "name": "get_value"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -862,8 +848,7 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "get_value",
-                                "pointer": []
+                                "name": "get_value"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -1093,8 +1078,7 @@
                         "<FUNCTION>": "10 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_npts",
-                                "pointer": []
+                                "name": "set_npts"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -1105,8 +1089,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "n",
-                                        "pointer": []
+                                        "name": "n"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1196,8 +1179,7 @@
                         "<FUNCTION>": "11 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_npts",
-                                "pointer": []
+                                "name": "get_npts"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -1277,8 +1259,7 @@
                         "<FUNCTION>": "12 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_value",
-                                "pointer": []
+                                "name": "set_value"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -1289,8 +1270,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "v",
-                                        "pointer": []
+                                        "name": "v"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1324,8 +1304,7 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "set_value",
-                                "pointer": []
+                                "name": "set_value"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -1336,8 +1315,7 @@
                                         "value": true
                                     },
                                     "declarator": {
-                                        "name": "v",
-                                        "pointer": []
+                                        "name": "v"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
@@ -1429,8 +1407,7 @@
                         "<FUNCTION>": "13 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_value",
-                                "pointer": []
+                                "name": "get_value"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -1459,8 +1436,7 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "get_value",
-                                "pointer": []
+                                "name": "get_value"
                             },
                             "metaattrs": {
                                 "intent": "function"
@@ -1617,8 +1593,7 @@
                 "<FUNCTION>": "30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnUserType",
-                        "pointer": []
+                        "name": "returnUserType"
                     },
                     "metaattrs": {
                         "api": "capptr",
@@ -1709,8 +1684,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1721,8 +1695,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1737,8 +1710,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1822,8 +1794,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1834,8 +1805,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1851,8 +1821,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2063,8 +2032,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2075,8 +2043,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2092,8 +2059,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2306,8 +2272,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker",
-                        "pointer": []
+                        "name": "UseImplWorker"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2375,8 +2340,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker",
-                        "pointer": []
+                        "name": "UseImplWorker"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2510,8 +2474,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker",
-                        "pointer": []
+                        "name": "UseImplWorker"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2816,8 +2779,7 @@
                                 "<FUNCTION>": "18 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back",
-                                        "pointer": []
+                                        "name": "push_back"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -2868,8 +2830,7 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back",
-                                        "pointer": []
+                                        "name": "push_back"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -3017,8 +2978,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -3071,8 +3031,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -3252,8 +3211,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -3604,8 +3562,7 @@
                                 "<FUNCTION>": "25 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back",
-                                        "pointer": []
+                                        "name": "push_back"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -3656,8 +3613,7 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back",
-                                        "pointer": []
+                                        "name": "push_back"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -3805,8 +3761,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -3859,8 +3814,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"
@@ -4040,8 +3994,7 @@
                                                 "value": true
                                             },
                                             "declarator": {
-                                                "name": "n",
-                                                "pointer": []
+                                                "name": "n"
                                             },
                                             "metaattrs": {
                                                 "intent": "in"

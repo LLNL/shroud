@@ -78,8 +78,7 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_flag",
-                                "pointer": []
+                                "name": "get_flag"
                             },
                             "metaattrs": {
                                 "intent": "getter"
@@ -171,8 +170,7 @@
                                 "readonly": true
                             },
                             "declarator": {
-                                "name": "m_flag",
-                                "pointer": []
+                                "name": "m_flag"
                             },
                             "specifier": [
                                 "int"
@@ -2823,8 +2821,7 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimRaw",
-                        "pointer": []
+                        "name": "IntPtrDimRaw"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2900,8 +2897,7 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimPointer",
-                        "pointer": []
+                        "name": "IntPtrDimPointer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2984,8 +2980,7 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimAlloc",
-                        "pointer": []
+                        "name": "IntPtrDimAlloc"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3068,8 +3063,7 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimDefault",
-                        "pointer": []
+                        "name": "IntPtrDimDefault"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3151,8 +3145,7 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimRawNew",
-                        "pointer": []
+                        "name": "IntPtrDimRawNew"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3229,8 +3222,7 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimPointerNew",
-                        "pointer": []
+                        "name": "IntPtrDimPointerNew"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3313,8 +3305,7 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimAllocNew",
-                        "pointer": []
+                        "name": "IntPtrDimAllocNew"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3397,8 +3388,7 @@
                 "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimDefaultNew",
-                        "pointer": []
+                        "name": "IntPtrDimDefaultNew"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3480,8 +3470,7 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "createClassStatic",
-                        "pointer": []
+                        "name": "createClassStatic"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -3492,8 +3481,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3734,8 +3722,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "flag",
-                                "pointer": []
+                                "name": "flag"
                             },
                             "metaattrs": {
                                 "intent": "in"

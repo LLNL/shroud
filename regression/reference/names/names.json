@@ -376,8 +376,7 @@
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
-                        "name": "getName",
-                        "pointer": []
+                        "name": "getName"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -499,8 +498,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "getName",
-                        "pointer": []
+                        "name": "getName"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -598,8 +596,7 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "function1",
-                        "pointer": []
+                        "name": "function1"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -645,8 +642,7 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "function2",
-                        "pointer": []
+                        "name": "function2"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -693,8 +689,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "function3a",
-                        "pointer": []
+                        "name": "function3a"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -705,8 +700,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -815,8 +809,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "function3a",
-                        "pointer": []
+                        "name": "function3a"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -827,8 +820,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "i",
-                                "pointer": []
+                                "name": "i"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -940,8 +932,7 @@
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
-                        "name": "function4",
-                        "pointer": []
+                        "name": "function4"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1108,8 +1099,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "function4",
-                        "pointer": []
+                        "name": "function4"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -1234,8 +1224,7 @@
                         "name": "fiveplus"
                     },
                     "declarator": {
-                        "name": "function5",
-                        "pointer": []
+                        "name": "function5"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1285,8 +1274,7 @@
                 "_PTR_F_C_index": "21",
                 "ast": {
                     "declarator": {
-                        "name": "TestMultilineSplicer",
-                        "pointer": []
+                        "name": "TestMultilineSplicer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1494,8 +1482,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "TestMultilineSplicer",
-                        "pointer": []
+                        "name": "TestMultilineSplicer"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1664,8 +1651,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1676,8 +1662,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1692,8 +1677,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1786,8 +1770,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -1798,8 +1781,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -1815,8 +1797,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2036,8 +2017,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU",
-                        "pointer": []
+                        "name": "FunctionTU"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2048,8 +2028,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg1",
-                                "pointer": []
+                                "name": "arg1"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2065,8 +2044,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "arg2",
-                                "pointer": []
+                                "name": "arg2"
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2288,8 +2266,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker",
-                        "pointer": []
+                        "name": "UseImplWorker"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2342,8 +2319,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker",
-                        "pointer": []
+                        "name": "UseImplWorker"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2461,8 +2437,7 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_as_class_sum",
-                        "pointer": []
+                        "name": "Cstruct_as_class_sum"
                     },
                     "metaattrs": {
                         "intent": "function"
@@ -2642,8 +2617,7 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "external_funcs",
-                        "pointer": []
+                        "name": "external_funcs"
                     },
                     "metaattrs": {
                         "intent": "subroutine"
@@ -2718,8 +2692,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2783,8 +2756,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -2828,8 +2800,7 @@
                                             "ptr": "*"
                                         }
                                     ]
-                                },
-                                "pointer": []
+                                }
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -3216,8 +3187,7 @@
                                 "<FUNCTION>": "1 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method1",
-                                        "pointer": []
+                                        "name": "method1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -3268,8 +3238,7 @@
                                 "<FUNCTION>": "2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method2",
-                                        "pointer": []
+                                        "name": "method2"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -3431,8 +3400,7 @@
                         "<FUNCTION>": "22 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "init_ns1",
-                                "pointer": []
+                                "name": "init_ns1"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
@@ -3996,8 +3964,7 @@
                                 "<FUNCTION>": "3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "Member1",
-                                        "pointer": []
+                                        "name": "Member1"
                                     },
                                     "metaattrs": {
                                         "intent": "subroutine"
@@ -4074,8 +4041,7 @@
                         "<FUNCTION>": "23 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "Worker1",
-                                "pointer": []
+                                "name": "Worker1"
                             },
                             "metaattrs": {
                                 "intent": "subroutine"
