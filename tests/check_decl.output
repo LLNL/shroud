@@ -6,7 +6,9 @@ XXXX CODE
 int i;
 const double d;
 XXXX PRINT_NODE
-int i;const double d;
+int i;
+const double d;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -34,7 +36,10 @@ int *i1;
 int **i2;
 int &i3;
 XXXX PRINT_NODE
-int * i1;int * * i2;int & i3;
+int * i1;
+int * * i2;
+int & i3;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -71,6 +76,7 @@ XXXX CODE
 class Class1;
 XXXX PRINT_NODE
 class Class1;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -92,7 +98,15 @@ struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
 XXXX PRINT_NODE
-struct Point { int x;int y; };;struct Point end;Point start;void func1(struct Point arg1,Point arg2);
+struct Point{
+int x;
+int y;
+}
+;
+struct Point end;
+Point start;
+void func1(struct Point arg1,Point arg2);
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -167,7 +181,11 @@ struct list_s {
   struct list_s *next;
 };
 XXXX PRINT_NODE
-struct list_s { struct list_s * next; };;
+struct list_s{
+struct list_s * next;
+}
+;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -213,7 +231,12 @@ struct list_s {
   list_s *prev;
 };
 XXXX PRINT_NODE
-struct list_s { struct list_s * next;list_s * prev; };;
+struct list_s{
+struct list_s * next;
+list_s * prev;
+}
+;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -252,7 +275,9 @@ XXXX CODE
 enum Color {RED, WHITE, BLUE};
 enum Color global;
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;enum Color global;
+enum Color { RED, WHITE, BLUE };;
+enum Color global;
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -296,7 +321,11 @@ enum Color global;
 Color flag = RED;
 void func1(enum Color arg1, Color arg2);
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;enum Color global;Color flag=RED;void func1(enum Color arg1,Color arg2);
+enum Color { RED, WHITE, BLUE };;
+enum Color global;
+Color flag=RED;
+void func1(enum Color arg1,Color arg2);
+
 XXXX AST
 stmts:
 - _ast: Declaration
@@ -359,7 +388,12 @@ template<T> class user {
 };
 user<int> returnUserType(void);
 XXXX PRINT_NODE
-template<T>  class user { template<U>  void nested(T arg1,U arg2); };;user returnUserType();
+template<T>  class user{
+template<U>  void nested(T arg1,U arg2);
+}
+;
+user returnUserType();
+
 XXXX AST
 stmts:
 - _ast: Template
@@ -429,6 +463,7 @@ namespace ns1 {
 }
 XXXX PRINT_NODE
 namespace ns1;
+
 XXXX AST
 stmts:
 - _ast: Namespace
@@ -466,6 +501,7 @@ namespace ns {
 }
 XXXX PRINT_NODE
 namespace ns;
+
 XXXX AST
 stmts:
 - _ast: Namespace

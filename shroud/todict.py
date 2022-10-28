@@ -619,7 +619,7 @@ class PrintNode(visitor.Visitor):
         n = []
         for item in lst:
             n.append(self.visit(item))
-            n.append(";")
+            n.append(";\n")
         return "".join(n)
 
     def visit_Identifier(self, node):
@@ -658,9 +658,9 @@ class PrintNode(visitor.Visitor):
                 s.append(", ")
             s.pop()
         if node.members:
-            s.append(" {{ {} }};".format(
-                self.stmt_list(node.members)
-            ))
+            s.append("{\n")
+            s.append(self.stmt_list(node.members))
+            s.append("}\n")
         return "".join(s)
 
     def visit_Namespace(self, node):
@@ -686,9 +686,12 @@ class PrintNode(visitor.Visitor):
         )
 
     def visit_Struct(self, node):
-        return " {{ {} }};".format(
-            self.stmt_list(node.members)
-        )
+        s = []
+        if node.members:
+            s.append("{\n")
+            s.append(self.stmt_list(node.members))
+            s.append("}\n")
+        return "".join(s)
 
     def visit_Template(self, node):
         parms = self.comma_list(node.parameters)

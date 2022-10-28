@@ -1533,9 +1533,6 @@ class CheckStruct(unittest.TestCase):
         r = declast.check_decl("struct struct1 { int i; double d; };",
                                symtab)
         self.assertEqual(
-            "struct struct1 { int i;double d; };", todict.print_node(r)
-        )
-        self.assertEqual(
             todict.to_dict(r),
             {
                 'class_specifier': {
