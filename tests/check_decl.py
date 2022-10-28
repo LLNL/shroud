@@ -17,10 +17,8 @@ make test-decl-diff
 make test-decl-replace
 """
 
-from shroud import ast
 from shroud import declast
 from shroud import todict
-from shroud import typemap
 
 import yaml
 import pprint
