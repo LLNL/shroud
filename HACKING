@@ -21,6 +21,17 @@ are too expensive to be enabled by default.  New in version 3.7.
 
 setenv PYTHONDEVMODE 1
 
+Parse test
+----------
+
+Parse some strings in ``tests/check_decl.py`` and compare to reference
+in ``tests/check-decl.output``.
+The parse trees are compared.
+
+    make test-decl
+    make test-decl-diff
+    make test-decl-replace
+
 Run unittest
 ------------
 
@@ -165,3 +176,6 @@ pp.pprint( dict or tuple )
 ```
 
 import pdb; pdb.set_trace()
+
+% yes c | python ... >&! out
+Answer 'c' to all pdb prompts.

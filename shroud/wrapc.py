@@ -1002,7 +1002,8 @@ class Wrapc(util.WrapperMixin):
                     cls_typemap = cls.typemap
                     if cls_typemap.base != "shadow":
                         raise RuntimeError(
-                            "Wapped class is not a shadow type"
+                            "Wapped class {} is not a shadow type"
+                            .format(cls_typemap.name)
                         )
                     append_format(
                         setup_this,

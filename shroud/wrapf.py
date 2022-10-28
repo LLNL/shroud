@@ -58,6 +58,7 @@ class Wrapf(util.WrapperMixin):
 
     def __init__(self, newlibrary, config, splicers):
         self.newlibrary = newlibrary
+        self.symtab = newlibrary.symtab
         self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
@@ -284,9 +285,9 @@ class Wrapf(util.WrapperMixin):
             fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
         elif options.class_baseclass:
             # Used with wrap_struct_as=class.
-            baseclass = node.parent.unqualified_lookup(options.class_baseclass)
+            baseclass = node.parent.ast.unqualified_lookup(options.class_baseclass)
             if not baseclass:
-                raise RuntimeError("Unknown class '{}'".format(options.class_baseclass))
+                raise RuntimeError("Unknown class '{}' in option.class_baseclass".format(options.class_baseclass))
             fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
         if fmt_class.F_derived_member_base:
             append_format(
@@ -1264,7 +1265,7 @@ rv = .false.
                 self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
             elif c_result_blk.return_type:
                 # Return type changed by user.
-                ntypemap = typemap.lookup_typemap(c_result_blk.return_type)
+                ntypemap = self.symtab.lookup_typemap(c_result_blk.return_type)
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)

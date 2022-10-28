@@ -1750,7 +1750,7 @@
                             "specifier": [
                                 "ArgType"
                             ],
-                            "typemap_name": "ArgType"
+                            "template_argument": "ArgType"
                         }
                     ],
                     "specifier": [
@@ -1831,6 +1831,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "template_argument": "ArgType",
                             "typemap_name": "int"
                         }
                     ],
@@ -2009,6 +2010,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "template_argument": "ArgType",
                             "typemap_name": "double"
                         }
                     ],
@@ -2174,7 +2176,7 @@
                     "specifier": [
                         "RetType"
                     ],
-                    "typemap_name": "RetType"
+                    "template_argument": "RetType"
                 },
                 "cxx_template": {
                     "RetType": [
@@ -2241,6 +2243,7 @@
                     "specifier": [
                         "int"
                     ],
+                    "template_argument": "RetType",
                     "typemap_name": "int"
                 },
                 "decl": "template<typename RetType> RetType TemplateReturn()",
@@ -2356,6 +2359,7 @@
                     "specifier": [
                         "double"
                     ],
+                    "template_argument": "RetType",
                     "typemap_name": "double"
                 },
                 "decl": "template<typename RetType> RetType TemplateReturn()",
@@ -6084,7 +6088,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "tutorial::TypeID"
                 },
                 "name": "TypeID",
                 "options": {},
@@ -6109,7 +6113,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "tutorial::EnumTypeID"
                 },
                 "name": "EnumTypeID",
                 "options": {},

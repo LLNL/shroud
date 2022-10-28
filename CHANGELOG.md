@@ -77,6 +77,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add continuations on Fortran ``IMPORT`` statements.
 - Better support for ``std::vector`` with pointer template arguments.
   For examples, ``<const double *>``.
+- Parse ``class``, ``struct`` and ``enum`` as part of declaration.
+  This allows ``typedef struct tag name`` to be parsed properly.
+- Create type table earlier in parse. This allows recursive structs such as
+  ``struct point { struct point *next; }`` to be parsed.
 
 ### Changed
 - The *C_memory_dtor_function* is now written to the utility file,

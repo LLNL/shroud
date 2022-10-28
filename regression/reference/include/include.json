@@ -874,7 +874,7 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "CustomType"
                 },
                 "name": "CustomType",
                 "options": {},

@@ -221,6 +221,28 @@ test-clean :
 
 ########################################################################
 #
+# Compare output of check_decl.py with previous run.
+#
+decl_file = check_decl.output
+decl_path = $(tempdir)/$(decl_file)
+decl_ref = $(testsdir)/$(decl_file)
+
+.PHONY : test-decl-work
+test-decl-work :
+	rm -f $(decl_path) && \
+	$(PYTHON) $(testsdir)/check_decl.py >& $(decl_path)
+
+test-decl : test-decl-work
+	diff $(decl_ref) $(decl_path)
+
+test-decl-replace : test-decl-work
+	cp $(decl_path) $(decl_ref)
+
+test-decl-diff :
+	tkdiff $(decl_ref) $(decl_path)
+
+########################################################################
+#
 # Run the sample YAML files and compare output
 # make do-test
 # make do-test do-test-args=tutorial

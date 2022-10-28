@@ -1685,7 +1685,7 @@
                             "specifier": [
                                 "T"
                             ],
-                            "typemap_name": "T"
+                            "template_argument": "T"
                         },
                         {
                             "attrs": {
@@ -1701,7 +1701,7 @@
                             "specifier": [
                                 "U"
                             ],
-                            "typemap_name": "U"
+                            "template_argument": "U"
                         }
                     ],
                     "specifier": [
@@ -1807,6 +1807,7 @@
                             "specifier": [
                                 "int"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "int"
                         },
                         {
@@ -1823,6 +1824,7 @@
                             "specifier": [
                                 "long"
                             ],
+                            "template_argument": "U",
                             "typemap_name": "long"
                         }
                     ],
@@ -2055,6 +2057,7 @@
                             "specifier": [
                                 "float"
                             ],
+                            "template_argument": "T",
                             "typemap_name": "float"
                         },
                         {
@@ -2071,6 +2074,7 @@
                             "specifier": [
                                 "double"
                             ],
+                            "template_argument": "U",
                             "typemap_name": "double"
                         }
                     ],
@@ -4495,14 +4499,6 @@
                 "typestestnames.hh"
             ]
         },
-        "std::vector::T": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
-        },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4667,22 +4663,6 @@
             "wrap_header": [
                 "typestestnames.hh"
             ]
-        },
-        "twoTs::T1": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
-        },
-        "twoTs::T2": {
-            "base": "template",
-            "c_type": "c_T",
-            "cxx_type": "cxx_T",
-            "f_type": "f_T",
-            "flat_name": "cxx_T",
-            "sgroup": "template"
         },
         "twoTs_0": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

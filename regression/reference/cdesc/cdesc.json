@@ -1133,7 +1133,7 @@
                     "specifier": [
                         "DataType"
                     ],
-                    "typemap_name": "DataType"
+                    "template_argument": "DataType"
                 },
                 "cxx_template": {
                     "DataType": [
@@ -1200,6 +1200,7 @@
                     "specifier": [
                         "int"
                     ],
+                    "template_argument": "DataType",
                     "typemap_name": "int"
                 },
                 "decl": "template<typename DataType> DataType getData();",
@@ -1316,6 +1317,7 @@
                     "specifier": [
                         "double"
                     ],
+                    "template_argument": "DataType",
                     "typemap_name": "double"
                 },
                 "decl": "template<typename DataType> DataType getData();",

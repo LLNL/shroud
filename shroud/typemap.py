@@ -23,6 +23,8 @@ except:
     def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
         return name.replace("::","_").translate(flat_trantab)
 
+void_typemap = None
+
 def flatten_modules_to_line(modules):
     """Flatten modules dictionary into a line.
 
@@ -198,6 +200,9 @@ class Typemap(object):
         """Compute some fields based on other fields."""
         self.f_c_module_line = flatten_modules_to_line(self.f_c_module or self.f_module)
         self.f_module_line = flatten_modules_to_line(self.f_module)
+        if self.cxx_type and not self.flat_name:
+            # Do not override an explicitly set value.
+            self.compute_flat_name()
 
     def XXXcopy(self):
         ntypemap = Typemap(self.name)
@@ -292,32 +297,7 @@ class Typemap(object):
         util.as_yaml(self, order, output)
 
 
-# Manage collection of typemaps
-shared_typemaps = {}  # dictionary of registered types
-
-
-def set_global_typemaps(typemaps):
-    global shared_typemaps
-    shared_typemaps = typemaps
-
-
-def get_global_typemaps():
-    return shared_typemaps
-
-
-def register_typemap(name, ntypemap):
-    """Register a typemap"""
-    shared_typemaps[name] = ntypemap
-
-
-def lookup_typemap(name):
-    """Lookup name in registered types."""
-    ntypemap = shared_typemaps.get(name)
-    return ntypemap
-
-
-def initialize():
-    set_global_typemaps({})
+def default_typemap():
     def_types = dict(
         void=Typemap(
             "void",
@@ -874,7 +854,20 @@ def initialize():
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
 
-    set_global_typemaps(def_types)
+    # One typemap for all template parameters.
+    type_name = "--template-parameter--"
+    ntypemap = Typemap(
+        type_name,
+        base="template",
+        sgroup="template",
+        c_type="c_T",
+        cxx_type="cxx_T",
+        f_type="f_T",
+    )
+    def_types[type_name] = ntypemap
+
+    global void_typemap
+    void_typemap = def_types["void"] # GGG
 
     return def_types
 
@@ -916,8 +909,7 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
         )
     fill_native_typemap_defaults(ntypemap, fmt)
     ntypemap.finalize()
-    register_typemap(cxx_name, ntypemap)
-    library.add_typedef_by_name(cxx_name, ntypemap)
+    library.symtab.add_typedef(cxx_name, ntypemap)
     return ntypemap
 
 
@@ -948,8 +940,10 @@ def fill_native_typemap_defaults(ntypemap, fmt):
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
-def create_enum_typemap(node):
-    """Create a typemap similar to an int.
+def fill_enum_typemap(node):
+    """Fill an enum typemap with wrapping fields.
+
+    Create a typemap similar to an int.
     C++ enums are converted to a C int.
 
     C enums are prefixed with 'enum-' to put them in an enum-only
@@ -961,13 +955,15 @@ def create_enum_typemap(node):
     """
     fmt_enum = node.fmtdict
     type_name = util.wformat("enum-{namespace_scope}{enum_name}", fmt_enum)
-        
-    ntypemap = lookup_typemap(type_name)
+
+    ntypemap = node.typemap
     if ntypemap is None:
+        raise RuntimeError("Missing typemap on Enum")
+    else:
         language = node.get_language()
 
-        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
-        ntypemap = inttypemap.clone_as(type_name)
+##        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
+##        ntypemap = inttypemap.clone_as(type_name)
 #        ntypemap.sgroup = "enum"
         if language == "c":
 #            ntypemap.c_type = "enum {}".format(fmt_enum.enum_name)
@@ -988,7 +984,6 @@ def create_enum_typemap(node):
             )
             ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
         ntypemap.compute_flat_name()
-        register_typemap(type_name, ntypemap)
     return ntypemap
 
 
@@ -1026,13 +1021,14 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     }
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_typemap(cxx_name, ntypemap)
-    library.add_shadow_typemap(ntypemap)
+    library.symtab.add_typedef(cxx_name, ntypemap)
     return ntypemap
 
 
 def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
+    The class ClassNode can result for template instantiation in generate
+    and not while parsing.
     Use fields to override defaults.
 
     The c_type and f_capsule_data_type are a struct which contains
@@ -1046,7 +1042,8 @@ def create_class_typemap(node, fields=None):
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
     cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
-    ntypemap = lookup_typemap(cxx_name)
+##    ntypemap = lookup_typemap(cxx_name)
+    # GGG already exits?
     # unname = util.un_camel(name)
     f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
@@ -1074,10 +1071,50 @@ def create_class_typemap(node, fields=None):
         ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
-    register_typemap(cxx_name, ntypemap)
+    node.symtab.register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
+
+def fill_class_typemap(node, fields=None):
+    """Fill a class typemap with wrapping fields.
+
+    The typemap already exists in the node.
+    """
+    ntypemap = node.typemap
+    fmt_class = node.fmtdict
+    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
+    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
+
+    # unname = util.un_camel(name)
+    f_name = fmt_class.cxx_class.lower()
+    c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
+    ntypemap.update(dict(
+        base="shadow",       # GGG already set but may be wrapped differently
+        sgroup="shadow",
+        cxx_type=cxx_type,
+        impl_header=node.find_header(),
+        wrap_header=fmt_class.C_header_utility,
+        c_type=c_name,
+        f_module_name=fmt_class.F_module_name,
+        f_derived_type=fmt_class.F_derived_name,
+        f_capsule_data_type=fmt_class.F_capsule_data_type,
+        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
+        # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
+        f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
+        sh_type="SH_TYPE_OTHER",
+        cfi_type="CFI_type_other",
+    ))
+    # import classes which are wrapped by this module
+    # XXX - deal with namespaces vs modules
+    ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    if fields is not None:
+        ntypemap.update(fields)
+    fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    ntypemap.finalize()
+
+    fmt_class.C_type_name = ntypemap.c_type
+#    return ntypemap
 
 
 def fill_shadow_typemap_defaults(ntypemap, fmt):
@@ -1167,8 +1204,7 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
 # XXX - Set defaults while being created above.
 #    fill_struct_typemap_defaults(node, ntypemap)
 
-    register_typemap(cxx_name, ntypemap)
-    library.add_shadow_typemap(ntypemap)
+    library.symtab.add_typedef(cxx_name, ntypemap)
     return ntypemap
 
 
@@ -1204,10 +1240,51 @@ def create_struct_typemap(node, fields=None):
     if fields is not None:
         ntypemap.update(fields)
     fill_struct_typemap_defaults(node, ntypemap)
-    register_typemap(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
+
+def fill_struct_typemap(node, fields=None):
+    """Fill a struct typemap with wrapping fields.
+
+    The typemap already exists in the node.
+    Use fields to override defaults.
+
+    Parameters:
+    -----------
+    node : ast.ClassNode
+    fields : dictionary-like object.
+    """
+    ntypemap = node.typemap
+    fmt_class = node.fmtdict
+    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
+    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
+
+    # unname = util.un_camel(name)
+    f_name = fmt_class.cxx_class.lower()
+    c_name = fmt_class.C_prefix + f_name
+    ntypemap.update(dict(
+        base="struct",        # GGG already set but may be wrapped differently
+        sgroup="struct",
+        cxx_type=cxx_type,
+        c_type=c_name,
+        f_derived_type=fmt_class.F_derived_name,
+        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
+        f_c_module={"--import--": [fmt_class.F_derived_name]},
+        PYN_descr=fmt_class.PY_struct_array_descr_variable,
+        sh_type="SH_TYPE_STRUCT",
+        cfi_type="CFI_type_struct",
+    ))
+    if fields is not None:
+        ntypemap.update(fields)
+    fill_struct_typemap_defaults(node, ntypemap)
+# GGG - sets f_c_module_line and f_module_line which may or may not be needed
+##    ntypemap.finalize()
+    if ntypemap.cxx_type and not ntypemap.flat_name:
+            ntypemap.compute_flat_name()
+
+    fmt_class.C_type_name = ntypemap.c_type
+##    return ntypemap
 
 
 def fill_struct_typemap_defaults(node, ntypemap):
@@ -1256,7 +1333,28 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # ntypemap.LUA_statements = {}
 
 
-def create_fcnptr_typemap(node, fields=None):
+def create_fcnptr_typemap(symtab, name):
+    # GGG - Similar to how typemaps are created in class Struct
+    """Create a typemap for a function pointer
+    The typemap contains a the declaration.
+
+    Args:
+        node - ast.TypedefNode
+        fields - dictionary
+    """
+    type_name = symtab.scopename + name
+    ntypemap = Typemap(
+        type_name,
+        base="fcnptr",
+        sgroup="fcnptr",
+    )
+    # Check if all fields are C compatible
+#            ntypemap.compute_flat_name()
+    
+    symtab.register_typemap(type_name, ntypemap)
+    return ntypemap
+
+def fill_fcnptr_typemap(node, fields=None):
     """Create a typemap for a function pointer
     The typemap contains a the declaration.
 
@@ -1270,6 +1368,7 @@ def create_fcnptr_typemap(node, fields=None):
 #    raise NotImplementedError(
 #        "Function pointers not supported in typedef"
 #    )
+    raise NotImplemented
     fmt = node.fmtdict
     cxx_name = node.ast.name
     fmt.typedef_name = cxx_name
@@ -1294,12 +1393,16 @@ def create_fcnptr_typemap(node, fields=None):
     return ntypemap
 
 
-def return_shadow_types():
+def return_shadow_types(typemaps):  # typemaps -> dict
     """Return a dictionary of user defined types."""
     dct = {}
-    for key, ntypemap in shared_typemaps.items():
-        if ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
+    for key, ntypemap in typemaps.items():
+        if ntypemap.name == "--template-parameter--":
+            continue
+        elif key.startswith("struct-"):
+            continue  # tag vs type name
+        elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
             dct[key] = ntypemap
-        elif ntypemap.name.startswith("enum-"):
+        elif key.startswith("enum-"):
             dct[key] = ntypemap
     return dct
