@@ -364,12 +364,7 @@ class Parser(ExprParser):
         params = []
         self.next()  # consume LPAREN peeked at in caller
         while self.token.typ != "RPAREN":
-            if self.token.typ == "ENUM":
-                node = self.enum_statement()
-            elif self.token.typ == "STRUCT":
-                node = self.struct_statement()
-            else:
-                node = self.declaration()
+            node = self.declaration()
             params.append(node)
             if self.have("COMMA"):
                 if self.have("VARARG"):
@@ -490,9 +485,18 @@ class Parser(ExprParser):
                 node.storage.append(self.token.value)
                 self.info("storage-class-specifier:", self.token.value)
                 self.next()
+            elif self.token.typ == "CLASS":
+                self.class_decl(node)
+                found_type = True
+            elif self.token.typ == "ENUM":
+                self.enum_decl(node)
+                found_type = True
+            elif self.token.typ == "STRUCT":
+                specifier = self.struct_decl(node)
+                found_type = True
             else:
                 more = False
-        if not node.specifier:
+        if not found_type:
             # GGG ValueError: Single '}' encountered in format string
             if self.token.value == '}':
                 value = '}}'
@@ -574,13 +578,7 @@ class Parser(ExprParser):
     def line_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
         """
-        if self.token.typ == "CLASS":
-            node = self.class_statement()
-        elif self.token.typ == "ENUM":
-            node = self.enum_statement()
-        elif self.token.typ == "STRUCT":
-            node = self.struct_statement()
-        elif self.token.typ == "NAMESPACE":
+        if self.token.typ == "NAMESPACE":
             node = self.namespace_statement()
         elif self.token.typ == "TEMPLATE":
             node = self.template_statement()
@@ -786,14 +784,27 @@ class Parser(ExprParser):
                 attrs[name] = True
         self.exit("attribute", attrs)
 
-    def class_statement(self):
-        """  class ID
+    def class_decl(self, node):
+        """Create a class.
+
+        class ID [ : ( PUBLIC | PRIVATE | PROTECTED ) ID '{'  '}'
+        class ID ;
+          Forward declare
+        class ID <EOF>
+          Declare in YAML.
+
+        node : declast.Declaration
         """
-        self.enter("class_statement")
+        self.enter("class_decl")
         self.mustbe("CLASS")
         name = self.mustbe("ID")
-        node = CXXClass(name.value, self.symtab)
-        if self.have("COLON"):
+        clsnode = CXXClass(name.value, self.symtab)
+        node.specifier.append("class " + name.value)
+        node.class_specifier = clsnode
+        node.typemap = clsnode.typemap
+        if self.have("EOF"):
+            pass
+        elif self.have("COLON"):
             if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
                 access_specifier = self.token.value
                 self.next()
@@ -804,13 +815,22 @@ class Parser(ExprParser):
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     # XXX - make sure ns is a ast.ClassNode (and not a namespace)
-                    node.baseclass.append((access_specifier, ns_name, ns))
+                    clsnode.baseclass.append((access_specifier, ns_name, ns))
                 else:
                     self.error_msg("unknown class '{}'", self.token.value)
             else:
                 self.mustbe("ID")
+
+        if self.have("LCURLY"):
+            members = clsnode.members
+            while self.token.typ != "RCURLY":
+#                members.append(self.declaration()) # GGG, accepts too much  - template
+                members.append(self.line_statement())
+                self.mustbe("SEMICOLON")
+            self.mustbe("RCURLY")
+            self.symtab.pop_scope()
                     
-        self.exit("class_statement")
+        self.exit("class_decl")
         return node
 
     def namespace_statement(self):
@@ -843,12 +863,7 @@ class Parser(ExprParser):
                 break
         self.mustbe("GT")
 
-        if self.token.typ == "CLASS":
-            node.decl = self.class_statement()
-        elif self.token.typ == "STRUCT":
-            node.decl = self.struct_statement()
-        else:
-            node.decl = self.declaration()
+        node.decl = self.declaration()
 
         self.exit("template_statement")
         return node
@@ -878,15 +893,17 @@ class Parser(ExprParser):
         self.mustbe("GT")
         return lst
 
-    def enum_statement(self):
+    def enum_decl(self, node):
         """Creating an enumeration.
 
         ENUM [ CLASS | STRUCT ] ID {  }
            Add to typemap table as "enum-{name}"
         ENUM ID
            Lookup enum in typemap table.
+
+        node : declast.Declaration
         """
-        self.enter("enum_statement")
+        self.enter("enum_decl")
         self.mustbe("ENUM")
         if self.have("STRUCT"):
             scope = "struct"
@@ -894,11 +911,15 @@ class Parser(ExprParser):
             scope = "class"
         else:
             scope = None
-        name = self.mustbe("ID")
+        name = self.mustbe("ID")  # GGG - optional
+        if scope:
+            node.specifier.append("enum {} {}".format(scope, name.value))
+        else:
+            node.specifier.append("enum " + name.value)
         if self.have("LCURLY"):
             #        self.mustbe("LCURLY")
-            node = Enum(name.value, self.symtab, scope)
-            members = node.members
+            enumnode = Enum(name.value, self.symtab, scope)
+            members = enumnode.members
             while self.token.typ != "RCURLY":
                 name = self.mustbe("ID")
                 if self.have("EQUALS"):
@@ -909,52 +930,57 @@ class Parser(ExprParser):
                 if not self.have("COMMA"):
                     break
             self.mustbe("RCURLY")
+            node.enum_specifier = enumnode
+            node.typemap = enumnode.typemap
         else:
-            node = Declaration(self.symtab)
-            node.declarator = self.declarator()
             ntypemap = self.symtab.lookup_typemap("enum-" + name.value)
             if ntypemap is None:
                 raise RuntimeError("Enum tag %s is not defined" % name.value)
             node.typemap = ntypemap
-            node.specifier.append("enum " + name.value)
-        self.exit("enum_statement")#, str(members))
+        self.exit("enum_decl")#, str(members))
         return node
 
-    def struct_statement(self):
-        """Creating a struct.
+    def struct_decl(self, node):
+        """Create a struct.
 
         STRUCT ID {  }
            Add to typemap table as "struct-{name}"
-        STRUCT ID <EOF>
+        STRUCT ID ;
            Forward declare
+        STRUCT ID <EOF>
+           Declare in YAML.
         STRUCT ID [ Declaration ]
            Lookup struct tag in typemap table.
+
+        node : declast.Declaration
         """
-        self.enter("struct_statement")
+        self.enter("struct_decl")
         self.mustbe("STRUCT")
-        name = self.mustbe("ID")
+        name = self.mustbe("ID")  # GGG name is optional
+        node.specifier.append("struct " + name.value)
         if self.have("LCURLY"):
-            node = Struct(name.value, self.symtab)
-            members = node.members
+            structnode = Struct(name.value, self.symtab)
+            members = structnode.members
             while self.token.typ != "RCURLY":
 #                members.append(self.declaration()) # GGG, accepts too much
                 members.append(self.line_statement())
                 self.mustbe("SEMICOLON")
             self.mustbe("RCURLY")
             self.symtab.pop_scope()
+            node.class_specifier = structnode
+            node.typemap = structnode.typemap
         elif self.have("EOF"):
-            node = Struct(name.value, self.symtab)
+            structnode = Struct(name.value, self.symtab)
+            node.class_specifier = structnode
+            node.typemap = structnode.typemap
             # GGG - Caller must call symtab.pop_scope when finished with members.
         else:
-            node = Declaration(self.symtab)
-            node.declarator = self.declarator()
             ntypemap = self.symtab.lookup_typemap("struct-" + name.value)
             if ntypemap is None:
                 raise RuntimeError("Struct tag %s is not defined" % name.value)
             #self.info("Typemap {}".format(ntypemap.name))
             node.typemap = ntypemap
-            node.specifier.append("struct " + name.value)
-        self.exit("struct_statement")
+        self.exit("struct_decl")
         return node
 
 
@@ -1221,6 +1247,8 @@ class Declaration(Node):
 #        self.symtab = symtab  # GGG -lots of problems with copy
         self.specifier = []  # int, long, ...
         self.storage = []  # static, tyedef, ...
+        self.enum_specifier = None   # Enum
+        self.class_specifier = None  # CXXClass, Struct (union)
         self.const = False
         self.volatile = False
         self.declarator = None
@@ -1910,11 +1938,18 @@ class Declaration(Node):
 
 class CXXClass(Node):
     """A C++ class statement.
+
+    members are populated by function class_decl.
+    children is populated by ast.py
     """
 
     def __init__(self, name, symtab, ntypemap=None):
+        """
+        ntypemap from YAML file.
+        """
         self.name = name
         self.baseclass = []
+        self.members = []
         self.has_ctor = True
         self.group = []
 
@@ -1991,7 +2026,7 @@ class Struct(Node):
 
     Add a typemap to the symbol table.
 
-    members are populated by struct_statement
+    members are populated by function struct_decl.
     children is populated by ast.py
     """
 
@@ -2325,7 +2360,7 @@ def check_decl(decl, symtab, trace=False):
 
     namespace - An ast.AstNode subclass.
     """
-#    trace = True   # GGG For debug
+    #trace = True   # GGG For debug
     a = Parser(decl, symtab, trace).decl_statement()
     return a
 

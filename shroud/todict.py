@@ -86,6 +86,7 @@ class ToDict(visitor.Visitor):
         )
         if self.labelast:
             d["_ast"] = node.__class__.__name__
+        self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
         add_non_none_fields(node, d, ["template_argument"])
         if node.typemap.base != "template":
             # print name to avoid too much nesting
@@ -160,6 +161,7 @@ class ToDict(visitor.Visitor):
 
     def visit_CXXClass(self, node):
         d = dict(name=node.name)
+        self.add_visit_fields(node, d, ["members"])
         if self.labelast:
             d["_ast"] = node.__class__.__name__
             if node.group:
@@ -194,7 +196,8 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_Struct(self, node):
-        d = dict(name=node.name, members=self.visit(node.members))
+        d = dict(name=node.name)
+        self.add_visit_fields(node, d, ["members"])
         if node.typemap is not None:
             d['typemap_name'] = node.typemap.name
             if node.children:
@@ -471,6 +474,7 @@ class ToDict(visitor.Visitor):
 def add_non_none_fields(node, d, fields):
     """Update dict d  with fields from node which are not None.
     Used to skip empty fields.
+    Fields must not be recursive, ex. Bool, Int, Str.
     """
     for key in fields:
         value = getattr(node, key)
@@ -646,21 +650,29 @@ class PrintNode(visitor.Visitor):
 
     def visit_CXXClass(self, node):
         s = ["class {}".format(node.name)]
+        s = []
         if node.baseclass:
             s.append(": ")
             for basetuple in node.baseclass:
                 s.append("{} {}".format(basetuple[0], basetuple[1]))
                 s.append(", ")
-            s[-1] = ";"
-        else:
-            s.append(";")
+            s.pop()
+        if node.members:
+            s.append(" {{ {} }};".format(
+                self.stmt_list(node.members)
+            ))
         return "".join(s)
 
     def visit_Namespace(self, node):
         return "namespace {}".format(node.name)
 
     def visit_Declaration(self, node):
-        return str(node)
+        s = str(node)
+        if node.enum_specifier:
+            s += self.visit(node.enum_specifier)
+        elif node.class_specifier:
+            s += self.visit(node.class_specifier)
+        return s
 
     def visit_EnumValue(self, node):
         if node.value is None:
@@ -669,18 +681,13 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        if node.scope:
-            return "enum {} {} {{ {} }};".format(
-                node.name, node.scope, self.comma_list(node.members)
-            )
-        else:
-            return "enum {} {{ {} }};".format(
-                node.name, self.comma_list(node.members)
-            )
+        return " {{ {} }};".format(
+            self.comma_list(node.members)
+        )
 
     def visit_Struct(self, node):
-        return "struct {} {{ {} }};".format(
-            node.name, self.stmt_list(node.members)
+        return " {{ {} }};".format(
+            self.stmt_list(node.members)
         )
 
     def visit_Template(self, node):

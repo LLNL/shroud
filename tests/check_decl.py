@@ -31,6 +31,9 @@ lines = """
 int i;
 double d;
 --------------------
+# Class statement
+class Class1;
+--------------------
 # nested namespace
 namespace ns1 {
   int i;
@@ -56,6 +59,7 @@ user<int> returnUserType(void);
 struct Point { int x; int y;};
 struct Point end;
 Point start;
+void func1(struct Point arg1, Point arg2);
 --------------------
 # Recursive structure
 # language=c
@@ -94,18 +98,35 @@ Color flag = RED;
 enum Color {RED, WHITE, BLUE};
 enum Color global;
 Color flag = RED;
+void func1(enum Color arg1, Color arg2);
 --------------------
 """
 
 # Run only one test by assigning here and
 # rename Xlines to lines.
 Xlines = """
-struct Point { int x; int y;};
-struct Point end;
-Point start;
+# language=c
+struct Point_s { int x; int y;};
+struct Point_s foo;
+#typedef struct Point_s Point;
+#Point start;
+--------------------
+"""
+Xlines = """
+# language=c
+typedef struct Point_s { int x; int y;} Point;
+--------------------
+"""
+Xlines = """
+template<typename T> struct structAsClass
 --------------------
 """
 
+Xlines = """
+# Class statement
+class Class1;
+--------------------
+"""
 
 def test_block(comments, code, symtab):
     """Parse a single block of code.

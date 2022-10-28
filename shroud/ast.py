@@ -174,32 +174,38 @@ class NamespaceMixin(object):
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
                 node = self.add_typedef(decl, ast=ast, **kwargs)
-            elif ast.params is None:
-                node = self.add_variable(decl, ast=ast, **kwargs)
-            else:
+            elif ast.enum_specifier:
+                node = self.add_enum(decl, ast=ast, **kwargs)
+            elif ast.class_specifier:
+                if isinstance(ast.class_specifier, declast.Struct):
+                    node = self.add_struct(
+                        decl, ast=ast,
+                        template_parameters=template_parameters,
+                        **kwargs)
+                elif isinstance(ast.class_specifier, declast.CXXClass):
+                    # A Class may already be forward defined.
+                    # If so, just return it.
+                    nodes = [cls for cls in self.classes if cls.name == ast.class_specifier.name]
+                    if not nodes:
+                        node = self.add_class(
+                            decl, ast, base=ast.class_specifier.baseclass,
+                            template_parameters=template_parameters, **kwargs
+                        )
+                    else:
+                        if len(nodes) != 1:
+                            raise RuntimeError(
+                                "internal: too many nodes with the same name {}"
+                                .format(ast.name))
+                        node = nodes[0]
+                else:
+                    # Class or Union
+                    raise RuntimeError("internal: add_declaration non-struct")
+            elif ast.params is not None:
                 node = self.add_function(decl, ast=fullast, **kwargs)
-        elif isinstance(ast, declast.CXXClass):
-            # A Class may already be forward defined.
-            # If so, just return it.
-            nodes = [cls for cls in self.classes if cls.name == ast.name]
-            if not nodes:
-                node = self.add_class(
-                    decl, ast, base=ast.baseclass,
-                    template_parameters=template_parameters, **kwargs
-                )
             else:
-                if len(nodes) != 1:
-                    raise RuntimeError(
-                        "internal: too many nodes with the same name {}"
-                        .format(ast.name))
-                node = nodes[0]
+                node = self.add_variable(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(decl, ast, **kwargs)
-        elif isinstance(ast, declast.Enum):
-            node = self.add_enum(decl, ast=ast, **kwargs)
-        elif isinstance(ast, declast.Struct):
-            node = self.add_struct(
-                decl, ast=ast, template_parameters=template_parameters, **kwargs)
         else:
             raise RuntimeError(
                 "add_declaration: unknown ast type {} after parsing '{}'".format(
@@ -258,11 +264,12 @@ class NamespaceMixin(object):
         """
         if ast is None:
             ast = declast.check_decl(decl, self.symtab)
-        name = ast.name
+        class_specifier = ast.class_specifier
+        name = class_specifier.name
         # XXX - base=... for inheritance
-        node = ClassNode(name, self, parse_keyword="struct", ast=ast,
+        node = ClassNode(decl, self, parse_keyword="struct", ast=ast,
                          template_parameters=template_parameters, **kwargs)
-        for member in ast.members:
+        for member in class_specifier.members:
             node.add_variable(str(member), member)
         self.classes.append(node)
         return node
@@ -1065,11 +1072,14 @@ class ClassNode(AstNode, NamespaceMixin):
         self.decl = decl
         if ast is None:
             ast = declast.check_decl(decl, parent.symtab)
-        self.ast = ast
-        if not (isinstance(ast, declast.CXXClass)
-                or isinstance(ast, declast.Struct)):
+        if not isinstance(ast, declast.Declaration):
+            raise RuntimeError("class decl is not a Declaration")
+        class_specifier = ast.class_specifier
+        self.ast = class_specifier  # declast.CXXClass
+        if not (isinstance(class_specifier, declast.CXXClass)
+                or isinstance(class_specifier, declast.Struct)):
             raise RuntimeError("class decl is not a CXXClass or Struct Node")
-        self.name = ast.name
+        self.name = class_specifier.name
 
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
@@ -1557,16 +1567,19 @@ class EnumNode(AstNode):
         self.decl = decl
         if ast is None:
             ast = declast.check_decl(decl, self.symtab)
-        if not isinstance(ast, declast.Enum):
+        if not isinstance(ast, declast.Declaration):
             raise RuntimeError("Declaration is not an enumeration: " + decl)
-        self.ast = ast
-        self.name = ast.name
+        enum_specifier = ast.enum_specifier
+        if not isinstance(enum_specifier, declast.Enum):
+            raise RuntimeError("Declaration is not an enumeration: " + decl)
+        self.ast = enum_specifier
+        self.name = enum_specifier.name
 
         # format for enum
         fmt_enum = self.fmtdict
-        fmt_enum.enum_name = ast.name
-        fmt_enum.enum_lower = ast.name.lower()
-        fmt_enum.enum_upper = ast.name.upper()
+        fmt_enum.enum_name = self.name
+        fmt_enum.enum_lower = self.name.lower()
+        fmt_enum.enum_upper = self.name.upper()
         if fmt_enum.cxx_class:
             fmt_enum.namespace_scope = (
                 fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
@@ -1577,16 +1590,16 @@ class EnumNode(AstNode):
         # C or Fortran names.
         options = self.options
         fmtmembers = {}
-        if ast.scope is not None:
+        if enum_specifier.scope is not None:
             # members of 'class enum' must be qualified, add to scope.
             C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
             F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
-        for member in ast.members:
+        for member in enum_specifier.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
             fmt.enum_member_lower = member.name.lower()
             fmt.enum_member_upper = member.name.upper()
-            if ast.scope is not None:
+            if enum_specifier.scope is not None:
                 fmt.C_name_scope = C_name_scope
                 fmt.F_name_scope = F_name_scope
             fmt.C_enum_member = wformat(options.C_enum_member_template, fmt)
@@ -1599,7 +1612,7 @@ class EnumNode(AstNode):
         cvalue = 0
         fvalue = 0
         value_is_int = True
-        for member in ast.members:
+        for member in enum_specifier.members:
             fmt = fmtmembers[member.name]
             # evaluate value
             if member.value is not None:

@@ -27,6 +27,25 @@ XXXX SymbolTable
 ***global***
 
 XXXXXXXXXXXXXXXXXXXX
+# Class statement
+XXXX CODE
+class Class1;
+XXXX PRINT_NODE
+class Class1;
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: CXXClass
+    name: Class1
+  specifier:
+  - class Class1
+  typemap_name: Class1
+XXXX SymbolTable
+***global***
+  class Class1::
+
+XXXXXXXXXXXXXXXXXXXX
 # nested namespace
 XXXX CODE
 namespace ns1 {
@@ -79,16 +98,21 @@ stmts:
 - _ast: Namespace
   name: ns
   ~group:
-  - _ast: CXXClass
-    name: name
-    ~group:
-    - _ast: Declaration
-      declarator:
-        name: imem
-        pointer: []
-      specifier:
-      - int
-      typemap_name: int
+  - _ast: Declaration
+    class_specifier:
+      _ast: CXXClass
+      members:
+      - _ast: Declaration
+        declarator:
+          name: imem
+          pointer: []
+        specifier:
+        - int
+        typemap_name: int
+      name: name
+    specifier:
+    - class name
+    typemap_name: ns::name
 XXXX SymbolTable
 ***global***
   namespace ns
@@ -102,40 +126,45 @@ template<T> class user {
 };
 user<int> returnUserType(void);
 XXXX PRINT_NODE
-template<T>  class user;;user returnUserType();
+template<T>  class user { template<U>  void nested(T arg1,U arg2); };;user returnUserType();
 XXXX AST
 stmts:
 - _ast: Template
   decl:
-    _ast: CXXClass
-    name: user
-    ~group:
-    - _ast: Template
-      decl:
-        _ast: Declaration
-        declarator:
-          name: nested
-          pointer: []
-        params:
-        - _ast: Declaration
+    _ast: Declaration
+    class_specifier:
+      _ast: CXXClass
+      members:
+      - _ast: Template
+        decl:
+          _ast: Declaration
           declarator:
-            name: arg1
+            name: nested
             pointer: []
+          params:
+          - _ast: Declaration
+            declarator:
+              name: arg1
+              pointer: []
+            specifier:
+            - T
+            template_argument: T
+          - _ast: Declaration
+            declarator:
+              name: arg2
+              pointer: []
+            specifier:
+            - U
+            template_argument: U
           specifier:
-          - T
-          template_argument: T
-        - _ast: Declaration
-          declarator:
-            name: arg2
-            pointer: []
-          specifier:
-          - U
-          template_argument: U
-        specifier:
-        - void
-        typemap_name: void
-      parameters:
-      - name: U
+          - void
+          typemap_name: void
+        parameters:
+        - name: U
+      name: user
+    specifier:
+    - class user
+    typemap_name: user
   parameters:
   - name: T
 - _ast: Declaration
@@ -161,27 +190,33 @@ XXXX CODE
 struct Point { int x; int y;};
 struct Point end;
 Point start;
+void func1(struct Point arg1, Point arg2);
 XXXX PRINT_NODE
-struct Point { int x;int y; };;struct Point end;Point start;
+struct Point { int x;int y; };;struct Point end;Point start;void func1(struct Point arg1,Point arg2);
 XXXX AST
 stmts:
-- _ast: Struct
-  members:
-  - _ast: Declaration
-    declarator:
-      name: x
-      pointer: []
-    specifier:
-    - int
-    typemap_name: int
-  - _ast: Declaration
-    declarator:
-      name: y
-      pointer: []
-    specifier:
-    - int
-    typemap_name: int
-  name: Point
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: x
+        pointer: []
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      declarator:
+        name: y
+        pointer: []
+      specifier:
+      - int
+      typemap_name: int
+    name: Point
+    typemap_name: Point
+  specifier:
+  - struct Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
@@ -197,6 +232,28 @@ stmts:
   specifier:
   - Point
   typemap_name: Point
+- _ast: Declaration
+  declarator:
+    name: func1
+    pointer: []
+  params:
+  - _ast: Declaration
+    declarator:
+      name: arg1
+      pointer: []
+    specifier:
+    - struct Point
+    typemap_name: Point
+  - _ast: Declaration
+    declarator:
+      name: arg2
+      pointer: []
+    specifier:
+    - Point
+    typemap_name: Point
+  specifier:
+  - void
+  typemap_name: void
 XXXX SymbolTable
 ***global***
   struct Point::
@@ -213,17 +270,22 @@ XXXX PRINT_NODE
 struct list_s { struct list_s * next; };;
 XXXX AST
 stmts:
-- _ast: Struct
-  members:
-  - _ast: Declaration
-    declarator:
-      name: next
-      pointer:
-      - ptr: '*'
-    specifier:
-    - struct list_s
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: next
+        pointer:
+        - ptr: '*'
+      specifier:
+      - struct list_s
+      typemap_name: list_s
+    name: list_s
     typemap_name: list_s
-  name: list_s
+  specifier:
+  - struct list_s
   typemap_name: list_s
 XXXX SymbolTable
 ***global***
@@ -254,25 +316,30 @@ XXXX PRINT_NODE
 struct list_s { struct list_s * next;list_s * prev; };;
 XXXX AST
 stmts:
-- _ast: Struct
-  members:
-  - _ast: Declaration
-    declarator:
-      name: next
-      pointer:
-      - ptr: '*'
-    specifier:
-    - struct list_s
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: next
+        pointer:
+        - ptr: '*'
+      specifier:
+      - struct list_s
+      typemap_name: list_s
+    - _ast: Declaration
+      declarator:
+        name: prev
+        pointer:
+        - ptr: '*'
+      specifier:
+      - list_s
+      typemap_name: list_s
+    name: list_s
     typemap_name: list_s
-  - _ast: Declaration
-    declarator:
-      name: prev
-      pointer:
-      - ptr: '*'
-    specifier:
-    - list_s
-    typemap_name: list_s
-  name: list_s
+  specifier:
+  - struct list_s
   typemap_name: list_s
 XXXX SymbolTable
 ***global***
@@ -288,12 +355,17 @@ XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };;enum Color global;
 XXXX AST
 stmts:
-- _ast: Enum
-  members:
-  - name: RED
-  - name: WHITE
-  - name: BLUE
-  name: Color
+- _ast: Declaration
+  enum_specifier:
+    _ast: Enum
+    members:
+    - name: RED
+    - name: WHITE
+    - name: BLUE
+    name: Color
+  specifier:
+  - enum Color
+  typemap_name: enum-Color
 - _ast: Declaration
   declarator:
     name: global
@@ -322,16 +394,22 @@ XXXX CODE
 enum Color {RED, WHITE, BLUE};
 enum Color global;
 Color flag = RED;
+void func1(enum Color arg1, Color arg2);
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;enum Color global;Color flag=RED;
+enum Color { RED, WHITE, BLUE };;enum Color global;Color flag=RED;void func1(enum Color arg1,Color arg2);
 XXXX AST
 stmts:
-- _ast: Enum
-  members:
-  - name: RED
-  - name: WHITE
-  - name: BLUE
-  name: Color
+- _ast: Declaration
+  enum_specifier:
+    _ast: Enum
+    members:
+    - name: RED
+    - name: WHITE
+    - name: BLUE
+    name: Color
+  specifier:
+  - enum Color
+  typemap_name: enum-Color
 - _ast: Declaration
   declarator:
     name: global
@@ -347,6 +425,28 @@ stmts:
   specifier:
   - Color
   typemap_name: enum-Color
+- _ast: Declaration
+  declarator:
+    name: func1
+    pointer: []
+  params:
+  - _ast: Declaration
+    declarator:
+      name: arg1
+      pointer: []
+    specifier:
+    - enum Color
+    typemap_name: enum-Color
+  - _ast: Declaration
+    declarator:
+      name: arg2
+      pointer: []
+    specifier:
+    - Color
+    typemap_name: enum-Color
+  specifier:
+  - void
+  typemap_name: void
 XXXX SymbolTable
 ***global***
   enum Color

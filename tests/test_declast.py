@@ -998,12 +998,20 @@ class CheckParse(unittest.TestCase):
         symtab.pop_scope()
 
         r2 = declast.check_decl("class Class2 : public Class1", symtab)
-        self.assertIsInstance(r2, declast.CXXClass)
-        self.assertEqual("class Class2: public Class1;", todict.print_node(r2))
-        self.assertEqual(todict.to_dict(r2), {
-            "name": "Class2",
-            "baseclass": [ ("public", "Class1", "Class1") ],
-        })
+        self.assertIsInstance(r2, declast.Declaration)
+        self.assertIsInstance(r2.class_specifier, declast.CXXClass)
+        self.assertEqual("class Class2: public Class1", todict.print_node(r2))
+        self.assertEqual(
+            todict.to_dict(r2),
+            {
+                'class_specifier': {
+                    'name': 'Class2',
+                    'baseclass': [('public', 'Class1', 'Class1')]
+                },
+                'specifier': ['class Class2'],
+                'typemap_name': 'Class2'
+            }
+        )
 
         with self.assertRaises(RuntimeError) as context:
             r2 = declast.check_decl("class Class3 : public public", symtab)
@@ -1018,11 +1026,13 @@ class CheckParse(unittest.TestCase):
         class1 = declast.check_decl("class Class1", symtab);
         symtab.pop_scope()
 
-        self.assertIsInstance(class1, declast.CXXClass)
+        self.assertIsInstance(class1, declast.Declaration)
+        self.assertIsInstance(class1.class_specifier, declast.CXXClass)
         # XXX - base needs a typemap as the 3rd member.
         class2 = declast.check_decl("class Class2 : public Class1", symtab)
 # GGG        class2 = declast.check_decl("class Class2", base=[("public", "Class1")])
-        self.assertIsInstance(class2, declast.CXXClass)
+        self.assertIsInstance(class2, declast.Declaration)
+        self.assertIsInstance(class2.class_specifier, declast.CXXClass)
 
     def test_decl09d(self):
         """Return pointer to Class instance
@@ -1213,7 +1223,14 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(
             todict.to_dict(r),
-            {"decl": {"name": "vector"}, "parameters": [{"name": "T"}]},
+            {
+                'decl': {
+                    'class_specifier': {'name': 'vector'},
+                    'specifier': ['class vector'],
+                    'typemap_name': 'vector'
+                },
+                'parameters': [{'name': 'T'}]
+            }
         )
 
         r = declast.check_decl("template<Key,T> class map", symtab)
@@ -1224,9 +1241,12 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "decl": {"name": "map"},
-                "parameters": [{"name": "Key"}, {"name": "T"}],
-            },
+                'decl': {
+                    'class_specifier': {'name': 'map'},
+                    'specifier': ['class map'],
+                    'typemap_name': 'vector::map'},
+                'parameters': [{'name': 'Key'}, {'name': 'T'}]
+            }
         )
 
     def test_as_arg(self):
@@ -1271,9 +1291,11 @@ struct Cstruct_list {
     int *ivalue;
 };
 """, symtab)
-        self.assertIsInstance(struct, declast.Struct)
-        self.assertEqual(2, len(struct.members))
-        ast = struct.members[0]
+        self.assertIsInstance(struct, declast.Declaration)
+        self.assertIsInstance(struct.class_specifier, declast.Struct)
+        members = struct.class_specifier.members
+        self.assertEqual(2, len(members))
+        ast = members[0]
         self.assertEqual(
             todict.to_dict(ast), {
                 'declarator': {
@@ -1283,7 +1305,7 @@ struct Cstruct_list {
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
-        ast = struct.members[1]
+        ast = members[1]
         self.assertEqual(
             todict.to_dict(ast), {
                 'declarator': {
@@ -1460,13 +1482,17 @@ class CheckEnum(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "name": "Color",
-                "members": [
-                    {"name": "RED", "value": {"constant": "1"}},
-                    {"name": "BLUE"},
-                    {"name": "WHITE"},
-                ],
-            },
+                'enum_specifier': {
+                    'name': 'Color',
+                    'members': [
+                        {'name': 'RED', 'value': {'constant': '1'}},
+                        {'name': 'BLUE'},
+                        {'name': 'WHITE'}
+                    ],
+                },
+                'specifier': ['enum Color'],
+                'typemap_name': 'enum-Color'
+            }
         )
 
     def test_enum2(self):
@@ -1512,21 +1538,27 @@ class CheckStruct(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "members": [
-                    {
-                        "declarator": {"name": "i", "pointer": []},
-                        "specifier": ["int"],
-                        "typemap_name": "int",
-                    },
-                    {
-                        "declarator": {"name": "d", "pointer": []},
-                        "specifier": ["double"],
-                        "typemap_name": "double",
-                    },
-                ],
-                "name": "struct1",
-                "typemap_name": "struct1",
-            },
+                'class_specifier': {
+                    'members': [
+                        {
+                            'declarator': {
+                                'name': 'i',
+                                'pointer': []},
+                            'specifier': ['int'],
+                            'typemap_name': 'int'
+                        },{
+                            'declarator': {
+                                'name': 'd',
+                                'pointer': []},
+                            'specifier': ['double'],
+                            'typemap_name': 'double'}
+                    ],
+                    'name': 'struct1',
+                    'typemap_name': 'struct1'
+                },
+                'specifier': ['struct struct1'],
+                'typemap_name': 'struct1'
+            }
         )
 
 
@@ -1534,9 +1566,17 @@ class CheckClass(unittest.TestCase):
     def test_class1(self):
         symtab = declast.SymbolTable()
         r = declast.check_decl("class Class1", symtab)
-        self.assertIsInstance(r, declast.CXXClass)
-        self.assertEqual("class Class1;", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "Class1"})
+        self.assertIsInstance(r, declast.Declaration)
+        self.assertIsInstance(r.class_specifier, declast.CXXClass)
+        self.assertEqual("class Class1", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                'class_specifier': {'name': 'Class1'},
+                'specifier': ['class Class1'],
+                'typemap_name': 'Class1'
+            }
+        )
 
     def test_class2(self):
         """Forward declare class in a library"""
