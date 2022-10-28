@@ -29,31 +29,15 @@ import sys
 lines = """
 # variable declarations
 int i;
-double d;
+const double d;
+--------------------
+# variable pointer declarations
+int *i1;
+int **i2;
+int &i3;
 --------------------
 # Class statement
 class Class1;
---------------------
-# nested namespace
-namespace ns1 {
-  int i;
-  namespace ns2 {
-    int j;
-  }
-}
---------------------
-# class in namespace
-namespace ns {
-  class name {
-     int imem;
-  };
-}
---------------------
-# template
-template<T> class user {
-  template<U> void nested(T arg1, U arg2 );
-};
-user<int> returnUserType(void);
 --------------------
 # Structure for C++
 struct Point { int x; int y;};
@@ -100,7 +84,29 @@ enum Color global;
 Color flag = RED;
 void func1(enum Color arg1, Color arg2);
 --------------------
-"""
+# template
+template<T> class user {
+  template<U> void nested(T arg1, U arg2 );
+};
+user<int> returnUserType(void);
+--------------------
+# nested namespace
+# XXX - fix printing
+namespace ns1 {
+  int i;
+  namespace ns2 {
+    int j;
+  }
+}
+--------------------
+# class in namespace
+namespace ns {
+  class name {
+     int imem;
+  };
+}
+--------------------
+"""  # end line
 
 # Run only one test by assigning here and
 # rename Xlines to lines.
