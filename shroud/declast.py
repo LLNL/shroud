@@ -2353,7 +2353,19 @@ class SymbolTable(object):
         self.add_typedef_by_name("string")
         self.add_typedef_by_name("vector")
         self.restore_depth(depth)
-        
+
+def symtab_to_dict(node):
+    """Return SymbolTable as a dictionary.
+    Used for debugging/testing.
+    """
+    d = dict(cls=node.__class__.__name__)
+    d["prefix"] = node.scope_prefix
+    if node.symbols:
+        symbols = {}
+        for k, v in node.symbols.items():
+            symbols[k] = symtab_to_dict(v)
+        d['symbols'] = symbols
+    return d
 
 def check_decl(decl, symtab, trace=False):
     """ parse expr as a declaration, return list/dict result.

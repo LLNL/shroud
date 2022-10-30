@@ -162,7 +162,8 @@ def test_block(comments, code, symtab):
         yaml.safe_dump(asdict, sys.stdout)
 
         print("XXXX SymbolTable")
-        todict.print_scope(symtab.scope_stack[0])
+        symbols = declast.symtab_to_dict(symtab.scope_stack[0])
+        yaml.safe_dump(symbols, sys.stdout)
     except RuntimeError as err:
         print(err)
 

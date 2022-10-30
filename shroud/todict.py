@@ -521,72 +521,7 @@ def to_dict(node, labelast=False):
     visitor = ToDict(labelast)
     return visitor.visit(node)
 
-
 ######################################################################
-
-blanks = "                                       "
-class PrintScope(visitor.Visitor):
-    """Print tree of symbol table AstNodes to verify the structure.
-
-    Node: children are the symbol table type nodes.
-    """
-    def __init__(self):
-        super(PrintScope, self).__init__()
-        self.nindent = 0
-
-    def get_indent(self):
-        return blanks[:self.nindent]
-    indent = property(get_indent)
-
-    def visit_list(self, node):
-        self.nindent += 2
-        for n in node:
-            self.visit(n)
-        self.nindent -= 2
-
-    def visit_CXXClass(self, node):
-        print("{}class {}".format(self.indent, node.scope_prefix))
-        self.visit(node.children)
-
-    def visit_Enum(self, node):
-        print("{}enum {}".format(self.indent, node.name))
-#        self.visit(node.children)
-
-    def visit_Global(self, node):
-        print("{}{}".format(self.indent, node.name))
-        self.visit(node.children)
-
-    def visit_Declaration(self, node):
-        print("{}{}".format(self.indent, str(node)))
-        
-    def visit_Namespace(self, node):
-        print("{}namespace {}".format(self.indent, node.name))
-        self.visit(node.children)
-
-    def visit_Struct(self, node):
-        print("{}struct {}".format(self.indent, node.scope_prefix))
-        self.visit(node.children)
-
-    def visit_Template(self, node):
-        print("{}template {}".format(self.indent, node.scope_prefix))
-        self.nindent += 2
-        self.visit(node.decl)
-        self.nindent -= 2
-
-    def visit_Typedef(self, node):
-        print("{}typedef {}".format(self.indent, node.name))
-#        print("{}typedef {}".format(self.indent, node.scope_prefix))
-
-def print_scope(node):
-    """Print nested scopes.
-    Useful for debugging.
-    """
-    visitor = PrintScope()
-    return visitor.visit(node)
-
-
-######################################################################
-
 
 class PrintNode(visitor.Visitor):
     """Unparse Nodes.
