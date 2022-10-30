@@ -358,19 +358,19 @@ stmts:
     name: Color
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: global
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 XXXX SymbolTable
 cls: Global
 symbols:
   enum-Color:
     cls: Enum
-    typemap: enum-Color
+    typemap: Color
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -409,20 +409,20 @@ stmts:
     name: Color
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: global
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: flag
   init: RED
   specifier:
   - Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: func1
@@ -432,13 +432,13 @@ stmts:
       name: arg1
     specifier:
     - enum Color
-    typemap_name: enum-Color
+    typemap_name: Color
   - _ast: Declaration
     declarator:
       name: arg2
     specifier:
     - Color
-    typemap_name: enum-Color
+    typemap_name: Color
   specifier:
   - void
   typemap_name: void
@@ -447,10 +447,10 @@ cls: Global
 symbols:
   Color:
     cls: Enum
-    typemap: enum-Color
+    typemap: Color
   enum-Color:
     cls: Enum
-    typemap: enum-Color
+    typemap: Color
 
 XXXXXXXXXXXXXXXXXXXX
 # template

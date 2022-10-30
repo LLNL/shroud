@@ -2010,17 +2010,18 @@ class Enum(Node):
 
         type_name = symtab.scopename + name
         inttypemap = symtab.lookup_typemap("int")  # XXX - all enums are not ints
-        ntypemap = inttypemap.clone_as("enum-" + type_name)
+        ntypemap = inttypemap.clone_as(type_name)
 #        ntypemap = typemap.Typemap( # GGG - do not assume enum is int
 #            type_name,
 #            base="enum",
 #            sgroup="enum",
 #        )
+        ntypemap.is_enum = True  # GGG kludge to identify enums
         symtab.add_tag_to_current("enum", self)
         if symtab.language == "cxx":
             symtab.add_child_to_current(self)
             symtab.register_typemap(type_name, ntypemap)
-        symtab.register_typemap("enum-" + type_name, ntypemap)
+        symtab.register_typemap(type_name, ntypemap)
         self.typemap = ntypemap
 
         symtab.push_scope(self)
@@ -2384,6 +2385,34 @@ def symtab_to_dict(node):
         # Global and Namespace do not have typemaps.
         d["typemap"] = node.typemap.name
     return d
+
+def symtab_to_typemap(node):
+    """Return SymbolTable as a dictionary.
+    Used for debugging/testing.
+    """
+    if hasattr(node, "typemap"):
+        # Global and Namespace do not have typemaps.
+        if node.typemap.sgroup in ["shadow", "struct", "template", "enum"]:
+            return node.typemap.name
+        elif hasattr(node.typemap, "is_enum"):
+            return node.typemap.name
+        else:
+            return None
+    symbols = {}
+    if hasattr(node, "symbols"):
+        for k, v in node.symbols.items():
+            if k.startswith("enum-"):
+                pass
+            elif k.startswith("struct-"):
+                pass
+            else:
+                out = symtab_to_typemap(v)
+                if out is not None:
+                    symbols[k] = out
+    if not symbols:
+        return None
+    else:
+        return symbols
 
 def check_decl(decl, symtab, trace=False):
     """ parse expr as a declaration, return list/dict result.

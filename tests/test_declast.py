@@ -1479,7 +1479,7 @@ class CheckEnum(unittest.TestCase):
                     ],
                 },
                 'specifier': ['enum Color'],
-                'typemap_name': 'enum-Color'
+                'typemap_name': 'Color'
             }
         )
 

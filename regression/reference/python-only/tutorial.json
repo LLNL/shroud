@@ -60,7 +60,7 @@
                 "options": {
                     "bar": 4
                 },
-                "typemap_name": "enum-tutorial::Color",
+                "typemap_name": "tutorial::Color",
                 "wrap": {
                     "python": true
                 },
@@ -1876,13 +1876,13 @@
                             "specifier": [
                                 "Color"
                             ],
-                            "typemap_name": "enum-tutorial::Color"
+                            "typemap_name": "tutorial::Color"
                         }
                     ],
                     "specifier": [
                         "Color"
                     ],
-                    "typemap_name": "enum-tutorial::Color"
+                    "typemap_name": "tutorial::Color"
                 },
                 "decl": "Color colorfunc(Color arg);",
                 "declgen": "Color colorfunc(Color arg +value)",
@@ -2309,7 +2309,7 @@
         }
     },
     "types": {
-        "enum-tutorial::Color": {
+        "tutorial::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
