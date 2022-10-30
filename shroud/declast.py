@@ -992,9 +992,6 @@ class Node(object):
     children - Symbol table nodes of types.
     group - Parse tree nodes.
     """
-    def add_child(self, node):
-        self.children.append(node)
-    
     def init_symtab(self, parent, prefix):
         """This node can contain nested symbols.
         Used for looking up scoped names.
@@ -1012,10 +1009,10 @@ class Node(object):
 #        if parent is not None: # GGG
 #            parent.add_symbol(self.name, self)
 
-    def add_symbol(self, name, node):
-        """Add symbol to this scope.
+    def add_child(self, name, node):
+        """Add child node.
 
-        Done as part of SymbolTable.add_to_current.
+        Done as part of SymbolTable.add_child_to_current.
         Call explicilty for non-scope Nodes like Declaration.
         (Actually a function creates a scope, but not one
         we care about since wrapping is not involved with
@@ -1025,6 +1022,12 @@ class Node(object):
         """
         self.symbols[name] = node
         self.children.append(node)
+
+    def add_tag(self, tag, node):
+        """Add a Node to symbols.
+        Used with struct and enum tags.
+        """
+        self.symbols["{}-{}".format(tag, node.name)] = node
 
     def create_template_typemaps(self, node, symtab):
         """
@@ -1968,7 +1971,7 @@ class CXXClass(Node):
             symtab.register_typemap(type_name, ntypemap)
             self.newtypemap = ntypemap
             self.typemap = ntypemap
-        symtab.add_to_current(self)
+        symtab.add_child_to_current(self)
         symtab.push_scope(self)
 
 
@@ -1978,7 +1981,7 @@ class Namespace(Node):
 
     def __init__(self, name, symtab):
         self.name = name
-        symtab.add_to_current(self)
+        symtab.add_child_to_current(self)
         symtab.push_scope(self)
         self.group = []
 
@@ -2002,8 +2005,9 @@ class Enum(Node):
 #            base="enum",
 #            sgroup="enum",
 #        )
+        symtab.add_tag_to_current("enum", self)
         if symtab.language == "cxx":
-            symtab.add_to_current(self)
+            symtab.add_child_to_current(self)
             symtab.register_typemap(type_name, ntypemap)
         symtab.register_typemap("enum-" + type_name, ntypemap)
         self.typemap = ntypemap
@@ -2046,8 +2050,9 @@ class Struct(Node):
                 base="struct",
                 sgroup="struct",
             )
+            symtab.add_tag_to_current("struct", self)
             if symtab.language == "cxx":
-                symtab.add_to_current(self)
+                symtab.add_child_to_current(self)
                 symtab.register_typemap(type_name, ntypemap)
             symtab.register_typemap("struct-" + type_name, ntypemap)
             self.newtypemap = ntypemap
@@ -2080,13 +2085,13 @@ class Template(Node):
         self.parameters.append(node)
         self.symbols[name] = node
 
-    def add_symbol(self, name, node):
+    def add_child(self, name, node):
         """
         Add the templated function into the parent,
         not the Template scope.
           template<U> class name
         """
-        self.parent.add_symbol(name, node)
+        self.parent.add_child(name, node)
             
 
 class TemplateParam(Node):
@@ -2176,16 +2181,13 @@ class SymbolTable(object):
         self.current = self.scope_stack[-1]
         self.scopename = self.scopename[:self.scope_len[-1]]
 
-    def add_parent(self, node):  # GGG add_to_parent
-        """Set the parent field of node.
-        The node does not contain children (ex. Declaration)
-        """
-        node.parent = self.current
-        self.current.add_symbol(node.name, node)
-            
-    def add_to_current(self, node, name=None):
+    def add_child_to_current(self, node, name=None):
         """Add symbol to current scope."""
-        self.current.add_symbol(name or node.name, node)
+        self.current.add_child(name or node.name, node)
+
+    def add_tag_to_current(self, tag, node):
+        """Add tag name to symbols."""
+        self.current.add_tag(tag, node)
 
     def using_directive(self, name):
         """Implement 'using namespace <name>' for current scope
@@ -2213,7 +2215,7 @@ class SymbolTable(object):
             if name in ns.symbols:
                 ns = ns.symbols[name]
                 # GGG make sure it is a Namespace node
-                symtab.add_to_current(ns)
+                symtab.add_child_to_current(ns)
                 symtab.push_scope(ns)
             else:
                 node = Namespace(name, self)
@@ -2233,7 +2235,7 @@ class SymbolTable(object):
         sgroup = ntypemap.sgroup
         if as_typedef:
             node = Typedef(cxx_name, ntypemap)
-            self.current.add_symbol(node.name, node)
+            self.current.add_child(node.name, node)
         elif sgroup == "shadow":
             node = CXXClass(cxx_name, self, ntypemap)
         elif sgroup == "struct":
@@ -2296,7 +2298,7 @@ class SymbolTable(object):
             )
 #            ntypemap.compute_flat_name() GGG
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_to_current(ast, name)
+            self.add_child_to_current(ast, name)
         else:
             # typedef int TypeID;
             # GGG At this point, just creating an alias for type.
@@ -2308,7 +2310,7 @@ class SymbolTable(object):
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_to_current(ast, name)
+            self.add_child_to_current(ast, name)
         ast.typemap = ntypemap
 
     def add_typedef_by_name(self, name):
@@ -2322,7 +2324,7 @@ class SymbolTable(object):
         if ntypemap is None:
             raise RuntimeError("Unknown type {}".format(tname))
         node = Typedef(name, ntypemap)
-        self.current.add_symbol(node.name, node)
+        self.current.add_child(node.name, node)
 
     def add_typedef(self, name, ntypemap):
         """

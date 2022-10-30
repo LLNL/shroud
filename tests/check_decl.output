@@ -172,6 +172,9 @@ symbols:
   Point:
     cls: Struct
     prefix: 'Point::'
+  struct-Point:
+    cls: Struct
+    prefix: 'Point::'
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -209,6 +212,10 @@ stmts:
 XXXX SymbolTable
 cls: Global
 prefix: ''
+symbols:
+  struct-list_s:
+    cls: Struct
+    prefix: 'list_s::'
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -273,6 +280,9 @@ symbols:
   list_s:
     cls: Struct
     prefix: 'list_s::'
+  struct-list_s:
+    cls: Struct
+    prefix: 'list_s::'
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -306,6 +316,10 @@ stmts:
 XXXX SymbolTable
 cls: Global
 prefix: ''
+symbols:
+  enum-Color:
+    cls: Enum
+    prefix: 'Color::'
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -382,6 +396,9 @@ cls: Global
 prefix: ''
 symbols:
   Color:
+    cls: Enum
+    prefix: 'Color::'
+  enum-Color:
     cls: Enum
     prefix: 'Color::'
 
