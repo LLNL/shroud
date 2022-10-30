@@ -6698,7 +6698,8 @@
         }
     },
     "symtab": {
-        "StructAsClass": "StructAsClass"
+        "StructAsClass": "struct-StructAsClass",
+        "struct-StructAsClass": "StructAsClass"
     },
     "types": {
         "StructAsClass": {

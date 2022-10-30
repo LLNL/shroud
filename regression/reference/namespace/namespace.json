@@ -739,10 +739,12 @@
             "ClassWork": "nswork::ClassWork"
         },
         "outer": {
-            "Cstruct1": "outer::Cstruct1"
+            "Cstruct1": "struct-Cstruct1",
+            "struct-Cstruct1": "outer::Cstruct1"
         },
         "upper": {
-            "Color": "upper::Color"
+            "Color": "enum-Color",
+            "enum-Color": "upper::Color"
         }
     },
     "types": {

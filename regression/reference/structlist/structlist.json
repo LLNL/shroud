@@ -291,7 +291,8 @@
         }
     },
     "symtab": {
-        "Arrays1": "Arrays1"
+        "Arrays1": "struct-Arrays1",
+        "struct-Arrays1": "Arrays1"
     },
     "types": {
         "Arrays1": {

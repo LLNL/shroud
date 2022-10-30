@@ -2119,19 +2119,27 @@
     "symtab": {
         "Class1": "Class1",
         "Class2": "Class2",
-        "Color": "Color",
-        "ColorEnum": "ColorEnum",
+        "Color": "enum-Color",
+        "ColorEnum": "enum-ColorEnum",
+        "enum-Color": "Color",
+        "enum-ColorEnum": "ColorEnum",
         "ns1": {
-            "Color": "ns1::Color",
-            "DataPointer": "ns1::DataPointer"
+            "Color": "enum-Color",
+            "DataPointer": "struct-DataPointer",
+            "enum-Color": "ns1::Color",
+            "struct-DataPointer": "ns1::DataPointer"
         },
         "ns2": {
-            "Color": "ns2::Color",
-            "DataPointer": "ns2::DataPointer"
+            "Color": "enum-Color",
+            "DataPointer": "struct-DataPointer",
+            "enum-Color": "ns2::Color",
+            "struct-DataPointer": "ns2::DataPointer"
         },
         "ns3": {
-            "Color": "ns3::Color",
-            "DataPointer": "ns3::DataPointer"
+            "Color": "enum-Color",
+            "DataPointer": "struct-DataPointer",
+            "enum-Color": "ns3::Color",
+            "struct-DataPointer": "ns3::DataPointer"
         }
     },
     "types": {

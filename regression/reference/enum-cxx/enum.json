@@ -394,8 +394,10 @@
         }
     },
     "symtab": {
-        "Color": "Color",
-        "val": "val"
+        "Color": "enum-Color",
+        "enum-Color": "Color",
+        "enum-val": "val",
+        "val": "enum-val"
     },
     "types": {
         "Color": {

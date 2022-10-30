@@ -490,8 +490,10 @@
         }
     },
     "symtab": {
-        "Cstruct_as_class": "Cstruct_as_class",
-        "Cstruct_as_numpy": "Cstruct_as_numpy"
+        "Cstruct_as_class": "struct-Cstruct_as_class",
+        "Cstruct_as_numpy": "struct-Cstruct_as_numpy",
+        "struct-Cstruct_as_class": "Cstruct_as_class",
+        "struct-Cstruct_as_numpy": "Cstruct_as_numpy"
     },
     "types": {
         "Cstruct_as_class": {

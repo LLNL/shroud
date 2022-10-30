@@ -6128,7 +6128,8 @@
     },
     "symtab": {
         "tutorial": {
-            "Color": "tutorial::Color"
+            "Color": "enum-Color",
+            "enum-Color": "tutorial::Color"
         }
     },
     "types": {

@@ -6071,7 +6071,8 @@
         }
     },
     "symtab": {
-        "array_info": "array_info"
+        "array_info": "struct-array_info",
+        "struct-array_info": "array_info"
     },
     "types": {
         "array_info": {

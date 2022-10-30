@@ -2021,7 +2021,6 @@ class Enum(Node):
         if symtab.language == "cxx":
             symtab.add_child_to_current(self)
             symtab.register_typemap(type_name, ntypemap)
-        symtab.register_typemap(type_name, ntypemap)
         self.typemap = ntypemap
 
         symtab.push_scope(self)
@@ -2066,7 +2065,6 @@ class Struct(Node):
             if symtab.language == "cxx":
                 symtab.add_child_to_current(self)
                 symtab.register_typemap(type_name, ntypemap)
-            symtab.register_typemap("struct-" + type_name, ntypemap)
             self.newtypemap = ntypemap
             self.typemap = ntypemap
         symtab.push_scope(self)
@@ -2401,10 +2399,11 @@ def symtab_to_typemap(node):
     symbols = {}
     if hasattr(node, "symbols"):
         for k, v in node.symbols.items():
-            if k.startswith("enum-"):
-                pass
-            elif k.startswith("struct-"):
-                pass
+            # If a tag exists, just add name of tag.
+            if "enum-" + k in node.symbols:
+                symbols[k] = "enum-" + k
+            elif "struct-" + k in node.symbols:
+                symbols[k] = "struct-" + k
             else:
                 out = symtab_to_typemap(v)
                 if out is not None:

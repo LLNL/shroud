@@ -4126,10 +4126,11 @@
         "CAPI": {
             "Class1": "CAPI::Class1"
         },
-        "Color": "Color",
-        "Cstruct_as_class": "Cstruct_as_class",
-        "Cstruct_as_subclass": "Cstruct_as_subclass",
+        "Color": "enum-Color",
+        "Cstruct_as_class": "struct-Cstruct_as_class",
+        "Cstruct_as_subclass": "struct-Cstruct_as_subclass",
         "Names2": "Names2",
+        "enum-Color": "Color",
         "internal": {
             "ImplWorker1": "internal::ImplWorker1"
         },
@@ -4139,6 +4140,8 @@
         "std": {
             "vector": "std::vector"
         },
+        "struct-Cstruct_as_class": "Cstruct_as_class",
+        "struct-Cstruct_as_subclass": "Cstruct_as_subclass",
         "twoTs": "twoTs"
     },
     "types": {

@@ -2219,13 +2219,20 @@
         }
     },
     "symtab": {
-        "Arrays1": "Arrays1",
-        "Cstruct1": "Cstruct1",
-        "Cstruct_as_class": "Cstruct_as_class",
-        "Cstruct_as_subclass": "Cstruct_as_subclass",
-        "Cstruct_list": "Cstruct_list",
-        "Cstruct_numpy": "Cstruct_numpy",
-        "Cstruct_ptr": "Cstruct_ptr"
+        "Arrays1": "struct-Arrays1",
+        "Cstruct1": "struct-Cstruct1",
+        "Cstruct_as_class": "struct-Cstruct_as_class",
+        "Cstruct_as_subclass": "struct-Cstruct_as_subclass",
+        "Cstruct_list": "struct-Cstruct_list",
+        "Cstruct_numpy": "struct-Cstruct_numpy",
+        "Cstruct_ptr": "struct-Cstruct_ptr",
+        "struct-Arrays1": "Arrays1",
+        "struct-Cstruct1": "Cstruct1",
+        "struct-Cstruct_as_class": "Cstruct_as_class",
+        "struct-Cstruct_as_subclass": "Cstruct_as_subclass",
+        "struct-Cstruct_list": "Cstruct_list",
+        "struct-Cstruct_numpy": "Cstruct_numpy",
+        "struct-Cstruct_ptr": "Cstruct_ptr"
     },
     "types": {
         "Arrays1": {
