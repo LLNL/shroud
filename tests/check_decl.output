@@ -184,11 +184,13 @@ XXXX CODE
 struct list_s {
   struct list_s *next;
 };
+struct list_s var1;
 XXXX PRINT_NODE
 struct list_s{
 struct list_s * next;
 }
 ;
+struct list_s var1;
 
 XXXX AST
 stmts:
@@ -206,6 +208,12 @@ stmts:
       typemap_name: list_s
     name: list_s
     typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: var1
   specifier:
   - struct list_s
   typemap_name: list_s

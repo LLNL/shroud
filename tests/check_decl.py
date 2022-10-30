@@ -48,6 +48,7 @@ void func1(struct Point arg1, Point arg2);
 struct list_s {
   struct list_s *next;
 };
+struct list_s var1;
 #  } listvar;
 --------------------
 # Recursive structure
@@ -127,8 +128,12 @@ template<typename T> struct structAsClass
 """
 
 Xlines = """
-# Class statement
-class Class1;
+namespace ns {
+struct tag_s { int i; };
+struct tag_s var1;
+#typedef struct tag_s tagname;
+#void caller(tagname *arg1);
+}
 --------------------
 """
 

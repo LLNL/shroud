@@ -912,13 +912,14 @@ class Parser(ExprParser):
         else:
             scope = None
         name = self.mustbe("ID")  # GGG - optional
+        ename = name.value
         if scope:
-            node.specifier.append("enum {} {}".format(scope, name.value))
+            node.specifier.append("enum {} {}".format(scope, ename))
         else:
-            node.specifier.append("enum " + name.value)
+            node.specifier.append("enum " + ename)
         if self.have("LCURLY"):
             #        self.mustbe("LCURLY")
-            enumnode = Enum(name.value, self.symtab, scope)
+            enumnode = Enum(ename, self.symtab, scope)
             members = enumnode.members
             while self.token.typ != "RCURLY":
                 name = self.mustbe("ID")
@@ -933,9 +934,10 @@ class Parser(ExprParser):
             node.enum_specifier = enumnode
             node.typemap = enumnode.typemap
         else:
-            ntypemap = self.symtab.lookup_typemap("enum-" + name.value)
-            if ntypemap is None:
-                raise RuntimeError("Enum tag %s is not defined" % name.value)
+            enumnode = self.symtab.current.lookup_tag("enum", ename)
+            if enumnode is None:
+                raise RuntimeError("Enum tag '%s' is not defined" % ename)
+            ntypemap = enumnode.typemap
             node.typemap = ntypemap
         self.exit("enum_decl")#, str(members))
         return node
@@ -957,9 +959,10 @@ class Parser(ExprParser):
         self.enter("struct_decl")
         self.mustbe("STRUCT")
         name = self.mustbe("ID")  # GGG name is optional
-        node.specifier.append("struct " + name.value)
+        sname = name.value
+        node.specifier.append("struct " + sname)
         if self.have("LCURLY"):
-            structnode = Struct(name.value, self.symtab)
+            structnode = Struct(sname, self.symtab)
             members = structnode.members
             while self.token.typ != "RCURLY":
 #                members.append(self.declaration()) # GGG, accepts too much
@@ -970,14 +973,15 @@ class Parser(ExprParser):
             node.class_specifier = structnode
             node.typemap = structnode.typemap
         elif self.have("EOF"):
-            structnode = Struct(name.value, self.symtab)
+            structnode = Struct(sname, self.symtab)
             node.class_specifier = structnode
             node.typemap = structnode.typemap
             # GGG - Caller must call symtab.pop_scope when finished with members.
         else:
-            ntypemap = self.symtab.lookup_typemap("struct-" + name.value)
-            if ntypemap is None:
-                raise RuntimeError("Struct tag %s is not defined" % name.value)
+            structnode = self.symtab.current.lookup_tag("struct", sname)
+            if structnode is None:
+                raise RuntimeError("Struct tag '%s' is not defined" % sname)
+            ntypemap = structnode.typemap
             #self.info("Typemap {}".format(ntypemap.name))
             node.typemap = ntypemap
         self.exit("struct_decl")
@@ -1025,10 +1029,17 @@ class Node(object):
 
     def add_tag(self, tag, node):
         """Add a Node to symbols.
+        Mangle tag name before adding to symbols dictionary.
         Used with struct and enum tags.
         """
         self.symbols["{}-{}".format(tag, node.name)] = node
 
+    def lookup_tag(self, tag, name):
+        """
+        Mangle tag name before looking up.
+        """
+        return self.unqualified_lookup("{}-{}".format(tag, name))
+        
     def create_template_typemaps(self, node, symtab):
         """
         Create typemaps for each template argument.
