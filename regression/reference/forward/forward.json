@@ -750,6 +750,16 @@
             "python": true
         }
     },
+    "symtab": {
+        "Cstruct1": "Cstruct1",
+        "forward": {
+            "Class2": "forward::Class2",
+            "Class3": "forward::Class3"
+        },
+        "tutorial": {
+            "Class1": "tutorial::Class1"
+        }
+    },
     "types": {
         "Cstruct1": {
             "base": "struct",

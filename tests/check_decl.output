@@ -1,8 +1,58 @@
 
 XXXXXXXXXXXXXXXXXXXX
-# variable declarations
+# create_std
 XXXX CODE
 
+XXXX PRINT_NODE
+
+XXXX AST
+stmts: []
+XXXX SymbolTable
+cls: Global
+symbols:
+  MPI_Comm:
+    cls: Typedef
+    typemap: MPI_Comm
+  int16_t:
+    cls: Typedef
+    typemap: int16_t
+  int32_t:
+    cls: Typedef
+    typemap: int32_t
+  int64_t:
+    cls: Typedef
+    typemap: int64_t
+  int8_t:
+    cls: Typedef
+    typemap: int8_t
+  size_t:
+    cls: Typedef
+    typemap: size_t
+  std:
+    cls: Namespace
+    symbols:
+      string:
+        cls: Typedef
+        typemap: std::string
+      vector:
+        cls: Typedef
+        typemap: std::vector
+  uint16_t:
+    cls: Typedef
+    typemap: uint16_t
+  uint32_t:
+    cls: Typedef
+    typemap: uint32_t
+  uint64_t:
+    cls: Typedef
+    typemap: uint64_t
+  uint8_t:
+    cls: Typedef
+    typemap: uint8_t
+
+XXXXXXXXXXXXXXXXXXXX
+# variable declarations
+XXXX CODE
 int i;
 const double d;
 XXXX PRINT_NODE
@@ -25,7 +75,7 @@ stmts:
   - double
   typemap_name: double
 XXXX SymbolTable
-***global***
+cls: Global
 
 XXXXXXXXXXXXXXXXXXXX
 # variable pointer declarations
@@ -66,7 +116,7 @@ stmts:
   - int
   typemap_name: int
 XXXX SymbolTable
-***global***
+cls: Global
 
 XXXXXXXXXXXXXXXXXXXX
 # Class statement
@@ -85,8 +135,11 @@ stmts:
   - class Class1
   typemap_name: Class1
 XXXX SymbolTable
-***global***
-  class Class1::
+cls: Global
+symbols:
+  Class1:
+    cls: CXXClass
+    typemap: Class1
 
 XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
@@ -160,8 +213,14 @@ stmts:
   - void
   typemap_name: void
 XXXX SymbolTable
-***global***
-  struct Point::
+cls: Global
+symbols:
+  Point:
+    cls: Struct
+    typemap: Point
+  struct-Point:
+    cls: Struct
+    typemap: Point
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -171,11 +230,13 @@ XXXX CODE
 struct list_s {
   struct list_s *next;
 };
+struct list_s var1;
 XXXX PRINT_NODE
 struct list_s{
 struct list_s * next;
 }
 ;
+struct list_s var1;
 
 XXXX AST
 stmts:
@@ -196,8 +257,18 @@ stmts:
   specifier:
   - struct list_s
   typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: var1
+  specifier:
+  - struct list_s
+  typemap_name: list_s
 XXXX SymbolTable
-***global***
+cls: Global
+symbols:
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -256,8 +327,14 @@ stmts:
   - struct list_s
   typemap_name: list_s
 XXXX SymbolTable
-***global***
-  struct list_s::
+cls: Global
+symbols:
+  list_s:
+    cls: Struct
+    typemap: list_s
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -281,15 +358,19 @@ stmts:
     name: Color
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: global
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 XXXX SymbolTable
-***global***
+cls: Global
+symbols:
+  enum-Color:
+    cls: Enum
+    typemap: Color
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -328,20 +409,20 @@ stmts:
     name: Color
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: global
   specifier:
   - enum Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: flag
   init: RED
   specifier:
   - Color
-  typemap_name: enum-Color
+  typemap_name: Color
 - _ast: Declaration
   declarator:
     name: func1
@@ -351,19 +432,25 @@ stmts:
       name: arg1
     specifier:
     - enum Color
-    typemap_name: enum-Color
+    typemap_name: Color
   - _ast: Declaration
     declarator:
       name: arg2
     specifier:
     - Color
-    typemap_name: enum-Color
+    typemap_name: Color
   specifier:
   - void
   typemap_name: void
 XXXX SymbolTable
-***global***
-  enum Color
+cls: Global
+symbols:
+  Color:
+    cls: Enum
+    typemap: Color
+  enum-Color:
+    cls: Enum
+    typemap: Color
 
 XXXXXXXXXXXXXXXXXXXX
 # template
@@ -429,8 +516,11 @@ stmts:
     typemap_name: int
   typemap_name: user
 XXXX SymbolTable
-***global***
-  class user::
+cls: Global
+symbols:
+  user:
+    cls: CXXClass
+    typemap: user
 
 XXXXXXXXXXXXXXXXXXXX
 # nested namespace
@@ -466,9 +556,13 @@ stmts:
       - int
       typemap_name: int
 XXXX SymbolTable
-***global***
-  namespace ns1
-    namespace ns2
+cls: Global
+symbols:
+  ns1:
+    cls: Namespace
+    symbols:
+      ns2:
+        cls: Namespace
 
 XXXXXXXXXXXXXXXXXXXX
 # class in namespace
@@ -501,6 +595,11 @@ stmts:
     - class name
     typemap_name: ns::name
 XXXX SymbolTable
-***global***
-  namespace ns
-    class ns::name::
+cls: Global
+symbols:
+  ns:
+    cls: Namespace
+    symbols:
+      name:
+        cls: CXXClass
+        typemap: ns::name

@@ -62,7 +62,7 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "name": "Color",
                 "options": {},
-                "typemap_name": "enum-Color",
+                "typemap_name": "Color",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -197,7 +197,7 @@
                 "decl": "enum val {\n  a1,\n  b1 = 3,\n  c1,\n  d1 = b1 - a1,\n  e1 = d1,\n  f1,\n  g1,\n  h1 = 100,\n};\n",
                 "name": "val",
                 "options": {},
-                "typemap_name": "enum-val",
+                "typemap_name": "val",
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -235,7 +235,7 @@
                             "specifier": [
                                 "enum Color"
                             ],
-                            "typemap_name": "enum-Color"
+                            "typemap_name": "Color"
                         }
                     ],
                     "specifier": [
@@ -391,8 +391,14 @@
             "python": true
         }
     },
+    "symtab": {
+        "Color": "enum-Color",
+        "enum-Color": "Color",
+        "enum-val": "val",
+        "val": "enum-val"
+    },
     "types": {
-        "enum-Color": {
+        "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
@@ -417,7 +423,7 @@
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT"
         },
-        "enum-val": {
+        "val": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",

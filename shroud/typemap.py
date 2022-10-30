@@ -1399,10 +1399,8 @@ def return_shadow_types(typemaps):  # typemaps -> dict
     for key, ntypemap in typemaps.items():
         if ntypemap.name == "--template-parameter--":
             continue
-        elif key.startswith("struct-"):
-            continue  # tag vs type name
         elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
             dct[key] = ntypemap
-        elif key.startswith("enum-"):
+        elif hasattr(ntypemap, "is_enum"):
             dct[key] = ntypemap
     return dct

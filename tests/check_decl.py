@@ -25,6 +25,8 @@ import pprint
 import sys
 
 lines = """
+# create_std
+--------------------
 # variable declarations
 int i;
 const double d;
@@ -48,6 +50,7 @@ void func1(struct Point arg1, Point arg2);
 struct list_s {
   struct list_s *next;
 };
+struct list_s var1;
 #  } listvar;
 --------------------
 # Recursive structure
@@ -127,8 +130,12 @@ template<typename T> struct structAsClass
 """
 
 Xlines = """
-# Class statement
-class Class1;
+namespace ns {
+struct tag_s { int i; };
+#struct tag_s var1;
+typedef struct tag_s tagname;
+#void caller(tagname *arg1);
+}
 --------------------
 """
 
@@ -138,11 +145,14 @@ def test_block(comments, code, symtab):
     print("")
     print("XXXXXXXXXXXXXXXXXXXX")
     language = "cxx"
+    create_std = False
     for cmt in comments:
         if cmt.find("language=c++") != -1:
             language = "cxx"
         elif cmt.find("language=c") != -1:
             language = "c"
+        elif cmt.find("create_std") != -1:
+            create_std = True
         print(f"{cmt}")
     trace = True
     trace = False
@@ -150,6 +160,9 @@ def test_block(comments, code, symtab):
     print("XXXX CODE")
     print(decl)
     symtab = declast.SymbolTable(language=language)
+    if create_std:
+        symtab.create_std_names()
+        symtab.create_std_namespace()
     try:
         ast = declast.Parser(decl, symtab, trace).top_level()
         asdict = todict.to_dict(ast, labelast=True)
@@ -162,7 +175,8 @@ def test_block(comments, code, symtab):
         yaml.safe_dump(asdict, sys.stdout)
 
         print("XXXX SymbolTable")
-        todict.print_scope(symtab.scope_stack[0])
+        symbols = declast.symtab_to_dict(symtab.scope_stack[0])
+        yaml.safe_dump(symbols, sys.stdout)
     except RuntimeError as err:
         print(err)
 

@@ -489,6 +489,12 @@
             "python": true
         }
     },
+    "symtab": {
+        "Cstruct_as_class": "struct-Cstruct_as_class",
+        "Cstruct_as_numpy": "struct-Cstruct_as_numpy",
+        "struct-Cstruct_as_class": "Cstruct_as_class",
+        "struct-Cstruct_as_numpy": "Cstruct_as_numpy"
+    },
     "types": {
         "Cstruct_as_class": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

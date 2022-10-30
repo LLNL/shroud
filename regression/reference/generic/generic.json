@@ -6532,6 +6532,10 @@
             "fortran": true
         }
     },
+    "symtab": {
+        "StructAsClass": "struct-StructAsClass",
+        "struct-StructAsClass": "StructAsClass"
+    },
     "types": {
         "StructAsClass": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

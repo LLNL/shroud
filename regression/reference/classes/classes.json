@@ -78,7 +78,7 @@
                         "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };",
                         "name": "DIRECTION",
                         "options": {},
-                        "typemap_name": "enum-classes::Class1::DIRECTION",
+                        "typemap_name": "classes::Class1::DIRECTION",
                         "wrap": {
                             "c": true,
                             "fortran": true,
@@ -1617,13 +1617,13 @@
                                     "specifier": [
                                         "DIRECTION"
                                     ],
-                                    "typemap_name": "enum-classes::Class1::DIRECTION"
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 }
                             ],
                             "specifier": [
                                 "DIRECTION"
                             ],
-                            "typemap_name": "enum-classes::Class1::DIRECTION"
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +value)",
@@ -4304,13 +4304,13 @@
                             "specifier": [
                                 "Class1::DIRECTION"
                             ],
-                            "typemap_name": "enum-classes::Class1::DIRECTION"
+                            "typemap_name": "classes::Class1::DIRECTION"
                         }
                     ],
                     "specifier": [
                         "Class1::DIRECTION"
                     ],
-                    "typemap_name": "enum-classes::Class1::DIRECTION"
+                    "typemap_name": "classes::Class1::DIRECTION"
                 },
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)",
@@ -5963,6 +5963,16 @@
             "python": true
         }
     },
+    "symtab": {
+        "classes": {
+            "Circle": "classes::Circle",
+            "Class1": "classes::Class1",
+            "Class2": "classes::Class2",
+            "Data": "classes::Data",
+            "Shape": "classes::Shape",
+            "Singleton": "classes::Singleton"
+        }
+    },
     "types": {
         "classes::Circle": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -6049,6 +6059,31 @@
             "wrap_header": [
                 "typesclasses.h"
             ]
+        },
+        "classes::Class1::DIRECTION": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<classes::Class1::DIRECTION>({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "classes::Class1::DIRECTION",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT"
         },
         "classes::Class2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -6214,31 +6249,6 @@
             "wrap_header": [
                 "typesclasses.h"
             ]
-        },
-        "enum-classes::Class1::DIRECTION": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({ctor_expr})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "c_to_cxx": "static_cast<classes::Class1::DIRECTION>({c_var})",
-            "c_type": "int",
-            "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "classes::Class1::DIRECTION",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            },
-            "f_type": "integer(C_INT)",
-            "flat_name": "int",
-            "sgroup": "native",
-            "sh_type": "SH_TYPE_INT"
         }
     }
 }

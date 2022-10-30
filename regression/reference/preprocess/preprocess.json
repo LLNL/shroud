@@ -576,6 +576,10 @@
             "python": true
         }
     },
+    "symtab": {
+        "User1": "User1",
+        "User2": "User2"
+    },
     "types": {
         "User1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
