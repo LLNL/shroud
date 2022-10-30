@@ -2131,6 +2131,8 @@ class TemplateParam(Node):
 class Typedef(Node):
     """
     Added to SymbolTable to record a typedef name.
+
+    Used with 'int', 'std::string', ...
     """
     def __init__(self, name, ntypemap):
         self.name = name
@@ -2372,12 +2374,15 @@ def symtab_to_dict(node):
     Used for debugging/testing.
     """
     d = dict(cls=node.__class__.__name__)
-    d["prefix"] = node.scope_prefix
-    if node.symbols:
-        symbols = {}
-        for k, v in node.symbols.items():
-            symbols[k] = symtab_to_dict(v)
-        d['symbols'] = symbols
+    if hasattr(node, "symbols"):
+        if node.symbols:
+            symbols = {}
+            for k, v in node.symbols.items():
+                symbols[k] = symtab_to_dict(v)
+            d['symbols'] = symbols
+    if hasattr(node, "typemap"):
+        # Global and Namespace do not have typemaps.
+        d["typemap"] = node.typemap.name
     return d
 
 def check_decl(decl, symtab, trace=False):

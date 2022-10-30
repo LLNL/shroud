@@ -1,8 +1,58 @@
 
 XXXXXXXXXXXXXXXXXXXX
-# variable declarations
+# create_std
 XXXX CODE
 
+XXXX PRINT_NODE
+
+XXXX AST
+stmts: []
+XXXX SymbolTable
+cls: Global
+symbols:
+  MPI_Comm:
+    cls: Typedef
+    typemap: MPI_Comm
+  int16_t:
+    cls: Typedef
+    typemap: int16_t
+  int32_t:
+    cls: Typedef
+    typemap: int32_t
+  int64_t:
+    cls: Typedef
+    typemap: int64_t
+  int8_t:
+    cls: Typedef
+    typemap: int8_t
+  size_t:
+    cls: Typedef
+    typemap: size_t
+  std:
+    cls: Namespace
+    symbols:
+      string:
+        cls: Typedef
+        typemap: std::string
+      vector:
+        cls: Typedef
+        typemap: std::vector
+  uint16_t:
+    cls: Typedef
+    typemap: uint16_t
+  uint32_t:
+    cls: Typedef
+    typemap: uint32_t
+  uint64_t:
+    cls: Typedef
+    typemap: uint64_t
+  uint8_t:
+    cls: Typedef
+    typemap: uint8_t
+
+XXXXXXXXXXXXXXXXXXXX
+# variable declarations
+XXXX CODE
 int i;
 const double d;
 XXXX PRINT_NODE
@@ -26,7 +76,6 @@ stmts:
   typemap_name: double
 XXXX SymbolTable
 cls: Global
-prefix: ''
 
 XXXXXXXXXXXXXXXXXXXX
 # variable pointer declarations
@@ -68,7 +117,6 @@ stmts:
   typemap_name: int
 XXXX SymbolTable
 cls: Global
-prefix: ''
 
 XXXXXXXXXXXXXXXXXXXX
 # Class statement
@@ -88,11 +136,10 @@ stmts:
   typemap_name: Class1
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   Class1:
     cls: CXXClass
-    prefix: 'Class1::'
+    typemap: Class1
 
 XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
@@ -167,14 +214,13 @@ stmts:
   typemap_name: void
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   Point:
     cls: Struct
-    prefix: 'Point::'
+    typemap: Point
   struct-Point:
     cls: Struct
-    prefix: 'Point::'
+    typemap: Point
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -219,11 +265,10 @@ stmts:
   typemap_name: list_s
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   struct-list_s:
     cls: Struct
-    prefix: 'list_s::'
+    typemap: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -283,14 +328,13 @@ stmts:
   typemap_name: list_s
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   list_s:
     cls: Struct
-    prefix: 'list_s::'
+    typemap: list_s
   struct-list_s:
     cls: Struct
-    prefix: 'list_s::'
+    typemap: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -323,11 +367,10 @@ stmts:
   typemap_name: enum-Color
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   enum-Color:
     cls: Enum
-    prefix: 'Color::'
+    typemap: enum-Color
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -401,14 +444,13 @@ stmts:
   typemap_name: void
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   Color:
     cls: Enum
-    prefix: 'Color::'
+    typemap: enum-Color
   enum-Color:
     cls: Enum
-    prefix: 'Color::'
+    typemap: enum-Color
 
 XXXXXXXXXXXXXXXXXXXX
 # template
@@ -475,11 +517,10 @@ stmts:
   typemap_name: user
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   user:
     cls: CXXClass
-    prefix: 'user::'
+    typemap: user
 
 XXXXXXXXXXXXXXXXXXXX
 # nested namespace
@@ -516,15 +557,12 @@ stmts:
       typemap_name: int
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   ns1:
     cls: Namespace
-    prefix: 'ns1::'
     symbols:
       ns2:
         cls: Namespace
-        prefix: 'ns1::ns2::'
 
 XXXXXXXXXXXXXXXXXXXX
 # class in namespace
@@ -558,12 +596,10 @@ stmts:
     typemap_name: ns::name
 XXXX SymbolTable
 cls: Global
-prefix: ''
 symbols:
   ns:
     cls: Namespace
-    prefix: 'ns::'
     symbols:
       name:
         cls: CXXClass
-        prefix: 'ns::name::'
+        typemap: ns::name
