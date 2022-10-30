@@ -2116,6 +2116,24 @@
             "fortran": true
         }
     },
+    "symtab": {
+        "Class1": "Class1",
+        "Class2": "Class2",
+        "Color": "Color",
+        "ColorEnum": "ColorEnum",
+        "ns1": {
+            "Color": "ns1::Color",
+            "DataPointer": "ns1::DataPointer"
+        },
+        "ns2": {
+            "Color": "ns2::Color",
+            "DataPointer": "ns2::DataPointer"
+        },
+        "ns3": {
+            "Color": "ns3::Color",
+            "DataPointer": "ns3::DataPointer"
+        }
+    },
     "types": {
         "Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

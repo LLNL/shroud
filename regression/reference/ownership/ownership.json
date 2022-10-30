@@ -3896,6 +3896,9 @@
             "python": true
         }
     },
+    "symtab": {
+        "Class1": "Class1"
+    },
     "types": {
         "Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

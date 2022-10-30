@@ -6126,6 +6126,11 @@
             "python": true
         }
     },
+    "symtab": {
+        "tutorial": {
+            "Color": "tutorial::Color"
+        }
+    },
     "types": {
         "tutorial::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

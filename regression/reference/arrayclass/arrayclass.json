@@ -3558,6 +3558,9 @@
             "python": true
         }
     },
+    "symtab": {
+        "ArrayWrapper": "ArrayWrapper"
+    },
     "types": {
         "ArrayWrapper": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

@@ -4323,6 +4323,18 @@
             "python": true
         }
     },
+    "symtab": {
+        "Worker": "Worker",
+        "internal": {
+            "ImplWorker1": "internal::ImplWorker1",
+            "ImplWorker2": "internal::ImplWorker2"
+        },
+        "std": {
+            "vector": "std::vector"
+        },
+        "structAsClass": "structAsClass",
+        "user": "user"
+    },
     "types": {
         "Worker": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

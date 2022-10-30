@@ -11210,6 +11210,14 @@
             "python": true
         }
     },
+    "symtab": {
+        "example": {
+            "nested": {
+                "ExClass1": "example::nested::ExClass1",
+                "ExClass2": "example::nested::ExClass2"
+            }
+        }
+    },
     "types": {
         "example::nested::ExClass1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

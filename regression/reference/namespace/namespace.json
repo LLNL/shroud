@@ -734,6 +734,17 @@
             "python": true
         }
     },
+    "symtab": {
+        "nswork": {
+            "ClassWork": "nswork::ClassWork"
+        },
+        "outer": {
+            "Cstruct1": "outer::Cstruct1"
+        },
+        "upper": {
+            "Color": "upper::Color"
+        }
+    },
     "types": {
         "nswork::ClassWork": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

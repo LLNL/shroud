@@ -4122,6 +4122,25 @@
             "python": true
         }
     },
+    "symtab": {
+        "CAPI": {
+            "Class1": "CAPI::Class1"
+        },
+        "Color": "Color",
+        "Cstruct_as_class": "Cstruct_as_class",
+        "Cstruct_as_subclass": "Cstruct_as_subclass",
+        "Names2": "Names2",
+        "internal": {
+            "ImplWorker1": "internal::ImplWorker1"
+        },
+        "ns0": {
+            "Names": "ns0::Names"
+        },
+        "std": {
+            "vector": "std::vector"
+        },
+        "twoTs": "twoTs"
+    },
     "types": {
         "CAPI::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

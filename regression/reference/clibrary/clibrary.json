@@ -6070,6 +6070,9 @@
             "python": true
         }
     },
+    "symtab": {
+        "array_info": "array_info"
+    },
     "types": {
         "array_info": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

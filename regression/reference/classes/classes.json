@@ -5963,6 +5963,16 @@
             "python": true
         }
     },
+    "symtab": {
+        "classes": {
+            "Circle": "classes::Circle",
+            "Class1": "classes::Class1",
+            "Class2": "classes::Class2",
+            "Data": "classes::Data",
+            "Shape": "classes::Shape",
+            "Singleton": "classes::Singleton"
+        }
+    },
     "types": {
         "classes::Circle": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

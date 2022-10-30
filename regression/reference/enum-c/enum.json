@@ -391,6 +391,10 @@
             "python": true
         }
     },
+    "symtab": {
+        "Color": "Color",
+        "val": "val"
+    },
     "types": {
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

@@ -3236,6 +3236,15 @@
             "python": true
         }
     },
+    "symtab": {
+        "Arrays1": "Arrays1",
+        "Cstruct1": "Cstruct1",
+        "Cstruct_as_class": "Cstruct_as_class",
+        "Cstruct_as_subclass": "Cstruct_as_subclass",
+        "Cstruct_list": "Cstruct_list",
+        "Cstruct_numpy": "Cstruct_numpy",
+        "Cstruct_ptr": "Cstruct_ptr"
+    },
     "types": {
         "Arrays1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

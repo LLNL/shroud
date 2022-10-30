@@ -879,6 +879,18 @@
             "fortran": true
         }
     },
+    "symtab": {
+        "Class2": "Class2",
+        "outer1": {
+            "class0": "outer1::class0"
+        },
+        "outer2": {
+            "class0": "outer2::class0"
+        },
+        "three": {
+            "Class1": "three::Class1"
+        }
+    },
     "types": {
         "Class2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
