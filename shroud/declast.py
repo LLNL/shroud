@@ -2296,11 +2296,14 @@ class SymbolTable(object):
 
         ast - ast.Declaration
         """
-        if ast.declarator.pointer:
-            # typedef int *foo;
-            raise NotImplementedError("Pointers not supported in typedef")
-        elif ast.declarator.func:
-            # typedef int (*incr_type)(int);
+#        if ast.declarator.pointer:
+#            # typedef int *foo;
+#            name = ast.declarator.name
+#            ntypemap = self.lookup_typemap("--typedef--")
+#            node = Typedef(name, ntypemap)
+#            self.add_child_to_current(node, name)
+        if ast.declarator.func:
+            # typedef int (*fcn)(int);
             name = ast.get_name()
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
@@ -2314,6 +2317,7 @@ class SymbolTable(object):
         else:
             # typedef int TypeID;
             # GGG At this point, just creating an alias for type.
+            # typedef void *address;
             name = ast.declarator.name
             type_name = self.scopename + name
             orig = ast.typemap
