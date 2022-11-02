@@ -282,7 +282,7 @@ XXXX SymbolTable
 cls: Global
 symbols:
   list_typ:
-    cls: Declaration
+    cls: Typedef
     typemap: list_typ
   struct-list_s:
     cls: Struct
@@ -442,22 +442,21 @@ stmts:
   - enum Color
   storage:
   - typedef
-  typemap_name: Color::Color_typ
+  typemap_name: Color_typ
 - _ast: Declaration
   declarator:
     name: local
   specifier:
   - Color_typ
-  typemap_name: Color::Color_typ
+  typemap_name: Color_typ
 XXXX SymbolTable
 cls: Global
 symbols:
+  Color_typ:
+    cls: Typedef
+    typemap: Color_typ
   enum-Color:
     cls: Enum
-    symbols:
-      Color_typ:
-        cls: Declaration
-        typemap: Color::Color_typ
     typemap: Color
 
 XXXXXXXXXXXXXXXXXXXX
@@ -587,7 +586,7 @@ XXXX SymbolTable
 cls: Global
 symbols:
   address:
-    cls: Declaration
+    cls: Typedef
     typemap: address
 
 XXXXXXXXXXXXXXXXXXXX
@@ -635,7 +634,7 @@ XXXX SymbolTable
 cls: Global
 symbols:
   fcn:
-    cls: Declaration
+    cls: Typedef
     typemap: fcn
 
 XXXXXXXXXXXXXXXXXXXX

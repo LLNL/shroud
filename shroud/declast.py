@@ -931,6 +931,7 @@ class Parser(ExprParser):
                 if not self.have("COMMA"):
                     break
             self.mustbe("RCURLY")
+            self.symtab.pop_scope()
             node.enum_specifier = enumnode
             node.typemap = enumnode.typemap
         else:
@@ -2131,10 +2132,12 @@ class Typedef(Node):
     """
     Added to SymbolTable to record a typedef name.
 
-    Used with 'int', 'std::string', ...
+    When used with 'int', 'std::string', ...
+    ast will be None.
     """
-    def __init__(self, name, ntypemap):
+    def __init__(self, name, ast, ntypemap):
         self.name = name
+        self.ast = ast
         self.typemap = ntypemap
         
         
@@ -2246,7 +2249,7 @@ class SymbolTable(object):
         depth = self.create_nested_namespaces(names)
         sgroup = ntypemap.sgroup
         if as_typedef:
-            node = Typedef(cxx_name, ntypemap)
+            node = Typedef(cxx_name, None, ntypemap)
             self.current.add_child(node.name, node)
         elif sgroup == "shadow":
             node = CXXClass(cxx_name, self, ntypemap)
@@ -2311,9 +2314,10 @@ class SymbolTable(object):
                 base="fcnptr",
                 sgroup="fcnptr",
             )
-#            ntypemap.compute_flat_name() GGG
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_child_to_current(ast, name)
+            node = Typedef(name, ast, ntypemap)
+#            ntypemap.compute_flat_name() GGG
+            self.add_child_to_current(node, name)
         else:
             # typedef int TypeID;
             # GGG At this point, just creating an alias for type.
@@ -2326,7 +2330,8 @@ class SymbolTable(object):
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_child_to_current(ast, name)
+            node = Typedef(name, ast, ntypemap)
+            self.add_child_to_current(node, name)
         ast.typemap = ntypemap
 
     def add_typedef_by_name(self, name):
@@ -2339,7 +2344,7 @@ class SymbolTable(object):
         ntypemap = self.lookup_typemap(tname)
         if ntypemap is None:
             raise RuntimeError("Unknown type {}".format(tname))
-        node = Typedef(name, ntypemap)
+        node = Typedef(name, None, ntypemap)
         self.current.add_child(node.name, node)
 
     def add_typedef(self, name, ntypemap):
