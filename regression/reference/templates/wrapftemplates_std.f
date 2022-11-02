@@ -27,6 +27,12 @@ module templates_std_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type TEM_SHROUD_capsule_data
 
+    ! start typedef size_type
+    ! end typedef size_type
+
+    ! start typedef size_type
+    ! end typedef size_type
+
     type vector_int
         type(TEM_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.std.class.vector_int.component_part

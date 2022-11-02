@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// shroud
+#include "wrapUserLibrary.h"
+
 // splicer begin CXX_definitions
 //   CXX_definitions
 // splicer end CXX_definitions

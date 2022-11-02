@@ -115,10 +115,11 @@ class Wrapf(util.WrapperMixin):
                 self.wrap_class(cls, fileinfo)
         self._pop_splicer("class")
 
-        if node.functions or node.enums:
+        if node.functions or node.typedefs or node.enums:
             fileinfo.begin_class()  # clear out old class info
             node.F_module_dependencies = []
 
+            self.wrap_typedefs(node, fileinfo)
             self.wrap_enums(node, fileinfo)
 
             self._push_splicer("function")
@@ -179,7 +180,7 @@ class Wrapf(util.WrapperMixin):
                 append_format(type_bound_part,
                               "procedure :: {F_name_function} => {F_name_impl}",
                               fmt_func)
-            
+
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
@@ -245,6 +246,7 @@ class Wrapf(util.WrapperMixin):
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer("module_use", fileinfo.use_stmts)
 
+        self.wrap_typedefs(node, fileinfo)
         self.wrap_enums(node, fileinfo)
 
         if node.cpp_if:
@@ -396,16 +398,42 @@ class Wrapf(util.WrapperMixin):
 
     #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
 
+    def wrap_typedefs(self, node, fileinfo):
+        """Wrap all typedefs in a splicer block
+
+        Args:
+            node - ast.ClassNode, ast.LibraryNode
+            fileinfo - ModuleInfo
+        """
+        self._push_splicer("typedef")
+        for typ in node.typedefs:
+            self.wrap_typedef(typ, fileinfo)
+        self._pop_splicer("typedef")
+
+    def wrap_typedef(self, node, fileinfo):
+        """Wrap a typedef declaration.
+
+        Args:
+            node - ast.TypedefNode.
+            fileinfo - ModuleInfo
+        """
+        self.log.write("typedef {0.name}\n".format(node))
+        output = fileinfo.typedef_impl
+
+        output.append("")
+        output.append("! start typedef " + node.name)
+        output.append("! end typedef " + node.name)
+        
     def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
 
         Args:
-            node - ast.EnumNode
+            node - ast.ClassNode, ast.LibraryNode
             fileinfo - ModuleInfo
         """
         self._push_splicer("enum")
-        for node in node.enums:
-            self.wrap_enum(None, node, fileinfo)
+        for enum in node.enums:
+            self.wrap_enum(None, enum, fileinfo)
         self._pop_splicer("enum")
 
     def wrap_enum(self, cls, node, fileinfo):
@@ -2197,6 +2225,7 @@ rv = .false.
 
         output.extend(fileinfo.helper_derived_type)
 
+        output.extend(fileinfo.typedef_impl)
         output.extend(fileinfo.enum_impl)
 
         # XXX output.append('! splicer push class')
@@ -2395,12 +2424,16 @@ def ftn_implied(expr, func, arg):
 class ModuleInfo(object):
     """Contains information to create a Fortran module.
 
+    Generated lines are accumulated by this class.
+    A single C declaration may need to add code in several places
+    in the generated Fortran.
     """
     newlibrary = None
     def __init__(self, node):
         self.node = node
         self.module_use = {}  # Use statements for a module
         self.use_stmts = []
+        self.typedef_impl = []
         self.enum_impl = []
         self.f_type_decl = []
         self.method_type_bound_part = {}

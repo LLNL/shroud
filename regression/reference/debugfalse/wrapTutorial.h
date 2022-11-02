@@ -27,6 +27,10 @@
 extern "C" {
 #endif
 
+// typedef tutorial::TypeID
+
+// typedef tutorial::EnumTypeID
+
 //  tutorial::Color
 enum TUT_Color {
     TUT_RED,

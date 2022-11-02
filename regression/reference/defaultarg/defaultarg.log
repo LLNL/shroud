@@ -12,6 +12,7 @@ C void apply_optional(IndexType num_elems +value, IndexType offset=0 +value, Ind
 C void apply_optional(TypeID type +value, IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)  +intent(subroutine)
 Close wrapdefaultarg.h
 Close wrapdefaultarg.cpp
+typedef TypeID
 Fortran void apply_generic(IndexType num_elems +value)  +intent(subroutine)
 Fortran void apply_generic(IndexType num_elems +value, IndexType offset=0 +value)  +intent(subroutine)
 Fortran void apply_generic(IndexType num_elems +value, IndexType offset=0 +value, IndexType stride=1 +value)  +intent(subroutine)

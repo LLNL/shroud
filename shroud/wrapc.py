@@ -74,6 +74,7 @@ class Wrapc(util.WrapperMixin):
         # Prototype for wrapped functions.
         self.header_proto_c = []
         self.impl = []
+        self.typedef_impl = []
         self.enum_impl = []
         self.struct_impl = []
         self.c_helper = {}
@@ -157,6 +158,7 @@ class Wrapc(util.WrapperMixin):
             if cls.wrap_as == "class":
                 self.wrap_class(cls)
         else:
+            self.wrap_typedefs(ns)
             self.wrap_enums(ns)
             self.wrap_functions(ns)
 
@@ -173,15 +175,26 @@ class Wrapc(util.WrapperMixin):
             c_header = None
         self.write_impl(ns, cls, c_header, c_impl)
 
+    def wrap_typedefs(self, node):
+        """Wrap all typedefs in a splicer block
+
+        Args:
+            node - ast.ClassNode, ast.LibraryNode
+        """
+        self._push_splicer("typedef")
+        for typ in node.typedefs:
+            self.wrap_typedef(typ)
+        self._pop_splicer("typedef")
+
     def wrap_enums(self, node):
         """Wrap all enums in a splicer block
 
         Args:
-            node - ast.ClassNode.
+            node - ast.ClassNode, ast.LibraryNode
         """
         self._push_splicer("enum")
-        for node in node.enums:
-            self.wrap_enum(None, node)
+        for enum in node.enums:
+            self.wrap_enum(enum)
         self._pop_splicer("enum")
 
     def wrap_functions(self, library):
@@ -417,6 +430,10 @@ class Wrapc(util.WrapperMixin):
         # ISO_Fortran_binding.h needs to be in extern "C" block.
         self.header_iface.write_headers(output)
 
+        if self.typedef_impl:
+            write_file = True
+            output.extend(self.typedef_impl)
+
         if self.enum_impl:
             write_file = True
             output.extend(self.enum_impl)
@@ -585,6 +602,7 @@ class Wrapc(util.WrapperMixin):
         #        self.header_forward[cname] = True
         self.compute_idtor(node)
 
+        self.wrap_typedefs(node)
         self.wrap_enums(node)
 
         self._push_splicer("method")
@@ -624,7 +642,23 @@ class Wrapc(util.WrapperMixin):
         else:
             ntypemap.idtor = "0"
 
-    def wrap_enum(self, cls, node):
+    def wrap_typedef(self, node):
+        """Wrap a typedef declaration.
+
+        Args:
+            node - ast.TypedefNode.
+        """
+        options = node.options
+        ast = node.ast
+        output = self.typedef_impl
+
+#        node.eval_template("C_enum")
+        fmt_typedef = node.fmtdict
+
+        output.append("")
+        append_format(output, "// typedef {namespace_scope}" + node.name, fmt_typedef)
+            
+    def wrap_enum(self, node):
         """Wrap an enumeration.
         This largely echoes the C++ code.
         For classes, it adds prefixes.

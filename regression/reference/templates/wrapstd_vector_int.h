@@ -31,6 +31,8 @@
 extern "C" {
 #endif
 
+// typedef std::size_type
+
 // splicer begin namespace.std.class.vector.C_declarations
 // splicer end namespace.std.class.vector.C_declarations
 

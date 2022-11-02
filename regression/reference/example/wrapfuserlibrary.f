@@ -21,6 +21,12 @@ module userlibrary_mod
     top of module library splicer  1
     ! splicer end module_top
 
+    ! start typedef SidreLength
+    ! end typedef SidreLength
+
+    ! start typedef TypeID
+    ! end typedef TypeID
+
     interface
 
         ! splicer begin additional_interfaces

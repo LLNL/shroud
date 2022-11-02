@@ -22,6 +22,12 @@ module clibrary_mod
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
 
+    ! start typedef TypeID
+    ! end typedef TypeID
+
+    ! start typedef EnumTypeID
+    ! end typedef EnumTypeID
+
 
     type, bind(C) :: array_info
         integer(C_INT) :: tc

@@ -25,6 +25,8 @@
 extern "C" {
 #endif
 
+// typedef TypeID
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

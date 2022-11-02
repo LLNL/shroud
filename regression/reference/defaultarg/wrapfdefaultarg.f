@@ -26,6 +26,9 @@ module defaultarg_mod
 #endif
     ! splicer end module_top
 
+    ! start typedef TypeID
+    ! end typedef TypeID
+
     ! ----------------------------------------
     ! Function:  void apply_generic
     ! Attrs:     +intent(subroutine)

@@ -33,6 +33,8 @@ C const std::string & LastFunctionCalled(void) +len(30)  +deref(copy)+intent(fun
 C const std::string & LastFunctionCalled(void) +len(30)  +api(buf)+deref(copy)+intent(function)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
+typedef TypeID
+typedef EnumTypeID
 Fortran void NoReturnNoArguments(void)  +intent(subroutine)
 Fortran double PassByValue(double arg1 +value, int arg2 +value)  +intent(function)
 Fortran const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)  +deref(allocatable)+intent(function)
