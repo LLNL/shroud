@@ -2323,6 +2323,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_to_cxx": "static_cast<tutorial::Color>({c_var})",
             "c_type": "int",
             "cfi_type": "CFI_type_int",
