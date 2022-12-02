@@ -561,6 +561,9 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
+C_typedef_name_template
+    ``{C_prefix}{C_name_scope}{typedef_name}``
+    
 F_C_name_template
     ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
@@ -612,6 +615,9 @@ F_module_name_namespace_template
 F_name_function_template
     ``{underscore_name}{function_suffix}{template_suffix}``
 
+F_typedef_name_template
+    ``{underscore_name}{template_suffix}``
+    
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
     ``{LUA_prefix}{cxx_class}_Reg``

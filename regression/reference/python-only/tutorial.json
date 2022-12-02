@@ -2222,7 +2222,11 @@
                 "wrap": {
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             },
             {
                 "<TYPEDEF>": "****************************************",
@@ -2243,7 +2247,11 @@
                 "wrap": {
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "cxx_type": "EnumTypeID",
+                    "typedef_name": "EnumTypeID",
+                    "underscore_name": "enum_type_id"
+                }
             }
         ],
         "variables": [

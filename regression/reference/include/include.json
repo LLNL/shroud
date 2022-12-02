@@ -871,7 +871,13 @@
                     "c": true,
                     "fortran": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "LIB_CustomType",
+                    "F_typedef_name": "custom_type",
+                    "cxx_type": "CustomType",
+                    "typedef_name": "CustomType",
+                    "underscore_name": "custom_type"
+                }
             }
         ],
         "wrap": {

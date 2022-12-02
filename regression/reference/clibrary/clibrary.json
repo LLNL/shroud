@@ -6038,7 +6038,13 @@
                     "fortran": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "CLI_TypeID",
+                    "F_typedef_name": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             },
             {
                 "<TYPEDEF>": "****************************************",
@@ -6061,7 +6067,13 @@
                     "fortran": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "CLI_EnumTypeID",
+                    "F_typedef_name": "enum_type_id",
+                    "cxx_type": "EnumTypeID",
+                    "typedef_name": "EnumTypeID",
+                    "underscore_name": "enum_type_id"
+                }
             }
         ],
         "wrap": {

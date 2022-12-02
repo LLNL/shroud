@@ -2093,7 +2093,13 @@
                     "c": true,
                     "fortran": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "DEF_TypeID",
+                    "F_typedef_name": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             }
         ],
         "wrap": {

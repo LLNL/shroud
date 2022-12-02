@@ -2129,53 +2129,29 @@ class Namify(object):
 
     def name_library(self):
         """entry pointer for library"""
-        self.name_language(self.name_function_c, self.newlibrary.wrap_namespace)
-        self.name_language(self.name_function_fortran, self.newlibrary.wrap_namespace)
+        self.name_language(self.newlibrary.wrap_namespace)
+        self.name_language(self.newlibrary.wrap_namespace)
 
-    def name_language(self, handler, node):
+    def iter_decl(self, node):
+        """Loop over members of a Namespace, class"""
+        for typ in node.typedefs:
+            typ.update_names()
+        for func in node.functions:
+            func.update_names()
+        
+    def name_language(self, node):
         """
         Args:
             handler - function.
             node - ast.LibraryNode, ast.NamespaceNode
         """
         for cls in node.classes:
-            for func in cls.functions:
-                handler(func)
+            self.iter_decl(cls)
 
-        for func in node.functions:
-            handler(func)
+        self.iter_decl(node)
 
         for ns in node.namespaces:
-            self.name_language(handler, ns)
-
-    def name_function_c(self, node):
-        """Compute name for C wrapped functions.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        """
-        if not node.wrap.c:
-            return
-        fmt_func = node.fmtdict
-
-        node.eval_template("C_name")
-        node.eval_template("F_C_name")
-        fmt_func.F_C_name = fmt_func.F_C_name.lower()
-
-    def name_function_fortran(self, node):
-        """Compute name for Fortran wrapped functions.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        """
-        if not node.wrap.fortran:
-            return
-
-        node.eval_template("F_name_impl")
-        node.eval_template("F_name_function")
-        node.eval_template("F_name_generic")
+            self.name_language(ns)
 
 
 class Preprocess(object):

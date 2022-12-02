@@ -11176,7 +11176,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "AA_SidreLength",
+                    "F_typedef_name": "sidre_length",
+                    "cxx_type": "SidreLength",
+                    "typedef_name": "SidreLength",
+                    "underscore_name": "sidre_length"
+                }
             },
             {
                 "<TYPEDEF>": "****************************************",
@@ -11200,7 +11206,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "AA_TypeID",
+                    "F_typedef_name": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             }
         ],
         "wrap": {

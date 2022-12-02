@@ -6028,7 +6028,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "TUT_TypeID",
+                    "F_typedef_name": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             },
             {
                 "<TYPEDEF>": "****************************************",
@@ -6052,7 +6058,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "TUT_EnumTypeID",
+                    "F_typedef_name": "enum_type_id",
+                    "cxx_type": "EnumTypeID",
+                    "typedef_name": "EnumTypeID",
+                    "underscore_name": "enum_type_id"
+                }
             }
         ],
         "variables": [
