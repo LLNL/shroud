@@ -1424,4 +1424,6 @@ def return_shadow_types(typemaps):  # typemaps -> dict
             dct[key] = ntypemap
         elif hasattr(ntypemap, "is_enum"):
             dct[key] = ntypemap
+        elif hasattr(ntypemap, "is_typedef"):
+            dct[key] = ntypemap
     return dct

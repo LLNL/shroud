@@ -4503,6 +4503,35 @@
                 "typestemplates.h"
             ]
         },
+        "std::vector::size_type": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PY_ctor": "PyInt_FromSize_t({ctor_expr})",
+            "PY_format": "n",
+            "base": "integer",
+            "c_header": [
+                "<stddef.h>"
+            ],
+            "c_type": "size_t",
+            "cfi_type": "CFI_type_size_t",
+            "cxx_header": [
+                "<cstddef>"
+            ],
+            "cxx_type": "std::vector::size_type",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "C_SIZE_T",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SIZE_T"
+                ]
+            },
+            "f_type": "integer(C_SIZE_T)",
+            "flat_name": "size_t",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_SIZE_T",
+            "typedef": "size_t"
+        },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",

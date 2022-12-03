@@ -11231,6 +11231,67 @@
         }
     },
     "types": {
+        "SidreLength": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_LONG",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "l",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "sidre/SidreTypes.h"
+            ],
+            "c_type": "SIDRE_SidreLength",
+            "cfi_type": "CFI_type_long",
+            "cxx_type": "SidreLength",
+            "f_cast": "int({f_var}, C_LONG)",
+            "f_kind": "C_LONG",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            },
+            "f_type": "integer(C_LONG)",
+            "flat_name": "long",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_LONG",
+            "typedef": "long"
+        },
+        "TypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "sidre/SidreTypes.h"
+            ],
+            "c_to_cxx": "getTypeID({c_var})",
+            "c_type": "int",
+            "cfi_type": "CFI_type_int",
+            "cxx_header": [
+                "sidre/SidreWrapperHelpers.hpp"
+            ],
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "TypeID",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int"
+        },
         "example::nested::ExClass1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",

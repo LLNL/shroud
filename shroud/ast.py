@@ -1717,13 +1717,6 @@ class TypedefNode(AstNode):
 
         self.ast = ast
 
-        # Add to namespace
-        if ntypemap is None:
-            typename = self.parent.scope + self.name
-            self.typemap = parent.symtab.lookup_typemap(typename)
-        else:
-            self.typemap = ntypemap
-
     def get_typename(self):
         return self.typemap.name
 

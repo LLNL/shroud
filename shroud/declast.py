@@ -2138,6 +2138,8 @@ class Typedef(Node):
     def __init__(self, name, ast, ntypemap):
         self.name = name
         self.ast = ast
+        if ast:
+            ntypemap.is_typedef = True  # GGG kludge to identify typedef
         self.typemap = ntypemap
         
         
