@@ -968,7 +968,7 @@ class GenFunctions(object):
                         dict(
                             cxx_type=cxx_type,
                             cxx_class=cxx_class,
-                            class_scope=cxx_class + "::",
+                            class_scope=cxx_type + "::",
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
                             F_derived_name=cxx_class.lower(),
