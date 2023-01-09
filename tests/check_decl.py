@@ -36,6 +36,8 @@ int *i1;
 int **i2;
 int &i3;
 --------------------
+typedef int footype;
+--------------------
 # Class statement
 class Class1;
 --------------------

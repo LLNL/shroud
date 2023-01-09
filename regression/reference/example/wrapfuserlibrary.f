@@ -13,6 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module userlibrary_mod
+    use iso_c_binding, only : C_INT, C_LONG
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -22,9 +23,11 @@ module userlibrary_mod
     ! splicer end module_top
 
     ! start typedef SidreLength
+    integer, parameter :: sidre_length = C_LONG
     ! end typedef SidreLength
 
     ! start typedef TypeID
+    integer, parameter :: type_id = C_INT
     ! end typedef TypeID
 
     interface

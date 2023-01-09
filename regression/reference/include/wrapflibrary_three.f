@@ -52,11 +52,10 @@ module library_three_mod
         ! Match:     c_default
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
-            use iso_c_binding, only : C_INT
-            import :: LIB_SHROUD_capsule_data
+            import :: LIB_SHROUD_capsule_data, custom_type
             implicit none
             type(LIB_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_INT), value, intent(IN) :: arg1
+            integer(custom_type), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 
 
@@ -79,9 +78,9 @@ contains
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine class1_method1(obj, arg1)
-        use iso_c_binding, only : C_INT
+        use library_mod, only : custom_type
         class(class1) :: obj
-        integer(C_INT), value, intent(IN) :: arg1
+        integer(custom_type), value, intent(IN) :: arg1
         call c_class1_method1(obj%cxxmem, arg1)
     end subroutine class1_method1
 

@@ -616,7 +616,7 @@ F_name_function_template
     ``{underscore_name}{function_suffix}{template_suffix}``
 
 F_typedef_name_template
-    ``{underscore_name}{template_suffix}``
+    ``{F_name_scope}{underscore_name}``
     
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
@@ -835,7 +835,11 @@ C_memory_dtor_function
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in C.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
+
+    *C_name_scope* will replace *class_name* with the instantiated *class_name*.
+    which will contain a template arguments.
 
 C_result
     The name of the C wrapper's result variable.
@@ -921,6 +925,7 @@ F_module_name
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in Fortran.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
 
 F_impl_filename

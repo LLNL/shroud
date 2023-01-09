@@ -22,6 +22,7 @@ module library_mod
     end type LIB_SHROUD_capsule_data
 
     ! start typedef CustomType
+    integer, parameter :: custom_type = C_INT
     ! end typedef CustomType
 
     type class2

@@ -3834,7 +3834,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_type": "int",
+                                                    "c_type": "AA_TypeID",
                                                     "c_var": "type",
                                                     "cfi_type": "CFI_type_int",
                                                     "cxx_addr": "&",
@@ -3852,9 +3852,10 @@
                                                 "fmtf": {
                                                     "F_C_var": "type",
                                                     "c_var": "type",
+                                                    "f_c_module_line": "--import--:type_id",
                                                     "f_intent": "IN",
-                                                    "f_kind": "C_INT",
-                                                    "f_type": "integer(C_INT)",
+                                                    "f_kind": "type_id",
+                                                    "f_type": "integer(type_id)",
                                                     "f_var": "type",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmt0": "f_in_native_scalar",
@@ -3867,7 +3868,7 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "SHCXX_type",
                                             "C_name": "AA_example_nested_ExClass2_declare_0",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t int type",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t type",
                                             "F_C_name": "c_exclass2_declare_0",
@@ -4238,7 +4239,7 @@
                                                 "fmtpy": {
                                                     "c_const": "",
                                                     "c_deref": "",
-                                                    "c_type": "int",
+                                                    "c_type": "AA_TypeID",
                                                     "c_var": "type",
                                                     "ctor_expr": "type",
                                                     "cxx_addr": "&",
@@ -4462,9 +4463,10 @@
                                                 "fmtf": {
                                                     "F_C_var": "len",
                                                     "c_var": "len",
+                                                    "f_c_module_line": "--import--:sidre_length",
                                                     "f_intent": "IN",
-                                                    "f_kind": "C_LONG",
-                                                    "f_type": "integer(C_LONG)",
+                                                    "f_kind": "sidre_length",
+                                                    "f_type": "integer(sidre_length)",
                                                     "f_var": "len",
                                                     "sh_type": "SH_TYPE_LONG",
                                                     "stmt0": "f_in_native_scalar",
@@ -4479,7 +4481,7 @@
                                                     "c_const": "",
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_type": "int",
+                                                    "c_type": "AA_TypeID",
                                                     "c_var": "type",
                                                     "cfi_type": "CFI_type_int",
                                                     "cxx_addr": "&",
@@ -4497,9 +4499,10 @@
                                                 "fmtf": {
                                                     "F_C_var": "type",
                                                     "c_var": "type",
+                                                    "f_c_module_line": "--import--:type_id",
                                                     "f_intent": "IN",
-                                                    "f_kind": "C_INT",
-                                                    "f_type": "integer(C_INT)",
+                                                    "f_kind": "type_id",
+                                                    "f_type": "integer(type_id)",
                                                     "f_var": "type",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmt0": "f_in_native_scalar",
@@ -4512,7 +4515,7 @@
                                         "zz_fmtdict": {
                                             "C_call_list": "SHCXX_type,\t len",
                                             "C_name": "AA_example_nested_ExClass2_declare_1",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t int type,\t SIDRE_SidreLength len",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_TypeID type,\t SIDRE_SidreLength len",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t type,\t len",
                                             "F_C_name": "c_exclass2_declare_1",
@@ -4789,7 +4792,7 @@
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_type_id",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
-                                            "C_return_type": "int",
+                                            "C_return_type": "AA_TypeID",
                                             "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_type_id",
                                             "F_C_name": "c_exclass2_get_type_id",
@@ -4818,8 +4821,8 @@
                                             "fmtc": {
                                                 "c_const": "",
                                                 "c_get_value": "",
-                                                "c_rv_decl": "int SHC_rv",
-                                                "c_type": "int",
+                                                "c_rv_decl": "AA_TypeID SHC_rv",
+                                                "c_type": "AA_TypeID",
                                                 "c_val": "static_cast<int>(SHCXX_rv)",
                                                 "c_var": "SHC_rv",
                                                 "cfi_type": "CFI_type_int",
@@ -4837,9 +4840,10 @@
                                                 "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "TypeID",
+                                                "f_c_module_line": "--import--:type_id",
                                                 "f_intent": "OUT",
-                                                "f_kind": "C_INT",
-                                                "f_type": "integer(C_INT)",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_INT",
                                                 "stmt0": "f_function_native_scalar",
@@ -11168,6 +11172,12 @@
                     ],
                     "typemap_name": "SidreLength"
                 },
+                "f_kind": "C_LONG",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_LONG"
+                    ]
+                },
                 "name": "SidreLength",
                 "options": {},
                 "wrap": {
@@ -11197,6 +11207,12 @@
                         "typedef"
                     ],
                     "typemap_name": "TypeID"
+                },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
                 },
                 "name": "TypeID",
                 "options": {},
@@ -11246,18 +11262,28 @@
             "c_type": "SIDRE_SidreLength",
             "cfi_type": "CFI_type_long",
             "cxx_type": "SidreLength",
-            "f_cast": "int({f_var}, C_LONG)",
-            "f_kind": "C_LONG",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
+            "f_c_module": {
+                "--import--": [
+                    "sidre_length"
                 ]
             },
-            "f_type": "integer(C_LONG)",
+            "f_c_module_line": "--import--:sidre_length",
+            "f_cast": "int({f_var}, C_LONG)",
+            "f_kind": "sidre_length",
+            "f_module": {
+                "userlibrary_mod": [
+                    "sidre_length"
+                ]
+            },
+            "f_module_line": "userlibrary_mod:sidre_length",
+            "f_type": "integer(sidre_length)",
             "flat_name": "long",
             "sgroup": "native",
             "sh_type": "SH_TYPE_LONG",
-            "typedef": "long"
+            "typedef": "long",
+            "wrap_header": [
+                "wrapUserLibrary.h"
+            ]
         },
         "TypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -11272,25 +11298,35 @@
                 "sidre/SidreTypes.h"
             ],
             "c_to_cxx": "getTypeID({c_var})",
-            "c_type": "int",
+            "c_type": "AA_TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_header": [
                 "sidre/SidreWrapperHelpers.hpp"
             ],
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
+            "f_c_module": {
+                "--import--": [
+                    "type_id"
                 ]
             },
-            "f_type": "integer(C_INT)",
+            "f_c_module_line": "--import--:type_id",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "type_id",
+            "f_module": {
+                "userlibrary_mod": [
+                    "type_id"
+                ]
+            },
+            "f_module_line": "userlibrary_mod:type_id",
+            "f_type": "integer(type_id)",
             "flat_name": "int",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
-            "typedef": "int"
+            "typedef": "int",
+            "wrap_header": [
+                "wrapUserLibrary.h"
+            ]
         },
         "example::nested::ExClass1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

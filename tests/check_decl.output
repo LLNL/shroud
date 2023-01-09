@@ -119,6 +119,29 @@ XXXX SymbolTable
 cls: Global
 
 XXXXXXXXXXXXXXXXXXXX
+XXXX CODE
+typedef int footype;
+XXXX PRINT_NODE
+typedef int footype;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: footype
+  specifier:
+  - int
+  storage:
+  - typedef
+  typemap_name: footype
+XXXX SymbolTable
+cls: Global
+symbols:
+  footype:
+    cls: Typedef
+    typemap: footype
+
+XXXXXXXXXXXXXXXXXXXX
 # Class statement
 XXXX CODE
 class Class1;

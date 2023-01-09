@@ -24,6 +24,7 @@ extern "C" {
 #endif
 
 // typedef CustomType
+typedef int LIB_CustomType;
 
 
 #ifdef __cplusplus

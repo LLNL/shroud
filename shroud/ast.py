@@ -91,6 +91,13 @@ class AstNode(object):
             tname = name + tname + "_template"
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+    def reeval_template(self, name, tname="", fmt=None):
+        """Always evaluate template."""
+        if fmt is None:
+            fmt = self.fmtdict
+        tname = name + tname + "_template"
+        setattr(fmt, name, util.wformat(self.options[tname], fmt))
+
     def set_fmt_default(self, name, value, fmt=None):
         """Set a fmt value unless already set."""
         if fmt is None:
@@ -531,7 +538,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
-            F_typedef_name_template="{underscore_name}{template_suffix}",
+            F_typedef_name_template="{F_name_scope}{underscore_name}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
@@ -635,6 +642,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_local="SHC_",
             C_name_scope = "",
             C_this="self",
+            C_typedef_name="",
             C_custom_return_type="",  # assume no value
             CXX_this="SH_this",
             CXX_local="SHCXX_",
@@ -653,6 +661,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_final="final",
             F_result="SHT_rv",
             F_result_ptr="SHT_prv",
+            F_typedef_name="",
             F_name_scope = "",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
@@ -1067,6 +1076,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.functions = []
         self.typedefs = []
         self.variables = []
+
+        self.typedef_map = []
 
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
@@ -1714,8 +1725,17 @@ class TypedefNode(AstNode):
         self.wrap = WrapFlags(self.options)
 
         self.default_format(parent, format, kwargs)
+        self.update_names()
 
         self.ast = ast
+
+        # save info from original type used in generated declarations.
+        ntypemap = ast.typemap
+        self.f_kind = ntypemap.f_kind
+        self.f_module = ntypemap.f_module
+        self.typemap = ntypemap
+            
+        typemap.fill_typedef_typemap(self)
 
     def get_typename(self):
         return self.typemap.name
@@ -1731,11 +1751,13 @@ class TypedefNode(AstNode):
 
     def update_names(self):
         """Update C and Fortran names."""
+        ### XXX - how to allow user to override since reevaluate is being used.
+        ### XXX - maybe preserve the original fmt from yaml file.
         fmt = self.fmtdict
         if self.wrap.c:
-            self.eval_template("C_typedef_name")
+            self.reeval_template("C_typedef_name")
         if self.wrap.fortran:
-            self.eval_template("F_typedef_name")
+            self.reeval_template("F_typedef_name")
 
     def clone(self):
         """Create a copy of a TypedefNode to use with C++ template.
@@ -1747,11 +1769,21 @@ class TypedefNode(AstNode):
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
         new.wrap = WrapFlags(self.options)
-
-        # Deep copy dictionaries to allow them to be modified independently.
-#        new.ast = copy.deepcopy(self.ast)
-
         return new
+
+    def clone_post_class(self, targs):
+        """Steps to clone typedef after class has been instantiated.
+
+        Need to create a new typemap for typedefs within a templated class.
+        """
+        self.update_names()
+        type_name = util.wformat("{namespace_scope}{class_scope}{cxx_type}", self.fmtdict)
+
+        ntypemap = self.typemap.clone_as(type_name)
+        self.typemap = ntypemap
+        self.parent.symtab.register_typemap(type_name, ntypemap)
+        ntypemap.is_typedef = True
+        typemap.fill_typedef_typemap(self)
 
 
 ######################################################################

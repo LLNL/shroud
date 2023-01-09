@@ -77,6 +77,19 @@ FileTuple = collections.namedtuple(
     "FileTuple", "MethodBody MethodDef GetSetBody GetSetDef")
 
 
+# The C type associated with PY_format fields used with PyArg_ParseTupleAndKeywords.
+PY_format_to_type = dict(
+    d="double",
+    D="float complex",
+    f="float",
+    h="short",
+    i="int",
+    l="long",
+    L="long long",
+    n="size_t",
+    s="char *",
+)
+
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
     """
@@ -1391,6 +1404,10 @@ return 1;""",
                 # Explicit declarations from py_statements.
                 for line in intent_blk.arg_declare:
                     append_format(declare_code, line, fmt_arg)
+            elif hasattr(arg_typemap, "is_typedef"):
+                # XXX - this helps typedefs to define PyArg type instead C wrapper type
+                declare_code.append("{} {};".format(
+                    PY_format_to_type[arg_typemap.PY_format], arg.name))
             else:
                 # Since all declarations are at the top, remove const
                 # since it will be assigned later.
@@ -4208,6 +4225,9 @@ py_statements = [
     dict(
         name="py_inout_string_scalar",
         cxx_local_var="scalar",
+        arg_declare=[
+            "char *{c_var};",
+        ],
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",

@@ -19,8 +19,10 @@
 #include "typesClibrary.h"
 
 // typedef TypeID
+typedef int CLI_TypeID;
 
 // typedef EnumTypeID
+typedef int CLI_EnumTypeID;
 
 // splicer begin C_declarations
 // splicer end C_declarations

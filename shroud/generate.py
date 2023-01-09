@@ -963,7 +963,7 @@ class GenFunctions(object):
                         cxx_class = targs.fmtdict["cxx_class"]
 
                     newcls.scope_file[-1] += class_suffix
-                    # Add default values to format dictionary.
+                    # Update default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
@@ -995,6 +995,8 @@ class GenFunctions(object):
                               "typemap.cxx_instantiation".format(targs.instantiation))
                     orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
 
+                    self.template_typedef(newcls, targs)
+
                     self.push_instantiate_scope(newcls, targs)
                     self.process_class(newcls, newcls)
                     self.pop_instantiate_scope()
@@ -1004,6 +1006,29 @@ class GenFunctions(object):
 
         node.classes = clslist
 
+    def template_typedef(self, node, targs):
+        """Create a new typemap for instantiated templated typedefs.
+
+        Replace typemap in function arguments with
+        class instantiation of the typemap.
+
+        node -> ClassNode
+        """
+        typedefmap = []
+        for typ in node.typedefs:
+            oldtyp = typ.typemap
+            typ.clone_post_class(targs)
+            typedefmap.append( (oldtyp, typ.typemap) )
+        node.typedef_map = typedefmap
+
+        for function in node.functions:
+            for arg in function.ast.params:
+                ntypemap = arg.typemap
+                for typedef in typedefmap:
+                    if ntypemap is typedef[0]:
+                        arg.typemap = typedef[1]
+                        break
+            
     def update_templated_typemaps(self, node):
         """Update templated types to use correct typemap.
 
@@ -2134,8 +2159,6 @@ class Namify(object):
 
     def iter_decl(self, node):
         """Loop over members of a Namespace, class"""
-        for typ in node.typedefs:
-            typ.update_names()
         for func in node.functions:
             func.update_names()
         

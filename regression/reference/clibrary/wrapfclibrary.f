@@ -23,9 +23,11 @@ module clibrary_mod
     ! splicer end module_top
 
     ! start typedef TypeID
+    integer, parameter :: type_id = C_INT
     ! end typedef TypeID
 
     ! start typedef EnumTypeID
+    integer, parameter :: enum_type_id = C_INT
     ! end typedef EnumTypeID
 
 

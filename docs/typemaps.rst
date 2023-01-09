@@ -39,7 +39,10 @@ base
 The base type of *type-name*.
 This is used to generalize operations for several types.
 The base types that Shroud uses are **bool**, **integer**, **real**,
-**string**, **vector**, **struct** or **shadow**.
+**complex**, **string**, **vector**, **struct** or **shadow**.
+
+
+**integer** includes all integer types such as ``short``, ``int`` and ``long``.
 
 .. **template**
 
@@ -83,6 +86,13 @@ Index of ``capsule_data`` destructor in the function
 This value is computed by Shroud and should not be set.
 It can be used when formatting statements as ``{idtor}``.
 Defaults to *0* indicating no destructor.
+
+sgroup
+^^^^^^
+
+Groups different base types together.
+For example, base *integer* and *real* are both sgroup *native*.
+For many others, they're the same: base=struct, sgroup=struct.
 
 .. format field
 
@@ -170,20 +180,36 @@ cxx_header
 ^^^^^^^^^^
 
 Name of C++ header file required for implementation.
-For example, if cxx_to_c was a function.
-Only used with *language=c++*.
-Defaults to *None*.
-Note the use of *stdlib* which adds ``std::`` with *language=c++*:
+
+
+.. For example, if cxx_to_c was a function.
+   Only used with *language=c++*.
+   Defaults to *None*.
+   Note the use of *stdlib* which adds ``std::`` with *language=c++*:
 
 .. code-block:: yaml
 
-    c_header='<stdlib.h>',
-    cxx_header='<cstdlib>',
-    pre_call=[
-        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
-    ],
+    c_type: size_t
+    c_header: '<stddef.h>',
+    cxx_header: '<cstddef>',
 
 See also *c_header*.
+
+impl_header
+^^^^^^^^^^^
+
+**impl_header** is used for implementation, i.e. the ``wrap.cpp`` file.
+For example, ``std::string`` uses ``<string>``.
+``<string>`` should not be in the interface since the wrapper is a C API.
+
+
+wrap_header
+^^^^^^^^^^^
+
+**wrap_header** is used for generated wrappers for shadow classes.
+Contains struct definitions for capsules from Fortran.
+
+.. ---------------------
 
 A C ``int`` is represented as:
 
@@ -205,6 +231,21 @@ Fortran modules needed for type in the interface.
 A dictionary keyed on the module name with the value being a list of symbols.
 Similar to **f_module**.
 Defaults to *None*.
+
+In this example, the symbol indextype is created by a typedef which
+creates a symbol in Fortran. This symbol, ``indextype``, must be
+``IMPORT``ed into the interface.
+
+.. code-block:: c
+
+   typedef int indextype;
+
+.. code-block:: yaml
+
+    indextype:
+       --import--:
+       - indextype
+
 
 f_c_type
 ^^^^^^^^

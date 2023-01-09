@@ -652,11 +652,12 @@ class Wrapc(util.WrapperMixin):
         ast = node.ast
         output = self.typedef_impl
 
-#        node.eval_template("C_enum")
-        fmt_typedef = node.fmtdict
+        fmtdict = node.fmtdict
+        decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_typedef_name)
 
         output.append("")
-        append_format(output, "// typedef {namespace_scope}" + node.name, fmt_typedef)
+        append_format(output, "// typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
+        output.append(decl + ";")
             
     def wrap_enum(self, node):
         """Wrap an enumeration.

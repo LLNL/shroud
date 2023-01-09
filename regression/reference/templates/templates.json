@@ -2986,7 +2986,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<int>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -3039,7 +3039,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<int>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -3066,13 +3066,13 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<int>::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -3082,22 +3082,23 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
+                                            "f_c_module_line": "--import--:vector_int_size_type",
                                             "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_kind": "vector_int_size_type",
+                                            "f_type": "integer(vector_int_size_type)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
                                             "c_deref": "",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "ctor_expr": "n",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<int>::size_type",
                                             "cxx_var": "n",
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
@@ -3112,7 +3113,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
-                                    "C_prototype": "TEM_vector_int * self,\t size_t n",
+                                    "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_call": "c_vector_int_at_bufferify",
@@ -3219,7 +3220,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<int>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -3246,13 +3247,13 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_int_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<int>::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -3262,9 +3263,10 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
+                                            "f_c_module_line": "--import--:vector_int_size_type",
                                             "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_kind": "vector_int_size_type",
+                                            "f_type": "integer(vector_int_size_type)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_in_native_scalar",
@@ -3277,7 +3279,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at_bufferify",
-                                    "C_prototype": "TEM_vector_int * self,\t size_t n",
+                                    "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_name": "c_vector_int_at_bufferify",
@@ -3360,6 +3362,12 @@
                         ],
                         "template_parameters": [
                             "T"
+                        ],
+                        "typedef_map": [
+                            [
+                                "std::vector::size_type",
+                                "std::vector<int>::size_type"
+                            ]
                         ],
                         "typemap_name": "std::vector_int",
                         "wrap": {
@@ -3769,7 +3777,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<double>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -3822,7 +3830,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<double>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -3849,13 +3857,13 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<double>::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -3865,22 +3873,23 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
+                                            "f_c_module_line": "--import--:vector_double_size_type",
                                             "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_kind": "vector_double_size_type",
+                                            "f_type": "integer(vector_double_size_type)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
                                             "c_deref": "",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "ctor_expr": "n",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<double>::size_type",
                                             "cxx_var": "n",
                                             "data_var": "SHData_n",
                                             "numpy_type": null,
@@ -3895,7 +3904,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",
-                                    "C_prototype": "TEM_vector_double * self,\t size_t n",
+                                    "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_call": "c_vector_double_at_bufferify",
@@ -4002,7 +4011,7 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<double>::size_type"
                                         }
                                     ],
                                     "specifier": [
@@ -4029,13 +4038,13 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_type": "size_t",
+                                            "c_type": "TEM_vector_double_size_type",
                                             "c_var": "n",
                                             "cfi_type": "CFI_type_size_t",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&n",
-                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_type": "std::vector<double>::size_type",
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
@@ -4045,9 +4054,10 @@
                                         "fmtf": {
                                             "F_C_var": "n",
                                             "c_var": "n",
+                                            "f_c_module_line": "--import--:vector_double_size_type",
                                             "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_kind": "vector_double_size_type",
+                                            "f_type": "integer(vector_double_size_type)",
                                             "f_var": "n",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_in_native_scalar",
@@ -4060,7 +4070,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at_bufferify",
-                                    "C_prototype": "TEM_vector_double * self,\t size_t n",
+                                    "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
                                     "F_C_name": "c_vector_double_at_bufferify",
@@ -4141,6 +4151,12 @@
                         ],
                         "template_parameters": [
                             "T"
+                        ],
+                        "typedef_map": [
+                            [
+                                "std::vector::size_type",
+                                "std::vector<double>::size_type"
+                            ]
                         ],
                         "typemap_name": "std::vector_double",
                         "wrap": {
@@ -4513,24 +4529,112 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_type": "size_t",
+            "c_type": "TEM_vector_size_type",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_cast": "int({f_var}, C_SIZE_T)",
-            "f_kind": "C_SIZE_T",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_SIZE_T"
+            "f_c_module": {
+                "--import--": [
+                    "vector_size_type"
                 ]
             },
-            "f_type": "integer(C_SIZE_T)",
+            "f_c_module_line": "--import--:vector_size_type",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "vector_size_type",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector_size_type"
+                ]
+            },
+            "f_module_line": "templates_std_mod:vector_size_type",
+            "f_type": "integer(vector_size_type)",
             "flat_name": "size_t",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
-            "typedef": "size_t"
+            "typedef": "size_t",
+            "wrap_header": [
+                "wrapstd_vector.h"
+            ]
+        },
+        "std::vector<double>::size_type": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PY_ctor": "PyInt_FromSize_t({ctor_expr})",
+            "PY_format": "n",
+            "base": "integer",
+            "c_header": [
+                "<stddef.h>"
+            ],
+            "c_type": "TEM_vector_double_size_type",
+            "cfi_type": "CFI_type_size_t",
+            "cxx_header": [
+                "<cstddef>"
+            ],
+            "cxx_type": "std::vector<double>::size_type",
+            "f_c_module": {
+                "--import--": [
+                    "vector_double_size_type"
+                ]
+            },
+            "f_c_module_line": "--import--:vector_double_size_type",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "vector_double_size_type",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector_double_size_type"
+                ]
+            },
+            "f_module_line": "templates_std_mod:vector_double_size_type",
+            "f_type": "integer(vector_double_size_type)",
+            "flat_name": "size_t",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_SIZE_T",
+            "typedef": "size_t",
+            "wrap_header": [
+                "wrapstd_vector_double.h"
+            ]
+        },
+        "std::vector<int>::size_type": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PY_ctor": "PyInt_FromSize_t({ctor_expr})",
+            "PY_format": "n",
+            "base": "integer",
+            "c_header": [
+                "<stddef.h>"
+            ],
+            "c_type": "TEM_vector_int_size_type",
+            "cfi_type": "CFI_type_size_t",
+            "cxx_header": [
+                "<cstddef>"
+            ],
+            "cxx_type": "std::vector<int>::size_type",
+            "f_c_module": {
+                "--import--": [
+                    "vector_int_size_type"
+                ]
+            },
+            "f_c_module_line": "--import--:vector_int_size_type",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "vector_int_size_type",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector_int_size_type"
+                ]
+            },
+            "f_module_line": "templates_std_mod:vector_int_size_type",
+            "f_type": "integer(vector_int_size_type)",
+            "flat_name": "size_t",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_SIZE_T",
+            "typedef": "size_t",
+            "wrap_header": [
+                "wrapstd_vector_int.h"
+            ]
         },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

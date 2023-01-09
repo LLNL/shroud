@@ -13,7 +13,7 @@
 ! splicer begin namespace.std.file_top
 ! splicer end namespace.std.file_top
 module templates_std_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin namespace.std.module_use
     ! splicer end namespace.std.module_use
     implicit none
@@ -28,9 +28,11 @@ module templates_std_mod
     end type TEM_SHROUD_capsule_data
 
     ! start typedef size_type
+    integer, parameter :: vector_int_size_type = C_SIZE_T
     ! end typedef size_type
 
     ! start typedef size_type
+    integer, parameter :: vector_double_size_type = C_SIZE_T
     ! end typedef size_type
 
     type vector_int
@@ -133,11 +135,11 @@ module templates_std_mod
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
-            use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: TEM_SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data, vector_int_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_SIZE_T), value, intent(IN) :: n
+            integer(vector_int_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_int_at
 
@@ -154,11 +156,11 @@ module templates_std_mod
         function c_vector_int_at_bufferify(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at_bufferify")
-            use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: TEM_SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data, vector_int_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_SIZE_T), value, intent(IN) :: n
+            integer(vector_int_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_int_at_bufferify
 
@@ -223,11 +225,11 @@ module templates_std_mod
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
-            use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: TEM_SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data, vector_double_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_SIZE_T), value, intent(IN) :: n
+            integer(vector_double_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_double_at
 
@@ -244,11 +246,11 @@ module templates_std_mod
         function c_vector_double_at_bufferify(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at_bufferify")
-            use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: TEM_SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data, vector_double_size_type
             implicit none
             type(TEM_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_SIZE_T), value, intent(IN) :: n
+            integer(vector_double_size_type), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_double_at_bufferify
 
@@ -340,9 +342,9 @@ contains
     ! Match:     c_default
     function vector_int_at(obj, n) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         class(vector_int) :: obj
-        integer(C_SIZE_T), value, intent(IN) :: n
+        integer(vector_int_size_type), value, intent(IN) :: n
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_int.method.at
         type(C_PTR) :: SHC_rv_ptr
@@ -448,9 +450,9 @@ contains
     ! Match:     c_default
     function vector_double_at(obj, n) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, C_SIZE_T, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
         class(vector_double) :: obj
-        integer(C_SIZE_T), value, intent(IN) :: n
+        integer(vector_double_size_type), value, intent(IN) :: n
         real(C_DOUBLE), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_double.method.at
         type(C_PTR) :: SHC_rv_ptr

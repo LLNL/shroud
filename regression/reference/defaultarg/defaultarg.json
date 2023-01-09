@@ -608,7 +608,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "DEF_TypeID",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -626,9 +626,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -641,7 +642,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems",
                     "C_name": "DEF_apply_generic_type_nelems",
-                    "C_prototype": "int type,\t IndexType num_elems",
+                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems",
                     "F_C_call": "c_apply_generic_type_nelems",
@@ -819,7 +820,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "DEF_TypeID",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -837,9 +838,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -852,7 +854,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset",
                     "C_name": "DEF_apply_generic_type_nelems_offset",
-                    "C_prototype": "int type,\t IndexType num_elems,\t IndexType offset",
+                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset",
                     "F_C_call": "c_apply_generic_type_nelems_offset",
@@ -1085,7 +1087,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "DEF_TypeID",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -1103,9 +1105,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -1118,7 +1121,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_generic_type_nelems_offset_stride",
-                    "C_prototype": "int type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_C_call": "c_apply_generic_type_nelems_offset_stride",
@@ -1547,7 +1550,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "DEF_TypeID",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -1565,9 +1568,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -1580,7 +1584,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_require_1",
-                    "C_prototype": "int type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_C_call": "c_apply_require_1",
@@ -2013,7 +2017,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "DEF_TypeID",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -2031,9 +2035,10 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "c_var": "type",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "type",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -2046,7 +2051,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_optional_1",
-                    "C_prototype": "int type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
+                    "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
                     "F_C_call": "c_apply_optional_1",
@@ -2087,6 +2092,12 @@
                     ],
                     "typemap_name": "TypeID"
                 },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
                 "name": "TypeID",
                 "options": {},
                 "wrap": {
@@ -2118,22 +2129,32 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
             "c_to_cxx": "static_cast<TypeID>({c_var})",
-            "c_type": "int",
+            "c_type": "DEF_TypeID",
             "cfi_type": "CFI_type_int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
             "cxx_type": "TypeID",
-            "f_cast": "int({f_var}, C_INT)",
-            "f_kind": "C_INT",
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
+            "f_c_module": {
+                "--import--": [
+                    "type_id"
                 ]
             },
-            "f_type": "integer(C_INT)",
+            "f_c_module_line": "--import--:type_id",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "type_id",
+            "f_module": {
+                "defaultarg_mod": [
+                    "type_id"
+                ]
+            },
+            "f_module_line": "defaultarg_mod:type_id",
+            "f_type": "integer(type_id)",
             "flat_name": "int",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
-            "typedef": "int"
+            "typedef": "int",
+            "wrap_header": [
+                "wrapdefaultarg.h"
+            ]
         }
     }
 }

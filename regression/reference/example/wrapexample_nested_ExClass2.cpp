@@ -335,7 +335,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 // Requested: c_in_native_scalar
 // Match:     c_default
 void AA_example_nested_ExClass2_declare_0(
-    AA_example_nested_ExClass2 * self, int type)
+    AA_example_nested_ExClass2 * self, AA_TypeID type)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
@@ -360,7 +360,8 @@ void AA_example_nested_ExClass2_declare_0(
 // Requested: c_in_native_scalar
 // Match:     c_default
 void AA_example_nested_ExClass2_declare_1(
-    AA_example_nested_ExClass2 * self, int type, SIDRE_SidreLength len)
+    AA_example_nested_ExClass2 * self, AA_TypeID type,
+    SIDRE_SidreLength len)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
@@ -389,14 +390,14 @@ void AA_example_nested_ExClass2_destroyall(
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int AA_example_nested_ExClass2_get_type_id(
+AA_TypeID AA_example_nested_ExClass2_get_type_id(
     const AA_example_nested_ExClass2 * self)
 {
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
     TypeID SHCXX_rv = SH_this->getTypeID();
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    AA_TypeID SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_type_id
 }

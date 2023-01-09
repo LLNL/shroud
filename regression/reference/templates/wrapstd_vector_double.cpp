@@ -78,7 +78,8 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
+double * TEM_vector_double_at(TEM_vector_double * self,
+    TEM_vector_double_size_type n)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
         (self->addr);
@@ -99,7 +100,7 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 // Requested: c_in_native_scalar
 // Match:     c_default
 double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
-    size_t n)
+    TEM_vector_double_size_type n)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
         (self->addr);

@@ -5733,6 +5733,8 @@ py_inout_shadow_*:
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_inout_string_&:
+  arg_declare:
+  - char *{c_var};
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
@@ -5743,6 +5745,8 @@ py_inout_string_&:
 py_inout_string_*:
   arg_call:
   - '&{cxx_var}'
+  arg_declare:
+  - char *{c_var};
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
@@ -5751,6 +5755,8 @@ py_inout_string_*:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
 py_inout_string_scalar:
+  arg_declare:
+  - char *{c_var};
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"

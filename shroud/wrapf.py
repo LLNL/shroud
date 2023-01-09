@@ -418,10 +418,17 @@ class Wrapf(util.WrapperMixin):
             fileinfo - ModuleInfo
         """
         self.log.write("typedef {0.name}\n".format(node))
-        output = fileinfo.typedef_impl
 
+        # Any USE statements for typedef value (ex. C_INT)
+        self.update_f_module(
+            fileinfo.module_use, {},
+            node.f_module)
+        
+        output = fileinfo.typedef_impl
         output.append("")
         output.append("! start typedef " + node.name)
+        output.append("integer, parameter :: {} = {}".format(
+            node.fmtdict.F_typedef_name, node.f_kind))
         output.append("! end typedef " + node.name)
         
     def wrap_enums(self, node, fileinfo):

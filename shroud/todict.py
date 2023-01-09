@@ -90,7 +90,7 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
         add_non_none_fields(node, d, ["template_argument"])
         if node.typemap.base != "template":
-            # print name to avoid too much nesting
+            # Only print name to avoid too much nesting.
             d["typemap_name"] = node.typemap.name
         attrs = {key: value
                  for (key, value) in node.attrs.items()
@@ -289,7 +289,7 @@ class ToDict(visitor.Visitor):
         d = dict(
             cxx_header=node.cxx_header,
             name=node.name,
-            typemap_name=node.typemap.name,  # print name to avoid too much nesting
+            typemap_name=node.typemap.name,  # Only print name to avoid too much nesting.
             parse_keyword=node.parse_keyword,
         )
         add_comment(d, "class")
@@ -301,6 +301,8 @@ class ToDict(visitor.Visitor):
             d["baseclass"] = stringify_baseclass(node.baseclass)
         if node.parse_keyword != node.wrap_as:
             d["wrap_as"] = node.wrap_as
+        if node.typedef_map:
+            d["typedef_map"] = [ (tup[0].name, tup[1].name) for tup in node.typedef_map ]
         self.add_visit_fields(
             node,
             d,
@@ -391,7 +393,7 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
-            typemap_name=node.typemap.name,  # print name to avoid too much nesting
+            typemap_name=node.typemap.name,  # Only print name to avoid too much nesting.
             ast=self.visit(node.ast),
             decl=node.decl,
         )
@@ -419,7 +421,10 @@ class ToDict(visitor.Visitor):
     def visit_TypedefNode(self, node):
         d = dict(name=node.name)
         add_comment(d, "typedef")
-        self.add_visit_fields(node, d, ["ast", "fmtdict", "options", "wrap"])
+        self.add_visit_fields(node, d, [
+            "ast", "fmtdict", "options", "wrap",
+            "f_kind", "f_module",
+        ])
         add_non_none_fields(node, d, ["linenumber"])
         return d
 
