@@ -1,0 +1,25 @@
+copyright:
+- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Create an executable program for typedefs
+# C source to enable testing of typedefs with struct/enum tags.
+
+library: typedef
+cxx_header: typedef.h
+
+options:
+  debug: True
+  wrap_python: True
+  literalinclude2: True
+
+declarations:
+
+# Using a typedef as an alias
+- decl: typedef int TypeID;
+- decl: TypeID typefunc(TypeID arg);
+

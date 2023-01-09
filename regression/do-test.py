@@ -349,6 +349,15 @@ if __name__ == "__main__":
                  cmdline=[
                      "--language", "c++",
                  ]),
+        # typedefs
+        TestDesc("typedefs-c", yaml="typedefs",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("typedefs-cxx", yaml="typedefs",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
 
         # pointers
         TestDesc("pointers-c", yaml="pointers",
