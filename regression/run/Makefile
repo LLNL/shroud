@@ -125,6 +125,7 @@ c-test-list = \
   test-c-typemap64 \
   test-c-classes \
   test-c-enum-c \
+  test-c-typedefs-cxx \
   test-c-namespace \
   test-c-pointers-cxx \
   test-c-struct-cxx \
