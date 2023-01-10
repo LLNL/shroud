@@ -10,7 +10,7 @@
             ""
         ],
         "cxx_header": [
-            "typedef.h"
+            "typedefs.h"
         ],
         "functions": [
             {
@@ -184,7 +184,7 @@
         ],
         "language": "cxx",
         "scope_file": [
-            "typedef"
+            "typedefs"
         ],
         "typedefs": [
             {
@@ -251,18 +251,18 @@
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "type_id",
             "f_module": {
-                "typedef_mod": [
+                "typedefs_mod": [
                     "type_id"
                 ]
             },
-            "f_module_line": "typedef_mod:type_id",
+            "f_module_line": "typedefs_mod:type_id",
             "f_type": "integer(type_id)",
             "flat_name": "int",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
             "typedef": "int",
             "wrap_header": [
-                "wraptypedef.h"
+                "wraptypedefs.h"
             ]
         }
     }

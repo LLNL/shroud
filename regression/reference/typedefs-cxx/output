@@ -1,8 +1,8 @@
-Wrote wraptypedef.h
-Wrote wraptypedef.cpp
-Wrote wrapftypedef.f
-Wrote utiltypedef.cpp
-Wrote typestypedef.h
-Wrote pytypedefmodule.cpp
-Wrote pytypedefmodule.hpp
+Wrote wraptypedefs.h
+Wrote wraptypedefs.cpp
+Wrote wrapftypedefs.f
+Wrote utiltypedefs.cpp
+Wrote typestypedefs.h
+Wrote pytypedefsmodule.cpp
+Wrote pytypedefsmodule.hpp
 Wrote setup.py

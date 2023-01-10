@@ -1,13 +1,13 @@
 Read yaml typedefs.yaml
 C TypeID typefunc(TypeID arg +value)  +intent(function)
-Close wraptypedef.h
+Close wraptypedefs.h
 typedef TypeID
 Fortran TypeID typefunc(TypeID arg +value)  +intent(function)
 C-interface TypeID typefunc(TypeID arg +value)  +intent(function)
-Close wrapftypedef.f
-Close utiltypedef.c
-Close typestypedef.h
+Close wrapftypedefs.f
+Close utiltypedefs.c
+Close typestypedefs.h
 Python function TypeID typefunc(TypeID arg +value)
-Close pytypedefmodule.c
-Close pytypedefmodule.h
+Close pytypedefsmodule.c
+Close pytypedefsmodule.h
 Close setup.py

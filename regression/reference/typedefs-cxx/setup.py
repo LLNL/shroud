@@ -9,9 +9,9 @@
 from setuptools import setup, Extension
 
 module = Extension(
-    'typedef',
+    'typedefs',
     sources=[
-         'pytypedefmodule.cpp'
+         'pytypedefsmodule.cpp'
     ],
     language='c++',
     include_dirs = None,
@@ -22,6 +22,6 @@ module = Extension(
 )
 
 setup(
-    name='typedef',
+    name='typedefs',
     ext_modules = [module],
 )

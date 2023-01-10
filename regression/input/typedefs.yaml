@@ -9,8 +9,8 @@ copyright:
 # Create an executable program for typedefs
 # C source to enable testing of typedefs with struct/enum tags.
 
-library: typedef
-cxx_header: typedef.h
+library: typedefs
+cxx_header: typedefs.h
 
 options:
   debug: True

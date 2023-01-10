@@ -40,18 +40,18 @@ endif
 # Done as an order-only dependency since the referrence file will not
 # change during the compilation test.
 #
-c-to-cxx = \
-  regression/run/struct/struct.c
-
 
 .PHONY : sync-cxx
 sync-cxx : \
   $(relrunpath)/cxx/pointers.cpp \
-  $(relrunpath)/cxx/struct.cpp
+  $(relrunpath)/cxx/struct.cpp \
+  $(relrunpath)/cxx/typedefs.cpp
 
 $(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/typedefs.cpp : regression/run/typedefs/typedefs.c | $(relrunpath)/cxx/..
 	cp $< $@
 
 
@@ -66,6 +66,8 @@ fortran-test-list-std = \
   test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \
+  test-fortran-typedefs-c \
+  test-fortran-typedefs-cxx \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
