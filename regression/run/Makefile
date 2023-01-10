@@ -192,6 +192,8 @@ python-test-list = \
   test-python-types \
   test-python-classes \
   test-python-enum-c \
+  test-python-typedefs-c \
+  test-python-typedefs-cxx \
   test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cxx \

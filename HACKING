@@ -122,6 +122,14 @@ Adding a regression test
   Try ``make -n test-fortran-newtest`` to see commands which will be
   run.
 
+
+Several tests are run with language=c and c++.  To accomplish this,
+the run/pkg files have the .c suffix. The sync-cxx target copies the
+files to another directory with a .cpp suffix. This directory is added
+to the VPATH.  For the Python tests, there is an explicit run to force
+the use of CXX.  The VPATH finds both the C and C++ files since they
+have the same stem.
+
 file dependency
 ---------------
 
