@@ -13,4 +13,12 @@
 typedef int TypeID;
 TypeID typefunc(TypeID arg);
 
+struct s_Struct1 {
+    int i;
+    double d;
+};
+typedef struct s_Struct1 Struct1;
+
+void typestruct(Struct1 *arg1);
+
 #endif // TYPEDEFS_HPP

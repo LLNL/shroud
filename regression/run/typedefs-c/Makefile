@@ -29,6 +29,9 @@ OBJS = \
 typedefs-c : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
+main.o : main.f fruit.o wrapftypedefs.o
+typedefs.o : typedefs.c typedefs.h
+
 clean :
 	rm -f $(OBJS) *.mod typedefs
 

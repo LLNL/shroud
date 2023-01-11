@@ -13,3 +13,8 @@ TypeID typefunc(TypeID arg)
 {
     return arg + 1;
 }
+
+void typestruct(Struct1 *arg1)
+{
+    arg1->d = arg1->i;
+}
