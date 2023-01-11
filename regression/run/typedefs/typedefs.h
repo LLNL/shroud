@@ -17,8 +17,8 @@ struct s_Struct1 {
     int i;
     double d;
 };
-typedef struct s_Struct1 Struct1;
+typedef struct s_Struct1 Struct1Rename;
 
-void typestruct(Struct1 *arg1);
+void typestruct(Struct1Rename *arg1);
 
 #endif // TYPEDEFS_HPP

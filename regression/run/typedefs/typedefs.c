@@ -9,12 +9,16 @@
 
 #include "typedefs.h"
 
+#ifdef __cplusplus
+s_Struct1 tmp1;
+#endif
+
 TypeID typefunc(TypeID arg)
 {
     return arg + 1;
 }
 
-void typestruct(Struct1 *arg1)
+void typestruct(Struct1Rename *arg1)
 {
     arg1->d = arg1->i;
 }
