@@ -90,6 +90,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Class instance arguments which are passed by value will now pass the
   shadow type by reference. This allows the addr and idtor fields to be
   changed if necessary by the C wrapper.
+- Create C and Fortran wrappers for typedef statements.
+  Before ``typedef`` as treated as an alias.  ``typedef int TypeID`` would
+  substitute ``integer(C_INT)`` for every use of ``TypeID`` in the Fortran wrapper.
+  Now a parameter is created: ``integer, parameter :: type_id = C_INT``.
+  Used as: ``integer(type_id) :: arg``.
 
 ### Removed
 - Removed format field *F_capsule_data_type_class*.
