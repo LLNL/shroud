@@ -338,7 +338,7 @@ PY_unsigned_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:unsigned_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I:unsigned_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
@@ -378,7 +378,7 @@ PY_ushort_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:ushort_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "H:ushort_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
@@ -418,7 +418,7 @@ PY_uint_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I:uint_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
@@ -458,7 +458,7 @@ PY_ulong_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "k:ulong_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
@@ -498,14 +498,14 @@ PY_ulong_long_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:ulong_long_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "K:ulong_long_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
     unsigned long long SHCXX_rv = ulong_long_func(arg1);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("L", SHCXX_rv);
+    SHTPy_rv = Py_BuildValue("K", SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.ulong_long_func
@@ -538,7 +538,7 @@ PY_ulong_int_func(
         nullptr };
     PyObject * SHTPy_rv = nullptr;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_int_func",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "k:ulong_int_func",
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 

@@ -600,7 +600,7 @@ typemap:
         iso_c_binding:
         - C_INT
       f_cast: int({f_var}, C_INT)
-      PY_format: i
+      PY_format: I
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT
@@ -623,7 +623,7 @@ typemap:
         iso_c_binding:
         - C_LONG
       f_cast: int({f_var}, C_LONG)
-      PY_format: l
+      PY_format: k
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_LONG
@@ -646,7 +646,7 @@ typemap:
         iso_c_binding:
         - C_LONG_LONG
       f_cast: int({f_var}, C_LONG_LONG)
-      PY_format: L
+      PY_format: K
       PYN_typenum: NPY_LONGLONG
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -667,7 +667,7 @@ typemap:
         iso_c_binding:
         - C_SHORT
       f_cast: int({f_var}, C_SHORT)
-      PY_format: h
+      PY_format: H
       PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_SHORT
