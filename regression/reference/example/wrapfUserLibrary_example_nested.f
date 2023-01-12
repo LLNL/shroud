@@ -598,11 +598,10 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
-            use iso_c_binding, only : C_INT
-            import :: AA_SHROUD_capsule_data
+            import :: AA_SHROUD_capsule_data, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_INT), value, intent(IN) :: type
+            integer(type_id), value, intent(IN) :: type
         end subroutine c_exclass2_declare_0
 
         ! ----------------------------------------
@@ -622,12 +621,11 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
-            use iso_c_binding, only : C_INT, C_LONG
-            import :: AA_SHROUD_capsule_data
+            import :: AA_SHROUD_capsule_data, sidre_length, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_INT), value, intent(IN) :: type
-            integer(C_LONG), value, intent(IN) :: len
+            integer(type_id), value, intent(IN) :: type
+            integer(sidre_length), value, intent(IN) :: len
         end subroutine c_exclass2_declare_1
 
         ! ----------------------------------------
@@ -650,11 +648,10 @@ module userlibrary_example_nested_mod
         pure function c_exclass2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_type_id")
-            use iso_c_binding, only : C_INT
-            import :: AA_SHROUD_capsule_data
+            import :: AA_SHROUD_capsule_data, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            integer(C_INT) :: SHT_rv
+            integer(type_id) :: SHT_rv
         end function c_exclass2_get_type_id
 
         ! ----------------------------------------
@@ -1763,9 +1760,9 @@ contains
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine exclass2_declare_0_int(obj, type)
-        use iso_c_binding, only : C_INT
+        use userlibrary_mod, only : type_id
         class(exclass2) :: obj
-        integer(C_INT), value, intent(IN) :: type
+        integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_int
         call c_exclass2_declare_0(obj%cxxmem, type)
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_int
@@ -1787,9 +1784,9 @@ contains
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine exclass2_declare_0_long(obj, type)
-        use iso_c_binding, only : C_INT
+        use userlibrary_mod, only : type_id
         class(exclass2) :: obj
-        integer(C_INT), value, intent(IN) :: type
+        integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_long
         call c_exclass2_declare_0(obj%cxxmem, type)
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_long
@@ -1820,9 +1817,10 @@ contains
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine exclass2_declare_1_int(obj, type, len)
-        use iso_c_binding, only : C_INT, C_LONG
+        use iso_c_binding, only : C_INT
+        use userlibrary_mod, only : sidre_length, type_id
         class(exclass2) :: obj
-        integer(C_INT), value, intent(IN) :: type
+        integer(type_id), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_int
         call c_exclass2_declare_1(obj%cxxmem, type, int(len, C_LONG))
@@ -1854,9 +1852,10 @@ contains
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     subroutine exclass2_declare_1_long(obj, type, len)
-        use iso_c_binding, only : C_INT, C_LONG
+        use iso_c_binding, only : C_LONG
+        use userlibrary_mod, only : sidre_length, type_id
         class(exclass2) :: obj
-        integer(C_INT), value, intent(IN) :: type
+        integer(type_id), value, intent(IN) :: type
         integer(C_LONG), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_long
         call c_exclass2_declare_1(obj%cxxmem, type, int(len, C_LONG))
@@ -1886,9 +1885,9 @@ contains
     ! Match:     c_function
     function exclass2_get_type_id(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use userlibrary_mod, only : type_id
         class(exclass2) :: obj
-        integer(C_INT) :: SHT_rv
+        integer(type_id) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
         SHT_rv = c_exclass2_get_type_id(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_type_id

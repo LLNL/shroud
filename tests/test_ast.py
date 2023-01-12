@@ -31,7 +31,7 @@ class Namespace(unittest.TestCase):
         self.assertIsInstance(typefoo, ast.TypedefNode)
         self.assertEqual("foo", typefoo.typemap.name)
         node = lib.qualified_lookup("foo")
-        self.assertEqual(typefoo.ast, node)
+        self.assertEqual(typefoo.ast, node.ast)
         self.assertEqual("foo", node.typemap.name)
 
         typ = lib.unqualified_lookup("foo")
@@ -84,7 +84,6 @@ class Namespace(unittest.TestCase):
         enum1 = lib.add_enum("enum Enum1 {}")
         self.assertEqual("Enum1", enum1.typemap.name)
         self.assertEqual("Enum1::", enum1.scope)
-        lib.symtab.pop_scope()
 
         node = lib.qualified_lookup("Enum1")
         self.assertEqual(enum1.ast, node)
@@ -93,7 +92,6 @@ class Namespace(unittest.TestCase):
         enum2 = ns.add_enum("enum Enum2 {}")
         self.assertEqual("ns1::Enum2", enum2.typemap.name)
         self.assertEqual("ns1::Enum2::", enum2.scope)
-        lib.symtab.pop_scope()
 
         node = ns.unqualified_lookup("Enum1")
         self.assertEqual(enum1.ast, node)

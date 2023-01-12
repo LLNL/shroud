@@ -4855,7 +4855,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "TUT_TypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -4871,9 +4871,10 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_c_module_line": "--import--:type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "type_id",
+                            "f_type": "integer(type_id)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -4898,7 +4899,7 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "TUT_TypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
@@ -4919,8 +4920,8 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TUT_typefunc",
-                    "C_prototype": "int arg",
-                    "C_return_type": "int",
+                    "C_prototype": "TUT_TypeID arg",
+                    "C_return_type": "TUT_TypeID",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_typefunc",
                     "F_C_name": "typefunc",
@@ -4944,7 +4945,7 @@
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
-                        "c_type": "int",
+                        "c_type": "TUT_TypeID",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_int",
                         "cxx_addr": "&",
@@ -4961,9 +4962,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "tutorial::TypeID",
+                        "f_c_module_line": "--import--:type_id",
                         "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
+                        "f_kind": "type_id",
+                        "f_type": "integer(type_id)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
@@ -5048,7 +5050,7 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_type": "int",
+                            "c_type": "TUT_EnumTypeID",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
@@ -5066,9 +5068,10 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "c_var": "arg",
+                            "f_c_module_line": "--import--:enum_type_id",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
+                            "f_kind": "enum_type_id",
+                            "f_type": "integer(enum_type_id)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_in_native_scalar",
@@ -5093,7 +5096,7 @@
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
-                            "c_type": "int",
+                            "c_type": "TUT_EnumTypeID",
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
@@ -5116,8 +5119,8 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
-                    "C_prototype": "int arg",
-                    "C_return_type": "int",
+                    "C_prototype": "TUT_EnumTypeID arg",
+                    "C_return_type": "TUT_EnumTypeID",
                     "F_C_arguments": "arg",
                     "F_C_call": "c_enumfunc",
                     "F_C_name": "enumfunc",
@@ -5141,8 +5144,8 @@
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
-                        "c_rv_decl": "int SHC_rv",
-                        "c_type": "int",
+                        "c_rv_decl": "TUT_EnumTypeID SHC_rv",
+                        "c_type": "TUT_EnumTypeID",
                         "c_val": "static_cast<int>(SHCXX_rv)",
                         "c_var": "SHC_rv",
                         "cfi_type": "CFI_type_int",
@@ -5160,9 +5163,10 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "tutorial::EnumTypeID",
+                        "f_c_module_line": "--import--:enum_type_id",
                         "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
+                        "f_kind": "enum_type_id",
+                        "f_type": "integer(enum_type_id)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_function_native_scalar",
@@ -6020,6 +6024,12 @@
                     ],
                     "typemap_name": "tutorial::TypeID"
                 },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
                 "name": "TypeID",
                 "options": {},
                 "wrap": {
@@ -6028,7 +6038,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "TUT_TypeID",
+                    "F_typedef_name": "type_id",
+                    "cxx_type": "TypeID",
+                    "typedef_name": "TypeID",
+                    "underscore_name": "type_id"
+                }
             },
             {
                 "<TYPEDEF>": "****************************************",
@@ -6044,6 +6060,12 @@
                     ],
                     "typemap_name": "tutorial::EnumTypeID"
                 },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
                 "name": "EnumTypeID",
                 "options": {},
                 "wrap": {
@@ -6052,7 +6074,13 @@
                     "lua": true,
                     "python": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "TUT_EnumTypeID",
+                    "F_typedef_name": "enum_type_id",
+                    "cxx_type": "EnumTypeID",
+                    "typedef_name": "EnumTypeID",
+                    "underscore_name": "enum_type_id"
+                }
             }
         ],
         "variables": [
@@ -6141,6 +6169,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_to_cxx": "static_cast<tutorial::Color>({c_var})",
             "c_type": "int",
             "cfi_type": "CFI_type_int",
@@ -6157,6 +6186,78 @@
             "flat_name": "int",
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT"
+        },
+        "tutorial::EnumTypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
+            "c_type": "TUT_EnumTypeID",
+            "cfi_type": "CFI_type_int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "tutorial::EnumTypeID",
+            "f_c_module": {
+                "--import--": [
+                    "enum_type_id"
+                ]
+            },
+            "f_c_module_line": "--import--:enum_type_id",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "enum_type_id",
+            "f_module": {
+                "tutorial_mod": [
+                    "enum_type_id"
+                ]
+            },
+            "f_module_line": "tutorial_mod:enum_type_id",
+            "f_type": "integer(enum_type_id)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wrapTutorial.h"
+            ]
+        },
+        "tutorial::TypeID": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_type": "TUT_TypeID",
+            "cfi_type": "CFI_type_int",
+            "cxx_type": "tutorial::TypeID",
+            "f_c_module": {
+                "--import--": [
+                    "type_id"
+                ]
+            },
+            "f_c_module_line": "--import--:type_id",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "type_id",
+            "f_module": {
+                "tutorial_mod": [
+                    "type_id"
+                ]
+            },
+            "f_module_line": "tutorial_mod:type_id",
+            "f_type": "integer(type_id)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wrapTutorial.h"
+            ]
         }
     }
 }

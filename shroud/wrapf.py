@@ -115,10 +115,11 @@ class Wrapf(util.WrapperMixin):
                 self.wrap_class(cls, fileinfo)
         self._pop_splicer("class")
 
-        if node.functions or node.enums:
+        if node.functions or node.typedefs or node.enums:
             fileinfo.begin_class()  # clear out old class info
             node.F_module_dependencies = []
 
+            self.wrap_typedefs(node, fileinfo)
             self.wrap_enums(node, fileinfo)
 
             self._push_splicer("function")
@@ -179,7 +180,7 @@ class Wrapf(util.WrapperMixin):
                 append_format(type_bound_part,
                               "procedure :: {F_name_function} => {F_name_impl}",
                               fmt_func)
-            
+
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
@@ -245,6 +246,7 @@ class Wrapf(util.WrapperMixin):
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer("module_use", fileinfo.use_stmts)
 
+        self.wrap_typedefs(node, fileinfo)
         self.wrap_enums(node, fileinfo)
 
         if node.cpp_if:
@@ -396,16 +398,54 @@ class Wrapf(util.WrapperMixin):
 
     #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
 
+    def wrap_typedefs(self, node, fileinfo):
+        """Wrap all typedefs in a splicer block
+
+        Args:
+            node - ast.ClassNode, ast.LibraryNode
+            fileinfo - ModuleInfo
+        """
+        self._push_splicer("typedef")
+        for typ in node.typedefs:
+            self.wrap_typedef(typ, fileinfo)
+        self._pop_splicer("typedef")
+
+    def wrap_typedef(self, node, fileinfo):
+        """Wrap a typedef declaration.
+
+        Args:
+            node - ast.TypedefNode.
+            fileinfo - ModuleInfo
+        """
+        options = node.options
+        fmtdict = node.fmtdict
+        self.log.write("typedef {0.name}\n".format(node))
+
+        # Any USE statements for typedef value (ex. C_INT)
+        self.update_f_module(
+            fileinfo.module_use, {},
+            node.f_module)
+        
+        output = fileinfo.typedef_impl
+        output.append("")
+        if options.literalinclude:
+            output.append("! start typedef " + node.name)
+        append_format(output, "! typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
+        output.append("integer, parameter :: {} = {}".format(
+            node.fmtdict.F_typedef_name, node.f_kind))
+        if options.literalinclude:
+            output.append("! end typedef " + node.name)
+        
     def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
 
         Args:
-            node - ast.EnumNode
+            node - ast.ClassNode, ast.LibraryNode
             fileinfo - ModuleInfo
         """
         self._push_splicer("enum")
-        for node in node.enums:
-            self.wrap_enum(None, node, fileinfo)
+        for enum in node.enums:
+            self.wrap_enum(None, enum, fileinfo)
         self._pop_splicer("enum")
 
     def wrap_enum(self, cls, node, fileinfo):
@@ -938,6 +978,7 @@ rv = .false.
 
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg = fileinfo.f_abstract_interface[key]
+                options = node.options
                 ast = node.ast
                 subprogram = arg.get_subprogram()
                 iface.append("")
@@ -950,7 +991,7 @@ rv = .false.
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
-                            node.options.F_abstract_interface_argument_template,
+                            options.F_abstract_interface_argument_template,
                             fmt,
                         )
                     arg_f_names.append(name)
@@ -968,7 +1009,7 @@ rv = .false.
                 if subprogram == "function":
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ",\t ".join(arg_f_names)
-                if node.options.literalinclude:
+                if options.literalinclude:
                     iface.append("! start abstract " + key)
                 if self.newlibrary.options.literalinclude2:
                     iface.append("abstract interface+")
@@ -986,7 +1027,7 @@ rv = .false.
                 iface.append("end {} {}".format(subprogram, key))
                 if self.newlibrary.options.literalinclude2:
                     iface.append("-end interface")
-                if node.options.literalinclude:
+                if options.literalinclude:
                     iface.append("! end abstract " + key)
             if not self.newlibrary.options.literalinclude2:
                 iface.append(-1)
@@ -2197,6 +2238,7 @@ rv = .false.
 
         output.extend(fileinfo.helper_derived_type)
 
+        output.extend(fileinfo.typedef_impl)
         output.extend(fileinfo.enum_impl)
 
         # XXX output.append('! splicer push class')
@@ -2395,12 +2437,16 @@ def ftn_implied(expr, func, arg):
 class ModuleInfo(object):
     """Contains information to create a Fortran module.
 
+    Generated lines are accumulated by this class.
+    A single C declaration may need to add code in several places
+    in the generated Fortran.
     """
     newlibrary = None
     def __init__(self, node):
         self.node = node
         self.module_use = {}  # Use statements for a module
         self.use_stmts = []
+        self.typedef_impl = []
         self.enum_impl = []
         self.f_type_decl = []
         self.method_type_bound_part = {}

@@ -1443,12 +1443,6 @@ class CheckTypedef(unittest.TestCase):
             "Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception)
         )
 
-        with self.assertRaises(NotImplementedError) as context:
-            declast.check_decl("typedef int * TD2;", symtab)
-        self.assertTrue(
-            "Pointers not supported in typedef" in str(context.exception)
-        )
-
     def test_typedef_fcnptr(self):
         symtab = declast.SymbolTable()
         node = declast.check_decl("typedef int(*func)();", symtab)

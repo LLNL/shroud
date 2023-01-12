@@ -963,12 +963,12 @@ class GenFunctions(object):
                         cxx_class = targs.fmtdict["cxx_class"]
 
                     newcls.scope_file[-1] += class_suffix
-                    # Add default values to format dictionary.
+                    # Update default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
                             cxx_class=cxx_class,
-                            class_scope=cxx_class + "::",
+                            class_scope=cxx_type + "::",
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
                             F_derived_name=cxx_class.lower(),
@@ -995,6 +995,8 @@ class GenFunctions(object):
                               "typemap.cxx_instantiation".format(targs.instantiation))
                     orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
 
+                    self.template_typedef(newcls, targs)
+
                     self.push_instantiate_scope(newcls, targs)
                     self.process_class(newcls, newcls)
                     self.pop_instantiate_scope()
@@ -1004,6 +1006,29 @@ class GenFunctions(object):
 
         node.classes = clslist
 
+    def template_typedef(self, node, targs):
+        """Create a new typemap for instantiated templated typedefs.
+
+        Replace typemap in function arguments with
+        class instantiation of the typemap.
+
+        node -> ClassNode
+        """
+        typedefmap = []
+        for typ in node.typedefs:
+            oldtyp = typ.typemap
+            typ.clone_post_class(targs)
+            typedefmap.append( (oldtyp, typ.typemap) )
+        node.typedef_map = typedefmap
+
+        for function in node.functions:
+            for arg in function.ast.params:
+                ntypemap = arg.typemap
+                for typedef in typedefmap:
+                    if ntypemap is typedef[0]:
+                        arg.typemap = typedef[1]
+                        break
+            
     def update_templated_typemaps(self, node):
         """Update templated types to use correct typemap.
 
@@ -2129,53 +2154,27 @@ class Namify(object):
 
     def name_library(self):
         """entry pointer for library"""
-        self.name_language(self.name_function_c, self.newlibrary.wrap_namespace)
-        self.name_language(self.name_function_fortran, self.newlibrary.wrap_namespace)
+        self.name_language(self.newlibrary.wrap_namespace)
+        self.name_language(self.newlibrary.wrap_namespace)
 
-    def name_language(self, handler, node):
+    def iter_decl(self, node):
+        """Loop over members of a Namespace, class"""
+        for func in node.functions:
+            func.update_names()
+        
+    def name_language(self, node):
         """
         Args:
             handler - function.
             node - ast.LibraryNode, ast.NamespaceNode
         """
         for cls in node.classes:
-            for func in cls.functions:
-                handler(func)
+            self.iter_decl(cls)
 
-        for func in node.functions:
-            handler(func)
+        self.iter_decl(node)
 
         for ns in node.namespaces:
-            self.name_language(handler, ns)
-
-    def name_function_c(self, node):
-        """Compute name for C wrapped functions.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        """
-        if not node.wrap.c:
-            return
-        fmt_func = node.fmtdict
-
-        node.eval_template("C_name")
-        node.eval_template("F_C_name")
-        fmt_func.F_C_name = fmt_func.F_C_name.lower()
-
-    def name_function_fortran(self, node):
-        """Compute name for Fortran wrapped functions.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        """
-        if not node.wrap.fortran:
-            return
-
-        node.eval_template("F_name_impl")
-        node.eval_template("F_name_function")
-        node.eval_template("F_name_generic")
+            self.name_language(ns)
 
 
 class Preprocess(object):

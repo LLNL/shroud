@@ -15,6 +15,8 @@
 #ifndef WRAPDEFAULTARG_H
 #define WRAPDEFAULTARG_H
 
+// typemap
+#include "wrapdefaultarg.h"
 // shroud
 #include "typesdefaultarg.h"
 
@@ -24,6 +26,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// typedef TypeID
+typedef int DEF_TypeID;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -37,30 +42,31 @@ void DEF_apply_generic_nelems_offset_stride(IndexType num_elems,
     IndexType offset, IndexType stride);
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_generic_type_nelems(int type, IndexType num_elems);
+void DEF_apply_generic_type_nelems(DEF_TypeID type,
+    IndexType num_elems);
 #endif
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_generic_type_nelems_offset(int type, IndexType num_elems,
-    IndexType offset);
+void DEF_apply_generic_type_nelems_offset(DEF_TypeID type,
+    IndexType num_elems, IndexType offset);
 #endif
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_generic_type_nelems_offset_stride(int type,
+void DEF_apply_generic_type_nelems_offset_stride(DEF_TypeID type,
     IndexType num_elems, IndexType offset, IndexType stride);
 #endif
 
 void DEF_apply_require_0(IndexType num_elems, IndexType offset,
     IndexType stride);
 
-void DEF_apply_require_1(int type, IndexType num_elems,
+void DEF_apply_require_1(DEF_TypeID type, IndexType num_elems,
     IndexType offset, IndexType stride);
 
 void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
     IndexType stride);
 
 #if INDETYPE_SIZE == 64
-void DEF_apply_optional_1(int type, IndexType num_elems,
+void DEF_apply_optional_1(DEF_TypeID type, IndexType num_elems,
     IndexType offset, IndexType stride);
 #endif
 

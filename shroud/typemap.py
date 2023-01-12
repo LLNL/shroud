@@ -6,6 +6,19 @@
 
 """
 Create and manage typemaps used to convert between languages.
+
+An initial typemap is created for struct, class, typedef in the
+process of parsing.
+
+It is then later expanded when the node in ast.py is created --
+EnumNode, ClassNode.
+
+Typemaps can also be created directly from the YAML file
+in the typemaps section..
+These represent types that are defined in another YAML file but 
+need to be used in a different YAML file.
+
+
 """
 from __future__ import print_function
 
@@ -72,6 +85,8 @@ class Typemap(object):
         - decl: template<typename T> class A
           cxx_template:
           - instantiation: <int>
+
+    A new typemap is created for each typedef.
     """
 
     # Array of known keys with default values
@@ -80,9 +95,9 @@ class Typemap(object):
         ("template_suffix", None),  # Name when used by wrapper identifiers
                                     # when added to class/struct format.
                     # Set from format.template_suffix in YAML for class.
-        ("base", "unknown"),  # Base type: 'string'
+        ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
         ("forward", None),  # Forward declaration
-        ("typedef", None),  # Initialize from existing type
+        ("typedef", None),  # Initialize from existing type (name of type)
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
         ("cxx_type", None),  # Name of type in C++, including namespace
@@ -177,6 +192,12 @@ class Typemap(object):
         if self.cxx_type and not self.flat_name:
             # Do not override an explicitly set value.
             self.compute_flat_name()
+
+    def __deepcopy__(self, memo):
+        """Do not deepcopy.
+        Instead must explicitly create and register with a different name.
+        """
+        return self
 
     def update(self, dct):
         """Add options from dictionary to self.
@@ -328,6 +349,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_SHORT",
             cfi_type="CFI_type_short",
         ),
@@ -347,6 +369,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_INT",
             cfi_type="CFI_type_int",
         ),
@@ -366,6 +389,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_LONG",
             cfi_type="CFI_type_long",
         ),
@@ -384,6 +408,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_LONG_LONG",
             cfi_type="CFI_type_long_long",
         ),
@@ -403,6 +428,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UNSIGNED_SHORT",
             cfi_type="CFI_type_short",
         ),
@@ -422,6 +448,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UNSIGNED_INT",
             cfi_type="CFI_type_int",
         ),
@@ -441,6 +468,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UNSIGNED_LONG",
             cfi_type="CFI_type_long",
         ),
@@ -459,6 +487,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UNSIGNED_LONG_LONG",
             cfi_type="CFI_type_long_long",
         ),
@@ -478,6 +507,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_SIZE_T",
             cfi_type="CFI_type_size_t",
         ),
@@ -500,6 +530,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_INT8_T",
             cfi_type="CFI_type_int8_t",
         ),
@@ -521,6 +552,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_INT16_T",
             cfi_type="CFI_type_int16_t",
         ),
@@ -542,6 +574,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_INT32_T",
             cfi_type="CFI_type_int32_t",
         ),
@@ -563,6 +596,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_INT64_T",
             cfi_type="CFI_type_int64_t",
         ),
@@ -585,6 +619,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UINT8_T",
             cfi_type="CFI_type_int8_t",
         ),
@@ -606,6 +641,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UINT16_T",
             cfi_type="CFI_type_int16_t",
         ),
@@ -627,6 +663,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UINT32_T",
             cfi_type="CFI_type_int32_t",
         ),
@@ -648,6 +685,7 @@ def default_typemap():
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="integer",
             sh_type="SH_TYPE_UINT64_T",
             cfi_type="CFI_type_int64_t",
         ),
@@ -667,6 +705,7 @@ def default_typemap():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="real",
             sh_type="SH_TYPE_FLOAT",
             cfi_type="CFI_type_float",
         ),
@@ -686,6 +725,7 @@ def default_typemap():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="real",
             sh_type="SH_TYPE_DOUBLE",
             cfi_type="CFI_type_double",
         ),
@@ -713,6 +753,7 @@ def default_typemap():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="complex",
             sh_type="SH_TYPE_FLOAT_COMPLEX",
             cfi_type="CFI_type_float_Complex",
         ),
@@ -744,6 +785,7 @@ def default_typemap():
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
+            base="complex",
             sh_type="SH_TYPE_DOUBLE_COMPLEX",
             cfi_type="CFI_type_double_Complex",
         ),
@@ -875,6 +917,7 @@ def default_typemap():
 def create_native_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
     Used when creating typemap from YAML. (from regression/forward.yaml)
+    Used when the base type is 'integer' or 'real'.
 
         typemap:
         - type: indextype
@@ -898,6 +941,7 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
         f_cast=None,  # Override Typemap default
     )
     ntypemap.update(fields)
+    # Report fields which must be defined
     missing = []
     if ntypemap.f_kind is None:
         missing.append("f_kind")
@@ -913,7 +957,7 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
     return ntypemap
 
 
-# Map base type to fortran intrinsic function.
+# Map typemap.base to fortran intrinsic function.
 base_cast = dict(
     integer='int',
     real='real',
@@ -942,23 +986,19 @@ def fill_native_typemap_defaults(ntypemap, fmt):
 
 def fill_enum_typemap(node):
     """Fill an enum typemap with wrapping fields.
+    The typemap is created in declast.Enum.
 
-    Create a typemap similar to an int.
-    C++ enums are converted to a C int.
-
-    C enums are prefixed with 'enum-' to put them in an enum-only
-    namespace and avoid conflicting with any typedef the user creates.
-    Needed with 'enum <name>'.
+# XXX    Create a typemap similar to an int.
+# XXX    C++ enums are converted to a C int.
 
     Args:
         node - EnumNode instance.
     """
     fmt_enum = node.fmtdict
-    type_name = util.wformat("enum-{namespace_scope}{enum_name}", fmt_enum)
 
     ntypemap = node.typemap
     if ntypemap is None:
-        raise RuntimeError("Missing typemap on Enum")
+        raise RuntimeError("Missing typemap on EnumNode")
     else:
         language = node.get_language()
 
@@ -990,6 +1030,7 @@ def fill_enum_typemap(node):
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
     Used when creating typemap from YAML. (from regression/forward.yaml)
+    Used when the base type is 'shadow''.
 
         typemap:
         - type: tutorial::Class1
@@ -1027,7 +1068,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
 
 def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
-    The class ClassNode can result for template instantiation in generate
+    The class ClassNode can result from template instantiation in generate
     and not while parsing.
     Use fields to override defaults.
 
@@ -1172,6 +1213,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 def create_struct_typemap_from_fields(cxx_name, fields, library):
     """Create a struct typemap from fields.
     Used when creating typemap from YAML. (from regression/forward.yaml)
+    Used when the base type is 'struct'.
 
         typemap:
         - type: tutorial::Struct1
@@ -1392,6 +1434,62 @@ def fill_fcnptr_typemap(node, fields=None):
     register_typemap(cxx_name, ntypemap)
     return ntypemap
 
+def fill_typedef_typemap(node, fields=None):
+    """Fill a typedef typemap with wrapping fields.
+
+    The typemap already exists in the node.
+
+    base stays the same.
+    f_kind will be a generated parameter
+       integer, parameter :: IndexType = C_INT
+
+    impl_header is not needed.  It will be defined
+    when the base type is defined.
+    """
+    ntypemap = node.typemap
+    if ntypemap is None:
+        raise RuntimeError("Missing typemap on TypedefNode")
+    fmtdict = node.fmtdict
+#    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmtdict)
+    cxx_type = util.wformat("{namespace_scope}{class_scope}{cxx_type}", fmtdict)
+
+#    f_name = fmtdict.F_name_scope[:-1]
+#    c_name = fmtdict.C_prefix + fmtdict.C_name_scope[:-1]
+    f_name = fmtdict.F_typedef_name
+    c_name = fmtdict.C_typedef_name
+#    print("XXX   fill_typedef_typemap  f={}  c={}".format(f_name, c_name))
+
+    # Define equivalent parameter for Fortran
+#    node.f_define_parameter = "integer, parameter :: {} = {}".format(
+#        f_name, ntypemap.f_kind)
+#    node.c_typedef = node.ast.gen_decl(as_c=True, name=c_name)
+
+##############################    print("XXXXX DD", ntypemap.name, fmtdict.C_header_filename)
+    ntypemap.update(dict(
+        cxx_type=cxx_type,
+        wrap_header=fmtdict.C_header_filename,
+        c_type=c_name,
+
+        f_type = "{}({})".format(ntypemap.base, f_name),
+        f_kind=f_name,
+        #XXX f_cast  using f_name
+#        f_module_name=fmtdict.F_module_name,
+#        f_derived_type=fmtdict.F_derived_name,
+#        f_capsule_data_type=fmtdict.F_capsule_data_type,
+#        f_module={fmtdict.F_module_name: [fmtdict.F_derived_name]},
+        # #- f_to_c='{f_var}%%%s()' % fmtdict.F_name_instance_get, # XXX - develop test
+#        f_to_c="{f_var}%%%s" % fmtdict.F_derived_member,
+#        sh_type="SH_TYPE_OTHER",
+#        cfi_type="CFI_type_other",
+    ))
+    # import names which are wrapped by this module
+    # XXX - deal with namespaces vs modules
+    ntypemap.f_module = {fmtdict.F_module_name: [f_name]}
+    ntypemap.f_c_module = {"--import--": [f_name]}
+    if fields is not None:
+        ntypemap.update(fields)
+#    fill_typedef_typemap_defaults(ntypemap, fmtdict)
+    ntypemap.finalize()
 
 def return_shadow_types(typemaps):  # typemaps -> dict
     """Return a dictionary of user defined types."""
@@ -1402,5 +1500,7 @@ def return_shadow_types(typemaps):  # typemaps -> dict
         elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
             dct[key] = ntypemap
         elif hasattr(ntypemap, "is_enum"):
+            dct[key] = ntypemap
+        elif hasattr(ntypemap, "is_typedef"):
             dct[key] = ntypemap
     return dct

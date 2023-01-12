@@ -16,6 +16,7 @@
 #define WRAPSTD_VECTOR_INT_H
 
 // typemap
+#include "wrapstd_vector_int.h"
 #ifdef __cplusplus
 #include <cstddef>
 #else
@@ -31,6 +32,9 @@
 extern "C" {
 #endif
 
+// typedef std::vector<int>::size_type
+typedef size_t TEM_vector_int_size_type;
+
 // splicer begin namespace.std.class.vector.C_declarations
 // splicer end namespace.std.class.vector.C_declarations
 
@@ -40,9 +44,11 @@ void TEM_vector_int_dtor(TEM_vector_int * self);
 
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value);
 
-int * TEM_vector_int_at(TEM_vector_int * self, size_t n);
+int * TEM_vector_int_at(TEM_vector_int * self,
+    TEM_vector_int_size_type n);
 
-int * TEM_vector_int_at_bufferify(TEM_vector_int * self, size_t n);
+int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
+    TEM_vector_int_size_type n);
 
 #ifdef __cplusplus
 }

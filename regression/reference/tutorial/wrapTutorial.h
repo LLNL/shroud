@@ -16,6 +16,7 @@
 #define WRAPTUTORIAL_H
 
 // typemap
+#include "wrapTutorial.h"
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
@@ -28,6 +29,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// typedef tutorial::TypeID
+typedef int TUT_TypeID;
+
+// typedef tutorial::EnumTypeID
+typedef int TUT_EnumTypeID;
 
 //  tutorial::Color
 enum TUT_Color {
@@ -91,9 +98,9 @@ int TUT_use_default_overload_4(double type, int num, int offset);
 int TUT_use_default_overload_5(double type, int num, int offset,
     int stride);
 
-int TUT_typefunc(int arg);
+TUT_TypeID TUT_typefunc(TUT_TypeID arg);
 
-int TUT_enumfunc(int arg);
+TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg);
 
 int TUT_colorfunc(int arg);
 

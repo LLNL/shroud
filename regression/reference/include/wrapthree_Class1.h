@@ -16,6 +16,7 @@
 #define WRAPTHREE_CLASS1_H
 
 // typemap
+#include "wraplibrary.h"
 #ifdef __cplusplus
 #include "type_header.hpp"
 #else
@@ -30,7 +31,8 @@ extern "C" {
 #endif
 
 
-void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1);
+void LIB_three_Class1_method1(LIB_three_Class1 * self,
+    LIB_CustomType arg1);
 
 #ifdef __cplusplus
 }

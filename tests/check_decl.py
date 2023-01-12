@@ -36,6 +36,8 @@ int *i1;
 int **i2;
 int &i3;
 --------------------
+typedef int footype;
+--------------------
 # Class statement
 class Class1;
 --------------------
@@ -44,6 +46,15 @@ struct Point { int x; int y;};
 struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
+--------------------
+# Typedef structure
+# language=c
+struct list_s {
+  int i;
+};
+struct list_s var1;
+typedef struct list_s list_typ;
+list_typ var2;
 --------------------
 # Recursive structure
 # language=c
@@ -72,6 +83,8 @@ struct list_s {
 # language=c
 enum Color {RED, WHITE, BLUE};
 enum Color global;
+typedef enum Color Color_typ;
+Color_typ local;
 --------------------
 # enumerations
 # Error: C does not automatically declare a type for enums
@@ -84,6 +97,17 @@ enum Color {RED, WHITE, BLUE};
 enum Color global;
 Color flag = RED;
 void func1(enum Color arg1, Color arg2);
+--------------------
+# pointer typedef
+# language=c
+typedef void *address;
+address var;
+void caller(address arg1);
+--------------------
+# function pointer typedef
+# language=c
+typedef int (*fcn)(int);
+void caller(fcn callback);
 --------------------
 # template
 template<T> class user {
@@ -130,12 +154,13 @@ template<typename T> struct structAsClass
 """
 
 Xlines = """
-namespace ns {
-struct tag_s { int i; };
+# language=c
+#struct tag_s { int i; };
 #struct tag_s var1;
-typedef struct tag_s tagname;
+#typedef struct tag_s tagname;
 #void caller(tagname *arg1);
-}
+typedef int (*fcn)(int);
+void caller(fcn callback);
 --------------------
 """
 

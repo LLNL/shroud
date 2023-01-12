@@ -931,6 +931,7 @@ class Parser(ExprParser):
                 if not self.have("COMMA"):
                     break
             self.mustbe("RCURLY")
+            self.symtab.pop_scope()
             node.enum_specifier = enumnode
             node.typemap = enumnode.typemap
         else:
@@ -2131,10 +2132,14 @@ class Typedef(Node):
     """
     Added to SymbolTable to record a typedef name.
 
-    Used with 'int', 'std::string', ...
+    When used with 'int', 'std::string', ...
+    ast will be None.
     """
-    def __init__(self, name, ntypemap):
+    def __init__(self, name, ast, ntypemap):
         self.name = name
+        self.ast = ast
+        if ast:
+            ntypemap.is_typedef = True  # GGG kludge to identify typedef
         self.typemap = ntypemap
         
         
@@ -2246,7 +2251,7 @@ class SymbolTable(object):
         depth = self.create_nested_namespaces(names)
         sgroup = ntypemap.sgroup
         if as_typedef:
-            node = Typedef(cxx_name, ntypemap)
+            node = Typedef(cxx_name, None, ntypemap)
             self.current.add_child(node.name, node)
         elif sgroup == "shadow":
             node = CXXClass(cxx_name, self, ntypemap)
@@ -2296,11 +2301,14 @@ class SymbolTable(object):
 
         ast - ast.Declaration
         """
-        if ast.declarator.pointer:
-            # typedef int *foo;
-            raise NotImplementedError("Pointers not supported in typedef")
-        elif ast.declarator.func:
-            # typedef int (*incr_type)(int);
+#        if ast.declarator.pointer:
+#            # typedef int *foo;
+#            name = ast.declarator.name
+#            ntypemap = self.lookup_typemap("--typedef--")
+#            node = Typedef(name, ntypemap)
+#            self.add_child_to_current(node, name)
+        if ast.declarator.func:
+            # typedef int (*fcn)(int);
             name = ast.get_name()
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
@@ -2308,12 +2316,14 @@ class SymbolTable(object):
                 base="fcnptr",
                 sgroup="fcnptr",
             )
-#            ntypemap.compute_flat_name() GGG
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_child_to_current(ast, name)
+            node = Typedef(name, ast, ntypemap)
+#            ntypemap.compute_flat_name() GGG
+            self.add_child_to_current(node, name)
         else:
             # typedef int TypeID;
             # GGG At this point, just creating an alias for type.
+            # typedef void *address;
             name = ast.declarator.name
             type_name = self.scopename + name
             orig = ast.typemap
@@ -2322,7 +2332,8 @@ class SymbolTable(object):
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
             self.register_typemap(ntypemap.name, ntypemap)
-            self.add_child_to_current(ast, name)
+            node = Typedef(name, ast, ntypemap)
+            self.add_child_to_current(node, name)
         ast.typemap = ntypemap
 
     def add_typedef_by_name(self, name):
@@ -2335,7 +2346,7 @@ class SymbolTable(object):
         ntypemap = self.lookup_typemap(tname)
         if ntypemap is None:
             raise RuntimeError("Unknown type {}".format(tname))
-        node = Typedef(name, ntypemap)
+        node = Typedef(name, None, ntypemap)
         self.current.add_child(node.name, node)
 
     def add_typedef(self, name, ntypemap):

@@ -26,11 +26,13 @@ C void method1(MPI_Comm comm +value)  +intent(subroutine)
 C void method2(three::Class1 * c2)  +intent(subroutine)
 Close wrapClass2.h
 Close wrapClass2.cpp
+Close wraplibrary.h
 class Class2
 Fortran void method1(MPI_Comm comm +value)  +intent(subroutine)
 Fortran void method2(three::Class1 * c2)  +intent(subroutine)
 C-interface void method1(MPI_Comm comm +value)  +intent(subroutine)
 C-interface void method2(three::Class1 * c2)  +intent(subroutine)
+typedef CustomType
 Fortran void function1(void)  +intent(subroutine)
 C-interface void function1(void)  +intent(subroutine)
 Close wrapflibrary_one_two.f

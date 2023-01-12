@@ -48,6 +48,12 @@ module tutorial_mod
     end type TUT_SHROUD_array
     ! end array_context
 
+    ! typedef tutorial::TypeID
+    integer, parameter :: type_id = C_INT
+
+    ! typedef tutorial::EnumTypeID
+    integer, parameter :: enum_type_id = C_INT
+
     !  enum tutorial::Color
     integer(C_INT), parameter :: red = 0
     integer(C_INT), parameter :: blue = 1
@@ -609,10 +615,10 @@ module tutorial_mod
         function typefunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_typefunc")
-            use iso_c_binding, only : C_INT
+            import :: type_id
             implicit none
-            integer(C_INT), value, intent(IN) :: arg
-            integer(C_INT) :: SHT_rv
+            integer(type_id), value, intent(IN) :: arg
+            integer(type_id) :: SHT_rv
         end function typefunc
     end interface
 
@@ -630,10 +636,10 @@ module tutorial_mod
         function enumfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_enumfunc")
-            use iso_c_binding, only : C_INT
+            import :: enum_type_id
             implicit none
-            integer(C_INT), value, intent(IN) :: arg
-            integer(C_INT) :: SHT_rv
+            integer(enum_type_id), value, intent(IN) :: arg
+            integer(enum_type_id) :: SHT_rv
         end function enumfunc
     end interface
 

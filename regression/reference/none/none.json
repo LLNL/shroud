@@ -28,6 +28,7 @@
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
             "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "C_shadow_result": true,
+            "C_typedef_name_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "F_CFI": false,
@@ -60,6 +61,7 @@
             "F_string_len_trim": true,
             "F_struct_getter_setter": true,
             "F_trim_char_in": true,
+            "F_typedef_name_template": "{F_name_scope}{underscore_name}",
             "LUA_class_reg_template": "{LUA_prefix}{cxx_class}_Reg",
             "LUA_ctor_name_template": "{cxx_class}",
             "LUA_header_filename_template": "lua{library}module.{LUA_header_filename_suffix}",
@@ -153,6 +155,7 @@
             "C_result": "rv",
             "C_string_result_as_arg": "SHF_rv",
             "C_this": "self",
+            "C_typedef_name": "",
             "F_C_name": "-F_C_name-",
             "F_C_prefix": "c_",
             "F_C_pure_clause": "",
@@ -180,6 +183,7 @@
             "F_result_ptr": "SHT_prv",
             "F_string_result_as_arg": "",
             "F_this": "obj",
+            "F_typedef_name": "",
             "LUA_header_filename_suffix": "hpp",
             "LUA_impl_filename_suffix": "cpp",
             "LUA_prefix": "l_",
@@ -330,6 +334,7 @@
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
+            "base": "real",
             "c_type": "double",
             "cfi_type": "CFI_type_double",
             "cxx_type": "double",
@@ -354,6 +359,7 @@
             "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
             "PY_format": "D",
             "PY_get": "PyComplex_AsCComplex({py_var})",
+            "base": "complex",
             "c_header": [
                 "<complex.h>"
             ],
@@ -387,6 +393,7 @@
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
             "PY_format": "f",
             "PY_get": "PyFloat_AsDouble({py_var})",
+            "base": "real",
             "c_type": "float",
             "cfi_type": "CFI_type_float",
             "cxx_type": "float",
@@ -411,6 +418,7 @@
             "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
             "PY_format": "D",
             "PY_get": "PyComplex_AsCComplex({py_var})",
+            "base": "complex",
             "c_header": [
                 "<complex.h>"
             ],
@@ -444,6 +452,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "int",
             "cfi_type": "CFI_type_int",
             "cxx_type": "int",
@@ -467,6 +476,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -496,6 +506,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -525,6 +536,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -554,6 +566,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -583,6 +596,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "long",
             "cfi_type": "CFI_type_long",
             "cxx_type": "long",
@@ -604,6 +618,7 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
+            "base": "integer",
             "c_type": "long long",
             "cfi_type": "CFI_type_long_long",
             "cxx_type": "long long",
@@ -627,6 +642,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "short",
             "cfi_type": "CFI_type_short",
             "cxx_type": "short",
@@ -648,6 +664,7 @@
             "LUA_type": "LUA_TNUMBER",
             "PY_ctor": "PyInt_FromSize_t({ctor_expr})",
             "PY_format": "n",
+            "base": "integer",
             "c_header": [
                 "<stddef.h>"
             ],
@@ -715,6 +732,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -744,6 +762,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -773,6 +792,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "L",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -802,6 +822,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_header": [
                 "<stdint.h>"
             ],
@@ -831,6 +852,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "unsigned int",
             "cfi_type": "CFI_type_int",
             "cxx_type": "unsigned int",
@@ -854,6 +876,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "l",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "unsigned long",
             "cfi_type": "CFI_type_long",
             "cxx_type": "unsigned long",
@@ -875,6 +898,7 @@
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
+            "base": "integer",
             "c_type": "unsigned long long",
             "cfi_type": "CFI_type_long_long",
             "cxx_type": "unsigned long long",
@@ -898,6 +922,7 @@
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
             "PY_format": "h",
             "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
             "c_type": "unsigned short",
             "cfi_type": "CFI_type_short",
             "cxx_type": "unsigned short",

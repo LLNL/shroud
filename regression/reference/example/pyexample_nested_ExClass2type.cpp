@@ -399,7 +399,7 @@ PP_declare_1(
 // splicer begin namespace.example::nested.class.ExClass2.method.declare
     Py_ssize_t SH_nargs = 0;
     int type;
-    SIDRE_SidreLength len;
+    long len;
     const char *SHT_kwlist[] = {
         "type",
         "len",

@@ -69,7 +69,10 @@ C int verylongfunctionname2(int verylongname1 +value, int verylongname2 +value, 
 C void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)  +intent(subroutine)
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
+Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
+typedef SidreLength
+typedef TypeID
 class ExClass1
 Fortran ExClass1(void)  +api(capptr)+intent(ctor)
 Fortran ExClass1(const string * name)  +api(capptr)+intent(ctor)

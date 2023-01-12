@@ -422,7 +422,7 @@
                                             "c_const": "",
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_type": "int",
+                                            "c_type": "LIB_CustomType",
                                             "c_var": "arg1",
                                             "cfi_type": "CFI_type_int",
                                             "cxx_addr": "&",
@@ -438,9 +438,10 @@
                                         "fmtf": {
                                             "F_C_var": "arg1",
                                             "c_var": "arg1",
+                                            "f_c_module_line": "--import--:custom_type",
                                             "f_intent": "IN",
-                                            "f_kind": "C_INT",
-                                            "f_type": "integer(C_INT)",
+                                            "f_kind": "custom_type",
+                                            "f_type": "integer(custom_type)",
                                             "f_var": "arg1",
                                             "sh_type": "SH_TYPE_INT",
                                             "stmt0": "f_in_native_scalar",
@@ -453,7 +454,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "arg1",
                                     "C_name": "LIB_three_Class1_method1",
-                                    "C_prototype": "LIB_three_Class1 * self,\t int arg1",
+                                    "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t arg1",
                                     "F_C_call": "c_class1_method1",
@@ -865,13 +866,25 @@
                     ],
                     "typemap_name": "CustomType"
                 },
+                "f_kind": "C_INT",
+                "f_module": {
+                    "iso_c_binding": [
+                        "C_INT"
+                    ]
+                },
                 "name": "CustomType",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true
                 },
-                "zz_fmtdict": {}
+                "zz_fmtdict": {
+                    "C_typedef_name": "LIB_CustomType",
+                    "F_typedef_name": "custom_type",
+                    "cxx_type": "CustomType",
+                    "typedef_name": "CustomType",
+                    "underscore_name": "custom_type"
+                }
             }
         ],
         "wrap": {
@@ -928,6 +941,47 @@
             "sgroup": "shadow",
             "wrap_header": [
                 "typeslibrary.h"
+            ]
+        },
+        "CustomType": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "type_header.h"
+            ],
+            "c_type": "LIB_CustomType",
+            "cfi_type": "CFI_type_int",
+            "cxx_header": [
+                "type_header.hpp"
+            ],
+            "cxx_type": "CustomType",
+            "f_c_module": {
+                "--import--": [
+                    "custom_type"
+                ]
+            },
+            "f_c_module_line": "--import--:custom_type",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "custom_type",
+            "f_module": {
+                "library_mod": [
+                    "custom_type"
+                ]
+            },
+            "f_module_line": "library_mod:custom_type",
+            "f_type": "integer(custom_type)",
+            "flat_name": "int",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_INT",
+            "typedef": "int",
+            "wrap_header": [
+                "wraplibrary.h"
             ]
         },
         "outer1::class0": {

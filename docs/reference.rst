@@ -224,7 +224,7 @@ Options
 C_API_case
    Control case of *C_name_scope*.
    Possible values are 'lower' or 'upper'.
-   Any other value will have no effect.
+   Any other value will preserve the case of the identifier.
 
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
@@ -561,6 +561,9 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
+C_typedef_name_template
+    ``{C_prefix}{C_name_scope}{typedef_name}``
+    
 F_C_name_template
     ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
@@ -612,6 +615,9 @@ F_module_name_namespace_template
 F_name_function_template
     ``{underscore_name}{function_suffix}{template_suffix}``
 
+F_typedef_name_template
+    ``{F_name_scope}{underscore_name}``
+    
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
     ``{LUA_prefix}{cxx_class}_Reg``
@@ -829,7 +835,11 @@ C_memory_dtor_function
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in C.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
+
+    *C_name_scope* will replace *class_name* with the instantiated *class_name*.
+    which will contain a template arguments.
 
 C_result
     The name of the C wrapper's result variable.
@@ -915,6 +925,7 @@ F_module_name
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in Fortran.
+    Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
 
 F_impl_filename

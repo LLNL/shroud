@@ -119,6 +119,29 @@ XXXX SymbolTable
 cls: Global
 
 XXXXXXXXXXXXXXXXXXXX
+XXXX CODE
+typedef int footype;
+XXXX PRINT_NODE
+typedef int footype;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: footype
+  specifier:
+  - int
+  storage:
+  - typedef
+  typemap_name: footype
+XXXX SymbolTable
+cls: Global
+symbols:
+  footype:
+    cls: Typedef
+    typemap: footype
+
+XXXXXXXXXXXXXXXXXXXX
 # Class statement
 XXXX CODE
 class Class1;
@@ -221,6 +244,72 @@ symbols:
   struct-Point:
     cls: Struct
     typemap: Point
+
+XXXXXXXXXXXXXXXXXXXX
+# Typedef structure
+# language=c
+XXXX CODE
+struct list_s {
+  int i;
+};
+struct list_s var1;
+typedef struct list_s list_typ;
+list_typ var2;
+XXXX PRINT_NODE
+struct list_s{
+int i;
+}
+;
+struct list_s var1;
+typedef struct list_s list_typ;
+list_typ var2;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: Struct
+    members:
+    - _ast: Declaration
+      declarator:
+        name: i
+      specifier:
+      - int
+      typemap_name: int
+    name: list_s
+    typemap_name: list_s
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: var1
+  specifier:
+  - struct list_s
+  typemap_name: list_s
+- _ast: Declaration
+  declarator:
+    name: list_typ
+  specifier:
+  - struct list_s
+  storage:
+  - typedef
+  typemap_name: list_typ
+- _ast: Declaration
+  declarator:
+    name: var2
+  specifier:
+  - list_typ
+  typemap_name: list_typ
+XXXX SymbolTable
+cls: Global
+symbols:
+  list_typ:
+    cls: Typedef
+    typemap: list_typ
+  struct-list_s:
+    cls: Struct
+    typemap: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -342,9 +431,13 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 enum Color {RED, WHITE, BLUE};
 enum Color global;
+typedef enum Color Color_typ;
+Color_typ local;
 XXXX PRINT_NODE
 enum Color { RED, WHITE, BLUE };;
 enum Color global;
+typedef enum Color Color_typ;
+Color_typ local;
 
 XXXX AST
 stmts:
@@ -365,9 +458,26 @@ stmts:
   specifier:
   - enum Color
   typemap_name: Color
+- _ast: Declaration
+  declarator:
+    name: Color_typ
+  specifier:
+  - enum Color
+  storage:
+  - typedef
+  typemap_name: Color_typ
+- _ast: Declaration
+  declarator:
+    name: local
+  specifier:
+  - Color_typ
+  typemap_name: Color_typ
 XXXX SymbolTable
 cls: Global
 symbols:
+  Color_typ:
+    cls: Typedef
+    typemap: Color_typ
   enum-Color:
     cls: Enum
     typemap: Color
@@ -451,6 +561,104 @@ symbols:
   enum-Color:
     cls: Enum
     typemap: Color
+
+XXXXXXXXXXXXXXXXXXXX
+# pointer typedef
+# language=c
+XXXX CODE
+typedef void *address;
+address var;
+void caller(address arg1);
+XXXX PRINT_NODE
+typedef void * address;
+address var;
+void caller(address arg1);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: address
+    pointer:
+    - ptr: '*'
+  specifier:
+  - void
+  storage:
+  - typedef
+  typemap_name: address
+- _ast: Declaration
+  declarator:
+    name: var
+  specifier:
+  - address
+  typemap_name: address
+- _ast: Declaration
+  declarator:
+    name: caller
+  params:
+  - _ast: Declaration
+    declarator:
+      name: arg1
+    specifier:
+    - address
+    typemap_name: address
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  address:
+    cls: Typedef
+    typemap: address
+
+XXXXXXXXXXXXXXXXXXXX
+# function pointer typedef
+# language=c
+XXXX CODE
+typedef int (*fcn)(int);
+void caller(fcn callback);
+XXXX PRINT_NODE
+typedef int (* fcn)(int);
+void caller(fcn callback);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    func:
+      name: fcn
+      pointer:
+      - ptr: '*'
+  params:
+  - _ast: Declaration
+    specifier:
+    - int
+    typemap_name: int
+  specifier:
+  - int
+  storage:
+  - typedef
+  typemap_name: fcn
+- _ast: Declaration
+  declarator:
+    name: caller
+  params:
+  - _ast: Declaration
+    declarator:
+      name: callback
+    specifier:
+    - fcn
+    typemap_name: fcn
+  specifier:
+  - void
+  typemap_name: void
+XXXX SymbolTable
+cls: Global
+symbols:
+  fcn:
+    cls: Typedef
+    typemap: fcn
 
 XXXXXXXXXXXXXXXXXXXX
 # template

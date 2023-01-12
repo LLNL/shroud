@@ -846,7 +846,7 @@ PY_acceptStringReference(
   PyObject *kwds)
 {
 // splicer begin function.accept_string_reference
-    char * arg1;
+    char *arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -934,7 +934,7 @@ PY_acceptStringPointer(
   PyObject *kwds)
 {
 // splicer begin function.accept_string_pointer
-    char * arg1;
+    char *arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -1026,7 +1026,7 @@ PY_acceptStringPointerLen(
   PyObject *kwds)
 {
 // splicer begin function.accept_string_pointer_len
-    char * arg1;
+    char *arg1;
     int nlen;
     const char *SHT_kwlist[] = {
         "arg1",
@@ -1321,7 +1321,7 @@ PY_PostDeclare(
     STR_SHROUD_converter_value SHValue_count = {NULL, NULL, NULL, NULL, 0};
     SHValue_count.name = "count";
     Py_ssize_t SHSize_count;
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "count",
         "name",

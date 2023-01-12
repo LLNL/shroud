@@ -91,6 +91,13 @@ class AstNode(object):
             tname = name + tname + "_template"
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+    def reeval_template(self, name, tname="", fmt=None):
+        """Always evaluate template."""
+        if fmt is None:
+            fmt = self.fmtdict
+        tname = name + tname + "_template"
+        setattr(fmt, name, util.wformat(self.options[tname], fmt))
+
     def set_fmt_default(self, name, value, fmt=None):
         """Set a fmt value unless already set."""
         if fmt is None:
@@ -129,6 +136,22 @@ class AstNode(object):
         """Look for symbols within the Abstract Syntax Tree
         and its parents."""
         return self.ast.unqualified_lookup(name)
+
+    def apply_case_option(self, name):
+        """Apply option.C_API_case to name"""
+        if self.options.C_API_case == 'lower':
+            return name.lower()
+        elif self.options.C_API_case == 'upper':
+            return name.upper()
+        else:
+            return name
+
+    def update_names(self):
+        """Update C and Fortran names.
+        Necessary after templates are instantiated which
+        defines fmt.function_suffix.
+        """
+        raise NotImplementedError("update_names for {}".format(self.__class__.__name__))
 
 ######################################################################
 
@@ -301,15 +324,6 @@ class NamespaceMixin(object):
         node = VariableNode(decl, parent=self, ast=ast, **kwargs)
         self.variables.append(node)
         return node
-
-    def apply_case_option(self, name):
-        """Apply option.C_API_case to name"""
-        if self.options.C_API_case == 'lower':
-            return name.lower()
-        elif self.options.C_API_case == 'upper':
-            return name.upper()
-        else:
-            return name
 
 
 ######################################################################
@@ -498,6 +512,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "{C_prefix}SHROUD_memory_destructor"
             ),
             C_shadow_result=True,               # Return pointer to capsule
+            C_typedef_name_template="{C_prefix}{C_name_scope}{typedef_name}",
             C_var_capsule_template="C{c_var}",  # capsule argument
             C_var_context_template="D{c_var}",  # context argument
 #            C_var_len_template="N{c_var}",  # argument for result of len(arg)
@@ -523,6 +538,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
+            F_typedef_name_template="{F_name_scope}{underscore_name}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
@@ -626,6 +642,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_local="SHC_",
             C_name_scope = "",
             C_this="self",
+            C_typedef_name="",
             C_custom_return_type="",  # assume no value
             CXX_this="SH_this",
             CXX_local="SHCXX_",
@@ -644,6 +661,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_final="final",
             F_result="SHT_rv",
             F_result_ptr="SHT_prv",
+            F_typedef_name="",
             F_name_scope = "",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
@@ -1059,6 +1077,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.typedefs = []
         self.variables = []
 
+        self.typedef_map = []
+
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
 
@@ -1238,6 +1258,15 @@ class ClassNode(AstNode, NamespaceMixin):
             newfcn.options.reparent(new.options)
             newfcns.append(newfcn)
         new.functions = newfcns
+
+        # Clone all typedefs
+        newtyps = []
+        for typ in self.typedefs:
+            newtyp = typ.clone()
+            newtyp.fmtdict.reparent(new.fmtdict)
+            newtyp.options.reparent(new.options)
+            newtyps.append(newtyp)
+        new.typedefs = newtyps
 
         return new
 
@@ -1499,6 +1528,18 @@ class FunctionNode(AstNode):
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
 
+    def update_names(self):
+        """Update C and Fortran names."""
+        fmt = self.fmtdict
+        if self.wrap.c:
+            self.eval_template("C_name")
+            self.eval_template("F_C_name")
+            fmt.F_C_name = fmt.F_C_name.lower()
+        if self.wrap.fortran:
+            self.eval_template("F_name_impl")
+            self.eval_template("F_name_function")
+            self.eval_template("F_name_generic")
+
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template
         or changing result to argument.
@@ -1659,8 +1700,6 @@ class TypedefNode(AstNode):
     Typedef.
     Includes builtin typedefs and from declarations.
 
-    Used for namespace resolution
-
     type name must be in a typemap.
     """
 
@@ -1677,6 +1716,7 @@ class TypedefNode(AstNode):
         # From arguments
         self.name = name
         self.parent = parent
+        self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent=parent.options)
@@ -1684,20 +1724,66 @@ class TypedefNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
-        #        self.default_format(parent, format, kwargs)
-        self.fmtdict = util.Scope(parent=parent.fmtdict)
+        self.default_format(parent, format, kwargs)
+        self.update_names()
 
         self.ast = ast
 
-        # Add to namespace
-        if ntypemap is None:
-            typename = self.parent.scope + self.name
-            self.typemap = parent.symtab.lookup_typemap(typename)
-        else:
-            self.typemap = ntypemap
+        # save info from original type used in generated declarations.
+        ntypemap = ast.typemap
+        self.f_kind = ntypemap.f_kind
+        self.f_module = ntypemap.f_module
+        self.typemap = ntypemap
+            
+        typemap.fill_typedef_typemap(self)
 
     def get_typename(self):
         return self.typemap.name
+
+    def default_format(self, parent, format, kwargs):
+        """Set format dictionary."""
+        self.fmtdict = util.Scope(
+            parent=parent.fmtdict,
+            cxx_type=self.name,
+            typedef_name=self.name,
+            underscore_name = util.un_camel(self.name),
+        )
+
+    def update_names(self):
+        """Update C and Fortran names."""
+        ### XXX - how to allow user to override since reevaluate is being used.
+        ### XXX - maybe preserve the original fmt from yaml file.
+        fmt = self.fmtdict
+        if self.wrap.c:
+            self.reeval_template("C_typedef_name")
+        if self.wrap.fortran:
+            self.reeval_template("F_typedef_name")
+
+    def clone(self):
+        """Create a copy of a TypedefNode to use with C++ template.
+        """
+        # Shallow copy everything.
+        new = copy.copy(self)
+
+        # new Scope with same inlocal and parent.
+        new.fmtdict = self.fmtdict.clone()
+        new.options = self.options.clone()
+        new.wrap = WrapFlags(self.options)
+        return new
+
+    def clone_post_class(self, targs):
+        """Steps to clone typedef after class has been instantiated.
+
+        Need to create a new typemap for typedefs within a templated class.
+        """
+        self.update_names()
+        type_name = util.wformat("{namespace_scope}{class_scope}{cxx_type}", self.fmtdict)
+
+        ntypemap = self.typemap.clone_as(type_name)
+        self.typemap = ntypemap
+        self.parent.symtab.register_typemap(type_name, ntypemap)
+        ntypemap.is_typedef = True
+        typemap.fill_typedef_typemap(self)
 
 
 ######################################################################

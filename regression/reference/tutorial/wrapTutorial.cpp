@@ -554,7 +554,7 @@ int TUT_use_default_overload_5(double type, int num, int offset,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int TUT_typefunc(int arg)
+TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
     tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
@@ -572,13 +572,13 @@ int TUT_typefunc(int arg)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int TUT_enumfunc(int arg)
+TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 {
     // splicer begin function.enumfunc
     tutorial::EnumTypeID SHCXX_arg =
         static_cast<tutorial::EnumTypeID>(arg);
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    TUT_EnumTypeID SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.enumfunc
 }

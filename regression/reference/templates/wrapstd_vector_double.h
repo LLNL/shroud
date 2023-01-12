@@ -16,6 +16,7 @@
 #define WRAPSTD_VECTOR_DOUBLE_H
 
 // typemap
+#include "wrapstd_vector_double.h"
 #ifdef __cplusplus
 #include <cstddef>
 #else
@@ -31,6 +32,9 @@
 extern "C" {
 #endif
 
+// typedef std::vector<double>::size_type
+typedef size_t TEM_vector_double_size_type;
+
 // splicer begin namespace.std.class.vector.C_declarations
 // splicer end namespace.std.class.vector.C_declarations
 
@@ -41,10 +45,11 @@ void TEM_vector_double_dtor(TEM_vector_double * self);
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value);
 
-double * TEM_vector_double_at(TEM_vector_double * self, size_t n);
+double * TEM_vector_double_at(TEM_vector_double * self,
+    TEM_vector_double_size_type n);
 
 double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
-    size_t n);
+    TEM_vector_double_size_type n);
 
 #ifdef __cplusplus
 }

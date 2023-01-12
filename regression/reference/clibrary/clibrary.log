@@ -37,6 +37,8 @@ C void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void (
 Close wrapClibrary.h
 Close wrapClibrary.c
 class array_info
+typedef TypeID
+typedef EnumTypeID
 Fortran void NoReturnNoArguments(void)  +intent(subroutine)
 Fortran double PassByValue(double arg1 +value, int arg2 +value)  +intent(function)
 Fortran void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))  +intent(subroutine)

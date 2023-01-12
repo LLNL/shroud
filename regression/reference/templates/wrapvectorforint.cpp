@@ -77,7 +77,8 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
+int * TEM_vector_int_at(TEM_vector_int * self,
+    TEM_vector_int_size_type n)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
         (self->addr);
@@ -97,7 +98,8 @@ int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int * TEM_vector_int_at_bufferify(TEM_vector_int * self, size_t n)
+int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
+    TEM_vector_int_size_type n)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
         (self->addr);
