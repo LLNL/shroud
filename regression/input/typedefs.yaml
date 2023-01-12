@@ -15,7 +15,7 @@ cxx_header: typedefs.h
 options:
   debug: True
   wrap_python: True
-  literalinclude2: True
+  literalinclude: True
 
 declarations:
 

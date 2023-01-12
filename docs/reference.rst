@@ -224,7 +224,7 @@ Options
 C_API_case
    Control case of *C_name_scope*.
    Possible values are 'lower' or 'upper'.
-   Any other value will have no effect.
+   Any other value will preserve the case of the identifier.
 
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.

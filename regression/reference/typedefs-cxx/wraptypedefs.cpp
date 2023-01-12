@@ -30,6 +30,7 @@ extern "C" {
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
+// start TYP_typefunc
 TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 {
     // splicer begin function.typefunc
@@ -37,5 +38,6 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
     return SHC_rv;
     // splicer end function.typefunc
 }
+// end TYP_typefunc
 
 }  // extern "C"

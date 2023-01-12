@@ -48,13 +48,11 @@ module tutorial_mod
     end type TUT_SHROUD_array
     ! end array_context
 
-    ! start typedef TypeID
+    ! typedef tutorial::TypeID
     integer, parameter :: type_id = C_INT
-    ! end typedef TypeID
 
-    ! start typedef EnumTypeID
+    ! typedef tutorial::EnumTypeID
     integer, parameter :: enum_type_id = C_INT
-    ! end typedef EnumTypeID
 
     !  enum tutorial::Color
     integer(C_INT), parameter :: red = 0

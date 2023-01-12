@@ -27,13 +27,11 @@ module templates_std_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type TEM_SHROUD_capsule_data
 
-    ! start typedef size_type
+    ! typedef std::vector<int>::size_type
     integer, parameter :: vector_int_size_type = C_SIZE_T
-    ! end typedef size_type
 
-    ! start typedef size_type
+    ! typedef std::vector<double>::size_type
     integer, parameter :: vector_double_size_type = C_SIZE_T
-    ! end typedef size_type
 
     type vector_int
         type(TEM_SHROUD_capsule_data) :: cxxmem

@@ -22,6 +22,7 @@ module typedefs_mod
     ! splicer end module_top
 
     ! start typedef TypeID
+    ! typedef TypeID
     integer, parameter :: type_id = C_INT
     ! end typedef TypeID
 
@@ -35,6 +36,7 @@ module typedefs_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
+    ! start typefunc
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
@@ -45,6 +47,7 @@ module typedefs_mod
             integer(type_id) :: SHT_rv
         end function typefunc
     end interface
+    ! end typefunc
 
     interface
         ! splicer begin additional_interfaces

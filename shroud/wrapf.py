@@ -417,6 +417,8 @@ class Wrapf(util.WrapperMixin):
             node - ast.TypedefNode.
             fileinfo - ModuleInfo
         """
+        options = node.options
+        fmtdict = node.fmtdict
         self.log.write("typedef {0.name}\n".format(node))
 
         # Any USE statements for typedef value (ex. C_INT)
@@ -426,10 +428,13 @@ class Wrapf(util.WrapperMixin):
         
         output = fileinfo.typedef_impl
         output.append("")
-        output.append("! start typedef " + node.name)
+        if options.literalinclude:
+            output.append("! start typedef " + node.name)
+        append_format(output, "! typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
         output.append("integer, parameter :: {} = {}".format(
             node.fmtdict.F_typedef_name, node.f_kind))
-        output.append("! end typedef " + node.name)
+        if options.literalinclude:
+            output.append("! end typedef " + node.name)
         
     def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
@@ -973,6 +978,7 @@ rv = .false.
 
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg = fileinfo.f_abstract_interface[key]
+                options = node.options
                 ast = node.ast
                 subprogram = arg.get_subprogram()
                 iface.append("")
@@ -985,7 +991,7 @@ rv = .false.
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
-                            node.options.F_abstract_interface_argument_template,
+                            options.F_abstract_interface_argument_template,
                             fmt,
                         )
                     arg_f_names.append(name)
@@ -1003,7 +1009,7 @@ rv = .false.
                 if subprogram == "function":
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ",\t ".join(arg_f_names)
-                if node.options.literalinclude:
+                if options.literalinclude:
                     iface.append("! start abstract " + key)
                 if self.newlibrary.options.literalinclude2:
                     iface.append("abstract interface+")
@@ -1021,7 +1027,7 @@ rv = .false.
                 iface.append("end {} {}".format(subprogram, key))
                 if self.newlibrary.options.literalinclude2:
                     iface.append("-end interface")
-                if node.options.literalinclude:
+                if options.literalinclude:
                     iface.append("! end abstract " + key)
             if not self.newlibrary.options.literalinclude2:
                 iface.append(-1)

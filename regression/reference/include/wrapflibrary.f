@@ -21,9 +21,8 @@ module library_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type LIB_SHROUD_capsule_data
 
-    ! start typedef CustomType
+    ! typedef CustomType
     integer, parameter :: custom_type = C_INT
-    ! end typedef CustomType
 
     type class2
         type(LIB_SHROUD_capsule_data) :: cxxmem
