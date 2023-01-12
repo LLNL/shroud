@@ -123,7 +123,7 @@ wget https://github.com/LLNL/shroud/archive/shroud-0.12.2.pyz
 
 ## License
 
-Copyright (c) 2017-2022, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC.
 Produced at the Lawrence Livermore National Laboratory.
 
 SPDX-License-Identifier: (BSD-3-Clause)
