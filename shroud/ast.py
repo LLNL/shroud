@@ -1047,7 +1047,6 @@ class ClassNode(AstNode, NamespaceMixin):
         options=None,
         parse_keyword="class",
         template_parameters=None,
-        ntypemap=None,
         **kwargs
     ):
         """Create ClassNode.
@@ -1117,18 +1116,13 @@ class ClassNode(AstNode, NamespaceMixin):
             self.wrap_as = self.options.wrap_class_as
         else:
             raise TypeError("parse_keyword must be 'class' or 'struct'")
-        if ntypemap is not None:
-            # From YAML typemap
-            self.typemap = ntypemap
-            if ast:
-                # GGG no ast for typemaps from YAML
-                ast.typemap = ntypemap # GGG
-        elif self.wrap_as == "struct":
-            self.typemap = ast.typemap
+
+        self.typemap = ast.typemap
+        if self.wrap_as == "struct":
             typemap.fill_struct_typemap(self, fields)
         elif self.wrap_as == "class":
-            self.typemap = ast.typemap
             typemap.fill_class_typemap(self, fields)
+
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
             # when in the format dictionary is passed in.
@@ -2268,7 +2262,7 @@ def create_library_from_dictionary(node, symtab):
                     typemap.create_struct_typemap_from_fields(
                         key, fields, library
                     )
-                elif base in ["integer", "real"]:
+                elif base in ["integer", "real", "complex"]:
                     ntypemap = typemap.create_native_typemap_from_fields(
                         key, fields, library
                     )
