@@ -2216,8 +2216,7 @@ def add_declarations(parent, node, symtab):
         else:
             print(subnode)
             raise RuntimeError(
-                "Expected 'block', 'class', 'decl', 'forward', 'namespace' "
-                "or 'typedef' found '{}'".format(sorted(subnode.keys()))
+                "Expected 'block' or 'decl', found '{}'".format(sorted(subnode.keys()))
             )
 
 

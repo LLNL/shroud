@@ -2171,7 +2171,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
-            "forward": "Class1",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -2232,7 +2231,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "Class2",
-            "forward": "Class2",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [

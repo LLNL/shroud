@@ -61,8 +61,6 @@ class Wrapc(util.WrapperMixin):
 
     def _begin_output_file(self):
         """Start a new class for output"""
-        #        # forward declarations of C++ class as opaque C struct.
-        #        self.header_forward = {}
         # Include files required by wrapper prototypes
         self.header_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Include files required by wrapper implementations.
@@ -442,21 +440,6 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(self.struct_impl)
 
-        #        if self.header_forward:
-        #            output.extend([
-        #                '',
-        #                '// declaration of shadow types'
-        #            ])
-        #            for name in sorted(self.header_forward.keys()):
-        #                write_file = True
-        #                output.append(
-        #                    'struct s_{C_type_name} {{+\n'
-        #                    'void *addr;   /* address of C++ memory */\n'
-        #                    'int idtor;    /* index of destructor */\n'
-        #                    'int refcount; /* reference count */\n'
-        #                    '-}};\n'
-        #                    'typedef struct s_{C_type_name} {C_type_name};'.
-        #                    format(C_type_name=name))
         output.append("")
         if self._create_splicer("C_declarations", output):
             write_file = True
@@ -599,7 +582,6 @@ class Wrapc(util.WrapperMixin):
         # create a forward declaration for this type
         hname = whelpers.add_shadow_helper(node)
         self.shared_helper[hname] = True
-        #        self.header_forward[cname] = True
         self.compute_idtor(node)
 
         self.wrap_typedefs(node)
@@ -917,10 +899,6 @@ class Wrapc(util.WrapperMixin):
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
-        #        if result_typemap.forward:
-        #            # create forward references for other types being wrapped
-        #            # i.e. This method returns a wrapped type
-        #            self.header_forward[result_typemap.c_type] = True
 
         sintent = ast.metaattrs["intent"]
         if CXX_subprogram == "subroutine":
@@ -1213,10 +1191,6 @@ class Wrapc(util.WrapperMixin):
                 else:
                     call_list.append(fmt_arg.cxx_var)
 
-        #            if arg_typemap.forward:
-        #                # create forward references for other types being wrapped
-        #                # i.e. This argument is another wrapped type
-        #                self.header_forward[arg_typemap.c_type] = True
         # --- End loop over function parameters
 
         self.build_proto_list(

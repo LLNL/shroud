@@ -4385,7 +4385,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(worker)",
             "flat_name": "Worker",
-            "forward": "Worker",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4427,7 +4426,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(implworker1)",
             "flat_name": "internal_ImplWorker1",
-            "forward": "internal::ImplWorker1",
             "impl_header": [
                 "implworker1.hpp"
             ],
@@ -4469,7 +4467,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(implworker2)",
             "flat_name": "internal_ImplWorker2",
-            "forward": "internal::ImplWorker2",
             "impl_header": [
                 "implworker2.hpp"
             ],
@@ -4510,7 +4507,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
             "flat_name": "std_vector",
-            "forward": "std::vector",
             "impl_header": [
                 "<vector>"
             ],
@@ -4669,7 +4665,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
-            "forward": "std::vector<double>",
             "idtor": "2",
             "impl_header": [
                 "<vector>"
@@ -4712,7 +4707,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_int)",
             "flat_name": "std_vector_int",
-            "forward": "std::vector<int>",
             "idtor": "1",
             "impl_header": [
                 "<vector>"
@@ -4754,7 +4748,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(structasclass)",
             "flat_name": "structAsClass",
-            "forward": "structAsClass",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4791,7 +4784,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(structasclass_double)",
             "flat_name": "structAsClass_double",
-            "forward": "structAsClass<double>",
             "idtor": "4",
             "impl_header": [
                 "templates.hpp"
@@ -4829,7 +4821,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(structasclass_int)",
             "flat_name": "structAsClass_int",
-            "forward": "structAsClass<int>",
             "idtor": "3",
             "impl_header": [
                 "templates.hpp"
@@ -4870,7 +4861,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user)",
             "flat_name": "user",
-            "forward": "user",
             "impl_header": [
                 "templates.hpp"
             ],
@@ -4912,7 +4902,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user_int)",
             "flat_name": "user_int",
-            "forward": "user<int>",
             "idtor": "5",
             "impl_header": [
                 "templates.hpp"

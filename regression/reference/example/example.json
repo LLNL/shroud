@@ -11361,7 +11361,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass1)",
             "flat_name": "example_nested_ExClass1",
-            "forward": "example::nested::ExClass1",
             "idtor": "1",
             "impl_header": [
                 "ExClass1.hpp"
@@ -11404,7 +11403,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2)",
             "flat_name": "example_nested_ExClass2",
-            "forward": "example::nested::ExClass2",
             "idtor": "2",
             "impl_header": [
                 "ExClass2.hpp"
@@ -11442,7 +11440,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(exclass2nested)",
             "flat_name": "example_nested_ExClass2Nested",
-            "forward": "example::nested::ExClass2Nested",
             "impl_header": [
                 "ExClass2.hpp"
             ],

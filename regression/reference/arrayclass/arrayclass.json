@@ -3595,7 +3595,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(arraywrapper)",
             "flat_name": "ArrayWrapper",
-            "forward": "ArrayWrapper",
             "idtor": "1",
             "impl_header": [
                 "arrayclass.hpp"
