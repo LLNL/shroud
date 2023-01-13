@@ -96,7 +96,6 @@ class Typemap(object):
                                     # when added to class/struct format.
                     # Set from format.template_suffix in YAML for class.
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
-        ("forward", None),  # Forward declaration
         ("typedef", None),  # Initialize from existing type (name of type)
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
@@ -1205,9 +1204,6 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     )
     # ntypemap.LUA_push = None  # XXX create a userdata object with metatable
     # ntypemap.LUA_statements = {}
-
-    # allow forward declarations to avoid recursive headers
-    ntypemap.forward = ntypemap.cxx_type
 
 
 def create_struct_typemap_from_fields(cxx_name, fields, library):

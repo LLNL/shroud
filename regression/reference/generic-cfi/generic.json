@@ -6730,7 +6730,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(structasclass)",
             "flat_name": "StructAsClass",
-            "forward": "StructAsClass",
             "impl_header": [
                 "generic.h",
                 "helper.h"

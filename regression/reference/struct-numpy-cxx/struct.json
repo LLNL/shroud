@@ -2314,7 +2314,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
-            "forward": "Cstruct_as_class",
             "impl_header": [
                 "struct.h"
             ],
@@ -2351,7 +2350,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
-            "forward": "Cstruct_as_subclass",
             "impl_header": [
                 "struct.h"
             ],

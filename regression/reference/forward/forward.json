@@ -816,7 +816,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "forward_Class2",
-            "forward": "forward::Class2",
             "idtor": "1",
             "impl_header": [
                 "forward.hpp"
@@ -859,7 +858,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class3)",
             "flat_name": "forward_Class3",
-            "forward": "forward::Class3",
             "impl_header": [
                 "header1.hpp",
                 "header2.hpp",
@@ -899,7 +897,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "tutorial_Class1",
-            "forward": "tutorial::Class1",
             "sgroup": "shadow",
             "wrap_header": [
                 "wrapClass1.h"

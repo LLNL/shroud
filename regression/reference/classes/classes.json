@@ -6007,7 +6007,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(circle)",
             "flat_name": "classes_Circle",
-            "forward": "classes::Circle",
             "idtor": "3",
             "impl_header": [
                 "classes.hpp"
@@ -6050,7 +6049,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "classes_Class1",
-            "forward": "classes::Class1",
             "idtor": "1",
             "impl_header": [
                 "classes.hpp"
@@ -6119,7 +6117,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "classes_Class2",
-            "forward": "classes::Class2",
             "impl_header": [
                 "classes.hpp"
             ],
@@ -6156,7 +6153,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(data)",
             "flat_name": "classes_Data",
-            "forward": "classes::Data",
             "idtor": "4",
             "impl_header": [
                 "classes.hpp"
@@ -6199,7 +6195,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(shape)",
             "flat_name": "classes_Shape",
-            "forward": "classes::Shape",
             "idtor": "2",
             "impl_header": [
                 "classes.hpp"
@@ -6242,7 +6237,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(singleton)",
             "flat_name": "classes_Singleton",
-            "forward": "classes::Singleton",
             "impl_header": [
                 "classes.hpp"
             ],

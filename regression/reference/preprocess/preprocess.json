@@ -614,7 +614,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user1)",
             "flat_name": "User1",
-            "forward": "User1",
             "impl_header": [
                 "preprocess.hpp"
             ],
@@ -656,7 +655,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user2)",
             "flat_name": "User2",
-            "forward": "User2",
             "impl_header": [
                 "User2.hpp"
             ],

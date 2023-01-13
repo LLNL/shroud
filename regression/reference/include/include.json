@@ -933,7 +933,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class2)",
             "flat_name": "Class2",
-            "forward": "Class2",
             "impl_header": [
                 "zzheader.hpp",
                 "global_header.hpp"
@@ -1012,7 +1011,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
             "flat_name": "outer1_class0",
-            "forward": "outer1::class0",
             "impl_header": [
                 "outer1.hpp"
             ],
@@ -1049,7 +1047,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class0)",
             "flat_name": "outer2_class0",
-            "forward": "outer2::class0",
             "impl_header": [
                 "classA.hpp",
                 "classAb.hpp"
@@ -1087,7 +1084,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "three_Class1",
-            "forward": "three::Class1",
             "impl_header": [
                 "class_header.hpp"
             ],

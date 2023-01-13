@@ -3933,7 +3933,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "Class1",
-            "forward": "Class1",
             "idtor": "1",
             "impl_header": [
                 "ownership.hpp"

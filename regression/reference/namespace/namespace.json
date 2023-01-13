@@ -781,7 +781,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(classwork)",
             "flat_name": "nswork_ClassWork",
-            "forward": "nswork::ClassWork",
             "impl_header": [
                 "namespace.hpp"
             ],

@@ -4173,7 +4173,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class1)",
             "flat_name": "CAPI_Class1",
-            "forward": "CAPI::Class1",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4239,7 +4238,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_class)",
             "flat_name": "Cstruct_as_class",
-            "forward": "Cstruct_as_class",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4279,7 +4277,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(Fstruct_as_subclass)",
             "flat_name": "Cstruct_as_subclass",
-            "forward": "Cstruct_as_subclass",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4319,7 +4316,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(names2)",
             "flat_name": "Names2",
-            "forward": "Names2",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4354,7 +4350,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(implworker1)",
             "flat_name": "internal_ImplWorker1",
-            "forward": "internal::ImplWorker1",
             "impl_header": [],
             "sgroup": "shadow",
             "template_suffix": "_instantiation3",
@@ -4395,7 +4390,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FNames)",
             "flat_name": "ns0_Names",
-            "forward": "ns0::Names",
             "idtor": "1",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4436,7 +4430,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(FFvvv1)",
             "flat_name": "std_vector_int",
-            "forward": "std::vector<int>",
             "impl_header": [
                 "<vector>"
             ],
@@ -4479,7 +4472,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
             "flat_name": "std_vector",
-            "forward": "std::vector",
             "impl_header": [
                 "<vector>"
             ],
@@ -4521,7 +4513,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
             "flat_name": "std_vector_double",
-            "forward": "std::vector<double>",
             "impl_header": [
                 "<vector>"
             ],
@@ -4563,7 +4554,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation3)",
             "flat_name": "std_vector_internal_ImplWorker1",
-            "forward": "std::vector<internal::ImplWorker1>",
             "impl_header": [
                 "<vector>"
             ],
@@ -4605,7 +4595,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_instantiation5)",
             "flat_name": "std_vector_long",
-            "forward": "std::vector<long>",
             "impl_header": [
                 "<vector>"
             ],
@@ -4646,7 +4635,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(twots)",
             "flat_name": "twoTs",
-            "forward": "twoTs",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4686,7 +4674,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(twots_0)",
             "flat_name": "twoTs_int,_long",
-            "forward": "twoTs<int, long>",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
@@ -4726,7 +4713,6 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(twots_instantiation4)",
             "flat_name": "twoTs_float,_double",
-            "forward": "twoTs<float, double>",
             "impl_header": [],
             "sgroup": "shadow",
             "wrap_header": [
