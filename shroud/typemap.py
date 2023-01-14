@@ -283,7 +283,6 @@ class Typemap(object):
 
     def __export_yaml__(self, output, mode="all"):
         """Write out a subset of a wrapped type.
-        Other fields are set with fill_shadow_typemap_defaults.
 
         Args:
             output -
@@ -1049,21 +1048,31 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         cxx_type=cxx_name,
         f_capsule_data_type="missing-f_capsule_data_type",
         f_derived_type=cxx_name,
+
+        cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+        c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_name,
+        LUA_type="LUA_TUSERDATA",
+        LUA_pop=(
+            "\t({LUA_userdata_type} *)\t luaL_checkudata"
+            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
+        ),
     )
     ntypemap.update(fields)
     if ntypemap.f_module_name is None:
         raise RuntimeError(
             "typemap {} requires field f_module_name".format(cxx_name)
         )
+    
     ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
     ntypemap.f_c_module = {
         ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
     }
-    fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
+    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+    ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+
     ntypemap.finalize()
     library.symtab.add_typedef(cxx_name, ntypemap)
-    return ntypemap
-
 
 def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
@@ -1103,13 +1112,24 @@ def create_class_typemap(node, fields=None):
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
         sh_type="SH_TYPE_OTHER",
         cfi_type="CFI_type_other",
+
+        cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+        c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_type,
+        LUA_type = "LUA_TUSERDATA",
+        LUA_pop = (
+            "\t({LUA_userdata_type} *)\t luaL_checkudata"
+            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
+        )
     )
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
+    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
+    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+    ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
     ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    
     if fields is not None:
         ntypemap.update(fields)
-    fill_shadow_typemap_defaults(ntypemap, fmt_class)
     ntypemap.finalize()
     node.symtab.register_typemap(cxx_name, ntypemap)
 
@@ -1144,67 +1164,27 @@ def fill_class_typemap(node, fields=None):
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
         sh_type="SH_TYPE_OTHER",
         cfi_type="CFI_type_other",
+
+        cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+        c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_type,
+        LUA_type = "LUA_TUSERDATA",
+        LUA_pop = (
+            "\t({LUA_userdata_type} *)\t luaL_checkudata"
+            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
+        )
     ))
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
-    ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
-    if fields is not None:
-        ntypemap.update(fields)
-    fill_shadow_typemap_defaults(ntypemap, fmt_class)
-    ntypemap.finalize()
-
-    fmt_class.C_type_name = ntypemap.c_type
-#    return ntypemap
-
-
-def fill_shadow_typemap_defaults(ntypemap, fmt):
-    """Add some defaults to shadow typemap.
-    When dumping typemaps to a file, only a subset is written
-    since the rest are boilerplate.  This function restores
-    the boilerplate.
-
-    Parameters
-    ----------
-    ntypemap : typemap.Typemap.
-    fmt : util.Scope
-    """
-    if ntypemap.base != "shadow":
-        return
-
-    # Convert to void * to add to context struct
-    ntypemap.cxx_to_c = "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})"
-
-    # void pointer in struct -> class instance pointer
-    ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>\t({c_var}->addr)" % ntypemap.cxx_type
-    )
-
-    # some default for ntypemap.f_capsule_data_type
     ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
     ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+    ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    
+    if fields is not None:
+        ntypemap.update(fields)
+    ntypemap.finalize()
 
-    # XXX module name may not conflict with type name
-    #    ntypemap.f_module={fmt_class.F_module_name:[unname]}
-
-    # return from C function
-    # f_c_return_decl='type(C_PTR)' % unname,
-
-    # The import is added in wrapf.py
-    #    ntypemap.f_c_module={ '--import--': ['F_capsule_data_type']}
-
-    # #-    if not ntypemap.PY_PyTypeObject:
-    # #-        ntypemap.PY_PyTypeObject = 'UUU'
-    # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
-
-    ntypemap.LUA_type = "LUA_TUSERDATA"
-    ntypemap.LUA_pop = (
-        "\t({LUA_userdata_type} *)\t luaL_checkudata"
-        '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
-    )
-    # ntypemap.LUA_push = None  # XXX create a userdata object with metatable
-    # ntypemap.LUA_statements = {}
-
+    fmt_class.C_type_name = ntypemap.c_type
 
 def create_struct_typemap_from_fields(cxx_name, fields, library):
     """Create a struct typemap from fields.
@@ -1239,12 +1219,7 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
     if ntypemap.f_derived_type is None:
         ntypemap.f_derived_type  = ntypemap.name
     ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-# XXX - Set defaults while being created above.
-#    fill_struct_typemap_defaults(node, ntypemap)
-
     library.symtab.add_typedef(cxx_name, ntypemap)
-    return ntypemap
-
 
 def create_struct_typemap(node, fields=None):
     """Create a typemap for a struct from a ClassNode.
@@ -1274,10 +1249,15 @@ def create_struct_typemap(node, fields=None):
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
         cfi_type="CFI_type_struct",
+
+        LUA_type = "LUA_TUSERDATA",
+        LUA_pop = (
+            "\t({LUA_userdata_type} *)\t luaL_checkudata"
+            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
+        ),
     )
     if fields is not None:
         ntypemap.update(fields)
-    fill_struct_typemap_defaults(node, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1312,32 +1292,13 @@ def fill_struct_typemap(node, fields=None):
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
         cfi_type="CFI_type_struct",
+
+        LUA_type = "LUA_TUSERDATA",
+        LUA_pop = (
+            "\t({LUA_userdata_type} *)\t luaL_checkudata"
+            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
+        ),
     ))
-    if fields is not None:
-        ntypemap.update(fields)
-    fill_struct_typemap_defaults(node, ntypemap)
-# GGG - sets f_c_module_line and f_module_line which may or may not be needed
-##    ntypemap.finalize()
-    if ntypemap.cxx_type and not ntypemap.flat_name:
-            ntypemap.compute_flat_name()
-
-    fmt_class.C_type_name = ntypemap.c_type
-##    return ntypemap
-
-
-def fill_struct_typemap_defaults(node, ntypemap):
-    """Add some defaults to struct typemap.
-    When dumping typemaps to a file, only a subset is written
-    since the rest are boilerplate.  This function restores
-    the boilerplate.
-
-    Parameters:
-    -----------
-        node : ast.ClassNode
-        ntypemap : typemap.Typemap.
-    """
-    if ntypemap.base != "struct":
-        return
 
     libnode = node.get_LibraryNode()
     language = libnode.language
@@ -1346,30 +1307,18 @@ def fill_struct_typemap_defaults(node, ntypemap):
         # XXX - if struct in class, uses class.cxx_header?
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
-
-    # To convert, extract correct field from union
-    # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
-    # #-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
-
     ntypemap.PY_struct_as = node.options.PY_struct_arg
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+    
+    if fields is not None:
+        ntypemap.update(fields)
+# GGG - sets f_c_module_line and f_module_line which may or may not be needed
+##    ntypemap.finalize()
+    if ntypemap.cxx_type and not ntypemap.flat_name:
+            ntypemap.compute_flat_name()
 
-    # XXX module name may not conflict with type name
-    # #-    ntypemap.f_module = {fmt_class.F_module_name:[unname]}
-
-    # #-    ntypemap.PYN_typenum = 'NPY_VOID'
-    # #-    if not ntypemap.PY_PyTypeObject:
-    # #-        ntypemap.PY_PyTypeObject = 'UUU'
-    # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
-
-    ntypemap.LUA_type = "LUA_TUSERDATA"
-    ntypemap.LUA_pop = (
-        "\t({LUA_userdata_type} *)\t luaL_checkudata"
-        '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
-    )
-    # ntypemap.LUA_push = None  # XXX create a userdata object with metatable
-    # ntypemap.LUA_statements = {}
-
+    fmt_class.C_type_name = ntypemap.c_type
+##    return ntypemap
 
 def create_fcnptr_typemap(symtab, name):
     # GGG - Similar to how typemaps are created in class Struct
