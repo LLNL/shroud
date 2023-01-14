@@ -1089,51 +1089,11 @@ def create_class_typemap(node, fields=None):
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
-    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
-##    ntypemap = lookup_typemap(cxx_name)
-    # GGG already exits?
-    # unname = util.un_camel(name)
-    f_name = fmt_class.cxx_class.lower()
-    c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
-    ntypemap = Typemap(
-        cxx_name,
-        base="shadow",
-        sgroup="shadow",
-        cxx_type=cxx_type,
-        impl_header=node.find_header(),
-        wrap_header=fmt_class.C_header_utility,
-        c_type=c_name,
-        f_module_name=fmt_class.F_module_name,
-        f_derived_type=fmt_class.F_derived_name,
-        f_capsule_data_type=fmt_class.F_capsule_data_type,
-        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
-        # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
-        f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
-        sh_type="SH_TYPE_OTHER",
-        cfi_type="CFI_type_other",
-
-        cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-        c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_type,
-        LUA_type = "LUA_TUSERDATA",
-        LUA_pop = (
-            "\t({LUA_userdata_type} *)\t luaL_checkudata"
-            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
-        )
-    )
-    # import classes which are wrapped by this module
-    # XXX - deal with namespaces vs modules
-    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
-    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
-    ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
-    
-    if fields is not None:
-        ntypemap.update(fields)
-    ntypemap.finalize()
+    ntypemap = Typemap(cxx_name)
+    node.typemap = ntypemap
+    fill_class_typemap(node, fields)
     node.symtab.register_typemap(cxx_name, ntypemap)
-
-    fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
 
 def fill_class_typemap(node, fields=None):
@@ -1143,7 +1103,6 @@ def fill_class_typemap(node, fields=None):
     """
     ntypemap = node.typemap
     fmt_class = node.fmtdict
-    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
     cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
     # unname = util.un_camel(name)
@@ -1232,34 +1191,11 @@ def create_struct_typemap(node, fields=None):
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
-    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
-    # unname = util.un_camel(name)
-    f_name = fmt_class.cxx_class.lower()
-    c_name = fmt_class.C_prefix + f_name
-    ntypemap = Typemap(
-        cxx_name,
-        base="struct",
-        sgroup="struct",
-        cxx_type=cxx_type,
-        c_type=c_name,
-        f_derived_type=fmt_class.F_derived_name,
-        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
-        f_c_module={"--import--": [fmt_class.F_derived_name]},
-        PYN_descr=fmt_class.PY_struct_array_descr_variable,
-        sh_type="SH_TYPE_STRUCT",
-        cfi_type="CFI_type_struct",
-
-        LUA_type = "LUA_TUSERDATA",
-        LUA_pop = (
-            "\t({LUA_userdata_type} *)\t luaL_checkudata"
-            '(\t{LUA_state_var}, 1, "{LUA_metadata}")'
-        ),
-    )
-    if fields is not None:
-        ntypemap.update(fields)
-
-    fmt_class.C_type_name = ntypemap.c_type
+    ntypemap = Typemap(cxx_name)
+    node.typemap = ntypemap
+    fill_struct_typemap(node, fields)
+    node.symtab.register_typemap(cxx_name, ntypemap)
     return ntypemap
 
 def fill_struct_typemap(node, fields=None):
@@ -1275,7 +1211,6 @@ def fill_struct_typemap(node, fields=None):
     """
     ntypemap = node.typemap
     fmt_class = node.fmtdict
-    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
     cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
 
     # unname = util.un_camel(name)
@@ -1318,7 +1253,6 @@ def fill_struct_typemap(node, fields=None):
             ntypemap.compute_flat_name()
 
     fmt_class.C_type_name = ntypemap.c_type
-##    return ntypemap
 
 def create_fcnptr_typemap(symtab, name):
     # GGG - Similar to how typemaps are created in class Struct
