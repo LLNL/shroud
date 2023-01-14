@@ -911,6 +911,15 @@ def default_typemap():
 
     return def_types
 
+def check_for_missing_typemap_fields(cxx_name, fields, names):
+    missing = []
+    for field_name in names:
+        if field_name not in fields:
+            missing.append(field_name)
+    if missing:
+        raise RuntimeError(
+            "typemap {} requires fields {}".format(cxx_name, ", ".join(missing))
+        )
 
 def create_native_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
@@ -930,6 +939,8 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
+    check_for_missing_typemap_fields(cxx_name, fields, ["f_kind", "f_module_name"])
+    
     fmt = library.fmtdict
     ntypemap = Typemap(
         cxx_name,
@@ -939,16 +950,6 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
         f_cast=None,  # Override Typemap default
     )
     ntypemap.update(fields)
-    # Report fields which must be defined
-    missing = []
-    if ntypemap.f_kind is None:
-        missing.append("f_kind")
-    if ntypemap.f_module_name is None:
-        missing.append("f_module_name")
-    if missing:
-        raise RuntimeError(
-            "typemap {} requires field(s) {}".format(cxx_name, ", ".join(missing))
-        )
     fill_native_typemap_defaults(ntypemap, fmt)
     ntypemap.finalize()
     library.symtab.add_typedef(cxx_name, ntypemap)
@@ -1041,6 +1042,8 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
+    check_for_missing_typemap_fields(cxx_name, fields, ["f_module_name"])
+    
     fmt_class = library.fmtdict
     ntypemap = Typemap(
         cxx_name,
@@ -1058,11 +1061,6 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         ),
     )
     ntypemap.update(fields)
-    if ntypemap.f_module_name is None:
-        raise RuntimeError(
-            "typemap {} requires field f_module_name".format(cxx_name)
-        )
-    
     ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
     ntypemap.f_c_module = {
         ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
@@ -1161,6 +1159,8 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
+    check_for_missing_typemap_fields(cxx_name, fields, ["f_module_name"])
+
     fmt_class = library.fmtdict
     ntypemap = Typemap(
         cxx_name,
@@ -1171,10 +1171,8 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
         f_to_c="{f_var}",
     )
     ntypemap.update(fields)
-    if ntypemap.f_module_name is None:
-        raise RuntimeError(
-            "typemap {} requires field f_module_name".format(cxx_name)
-        )
+
+    # Add defaults for missing names
     if ntypemap.f_derived_type is None:
         ntypemap.f_derived_type  = ntypemap.name
     ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
