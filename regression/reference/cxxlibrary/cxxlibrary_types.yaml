@@ -12,6 +12,7 @@ typemap:
     fields:
       base: struct
       c_type: CXX_cstruct1_cls
+      f_module_name: cxxlibrary_mod
       f_derived_type: cstruct1_cls
   - namespace: structns
     declarations: structns
@@ -19,4 +20,5 @@ typemap:
       fields:
         base: struct
         c_type: CXX_cstruct1
+        f_module_name: cxxlibrary_structns_mod
         f_derived_type: cstruct1

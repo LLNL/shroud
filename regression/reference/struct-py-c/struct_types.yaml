@@ -14,6 +14,7 @@ typemap:
       c_header:
       - struct.h
       c_type: Cstruct_as_class
+      f_module_name: struct_mod
       f_derived_type: cstruct_as_class
   - type: Cstruct_as_numpy
     fields:
@@ -21,4 +22,5 @@ typemap:
       c_header:
       - struct.h
       c_type: Cstruct_as_numpy
+      f_module_name: struct_mod
       f_derived_type: cstruct_as_numpy

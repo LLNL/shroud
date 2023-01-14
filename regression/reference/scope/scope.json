@@ -2361,6 +2361,7 @@
                     "datapointer"
                 ]
             },
+            "f_module_name": "scope_ns1_mod",
             "f_type": "type(datapointer)",
             "flat_name": "ns1_DataPointer",
             "sgroup": "struct",
@@ -2412,6 +2413,7 @@
                     "datapointer"
                 ]
             },
+            "f_module_name": "scope_ns2_mod",
             "f_type": "type(datapointer)",
             "flat_name": "ns2_DataPointer",
             "sgroup": "struct",
@@ -2463,6 +2465,7 @@
                     "datapointer"
                 ]
             },
+            "f_module_name": "scope_ns3_mod",
             "f_type": "type(datapointer)",
             "flat_name": "ns3_DataPointer",
             "sgroup": "struct",

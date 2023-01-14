@@ -12,9 +12,11 @@ typemap:
     fields:
       base: struct
       c_type: STR_cstruct_as_class
+      f_module_name: struct_mod
       f_derived_type: cstruct_as_class
   - type: Cstruct_as_numpy
     fields:
       base: struct
       c_type: STR_cstruct_as_numpy
+      f_module_name: struct_mod
       f_derived_type: cstruct_as_numpy

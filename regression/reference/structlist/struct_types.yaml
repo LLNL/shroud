@@ -14,4 +14,5 @@ typemap:
       c_header:
       - struct.h
       c_type: Arrays1
+      f_module_name: struct_mod
       f_derived_type: arrays1

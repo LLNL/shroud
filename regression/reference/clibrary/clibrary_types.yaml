@@ -14,4 +14,5 @@ typemap:
       c_header:
       - clibrary.h
       c_type: array_info
+      f_module_name: clibrary_mod
       f_derived_type: array_info

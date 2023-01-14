@@ -939,7 +939,10 @@ def create_native_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
-    check_for_missing_typemap_fields(cxx_name, fields, ["f_kind", "f_module_name"])
+    check_for_missing_typemap_fields(cxx_name, fields, [
+        "f_kind",
+        "f_module_name",
+    ])
     
     fmt = library.fmtdict
     ntypemap = Typemap(
@@ -1042,7 +1045,10 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
-    check_for_missing_typemap_fields(cxx_name, fields, ["f_module_name"])
+    check_for_missing_typemap_fields(cxx_name, fields, [
+        "f_derived_type",
+        "f_module_name",
+    ])
     
     fmt_class = library.fmtdict
     ntypemap = Typemap(
@@ -1116,9 +1122,7 @@ def fill_class_typemap(node, fields=None):
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
         f_capsule_data_type=fmt_class.F_capsule_data_type,
-        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
-        f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
         sh_type="SH_TYPE_OTHER",
         cfi_type="CFI_type_other",
 
@@ -1132,13 +1136,23 @@ def fill_class_typemap(node, fields=None):
     ))
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
-    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
-    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
-    ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
     
     if fields is not None:
         ntypemap.update(fields)
+
+    # compute names derived from other values
+    if ntypemap.f_module is None:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+    if ntypemap.f_class is None:
+        ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
+    if ntypemap.f_type is None:
+        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+    if ntypemap.f_c_type is None:
+        ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+    if ntypemap.f_c_module is None:
+        ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    if ntypemap.f_to_c is None:
+        ntypemap.f_to_c = "{f_var}%%%s" % fmt_class.F_derived_member
     ntypemap.finalize()
 
     fmt_class.C_type_name = ntypemap.c_type
@@ -1159,7 +1173,10 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
     fields : dictionary object.
     library : ast.LibraryNode.
     """
-    check_for_missing_typemap_fields(cxx_name, fields, ["f_module_name"])
+    check_for_missing_typemap_fields(cxx_name, fields, [
+        "f_derived_type",
+        "f_module_name",
+    ])
 
     fmt_class = library.fmtdict
     ntypemap = Typemap(
@@ -1219,9 +1236,8 @@ def fill_struct_typemap(node, fields=None):
         sgroup="struct",
         cxx_type=cxx_type,
         c_type=c_name,
+        f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
-        f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
-        f_c_module={"--import--": [fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
         sh_type="SH_TYPE_STRUCT",
         cfi_type="CFI_type_struct",
@@ -1245,6 +1261,14 @@ def fill_struct_typemap(node, fields=None):
     
     if fields is not None:
         ntypemap.update(fields)
+
+    # compute names derived from other values
+    if ntypemap.f_module is None:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+    if ntypemap.f_c_module is None:
+        ntypemap.f_c_module = {"--import--": [ntypemap.f_derived_type]}
+
+        
 # GGG - sets f_c_module_line and f_module_line which may or may not be needed
 ##    ntypemap.finalize()
     if ntypemap.cxx_type and not ntypemap.flat_name:

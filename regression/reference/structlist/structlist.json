@@ -323,6 +323,7 @@
                     "arrays1"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
             "sgroup": "struct",

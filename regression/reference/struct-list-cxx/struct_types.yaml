@@ -12,11 +12,13 @@ typemap:
     fields:
       base: struct
       c_type: STR_arrays1
+      f_module_name: struct_mod
       f_derived_type: arrays1
   - type: Cstruct1
     fields:
       base: struct
       c_type: STR_cstruct1
+      f_module_name: struct_mod
       f_derived_type: cstruct1
   - type: Cstruct_as_class
     fields:
@@ -42,14 +44,17 @@ typemap:
     fields:
       base: struct
       c_type: STR_cstruct_list
+      f_module_name: struct_mod
       f_derived_type: cstruct_list
   - type: Cstruct_numpy
     fields:
       base: struct
       c_type: STR_cstruct_numpy
+      f_module_name: struct_mod
       f_derived_type: cstruct_numpy
   - type: Cstruct_ptr
     fields:
       base: struct
       c_type: STR_cstruct_ptr
+      f_module_name: struct_mod
       f_derived_type: cstruct_ptr

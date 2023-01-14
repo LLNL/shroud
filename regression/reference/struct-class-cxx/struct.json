@@ -3278,6 +3278,7 @@
                     "arrays1"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(arrays1)",
             "flat_name": "Arrays1",
             "sgroup": "struct",
@@ -3308,6 +3309,7 @@
                     "cstruct1"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "sgroup": "struct",
@@ -3410,6 +3412,7 @@
                     "cstruct_list"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct_list)",
             "flat_name": "Cstruct_list",
             "sgroup": "struct",
@@ -3440,6 +3443,7 @@
                     "cstruct_numpy"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct_numpy)",
             "flat_name": "Cstruct_numpy",
             "sgroup": "struct",
@@ -3470,6 +3474,7 @@
                     "cstruct_ptr"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct_ptr)",
             "flat_name": "Cstruct_ptr",
             "sgroup": "struct",
