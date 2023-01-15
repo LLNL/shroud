@@ -32,6 +32,7 @@ typemap:
     fields:
       base: struct
       c_type: SCO_datapointer
+      f_module_name: scope_ns3_mod
       f_derived_type: datapointer
   - namespace: ns1
     declarations: ns1
@@ -39,6 +40,7 @@ typemap:
       fields:
         base: struct
         c_type: SCO_datapointer
+        f_module_name: scope_ns1_mod
         f_derived_type: datapointer
   - namespace: ns2
     declarations: ns2
@@ -46,4 +48,5 @@ typemap:
       fields:
         base: struct
         c_type: SCO_datapointer
+        f_module_name: scope_ns2_mod
         f_derived_type: datapointer

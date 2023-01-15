@@ -524,6 +524,7 @@
                     "cstruct_as_class"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
             "sgroup": "struct",
@@ -557,6 +558,7 @@
                     "cstruct_as_numpy"
                 ]
             },
+            "f_module_name": "struct_mod",
             "f_type": "type(cstruct_as_numpy)",
             "flat_name": "Cstruct_as_numpy",
             "sgroup": "struct",

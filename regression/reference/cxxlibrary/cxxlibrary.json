@@ -2829,6 +2829,7 @@
                     "cstruct1_cls"
                 ]
             },
+            "f_module_name": "cxxlibrary_mod",
             "f_type": "type(cstruct1_cls)",
             "flat_name": "Cstruct1_cls",
             "sgroup": "struct",
@@ -2859,6 +2860,7 @@
                     "cstruct1"
                 ]
             },
+            "f_module_name": "cxxlibrary_structns_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "structns_Cstruct1",
             "sgroup": "struct",

@@ -6194,6 +6194,7 @@
                     "array_info"
                 ]
             },
+            "f_module_name": "clibrary_mod",
             "f_type": "type(array_info)",
             "flat_name": "array_info",
             "sgroup": "struct",
