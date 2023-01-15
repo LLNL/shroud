@@ -283,6 +283,7 @@ class Typemap(object):
 
     def __export_yaml__(self, output, mode="all"):
         """Write out a subset of a wrapped type.
+        Other fields can be derived from these values.
 
         Args:
             output -
