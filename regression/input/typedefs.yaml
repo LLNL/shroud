@@ -15,6 +15,7 @@ cxx_header: typedefs.h
 options:
   debug: True
   wrap_python: True
+  PY_struct_arg: list
   literalinclude: True
 
 declarations:
@@ -22,4 +23,13 @@ declarations:
 # Using a typedef as an alias
 - decl: typedef int TypeID;
 - decl: TypeID typefunc(TypeID arg);
+
+# struct typedef
+- decl: struct s_Struct1 {
+          int i;
+          double d;
+        };
+- decl: typedef struct s_Struct1 Struct1Rename;
+- decl: void typestruct(Struct1Rename *arg1);
+
 

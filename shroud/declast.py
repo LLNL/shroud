@@ -982,8 +982,8 @@ class Parser(ExprParser):
             structnode = self.symtab.current.lookup_tag("struct", sname)
             if structnode is None:
                 raise RuntimeError("Struct tag '%s' is not defined" % sname)
+            node.class_specifier = structnode
             ntypemap = structnode.typemap
-            #self.info("Typemap {}".format(ntypemap.name))
             node.typemap = ntypemap
         self.exit("struct_decl")
         return node
@@ -1958,7 +1958,7 @@ class CXXClass(Node):
     children is populated by ast.py
     """
 
-    def __init__(self, name, symtab, ntypemap=None):
+    def __init__(self, name, symtab):
         """
         ntypemap from YAML file.
         """
@@ -1970,10 +1970,7 @@ class CXXClass(Node):
 
         forward = self.check_forward_declaration(symtab)
 
-        if ntypemap:
-            self.typemap = ntypemap
-            self.newtypemap = ntypemap
-        elif not forward:
+        if not forward:
             type_name = symtab.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,
@@ -2046,16 +2043,13 @@ class Struct(Node):
     children is populated by ast.py
     """
 
-    def __init__(self, name, symtab, ntypemap=None):
+    def __init__(self, name, symtab):
         self.name = name
         self.members = []
         self.has_ctor = True
         forward = self.check_forward_declaration(symtab)
 
-        if ntypemap:
-            self.newtypemap = ntypemap
-            self.typemap = ntypemap
-        elif not forward:
+        if not forward:
             type_name = symtab.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,

@@ -385,6 +385,9 @@
         "scope_file": [
             "enum"
         ],
+        "user_fmt": {
+            "PY_module_name": "cenum"
+        },
         "wrap": {
             "c": true,
             "fortran": true,

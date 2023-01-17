@@ -118,6 +118,9 @@
                         "options": {
                             "F_create_generic": true
                         },
+                        "user_fmt": {
+                            "function_suffix": "_default"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -253,6 +256,9 @@
                         "declgen": "Class1(int flag +value)",
                         "options": {
                             "F_create_generic": true
+                        },
+                        "user_fmt": {
+                            "function_suffix": "_flag"
                         },
                         "wrap": {
                             "c": true,
@@ -1819,6 +1825,11 @@
                         "decl": "int get_m_flag()",
                         "declgen": "int get_m_flag(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_flag",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_flag"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1904,6 +1915,11 @@
                         "decl": "int get_test()",
                         "declgen": "int get_test(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_test",
+                            "struct_name": "Class1",
+                            "wrapped_name": "test"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -2006,6 +2022,11 @@
                         "decl": "void set_test(int val)",
                         "declgen": "void set_test(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_test",
+                            "struct_name": "Class1",
+                            "wrapped_name": "test"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -2101,6 +2122,11 @@
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_name",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name"
+                        },
                         "wrap": {
                             "fortran": true
                         },
@@ -2161,6 +2187,11 @@
                         "declgen": "std::string get_m_name(void)",
                         "options": {},
                         "splicer_group": "buf",
+                        "user_fmt": {
+                            "field_name": "m_name",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2253,6 +2284,11 @@
                         "decl": "void set_m_name(std::string val)",
                         "declgen": "void set_m_name(std::string val +intent(in))",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_name",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name"
+                        },
                         "wrap": {
                             "fortran": true
                         },
@@ -2313,6 +2349,11 @@
                         "declgen": "void set_m_name(std::string val +intent(in))",
                         "options": {},
                         "splicer_group": "buf",
+                        "user_fmt": {
+                            "field_name": "m_name",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -2908,6 +2949,11 @@
                 "parse_keyword": "class",
                 "scope": "classes::Singleton::",
                 "typemap_name": "classes::Singleton",
+                "user_fmt": {
+                    "F_name_associated": "",
+                    "F_name_instance_get": "",
+                    "F_name_instance_set": ""
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3704,6 +3750,11 @@
                         "decl": "int get_nitems()",
                         "declgen": "int get_nitems(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "nitems",
+                            "struct_name": "Data",
+                            "wrapped_name": "nitems"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -3806,6 +3857,11 @@
                         "decl": "void set_nitems(int val)",
                         "declgen": "void set_nitems(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "nitems",
+                            "struct_name": "Data",
+                            "wrapped_name": "nitems"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -3911,6 +3967,11 @@
                         "decl": "int * get_items()",
                         "declgen": "int * get_items(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "Data",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "fortran": true
                         },
@@ -3984,6 +4045,11 @@
                         "declgen": "int * get_items(void)",
                         "options": {},
                         "splicer_group": "buf",
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "Data",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -4091,6 +4157,11 @@
                         "decl": "void set_items(int * val)",
                         "declgen": "void set_items(int * val +intent(in)+rank(1))",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "Data",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -4176,6 +4247,11 @@
                 "parse_keyword": "class",
                 "scope": "classes::Data::",
                 "typemap_name": "classes::Data",
+                "user_fmt": {
+                    "F_name_associated": "",
+                    "F_name_instance_get": "",
+                    "F_name_instance_set": ""
+                },
                 "variables": [
                     {
                         "<VARIABLE>": "****************************************",

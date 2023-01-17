@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytypedefsmodule.hpp"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TYPEDEFS_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -28,6 +31,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyArray_Descr *PY_s_Struct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -70,11 +74,114 @@ PY_typefunc(
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
 }
+
+// ----------------------------------------
+// Function:  void typestruct
+// Attrs:     +intent(subroutine)
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Struct1Rename * arg1
+// Attrs:     +intent(inout)
+// Exact:     py_inout_struct_*_list
+static char PY_typestruct__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_typestruct(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.typestruct
+    const char *SHT_kwlist[] = {
+        "arg1",
+        nullptr };
+    PyObject * SHPy_arg1 = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:typestruct",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return nullptr;
+
+    typestruct(&arg1);
+
+    // post_call
+    SHPy_arg1 = Py_BuildValue("O", arg1);
+
+    return (PyObject *) SHPy_arg1;
+// splicer end function.typestruct
+}
 static PyMethodDef PY_methods[] = {
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
+{"typestruct", (PyCFunction)PY_typestruct, METH_VARARGS|METH_KEYWORDS,
+    PY_typestruct__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
+
+// start PY_s_Struct1_create_array_descr
+// Create PyArray_Descr for s_Struct1
+static PyArray_Descr *PY_s_Struct1_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(2);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(2);
+    if (ldescr == nullptr) goto fail;
+
+    // i
+    obj = PyString_FromString("i");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // d
+    obj = PyString_FromString("d");
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    if (obj == nullptr) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+// end PY_s_Struct1_create_array_descr
 
 /*
  * inittypedefs - Initialization function for the module
@@ -150,6 +257,13 @@ inittypedefs(void)
     if (m == nullptr)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
+
+    import_array();
+
+    // Define PyArray_Descr for structs
+    PY_s_Struct1_array_descr = PY_s_Struct1_create_array_descr();
+    PyModule_AddObject(m, "s_Struct1_dtype", 
+        (PyObject *) PY_s_Struct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

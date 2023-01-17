@@ -645,6 +645,11 @@
                         "decl": "int get_x1()",
                         "declgen": "int get_x1(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "x1",
+                            "struct_name": "Cstruct_as_class",
+                            "wrapped_name": "x1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -747,6 +752,11 @@
                         "decl": "void set_x1(int val)",
                         "declgen": "void set_x1(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "x1",
+                            "struct_name": "Cstruct_as_class",
+                            "wrapped_name": "x1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -839,6 +849,11 @@
                         "decl": "int get_y1()",
                         "declgen": "int get_y1(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "y1",
+                            "struct_name": "Cstruct_as_class",
+                            "wrapped_name": "y1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -941,6 +956,11 @@
                         "decl": "void set_y1(int val)",
                         "declgen": "void set_y1(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "y1",
+                            "struct_name": "Cstruct_as_class",
+                            "wrapped_name": "y1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1125,6 +1145,11 @@
                         "decl": "int get_x1()",
                         "declgen": "int get_x1(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "x1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "x1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1227,6 +1252,11 @@
                         "decl": "void set_x1(int val)",
                         "declgen": "void set_x1(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "x1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "x1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1319,6 +1349,11 @@
                         "decl": "int get_y1()",
                         "declgen": "int get_y1(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "y1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "y1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1421,6 +1456,11 @@
                         "decl": "void set_y1(int val)",
                         "declgen": "void set_y1(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "y1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "y1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1513,6 +1553,11 @@
                         "decl": "int get_z1()",
                         "declgen": "int get_z1(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "z1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "z1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1615,6 +1660,11 @@
                         "decl": "void set_z1(int val)",
                         "declgen": "void set_z1(int val +intent(in)+value)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "z1",
+                            "struct_name": "Cstruct_as_subclass",
+                            "wrapped_name": "z1"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -4340,6 +4390,9 @@
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
                 },
+                "user_fmt": {
+                    "F_name_function": "sum"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -4721,6 +4774,11 @@
                 "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
                 "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "const_dvalue",
+                    "struct_name": "Cstruct_ptr",
+                    "wrapped_name": "const_dvalue"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -4804,6 +4862,11 @@
                 "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "field_name": "const_dvalue",
+                    "struct_name": "Cstruct_ptr",
+                    "wrapped_name": "const_dvalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -4948,6 +5011,11 @@
                 "decl": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,const double * val)",
                 "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "const_dvalue",
+                    "struct_name": "Cstruct_ptr",
+                    "wrapped_name": "const_dvalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -5108,6 +5176,11 @@
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "ivalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "ivalue"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -5207,6 +5280,11 @@
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "field_name": "ivalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "ivalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5370,6 +5448,11 @@
                 "decl": "void Cstruct_list_set_ivalue(Cstruct_list *SH_this,int * val)",
                 "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "ivalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "ivalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -5535,6 +5618,11 @@
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "dvalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "dvalue"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -5634,6 +5722,11 @@
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "field_name": "dvalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "dvalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -5797,6 +5890,11 @@
                 "decl": "void Cstruct_list_set_dvalue(Cstruct_list *SH_this,double * val)",
                 "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "dvalue",
+                    "struct_name": "Cstruct_list",
+                    "wrapped_name": "dvalue"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -5906,6 +6004,12 @@
         "scope_file": [
             "struct"
         ],
+        "user_fmt": {
+            "F_name_associated": "",
+            "F_name_instance_get": "",
+            "F_name_instance_set": "",
+            "PY_module_name": "cstruct"
+        },
         "wrap": {
             "c": true,
             "fortran": true

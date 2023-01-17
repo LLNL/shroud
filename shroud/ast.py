@@ -339,7 +339,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         cxx_header="",
         fortran_header="",
         namespace=None,
-        format=None,
+        format={},
         language="c++",
         library="library",
         options=None,
@@ -417,6 +417,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 ntypemap.update(values)
                 self.file_code[fname] = ntypemap
 
+        self.user_fmt = format
         self.default_format(format, kwargs)
 
         # Create a symbol table and a 'fake' AST node for global.
@@ -882,7 +883,7 @@ class BlockNode(AstNode, NamespaceMixin):
     Blocks can be added to a LibraryNode, NamespaceNode or ClassNode.
     """
 
-    def __init__(self, parent, format=None, options=None, **kwargs):
+    def __init__(self, parent, format={}, options=None, **kwargs):
         # From arguments
         self.parent = parent
         self.symtab = parent.symtab
@@ -901,6 +902,7 @@ class BlockNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
+        self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
         if format:
             self.fmtdict.update(format, replace=True)
@@ -911,7 +913,7 @@ class BlockNode(AstNode, NamespaceMixin):
 
 class NamespaceNode(AstNode, NamespaceMixin):
     def __init__(self, decl, parent, ast=None, cxx_header="",
-                 format=None, options=None, skip=False, **kwargs):
+                 format={}, options=None, skip=False, **kwargs):
         """Create NamespaceNode.
 
         parent may be LibraryNode or NamespaceNode.
@@ -969,6 +971,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         else:
             self.scope_file = self.parent.scope_file + [self.name]
 
+        self.user_fmt = format
         self.default_format(parent, format, skip)
 
     #####
@@ -1043,7 +1046,7 @@ class ClassNode(AstNode, NamespaceMixin):
         ast=None,
         base=[],
         cxx_header="",
-        format=None,
+        format={},
         options=None,
         parse_keyword="class",
         template_parameters=None,
@@ -1103,6 +1106,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
 
+        self.user_fmt = format
         self.default_format(parent, format, kwargs)
 
         fields = kwargs.get("fields", None)
@@ -1343,7 +1347,7 @@ class FunctionNode(AstNode):
     """
 
     def __init__(
-        self, decl, parent, format=None, ast=None, options=None, **kwargs
+        self, decl, parent, format={}, ast=None, options=None, **kwargs
     ):
         """
         ast - None, declast.Declaration, declast.Template
@@ -1357,6 +1361,7 @@ class FunctionNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
+        self.user_fmt = format
         self.default_format(parent, format, kwargs)
 
         # working variables
@@ -1580,7 +1585,7 @@ class EnumNode(AstNode):
     """
 
     def __init__(
-        self, decl, parent, format=None, ast=None, options=None, **kwargs
+        self, decl, parent, format={}, ast=None, options=None, **kwargs
     ):
 
         # From arguments
@@ -1594,6 +1599,7 @@ class EnumNode(AstNode):
         self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
+        self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         if not decl:
@@ -1698,7 +1704,7 @@ class TypedefNode(AstNode):
     """
 
     def __init__(self, name, parent, ntypemap=None, ast=None,
-                 format=None, options=None,
+                 format={}, options=None,
                  **kwargs):
         """
         Args:
@@ -1718,6 +1724,7 @@ class TypedefNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
+        self.user_fmt = format
         self.default_format(parent, format, kwargs)
         self.update_names()
 
@@ -1796,7 +1803,7 @@ class VariableNode(AstNode):
     """
 
     def __init__(
-        self, decl, parent, format=None, ast=None, options=None, **kwargs
+        self, decl, parent, format={}, ast=None, options=None, **kwargs
     ):
 
         # From arguments
@@ -1810,6 +1817,7 @@ class VariableNode(AstNode):
         self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
+        self.user_fmt = format
         self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         if not decl:

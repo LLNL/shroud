@@ -286,6 +286,9 @@
         "scope_file": [
             "struct"
         ],
+        "user_fmt": {
+            "PY_module_name": "cstruct"
+        },
         "wrap": {
             "python": true
         }

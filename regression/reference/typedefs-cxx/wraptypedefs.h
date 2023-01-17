@@ -32,10 +32,24 @@ extern "C" {
 typedef int TYP_TypeID;
 // end typedef TypeID
 
+// start typedef Struct1Rename
+// typedef Struct1Rename
+typedef struct s_Struct1 TYP_Struct1Rename;
+// end typedef Struct1Rename
+
+
+struct s_TYP_s_struct1 {
+    int i;
+    double d;
+};
+typedef struct s_TYP_s_struct1 TYP_s_struct1;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 
 TYP_TypeID TYP_typefunc(TYP_TypeID arg);
+
+void TYP_typestruct(TYP_Struct1Rename * arg1);
 
 #ifdef __cplusplus
 }

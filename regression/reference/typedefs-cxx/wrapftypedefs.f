@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module typedefs_mod
-    use iso_c_binding, only : C_INT
+    use iso_c_binding, only : C_DOUBLE, C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -25,6 +25,19 @@ module typedefs_mod
     ! typedef TypeID
     integer, parameter :: type_id = C_INT
     ! end typedef TypeID
+
+    ! start typedef Struct1Rename
+    ! typedef Struct1Rename
+    integer, parameter :: struct1_rename = None
+    ! end typedef Struct1Rename
+
+
+    ! start derived-type s_struct1
+    type, bind(C) :: s_struct1
+        integer(C_INT) :: i
+        real(C_DOUBLE) :: d
+    end type s_struct1
+    ! end derived-type s_struct1
 
     ! ----------------------------------------
     ! Function:  TypeID typefunc
@@ -48,6 +61,27 @@ module typedefs_mod
         end function typefunc
     end interface
     ! end typefunc
+
+    ! ----------------------------------------
+    ! Function:  void typestruct
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
+    ! ----------------------------------------
+    ! Argument:  Struct1Rename * arg1
+    ! Attrs:     +intent(inout)
+    ! Requested: c_inout_struct_*
+    ! Match:     c_inout_struct
+    ! start typestruct
+    interface
+        subroutine typestruct(arg1) &
+                bind(C, name="TYP_typestruct")
+            import :: struct1_rename
+            implicit none
+            struct(struct1_rename), intent(INOUT) :: arg1
+        end subroutine typestruct
+    end interface
+    ! end typestruct
 
     interface
         ! splicer begin additional_interfaces

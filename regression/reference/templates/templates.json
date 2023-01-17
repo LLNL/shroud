@@ -4196,6 +4196,10 @@
                     "templates",
                     "std"
                 ],
+                "user_fmt": {
+                    "C_name_scope": "",
+                    "PY_module_scope": "templates"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -4306,6 +4310,9 @@
                     "templates",
                     "internal"
                 ],
+                "user_fmt": {
+                    "PY_module_scope": "templates"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,

@@ -3141,6 +3141,9 @@
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
                 },
+                "user_fmt": {
+                    "F_name_function": "sum"
+                },
                 "wrap": {},
                 "zz_fmtdict": {
                     "F_name_function": "sum",
@@ -3232,6 +3235,12 @@
         "scope_file": [
             "struct"
         ],
+        "user_fmt": {
+            "F_name_associated": "",
+            "F_name_instance_get": "",
+            "F_name_instance_set": "",
+            "PY_module_name": "cstruct"
+        },
         "wrap": {
             "python": true
         }

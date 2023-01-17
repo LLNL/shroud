@@ -92,6 +92,11 @@
                         "decl": "int get_flag()",
                         "declgen": "int get_flag(void)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "m_flag",
+                            "struct_name": "Class1",
+                            "wrapped_name": "flag"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
