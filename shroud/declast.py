@@ -982,8 +982,8 @@ class Parser(ExprParser):
             structnode = self.symtab.current.lookup_tag("struct", sname)
             if structnode is None:
                 raise RuntimeError("Struct tag '%s' is not defined" % sname)
+            node.class_specifier = structnode
             ntypemap = structnode.typemap
-            #self.info("Typemap {}".format(ntypemap.name))
             node.typemap = ntypemap
         self.exit("struct_decl")
         return node

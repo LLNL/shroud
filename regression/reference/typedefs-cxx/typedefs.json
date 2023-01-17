@@ -445,6 +445,30 @@
             {
                 "<TYPEDEF>": "****************************************",
                 "ast": {
+                    "class_specifier": {
+                        "members": [
+                            {
+                                "declarator": {
+                                    "name": "i"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "d"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "name": "s_Struct1",
+                        "typemap_name": "s_Struct1"
+                    },
                     "declarator": {
                         "name": "Struct1Rename"
                     },
