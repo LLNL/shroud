@@ -23,6 +23,11 @@
 typedef int TYP_TypeID;
 // end typedef TypeID
 
+// start typedef Struct1Rename
+// typedef Struct1Rename
+typedef struct s_Struct1 TYP_Struct1Rename;
+// end typedef Struct1Rename
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

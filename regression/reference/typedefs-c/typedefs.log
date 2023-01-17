@@ -1,13 +1,20 @@
 Read yaml typedefs.yaml
+Close typedefs_types.yaml
 C TypeID typefunc(TypeID arg +value)  +intent(function)
+C void typestruct(Struct1Rename * arg1)  +intent(subroutine)
 Close wraptypedefs.h
+class s_Struct1
 typedef TypeID
+typedef Struct1Rename
 Fortran TypeID typefunc(TypeID arg +value)  +intent(function)
+Fortran void typestruct(Struct1Rename * arg1)  +intent(subroutine)
 C-interface TypeID typefunc(TypeID arg +value)  +intent(function)
+C-interface void typestruct(Struct1Rename * arg1)  +intent(subroutine)
 Close wrapftypedefs.f
 Close utiltypedefs.c
 Close typestypedefs.h
 Python function TypeID typefunc(TypeID arg +value)
+Python function void typestruct(Struct1Rename * arg1)
 Close pytypedefsmodule.c
 Close pytypedefsmodule.h
 Close setup.py

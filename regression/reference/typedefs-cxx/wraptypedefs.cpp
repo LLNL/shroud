@@ -40,4 +40,24 @@ TYP_TypeID TYP_typefunc(TYP_TypeID arg)
 }
 // end TYP_typefunc
 
+// ----------------------------------------
+// Function:  void typestruct
+// Attrs:     +intent(subroutine)
+// Exact:     c_subroutine
+// ----------------------------------------
+// Argument:  Struct1Rename * arg1
+// Attrs:     +intent(inout)
+// Requested: c_inout_struct_*
+// Match:     c_inout_struct
+// start TYP_typestruct
+void TYP_typestruct(TYP_Struct1Rename * arg1)
+{
+    // splicer begin function.typestruct
+    Struct1Rename * SHCXX_arg1 = static_cast<Struct1Rename *>
+        (static_cast<void *>(arg1));
+    typestruct(SHCXX_arg1);
+    // splicer end function.typestruct
+}
+// end TYP_typestruct
+
 }  // extern "C"
