@@ -185,6 +185,9 @@
         "scope_file": [
             "memdoc"
         ],
+        "user_fmt": {
+            "C_prefix": "STR_"
+        },
         "wrap": {
             "c": true,
             "fortran": true

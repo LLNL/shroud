@@ -89,6 +89,9 @@
                 "options": {
                     "F_force_wrapper": true
                 },
+                "user_fmt": {
+                    "F_name_generic": "update_real"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -187,6 +190,9 @@
                 "declgen": "void UpdateAsDouble(double arg +value)",
                 "options": {
                     "F_force_wrapper": true
+                },
+                "user_fmt": {
+                    "F_name_generic": "update_real"
                 },
                 "wrap": {
                     "c": true,

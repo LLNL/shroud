@@ -4046,6 +4046,9 @@
         "scope_file": [
             "types"
         ],
+        "user_fmt": {
+            "PY_module_name": "shtypes"
+        },
         "wrap": {
             "c": true,
             "fortran": true,

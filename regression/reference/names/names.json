@@ -224,6 +224,9 @@
                 "parse_keyword": "struct",
                 "scope": "Cstruct_as_class::",
                 "typemap_name": "Cstruct_as_class",
+                "user_fmt": {
+                    "F_derived_name": "Fstruct_as_class"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -265,6 +268,9 @@
                 "parse_keyword": "struct",
                 "scope": "Cstruct_as_subclass::",
                 "typemap_name": "Cstruct_as_subclass",
+                "user_fmt": {
+                    "F_derived_name": "Fstruct_as_subclass"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -354,6 +360,9 @@
                     "bar": 4
                 },
                 "typemap_name": "Color",
+                "user_fmt": {
+                    "baz": "4"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -656,6 +665,11 @@
                 "decl": "void function2()",
                 "declgen": "void function2(void)",
                 "options": {},
+                "user_fmt": {
+                    "C_name": "c_name_special",
+                    "F_C_name": "f_c_name_special",
+                    "F_name_impl": "f_name_special"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -719,6 +733,10 @@
                 "decl": "void function3a(int i)",
                 "declgen": "void function3a(int i +value)",
                 "options": {},
+                "user_fmt": {
+                    "F_name_generic": "generic3",
+                    "F_name_impl": "F_name_function3a_int"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -839,6 +857,10 @@
                 "decl": "void function3a(long i)",
                 "declgen": "void function3a(long i +value)",
                 "options": {},
+                "user_fmt": {
+                    "F_name_generic": "generic3",
+                    "F_name_impl": "F_name_function3a_long"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -3201,6 +3223,9 @@
                                 "decl": "void method1()",
                                 "declgen": "void method1(void)",
                                 "options": {},
+                                "user_fmt": {
+                                    "F_name_function": "type_method1"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true,
@@ -3252,6 +3277,11 @@
                                 "decl": "void method2()",
                                 "declgen": "void method2(void)",
                                 "options": {},
+                                "user_fmt": {
+                                    "CXX_this": "SH_this2",
+                                    "C_this": "self2",
+                                    "F_this": "obj2"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true,
@@ -3298,6 +3328,11 @@
                         "parse_keyword": "class",
                         "scope": "ns0::Names::",
                         "typemap_name": "ns0::Names",
+                        "user_fmt": {
+                            "C_header_filename": "foo.h",
+                            "C_impl_filename": "foo.cpp",
+                            "F_derived_name": "FNames"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true,
@@ -3370,6 +3405,12 @@
                     "testnames",
                     "ns0"
                 ],
+                "user_fmt": {
+                    "C_header_filename": "foons0.h",
+                    "C_impl_filename": "foons0.cpp",
+                    "F_impl_filename": "foo.f",
+                    "F_module_name": "name_module"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3489,6 +3530,9 @@
                         "parse_keyword": "class",
                         "scope": "internal::ImplWorker1::",
                         "typemap_name": "internal::ImplWorker1",
+                        "user_fmt": {
+                            "template_suffix": "_instantiation3"
+                        },
                         "wrap": {
                             "c": true
                         },
@@ -4116,6 +4160,19 @@
         "scope_file": [
             "testnames"
         ],
+        "user_fmt": {
+            "CXX_local": "ARG_",
+            "C_header_filename": "top.h",
+            "C_header_filename_suffix": "hh",
+            "C_impl_filename": "top.cpp",
+            "C_impl_filename_suffix": "cc",
+            "F_filename_suffix": "F",
+            "F_impl_filename": "top.f",
+            "F_module_name": "top_module",
+            "LUA_module_name": "lua_module_name",
+            "PY_type_dtor": "mydtor",
+            "PY_type_obj": "myobj"
+        },
         "wrap": {
             "c": true,
             "fortran": true,

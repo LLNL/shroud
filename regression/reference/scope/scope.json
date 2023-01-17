@@ -547,6 +547,11 @@
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this)",
                 "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "items",
+                    "struct_name": "DataPointer",
+                    "wrapped_name": "items"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -639,6 +644,11 @@
                 "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this)",
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "field_name": "items",
+                    "struct_name": "DataPointer",
+                    "wrapped_name": "items"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -796,6 +806,11 @@
                 "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
                 "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                 "options": {},
+                "user_fmt": {
+                    "field_name": "items",
+                    "struct_name": "DataPointer",
+                    "wrapped_name": "items"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -1123,6 +1138,11 @@
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this)",
                         "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "fortran": true
                         },
@@ -1216,6 +1236,11 @@
                         "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this)",
                         "options": {},
                         "splicer_group": "buf",
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1373,6 +1398,11 @@
                         "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
                         "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,
@@ -1725,6 +1755,11 @@
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this)",
                         "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "fortran": true
                         },
@@ -1818,6 +1853,11 @@
                         "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this)",
                         "options": {},
                         "splicer_group": "buf",
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true
@@ -1975,6 +2015,11 @@
                         "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
                         "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(in)+rank(1))",
                         "options": {},
+                        "user_fmt": {
+                            "field_name": "items",
+                            "struct_name": "DataPointer",
+                            "wrapped_name": "items"
+                        },
                         "wrap": {
                             "c": true,
                             "f_c": true,

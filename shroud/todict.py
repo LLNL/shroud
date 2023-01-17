@@ -57,7 +57,7 @@ class ToDict(visitor.Visitor):
         return [self.visit(n) for n in node]
 
     def visit_dict(self, node):
-        return {key: self.visit(value) for (key, value) in node.items()}
+        return {key: "" if value is None else self.visit(value) for (key, value) in node.items()}
 
     ######################################################################
 
@@ -278,6 +278,7 @@ class ToDict(visitor.Visitor):
                 "typedefs",
                 "variables",
                 "wrap",
+                "user_fmt",
 #                "fmtdict",
 #                "options",
 #                "scope_file",
@@ -295,7 +296,11 @@ class ToDict(visitor.Visitor):
         add_comment(d, "class")
         add_non_none_fields(node, d, ["linenumber"])
         add_true_fields(
-            node, d, ["python", "scope", "template_parameters"]
+            node, d, [
+                "python",
+                "scope",
+                "template_parameters",
+            ]
         )
         if node.baseclass:
             d["baseclass"] = stringify_baseclass(node.baseclass)
@@ -311,6 +316,7 @@ class ToDict(visitor.Visitor):
                 "enums",
                 "functions",
                 "variables",
+                "user_fmt",
                 "fmtdict",
                 "options",
                 "template_arguments",
@@ -330,6 +336,7 @@ class ToDict(visitor.Visitor):
                 "_PTR_F_C_index",
                 "_fmtargs",
                 "_fmtresult",
+                "user_fmt",
                 "fmtdict",
                 "options",
                 "template_arguments",
@@ -401,6 +408,7 @@ class ToDict(visitor.Visitor):
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, [
             "_fmtmembers",
+            "user_fmt",
             "fmtdict",
             "options",
             "wrap",
@@ -412,7 +420,7 @@ class ToDict(visitor.Visitor):
         add_comment(d, "namespace")
         self.add_visit_fields(node, d, [
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
-            "fmtdict", "options", "wrap"])
+            "user_fmt", "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, ["scope_file"])
         add_non_none_fields(node, d, ["scope"])
@@ -422,8 +430,13 @@ class ToDict(visitor.Visitor):
         d = dict(name=node.name)
         add_comment(d, "typedef")
         self.add_visit_fields(node, d, [
-            "ast", "fmtdict", "options", "wrap",
-            "f_kind", "f_module",
+            "ast",
+            "user_fmt",
+            "fmtdict",
+            "options",
+            "wrap",
+            "f_kind",
+            "f_module",
         ])
         add_non_none_fields(node, d, ["linenumber"])
         return d
@@ -431,7 +444,12 @@ class ToDict(visitor.Visitor):
     def visit_VariableNode(self, node):
         d = dict(name=node.name, ast=self.visit(node.ast))
         add_comment(d, "variable")
-        self.add_visit_fields(node, d, ["fmtdict", "options", "wrap"])
+        self.add_visit_fields(node, d, [
+            "user_fmt",
+            "fmtdict",
+            "options",
+            "wrap",
+        ])
         add_non_none_fields(node, d, ["linenumber"])
         return d
 
@@ -489,8 +507,8 @@ def add_non_none_fields(node, d, fields):
 
 
 def add_true_fields(node, d, fields):
-    """Update dict d  with fields from node which are not None.
-    Used to skip empty fields.
+    """Update dict d with fields from node which are True.
+    Used to skip empty list and dictionary fields.
     """
     for key in fields:
         value = getattr(node, key)
@@ -587,6 +605,7 @@ class PrintNode(visitor.Visitor):
         return node.value
 
     def visit_Block(self, node):
+#        self.add_visit_fields(node, d, ["user_fmt",])
         return self.stmt_list(node.stmts)
 
     def visit_CXXClass(self, node):

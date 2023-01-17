@@ -518,6 +518,9 @@
                                             "description": "longer description joined with previous line"
                                         },
                                         "options": {},
+                                        "user_fmt": {
+                                            "F_name_function": "delete"
+                                        },
                                         "wrap": {
                                             "c": true,
                                             "f_c": true,
@@ -991,6 +994,9 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string & getNameArg(void) const",
                                         "options": {},
+                                        "user_fmt": {
+                                            "F_string_result_as_arg": "name"
+                                        },
                                         "wrap": {
                                             "c": true,
                                             "lua": true,
@@ -1117,6 +1123,9 @@
                                         "declgen": "void getNameArg(string & name) const",
                                         "options": {},
                                         "splicer_group": "buf",
+                                        "user_fmt": {
+                                            "F_string_result_as_arg": "name"
+                                        },
                                         "wrap": {
                                             "c": true,
                                             "f_c": true
@@ -1240,6 +1249,9 @@
                                         "declgen": "void getNameArg(string & name) const",
                                         "options": {},
                                         "splicer_group": "buf",
+                                        "user_fmt": {
+                                            "F_string_result_as_arg": "name"
+                                        },
                                         "wrap": {
                                             "fortran": true
                                         },
@@ -1296,6 +1308,9 @@
                                         "decl": "int  getValue(int value)",
                                         "declgen": "int getValue(int value +value)",
                                         "options": {},
+                                        "user_fmt": {
+                                            "function_suffix": "_from_int"
+                                        },
                                         "wrap": {
                                             "c": true,
                                             "f_c": true,
@@ -2373,6 +2388,9 @@
                                             "brief": "destructor"
                                         },
                                         "options": {},
+                                        "user_fmt": {
+                                            "F_name_function": "delete"
+                                        },
                                         "wrap": {
                                             "c": true,
                                             "f_c": true,
@@ -6765,6 +6783,9 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
                                 "options": {},
+                                "user_fmt": {
+                                    "function_suffix": ""
+                                },
                                 "wrap": {
                                     "c": true,
                                     "fortran": true,
@@ -6911,6 +6932,9 @@
                                 "declgen": "void test_names(const std::string & name)",
                                 "options": {},
                                 "splicer_group": "buf",
+                                "user_fmt": {
+                                    "function_suffix": ""
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true
@@ -7024,6 +7048,9 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
                                 "options": {},
+                                "user_fmt": {
+                                    "function_suffix": "_flag"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "fortran": true,
@@ -7245,6 +7272,9 @@
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
                                 "options": {},
                                 "splicer_group": "buf",
+                                "user_fmt": {
+                                    "function_suffix": "_flag"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true
@@ -7866,6 +7896,9 @@
                                 "decl": "void testmpi(MPI_Comm comm)",
                                 "declgen": "void testmpi(MPI_Comm comm +value)",
                                 "options": {},
+                                "user_fmt": {
+                                    "function_suffix": "_mpi"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true,
@@ -7997,6 +8030,9 @@
                                 "decl": "void testmpi()",
                                 "declgen": "void testmpi(void)",
                                 "options": {},
+                                "user_fmt": {
+                                    "function_suffix": "_serial"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "f_c": true,
@@ -11231,6 +11267,12 @@
                 }
             }
         ],
+        "user_fmt": {
+            "C_prefix": "AA_",
+            "F_name_instance_get": "yadda",
+            "F_name_instance_set": "",
+            "PY_prefix": "PP_"
+        },
         "wrap": {
             "c": true,
             "fortran": true,

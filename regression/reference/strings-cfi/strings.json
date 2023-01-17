@@ -1209,6 +1209,9 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true
                 },
@@ -1301,6 +1304,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1425,6 +1431,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -2030,6 +2039,9 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {},
                 "zz_fmtdict": {
                     "F_string_result_as_arg": "output",
@@ -2085,6 +2097,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2209,6 +2224,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -2746,6 +2764,9 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true
                 },
@@ -2840,6 +2861,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2965,6 +2989,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -6553,6 +6580,9 @@
                 "options": {
                     "wrap_fortran": false
                 },
+                "user_fmt": {
+                    "C_bufferify_suffix": "_BUFFER"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -6658,6 +6688,9 @@
                     "wrap_fortran": false
                 },
                 "splicer_group": "cfi",
+                "user_fmt": {
+                    "C_bufferify_suffix": "_BUFFER"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true

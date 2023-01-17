@@ -1343,6 +1343,9 @@
                 "options": {
                     "literalinclude": true
                 },
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "python": true
@@ -1454,6 +1457,9 @@
                     "literalinclude": true
                 },
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -1577,6 +1583,9 @@
                     "literalinclude": true
                 },
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -2205,6 +2214,9 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "options": {},
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "python": true
                 },
@@ -2280,6 +2292,9 @@
                 },
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -2402,6 +2417,9 @@
                 },
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -2993,6 +3011,9 @@
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "options": {},
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "python": true
@@ -3105,6 +3126,9 @@
                 },
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
@@ -3228,6 +3252,9 @@
                 },
                 "options": {},
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
                 "wrap": {
                     "fortran": true
                 },
@@ -7171,6 +7198,9 @@
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
                 "options": {},
+                "user_fmt": {
+                    "C_bufferify_suffix": "_BUFFER"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,

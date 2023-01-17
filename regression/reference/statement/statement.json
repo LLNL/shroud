@@ -278,6 +278,9 @@
         "scope_file": [
             "statement"
         ],
+        "user_fmt": {
+            "C_prefix": "STMT_"
+        },
         "wrap": {
             "c": true,
             "fortran": true

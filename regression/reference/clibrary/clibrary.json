@@ -3687,6 +3687,10 @@
                 "options": {
                     "wrap_python": false
                 },
+                "user_fmt": {
+                    "F_C_name": "Fortran_bindC1b",
+                    "F_name_impl": "Fortran_bindC1a"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true,
@@ -3761,6 +3765,9 @@
                 },
                 "options": {
                     "wrap_python": false
+                },
+                "user_fmt": {
+                    "F_name_impl": "Fortran_bindC2a"
                 },
                 "wrap": {
                     "c": true,
@@ -3869,6 +3876,9 @@
                     "wrap_python": false
                 },
                 "splicer_group": "buf",
+                "user_fmt": {
+                    "F_name_impl": "Fortran_bindC2a"
+                },
                 "wrap": {
                     "c": true,
                     "f_c": true
