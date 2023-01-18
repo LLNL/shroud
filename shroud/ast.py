@@ -1123,6 +1123,7 @@ class ClassNode(AstNode, NamespaceMixin):
         else:
             raise TypeError("parse_keyword must be 'class' or 'struct'")
 
+        self.user_fields = fields
         self.typemap = ast.typemap
         if self.wrap_as == "struct":
             typemap.fill_struct_typemap(self, fields)

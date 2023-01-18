@@ -316,6 +316,7 @@ class ToDict(visitor.Visitor):
                 "enums",
                 "functions",
                 "variables",
+                "user_fields",
                 "user_fmt",
                 "fmtdict",
                 "options",
