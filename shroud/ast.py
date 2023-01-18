@@ -1114,7 +1114,9 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope_file = self.parent.scope_file + [self.name]
 
         self.user_fmt = format
-        self.default_format(parent, format, kwargs)
+        self.deprecated_format(kwargs)
+        self.fmtdict = util.Scope(parent.fmtdict)
+        self.default_format()
 
         if self.parse_keyword == "struct":
             self.wrap_as = self.options.wrap_struct_as
@@ -1153,9 +1155,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
     #####
 
-    def default_format(self, parent, format, kwargs):
-        """Set format dictionary."""
-
+    def deprecated_format(self, kwargs):
         for name in [
             "C_header_filename",
             "C_impl_filename",
@@ -1179,8 +1179,9 @@ class ClassNode(AstNode, NamespaceMixin):
                     )
                 )
 
-        self.fmtdict = util.Scope(
-            parent=parent.fmtdict,
+    def default_format(self):
+        """Set format dictionary."""
+        self.fmtdict.update(dict(
             cxx_type=self.name,
             cxx_class=self.name,
             class_scope=self.name + "::",
@@ -1189,11 +1190,10 @@ class ClassNode(AstNode, NamespaceMixin):
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
             file_scope="_".join(self.scope_file[1:]),
-        )
+        ))
 
-        fmt_class = self.fmtdict
-        if format:
-            fmt_class.update(format, replace=True)
+        if self.user_fmt:
+            self.fmtdict.update(self.user_fmt, replace=True)
         self.expand_format_templates()
 
     def expand_format_templates(self):
