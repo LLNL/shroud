@@ -70,7 +70,10 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "WRA_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "class1",
+                    "underscore_name": "class1",
+                    "upper_name": "CLASS1"
                 }
             }
         ],

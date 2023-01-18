@@ -89,18 +89,18 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_*_capptr
-// start STR_create__cstruct_as_class
-STR_Cstruct_as_class * STR_create__cstruct_as_class(
+// start STR_create_cstruct_as_class
+STR_Cstruct_as_class * STR_create_cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
 {
-    // splicer begin function.create__cstruct_as_class
+    // splicer begin function.create_cstruct_as_class
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create__cstruct_as_class
+    // splicer end function.create_cstruct_as_class
 }
-// end STR_create__cstruct_as_class
+// end STR_create_cstruct_as_class
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
@@ -116,15 +116,15 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
+STR_Cstruct_as_class * STR_create_cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
-    // splicer begin function.create__cstruct_as_class_args
+    // splicer begin function.create_cstruct_as_class_args
     Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create__cstruct_as_class_args
+    // splicer end function.create_cstruct_as_class_args
 }
 
 // ----------------------------------------
@@ -165,16 +165,16 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
+STR_Cstruct_as_subclass * STR_create_cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
-    // splicer begin function.create__cstruct_as_subclass_args
+    // splicer begin function.create_cstruct_as_subclass_args
     Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,
         y, z);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create__cstruct_as_subclass_args
+    // splicer end function.create_cstruct_as_subclass_args
 }
 
 // ----------------------------------------

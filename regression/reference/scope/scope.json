@@ -103,7 +103,10 @@
                     "class_scope": "DataPointer::",
                     "cxx_class": "DataPointer",
                     "cxx_type": "DataPointer",
-                    "file_scope": "ns3_DataPointer"
+                    "file_scope": "ns3_DataPointer",
+                    "lower_name": "datapointer",
+                    "underscore_name": "data_pointer",
+                    "upper_name": "DATAPOINTER"
                 }
             },
             {
@@ -195,7 +198,10 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "class1",
+                    "underscore_name": "class1",
+                    "upper_name": "CLASS1"
                 }
             },
             {
@@ -287,7 +293,10 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "class2",
+                    "underscore_name": "class2",
+                    "upper_name": "CLASS2"
                 }
             }
         ],
@@ -1015,7 +1024,10 @@
                             "class_scope": "DataPointer::",
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
-                            "file_scope": "ns1_DataPointer"
+                            "file_scope": "ns1_DataPointer",
+                            "lower_name": "datapointer",
+                            "underscore_name": "data_pointer",
+                            "upper_name": "DATAPOINTER"
                         }
                     }
                 ],
@@ -1632,7 +1644,10 @@
                             "class_scope": "DataPointer::",
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
-                            "file_scope": "ns2_DataPointer"
+                            "file_scope": "ns2_DataPointer",
+                            "lower_name": "datapointer",
+                            "underscore_name": "data_pointer",
+                            "upper_name": "DATAPOINTER"
                         }
                     }
                 ],

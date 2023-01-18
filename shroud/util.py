@@ -9,6 +9,7 @@ from __future__ import absolute_import
 
 import collections
 import os
+import re
 import string
 
 try:
@@ -69,32 +70,22 @@ def append_format_cmds(lstout, stmts, name, fmt):
     return True
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
-def un_camel(text):
+def un_camel(name):
     """ Converts a CamelCase name into an under_score name.
 
         >>> un_camel('CamelCase')
         'camel_case'
         >>> un_camel('getHTTPResponseCode')
         'get_http_response_code'
+        >>> un_camel('TypeID')
+        'type_id'
+        >>> un_camel('AFunction')
+        'a_function
+        >>> un_camel("Create_Cstruct_as_class")
+        'create_cstruct_as_class'
     """
-    result = []
-    pos = 0
-    while pos < len(text):
-        if text[pos].isupper():
-            if (
-                pos - 1 > 0
-                and text[pos - 1].islower()
-                or pos - 1 > 0
-                and pos + 1 < len(text)
-                and text[pos + 1].islower()
-            ):
-                result.append("_%s" % text[pos].lower())
-            else:
-                result.append(text[pos].lower())
-        else:
-            result.append(text[pos])
-        pos += 1
-    return "".join(result)
+    name = re.sub('([^_])([A-Z][a-z]+)', r'\1_\2', name)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', name).lower()
 
 
 # http://stackoverflow.com/questions/3232943/update-value-of-a-nested-dictionary-of-varying-depth

@@ -61,7 +61,10 @@
                     "class_scope": "array_info::",
                     "cxx_class": "array_info",
                     "cxx_type": "array_info",
-                    "file_scope": "array_info"
+                    "file_scope": "array_info",
+                    "lower_name": "array_info",
+                    "underscore_name": "array_info",
+                    "upper_name": "ARRAY_INFO"
                 }
             }
         ],

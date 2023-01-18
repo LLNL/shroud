@@ -2558,7 +2558,10 @@
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "class1",
+                    "underscore_name": "class1",
+                    "upper_name": "CLASS1"
                 }
             },
             {
@@ -2817,7 +2820,10 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "class2",
+                    "underscore_name": "class2",
+                    "upper_name": "CLASS2"
                 }
             },
             {
@@ -2983,7 +2989,10 @@
                     "cxx_type": "Singleton",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Singleton",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "singleton",
+                    "underscore_name": "singleton",
+                    "upper_name": "SINGLETON"
                 }
             },
             {
@@ -3263,7 +3272,10 @@
                     "cxx_type": "Shape",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Shape",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "shape",
+                    "underscore_name": "shape",
+                    "upper_name": "SHAPE"
                 }
             },
             {
@@ -3438,7 +3450,10 @@
                     "cxx_type": "Circle",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Circle",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "circle",
+                    "underscore_name": "circle",
+                    "upper_name": "CIRCLE"
                 }
             },
             {
@@ -4341,7 +4356,10 @@
                     "cxx_type": "Data",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                     "file_scope": "Data",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "data",
+                    "underscore_name": "data",
+                    "upper_name": "DATA"
                 }
             }
         ],

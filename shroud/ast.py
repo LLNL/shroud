@@ -545,6 +545,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
+            F_derived_name_template="{lower_name}",
             F_typedef_name_template="{F_name_scope}{underscore_name}",
 
             LUA_module_name_template="{library_lower}",
@@ -1114,7 +1115,9 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope_file = self.parent.scope_file + [self.name]
 
         self.user_fmt = format
-        self.default_format(parent, format, kwargs)
+        self.deprecated_format(kwargs)
+        self.fmtdict = util.Scope(parent.fmtdict)
+        self.default_format()
 
         if self.parse_keyword == "struct":
             self.wrap_as = self.options.wrap_struct_as
@@ -1153,9 +1156,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
     #####
 
-    def default_format(self, parent, format, kwargs):
-        """Set format dictionary."""
-
+    def deprecated_format(self, kwargs):
         for name in [
             "C_header_filename",
             "C_impl_filename",
@@ -1179,21 +1180,27 @@ class ClassNode(AstNode, NamespaceMixin):
                     )
                 )
 
-        self.fmtdict = util.Scope(
-            parent=parent.fmtdict,
+    def default_format(self):
+        """Set format dictionary."""
+        self.fmtdict.update(dict(
             cxx_type=self.name,
             cxx_class=self.name,
+
+            underscore_name = util.un_camel(self.name),
+            upper_name = self.name.upper(),
+            lower_name = self.name.lower(),
+
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
+
+            # The scope for things in the class.
             C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
-            F_derived_name=self.name.lower(),
             file_scope="_".join(self.scope_file[1:]),
-        )
+        ))
 
-        fmt_class = self.fmtdict
-        if format:
-            fmt_class.update(format, replace=True)
+        if self.user_fmt:
+            self.fmtdict.update(self.user_fmt, replace=True)
         self.expand_format_templates()
 
     def expand_format_templates(self):
@@ -1207,6 +1214,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_header_filename", "_class")
         self.eval_template("C_impl_filename", "_class")
 
+        self.eval_template("F_derived_name")
+        
         # As PyArray_Descr
         if self.parse_keyword == "struct":
             self.eval_template("PY_struct_array_descr_create")
