@@ -27,10 +27,10 @@ module worker_names
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine afunction() &
-                bind(C, name="NAM_afunction")
+        subroutine a_function() &
+                bind(C, name="NAM_a_function")
             implicit none
-        end subroutine afunction
+        end subroutine a_function
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

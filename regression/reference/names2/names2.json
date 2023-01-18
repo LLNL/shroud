@@ -34,24 +34,24 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NAM_afunction",
+                    "C_name": "NAM_a_function",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
-                    "F_C_call": "c_afunction",
-                    "F_C_name": "afunction",
+                    "F_C_call": "c_a_function",
+                    "F_C_name": "a_function",
                     "F_C_subprogram": "subroutine",
                     "F_arguments": "",
-                    "F_name_function": "afunction",
-                    "F_name_generic": "afunction",
-                    "F_name_impl": "afunction",
+                    "F_name_function": "a_function",
+                    "F_name_generic": "a_function",
+                    "F_name_impl": "a_function",
                     "F_subprogram": "subroutine",
                     "function_name": "AFunction",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
                     "stmtc1": "c_subroutine",
-                    "underscore_name": "afunction"
+                    "underscore_name": "a_function"
                 }
             }
         ],

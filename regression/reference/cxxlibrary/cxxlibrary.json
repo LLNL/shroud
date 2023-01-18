@@ -235,7 +235,10 @@
                     "class_scope": "Cstruct1_cls::",
                     "cxx_class": "Cstruct1_cls",
                     "cxx_type": "Cstruct1_cls",
-                    "file_scope": "Cstruct1_cls"
+                    "file_scope": "Cstruct1_cls",
+                    "lower_name": "cstruct1_cls",
+                    "underscore_name": "cstruct1_cls",
+                    "upper_name": "CSTRUCT1_CLS"
                 }
             }
         ],
@@ -2141,7 +2144,10 @@
                             "class_scope": "Cstruct1::",
                             "cxx_class": "Cstruct1",
                             "cxx_type": "Cstruct1",
-                            "file_scope": "structns_Cstruct1"
+                            "file_scope": "structns_Cstruct1",
+                            "lower_name": "cstruct1",
+                            "underscore_name": "cstruct1",
+                            "upper_name": "CSTRUCT1"
                         }
                     }
                 ],

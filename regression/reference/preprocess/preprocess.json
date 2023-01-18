@@ -333,7 +333,10 @@
                     "cxx_type": "User1",
                     "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User1",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "user1",
+                    "underscore_name": "user1",
+                    "upper_name": "USER1"
                 }
             },
             {
@@ -551,7 +554,10 @@
                     "cxx_type": "User2",
                     "f_capsule_data_type": "PRE_SHROUD_capsule_data",
                     "file_scope": "User2",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "user2",
+                    "underscore_name": "user2",
+                    "upper_name": "USER2"
                 }
             }
         ],

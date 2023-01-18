@@ -591,6 +591,10 @@ F_capsule_data_type_template
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``
 
+F_derived_name_template
+    Defaults to ``{underscore_name}``.
+    Other useful values are ``{lower_name}`` and ``{upper_name}``.
+    
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
     ``{F_name_scope}{enum_member_lower}``
@@ -1083,7 +1087,7 @@ flat_name
 
 C_enum_member
     C name for enum member.
-    Computed from *C_enum_member_template*.
+    Computed from option *C_enum_member_template*.
 
 C_value
     Evalued value of enumeration.
@@ -1101,7 +1105,7 @@ F_scope_name
 
 F_enum_member
     Fortran name for enum member.
-    Computed from *F_enum_member_template*.
+    Computed from option *F_enum_member_template*.
 
 F_value
     Evalued value of enumeration.
@@ -1119,9 +1123,8 @@ C_impl_file
     Defaulted from expansion of option *C_impl_filename_class_template*.
 
 F_derived_name
-   Name of Fortran derived type for this class.
-   Defaults to the value *cxx_class* (usually the C++ class name) converted
-   to lowercase.
+    Name of Fortran derived type for this class.
+    Computed from option *F_derived_name_template*.
 
 F_name_assign
     Name of method that controls assignment of shadow types.

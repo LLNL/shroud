@@ -545,6 +545,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
+            F_derived_name_template="{lower_name}",
             F_typedef_name_template="{F_name_scope}{underscore_name}",
 
             LUA_module_name_template="{library_lower}",
@@ -1184,11 +1185,17 @@ class ClassNode(AstNode, NamespaceMixin):
         self.fmtdict.update(dict(
             cxx_type=self.name,
             cxx_class=self.name,
+
+            underscore_name = util.un_camel(self.name),
+            upper_name = self.name.upper(),
+            lower_name = self.name.lower(),
+
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
+
+            # The scope for things in the class.
             C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
-            F_derived_name=self.name.lower(),
             file_scope="_".join(self.scope_file[1:]),
         ))
 
@@ -1207,6 +1214,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_header_filename", "_class")
         self.eval_template("C_impl_filename", "_class")
 
+        self.eval_template("F_derived_name")
+        
         # As PyArray_Descr
         if self.parse_keyword == "struct":
             self.eval_template("PY_struct_array_descr_create")

@@ -45,6 +45,7 @@
             "F_create_bufferify_function": true,
             "F_create_generic": true,
             "F_default_args": "generic",
+            "F_derived_name_template": "{lower_name}",
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_flatten_namespace": false,
             "F_force_wrapper": false,

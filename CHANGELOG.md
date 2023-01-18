@@ -81,6 +81,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This allows ``typedef struct tag name`` to be parsed properly.
 - Create type table earlier in parse. This allows recursive structs such as
   ``struct point { struct point *next; }`` to be parsed.
+- Fixed issues in converting function names from CamelCase
+  * Remove redundant underscore
+    ``Create_Cstruct_as_class`` was ``c_create__cstruct_as_class`` now ``c_create_cstruct_as_class``
+  * Add missing underscore
+    ``AFunction`` was ``afunction`` now ``a_function``.
 
 ### Changed
 - The *C_memory_dtor_function* is now written to the utility file,

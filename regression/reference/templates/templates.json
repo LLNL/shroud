@@ -46,7 +46,10 @@
                     "cxx_type": "Worker",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "Worker",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "worker",
+                    "underscore_name": "worker",
+                    "upper_name": "WORKER"
                 }
             },
             {
@@ -397,7 +400,10 @@
                     "cxx_type": "user<int>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "user_int",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "user",
+                    "underscore_name": "user",
+                    "upper_name": "USER"
                 }
             },
             {
@@ -985,7 +991,10 @@
                     "cxx_type": "structAsClass<int>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_int",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "structasclass",
+                    "underscore_name": "struct_as_class",
+                    "upper_name": "STRUCTASCLASS"
                 }
             },
             {
@@ -1573,7 +1582,10 @@
                     "cxx_type": "structAsClass<double>",
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_double",
-                    "hnamefunc0": "capsule_data_helper"
+                    "hnamefunc0": "capsule_data_helper",
+                    "lower_name": "structasclass",
+                    "underscore_name": "struct_as_class",
+                    "upper_name": "STRUCTASCLASS"
                 }
             }
         ],
@@ -3397,7 +3409,10 @@
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_int",
                             "fmtsample": "one",
-                            "hnamefunc0": "capsule_data_helper"
+                            "hnamefunc0": "capsule_data_helper",
+                            "lower_name": "vector",
+                            "underscore_name": "vector",
+                            "upper_name": "VECTOR"
                         }
                     },
                     {
@@ -4185,7 +4200,10 @@
                             "cxx_type": "vector<double>",
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
-                            "hnamefunc0": "capsule_data_helper"
+                            "hnamefunc0": "capsule_data_helper",
+                            "lower_name": "vector",
+                            "underscore_name": "vector",
+                            "upper_name": "VECTOR"
                         }
                     }
                 ],
@@ -4261,7 +4279,10 @@
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
-                            "file_scope": "internal_ImplWorker1"
+                            "file_scope": "internal_ImplWorker1",
+                            "lower_name": "implworker1",
+                            "underscore_name": "impl_worker1",
+                            "upper_name": "IMPLWORKER1"
                         }
                     },
                     {
@@ -4299,7 +4320,10 @@
                             "class_scope": "ImplWorker2::",
                             "cxx_class": "ImplWorker2",
                             "cxx_type": "ImplWorker2",
-                            "file_scope": "internal_ImplWorker2"
+                            "file_scope": "internal_ImplWorker2",
+                            "lower_name": "implworker2",
+                            "underscore_name": "impl_worker2",
+                            "upper_name": "IMPLWORKER2"
                         }
                     }
                 ],

@@ -94,7 +94,10 @@
                     "class_scope": "Cstruct1::",
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1",
-                    "file_scope": "Cstruct1"
+                    "file_scope": "Cstruct1",
+                    "lower_name": "cstruct1",
+                    "underscore_name": "cstruct1",
+                    "upper_name": "CSTRUCT1"
                 }
             },
             {
@@ -189,7 +192,10 @@
                     "class_scope": "Cstruct_ptr::",
                     "cxx_class": "Cstruct_ptr",
                     "cxx_type": "Cstruct_ptr",
-                    "file_scope": "Cstruct_ptr"
+                    "file_scope": "Cstruct_ptr",
+                    "lower_name": "cstruct_ptr",
+                    "underscore_name": "cstruct_ptr",
+                    "upper_name": "CSTRUCT_PTR"
                 }
             },
             {
@@ -385,7 +391,10 @@
                     "class_scope": "Cstruct_list::",
                     "cxx_class": "Cstruct_list",
                     "cxx_type": "Cstruct_list",
-                    "file_scope": "Cstruct_list"
+                    "file_scope": "Cstruct_list",
+                    "lower_name": "cstruct_list",
+                    "underscore_name": "cstruct_list",
+                    "upper_name": "CSTRUCT_LIST"
                 }
             },
             {
@@ -527,7 +536,10 @@
                     "class_scope": "Cstruct_numpy::",
                     "cxx_class": "Cstruct_numpy",
                     "cxx_type": "Cstruct_numpy",
-                    "file_scope": "Cstruct_numpy"
+                    "file_scope": "Cstruct_numpy",
+                    "lower_name": "cstruct_numpy",
+                    "underscore_name": "cstruct_numpy",
+                    "upper_name": "CSTRUCT_NUMPY"
                 }
             },
             {
@@ -623,7 +635,10 @@
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
-                    "file_scope": "Arrays1"
+                    "file_scope": "Arrays1",
+                    "lower_name": "arrays1",
+                    "underscore_name": "arrays1",
+                    "upper_name": "ARRAYS1"
                 }
             },
             {
@@ -701,7 +716,10 @@
                     "class_scope": "Cstruct_as_class::",
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
-                    "file_scope": "Cstruct_as_class"
+                    "file_scope": "Cstruct_as_class",
+                    "lower_name": "cstruct_as_class",
+                    "underscore_name": "cstruct_as_class",
+                    "upper_name": "CSTRUCT_AS_CLASS"
                 }
             },
             {
@@ -803,7 +821,10 @@
                     "class_scope": "Cstruct_as_subclass::",
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
-                    "file_scope": "Cstruct_as_subclass"
+                    "file_scope": "Cstruct_as_subclass",
+                    "lower_name": "cstruct_as_subclass",
+                    "underscore_name": "cstruct_as_subclass",
+                    "upper_name": "CSTRUCT_AS_SUBCLASS"
                 }
             }
         ],
@@ -2004,7 +2025,7 @@
                 "wrap": {},
                 "zz_fmtdict": {
                     "function_name": "Create_Cstruct_as_class",
-                    "underscore_name": "create__cstruct_as_class"
+                    "underscore_name": "create_cstruct_as_class"
                 }
             },
             {
@@ -2068,7 +2089,7 @@
                 "wrap": {},
                 "zz_fmtdict": {
                     "function_name": "Create_Cstruct_as_class_args",
-                    "underscore_name": "create__cstruct_as_class_args"
+                    "underscore_name": "create_cstruct_as_class_args"
                 }
             },
             {
@@ -2200,7 +2221,7 @@
                 "wrap": {},
                 "zz_fmtdict": {
                     "function_name": "Create_Cstruct_as_subclass_args",
-                    "underscore_name": "create__cstruct_as_subclass_args"
+                    "underscore_name": "create_cstruct_as_subclass_args"
                 }
             }
         ],
