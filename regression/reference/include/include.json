@@ -874,6 +874,10 @@
                 },
                 "name": "CustomType",
                 "options": {},
+                "user_fields": {
+                    "c_header": "type_header.h",
+                    "cxx_header": "type_header.hpp"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true

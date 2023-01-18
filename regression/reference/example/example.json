@@ -11216,6 +11216,10 @@
                 },
                 "name": "SidreLength",
                 "options": {},
+                "user_fields": {
+                    "c_header": "sidre/SidreTypes.h",
+                    "c_type": "SIDRE_SidreLength"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -11252,6 +11256,12 @@
                 },
                 "name": "TypeID",
                 "options": {},
+                "user_fields": {
+                    "c_header": "sidre/SidreTypes.h",
+                    "c_to_cxx": "getTypeID({c_var})",
+                    "cxx_header": "sidre/SidreWrapperHelpers.hpp",
+                    "cxx_to_c": "static_cast<int>({cxx_var})"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
