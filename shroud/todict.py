@@ -316,6 +316,7 @@ class ToDict(visitor.Visitor):
                 "enums",
                 "functions",
                 "variables",
+                "user_fields",
                 "user_fmt",
                 "fmtdict",
                 "options",
@@ -432,6 +433,7 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(node, d, [
             "ast",
             "user_fmt",
+            "user_fields",
             "fmtdict",
             "options",
             "wrap",

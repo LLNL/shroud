@@ -1945,6 +1945,9 @@
                                 },
                                 "scope": "example::nested::ExClass1::",
                                 "typemap_name": "example::nested::ExClass1",
+                                "user_fields": {
+                                    "export": "True"
+                                },
                                 "wrap": {
                                     "c": true,
                                     "fortran": true,
@@ -11216,6 +11219,10 @@
                 },
                 "name": "SidreLength",
                 "options": {},
+                "user_fields": {
+                    "c_header": "sidre/SidreTypes.h",
+                    "c_type": "SIDRE_SidreLength"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -11252,6 +11259,12 @@
                 },
                 "name": "TypeID",
                 "options": {},
+                "user_fields": {
+                    "c_header": "sidre/SidreTypes.h",
+                    "c_to_cxx": "getTypeID({c_var})",
+                    "cxx_header": "sidre/SidreWrapperHelpers.hpp",
+                    "cxx_to_c": "static_cast<int>({cxx_var})"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -11383,6 +11396,7 @@
             "c_type": "AA_example_nested_ExClass1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "example::nested::ExClass1",
+            "export": true,
             "f_c_module": {
                 "--import--": [
                     "AA_SHROUD_capsule_data"

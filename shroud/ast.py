@@ -156,7 +156,9 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
-    def add_class(self, decl, ast=None, base=[], template_parameters=None, **kwargs):
+    def add_class(self, decl, ast=None, fields=None,
+                  base=[], template_parameters=None,
+                  **kwargs):
         """Add a class.
 
         template_parameters - list names of template parameters.
@@ -168,12 +170,14 @@ class NamespaceMixin(object):
             base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
         """
         node = ClassNode(
-            decl, self, ast, base, template_parameters=template_parameters, **kwargs
+            decl, self, ast, base, fields=fields,
+            template_parameters=template_parameters,
+            **kwargs
         )
         self.classes.append(node)
         return node
 
-    def add_declaration(self, decl, **kwargs):
+    def add_declaration(self, decl, fields=None, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
 
@@ -196,13 +200,14 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
-                node = self.add_typedef(decl, ast=ast, **kwargs)
+                node = self.add_typedef(decl, ast=ast, fields=fields, **kwargs)
             elif ast.enum_specifier:
                 node = self.add_enum(decl, ast=ast, **kwargs)
             elif ast.class_specifier:
                 if isinstance(ast.class_specifier, declast.Struct):
                     node = self.add_struct(
                         decl, ast=ast,
+                        fields=fields,
                         template_parameters=template_parameters,
                         **kwargs)
                 elif isinstance(ast.class_specifier, declast.CXXClass):
@@ -211,8 +216,10 @@ class NamespaceMixin(object):
                     nodes = [cls for cls in self.classes if cls.name == ast.class_specifier.name]
                     if not nodes:
                         node = self.add_class(
-                            decl, ast, base=ast.class_specifier.baseclass,
-                            template_parameters=template_parameters, **kwargs
+                            decl, ast, fields=fields,
+                            base=ast.class_specifier.baseclass,
+                            template_parameters=template_parameters,
+                            **kwargs
                         )
                     else:
                         if len(nodes) != 1:
@@ -270,7 +277,8 @@ class NamespaceMixin(object):
             self.namespaces.append(node)
         return node
 
-    def add_struct(self, decl, ast=None, template_parameters=None, **kwargs):
+    def add_struct(self, decl, ast=None, fields=None,
+                   template_parameters=None, **kwargs):
         """Add a struct.
 
         A struct is exactly like a class to the C++ compiler.  From
@@ -290,8 +298,10 @@ class NamespaceMixin(object):
         class_specifier = ast.class_specifier
         name = class_specifier.name
         # XXX - base=... for inheritance
-        node = ClassNode(decl, self, parse_keyword="struct", ast=ast,
-                         template_parameters=template_parameters, **kwargs)
+        node = ClassNode(decl, self, parse_keyword="struct",
+                         ast=ast, fields=fields,
+                         template_parameters=template_parameters,
+                         **kwargs)
         for member in class_specifier.members:
             node.add_variable(str(member), member)
         self.classes.append(node)
@@ -307,11 +317,7 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, self.symtab)
 
         name = ast.get_name()  # Local name.
-        node = TypedefNode(name, parent=self, ast=ast)
-        # See enum GGG
-        node.typemap = ast.typemap
-        if fields:
-            node.typemap.update(fields)
+        node = TypedefNode(name, self, ast, fields)
         self.typedefs.append(node)
         return node
 
@@ -1047,6 +1053,7 @@ class ClassNode(AstNode, NamespaceMixin):
         base=[],
         cxx_header="",
         format={},
+        fields=None,
         options=None,
         parse_keyword="class",
         template_parameters=None,
@@ -1109,11 +1116,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.user_fmt = format
         self.default_format(parent, format, kwargs)
 
-        fields = kwargs.get("fields", None)
-        if fields is not None:
-            if not isinstance(fields, dict):
-                raise TypeError("fields must be a dictionary")
-
         if self.parse_keyword == "struct":
             self.wrap_as = self.options.wrap_struct_as
         elif self.parse_keyword == "class":
@@ -1121,6 +1123,7 @@ class ClassNode(AstNode, NamespaceMixin):
         else:
             raise TypeError("parse_keyword must be 'class' or 'struct'")
 
+        self.user_fields = fields
         self.typemap = ast.typemap
         if self.wrap_as == "struct":
             typemap.fill_struct_typemap(self, fields)
@@ -1703,7 +1706,7 @@ class TypedefNode(AstNode):
     type name must be in a typemap.
     """
 
-    def __init__(self, name, parent, ntypemap=None, ast=None,
+    def __init__(self, name, parent, ast, fields,
                  format={}, options=None,
                  **kwargs):
         """
@@ -1729,6 +1732,7 @@ class TypedefNode(AstNode):
         self.update_names()
 
         self.ast = ast
+        self.user_fields = fields
 
         # save info from original type used in generated declarations.
         ntypemap = ast.typemap
@@ -1737,6 +1741,8 @@ class TypedefNode(AstNode):
         self.typemap = ntypemap
             
         typemap.fill_typedef_typemap(self)
+        if fields:
+            ntypemap.update(fields)
 
     def get_typename(self):
         return self.typemap.name
@@ -2211,6 +2217,12 @@ def add_declarations(parent, node, symtab):
                     dct["splicer"],["c", "c_buf", "f", "py"]
                 )
             old = symtab.save_depth()
+
+            fields = dct.get("fields", None)
+            if fields is not None:
+                if not isinstance(fields, dict):
+                    raise TypeError("fields must be a dictionary")
+            
             declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode, symtab)
             symtab.restore_depth(old)

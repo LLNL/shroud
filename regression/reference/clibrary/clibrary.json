@@ -6084,6 +6084,10 @@
                 },
                 "name": "EnumTypeID",
                 "options": {},
+                "user_fields": {
+                    "c_to_cxx": "static_cast<EnumTypeID>({c_var})",
+                    "cxx_to_c": "static_cast<int>({cxx_var})"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
