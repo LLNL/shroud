@@ -806,6 +806,7 @@ class Parser(ExprParser):
             # Body added by other lines in YAML.
             node.tag_body = True
         elif self.have("COLON"):
+            node.tag_body = True
             if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
                 access_specifier = self.token.value
                 self.next()
