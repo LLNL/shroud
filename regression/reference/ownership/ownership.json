@@ -16,6 +16,7 @@
                                 "_destructor": "Class1",
                                 "_name": "dtor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "intent": "dtor"
                             },

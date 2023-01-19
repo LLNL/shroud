@@ -103,6 +103,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -226,6 +227,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -432,6 +434,7 @@
                                 "_name": "dtor",
                                 "name": "delete"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "intent": "dtor"
                             },
@@ -3007,6 +3010,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -3297,6 +3301,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -3618,6 +3623,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -3699,6 +3705,7 @@
                                 "_destructor": "Data",
                                 "_name": "dtor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "intent": "dtor"
                             },

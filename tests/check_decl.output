@@ -162,6 +162,55 @@ symbols:
     typemap: Class1
 
 XXXXXXXXXXXXXXXXXXXX
+# Class constructor
+XXXX CODE
+class Class2 {
+  Class2();
+  ~Class2();
+};
+XXXX PRINT_NODE
+class Class2{
+Class2 ();
+~Class2 ();
+}
+;
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  class_specifier:
+    _ast: CXXClass
+    members:
+    - _ast: Declaration
+      attrs:
+        _constructor: true
+        _name: ctor
+      declarator: {}
+      params: []
+      specifier:
+      - Class2
+      typemap_name: Class2
+    - _ast: Declaration
+      attrs:
+        _destructor: Class2
+        _name: dtor
+      declarator: {}
+      params: []
+      specifier:
+      - void
+      typemap_name: void
+    name: Class2
+  specifier:
+  - class Class2
+  typemap_name: Class2
+XXXX SymbolTable
+cls: Global
+symbols:
+  Class2:
+    cls: CXXClass
+    typemap: Class2
+
+XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
 XXXX CODE
 struct Point { int x; int y;};

@@ -3120,6 +3120,7 @@
                                         "_name": "ctor",
                                         "name": "defaultctor"
                                     },
+                                    "declarator": {},
                                     "metaattrs": {
                                         "api": "capptr",
                                         "intent": "ctor"

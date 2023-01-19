@@ -621,9 +621,9 @@ class Parser(ExprParser):
         """
         self.enter("declarator_item")
         if node.attrs["_destructor"]:
-            pass
+            node.declarator = Declarator()
         elif node.attrs["_constructor"]:
-            pass
+            node.declarator = Declarator()
         else:
             node.declarator = self.declarator()
 
@@ -1213,13 +1213,13 @@ class Declarator(Node):
         self.name = None  # *name
         self.func = None  # (*name)     declarator
 
-    def gen_decl_work(self, decl, **kwargs):
+    def gen_decl_work(self, decl, force_ptr=False, **kwargs):
         """Generate string by appending text to decl.
 
         Replace name with value from kwargs.
         name=None will skip appending any existing name.
         """
-        if kwargs.get("force_ptr", False):
+        if force_ptr:
             # Force to be a pointer
             decl.append(" *")
         elif kwargs.get("as_scalar", False):
@@ -1685,6 +1685,7 @@ class Declaration(Node):
         asgn_value=False,
         remove_const=False,
         with_template_args=False,
+        force_ptr=False,
         **kwargs
     ):
         """Generate an argument for the C wrapper.
@@ -1734,15 +1735,10 @@ class Declaration(Node):
             typ = getattr(ntypemap, lang) or "--NOTYPE--"
             decl.append(typ)
 
-        if self.declarator is None:
-            # XXX - used with constructor but seems wrong for abstract arguments
-            declarator = Declarator()
-            declarator.name = self.name
-            if self.attrs["_constructor"] and lang == "c_type":
-                # The C wrapper wants a pointer to the type.
-                declarator.pointer.append(Ptr("*"))
-        else:
-            declarator = self.declarator
+        declarator = self.declarator
+        if self.attrs["_constructor"] and lang == "c_type":
+            # The C wrapper wants a pointer to the type.
+            force_ptr = True
 
         if asgn_value and const_index is not None and not self.is_indirect():
             # Remove 'const' so the variable can be assigned to.
@@ -1750,10 +1746,13 @@ class Declaration(Node):
         elif remove_const and const_index is not None:
             decl[const_index] = ""
 
-        if lang == "c_type":
-            declarator.gen_decl_work(decl, as_c=True, **kwargs)
+        if declarator is None:
+            # Abstract argument
+            pass
+        elif lang == "c_type":
+            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr, **kwargs)
         else:
-            declarator.gen_decl_work(decl, **kwargs)
+            declarator.gen_decl_work(decl, force_ptr=force_ptr, **kwargs)
 
         params = kwargs.get("params", self.params)
         if params is not None:

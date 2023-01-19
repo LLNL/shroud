@@ -17,6 +17,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"

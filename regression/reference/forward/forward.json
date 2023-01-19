@@ -70,6 +70,7 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "api": "capptr",
                                 "intent": "ctor"
@@ -188,6 +189,7 @@
                                 "_destructor": "Class2",
                                 "_name": "dtor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "intent": "dtor"
                             },

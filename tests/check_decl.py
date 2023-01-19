@@ -41,6 +41,12 @@ typedef int footype;
 # Class statement
 class Class1;
 --------------------
+# Class constructor
+class Class2 {
+  Class2();
+  ~Class2();
+};
+--------------------
 # Structure for C++
 struct Point { int x; int y;};
 struct Point end;
