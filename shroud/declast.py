@@ -599,16 +599,27 @@ class Parser(ExprParser):
         """Parse a declaration statement.
         Use with decl_statement and function arguments
 
-        <declaration> ::= {<declaration-specifier>}+ <declarator>?
-                           ( '['  <constant-expression>?  ']'  |
-                             '('  <parameter-list>            ')' [ const ] )
-                           [ = <initializer> ]
+        <declaration> ::= {<declaration-specifier>}+ <declarator_item>*
         """
         self.enter("declaration")
         node = Declaration(self.symtab)
         self.declaration_specifier(node)
         self.get_canonical_typemap(node)
 
+        self.declarator_item(node)
+        if "typedef" in node.storage:
+            self.symtab.create_typedef(node)
+        self.exit("declaration", str(node))
+        return node
+
+    def declarator_item(self, node):
+        """
+        <declarator_item> ::= (
+                             '['  <constant-expression>?  ']'  |
+                             '('  <parameter-list>            ')' [ const ]
+                            ) [ = <initializer> ]
+        """
+        self.enter("declarator_item")
         if node.attrs["_destructor"]:
             pass
         elif node.attrs["_constructor"]:
@@ -649,9 +660,7 @@ class Parser(ExprParser):
         # (int value = 1+size)
         if self.have("EQUALS"):
             node.init = self.initializer()
-        self.exit("declaration", str(node))
-        if "typedef" in node.storage:
-            self.symtab.create_typedef(node)
+        self.exit("declarator_item", str(node))
         return node
 
     def declarator(self):
