@@ -151,9 +151,6 @@ class Class1;
 XXXX AST
 stmts:
 - _ast: Declaration
-  class_specifier:
-    _ast: CXXClass
-    name: Class1
   specifier:
   - class Class1
   typemap_name: Class1

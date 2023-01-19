@@ -87,7 +87,8 @@ class ToDict(visitor.Visitor):
         )
         if self.labelast:
             d["_ast"] = node.__class__.__name__
-        self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
+        if node.tag_body:
+            self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
         add_non_none_fields(node, d, ["template_argument"])
         if node.typemap.base != "template":
             # Only print name to avoid too much nesting.
@@ -630,7 +631,9 @@ class PrintNode(visitor.Visitor):
 
     def visit_Declaration(self, node):
         s = str(node)
-        if node.enum_specifier:
+        if not node.tag_body:
+            pass
+        elif node.enum_specifier:
             s += self.visit(node.enum_specifier)
         elif node.class_specifier:
             s += self.visit(node.class_specifier)

@@ -803,7 +803,8 @@ class Parser(ExprParser):
         node.class_specifier = clsnode
         node.typemap = clsnode.typemap
         if self.have("EOF"):
-            pass
+            # Body added by other lines in YAML.
+            node.tag_body = True
         elif self.have("COLON"):
             if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
                 access_specifier = self.token.value
@@ -822,6 +823,7 @@ class Parser(ExprParser):
                 self.mustbe("ID")
 
         if self.have("LCURLY"):
+            node.tag_body = True
             members = clsnode.members
             while self.token.typ != "RCURLY":
 #                members.append(self.declaration()) # GGG, accepts too much  - template
@@ -919,6 +921,7 @@ class Parser(ExprParser):
             node.specifier.append("enum " + ename)
         if self.have("LCURLY"):
             #        self.mustbe("LCURLY")
+            node.tag_body = True
             enumnode = Enum(ename, self.symtab, scope)
             members = enumnode.members
             while self.token.typ != "RCURLY":
@@ -973,10 +976,13 @@ class Parser(ExprParser):
             self.symtab.pop_scope()
             node.class_specifier = structnode
             node.typemap = structnode.typemap
+            node.tag_body = True
         elif self.have("EOF"):
             structnode = Struct(sname, self.symtab)
             node.class_specifier = structnode
             node.typemap = structnode.typemap
+            # Body added by other lines in YAML.
+            node.tag_body = True
             # GGG - Caller must call symtab.pop_scope when finished with members.
         else:
             structnode = self.symtab.current.lookup_tag("struct", sname)
@@ -1264,6 +1270,7 @@ class Declaration(Node):
         self.storage = []  # static, tyedef, ...
         self.enum_specifier = None   # Enum
         self.class_specifier = None  # CXXClass, Struct (union)
+        self.tag_body = False        # if True, members are defined.
         self.const = False
         self.volatile = False
         self.declarator = None
