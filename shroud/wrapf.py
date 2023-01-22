@@ -1166,8 +1166,9 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
-        result_api = ast.metaattrs["api"]
-        sintent = ast.metaattrs["intent"]
+        r_meta = ast.metaattrs
+        result_api = r_meta["api"]
+        sintent = r_meta["intent"]
 
         if cls:
             is_static = "static" in ast.storage
@@ -1188,7 +1189,7 @@ rv = .false.
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
-                   ast.metaattrs["deref"]] + specialize
+                   r_meta["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
@@ -1648,7 +1649,9 @@ rv = .false.
         imports = {}
         stmts_comments = []
 
-        sintent = ast.metaattrs["intent"]
+        r_attrs = ast.attrs
+        r_meta = ast.metaattrs
+        sintent = r_meta["intent"]
         if subprogram == "subroutine":
             fmt_result = fmt_func
             # intent will be "subroutine" or "dtor".
@@ -1663,10 +1666,10 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
-            return_deref_attr = ast.metaattrs["deref"]
+            return_deref_attr = r_meta["deref"]
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr, ast.attrs["owner"]] + specialize
+                       return_deref_attr, r_attrs["owner"]] + specialize
             c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
                        return_deref_attr] + specialize
         fmt_func.F_subprogram = subprogram

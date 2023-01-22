@@ -132,19 +132,21 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
+
+        meta = ast.metaattrs
         if ast.typemap is None:
             print("XXXXXX typemap is None")
         if ast.typemap.sgroup == "shadow":
             if options.C_shadow_result:
-                ast.metaattrs["api"] = "capptr"
+                meta["api"] = "capptr"
             else:
-                ast.metaattrs["api"] = "capsule"
+                meta["api"] = "capsule"
         if ast.is_ctor():
-            ast.metaattrs["intent"] = "ctor"
+            meta["intent"] = "ctor"
         elif ast.is_dtor():
-            ast.metaattrs["intent"] = "dtor"
+            meta["intent"] = "dtor"
         else:
-            ast.metaattrs["intent"] = ast.get_subprogram()
+            meta["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
@@ -174,7 +176,7 @@ class VerifyAttrs(object):
         attrs = arg.attrs
         meta = arg.metaattrs
         is_ptr = arg.is_indirect()
-        intent = arg.attrs["intent"]
+        intent = attrs["intent"]
         if intent is None:
             if node is None:
                 # do not default intent for function pointers
@@ -602,12 +604,12 @@ class VerifyAttrs(object):
         ast : declast.Declaration
         """
         attrs = ast.attrs
-        metaattrs = ast.metaattrs
+        meta = ast.metaattrs
 
         dim = attrs["dimension"]
         if dim:
             try:
-                check_dimension(dim, metaattrs)
+                check_dimension(dim, meta)
             except RuntimeError:
                 raise RuntimeError("Unable to parse dimension: {} at line {}"
                                    .format(dim, node.linenumber))
@@ -1923,14 +1925,16 @@ class GenFunctions(object):
         for arg in ast.params:
             has_buf_arg = None
             arg_typemap = arg.typemap
-            if arg.metaattrs["api"]:
+            attrs = arg.attrs
+            meta = arg.metaattrs
+            if meta["api"]:
                 # API explicitly set by user.
                 continue
-            elif arg.attrs["cdesc"]:
+            elif attrs["cdesc"]:
                 # User requested cdesc.
                 has_buf_arg = "cdesc"
             elif arg_typemap.sgroup == "string":
-                if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                if meta["deref"] in ["allocatable", "pointer"]:
                     has_buf_arg = "cdesc"
                     # XXX - this is not tested
                 else:
@@ -1939,19 +1943,19 @@ class GenFunctions(object):
                 if arg.ftrim_char_in:
                     pass
                 elif arg.is_indirect():
-                    if arg.metaattrs["deref"] in ["allocatable", "pointer"]:
+                    if meta["deref"] in ["allocatable", "pointer"]:
                         has_buf_arg = "cdesc"
                     else:
                         has_buf_arg = "buf"
             elif arg_typemap.sgroup == "vector":
-                if arg.metaattrs["intent"] == "in":
+                if meta["intent"] == "in":
                     # Pass SIZE.
                     has_buf_arg = "buf"
                 else:
                     has_buf_arg = "cdesc"
             elif (arg_typemap.sgroup == "native" and
-                  arg.metaattrs["intent"] == "out" and
-                  arg.metaattrs["deref"] != "raw" and
+                  meta["intent"] == "out" and
+                  meta["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
                 # double **values +intent(out) +deref(pointer)
                 has_buf_arg = "cdesc"
@@ -2026,10 +2030,10 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
-            if buf_args[arg.name]:
-                arg.metaattrs["api"] = buf_args[arg.name]
             attrs = arg.attrs
             meta = arg.metaattrs
+            if buf_args[arg.name]:
+                meta["api"] = buf_args[arg.name]
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap

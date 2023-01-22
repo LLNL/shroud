@@ -767,9 +767,10 @@ class Wrapc(util.WrapperMixin):
                 fmt.c_blanknull = "1"
         
         attrs = ast.attrs
-        statements.assign_buf_variable_names(attrs, ast.metaattrs, fcn.options, fmt, rootname)
+        meta = ast.metaattrs
+        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
         
-        if ast.metaattrs["dimension"]:
+        if meta["dimension"]:
             if cls is not None:
                 parent = cls
                 cls.create_node_map()
@@ -783,7 +784,7 @@ class Wrapc(util.WrapperMixin):
                 parent = None
                 class_context = ""
             visitor = ToDimension(parent, fcn, fmt, class_context)
-            visitor.visit(ast.metaattrs["dimension"])
+            visitor.visit(meta["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 if hasattr(fmt, "c_var_cdesc"):
@@ -900,7 +901,8 @@ class Wrapc(util.WrapperMixin):
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        sintent = ast.metaattrs["intent"]
+        meta = ast.metaattrs
+        sintent = meta["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -916,7 +918,7 @@ class Wrapc(util.WrapperMixin):
             # intent will be "function", "ctor", "getter"
             junk, specialize = statements.lookup_c_statements(ast)
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                     result_api, ast.metaattrs["deref"]] + specialize
+                     result_api, meta["deref"]] + specialize
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
