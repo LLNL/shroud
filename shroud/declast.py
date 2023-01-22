@@ -2508,6 +2508,7 @@ def create_struct_ctor(cls):
     ast.specifier = [ cls.name ]
     ast.params = []
     ast.declarator = Declarator()  # SSS
+    ast.declarator.params = ast.params
     ast.declarator.typemap = cls.typemap
     ast.declarator.attrs = ast.attrs
     ast.declarator.metaattrs = ast.metaattrs

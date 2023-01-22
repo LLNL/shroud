@@ -21,6 +21,46 @@
                                 "metaattrs": {
                                     "intent": "ctor"
                                 },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "20"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "name"
+                                            },
+                                            "name": "name",
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "10"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "count"
+                                            },
+                                            "name": "count",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
                                 "typemap_name": "Arrays1"
                             },
                             "specifier": [

@@ -22,6 +22,36 @@
                                 "metaattrs": {
                                     "intent": "ctor"
                                 },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "x1"
+                                            },
+                                            "name": "x1",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "y1"
+                                            },
+                                            "name": "y1",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "specifier": [
