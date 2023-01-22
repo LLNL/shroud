@@ -622,8 +622,10 @@ class Parser(ExprParser):
         self.enter("declarator_item")
         if node.attrs["_destructor"]:
             node.declarator = Declarator()
+            node.declarator.ctor_dtor_name = True
         elif node.attrs["_constructor"]:
             node.declarator = Declarator()
+            node.declarator.ctor_dtor_name = True
         else:
             node.declarator = self.declarator()
 
@@ -634,8 +636,10 @@ class Parser(ExprParser):
             # Look for (void), set to no parameters.
             if len(node.params) == 1:
                 chk = node.params[0]
-                if (chk.declarator is None and
-                    chk.specifier == ["void"]):
+                if (chk.declarator.name is None and
+                    chk.specifier == ["void"] and
+                    chk.declarator.func is None    # Function pointers
+                ):
                     node.params = []
 
             #  method const
@@ -660,6 +664,10 @@ class Parser(ExprParser):
         # (int value = 1+size)
         if self.have("EQUALS"):
             node.init = self.initializer()
+
+        if node.declarator.ctor_dtor_name:
+            node.declarator.ctor_dtor_name = node.attrs["name"] or node.attrs["_name"]
+            
         self.exit("declarator_item", str(node))
         return node
 
@@ -680,9 +688,6 @@ class Parser(ExprParser):
             self.next()
             node.func = self.declarator()
             self.mustbe("RPAREN")
-        else:
-            if not node.pointer:
-                node = None
 
         self.exit("declarator", str(node))
         return node
@@ -1212,8 +1217,10 @@ class Declarator(Node):
         self.pointer = []  # Multiple levels of indirection
         self.name = None  # *name
         self.func = None  # (*name)     declarator
+        
+        self.ctor_dtor_name = False
 
-    def gen_decl_work(self, decl, force_ptr=False, **kwargs):
+    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False, **kwargs):
         """Generate string by appending text to decl.
 
         Replace name with value from kwargs.
@@ -1238,6 +1245,9 @@ class Declarator(Node):
         elif self.name:
             decl.append(" ")
             decl.append(self.name)
+        elif ctor_dtor and self.ctor_dtor_name:
+            decl.append(" ")
+            decl.append(self.ctor_dtor_name)
 
     def __str__(self):
         out = ""
@@ -1307,9 +1317,6 @@ class Declaration(Node):
             name = self.attrs["name"] or self.attrs["_name"]
             if name is not None:
                 return name
-        if self.declarator is None:
-            # abstract declarator
-            return None
         name = self.declarator.name
         if name is None:
             if self.declarator.func:
@@ -1348,8 +1355,6 @@ class Declaration(Node):
         """Return number of levels of pointers.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr == "*":
                 nlevels += 1
@@ -1359,8 +1364,6 @@ class Declaration(Node):
         """Return number of levels of references.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr == "&":
                 nlevels += 1
@@ -1371,10 +1374,9 @@ class Declaration(Node):
         pointer or reference.
         """
         nlevels = 0
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                if ptr.ptr:
-                    nlevels += 1
+        for ptr in self.declarator.pointer:
+            if ptr.ptr:
+                nlevels += 1
         return nlevels
 
     def is_array(self):
@@ -1384,8 +1386,6 @@ class Declaration(Node):
         nlevels = 0
         if self.array:
             nlevels += 1
-        if self.declarator is None:
-            return nlevels
         for ptr in self.declarator.pointer:
             if ptr.ptr:
                 nlevels += 1
@@ -1394,8 +1394,6 @@ class Declaration(Node):
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
-        if self.declarator is None:
-            return False
         if self.declarator.func is None:
             return False
         if not self.declarator.func.pointer:
@@ -1407,8 +1405,6 @@ class Declaration(Node):
         '*', '**', '&*', '[]'
         """
         out = ''
-        if self.declarator is None:
-            return out
         for ptr in self.declarator.pointer:
             out += ptr.ptr
         if self.array:
@@ -1420,8 +1416,6 @@ class Declaration(Node):
         'scalar', '*', '**'
         """
         out = ''
-        if self.declarator is None:
-            return "scalar"
         for ptr in self.declarator.pointer:
             out += ptr.ptr
         if self.array:
@@ -1531,27 +1525,34 @@ class Declaration(Node):
                 out.append(" ".join(self.specifier))
             else:
                 out.append("int")
+
+        out2 = []
         if self.declarator:
-            out.append(" ")
-            out.append(str(self.declarator))
+            var = str(self.declarator)
+            if var:
+                out2.append(var)
         if self.params is not None:
-            out.append("(")
+            out2.append("(")
             if self.params:
-                out.append(str(self.params[0]))
+                out2.append(str(self.params[0]))
                 for param in self.params[1:]:
-                    out.append(",")
-                    out.append(str(param))
-            out.append(")")
+                    out2.append(",")
+                    out2.append(str(param))
+            out2.append(")")
             if self.func_const:
-                out.append(" const")
+                out2.append(" const")
         if self.array:
             for dim in self.array:
-                out.append("[")
-                out.append(todict.print_node(dim))
-                out.append("]")
+                out2.append("[")
+                out2.append(todict.print_node(dim))
+                out2.append("]")
         if self.init:
-            out.append("=")
-            out.append(str(self.init))
+            out2.append("=")
+            out2.append(str(self.init))
+
+        if out2:
+            out.append(" ")
+            out.extend(out2)
         return "".join(out)
 
     def gen_decl(self, **kwargs):
@@ -1588,8 +1589,7 @@ class Declaration(Node):
         if self.template_arguments:
             decl.append(self.gen_template_arguments())
 
-        if self.declarator:
-            self.declarator.gen_decl_work(decl, **kwargs)
+        self.declarator.gen_decl_work(decl, **kwargs)
 
         if self.init is not None:
             decl.append("=")
@@ -1746,13 +1746,10 @@ class Declaration(Node):
         elif remove_const and const_index is not None:
             decl[const_index] = ""
 
-        if declarator is None:
-            # Abstract argument
-            pass
-        elif lang == "c_type":
-            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr, **kwargs)
+        if lang == "c_type":
+            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr, ctor_dtor=True, **kwargs)
         else:
-            declarator.gen_decl_work(decl, force_ptr=force_ptr, **kwargs)
+            declarator.gen_decl_work(decl, force_ptr=force_ptr, ctor_dtor=True, **kwargs)
 
         params = kwargs.get("params", self.params)
         if params is not None:
@@ -1792,9 +1789,8 @@ class Declaration(Node):
         typ = getattr(self.typemap, language + '_type')
         decl.append(typ)
         ptrs = []
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                ptrs.append("*")   # ptr.ptr)
+        for ptr in self.declarator.pointer:
+            ptrs.append("*")   # ptr.ptr)
         if self.array:
             ptrs.append("*")
         if ptrs:
@@ -2483,6 +2479,7 @@ def create_struct_ctor(cls):
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
     ast.params = []
+    ast.declarator = Declarator()  # SSS
     return ast
 
 

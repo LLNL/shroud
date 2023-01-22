@@ -151,6 +151,7 @@ class Class1;
 XXXX AST
 stmts:
 - _ast: Declaration
+  declarator: {}
   specifier:
   - class Class1
   typemap_name: Class1
@@ -200,6 +201,7 @@ stmts:
       - void
       typemap_name: void
     name: Class2
+  declarator: {}
   specifier:
   - class Class2
   typemap_name: Class2
@@ -247,6 +249,7 @@ stmts:
       typemap_name: int
     name: Point
     typemap_name: Point
+  declarator: {}
   specifier:
   - struct Point
   typemap_name: Point
@@ -324,6 +327,7 @@ stmts:
       typemap_name: int
     name: list_s
     typemap_name: list_s
+  declarator: {}
   specifier:
   - struct list_s
   typemap_name: list_s
@@ -389,6 +393,7 @@ stmts:
       typemap_name: list_s
     name: list_s
     typemap_name: list_s
+  declarator: {}
   specifier:
   - struct list_s
   typemap_name: list_s
@@ -458,6 +463,7 @@ stmts:
       typemap_name: list_s
     name: list_s
     typemap_name: list_s
+  declarator: {}
   specifier:
   - struct list_s
   typemap_name: list_s
@@ -488,6 +494,7 @@ Color_typ local;
 XXXX AST
 stmts:
 - _ast: Declaration
+  declarator: {}
   enum_specifier:
     _ast: Enum
     members:
@@ -556,6 +563,7 @@ void func1(enum Color arg1,Color arg2);
 XXXX AST
 stmts:
 - _ast: Declaration
+  declarator: {}
   enum_specifier:
     _ast: Enum
     members:
@@ -678,6 +686,7 @@ stmts:
       - ptr: '*'
   params:
   - _ast: Declaration
+    declarator: {}
     specifier:
     - int
     typemap_name: int
@@ -752,6 +761,7 @@ stmts:
         parameters:
         - name: U
       name: user
+    declarator: {}
     specifier:
     - class user
     typemap_name: user
@@ -765,6 +775,7 @@ stmts:
   - user
   template_arguments:
   - _ast: Declaration
+    declarator: {}
     specifier:
     - int
     typemap_name: int
@@ -845,6 +856,7 @@ stmts:
         - int
         typemap_name: int
       name: name
+    declarator: {}
     specifier:
     - class name
     typemap_name: ns::name

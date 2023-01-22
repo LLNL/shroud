@@ -434,7 +434,10 @@ class CheckParse(unittest.TestCase):
                 "declarator": {"name": "var1"},
                 "specifier": ["std::vector"],
                 "template_arguments": [
-                    {"specifier": ["int"], "typemap_name": "int"}
+                    {"specifier": ["int"],
+                     "typemap_name": "int",
+                     "declarator": {},
+                    }
                 ],
                 "typemap_name": "std::vector",
             },
@@ -462,7 +465,11 @@ class CheckParse(unittest.TestCase):
                 "declarator": {"name": "var1"},
                 "specifier": ["std::vector"],
                 "template_arguments": [
-                    {"specifier": ["long", "long"], "typemap_name": "long_long"}
+                    {
+                        "specifier": ["long", "long"],
+                        "typemap_name": "long_long",
+                        "declarator": {},
+                    }
                 ],
                 "typemap_name": "std::vector",
             },
@@ -480,6 +487,7 @@ class CheckParse(unittest.TestCase):
                     {
                         "specifier": ["std::string"],
                         "typemap_name": "std::string",
+                        "declarator": {},
                     }
                 ],
                 "typemap_name": "std::vector",
@@ -646,7 +654,12 @@ class CheckParse(unittest.TestCase):
                 "declarator": {
                     "func": {"name": "func", "pointer": [{"ptr": "*"}]},
                 },
-                "params": [{"specifier": ["int"], "typemap_name": "int"}],
+                "params": [
+                    {
+                        "specifier": ["int"],
+                        "typemap_name": "int",
+                        "declarator": {},
+                    }],
                 "specifier": ["int"],
                 "typemap_name": "int",
             },
@@ -918,6 +931,7 @@ class CheckParse(unittest.TestCase):
                 "params": [],
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
+                'declarator': {},
             },
         )
         self.assertEqual("ctor", r.get_name())
@@ -946,6 +960,7 @@ class CheckParse(unittest.TestCase):
                 "params": [],
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
+                'declarator': {},
             },
         )
         self.assertEqual("new", r.get_name())
@@ -973,6 +988,7 @@ class CheckParse(unittest.TestCase):
                 "params": [],
                 "specifier": ["void"],
                 "typemap_name": "void",
+                'declarator': {},
             },
         )
         self.assertEqual("dtor", r.get_name())
@@ -1000,7 +1016,8 @@ class CheckParse(unittest.TestCase):
                     'baseclass': [('public', 'Class1', 'Class1')]
                 },
                 'specifier': ['class Class2'],
-                'typemap_name': 'Class2'
+                'typemap_name': 'Class2',
+                "declarator": {},
             }
         )
 
@@ -1167,6 +1184,7 @@ class CheckParse(unittest.TestCase):
                             {
                                 "specifier": ["std::string"],
                                 "typemap_name": "std::string",
+                                "declarator": {},
                             }
                         ],
                         "typemap_name": "std::vector",
@@ -1218,7 +1236,8 @@ class CheckParse(unittest.TestCase):
                 'decl': {
                     'class_specifier': {'name': 'vector'},
                     'specifier': ['class vector'],
-                    'typemap_name': 'vector'
+                    'typemap_name': 'vector',
+                    'declarator': {},
                 },
                 'parameters': [{'name': 'T'}]
             }
@@ -1235,7 +1254,9 @@ class CheckParse(unittest.TestCase):
                 'decl': {
                     'class_specifier': {'name': 'map'},
                     'specifier': ['class map'],
-                    'typemap_name': 'vector::map'},
+                    'typemap_name': 'vector::map',
+                    'declarator': {},
+                },
                 'parameters': [{'name': 'Key'}, {'name': 'T'}]
             }
         )
@@ -1473,7 +1494,8 @@ class CheckEnum(unittest.TestCase):
                     ],
                 },
                 'specifier': ['enum Color'],
-                'typemap_name': 'Color'
+                'typemap_name': 'Color',
+                "declarator": {},
             }
         )
 
@@ -1532,7 +1554,8 @@ class CheckStruct(unittest.TestCase):
                     'typemap_name': 'struct1'
                 },
                 'specifier': ['struct struct1'],
-                'typemap_name': 'struct1'
+                'typemap_name': 'struct1',
+                "declarator": {},
             }
         )
 
@@ -1549,7 +1572,8 @@ class CheckClass(unittest.TestCase):
             {
                 'class_specifier': {'name': 'Class1'},
                 'specifier': ['class Class1'],
-                'typemap_name': 'Class1'
+                'typemap_name': 'Class1',
+                'declarator': {},
             }
         )
 

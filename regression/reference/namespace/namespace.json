@@ -347,6 +347,7 @@
                                         "_constructor": true,
                                         "name": "Cstruct1_ctor"
                                     },
+                                    "declarator": {},
                                     "metaattrs": {
                                         "intent": "ctor"
                                     },

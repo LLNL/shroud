@@ -17,6 +17,7 @@
                                 "_constructor": true,
                                 "name": "Arrays1_ctor"
                             },
+                            "declarator": {},
                             "metaattrs": {
                                 "intent": "ctor"
                             },

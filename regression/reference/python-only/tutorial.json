@@ -2116,6 +2116,7 @@
                                     "attrs": {
                                         "value": true
                                     },
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],

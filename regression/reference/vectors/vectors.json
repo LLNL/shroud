@@ -48,6 +48,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -132,6 +133,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -277,6 +279,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -353,6 +356,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -475,6 +479,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -583,6 +588,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -736,6 +742,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -832,6 +839,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -974,6 +982,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1053,6 +1062,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1178,6 +1188,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1257,6 +1268,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1381,6 +1393,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1453,6 +1466,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "int"
                                     ],
@@ -1574,6 +1588,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "double"
                                     ],
@@ -1649,6 +1664,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "double"
                                     ],
@@ -2087,6 +2103,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -2175,6 +2192,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -2327,6 +2345,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -2390,6 +2409,7 @@
                             ],
                             "template_arguments": [
                                 {
+                                    "declarator": {},
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -2460,6 +2480,7 @@
                     ],
                     "template_arguments": [
                         {
+                            "declarator": {},
                             "specifier": [
                                 "int"
                             ],
@@ -2550,6 +2571,7 @@
                     ],
                     "template_arguments": [
                         {
+                            "declarator": {},
                             "specifier": [
                                 "int"
                             ],

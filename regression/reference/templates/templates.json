@@ -1619,6 +1619,7 @@
                     ],
                     "template_arguments": [
                         {
+                            "declarator": {},
                             "specifier": [
                                 "int"
                             ],
