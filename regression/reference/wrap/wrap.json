@@ -13,12 +13,13 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "FuncInClass"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "FuncInClass",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],

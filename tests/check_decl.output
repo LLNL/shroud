@@ -64,6 +64,7 @@ stmts:
 - _ast: Declaration
   declarator:
     name: i
+    typemap_name: int
   specifier:
   - int
   typemap_name: int
@@ -71,6 +72,7 @@ stmts:
   const: true
   declarator:
     name: d
+    typemap_name: double
   specifier:
   - double
   typemap_name: double
@@ -95,6 +97,7 @@ stmts:
     name: i1
     pointer:
     - ptr: '*'
+    typemap_name: int
   specifier:
   - int
   typemap_name: int
@@ -104,6 +107,7 @@ stmts:
     pointer:
     - ptr: '*'
     - ptr: '*'
+    typemap_name: int
   specifier:
   - int
   typemap_name: int
@@ -112,6 +116,7 @@ stmts:
     name: i3
     pointer:
     - ptr: '&'
+    typemap_name: int
   specifier:
   - int
   typemap_name: int
@@ -129,6 +134,7 @@ stmts:
 - _ast: Declaration
   declarator:
     name: footype
+    typemap_name: int
   specifier:
   - int
   storage:
@@ -151,7 +157,8 @@ class Class1;
 XXXX AST
 stmts:
 - _ast: Declaration
-  declarator: {}
+  declarator:
+    typemap_name: Class1
   specifier:
   - class Class1
   typemap_name: Class1
@@ -183,25 +190,28 @@ stmts:
     _ast: CXXClass
     members:
     - _ast: Declaration
-      attrs:
-        _constructor: true
-        _name: ctor
-      declarator: {}
-      params: []
+      declarator:
+        attrs:
+          _constructor: true
+          _name: ctor
+        params: []
+        typemap_name: Class2
       specifier:
       - Class2
       typemap_name: Class2
     - _ast: Declaration
-      attrs:
-        _destructor: Class2
-        _name: dtor
-      declarator: {}
-      params: []
+      declarator:
+        attrs:
+          _destructor: Class2
+          _name: dtor
+        params: []
+        typemap_name: void
       specifier:
       - void
       typemap_name: void
     name: Class2
-  declarator: {}
+  declarator:
+    typemap_name: Class2
   specifier:
   - class Class2
   typemap_name: Class2
@@ -238,49 +248,57 @@ stmts:
     - _ast: Declaration
       declarator:
         name: x
+        typemap_name: int
       specifier:
       - int
       typemap_name: int
     - _ast: Declaration
       declarator:
         name: y
+        typemap_name: int
       specifier:
       - int
       typemap_name: int
     name: Point
     typemap_name: Point
-  declarator: {}
+  declarator:
+    typemap_name: Point
   specifier:
   - struct Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
     name: end
+    typemap_name: Point
   specifier:
   - struct Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
     name: start
+    typemap_name: Point
   specifier:
   - Point
   typemap_name: Point
 - _ast: Declaration
   declarator:
     name: func1
-  params:
-  - _ast: Declaration
-    declarator:
-      name: arg1
-    specifier:
-    - struct Point
-    typemap_name: Point
-  - _ast: Declaration
-    declarator:
-      name: arg2
-    specifier:
-    - Point
-    typemap_name: Point
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: Point
+      specifier:
+      - struct Point
+      typemap_name: Point
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        typemap_name: Point
+      specifier:
+      - Point
+      typemap_name: Point
+    typemap_name: void
   specifier:
   - void
   typemap_name: void
@@ -322,24 +340,28 @@ stmts:
     - _ast: Declaration
       declarator:
         name: i
+        typemap_name: int
       specifier:
       - int
       typemap_name: int
     name: list_s
     typemap_name: list_s
-  declarator: {}
+  declarator:
+    typemap_name: list_s
   specifier:
   - struct list_s
   typemap_name: list_s
 - _ast: Declaration
   declarator:
     name: var1
+    typemap_name: list_s
   specifier:
   - struct list_s
   typemap_name: list_s
 - _ast: Declaration
   declarator:
     name: list_typ
+    typemap_name: list_s
   specifier:
   - struct list_s
   storage:
@@ -348,6 +370,7 @@ stmts:
 - _ast: Declaration
   declarator:
     name: var2
+    typemap_name: list_typ
   specifier:
   - list_typ
   typemap_name: list_typ
@@ -388,18 +411,21 @@ stmts:
         name: next
         pointer:
         - ptr: '*'
+        typemap_name: list_s
       specifier:
       - struct list_s
       typemap_name: list_s
     name: list_s
     typemap_name: list_s
-  declarator: {}
+  declarator:
+    typemap_name: list_s
   specifier:
   - struct list_s
   typemap_name: list_s
 - _ast: Declaration
   declarator:
     name: var1
+    typemap_name: list_s
   specifier:
   - struct list_s
   typemap_name: list_s
@@ -450,6 +476,7 @@ stmts:
         name: next
         pointer:
         - ptr: '*'
+        typemap_name: list_s
       specifier:
       - struct list_s
       typemap_name: list_s
@@ -458,12 +485,14 @@ stmts:
         name: prev
         pointer:
         - ptr: '*'
+        typemap_name: list_s
       specifier:
       - list_s
       typemap_name: list_s
     name: list_s
     typemap_name: list_s
-  declarator: {}
+  declarator:
+    typemap_name: list_s
   specifier:
   - struct list_s
   typemap_name: list_s
@@ -494,7 +523,8 @@ Color_typ local;
 XXXX AST
 stmts:
 - _ast: Declaration
-  declarator: {}
+  declarator:
+    typemap_name: Color
   enum_specifier:
     _ast: Enum
     members:
@@ -508,12 +538,14 @@ stmts:
 - _ast: Declaration
   declarator:
     name: global
+    typemap_name: Color
   specifier:
   - enum Color
   typemap_name: Color
 - _ast: Declaration
   declarator:
     name: Color_typ
+    typemap_name: Color
   specifier:
   - enum Color
   storage:
@@ -522,6 +554,7 @@ stmts:
 - _ast: Declaration
   declarator:
     name: local
+    typemap_name: Color_typ
   specifier:
   - Color_typ
   typemap_name: Color_typ
@@ -563,7 +596,8 @@ void func1(enum Color arg1,Color arg2);
 XXXX AST
 stmts:
 - _ast: Declaration
-  declarator: {}
+  declarator:
+    typemap_name: Color
   enum_specifier:
     _ast: Enum
     members:
@@ -577,32 +611,37 @@ stmts:
 - _ast: Declaration
   declarator:
     name: global
+    typemap_name: Color
   specifier:
   - enum Color
   typemap_name: Color
 - _ast: Declaration
   declarator:
+    init: RED
     name: flag
-  init: RED
+    typemap_name: Color
   specifier:
   - Color
   typemap_name: Color
 - _ast: Declaration
   declarator:
     name: func1
-  params:
-  - _ast: Declaration
-    declarator:
-      name: arg1
-    specifier:
-    - enum Color
-    typemap_name: Color
-  - _ast: Declaration
-    declarator:
-      name: arg2
-    specifier:
-    - Color
-    typemap_name: Color
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: Color
+      specifier:
+      - enum Color
+      typemap_name: Color
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        typemap_name: Color
+      specifier:
+      - Color
+      typemap_name: Color
+    typemap_name: void
   specifier:
   - void
   typemap_name: void
@@ -635,6 +674,7 @@ stmts:
     name: address
     pointer:
     - ptr: '*'
+    typemap_name: void
   specifier:
   - void
   storage:
@@ -643,19 +683,22 @@ stmts:
 - _ast: Declaration
   declarator:
     name: var
+    typemap_name: address
   specifier:
   - address
   typemap_name: address
 - _ast: Declaration
   declarator:
     name: caller
-  params:
-  - _ast: Declaration
-    declarator:
-      name: arg1
-    specifier:
-    - address
-    typemap_name: address
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: address
+      specifier:
+      - address
+      typemap_name: address
+    typemap_name: void
   specifier:
   - void
   typemap_name: void
@@ -684,11 +727,14 @@ stmts:
       name: fcn
       pointer:
       - ptr: '*'
-  params:
-  - _ast: Declaration
-    declarator: {}
-    specifier:
-    - int
+      typemap_name: int
+    params:
+    - _ast: Declaration
+      declarator:
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
     typemap_name: int
   specifier:
   - int
@@ -698,13 +744,15 @@ stmts:
 - _ast: Declaration
   declarator:
     name: caller
-  params:
-  - _ast: Declaration
-    declarator:
-      name: callback
-    specifier:
-    - fcn
-    typemap_name: fcn
+    params:
+    - _ast: Declaration
+      declarator:
+        name: callback
+        typemap_name: fcn
+      specifier:
+      - fcn
+      typemap_name: fcn
+    typemap_name: void
   specifier:
   - void
   typemap_name: void
@@ -742,26 +790,28 @@ stmts:
           _ast: Declaration
           declarator:
             name: nested
-          params:
-          - _ast: Declaration
-            declarator:
-              name: arg1
-            specifier:
-            - T
-            template_argument: T
-          - _ast: Declaration
-            declarator:
-              name: arg2
-            specifier:
-            - U
-            template_argument: U
+            params:
+            - _ast: Declaration
+              declarator:
+                name: arg1
+              specifier:
+              - T
+              template_argument: T
+            - _ast: Declaration
+              declarator:
+                name: arg2
+              specifier:
+              - U
+              template_argument: U
+            typemap_name: void
           specifier:
           - void
           typemap_name: void
         parameters:
         - name: U
       name: user
-    declarator: {}
+    declarator:
+      typemap_name: user
     specifier:
     - class user
     typemap_name: user
@@ -770,12 +820,14 @@ stmts:
 - _ast: Declaration
   declarator:
     name: returnUserType
-  params: []
+    params: []
+    typemap_name: user
   specifier:
   - user
   template_arguments:
   - _ast: Declaration
-    declarator: {}
+    declarator:
+      typemap_name: int
     specifier:
     - int
     typemap_name: int
@@ -808,6 +860,7 @@ stmts:
   - _ast: Declaration
     declarator:
       name: i
+      typemap_name: int
     specifier:
     - int
     typemap_name: int
@@ -817,6 +870,7 @@ stmts:
     - _ast: Declaration
       declarator:
         name: j
+        typemap_name: int
       specifier:
       - int
       typemap_name: int
@@ -852,11 +906,13 @@ stmts:
       - _ast: Declaration
         declarator:
           name: imem
+          typemap_name: int
         specifier:
         - int
         typemap_name: int
       name: name
-    declarator: {}
+    declarator:
+      typemap_name: ns::name
     specifier:
     - class name
     typemap_name: ns::name

@@ -14,12 +14,13 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method1"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method1",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -65,12 +66,13 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method2"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method2",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -121,12 +123,13 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method3def",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -180,29 +183,31 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method3def",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 0,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "i",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "i"
-                                    },
-                                    "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -350,12 +355,13 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "exfunc",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -403,28 +409,30 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "exfunc",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "flag",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],

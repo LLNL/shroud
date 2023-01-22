@@ -216,28 +216,30 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "convert_to_int"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "convert_to_int",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
+                                    "typemap_name": "Color"
+                                },
+                                "specifier": [
+                                    "enum Color"
+                                ],
+                                "typemap_name": "Color"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "in"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "enum Color"
-                            ],
-                            "typemap_name": "Color"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],

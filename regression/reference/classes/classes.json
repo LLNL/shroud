@@ -99,16 +99,18 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "classes::Class1"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Class1"
                             ],
@@ -223,32 +225,35 @@
                         "<FUNCTION>": "1 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "flag",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "classes::Class1"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "Class1"
                             ],
@@ -429,16 +434,18 @@
                     {
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
-                            "attrs": {
-                                "_destructor": "Class1",
-                                "_name": "dtor",
-                                "name": "delete"
+                            "declarator": {
+                                "attrs": {
+                                    "_destructor": "Class1",
+                                    "_name": "dtor",
+                                    "name": "delete"
+                                },
+                                "metaattrs": {
+                                    "intent": "dtor"
+                                },
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "intent": "dtor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -493,12 +500,13 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "Method1"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "Method1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -608,32 +616,34 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "equivalent"
+                                "func_const": true,
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "equivalent",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "obj2",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "classes::Class1"
+                                        },
+                                        "specifier": [
+                                            "Class1"
+                                        ],
+                                        "typemap_name": "classes::Class1"
+                                    }
+                                ],
+                                "typemap_name": "bool"
                             },
-                            "func_const": true,
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "obj2",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "Class1"
-                                    ],
-                                    "typemap_name": "classes::Class1"
-                                }
-                            ],
                             "specifier": [
                                 "bool"
                             ],
@@ -795,18 +805,19 @@
                         "<FUNCTION>": "5 ****************************************",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "function"
+                                },
                                 "name": "returnThis",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "classes::Class1"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Class1"
                             ],
@@ -836,13 +847,14 @@
                         "_generated": "return_this",
                         "ast": {
                             "declarator": {
-                                "name": "returnThis"
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "subroutine"
+                                },
+                                "name": "returnThis",
+                                "params": [],
+                                "typemap_name": "classes::Class1"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -897,54 +909,57 @@
                         "_PTR_F_C_index": "16",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "function"
+                                },
                                 "name": "returnThisBuffer",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "name",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "flag",
+                                            "typemap_name": "bool"
+                                        },
+                                        "specifier": [
+                                            "bool"
+                                        ],
+                                        "typemap_name": "bool"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "classes::Class1"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "name",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "bool"
-                                    ],
-                                    "typemap_name": "bool"
-                                }
-                            ],
                             "specifier": [
                                 "Class1"
                             ],
@@ -1089,55 +1104,58 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "function"
+                                },
                                 "name": "returnThisBuffer",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "api": "buf",
+                                                "intent": "in"
+                                            },
+                                            "name": "name",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "flag",
+                                            "typemap_name": "bool"
+                                        },
+                                        "specifier": [
+                                            "bool"
+                                        ],
+                                        "typemap_name": "bool"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "classes::Class1"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "name",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                },
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "bool"
-                                    ],
-                                    "typemap_name": "bool"
-                                }
-                            ],
                             "specifier": [
                                 "Class1"
                             ],
@@ -1278,19 +1296,20 @@
                         "<FUNCTION>": "7 ****************************************",
                         "ast": {
                             "declarator": {
+                                "func_const": true,
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "function"
+                                },
                                 "name": "getclass3",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "classes::Class1"
                             },
-                            "func_const": true,
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Class1"
                             ],
@@ -1400,18 +1419,19 @@
                         "ast": {
                             "const": true,
                             "declarator": {
+                                "metaattrs": {
+                                    "deref": "allocatable",
+                                    "intent": "function"
+                                },
                                 "name": "getName",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "&"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -1528,19 +1548,20 @@
                         "ast": {
                             "const": true,
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "allocatable",
+                                    "intent": "function"
+                                },
                                 "name": "getName",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "&"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -1607,28 +1628,30 @@
                         "<FUNCTION>": "9 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "directionFunc"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "directionFunc",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "typemap_name": "classes::Class1::DIRECTION"
+                                        },
+                                        "specifier": [
+                                            "DIRECTION"
+                                        ],
+                                        "typemap_name": "classes::Class1::DIRECTION"
+                                    }
+                                ],
+                                "typemap_name": "classes::Class1::DIRECTION"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "arg"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "DIRECTION"
-                                    ],
-                                    "typemap_name": "classes::Class1::DIRECTION"
-                                }
-                            ],
                             "specifier": [
                                 "DIRECTION"
                             ],
@@ -1814,12 +1837,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_flag"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_flag",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1904,12 +1928,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_test"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_test",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1994,29 +2019,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_test"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_test",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -2110,13 +2137,14 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_name"
+                                "metaattrs": {
+                                    "deref": "allocatable",
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_name",
+                                "params": [],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -2173,14 +2201,15 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "get_m_name"
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "allocatable",
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_name",
+                                "params": [],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "allocatable",
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -2257,28 +2286,30 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_m_name"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_m_name",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -2320,29 +2351,31 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "set_m_name"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_m_name",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "api": "buf",
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -2432,11 +2465,12 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "readonly": true
-                            },
                             "declarator": {
-                                "name": "m_flag"
+                                "attrs": {
+                                    "readonly": true
+                                },
+                                "name": "m_flag",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -2466,11 +2500,12 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "name": "test"
-                            },
                             "declarator": {
-                                "name": "m_test"
+                                "attrs": {
+                                    "name": "test"
+                                },
+                                "name": "m_test",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -2501,7 +2536,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "m_name"
+                                "name": "m_name",
+                                "typemap_name": "std::string"
                             },
                             "specifier": [
                                 "std::string"
@@ -2580,18 +2616,19 @@
                         "ast": {
                             "const": true,
                             "declarator": {
+                                "metaattrs": {
+                                    "deref": "allocatable",
+                                    "intent": "function"
+                                },
                                 "name": "getName",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "&"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -2708,19 +2745,20 @@
                         "ast": {
                             "const": true,
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "allocatable",
+                                    "intent": "function"
+                                },
                                 "name": "getName",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "&"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "allocatable",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "std::string"
                             ],
@@ -2837,18 +2875,19 @@
                         "<FUNCTION>": "22 ****************************************",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "function"
+                                },
                                 "name": "getReference",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "&"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "classes::Singleton"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Singleton"
                             ],
@@ -3006,16 +3045,18 @@
                         "<FUNCTION>": "23 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "classes::Shape"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Shape"
                             ],
@@ -3126,13 +3167,14 @@
                         "<FUNCTION>": "24 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_ivar"
+                                "func_const": true,
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_ivar",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "func_const": true,
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -3297,16 +3339,18 @@
                         "<FUNCTION>": "25 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "classes::Circle"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Circle"
                             ],
@@ -3469,28 +3513,30 @@
                         "<FUNCTION>": "26 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "allocate"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "allocate",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "n",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -3570,12 +3616,13 @@
                         "<FUNCTION>": "27 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "free"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "free",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -3619,16 +3666,18 @@
                         "<FUNCTION>": "28 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "classes::Data"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Data"
                             ],
@@ -3701,15 +3750,17 @@
                     {
                         "<FUNCTION>": "29 ****************************************",
                         "ast": {
-                            "attrs": {
-                                "_destructor": "Data",
-                                "_name": "dtor"
+                            "declarator": {
+                                "attrs": {
+                                    "_destructor": "Data",
+                                    "_name": "dtor"
+                                },
+                                "metaattrs": {
+                                    "intent": "dtor"
+                                },
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "intent": "dtor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -3758,12 +3809,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_nitems"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_nitems",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -3848,29 +3900,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_nitems"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_nitems",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -3964,23 +4018,24 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter"
+                                },
                                 "name": "get_items",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter"
+                                "typemap_name": "int"
                             },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -4040,24 +4095,25 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter"
+                                },
                                 "name": "get_items",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter"
+                                "typemap_name": "int"
                             },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -4138,39 +4194,41 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_items"
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "rank": 1
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
                                         ],
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -4279,7 +4337,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -4304,23 +4363,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -4386,28 +4446,30 @@
                 "<FUNCTION>": "35 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "directionFunc"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "directionFunc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "classes::Class1::DIRECTION"
+                                },
+                                "specifier": [
+                                    "Class1::DIRECTION"
+                                ],
+                                "typemap_name": "classes::Class1::DIRECTION"
+                            }
+                        ],
+                        "typemap_name": "classes::Class1::DIRECTION"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Class1::DIRECTION"
-                            ],
-                            "typemap_name": "classes::Class1::DIRECTION"
-                        }
-                    ],
                     "specifier": [
                         "Class1::DIRECTION"
                     ],
@@ -4585,28 +4647,30 @@
                 "<FUNCTION>": "36 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passClassByValue"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passClassByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "classes::Class1"
+                                },
+                                "specifier": [
+                                    "Class1"
+                                ],
+                                "typemap_name": "classes::Class1"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Class1"
-                            ],
-                            "typemap_name": "classes::Class1"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -4713,31 +4777,33 @@
                 "<FUNCTION>": "37 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "useclass"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "useclass",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "classes::Class1"
+                                },
+                                "specifier": [
+                                    "Class1"
+                                ],
+                                "typemap_name": "classes::Class1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Class1"
-                            ],
-                            "typemap_name": "classes::Class1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -4891,18 +4957,19 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getclass2",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -4981,18 +5048,19 @@
                 "<FUNCTION>": "39 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getclass3",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -5094,18 +5162,19 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capsule",
+                            "intent": "function"
+                        },
                         "name": "getclass2_void",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capsule",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -5183,18 +5252,19 @@
                 "<FUNCTION>": "41 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capsule",
+                            "intent": "function"
+                        },
                         "name": "getclass3_void",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capsule",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -5273,18 +5343,19 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getConstClassReference",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -5360,18 +5431,19 @@
                 "<FUNCTION>": "43 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getClassReference",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -5469,29 +5541,31 @@
                 "<FUNCTION>": "44 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "getClassCopy"
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
+                        "name": "getClassCopy",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "classes::Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Class1"
                     ],
@@ -5606,28 +5680,30 @@
                 "<FUNCTION>": "45 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "set_global_flag"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "set_global_flag",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -5747,12 +5823,13 @@
                 "<FUNCTION>": "46 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "get_global_flag"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "get_global_flag",
+                        "params": [],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -5857,23 +5934,24 @@
                 ],
                 "_PTR_F_C_index": "48",
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],
@@ -5979,24 +6057,25 @@
                 "_PTR_C_CXX_index": "47",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],

@@ -14,12 +14,13 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker3"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "worker3",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -60,12 +61,13 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "worker",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -112,12 +114,13 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -192,12 +195,13 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -272,12 +276,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker4"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker4",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],

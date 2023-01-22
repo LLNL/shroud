@@ -21,35 +21,37 @@
                 "_PTR_F_C_index": "10",
                 "ast": {
                     "declarator": {
-                        "name": "Rank2In"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "Rank2In",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 2
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "in",
-                                "rank": 2
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -127,36 +129,38 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "Rank2In"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "Rank2In",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 2
+                                    },
+                                    "metaattrs": {
+                                        "api": "cdesc",
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "in",
-                                "rank": 2
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -235,56 +239,59 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "in",
-                                "rank": 0,
-                                "value": true
+                        "name": "GetScalar1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 0,
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -299,19 +306,20 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
                                             "ptr": "&"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    ],
+                                    "typemap_name": "std::string"
                                 },
                                 "specifier": [
                                     "std::string"
@@ -319,21 +327,22 @@
                                 "typemap_name": "std::string"
                             },
                             {
-                                "attrs": {
-                                    "cdesc": true,
-                                    "intent": "out",
-                                    "rank": 0
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "out",
+                                        "rank": 0
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
                                     "name": "value",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
+                                    ],
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -347,19 +356,20 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
                                             "ptr": "&"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    ],
+                                    "typemap_name": "std::string"
                                 },
                                 "specifier": [
                                     "std::string"
@@ -367,21 +377,22 @@
                                 "typemap_name": "std::string"
                             },
                             {
-                                "attrs": {
-                                    "cdesc": true,
-                                    "intent": "out",
-                                    "rank": 0
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "out",
+                                        "rank": 0
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
                                     "name": "value",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
+                                    ],
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"
@@ -510,55 +521,59 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "out",
-                                "rank": 0
+                        "name": "GetScalar1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 0,
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -621,57 +636,59 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "out",
-                                "rank": 0
+                        "name": "GetScalar1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 0,
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -817,55 +834,59 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "out",
-                                "rank": 0
+                        "name": "GetScalar1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 0,
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -928,57 +949,59 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "cdesc": true,
-                                "intent": "out",
-                                "rank": 0
+                        "name": "GetScalar1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "cdesc": true,
+                                        "intent": "in",
+                                        "rank": 0,
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1116,12 +1139,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "getData"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "getData",
+                        "params": []
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "DataType"
                     ],
@@ -1182,12 +1205,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "getData"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "getData",
+                        "params": []
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -1298,12 +1321,12 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "getData"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "getData",
+                        "params": []
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "double"
                     ],
@@ -1414,54 +1437,57 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": true
+                        "name": "GetScalar2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1476,19 +1502,20 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
                                             "ptr": "&"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    ],
+                                    "typemap_name": "std::string"
                                 },
                                 "specifier": [
                                     "std::string"
@@ -1496,19 +1523,20 @@
                                 "typemap_name": "std::string"
                             },
                             {
-                                "attrs": {
-                                    "intent": "out"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
                                     "name": "value",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
+                                    ],
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -1525,19 +1553,20 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "name": "name",
                                     "pointer": [
                                         {
                                             "ptr": "&"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    ],
+                                    "typemap_name": "std::string"
                                 },
                                 "specifier": [
                                     "std::string"
@@ -1545,19 +1574,20 @@
                                 "typemap_name": "std::string"
                             },
                             {
-                                "attrs": {
-                                    "intent": "out"
-                                },
                                 "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
                                     "name": "value",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
+                                    ],
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"
@@ -1606,53 +1636,57 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "GetScalar2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1707,54 +1741,57 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "GetScalar2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1835,53 +1872,57 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "GetScalar2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1936,54 +1977,57 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "GetScalar2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "GetScalar2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
                             },
-                            "declarator": {
-                                "name": "value",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "value",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],

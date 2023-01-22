@@ -16,28 +16,30 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method1"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "comm",
+                                            "typemap_name": "MPI_Comm"
+                                        },
+                                        "specifier": [
+                                            "MPI_Comm"
+                                        ],
+                                        "typemap_name": "MPI_Comm"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "comm"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "MPI_Comm"
-                                    ],
-                                    "typemap_name": "MPI_Comm"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -119,30 +121,32 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method2"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method2",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "c2",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "three::Class1"
+                                        },
+                                        "specifier": [
+                                            "three::Class1"
+                                        ],
+                                        "typemap_name": "three::Class1"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "c2",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "three::Class1"
-                                    ],
-                                    "typemap_name": "three::Class1"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -274,12 +278,13 @@
                                 "<FUNCTION>": "5 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "function1"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "function1",
+                                        "params": [],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "void"
                                     ],
@@ -383,28 +388,30 @@
                                 "<FUNCTION>": "2 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method1"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "method1",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "arg1",
+                                                    "typemap_name": "CustomType"
+                                                },
+                                                "specifier": [
+                                                    "CustomType"
+                                                ],
+                                                "typemap_name": "CustomType"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "arg1"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "CustomType"
-                                            ],
-                                            "typemap_name": "CustomType"
-                                        }
-                                    ],
                                     "specifier": [
                                         "void"
                                     ],
@@ -549,12 +556,13 @@
                                 "<FUNCTION>": "3 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "method",
+                                        "params": [],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "void"
                                     ],
@@ -629,12 +637,13 @@
                         "<FUNCTION>": "6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "outer_func"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "outer_func",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -711,12 +720,13 @@
                                 "<FUNCTION>": "4 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "method"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "method",
+                                        "params": [],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "void"
                                     ],
@@ -791,12 +801,13 @@
                         "<FUNCTION>": "7 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "outer_func"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "outer_func",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -868,7 +879,8 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "CustomType"
+                        "name": "CustomType",
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"

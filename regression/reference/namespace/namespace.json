@@ -26,18 +26,19 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "allocatable",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],
@@ -134,19 +135,20 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "allocatable",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "allocatable",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],
@@ -206,12 +208,13 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "One"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "One",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -343,42 +346,9 @@
                                 "<FUNCTION>": "0 ****************************************",
                                 "_generated": "struct_as_class_ctor",
                                 "ast": {
-                                    "attrs": {
-                                        "_constructor": true,
-                                        "name": "Cstruct1_ctor"
+                                    "declarator": {
+                                        "typemap_name": "outer::Cstruct1"
                                     },
-                                    "declarator": {},
-                                    "metaattrs": {
-                                        "intent": "ctor"
-                                    },
-                                    "params": [
-                                        {
-                                            "declarator": {
-                                                "name": "ifield"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "ifield"
-                                            },
-                                            "specifier": [
-                                                "int"
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        {
-                                            "declarator": {
-                                                "name": "dfield"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "dfield"
-                                            },
-                                            "specifier": [
-                                                "double"
-                                            ],
-                                            "typemap_name": "double"
-                                        }
-                                    ],
                                     "specifier": [
                                         "Cstruct1"
                                     ],
@@ -486,7 +456,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "ifield"
+                                        "name": "ifield",
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -516,7 +487,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "dfield"
+                                        "name": "dfield",
+                                        "typemap_name": "double"
                                     },
                                     "specifier": [
                                         "double"
@@ -581,12 +553,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "One"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "One",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],

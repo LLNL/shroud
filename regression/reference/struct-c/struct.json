@@ -26,7 +26,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "ifield"
+                                "name": "ifield",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -52,7 +53,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "dfield"
+                                "name": "dfield",
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -116,7 +118,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -148,7 +151,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -209,7 +213,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -234,29 +239,30 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems+nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems+nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                                "name": "nitems"
+                                            }
+                                        }
+                                    ]
+                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "+",
-                                        "right": {
-                                            "name": "nitems"
-                                        }
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -281,29 +287,30 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems*TWO"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems*TWO"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "*",
+                                            "right": {
+                                                "name": "TWO"
+                                            }
+                                        }
+                                    ]
+                                },
                                 "name": "dvalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "*",
-                                        "right": {
-                                            "name": "TWO"
-                                        }
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -328,10 +335,17 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "svalue",
                                 "pointer": [
                                     {
@@ -340,14 +354,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -409,7 +417,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -434,23 +443,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -475,23 +485,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "dvalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -551,13 +562,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "20"
-                                }
-                            ],
                             "declarator": {
-                                "name": "name"
+                                "array": [
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
+                                "name": "name",
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -582,13 +594,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
                             "declarator": {
-                                "name": "count"
+                                "array": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "name": "count",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -646,12 +659,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_x1"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_x1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -736,29 +750,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_x1"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_x1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -850,12 +866,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_y1"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_y1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -940,29 +957,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_y1"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_y1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1061,7 +1080,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1"
+                                "name": "x1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1087,7 +1107,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1"
+                                "name": "y1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1149,12 +1170,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_x1"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_x1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1239,29 +1261,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_x1"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_x1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1353,12 +1377,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_y1"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_y1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1443,29 +1468,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_y1"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_y1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1557,12 +1584,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_z1"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_z1",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1647,29 +1675,31 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "set_z1"
+                                "metaattrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_z1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "val"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "setter"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1769,7 +1799,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1"
+                                "name": "x1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1795,7 +1826,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1"
+                                "name": "y1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1821,7 +1853,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "z1"
+                                "name": "z1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1889,28 +1922,30 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByValue"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStructByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2018,31 +2053,33 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStruct1",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2154,52 +2191,55 @@
                 "_PTR_F_C_index": "30",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct2"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "s1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
+                        "name": "passStruct2",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "s1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -2334,53 +2374,56 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct2"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "s1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
+                        "name": "passStruct2",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "s1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -2512,33 +2555,35 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInPtr"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "acceptStructInPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2644,63 +2689,67 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructOutPtr"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "acceptStructOutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
                             },
-                            "declarator": {
-                                "name": "i"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2844,33 +2893,35 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInOutPtr"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptStructInOutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -2945,43 +2996,46 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnStructByValue"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "returnStructByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "Cstruct1"
+                    },
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -3124,49 +3178,52 @@
                 "_PTR_F_C_index": "31",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -3303,50 +3360,53 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -3481,70 +3541,74 @@
                 "_PTR_F_C_index": "32",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -3710,72 +3774,76 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -3945,18 +4013,19 @@
                 "_PTR_F_C_index": "33",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "get_global_struct_list",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_list"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Cstruct_list"
                     ],
@@ -4027,19 +4096,20 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "get_global_struct_list",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_list"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Cstruct_list"
                     ],
@@ -4097,18 +4167,19 @@
                 "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_class",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_class"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Cstruct_as_class"
                     ],
@@ -4185,49 +4256,52 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_class_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_class"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "x"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "y"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct_as_class"
                     ],
@@ -4372,34 +4446,36 @@
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_as_class_sum"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "Cstruct_as_class_sum",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "pass": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "point",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_as_class"
+                                },
+                                "specifier": [
+                                    "Cstruct_as_class"
+                                ],
+                                "typemap_name": "Cstruct_as_class"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "pass": true
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "point",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct_as_class"
-                            ],
-                            "typemap_name": "Cstruct_as_class"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -4513,64 +4589,68 @@
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_subclass_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "z",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_subclass"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "x"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "y"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "z"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct_as_subclass"
                     ],
@@ -4755,38 +4835,40 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "getter",
+                            "struct": "Cstruct_ptr"
+                        },
                         "name": "Cstruct_ptr_get_const_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_ptr"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_ptr"
+                                },
+                                "specifier": [
+                                    "Cstruct_ptr"
+                                ],
+                                "typemap_name": "Cstruct_ptr"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "double"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "getter",
-                        "struct": "Cstruct_ptr"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_ptr"
-                            },
-                            "specifier": [
-                                "Cstruct_ptr"
-                            ],
-                            "typemap_name": "Cstruct_ptr"
-                        }
-                    ],
                     "specifier": [
                         "double"
                     ],
@@ -4841,39 +4923,41 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "pointer",
+                            "intent": "getter",
+                            "struct": "Cstruct_ptr"
+                        },
                         "name": "Cstruct_ptr_get_const_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_ptr"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_ptr"
+                                },
+                                "specifier": [
+                                    "Cstruct_ptr"
+                                ],
+                                "typemap_name": "Cstruct_ptr"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "double"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "pointer",
-                        "intent": "getter",
-                        "struct": "Cstruct_ptr"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_ptr"
-                            },
-                            "specifier": [
-                                "Cstruct_ptr"
-                            ],
-                            "typemap_name": "Cstruct_ptr"
-                        }
-                    ],
                     "specifier": [
                         "double"
                     ],
@@ -4978,52 +5062,55 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_ptr_set_const_dvalue"
-                    },
-                    "metaattrs": {
-                        "intent": "setter"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout",
-                                "struct": "Cstruct_ptr"
-                            },
-                            "specifier": [
-                                "Cstruct_ptr"
-                            ],
-                            "typemap_name": "Cstruct_ptr"
+                        "metaattrs": {
+                            "intent": "setter"
                         },
-                        {
-                            "attrs": {
-                                "intent": "in"
+                        "name": "Cstruct_ptr_set_const_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout",
+                                        "struct": "Cstruct_ptr"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_ptr"
+                                },
+                                "specifier": [
+                                    "Cstruct_ptr"
+                                ],
+                                "typemap_name": "Cstruct_ptr"
                             },
-                            "const": true,
-                            "declarator": {
-                                "name": "val",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "setter"
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5146,49 +5233,51 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "left": {
+                                        "name": "nitems"
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "name": "nitems"
+                                    }
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "Cstruct_list"
+                        },
                         "name": "Cstruct_list_get_ivalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
+                                ],
+                                "typemap_name": "Cstruct_list"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "left": {
-                                    "name": "nitems"
-                                },
-                                "op": "+",
-                                "right": {
-                                    "name": "nitems"
-                                }
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "Cstruct_list"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -5248,50 +5337,52 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "left": {
+                                        "name": "nitems"
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "name": "nitems"
+                                    }
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "Cstruct_list"
+                        },
                         "name": "Cstruct_list_get_ivalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
+                                ],
+                                "typemap_name": "Cstruct_list"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "left": {
-                                    "name": "nitems"
-                                },
-                                "op": "+",
-                                "right": {
-                                    "name": "nitems"
-                                }
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "Cstruct_list"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -5404,63 +5495,66 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_set_ivalue"
-                    },
-                    "metaattrs": {
-                        "intent": "setter"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
+                        "metaattrs": {
+                            "intent": "setter"
                         },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "val",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "+",
-                                        "right": {
-                                            "name": "nitems"
+                        "name": "Cstruct_list_set_ivalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
                                         }
-                                    }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
                                 ],
-                                "intent": "setter"
+                                "typemap_name": "Cstruct_list"
                             },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "+",
+                                                "right": {
+                                                    "name": "nitems"
+                                                }
+                                            }
+                                        ],
+                                        "intent": "setter"
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5588,49 +5682,51 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "left": {
+                                        "name": "nitems"
+                                    },
+                                    "op": "*",
+                                    "right": {
+                                        "name": "TWO"
+                                    }
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "Cstruct_list"
+                        },
                         "name": "Cstruct_list_get_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
+                                ],
+                                "typemap_name": "Cstruct_list"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "left": {
-                                    "name": "nitems"
-                                },
-                                "op": "*",
-                                "right": {
-                                    "name": "TWO"
-                                }
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "Cstruct_list"
+                        "typemap_name": "double"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
-                        }
-                    ],
                     "specifier": [
                         "double"
                     ],
@@ -5690,50 +5786,52 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "left": {
+                                        "name": "nitems"
+                                    },
+                                    "op": "*",
+                                    "right": {
+                                        "name": "TWO"
+                                    }
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "Cstruct_list"
+                        },
                         "name": "Cstruct_list_get_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
+                                ],
+                                "typemap_name": "Cstruct_list"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "left": {
-                                    "name": "nitems"
-                                },
-                                "op": "*",
-                                "right": {
-                                    "name": "TWO"
-                                }
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "Cstruct_list"
+                        "typemap_name": "double"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
-                        }
-                    ],
                     "specifier": [
                         "double"
                     ],
@@ -5846,63 +5944,66 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_list_set_dvalue"
-                    },
-                    "metaattrs": {
-                        "intent": "setter"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout",
-                                "struct": "Cstruct_list"
-                            },
-                            "specifier": [
-                                "Cstruct_list"
-                            ],
-                            "typemap_name": "Cstruct_list"
+                        "metaattrs": {
+                            "intent": "setter"
                         },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "val",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "*",
-                                        "right": {
-                                            "name": "TWO"
+                        "name": "Cstruct_list_set_dvalue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout",
+                                        "struct": "Cstruct_list"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
                                         }
-                                    }
+                                    ],
+                                    "typemap_name": "Cstruct_list"
+                                },
+                                "specifier": [
+                                    "Cstruct_list"
                                 ],
-                                "intent": "setter"
+                                "typemap_name": "Cstruct_list"
                             },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "left": {
+                                                    "name": "nitems"
+                                                },
+                                                "op": "*",
+                                                "right": {
+                                                    "name": "TWO"
+                                                }
+                                            }
+                                        ],
+                                        "intent": "setter"
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],

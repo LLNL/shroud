@@ -13,16 +13,18 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "ArrayWrapper"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "ArrayWrapper"
                             ],
@@ -122,28 +124,30 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "setSize"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "setSize",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "size",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "size"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -244,13 +248,14 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "getSize"
+                                "func_const": true,
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "getSize",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "func_const": true,
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -345,33 +350,35 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "fillSize"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "fillSize",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "out"
+                                            },
+                                            "name": "size",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "size",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -473,12 +480,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "allocate"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "allocate",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -527,28 +535,29 @@
                         ],
                         "_PTR_F_C_index": "17",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArray",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -655,29 +664,30 @@
                         "_PTR_C_CXX_index": "5",
                         "_generated": "arg_to_buffer",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArray",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -750,29 +760,30 @@
                         ],
                         "_PTR_F_C_index": "18",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "func_const": true,
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayConst",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "func_const": true,
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -880,30 +891,31 @@
                         "_PTR_C_CXX_index": "6",
                         "_generated": "arg_to_buffer",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "func_const": true,
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayConst",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "func_const": true,
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -976,29 +988,30 @@
                         ],
                         "_PTR_F_C_index": "19",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "const": true,
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayC",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -1105,30 +1118,31 @@
                         "_PTR_C_CXX_index": "7",
                         "_generated": "arg_to_buffer",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "const": true,
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayC",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -1201,30 +1215,31 @@
                         ],
                         "_PTR_F_C_index": "20",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "const": true,
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "func_const": true,
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayConstC",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "func_const": true,
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -1332,31 +1347,32 @@
                         "_PTR_C_CXX_index": "8",
                         "_generated": "arg_to_buffer",
                         "ast": {
-                            "attrs": {
-                                "dimension": "getSize()"
-                            },
                             "const": true,
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "getSize()"
+                                },
+                                "func_const": true,
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "args": [],
+                                            "name": "getSize"
+                                        }
+                                    ],
+                                    "intent": "function"
+                                },
                                 "name": "getArrayConstC",
+                                "params": [],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "func_const": true,
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "args": [],
-                                        "name": "getSize"
-                                    }
                                 ],
-                                "intent": "function"
+                                "typemap_name": "double"
                             },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -1430,63 +1446,66 @@
                         "_PTR_F_C_index": "21",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayPtr"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayPtr",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -1643,64 +1662,67 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayPtr"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayPtr",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "api": "cdesc",
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -1815,63 +1837,66 @@
                         "_PTR_F_C_index": "22",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayRef"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayRef",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2028,64 +2053,67 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayRef"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayRef",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "api": "cdesc",
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2200,64 +2228,67 @@
                         "_PTR_F_C_index": "23",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayPtrConst"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayPtrConst",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2414,65 +2445,68 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayPtrConst"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayPtrConst",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "api": "cdesc",
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2587,64 +2621,67 @@
                         "_PTR_F_C_index": "24",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayRefConst"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayRefConst",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2801,65 +2838,68 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
-                                "name": "fetchArrayRefConst"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "dimension": "isize",
-                                        "intent": "out"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            },
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "pointer",
-                                        "dimension": [
-                                            {
-                                                "name": "isize"
-                                            }
-                                        ],
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "hidden": true
+                                "name": "fetchArrayRefConst",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "isize",
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "api": "cdesc",
+                                                "deref": "pointer",
+                                                "dimension": [
+                                                    {
+                                                        "name": "isize"
+                                                    }
+                                                ],
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
                                     },
-                                    "declarator": {
-                                        "name": "isize",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "hidden": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "isize",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -2970,36 +3010,38 @@
                         "<FUNCTION>": "13 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "fetchVoidPtr"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "fetchVoidPtr",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "out"
                                             },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "void"
-                                    ],
-                                    "typemap_name": "void"
-                                }
-                            ],
+                                            "metaattrs": {
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3100,36 +3142,38 @@
                         "<FUNCTION>": "14 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "fetchVoidRef"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "fetchVoidRef",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "out"
                                             },
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "void"
-                                    ],
-                                    "typemap_name": "void"
-                                }
-                            ],
+                                            "metaattrs": {
+                                                "intent": "out"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3230,33 +3274,35 @@
                         "<FUNCTION>": "15 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "checkPtr"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "checkPtr",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "array",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    }
+                                ],
+                                "typemap_name": "bool"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "array",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "void"
-                                    ],
-                                    "typemap_name": "void"
-                                }
-                            ],
                             "specifier": [
                                 "bool"
                             ],
@@ -3407,12 +3453,13 @@
                         "<FUNCTION>": "16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "sumArray"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "sumArray",
+                                "params": [],
+                                "typemap_name": "double"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],

@@ -21,7 +21,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "tc"
+                                "name": "tc",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -84,12 +85,13 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "NoReturnNoArguments"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "NoReturnNoArguments",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -132,43 +134,46 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValue"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "PassByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
                             },
-                            "declarator": {
-                                "name": "arg2"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "double"
+                    },
                     "specifier": [
                         "double"
                     ],
@@ -367,53 +372,56 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByReference"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "PassByReference",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
                             },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -566,28 +574,30 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValueMacro"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "PassByValueMacro",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "double"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg2"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "double"
                     ],
@@ -737,69 +747,73 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "checkBool"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "checkBool",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
                             },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
                             },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arg3",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg3",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1015,61 +1029,64 @@
                 ],
                 "_PTR_F_C_index": "26",
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "Function4a",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            },
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "char"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "char"
                     ],
@@ -1261,62 +1278,65 @@
                 "_PTR_C_CXX_index": "5",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "Function4a",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            },
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "char"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "char"
                     ],
@@ -1437,32 +1457,34 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptName"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptName",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1562,33 +1584,35 @@
                 "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passCharPtrInOut",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "s",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "s",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1687,34 +1711,36 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "passCharPtrInOut"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passCharPtrInOut",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "inout"
+                                    },
+                                    "name": "s",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "s",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1792,34 +1818,36 @@
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "declarator": {
-                        "name": "returnOneName"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "returnOneName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "name1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1921,35 +1949,37 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "returnOneName"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "returnOneName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "name1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -2029,55 +2059,58 @@
                 "_PTR_F_C_index": "29",
                 "ast": {
                     "declarator": {
-                        "name": "returnTwoNames"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
+                        "name": "returnTwoNames",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "name1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "name2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "name2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2227,57 +2260,60 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "returnTwoNames"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
+                        "name": "returnTwoNames",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "name1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "name2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "name2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2390,50 +2426,53 @@
                 "_PTR_F_C_index": "30",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedTextLen"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "implied": "len(text)",
-                                "value": true
+                        "name": "ImpliedTextLen",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "text",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "ltext"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "len(text)",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "ltext",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2581,51 +2620,54 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedTextLen"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "implied": "len(text)",
-                                "value": true
+                        "name": "ImpliedTextLen",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "MAXNAME",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "text",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "ltext"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "len(text)",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "ltext",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2730,64 +2772,68 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLen"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "implied": "len(text)",
-                                "value": true
+                        "name": "ImpliedLen",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "text",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "ltext"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "len(text)",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "ltext",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "false",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "false",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -3032,64 +3078,68 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLenTrim"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "implied": "len_trim(text)",
-                                "value": true
+                        "name": "ImpliedLenTrim",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "text",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "declarator": {
-                                "name": "ltext"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "len_trim(text)",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "ltext",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "true",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "true",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -3334,29 +3384,31 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedBoolTrue"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ImpliedBoolTrue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "true",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "implied": "true",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
                     "specifier": [
                         "bool"
                     ],
@@ -3502,29 +3554,31 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedBoolFalse"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ImpliedBoolFalse",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "false",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "implied": "false",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
                     "specifier": [
                         "bool"
                     ],
@@ -3670,12 +3724,13 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "bindC1"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "bindC1",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -3728,33 +3783,35 @@
                 "_PTR_F_C_index": "31",
                 "ast": {
                     "declarator": {
-                        "name": "bindC2"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "bindC2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -3836,34 +3893,36 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "bindC2"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "bindC2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -3943,57 +4002,60 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passVoidStarStar"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "out",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
+                        "name": "passVoidStarStar",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
                                     },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "out",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -4107,33 +4169,35 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedType"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passAssumedType",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "assumedtype": true
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -4242,34 +4306,36 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeDim"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passAssumedTypeDim",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true,
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "assumedtype": true,
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -4354,53 +4420,56 @@
                 "_PTR_F_C_index": "32",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeBuf"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "assumedtype": true
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "passAssumedTypeBuf",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -4538,54 +4607,57 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeBuf"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "assumedtype": true
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "passAssumedTypeBuf",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -4716,52 +4788,56 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback1"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "external": true,
-                                "value": true
+                        "name": "callback1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "func": {
-                                    "name": "incr",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                }
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true,
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -4872,52 +4948,56 @@
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback1a"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "external": true,
-                                "value": true
+                        "name": "callback1a",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "func": {
-                                    "name": "incr",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                }
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true,
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5030,86 +5110,92 @@
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "assumedtype": true
+                        "name": "callback2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "external": true,
-                                "value": true
-                            },
-                            "declarator": {
-                                "func": {
-                                    "name": "incr",
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true,
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "specifier": [
-                                        "int"
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5251,110 +5337,117 @@
                 "_PTR_F_C_index": "33",
                 "ast": {
                     "declarator": {
-                        "name": "callback3"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "type",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "assumedtype": true
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "external": true,
-                                "value": true
-                            },
-                            "declarator": {
-                                "func": {
-                                    "name": "incr",
+                        "name": "callback3",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "metaattrs": {
-                                "intent": "in"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true,
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "specifier": [
-                                        "int"
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5519,111 +5612,118 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
-                        "name": "callback3"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "type",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "assumedtype": true
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "external": true,
-                                "value": true
-                            },
-                            "declarator": {
-                                "func": {
-                                    "name": "incr",
+                        "name": "callback3",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
                                     "pointer": [
                                         {
                                             "ptr": "*"
                                         }
-                                    ]
-                                }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "ftrim_char_in": true,
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
                             },
-                            "metaattrs": {
-                                "intent": "in"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "assumedtype": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "external": true,
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "incr",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "specifier": [
-                                        "int"
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "buf",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "api": "buf",
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -5785,108 +5885,115 @@
                 "<FUNCTION>": "25 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback_set_alloc"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "tc"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arr",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "array_info"
-                            ],
-                            "typemap_name": "array_info"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "func": {
-                                    "name": "alloc",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                }
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "params": [
-                                {
+                        "name": "callback_set_alloc",
+                        "params": [
+                            {
+                                "declarator": {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "tc"
                                     },
                                     "metaattrs": {
                                         "intent": "in"
                                     },
-                                    "specifier": [
-                                        "int"
-                                    ],
+                                    "name": "tc",
                                     "typemap_name": "int"
                                 },
-                                {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
                                     "attrs": {
                                         "intent": "inout"
-                                    },
-                                    "declarator": {
-                                        "name": "arr",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
                                     },
                                     "metaattrs": {
                                         "intent": "inout"
                                     },
-                                    "specifier": [
-                                        "array_info"
+                                    "name": "arr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
                                     ],
                                     "typemap_name": "array_info"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
+                                },
+                                "specifier": [
+                                    "array_info"
+                                ],
+                                "typemap_name": "array_info"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "func": {
+                                        "name": "alloc",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                },
+                                                "metaattrs": {
+                                                    "intent": "in"
+                                                },
+                                                "name": "tc",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "intent": "inout"
+                                                },
+                                                "metaattrs": {
+                                                    "intent": "inout"
+                                                },
+                                                "name": "arr",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "array_info"
+                                            },
+                                            "specifier": [
+                                                "array_info"
+                                            ],
+                                            "typemap_name": "array_info"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -6034,7 +6141,8 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID"
+                        "name": "TypeID",
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -6069,7 +6177,8 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "EnumTypeID"
+                        "name": "EnumTypeID",
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"

@@ -61,43 +61,44 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "nested"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "arg1"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "T"
-                                    ],
-                                    "template_argument": "T"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "value": true
+                                "name": "nested",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg1"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
                                     },
-                                    "declarator": {
-                                        "name": "arg2"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "U"
-                                    ],
-                                    "template_argument": "U"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg2"
+                                        },
+                                        "specifier": [
+                                            "U"
+                                        ],
+                                        "template_argument": "U"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -143,45 +144,44 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "nested"
-                            },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "arg1"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "template_argument": "T",
-                                    "typemap_name": "int"
+                                "metaattrs": {
+                                    "intent": "subroutine"
                                 },
-                                {
-                                    "attrs": {
-                                        "value": true
+                                "name": "nested",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg1"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
                                     },
-                                    "declarator": {
-                                        "name": "arg2"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "template_argument": "U",
-                                    "typemap_name": "double"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg2"
+                                        },
+                                        "specifier": [
+                                            "U"
+                                        ],
+                                        "template_argument": "U"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -414,16 +414,18 @@
                         "<FUNCTION>": "2 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "structAsClass"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "structAsClass"
                             ],
@@ -497,28 +499,30 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_npts"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_npts",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "n",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -598,12 +602,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_npts"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_npts",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -678,28 +683,29 @@
                         "<FUNCTION>": "5 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_value"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_value",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "v"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "v"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "T"
-                                    ],
-                                    "template_argument": "T"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -723,29 +729,29 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "set_value"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_value",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "v"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "v"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "template_argument": "T",
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -826,12 +832,12 @@
                         "<FUNCTION>": "6 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_value"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_value",
+                                "params": []
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "T"
                             ],
@@ -855,12 +861,12 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "get_value"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_value",
+                                "params": []
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1006,16 +1012,18 @@
                         "<FUNCTION>": "9 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "structAsClass"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "structAsClass"
                             ],
@@ -1089,28 +1097,30 @@
                         "<FUNCTION>": "10 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_npts"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_npts",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "n",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "n"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1190,12 +1200,13 @@
                         "<FUNCTION>": "11 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_npts"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_npts",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -1270,28 +1281,29 @@
                         "<FUNCTION>": "12 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "set_value"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_value",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "v"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "v"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "T"
-                                    ],
-                                    "template_argument": "T"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1315,29 +1327,29 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "set_value"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "set_value",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "v"
+                                        },
+                                        "specifier": [
+                                            "T"
+                                        ],
+                                        "template_argument": "T"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "v"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "template_argument": "T",
-                                    "typemap_name": "double"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -1418,12 +1430,12 @@
                         "<FUNCTION>": "13 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "get_value"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_value",
+                                "params": []
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "T"
                             ],
@@ -1447,12 +1459,12 @@
                         "_generated": "cxx_template",
                         "ast": {
                             "declarator": {
-                                "name": "get_value"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "get_value",
+                                "params": []
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [],
                             "specifier": [
                                 "double"
                             ],
@@ -1607,19 +1619,22 @@
                 "<FUNCTION>": "30 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnUserType"
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
+                        "name": "returnUserType",
+                        "params": [],
+                        "typemap_name": "user"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "user"
                     ],
                     "template_arguments": [
                         {
-                            "declarator": {},
+                            "declarator": {
+                                "typemap_name": "int"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1699,43 +1714,44 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "T"
-                            ],
-                            "template_argument": "T"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "FunctionTU",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1"
+                                },
+                                "specifier": [
+                                    "T"
+                                ],
+                                "template_argument": "T"
                             },
-                            "declarator": {
-                                "name": "arg2"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "U"
-                            ],
-                            "template_argument": "U"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2"
+                                },
+                                "specifier": [
+                                    "U"
+                                ],
+                                "template_argument": "U"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1809,45 +1825,44 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "template_argument": "T",
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "FunctionTU",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1"
+                                },
+                                "specifier": [
+                                    "T"
+                                ],
+                                "template_argument": "T"
                             },
-                            "declarator": {
-                                "name": "arg2"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long"
-                            ],
-                            "template_argument": "U",
-                            "typemap_name": "long"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2"
+                                },
+                                "specifier": [
+                                    "U"
+                                ],
+                                "template_argument": "U"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2047,45 +2062,44 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "FunctionTU"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "float"
-                            ],
-                            "template_argument": "T",
-                            "typemap_name": "float"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "FunctionTU",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1"
+                                },
+                                "specifier": [
+                                    "T"
+                                ],
+                                "template_argument": "T"
                             },
-                            "declarator": {
-                                "name": "arg2"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "template_argument": "U",
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg2"
+                                },
+                                "specifier": [
+                                    "U"
+                                ],
+                                "template_argument": "U"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2287,12 +2301,13 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "UseImplWorker",
+                        "params": [],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -2355,12 +2370,13 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "UseImplWorker",
+                        "params": [],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -2489,12 +2505,13 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "UseImplWorker"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "UseImplWorker",
+                        "params": [],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -2634,16 +2651,18 @@
                                 "<FUNCTION>": "16 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
-                                    "attrs": {
-                                        "_constructor": true,
-                                        "_name": "ctor"
+                                    "declarator": {
+                                        "attrs": {
+                                            "_constructor": true,
+                                            "_name": "ctor"
+                                        },
+                                        "metaattrs": {
+                                            "api": "capptr",
+                                            "intent": "ctor"
+                                        },
+                                        "params": [],
+                                        "typemap_name": "std::vector"
                                     },
-                                    "declarator": {},
-                                    "metaattrs": {
-                                        "api": "capptr",
-                                        "intent": "ctor"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "vector"
                                     ],
@@ -2742,15 +2761,17 @@
                             {
                                 "<FUNCTION>": "17 ****************************************",
                                 "ast": {
-                                    "attrs": {
-                                        "_destructor": "vector",
-                                        "_name": "dtor"
+                                    "declarator": {
+                                        "attrs": {
+                                            "_destructor": "vector",
+                                            "_name": "dtor"
+                                        },
+                                        "metaattrs": {
+                                            "intent": "dtor"
+                                        },
+                                        "params": [],
+                                        "typemap_name": "void"
                                     },
-                                    "declarator": {},
-                                    "metaattrs": {
-                                        "intent": "dtor"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "void"
                                     ],
@@ -2796,34 +2817,35 @@
                                 "<FUNCTION>": "18 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "push_back",
+                                        "params": [
+                                            {
+                                                "const": true,
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "value",
+                                                    "pointer": [
+                                                        {
+                                                            "ptr": "&"
+                                                        }
+                                                    ]
+                                                },
+                                                "specifier": [
+                                                    "T"
+                                                ],
+                                                "template_argument": "T"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "const": true,
-                                            "declarator": {
-                                                "name": "value",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ]
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "T"
-                                            ],
-                                            "template_argument": "T"
-                                        }
-                                    ],
                                     "specifier": [
                                         "void"
                                     ],
@@ -2847,35 +2869,35 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "push_back",
+                                        "params": [
+                                            {
+                                                "const": true,
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "value",
+                                                    "pointer": [
+                                                        {
+                                                            "ptr": "&"
+                                                        }
+                                                    ]
+                                                },
+                                                "specifier": [
+                                                    "T"
+                                                ],
+                                                "template_argument": "T"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "const": true,
-                                            "declarator": {
-                                                "name": "value",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ]
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "int"
-                                            ],
-                                            "template_argument": "T",
-                                            "typemap_name": "int"
-                                        }
-                                    ],
                                     "specifier": [
                                         "void"
                                     ],
@@ -2978,34 +3000,35 @@
                                 "<FUNCTION>": "19 ****************************************",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<int>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<int>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "T"
                                     ],
@@ -3031,34 +3054,35 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<int>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<int>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "int"
                                     ],
@@ -3211,35 +3235,36 @@
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "api": "buf",
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<int>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<int>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "int"
                                     ],
@@ -3430,16 +3455,18 @@
                                 "<FUNCTION>": "23 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
-                                    "attrs": {
-                                        "_constructor": true,
-                                        "_name": "ctor"
+                                    "declarator": {
+                                        "attrs": {
+                                            "_constructor": true,
+                                            "_name": "ctor"
+                                        },
+                                        "metaattrs": {
+                                            "api": "capptr",
+                                            "intent": "ctor"
+                                        },
+                                        "params": [],
+                                        "typemap_name": "std::vector"
                                     },
-                                    "declarator": {},
-                                    "metaattrs": {
-                                        "api": "capptr",
-                                        "intent": "ctor"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "vector"
                                     ],
@@ -3538,15 +3565,17 @@
                             {
                                 "<FUNCTION>": "24 ****************************************",
                                 "ast": {
-                                    "attrs": {
-                                        "_destructor": "vector",
-                                        "_name": "dtor"
+                                    "declarator": {
+                                        "attrs": {
+                                            "_destructor": "vector",
+                                            "_name": "dtor"
+                                        },
+                                        "metaattrs": {
+                                            "intent": "dtor"
+                                        },
+                                        "params": [],
+                                        "typemap_name": "void"
                                     },
-                                    "declarator": {},
-                                    "metaattrs": {
-                                        "intent": "dtor"
-                                    },
-                                    "params": [],
                                     "specifier": [
                                         "void"
                                     ],
@@ -3592,34 +3621,35 @@
                                 "<FUNCTION>": "25 ****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "push_back",
+                                        "params": [
+                                            {
+                                                "const": true,
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "value",
+                                                    "pointer": [
+                                                        {
+                                                            "ptr": "&"
+                                                        }
+                                                    ]
+                                                },
+                                                "specifier": [
+                                                    "T"
+                                                ],
+                                                "template_argument": "T"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "const": true,
-                                            "declarator": {
-                                                "name": "value",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ]
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "T"
-                                            ],
-                                            "template_argument": "T"
-                                        }
-                                    ],
                                     "specifier": [
                                         "void"
                                     ],
@@ -3643,35 +3673,35 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
-                                        "name": "push_back"
+                                        "metaattrs": {
+                                            "intent": "subroutine"
+                                        },
+                                        "name": "push_back",
+                                        "params": [
+                                            {
+                                                "const": true,
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "value",
+                                                    "pointer": [
+                                                        {
+                                                            "ptr": "&"
+                                                        }
+                                                    ]
+                                                },
+                                                "specifier": [
+                                                    "T"
+                                                ],
+                                                "template_argument": "T"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
                                     },
-                                    "metaattrs": {
-                                        "intent": "subroutine"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
-                                            "const": true,
-                                            "declarator": {
-                                                "name": "value",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ]
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "double"
-                                            ],
-                                            "template_argument": "T",
-                                            "typemap_name": "double"
-                                        }
-                                    ],
                                     "specifier": [
                                         "void"
                                     ],
@@ -3774,34 +3804,35 @@
                                 "<FUNCTION>": "26 ****************************************",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<double>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<double>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "T"
                                     ],
@@ -3827,34 +3858,35 @@
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<double>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<double>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "double"
                                     ],
@@ -4007,35 +4039,36 @@
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {
+                                        "metaattrs": {
+                                            "api": "buf",
+                                            "deref": "pointer",
+                                            "intent": "function"
+                                        },
                                         "name": "at",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "value": true
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
+                                                    "name": "n",
+                                                    "typemap_name": "std::vector::size_type"
+                                                },
+                                                "specifier": [
+                                                    "size_type"
+                                                ],
+                                                "typemap_name": "std::vector<double>::size_type"
+                                            }
+                                        ],
                                         "pointer": [
                                             {
                                                 "ptr": "&"
                                             }
                                         ]
                                     },
-                                    "metaattrs": {
-                                        "api": "buf",
-                                        "deref": "pointer",
-                                        "intent": "function"
-                                    },
-                                    "params": [
-                                        {
-                                            "attrs": {
-                                                "value": true
-                                            },
-                                            "declarator": {
-                                                "name": "n"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in"
-                                            },
-                                            "specifier": [
-                                                "size_type"
-                                            ],
-                                            "typemap_name": "std::vector<double>::size_type"
-                                        }
-                                    ],
                                     "specifier": [
                                         "double"
                                     ],

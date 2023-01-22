@@ -14,42 +14,9 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct_as_class_ctor"
+                            "declarator": {
+                                "typemap_name": "Cstruct_as_class"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "x1"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "x1"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                {
-                                    "declarator": {
-                                        "name": "y1"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "y1"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "Cstruct_as_class"
                             ],
@@ -159,7 +126,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1"
+                                "name": "x1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -187,7 +155,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1"
+                                "name": "y1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -257,7 +226,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x2"
+                                "name": "x2",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -282,7 +252,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y2"
+                                "name": "y2",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -348,53 +319,56 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptBothStructs"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "s1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct_as_class"
-                            ],
-                            "typemap_name": "Cstruct_as_class"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "intent": "in"
+                        "name": "acceptBothStructs",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "s1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_as_class"
+                                },
+                                "specifier": [
+                                    "Cstruct_as_class"
+                                ],
+                                "typemap_name": "Cstruct_as_class"
                             },
-                            "declarator": {
-                                "name": "s2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct_as_numpy"
-                            ],
-                            "typemap_name": "Cstruct_as_numpy"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "s2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_as_numpy"
+                                },
+                                "specifier": [
+                                    "Cstruct_as_numpy"
+                                ],
+                                "typemap_name": "Cstruct_as_numpy"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],

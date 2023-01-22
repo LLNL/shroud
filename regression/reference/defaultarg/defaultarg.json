@@ -22,28 +22,30 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -133,44 +135,47 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "declarator": {
-                                "name": "offset"
-                            },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -299,60 +304,64 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "declarator": {
-                                "name": "offset"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -510,43 +519,46 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
                             },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -672,59 +684,63 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
                             },
-                            "declarator": {
-                                "name": "num_elems"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "offset"
-                            },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -889,75 +905,80 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_generic"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "apply_generic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "offset"
-                            },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1148,60 +1169,64 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_require"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_require",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "declarator": {
-                                "name": "offset"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1354,75 +1379,80 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_require"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "apply_require",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "offset"
-                            },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1611,60 +1641,64 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_optional"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "apply_optional",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "declarator": {
-                                "name": "offset"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
                             },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -1819,75 +1853,80 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "apply_optional"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "apply_optional",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "type",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num_elems",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "offset",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": 1,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "stride",
+                                    "typemap_name": "IndexType"
+                                },
+                                "specifier": [
+                                    "IndexType"
+                                ],
+                                "typemap_name": "IndexType"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "type"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "num_elems"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "offset"
-                            },
-                            "init": 0,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "stride"
-                            },
-                            "init": 1,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "IndexType"
-                            ],
-                            "typemap_name": "IndexType"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -2082,7 +2121,8 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID"
+                        "name": "TypeID",
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"

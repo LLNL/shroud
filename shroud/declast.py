@@ -607,6 +607,19 @@ class Parser(ExprParser):
         self.get_canonical_typemap(node)
 
         self.declarator_item(node)
+
+        # SSS Share fields between Declaration and Declarator for now
+        declarator = node.declarator
+        declarator.params = node.params
+        declarator.array = node.array
+        declarator.init = node.init
+        declarator.attrs = node.attrs
+        declarator.metaattrs = node.metaattrs
+        declarator.func_const = node.func_const
+        declarator.typemap = node.typemap
+        if declarator.func:
+            declarator.func.typemap = node.typemap
+        
         if "typedef" in node.storage:
             self.symtab.create_typedef(node)
         self.exit("declaration", str(node))
@@ -1219,6 +1232,15 @@ class Declarator(Node):
         self.func = None  # (*name)     declarator
         
         self.ctor_dtor_name = False
+
+        # SSS
+        self.params = None  # None=No parameters, []=empty parameters list
+        self.array = []
+        self.init = None  # initial value
+        self.attrs = collections.defaultdict(lambda: None)
+        self.metaattrs = collections.defaultdict(lambda: None)
+        self.func_const = False
+        self.typemap = None
 
     def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False, **kwargs):
         """Generate string by appending text to decl.
@@ -2460,6 +2482,7 @@ def create_voidstar(ntypemap, name, const=False):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr("*")]
+    arg.declarator.typemap = ntypemap
     arg.specifier = ntypemap.cxx_type.split()
     arg.typemap = ntypemap
     return arg
@@ -2480,6 +2503,7 @@ def create_struct_ctor(cls):
     ast.specifier = [ cls.name ]
     ast.params = []
     ast.declarator = Declarator()  # SSS
+    ast.declarator.typemap = cls.typemap
     return ast
 
 

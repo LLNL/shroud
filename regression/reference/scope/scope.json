@@ -22,7 +22,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -47,23 +48,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "items",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -511,43 +513,45 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "nitems"
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "ns3_DataPointer"
+                        },
                         "name": "DataPointer_get_items",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "ns3_DataPointer"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "ns3::DataPointer"
+                                },
+                                "specifier": [
+                                    "ns3::DataPointer"
+                                ],
+                                "typemap_name": "ns3::DataPointer"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "nitems"
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "ns3_DataPointer"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "ns3_DataPointer"
-                            },
-                            "specifier": [
-                                "ns3::DataPointer"
-                            ],
-                            "typemap_name": "ns3::DataPointer"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -606,44 +610,46 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "nitems"
+                                }
+                            ],
+                            "intent": "getter",
+                            "struct": "ns3_DataPointer"
+                        },
                         "name": "DataPointer_get_items",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct": "ns3_DataPointer"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "ns3::DataPointer"
+                                },
+                                "specifier": [
+                                    "ns3::DataPointer"
+                                ],
+                                "typemap_name": "ns3::DataPointer"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "nitems"
-                            }
                         ],
-                        "intent": "getter",
-                        "struct": "ns3_DataPointer"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in",
-                                "struct": "ns3_DataPointer"
-                            },
-                            "specifier": [
-                                "ns3::DataPointer"
-                            ],
-                            "typemap_name": "ns3::DataPointer"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -756,57 +762,60 @@
                 "_generated": "getter/setter",
                 "ast": {
                     "declarator": {
-                        "name": "DataPointer_set_items"
-                    },
-                    "metaattrs": {
-                        "intent": "setter"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "SH_this",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout",
-                                "struct": "ns3_DataPointer"
-                            },
-                            "specifier": [
-                                "ns3::DataPointer"
-                            ],
-                            "typemap_name": "ns3::DataPointer"
+                        "metaattrs": {
+                            "intent": "setter"
                         },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "val",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
+                        "name": "DataPointer_set_items",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout",
+                                        "struct": "ns3_DataPointer"
+                                    },
+                                    "name": "SH_this",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "ns3::DataPointer"
+                                },
+                                "specifier": [
+                                    "ns3::DataPointer"
                                 ],
-                                "intent": "setter"
+                                "typemap_name": "ns3::DataPointer"
                             },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "dimension": [
+                                            {
+                                                "name": "nitems"
+                                            }
+                                        ],
+                                        "intent": "setter"
+                                    },
+                                    "name": "val",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -943,7 +952,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "nitems"
+                                        "name": "nitems",
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -968,23 +978,24 @@
                             {
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
-                                    "attrs": {
-                                        "dimension": "nitems"
-                                    },
                                     "declarator": {
+                                        "attrs": {
+                                            "dimension": "nitems"
+                                        },
+                                        "metaattrs": {
+                                            "dimension": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        },
                                         "name": "items",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
                                             }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ]
+                                        ],
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -1105,43 +1116,45 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter",
+                                    "struct": "ns1_DataPointer"
+                                },
                                 "name": "DataPointer_get_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct": "ns1_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns1::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns1::DataPointer"
+                                        ],
+                                        "typemap_name": "ns1::DataPointer"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter",
-                                "struct": "ns1_DataPointer"
+                                "typemap_name": "int"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns1_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns1::DataPointer"
-                                    ],
-                                    "typemap_name": "ns1::DataPointer"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -1201,44 +1214,46 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter",
+                                    "struct": "ns1_DataPointer"
+                                },
                                 "name": "DataPointer_get_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct": "ns1_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns1::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns1::DataPointer"
+                                        ],
+                                        "typemap_name": "ns1::DataPointer"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter",
-                                "struct": "ns1_DataPointer"
+                                "typemap_name": "int"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns1_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns1::DataPointer"
-                                    ],
-                                    "typemap_name": "ns1::DataPointer"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -1351,57 +1366,60 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_set_items"
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "ns1_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns1::DataPointer"
-                                    ],
-                                    "typemap_name": "ns1::DataPointer"
+                                "metaattrs": {
+                                    "intent": "setter"
                                 },
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
+                                "name": "DataPointer_set_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "inout",
+                                                "struct": "ns1_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns1::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns1::DataPointer"
                                         ],
-                                        "intent": "setter"
+                                        "typemap_name": "ns1::DataPointer"
                                     },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "rank": 1
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -1563,7 +1581,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "nitems"
+                                        "name": "nitems",
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -1588,23 +1607,24 @@
                             {
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
-                                    "attrs": {
-                                        "dimension": "nitems"
-                                    },
                                     "declarator": {
+                                        "attrs": {
+                                            "dimension": "nitems"
+                                        },
+                                        "metaattrs": {
+                                            "dimension": [
+                                                {
+                                                    "name": "nitems"
+                                                }
+                                            ]
+                                        },
                                         "name": "items",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
                                             }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ]
+                                        ],
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -1725,43 +1745,45 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter",
+                                    "struct": "ns2_DataPointer"
+                                },
                                 "name": "DataPointer_get_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct": "ns2_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns2::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns2::DataPointer"
+                                        ],
+                                        "typemap_name": "ns2::DataPointer"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter",
-                                "struct": "ns2_DataPointer"
+                                "typemap_name": "int"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns2_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns2::DataPointer"
-                                    ],
-                                    "typemap_name": "ns2::DataPointer"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -1821,44 +1843,46 @@
                         "_generated": "arg_to_buffer",
                         "ast": {
                             "declarator": {
+                                "metaattrs": {
+                                    "api": "cdesc",
+                                    "deref": "pointer",
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ],
+                                    "intent": "getter",
+                                    "struct": "ns2_DataPointer"
+                                },
                                 "name": "DataPointer_get_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct": "ns2_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns2::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns2::DataPointer"
+                                        ],
+                                        "typemap_name": "ns2::DataPointer"
+                                    }
+                                ],
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "api": "cdesc",
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
                                 ],
-                                "intent": "getter",
-                                "struct": "ns2_DataPointer"
+                                "typemap_name": "int"
                             },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct": "ns2_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns2::DataPointer"
-                                    ],
-                                    "typemap_name": "ns2::DataPointer"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -1971,57 +1995,60 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "DataPointer_set_items"
-                            },
-                            "metaattrs": {
-                                "intent": "setter"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "SH_this",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout",
-                                        "struct": "ns2_DataPointer"
-                                    },
-                                    "specifier": [
-                                        "ns2::DataPointer"
-                                    ],
-                                    "typemap_name": "ns2::DataPointer"
+                                "metaattrs": {
+                                    "intent": "setter"
                                 },
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "rank": 1
-                                    },
-                                    "declarator": {
-                                        "name": "val",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
+                                "name": "DataPointer_set_items",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "inout",
+                                                "struct": "ns2_DataPointer"
+                                            },
+                                            "name": "SH_this",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "ns2::DataPointer"
+                                        },
+                                        "specifier": [
+                                            "ns2::DataPointer"
                                         ],
-                                        "intent": "setter"
+                                        "typemap_name": "ns2::DataPointer"
                                     },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in",
+                                                "rank": 1
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
                             "specifier": [
                                 "void"
                             ],

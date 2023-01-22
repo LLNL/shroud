@@ -66,9 +66,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r), {
                 'const': True,
-                'declarator': {'name': 'var1'},
+                'declarator': {
+                    'name': 'var1',
+                    'typemap_name': 'int',
+                },
                 'specifier': ['int'],
-                'typemap_name': 'int'})
+                'typemap_name': 'int',
+            })
         self.assertEqual("scalar", r.get_indirect_stmt())
 
         r = declast.check_decl("int const var1", symtab)
@@ -77,7 +81,10 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r), {
                 'const': True,
-                'declarator': {'name': 'var1'},
+                'declarator': {
+                    'name': 'var1',
+                    'typemap_name': 'int',
+                },
                 'specifier': ['int'],
                 'typemap_name': 'int'})
         self.assertEqual("scalar", r.get_indirect_stmt())
@@ -111,8 +118,10 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r), {
                 'declarator': {
-                    'name': 'var1', 'pointer': [
-                        {'const': True, 'ptr': '*'}]},
+                    'name': 'var1',
+                    'pointer': [{'const': True, 'ptr': '*'}],
+                    'typemap_name': 'int',
+                },
                 'specifier': ['int'],
                 'typemap_name': 'int'})
         self.assertEqual("*", r.get_indirect_stmt())
@@ -124,8 +133,10 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r), {
                 'declarator': {
-                    'name': 'var1', 'pointer': [
-                        {'ptr': '*'}, {'ptr': '*'}]},
+                    'name': 'var1',
+                    'pointer': [{'ptr': '*'}, {'ptr': '*'}],
+                    'typemap_name': 'int'
+                },
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
@@ -139,10 +150,11 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r), {
                 'declarator': {
                     'name': 'var1',
-                    'pointer': [{   'ptr': '&'}, {   'ptr': '*'}]
+                    'pointer': [{   'ptr': '&'}, {   'ptr': '*'}],
+                    'typemap_name': 'int',
                 },
                 'specifier': ['int'],
-                'typemap_name': 'int'
+                'typemap_name': 'int',
             })
         self.assertEqual("&*", r.get_indirect_stmt())
         self.assertEqual("int **", r.as_cast())
@@ -155,11 +167,14 @@ class CheckParse(unittest.TestCase):
                 'const': True,
                 'declarator': {
                     'name': 'var1',
-                      'pointer': [
-                          {   'const': True, 'ptr': '*'},
-                          {   'const': True, 'ptr': '*'}]},
+                    'pointer': [
+                        {'const': True, 'ptr': '*'},
+                        {'const': True, 'ptr': '*'}
+                    ],
+                    'typemap_name': 'int',
+                },
                 'specifier': ['int'],
-                'typemap_name': 'int'
+                'typemap_name': 'int',
             })
         self.assertEqual("**", r.get_indirect_stmt())
         self.assertEqual("int **", r.as_cast())
@@ -173,8 +188,11 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"name": "ivar", "readonly": True},
-                "declarator": {"name": "m_ivar"},
+                "declarator": {
+                    "name": "m_ivar",
+                    "attrs": {"name": "ivar", "readonly": True},
+                    "typemap_name": "int",
+                },
                 "specifier": ["int"],
                 "typemap_name": "int",
             },
@@ -188,10 +206,15 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int var1[20]", s)
         self.assertEqual(
-            {'declarator': {'name': 'var1'},
-             'array': [{ 'constant': '20'}],
-             'specifier': ['int'],
-             'typemap_name': 'int'},
+            {
+                'declarator': {
+                    'name': 'var1',
+                    'array': [{ 'constant': '20'}],
+                    'typemap_name': 'int',
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int',
+            },
             todict.to_dict(r)
         )
         self.assertEqual("int *", r.as_cast())
@@ -207,11 +230,14 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int var2[20][10]", s)
         self.assertEqual(
-            {'declarator': {'name': 'var2'},
-             'array': [
-                 { 'constant': '20'},
-                 { 'constant': '10'},
-             ],
+            {'declarator': {
+                'name': 'var2',
+                'array': [
+                    { 'constant': '20'},
+                    { 'constant': '10'},
+                ],
+                'typemap_name': 'int',
+            },
              'specifier': ['int'],
              'typemap_name': 'int'},
             todict.to_dict(r)
@@ -229,11 +255,15 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int var3[DEFINE+3]", s)
         self.assertEqual(
-            {'array': [
-                {'left': {'name': 'DEFINE'},
-                 'op': '+',
-                 'right': {'constant': '3'}}],
-             'declarator': {'name': 'var3'},
+            {
+             'declarator': {
+                 'name': 'var3',
+                'array': [
+                    {'left': {'name': 'DEFINE'},
+                     'op': '+',
+                     'right': {'constant': '3'}}],
+                 'typemap_name': 'int',
+             },
              'specifier': ['int'],
              'typemap_name': 'int'},
             todict.to_dict(r)
@@ -328,8 +358,11 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("char var1[20]", s)
         self.assertEqual(
-            {'declarator': {'name': 'var1'},
-             'array': [{ 'constant': '20'}],
+            {'declarator': {
+                'name': 'var1',
+                'array': [{ 'constant': '20'}],
+                'typemap_name': 'char',
+            },
              'specifier': ['char'],
              'typemap_name': 'char'},
             todict.to_dict(r)
@@ -351,12 +384,15 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("char var2[20][10][5]", s)
         self.assertEqual(
-            {'declarator': {'name': 'var2'},
-             'array': [
-                 { 'constant': '20'},
-                 { 'constant': '10'},
-                 { 'constant': '5'},
-             ],
+            {'declarator': {
+                'name': 'var2',
+                'array': [
+                    { 'constant': '20'},
+                    { 'constant': '10'},
+                    { 'constant': '5'},
+                ],
+                'typemap_name': 'char',
+            },
              'specifier': ['char'],
              'typemap_name': 'char'},
             todict.to_dict(r)
@@ -378,12 +414,16 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("char var3[DEFINE+3]", s)
         self.assertEqual(
-            {'array': [
-                {'left': {'name': 'DEFINE'},
-                 'op': '+',
-                 'right': {'constant': '3'}}],
-             'declarator': {'name': 'var3'},
-             'specifier': ['char'],
+            {
+             'declarator': {
+                 'name': 'var3',
+                 'array': [
+                     {'left': {'name': 'DEFINE'},
+                      'op': '+',
+                      'right': {'constant': '3'}}],
+                 'typemap_name': 'char',
+             },
+            'specifier': ['char'],
              'typemap_name': 'char'},
             todict.to_dict(r)
         )
@@ -404,9 +444,13 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("char * var4[44]", s)
         self.assertEqual(
-            {'array': [{'constant': '44'}],
-             'declarator': {   'name': 'var4',
-                               'pointer': [{'ptr': '*'}]},
+            {
+             'declarator': {
+                 'name': 'var4',
+                 'array': [{'constant': '44'}],
+                 'pointer': [{'ptr': '*'}],
+                 'typemap_name': 'char',
+             },
              'specifier': ['char'],
              'typemap_name': 'char'},
             todict.to_dict(r)
@@ -431,12 +475,17 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "var1"},
+                "declarator": {
+                    "name": "var1",
+                    "typemap_name": "std::vector",
+                },
                 "specifier": ["std::vector"],
                 "template_arguments": [
                     {"specifier": ["int"],
                      "typemap_name": "int",
-                     "declarator": {},
+                     "declarator": {
+                         "typemap_name": "int",
+                     },
                     }
                 ],
                 "typemap_name": "std::vector",
@@ -462,13 +511,18 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "var1"},
+                "declarator": {
+                    "name": "var1",
+                    "typemap_name": "std::vector",
+                },
                 "specifier": ["std::vector"],
                 "template_arguments": [
                     {
                         "specifier": ["long", "long"],
                         "typemap_name": "long_long",
-                        "declarator": {},
+                        "declarator": {
+                            "typemap_name": "long_long",
+                        },
                     }
                 ],
                 "typemap_name": "std::vector",
@@ -481,13 +535,18 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "var1"},
+                "declarator": {
+                    "name": "var1",
+                    "typemap_name": "std::vector",
+                },
                 "specifier": ["std::vector"],
                 "template_arguments": [
                     {
                         "specifier": ["std::string"],
                         "typemap_name": "std::string",
-                        "declarator": {},
+                        "declarator": {
+                            "typemap_name": "std::string",
+                        },
                     }
                 ],
                 "typemap_name": "std::vector",
@@ -507,12 +566,21 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                'declarator': {'name': 'var1'},
+                'declarator': {
+                    'name': 'var1',
+                    'typemap_name': 'std::vector'
+                },
                 'specifier': ['std::vector'],
                 'template_arguments': [
-                    { 'declarator': {'pointer': [{'ptr': '*'}]},
-                      'specifier': ['int'],
-                      'typemap_name': 'int'}],
+                    {
+                        'declarator': {
+                            'pointer': [{'ptr': '*'}],
+                            'typemap_name': 'int',
+                        },
+                        'specifier': ['int'],
+                        'typemap_name': 'int',
+                    }
+                ],
                 'typemap_name': 'std::vector'
             }
         )
@@ -652,14 +720,22 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r),
             {
                 "declarator": {
-                    "func": {"name": "func", "pointer": [{"ptr": "*"}]},
-                },
-                "params": [
-                    {
-                        "specifier": ["int"],
+                    "func": {
+                        "name": "func",
+                        "pointer": [{"ptr": "*"}],
                         "typemap_name": "int",
-                        "declarator": {},
-                    }],
+                    },
+                    "params": [
+                        {
+                            "specifier": ["int"],
+                            "typemap_name": "int",
+                            "declarator": {
+                                "typemap_name": "int",
+                            },
+                        }
+                    ],
+                    "typemap_name": "int",
+                },
                 "specifier": ["int"],
                 "typemap_name": "int",
             },
@@ -706,7 +782,10 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "foo"},
+                "declarator": {
+                    "name": "foo",
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -725,8 +804,11 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"alias": "junk"},
-                "declarator": {"name": "foo"},
+                "declarator": {
+                    "name": "foo",
+                    "attrs": {"alias": "junk"},
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -745,8 +827,11 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "foo"},
-                "params": [],
+                "declarator": {
+                    "name": "foo",
+                    "params": [],
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -769,9 +854,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "foo", "pointer": [{"ptr": "*"}]},
-                "func_const": True,
-                "params": [],
+                "declarator": {
+                    "name": "foo",
+                    "pointer": [{"ptr": "*"}],
+                    "params": [],
+                    "func_const": True,
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -793,14 +882,20 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "foo"},
-                "params": [
-                    {
-                        "declarator": {"name": "arg1"},
-                        "specifier": ["int"],
-                        "typemap_name": "int",
-                    }
-                ],
+                "declarator": {
+                    "name": "foo",
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "typemap_name": "int",
+                            },
+                            "specifier": ["int"],
+                            "typemap_name": "int",
+                        }
+                    ],
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -819,19 +914,28 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "foo"},
-                "params": [
-                    {
-                        "declarator": {"name": "arg1"},
-                        "specifier": ["int"],
-                        "typemap_name": "int",
-                    },
-                    {
-                        "declarator": {"name": "arg2"},
-                        "specifier": ["double"],
-                        "typemap_name": "double",
-                    },
-                ],
+                "declarator": {
+                    "name": "foo",
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "typemap_name": "int",
+                            },
+                            "specifier": ["int"],
+                            "typemap_name": "int",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg2",
+                                "typemap_name": "double",
+                            },
+                            "specifier": ["double"],
+                            "typemap_name": "double",
+                        },
+                    ],
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -859,9 +963,13 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r),
             {
                 "const": True,
-                "declarator": {"name": "getName", "pointer": [{"ptr": "&"}]},
-                "func_const": True,
-                "params": [],
+                "declarator": {
+                    "name": "getName",
+                    "func_const": True,
+                    "pointer": [{"ptr": "&"}],
+                    "params": [],
+                    "typemap_name": "std::string",
+                },
                 "specifier": ["std::string"],
                 "typemap_name": "std::string",
             },
@@ -890,23 +998,32 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"attr2": "True", "len": 30},
                 "const": True,
-                "declarator": {"name": "foo"},
-                "params": [
-                    {
-                        "attrs": {"in": True},
-                        "declarator": {"name": "arg1"},
-                        "specifier": ["int"],
-                        "typemap_name": "int",
-                    },
-                    {
-                        "attrs": {"out": True},
-                        "declarator": {"name": "arg2"},
-                        "specifier": ["double"],
-                        "typemap_name": "double",
-                    },
-                ],
+                "declarator": {
+                    "name": "foo",
+                    "attrs": {"attr2": "True", "len": 30},
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "attrs": {"in": True},
+                                "typemap_name": "int",
+                            },
+                            "specifier": ["int"],
+                            "typemap_name": "int",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg2",
+                                "attrs": {"out": True},
+                                "typemap_name": "double",
+                            },
+                            "specifier": ["double"],
+                            "typemap_name": "double",
+                        },
+                    ],
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -927,11 +1044,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"_constructor": True, "_name": "ctor"},
-                "params": [],
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
-                'declarator': {},
+                'declarator': {
+                    "attrs": {"_constructor": True, "_name": "ctor"},
+                    "params": [],
+                    "typemap_name": "Class1",
+                },
             },
         )
         self.assertEqual("ctor", r.get_name())
@@ -956,11 +1075,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"_constructor": True, "_name": "ctor", "name": "new"},
-                "params": [],
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
-                'declarator': {},
+                'declarator': {
+                    "attrs": {"_constructor": True, "_name": "ctor", "name": "new"},
+                    "params": [],
+                    "typemap_name": "Class1",
+                },
             },
         )
         self.assertEqual("new", r.get_name())
@@ -984,11 +1105,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"_destructor": "Class1", "_name": "dtor"},
-                "params": [],
                 "specifier": ["void"],
                 "typemap_name": "void",
-                'declarator': {},
+                'declarator': {
+                    "attrs": {"_destructor": "Class1", "_name": "dtor"},
+                    "params": [],
+                    "typemap_name": "void",
+                },
             },
         )
         self.assertEqual("dtor", r.get_name())
@@ -1017,7 +1140,9 @@ class CheckParse(unittest.TestCase):
                 },
                 'specifier': ['class Class2'],
                 'typemap_name': 'Class2',
-                "declarator": {},
+                "declarator": {
+                    'typemap_name': 'Class2',
+                },
             }
         )
 
@@ -1056,8 +1181,12 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "make", "pointer": [{"ptr": "*"}]},
-                "params": [],
+                "declarator": {
+                    "name": "make",
+                    "pointer": [{"ptr": "*"}],
+                    "params": [],
+                    "typemap_name": "Class1",
+                },
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
             },
@@ -1090,33 +1219,48 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "name"},
-                "params": [
-                    {
-                        "declarator": {"name": "arg1"},
-                        "init": 0,
-                        "specifier": ["int"],
-                        "typemap_name": "int",
-                    },
-                    {
-                        "declarator": {"name": "arg2"},
-                        "init": 0.0,
-                        "specifier": ["double"],
-                        "typemap_name": "double",
-                    },
-                    {
-                        "declarator": {"name": "arg3"},
-                        "init": '"name"',
-                        "specifier": ["std::string"],
-                        "typemap_name": "std::string",
-                    },
-                    {
-                        "declarator": {"name": "arg4"},
-                        "init": "true",
-                        "specifier": ["bool"],
-                        "typemap_name": "bool",
-                    },
-                ],
+                "declarator": {
+                    "name": "name",
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "init": 0,
+                                "typemap_name": "int",
+                            },
+                            "specifier": ["int"],
+                            "typemap_name": "int",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg2",
+                                "init": 0.0,
+                                "typemap_name": "double",
+                            },
+                            "specifier": ["double"],
+                            "typemap_name": "double",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg3",
+                                "init": '"name"',
+                                "typemap_name": "std::string",
+                            },
+                            "specifier": ["std::string"],
+                            "typemap_name": "std::string",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg4",
+                                "init": "true",
+                                "typemap_name": "bool",
+                            },
+                            "specifier": ["bool"],
+                            "typemap_name": "bool",
+                        },
+                    ],
+                    "typemap_name": "void",
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -1138,14 +1282,19 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r),
             {
                 "decl": {
-                    "declarator": {"name": "decl11"},
-                    "params": [
-                        {
-                            "declarator": {"name": "arg"},
-                            "specifier": ["ArgType"],
-                            "template_argument": "ArgType",
-                        }
-                    ],
+                    "declarator": {
+                        "name": "decl11",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg",
+                                },
+                                "specifier": ["ArgType"],
+                                "template_argument": "ArgType",
+                            }
+                        ],
+                        "typemap_name": "void",
+                    },
                     "specifier": ["void"],
                     "typemap_name": "void",
                 },
@@ -1175,26 +1324,37 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "decl12"},
-                "params": [
-                    {
-                        "declarator": {"name": "arg1"},
-                        "specifier": ["std::vector"],
-                        "template_arguments": [
-                            {
-                                "specifier": ["std::string"],
+                "declarator": {
+                    "name": "decl12",
+                    "typemap_name": "void",
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "typemap_name": "std::vector",
+                            },
+                            "specifier": ["std::vector"],
+                            "template_arguments": [
+                                {
+                                    "specifier": ["std::string"],
+                                    "typemap_name": "std::string",
+                                    "declarator": {
+                                        "typemap_name": "std::string",
+                                    },
+                                }
+                            ],
+                            "typemap_name": "std::vector",
+                        },
+                        {
+                            "declarator": {
+                                "name": "arg2",
                                 "typemap_name": "std::string",
-                                "declarator": {},
-                            }
-                        ],
-                        "typemap_name": "std::vector",
-                    },
-                    {
-                        "declarator": {"name": "arg2"},
-                        "specifier": ["string"],
-                        "typemap_name": "std::string",
-                    },
-                ],
+                            },
+                            "specifier": ["string"],
+                            "typemap_name": "std::string",
+                        },
+                    ],
+                },
                 "specifier": ["void"],
                 "typemap_name": "void",
             },
@@ -1237,7 +1397,9 @@ class CheckParse(unittest.TestCase):
                     'class_specifier': {'name': 'vector'},
                     'specifier': ['class vector'],
                     'typemap_name': 'vector',
-                    'declarator': {},
+                    'declarator': {
+                        'typemap_name': 'vector',
+                    },
                 },
                 'parameters': [{'name': 'T'}]
             }
@@ -1255,7 +1417,9 @@ class CheckParse(unittest.TestCase):
                     'class_specifier': {'name': 'map'},
                     'specifier': ['class map'],
                     'typemap_name': 'vector::map',
-                    'declarator': {},
+                    'declarator': {
+                        'typemap_name': 'vector::map',
+                    },
                 },
                 'parameters': [{'name': 'Key'}, {'name': 'T'}]
             }
@@ -1310,7 +1474,10 @@ struct Cstruct_list {
         ast = members[0]
         self.assertEqual(
             todict.to_dict(ast), {
-                'declarator': {'name': 'nitems'},
+                'declarator': {
+                    'name': 'nitems',
+                    'typemap_name': 'int'
+                },
                 'specifier': ['int'],
                 'typemap_name': 'int'
             })
@@ -1319,10 +1486,11 @@ struct Cstruct_list {
             todict.to_dict(ast), {
                 'declarator': {
                     'name': 'ivalue',
-                    'pointer': [{   'ptr': '*'}]
+                    'pointer': [{   'ptr': '*'}],
+                    'typemap_name': 'int',
                 },
                 'specifier': ['int'],
-                'typemap_name': 'int'
+                'typemap_name': 'int',
             })
 
 
@@ -1437,7 +1605,10 @@ class CheckTypedef(unittest.TestCase):
         self.assertDictEqual(
             todict.to_dict(r),
             {
-                "declarator": {"name": "TypeID"},
+                "declarator": {
+                    "name": "TypeID",
+                    "typemap_name": "int",
+                },
                 "specifier": ["int"],
                 "storage": ["typedef"],
                 "typemap_name": "TypeID",
@@ -1494,8 +1665,10 @@ class CheckEnum(unittest.TestCase):
                     ],
                 },
                 'specifier': ['enum Color'],
+                "declarator": {
+                    'typemap_name': 'Color',
+                },
                 'typemap_name': 'Color',
-                "declarator": {},
             }
         )
 
@@ -1542,20 +1715,29 @@ class CheckStruct(unittest.TestCase):
                 'class_specifier': {
                     'members': [
                         {
-                            'declarator': {'name': 'i'},
+                            'declarator': {
+                                'name': 'i',
+                                'typemap_name': 'int'
+                            },
                             'specifier': ['int'],
                             'typemap_name': 'int'
                         },{
-                            'declarator': {'name': 'd'},
+                            'declarator': {
+                                'name': 'd',
+                                'typemap_name': 'double',
+                            },
                             'specifier': ['double'],
-                            'typemap_name': 'double'}
+                            'typemap_name': 'double',
+                        },
                     ],
                     'name': 'struct1',
                     'typemap_name': 'struct1'
                 },
                 'specifier': ['struct struct1'],
+                "declarator": {
+                    'typemap_name': 'struct1',
+                },
                 'typemap_name': 'struct1',
-                "declarator": {},
             }
         )
 
@@ -1572,8 +1754,10 @@ class CheckClass(unittest.TestCase):
             {
                 'class_specifier': {'name': 'Class1'},
                 'specifier': ['class Class1'],
+                'declarator': {
+                    'typemap_name': 'Class1',
+                },
                 'typemap_name': 'Class1',
-                'declarator': {},
             }
         )
 

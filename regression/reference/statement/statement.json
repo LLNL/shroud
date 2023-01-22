@@ -16,16 +16,17 @@
             {
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "pure": true
-                    },
                     "declarator": {
-                        "name": "GetNameLength"
+                        "attrs": {
+                            "pure": true
+                        },
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "GetNameLength",
+                        "params": [],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -109,23 +110,24 @@
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_F_C_index": "2",
                 "ast": {
-                    "attrs": {
-                        "len": "get_name_length()"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "get_name_length()"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getNameErrorPattern",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "string"
                     ],
@@ -200,24 +202,25 @@
                 "_PTR_C_CXX_index": "1",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "len": "get_name_length()"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "get_name_length()"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getNameErrorPattern",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "string"
                     ],

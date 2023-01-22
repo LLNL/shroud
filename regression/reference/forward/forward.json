@@ -66,16 +66,18 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "forward::Class2"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "Class2"
                             ],
@@ -185,15 +187,17 @@
                     {
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
-                            "attrs": {
-                                "_destructor": "Class2",
-                                "_name": "dtor"
+                            "declarator": {
+                                "attrs": {
+                                    "_destructor": "Class2",
+                                    "_name": "dtor"
+                                },
+                                "metaattrs": {
+                                    "intent": "dtor"
+                                },
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "declarator": {},
-                            "metaattrs": {
-                                "intent": "dtor"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -248,33 +252,35 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "func1"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "func1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "tutorial::Class1"
+                                        },
+                                        "specifier": [
+                                            "tutorial::Class1"
+                                        ],
+                                        "typemap_name": "tutorial::Class1"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "tutorial::Class1"
-                                    ],
-                                    "typemap_name": "tutorial::Class1"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -402,33 +408,35 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "acceptClass3"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "acceptClass3",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "forward::Class3"
+                                        },
+                                        "specifier": [
+                                            "Class3"
+                                        ],
+                                        "typemap_name": "forward::Class3"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "Class3"
-                                    ],
-                                    "typemap_name": "forward::Class3"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -617,31 +625,33 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStruct1",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
