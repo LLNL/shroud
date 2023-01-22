@@ -1115,9 +1115,10 @@
                                                         "declarator": {
                                                             "func_const": true,
                                                             "metaattrs": {
-                                                                "api": "cdesc",
-                                                                "deref": "allocatable",
-                                                                "intent": "function"
+                                                                "api": "buf",
+                                                                "deref": "result",
+                                                                "intent": "out",
+                                                                "is_result": true
                                                             },
                                                             "name": "name",
                                                             "params": [],
@@ -1134,7 +1135,7 @@
                                                         "typemap_name": "std::string"
                                                     }
                                                 ],
-                                                "typemap_name": "std::string"
+                                                "typemap_name": "void"
                                             },
                                             "specifier": [
                                                 "void"
@@ -1244,9 +1245,10 @@
                                                         "declarator": {
                                                             "func_const": true,
                                                             "metaattrs": {
-                                                                "api": "cdesc",
-                                                                "deref": "allocatable",
-                                                                "intent": "function"
+                                                                "api": "buf",
+                                                                "deref": "result",
+                                                                "intent": "out",
+                                                                "is_result": true
                                                             },
                                                             "name": "name",
                                                             "params": [],
@@ -1263,7 +1265,7 @@
                                                         "typemap_name": "std::string"
                                                     }
                                                 ],
-                                                "typemap_name": "std::string"
+                                                "typemap_name": "void"
                                             },
                                             "specifier": [
                                                 "void"

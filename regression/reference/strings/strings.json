@@ -1444,9 +1444,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -1463,7 +1464,7 @@
                                 "typemap_name": "char"
                             }
                         ],
-                        "typemap_name": "char"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -1572,9 +1573,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -1591,7 +1593,7 @@
                                 "typemap_name": "char"
                             }
                         ],
-                        "typemap_name": "char"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -2293,9 +2295,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -2312,7 +2315,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -2420,9 +2423,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -2439,7 +2443,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -3137,9 +3141,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -3156,7 +3161,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -3265,9 +3270,10 @@
                             {
                                 "declarator": {
                                     "metaattrs": {
-                                        "api": "cdesc",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "api": "buf",
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -3284,7 +3290,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"

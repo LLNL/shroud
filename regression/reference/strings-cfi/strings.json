@@ -1291,8 +1291,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -1309,7 +1310,7 @@
                                 "typemap_name": "char"
                             }
                         ],
-                        "typemap_name": "char"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -1420,8 +1421,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -1438,7 +1440,7 @@
                                 "typemap_name": "char"
                             }
                         ],
-                        "typemap_name": "char"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -2097,8 +2099,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -2115,7 +2118,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -2226,8 +2229,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -2244,7 +2248,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -2871,8 +2875,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -2889,7 +2894,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"
@@ -3001,8 +3006,9 @@
                                 "declarator": {
                                     "metaattrs": {
                                         "api": "cfi",
-                                        "deref": "allocatable",
-                                        "intent": "function"
+                                        "deref": "result",
+                                        "intent": "out",
+                                        "is_result": true
                                     },
                                     "name": "output",
                                     "params": [],
@@ -3019,7 +3025,7 @@
                                 "typemap_name": "std::string"
                             }
                         ],
-                        "typemap_name": "std::string"
+                        "typemap_name": "void"
                     },
                     "specifier": [
                         "void"

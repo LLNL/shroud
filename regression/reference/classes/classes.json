@@ -853,7 +853,7 @@
                                 },
                                 "name": "returnThis",
                                 "params": [],
-                                "typemap_name": "classes::Class1"
+                                "typemap_name": "void"
                             },
                             "specifier": [
                                 "void"

@@ -1499,6 +1499,10 @@ class Declaration(Node):
         new.metaattrs["intent"] = "out"
         new.typemap = self.typemap
         new.template_arguments = self.template_arguments
+        # SSS
+        new.declarator.attrs = new.attrs
+        new.declarator.metaattrs = new.metaattrs
+        new.declarator.typemap = new.typemap
         return new
 
     def set_return_to_void(self):
@@ -1508,6 +1512,7 @@ class Declaration(Node):
         self.const = False
         self.volatile = False
         self.declarator.pointer = []
+        self.declarator.typemap = typemap.void_typemap
         self.template_arguments = []
 
     def result_as_arg(self, name):
