@@ -15,6 +15,13 @@
                         "_generated": "struct_as_class_ctor",
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct1_cls_ctor"
+                                },
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
                                 "typemap_name": "Cstruct1_cls"
                             },
                             "specifier": [
