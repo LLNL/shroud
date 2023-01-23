@@ -1387,17 +1387,36 @@ class Declarator(Node):
             decl.append(self.ctor_dtor_name)
 
     def __str__(self):
-        out = ""
+        out = []
         for ptr in self.pointer:
-            out += str(ptr)
-            out += " "
+            out.append(str(ptr))
+            out.append(" ")
 
         if self.name:
-            out += self.name
+            out.append(self.name)
         elif self.func:
-            out += "(" + str(self.func) + ")"
+            out.append("(" + str(self.func) + ")")
 
-        return out
+        if self.params is not None:
+            out.append("(")
+            if self.params:
+                out.append(str(self.params[0]))
+                for param in self.params[1:]:
+                    out.append(",")
+                    out.append(str(param))
+            out.append(")")
+            if self.func_const:
+                out.append(" const")
+        if self.array:
+            for dim in self.array:
+                out.append("[")
+                out.append(todict.print_node(dim))
+                out.append("]")
+        if self.init:
+            out.append("=")
+            out.append(str(self.init))
+
+        return "".join(out)
 
 
 class Declaration(Node):
@@ -1561,33 +1580,10 @@ class Declaration(Node):
             else:
                 out.append("int")
 
-        out2 = []
-        if self.declarator:
-            var = str(self.declarator)
-            if var:
-                out2.append(var)
-        if self.params is not None:
-            out2.append("(")
-            if self.params:
-                out2.append(str(self.params[0]))
-                for param in self.params[1:]:
-                    out2.append(",")
-                    out2.append(str(param))
-            out2.append(")")
-            if self.func_const:
-                out2.append(" const")
-        if self.array:
-            for dim in self.array:
-                out2.append("[")
-                out2.append(todict.print_node(dim))
-                out2.append("]")
-        if self.init:
-            out2.append("=")
-            out2.append(str(self.init))
-
-        if out2:
+        var = str(self.declarator)
+        if var:
             out.append(" ")
-            out.extend(out2)
+            out.append(var)
         return "".join(out)
 
     def gen_decl(self, **kwargs):
