@@ -76,7 +76,7 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(node, d, ["pointer"])
         if node.name:
             d["name"] = node.name
-        elif node.func:
+        if node.func:
             d["func"] = self.visit(node.func)
         if node.params is not None:
             d["params"] = self.visit(node.params)

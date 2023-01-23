@@ -2764,6 +2764,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "alloc",
                                     "params": [
                                         {
                                             "declarator": {
@@ -2832,6 +2833,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "afree",
                                     "params": [
                                         {
                                             "declarator": {
@@ -2879,6 +2881,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "assoc",
                                     "params": [
                                         {
                                             "declarator": {

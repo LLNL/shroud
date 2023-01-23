@@ -4827,6 +4827,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -4987,6 +4988,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -5170,6 +5172,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [
                                         {
                                             "declarator": {
@@ -5401,6 +5404,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [
                                         {
                                             "declarator": {
@@ -5676,6 +5680,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [
                                         {
                                             "declarator": {
@@ -5944,6 +5949,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "alloc",
                                     "params": [
                                         {
                                             "declarator": {

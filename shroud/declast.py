@@ -698,6 +698,8 @@ class Parser(ExprParser):
         elif self.token.typ == "LPAREN":  # (*var)
             self.next()
             node.func = self.declarator()
+            # Promote name.
+            node.name = node.func.name
             self.mustbe("RPAREN")
 
         self.exit("declarator", str(node))
@@ -1448,10 +1450,10 @@ class Declarator(Node):
             out.append(str(ptr))
             out.append(" ")
 
-        if self.name:
-            out.append(self.name)
-        elif self.func:
+        if self.func:
             out.append("(" + str(self.func) + ")")
+        elif self.name:
+            out.append(self.name)
 
         if self.params is not None:
             out.append("(")
@@ -1525,20 +1527,8 @@ class Declaration(Node):
             name = self.attrs["name"] or self.attrs["_name"]
             if name is not None:
                 return name
-        name = self.declarator.name
-        if name is None:
-            if self.declarator.func:
-                name = self.declarator.func.name
-        return name
-
-    def set_name(self, name):
-        """Set name in declarator"""
-        if self.declarator.name:
-            self.declarator.name = name
-        else:
-            self.declarator.func.name = name
-
-    name = property(get_name, set_name, None, "Declaration name")
+        return self.declarator.name
+    name = property(get_name, None, None, "Declaration name")
 
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""

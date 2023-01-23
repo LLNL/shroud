@@ -8232,6 +8232,7 @@
                                                     "metaattrs": {
                                                         "intent": "in"
                                                     },
+                                                    "name": "get",
                                                     "params": [],
                                                     "typemap_name": "void"
                                                 },
@@ -8377,6 +8378,7 @@
                                                     "metaattrs": {
                                                         "intent": "in"
                                                     },
+                                                    "name": "get",
                                                     "params": [],
                                                     "pointer": [
                                                         {
@@ -8532,6 +8534,7 @@
                                                     "metaattrs": {
                                                         "intent": "in"
                                                     },
+                                                    "name": "get",
                                                     "params": [
                                                         {
                                                             "declarator": {
@@ -8709,6 +8712,7 @@
                                                     "metaattrs": {
                                                         "intent": "in"
                                                     },
+                                                    "name": "get",
                                                     "params": [
                                                         {
                                                             "declarator": {
@@ -8847,6 +8851,7 @@
                                                     "metaattrs": {
                                                         "intent": "in"
                                                     },
+                                                    "name": "get",
                                                     "params": [
                                                         {
                                                             "declarator": {

@@ -5734,6 +5734,7 @@
                                     "metaattrs": {
                                         "intent": "in"
                                     },
+                                    "name": "incr",
                                     "params": [
                                         {
                                             "declarator": {
