@@ -1242,6 +1242,18 @@ class Declarator(Node):
         self.func_const = False
         self.typemap = None
 
+    def get_user_name(self, use_attr=True):
+        """Get name from declarator
+        use_attr - True, check attr for name
+        ctor and dtor should have _name set
+        """
+        if use_attr:
+            name = self.attrs["name"] or self.attrs["_name"]
+            if name is not None:
+                return name
+        return self.name
+    user_name = property(get_user_name, None, None, "Declaration user_name")
+
     def is_ctor(self):
         """Return True if self is a constructor."""
         return self.attrs["_constructor"]
@@ -1517,18 +1529,6 @@ class Declaration(Node):
 
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
         self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
-
-    def get_name(self, use_attr=True):
-        """Get name from declarator
-        use_attr - True, check attr for name
-        ctor and dtor should have _name set
-        """
-        if use_attr:
-            name = self.attrs["name"] or self.attrs["_name"]
-            if name is not None:
-                return name
-        return self.declarator.name
-    name = property(get_name, None, None, "Declaration name")
 
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""
@@ -1831,7 +1831,7 @@ class Declaration(Node):
         if kwargs.get("name", None):
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         if basedef.base == "vector":
             decl.append("(*)")  # is array
@@ -1926,7 +1926,7 @@ class Declaration(Node):
         if "name" in kwargs:
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         dimension = attrs["dimension"]
         rank = attrs["rank"]
@@ -2307,7 +2307,7 @@ class SymbolTable(object):
 #            self.add_child_to_current(node, name)
         if ast.declarator.func:
             # typedef int (*fcn)(int);
-            name = ast.get_name()
+            name = ast.declarator.user_name
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,
@@ -2482,6 +2482,7 @@ def create_struct_ctor(cls):
 def find_arg_by_name(decls, name):
     """Find argument in params with name.
     Return None if not found.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -2490,12 +2491,13 @@ def find_arg_by_name(decls, name):
     if decls is None:
         return None
     for decl in decls:
-        if decl.name == name:
+        if decl.declarator.name == name:
             return decl
     return None
 
 def find_arg_index_by_name(decls, name):
     """Return index of argument in decls with name.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -2504,6 +2506,6 @@ def find_arg_index_by_name(decls, name):
     if decls is None:
         return -1
     for i, decl in enumerate(decls):
-        if decl.name == name:
+        if decl.declarator.name == name:
             return i
     return -1

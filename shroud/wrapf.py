@@ -954,7 +954,7 @@ rv = .false.
             fileinfo - ModuleInfo
         """
         fmt = util.Scope(node.fmtdict)
-        fmt.argname = arg.name
+        fmt.argname = arg.declarator.user_name
         name = wformat(
             node.options.F_abstract_interface_subprogram_template, fmt
         )
@@ -988,7 +988,7 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 imports = {}
                 for i, param in enumerate(arg.declarator.params):
-                    name = param.name
+                    name = param.declarator.user_name
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
@@ -1074,27 +1074,28 @@ rv = .false.
             pass
         else:
             declarator = ast.declarator
+            name = declarator.user_name
             attrs = ast.attrs
-            arg_c_names.append(ast.name)
+            arg_c_names.append(name)
             # argument declarations
             if attrs["assumedtype"]:
                 if attrs["rank"]:
                     arg_c_decl.append(
-                        "type(*) :: {}(*)".format(ast.name)
+                        "type(*) :: {}(*)".format(name)
                     )
                 elif attrs["dimension"]:
                     arg_c_decl.append(
                         "type(*) :: {}({})".format(
-                            ast.name, attrs["dimension"])
+                            name, attrs["dimension"])
                     )
                 else:
                     arg_c_decl.append(
-                        "type(*) :: {}".format(ast.name)
+                        "type(*) :: {}".format(name)
                     )
             elif declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, ast, fileinfo)
                 arg_c_decl.append(
-                    "procedure({}) :: {}".format(absiface, ast.name)
+                    "procedure({}) :: {}".format(absiface, name)
                 )
                 imports[absiface] = True
             elif declarator.is_array() > 1:
@@ -1228,15 +1229,15 @@ rv = .false.
             # default argument's intent
             # XXX look at const, ptr
             declarator = arg.declarator
-            arg_name = arg.name
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
-            fmt_arg.c_var = arg.name
-            fmt_arg.f_var = arg.name
-            fmt_arg.F_C_var = arg.name
+            fmt_arg.c_var = arg_name
+            fmt_arg.f_var = arg_name
+            fmt_arg.F_C_var = arg_name
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
             self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             
@@ -1550,7 +1551,7 @@ rv = .false.
             rootname = fmt.C_result
         else:
             ntypemap = f_ast.typemap
-            rootname = c_ast.name
+            rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             # XXX - need to add an argument for each template arg
             ntypemap = c_ast.template_arguments[0].typemap
@@ -1748,7 +1749,7 @@ rv = .false.
         f_index = -1  # index into f_args
         have_f_arg = False
         for c_arg in C_node.ast.declarator.params:
-            arg_name = c_arg.name
+            arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
@@ -1784,6 +1785,7 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
             f_declarator = f_arg.declarator
+            f_name = f_declarator.user_name
             f_attrs = f_arg.attrs
             f_meta = f_arg.metaattrs
 
@@ -1819,20 +1821,20 @@ rv = .false.
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
                     arg_f_decl.append(
-                        "character(len=*), intent(IN) :: {}".format(f_arg.name)
+                        "character(len=*), intent(IN) :: {}".format(f_name)
                     )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_arg.name))
+                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_name))
                     self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                     need_wrapper = True
                     continue
                 elif c_attrs["assumedtype"]:
                     # Passed directly to C as a 'void *'
                     arg_f_decl.append(
-                        "type(*) :: {}".format(f_arg.name)
+                        "type(*) :: {}".format(f_name)
                     )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_arg.name)
+                    arg_c_call.append(f_name)
                     continue
                 elif f_declarator.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo)
@@ -1840,14 +1842,14 @@ rv = .false.
                         # external is similar to assumed type, in that it will
                         # accept any function.  But external is not allowed
                         # in bind(C), so make sure a wrapper is generated.
-                        arg_f_decl.append("external :: {}".format(f_arg.name))
+                        arg_f_decl.append("external :: {}".format(f_name))
                         need_wrapper = True
                     else:
                         arg_f_decl.append(
-                            "procedure({}) :: {}".format(absiface, f_arg.name)
+                            "procedure({}) :: {}".format(absiface, f_name)
                         )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_arg.name)
+                    arg_c_call.append(f_name)
                     # function pointers are pass thru without any other action
                     continue
                 elif implied:

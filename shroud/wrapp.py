@@ -661,11 +661,13 @@ return 1;""",
 
         for i, var in enumerate(node.variables):
             ast = var.ast
+            declarator = ast.declarator
+            name = declarator.user_name
             output.extend(
                 [
                     "",
-                    "// " + var.ast.name,
-                    'obj = PyString_FromString("{}");'.format(ast.name),
+                    "// " + name,
+                    'obj = PyString_FromString("{}");'.format(name),
                     "if (obj == {}) goto fail;".format(fmt.nullptr),
                     "PyList_SET_ITEM(lnames, {}, obj);".format(i),
                 ]
@@ -919,7 +921,7 @@ return 1;""",
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
-                fmt.npy_dims_var = "SHD_" + ast.name
+                fmt.npy_dims_var = "SHD_" + ast.declarator.user_name
             # Dimensions must be in npy_intp type array.
             # XXX - assumes 1-d
             fmt.npy_intp_decl = wformat("npy_intp {npy_dims_var}[1];\n", fmt)
@@ -940,7 +942,7 @@ return 1;""",
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
-                fmt.npy_dims_var = "SHD_" + ast.name
+                fmt.npy_dims_var = "SHD_" + declarator.user_name
             # Dimensions must be in npy_intp type array.
             fmt.npy_intp_decl = wformat(
                 "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
@@ -1008,7 +1010,7 @@ return 1;""",
         """
         implied = arg.attrs["implied"]
         if implied:
-            fmt = node._fmtargs[arg.name]["fmtpy"]
+            fmt = node._fmtargs[arg.declarator.user_name]["fmtpy"]
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
 
@@ -1090,7 +1092,7 @@ return 1;""",
         """
         overloaded_methods = {}
         for function in functions:
-            flist = overloaded_methods.setdefault(function.ast.name, [])
+            flist = overloaded_methods.setdefault(function.ast.declarator.user_name, [])
             if not function.wrap.python:
                 continue
             if not function.options.PY_create_generic:
@@ -1263,7 +1265,7 @@ return 1;""",
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
             declarator = arg.declarator
-            arg_name = arg.name
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))
             fmt_arg.c_var = arg_name
@@ -1415,7 +1417,7 @@ return 1;""",
             elif hasattr(arg_typemap, "is_typedef"):
                 # XXX - this helps typedefs to define PyArg type instead C wrapper type
                 declare_code.append("{} {};".format(
-                    PY_format_to_type[arg_typemap.PY_format], arg.name))
+                    PY_format_to_type[arg_typemap.PY_format], arg_name))
             else:
                 # Since all declarations are at the top, remove const
                 # since it will be assigned later.
@@ -1813,7 +1815,7 @@ return 1;""",
         expose = True
         if is_ctor:
             expose = False
-        if len(self.overloaded_methods[ast.name]) > 1:
+        if len(self.overloaded_methods[ast.declarator.user_name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:
@@ -2452,7 +2454,7 @@ return 1;""",
         mdone = {}
         for function in functions:
             # preserve order of multi-dispatch functions
-            mname = function.ast.name
+            mname = function.ast.declarator.user_name
             if mname in mdone:
                 continue
             mdone[mname] = True

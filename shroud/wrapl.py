@@ -188,7 +188,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function.wrap.lua:
                 continue
-            name = function.ast.name
+            name = function.ast.declarator.user_name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -515,7 +515,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for iarg in range(luafcn.nargs):
             arg = ast.declarator.params[iarg]
             a_declarator = arg.declarator
-            arg_name = arg.name
+            arg_name = a_declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
             fmt_arg.LUA_index = LUA_index

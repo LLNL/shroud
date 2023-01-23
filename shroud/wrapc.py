@@ -744,10 +744,11 @@ class Wrapc(util.WrapperMixin):
             is_func  - True if function.
         """
 
+        declarator = ast.declarator
         if is_func:
             rootname = fmt.C_result
         else:
-            rootname = ast.name
+            rootname = declarator.user_name
             if ast.const:
                 fmt.c_const = "const "
             else:
@@ -1045,13 +1046,13 @@ class Wrapc(util.WrapperMixin):
 
         # --- Loop over function parameters
         for arg in ast.declarator.params:
-            arg_name = arg.name
+            declarator = arg.declarator
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
             c_attrs = arg.attrs
             c_meta = arg.metaattrs
 
-            declarator = arg.declarator
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
 
@@ -1075,7 +1076,7 @@ class Wrapc(util.WrapperMixin):
                     sapi, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg.name
+                fmt_arg.c_var = arg_name
                 self.name_temp_vars(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
@@ -1108,7 +1109,7 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
                          sapi, c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg.name
+                fmt_arg.c_var = arg_name
                 # XXX - order issue - c_var must be set before name_temp_vars,
                 #       but set by set_fmt_fields
                 self.name_temp_vars(arg_name, intent_blk, fmt_arg)
@@ -1389,7 +1390,7 @@ class Wrapc(util.WrapperMixin):
                 impl.append("#endif  // " + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node.ast.name
+            fmt_func.C_name = node.ast.declarator.user_name
 
     def set_capsule_headers(self, headers):
         """Headers used by C_memory_dtor_function.

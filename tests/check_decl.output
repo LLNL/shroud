@@ -728,6 +728,7 @@ stmts:
       pointer:
       - ptr: '*'
       typemap_name: int
+    name: fcn
     params:
     - _ast: Declaration
       declarator:

@@ -441,7 +441,7 @@ class VerifyAttrs(object):
         if options is None:
             options = node.options
         declarator = arg.declarator
-        argname = arg.name
+        argname = declarator.user_name
         attrs = arg.attrs
         meta = arg.metaattrs
 
@@ -802,7 +802,7 @@ class GenFunctions(object):
         fmt_func = dict(
             # Use variable's field_name for the generated functions.
             field_name=var.fmtdict.field_name, # Name of member variable
-            wrapped_name=ast.name,             # Using name attribute
+            wrapped_name=declarator.user_name, # Using name attribute
             struct_name=cls.fmtdict.cxx_type,
         )
 
@@ -1143,7 +1143,7 @@ class GenFunctions(object):
         cxx_overload = {}
         for function in functions:
             self.append_function_index(function)
-            cxx_overload.setdefault(function.ast.name, []).append(
+            cxx_overload.setdefault(function.ast.declarator.user_name, []).append(
                 function._function_index
             )
 
@@ -1192,7 +1192,7 @@ class GenFunctions(object):
                 fmt.F_name_generic = name
                 function._overloaded = True
             else:
-                overloaded_functions.setdefault(function.ast.name, []).append(
+                overloaded_functions.setdefault(function.ast.declarator.user_name, []).append(
                     function)
 
         # look for function overload and compute function_suffix
@@ -1758,29 +1758,30 @@ class GenFunctions(object):
                 "for function returning {} instance"
                 " (must return a pointer or reference)."
                 " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, ast.name
+                    result_typemap.cxx_type, declarator.user_name
                 )
             )
         
         cfi_args = {}
         for arg in ast.declarator.params:
             declarator = arg.declarator
-            cfi_args[arg.name] = False
+            name = declarator.user_name
+            cfi_args[name] = False
             arg_typemap = arg.typemap
             if arg.metaattrs["api"]:
                 # API explicitly set by user.
                 continue
             elif arg.metaattrs["assumed-rank"]:
-                cfi_args[arg.name] = True
+                cfi_args[name] = True
             elif arg.attrs["rank"]:
-                cfi_args[arg.name] = True
+                cfi_args[name] = True
             elif arg_typemap.sgroup == "string":
-                    cfi_args[arg.name] = True
+                    cfi_args[name] = True
             elif arg_typemap.sgroup == "char":
                 if declarator.is_indirect():
-                    cfi_args[arg.name] = True
+                    cfi_args[name] = True
             elif arg.metaattrs["deref"] in ["allocatable", "pointer"]:
-                cfi_args[arg.name] = True
+                cfi_args[name] = True
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
@@ -1830,7 +1831,8 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
-            if cfi_args[arg.name]:
+            name = arg.declarator.user_name
+            if cfi_args[name]:
                 arg.metaattrs["api"] = generated_suffix
             attrs = arg.attrs
             arg_typemap = arg.typemap
@@ -1916,7 +1918,7 @@ class GenFunctions(object):
                 "for function returning {} instance"
                 " (must return a pointer or reference)."
                 " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, ast.name
+                    result_typemap.cxx_type, declarator.user_name
                 )
             )
 
@@ -1971,7 +1973,7 @@ class GenFunctions(object):
                 # double **values +intent(out) +deref(pointer)
                 has_buf_arg = "cdesc"
                 #has_buf_arg = "buf" # XXX - for scalar?
-            buf_args[arg.name] = has_buf_arg
+            buf_args[declarator.user_name] = has_buf_arg
         has_buf_arg = any(buf_args.values())
 
         # Function result.
@@ -2041,10 +2043,11 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.declarator.params:
+            declarator = arg.declarator
             attrs = arg.attrs
             meta = arg.metaattrs
-            if buf_args[arg.name]:
-                meta["api"] = buf_args[arg.name]
+            if buf_args[declarator.user_name]:
+                meta["api"] = buf_args[declarator.user_name]
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap

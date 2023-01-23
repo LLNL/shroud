@@ -316,7 +316,7 @@ class NamespaceMixin(object):
         if ast is None:
             ast = declast.check_decl(decl, self.symtab)
 
-        name = ast.get_name()  # Local name.
+        name = ast.declarator.user_name  # Local name.
         node = TypedefNode(name, self, ast, fields)
         self.typedefs.append(node)
         return node
@@ -1288,7 +1288,7 @@ class ClassNode(AstNode, NamespaceMixin):
         for var in self.variables:
             self.map_name_to_node[var.name] = var
         for node in self.functions:
-            self.map_name_to_node[node.ast.name] = node
+            self.map_name_to_node[node.ast.declarator.user_name] = node
 
 ######################################################################
 
@@ -1462,7 +1462,7 @@ class FunctionNode(AstNode):
             generic.parse_generic(self.symtab)
             newparams = copy.deepcopy(ast.declarator.params)
             for garg in generic.decls:
-                i = declast.find_arg_index_by_name(newparams, garg.name)
+                i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.
                     print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
@@ -1478,7 +1478,7 @@ class FunctionNode(AstNode):
         if "attrs" in kwargs:
             attrs = kwargs["attrs"]
             for arg in ast.declarator.params:
-                name = arg.name
+                name = arg.declarator.user_name
                 if name in attrs:
                     arg.declarator.attrs.update(attrs[name])
         if "fattrs" in kwargs:
@@ -1498,7 +1498,7 @@ class FunctionNode(AstNode):
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
-        fmt_func.function_name = ast.name
+        fmt_func.function_name = ast.declarator.user_name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
     def default_format(self, parent, fmtdict, kwargs):
@@ -1848,15 +1848,15 @@ class VariableNode(AstNode):
             # 'void foo()' instead of 'void foo'
             raise RuntimeError("Arguments given to variable:", ast.gen_decl())
         self.ast = ast
-        self.name = ast.name
+        self.name = ast.declarator.user_name
 
         # format for struct
         fmt_var = self.fmtdict
 
         # Treat similar to class
         #        fmt_struct.class_scope = self.name + '::'
-        fmt_var.field_name = ast.get_name(use_attr=False)
-        fmt_var.variable_name = ast.name
+        fmt_var.field_name = ast.declarator.name
+        fmt_var.variable_name = self.name
         fmt_var.variable_lower = fmt_var.variable_name.lower()
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
