@@ -1843,9 +1843,10 @@
                                     "name": "arg"
                                 },
                                 "specifier": [
-                                    "ArgType"
+                                    "int"
                                 ],
-                                "template_argument": "ArgType"
+                                "template_argument": "ArgType",
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -2020,9 +2021,10 @@
                                     "name": "arg"
                                 },
                                 "specifier": [
-                                    "ArgType"
+                                    "double"
                                 ],
-                                "template_argument": "ArgType"
+                                "template_argument": "ArgType",
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"
@@ -2870,12 +2872,12 @@
                                         "intent": "in"
                                     },
                                     "name": "arg2",
-                                    "typemap_name": "double"
+                                    "typemap_name": "float"
                                 },
                                 "specifier": [
-                                    "double"
+                                    "float"
                                 ],
-                                "typemap_name": "double"
+                                "typemap_name": "float"
                             }
                         ],
                         "typemap_name": "void"
@@ -2927,6 +2929,7 @@
                                 "const": true,
                                 "declarator": {
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -2951,12 +2954,12 @@
                                         "intent": "in"
                                     },
                                     "name": "arg2",
-                                    "typemap_name": "double"
+                                    "typemap_name": "float"
                                 },
                                 "specifier": [
-                                    "double"
+                                    "float"
                                 ],
-                                "typemap_name": "double"
+                                "typemap_name": "float"
                             }
                         ],
                         "typemap_name": "void"
@@ -3164,6 +3167,7 @@
                                 "const": true,
                                 "declarator": {
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",

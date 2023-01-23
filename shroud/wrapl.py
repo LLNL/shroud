@@ -246,7 +246,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             nargs = 0
             in_args = []
             out_args = []
-            for arg in function.ast.params:
+            for arg in function.ast.declarator.params:
                 arg_typemap = arg.typemap
                 if arg.init is not None:
                     all_calls.append(
@@ -513,7 +513,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # Each variation of default-arguments produces a new call.
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = ast.params[iarg]
+            arg = ast.declarator.params[iarg]
             a_declarator = arg.declarator
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})

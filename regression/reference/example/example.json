@@ -1121,7 +1121,6 @@
                                                                 "is_result": true
                                                             },
                                                             "name": "name",
-                                                            "params": [],
                                                             "pointer": [
                                                                 {
                                                                     "ptr": "&"
@@ -1251,7 +1250,6 @@
                                                                 "is_result": true
                                                             },
                                                             "name": "name",
-                                                            "params": [],
                                                             "pointer": [
                                                                 {
                                                                     "ptr": "&"
@@ -4010,6 +4008,23 @@
                                                             "TypeID"
                                                         ],
                                                         "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "declarator": {
+                                                            "attrs": {
+                                                                "value": true
+                                                            },
+                                                            "init": 1,
+                                                            "metaattrs": {
+                                                                "intent": "in"
+                                                            },
+                                                            "name": "len",
+                                                            "typemap_name": "int"
+                                                        },
+                                                        "specifier": [
+                                                            "int"
+                                                        ],
+                                                        "typemap_name": "int"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -4074,6 +4089,23 @@
                                                             "TypeID"
                                                         ],
                                                         "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "declarator": {
+                                                            "attrs": {
+                                                                "value": true
+                                                            },
+                                                            "init": 1,
+                                                            "metaattrs": {
+                                                                "intent": "in"
+                                                            },
+                                                            "name": "len",
+                                                            "typemap_name": "long"
+                                                        },
+                                                        "specifier": [
+                                                            "long"
+                                                        ],
+                                                        "typemap_name": "long"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -4662,12 +4694,12 @@
                                                                 "intent": "in"
                                                             },
                                                             "name": "len",
-                                                            "typemap_name": "SidreLength"
+                                                            "typemap_name": "int"
                                                         },
                                                         "specifier": [
-                                                            "SidreLength"
+                                                            "int"
                                                         ],
-                                                        "typemap_name": "SidreLength"
+                                                        "typemap_name": "int"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -4751,12 +4783,12 @@
                                                                 "intent": "in"
                                                             },
                                                             "name": "len",
-                                                            "typemap_name": "SidreLength"
+                                                            "typemap_name": "long"
                                                         },
                                                         "specifier": [
-                                                            "SidreLength"
+                                                            "long"
                                                         ],
-                                                        "typemap_name": "SidreLength"
+                                                        "typemap_name": "long"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -5094,9 +5126,10 @@
                                                             "name": "value"
                                                         },
                                                         "specifier": [
-                                                            "ValueType"
+                                                            "int"
                                                         ],
-                                                        "template_argument": "ValueType"
+                                                        "template_argument": "ValueType",
+                                                        "typemap_name": "int"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -5297,9 +5330,10 @@
                                                             "name": "value"
                                                         },
                                                         "specifier": [
-                                                            "ValueType"
+                                                            "long"
                                                         ],
-                                                        "template_argument": "ValueType"
+                                                        "template_argument": "ValueType",
+                                                        "typemap_name": "long"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -5498,9 +5532,10 @@
                                                             "name": "value"
                                                         },
                                                         "specifier": [
-                                                            "ValueType"
+                                                            "float"
                                                         ],
-                                                        "template_argument": "ValueType"
+                                                        "template_argument": "ValueType",
+                                                        "typemap_name": "float"
                                                     }
                                                 ],
                                                 "typemap_name": "void"
@@ -5699,9 +5734,10 @@
                                                             "name": "value"
                                                         },
                                                         "specifier": [
-                                                            "ValueType"
+                                                            "double"
                                                         ],
-                                                        "template_argument": "ValueType"
+                                                        "template_argument": "ValueType",
+                                                        "typemap_name": "double"
                                                     }
                                                 ],
                                                 "typemap_name": "void"

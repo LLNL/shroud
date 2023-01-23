@@ -987,7 +987,7 @@ rv = .false.
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
                 imports = {}
-                for i, param in enumerate(arg.params):
+                for i, param in enumerate(arg.declarator.params):
                     name = param.name
                     if name is None:
                         fmt.index = str(i)
@@ -1055,7 +1055,7 @@ rv = .false.
             fmt -
             ast - Abstract Syntax Tree from parser
                node.ast for subprograms
-               node.params[n] for parameters
+               node.declarator.params[n] for parameters
             stmts_blk - typemap.CStmts or util.Scope
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -1224,7 +1224,7 @@ rv = .false.
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
-        for arg in ast.params:
+        for arg in ast.declarator.params:
             # default argument's intent
             # XXX look at const, ptr
             declarator = arg.declarator
@@ -1744,10 +1744,10 @@ rv = .false.
         # May be one more argument to C function than Fortran function
         # (the result)
         #
-        f_args = ast.params
+        f_args = ast.declarator.params
         f_index = -1  # index into f_args
         have_f_arg = False
-        for c_arg in C_node.ast.params:
+        for c_arg in C_node.ast.declarator.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))

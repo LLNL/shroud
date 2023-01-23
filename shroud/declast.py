@@ -610,7 +610,6 @@ class Parser(ExprParser):
 
         # SSS Share fields between Declaration and Declarator for now
         declarator = node.declarator
-        declarator.params = node.params
         declarator.array = node.array
         declarator.init = node.init
         declarator.attrs = node.attrs
@@ -644,16 +643,17 @@ class Parser(ExprParser):
 
         if self.token.typ == "LPAREN":  # peek
             # Function parameters.
-            node.params = self.parameter_list()
+            params = self.parameter_list()
+            node.declarator.params = params
 
             # Look for (void), set to no parameters.
-            if len(node.params) == 1:
-                chk = node.params[0]
+            if len(params) == 1:
+                chk = params[0]
                 if (chk.declarator.name is None and
                     chk.specifier == ["void"] and
                     chk.declarator.func is None    # Function pointers
                 ):
-                    node.params = []
+                    node.declarator.params = []
 
             #  method const
             if self.token.typ == "TYPE_QUALIFIER":
@@ -1229,7 +1229,7 @@ class Declarator(Node):
     def __init__(self):
         self.pointer = []  # Multiple levels of indirection
         self.name = None  # *name
-        self.func = None  # (*name)     declarator
+        self.func = None  # (*name)     Declarator
         
         self.ctor_dtor_name = False
 
@@ -1357,11 +1357,15 @@ class Declarator(Node):
         """Return index of argument in params with name."""
         return find_arg_index_by_name(self.params, name)
 
-    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False, **kwargs):
+    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False,
+                      append_init=True, continuation=False,
+                      attrs=True, **kwargs):
         """Generate string by appending text to decl.
 
         Replace name with value from kwargs.
         name=None will skip appending any existing name.
+
+        attrs=False give compilable code.
         """
         if force_ptr:
             # Force to be a pointer
@@ -1373,7 +1377,7 @@ class Declarator(Node):
                 ptr.gen_decl_work(decl, **kwargs)
         if self.func:
             decl.append(" (")
-            self.func.gen_decl_work(decl, **kwargs)
+            self.func.gen_decl_work(decl, attrs=attrs, **kwargs)
             decl.append(")")
         elif "name" in kwargs:
             if kwargs["name"]:
@@ -1385,6 +1389,60 @@ class Declarator(Node):
         elif ctor_dtor and self.ctor_dtor_name:
             decl.append(" ")
             decl.append(self.ctor_dtor_name)
+
+        if append_init and self.init is not None:
+            decl.append("=")
+            decl.append(str(self.init))
+        #        if use_attrs:
+        #            self.gen_attrs(self.attrs, decl)
+
+        params = kwargs.get("params", self.params)
+        if params is not None:
+            decl.append("(")
+            if continuation:
+                decl.append("\t")
+            if params:
+                comma = ""
+                for arg in params:
+                    decl.append(comma)
+                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation)
+                    if continuation:
+                        comma = ",\t "
+                    else:
+                        comma = ", "
+            else:
+                decl.append("void")
+            decl.append(")")
+            if self.func_const:
+                decl.append(" const")
+        for dim in self.array:
+            decl.append("[")
+            decl.append(todict.print_node(dim))
+            decl.append("]")
+        if attrs:
+            self.gen_attrs(self.attrs, decl)
+
+    _skip_annotations = ["template"]
+
+    def gen_attrs(self, attrs, decl, skip={}):
+        space = " "
+        for attr in sorted(attrs):
+            if attr[0] == "_":  # internal attribute
+                continue
+            if attr in self._skip_annotations:
+                continue
+            if attr in skip:
+                continue
+            value = attrs[attr]
+            if value is None:  # unset
+                continue
+            decl.append(space)
+            decl.append("+")
+            if value is True:
+                decl.append(attr)
+            else:
+                decl.append("{}({})".format(attr, value))
+            space = ""
 
     def __str__(self):
         out = []
@@ -1450,7 +1508,6 @@ class Declaration(Node):
         self.const = False
         self.volatile = False
         self.declarator = None
-        self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
         self.template_arguments = []    # vector<int>, list of Declaration
@@ -1499,11 +1556,11 @@ class Declaration(Node):
 
     def find_arg_by_name(self, name):
         """Find argument in params with name."""
-        return find_arg_by_name(self.params, name)
+        return find_arg_by_name(self.declarator.params, name)
 
     def find_arg_index_by_name(self, name):
         """Return index of argument in params with name."""
-        return find_arg_index_by_name(self.params, name)
+        return find_arg_index_by_name(self.declarator.params, name)
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
@@ -1527,6 +1584,7 @@ class Declaration(Node):
         new.typemap = self.typemap
         new.template_arguments = self.template_arguments
         # SSS
+        new.declarator.params= None
         new.declarator.attrs = new.attrs
         new.declarator.metaattrs = new.metaattrs
         new.declarator.typemap = new.typemap
@@ -1547,7 +1605,7 @@ class Declaration(Node):
         Change function result to 'void'.
         """
         newarg = self._as_arg(name)
-        self.params.append(newarg)
+        self.declarator.params.append(newarg)
         self.set_return_to_void()
         return newarg
 
@@ -1596,16 +1654,13 @@ class Declaration(Node):
         self.gen_decl_work(decl, **kwargs)
         return "".join(decl)
 
-    def gen_decl_work(self, decl, **kwargs):
+    def gen_decl_work(self, decl, attrs=True, **kwargs):
         """Generate string by appending text to decl.
 
         Replace params with value from kwargs.
         Most useful to call with params=None to skip parameters
         and only get function result.
-
-        attrs=False give compilable code.
         """
-        use_attrs = kwargs.get("attrs", True)
         if self.const:
             decl.append("const ")
 
@@ -1620,36 +1675,7 @@ class Declaration(Node):
         if self.template_arguments:
             decl.append(self.gen_template_arguments())
 
-        self.declarator.gen_decl_work(decl, **kwargs)
-
-        if self.init is not None:
-            decl.append("=")
-            decl.append(str(self.init))
-        #        if use_attrs:
-        #            self.gen_attrs(self.attrs, decl)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            if params:
-                comma = ""
-                for arg in params:
-                    decl.append(comma)
-                    arg.gen_decl_work(decl)
-                    comma = ", "
-            else:
-                decl.append("void")
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        for dim in self.array:
-            decl.append("[")
-            decl.append(todict.print_node(dim))
-            decl.append("]")
-        if use_attrs:
-            self.gen_attrs(self.attrs, decl)
-
-    _skip_annotations = ["template"]
+        self.declarator.gen_decl_work(decl, attrs=attrs, **kwargs)
 
     def gen_template_arguments(self):
         """Return string for template_arguments."""
@@ -1659,26 +1685,6 @@ class Declaration(Node):
             decl.append(",")
         decl[-1] = ">"
         return ''.join(decl)
-
-    def gen_attrs(self, attrs, decl, skip={}):
-        space = " "
-        for attr in sorted(attrs):
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr in self._skip_annotations:
-                continue
-            if attr in skip:
-                continue
-            value = attrs[attr]
-            if value is None:  # unset
-                continue
-            decl.append(space)
-            decl.append("+")
-            if value is True:
-                decl.append(attr)
-            else:
-                decl.append("{}({})".format(attr, value))
-            space = ""
 
     def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
@@ -1778,36 +1784,13 @@ class Declaration(Node):
             decl[const_index] = ""
 
         if lang == "c_type":
-            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr, ctor_dtor=True, **kwargs)
+            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
         else:
-            declarator.gen_decl_work(decl, force_ptr=force_ptr, ctor_dtor=True, **kwargs)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            if continuation:
-                decl.append("\t")
-
-            if params:
-                comma = ""
-                for arg in params:
-                    decl.append(comma)
-                    arg.gen_arg_as_lang(decl, lang, attrs=None, continuation=continuation)
-                    if continuation:
-                        comma = ",\t "
-                    else:
-                        comma = ", "
-
-            else:
-                decl.append("void")
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        if self.array:
-            for dim in self.array:
-                decl.append("[")
-                decl.append(todict.print_node(dim))
-                decl.append("]")
+            declarator.gen_decl_work(decl, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
 
     def as_cast(self, language="c"):
         """
@@ -2510,9 +2493,8 @@ def create_struct_ctor(cls):
     ast.metaattrs["intent"] = "ctor"
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
-    ast.params = []
     ast.declarator = Declarator()  # SSS
-    ast.declarator.params = ast.params
+    ast.declarator.params = []
     ast.declarator.typemap = cls.typemap
     ast.declarator.attrs = ast.attrs
     ast.declarator.metaattrs = ast.metaattrs

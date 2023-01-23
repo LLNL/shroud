@@ -1845,9 +1845,10 @@
                                     "name": "arg1"
                                 },
                                 "specifier": [
-                                    "T"
+                                    "int"
                                 ],
-                                "template_argument": "T"
+                                "template_argument": "T",
+                                "typemap_name": "int"
                             },
                             {
                                 "declarator": {
@@ -1860,9 +1861,10 @@
                                     "name": "arg2"
                                 },
                                 "specifier": [
-                                    "U"
+                                    "long"
                                 ],
-                                "template_argument": "U"
+                                "template_argument": "U",
+                                "typemap_name": "long"
                             }
                         ],
                         "typemap_name": "void"
@@ -2091,9 +2093,10 @@
                                     "name": "arg1"
                                 },
                                 "specifier": [
-                                    "T"
+                                    "float"
                                 ],
-                                "template_argument": "T"
+                                "template_argument": "T",
+                                "typemap_name": "float"
                             },
                             {
                                 "declarator": {
@@ -2106,9 +2109,10 @@
                                     "name": "arg2"
                                 },
                                 "specifier": [
-                                    "U"
+                                    "double"
                                 ],
-                                "template_argument": "U"
+                                "template_argument": "U",
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"

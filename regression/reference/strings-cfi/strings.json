@@ -1296,7 +1296,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "*"
@@ -1426,7 +1425,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "*"
@@ -2104,7 +2102,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "*"
@@ -2234,7 +2231,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "*"
@@ -2880,7 +2876,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "&"
@@ -3011,7 +3006,6 @@
                                         "is_result": true
                                     },
                                     "name": "output",
-                                    "params": [],
                                     "pointer": [
                                         {
                                             "ptr": "&"

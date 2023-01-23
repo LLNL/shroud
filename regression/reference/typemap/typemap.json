@@ -289,12 +289,12 @@
                                         "intent": "in"
                                     },
                                     "name": "i1",
-                                    "typemap_name": "IndexType"
+                                    "typemap_name": "int32_t"
                                 },
                                 "specifier": [
-                                    "IndexType"
+                                    "int32_t"
                                 ],
-                                "typemap_name": "IndexType"
+                                "typemap_name": "int32_t"
                             },
                             {
                                 "declarator": {
@@ -481,12 +481,12 @@
                                         "intent": "in"
                                     },
                                     "name": "i1",
-                                    "typemap_name": "IndexType"
+                                    "typemap_name": "int64_t"
                                 },
                                 "specifier": [
-                                    "IndexType"
+                                    "int64_t"
                                 ],
-                                "typemap_name": "IndexType"
+                                "typemap_name": "int64_t"
                             },
                             {
                                 "declarator": {
@@ -810,12 +810,12 @@
                                         "intent": "in"
                                     },
                                     "name": "i1",
-                                    "typemap_name": "IndexType"
+                                    "typemap_name": "int32_t"
                                 },
                                 "specifier": [
-                                    "IndexType"
+                                    "int32_t"
                                 ],
-                                "typemap_name": "IndexType"
+                                "typemap_name": "int32_t"
                             }
                         ],
                         "typemap_name": "void"
@@ -872,12 +872,12 @@
                                         "intent": "in"
                                     },
                                     "name": "i1",
-                                    "typemap_name": "IndexType"
+                                    "typemap_name": "int64_t"
                                 },
                                 "specifier": [
-                                    "IndexType"
+                                    "int64_t"
                                 ],
-                                "typemap_name": "IndexType"
+                                "typemap_name": "int64_t"
                             }
                         ],
                         "typemap_name": "void"
@@ -1071,12 +1071,12 @@
                                         "intent": "in"
                                     },
                                     "name": "f1",
-                                    "typemap_name": "FloatType"
+                                    "typemap_name": "float"
                                 },
                                 "specifier": [
-                                    "FloatType"
+                                    "float"
                                 ],
-                                "typemap_name": "FloatType"
+                                "typemap_name": "float"
                             }
                         ],
                         "typemap_name": "void"
@@ -1133,12 +1133,12 @@
                                         "intent": "in"
                                     },
                                     "name": "f1",
-                                    "typemap_name": "FloatType"
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
-                                    "FloatType"
+                                    "double"
                                 ],
-                                "typemap_name": "FloatType"
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"

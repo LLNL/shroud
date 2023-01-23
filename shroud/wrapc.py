@@ -1044,7 +1044,7 @@ class Wrapc(util.WrapperMixin):
         #                 or the function result variable.
 
         # --- Loop over function parameters
-        for arg in ast.params:
+        for arg in ast.declarator.params:
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))

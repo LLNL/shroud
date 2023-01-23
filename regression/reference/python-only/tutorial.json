@@ -751,9 +751,10 @@
                                     "name": "arg"
                                 },
                                 "specifier": [
-                                    "ArgType"
+                                    "int"
                                 ],
-                                "template_argument": "ArgType"
+                                "template_argument": "ArgType",
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -850,9 +851,10 @@
                                     "name": "arg"
                                 },
                                 "specifier": [
-                                    "ArgType"
+                                    "double"
                                 ],
-                                "template_argument": "ArgType"
+                                "template_argument": "ArgType",
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"

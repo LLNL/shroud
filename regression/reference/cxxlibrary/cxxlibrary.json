@@ -1656,12 +1656,12 @@
                                         "intent": "in"
                                     },
                                     "name": "idx",
-                                    "typemap_name": "long"
+                                    "typemap_name": "int32_t"
                                 },
                                 "specifier": [
-                                    "long"
+                                    "int32_t"
                                 ],
-                                "typemap_name": "long"
+                                "typemap_name": "int32_t"
                             }
                         ],
                         "pointer": [
@@ -1745,12 +1745,12 @@
                                         "intent": "in"
                                     },
                                     "name": "idx",
-                                    "typemap_name": "long"
+                                    "typemap_name": "int32_t"
                                 },
                                 "specifier": [
-                                    "long"
+                                    "int32_t"
                                 ],
-                                "typemap_name": "long"
+                                "typemap_name": "int32_t"
                             }
                         ],
                         "pointer": [
@@ -1888,12 +1888,12 @@
                                         "intent": "in"
                                     },
                                     "name": "idx",
-                                    "typemap_name": "long"
+                                    "typemap_name": "int64_t"
                                 },
                                 "specifier": [
-                                    "long"
+                                    "int64_t"
                                 ],
-                                "typemap_name": "long"
+                                "typemap_name": "int64_t"
                             }
                         ],
                         "pointer": [
@@ -1977,12 +1977,12 @@
                                         "intent": "in"
                                     },
                                     "name": "idx",
-                                    "typemap_name": "long"
+                                    "typemap_name": "int64_t"
                                 },
                                 "specifier": [
-                                    "long"
+                                    "int64_t"
                                 ],
-                                "typemap_name": "long"
+                                "typemap_name": "int64_t"
                             }
                         ],
                         "pointer": [

@@ -551,12 +551,11 @@
                                 "declarator": {
                                     "attrs": {
                                         "cdesc": true,
-                                        "intent": "in",
-                                        "rank": 0,
-                                        "value": true
+                                        "intent": "out",
+                                        "rank": 0
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -564,12 +563,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "int"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -647,6 +646,7 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -666,12 +666,12 @@
                                 "declarator": {
                                     "attrs": {
                                         "cdesc": true,
-                                        "intent": "in",
-                                        "rank": 0,
-                                        "value": true
+                                        "intent": "out",
+                                        "rank": 0
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "api": "cdesc",
+                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -679,12 +679,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "int"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -864,12 +864,11 @@
                                 "declarator": {
                                     "attrs": {
                                         "cdesc": true,
-                                        "intent": "in",
-                                        "rank": 0,
-                                        "value": true
+                                        "intent": "out",
+                                        "rank": 0
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -877,12 +876,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "double"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"
@@ -960,6 +959,7 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -979,12 +979,12 @@
                                 "declarator": {
                                     "attrs": {
                                         "cdesc": true,
-                                        "intent": "in",
-                                        "rank": 0,
-                                        "value": true
+                                        "intent": "out",
+                                        "rank": 0
                                     },
                                     "metaattrs": {
-                                        "intent": "in"
+                                        "api": "cdesc",
+                                        "intent": "out"
                                     },
                                     "name": "value",
                                     "pointer": [
@@ -992,12 +992,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "double"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"
@@ -1665,8 +1665,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "metaattrs": {
                                         "intent": "out"
@@ -1677,12 +1676,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "int"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -1752,6 +1751,7 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -1770,8 +1770,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "metaattrs": {
                                         "intent": "out"
@@ -1782,12 +1781,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "int"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "int"
                             }
                         ],
                         "typemap_name": "void"
@@ -1901,8 +1900,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "metaattrs": {
                                         "intent": "out"
@@ -1913,12 +1911,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "double"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"
@@ -1988,6 +1986,7 @@
                                         "intent": "in"
                                     },
                                     "metaattrs": {
+                                        "api": "buf",
                                         "intent": "in"
                                     },
                                     "name": "name",
@@ -2006,8 +2005,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
-                                        "intent": "out",
-                                        "value": true
+                                        "intent": "out"
                                     },
                                     "metaattrs": {
                                         "intent": "out"
@@ -2018,12 +2016,12 @@
                                             "ptr": "*"
                                         }
                                     ],
-                                    "typemap_name": "void"
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
-                                    "void"
+                                    "double"
                                 ],
-                                "typemap_name": "void"
+                                "typemap_name": "double"
                             }
                         ],
                         "typemap_name": "void"

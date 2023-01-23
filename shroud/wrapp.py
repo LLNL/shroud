@@ -1255,7 +1255,7 @@ return 1;""",
             )
 
         goto_fail = False
-        args = ast.params
+        args = ast.declarator.params
         arg_names = []    # Arguments to function, intent in or inout.
         arg_offsets = []
         arg_implied = []  # Collect implied arguments
@@ -2515,7 +2515,7 @@ return 1;""",
                     )
                 else:
                     body.append(
-                        "if (SHT_nargs == %d) {+" % len(overload.ast.params)
+                        "if (SHT_nargs == %d) {+" % len(overload.ast.declarator.params)
                     )
                 append_format(
                     body,

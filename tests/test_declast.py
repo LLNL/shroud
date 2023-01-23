@@ -712,10 +712,10 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_reference())
         self.assertTrue(declarator.is_function_pointer())
 
-        self.assertNotEqual(None, r.params)
-        self.assertEqual(1, len(r.params))
+        self.assertNotEqual(None, declarator.params)
+        self.assertEqual(1, len(declarator.params))
 
-        param0 = r.params[0]
+        param0 = declarator.params[0]
         s = param0.gen_decl()
         self.assertEqual("int", s)
         self.assertEqual("int", param0.typemap.name)
@@ -773,10 +773,10 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_reference())
         self.assertTrue(declarator.is_function_pointer())
 
-        self.assertNotEqual(None, r.params)
-        self.assertEqual(1, len(r.params))
+        self.assertNotEqual(None, declarator.params)
+        self.assertEqual(1, len(declarator.params))
 
-        param0 = r.params[0]
+        param0 = declarator.params[0]
         s = param0.gen_decl()
         self.assertEqual("int * arg", s)
         self.assertEqual("int", param0.typemap.name)
@@ -1394,14 +1394,15 @@ class CheckParse(unittest.TestCase):
             symtab
         )
 
-        self.assertEqual(["long", "int"], r.params[0].specifier)
-        self.assertEqual("long", r.params[0].typemap.name)
+        params = r.declarator.params
+        self.assertEqual(["long", "int"], params[0].specifier)
+        self.assertEqual("long", params[0].typemap.name)
 
-        self.assertEqual(["long", "long"], r.params[1].specifier)
-        self.assertEqual("long_long", r.params[1].typemap.name)
+        self.assertEqual(["long", "long"], params[1].specifier)
+        self.assertEqual("long_long", params[1].typemap.name)
 
-        self.assertEqual(["unsigned", "int"], r.params[2].specifier)
-        self.assertEqual("unsigned_int", r.params[2].typemap.name)
+        self.assertEqual(["unsigned", "int"], params[2].specifier)
+        self.assertEqual("unsigned_int", params[2].typemap.name)
 
     def test_class_template(self):
         """Class templates"""
