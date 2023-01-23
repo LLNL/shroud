@@ -2345,7 +2345,7 @@ class ToDimension(todict.PrintNode):
                 else:
                     return "obj->{}".format(argname)
         else:
-            if self.fcn.ast.find_arg_by_name(argname) is None:
+            if self.fcn.ast.declarator.find_arg_by_name(argname) is None:
                 self.need_helper = True
             if node.args is None:
                 return argname  # variable
@@ -2411,7 +2411,7 @@ class ToImplied(todict.PrintNode):
             self.intermediate = True
             self.helper = "ShroudTypeDefines"
             argname = node.args[0].name
-            typearg = self.func.ast.find_arg_by_name(argname)
+            typearg = self.func.ast.declarator.find_arg_by_name(argname)
             arg_typemap = typearg.typemap
             return arg_typemap.sh_type
         elif argname == "len":

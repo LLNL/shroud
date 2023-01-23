@@ -1554,14 +1554,6 @@ class Declaration(Node):
     def get_full_type(self):
         return ' '.join(self.specifier)
 
-    def find_arg_by_name(self, name):
-        """Find argument in params with name."""
-        return find_arg_by_name(self.declarator.params, name)
-
-    def find_arg_index_by_name(self, name):
-        """Return index of argument in params with name."""
-        return find_arg_index_by_name(self.declarator.params, name)
-
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char, string or vector.

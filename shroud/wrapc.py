@@ -1660,7 +1660,7 @@ class ToDimension(todict.PrintNode):
                     return "{}{}".format(self.context, argname)
         else:
             deref = ''
-            arg = self.fcn.ast.find_arg_by_name(argname)
+            arg = self.fcn.ast.declarator.find_arg_by_name(argname)
             if arg:
                 declarator = arg.declarator
                 if arg.attrs["hidden"]:

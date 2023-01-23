@@ -3495,7 +3495,7 @@ class ToImplied(todict.PrintNode):
             fmt = self.func._fmtargs[argname]["fmtpy"]
 
             # find argname in function parameters
-            arg = self.func.ast.find_arg_by_name(argname)
+            arg = self.func.ast.declarator.find_arg_by_name(argname)
             if arg.metaattrs["intent"] == "out":
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
