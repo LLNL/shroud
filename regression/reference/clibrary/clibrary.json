@@ -99,6 +99,7 @@
                 },
                 "decl": "void NoReturnNoArguments(void)",
                 "declgen": "void NoReturnNoArguments(void)",
+                "name": "NoReturnNoArguments",
                 "options": {
                     "literalinclude": true
                 },
@@ -181,6 +182,7 @@
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
                 "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
+                "name": "PassByValue",
                 "options": {
                     "literalinclude": true
                 },
@@ -429,6 +431,7 @@
                 },
                 "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
                 "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
+                "name": "PassByReference",
                 "options": {
                     "literalinclude": true
                 },
@@ -608,6 +611,7 @@
                 "doxygen": {
                     "description": "PassByValueMacro is a #define macro. Force a C wrapper\nto allow Fortran to have an actual function to call.\n"
                 },
+                "name": "PassByValueMacro",
                 "options": {
                     "C_force_wrapper": true
                 },
@@ -824,6 +828,7 @@
                 "doxygen": {
                     "brief": "Check intent with bool"
                 },
+                "name": "checkBool",
                 "options": {
                     "literalinclude": true
                 },
@@ -1094,6 +1099,7 @@
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "name": "Function4a",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1344,6 +1350,7 @@
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "name": "Function4a",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -1492,6 +1499,7 @@
                 },
                 "decl": "void acceptName(const char *name)",
                 "declgen": "void acceptName(const char * name)",
+                "name": "acceptName",
                 "options": {
                     "literalinclude": true
                 },
@@ -1624,6 +1632,7 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "name": "passCharPtrInOut",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1752,6 +1761,7 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "name": "passCharPtrInOut",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -1859,6 +1869,7 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
+                "name": "returnOneName",
                 "options": {
                     "literalinclude": true
                 },
@@ -1991,6 +2002,7 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
+                "name": "returnOneName",
                 "options": {
                     "literalinclude": true
                 },
@@ -2122,6 +2134,7 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
+                "name": "returnTwoNames",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2325,6 +2338,7 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
+                "name": "returnTwoNames",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -2483,6 +2497,7 @@
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
+                "name": "ImpliedTextLen",
                 "options": {
                     "literalinclude": true
                 },
@@ -2678,6 +2693,7 @@
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
+                "name": "ImpliedTextLen",
                 "options": {
                     "literalinclude": true
                 },
@@ -2845,6 +2861,7 @@
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
+                "name": "ImpliedLen",
                 "options": {
                     "F_create_bufferify_function": false
                 },
@@ -3151,6 +3168,7 @@
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
+                "name": "ImpliedLenTrim",
                 "options": {
                     "F_create_bufferify_function": false
                 },
@@ -3419,6 +3437,7 @@
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
+                "name": "ImpliedBoolTrue",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3589,6 +3608,7 @@
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
+                "name": "ImpliedBoolFalse",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3742,6 +3762,7 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
                 },
+                "name": "bindC1",
                 "options": {
                     "wrap_python": false
                 },
@@ -3823,6 +3844,7 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
+                "name": "bindC2",
                 "options": {
                     "wrap_python": false
                 },
@@ -3934,6 +3956,7 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
+                "name": "bindC2",
                 "options": {
                     "wrap_python": false
                 },
@@ -4067,6 +4090,7 @@
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
                 },
+                "name": "passVoidStarStar",
                 "options": {
                     "literalinclude": true,
                     "wrap_python": false
@@ -4209,6 +4233,7 @@
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
+                "name": "passAssumedType",
                 "options": {
                     "literalinclude": true,
                     "wrap_python": false
@@ -4346,6 +4371,7 @@
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
+                "name": "passAssumedTypeDim",
                 "options": {
                     "literalinclude": true,
                     "wrap_python": false
@@ -4481,6 +4507,7 @@
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
+                "name": "passAssumedTypeBuf",
                 "options": {
                     "wrap_python": false
                 },
@@ -4669,6 +4696,7 @@
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
+                "name": "passAssumedTypeBuf",
                 "options": {
                     "wrap_python": false
                 },
@@ -4849,6 +4877,7 @@
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
+                "name": "callback1",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -5011,6 +5040,7 @@
                     "brief": "Test function pointer",
                     "description": "Add C_force_wrapper to test generating function pointer prototype.\n"
                 },
+                "name": "callback1a",
                 "options": {
                     "C_force_wrapper": true,
                     "literalinclude": true,
@@ -5209,6 +5239,7 @@
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
+                "name": "callback2",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5463,6 +5494,7 @@
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
+                "name": "callback3",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5740,6 +5772,7 @@
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
+                "name": "callback3",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -6010,6 +6043,7 @@
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
+                "name": "callback_set_alloc",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false

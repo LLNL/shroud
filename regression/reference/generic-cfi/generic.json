@@ -91,6 +91,7 @@
                 },
                 "decl": "void UpdateAsFloat(float arg)",
                 "declgen": "void UpdateAsFloat(float arg +value)",
+                "name": "UpdateAsFloat",
                 "options": {
                     "F_force_wrapper": true
                 },
@@ -195,6 +196,7 @@
                 },
                 "decl": "void UpdateAsDouble(double arg)",
                 "declgen": "void UpdateAsDouble(double arg +value)",
+                "name": "UpdateAsDouble",
                 "options": {
                     "F_force_wrapper": true
                 },
@@ -282,6 +284,7 @@
                 },
                 "decl": "double GetGlobalDouble(void)",
                 "declgen": "double GetGlobalDouble(void)",
+                "name": "GetGlobalDouble",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -425,6 +428,7 @@
                         "generic": "(double arg)"
                     }
                 ],
+                "name": "GenericReal",
                 "options": {
                     "literalinclude": true
                 },
@@ -525,6 +529,7 @@
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
+                "name": "GenericReal",
                 "options": {
                     "literalinclude": true
                 },
@@ -592,6 +597,7 @@
                 "doxygen": {
                     "brief": "Single argument generic"
                 },
+                "name": "GenericReal",
                 "options": {
                     "literalinclude": true
                 },
@@ -749,6 +755,7 @@
                         "generic": "(long arg1, long arg2)"
                     }
                 ],
+                "name": "GenericReal2",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -924,6 +931,7 @@
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
+                "name": "GenericReal2",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -1018,6 +1026,7 @@
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
+                "name": "GenericReal2",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -1120,6 +1129,7 @@
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
+                "name": "SumValues",
                 "options": {
                     "F_assumed_rank_max": 2,
                     "wrap_fortran": false
@@ -1313,6 +1323,7 @@
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
+                "name": "SumValues",
                 "options": {
                     "F_assumed_rank_max": 2,
                     "wrap_fortran": false
@@ -1769,6 +1780,7 @@
                         "generic": "(const int *from+rank(1), int *to+rank(1))"
                     }
                 ],
+                "name": "AssignValues",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2003,6 +2015,7 @@
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
+                "name": "AssignValues",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2270,6 +2283,7 @@
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
+                "name": "AssignValues",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2392,6 +2406,7 @@
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
+                "name": "AssignValues",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2665,6 +2680,7 @@
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
+                "name": "AssignValues",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2791,6 +2807,7 @@
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
+                "name": "AssignValues",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3168,6 +3185,7 @@
                         "generic": "(float *addr+rank(2)+intent(in),  int type+implied(T_FLOAT))"
                     }
                 ],
+                "name": "SavePointer",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3358,6 +3376,7 @@
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "name": "SavePointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3461,6 +3480,7 @@
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "name": "SavePointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3673,6 +3693,7 @@
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "name": "SavePointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3776,6 +3797,7 @@
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
+                "name": "SavePointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4115,6 +4137,7 @@
                         ]
                     }
                 },
+                "name": "SavePointer2",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4315,6 +4338,7 @@
                         ]
                     }
                 },
+                "name": "SavePointer2",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4428,6 +4452,7 @@
                         ]
                     }
                 },
+                "name": "SavePointer2",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4650,6 +4675,7 @@
                         ]
                     }
                 },
+                "name": "SavePointer2",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4763,6 +4789,7 @@
                         ]
                     }
                 },
+                "name": "SavePointer2",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4976,6 +5003,7 @@
                 },
                 "decl": "void GetPointer(void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
                 "declgen": "void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
+                "name": "GetPointer",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5349,6 +5377,7 @@
                         "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
+                "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -5554,6 +5583,7 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "name": "GetPointerAsPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5672,6 +5702,7 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "name": "GetPointerAsPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5905,6 +5936,7 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "name": "GetPointerAsPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6023,6 +6055,7 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "name": "GetPointerAsPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6181,6 +6214,7 @@
                 },
                 "decl": "StructAsClass *CreateStructAsClass(void)",
                 "declgen": "StructAsClass * CreateStructAsClass(void)",
+                "name": "CreateStructAsClass",
                 "options": {
                     "class_ctor": "StructAsClass"
                 },
@@ -6380,6 +6414,7 @@
                         "generic": "(long inew)"
                     }
                 ],
+                "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -6546,6 +6581,7 @@
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew +value)",
+                "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6736,6 +6772,7 @@
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew +value)",
+                "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
                     "c": true,

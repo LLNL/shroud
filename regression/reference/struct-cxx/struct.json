@@ -673,6 +673,7 @@
                         },
                         "decl": "int get_x1()",
                         "declgen": "int get_x1(void)",
+                        "name": "get_x1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "x1",
@@ -782,6 +783,7 @@
                         },
                         "decl": "void set_x1(int val)",
                         "declgen": "void set_x1(int val +intent(in)+value)",
+                        "name": "set_x1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "x1",
@@ -880,6 +882,7 @@
                         },
                         "decl": "int get_y1()",
                         "declgen": "int get_y1(void)",
+                        "name": "get_y1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "y1",
@@ -989,6 +992,7 @@
                         },
                         "decl": "void set_y1(int val)",
                         "declgen": "void set_y1(int val +intent(in)+value)",
+                        "name": "set_y1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "y1",
@@ -1184,6 +1188,7 @@
                         },
                         "decl": "int get_x1()",
                         "declgen": "int get_x1(void)",
+                        "name": "get_x1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "x1",
@@ -1293,6 +1298,7 @@
                         },
                         "decl": "void set_x1(int val)",
                         "declgen": "void set_x1(int val +intent(in)+value)",
+                        "name": "set_x1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "x1",
@@ -1391,6 +1397,7 @@
                         },
                         "decl": "int get_y1()",
                         "declgen": "int get_y1(void)",
+                        "name": "get_y1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "y1",
@@ -1500,6 +1507,7 @@
                         },
                         "decl": "void set_y1(int val)",
                         "declgen": "void set_y1(int val +intent(in)+value)",
+                        "name": "set_y1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "y1",
@@ -1598,6 +1606,7 @@
                         },
                         "decl": "int get_z1()",
                         "declgen": "int get_z1(void)",
+                        "name": "get_z1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "z1",
@@ -1707,6 +1716,7 @@
                         },
                         "decl": "void set_z1(int val)",
                         "declgen": "void set_z1(int val +intent(in)+value)",
+                        "name": "set_z1",
                         "options": {},
                         "user_fmt": {
                             "field_name": "z1",
@@ -1953,6 +1963,7 @@
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
                 },
@@ -2087,6 +2098,7 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "name": "passStruct1",
                 "options": {
                     "literalinclude": true
                 },
@@ -2250,6 +2262,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "passStruct2",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2434,6 +2447,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "passStruct2",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -2591,6 +2605,7 @@
                 },
                 "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2760,6 +2775,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "acceptStructOutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2929,6 +2945,7 @@
                 },
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
+                "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3043,6 +3060,7 @@
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3235,6 +3253,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
+                "name": "returnStructPtr1",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3418,6 +3437,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
+                "name": "returnStructPtr1",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -3620,6 +3640,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
+                "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3855,6 +3876,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
+                "name": "returnStructPtr2",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -4033,6 +4055,7 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4117,6 +4140,7 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "name": "get_global_struct_list",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -4187,6 +4211,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
+                "name": "Create_Cstruct_as_class",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "literalinclude": true,
@@ -4309,6 +4334,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
@@ -4483,6 +4509,7 @@
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
@@ -4658,6 +4685,7 @@
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false
@@ -4876,6 +4904,7 @@
                 },
                 "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
                 "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
+                "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "const_dvalue",
@@ -4965,6 +4994,7 @@
                 },
                 "decl": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this)",
                 "declgen": "const double * Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)",
+                "name": "Cstruct_ptr_get_const_dvalue",
                 "options": {},
                 "splicer_group": "buf",
                 "user_fmt": {
@@ -5118,6 +5148,7 @@
                 },
                 "decl": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,const double * val)",
                 "declgen": "void Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this, const double * val +intent(in))",
+                "name": "Cstruct_ptr_set_const_dvalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "const_dvalue",
@@ -5285,6 +5316,7 @@
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "name": "Cstruct_list_get_ivalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "ivalue",
@@ -5390,6 +5422,7 @@
                 },
                 "decl": "int * Cstruct_list_get_ivalue(Cstruct_list *SH_this)",
                 "declgen": "int * Cstruct_list_get_ivalue(Cstruct_list * SH_this)",
+                "name": "Cstruct_list_get_ivalue",
                 "options": {},
                 "splicer_group": "buf",
                 "user_fmt": {
@@ -5562,6 +5595,7 @@
                 },
                 "decl": "void Cstruct_list_set_ivalue(Cstruct_list *SH_this,int * val)",
                 "declgen": "void Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val +intent(in)+rank(1))",
+                "name": "Cstruct_list_set_ivalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "ivalue",
@@ -5734,6 +5768,7 @@
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "name": "Cstruct_list_get_dvalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "dvalue",
@@ -5839,6 +5874,7 @@
                 },
                 "decl": "double * Cstruct_list_get_dvalue(Cstruct_list *SH_this)",
                 "declgen": "double * Cstruct_list_get_dvalue(Cstruct_list * SH_this)",
+                "name": "Cstruct_list_get_dvalue",
                 "options": {},
                 "splicer_group": "buf",
                 "user_fmt": {
@@ -6011,6 +6047,7 @@
                 },
                 "decl": "void Cstruct_list_set_dvalue(Cstruct_list *SH_this,double * val)",
                 "declgen": "void Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val +intent(in)+rank(1))",
+                "name": "Cstruct_list_set_dvalue",
                 "options": {},
                 "user_fmt": {
                     "field_name": "dvalue",

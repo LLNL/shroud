@@ -359,7 +359,7 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_FunctionNode(self, node):
-        d = dict(ast=self.visit(node.ast), decl=node.decl)
+        d = dict(ast=self.visit(node.ast), decl=node.decl, name=node.name)
         add_comment(d, "function", node._function_index)
         self.add_visit_fields(
             node,

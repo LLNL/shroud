@@ -893,6 +893,7 @@
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
                 },
@@ -990,6 +991,7 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "name": "passStruct1",
                 "options": {
                     "literalinclude": true
                 },
@@ -1113,6 +1115,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "passStruct2",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1234,6 +1237,7 @@
                 },
                 "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1367,6 +1371,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "acceptStructOutPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1487,6 +1492,7 @@
                 },
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
+                "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1577,6 +1583,7 @@
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1718,6 +1725,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
+                "name": "returnStructPtr1",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1879,6 +1887,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
+                "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2004,6 +2013,7 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2062,6 +2072,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
+                "name": "Create_Cstruct_as_class",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "literalinclude": true,
@@ -2130,6 +2141,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
@@ -2181,6 +2193,7 @@
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
@@ -2268,6 +2281,7 @@
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false

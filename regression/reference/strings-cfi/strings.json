@@ -55,6 +55,7 @@
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar."
                 },
+                "name": "passChar",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -157,6 +158,7 @@
                 "doxygen": {
                     "description": "By default no Fortran wrapper is created.\nForce one so it can be tested.\n"
                 },
+                "name": "passCharForce",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -245,6 +247,7 @@
                 "doxygen": {
                     "brief": "return a char argument (non-pointer)"
                 },
+                "name": "returnChar",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -370,6 +373,7 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
+                "name": "passCharPtr",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false,
@@ -530,6 +534,7 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
+                "name": "passCharPtr",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false,
@@ -675,6 +680,7 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "name": "passCharPtrInOut",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -783,6 +789,7 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "name": "passCharPtrInOut",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -875,6 +882,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
+                "name": "getCharPtr1",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -967,6 +975,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
+                "name": "getCharPtr1",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1053,6 +1062,7 @@
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
+                "name": "getCharPtr2",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1147,6 +1157,7 @@
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
+                "name": "getCharPtr2",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1225,6 +1236,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
+                "name": "getCharPtr3",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1321,6 +1333,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
+                "name": "getCharPtr3",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1450,6 +1463,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
+                "name": "getCharPtr3",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -1510,6 +1524,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as type(C_PTR)"
                 },
+                "name": "getCharPtr4",
                 "options": {
                     "wrap_python": false
                 },
@@ -1605,6 +1620,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as character(:) pointer"
                 },
+                "name": "getCharPtr5",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -1700,6 +1716,7 @@
                 "doxygen": {
                     "brief": "return a 'const char *' as character(:) pointer"
                 },
+                "name": "getCharPtr5",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -1789,6 +1806,7 @@
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
+                "name": "getConstStringResult",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -1850,6 +1868,7 @@
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
+                "name": "getConstStringResult",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -1931,6 +1950,7 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
+                "name": "getConstStringLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -1995,6 +2015,7 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
+                "name": "getConstStringLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2068,6 +2089,7 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
+                "name": "getConstStringAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2127,6 +2149,7 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
+                "name": "getConstStringAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2256,6 +2279,7 @@
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
+                "name": "getConstStringAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2308,6 +2332,7 @@
                 },
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "const std::string getConstStringAlloc(void)",
+                "name": "getConstStringAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2365,6 +2390,7 @@
                 },
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "const std::string getConstStringAlloc(void)",
+                "name": "getConstStringAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2447,6 +2473,7 @@
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
+                "name": "getConstStringRefPure",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -2540,6 +2567,7 @@
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
+                "name": "getConstStringRefPure",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -2628,6 +2656,7 @@
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
+                "name": "getConstStringRefLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2725,6 +2754,7 @@
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
+                "name": "getConstStringRefLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2804,6 +2834,7 @@
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
+                "name": "getConstStringRefAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -2902,6 +2933,7 @@
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
+                "name": "getConstStringRefAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3032,6 +3064,7 @@
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
+                "name": "getConstStringRefAsArg",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3096,6 +3129,7 @@
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
+                "name": "getConstStringRefLenEmpty",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3192,6 +3226,7 @@
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
+                "name": "getConstStringRefLenEmpty",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3271,6 +3306,7 @@
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "const std::string & getConstStringRefAlloc(void)",
+                "name": "getConstStringRefAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3360,6 +3396,7 @@
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
                 "declgen": "const std::string & getConstStringRefAlloc(void)",
+                "name": "getConstStringRefAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3453,6 +3490,7 @@
                         ]
                     }
                 },
+                "name": "getConstStringPtrLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3556,6 +3594,7 @@
                         ]
                     }
                 },
+                "name": "getConstStringPtrLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3638,6 +3677,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "name": "getConstStringPtrAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3730,6 +3770,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "name": "getConstStringPtrAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3815,6 +3856,7 @@
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
+                "name": "getConstStringPtrOwnsAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3910,6 +3952,7 @@
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
+                "name": "getConstStringPtrOwnsAlloc",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -3996,6 +4039,7 @@
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
+                "name": "getConstStringPtrOwnsAllocPattern",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4092,6 +4136,7 @@
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
+                "name": "getConstStringPtrOwnsAllocPattern",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4175,6 +4220,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrPointer() +deref(pointer)+owner(library)",
                 "declgen": "const std::string * getConstStringPtrPointer(void) +deref(pointer)+owner(library)",
+                "name": "getConstStringPtrPointer",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -4269,6 +4315,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrPointer() +deref(pointer)+owner(library)",
                 "declgen": "const std::string * getConstStringPtrPointer(void) +deref(pointer)+owner(library)",
+                "name": "getConstStringPtrPointer",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -4376,6 +4423,7 @@
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
+                "name": "acceptStringConstReference",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4482,6 +4530,7 @@
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
+                "name": "acceptStringConstReference",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4592,6 +4641,7 @@
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
+                "name": "acceptStringReferenceOut",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4700,6 +4750,7 @@
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
+                "name": "acceptStringReferenceOut",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -4805,6 +4856,7 @@
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
+                "name": "acceptStringReference",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -4911,6 +4963,7 @@
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
+                "name": "acceptStringReference",
                 "options": {
                     "literalinclude": true,
                     "wrap_fortran": false
@@ -5019,6 +5072,7 @@
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
+                "name": "acceptStringPointerConst",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5124,6 +5178,7 @@
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
+                "name": "acceptStringPointerConst",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5230,6 +5285,7 @@
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
+                "name": "acceptStringPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5334,6 +5390,7 @@
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
+                "name": "acceptStringPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5444,6 +5501,7 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\n"
                 },
+                "name": "fetchStringPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5552,6 +5610,7 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\n"
                 },
+                "name": "fetchStringPointer",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5678,6 +5737,7 @@
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
+                "name": "acceptStringPointerLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5833,6 +5893,7 @@
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
+                "name": "acceptStringPointerLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -5997,6 +6058,7 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
+                "name": "fetchStringPointerLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6155,6 +6217,7 @@
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
+                "name": "fetchStringPointerLen",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6290,6 +6353,7 @@
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
+                "name": "acceptStringInstance",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6423,6 +6487,7 @@
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
+                "name": "acceptStringInstance",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6576,6 +6641,7 @@
                 "doxygen": {
                     "brief": "Test Python returning multiple std::string arguments."
                 },
+                "name": "returnStrings",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false
@@ -6629,6 +6695,7 @@
                 "doxygen": {
                     "description": "Test Py_BuildValue with multiple values.\n"
                 },
+                "name": "returnMany",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -6685,6 +6752,7 @@
                 },
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
+                "name": "explicit1",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6794,6 +6862,7 @@
                 },
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
+                "name": "explicit1",
                 "options": {
                     "wrap_fortran": false
                 },
@@ -6903,6 +6972,7 @@
                 },
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
+                "name": "explicit2",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7010,6 +7080,7 @@
                 },
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
+                "name": "explicit2",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7110,6 +7181,7 @@
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
+                "name": "CpassChar",
                 "options": {
                     "C_extern_C": true
                 },
@@ -7197,6 +7269,7 @@
                 "doxygen": {
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
+                "name": "CreturnChar",
                 "options": {
                     "C_extern_C": true
                 },
@@ -7327,6 +7400,7 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\nIf src is a blank string, pass a NULL pointer to C library function.\n"
                 },
+                "name": "CpassCharPtr",
                 "options": {
                     "C_extern_C": true,
                     "wrap_fortran": false,
@@ -7492,6 +7566,7 @@
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\nIf src is a blank string, pass a NULL pointer to C library function.\n"
                 },
+                "name": "CpassCharPtr",
                 "options": {
                     "C_extern_C": true,
                     "wrap_fortran": false,
@@ -7658,6 +7733,7 @@
                 "doxygen": {
                     "brief": "Test F_blanknull option"
                 },
+                "name": "CpassCharPtrBlank",
                 "options": {
                     "F_blanknull": true,
                     "wrap_fortran": false,
@@ -7819,6 +7895,7 @@
                 "doxygen": {
                     "brief": "Test F_blanknull option"
                 },
+                "name": "CpassCharPtrBlank",
                 "options": {
                     "F_blanknull": true,
                     "wrap_fortran": false,
@@ -7984,6 +8061,7 @@
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
+                "name": "PostDeclare",
                 "options": {
                     "PY_array_arg": "list",
                     "wrap_fortran": false
@@ -8145,6 +8223,7 @@
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
+                "name": "PostDeclare",
                 "options": {
                     "PY_array_arg": "list",
                     "wrap_fortran": false
@@ -8296,6 +8375,7 @@
                 "doxygen": {
                     "brief": "NULL terminate input string in C, not in Fortran."
                 },
+                "name": "CpassCharPtrNotrim",
                 "options": {
                     "F_trim_char_in": false,
                     "wrap_fortran": false,
@@ -8434,6 +8514,7 @@
                 "doxygen": {
                     "brief": "NULL terminate input string in C, not in Fortran."
                 },
+                "name": "CpassCharPtrNotrim",
                 "options": {
                     "F_trim_char_in": false,
                     "wrap_fortran": false,
@@ -8590,6 +8671,7 @@
                     "brief": "Do not NULL terminate input string",
                     "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"
                 },
+                "name": "CpassCharPtrCAPI",
                 "options": {
                     "wrap_python": false
                 },
@@ -8787,6 +8869,7 @@
                 "doxygen": {
                     "brief": "Mix api(buf) and api(capi)"
                 },
+                "name": "CpassCharPtrCAPI2",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -8976,6 +9059,7 @@
                 "doxygen": {
                     "brief": "Mix api(buf) and api(capi)"
                 },
+                "name": "CpassCharPtrCAPI2",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_python": false

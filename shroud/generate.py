@@ -1143,7 +1143,7 @@ class GenFunctions(object):
         cxx_overload = {}
         for function in functions:
             self.append_function_index(function)
-            cxx_overload.setdefault(function.ast.declarator.user_name, []).append(
+            cxx_overload.setdefault(function.name, []).append(
                 function._function_index
             )
 
@@ -1192,7 +1192,7 @@ class GenFunctions(object):
                 fmt.F_name_generic = name
                 function._overloaded = True
             else:
-                overloaded_functions.setdefault(function.ast.declarator.user_name, []).append(
+                overloaded_functions.setdefault(function.name, []).append(
                     function)
 
         # look for function overload and compute function_suffix

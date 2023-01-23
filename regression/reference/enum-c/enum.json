@@ -247,6 +247,7 @@
                 },
                 "decl": "int convert_to_int(enum Color in)",
                 "declgen": "int convert_to_int(enum Color in +value)",
+                "name": "convert_to_int",
                 "options": {},
                 "wrap": {
                     "c": true,

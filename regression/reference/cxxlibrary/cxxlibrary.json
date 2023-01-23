@@ -61,6 +61,7 @@
                         },
                         "decl": "Cstruct1_cls_ctor",
                         "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
+                        "name": "Cstruct1_cls_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -298,6 +299,7 @@
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
                 "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg)",
+                "name": "passStructByReferenceCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -397,6 +399,7 @@
                 "doxygen": {
                     "description": "const defaults to intent(in)\n"
                 },
+                "name": "passStructByReferenceInCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -495,6 +498,7 @@
                 },
                 "decl": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
                 "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls & arg +intent(inout))",
+                "name": "passStructByReferenceInoutCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -574,6 +578,7 @@
                 },
                 "decl": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
                 "declgen": "void passStructByReferenceOutCls(Cstruct1_cls & arg +intent(out))",
+                "name": "passStructByReferenceOutCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -635,6 +640,7 @@
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
                 "declgen": "bool defaultPtrIsNULL(void)",
+                "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -745,6 +751,7 @@
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
                 "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))",
+                "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -969,6 +976,7 @@
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
                 "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))",
+                "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1203,6 +1211,7 @@
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
                 "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)",
+                "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1545,6 +1554,7 @@
                         "generic": "(int64_t idx)"
                     }
                 ],
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1681,6 +1691,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1770,6 +1781,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1913,6 +1925,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -2002,6 +2015,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -2233,6 +2247,7 @@
                         "doxygen": {
                             "description": "Argument is modified by library, defaults to intent(inout).\n"
                         },
+                        "name": "passStructByReference",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2412,6 +2427,7 @@
                         "doxygen": {
                             "description": "const defaults to intent(in)\n"
                         },
+                        "name": "passStructByReferenceIn",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2590,6 +2606,7 @@
                         },
                         "decl": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
                         "declgen": "void passStructByReferenceInout(Cstruct1 & arg +intent(inout))",
+                        "name": "passStructByReferenceInout",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2720,6 +2737,7 @@
                         },
                         "decl": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
                         "declgen": "void passStructByReferenceOut(Cstruct1 & arg +intent(out))",
+                        "name": "passStructByReferenceOut",
                         "options": {},
                         "wrap": {
                             "c": true,

@@ -46,6 +46,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -156,6 +157,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -222,6 +224,7 @@
                 },
                 "decl": "void One()",
                 "declgen": "void One(void)",
+                "name": "One",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -393,6 +396,7 @@
                                 },
                                 "decl": "Cstruct1_ctor",
                                 "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
+                                "name": "Cstruct1_ctor",
                                 "options": {
                                     "wrap_c": false,
                                     "wrap_fortran": false,
@@ -604,6 +608,7 @@
                         },
                         "decl": "void One()",
                         "declgen": "void One(void)",
+                        "name": "One",
                         "options": {},
                         "wrap": {
                             "c": true,

@@ -148,6 +148,7 @@
                 },
                 "decl": "TypeID typefunc(TypeID arg);",
                 "declgen": "TypeID typefunc(TypeID arg +value)",
+                "name": "typefunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -320,6 +321,7 @@
                 },
                 "decl": "void typestruct(Struct1Rename *arg1);",
                 "declgen": "void typestruct(Struct1Rename * arg1)",
+                "name": "typestruct",
                 "options": {},
                 "wrap": {
                     "c": true,

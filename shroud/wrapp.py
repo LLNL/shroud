@@ -1092,7 +1092,7 @@ return 1;""",
         """
         overloaded_methods = {}
         for function in functions:
-            flist = overloaded_methods.setdefault(function.ast.declarator.user_name, [])
+            flist = overloaded_methods.setdefault(function.name, [])
             if not function.wrap.python:
                 continue
             if not function.options.PY_create_generic:
@@ -2454,7 +2454,7 @@ return 1;""",
         mdone = {}
         for function in functions:
             # preserve order of multi-dispatch functions
-            mname = function.ast.declarator.user_name
+            mname = function.name
             if mname in mdone:
                 continue
             mdone[mname] = True

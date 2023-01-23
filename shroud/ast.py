@@ -1445,6 +1445,7 @@ class FunctionNode(AstNode):
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments to function:", ast.gen_decl())
         self.ast = ast
+        self.name = ast.declarator.user_name
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
@@ -1498,7 +1499,7 @@ class FunctionNode(AstNode):
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
-        fmt_func.function_name = ast.declarator.user_name
+        fmt_func.function_name = self.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
     def default_format(self, parent, fmtdict, kwargs):

@@ -47,6 +47,7 @@
                         },
                         "decl": "void method1(MPI_Comm comm)",
                         "declgen": "void method1(MPI_Comm comm +value)",
+                        "name": "method1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -154,6 +155,7 @@
                         },
                         "decl": "void method2(three::Class1 * c2)",
                         "declgen": "void method2(three::Class1 * c2)",
+                        "name": "method2",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -292,6 +294,7 @@
                                 },
                                 "decl": "void function1()",
                                 "declgen": "void function1(void)",
+                                "name": "function1",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -419,6 +422,7 @@
                                 },
                                 "decl": "void method1(CustomType arg1)",
                                 "declgen": "void method1(CustomType arg1 +value)",
+                                "name": "method1",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -570,6 +574,7 @@
                                 },
                                 "decl": "void method()",
                                 "declgen": "void method(void)",
+                                "name": "method",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -651,6 +656,7 @@
                         },
                         "decl": "void outer_func()",
                         "declgen": "void outer_func(void)",
+                        "name": "outer_func",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -734,6 +740,7 @@
                                 },
                                 "decl": "void method()",
                                 "declgen": "void method(void)",
+                                "name": "method",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -815,6 +822,7 @@
                         },
                         "decl": "void outer_func()",
                         "declgen": "void outer_func(void)",
+                        "name": "outer_func",
                         "options": {},
                         "wrap": {
                             "c": true,

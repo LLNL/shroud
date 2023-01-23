@@ -112,6 +112,7 @@
                         "decl": "template<U> void nested( T arg1, U arg2 );",
                         "declgen": "void nested(T arg1 +value, U arg2 +value)",
                         "have_template_args": true,
+                        "name": "nested",
                         "options": {},
                         "template_arguments": [
                             {
@@ -195,6 +196,7 @@
                             "double"
                         ],
                         "have_template_args": true,
+                        "name": "nested",
                         "options": {},
                         "template_arguments": [
                             {
@@ -435,6 +437,7 @@
                         },
                         "decl": "structAsClass()",
                         "declgen": "structAsClass(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -532,6 +535,7 @@
                         },
                         "decl": "void set_npts(int n)",
                         "declgen": "void set_npts(int n +value)",
+                        "name": "set_npts",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -618,6 +622,7 @@
                         },
                         "decl": "int get_npts()",
                         "declgen": "int get_npts(void)",
+                        "name": "get_npts",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -716,6 +721,7 @@
                         "decl": "void set_value(T v)",
                         "declgen": "void set_value(T v +value)",
                         "have_template_args": true,
+                        "name": "set_value",
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
@@ -763,6 +769,7 @@
                         "decl": "void set_value(T v)",
                         "declgen": "void set_value(int v +value)",
                         "have_template_args": true,
+                        "name": "set_value",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -849,6 +856,7 @@
                         "decl": "T get_value()",
                         "declgen": "T get_value(void)",
                         "have_template_args": true,
+                        "name": "get_value",
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
@@ -879,6 +887,7 @@
                         "decl": "T get_value()",
                         "declgen": "int get_value(void)",
                         "have_template_args": true,
+                        "name": "get_value",
                         "options": {
                             "F_create_generic": false
                         },
@@ -1034,6 +1043,7 @@
                         },
                         "decl": "structAsClass()",
                         "declgen": "structAsClass(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -1131,6 +1141,7 @@
                         },
                         "decl": "void set_npts(int n)",
                         "declgen": "void set_npts(int n +value)",
+                        "name": "set_npts",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1217,6 +1228,7 @@
                         },
                         "decl": "int get_npts()",
                         "declgen": "int get_npts(void)",
+                        "name": "get_npts",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1315,6 +1327,7 @@
                         "decl": "void set_value(T v)",
                         "declgen": "void set_value(T v +value)",
                         "have_template_args": true,
+                        "name": "set_value",
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
@@ -1362,6 +1375,7 @@
                         "decl": "void set_value(T v)",
                         "declgen": "void set_value(double v +value)",
                         "have_template_args": true,
+                        "name": "set_value",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1448,6 +1462,7 @@
                         "decl": "T get_value()",
                         "declgen": "T get_value(void)",
                         "have_template_args": true,
+                        "name": "get_value",
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
@@ -1478,6 +1493,7 @@
                         "decl": "T get_value()",
                         "declgen": "double get_value(void)",
                         "have_template_args": true,
+                        "name": "get_value",
                         "options": {
                             "F_create_generic": false
                         },
@@ -1649,6 +1665,7 @@
                 },
                 "decl": "user<int> returnUserType(void);",
                 "declgen": "user<int> returnUserType(void)",
+                "name": "returnUserType",
                 "options": {
                     "wrap_python": false
                 },
@@ -1773,6 +1790,7 @@
                     "brief": "Function template with two template parameters."
                 },
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -1880,6 +1898,7 @@
                     "brief": "Function template with two template parameters."
                 },
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2125,6 +2144,7 @@
                     "double"
                 ],
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2332,6 +2352,7 @@
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
+                "name": "UseImplWorker",
                 "options": {
                     "F_create_generic": false,
                     "PY_create_generic": false
@@ -2395,6 +2416,7 @@
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
+                "name": "UseImplWorker",
                 "options": {
                     "F_create_generic": false,
                     "PY_create_generic": false
@@ -2534,6 +2556,7 @@
                     "internal::ImplWorker1",
                     "internal::ImplWorker2"
                 ],
+                "name": "UseImplWorker",
                 "options": {
                     "F_create_generic": false,
                     "PY_create_generic": false
@@ -2678,6 +2701,7 @@
                                 },
                                 "decl": "vector()",
                                 "declgen": "vector(void)",
+                                "name": "ctor",
                                 "options": {
                                     "F_create_generic": true
                                 },
@@ -2787,6 +2811,7 @@
                                 },
                                 "decl": "~vector()",
                                 "declgen": "~vector(void)",
+                                "name": "dtor",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -2862,6 +2887,7 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const T & value +intent(in))",
                                 "have_template_args": true,
+                                "name": "push_back",
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
@@ -2915,6 +2941,7 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const int & value +intent(in))",
                                 "have_template_args": true,
+                                "name": "push_back",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -3046,6 +3073,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "T & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
@@ -3101,6 +3129,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "int & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {
                                     "F_create_generic": false
                                 },
@@ -3283,6 +3312,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "int & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {
                                     "F_create_generic": false
                                 },
@@ -3483,6 +3513,7 @@
                                 },
                                 "decl": "vector()",
                                 "declgen": "vector(void)",
+                                "name": "ctor",
                                 "options": {
                                     "F_create_generic": true
                                 },
@@ -3592,6 +3623,7 @@
                                 },
                                 "decl": "~vector()",
                                 "declgen": "~vector(void)",
+                                "name": "dtor",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -3667,6 +3699,7 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const T & value +intent(in))",
                                 "have_template_args": true,
+                                "name": "push_back",
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
@@ -3720,6 +3753,7 @@
                                 "decl": "void push_back( const T& value+intent(in) )",
                                 "declgen": "void push_back(const double & value +intent(in))",
                                 "have_template_args": true,
+                                "name": "push_back",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -3851,6 +3885,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "T & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
@@ -3906,6 +3941,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "double & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {
                                     "F_create_generic": false
                                 },
@@ -4088,6 +4124,7 @@
                                 "decl": "T & at(size_type n)",
                                 "declgen": "double & at(size_type n +value)",
                                 "have_template_args": true,
+                                "name": "at",
                                 "options": {
                                     "F_create_generic": false
                                 },

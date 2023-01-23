@@ -28,6 +28,7 @@
                 },
                 "decl": "void AFunction()",
                 "declgen": "void AFunction(void)",
+                "name": "AFunction",
                 "options": {},
                 "wrap": {
                     "c": true,

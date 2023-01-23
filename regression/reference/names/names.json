@@ -437,6 +437,7 @@
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
+                "name": "getName",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -562,6 +563,7 @@
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
+                "name": "getName",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -638,6 +640,7 @@
                 },
                 "decl": "void function1()",
                 "declgen": "void function1(void)",
+                "name": "function1",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -685,6 +688,7 @@
                 },
                 "decl": "void function2()",
                 "declgen": "void function2(void)",
+                "name": "function2",
                 "options": {},
                 "user_fmt": {
                     "C_name": "c_name_special",
@@ -755,6 +759,7 @@
                 },
                 "decl": "void function3a(int i)",
                 "declgen": "void function3a(int i +value)",
+                "name": "function3a",
                 "options": {},
                 "user_fmt": {
                     "F_name_generic": "generic3",
@@ -881,6 +886,7 @@
                 },
                 "decl": "void function3a(long i)",
                 "declgen": "void function3a(long i +value)",
+                "name": "function3a",
                 "options": {},
                 "user_fmt": {
                     "F_name_generic": "generic3",
@@ -1013,6 +1019,7 @@
                 },
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv)",
+                "name": "function4",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1183,6 +1190,7 @@
                 },
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string & rv)",
+                "name": "function4",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -1289,6 +1297,7 @@
                 },
                 "decl": "void function5() +name(fiveplus)",
                 "declgen": "void function5(void) +name(fiveplus)",
+                "name": "fiveplus",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1383,6 +1392,7 @@
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
+                "name": "TestMultilineSplicer",
                 "options": {},
                 "splicer": {
                     "c": [
@@ -1595,6 +1605,7 @@
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
+                "name": "TestMultilineSplicer",
                 "options": {},
                 "splicer": {
                     "c": [
@@ -1764,6 +1775,7 @@
                     "brief": "Function template with two template parameters."
                 },
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -1880,6 +1892,7 @@
                     "brief": "Function template with two template parameters."
                 },
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2134,6 +2147,7 @@
                     "double"
                 ],
                 "have_template_args": true,
+                "name": "FunctionTU",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2349,6 +2363,7 @@
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
+                "name": "UseImplWorker",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2401,6 +2416,7 @@
                 "gen_headers_typedef": [
                     "internal::ImplWorker1"
                 ],
+                "name": "UseImplWorker",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2537,6 +2553,7 @@
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class"
                 },
@@ -2943,6 +2960,7 @@
                 },
                 "decl": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr+intent(inout), int *err+intent(out)), void (*afree)(double *arr+intent(inout)), void (*assoc)(double *arr+intent(in), int *err+intent(out)))",
                 "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void ( * alloc)(double * arr +intent(inout), int * err +intent(out)) +value, void ( * afree)(double * arr +intent(inout)) +value, void ( * assoc)(double * arr +intent(in), int * err +intent(out)) +value)",
+                "name": "external_funcs",
                 "options": {
                     "wrap_python": false
                 },
@@ -3181,6 +3199,7 @@
                                 },
                                 "decl": "Names()         +name(defaultctor)",
                                 "declgen": "Names(void) +name(defaultctor)",
+                                "name": "defaultctor",
                                 "options": {
                                     "F_create_generic": true
                                 },
@@ -3287,6 +3306,7 @@
                                 },
                                 "decl": "void method1()",
                                 "declgen": "void method1(void)",
+                                "name": "method1",
                                 "options": {},
                                 "user_fmt": {
                                     "F_name_function": "type_method1"
@@ -3342,6 +3362,7 @@
                                 },
                                 "decl": "void method2()",
                                 "declgen": "void method2(void)",
+                                "name": "method2",
                                 "options": {},
                                 "user_fmt": {
                                     "CXX_this": "SH_this2",
@@ -3524,6 +3545,7 @@
                         },
                         "decl": "void init_ns1()",
                         "declgen": "void init_ns1(void)",
+                        "name": "init_ns1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -4107,6 +4129,7 @@
                                 },
                                 "decl": "void Member1()",
                                 "declgen": "void Member1(void)",
+                                "name": "Member1",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -4188,6 +4211,7 @@
                         },
                         "decl": "void Worker1()",
                         "declgen": "void Worker1(void)",
+                        "name": "Worker1",
                         "options": {},
                         "wrap": {
                             "c": true,

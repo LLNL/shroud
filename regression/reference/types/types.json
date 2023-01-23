@@ -48,6 +48,7 @@
                 },
                 "decl": "short short_func(short arg1)",
                 "declgen": "short short_func(short arg1 +value)",
+                "name": "short_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -216,6 +217,7 @@
                 },
                 "decl": "int int_func(int arg1)",
                 "declgen": "int int_func(int arg1 +value)",
+                "name": "int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -384,6 +386,7 @@
                 },
                 "decl": "long long_func(long arg1)",
                 "declgen": "long long_func(long arg1 +value)",
+                "name": "long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -554,6 +557,7 @@
                 },
                 "decl": "long long long_long_func(long long arg1)",
                 "declgen": "long long long_long_func(long long arg1 +value)",
+                "name": "long_long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -726,6 +730,7 @@
                 },
                 "decl": "short int short_int_func(short int arg1)",
                 "declgen": "short int short_int_func(short int arg1 +value)",
+                "name": "short_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -896,6 +901,7 @@
                 },
                 "decl": "long int long_int_func(long int arg1)",
                 "declgen": "long int long_int_func(long int arg1 +value)",
+                "name": "long_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1068,6 +1074,7 @@
                 },
                 "decl": "long long int long_long_int_func(long long int arg1)",
                 "declgen": "long long int long_long_int_func(long long int arg1 +value)",
+                "name": "long_long_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1238,6 +1245,7 @@
                 },
                 "decl": "unsigned unsigned_func(unsigned arg1)",
                 "declgen": "unsigned unsigned_func(unsigned arg1 +value)",
+                "name": "unsigned_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1408,6 +1416,7 @@
                 },
                 "decl": "unsigned short ushort_func(unsigned short arg1)",
                 "declgen": "unsigned short ushort_func(unsigned short arg1 +value)",
+                "name": "ushort_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1578,6 +1587,7 @@
                 },
                 "decl": "unsigned int uint_func(unsigned int arg1)",
                 "declgen": "unsigned int uint_func(unsigned int arg1 +value)",
+                "name": "uint_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1748,6 +1758,7 @@
                 },
                 "decl": "unsigned long ulong_func(unsigned long arg1)",
                 "declgen": "unsigned long ulong_func(unsigned long arg1 +value)",
+                "name": "ulong_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1920,6 +1931,7 @@
                 },
                 "decl": "unsigned long long ulong_long_func(unsigned long long arg1)",
                 "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +value)",
+                "name": "ulong_long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2094,6 +2106,7 @@
                 },
                 "decl": "unsigned long int ulong_int_func(unsigned long int arg1)",
                 "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +value)",
+                "name": "ulong_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2262,6 +2275,7 @@
                 },
                 "decl": "int8_t  int8_func(int8_t arg1)",
                 "declgen": "int8_t int8_func(int8_t arg1 +value)",
+                "name": "int8_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2430,6 +2444,7 @@
                 },
                 "decl": "int16_t int16_func(int16_t arg1)",
                 "declgen": "int16_t int16_func(int16_t arg1 +value)",
+                "name": "int16_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2598,6 +2613,7 @@
                 },
                 "decl": "int32_t int32_func(int32_t arg1)",
                 "declgen": "int32_t int32_func(int32_t arg1 +value)",
+                "name": "int32_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2766,6 +2782,7 @@
                 },
                 "decl": "int64_t int64_func(int64_t arg1)",
                 "declgen": "int64_t int64_func(int64_t arg1 +value)",
+                "name": "int64_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2934,6 +2951,7 @@
                 },
                 "decl": "uint8_t  uint8_func(uint8_t arg1)",
                 "declgen": "uint8_t uint8_func(uint8_t arg1 +value)",
+                "name": "uint8_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3102,6 +3120,7 @@
                 },
                 "decl": "uint16_t uint16_func(uint16_t arg1)",
                 "declgen": "uint16_t uint16_func(uint16_t arg1 +value)",
+                "name": "uint16_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3270,6 +3289,7 @@
                 },
                 "decl": "uint32_t uint32_func(uint32_t arg1)",
                 "declgen": "uint32_t uint32_func(uint32_t arg1 +value)",
+                "name": "uint32_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3438,6 +3458,7 @@
                 },
                 "decl": "uint64_t uint64_func(uint64_t arg1)",
                 "declgen": "uint64_t uint64_func(uint64_t arg1 +value)",
+                "name": "uint64_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3606,6 +3627,7 @@
                 },
                 "decl": "size_t size_func(size_t arg1)",
                 "declgen": "size_t size_func(size_t arg1 +value)",
+                "name": "size_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3774,6 +3796,7 @@
                 },
                 "decl": "bool bool_func(bool arg)",
                 "declgen": "bool bool_func(bool arg +value)",
+                "name": "bool_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3954,6 +3977,7 @@
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
+                "name": "returnBoolAndOthers",
                 "options": {},
                 "wrap": {
                     "c": true,

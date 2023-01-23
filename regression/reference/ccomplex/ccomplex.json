@@ -51,6 +51,7 @@
                 },
                 "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
                 "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
+                "name": "acceptFloatComplexInoutPtr",
                 "options": {
                     "wrap_python": false
                 },
@@ -155,6 +156,7 @@
                 },
                 "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
                 "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
+                "name": "acceptDoubleComplexInoutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -285,6 +287,7 @@
                 },
                 "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
                 "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
+                "name": "acceptDoubleComplexOutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -435,6 +438,7 @@
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
+                "name": "acceptDoubleComplexInoutPtrFlag",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false
@@ -562,6 +566,7 @@
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
                 },
+                "name": "acceptDoubleComplexOutPtrFlag",
                 "options": {},
                 "wrap": {
                     "c": true,

@@ -58,6 +58,7 @@
                     "_nelems_offset",
                     "_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -188,6 +189,7 @@
                     "_nelems_offset",
                     "_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -374,6 +376,7 @@
                     "_nelems_offset",
                     "_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -571,6 +574,7 @@
                     "_type_nelems_offset",
                     "_type_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -753,6 +757,7 @@
                     "_type_nelems_offset",
                     "_type_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -991,6 +996,7 @@
                     "_type_nelems_offset",
                     "_type_nelems_offset_stride"
                 ],
+                "name": "apply_generic",
                 "options": {
                     "F_default_args": "generic"
                 },
@@ -1237,6 +1243,7 @@
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
+                "name": "apply_require",
                 "options": {
                     "F_default_args": "require"
                 },
@@ -1463,6 +1470,7 @@
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],
+                "name": "apply_require",
                 "options": {
                     "F_default_args": "require"
                 },
@@ -1709,6 +1717,7 @@
                 "default_arg_suffix": [
                     "_nelems_offset_stride"
                 ],
+                "name": "apply_optional",
                 "options": {
                     "F_default_args": "optional"
                 },
@@ -1937,6 +1946,7 @@
                 "default_arg_suffix": [
                     "_type_nelems_offset_stride"
                 ],
+                "name": "apply_optional",
                 "options": {
                     "F_default_args": "optional"
                 },

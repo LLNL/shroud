@@ -37,6 +37,7 @@
                 "doxygen": {
                     "brief": "helper function for Fortran to get length of name."
                 },
+                "name": "GetNameLength",
                 "options": {},
                 "splicer": {
                     "c": [
@@ -135,6 +136,7 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "name": "getNameErrorPattern",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -228,6 +230,7 @@
                 },
                 "decl": "const string& getNameErrorPattern()",
                 "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "name": "getNameErrorPattern",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {

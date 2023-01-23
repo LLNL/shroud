@@ -59,6 +59,7 @@
                 },
                 "decl": "void Rank2In(int *arg +intent(in)+rank(2)+cdesc)",
                 "declgen": "void Rank2In(int * arg +cdesc+intent(in)+rank(2))",
+                "name": "Rank2In",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -168,6 +169,7 @@
                 },
                 "decl": "void Rank2In(int *arg +intent(in)+rank(2)+cdesc)",
                 "declgen": "void Rank2In(int * arg +cdesc+intent(in)+rank(2))",
+                "name": "Rank2In",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -404,6 +406,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
+                "name": "GetScalar1",
                 "options": {},
                 "splicer": {
                     "c_buf": [
@@ -583,6 +586,7 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "name": "GetScalar1",
                 "options": {},
                 "splicer": {
                     "c_buf": [
@@ -699,6 +703,7 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "name": "GetScalar1",
                 "options": {},
                 "splicer": {
                     "c_buf": [
@@ -896,6 +901,7 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "name": "GetScalar1",
                 "options": {},
                 "splicer": {
                     "c_buf": [
@@ -1012,6 +1018,7 @@
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
+                "name": "GetScalar1",
                 "options": {},
                 "splicer": {
                     "c_buf": [
@@ -1162,6 +1169,7 @@
                     "description": "Wrapper for function which is templated on the return value.\n"
                 },
                 "have_template_args": true,
+                "name": "getData",
                 "options": {},
                 "template_arguments": [
                     {
@@ -1223,6 +1231,7 @@
                     "description": "Wrapper for function which is templated on the return value.\n"
                 },
                 "have_template_args": true,
+                "name": "getData",
                 "options": {
                     "F_create_generic": false
                 },
@@ -1343,6 +1352,7 @@
                     "double"
                 ],
                 "have_template_args": true,
+                "name": "getData",
                 "options": {
                     "F_create_generic": false
                 },
@@ -1609,6 +1619,7 @@
                         ]
                     }
                 },
+                "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
                 },
@@ -1703,6 +1714,7 @@
                         ]
                     }
                 },
+                "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
                 },
@@ -1808,6 +1820,7 @@
                         ]
                     }
                 },
+                "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
                 },
@@ -1938,6 +1951,7 @@
                         ]
                     }
                 },
+                "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
                 },
@@ -2043,6 +2057,7 @@
                         ]
                     }
                 },
+                "name": "GetScalar2",
                 "options": {
                     "wrap_c": false
                 },

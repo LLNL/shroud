@@ -188,7 +188,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function.wrap.lua:
                 continue
-            name = function.ast.declarator.user_name
+            name = function.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:

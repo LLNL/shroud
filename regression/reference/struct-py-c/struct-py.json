@@ -61,6 +61,7 @@
                         },
                         "decl": "Cstruct_as_class_ctor",
                         "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
+                        "name": "Cstruct_as_class_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -413,6 +414,7 @@
                 },
                 "decl": "int acceptBothStructs( Cstruct_as_class *s1 +intent(in), Cstruct_as_numpy *s2 +intent(in))",
                 "declgen": "int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))",
+                "name": "acceptBothStructs",
                 "options": {},
                 "wrap": {
                     "python": true

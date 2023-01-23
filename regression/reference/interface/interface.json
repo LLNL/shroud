@@ -31,6 +31,7 @@
                 },
                 "decl": "void Function1()",
                 "declgen": "void Function1(void)",
+                "name": "Function1",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -109,6 +110,7 @@
                 },
                 "decl": "double Function2(double arg1, int arg2)",
                 "declgen": "double Function2(double arg1 +value, int arg2 +value)",
+                "name": "Function2",
                 "options": {},
                 "wrap": {
                     "c": true,

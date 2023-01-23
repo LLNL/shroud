@@ -118,6 +118,7 @@
                         },
                         "decl": "Class1()",
                         "declgen": "Class1(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -261,6 +262,7 @@
                         },
                         "decl": "Class1(int flag)",
                         "declgen": "Class1(int flag +value)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -453,6 +455,7 @@
                         },
                         "decl": "~Class1()        +name(delete)",
                         "declgen": "~Class1(void) +name(delete)",
+                        "name": "delete",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -517,6 +520,7 @@
                         "doxygen": {
                             "brief": "returns the value of flag member"
                         },
+                        "name": "Method1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -654,6 +658,7 @@
                         "doxygen": {
                             "brief": "Pass in reference to instance"
                         },
+                        "name": "equivalent",
                         "options": {
                             "wrap_lua": false
                         },
@@ -828,6 +833,7 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
+                        "name": "returnThis",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -865,6 +871,7 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
+                        "name": "returnThis",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -970,6 +977,7 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
+                        "name": "returnThisBuffer",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1166,6 +1174,7 @@
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
+                        "name": "returnThisBuffer",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1320,6 +1329,7 @@
                         "doxygen": {
                             "brief": "Test const method"
                         },
+                        "name": "getclass3",
                         "options": {
                             "wrap_lua": false
                         },
@@ -1442,6 +1452,7 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "name": "getName",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1572,6 +1583,7 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "name": "getName",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -1659,6 +1671,7 @@
                         },
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +value)",
+                        "name": "directionFunc",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -1851,6 +1864,7 @@
                         },
                         "decl": "int get_m_flag()",
                         "declgen": "int get_m_flag(void)",
+                        "name": "get_m_flag",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_flag",
@@ -1942,6 +1956,7 @@
                         },
                         "decl": "int get_test()",
                         "declgen": "int get_test(void)",
+                        "name": "get_test",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_test",
@@ -2051,6 +2066,7 @@
                         },
                         "decl": "void set_test(int val)",
                         "declgen": "void set_test(int val +intent(in)+value)",
+                        "name": "set_test",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_test",
@@ -2152,6 +2168,7 @@
                         },
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void)",
+                        "name": "get_m_name",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_name",
@@ -2217,6 +2234,7 @@
                         },
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void)",
+                        "name": "get_m_name",
                         "options": {},
                         "splicer_group": "buf",
                         "user_fmt": {
@@ -2317,6 +2335,7 @@
                         },
                         "decl": "void set_m_name(std::string val)",
                         "declgen": "void set_m_name(std::string val +intent(in))",
+                        "name": "set_m_name",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_name",
@@ -2383,6 +2402,7 @@
                         },
                         "decl": "void set_m_name(std::string val)",
                         "declgen": "void set_m_name(std::string val +intent(in))",
+                        "name": "set_m_name",
                         "options": {},
                         "splicer_group": "buf",
                         "user_fmt": {
@@ -2639,6 +2659,7 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "name": "getName",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2769,6 +2790,7 @@
                         "doxygen": {
                             "brief": "test helper"
                         },
+                        "name": "getName",
                         "options": {},
                         "splicer_group": "buf",
                         "wrap": {
@@ -2898,6 +2920,7 @@
                         },
                         "decl": "static Singleton& getReference()",
                         "declgen": "static Singleton & getReference(void)",
+                        "name": "getReference",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3064,6 +3087,7 @@
                         },
                         "decl": "Shape()",
                         "declgen": "Shape(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -3182,6 +3206,7 @@
                         },
                         "decl": "int get_ivar() const",
                         "declgen": "int get_ivar(void) const",
+                        "name": "get_ivar",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3358,6 +3383,7 @@
                         },
                         "decl": "Circle()",
                         "declgen": "Circle(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -3544,6 +3570,7 @@
                         },
                         "decl": "void allocate(int n);",
                         "declgen": "void allocate(int n +value)",
+                        "name": "allocate",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3630,6 +3657,7 @@
                         },
                         "decl": "void free();",
                         "declgen": "void free(void)",
+                        "name": "free",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3685,6 +3713,7 @@
                         },
                         "decl": "Data()",
                         "declgen": "Data(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -3768,6 +3797,7 @@
                         },
                         "decl": "~Data()",
                         "declgen": "~Data(void)",
+                        "name": "dtor",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -3823,6 +3853,7 @@
                         },
                         "decl": "int get_nitems()",
                         "declgen": "int get_nitems(void)",
+                        "name": "get_nitems",
                         "options": {},
                         "user_fmt": {
                             "field_name": "nitems",
@@ -3932,6 +3963,7 @@
                         },
                         "decl": "void set_nitems(int val)",
                         "declgen": "void set_nitems(int val +intent(in)+value)",
+                        "name": "set_nitems",
                         "options": {},
                         "user_fmt": {
                             "field_name": "nitems",
@@ -4043,6 +4075,7 @@
                         },
                         "decl": "int * get_items()",
                         "declgen": "int * get_items(void)",
+                        "name": "get_items",
                         "options": {},
                         "user_fmt": {
                             "field_name": "items",
@@ -4121,6 +4154,7 @@
                         },
                         "decl": "int * get_items()",
                         "declgen": "int * get_items(void)",
+                        "name": "get_items",
                         "options": {},
                         "splicer_group": "buf",
                         "user_fmt": {
@@ -4236,6 +4270,7 @@
                         },
                         "decl": "void set_items(int * val)",
                         "declgen": "void set_items(int * val +intent(in)+rank(1))",
+                        "name": "set_items",
                         "options": {},
                         "user_fmt": {
                             "field_name": "items",
@@ -4477,6 +4512,7 @@
                 },
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)",
+                "name": "directionFunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4681,6 +4717,7 @@
                 "doxygen": {
                     "brief": "Pass arguments to a function."
                 },
+                "name": "passClassByValue",
                 "options": {
                     "wrap_lua": false
                 },
@@ -4811,6 +4848,7 @@
                 },
                 "decl": "int useclass(const Class1 *arg)",
                 "declgen": "int useclass(const Class1 * arg)",
+                "name": "useclass",
                 "options": {
                     "wrap_lua": false
                 },
@@ -4980,6 +5018,7 @@
                 "doxygen": {
                     "brief": "Return const class pointer"
                 },
+                "name": "getclass2",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5071,6 +5110,7 @@
                 "doxygen": {
                     "brief": "Return class pointer"
                 },
+                "name": "getclass3",
                 "options": {
                     "wrap_lua": false
                 },
@@ -5185,6 +5225,7 @@
                 "doxygen": {
                     "brief": "C wrapper will return void"
                 },
+                "name": "getclass2_void",
                 "options": {
                     "C_shadow_result": false,
                     "wrap_lua": false,
@@ -5275,6 +5316,7 @@
                 "doxygen": {
                     "brief": "C wrapper will return void"
                 },
+                "name": "getclass3_void",
                 "options": {
                     "C_shadow_result": false,
                     "wrap_lua": false,
@@ -5363,6 +5405,7 @@
                 },
                 "decl": "const Class1 &getConstClassReference()",
                 "declgen": "const Class1 & getConstClassReference(void)",
+                "name": "getConstClassReference",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5451,6 +5494,7 @@
                 },
                 "decl": "Class1 &getClassReference()",
                 "declgen": "Class1 & getClassReference(void)",
+                "name": "getClassReference",
                 "options": {
                     "wrap_lua": false
                 },
@@ -5576,6 +5620,7 @@
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
+                "name": "getClassCopy",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5711,6 +5756,7 @@
                 },
                 "decl": "void set_global_flag(int arg)",
                 "declgen": "void set_global_flag(int arg +value)",
+                "name": "set_global_flag",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5837,6 +5883,7 @@
                 },
                 "decl": "int get_global_flag()",
                 "declgen": "int get_global_flag(void)",
+                "name": "get_global_flag",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5959,6 +6006,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6083,6 +6131,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {

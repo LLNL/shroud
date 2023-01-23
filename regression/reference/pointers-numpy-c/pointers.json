@@ -51,6 +51,7 @@
                 },
                 "decl": "void  intargs_in(const int *arg)",
                 "declgen": "void intargs_in(const int * arg)",
+                "name": "intargs_in",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -125,6 +126,7 @@
                 "doxygen": {
                     "description": "Argument is modified by library, defaults to intent(inout).\n"
                 },
+                "name": "intargs_inout",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -199,6 +201,7 @@
                 },
                 "decl": "void  intargs_out(int *arg +intent(out))",
                 "declgen": "void intargs_out(int * arg +intent(out))",
+                "name": "intargs_out",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -312,6 +315,7 @@
                 },
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
+                "name": "intargs",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -483,6 +487,7 @@
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
                 },
+                "name": "cos_doubles",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -659,6 +664,7 @@
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
+                "name": "truncate_to_int",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -812,6 +818,7 @@
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
+                "name": "get_values",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -950,6 +957,7 @@
                     "brief": "fill values into two arrays",
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
+                "name": "get_values2",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1078,6 +1086,7 @@
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
                 "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
+                "name": "iota_dimension",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1217,6 +1226,7 @@
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
                 "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
+                "name": "Sum",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1345,6 +1355,7 @@
                 "doxygen": {
                     "description": "Return three values into memory the user provides.\n"
                 },
+                "name": "fillIntArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1445,6 +1456,7 @@
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
+                "name": "incrementIntArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1557,6 +1569,7 @@
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
                 "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
+                "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1670,6 +1683,7 @@
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
                 "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
+                "name": "accumulate",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1791,6 +1805,7 @@
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
+                "name": "acceptCharArrayIn",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1881,6 +1896,7 @@
                 },
                 "decl": "void setGlobalInt(int value)",
                 "declgen": "void setGlobalInt(int value +value)",
+                "name": "setGlobalInt",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1935,6 +1951,7 @@
                 "doxygen": {
                     "description": "Used to test values global_array.\n"
                 },
+                "name": "sumFixedArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2008,6 +2025,7 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
                 },
@@ -2070,6 +2088,7 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "name": "getPtrToFixedArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2184,6 +2203,7 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
+                "name": "getPtrToDynamicArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2299,6 +2319,7 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
+                "name": "getPtrToFuncArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2383,6 +2404,7 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
                 },
@@ -2443,6 +2465,7 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2555,6 +2578,7 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2664,6 +2688,7 @@
                 "doxygen": {
                     "description": "Called directly via an interface in Fortran.\n"
                 },
+                "name": "getRawPtrToScalar",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2746,6 +2771,7 @@
                 "doxygen": {
                     "description": "Create a Fortran wrapper.\n"
                 },
+                "name": "getRawPtrToScalarForce",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -2804,6 +2830,7 @@
                 "doxygen": {
                     "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
+                "name": "getRawPtrToFixedArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2886,6 +2913,7 @@
                 "doxygen": {
                     "description": "Return a type(C_PTR) to an array which is always the same length.\nCreate a Fortran wrapper.\n"
                 },
+                "name": "getRawPtrToFixedArrayForce",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -2945,6 +2973,7 @@
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n"
                 },
+                "name": "getRawPtrToInt2d",
                 "options": {
                     "wrap_python": false
                 },
@@ -3000,6 +3029,7 @@
                 "doxygen": {
                     "description": "Check results of getRawPtrToInt2d.\n"
                 },
+                "name": "checkInt2d",
                 "options": {
                     "wrap_python": false
                 },
@@ -3061,6 +3091,7 @@
                 "doxygen": {
                     "description": "Test +dimension(10,20) +intent(in) together.\nThis will not use assumed-shape in the Fortran wrapper.\n"
                 },
+                "name": "DimensionIn",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -3125,6 +3156,7 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "name": "getAllocToFixedArray",
                 "options": {
                     "wrap_python": false
                 },
@@ -3174,6 +3206,7 @@
                 },
                 "decl": "void *returnAddress1(int flag)",
                 "declgen": "void * returnAddress1(int flag +value)",
+                "name": "returnAddress1",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3267,6 +3300,7 @@
                 },
                 "decl": "void *returnAddress2(int flag)",
                 "declgen": "void * returnAddress2(int flag +value)",
+                "name": "returnAddress2",
                 "options": {
                     "F_force_wrapper": true
                 },
@@ -3365,6 +3399,7 @@
                 },
                 "decl": "void fetchVoidPtr(void **addr+intent(out))",
                 "declgen": "void fetchVoidPtr(void * * addr +intent(out))",
+                "name": "fetchVoidPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3442,6 +3477,7 @@
                 },
                 "decl": "void updateVoidPtr(void **addr+intent(inout))",
                 "declgen": "void updateVoidPtr(void * * addr +intent(inout))",
+                "name": "updateVoidPtr",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -3495,6 +3531,7 @@
                 },
                 "decl": "int VoidPtrArray(void **addr+rank(1))",
                 "declgen": "int VoidPtrArray(void * * addr +rank(1))",
+                "name": "VoidPtrArray",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -3529,6 +3566,7 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar(void)",
+                "name": "returnIntPtrToScalar",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3591,6 +3629,7 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
+                "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3651,6 +3690,7 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar(void)",
+                "name": "returnIntPtrToConstScalar",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3714,6 +3754,7 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3776,6 +3817,7 @@
                 },
                 "decl": "int *returnIntScalar(void) +deref(scalar)",
                 "declgen": "int * returnIntScalar(void) +deref(scalar)",
+                "name": "returnIntScalar",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3836,6 +3878,7 @@
                 "doxygen": {
                     "description": "Call directly via interface.\n"
                 },
+                "name": "returnIntRaw",
                 "options": {
                     "wrap_python": false
                 },
@@ -3896,6 +3939,7 @@
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_function_native_*_raw.\n"
                 },
+                "name": "returnIntRawWithArgs",
                 "options": {
                     "wrap_python": false
                 },
@@ -3934,6 +3978,7 @@
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },
+                "name": "returnRawPtrToInt2d",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -3977,6 +4022,7 @@
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false
                 },

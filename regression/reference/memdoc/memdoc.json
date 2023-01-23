@@ -42,6 +42,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "name": "getConstStringPtrAlloc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -134,6 +135,7 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "name": "getConstStringPtrAlloc",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {

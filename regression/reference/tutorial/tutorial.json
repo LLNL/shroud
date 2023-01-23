@@ -97,6 +97,7 @@
                 },
                 "decl": "void NoReturnNoArguments()",
                 "declgen": "void NoReturnNoArguments(void)",
+                "name": "NoReturnNoArguments",
                 "options": {
                     "literalinclude": true
                 },
@@ -188,6 +189,7 @@
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
                 "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
+                "name": "PassByValue",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -480,6 +482,7 @@
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
+                "name": "ConcatenateStrings",
                 "options": {},
                 "wrap": {
                     "fortran": true,
@@ -688,6 +691,7 @@
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
+                "name": "ConcatenateStrings",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -837,6 +841,7 @@
                     "_arg1",
                     "_arg1_arg2"
                 ],
+                "name": "UseDefaultArguments",
                 "options": {
                     "literalinclude": true
                 },
@@ -944,6 +949,7 @@
                     "_arg1",
                     "_arg1_arg2"
                 ],
+                "name": "UseDefaultArguments",
                 "options": {
                     "literalinclude": true
                 },
@@ -1110,6 +1116,7 @@
                     "_arg1",
                     "_arg1_arg2"
                 ],
+                "name": "UseDefaultArguments",
                 "options": {
                     "literalinclude": true
                 },
@@ -1385,6 +1392,7 @@
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name)",
+                "name": "OverloadedFunction",
                 "options": {},
                 "user_fmt": {
                     "function_suffix": "_from_name"
@@ -1535,6 +1543,7 @@
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string & name)",
+                "name": "OverloadedFunction",
                 "options": {},
                 "splicer_group": "buf",
                 "user_fmt": {
@@ -1632,6 +1641,7 @@
                 },
                 "decl": "void OverloadedFunction(int indx)",
                 "declgen": "void OverloadedFunction(int indx +value)",
+                "name": "OverloadedFunction",
                 "options": {},
                 "user_fmt": {
                     "function_suffix": "_from_index"
@@ -1784,6 +1794,7 @@
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
                 "declgen": "void TemplateArgument(ArgType arg +value)",
                 "have_template_args": true,
+                "name": "TemplateArgument",
                 "options": {},
                 "template_arguments": [
                     {
@@ -1859,6 +1870,7 @@
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
                 "declgen": "void TemplateArgument(int arg +value)",
                 "have_template_args": true,
+                "name": "TemplateArgument",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2041,6 +2053,7 @@
                     "double"
                 ],
                 "have_template_args": true,
+                "name": "TemplateArgument",
                 "options": {},
                 "template_arguments": [
                     {
@@ -2201,6 +2214,7 @@
                 "decl": "template<typename RetType> RetType TemplateReturn()",
                 "declgen": "RetType TemplateReturn(void)",
                 "have_template_args": true,
+                "name": "TemplateReturn",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -2262,6 +2276,7 @@
                 "decl": "template<typename RetType> RetType TemplateReturn()",
                 "declgen": "int TemplateReturn(void)",
                 "have_template_args": true,
+                "name": "TemplateReturn",
                 "options": {
                     "F_create_generic": false,
                     "wrap_lua": false,
@@ -2381,6 +2396,7 @@
                     "double"
                 ],
                 "have_template_args": true,
+                "name": "TemplateReturn",
                 "options": {
                     "F_create_generic": false,
                     "wrap_lua": false,
@@ -2491,6 +2507,7 @@
                 },
                 "decl": "void FortranGenericOverloaded()",
                 "declgen": "void FortranGenericOverloaded(void)",
+                "name": "FortranGenericOverloaded",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2669,6 +2686,7 @@
                         "generic": "(double arg2)"
                     }
                 ],
+                "name": "FortranGenericOverloaded",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -2889,6 +2907,7 @@
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
+                "name": "FortranGenericOverloaded",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -2971,6 +2990,7 @@
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
+                "name": "FortranGenericOverloaded",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -3127,6 +3147,7 @@
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "name": "FortranGenericOverloaded",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -3209,6 +3230,7 @@
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
+                "name": "FortranGenericOverloaded",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -3347,6 +3369,7 @@
                     "_num_offset",
                     "_num_offset_stride"
                 ],
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3505,6 +3528,7 @@
                     "_num_offset",
                     "_num_offset_stride"
                 ],
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3718,6 +3742,7 @@
                     "_num_offset",
                     "_num_offset_stride"
                 ],
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4068,6 +4093,7 @@
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +value, int num +value)",
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4270,6 +4296,7 @@
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value)",
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4527,6 +4554,7 @@
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
                 "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)",
+                "name": "UseDefaultOverload",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -4920,6 +4948,7 @@
                 },
                 "decl": "TypeID typefunc(TypeID arg)",
                 "declgen": "TypeID typefunc(TypeID arg +value)",
+                "name": "typefunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5117,6 +5146,7 @@
                 },
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +value)",
+                "name": "enumfunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5320,6 +5350,7 @@
                 },
                 "decl": "Color colorfunc(Color arg);",
                 "declgen": "Color colorfunc(Color arg +value)",
+                "name": "colorfunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -5550,6 +5581,7 @@
                 "doxygen": {
                     "brief": "Pass in reference to scalar"
                 },
+                "name": "getMinMax",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -5769,6 +5801,7 @@
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
+                "name": "callback1",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -5929,6 +5962,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -6053,6 +6087,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {

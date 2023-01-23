@@ -85,6 +85,7 @@
                         },
                         "decl": "Class2()",
                         "declgen": "Class2(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -205,6 +206,7 @@
                         },
                         "decl": "~Class2()",
                         "declgen": "~Class2(void)",
+                        "name": "dtor",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -288,6 +290,7 @@
                         },
                         "decl": "void func1(tutorial::Class1 *arg +intent(in))",
                         "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
+                        "name": "func1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -444,6 +447,7 @@
                         },
                         "decl": "void acceptClass3(Class3 *arg +intent(in))",
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))",
+                        "name": "acceptClass3",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -659,6 +663,7 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "name": "passStruct1",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false

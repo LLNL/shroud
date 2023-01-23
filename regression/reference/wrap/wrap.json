@@ -27,6 +27,7 @@
                         },
                         "decl": "void FuncInClass(void)",
                         "declgen": "void FuncInClass(void)",
+                        "name": "FuncInClass",
                         "options": {
                             "wrap_fortran": true
                         },

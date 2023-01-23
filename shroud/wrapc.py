@@ -1390,7 +1390,7 @@ class Wrapc(util.WrapperMixin):
                 impl.append("#endif  // " + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node.ast.declarator.user_name
+            fmt_func.C_name = node.ast.declarator.name
 
     def set_capsule_headers(self, headers):
         """Headers used by C_memory_dtor_function.

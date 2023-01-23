@@ -52,6 +52,7 @@
                                         },
                                         "decl": "ExClass1()",
                                         "declgen": "ExClass1(void)",
+                                        "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -204,6 +205,7 @@
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
                                         },
+                                        "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -418,6 +420,7 @@
                                             "description": "longer description\nusually multiple lines\n",
                                             "return": "return new instance"
                                         },
+                                        "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -531,6 +534,7 @@
                                             "brief": "destructor",
                                             "description": "longer description joined with previous line"
                                         },
+                                        "name": "dtor",
                                         "options": {},
                                         "user_fmt": {
                                             "F_name_function": "delete"
@@ -612,6 +616,7 @@
                                         },
                                         "decl": "int incrementCount(int incr)",
                                         "declgen": "int incrementCount(int incr +value)",
+                                        "name": "incrementCount",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -806,6 +811,7 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
+                                        "name": "getNameErrorCheck",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -935,6 +941,7 @@
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string & getNameErrorCheck(void) const",
+                                        "name": "getNameErrorCheck",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "wrap": {
@@ -1012,6 +1019,7 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string & getNameArg(void) const",
+                                        "name": "getNameArg",
                                         "options": {},
                                         "user_fmt": {
                                             "F_string_result_as_arg": "name"
@@ -1143,6 +1151,7 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name) const",
+                                        "name": "getNameArg",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "user_fmt": {
@@ -1272,6 +1281,7 @@
                                         },
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "void getNameArg(string & name) const",
+                                        "name": "getNameArg",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "user_fmt": {
@@ -1334,6 +1344,7 @@
                                         },
                                         "decl": "int  getValue(int value)",
                                         "declgen": "int getValue(int value +value)",
+                                        "name": "getValue",
                                         "options": {},
                                         "user_fmt": {
                                             "function_suffix": "_from_int"
@@ -1538,6 +1549,7 @@
                                         },
                                         "decl": "long getValue(long value)",
                                         "declgen": "long getValue(long value +value)",
+                                        "name": "getValue",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1736,6 +1748,7 @@
                                         },
                                         "decl": "bool hasAddr(bool in)",
                                         "declgen": "bool hasAddr(bool in +value)",
+                                        "name": "hasAddr",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -1921,6 +1934,7 @@
                                         },
                                         "decl": "void SplicerSpecial()",
                                         "declgen": "void SplicerSpecial(void)",
+                                        "name": "SplicerSpecial",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2111,6 +2125,7 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
+                                        "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -2327,6 +2342,7 @@
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
+                                        "name": "ctor",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -2439,6 +2455,7 @@
                                         "doxygen": {
                                             "brief": "destructor"
                                         },
+                                        "name": "dtor",
                                         "options": {},
                                         "user_fmt": {
                                             "F_name_function": "delete"
@@ -2518,6 +2535,7 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "name": "getName",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2648,6 +2666,7 @@
                                         },
                                         "decl": "const string& getName() const",
                                         "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "name": "getName",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "wrap": {
@@ -2729,6 +2748,7 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
+                                        "name": "getName2",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -2856,6 +2876,7 @@
                                         },
                                         "decl": "const string& getName2()",
                                         "declgen": "const string & getName2(void)",
+                                        "name": "getName2",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "wrap": {
@@ -2937,6 +2958,7 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
+                                        "name": "getName3",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3065,6 +3087,7 @@
                                         },
                                         "decl": "string& getName3() const",
                                         "declgen": "string & getName3(void) const",
+                                        "name": "getName3",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "wrap": {
@@ -3145,6 +3168,7 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
+                                        "name": "getName4",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3271,6 +3295,7 @@
                                         },
                                         "decl": "string& getName4()",
                                         "declgen": "string & getName4(void)",
+                                        "name": "getName4",
                                         "options": {},
                                         "splicer_group": "buf",
                                         "wrap": {
@@ -3345,6 +3370,7 @@
                                         "doxygen": {
                                             "brief": "helper function for Fortran"
                                         },
+                                        "name": "GetNameLength",
                                         "options": {},
                                         "splicer": {
                                             "c": [
@@ -3490,6 +3516,7 @@
                                         },
                                         "decl": "ExClass1 *get_class1(const ExClass1 *in)",
                                         "declgen": "ExClass1 * get_class1(const ExClass1 * in)",
+                                        "name": "get_class1",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -3788,6 +3815,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {},
@@ -3914,6 +3942,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4036,6 +4065,7 @@
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void declare(TypeID type +value, int len=1 +value)",
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4117,6 +4147,7 @@
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void declare(TypeID type +value, long len=1 +value)",
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4285,6 +4316,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4547,6 +4579,7 @@
                                                 "generic": "(long len=1)"
                                             }
                                         ],
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4711,6 +4744,7 @@
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void declare(TypeID type +value, int len=1 +value)",
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4800,6 +4834,7 @@
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void declare(TypeID type +value, long len=1 +value)",
+                                        "name": "declare",
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
@@ -4840,6 +4875,7 @@
                                         },
                                         "decl": "void destroyall()",
                                         "declgen": "void destroyall(void)",
+                                        "name": "destroyall",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -4902,6 +4938,7 @@
                                         },
                                         "decl": "TypeID getTypeID() const",
                                         "declgen": "TypeID getTypeID(void) const",
+                                        "name": "getTypeID",
                                         "options": {},
                                         "wrap": {
                                             "c": true,
@@ -5045,6 +5082,7 @@
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
                                         "declgen": "void setValue(ValueType value +value)",
                                         "have_template_args": true,
+                                        "name": "setValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -5142,6 +5180,7 @@
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
                                         "declgen": "void setValue(int value +value)",
                                         "have_template_args": true,
+                                        "name": "setValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -5346,6 +5385,7 @@
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
                                         "declgen": "void setValue(long value +value)",
                                         "have_template_args": true,
+                                        "name": "setValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -5548,6 +5588,7 @@
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
                                         "declgen": "void setValue(float value +value)",
                                         "have_template_args": true,
+                                        "name": "setValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -5756,6 +5797,7 @@
                                             "double"
                                         ],
                                         "have_template_args": true,
+                                        "name": "setValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -5942,6 +5984,7 @@
                                         "decl": "template<typename ValueType> ValueType getValue()",
                                         "declgen": "ValueType getValue(void)",
                                         "have_template_args": true,
+                                        "name": "getValue",
                                         "options": {},
                                         "template_arguments": [
                                             {
@@ -6000,6 +6043,7 @@
                                         "decl": "template<typename ValueType> ValueType getValue()",
                                         "declgen": "int getValue(void)",
                                         "have_template_args": true,
+                                        "name": "getValue",
                                         "options": {
                                             "F_create_generic": false
                                         },
@@ -6154,6 +6198,7 @@
                                             "double"
                                         ],
                                         "have_template_args": true,
+                                        "name": "getValue",
                                         "options": {
                                             "F_create_generic": false
                                         },
@@ -6364,6 +6409,7 @@
                                 },
                                 "decl": "void local_function1()",
                                 "declgen": "void local_function1(void)",
+                                "name": "local_function1",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -6444,6 +6490,7 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name)",
+                                "name": "isNameValid",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6653,6 +6700,7 @@
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string & name)",
+                                "name": "isNameValid",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6767,6 +6815,7 @@
                                 },
                                 "decl": "bool isInitialized()",
                                 "declgen": "bool isInitialized(void)",
+                                "name": "isInitialized",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -6901,6 +6950,7 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
+                                "name": "test_names",
                                 "options": {},
                                 "user_fmt": {
                                     "function_suffix": ""
@@ -7051,6 +7101,7 @@
                                 },
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string & name)",
+                                "name": "test_names",
                                 "options": {},
                                 "splicer_group": "buf",
                                 "user_fmt": {
@@ -7171,6 +7222,7 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
+                                "name": "test_names",
                                 "options": {},
                                 "user_fmt": {
                                     "function_suffix": "_flag"
@@ -7397,6 +7449,7 @@
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string & name, int flag +value)",
+                                "name": "test_names",
                                 "options": {},
                                 "splicer_group": "buf",
                                 "user_fmt": {
@@ -7514,6 +7567,7 @@
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional(void)",
+                                "name": "testoptional",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7583,6 +7637,7 @@
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional(int i=1 +value)",
+                                "name": "testoptional",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7711,6 +7766,7 @@
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
                                 "declgen": "void testoptional(int i=1 +value, long j=2 +value)",
+                                "name": "testoptional",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -7905,6 +7961,7 @@
                                 },
                                 "decl": "size_t test_size_t()",
                                 "declgen": "size_t test_size_t(void)",
+                                "name": "test_size_t",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -8031,6 +8088,7 @@
                                 },
                                 "decl": "void testmpi(MPI_Comm comm)",
                                 "declgen": "void testmpi(MPI_Comm comm +value)",
+                                "name": "testmpi",
                                 "options": {},
                                 "user_fmt": {
                                     "function_suffix": "_mpi"
@@ -8166,6 +8224,7 @@
                                 },
                                 "decl": "void testmpi()",
                                 "declgen": "void testmpi(void)",
+                                "name": "testmpi",
                                 "options": {},
                                 "user_fmt": {
                                     "function_suffix": "_serial"
@@ -8254,6 +8313,7 @@
                                 "doxygen": {
                                     "brief": "subroutine"
                                 },
+                                "name": "FuncPtr1",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -8405,6 +8465,7 @@
                                 "doxygen": {
                                     "brief": "return a pointer"
                                 },
+                                "name": "FuncPtr2",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -8582,6 +8643,7 @@
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
+                                "name": "FuncPtr3",
                                 "options": {
                                     "F_force_wrapper": true
                                 },
@@ -8759,6 +8821,7 @@
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
+                                "name": "FuncPtr4",
                                 "options": {
                                     "F_abstract_interface_argument_template": "XX{index}arg",
                                     "F_abstract_interface_subprogram_template": "custom_funptr",
@@ -9001,6 +9064,7 @@
                                 },
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
                                 "declgen": "void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value)",
+                                "name": "FuncPtr5",
                                 "options": {},
                                 "wrap": {
                                     "c": true,
@@ -9331,6 +9395,7 @@
                                 },
                                 "decl": "void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))",
                                 "declgen": "void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))",
+                                "name": "verylongfunctionname1",
                                 "options": {
                                     "F_force_wrapper": true
                                 },
@@ -10224,6 +10289,7 @@
                                 },
                                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                 "declgen": "int verylongfunctionname2(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)",
+                                "name": "verylongfunctionname2",
                                 "options": {
                                     "C_line_length": 0,
                                     "F_force_wrapper": true,
@@ -11075,6 +11141,7 @@
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },
+                                "name": "cos_doubles",
                                 "options": {
                                     "F_standard": 2008
                                 },
