@@ -692,8 +692,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_pointer())
         self.assertEqual("function", declarator.get_subprogram())
 
-        self.assertIsNotNone(r.find_arg_by_name("arg1"))
-        self.assertIsNone(r.find_arg_by_name("argnone"))
+        self.assertIsNotNone(declarator.find_arg_by_name("arg1"))
+        self.assertIsNone(declarator.find_arg_by_name("argnone"))
 
     def test_type_function_pointer1(self):
         """Function pointer
@@ -858,7 +858,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("void", r.typemap.name)
         self.assertFalse(declarator.is_pointer())
         self.assertEqual("subroutine", declarator.get_subprogram())
-        self.assertIsNone(r.find_arg_by_name("argnone"))
+        self.assertIsNone(declarator.find_arg_by_name("argnone"))
 
     def test_decl04(self):
         """const method"""
@@ -926,6 +926,7 @@ class CheckParse(unittest.TestCase):
         symtab = declast.SymbolTable()
 
         r = declast.check_decl("void foo(int arg1, double arg2)", symtab)
+        declarator = r.declarator
 
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1, double arg2)", s)
@@ -961,9 +962,9 @@ class CheckParse(unittest.TestCase):
         )
         self.assertEqual("foo", r.get_name())
 
-        self.assertIsNotNone(r.find_arg_by_name("arg1"))
-        self.assertIsNotNone(r.find_arg_by_name("arg2"))
-        self.assertIsNone(r.find_arg_by_name("argnone"))
+        self.assertIsNotNone(declarator.find_arg_by_name("arg1"))
+        self.assertIsNotNone(declarator.find_arg_by_name("arg2"))
+        self.assertIsNone(declarator.find_arg_by_name("argnone"))
 
     def test_decl07(self):
         """Return string"""

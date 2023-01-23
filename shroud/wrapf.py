@@ -1141,7 +1141,7 @@ rv = .false.
         is_ctor = declarator.is_ctor()
         is_pure = ast.attrs["pure"]
         is_static = False
-        func_is_const = ast.func_const
+        func_is_const = declarator.func_const
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []  # declaraion of argument names
@@ -1880,8 +1880,8 @@ rv = .false.
                     self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
                     # Generate declaration from argument.
-                    if options.F_default_args == "optional" and c_arg.init is not None:
-                        fmt_arg.default_value = c_arg.init
+                    if options.F_default_args == "optional" and c_arg.declarator.init is not None:
+                        fmt_arg.default_value = c_arg.declarator.init
                         optattr = True
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                     arg_f_names.append(fmt_arg.f_var)

@@ -248,7 +248,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             for arg in function.ast.declarator.params:
                 arg_typemap = arg.typemap
-                if arg.init is not None:
+                if arg.declarator.init is not None:
                     all_calls.append(
                         LuaFunction(
                             function, CXX_subprogram, in_args[:], out_args

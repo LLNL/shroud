@@ -610,11 +610,8 @@ class Parser(ExprParser):
 
         # SSS Share fields between Declaration and Declarator for now
         declarator = node.declarator
-        declarator.array = node.array
-        declarator.init = node.init
         declarator.attrs = node.attrs
         declarator.metaattrs = node.metaattrs
-        declarator.func_const = node.func_const
         declarator.typemap = node.typemap
         if declarator.func:
             declarator.func.typemap = node.typemap
@@ -640,11 +637,12 @@ class Parser(ExprParser):
             node.declarator.ctor_dtor_name = True
         else:
             node.declarator = self.declarator()
+        declarator = node.declarator
 
         if self.token.typ == "LPAREN":  # peek
             # Function parameters.
             params = self.parameter_list()
-            node.declarator.params = params
+            declarator.params = params
 
             # Look for (void), set to no parameters.
             if len(params) == 1:
@@ -653,13 +651,13 @@ class Parser(ExprParser):
                     chk.specifier == ["void"] and
                     chk.declarator.func is None    # Function pointers
                 ):
-                    node.declarator.params = []
+                    declarator.params = []
 
             #  method const
             if self.token.typ == "TYPE_QUALIFIER":
                 if self.token.value == "const":
                     self.next()
-                    node.func_const = True
+                    declarator.func_const = True
                 else:
                     raise RuntimeError(
                         "'{}' unexpected after function declaration".format(
@@ -668,7 +666,7 @@ class Parser(ExprParser):
                     )
         while self.token.typ == "LBRACKET":
             self.next() # consume bracket
-            node.array.append(self.expression())
+            declarator.array.append(self.expression())
             self.mustbe("RBRACKET")
         self.attribute(node.attrs)  # variable attributes
 
@@ -676,7 +674,7 @@ class Parser(ExprParser):
         # default value may have a +.
         # (int value = 1+size)
         if self.have("EQUALS"):
-            node.init = self.initializer()
+            declarator.init = self.initializer()
 
         if node.declarator.ctor_dtor_name:
             node.declarator.ctor_dtor_name = node.attrs["name"] or node.attrs["_name"]
@@ -1508,14 +1506,11 @@ class Declaration(Node):
         self.const = False
         self.volatile = False
         self.declarator = None
-        self.array = []
-        self.init = None  # initial value
         self.template_arguments = []    # vector<int>, list of Declaration
         self.template_argument = None   # T arg, str
         self.attrs = collections.defaultdict(lambda: None)
         self.metaattrs = collections.defaultdict(lambda: None)
 
-        self.func_const = False
         self.typemap = None
 
         self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
@@ -1797,7 +1792,7 @@ class Declaration(Node):
         ptrs = []
         for ptr in self.declarator.pointer:
             ptrs.append("*")   # ptr.ptr)
-        if self.array:
+        if self.declarator.array:
             ptrs.append("*")
         if ptrs:
             decl.append(" ")
@@ -1878,6 +1873,7 @@ class Declaration(Node):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
+        declarator = self.declarator
         attrs = self.attrs
         meta = self.metaattrs
         ntypemap = self.typemap
@@ -1902,7 +1898,7 @@ class Declaration(Node):
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
                 t.append("character(len=:)")
-            elif self.array:
+            elif declarator.array:
                 t.append("character(kind=C_CHAR)")
             elif not local:
                 t.append("character(len=*)")
@@ -1958,10 +1954,10 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
-        elif self.array:
+        elif declarator.array:
             decl.append("(")
             # Convert to column-major order.
-            for dim in reversed(self.array):
+            for dim in reversed(declarator.array):
                 decl.append(todict.print_node(dim))
                 decl.append(",")
             decl[-1] = ")"

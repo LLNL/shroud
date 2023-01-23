@@ -563,7 +563,7 @@ class VerifyAttrs(object):
             arg.ftrim_char_in = options.F_trim_char_in
 
         if node:
-            if arg.init is not None:
+            if declarator.init is not None:
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
@@ -1513,7 +1513,7 @@ class GenFunctions(object):
 
         min_args = 0
         for i, arg in enumerate(node.ast.declarator.params):
-            if arg.init is None:
+            if arg.declarator.init is None:
                 min_args += 1
                 continue
             new = node.clone()

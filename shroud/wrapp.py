@@ -1432,7 +1432,7 @@ return 1;""",
                 offset += len(arg_name) + 1
 
                 # XXX default should be handled differently
-                if arg.init is not None:
+                if declarator.init is not None:
                     # Default value argument.
                     if not found_optional:
                         parse_format.append("|")  # add once
@@ -3340,8 +3340,9 @@ def py_struct_dimension(parent, var, fmt):
     # fmt.npy_intp_asgn     # assign to
     #    fmt.npy_intp_values     # comma separated list of values
     ast = var.ast
-    if ast.array: # Fixed size array.
-        metadim = ast.array
+    declarator = ast.declarator
+    if declarator.array: # Fixed size array.
+        metadim = declarator.array
     elif ast.attrs["dimension"] is not None:
         metadim = ast.metaattrs["dimension"]
     else:

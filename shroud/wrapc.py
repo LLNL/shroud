@@ -896,7 +896,7 @@ class Wrapc(util.WrapperMixin):
         is_dtor = CXX_ast.declarator.is_dtor()
         is_static = False
         is_pointer = CXX_ast.declarator.is_pointer()
-        is_const = ast.func_const
+        is_const = declarator.func_const
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
