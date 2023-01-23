@@ -1242,6 +1242,121 @@ class Declarator(Node):
         self.func_const = False
         self.typemap = None
 
+    def is_ctor(self):
+        """Return True if self is a constructor."""
+        return self.attrs["_constructor"]
+
+    def is_dtor(self):
+        """Return destructor attribute.
+        Will be False for non-destructors, else class name.
+        """
+        return self.attrs["_destructor"]
+
+    def is_pointer(self):
+        """Return number of levels of pointers.
+        """
+        nlevels = 0
+        for ptr in self.pointer:
+            if ptr.ptr == "*":
+                nlevels += 1
+        return nlevels
+
+    def is_reference(self):
+        """Return number of levels of references.
+        """
+        nlevels = 0
+        for ptr in self.pointer:
+            if ptr.ptr == "&":
+                nlevels += 1
+        return nlevels
+
+    def is_indirect(self):
+        """Return number of indirections.
+        pointer or reference.
+        """
+        nlevels = 0
+        for ptr in self.pointer:
+            if ptr.ptr:
+                nlevels += 1
+        return nlevels
+
+    def is_array(self):
+        """Return number of indirections.
+        array, pointer or reference.
+        """
+        nlevels = 0
+        if self.array:
+            nlevels += 1
+        for ptr in self.pointer:
+            if ptr.ptr:
+                nlevels += 1
+        return nlevels
+        
+    def is_function_pointer(self):
+        """Return number of levels of pointers.
+        """
+        if self.func is None:
+            return False
+        if not self.func.pointer:
+            return False
+        return True
+
+    def XXXget_indirect(self):
+        """Return indirect operators.
+        '*', '**', '&*', '[]'
+        """
+        out = ''
+        for ptr in self.pointer:
+            out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
+        return out
+
+    def get_indirect_stmt(self):
+        """Return statement field for pointers.
+        'scalar', '*', '**'
+        """
+        out = ''
+        for ptr in self.pointer:
+            out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
+        if out == "":
+            return "scalar"
+        return out
+
+    def get_array_size(self):
+        """Return size of array by multiplying dimensions."""
+        array = self.array
+        if not array:
+            return None
+        if len(array) == 1:
+            return todict.print_node(array[0])
+        out = []
+        for dim in array:
+            out.append("({})".format(todict.print_node(dim)))
+        return '*'.join(out)
+
+    def get_subprogram(self):
+        """Return Fortran subprogram - subroutine or function.
+        Return None for variable declarations.
+        """
+        if self.params is None:
+            return None
+        if self.typemap.name != "void":
+            return "function"
+        if self.is_pointer():
+            return "function"
+        return "subroutine"
+
+    def find_arg_by_name(self, name):
+        """Find argument in params with name."""
+        return find_arg_by_name(self.params, name)
+
+    def find_arg_index_by_name(self, name):
+        """Return index of argument in params with name."""
+        return find_arg_index_by_name(self.params, name)
+
     def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False, **kwargs):
         """Generate string by appending text to decl.
 
@@ -1362,113 +1477,6 @@ class Declaration(Node):
 
     def get_full_type(self):
         return ' '.join(self.specifier)
-
-    def is_ctor(self):
-        """Return True if self is a constructor."""
-        return self.attrs["_constructor"]
-
-    def is_dtor(self):
-        """Return destructor attribute.
-        Will be False for non-destructors, else class name.
-        """
-        return self.attrs["_destructor"]
-
-    def is_pointer(self):
-        """Return number of levels of pointers.
-        """
-        nlevels = 0
-        for ptr in self.declarator.pointer:
-            if ptr.ptr == "*":
-                nlevels += 1
-        return nlevels
-
-    def is_reference(self):
-        """Return number of levels of references.
-        """
-        nlevels = 0
-        for ptr in self.declarator.pointer:
-            if ptr.ptr == "&":
-                nlevels += 1
-        return nlevels
-
-    def is_indirect(self):
-        """Return number of indirections.
-        pointer or reference.
-        """
-        nlevels = 0
-        for ptr in self.declarator.pointer:
-            if ptr.ptr:
-                nlevels += 1
-        return nlevels
-
-    def is_array(self):
-        """Return number of indirections.
-        array, pointer or reference.
-        """
-        nlevels = 0
-        if self.array:
-            nlevels += 1
-        for ptr in self.declarator.pointer:
-            if ptr.ptr:
-                nlevels += 1
-        return nlevels
-        
-    def is_function_pointer(self):
-        """Return number of levels of pointers.
-        """
-        if self.declarator.func is None:
-            return False
-        if not self.declarator.func.pointer:
-            return False
-        return True
-
-    def XXXget_indirect(self):
-        """Return indirect operators.
-        '*', '**', '&*', '[]'
-        """
-        out = ''
-        for ptr in self.declarator.pointer:
-            out += ptr.ptr
-        if self.array:
-            out += "[]"   # XXX - multidimensional?
-        return out
-
-    def get_indirect_stmt(self):
-        """Return statement field for pointers.
-        'scalar', '*', '**'
-        """
-        out = ''
-        for ptr in self.declarator.pointer:
-            out += ptr.ptr
-        if self.array:
-            out += "[]"   # XXX - multidimensional?
-        if out == "":
-            return "scalar"
-        return out
-
-    def get_array_size(self):
-        """Return size of array by multiplying dimensions."""
-        array = self.array
-        if not array:
-            return None
-        if len(array) == 1:
-            return todict.print_node(array[0])
-        out = []
-        for dim in array:
-            out.append("({})".format(todict.print_node(dim)))
-        return '*'.join(out)
-
-    def get_subprogram(self):
-        """Return Fortran subprogram - subroutine or function.
-        Return None for variable declarations.
-        """
-        if self.params is None:
-            return None
-        if self.typemap.name != "void":
-            return "function"
-        if self.is_pointer():
-            return "function"
-        return "subroutine"
 
     def find_arg_by_name(self, name):
         """Find argument in params with name."""
@@ -1767,7 +1775,7 @@ class Declaration(Node):
             # The C wrapper wants a pointer to the type.
             force_ptr = True
 
-        if asgn_value and const_index is not None and not self.is_indirect():
+        if asgn_value and const_index is not None and not self.declarator.is_indirect():
             # Remove 'const' so the variable can be assigned to.
             decl[const_index] = ""
         elif remove_const and const_index is not None:

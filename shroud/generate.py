@@ -80,6 +80,7 @@ class VerifyAttrs(object):
             node -
         """
         ast = node.ast
+        declarator = ast.declarator
         attrs = ast.attrs
         for attr in attrs:
             if attr[0] == "_":  # internal attribute
@@ -91,7 +92,7 @@ class VerifyAttrs(object):
                     ) + "\nonly 'name', 'readonly', and 'dimension' are allowed on variables"
                 )
 
-        is_ptr = ast.is_indirect()
+        is_ptr = declarator.is_indirect()
         if attrs["dimension"] and not is_ptr:
             raise RuntimeError(
                 "dimension attribute can only be "
@@ -109,6 +110,7 @@ class VerifyAttrs(object):
         options = node.options
 
         ast = node.ast
+        declarator = ast.declarator
         node._has_found_default = False
 
         for attr in ast.attrs:
@@ -141,12 +143,12 @@ class VerifyAttrs(object):
                 meta["api"] = "capptr"
             else:
                 meta["api"] = "capsule"
-        if ast.is_ctor():
+        if declarator.is_ctor():
             meta["intent"] = "ctor"
-        elif ast.is_dtor():
+        elif declarator.is_dtor():
             meta["intent"] = "dtor"
         else:
-            meta["intent"] = ast.get_subprogram()
+            meta["intent"] = declarator.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
@@ -173,15 +175,16 @@ class VerifyAttrs(object):
         Intent is only valid on arguments.
         intent: lower case, no parens, must be in, out, or inout
         """
+        declarator = arg.declarator
         attrs = arg.attrs
         meta = arg.metaattrs
-        is_ptr = arg.is_indirect()
+        is_ptr = declarator.is_indirect()
         intent = attrs["intent"]
         if intent is None:
             if node is None:
                 # do not default intent for function pointers
                 pass
-            elif arg.is_function_pointer():
+            elif declarator.is_function_pointer():
                 intent = "in"
             elif not is_ptr:
                 intent = "in"
@@ -218,12 +221,13 @@ class VerifyAttrs(object):
         """
         options = node.options
         ast = node.ast
+        declarator = ast.declarator
         attrs = ast.attrs
         deref = attrs["deref"]
         mderef = None
         ntypemap = ast.typemap
-        nindirect = ast.is_indirect()
-        if ast.get_subprogram() == "subroutine":
+        nindirect = declarator.is_indirect()
+        if declarator.get_subprogram() == "subroutine":
             pass
         if ntypemap.sgroup == "void":
             # Unable to set Fortran pointer for void
@@ -283,10 +287,11 @@ class VerifyAttrs(object):
         node - ast.FunctionNode or ast.FortranGeneric
         ast : declast.Declaration
         """
+        declarator = ast.declarator
         attrs = ast.attrs
         meta = ast.metaattrs
         ntypemap = ast.typemap
-        is_ptr = ast.is_indirect()
+        is_ptr = declarator.is_indirect()
 
         deref = attrs["deref"]
         if deref is not None:
@@ -296,7 +301,7 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
-            nindirect = ast.is_indirect()
+            nindirect = declarator.is_indirect()
             if ntypemap.sgroup == "vector":
                 if deref:
                     mderef = deref
@@ -317,7 +322,7 @@ class VerifyAttrs(object):
 
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
-        spointer = ast.get_indirect_stmt()
+        spointer = declarator.get_indirect_stmt()
         if ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
@@ -332,10 +337,11 @@ class VerifyAttrs(object):
         ----------
         ast : declast.Declaration
         """
+        declarator = ast.declarator
         attrs = ast.attrs
         meta = ast.metaattrs
         ntypemap = ast.typemap
-        is_ptr = ast.is_indirect()
+        is_ptr = declarator.is_indirect()
 
         # api
         api = attrs["api"]
@@ -434,6 +440,7 @@ class VerifyAttrs(object):
         """
         if options is None:
             options = node.options
+        declarator = arg.declarator
         argname = arg.name
         attrs = arg.attrs
         meta = arg.metaattrs
@@ -483,7 +490,7 @@ class VerifyAttrs(object):
         self.check_deref_attr_var(node, arg)
         self.check_common_attrs(arg)
 
-        is_ptr = arg.is_indirect()
+        is_ptr = declarator.is_indirect()
 
         # assumedtype
         assumedtype = attrs["assumedtype"]
@@ -588,7 +595,7 @@ class VerifyAttrs(object):
         if arg.metaattrs["assumed-rank"]:
             node._gen_fortran_generic = True
 
-        if arg.is_function_pointer():
+        if declarator.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1, options)
 
@@ -788,6 +795,7 @@ class GenFunctions(object):
             return
 
         ast = var.ast
+        declarator = ast.declarator
         sgroup = ast.typemap.sgroup
 
         fmt = util.Scope(var.fmtdict)
@@ -802,7 +810,7 @@ class GenFunctions(object):
         if is_struct:
             if not options.F_struct_getter_setter:
                 return
-            if var.ast.is_pointer() != 1:
+            if declarator.is_pointer() != 1:
                 # Skip scalar and char**.
                 return
             if sgroup in ["char", "string"]:
@@ -832,7 +840,7 @@ class GenFunctions(object):
         elif sgroup == "vector":
             value = None
             deref = "pointer"
-        elif var.ast.is_pointer():
+        elif declarator.is_pointer():
             value = None
             deref = "pointer"
         else:
@@ -1172,7 +1180,7 @@ class GenFunctions(object):
                 # Stuff like push_back which is in a templated class, is not an overload.
                 # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
-            if function.ast.is_ctor():
+            if function.ast.declarator.is_ctor():
                 if not function.wrap.fortran:
                     continue
                 # Always create generic interface for class derived type.
@@ -1449,11 +1457,11 @@ class GenFunctions(object):
             # Try to call original C function if possible.
             # All arguments are native scalar.
             need_wrapper = False
-            if new.ast.is_indirect():
+            if new.ast.declarator.is_indirect():
                 need_wrapper = True
             
             for arg in new.ast.params:
-                if arg.is_indirect():
+                if arg.declarator.is_indirect():
                     need_wrapper = True
                     break
                 elif arg.typemap.sgroup == "native":
@@ -1732,10 +1740,11 @@ class GenFunctions(object):
             return
 
         ast = node.ast
+        declarator = ast.declarator
         result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string, vector here.
-        result_is_ptr = ast.is_indirect()
+        result_is_ptr = declarator.is_indirect()
         if (
             result_typemap
             and result_typemap.base in ["string", "vector"]
@@ -1753,9 +1762,9 @@ class GenFunctions(object):
                 )
             )
         
-        ast = node.ast
         cfi_args = {}
         for arg in ast.params:
+            declarator = arg.declarator
             cfi_args[arg.name] = False
             arg_typemap = arg.typemap
             if arg.metaattrs["api"]:
@@ -1768,7 +1777,7 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "string":
                     cfi_args[arg.name] = True
             elif arg_typemap.sgroup == "char":
-                if arg.is_indirect():
+                if declarator.is_indirect():
                     cfi_args[arg.name] = True
             elif arg.metaattrs["deref"] in ["allocatable", "pointer"]:
                 cfi_args[arg.name] = True
@@ -1892,7 +1901,7 @@ class GenFunctions(object):
         result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string, vector here.
-        result_is_ptr = ast.is_indirect()
+        result_is_ptr = ast.declarator.is_indirect()
         if (
             result_typemap
             and result_typemap.base in ["string", "vector"]
@@ -1925,6 +1934,7 @@ class GenFunctions(object):
         for arg in ast.params:
             has_buf_arg = None
             arg_typemap = arg.typemap
+            declarator = arg.declarator
             attrs = arg.attrs
             meta = arg.metaattrs
             if meta["api"]:
@@ -1942,7 +1952,7 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "char":
                 if arg.ftrim_char_in:
                     pass
-                elif arg.is_indirect():
+                elif declarator.is_indirect():
                     if meta["deref"] in ["allocatable", "pointer"]:
                         has_buf_arg = "cdesc"
                     else:
@@ -1956,7 +1966,7 @@ class GenFunctions(object):
             elif (arg_typemap.sgroup == "native" and
                   meta["intent"] == "out" and
                   meta["deref"] != "raw" and
-                  arg.get_indirect_stmt() in ["**", "*&"]):
+                  declarator.get_indirect_stmt() in ["**", "*&"]):
                 # double **values +intent(out) +deref(pointer)
                 has_buf_arg = "cdesc"
                 #has_buf_arg = "buf" # XXX - for scalar?
@@ -2263,7 +2273,7 @@ class TemplateTypemap(visitor.Visitor):
         for cls in node.classes:
             self.visit(cls)
         for fcn in node.functions:
-            if fcn.ast.is_ctor():
+            if fcn.ast.declarator.is_ctor():
                 fcn.ast.typemap = node.typemap
             self.visit(fcn)
         for var in node.variables:

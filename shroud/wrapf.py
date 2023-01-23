@@ -209,8 +209,9 @@ class Wrapf(util.WrapperMixin):
         append_format(output, "type, bind(C) :: {F_derived_name}+", fmt_class)
         for var in node.variables:
             ast = var.ast
+            declarator = ast.declarator
             ntypemap = ast.typemap
-            if ast.is_indirect():
+            if declarator.is_indirect():
                 append_format(output, "type(C_PTR) :: {variable_name}", var.fmtdict)
                 self.set_f_module(fileinfo.module_use,
                                   "iso_c_binding", "C_PTR")
@@ -980,7 +981,7 @@ rv = .false.
                 node, fmt, arg = fileinfo.f_abstract_interface[key]
                 options = node.options
                 ast = node.ast
-                subprogram = arg.get_subprogram()
+                subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
                 arg_c_decl = []
@@ -1072,6 +1073,7 @@ rv = .false.
             # Functions do not pass arguments by default.
             pass
         else:
+            declarator = ast.declarator
             attrs = ast.attrs
             arg_c_names.append(ast.name)
             # argument declarations
@@ -1089,13 +1091,13 @@ rv = .false.
                     arg_c_decl.append(
                         "type(*) :: {}".format(ast.name)
                     )
-            elif ast.is_function_pointer():
+            elif declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, ast, fileinfo)
                 arg_c_decl.append(
                     "procedure({}) :: {}".format(absiface, ast.name)
                 )
                 imports[absiface] = True
-            elif ast.is_array() > 1:
+            elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
                 # 'char **' uses c_char_**_in as a special case.
@@ -1133,9 +1135,10 @@ rv = .false.
         fmtargs = node._fmtargs
 
         ast = node.ast
-        subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = ast.is_ctor()
+        is_ctor = declarator.is_ctor()
         is_pure = ast.attrs["pure"]
         is_static = False
         func_is_const = ast.func_const
@@ -1187,7 +1190,7 @@ rv = .false.
 
         junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
-        spointer = ast.get_indirect_stmt()
+        spointer = ast.declarator.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
                    r_meta["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
@@ -1224,6 +1227,7 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
+            declarator = arg.declarator
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
@@ -1245,7 +1249,7 @@ rv = .false.
                 args_all_in = False
             deref_attr = meta["deref"]
 
-            spointer = arg.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             if meta["is_result"]:
                 c_stmts = ["c", "function", sgroup, spointer,
                            meta["api"], deref_attr]
@@ -1630,11 +1634,12 @@ rv = .false.
 
         # Fortran return type
         ast = node.ast
-        subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        C_subprogram = C_node.ast.get_subprogram()
-        c_result_api = C_node.ast.metaattrs["api"]
-        is_ctor = ast.is_ctor()
+        C_subprogram = C_node.ast.declarator.get_subprogram()
+        c_result_api = C_node.ast.declarator.metaattrs["api"]
+        is_ctor = declarator.is_ctor()
         is_static = False
 
         arg_c_call = []  # arguments to C function
@@ -1665,7 +1670,7 @@ rv = .false.
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
-            spointer = C_node.ast.get_indirect_stmt()
+            spointer = C_node.ast.declarator.get_indirect_stmt()
             return_deref_attr = r_meta["deref"]
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
@@ -1749,6 +1754,7 @@ rv = .false.
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 
+            c_declarator = c_arg.declarator
             c_attrs = c_arg.attrs
             c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
@@ -1777,15 +1783,16 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
+            f_declarator = f_arg.declarator
             f_attrs = f_arg.attrs
             f_meta = f_arg.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
-            c_spointer = c_arg.get_indirect_stmt()
+            c_spointer = c_declarator.get_indirect_stmt()
             c_api = c_meta["api"]
             c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
-            f_spointer = f_arg.get_indirect_stmt()
+            f_spointer = f_declarator.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
@@ -1827,7 +1834,7 @@ rv = .false.
                     arg_f_names.append(fmt_arg.f_var)
                     arg_c_call.append(f_arg.name)
                     continue
-                elif f_arg.is_function_pointer():
+                elif f_declarator.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     if c_attrs["external"]:
                         # external is similar to assumed type, in that it will
@@ -1976,7 +1983,7 @@ rv = .false.
                     ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True)
                 )
 
-            if ast.is_indirect() < 2:
+            if ast.declarator.is_indirect() < 2:
                 # If more than one level of indirection, will return
                 # a type(C_PTR).  i.e. int ** same as void *.
                 # So do not add type's f_module.

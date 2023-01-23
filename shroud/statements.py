@@ -32,7 +32,7 @@ def lookup_c_statements(arg):
         targ = arg.template_arguments[0]
         arg_typemap = targ.typemap
         specialize.append(arg_typemap.sgroup)
-        spointer = targ.get_indirect_stmt()
+        spointer = targ.declarator.get_indirect_stmt()
         specialize.append(spointer)
     return arg_typemap, specialize
 
@@ -51,7 +51,7 @@ def template_stmts(ast):
         targ = ast.template_arguments[0]
         arg_typemap = targ.typemap
         specialize.append(arg_typemap.sgroup)
-        spointer = targ.get_indirect_stmt()
+        spointer = targ.declarator.get_indirect_stmt()
         specialize.append(spointer)
     return specialize
 
@@ -114,13 +114,13 @@ def compute_return_prefix(arg, local_var):
         else:
             return ""
     elif local_var == "pointer":
-        if arg.is_pointer():
+        if arg.declarator.is_pointer():
             return ""
         else:
             return "*"
     elif local_var == "funcptr":
         return ""
-    elif arg.is_reference():
+    elif arg.declarator.is_reference():
         # Convert a return reference into a pointer.
         return "&"
     else:

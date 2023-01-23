@@ -672,7 +672,7 @@ return 1;""",
             )
 
             arg_typemap = ast.typemap
-            if ast.is_pointer():
+            if ast.declarator.is_pointer():
                 PYN_typenum = "NPY_INTP"
             else:
                 PYN_typenum = arg_typemap.PYN_typenum
@@ -745,6 +745,7 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
+        declarator = ast.declarator
         arg_typemap = ast.typemap
         
         fmt_var = node.fmtdict
@@ -770,7 +771,7 @@ return 1;""",
         fmt.c_type = arg_typemap.c_type
 
         py_struct_dimension(parent, node, fmt)
-        indirect_stmt = ast.get_indirect_stmt()
+        indirect_stmt = declarator.get_indirect_stmt()
 
         if arg_typemap.PY_get:
             fmt.PY_get = wformat(arg_typemap.PY_get, fmt)
@@ -901,6 +902,7 @@ return 1;""",
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
+        declarator = ast.declarator
         typemap = ast.typemap
         if typemap.PY_PyObject:
             fmt.PyObject = typemap.PY_PyObject
@@ -955,7 +957,7 @@ return 1;""",
                 fmt.array_size = "*\t".join(fmtsize)
             else:
                 fmt.array_size = visitor.shape[0]
-        elif ast.is_indirect():
+        elif declarator.is_indirect():
             fmt.array_size = "1"  # assume scalar
 
 #        fmt.c_type = typemap.c_type
@@ -1156,10 +1158,11 @@ return 1;""",
         fmt.PY_array_arg = options.PY_array_arg
 
         ast = node.ast
-        CXX_subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
         #        is_const = ast.const
         ml_flags = []
 
@@ -1259,6 +1262,7 @@ return 1;""",
         offset = 0
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
+            declarator = arg.declarator
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))
@@ -1277,7 +1281,7 @@ return 1;""",
                 fmt_arg.c_const = "const "
             else:
                 fmt_arg.c_const = ""
-            if arg.is_pointer():
+            if declarator.is_pointer():
                 fmt_arg.c_deref = "*"
                 fmt_arg.cxx_addr = ""
                 fmt_arg.cxx_member = "->"
@@ -1301,7 +1305,7 @@ return 1;""",
             implied = attrs["implied"]
             intent = meta["intent"]
             sgroup = arg_typemap.sgroup
-            spointer = arg.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = None
 
             intent_blk = None
@@ -1314,7 +1318,7 @@ return 1;""",
                 struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
-                field_size = struct_member.ast.get_array_size()
+                field_size = struct_member.ast.declarator.get_array_size()
                 if field_size is not None:
                     fmt_arg.field_size = field_size
                 if not found_optional:
@@ -1323,7 +1327,7 @@ return 1;""",
             deref = meta["deref"] or "pointer"
             if intent_blk is not None:
                 pass
-            elif arg.is_function_pointer():
+            elif declarator.is_function_pointer():
                 intent_blk = default_scope
             elif implied:
                 arg_implied.append(arg)
@@ -1967,9 +1971,10 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
+        declarator = ast.declarator
         attrs = ast.attrs
         meta = ast.metaattrs
-        is_ctor = ast.is_ctor()
+        is_ctor = declarator.is_ctor()
         result_typemap = ast.typemap
 
         result_blk = default_scope
@@ -1989,7 +1994,7 @@ return 1;""",
             with_template_args=True, continuation=True
         )
 
-        if CXX_result.is_pointer():
+        if CXX_result.declarator.is_pointer():
             fmt_result.c_deref = "*"
             fmt_result.cxx_addr = ""
             fmt_result.cxx_member = "->"
@@ -2023,7 +2028,7 @@ return 1;""",
             specialize = statements.template_stmts(ast)
             stmts = ["py", "function", sgroup, options.PY_array_arg] + specialize
         elif sgroup == "native":
-            spointer = ast.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
                 deref = meta["deref"] or "pointer"
@@ -2031,7 +2036,7 @@ return 1;""",
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)
         else:
-            spointer = ast.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
@@ -2082,7 +2087,8 @@ return 1;""",
         The results will be processed by format so literal curly must be protected.
 
         """
-        if ast.is_pointer():
+        declarator = ast.declarator
+        if declarator.is_pointer():
             return None
         allocate_local_var = stmts.allocate_local_var
         if allocate_local_var:
@@ -2465,7 +2471,7 @@ return 1;""",
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.is_ctor()
+            is_ctor = node.ast.declarator.is_ctor()
 
             body = []
             body.append(1)
@@ -2985,7 +2991,7 @@ setup(
         """
         for var in node.variables:
             fmt = var.fmtdict
-            if var.ast.is_array():
+            if var.ast.declarator.is_array():
                 fmt.py_var = "SHPy_" + fmt.variable_name
                 var.eval_template("PY_member_object")
                 var.eval_template("PY_member_data")
@@ -2999,7 +3005,7 @@ setup(
         print_header = True
         for var in node.variables:
             # var is VariableNode
-            if not var.ast.is_array():
+            if not var.ast.declarator.is_array():
                 continue
             if print_header:
                 output.append("// Python objects for members.")
