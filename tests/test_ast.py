@@ -258,10 +258,10 @@ class CheckAst(unittest.TestCase):
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
-        self.assertEqual(library.classes[0].functions[0].ast.name, "c1func1")
-        self.assertEqual(library.classes[0].functions[1].ast.name, "c1func2")
+        self.assertEqual(library.classes[0].functions[0].ast.declarator.name, "c1func1")
+        self.assertEqual(library.classes[0].functions[1].ast.declarator.name, "c1func2")
         self.assertEqual(len(library.classes[1].functions), 1)
-        self.assertEqual(library.classes[1].functions[0].ast.name, "c2func1")
+        self.assertEqual(library.classes[1].functions[0].ast.declarator.name, "c2func1")
 
     def test_c_class3(self):
         """Test class options"""

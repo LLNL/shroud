@@ -26,18 +26,19 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "allocatable",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],
@@ -45,6 +46,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -134,19 +136,20 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "allocatable",
+                            "intent": "function"
+                        },
                         "name": "LastFunctionCalled",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "allocatable",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "std::string"
                     ],
@@ -154,6 +157,7 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string & LastFunctionCalled(void)",
+                "name": "LastFunctionCalled",
                 "options": {},
                 "splicer_group": "buf",
                 "wrap": {
@@ -206,12 +210,13 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "One"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "One",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -219,6 +224,7 @@
                 },
                 "decl": "void One()",
                 "declgen": "void One(void)",
+                "name": "One",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -343,41 +349,47 @@
                                 "<FUNCTION>": "0 ****************************************",
                                 "_generated": "struct_as_class_ctor",
                                 "ast": {
-                                    "attrs": {
-                                        "_constructor": true,
-                                        "name": "Cstruct1_ctor"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "ctor"
-                                    },
-                                    "params": [
-                                        {
-                                            "declarator": {
-                                                "name": "ifield"
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "ifield"
-                                            },
-                                            "specifier": [
-                                                "int"
-                                            ],
-                                            "typemap_name": "int"
+                                    "declarator": {
+                                        "attrs": {
+                                            "_constructor": true,
+                                            "name": "Cstruct1_ctor"
                                         },
-                                        {
-                                            "declarator": {
-                                                "name": "dfield"
+                                        "metaattrs": {
+                                            "intent": "ctor"
+                                        },
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "metaattrs": {
+                                                        "intent": "in",
+                                                        "struct_member": "ifield"
+                                                    },
+                                                    "name": "ifield",
+                                                    "typemap_name": "int"
+                                                },
+                                                "specifier": [
+                                                    "int"
+                                                ],
+                                                "typemap_name": "int"
                                             },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "dfield"
-                                            },
-                                            "specifier": [
-                                                "double"
-                                            ],
-                                            "typemap_name": "double"
-                                        }
-                                    ],
+                                            {
+                                                "declarator": {
+                                                    "metaattrs": {
+                                                        "intent": "in",
+                                                        "struct_member": "dfield"
+                                                    },
+                                                    "name": "dfield",
+                                                    "typemap_name": "double"
+                                                },
+                                                "specifier": [
+                                                    "double"
+                                                ],
+                                                "typemap_name": "double"
+                                            }
+                                        ],
+                                        "typemap_name": "outer::Cstruct1"
+                                    },
+                                    "is_ctor": true,
                                     "specifier": [
                                         "Cstruct1"
                                     ],
@@ -385,6 +397,7 @@
                                 },
                                 "decl": "Cstruct1_ctor",
                                 "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
+                                "name": "Cstruct1_ctor",
                                 "options": {
                                     "wrap_c": false,
                                     "wrap_fortran": false,
@@ -485,7 +498,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "ifield"
+                                        "name": "ifield",
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -515,7 +529,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "dfield"
+                                        "name": "dfield",
+                                        "typemap_name": "double"
                                     },
                                     "specifier": [
                                         "double"
@@ -580,12 +595,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "One"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "One",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -593,6 +609,7 @@
                         },
                         "decl": "void One()",
                         "declgen": "void One(void)",
+                        "name": "One",
                         "options": {},
                         "wrap": {
                             "c": true,

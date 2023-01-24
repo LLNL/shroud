@@ -12,14 +12,18 @@
                     {
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
-                            "attrs": {
-                                "_destructor": "Class1",
-                                "_name": "dtor"
+                            "declarator": {
+                                "attrs": {
+                                    "_destructor": "Class1",
+                                    "_name": "dtor"
+                                },
+                                "metaattrs": {
+                                    "intent": "dtor"
+                                },
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "dtor"
-                            },
-                            "params": [],
+                            "is_dtor": "Class1",
                             "specifier": [
                                 "void"
                             ],
@@ -27,6 +31,7 @@
                         },
                         "decl": "~Class1()",
                         "declgen": "~Class1(void)",
+                        "name": "dtor",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -78,12 +83,13 @@
                         "_generated": "getter/setter",
                         "ast": {
                             "declarator": {
-                                "name": "get_flag"
+                                "metaattrs": {
+                                    "intent": "getter"
+                                },
+                                "name": "get_flag",
+                                "params": [],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "getter"
-                            },
-                            "params": [],
                             "specifier": [
                                 "int"
                             ],
@@ -91,6 +97,7 @@
                         },
                         "decl": "int get_flag()",
                         "declgen": "int get_flag(void)",
+                        "name": "get_flag",
                         "options": {},
                         "user_fmt": {
                             "field_name": "m_flag",
@@ -170,12 +177,13 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "name": "flag",
-                                "readonly": true
-                            },
                             "declarator": {
-                                "name": "m_flag"
+                                "attrs": {
+                                    "name": "flag",
+                                    "readonly": true
+                                },
+                                "name": "m_flag",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -259,22 +267,23 @@
             {
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "deref": "raw"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "raw"
+                        },
+                        "metaattrs": {
+                            "deref": "raw",
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrRaw",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "deref": "raw",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -282,6 +291,7 @@
                 },
                 "decl": "int * ReturnIntPtrRaw()",
                 "declgen": "int * ReturnIntPtrRaw(void) +deref(raw)",
+                "name": "ReturnIntPtrRaw",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -333,22 +343,23 @@
             {
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "deref": "scalar"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "scalar"
+                        },
+                        "metaattrs": {
+                            "deref": "scalar",
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrScalar",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "deref": "scalar",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -356,6 +367,7 @@
                 },
                 "decl": "int * ReturnIntPtrScalar()",
                 "declgen": "int * ReturnIntPtrScalar(void) +deref(scalar)",
+                "name": "ReturnIntPtrScalar",
                 "options": {
                     "wrap_lua": false
                 },
@@ -442,22 +454,23 @@
                 ],
                 "_PTR_F_C_index": "24",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer"
+                        },
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrPointer",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -465,6 +478,7 @@
                 },
                 "decl": "int * ReturnIntPtrPointer()",
                 "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
+                "name": "ReturnIntPtrPointer",
                 "options": {
                     "wrap_lua": false
                 },
@@ -550,23 +564,24 @@
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrPointer",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "int"
                     ],
@@ -574,6 +589,7 @@
                 },
                 "decl": "int * ReturnIntPtrPointer()",
                 "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
+                "name": "ReturnIntPtrPointer",
                 "options": {
                     "wrap_lua": false
                 },
@@ -626,43 +642,45 @@
             {
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "deref": "raw"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "raw"
+                        },
+                        "metaattrs": {
+                            "deref": "raw",
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimRaw",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "deref": "raw",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -670,6 +688,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))",
                 "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)",
+                "name": "ReturnIntPtrDimRaw",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -757,50 +776,52 @@
                 ],
                 "_PTR_F_C_index": "25",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer",
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimPointer",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -808,6 +829,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "name": "ReturnIntPtrDimPointer",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -958,51 +980,53 @@
                 "_PTR_C_CXX_index": "6",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer",
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimPointer",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1010,6 +1034,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "name": "ReturnIntPtrDimPointer",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -1106,50 +1131,52 @@
                 ],
                 "_PTR_F_C_index": "26",
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable",
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "allocatable",
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "deref": "allocatable",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimAlloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1157,6 +1184,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
+                "name": "ReturnIntPtrDimAlloc",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -1307,51 +1335,53 @@
                 "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable",
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "allocatable",
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "allocatable",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimAlloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "allocatable",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1359,6 +1389,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
+                "name": "ReturnIntPtrDimAlloc",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -1455,49 +1486,51 @@
                 ],
                 "_PTR_F_C_index": "27",
                 "ast": {
-                    "attrs": {
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimDefault",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1505,6 +1538,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "name": "ReturnIntPtrDimDefault",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1654,50 +1688,52 @@
                 "_PTR_C_CXX_index": "8",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "dimension": "len"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "dimension": "len"
+                        },
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimDefault",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1705,6 +1741,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "name": "ReturnIntPtrDimDefault",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1796,51 +1833,53 @@
             {
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "capsule": true,
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimRawNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "capsule": true,
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1848,6 +1887,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimRawNew",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1941,52 +1981,54 @@
                 ],
                 "_PTR_F_C_index": "28",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer",
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "capsule": true,
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimPointerNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "capsule": true,
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1994,6 +2036,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimPointerNew",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2145,53 +2188,55 @@
                 "_PTR_C_CXX_index": "10",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer",
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "pointer",
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "capsule": true,
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimPointerNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "capsule": true,
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2199,6 +2244,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimPointerNew",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2292,51 +2338,53 @@
             {
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable",
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "deref": "allocatable",
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "deref": "allocatable",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimAllocNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2344,6 +2392,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimAllocNew",
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false
@@ -2479,51 +2528,53 @@
                 ],
                 "_PTR_F_C_index": "29",
                 "ast": {
-                    "attrs": {
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "capsule": true,
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimDefaultNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "capsule": true,
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2531,6 +2582,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimDefaultNew",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2682,52 +2734,54 @@
                 "_PTR_C_CXX_index": "12",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "dimension": "len",
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "api": "cdesc",
+                            "capsule": true,
+                            "deref": "pointer",
+                            "dimension": [
+                                {
+                                    "name": "len"
+                                }
+                            ],
+                            "intent": "function"
+                        },
                         "name": "ReturnIntPtrDimDefaultNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
-                    },
-                    "metaattrs": {
-                        "api": "cdesc",
-                        "capsule": true,
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
                         ],
-                        "intent": "function"
+                        "typemap_name": "int"
                     },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2735,6 +2789,7 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "name": "ReturnIntPtrDimDefaultNew",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2829,59 +2884,62 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimRaw"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "raw",
-                                "intent": "out",
-                                "owner": "library"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "raw",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "IntPtrDimRaw",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "raw",
+                                        "intent": "out",
+                                        "owner": "library"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "raw",
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2889,6 +2947,7 @@
                 },
                 "decl": "void IntPtrDimRaw(int **array, int *len+intent(out))",
                 "declgen": "void IntPtrDimRaw(int * * array +deref(raw)+intent(out)+owner(library), int * len +intent(out))",
+                "name": "IntPtrDimRaw",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -2905,66 +2964,69 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimPointer"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "pointer",
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "library"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimPointer",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "pointer",
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "library"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2972,6 +3034,7 @@
                 },
                 "decl": "void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimPointer(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "name": "IntPtrDimPointer",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -2988,66 +3051,69 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimAlloc"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "allocatable",
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "library"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimAlloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable",
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "library"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3055,6 +3121,7 @@
                 },
                 "decl": "void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimAlloc(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "name": "IntPtrDimAlloc",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3071,65 +3138,68 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimDefault"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "library"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimDefault",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "library"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3137,6 +3207,7 @@
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "name": "IntPtrDimDefault",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3153,60 +3224,63 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimRawNew"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "raw",
-                                "intent": "out",
-                                "owner": "caller"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "raw",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimRawNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "raw",
+                                        "intent": "out",
+                                        "owner": "caller"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "raw",
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3214,6 +3288,7 @@
                 },
                 "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimRawNew(int * * array +deref(raw)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "name": "IntPtrDimRawNew",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3230,66 +3305,69 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimPointerNew"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "pointer",
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "caller"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimPointerNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "pointer",
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "caller"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3297,6 +3375,7 @@
                 },
                 "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimPointerNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "name": "IntPtrDimPointerNew",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3313,66 +3392,69 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimAllocNew"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "allocatable",
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "caller"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimAllocNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable",
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "caller"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3380,6 +3462,7 @@
                 },
                 "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimAllocNew(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "name": "IntPtrDimAllocNew",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3396,65 +3479,68 @@
                 "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "IntPtrDimDefaultNew"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "dimension": "len",
-                                "intent": "out",
-                                "owner": "caller"
-                            },
-                            "declarator": {
-                                "name": "array",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "pointer",
-                                "dimension": [
-                                    {
-                                        "name": "len"
-                                    }
-                                ],
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
+                        "name": "IntPtrDimDefaultNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "dimension": "len",
+                                        "intent": "out",
+                                        "owner": "caller"
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "dimension": [
+                                            {
+                                                "name": "len"
+                                            }
+                                        ],
+                                        "intent": "out"
+                                    },
+                                    "name": "array",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "hidden": true,
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "len",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -3462,6 +3548,7 @@
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "name": "IntPtrDimDefaultNew",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -3478,28 +3565,30 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "createClassStatic"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "createClassStatic",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -3507,6 +3596,7 @@
                 },
                 "decl": "void createClassStatic(int flag)",
                 "declgen": "void createClassStatic(int flag +value)",
+                "name": "createClassStatic",
                 "options": {
                     "wrap_lua": false
                 },
@@ -3597,22 +3687,23 @@
             {
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "owner": "library"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "owner": "library"
+                        },
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getClassStatic",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Class1"
                     ],
@@ -3620,6 +3711,7 @@
                 },
                 "decl": "Class1 * getClassStatic() +owner(library)",
                 "declgen": "Class1 * getClassStatic(void) +owner(library)",
+                "name": "getClassStatic",
                 "options": {
                     "wrap_lua": false
                 },
@@ -3709,38 +3801,40 @@
             {
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "owner": "caller"
-                    },
                     "declarator": {
+                        "attrs": {
+                            "owner": "caller"
+                        },
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "getClassNew",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Class1"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Class1"
                     ],
@@ -3751,6 +3845,7 @@
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },
+                "name": "getClassNew",
                 "options": {
                     "wrap_lua": false
                 },

@@ -13,12 +13,13 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "FuncInClass"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "FuncInClass",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -26,6 +27,7 @@
                         },
                         "decl": "void FuncInClass(void)",
                         "declgen": "void FuncInClass(void)",
+                        "name": "FuncInClass",
                         "options": {
                             "wrap_fortran": true
                         },

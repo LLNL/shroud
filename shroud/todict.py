@@ -76,22 +76,20 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(node, d, ["pointer"])
         if node.name:
             d["name"] = node.name
-        elif node.func:
+        if node.func:
             d["func"] = self.visit(node.func)
-        return d
+        if node.params is not None:
+            d["params"] = self.visit(node.params)
+        if node.array:
+            d["array"] = self.visit(node.array)
+        if node.init is not None:
+            d["init"] = node.init
+        add_true_fields(node, d, ["func_const"])
 
-    def visit_Declaration(self, node):
-        d = dict(
-            specifier=node.specifier,
-            # #- node.array,
-        )
-        if self.labelast:
-            d["_ast"] = node.__class__.__name__
-        self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
-        add_non_none_fields(node, d, ["template_argument"])
         if node.typemap.base != "template":
             # Only print name to avoid too much nesting.
             d["typemap_name"] = node.typemap.name
+
         attrs = {key: value
                  for (key, value) in node.attrs.items()
                  if value is not None}
@@ -110,21 +108,32 @@ class ToDict(visitor.Visitor):
                 metaattrs["dimension"] = self.visit(metaattrs["dimension"])
             d["metaattrs"] = metaattrs
         
+        return d
+
+    def visit_Declaration(self, node):
+        d = dict(
+            specifier=node.specifier,
+            # #- node.array,
+        )
+        if self.labelast:
+            d["_ast"] = node.__class__.__name__
+        if node.tag_body:
+            self.add_visit_fields(node, d, ["enum_specifier", "class_specifier"])
+        add_non_none_fields(node, d, ["template_argument"])
+        if node.typemap.base != "template":
+            # Only print name to avoid too much nesting.
+            d["typemap_name"] = node.typemap.name
+        
         add_true_fields(node, d, [
-            "const", "func_const", "volatile",
+            "const", "volatile",
             "ftrim_char_in", "blanknull",
+            "is_ctor", "is_dtor",
         ])
         if node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
         if node.storage:
             d["storage"] = node.storage
-        if node.params is not None:
-            d["params"] = self.visit(node.params)
-        if node.array:
-            d["array"] = self.visit(node.array)
-        if node.init is not None:
-            d["init"] = node.init
         if node.template_arguments:
             lst = []
             for tp in node.template_arguments:
@@ -327,7 +336,7 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_FunctionNode(self, node):
-        d = dict(ast=self.visit(node.ast), decl=node.decl)
+        d = dict(ast=self.visit(node.ast), decl=node.decl, name=node.name)
         add_comment(d, "function", node._function_index)
         self.add_visit_fields(
             node,
@@ -630,7 +639,9 @@ class PrintNode(visitor.Visitor):
 
     def visit_Declaration(self, node):
         s = str(node)
-        if node.enum_specifier:
+        if not node.tag_body:
+            pass
+        elif node.enum_specifier:
             s += self.visit(node.enum_specifier)
         elif node.class_specifier:
             s += self.visit(node.class_specifier)

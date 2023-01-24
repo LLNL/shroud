@@ -19,41 +19,47 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct1_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "ifield"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "ifield"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct1_ctor"
                                 },
-                                {
-                                    "declarator": {
-                                        "name": "dfield"
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "ifield"
+                                            },
+                                            "name": "ifield",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "dfield"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "dfield"
+                                            },
+                                            "name": "dfield",
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "Cstruct1"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -61,6 +67,7 @@
                         },
                         "decl": "Cstruct1_ctor",
                         "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
+                        "name": "Cstruct1_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -163,7 +170,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "ifield"
+                                "name": "ifield",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -191,7 +199,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "dfield"
+                                "name": "dfield",
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -254,52 +263,58 @@
                         "<FUNCTION>": "1 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct_ptr_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "cfield",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "cfield"
-                                    },
-                                    "specifier": [
-                                        "char"
-                                    ],
-                                    "typemap_name": "char"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct_ptr_ctor"
                                 },
-                                {
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "const_dvalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "cfield"
+                                            },
+                                            "name": "cfield",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "const_dvalue"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "const_dvalue"
+                                            },
+                                            "name": "const_dvalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "Cstruct_ptr"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_ptr"
                             ],
@@ -307,6 +322,7 @@
                         },
                         "decl": "Cstruct_ptr_ctor",
                         "declgen": "Cstruct_ptr(char * cfield, const double * const_dvalue) +name(Cstruct_ptr_ctor)",
+                        "name": "Cstruct_ptr_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -418,7 +434,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -455,7 +472,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -521,121 +539,129 @@
                         "<FUNCTION>": "2 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct_list_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "nitems"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "nitems"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct_list_ctor"
                                 },
-                                {
-                                    "attrs": {
-                                        "dimension": "nitems+nitems"
-                                    },
-                                    "declarator": {
-                                        "name": "ivalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "+",
-                                                "right": {
-                                                    "name": "nitems"
-                                                }
-                                            }
-                                        ],
-                                        "intent": "in",
-                                        "struct_member": "ivalue"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                                "metaattrs": {
+                                    "intent": "ctor"
                                 },
-                                {
-                                    "attrs": {
-                                        "dimension": "nitems*TWO"
-                                    },
-                                    "declarator": {
-                                        "name": "dvalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "left": {
-                                                    "name": "nitems"
-                                                },
-                                                "op": "*",
-                                                "right": {
-                                                    "name": "TWO"
-                                                }
-                                            }
-                                        ],
-                                        "intent": "in",
-                                        "struct_member": "dvalue"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                },
-                                {
-                                    "attrs": {
-                                        "dimension": "nitems"
-                                    },
-                                    "declarator": {
-                                        "name": "svalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "nitems"
                                             },
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
+                                            "name": "nitems",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
                                         ],
-                                        "intent": "in",
-                                        "struct_member": "svalue"
+                                        "typemap_name": "int"
                                     },
-                                    "specifier": [
-                                        "char"
-                                    ],
-                                    "typemap_name": "char"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "nitems+nitems"
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "left": {
+                                                            "name": "nitems"
+                                                        },
+                                                        "op": "+",
+                                                        "right": {
+                                                            "name": "nitems"
+                                                        }
+                                                    }
+                                                ],
+                                                "intent": "in",
+                                                "struct_member": "ivalue"
+                                            },
+                                            "name": "ivalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "nitems*TWO"
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "left": {
+                                                            "name": "nitems"
+                                                        },
+                                                        "op": "*",
+                                                        "right": {
+                                                            "name": "TWO"
+                                                        }
+                                                    }
+                                                ],
+                                                "intent": "in",
+                                                "struct_member": "dvalue"
+                                            },
+                                            "name": "dvalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "nitems"
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "in",
+                                                "struct_member": "svalue"
+                                            },
+                                            "name": "svalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                },
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
+                                    }
+                                ],
+                                "typemap_name": "Cstruct_list"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_list"
                             ],
@@ -643,6 +669,7 @@
                         },
                         "decl": "Cstruct_list_ctor",
                         "declgen": "Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems), double * dvalue +dimension(nitems*TWO), char * * svalue +dimension(nitems)) +name(Cstruct_list_ctor)",
+                        "name": "Cstruct_list_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -815,7 +842,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -842,29 +870,30 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems+nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems+nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "+",
+                                            "right": {
+                                                "name": "nitems"
+                                            }
+                                        }
+                                    ]
+                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "+",
-                                        "right": {
-                                            "name": "nitems"
-                                        }
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -894,29 +923,30 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems*TWO"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems*TWO"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "left": {
+                                                "name": "nitems"
+                                            },
+                                            "op": "*",
+                                            "right": {
+                                                "name": "TWO"
+                                            }
+                                        }
+                                    ]
+                                },
                                 "name": "dvalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "left": {
-                                            "name": "nitems"
-                                        },
-                                        "op": "*",
-                                        "right": {
-                                            "name": "TWO"
-                                        }
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -946,10 +976,17 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "svalue",
                                 "pointer": [
                                     {
@@ -958,14 +995,8 @@
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -1031,80 +1062,87 @@
                         "<FUNCTION>": "3 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct_numpy_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "nitems"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "nitems"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct_numpy_ctor"
                                 },
-                                {
-                                    "attrs": {
-                                        "dimension": "nitems"
-                                    },
-                                    "declarator": {
-                                        "name": "ivalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
-                                        ],
-                                        "intent": "in",
-                                        "struct_member": "ivalue"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                                "metaattrs": {
+                                    "intent": "ctor"
                                 },
-                                {
-                                    "attrs": {
-                                        "dimension": "nitems"
-                                    },
-                                    "declarator": {
-                                        "name": "dvalue",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "dimension": [
-                                            {
-                                                "name": "nitems"
-                                            }
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "nitems"
+                                            },
+                                            "name": "nitems",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
                                         ],
-                                        "intent": "in",
-                                        "struct_member": "dvalue"
+                                        "typemap_name": "int"
                                     },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "nitems"
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "in",
+                                                "struct_member": "ivalue"
+                                            },
+                                            "name": "ivalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "dimension": "nitems"
+                                            },
+                                            "metaattrs": {
+                                                "dimension": [
+                                                    {
+                                                        "name": "nitems"
+                                                    }
+                                                ],
+                                                "intent": "in",
+                                                "struct_member": "dvalue"
+                                            },
+                                            "name": "dvalue",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "Cstruct_numpy"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_numpy"
                             ],
@@ -1112,6 +1150,7 @@
                         },
                         "decl": "Cstruct_numpy_ctor",
                         "declgen": "Cstruct_numpy(int nitems, int * ivalue +dimension(nitems), double * dvalue +dimension(nitems)) +name(Cstruct_numpy_ctor)",
+                        "name": "Cstruct_numpy_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1254,7 +1293,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "nitems"
+                                "name": "nitems",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1281,23 +1321,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "ivalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1327,23 +1368,24 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "attrs": {
-                                "dimension": "nitems"
-                            },
                             "declarator": {
+                                "attrs": {
+                                    "dimension": "nitems"
+                                },
+                                "metaattrs": {
+                                    "dimension": [
+                                        {
+                                            "name": "nitems"
+                                        }
+                                    ]
+                                },
                                 "name": "dvalue",
                                 "pointer": [
                                     {
                                         "ptr": "*"
                                     }
-                                ]
-                            },
-                            "metaattrs": {
-                                "dimension": [
-                                    {
-                                        "name": "nitems"
-                                    }
-                                ]
+                                ],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -1409,51 +1451,57 @@
                         "<FUNCTION>": "4 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Arrays1_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "array": [
-                                        {
-                                            "constant": "20"
-                                        }
-                                    ],
-                                    "declarator": {
-                                        "name": "name"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "name"
-                                    },
-                                    "specifier": [
-                                        "char"
-                                    ],
-                                    "typemap_name": "char"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Arrays1_ctor"
                                 },
-                                {
-                                    "array": [
-                                        {
-                                            "constant": "10"
-                                        }
-                                    ],
-                                    "declarator": {
-                                        "name": "count"
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "20"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "name"
+                                            },
+                                            "name": "name",
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "count"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "10"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "count"
+                                            },
+                                            "name": "count",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "Arrays1"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Arrays1"
                             ],
@@ -1461,6 +1509,7 @@
                         },
                         "decl": "Arrays1_ctor",
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
+                        "name": "Arrays1_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1568,13 +1617,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "20"
-                                }
-                            ],
                             "declarator": {
-                                "name": "name"
+                                "array": [
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
+                                "name": "name",
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -1604,13 +1654,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
                             "declarator": {
-                                "name": "count"
+                                "array": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "name": "count",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1685,7 +1736,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1"
+                                "name": "x1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1708,7 +1760,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1"
+                                "name": "y1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1767,7 +1820,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "x1"
+                                "name": "x1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1790,7 +1844,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "y1"
+                                "name": "y1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1813,7 +1868,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "z1"
+                                "name": "z1",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1871,28 +1927,30 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByValue"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStructByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1900,6 +1958,7 @@
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
                 "declgen": "int passStructByValue(Cstruct1 arg +value)",
+                "name": "passStructByValue",
                 "options": {
                     "literalinclude": true
                 },
@@ -1963,31 +2022,33 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStruct1",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -1995,6 +2056,7 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "name": "passStruct1",
                 "options": {
                     "literalinclude": true
                 },
@@ -2059,52 +2121,55 @@
                 "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct2"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "s1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
+                        "name": "passStruct2",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "s1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
                             },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -2115,6 +2180,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "passStruct2",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2200,33 +2266,35 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInPtr"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "acceptStructInPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -2234,6 +2302,7 @@
                 },
                 "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2296,63 +2365,67 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructOutPtr"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "acceptStructOutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
                             },
-                            "declarator": {
-                                "name": "i"
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -2363,6 +2436,7 @@
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
+                "name": "acceptStructOutPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2447,33 +2521,35 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructInOutPtr"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptStructInOutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -2481,6 +2557,7 @@
                 },
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
+                "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2524,43 +2601,46 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnStructByValue"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "returnStructByValue",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "Cstruct1"
+                    },
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -2568,6 +2648,7 @@
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
                 "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
+                "name": "returnStructByValue",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2652,49 +2733,52 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr1",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -2706,6 +2790,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
+                "name": "returnStructPtr1",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2788,70 +2873,74 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "returnStructPtr2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "i",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "d",
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "charlen": "LENOUTBUF",
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outbuf",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct1"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "charlen": "LENOUTBUF",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "outbuf",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct1"
                     ],
@@ -2863,6 +2952,7 @@
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
+                "name": "returnStructPtr2",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -2968,18 +3058,19 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "deref": "pointer",
+                            "intent": "function"
+                        },
                         "name": "get_global_struct_list",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_list"
                     },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Cstruct_list"
                     ],
@@ -2987,6 +3078,7 @@
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -3025,18 +3117,19 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_class",
+                        "params": [],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_class"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "Cstruct_as_class"
                     ],
@@ -3044,6 +3137,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
+                "name": "Create_Cstruct_as_class",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "literalinclude": true,
@@ -3059,49 +3153,52 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_class_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_class"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "x"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "y"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct_as_class"
                     ],
@@ -3109,6 +3206,7 @@
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
                 "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
+                "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
@@ -3123,34 +3221,36 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "Cstruct_as_class_sum"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "Cstruct_as_class_sum",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "pass": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "point",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct_as_class"
+                                },
+                                "specifier": [
+                                    "Cstruct_as_class"
+                                ],
+                                "typemap_name": "Cstruct_as_class"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "pass": true
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "point",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct_as_class"
-                            ],
-                            "typemap_name": "Cstruct_as_class"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -3158,6 +3258,7 @@
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
@@ -3176,64 +3277,68 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
+                        "metaattrs": {
+                            "api": "capptr",
+                            "intent": "function"
+                        },
                         "name": "Create_Cstruct_as_subclass_args",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "x",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "y",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "z",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "*"
                             }
-                        ]
+                        ],
+                        "typemap_name": "Cstruct_as_subclass"
                     },
-                    "metaattrs": {
-                        "api": "capptr",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "x"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "y"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "z"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "Cstruct_as_subclass"
                     ],
@@ -3241,6 +3346,7 @@
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
+                "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false

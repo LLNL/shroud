@@ -66,15 +66,19 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_overloaded": true,
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "_name": "ctor"
+                                },
+                                "metaattrs": {
+                                    "api": "capptr",
+                                    "intent": "ctor"
+                                },
+                                "params": [],
+                                "typemap_name": "forward::Class2"
                             },
-                            "metaattrs": {
-                                "api": "capptr",
-                                "intent": "ctor"
-                            },
-                            "params": [],
+                            "is_ctor": true,
                             "specifier": [
                                 "Class2"
                             ],
@@ -82,6 +86,7 @@
                         },
                         "decl": "Class2()",
                         "declgen": "Class2(void)",
+                        "name": "ctor",
                         "options": {
                             "F_create_generic": true
                         },
@@ -184,14 +189,18 @@
                     {
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
-                            "attrs": {
-                                "_destructor": "Class2",
-                                "_name": "dtor"
+                            "declarator": {
+                                "attrs": {
+                                    "_destructor": "Class2",
+                                    "_name": "dtor"
+                                },
+                                "metaattrs": {
+                                    "intent": "dtor"
+                                },
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "dtor"
-                            },
-                            "params": [],
+                            "is_dtor": "Class2",
                             "specifier": [
                                 "void"
                             ],
@@ -199,6 +208,7 @@
                         },
                         "decl": "~Class2()",
                         "declgen": "~Class2(void)",
+                        "name": "dtor",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -246,33 +256,35 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "func1"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "func1",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "tutorial::Class1"
+                                        },
+                                        "specifier": [
+                                            "tutorial::Class1"
+                                        ],
+                                        "typemap_name": "tutorial::Class1"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "tutorial::Class1"
-                                    ],
-                                    "typemap_name": "tutorial::Class1"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -280,6 +292,7 @@
                         },
                         "decl": "void func1(tutorial::Class1 *arg +intent(in))",
                         "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
+                        "name": "func1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -400,33 +413,35 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "acceptClass3"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "acceptClass3",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "forward::Class3"
+                                        },
+                                        "specifier": [
+                                            "Class3"
+                                        ],
+                                        "typemap_name": "forward::Class3"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "Class3"
-                                    ],
-                                    "typemap_name": "forward::Class3"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -434,6 +449,7 @@
                         },
                         "decl": "void acceptClass3(Class3 *arg +intent(in))",
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))",
+                        "name": "acceptClass3",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -615,31 +631,33 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStruct1"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStruct1",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1"
+                                },
+                                "specifier": [
+                                    "Cstruct1"
+                                ],
+                                "typemap_name": "Cstruct1"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1"
-                            ],
-                            "typemap_name": "Cstruct1"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -647,6 +665,7 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "name": "passStruct1",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false

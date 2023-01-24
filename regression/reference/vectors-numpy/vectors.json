@@ -17,42 +17,47 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_sum"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "vector_sum",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -60,6 +65,7 @@
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
+                "name": "vector_sum",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -126,42 +132,47 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_out",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -172,6 +183,7 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
+                "name": "vector_iota_out",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -221,42 +233,47 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_out_with_num",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -296,6 +313,7 @@
                         "result": "num"
                     }
                 },
+                "name": "vector_iota_out_with_num",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -311,42 +329,47 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_with_num2"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_out_with_num2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -374,6 +397,7 @@
                         "result": "num"
                     }
                 },
+                "name": "vector_iota_out_with_num2",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -389,44 +413,49 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_alloc"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "allocatable",
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_out_alloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable",
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable",
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -437,6 +466,7 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
+                "name": "vector_iota_out_alloc",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -452,44 +482,49 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_inout_alloc"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "deref": "allocatable",
-                                "intent": "inout",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_inout_alloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "allocatable",
+                                        "intent": "inout",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable",
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -500,6 +535,7 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
+                "name": "vector_iota_inout_alloc",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -515,41 +551,46 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_increment"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_increment",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -557,6 +598,7 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
+                "name": "vector_increment",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -571,42 +613,47 @@
                 "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_iota_out_d"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "double"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_iota_out_d",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "double"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -617,6 +664,7 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
+                "name": "vector_iota_out_d",
                 "options": {
                     "wrap_lua": false
                 },
@@ -665,65 +713,69 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_of_pointers"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "const": true,
-                                    "declarator": {
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "value": true
+                        "name": "vector_of_pointers",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
                             },
-                            "declarator": {
-                                "name": "num"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "num",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -734,6 +786,7 @@
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
+                "name": "vector_of_pointers",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -748,42 +801,47 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_count"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "std::string"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "vector_string_count",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "attrs": {
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -795,6 +853,7 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
+                "name": "vector_string_count",
                 "options": {
                     "wrap_python": false
                 },
@@ -808,42 +867,47 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_fill"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_string_fill",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -855,6 +919,7 @@
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
+                "name": "vector_string_fill",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -871,42 +936,47 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "vector_string_append"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "std::string"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "vector_string_append",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout",
+                                        "rank": 1
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
                                     ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "std::vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "std::string"
+                                        },
+                                        "specifier": [
+                                            "std::string"
+                                        ],
+                                        "typemap_name": "std::string"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -917,6 +987,7 @@
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
+                "name": "vector_string_append",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -932,38 +1003,43 @@
             {
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
-                    "attrs": {
-                        "rank": 1
-                    },
                     "declarator": {
-                        "name": "ReturnVectorAlloc"
+                        "attrs": {
+                            "rank": 1
+                        },
+                        "metaattrs": {
+                            "deref": "allocatable",
+                            "intent": "function"
+                        },
+                        "name": "ReturnVectorAlloc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "n",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "std::vector"
                     },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "n"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "std::vector"
                     ],
                     "template_arguments": [
                         {
+                            "declarator": {
+                                "typemap_name": "int"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -977,6 +1053,7 @@
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
+                "name": "ReturnVectorAlloc",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -1042,50 +1119,53 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnDim2"
-                    },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "rank": 2
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "function"
                         },
-                        {
-                            "attrs": {
-                                "implied": "size(arg,2)",
-                                "value": true
+                        "name": "returnDim2",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "rank": 2
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "len"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "implied": "size(arg,2)",
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "len",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
                     "specifier": [
                         "int"
                     ],
@@ -1093,6 +1173,7 @@
                 },
                 "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
                 "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2))+value)",
+                "name": "returnDim2",
                 "options": {},
                 "wrap": {
                     "python": true

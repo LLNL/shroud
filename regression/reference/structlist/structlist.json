@@ -13,51 +13,57 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Arrays1_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "array": [
-                                        {
-                                            "constant": "20"
-                                        }
-                                    ],
-                                    "declarator": {
-                                        "name": "name"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "name"
-                                    },
-                                    "specifier": [
-                                        "char"
-                                    ],
-                                    "typemap_name": "char"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Arrays1_ctor"
                                 },
-                                {
-                                    "array": [
-                                        {
-                                            "constant": "10"
-                                        }
-                                    ],
-                                    "declarator": {
-                                        "name": "count"
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "20"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "name"
+                                            },
+                                            "name": "name",
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "count"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "array": [
+                                                {
+                                                    "constant": "10"
+                                                }
+                                            ],
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "count"
+                                            },
+                                            "name": "count",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "Arrays1"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Arrays1"
                             ],
@@ -65,6 +71,7 @@
                         },
                         "decl": "Arrays1_ctor",
                         "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
+                        "name": "Arrays1_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -173,13 +180,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "20"
-                                }
-                            ],
                             "declarator": {
-                                "name": "name"
+                                "array": [
+                                    {
+                                        "constant": "20"
+                                    }
+                                ],
+                                "name": "name",
+                                "typemap_name": "char"
                             },
                             "specifier": [
                                 "char"
@@ -209,13 +217,14 @@
                     {
                         "<VARIABLE>": "****************************************",
                         "ast": {
-                            "array": [
-                                {
-                                    "constant": "10"
-                                }
-                            ],
                             "declarator": {
-                                "name": "count"
+                                "array": [
+                                    {
+                                        "constant": "10"
+                                    }
+                                ],
+                                "name": "count",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"

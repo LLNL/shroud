@@ -436,8 +436,7 @@ class Parser(ExprParser):
             self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
             self.info("destructor", parent.typemap.name)
-            node.attrs["_name"] = "dtor"
-            node.attrs["_destructor"] = tok.value
+            node.is_dtor = tok.value
             #node.typemap = self.namespace.typemap # The class' typemap
             node.typemap = typemap.void_typemap
             found_type = True
@@ -460,8 +459,7 @@ class Parser(ExprParser):
                         # template<T> vector { vector<T>(); }
                         # class Class1 { Class1(); }
                         self.info("constructor")
-                        node.attrs["_name"] = "ctor"
-                        node.attrs["_constructor"] = True
+                        node.is_ctor = True
                         more = False
                     # Save fully resolved typename
                     node.typemap = ns.typemap
@@ -599,39 +597,67 @@ class Parser(ExprParser):
         """Parse a declaration statement.
         Use with decl_statement and function arguments
 
-        <declaration> ::= {<declaration-specifier>}+ <declarator>?
-                           ( '['  <constant-expression>?  ']'  |
-                             '('  <parameter-list>            ')' [ const ] )
-                           [ = <initializer> ]
+        <declaration> ::= {<declaration-specifier>}+ <declarator_item>*
         """
         self.enter("declaration")
         node = Declaration(self.symtab)
         self.declaration_specifier(node)
         self.get_canonical_typemap(node)
 
-        if node.attrs["_destructor"]:
-            pass
-        elif node.attrs["_constructor"]:
-            pass
+        self.declarator_item(node)
+
+        # SSS Share fields between Declaration and Declarator for now
+        declarator = node.declarator
+        declarator.typemap = node.typemap
+        if declarator.func:
+            declarator.func.typemap = node.typemap
+        
+        if "typedef" in node.storage:
+            self.symtab.create_typedef(node)
+        self.exit("declaration", str(node))
+        return node
+
+    def declarator_item(self, node):
+        """
+        <declarator_item> ::= (
+                             '['  <constant-expression>?  ']'  |
+                             '('  <parameter-list>            ')' [ const ]
+                            ) [ = <initializer> ]
+        """
+        self.enter("declarator_item")
+        if node.is_dtor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "dtor"
+            declarator.attrs["_destructor"] = node.is_dtor
+        elif node.is_ctor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "ctor"
+            declarator.attrs["_constructor"] = True
         else:
-            node.declarator = self.declarator()
+            declarator = self.declarator()
+        node.declarator = declarator
 
         if self.token.typ == "LPAREN":  # peek
             # Function parameters.
-            node.params = self.parameter_list()
+            params = self.parameter_list()
+            declarator.params = params
 
             # Look for (void), set to no parameters.
-            if len(node.params) == 1:
-                chk = node.params[0]
-                if (chk.declarator is None and
-                    chk.specifier == ["void"]):
-                    node.params = []
+            if len(params) == 1:
+                chk = params[0]
+                if (chk.declarator.name is None and
+                    chk.specifier == ["void"] and
+                    chk.declarator.func is None    # Function pointers
+                ):
+                    declarator.params = []
 
             #  method const
             if self.token.typ == "TYPE_QUALIFIER":
                 if self.token.value == "const":
                     self.next()
-                    node.func_const = True
+                    declarator.func_const = True
                 else:
                     raise RuntimeError(
                         "'{}' unexpected after function declaration".format(
@@ -640,18 +666,20 @@ class Parser(ExprParser):
                     )
         while self.token.typ == "LBRACKET":
             self.next() # consume bracket
-            node.array.append(self.expression())
+            declarator.array.append(self.expression())
             self.mustbe("RBRACKET")
-        self.attribute(node.attrs)  # variable attributes
+        self.attribute(declarator.attrs)  # variable attributes
 
         # Attribute are parsed before default value since
         # default value may have a +.
         # (int value = 1+size)
         if self.have("EQUALS"):
-            node.init = self.initializer()
-        self.exit("declaration", str(node))
-        if "typedef" in node.storage:
-            self.symtab.create_typedef(node)
+            declarator.init = self.initializer()
+
+        if declarator.ctor_dtor_name:
+            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.attrs["_name"]
+            
+        self.exit("declarator_item", str(node))
         return node
 
     def declarator(self):
@@ -670,10 +698,9 @@ class Parser(ExprParser):
         elif self.token.typ == "LPAREN":  # (*var)
             self.next()
             node.func = self.declarator()
+            # Promote name.
+            node.name = node.func.name
             self.mustbe("RPAREN")
-        else:
-            if not node.pointer:
-                node = None
 
         self.exit("declarator", str(node))
         return node
@@ -803,8 +830,10 @@ class Parser(ExprParser):
         node.class_specifier = clsnode
         node.typemap = clsnode.typemap
         if self.have("EOF"):
-            pass
+            # Body added by other lines in YAML.
+            node.tag_body = True
         elif self.have("COLON"):
+            node.tag_body = True
             if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
                 access_specifier = self.token.value
                 self.next()
@@ -822,6 +851,7 @@ class Parser(ExprParser):
                 self.mustbe("ID")
 
         if self.have("LCURLY"):
+            node.tag_body = True
             members = clsnode.members
             while self.token.typ != "RCURLY":
 #                members.append(self.declaration()) # GGG, accepts too much  - template
@@ -919,6 +949,7 @@ class Parser(ExprParser):
             node.specifier.append("enum " + ename)
         if self.have("LCURLY"):
             #        self.mustbe("LCURLY")
+            node.tag_body = True
             enumnode = Enum(ename, self.symtab, scope)
             members = enumnode.members
             while self.token.typ != "RCURLY":
@@ -973,10 +1004,13 @@ class Parser(ExprParser):
             self.symtab.pop_scope()
             node.class_specifier = structnode
             node.typemap = structnode.typemap
+            node.tag_body = True
         elif self.have("EOF"):
             structnode = Struct(sname, self.symtab)
             node.class_specifier = structnode
             node.typemap = structnode.typemap
+            # Body added by other lines in YAML.
+            node.tag_body = True
             # GGG - Caller must call symtab.pop_scope when finished with members.
         else:
             structnode = self.symtab.current.lookup_tag("struct", sname)
@@ -1195,93 +1229,19 @@ class Declarator(Node):
     def __init__(self):
         self.pointer = []  # Multiple levels of indirection
         self.name = None  # *name
-        self.func = None  # (*name)     declarator
+        self.func = None  # (*name)     Declarator
+        
+        self.ctor_dtor_name = False
 
-    def gen_decl_work(self, decl, **kwargs):
-        """Generate string by appending text to decl.
-
-        Replace name with value from kwargs.
-        name=None will skip appending any existing name.
-        """
-        if kwargs.get("force_ptr", False):
-            # Force to be a pointer
-            decl.append(" *")
-        elif kwargs.get("as_scalar", False):
-            pass  # Do not print pointer
-        else:
-            for ptr in self.pointer:
-                ptr.gen_decl_work(decl, **kwargs)
-        if self.func:
-            decl.append(" (")
-            self.func.gen_decl_work(decl, **kwargs)
-            decl.append(")")
-        elif "name" in kwargs:
-            if kwargs["name"]:
-                decl.append(" ")
-                decl.append(kwargs["name"])
-        elif self.name:
-            decl.append(" ")
-            decl.append(self.name)
-
-    def __str__(self):
-        out = ""
-        for ptr in self.pointer:
-            out += str(ptr)
-            out += " "
-
-        if self.name:
-            out += self.name
-        elif self.func:
-            out += "(" + str(self.func) + ")"
-
-        return out
-
-
-class Declaration(Node):
-    """
-    specifier = const  int
-    init =         a  *a   a=1
-
-    attrs     - Attributes set by the user.
-    metaattrs - Attributes set by Shroud.
-        struct_member - map ctor argument to struct member.
-    """
-
-    fortran_ranks = [
-        "",
-        "(:)",
-        "(:,:)",
-        "(:,:,:)",
-        "(:,:,:,:)",
-        "(:,:,:,:,:)",
-        "(:,:,:,:,:,:)",
-        "(:,:,:,:,:,:,:)",
-    ]
-
-    def __init__(self, symtab=None):
-#        self.symtab = symtab  # GGG -lots of problems with copy
-        self.specifier = []  # int, long, ...
-        self.storage = []  # static, tyedef, ...
-        self.enum_specifier = None   # Enum
-        self.class_specifier = None  # CXXClass, Struct (union)
-        self.const = False
-        self.volatile = False
-        self.declarator = None
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
-        self.template_arguments = []    # vector<int>, list of Declaration
-        self.template_argument = None   # T arg, str
         self.attrs = collections.defaultdict(lambda: None)
         self.metaattrs = collections.defaultdict(lambda: None)
-
         self.func_const = False
         self.typemap = None
 
-        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
-        self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
-
-    def get_name(self, use_attr=True):
+    def get_user_name(self, use_attr=True):
         """Get name from declarator
         use_attr - True, check attr for name
         ctor and dtor should have _name set
@@ -1290,32 +1250,8 @@ class Declaration(Node):
             name = self.attrs["name"] or self.attrs["_name"]
             if name is not None:
                 return name
-        if self.declarator is None:
-            # abstract declarator
-            return None
-        name = self.declarator.name
-        if name is None:
-            if self.declarator.func:
-                name = self.declarator.func.name
-        return name
-
-    def set_name(self, name):
-        """Set name in declarator"""
-        if self.declarator.name:
-            self.declarator.name = name
-        else:
-            self.declarator.func.name = name
-
-    name = property(get_name, set_name, None, "Declaration name")
-
-    def set_type(self, ntypemap):
-        """Set type specifier from a typemap."""
-        self.typemap = ntypemap
-        # 'long long' into ['long', 'long']
-        self.specifier = ntypemap.cxx_type.split()
-
-    def get_full_type(self):
-        return ' '.join(self.specifier)
+        return self.name
+    user_name = property(get_user_name, None, None, "Declaration user_name")
 
     def is_ctor(self):
         """Return True if self is a constructor."""
@@ -1331,9 +1267,7 @@ class Declaration(Node):
         """Return number of levels of pointers.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr == "*":
                 nlevels += 1
         return nlevels
@@ -1342,9 +1276,7 @@ class Declaration(Node):
         """Return number of levels of references.
         """
         nlevels = 0
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr == "&":
                 nlevels += 1
         return nlevels
@@ -1354,10 +1286,9 @@ class Declaration(Node):
         pointer or reference.
         """
         nlevels = 0
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                if ptr.ptr:
-                    nlevels += 1
+        for ptr in self.pointer:
+            if ptr.ptr:
+                nlevels += 1
         return nlevels
 
     def is_array(self):
@@ -1367,9 +1298,7 @@ class Declaration(Node):
         nlevels = 0
         if self.array:
             nlevels += 1
-        if self.declarator is None:
-            return nlevels
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             if ptr.ptr:
                 nlevels += 1
         return nlevels
@@ -1377,11 +1306,9 @@ class Declaration(Node):
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
-        if self.declarator is None:
+        if self.func is None:
             return False
-        if self.declarator.func is None:
-            return False
-        if not self.declarator.func.pointer:
+        if not self.func.pointer:
             return False
         return True
 
@@ -1390,9 +1317,7 @@ class Declaration(Node):
         '*', '**', '&*', '[]'
         """
         out = ''
-        if self.declarator is None:
-            return out
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             out += ptr.ptr
         if self.array:
             out += "[]"   # XXX - multidimensional?
@@ -1403,9 +1328,7 @@ class Declaration(Node):
         'scalar', '*', '**'
         """
         out = ''
-        if self.declarator is None:
-            return "scalar"
-        for ptr in self.declarator.pointer:
+        for ptr in self.pointer:
             out += ptr.ptr
         if self.array:
             out += "[]"   # XXX - multidimensional?
@@ -1445,136 +1368,40 @@ class Declaration(Node):
         """Return index of argument in params with name."""
         return find_arg_index_by_name(self.params, name)
 
-    def _as_arg(self, name):
-        """Create an argument to hold the function result.
-        This is intended for pointer arguments, char, string or vector.
-        Move template_arguments from function to argument.
-        """
-        new = Declaration()
-        new.specifier = self.specifier[:]
-        new.storage = self.storage[:]
-        new.const = self.const
-        new.volatile = self.volatile
-        new.declarator = copy.deepcopy(self.declarator)
-        new.declarator.name = name
-        if not new.declarator.pointer:
-            # make sure the return type is a pointer
-            new.declarator.pointer = [Ptr("*")]
-        # new.array = None
-        new.attrs = copy.deepcopy(self.attrs) # XXX no need for deepcopy in future
-        new.metaattrs = copy.deepcopy(self.metaattrs)
-        new.metaattrs["intent"] = "out"
-        new.typemap = self.typemap
-        new.template_arguments = self.template_arguments
-        return new
-
-    def set_return_to_void(self):
-        """Change function to void"""
-        self.specifier = ["void"]
-        self.typemap = typemap.void_typemap
-        self.const = False
-        self.volatile = False
-        self.declarator.pointer = []
-        self.template_arguments = []
-
-    def result_as_arg(self, name):
-        """Pass the function result as an argument.
-        Change function result to 'void'.
-        """
-        newarg = self._as_arg(name)
-        self.params.append(newarg)
-        self.set_return_to_void()
-        return newarg
-
-    def instantiate(self, node):
-        """Instantiate a template argument.
-        node - Declaration node of template argument.
-        Return a new copy of self and fill in type from node.
-        If node is 'int *', the pointer is in the declarator.
-        """
-        # XXX - what if T = 'int *' and arg is 'T *arg'?
-        new = copy.copy(self)
-        new.set_type(node.typemap)
-        return new
-
-    def __str__(self):
-        out = []
-        if self.const:
-            out.append("const ")
-        if self.volatile:
-            out.append("volatile ")
-        if self.attrs["_destructor"]:
-            out.append("~")
-            out.append(self.attrs["_destructor"])
-        else:
-            if self.storage:
-                out.append(" ".join(self.storage))
-                out.append(" ")
-            if self.specifier:
-                out.append(" ".join(self.specifier))
-            else:
-                out.append("int")
-        if self.declarator:
-            out.append(" ")
-            out.append(str(self.declarator))
-        if self.params is not None:
-            out.append("(")
-            if self.params:
-                out.append(str(self.params[0]))
-                for param in self.params[1:]:
-                    out.append(",")
-                    out.append(str(param))
-            out.append(")")
-            if self.func_const:
-                out.append(" const")
-        if self.array:
-            for dim in self.array:
-                out.append("[")
-                out.append(todict.print_node(dim))
-                out.append("]")
-        if self.init:
-            out.append("=")
-            out.append(str(self.init))
-        return "".join(out)
-
-    def gen_decl(self, **kwargs):
-        """Return a string of the unparsed declaration.
-
-        Args:
-            params - None do not print parameters.
-        """
-        decl = []
-        self.gen_decl_work(decl, **kwargs)
-        return "".join(decl)
-
-    def gen_decl_work(self, decl, **kwargs):
+    def gen_decl_work(self, decl, force_ptr=False, ctor_dtor=False,
+                      append_init=True, continuation=False,
+                      attrs=True, **kwargs):
         """Generate string by appending text to decl.
 
-        Replace params with value from kwargs.
-        Most useful to call with params=None to skip parameters
-        and only get function result.
+        Replace name with value from kwargs.
+        name=None will skip appending any existing name.
 
         attrs=False give compilable code.
         """
-        use_attrs = kwargs.get("attrs", True)
-        if self.const:
-            decl.append("const ")
-
-        if self.attrs["_destructor"]:
-            decl.append("~")
-            decl.append(self.attrs["_destructor"])
+        if force_ptr:
+            # Force to be a pointer
+            decl.append(" *")
+        elif kwargs.get("as_scalar", False):
+            pass  # Do not print pointer
         else:
-            if self.storage:
-                decl.append(" ".join(self.storage))
+            for ptr in self.pointer:
+                ptr.gen_decl_work(decl, **kwargs)
+        if self.func:
+            decl.append(" (")
+            self.func.gen_decl_work(decl, attrs=attrs, **kwargs)
+            decl.append(")")
+        elif "name" in kwargs:
+            if kwargs["name"]:
                 decl.append(" ")
-            decl.append(" ".join(self.specifier))
-        if self.template_arguments:
-            decl.append(self.gen_template_arguments())
+                decl.append(kwargs["name"])
+        elif self.name:
+            decl.append(" ")
+            decl.append(self.name)
+        elif ctor_dtor and self.ctor_dtor_name:
+            decl.append(" ")
+            decl.append(self.ctor_dtor_name)
 
-        if self.declarator:
-            self.declarator.gen_decl_work(decl, **kwargs)
-
-        if self.init is not None:
+        if append_init and self.init is not None:
             decl.append("=")
             decl.append(str(self.init))
         #        if use_attrs:
@@ -1583,12 +1410,17 @@ class Declaration(Node):
         params = kwargs.get("params", self.params)
         if params is not None:
             decl.append("(")
+            if continuation:
+                decl.append("\t")
             if params:
                 comma = ""
                 for arg in params:
                     decl.append(comma)
-                    arg.gen_decl_work(decl)
-                    comma = ", "
+                    arg.gen_decl_work(decl, attrs=attrs, continuation=continuation)
+                    if continuation:
+                        comma = ",\t "
+                    else:
+                        comma = ", "
             else:
                 decl.append("void")
             decl.append(")")
@@ -1598,19 +1430,10 @@ class Declaration(Node):
             decl.append("[")
             decl.append(todict.print_node(dim))
             decl.append("]")
-        if use_attrs:
+        if attrs:
             self.gen_attrs(self.attrs, decl)
 
     _skip_annotations = ["template"]
-
-    def gen_template_arguments(self):
-        """Return string for template_arguments."""
-        decl = ["<"]
-        for targ in self.template_arguments:
-            decl.append(str(targ))
-            decl.append(",")
-        decl[-1] = ">"
-        return ''.join(decl)
 
     def gen_attrs(self, attrs, decl, skip={}):
         space = " "
@@ -1631,6 +1454,211 @@ class Declaration(Node):
             else:
                 decl.append("{}({})".format(attr, value))
             space = ""
+
+    def __str__(self):
+        out = []
+        for ptr in self.pointer:
+            out.append(str(ptr))
+            out.append(" ")
+
+        if self.func:
+            out.append("(" + str(self.func) + ")")
+        elif self.name:
+            out.append(self.name)
+
+        if self.params is not None:
+            out.append("(")
+            if self.params:
+                out.append(str(self.params[0]))
+                for param in self.params[1:]:
+                    out.append(",")
+                    out.append(str(param))
+            out.append(")")
+            if self.func_const:
+                out.append(" const")
+        if self.array:
+            for dim in self.array:
+                out.append("[")
+                out.append(todict.print_node(dim))
+                out.append("]")
+        if self.init:
+            out.append("=")
+            out.append(str(self.init))
+
+        return "".join(out)
+
+
+class Declaration(Node):
+    """
+    specifier = const  int
+    init =         a  *a   a=1
+
+    attrs     - Attributes set by the user.
+    metaattrs - Attributes set by Shroud.
+        struct_member - map ctor argument to struct member.
+    """
+
+    fortran_ranks = [
+        "",
+        "(:)",
+        "(:,:)",
+        "(:,:,:)",
+        "(:,:,:,:)",
+        "(:,:,:,:,:)",
+        "(:,:,:,:,:,:)",
+        "(:,:,:,:,:,:,:)",
+    ]
+
+    def __init__(self, symtab=None):
+#        self.symtab = symtab  # GGG -lots of problems with copy
+        self.specifier = []  # int, long, ...
+        self.storage = []  # static, tyedef, ...
+        self.enum_specifier = None   # Enum
+        self.class_specifier = None  # CXXClass, Struct (union)
+        self.tag_body = False        # if True, members are defined.
+        self.const = False
+        self.volatile = False
+        self.declarator = None
+        self.template_arguments = []    # vector<int>, list of Declaration
+        self.template_argument = None   # T arg, str
+        self.is_ctor = False
+        self.is_dtor = False
+
+        self.typemap = None
+
+        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
+        self.blanknull = False     # Convert blank CHARACTER to NULL pointer.
+
+    def set_type(self, ntypemap):
+        """Set type specifier from a typemap."""
+        self.typemap = ntypemap
+        # 'long long' into ['long', 'long']
+        self.specifier = ntypemap.cxx_type.split()
+
+    def get_full_type(self):
+        return ' '.join(self.specifier)
+
+    def _as_arg(self, name):
+        """Create an argument to hold the function result.
+        This is intended for pointer arguments, char, string or vector.
+        Move template_arguments from function to argument.
+        """
+        new = Declaration()
+        new.specifier = self.specifier[:]
+        new.storage = self.storage[:]
+        new.const = self.const
+        new.volatile = self.volatile
+        new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
+
+        new.declarator = copy.deepcopy(self.declarator)
+        new.declarator.name = name
+        if not new.declarator.pointer:
+            # make sure the return type is a pointer
+            new.declarator.pointer = [Ptr("*")]
+        # new.array = None
+        new.declarator.attrs = copy.deepcopy(self.declarator.attrs) # XXX no need for deepcopy in future
+        new.declarator.metaattrs = copy.deepcopy(self.declarator.metaattrs)
+        new.declarator.metaattrs["intent"] = "out"
+        new.declarator.params= None
+        new.declarator.typemap = new.declarator.typemap
+        return new
+
+    def set_return_to_void(self):
+        """Change function to void"""
+        self.specifier = ["void"]
+        self.typemap = typemap.void_typemap
+        self.const = False
+        self.volatile = False
+        self.declarator.pointer = []
+        self.declarator.typemap = typemap.void_typemap
+        self.template_arguments = []
+
+    def result_as_arg(self, name):
+        """Pass the function result as an argument.
+        Change function result to 'void'.
+        """
+        newarg = self._as_arg(name)
+        self.declarator.params.append(newarg)
+        self.set_return_to_void()
+        return newarg
+
+    def instantiate(self, node):
+        """Instantiate a template argument.
+        node - Declaration node of template argument.
+        Return a new copy of self and fill in type from node.
+        If node is 'int *', the pointer is in the declarator.
+        """
+        # XXX - what if T = 'int *' and arg is 'T *arg'?
+        new = copy.copy(self)
+        new.set_type(node.typemap)
+        return new
+
+    def __str__(self):
+        out = []
+        if self.const:
+            out.append("const ")
+        if self.volatile:
+            out.append("volatile ")
+        if self.is_dtor:
+            out.append("~")
+            out.append(self.is_dtor)
+        else:
+            if self.storage:
+                out.append(" ".join(self.storage))
+                out.append(" ")
+            if self.specifier:
+                out.append(" ".join(self.specifier))
+            else:
+                out.append("int")
+
+        var = str(self.declarator)
+        if var:
+            out.append(" ")
+            out.append(var)
+        return "".join(out)
+
+    def gen_decl(self, **kwargs):
+        """Return a string of the unparsed declaration.
+
+        Args:
+            params - None do not print parameters.
+        """
+        decl = []
+        self.gen_decl_work(decl, **kwargs)
+        return "".join(decl)
+
+    def gen_decl_work(self, decl, attrs=True, **kwargs):
+        """Generate string by appending text to decl.
+
+        Replace params with value from kwargs.
+        Most useful to call with params=None to skip parameters
+        and only get function result.
+        """
+        if self.const:
+            decl.append("const ")
+
+        if self.is_dtor:
+            decl.append("~")
+            decl.append(self.is_dtor)
+        else:
+            if self.storage:
+                decl.append(" ".join(self.storage))
+                decl.append(" ")
+            decl.append(" ".join(self.specifier))
+        if self.template_arguments:
+            decl.append(self.gen_template_arguments())
+
+        self.declarator.gen_decl_work(decl, attrs=attrs, **kwargs)
+
+    def gen_template_arguments(self):
+        """Return string for template_arguments."""
+        decl = ["<"]
+        for targ in self.template_arguments:
+            decl.append(str(targ))
+            decl.append(",")
+        decl[-1] = ">"
+        return ''.join(decl)
 
     def gen_arg_as_cxx(self, **kwargs):
         """Generate C++ declaration of variable.
@@ -1668,6 +1696,7 @@ class Declaration(Node):
         asgn_value=False,
         remove_const=False,
         with_template_args=False,
+        force_ptr=False,
         **kwargs
     ):
         """Generate an argument for the C wrapper.
@@ -1717,53 +1746,25 @@ class Declaration(Node):
             typ = getattr(ntypemap, lang) or "--NOTYPE--"
             decl.append(typ)
 
-        if self.declarator is None:
-            # XXX - used with constructor but seems wrong for abstract arguments
-            declarator = Declarator()
-            declarator.name = self.name
-            if self.attrs["_constructor"] and lang == "c_type":
-                # The C wrapper wants a pointer to the type.
-                declarator.pointer.append(Ptr("*"))
-        else:
-            declarator = self.declarator
+        declarator = self.declarator
+        if self.is_ctor and lang == "c_type":
+            # The C wrapper wants a pointer to the type.
+            force_ptr = True
 
-        if asgn_value and const_index is not None and not self.is_indirect():
+        if asgn_value and const_index is not None and not self.declarator.is_indirect():
             # Remove 'const' so the variable can be assigned to.
             decl[const_index] = ""
         elif remove_const and const_index is not None:
             decl[const_index] = ""
 
         if lang == "c_type":
-            declarator.gen_decl_work(decl, as_c=True, **kwargs)
+            declarator.gen_decl_work(decl, as_c=True, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
         else:
-            declarator.gen_decl_work(decl, **kwargs)
-
-        params = kwargs.get("params", self.params)
-        if params is not None:
-            decl.append("(")
-            if continuation:
-                decl.append("\t")
-
-            if params:
-                comma = ""
-                for arg in params:
-                    decl.append(comma)
-                    arg.gen_arg_as_lang(decl, lang, attrs=None, continuation=continuation)
-                    if continuation:
-                        comma = ",\t "
-                    else:
-                        comma = ", "
-
-            else:
-                decl.append("void")
-            decl.append(")")
-            if self.func_const:
-                decl.append(" const")
-        if self.array:
-            for dim in self.array:
-                decl.append("[")
-                decl.append(todict.print_node(dim))
-                decl.append("]")
+            declarator.gen_decl_work(decl, force_ptr=force_ptr,
+                                     append_init=False, ctor_dtor=True,
+                                     attrs=False, continuation=continuation, **kwargs)
 
     def as_cast(self, language="c"):
         """
@@ -1776,10 +1777,9 @@ class Declaration(Node):
         typ = getattr(self.typemap, language + '_type')
         decl.append(typ)
         ptrs = []
-        if self.declarator:
-            for ptr in self.declarator.pointer:
-                ptrs.append("*")   # ptr.ptr)
-        if self.array:
+        for ptr in self.declarator.pointer:
+            ptrs.append("*")   # ptr.ptr)
+        if self.declarator.array:
             ptrs.append("*")
         if ptrs:
             decl.append(" ")
@@ -1798,8 +1798,8 @@ class Declaration(Node):
             name   - Set name explicitly, else self.name.
         """
         t = []
-        attrs = self.attrs
-        meta = self.metaattrs
+        attrs = self.declarator.attrs
+        meta = self.declarator.metaattrs
         ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
@@ -1828,7 +1828,7 @@ class Declaration(Node):
         if kwargs.get("name", None):
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         if basedef.base == "vector":
             decl.append("(*)")  # is array
@@ -1860,8 +1860,9 @@ class Declaration(Node):
           OPTIONAL, VALUE, and INTENT
         """
         t = []
-        attrs = self.attrs
-        meta = self.metaattrs
+        declarator = self.declarator
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         ntypemap = self.typemap
         if ntypemap.sgroup == "vector":
             # If std::vector, use its type (<int>)
@@ -1884,7 +1885,7 @@ class Declaration(Node):
                 t.append("character(len={})".format(attrs["len"]))
             elif is_allocatable:
                 t.append("character(len=:)")
-            elif self.array:
+            elif declarator.array:
                 t.append("character(kind=C_CHAR)")
             elif not local:
                 t.append("character(len=*)")
@@ -1922,7 +1923,7 @@ class Declaration(Node):
         if "name" in kwargs:
             decl.append(kwargs["name"])
         else:
-            decl.append(self.name)
+            decl.append(self.declarator.user_name)
 
         dimension = attrs["dimension"]
         rank = attrs["rank"]
@@ -1940,10 +1941,10 @@ class Declaration(Node):
             # Assume 1-d.
             if ntypemap.base != "string":
                 decl.append("(:)")
-        elif self.array:
+        elif declarator.array:
             decl.append("(")
             # Convert to column-major order.
-            for dim in reversed(self.array):
+            for dim in reversed(declarator.array):
                 decl.append(todict.print_node(dim))
                 decl.append(",")
             decl[-1] = ")"
@@ -2303,7 +2304,7 @@ class SymbolTable(object):
 #            self.add_child_to_current(node, name)
         if ast.declarator.func:
             # typedef int (*fcn)(int);
-            name = ast.get_name()
+            name = ast.declarator.user_name
             type_name = self.scopename + name
             ntypemap = typemap.Typemap(
                 type_name,
@@ -2448,6 +2449,7 @@ def create_voidstar(ntypemap, name, const=False):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr("*")]
+    arg.declarator.typemap = ntypemap
     arg.specifier = ntypemap.cxx_type.split()
     arg.typemap = ntypemap
     return arg
@@ -2460,19 +2462,24 @@ def create_struct_ctor(cls):
     """
     name = cls.name + "_ctor"
     ast = Declaration()
-    ast.attrs["_constructor"] = True
-    ast.attrs["name"] = name
-##        _name="ctor",
-    ast.metaattrs["intent"] = "ctor"
+    ast.is_ctor = True
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
-    ast.params = []
+    declarator = Declarator()
+    ast.declarator = declarator
+    declarator.params = []
+    declarator.typemap = cls.typemap
+    declarator.attrs["_constructor"] = True
+    declarator.attrs["name"] = name
+##        _name="ctor",
+    declarator.metaattrs["intent"] = "ctor"
     return ast
 
 
 def find_arg_by_name(decls, name):
     """Find argument in params with name.
     Return None if not found.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -2481,12 +2488,13 @@ def find_arg_by_name(decls, name):
     if decls is None:
         return None
     for decl in decls:
-        if decl.name == name:
+        if decl.declarator.name == name:
             return decl
     return None
 
 def find_arg_index_by_name(decls, name):
     """Return index of argument in decls with name.
+    Does not check name attribute.
 
     Args:
         decls - list of Declaration
@@ -2495,6 +2503,6 @@ def find_arg_index_by_name(decls, name):
     if decls is None:
         return -1
     for i, decl in enumerate(decls):
-        if decl.name == name:
+        if decl.declarator.name == name:
             return i
     return -1

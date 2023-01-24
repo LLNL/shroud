@@ -14,41 +14,47 @@
                         "<FUNCTION>": "0 ****************************************",
                         "_generated": "struct_as_class_ctor",
                         "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct1_cls_ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "ifield"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "ifield"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
+                            "declarator": {
+                                "attrs": {
+                                    "_constructor": true,
+                                    "name": "Cstruct1_cls_ctor"
                                 },
-                                {
-                                    "declarator": {
-                                        "name": "dfield"
+                                "metaattrs": {
+                                    "intent": "ctor"
+                                },
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "ifield"
+                                            },
+                                            "name": "ifield",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
                                     },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "dfield"
-                                    },
-                                    "specifier": [
-                                        "double"
-                                    ],
-                                    "typemap_name": "double"
-                                }
-                            ],
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "dfield"
+                                            },
+                                            "name": "dfield",
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    }
+                                ],
+                                "typemap_name": "Cstruct1_cls"
+                            },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct1_cls"
                             ],
@@ -56,6 +62,7 @@
                         },
                         "decl": "Cstruct1_cls_ctor",
                         "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
+                        "name": "Cstruct1_cls_ctor",
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -158,7 +165,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "ifield"
+                                "name": "ifield",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -186,7 +194,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "dfield"
+                                "name": "dfield",
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -258,30 +267,32 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceCls"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStructByReferenceCls",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1_cls"
+                                },
+                                "specifier": [
+                                    "Cstruct1_cls"
+                                ],
+                                "typemap_name": "Cstruct1_cls"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "Cstruct1_cls"
-                            ],
-                            "typemap_name": "Cstruct1_cls"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -289,6 +300,7 @@
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
                 "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg)",
+                "name": "passStructByReferenceCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -351,31 +363,33 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceInCls"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "passStructByReferenceInCls",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1_cls"
+                                },
+                                "specifier": [
+                                    "Cstruct1_cls"
+                                ],
+                                "typemap_name": "Cstruct1_cls"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "Cstruct1_cls"
-                            ],
-                            "typemap_name": "Cstruct1_cls"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -386,6 +400,7 @@
                 "doxygen": {
                     "description": "const defaults to intent(in)\n"
                 },
+                "name": "passStructByReferenceInCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -448,33 +463,35 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceInoutCls"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passStructByReferenceInoutCls",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "inout"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1_cls"
+                                },
+                                "specifier": [
+                                    "Cstruct1_cls"
+                                ],
+                                "typemap_name": "Cstruct1_cls"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "Cstruct1_cls"
-                            ],
-                            "typemap_name": "Cstruct1_cls"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -482,6 +499,7 @@
                 },
                 "decl": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
                 "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls & arg +intent(inout))",
+                "name": "passStructByReferenceInoutCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -525,33 +543,35 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passStructByReferenceOutCls"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "passStructByReferenceOutCls",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "Cstruct1_cls"
+                                },
+                                "specifier": [
+                                    "Cstruct1_cls"
+                                ],
+                                "typemap_name": "Cstruct1_cls"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "&"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "Cstruct1_cls"
-                            ],
-                            "typemap_name": "Cstruct1_cls"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -559,6 +579,7 @@
                 },
                 "decl": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
                 "declgen": "void passStructByReferenceOutCls(Cstruct1_cls & arg +intent(out))",
+                "name": "passStructByReferenceOutCls",
                 "options": {},
                 "wrap": {
                     "python": true
@@ -606,12 +627,13 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultPtrIsNULL"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "defaultPtrIsNULL",
+                        "params": [],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [],
                     "specifier": [
                         "bool"
                     ],
@@ -619,6 +641,7 @@
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
                 "declgen": "bool defaultPtrIsNULL(void)",
+                "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -691,35 +714,37 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultPtrIsNULL"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "defaultPtrIsNULL",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "IN",
+                                        "rank": 1
+                                    },
+                                    "init": "nullptr",
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "data",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "IN",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "data",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "init": "nullptr",
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
                     "specifier": [
                         "bool"
                     ],
@@ -727,6 +752,7 @@
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
                 "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))",
+                "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -878,68 +904,72 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultArgsInOut"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "in1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "defaultArgsInOut",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in1",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "declarator": {
-                                "name": "out1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "out1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "out2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "out2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -947,6 +977,7 @@
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
                 "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))",
+                "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1091,84 +1122,89 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "defaultArgsInOut"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "defaultArgsInOut",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "in1",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "out1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "out2",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "init": "false",
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "flag",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "in1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "out1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "out2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag"
-                            },
-                            "init": "false",
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -1176,6 +1212,7 @@
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
                 "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)",
+                "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1427,39 +1464,41 @@
                 "<FUNCTION>": "7 ****************************************",
                 "_overloaded": true,
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getGroupName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "long"
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "idx"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long"
-                            ],
-                            "typemap_name": "long"
-                        }
-                    ],
                     "specifier": [
                         "std::string"
                     ],
@@ -1474,14 +1513,15 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "value": true
-                                },
                                 "declarator": {
-                                    "name": "idx"
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int32_t"
                                 },
                                 "specifier": [
                                     "int32_t"
@@ -1495,14 +1535,15 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "value": true
-                                },
                                 "declarator": {
-                                    "name": "idx"
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int64_t"
                                 },
                                 "specifier": [
                                     "int64_t"
@@ -1514,6 +1555,7 @@
                         "generic": "(int64_t idx)"
                     }
                 ],
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1605,39 +1647,41 @@
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getGroupName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int32_t"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "idx"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int32_t"
-                            ],
-                            "typemap_name": "int32_t"
-                        }
-                    ],
                     "specifier": [
                         "std::string"
                     ],
@@ -1648,6 +1692,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1691,40 +1736,42 @@
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getGroupName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int32_t"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "idx"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int32_t"
-                            ],
-                            "typemap_name": "int32_t"
-                        }
-                    ],
                     "specifier": [
                         "std::string"
                     ],
@@ -1735,6 +1782,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1833,39 +1881,41 @@
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getGroupName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int64_t"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "idx"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int64_t"
-                            ],
-                            "typemap_name": "int64_t"
-                        }
-                    ],
                     "specifier": [
                         "std::string"
                     ],
@@ -1876,6 +1926,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -1919,40 +1970,42 @@
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "len": "30"
+                        },
+                        "metaattrs": {
+                            "api": "buf",
+                            "deref": "copy",
+                            "intent": "function"
+                        },
                         "name": "getGroupName",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "idx",
+                                    "typemap_name": "int64_t"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
                         "pointer": [
                             {
                                 "ptr": "&"
                             }
-                        ]
+                        ],
+                        "typemap_name": "std::string"
                     },
-                    "metaattrs": {
-                        "api": "buf",
-                        "deref": "copy",
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "idx"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int64_t"
-                            ],
-                            "typemap_name": "int64_t"
-                        }
-                    ],
                     "specifier": [
                         "std::string"
                     ],
@@ -1963,6 +2016,7 @@
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
+                "name": "getGroupName",
                 "options": {
                     "wrap_python": false
                 },
@@ -2070,7 +2124,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "ifield"
+                                        "name": "ifield",
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -2097,7 +2152,8 @@
                                 "<VARIABLE>": "****************************************",
                                 "ast": {
                                     "declarator": {
-                                        "name": "dfield"
+                                        "name": "dfield",
+                                        "typemap_name": "double"
                                     },
                                     "specifier": [
                                         "double"
@@ -2156,30 +2212,32 @@
                         "<FUNCTION>": "14 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReference"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "passStructByReference",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "structns::Cstruct1"
+                                        },
+                                        "specifier": [
+                                            "Cstruct1"
+                                        ],
+                                        "typemap_name": "structns::Cstruct1"
+                                    }
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "Cstruct1"
-                                    ],
-                                    "typemap_name": "structns::Cstruct1"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -2190,6 +2248,7 @@
                         "doxygen": {
                             "description": "Argument is modified by library, defaults to intent(inout).\n"
                         },
+                        "name": "passStructByReference",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2332,31 +2391,33 @@
                         "<FUNCTION>": "15 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceIn"
+                                "metaattrs": {
+                                    "intent": "function"
+                                },
+                                "name": "passStructByReferenceIn",
+                                "params": [
+                                    {
+                                        "const": true,
+                                        "declarator": {
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "structns::Cstruct1"
+                                        },
+                                        "specifier": [
+                                            "Cstruct1"
+                                        ],
+                                        "typemap_name": "structns::Cstruct1"
+                                    }
+                                ],
+                                "typemap_name": "int"
                             },
-                            "metaattrs": {
-                                "intent": "function"
-                            },
-                            "params": [
-                                {
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "Cstruct1"
-                                    ],
-                                    "typemap_name": "structns::Cstruct1"
-                                }
-                            ],
                             "specifier": [
                                 "int"
                             ],
@@ -2367,6 +2428,7 @@
                         "doxygen": {
                             "description": "const defaults to intent(in)\n"
                         },
+                        "name": "passStructByReferenceIn",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2509,33 +2571,35 @@
                         "<FUNCTION>": "16 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceInout"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "passStructByReferenceInout",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "inout"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "structns::Cstruct1"
+                                        },
+                                        "specifier": [
+                                            "Cstruct1"
+                                        ],
+                                        "typemap_name": "structns::Cstruct1"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "inout"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "inout"
-                                    },
-                                    "specifier": [
-                                        "Cstruct1"
-                                    ],
-                                    "typemap_name": "structns::Cstruct1"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -2543,6 +2607,7 @@
                         },
                         "decl": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
                         "declgen": "void passStructByReferenceInout(Cstruct1 & arg +intent(inout))",
+                        "name": "passStructByReferenceInout",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -2637,33 +2702,35 @@
                         "<FUNCTION>": "17 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "passStructByReferenceOut"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "passStructByReferenceOut",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "out"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "out"
+                                            },
+                                            "name": "arg",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "&"
+                                                }
+                                            ],
+                                            "typemap_name": "structns::Cstruct1"
+                                        },
+                                        "specifier": [
+                                            "Cstruct1"
+                                        ],
+                                        "typemap_name": "structns::Cstruct1"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "out"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "out"
-                                    },
-                                    "specifier": [
-                                        "Cstruct1"
-                                    ],
-                                    "typemap_name": "structns::Cstruct1"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -2671,6 +2738,7 @@
                         },
                         "decl": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
                         "declgen": "void passStructByReferenceOut(Cstruct1 & arg +intent(out))",
+                        "name": "passStructByReferenceOut",
                         "options": {},
                         "wrap": {
                             "c": true,

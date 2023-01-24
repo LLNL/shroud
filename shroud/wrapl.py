@@ -188,7 +188,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         for function in functions:
             if not function.wrap.lua:
                 continue
-            name = function.ast.name
+            name = function.name
             if name in overloaded_methods:
                 overloaded_methods[name].append(function)
             else:
@@ -217,20 +217,21 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node = overloads[0]
 
         ast = node.ast
+        declarator = ast.declarator
         fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
         node.eval_template("LUA_name")
         node.eval_template("LUA_name_impl")
 
-        CXX_subprogram = ast.get_subprogram()
+        CXX_subprogram = declarator.get_subprogram()
 
         # XXX       ast = node.ast
         # XXX       result_type = ast.typename
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
         if is_dtor:
             CXX_subprogram = "subroutine"
             fmt.LUA_name = "__gc"
@@ -245,9 +246,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             nargs = 0
             in_args = []
             out_args = []
-            for arg in function.ast.params:
+            for arg in function.ast.declarator.params:
                 arg_typemap = arg.typemap
-                if arg.init is not None:
+                if arg.declarator.init is not None:
                     all_calls.append(
                         LuaFunction(
                             function, CXX_subprogram, in_args[:], out_args
@@ -432,10 +433,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        node.eval_template('LUA_name_impl')
 
         ast = node.ast
-        CXX_subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
         stmts_comments = self.stmts_comments
         stmts_comments_args = []  # Used to reorder comments
 
@@ -459,7 +461,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt_func))
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
-            if is_ctor or ast.is_pointer():
+            if is_ctor or declarator.is_pointer():
                 #                fmt_result.c_member = '->'
                 fmt_result.cxx_member = "->"
                 fmt_result.cxx_addr = ""
@@ -511,8 +513,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # Each variation of default-arguments produces a new call.
         LUA_index = 1
         for iarg in range(luafcn.nargs):
-            arg = ast.params[iarg]
-            arg_name = arg.name
+            arg = ast.declarator.params[iarg]
+            a_declarator = arg.declarator
+            arg_name = a_declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
             fmt_arg.LUA_index = LUA_index
@@ -520,7 +523,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.cxx_var = arg_name
             fmt_arg.lua_var = "SH_Lua_" + arg_name
             fmt_arg.c_var_len = "L" + arg_name
-            if arg.is_pointer():
+            if a_declarator.is_pointer():
                 fmt_arg.c_deref = " *"
                 fmt_arg.c_member = "->"
                 fmt_arg.cxx_member = "->"
@@ -528,8 +531,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_deref = ""
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = a_declarator.attrs
+            meta = a_declarator.metaattrs
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -537,7 +540,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             intent_blk = None
             intent = meta["intent"]
             sgroup = arg_typemap.sgroup
-            spointer = arg.get_indirect_stmt()
+            spointer = a_declarator.get_indirect_stmt()
             stmts = None
             stmts = ["lua", intent, sgroup, spointer]
             if intent_blk is None:
@@ -587,9 +590,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        call_code.extend(post_parse)
 
         sgroup = None
-        spointer = ast.get_indirect_stmt()
+        spointer = ast.declarator.get_indirect_stmt()
 #        print("DDDDDDDDDDDDDD", ast.name)
-        sintent = ast.metaattrs["intent"]
+        sintent = declarator.metaattrs["intent"]
         if is_ctor:
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)

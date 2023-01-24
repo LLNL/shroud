@@ -14,12 +14,13 @@
                         "<FUNCTION>": "0 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method1"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method1",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -27,6 +28,7 @@
                         },
                         "decl": "void method1()",
                         "declgen": "void method1(void)",
+                        "name": "method1",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -65,12 +67,13 @@
                         "<FUNCTION>": "1 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "method2"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method2",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -78,6 +81,7 @@
                         },
                         "decl": "void method2()",
                         "declgen": "void method2(void)",
+                        "name": "method2",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -121,12 +125,13 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method3def",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -134,6 +139,7 @@
                         },
                         "decl": "void method3def(int i=0)",
                         "declgen": "void method3def(void)",
+                        "name": "method3def",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -180,29 +186,31 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "method3def"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "method3def",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "init": 0,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "i",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "i"
-                                    },
-                                    "init": 0,
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -210,6 +218,7 @@
                         },
                         "decl": "void method3def(int i=0)",
                         "declgen": "void method3def(int i=0 +value)",
+                        "name": "method3def",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -350,12 +359,13 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "exfunc",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -363,6 +373,7 @@
                         },
                         "decl": "void exfunc()",
                         "declgen": "void exfunc(void)",
+                        "name": "exfunc",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -403,28 +414,30 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
-                                "name": "exfunc"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "exfunc",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "flag",
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag"
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
                             "specifier": [
                                 "void"
                             ],
@@ -432,6 +445,7 @@
                         },
                         "decl": "void exfunc(int flag)",
                         "declgen": "void exfunc(int flag +value)",
+                        "name": "exfunc",
                         "options": {},
                         "wrap": {
                             "c": true,

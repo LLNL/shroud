@@ -604,7 +604,7 @@ class Wrapc(util.WrapperMixin):
         """
         has_dtor = False
         for method in node.functions:
-            if method.ast.attrs["_destructor"]:
+            if method.ast.is_dtor:
                 has_dtor = True
                 break
 
@@ -744,10 +744,11 @@ class Wrapc(util.WrapperMixin):
             is_func  - True if function.
         """
 
+        declarator = ast.declarator
         if is_func:
             rootname = fmt.C_result
         else:
-            rootname = ast.name
+            rootname = declarator.user_name
             if ast.const:
                 fmt.c_const = "const "
             else:
@@ -766,24 +767,26 @@ class Wrapc(util.WrapperMixin):
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
-        attrs = ast.attrs
-        statements.assign_buf_variable_names(attrs, ast.metaattrs, fcn.options, fmt, rootname)
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
+        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
         
-        if ast.metaattrs["dimension"]:
+        if meta["dimension"]:
+            fcn_struct = fcn.ast.declarator.metaattrs["struct"]
             if cls is not None:
                 parent = cls
                 cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
-            elif fcn.ast.metaattrs["struct"]:
+            elif fcn_struct:
                 # metaattr set in add_var_getter_setter
-                parent = self.newlibrary.class_map[fcn.ast.metaattrs["struct"]]
+                parent = self.newlibrary.class_map[fcn_struct]
                 parent.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
             else:
                 parent = None
                 class_context = ""
             visitor = ToDimension(parent, fcn, fmt, class_context)
-            visitor.visit(ast.metaattrs["dimension"])
+            visitor.visit(meta["dimension"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 if hasattr(fmt, "c_var_cdesc"):
@@ -881,26 +884,28 @@ class Wrapc(util.WrapperMixin):
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
         CXX_ast = CXX_node.ast
-        CXX_subprogram = CXX_ast.get_subprogram()
+        CXX_subprogram = CXX_ast.declarator.get_subprogram()
 
         # C return type
         ast = node.ast
-        C_subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        meta = declarator.metaattrs
+        C_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        result_api = ast.metaattrs["api"]
+        result_api = meta["api"]
 
         result_is_const = ast.const
-        is_ctor = CXX_ast.is_ctor()
-        is_dtor = CXX_ast.is_dtor()
+        is_ctor = CXX_ast.declarator.is_ctor()
+        is_dtor = CXX_ast.declarator.is_dtor()
         is_static = False
-        is_pointer = CXX_ast.is_pointer()
-        is_const = ast.func_const
+        is_pointer = CXX_ast.declarator.is_pointer()
+        is_const = declarator.func_const
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        sintent = ast.metaattrs["intent"]
+        sintent = meta["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
@@ -912,11 +917,11 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
-            spointer = ast.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             # intent will be "function", "ctor", "getter"
             junk, specialize = statements.lookup_c_statements(ast)
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                     result_api, ast.metaattrs["deref"]] + specialize
+                     result_api, meta["deref"]] + specialize
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -1041,12 +1046,13 @@ class Wrapc(util.WrapperMixin):
         #                 or the function result variable.
 
         # --- Loop over function parameters
-        for arg in ast.params:
-            arg_name = arg.name
+        for arg in ast.declarator.params:
+            declarator = arg.declarator
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
-            c_attrs = arg.attrs
-            c_meta = arg.metaattrs
+            c_attrs = declarator.attrs
+            c_meta = declarator.metaattrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
@@ -1065,13 +1071,13 @@ class Wrapc(util.WrapperMixin):
                 fmt_pattern = fmt_arg
                 result_arg = arg
                 return_deref_attr = c_meta["deref"]
-                spointer = CXX_ast.get_indirect_stmt()
+                spointer = CXX_ast.declarator.get_indirect_stmt()
                 stmts = [
                     "c", "function", sgroup, spointer,
                     sapi, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg.name
+                fmt_arg.c_var = arg_name
                 self.name_temp_vars(arg_name, intent_blk, fmt_arg)
                 self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
                 need_wrapper = True
@@ -1098,13 +1104,13 @@ class Wrapc(util.WrapperMixin):
             else:
                 # regular argument (not function result)
                 arg_call = arg
-                spointer = arg.get_indirect_stmt()
+                spointer = declarator.get_indirect_stmt()
                 if c_attrs["hidden"] and node._generated:
                     sapi = "hidden"
                 stmts = ["c", c_meta["intent"], sgroup, spointer,
                          sapi, c_meta["deref"]] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
-                fmt_arg.c_var = arg.name
+                fmt_arg.c_var = arg_name
                 # XXX - order issue - c_var must be set before name_temp_vars,
                 #       but set by set_fmt_fields
                 self.name_temp_vars(arg_name, intent_blk, fmt_arg)
@@ -1172,16 +1178,16 @@ class Wrapc(util.WrapperMixin):
                     for arg_call in intent_blk.arg_call:
                         append_format(call_list, arg_call, fmt_arg)
                 elif cxx_local_var == "scalar":
-                    if arg.is_pointer():
+                    if declarator.is_pointer():
                         call_list.append("&" + fmt_arg.cxx_var)
                     else:
                         call_list.append(fmt_arg.cxx_var)
                 elif cxx_local_var == "pointer":
-                    if arg.is_pointer():
+                    if declarator.is_pointer():
                         call_list.append(fmt_arg.cxx_var)
                     else:
                         call_list.append("*" + fmt_arg.cxx_var)
-                elif arg.is_reference():
+                elif declarator.is_reference():
                     # reference to scalar  i.e. double &max
                     # void tutorial::getMinMax(int &min);
                     # wrapper(int *min) {
@@ -1209,7 +1215,7 @@ class Wrapc(util.WrapperMixin):
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
-        return_deref_attr = ast.metaattrs["deref"]
+        return_deref_attr = ast.declarator.metaattrs["deref"]
         if result_blk.return_type:
             # Override return type.
             fmt_func.C_return_type = wformat(
@@ -1385,7 +1391,7 @@ class Wrapc(util.WrapperMixin):
                 impl.append("#endif  // " + node.cpp_if)
         else:
             # There is no C wrapper, have Fortran call the function directly.
-            fmt_func.C_name = node.ast.name
+            fmt_func.C_name = node.ast.declarator.name
 
     def set_capsule_headers(self, headers):
         """Headers used by C_memory_dtor_function.
@@ -1540,20 +1546,21 @@ class Wrapc(util.WrapperMixin):
                 fmt.idtor = self.capsule_code[destructor_name][0]
             return
 
+        declarator = ast.declarator
         from_stmt = False
-        if ast.attrs["owner"]:
-            owner = ast.attrs["owner"]
+        if declarator.attrs["owner"]:
+            owner = declarator.attrs["owner"]
         elif intent_blk.owner:
             owner = intent_blk.owner
             from_stmt = True
         else:
             owner = default_owner
 
-        free_pattern = ast.attrs["free_pattern"]
+        free_pattern = declarator.attrs["free_pattern"]
         if owner == "library":
             # Library owns memory, do not let user release.
             pass
-        elif not ast.is_pointer() and not from_stmt:
+        elif not declarator.is_pointer() and not from_stmt:
             # Non-pointers do not return dynamic memory.
             # Unless it is a function which returns memory
             # by value. (like a class instance.)
@@ -1655,13 +1662,14 @@ class ToDimension(todict.PrintNode):
                     return "{}{}".format(self.context, argname)
         else:
             deref = ''
-            arg = self.fcn.ast.find_arg_by_name(argname)
+            arg = self.fcn.ast.declarator.find_arg_by_name(argname)
             if arg:
-                if arg.attrs["hidden"]:
+                declarator = arg.declarator
+                if declarator.attrs["hidden"]:
                     # (int *arg +intent(out)+hidden)
                     # c_out_native_*_hidden creates a local scalar.
                     deref = ''
-                elif arg.is_indirect():
+                elif declarator.is_indirect():
                     # If argument is a pointer, then dereference it.
                     # i.e.  (int *arg +intent(out))
                     deref = '*'
@@ -1688,7 +1696,7 @@ def compute_c_deref(arg, local_var, fmt):
         fmt.c_deref = "*"
         fmt.c_member = "->"
         fmt.c_addr = ""
-    elif arg.is_indirect(): #pointer():
+    elif arg.declarator.is_indirect(): #pointer():
         fmt.c_deref = "*"
         fmt.c_member = "->"
         fmt.c_addr = ""
@@ -1707,7 +1715,7 @@ def compute_cxx_deref(arg, local_var, fmt):
 #        fmt.cxx_deref = "*"
         fmt.cxx_member = "->"
         fmt.cxx_addr = ""
-    elif arg.is_pointer():
+    elif arg.declarator.is_pointer():
 #        fmt.cxx_deref = "*"
         fmt.cxx_member = "->"
         fmt.cxx_addr = ""

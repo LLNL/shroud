@@ -17,28 +17,30 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "short_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "short_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "short"
+                                },
+                                "specifier": [
+                                    "short"
+                                ],
+                                "typemap_name": "short"
+                            }
+                        ],
+                        "typemap_name": "short"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "short"
-                            ],
-                            "typemap_name": "short"
-                        }
-                    ],
                     "specifier": [
                         "short"
                     ],
@@ -46,6 +48,7 @@
                 },
                 "decl": "short short_func(short arg1)",
                 "declgen": "short short_func(short arg1 +value)",
+                "name": "short_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -183,28 +186,30 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "int_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "int"
                     ],
@@ -212,6 +217,7 @@
                 },
                 "decl": "int int_func(int arg1)",
                 "declgen": "int int_func(int arg1 +value)",
+                "name": "int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -349,28 +355,30 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "long_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "long"
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "typemap_name": "long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long"
-                            ],
-                            "typemap_name": "long"
-                        }
-                    ],
                     "specifier": [
                         "long"
                     ],
@@ -378,6 +386,7 @@
                 },
                 "decl": "long long_func(long arg1)",
                 "declgen": "long long_func(long arg1 +value)",
+                "name": "long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -515,29 +524,31 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_long_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "long_long_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "long_long"
+                                },
+                                "specifier": [
+                                    "long",
+                                    "long"
+                                ],
+                                "typemap_name": "long_long"
+                            }
+                        ],
+                        "typemap_name": "long_long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long",
-                                "long"
-                            ],
-                            "typemap_name": "long_long"
-                        }
-                    ],
                     "specifier": [
                         "long",
                         "long"
@@ -546,6 +557,7 @@
                 },
                 "decl": "long long long_long_func(long long arg1)",
                 "declgen": "long long long_long_func(long long arg1 +value)",
+                "name": "long_long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -685,29 +697,31 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "short_int_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "short_int_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "short"
+                                },
+                                "specifier": [
+                                    "short",
+                                    "int"
+                                ],
+                                "typemap_name": "short"
+                            }
+                        ],
+                        "typemap_name": "short"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "short",
-                                "int"
-                            ],
-                            "typemap_name": "short"
-                        }
-                    ],
                     "specifier": [
                         "short",
                         "int"
@@ -716,6 +730,7 @@
                 },
                 "decl": "short int short_int_func(short int arg1)",
                 "declgen": "short int short_int_func(short int arg1 +value)",
+                "name": "short_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -853,29 +868,31 @@
                 "<FUNCTION>": "5 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_int_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "long_int_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "long"
+                                },
+                                "specifier": [
+                                    "long",
+                                    "int"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "typemap_name": "long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long",
-                                "int"
-                            ],
-                            "typemap_name": "long"
-                        }
-                    ],
                     "specifier": [
                         "long",
                         "int"
@@ -884,6 +901,7 @@
                 },
                 "decl": "long int long_int_func(long int arg1)",
                 "declgen": "long int long_int_func(long int arg1 +value)",
+                "name": "long_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1021,30 +1039,32 @@
                 "<FUNCTION>": "6 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "long_long_int_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "long_long_int_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "long_long"
+                                },
+                                "specifier": [
+                                    "long",
+                                    "long",
+                                    "int"
+                                ],
+                                "typemap_name": "long_long"
+                            }
+                        ],
+                        "typemap_name": "long_long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "long",
-                                "long",
-                                "int"
-                            ],
-                            "typemap_name": "long_long"
-                        }
-                    ],
                     "specifier": [
                         "long",
                         "long",
@@ -1054,6 +1074,7 @@
                 },
                 "decl": "long long int long_long_int_func(long long int arg1)",
                 "declgen": "long long int long_long_int_func(long long int arg1 +value)",
+                "name": "long_long_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1193,28 +1214,30 @@
                 "<FUNCTION>": "7 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "unsigned_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "unsigned_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_int"
+                                },
+                                "specifier": [
+                                    "unsigned"
+                                ],
+                                "typemap_name": "unsigned_int"
+                            }
+                        ],
+                        "typemap_name": "unsigned_int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned"
-                            ],
-                            "typemap_name": "unsigned_int"
-                        }
-                    ],
                     "specifier": [
                         "unsigned"
                     ],
@@ -1222,6 +1245,7 @@
                 },
                 "decl": "unsigned unsigned_func(unsigned arg1)",
                 "declgen": "unsigned unsigned_func(unsigned arg1 +value)",
+                "name": "unsigned_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1359,29 +1383,31 @@
                 "<FUNCTION>": "8 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ushort_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ushort_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_short"
+                                },
+                                "specifier": [
+                                    "unsigned",
+                                    "short"
+                                ],
+                                "typemap_name": "unsigned_short"
+                            }
+                        ],
+                        "typemap_name": "unsigned_short"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned",
-                                "short"
-                            ],
-                            "typemap_name": "unsigned_short"
-                        }
-                    ],
                     "specifier": [
                         "unsigned",
                         "short"
@@ -1390,6 +1416,7 @@
                 },
                 "decl": "unsigned short ushort_func(unsigned short arg1)",
                 "declgen": "unsigned short ushort_func(unsigned short arg1 +value)",
+                "name": "ushort_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1527,29 +1554,31 @@
                 "<FUNCTION>": "9 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "uint_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_int"
+                                },
+                                "specifier": [
+                                    "unsigned",
+                                    "int"
+                                ],
+                                "typemap_name": "unsigned_int"
+                            }
+                        ],
+                        "typemap_name": "unsigned_int"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned",
-                                "int"
-                            ],
-                            "typemap_name": "unsigned_int"
-                        }
-                    ],
                     "specifier": [
                         "unsigned",
                         "int"
@@ -1558,6 +1587,7 @@
                 },
                 "decl": "unsigned int uint_func(unsigned int arg1)",
                 "declgen": "unsigned int uint_func(unsigned int arg1 +value)",
+                "name": "uint_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1695,29 +1725,31 @@
                 "<FUNCTION>": "10 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ulong_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_long"
+                                },
+                                "specifier": [
+                                    "unsigned",
+                                    "long"
+                                ],
+                                "typemap_name": "unsigned_long"
+                            }
+                        ],
+                        "typemap_name": "unsigned_long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned",
-                                "long"
-                            ],
-                            "typemap_name": "unsigned_long"
-                        }
-                    ],
                     "specifier": [
                         "unsigned",
                         "long"
@@ -1726,6 +1758,7 @@
                 },
                 "decl": "unsigned long ulong_func(unsigned long arg1)",
                 "declgen": "unsigned long ulong_func(unsigned long arg1 +value)",
+                "name": "ulong_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -1863,30 +1896,32 @@
                 "<FUNCTION>": "11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_long_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ulong_long_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_long_long"
+                                },
+                                "specifier": [
+                                    "unsigned",
+                                    "long",
+                                    "long"
+                                ],
+                                "typemap_name": "unsigned_long_long"
+                            }
+                        ],
+                        "typemap_name": "unsigned_long_long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned",
-                                "long",
-                                "long"
-                            ],
-                            "typemap_name": "unsigned_long_long"
-                        }
-                    ],
                     "specifier": [
                         "unsigned",
                         "long",
@@ -1896,6 +1931,7 @@
                 },
                 "decl": "unsigned long long ulong_long_func(unsigned long long arg1)",
                 "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +value)",
+                "name": "ulong_long_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2035,30 +2071,32 @@
                 "<FUNCTION>": "12 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ulong_int_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "ulong_int_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "unsigned_long"
+                                },
+                                "specifier": [
+                                    "unsigned",
+                                    "long",
+                                    "int"
+                                ],
+                                "typemap_name": "unsigned_long"
+                            }
+                        ],
+                        "typemap_name": "unsigned_long"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "unsigned",
-                                "long",
-                                "int"
-                            ],
-                            "typemap_name": "unsigned_long"
-                        }
-                    ],
                     "specifier": [
                         "unsigned",
                         "long",
@@ -2068,6 +2106,7 @@
                 },
                 "decl": "unsigned long int ulong_int_func(unsigned long int arg1)",
                 "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +value)",
+                "name": "ulong_int_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2205,28 +2244,30 @@
                 "<FUNCTION>": "13 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int8_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "int8_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int8_t"
+                                },
+                                "specifier": [
+                                    "int8_t"
+                                ],
+                                "typemap_name": "int8_t"
+                            }
+                        ],
+                        "typemap_name": "int8_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int8_t"
-                            ],
-                            "typemap_name": "int8_t"
-                        }
-                    ],
                     "specifier": [
                         "int8_t"
                     ],
@@ -2234,6 +2275,7 @@
                 },
                 "decl": "int8_t  int8_func(int8_t arg1)",
                 "declgen": "int8_t int8_func(int8_t arg1 +value)",
+                "name": "int8_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2371,28 +2413,30 @@
                 "<FUNCTION>": "14 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int16_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "int16_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int16_t"
+                                },
+                                "specifier": [
+                                    "int16_t"
+                                ],
+                                "typemap_name": "int16_t"
+                            }
+                        ],
+                        "typemap_name": "int16_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int16_t"
-                            ],
-                            "typemap_name": "int16_t"
-                        }
-                    ],
                     "specifier": [
                         "int16_t"
                     ],
@@ -2400,6 +2444,7 @@
                 },
                 "decl": "int16_t int16_func(int16_t arg1)",
                 "declgen": "int16_t int16_func(int16_t arg1 +value)",
+                "name": "int16_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2537,28 +2582,30 @@
                 "<FUNCTION>": "15 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int32_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "int32_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int32_t"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
+                        "typemap_name": "int32_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int32_t"
-                            ],
-                            "typemap_name": "int32_t"
-                        }
-                    ],
                     "specifier": [
                         "int32_t"
                     ],
@@ -2566,6 +2613,7 @@
                 },
                 "decl": "int32_t int32_func(int32_t arg1)",
                 "declgen": "int32_t int32_func(int32_t arg1 +value)",
+                "name": "int32_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2703,28 +2751,30 @@
                 "<FUNCTION>": "16 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "int64_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "int64_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "int64_t"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
+                        "typemap_name": "int64_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int64_t"
-                            ],
-                            "typemap_name": "int64_t"
-                        }
-                    ],
                     "specifier": [
                         "int64_t"
                     ],
@@ -2732,6 +2782,7 @@
                 },
                 "decl": "int64_t int64_func(int64_t arg1)",
                 "declgen": "int64_t int64_func(int64_t arg1 +value)",
+                "name": "int64_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -2869,28 +2920,30 @@
                 "<FUNCTION>": "17 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint8_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "uint8_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "uint8_t"
+                                },
+                                "specifier": [
+                                    "uint8_t"
+                                ],
+                                "typemap_name": "uint8_t"
+                            }
+                        ],
+                        "typemap_name": "uint8_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "uint8_t"
-                            ],
-                            "typemap_name": "uint8_t"
-                        }
-                    ],
                     "specifier": [
                         "uint8_t"
                     ],
@@ -2898,6 +2951,7 @@
                 },
                 "decl": "uint8_t  uint8_func(uint8_t arg1)",
                 "declgen": "uint8_t uint8_func(uint8_t arg1 +value)",
+                "name": "uint8_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3035,28 +3089,30 @@
                 "<FUNCTION>": "18 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint16_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "uint16_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "uint16_t"
+                                },
+                                "specifier": [
+                                    "uint16_t"
+                                ],
+                                "typemap_name": "uint16_t"
+                            }
+                        ],
+                        "typemap_name": "uint16_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "uint16_t"
-                            ],
-                            "typemap_name": "uint16_t"
-                        }
-                    ],
                     "specifier": [
                         "uint16_t"
                     ],
@@ -3064,6 +3120,7 @@
                 },
                 "decl": "uint16_t uint16_func(uint16_t arg1)",
                 "declgen": "uint16_t uint16_func(uint16_t arg1 +value)",
+                "name": "uint16_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3201,28 +3258,30 @@
                 "<FUNCTION>": "19 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint32_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "uint32_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "uint32_t"
+                                },
+                                "specifier": [
+                                    "uint32_t"
+                                ],
+                                "typemap_name": "uint32_t"
+                            }
+                        ],
+                        "typemap_name": "uint32_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "uint32_t"
-                            ],
-                            "typemap_name": "uint32_t"
-                        }
-                    ],
                     "specifier": [
                         "uint32_t"
                     ],
@@ -3230,6 +3289,7 @@
                 },
                 "decl": "uint32_t uint32_func(uint32_t arg1)",
                 "declgen": "uint32_t uint32_func(uint32_t arg1 +value)",
+                "name": "uint32_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3367,28 +3427,30 @@
                 "<FUNCTION>": "20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "uint64_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "uint64_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "uint64_t"
+                                },
+                                "specifier": [
+                                    "uint64_t"
+                                ],
+                                "typemap_name": "uint64_t"
+                            }
+                        ],
+                        "typemap_name": "uint64_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "uint64_t"
-                            ],
-                            "typemap_name": "uint64_t"
-                        }
-                    ],
                     "specifier": [
                         "uint64_t"
                     ],
@@ -3396,6 +3458,7 @@
                 },
                 "decl": "uint64_t uint64_func(uint64_t arg1)",
                 "declgen": "uint64_t uint64_func(uint64_t arg1 +value)",
+                "name": "uint64_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3533,28 +3596,30 @@
                 "<FUNCTION>": "21 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "size_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "size_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg1",
+                                    "typemap_name": "size_t"
+                                },
+                                "specifier": [
+                                    "size_t"
+                                ],
+                                "typemap_name": "size_t"
+                            }
+                        ],
+                        "typemap_name": "size_t"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "size_t"
-                            ],
-                            "typemap_name": "size_t"
-                        }
-                    ],
                     "specifier": [
                         "size_t"
                     ],
@@ -3562,6 +3627,7 @@
                 },
                 "decl": "size_t size_func(size_t arg1)",
                 "declgen": "size_t size_func(size_t arg1 +value)",
+                "name": "size_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3699,28 +3765,30 @@
                 "<FUNCTION>": "22 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "bool_func"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "bool_func",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "bool"
+                                },
+                                "specifier": [
+                                    "bool"
+                                ],
+                                "typemap_name": "bool"
+                            }
+                        ],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
                     "specifier": [
                         "bool"
                     ],
@@ -3728,6 +3796,7 @@
                 },
                 "decl": "bool bool_func(bool arg)",
                 "declgen": "bool bool_func(bool arg +value)",
+                "name": "bool_func",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -3868,33 +3937,35 @@
                 "<FUNCTION>": "23 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "returnBoolAndOthers"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "returnBoolAndOthers",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "flag",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "bool"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
                     "specifier": [
                         "bool"
                     ],
@@ -3906,6 +3977,7 @@
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
+                "name": "returnBoolAndOthers",
                 "options": {},
                 "wrap": {
                     "c": true,

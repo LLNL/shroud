@@ -230,7 +230,7 @@ class NamespaceMixin(object):
                 else:
                     # Class or Union
                     raise RuntimeError("internal: add_declaration non-struct")
-            elif ast.params is not None:
+            elif ast.declarator.params is not None:
                 node = self.add_function(decl, ast=fullast, **kwargs)
             else:
                 node = self.add_variable(decl, ast=ast, **kwargs)
@@ -316,7 +316,7 @@ class NamespaceMixin(object):
         if ast is None:
             ast = declast.check_decl(decl, self.symtab)
 
-        name = ast.get_name()  # Local name.
+        name = ast.declarator.user_name  # Local name.
         node = TypedefNode(name, self, ast, fields)
         self.typedefs.append(node)
         return node
@@ -1288,7 +1288,7 @@ class ClassNode(AstNode, NamespaceMixin):
         for var in self.variables:
             self.map_name_to_node[var.name] = var
         for node in self.functions:
-            self.map_name_to_node[node.ast.name] = node
+            self.map_name_to_node[node.ast.declarator.user_name] = node
 
 ######################################################################
 
@@ -1441,17 +1441,19 @@ class FunctionNode(AstNode):
             pass
         else:
             raise RuntimeError("Expected a function declaration")
-        if ast.params is None:
+        if ast.declarator.params is None:
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments to function:", ast.gen_decl())
         self.ast = ast
+        declarator = ast.declarator
+        self.name = declarator.user_name
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
         if ast.typemap.base == "template":
             self.have_template_args = True
         else:
-            for args in ast.params:
+            for args in declarator.params:
                 if args.typemap.base == "template":
                     self.have_template_args = True
                     break
@@ -1460,9 +1462,9 @@ class FunctionNode(AstNode):
         # by copying original params then substituting decls from fortran_generic.
         for generic in self.fortran_generic:
             generic.parse_generic(self.symtab)
-            newdecls = copy.deepcopy(ast.params)
+            newparams = copy.deepcopy(declarator.params)
             for garg in generic.decls:
-                i = declast.find_arg_index_by_name(newdecls, garg.name)
+                i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.
                     print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
@@ -1471,18 +1473,18 @@ class FunctionNode(AstNode):
 #                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
 #                            garg.name, str(new.ast), generic.linenumber))
                 else:
-                    newdecls[i] = garg
-            generic.decls = newdecls
+                    newparams[i] = garg
+            generic.decls = newparams
 
         # add any attributes from YAML files to the ast
         if "attrs" in kwargs:
             attrs = kwargs["attrs"]
-            for arg in ast.params:
-                name = arg.name
+            for arg in declarator.params:
+                name = arg.declarator.user_name
                 if name in attrs:
-                    arg.attrs.update(attrs[name])
+                    arg.declarator.attrs.update(attrs[name])
         if "fattrs" in kwargs:
-            ast.attrs.update(kwargs["fattrs"])
+            declarator.attrs.update(kwargs["fattrs"])
 
         if "splicer" in kwargs:
             self.splicer = kwargs["splicer"]
@@ -1498,7 +1500,7 @@ class FunctionNode(AstNode):
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
-        fmt_func.function_name = ast.name
+        fmt_func.function_name = self.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
     def default_format(self, parent, fmtdict, kwargs):
@@ -1844,19 +1846,19 @@ class VariableNode(AstNode):
         if not isinstance(ast, declast.Declaration):
             # GGG - only declarations in stucts?
             raise RuntimeError("Declaration is not a structure: " + decl)
-        if ast.params is not None:
+        if ast.declarator.params is not None:
             # 'void foo()' instead of 'void foo'
             raise RuntimeError("Arguments given to variable:", ast.gen_decl())
         self.ast = ast
-        self.name = ast.name
+        self.name = ast.declarator.user_name
 
         # format for struct
         fmt_var = self.fmtdict
 
         # Treat similar to class
         #        fmt_struct.class_scope = self.name + '::'
-        fmt_var.field_name = ast.get_name(use_attr=False)
-        fmt_var.variable_name = ast.name
+        fmt_var.field_name = ast.declarator.name
+        fmt_var.variable_name = self.name
         fmt_var.variable_lower = fmt_var.variable_name.lower()
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 

@@ -17,31 +17,33 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptFloatComplexInoutPtr"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptFloatComplexInoutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "float_complex"
+                                },
+                                "specifier": [
+                                    "float",
+                                    "complex"
+                                ],
+                                "typemap_name": "float_complex"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "float",
-                                "complex"
-                            ],
-                            "typemap_name": "float_complex"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -49,6 +51,7 @@
                 },
                 "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
                 "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
+                "name": "acceptFloatComplexInoutPtr",
                 "options": {
                     "wrap_python": false
                 },
@@ -119,31 +122,33 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexInoutPtr"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptDoubleComplexInoutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double_complex"
+                                },
+                                "specifier": [
+                                    "double",
+                                    "complex"
+                                ],
+                                "typemap_name": "double_complex"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -151,6 +156,7 @@
                 },
                 "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
                 "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
+                "name": "acceptDoubleComplexInoutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -244,34 +250,36 @@
                 "<FUNCTION>": "2 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexOutPtr"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "acceptDoubleComplexOutPtr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double_complex"
+                                },
+                                "specifier": [
+                                    "double",
+                                    "complex"
+                                ],
+                                "typemap_name": "double_complex"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -279,6 +287,7 @@
                 },
                 "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
                 "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
+                "name": "acceptDoubleComplexOutPtr",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -371,51 +380,54 @@
                 "<FUNCTION>": "3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexInoutPtrFlag"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "acceptDoubleComplexInoutPtrFlag",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double_complex"
+                                },
+                                "specifier": [
+                                    "double",
+                                    "complex"
+                                ],
+                                "typemap_name": "double_complex"
                             },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "flag",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -426,6 +438,7 @@
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
+                "name": "acceptDoubleComplexInoutPtrFlag",
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false
@@ -492,54 +505,57 @@
                 "<FUNCTION>": "4 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "acceptDoubleComplexOutPtrFlag"
-                    },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
+                        "metaattrs": {
+                            "intent": "subroutine"
                         },
-                        {
-                            "attrs": {
-                                "intent": "out"
+                        "name": "acceptDoubleComplexOutPtrFlag",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "double_complex"
+                                },
+                                "specifier": [
+                                    "double",
+                                    "complex"
+                                ],
+                                "typemap_name": "double_complex"
                             },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "flag",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
                     "specifier": [
                         "void"
                     ],
@@ -550,6 +566,7 @@
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
                 },
+                "name": "acceptDoubleComplexOutPtrFlag",
                 "options": {},
                 "wrap": {
                     "c": true,

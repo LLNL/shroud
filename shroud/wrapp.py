@@ -661,18 +661,20 @@ return 1;""",
 
         for i, var in enumerate(node.variables):
             ast = var.ast
+            declarator = ast.declarator
+            name = declarator.user_name
             output.extend(
                 [
                     "",
-                    "// " + var.ast.name,
-                    'obj = PyString_FromString("{}");'.format(ast.name),
+                    "// " + name,
+                    'obj = PyString_FromString("{}");'.format(name),
                     "if (obj == {}) goto fail;".format(fmt.nullptr),
                     "PyList_SET_ITEM(lnames, {}, obj);".format(i),
                 ]
             )
 
             arg_typemap = ast.typemap
-            if ast.is_pointer():
+            if ast.declarator.is_pointer():
                 PYN_typenum = "NPY_INTP"
             else:
                 PYN_typenum = arg_typemap.PYN_typenum
@@ -745,6 +747,7 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
+        declarator = ast.declarator
         arg_typemap = ast.typemap
         
         fmt_var = node.fmtdict
@@ -770,7 +773,7 @@ return 1;""",
         fmt.c_type = arg_typemap.c_type
 
         py_struct_dimension(parent, node, fmt)
-        indirect_stmt = ast.get_indirect_stmt()
+        indirect_stmt = declarator.get_indirect_stmt()
 
         if arg_typemap.PY_get:
             fmt.PY_get = wformat(arg_typemap.PY_get, fmt)
@@ -828,7 +831,7 @@ return 1;""",
 
         ########################################
         # setter
-        if not ast.attrs["readonly"]:
+        if not declarator.attrs["readonly"]:
             fmt_var.PY_setter = wformat(
                 options.PY_member_setter_template, fmt_var
             )
@@ -901,6 +904,7 @@ return 1;""",
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
+        declarator = ast.declarator
         typemap = ast.typemap
         if typemap.PY_PyObject:
             fmt.PyObject = typemap.PY_PyObject
@@ -917,15 +921,15 @@ return 1;""",
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
-                fmt.npy_dims_var = "SHD_" + ast.name
+                fmt.npy_dims_var = "SHD_" + ast.declarator.user_name
             # Dimensions must be in npy_intp type array.
             # XXX - assumes 1-d
             fmt.npy_intp_decl = wformat("npy_intp {npy_dims_var}[1];\n", fmt)
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = ast.metaattrs["dimension"]
-        rank = ast.attrs["rank"]
+        dimension = declarator.metaattrs["dimension"]
+        rank = declarator.attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
         elif dimension:
@@ -938,7 +942,7 @@ return 1;""",
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
             else:
-                fmt.npy_dims_var = "SHD_" + ast.name
+                fmt.npy_dims_var = "SHD_" + declarator.user_name
             # Dimensions must be in npy_intp type array.
             fmt.npy_intp_decl = wformat(
                 "npy_intp {npy_dims_var}[{npy_rank}];\n", fmt)
@@ -955,7 +959,7 @@ return 1;""",
                 fmt.array_size = "*\t".join(fmtsize)
             else:
                 fmt.array_size = visitor.shape[0]
-        elif ast.is_indirect():
+        elif declarator.is_indirect():
             fmt.array_size = "1"  # assume scalar
 
 #        fmt.c_type = typemap.c_type
@@ -1004,9 +1008,9 @@ return 1;""",
             arg -
             pre_call -
         """
-        implied = arg.attrs["implied"]
+        implied = arg.declarator.attrs["implied"]
         if implied:
-            fmt = node._fmtargs[arg.name]["fmtpy"]
+            fmt = node._fmtargs[arg.declarator.user_name]["fmtpy"]
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
 
@@ -1088,7 +1092,7 @@ return 1;""",
         """
         overloaded_methods = {}
         for function in functions:
-            flist = overloaded_methods.setdefault(function.ast.name, [])
+            flist = overloaded_methods.setdefault(function.name, [])
             if not function.wrap.python:
                 continue
             if not function.options.PY_create_generic:
@@ -1156,10 +1160,11 @@ return 1;""",
         fmt.PY_array_arg = options.PY_array_arg
 
         ast = node.ast
-        CXX_subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        CXX_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
+        is_ctor = declarator.is_ctor()
+        is_dtor = declarator.is_dtor()
         #        is_const = ast.const
         ml_flags = []
 
@@ -1252,14 +1257,15 @@ return 1;""",
             )
 
         goto_fail = False
-        args = ast.params
+        args = ast.declarator.params
         arg_names = []    # Arguments to function, intent in or inout.
         arg_offsets = []
         arg_implied = []  # Collect implied arguments
         offset = 0
         npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
-            arg_name = arg.name
+            declarator = arg.declarator
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))
             fmt_arg.c_var = arg_name
@@ -1277,7 +1283,7 @@ return 1;""",
                 fmt_arg.c_const = "const "
             else:
                 fmt_arg.c_const = ""
-            if arg.is_pointer():
+            if declarator.is_pointer():
                 fmt_arg.c_deref = "*"
                 fmt_arg.cxx_addr = ""
                 fmt_arg.cxx_member = "->"
@@ -1288,20 +1294,20 @@ return 1;""",
                 fmt_arg.cxx_member = "."
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = declarator.attrs
+            meta = declarator.metaattrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
-            rank = arg.attrs["rank"]
-            dimension = arg.attrs["dimension"]
+            rank = attrs["rank"]
+            dimension = attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
             intent = meta["intent"]
             sgroup = arg_typemap.sgroup
-            spointer = arg.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = None
 
             intent_blk = None
@@ -1310,11 +1316,11 @@ return 1;""",
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_member = arg.metaattrs["struct_member"]
+                struct_member = meta["struct_member"]
                 struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
-                field_size = struct_member.ast.get_array_size()
+                field_size = struct_member.ast.declarator.get_array_size()
                 if field_size is not None:
                     fmt_arg.field_size = field_size
                 if not found_optional:
@@ -1323,14 +1329,14 @@ return 1;""",
             deref = meta["deref"] or "pointer"
             if intent_blk is not None:
                 pass
-            elif arg.is_function_pointer():
+            elif declarator.is_function_pointer():
                 intent_blk = default_scope
             elif implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
             elif sgroup == "char":
                 stmts = ["py", intent, sgroup, spointer]
-                charlen = arg.attrs["charlen"]
+                charlen = attrs["charlen"]
                 if charlen:
                     fmt_arg.charlen = charlen
                     stmts.append("charlen")
@@ -1411,7 +1417,7 @@ return 1;""",
             elif hasattr(arg_typemap, "is_typedef"):
                 # XXX - this helps typedefs to define PyArg type instead C wrapper type
                 declare_code.append("{} {};".format(
-                    PY_format_to_type[arg_typemap.PY_format], arg.name))
+                    PY_format_to_type[arg_typemap.PY_format], arg_name))
             else:
                 # Since all declarations are at the top, remove const
                 # since it will be assigned later.
@@ -1428,7 +1434,7 @@ return 1;""",
                 offset += len(arg_name) + 1
 
                 # XXX default should be handled differently
-                if arg.init is not None:
+                if declarator.init is not None:
                     # Default value argument.
                     if not found_optional:
                         parse_format.append("|")  # add once
@@ -1809,7 +1815,7 @@ return 1;""",
         expose = True
         if is_ctor:
             expose = False
-        if len(self.overloaded_methods[ast.name]) > 1:
+        if len(self.overloaded_methods[ast.declarator.user_name]) > 1:
             # Only expose a multi-dispatch name, not each overload
             expose = False
         elif found_default:
@@ -1967,9 +1973,10 @@ return 1;""",
         """
         options = node.options
         ast = node.ast
-        attrs = ast.attrs
-        meta = ast.metaattrs
-        is_ctor = ast.is_ctor()
+        declarator = ast.declarator
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
+        is_ctor = declarator.is_ctor()
         result_typemap = ast.typemap
 
         result_blk = default_scope
@@ -1989,7 +1996,7 @@ return 1;""",
             with_template_args=True, continuation=True
         )
 
-        if CXX_result.is_pointer():
+        if CXX_result.declarator.is_pointer():
             fmt_result.c_deref = "*"
             fmt_result.cxx_addr = ""
             fmt_result.cxx_member = "->"
@@ -2023,7 +2030,7 @@ return 1;""",
             specialize = statements.template_stmts(ast)
             stmts = ["py", "function", sgroup, options.PY_array_arg] + specialize
         elif sgroup == "native":
-            spointer = ast.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
                 deref = meta["deref"] or "pointer"
@@ -2031,7 +2038,7 @@ return 1;""",
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)
         else:
-            spointer = ast.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
@@ -2082,7 +2089,8 @@ return 1;""",
         The results will be processed by format so literal curly must be protected.
 
         """
-        if ast.is_pointer():
+        declarator = ast.declarator
+        if declarator.is_pointer():
             return None
         allocate_local_var = stmts.allocate_local_var
         if allocate_local_var:
@@ -2446,7 +2454,7 @@ return 1;""",
         mdone = {}
         for function in functions:
             # preserve order of multi-dispatch functions
-            mname = function.ast.name
+            mname = function.name
             if mname in mdone:
                 continue
             mdone[mname] = True
@@ -2465,7 +2473,7 @@ return 1;""",
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.is_ctor()
+            is_ctor = node.ast.declarator.is_ctor()
 
             body = []
             body.append(1)
@@ -2509,7 +2517,7 @@ return 1;""",
                     )
                 else:
                     body.append(
-                        "if (SHT_nargs == %d) {+" % len(overload.ast.params)
+                        "if (SHT_nargs == %d) {+" % len(overload.ast.declarator.params)
                     )
                 append_format(
                     body,
@@ -2985,7 +2993,7 @@ setup(
         """
         for var in node.variables:
             fmt = var.fmtdict
-            if var.ast.is_array():
+            if var.ast.declarator.is_array():
                 fmt.py_var = "SHPy_" + fmt.variable_name
                 var.eval_template("PY_member_object")
                 var.eval_template("PY_member_data")
@@ -2999,7 +3007,7 @@ setup(
         print_header = True
         for var in node.variables:
             # var is VariableNode
-            if not var.ast.is_array():
+            if not var.ast.declarator.is_array():
                 continue
             if print_header:
                 output.append("// Python objects for members.")
@@ -3334,10 +3342,11 @@ def py_struct_dimension(parent, var, fmt):
     # fmt.npy_intp_asgn     # assign to
     #    fmt.npy_intp_values     # comma separated list of values
     ast = var.ast
-    if ast.array: # Fixed size array.
-        metadim = ast.array
-    elif ast.attrs["dimension"] is not None:
-        metadim = ast.metaattrs["dimension"]
+    declarator = ast.declarator
+    if declarator.array: # Fixed size array.
+        metadim = declarator.array
+    elif declarator.attrs["dimension"] is not None:
+        metadim = declarator.metaattrs["dimension"]
     else:
         metadim = None
     if metadim:
@@ -3489,13 +3498,13 @@ class ToImplied(todict.PrintNode):
             fmt = self.func._fmtargs[argname]["fmtpy"]
 
             # find argname in function parameters
-            arg = self.func.ast.find_arg_by_name(argname)
-            if arg.metaattrs["intent"] == "out":
+            arg = self.func.ast.declarator.find_arg_by_name(argname)
+            if arg.declarator.metaattrs["intent"] == "out":
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
                 # len(text) in this case is the value of "charlen"
                 # since no variable is actually passed in as an argument.
-                return arg.attrs["charlen"]
+                return arg.declarator.attrs["charlen"]
             # XXX - need code for len_trim?
             return wformat("strlen({cxx_var})", fmt)
         elif argname == "len_trim":

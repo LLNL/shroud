@@ -14,12 +14,13 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker3"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "worker3",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -27,6 +28,7 @@
                 },
                 "decl": "void worker3();",
                 "declgen": "void worker3(void)",
+                "name": "worker3",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -60,12 +62,13 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "worker"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "worker",
+                        "params": [],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [],
                     "specifier": [
                         "void"
                     ],
@@ -73,6 +76,7 @@
                 },
                 "decl": "void worker();",
                 "declgen": "void worker(void)",
+                "name": "worker",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -112,12 +116,13 @@
                         "<FUNCTION>": "2 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -125,6 +130,7 @@
                         },
                         "decl": "void worker();",
                         "declgen": "void worker(void)",
+                        "name": "worker",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -192,12 +198,13 @@
                         "<FUNCTION>": "3 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -205,6 +212,7 @@
                         },
                         "decl": "void worker();",
                         "declgen": "void worker(void)",
+                        "name": "worker",
                         "options": {},
                         "wrap": {
                             "c": true,
@@ -272,12 +280,13 @@
                         "<FUNCTION>": "4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "worker4"
+                                "metaattrs": {
+                                    "intent": "subroutine"
+                                },
+                                "name": "worker4",
+                                "params": [],
+                                "typemap_name": "void"
                             },
-                            "metaattrs": {
-                                "intent": "subroutine"
-                            },
-                            "params": [],
                             "specifier": [
                                 "void"
                             ],
@@ -285,6 +294,7 @@
                         },
                         "decl": "void worker4();",
                         "declgen": "void worker4(void)",
+                        "name": "worker4",
                         "options": {},
                         "wrap": {
                             "c": true,

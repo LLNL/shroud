@@ -209,8 +209,9 @@ class Wrapf(util.WrapperMixin):
         append_format(output, "type, bind(C) :: {F_derived_name}+", fmt_class)
         for var in node.variables:
             ast = var.ast
+            declarator = ast.declarator
             ntypemap = ast.typemap
-            if ast.is_indirect():
+            if declarator.is_indirect():
                 append_format(output, "type(C_PTR) :: {variable_name}", var.fmtdict)
                 self.set_f_module(fileinfo.module_use,
                                   "iso_c_binding", "C_PTR")
@@ -953,7 +954,7 @@ rv = .false.
             fileinfo - ModuleInfo
         """
         fmt = util.Scope(node.fmtdict)
-        fmt.argname = arg.name
+        fmt.argname = arg.declarator.user_name
         name = wformat(
             node.options.F_abstract_interface_subprogram_template, fmt
         )
@@ -980,14 +981,14 @@ rv = .false.
                 node, fmt, arg = fileinfo.f_abstract_interface[key]
                 options = node.options
                 ast = node.ast
-                subprogram = arg.get_subprogram()
+                subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
                 imports = {}
-                for i, param in enumerate(arg.params):
-                    name = param.name
+                for i, param in enumerate(arg.declarator.params):
+                    name = param.declarator.user_name
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
@@ -1054,7 +1055,7 @@ rv = .false.
             fmt -
             ast - Abstract Syntax Tree from parser
                node.ast for subprograms
-               node.params[n] for parameters
+               node.declarator.params[n] for parameters
             stmts_blk - typemap.CStmts or util.Scope
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -1072,34 +1073,36 @@ rv = .false.
             # Functions do not pass arguments by default.
             pass
         else:
-            attrs = ast.attrs
-            arg_c_names.append(ast.name)
+            declarator = ast.declarator
+            name = declarator.user_name
+            attrs = declarator.attrs
+            arg_c_names.append(name)
             # argument declarations
             if attrs["assumedtype"]:
                 if attrs["rank"]:
                     arg_c_decl.append(
-                        "type(*) :: {}(*)".format(ast.name)
+                        "type(*) :: {}(*)".format(name)
                     )
                 elif attrs["dimension"]:
                     arg_c_decl.append(
                         "type(*) :: {}({})".format(
-                            ast.name, attrs["dimension"])
+                            name, attrs["dimension"])
                     )
                 else:
                     arg_c_decl.append(
-                        "type(*) :: {}".format(ast.name)
+                        "type(*) :: {}".format(name)
                     )
-            elif ast.is_function_pointer():
+            elif declarator.is_function_pointer():
                 absiface = self.add_abstract_interface(node, ast, fileinfo)
                 arg_c_decl.append(
-                    "procedure({}) :: {}".format(absiface, ast.name)
+                    "procedure({}) :: {}".format(absiface, name)
                 )
                 imports[absiface] = True
-            elif ast.is_array() > 1:
+            elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
                 # 'char **' uses c_char_**_in as a special case.
-                intent = ast.metaattrs["intent"].upper()
+                intent = ast.declarator.metaattrs["intent"].upper()
                 arg_c_decl.append(
                     "type(C_PTR), intent({}) :: {}".format(
                         intent, fmt.F_C_var))
@@ -1133,12 +1136,13 @@ rv = .false.
         fmtargs = node._fmtargs
 
         ast = node.ast
-        subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_ctor = ast.is_ctor()
-        is_pure = ast.attrs["pure"]
+        is_ctor = declarator.is_ctor()
+        is_pure = declarator.attrs["pure"]
         is_static = False
-        func_is_const = ast.func_const
+        func_is_const = declarator.func_const
 
         arg_c_names = []  # argument names for functions
         arg_c_decl = []  # declaraion of argument names
@@ -1166,8 +1170,9 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
-        result_api = ast.metaattrs["api"]
-        sintent = ast.metaattrs["intent"]
+        r_meta = ast.declarator.metaattrs
+        result_api = r_meta["api"]
+        sintent = r_meta["intent"]
 
         if cls:
             is_static = "static" in ast.storage
@@ -1186,9 +1191,9 @@ rv = .false.
 
         junk, specialize = statements.lookup_c_statements(ast)
         sgroup = result_typemap.sgroup
-        spointer = ast.get_indirect_stmt()
+        spointer = ast.declarator.get_indirect_stmt()
         c_stmts = ["c", sintent, sgroup, spointer, result_api,
-                   ast.metaattrs["deref"]] + specialize
+                   r_meta["deref"]] + specialize
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", result_api], c_result_blk, node)
@@ -1220,23 +1225,24 @@ rv = .false.
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         args_all_in = True  # assume all arguments are intent(in)
-        for arg in ast.params:
+        for arg in ast.declarator.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_name = arg.name
+            declarator = arg.declarator
+            arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
-            fmt_arg.c_var = arg.name
-            fmt_arg.f_var = arg.name
-            fmt_arg.F_C_var = arg.name
+            fmt_arg.c_var = arg_name
+            fmt_arg.f_var = arg_name
+            fmt_arg.F_C_var = arg_name
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
             self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = declarator.attrs
+            meta = declarator.metaattrs
             if attrs["hidden"] and node._generated:
                 continue
             intent = meta["intent"]
@@ -1244,7 +1250,7 @@ rv = .false.
                 args_all_in = False
             deref_attr = meta["deref"]
 
-            spointer = arg.get_indirect_stmt()
+            spointer = declarator.get_indirect_stmt()
             if meta["is_result"]:
                 c_stmts = ["c", "function", sgroup, spointer,
                            meta["api"], deref_attr]
@@ -1492,7 +1498,8 @@ rv = .false.
         subprogram : str
             "function" or "subroutine" or None
         """
-        meta = ast.metaattrs
+        attrs = ast.declarator.attrs
+        meta = ast.declarator.metaattrs
 
         if subprogram == "subroutine":
             pass
@@ -1513,7 +1520,7 @@ rv = .false.
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
         if f_c_module_line:
             fmt.f_c_module_line = f_c_module_line
-        statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
+        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
@@ -1533,8 +1540,8 @@ rv = .false.
         subprogram : str
         ntypemap : typemap.Typemap
         """
-        c_attrs = c_ast.attrs
-        c_meta = c_ast.metaattrs
+        c_attrs = c_ast.declarator.attrs
+        c_meta = c_ast.declarator.metaattrs
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
@@ -1545,7 +1552,7 @@ rv = .false.
             rootname = fmt.C_result
         else:
             ntypemap = f_ast.typemap
-            rootname = c_ast.name
+            rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             # XXX - need to add an argument for each template arg
             ntypemap = c_ast.template_arguments[0].typemap
@@ -1571,10 +1578,11 @@ rv = .false.
         f_ast : declast.Declaration
         fmt: util.Scope
         """
-        f_attrs = f_ast.attrs
-        dim = f_ast.metaattrs["dimension"]
+        f_attrs = f_ast.declarator.attrs
+        f_meta = f_ast.declarator.metaattrs
+        dim = f_meta["dimension"]
         rank = f_attrs["rank"]
-        if f_ast.metaattrs["assumed-rank"]:
+        if f_meta["assumed-rank"]:
             fmt.f_c_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
@@ -1629,11 +1637,12 @@ rv = .false.
 
         # Fortran return type
         ast = node.ast
-        subprogram = ast.get_subprogram()
+        declarator = ast.declarator
+        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        C_subprogram = C_node.ast.get_subprogram()
-        c_result_api = C_node.ast.metaattrs["api"]
-        is_ctor = ast.is_ctor()
+        C_subprogram = C_node.ast.declarator.get_subprogram()
+        c_result_api = C_node.ast.declarator.metaattrs["api"]
+        is_ctor = declarator.is_ctor()
         is_static = False
 
         arg_c_call = []  # arguments to C function
@@ -1648,7 +1657,9 @@ rv = .false.
         imports = {}
         stmts_comments = []
 
-        sintent = ast.metaattrs["intent"]
+        r_attrs = declarator.attrs
+        r_meta = declarator.metaattrs
+        sintent = r_meta["intent"]
         if subprogram == "subroutine":
             fmt_result = fmt_func
             # intent will be "subroutine" or "dtor".
@@ -1662,11 +1673,11 @@ rv = .false.
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
-            spointer = C_node.ast.get_indirect_stmt()
-            return_deref_attr = ast.metaattrs["deref"]
+            spointer = C_node.ast.declarator.get_indirect_stmt()
+            return_deref_attr = r_meta["deref"]
             junk, specialize = statements.lookup_c_statements(ast)
             f_stmts = ["f", sintent, sgroup, spointer, c_result_api,
-                       return_deref_attr, ast.attrs["owner"]] + specialize
+                       return_deref_attr, r_attrs["owner"]] + specialize
             c_stmts = ["c", sintent, sgroup, spointer, c_result_api,
                        return_deref_attr] + specialize
         fmt_func.F_subprogram = subprogram
@@ -1736,18 +1747,19 @@ rv = .false.
         # May be one more argument to C function than Fortran function
         # (the result)
         #
-        f_args = ast.params
+        f_args = ast.declarator.params
         f_index = -1  # index into f_args
         have_f_arg = False
-        for c_arg in C_node.ast.params:
-            arg_name = c_arg.name
+        for c_arg in C_node.ast.declarator.params:
+            arg_name = c_arg.declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 
-            c_attrs = c_arg.attrs
-            c_meta = c_arg.metaattrs
+            c_declarator = c_arg.declarator
+            c_attrs = c_declarator.attrs
+            c_meta = c_declarator.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_meta["intent"]
             optattr = False
@@ -1774,15 +1786,17 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-            f_attrs = f_arg.attrs
-            f_meta = f_arg.metaattrs
+            f_declarator = f_arg.declarator
+            f_name = f_declarator.user_name
+            f_attrs = f_declarator.attrs
+            f_meta = f_declarator.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
-            c_spointer = c_arg.get_indirect_stmt()
+            c_spointer = c_declarator.get_indirect_stmt()
             c_api = c_meta["api"]
             c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
-            f_spointer = f_arg.get_indirect_stmt()
+            f_spointer = f_declarator.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
@@ -1809,35 +1823,35 @@ rv = .false.
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
                     arg_f_decl.append(
-                        "character(len=*), intent(IN) :: {}".format(f_arg.name)
+                        "character(len=*), intent(IN) :: {}".format(f_name)
                     )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_arg.name))
+                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_name))
                     self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                     need_wrapper = True
                     continue
                 elif c_attrs["assumedtype"]:
                     # Passed directly to C as a 'void *'
                     arg_f_decl.append(
-                        "type(*) :: {}".format(f_arg.name)
+                        "type(*) :: {}".format(f_name)
                     )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_arg.name)
+                    arg_c_call.append(f_name)
                     continue
-                elif f_arg.is_function_pointer():
+                elif f_declarator.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     if c_attrs["external"]:
                         # external is similar to assumed type, in that it will
                         # accept any function.  But external is not allowed
                         # in bind(C), so make sure a wrapper is generated.
-                        arg_f_decl.append("external :: {}".format(f_arg.name))
+                        arg_f_decl.append("external :: {}".format(f_name))
                         need_wrapper = True
                     else:
                         arg_f_decl.append(
-                            "procedure({}) :: {}".format(absiface, f_arg.name)
+                            "procedure({}) :: {}".format(absiface, f_name)
                         )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append(f_arg.name)
+                    arg_c_call.append(f_name)
                     # function pointers are pass thru without any other action
                     continue
                 elif implied:
@@ -1870,8 +1884,8 @@ rv = .false.
                     self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
                     # Generate declaration from argument.
-                    if options.F_default_args == "optional" and c_arg.init is not None:
-                        fmt_arg.default_value = c_arg.init
+                    if options.F_default_args == "optional" and c_arg.declarator.init is not None:
+                        fmt_arg.default_value = c_arg.declarator.init
                         optattr = True
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj, optional=optattr))
                     arg_f_names.append(fmt_arg.f_var)
@@ -1973,7 +1987,7 @@ rv = .false.
                     ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True)
                 )
 
-            if ast.is_indirect() < 2:
+            if ast.declarator.is_indirect() < 2:
                 # If more than one level of indirection, will return
                 # a type(C_PTR).  i.e. int ** same as void *.
                 # So do not add type's f_module.
@@ -2335,7 +2349,7 @@ class ToDimension(todict.PrintNode):
                 else:
                     return "obj->{}".format(argname)
         else:
-            if self.fcn.ast.find_arg_by_name(argname) is None:
+            if self.fcn.ast.declarator.find_arg_by_name(argname) is None:
                 self.need_helper = True
             if node.args is None:
                 return argname  # variable
@@ -2401,7 +2415,7 @@ class ToImplied(todict.PrintNode):
             self.intermediate = True
             self.helper = "ShroudTypeDefines"
             argname = node.args[0].name
-            typearg = self.func.ast.find_arg_by_name(argname)
+            typearg = self.func.ast.declarator.find_arg_by_name(argname)
             arg_typemap = typearg.typemap
             return arg_typemap.sh_type
         elif argname == "len":

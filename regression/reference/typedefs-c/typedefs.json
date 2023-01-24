@@ -18,7 +18,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "i"
+                                "name": "i",
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -45,7 +46,8 @@
                         "<VARIABLE>": "****************************************",
                         "ast": {
                             "declarator": {
-                                "name": "d"
+                                "name": "d",
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -115,28 +117,30 @@
                 "<FUNCTION>": "0 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "typefunc"
+                        "metaattrs": {
+                            "intent": "function"
+                        },
+                        "name": "typefunc",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "name": "arg",
+                                    "typemap_name": "TypeID"
+                                },
+                                "specifier": [
+                                    "TypeID"
+                                ],
+                                "typemap_name": "TypeID"
+                            }
+                        ],
+                        "typemap_name": "TypeID"
                     },
-                    "metaattrs": {
-                        "intent": "function"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg"
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "TypeID"
-                            ],
-                            "typemap_name": "TypeID"
-                        }
-                    ],
                     "specifier": [
                         "TypeID"
                     ],
@@ -144,6 +148,7 @@
                 },
                 "decl": "TypeID typefunc(TypeID arg);",
                 "declgen": "TypeID typefunc(TypeID arg +value)",
+                "name": "typefunc",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -283,30 +288,32 @@
                 "<FUNCTION>": "1 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "typestruct"
+                        "metaattrs": {
+                            "intent": "subroutine"
+                        },
+                        "name": "typestruct",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "Struct1Rename"
+                                },
+                                "specifier": [
+                                    "Struct1Rename"
+                                ],
+                                "typemap_name": "Struct1Rename"
+                            }
+                        ],
+                        "typemap_name": "void"
                     },
-                    "metaattrs": {
-                        "intent": "subroutine"
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "Struct1Rename"
-                            ],
-                            "typemap_name": "Struct1Rename"
-                        }
-                    ],
                     "specifier": [
                         "void"
                     ],
@@ -314,6 +321,7 @@
                 },
                 "decl": "void typestruct(Struct1Rename *arg1);",
                 "declgen": "void typestruct(Struct1Rename * arg1)",
+                "name": "typestruct",
                 "options": {},
                 "wrap": {
                     "c": true,
@@ -414,7 +422,8 @@
                 "<TYPEDEF>": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "TypeID"
+                        "name": "TypeID",
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -448,32 +457,9 @@
             {
                 "<TYPEDEF>": "****************************************",
                 "ast": {
-                    "class_specifier": {
-                        "members": [
-                            {
-                                "declarator": {
-                                    "name": "i"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            },
-                            {
-                                "declarator": {
-                                    "name": "d"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "name": "s_Struct1",
-                        "typemap_name": "s_Struct1"
-                    },
                     "declarator": {
-                        "name": "Struct1Rename"
+                        "name": "Struct1Rename",
+                        "typemap_name": "s_Struct1"
                     },
                     "specifier": [
                         "struct s_Struct1"
