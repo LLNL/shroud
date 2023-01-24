@@ -196,6 +196,7 @@ stmts:
           _name: ctor
         params: []
         typemap_name: Class2
+      is_ctor: true
       specifier:
       - Class2
       typemap_name: Class2
@@ -206,6 +207,7 @@ stmts:
           _name: dtor
         params: []
         typemap_name: void
+      is_dtor: Class2
       specifier:
       - void
       typemap_name: void

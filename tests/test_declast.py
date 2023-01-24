@@ -1082,6 +1082,7 @@ class CheckParse(unittest.TestCase):
             {
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
+                "is_ctor": True,
                 'declarator': {
                     "attrs": {"_constructor": True, "_name": "ctor"},
                     "params": [],
@@ -1114,6 +1115,7 @@ class CheckParse(unittest.TestCase):
             {
                 "specifier": ["Class1"],
                 "typemap_name": "Class1",
+                "is_ctor": True,
                 'declarator': {
                     "attrs": {"_constructor": True, "_name": "ctor", "name": "new"},
                     "params": [],
@@ -1145,6 +1147,7 @@ class CheckParse(unittest.TestCase):
             {
                 "specifier": ["void"],
                 "typemap_name": "void",
+                "is_dtor": "Class1",
                 'declarator': {
                     "attrs": {"_destructor": "Class1", "_name": "dtor"},
                     "params": [],

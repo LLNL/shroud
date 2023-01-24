@@ -743,9 +743,9 @@ class GenFunctions(object):
         found_ctor = False
         found_dtor = False
         for node in cls.functions:
-            fattrs = node.ast.attrs
-            found_ctor = found_ctor or fattrs["_constructor"]
-            found_dtor = found_dtor or fattrs["_destructor"]
+            declarator = node.ast.declarator
+            found_ctor = found_ctor or declarator.is_ctor()
+            found_dtor = found_dtor or declarator.is_dtor()
 
         if found_ctor and found_dtor:
             return cls.functions
