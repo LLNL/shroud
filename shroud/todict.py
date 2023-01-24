@@ -134,12 +134,6 @@ class ToDict(visitor.Visitor):
             d["declarator"] = self.visit(node.declarator)
         if node.storage:
             d["storage"] = node.storage
-#        if node.params is not None:
-#            d["params"] = self.visit(node.params)
-#        if node.array:
-#            d["array"] = self.visit(node.array)
-#        if node.init is not None:
-#            d["init"] = node.init
         if node.template_arguments:
             lst = []
             for tp in node.template_arguments:
