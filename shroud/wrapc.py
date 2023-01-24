@@ -604,7 +604,7 @@ class Wrapc(util.WrapperMixin):
         """
         has_dtor = False
         for method in node.functions:
-            if method.ast.attrs["_destructor"]:
+            if method.ast.is_dtor:
                 has_dtor = True
                 break
 
@@ -767,18 +767,19 @@ class Wrapc(util.WrapperMixin):
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
-        attrs = ast.attrs
-        meta = ast.metaattrs
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
         
         if meta["dimension"]:
+            fcn_struct = fcn.ast.declarator.metaattrs["struct"]
             if cls is not None:
                 parent = cls
                 cls.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
-            elif fcn.ast.metaattrs["struct"]:
+            elif fcn_struct:
                 # metaattr set in add_var_getter_setter
-                parent = self.newlibrary.class_map[fcn.ast.metaattrs["struct"]]
+                parent = self.newlibrary.class_map[fcn_struct]
                 parent.create_node_map()
                 class_context = wformat("{CXX_this}->", fmt)
             else:
@@ -888,9 +889,10 @@ class Wrapc(util.WrapperMixin):
         # C return type
         ast = node.ast
         declarator = ast.declarator
+        meta = declarator.metaattrs
         C_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        result_api = ast.metaattrs["api"]
+        result_api = meta["api"]
 
         result_is_const = ast.const
         is_ctor = CXX_ast.declarator.is_ctor()
@@ -903,7 +905,6 @@ class Wrapc(util.WrapperMixin):
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
 
-        meta = ast.metaattrs
         sintent = meta["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
@@ -1050,8 +1051,8 @@ class Wrapc(util.WrapperMixin):
             arg_name = declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
-            c_attrs = arg.attrs
-            c_meta = arg.metaattrs
+            c_attrs = declarator.attrs
+            c_meta = declarator.metaattrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
@@ -1214,7 +1215,7 @@ class Wrapc(util.WrapperMixin):
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
-        return_deref_attr = ast.metaattrs["deref"]
+        return_deref_attr = ast.declarator.metaattrs["deref"]
         if result_blk.return_type:
             # Override return type.
             fmt_func.C_return_type = wformat(
@@ -1547,15 +1548,15 @@ class Wrapc(util.WrapperMixin):
 
         declarator = ast.declarator
         from_stmt = False
-        if ast.attrs["owner"]:
-            owner = ast.attrs["owner"]
+        if declarator.attrs["owner"]:
+            owner = declarator.attrs["owner"]
         elif intent_blk.owner:
             owner = intent_blk.owner
             from_stmt = True
         else:
             owner = default_owner
 
-        free_pattern = ast.attrs["free_pattern"]
+        free_pattern = declarator.attrs["free_pattern"]
         if owner == "library":
             # Library owns memory, do not let user release.
             pass
@@ -1664,7 +1665,7 @@ class ToDimension(todict.PrintNode):
             arg = self.fcn.ast.declarator.find_arg_by_name(argname)
             if arg:
                 declarator = arg.declarator
-                if arg.attrs["hidden"]:
+                if declarator.attrs["hidden"]:
                     # (int *arg +intent(out)+hidden)
                     # c_out_native_*_hidden creates a local scalar.
                     deref = ''

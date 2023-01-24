@@ -831,7 +831,7 @@ return 1;""",
 
         ########################################
         # setter
-        if not ast.attrs["readonly"]:
+        if not declarator.attrs["readonly"]:
             fmt_var.PY_setter = wformat(
                 options.PY_member_setter_template, fmt_var
             )
@@ -928,8 +928,8 @@ return 1;""",
             # XXX - cxx_var may not have prefix yet.
             fmt.npy_intp_asgn = wformat("{npy_dims_var}[0] = {cxx_var}->size();\n", fmt)
 
-        dimension = ast.metaattrs["dimension"]
-        rank = ast.attrs["rank"]
+        dimension = declarator.metaattrs["dimension"]
+        rank = declarator.attrs["rank"]
         if rank is not None:
             fmt.rank = str(rank)
         elif dimension:
@@ -1008,7 +1008,7 @@ return 1;""",
             arg -
             pre_call -
         """
-        implied = arg.attrs["implied"]
+        implied = arg.declarator.attrs["implied"]
         if implied:
             fmt = node._fmtargs[arg.declarator.user_name]["fmtpy"]
             fmt.pre_call_intent = py_implied(implied, node)
@@ -1294,15 +1294,15 @@ return 1;""",
                 fmt_arg.cxx_member = "."
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = declarator.attrs
+            meta = declarator.metaattrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
-            rank = arg.attrs["rank"]
-            dimension = arg.attrs["dimension"]
+            rank = attrs["rank"]
+            dimension = attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
             intent = meta["intent"]
@@ -1316,7 +1316,7 @@ return 1;""",
                 intent_blk = lookup_stmts(stmts)
                 if intent_blk.name == "py_default":
                     intent_blk = None
-                struct_member = arg.metaattrs["struct_member"]
+                struct_member = meta["struct_member"]
                 struct_fmt = struct_member.fmtdict
                 fmt_arg.field_name = struct_fmt.field_name
                 fmt_arg.PY_member_object = struct_fmt.PY_member_object
@@ -1336,7 +1336,7 @@ return 1;""",
                 intent_blk = default_scope
             elif sgroup == "char":
                 stmts = ["py", intent, sgroup, spointer]
-                charlen = arg.attrs["charlen"]
+                charlen = attrs["charlen"]
                 if charlen:
                     fmt_arg.charlen = charlen
                     stmts.append("charlen")
@@ -1974,8 +1974,8 @@ return 1;""",
         options = node.options
         ast = node.ast
         declarator = ast.declarator
-        attrs = ast.attrs
-        meta = ast.metaattrs
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         is_ctor = declarator.is_ctor()
         result_typemap = ast.typemap
 
@@ -3345,8 +3345,8 @@ def py_struct_dimension(parent, var, fmt):
     declarator = ast.declarator
     if declarator.array: # Fixed size array.
         metadim = declarator.array
-    elif ast.attrs["dimension"] is not None:
-        metadim = ast.metaattrs["dimension"]
+    elif declarator.attrs["dimension"] is not None:
+        metadim = declarator.metaattrs["dimension"]
     else:
         metadim = None
     if metadim:
@@ -3499,12 +3499,12 @@ class ToImplied(todict.PrintNode):
 
             # find argname in function parameters
             arg = self.func.ast.declarator.find_arg_by_name(argname)
-            if arg.metaattrs["intent"] == "out":
+            if arg.declarator.metaattrs["intent"] == "out":
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
                 # len(text) in this case is the value of "charlen"
                 # since no variable is actually passed in as an argument.
-                return arg.attrs["charlen"]
+                return arg.declarator.attrs["charlen"]
             # XXX - need code for len_trim?
             return wformat("strlen({cxx_var})", fmt)
         elif argname == "len_trim":

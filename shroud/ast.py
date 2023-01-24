@@ -1445,14 +1445,15 @@ class FunctionNode(AstNode):
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments to function:", ast.gen_decl())
         self.ast = ast
-        self.name = ast.declarator.user_name
+        declarator = ast.declarator
+        self.name = declarator.user_name
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
         if ast.typemap.base == "template":
             self.have_template_args = True
         else:
-            for args in ast.declarator.params:
+            for args in declarator.params:
                 if args.typemap.base == "template":
                     self.have_template_args = True
                     break
@@ -1461,7 +1462,7 @@ class FunctionNode(AstNode):
         # by copying original params then substituting decls from fortran_generic.
         for generic in self.fortran_generic:
             generic.parse_generic(self.symtab)
-            newparams = copy.deepcopy(ast.declarator.params)
+            newparams = copy.deepcopy(declarator.params)
             for garg in generic.decls:
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
@@ -1478,12 +1479,12 @@ class FunctionNode(AstNode):
         # add any attributes from YAML files to the ast
         if "attrs" in kwargs:
             attrs = kwargs["attrs"]
-            for arg in ast.declarator.params:
+            for arg in declarator.params:
                 name = arg.declarator.user_name
                 if name in attrs:
                     arg.declarator.attrs.update(attrs[name])
         if "fattrs" in kwargs:
-            ast.attrs.update(kwargs["fattrs"])
+            declarator.attrs.update(kwargs["fattrs"])
 
         if "splicer" in kwargs:
             self.splicer = kwargs["splicer"]

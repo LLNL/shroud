@@ -531,8 +531,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_deref = ""
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = a_declarator.attrs
+            meta = a_declarator.metaattrs
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -592,7 +592,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         sgroup = None
         spointer = ast.declarator.get_indirect_stmt()
 #        print("DDDDDDDDDDDDDD", ast.name)
-        sintent = ast.metaattrs["intent"]
+        sintent = declarator.metaattrs["intent"]
         if is_ctor:
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)

@@ -72,7 +72,8 @@ struct Cstruct_list {
         #####
         var = map['ivalue']
         # done in generate.VerifyAttrs.parse_attrs
-        generate.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
+        declarator = var.ast.declarator
+        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."
@@ -84,7 +85,8 @@ struct Cstruct_list {
         #####
         var = map['dvalue']
         # done in generate.VerifyAttrs.parse_attrs
-        generate.check_dimension(var.ast.attrs["dimension"], var.ast.metaattrs)
+        declarator = var.ast.declarator
+        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."

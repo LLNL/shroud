@@ -1075,7 +1075,7 @@ rv = .false.
         else:
             declarator = ast.declarator
             name = declarator.user_name
-            attrs = ast.attrs
+            attrs = declarator.attrs
             arg_c_names.append(name)
             # argument declarations
             if attrs["assumedtype"]:
@@ -1102,7 +1102,7 @@ rv = .false.
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
                 # 'char **' uses c_char_**_in as a special case.
-                intent = ast.metaattrs["intent"].upper()
+                intent = ast.declarator.metaattrs["intent"].upper()
                 arg_c_decl.append(
                     "type(C_PTR), intent({}) :: {}".format(
                         intent, fmt.F_C_var))
@@ -1140,7 +1140,7 @@ rv = .false.
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
         is_ctor = declarator.is_ctor()
-        is_pure = ast.attrs["pure"]
+        is_pure = declarator.attrs["pure"]
         is_static = False
         func_is_const = declarator.func_const
 
@@ -1170,7 +1170,7 @@ rv = .false.
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, fmt_result)
 
-        r_meta = ast.metaattrs
+        r_meta = ast.declarator.metaattrs
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
 
@@ -1241,8 +1241,8 @@ rv = .false.
             self.set_fmt_fields_iface(node, arg, fmt_arg, arg_name, arg_typemap)
             self.set_fmt_fields_dimension(cls, node, arg, fmt_arg)
             
-            attrs = arg.attrs
-            meta = arg.metaattrs
+            attrs = declarator.attrs
+            meta = declarator.metaattrs
             if attrs["hidden"] and node._generated:
                 continue
             intent = meta["intent"]
@@ -1498,7 +1498,8 @@ rv = .false.
         subprogram : str
             "function" or "subroutine" or None
         """
-        meta = ast.metaattrs
+        attrs = ast.declarator.attrs
+        meta = ast.declarator.metaattrs
 
         if subprogram == "subroutine":
             pass
@@ -1519,7 +1520,7 @@ rv = .false.
         f_c_module_line = ntypemap.f_c_module_line or ntypemap.f_module_line
         if f_c_module_line:
             fmt.f_c_module_line = f_c_module_line
-        statements.assign_buf_variable_names(ast.attrs, ast.metaattrs, fcn.options, fmt, rootname)
+        statements.assign_buf_variable_names(attrs, meta, fcn.options, fmt, rootname)
     
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt,
                        subprogram=None,
@@ -1539,8 +1540,8 @@ rv = .false.
         subprogram : str
         ntypemap : typemap.Typemap
         """
-        c_attrs = c_ast.attrs
-        c_meta = c_ast.metaattrs
+        c_attrs = c_ast.declarator.attrs
+        c_meta = c_ast.declarator.metaattrs
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
@@ -1577,10 +1578,11 @@ rv = .false.
         f_ast : declast.Declaration
         fmt: util.Scope
         """
-        f_attrs = f_ast.attrs
-        dim = f_ast.metaattrs["dimension"]
+        f_attrs = f_ast.declarator.attrs
+        f_meta = f_ast.declarator.metaattrs
+        dim = f_meta["dimension"]
         rank = f_attrs["rank"]
-        if f_ast.metaattrs["assumed-rank"]:
+        if f_meta["assumed-rank"]:
             fmt.f_c_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
@@ -1655,8 +1657,8 @@ rv = .false.
         imports = {}
         stmts_comments = []
 
-        r_attrs = ast.attrs
-        r_meta = ast.metaattrs
+        r_attrs = declarator.attrs
+        r_meta = declarator.metaattrs
         sintent = r_meta["intent"]
         if subprogram == "subroutine":
             fmt_result = fmt_func
@@ -1756,8 +1758,8 @@ rv = .false.
             fmt_arg.c_var = arg_name
 
             c_declarator = c_arg.declarator
-            c_attrs = c_arg.attrs
-            c_meta = c_arg.metaattrs
+            c_attrs = c_declarator.attrs
+            c_meta = c_declarator.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_meta["intent"]
             optattr = False
@@ -1786,8 +1788,8 @@ rv = .false.
                 f_arg = f_args[f_index]
             f_declarator = f_arg.declarator
             f_name = f_declarator.user_name
-            f_attrs = f_arg.attrs
-            f_meta = f_arg.metaattrs
+            f_attrs = f_declarator.attrs
+            f_meta = f_declarator.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_declarator.get_indirect_stmt()

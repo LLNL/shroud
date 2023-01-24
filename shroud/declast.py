@@ -436,8 +436,7 @@ class Parser(ExprParser):
             self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
             self.info("destructor", parent.typemap.name)
-            node.attrs["_name"] = "dtor"
-            node.attrs["_destructor"] = tok.value
+            node.is_dtor = tok.value
             #node.typemap = self.namespace.typemap # The class' typemap
             node.typemap = typemap.void_typemap
             found_type = True
@@ -460,8 +459,7 @@ class Parser(ExprParser):
                         # template<T> vector { vector<T>(); }
                         # class Class1 { Class1(); }
                         self.info("constructor")
-                        node.attrs["_name"] = "ctor"
-                        node.attrs["_constructor"] = True
+                        node.is_ctor = True
                         more = False
                     # Save fully resolved typename
                     node.typemap = ns.typemap
@@ -610,8 +608,6 @@ class Parser(ExprParser):
 
         # SSS Share fields between Declaration and Declarator for now
         declarator = node.declarator
-        declarator.attrs = node.attrs
-        declarator.metaattrs = node.metaattrs
         declarator.typemap = node.typemap
         if declarator.func:
             declarator.func.typemap = node.typemap
@@ -629,15 +625,19 @@ class Parser(ExprParser):
                             ) [ = <initializer> ]
         """
         self.enter("declarator_item")
-        if node.attrs["_destructor"]:
-            node.declarator = Declarator()
-            node.declarator.ctor_dtor_name = True
-        elif node.attrs["_constructor"]:
-            node.declarator = Declarator()
-            node.declarator.ctor_dtor_name = True
+        if node.is_dtor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "dtor"
+            declarator.attrs["_destructor"] = node.is_dtor
+        elif node.is_ctor:
+            declarator = Declarator()
+            declarator.ctor_dtor_name = True
+            declarator.attrs["_name"] = "ctor"
+            declarator.attrs["_constructor"] = True
         else:
-            node.declarator = self.declarator()
-        declarator = node.declarator
+            declarator = self.declarator()
+        node.declarator = declarator
 
         if self.token.typ == "LPAREN":  # peek
             # Function parameters.
@@ -668,7 +668,7 @@ class Parser(ExprParser):
             self.next() # consume bracket
             declarator.array.append(self.expression())
             self.mustbe("RBRACKET")
-        self.attribute(node.attrs)  # variable attributes
+        self.attribute(declarator.attrs)  # variable attributes
 
         # Attribute are parsed before default value since
         # default value may have a +.
@@ -676,8 +676,8 @@ class Parser(ExprParser):
         if self.have("EQUALS"):
             declarator.init = self.initializer()
 
-        if node.declarator.ctor_dtor_name:
-            node.declarator.ctor_dtor_name = node.attrs["name"] or node.attrs["_name"]
+        if declarator.ctor_dtor_name:
+            declarator.ctor_dtor_name = declarator.attrs["name"] or declarator.attrs["_name"]
             
         self.exit("declarator_item", str(node))
         return node
@@ -1522,8 +1522,8 @@ class Declaration(Node):
         self.declarator = None
         self.template_arguments = []    # vector<int>, list of Declaration
         self.template_argument = None   # T arg, str
-        self.attrs = collections.defaultdict(lambda: None)
-        self.metaattrs = collections.defaultdict(lambda: None)
+        self.is_ctor = False
+        self.is_dtor = False
 
         self.typemap = None
 
@@ -1555,16 +1555,14 @@ class Declaration(Node):
             # make sure the return type is a pointer
             new.declarator.pointer = [Ptr("*")]
         # new.array = None
-        new.attrs = copy.deepcopy(self.attrs) # XXX no need for deepcopy in future
-        new.metaattrs = copy.deepcopy(self.metaattrs)
-        new.metaattrs["intent"] = "out"
+        new.declarator.attrs = copy.deepcopy(self.declarator.attrs) # XXX no need for deepcopy in future
+        new.declarator.metaattrs = copy.deepcopy(self.declarator.metaattrs)
+        new.declarator.metaattrs["intent"] = "out"
         new.typemap = self.typemap
         new.template_arguments = self.template_arguments
         # SSS
         new.declarator.params= None
-        new.declarator.attrs = new.attrs
-        new.declarator.metaattrs = new.metaattrs
-        new.declarator.typemap = new.typemap
+        new.declarator.typemap = new.declarator.typemap
         return new
 
     def set_return_to_void(self):
@@ -1603,9 +1601,9 @@ class Declaration(Node):
             out.append("const ")
         if self.volatile:
             out.append("volatile ")
-        if self.attrs["_destructor"]:
+        if self.is_dtor:
             out.append("~")
-            out.append(self.attrs["_destructor"])
+            out.append(self.is_dtor)
         else:
             if self.storage:
                 out.append(" ".join(self.storage))
@@ -1641,9 +1639,9 @@ class Declaration(Node):
         if self.const:
             decl.append("const ")
 
-        if self.attrs["_destructor"]:
+        if self.is_dtor:
             decl.append("~")
-            decl.append(self.attrs["_destructor"])
+            decl.append(self.is_dtor)
         else:
             if self.storage:
                 decl.append(" ".join(self.storage))
@@ -1750,7 +1748,7 @@ class Declaration(Node):
             decl.append(typ)
 
         declarator = self.declarator
-        if self.attrs["_constructor"] and lang == "c_type":
+        if self.is_ctor and lang == "c_type":
             # The C wrapper wants a pointer to the type.
             force_ptr = True
 
@@ -1801,8 +1799,8 @@ class Declaration(Node):
             name   - Set name explicitly, else self.name.
         """
         t = []
-        attrs = self.attrs
-        meta = self.metaattrs
+        attrs = self.declarator.attrs
+        meta = self.declarator.metaattrs
         ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
@@ -1864,8 +1862,8 @@ class Declaration(Node):
         """
         t = []
         declarator = self.declarator
-        attrs = self.attrs
-        meta = self.metaattrs
+        attrs = declarator.attrs
+        meta = declarator.metaattrs
         ntypemap = self.typemap
         if ntypemap.sgroup == "vector":
             # If std::vector, use its type (<int>)
@@ -2465,17 +2463,17 @@ def create_struct_ctor(cls):
     """
     name = cls.name + "_ctor"
     ast = Declaration()
-    ast.attrs["_constructor"] = True
-    ast.attrs["name"] = name
-##        _name="ctor",
-    ast.metaattrs["intent"] = "ctor"
+    ast.is_ctor = True
     ast.typemap = cls.typemap
     ast.specifier = [ cls.name ]
-    ast.declarator = Declarator()  # SSS
-    ast.declarator.params = []
-    ast.declarator.typemap = cls.typemap
-    ast.declarator.attrs = ast.attrs
-    ast.declarator.metaattrs = ast.metaattrs
+    declarator = Declarator()
+    ast.declarator = declarator
+    declarator.params = []
+    declarator.typemap = cls.typemap
+    declarator.attrs["_constructor"] = True
+    declarator.attrs["name"] = name
+##        _name="ctor",
+    declarator.metaattrs["intent"] = "ctor"
     return ast
 
 
