@@ -59,6 +59,7 @@
                                 ],
                                 "typemap_name": "Cstruct1"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -313,6 +314,7 @@
                                 ],
                                 "typemap_name": "Cstruct_ptr"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_ptr"
                             ],
@@ -659,6 +661,7 @@
                                 ],
                                 "typemap_name": "Cstruct_list"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_list"
                             ],
@@ -1139,6 +1142,7 @@
                                 ],
                                 "typemap_name": "Cstruct_numpy"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct_numpy"
                             ],
@@ -1497,6 +1501,7 @@
                                 ],
                                 "typemap_name": "Arrays1"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Arrays1"
                             ],

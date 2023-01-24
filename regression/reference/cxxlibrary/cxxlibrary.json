@@ -54,6 +54,7 @@
                                 ],
                                 "typemap_name": "Cstruct1_cls"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Cstruct1_cls"
                             ],

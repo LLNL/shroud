@@ -3192,6 +3192,7 @@
                                         "params": [],
                                         "typemap_name": "ns0::Names"
                                     },
+                                    "is_ctor": true,
                                     "specifier": [
                                         "Names"
                                     ],

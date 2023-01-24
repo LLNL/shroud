@@ -389,6 +389,7 @@
                                         ],
                                         "typemap_name": "outer::Cstruct1"
                                     },
+                                    "is_ctor": true,
                                     "specifier": [
                                         "Cstruct1"
                                     ],

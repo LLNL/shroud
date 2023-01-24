@@ -25,6 +25,7 @@
                                 "params": [],
                                 "typemap_name": "ArrayWrapper"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "ArrayWrapper"
                             ],

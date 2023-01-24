@@ -63,6 +63,7 @@
                                 ],
                                 "typemap_name": "Arrays1"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Arrays1"
                             ],

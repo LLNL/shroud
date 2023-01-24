@@ -23,6 +23,7 @@
                                 "params": [],
                                 "typemap_name": "void"
                             },
+                            "is_dtor": "Class1",
                             "specifier": [
                                 "void"
                             ],

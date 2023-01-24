@@ -111,6 +111,7 @@
                                 "params": [],
                                 "typemap_name": "classes::Class1"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Class1"
                             ],
@@ -255,6 +256,7 @@
                                 ],
                                 "typemap_name": "classes::Class1"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Class1"
                             ],
@@ -448,6 +450,7 @@
                                 "params": [],
                                 "typemap_name": "void"
                             },
+                            "is_dtor": "Class1",
                             "specifier": [
                                 "void"
                             ],
@@ -3080,6 +3083,7 @@
                                 "params": [],
                                 "typemap_name": "classes::Shape"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Shape"
                             ],
@@ -3376,6 +3380,7 @@
                                 "params": [],
                                 "typemap_name": "classes::Circle"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Circle"
                             ],
@@ -3706,6 +3711,7 @@
                                 "params": [],
                                 "typemap_name": "classes::Data"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Data"
                             ],
@@ -3790,6 +3796,7 @@
                                 "params": [],
                                 "typemap_name": "void"
                             },
+                            "is_dtor": "Data",
                             "specifier": [
                                 "void"
                             ],

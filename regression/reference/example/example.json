@@ -45,6 +45,7 @@
                                                 "params": [],
                                                 "typemap_name": "example::nested::ExClass1"
                                             },
+                                            "is_ctor": true,
                                             "specifier": [
                                                 "ExClass1"
                                             ],
@@ -193,6 +194,7 @@
                                                 ],
                                                 "typemap_name": "example::nested::ExClass1"
                                             },
+                                            "is_ctor": true,
                                             "specifier": [
                                                 "ExClass1"
                                             ],
@@ -408,6 +410,7 @@
                                                 ],
                                                 "typemap_name": "example::nested::ExClass1"
                                             },
+                                            "is_ctor": true,
                                             "specifier": [
                                                 "ExClass1"
                                             ],
@@ -523,6 +526,7 @@
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },
+                                            "is_dtor": "ExClass1",
                                             "specifier": [
                                                 "void"
                                             ],
@@ -2115,6 +2119,7 @@
                                                 ],
                                                 "typemap_name": "example::nested::ExClass2"
                                             },
+                                            "is_ctor": true,
                                             "specifier": [
                                                 "ExClass2"
                                             ],
@@ -2332,6 +2337,7 @@
                                                 ],
                                                 "typemap_name": "example::nested::ExClass2"
                                             },
+                                            "is_ctor": true,
                                             "specifier": [
                                                 "ExClass2"
                                             ],
@@ -2445,6 +2451,7 @@
                                                 "params": [],
                                                 "typemap_name": "void"
                                             },
+                                            "is_dtor": "ExClass2",
                                             "specifier": [
                                                 "void"
                                             ],

@@ -123,28 +123,11 @@ class ToDict(visitor.Visitor):
         if node.typemap.base != "template":
             # Only print name to avoid too much nesting.
             d["typemap_name"] = node.typemap.name
-# SSS
-#        attrs = {key: value
-#                 for (key, value) in node.attrs.items()
-#                 if value is not None}
-#        if attrs:
-#            d["attrs"] = attrs
-#
-#        metaattrs = {key: value
-#                 for (key, value) in node.metaattrs.items()
-#                 if value is not None}
-#        if metaattrs:
-#            if "struct_member" in metaattrs:
-#                # struct_member is a ast.VariableNode, add name instead
-#                # to avoid huge dump.
-#                metaattrs["struct_member"] = metaattrs["struct_member"].name
-#            if "dimension" in metaattrs:
-#                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
-#            d["metaattrs"] = metaattrs
         
         add_true_fields(node, d, [
             "const", "volatile",
             "ftrim_char_in", "blanknull",
+            "is_ctor", "is_dtor",
         ])
         if node.declarator:
             # ctor and dtor have no declarator

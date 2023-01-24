@@ -78,6 +78,7 @@
                                 "params": [],
                                 "typemap_name": "forward::Class2"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "Class2"
                             ],
@@ -199,6 +200,7 @@
                                 "params": [],
                                 "typemap_name": "void"
                             },
+                            "is_dtor": "Class2",
                             "specifier": [
                                 "void"
                             ],

@@ -430,6 +430,7 @@
                                 "params": [],
                                 "typemap_name": "structAsClass"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "structAsClass"
                             ],
@@ -1036,6 +1037,7 @@
                                 "params": [],
                                 "typemap_name": "structAsClass"
                             },
+                            "is_ctor": true,
                             "specifier": [
                                 "structAsClass"
                             ],
@@ -2694,6 +2696,7 @@
                                         "params": [],
                                         "typemap_name": "std::vector"
                                     },
+                                    "is_ctor": true,
                                     "specifier": [
                                         "vector"
                                     ],
@@ -2804,6 +2807,7 @@
                                         "params": [],
                                         "typemap_name": "void"
                                     },
+                                    "is_dtor": "vector",
                                     "specifier": [
                                         "void"
                                     ],
@@ -3506,6 +3510,7 @@
                                         "params": [],
                                         "typemap_name": "std::vector"
                                     },
+                                    "is_ctor": true,
                                     "specifier": [
                                         "vector"
                                     ],
@@ -3616,6 +3621,7 @@
                                         "params": [],
                                         "typemap_name": "void"
                                     },
+                                    "is_dtor": "vector",
                                     "specifier": [
                                         "void"
                                     ],

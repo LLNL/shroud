@@ -1233,7 +1233,6 @@ class Declarator(Node):
         
         self.ctor_dtor_name = False
 
-        # SSS
         self.params = None  # None=No parameters, []=empty parameters list
         self.array = []
         self.init = None  # initial value
@@ -1549,6 +1548,9 @@ class Declaration(Node):
         new.storage = self.storage[:]
         new.const = self.const
         new.volatile = self.volatile
+        new.typemap = self.typemap
+        new.template_arguments = self.template_arguments
+
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
@@ -1558,9 +1560,6 @@ class Declaration(Node):
         new.declarator.attrs = copy.deepcopy(self.declarator.attrs) # XXX no need for deepcopy in future
         new.declarator.metaattrs = copy.deepcopy(self.declarator.metaattrs)
         new.declarator.metaattrs["intent"] = "out"
-        new.typemap = self.typemap
-        new.template_arguments = self.template_arguments
-        # SSS
         new.declarator.params= None
         new.declarator.typemap = new.declarator.typemap
         return new
