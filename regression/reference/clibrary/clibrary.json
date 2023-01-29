@@ -6105,6 +6105,7 @@
                             "F_C_var": "arr",
                             "c_var": "arr",
                             "f_intent": "INOUT",
+                            "f_kind": "array_info",
                             "f_type": "type(array_info)",
                             "f_var": "arr",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -6355,6 +6356,7 @@
                 ]
             },
             "f_derived_type": "array_info",
+            "f_kind": "array_info",
             "f_module": {
                 "clibrary_mod": [
                     "array_info"

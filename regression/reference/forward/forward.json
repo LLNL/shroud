@@ -699,7 +699,8 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "IN",
-                            "f_type": "type(Cstruct1)",
+                            "f_kind": "cstruct1",
+                            "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_in_struct_*",
@@ -794,6 +795,7 @@
             ],
             "cxx_type": "Cstruct1",
             "f_derived_type": "cstruct1",
+            "f_kind": "cstruct1",
             "f_module": {
                 "struct_mod": [
                     "cstruct1"
@@ -801,7 +803,7 @@
             },
             "f_module_name": "struct_mod",
             "f_to_c": "{f_var}",
-            "f_type": "type(Cstruct1)",
+            "f_type": "type(cstruct1)",
             "flat_name": "Cstruct1",
             "sgroup": "struct",
             "wrap_header": [

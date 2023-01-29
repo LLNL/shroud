@@ -2280,6 +2280,7 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
+                                    "f_kind": "cstruct1",
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2460,6 +2461,7 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
+                                    "f_kind": "cstruct1",
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2639,6 +2641,7 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
+                                    "f_kind": "cstruct1",
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2770,6 +2773,7 @@
                                     "F_C_var": "arg",
                                     "c_var": "arg",
                                     "f_intent": "OUT",
+                                    "f_kind": "cstruct1",
                                     "f_type": "type(cstruct1)",
                                     "f_var": "arg",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2898,6 +2902,7 @@
                 ]
             },
             "f_derived_type": "cstruct1_cls",
+            "f_kind": "cstruct1_cls",
             "f_module": {
                 "cxxlibrary_mod": [
                     "cstruct1_cls"
@@ -2929,6 +2934,7 @@
                 ]
             },
             "f_derived_type": "cstruct1",
+            "f_kind": "cstruct1",
             "f_module": {
                 "cxxlibrary_structns_mod": [
                     "cstruct1"

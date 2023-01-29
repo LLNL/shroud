@@ -2353,6 +2353,7 @@
                 ]
             },
             "f_derived_type": "arrays1",
+            "f_kind": "arrays1",
             "f_module": {
                 "struct_mod": [
                     "arrays1"
@@ -2384,6 +2385,7 @@
                 ]
             },
             "f_derived_type": "cstruct1",
+            "f_kind": "cstruct1",
             "f_module": {
                 "struct_mod": [
                     "cstruct1"
@@ -2487,6 +2489,7 @@
                 ]
             },
             "f_derived_type": "cstruct_list",
+            "f_kind": "cstruct_list",
             "f_module": {
                 "struct_mod": [
                     "cstruct_list"
@@ -2518,6 +2521,7 @@
                 ]
             },
             "f_derived_type": "cstruct_numpy",
+            "f_kind": "cstruct_numpy",
             "f_module": {
                 "struct_mod": [
                     "cstruct_numpy"
@@ -2549,6 +2553,7 @@
                 ]
             },
             "f_derived_type": "cstruct_ptr",
+            "f_kind": "cstruct_ptr",
             "f_module": {
                 "struct_mod": [
                     "cstruct_ptr"

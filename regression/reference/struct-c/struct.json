@@ -1996,6 +1996,7 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "IN",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -2131,6 +2132,7 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "IN",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -2321,6 +2323,7 @@
                             "F_C_var": "s1",
                             "c_var": "s1",
                             "f_intent": "IN",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT"
@@ -2513,6 +2516,7 @@
                             "F_C_var": "s1",
                             "c_var": "s1",
                             "f_intent": "IN",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "s1",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -2636,6 +2640,7 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "IN",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -2806,6 +2811,7 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "OUT",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -2976,6 +2982,7 @@
                             "F_C_var": "arg",
                             "c_var": "arg",
                             "f_intent": "INOUT",
+                            "f_kind": "cstruct1",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -3178,6 +3185,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -3363,6 +3371,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -3547,6 +3556,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
@@ -3779,6 +3789,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -4021,6 +4032,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
@@ -4103,6 +4115,7 @@
                         "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_list",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct_list",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -4181,6 +4194,7 @@
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "f_intent": "OUT",
+                        "f_kind": "cstruct_list",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT"
@@ -5030,6 +5044,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
+                            "f_kind": "cstruct_ptr",
                             "f_type": "type(cstruct_ptr)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -5184,6 +5199,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
+                            "f_kind": "cstruct_ptr",
                             "f_type": "type(cstruct_ptr)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -5458,6 +5474,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
+                            "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -5631,6 +5648,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
+                            "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -5910,6 +5928,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
+                            "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -6083,6 +6102,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
+                            "f_kind": "cstruct_list",
                             "f_type": "type(cstruct_list)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -6209,6 +6229,7 @@
                 ]
             },
             "f_derived_type": "arrays1",
+            "f_kind": "arrays1",
             "f_module": {
                 "struct_mod": [
                     "arrays1"
@@ -6238,6 +6259,7 @@
                 ]
             },
             "f_derived_type": "cstruct1",
+            "f_kind": "cstruct1",
             "f_module": {
                 "struct_mod": [
                     "cstruct1"
@@ -6339,6 +6361,7 @@
                 ]
             },
             "f_derived_type": "cstruct_list",
+            "f_kind": "cstruct_list",
             "f_module": {
                 "struct_mod": [
                     "cstruct_list"
@@ -6368,6 +6391,7 @@
                 ]
             },
             "f_derived_type": "cstruct_numpy",
+            "f_kind": "cstruct_numpy",
             "f_module": {
                 "struct_mod": [
                     "cstruct_numpy"
@@ -6397,6 +6421,7 @@
                 ]
             },
             "f_derived_type": "cstruct_ptr",
+            "f_kind": "cstruct_ptr",
             "f_module": {
                 "struct_mod": [
                     "cstruct_ptr"

@@ -156,7 +156,7 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
-    def add_class(self, decl, ast=None, fields=None,
+    def add_class(self, decl, ast=None, fields={},
                   base=[], template_parameters=None,
                   **kwargs):
         """Add a class.
@@ -177,7 +177,7 @@ class NamespaceMixin(object):
         self.classes.append(node)
         return node
 
-    def add_declaration(self, decl, fields=None, **kwargs):
+    def add_declaration(self, decl, fields={}, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
 
@@ -277,7 +277,7 @@ class NamespaceMixin(object):
             self.namespaces.append(node)
         return node
 
-    def add_struct(self, decl, ast=None, fields=None,
+    def add_struct(self, decl, ast=None, fields={},
                    template_parameters=None, **kwargs):
         """Add a struct.
 
@@ -307,7 +307,7 @@ class NamespaceMixin(object):
         self.classes.append(node)
         return node
 
-    def add_typedef(self, decl, ast=None, fields=None, **kwargs):
+    def add_typedef(self, decl, ast=None, fields={}, **kwargs):
         """Add a TypedefNode to the typedefs list.
 
         This may be the YAML file as a typemap which may have 'fields',
@@ -1054,7 +1054,7 @@ class ClassNode(AstNode, NamespaceMixin):
         base=[],
         cxx_header="",
         format={},
-        fields=None,
+        fields={},
         options=None,
         parse_keyword="class",
         template_parameters=None,
