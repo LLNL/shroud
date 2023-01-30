@@ -28,7 +28,7 @@ module typedefs_mod
 
     ! start typedef Struct1Rename
     ! typedef Struct1Rename
-    integer, parameter :: struct1_rename = None
+    integer, parameter :: struct1_rename = s_struct1
     ! end typedef Struct1Rename
 
 

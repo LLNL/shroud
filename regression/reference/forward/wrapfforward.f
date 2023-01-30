@@ -149,7 +149,7 @@ module forward_mod
             use iso_c_binding, only : C_INT
             use struct_mod, only : cstruct1
             implicit none
-            type(Cstruct1), intent(IN) :: arg
+            type(cstruct1), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_pass_struct1
 
@@ -307,7 +307,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         use struct_mod, only : cstruct1
-        type(Cstruct1), intent(IN) :: arg
+        type(cstruct1), intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_struct1
         SHT_rv = c_pass_struct1(arg)

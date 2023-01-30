@@ -292,8 +292,13 @@ class Typemap(object):
         if mode == "all":
             order = self._keyorder
         else: # class
-            # To be used by other libraries which import shadow types.
+            # To be used by other libraries which import shadow types. 
             if self.base == "shadow":
+                order = [
+                    "base",
+                    "wrap_header",
+                ]
+            elif self.base == "struct":
                 order = [
                     "base",
                     "wrap_header",
@@ -301,12 +306,12 @@ class Typemap(object):
             else:
                 order = [
                     "base",
-                    "cxx_header",
-                    "c_header",
                     "f_kind",
                 ]
             order.extend([
 #                "cxx_type",  # same as the dict key
+                "cxx_header",
+                "c_header",
                 "c_type",
                 "f_module_name",
                 "f_derived_type",
@@ -1029,6 +1034,19 @@ def fill_enum_typemap(node):
         ntypemap.compute_flat_name()
     return ntypemap
 
+def compute_class_typemap_derived_fields(ntypemap, fields):
+    """Compute typemap fields which are derived from other fields.
+
+    If fields has a user provided value, do not compute default.
+    """
+    # compute names derived from other values
+    if "f_class" not in fields:
+        ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
+        # XXX f_kind
+    if "f_type" not in fields:
+        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+    if "f_c_type" not in fields:
+        ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
 
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
@@ -1068,18 +1086,17 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         ),
     )
     ntypemap.update(fields)
-    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    ntypemap.f_c_module = {
-        ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
-    }
-    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
-    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+    compute_class_typemap_derived_fields(ntypemap, fields)
 
+    if "f_module" not in fields:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+    if "f_c_module" not in fields:
+        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+    
     ntypemap.finalize()
     library.symtab.add_typedef(cxx_name, ntypemap)
 
-def create_class_typemap(node, fields=None):
+def create_class_typemap(node, fields={}):
     """Create a typemap from a ClassNode.
     The class ClassNode can result from template instantiation in generate
     and not while parsing.
@@ -1101,7 +1118,7 @@ def create_class_typemap(node, fields=None):
     node.symtab.register_typemap(cxx_name, ntypemap)
     return ntypemap
 
-def fill_class_typemap(node, fields=None):
+def fill_class_typemap(node, fields={}):
     """Fill a class typemap with wrapping fields.
 
     The typemap already exists in the node.
@@ -1138,25 +1155,31 @@ def fill_class_typemap(node, fields=None):
     # import classes which are wrapped by this module
     # XXX - deal with namespaces vs modules
     
-    if fields is not None:
-        ntypemap.update(fields)
+    ntypemap.update(fields)
+    compute_class_typemap_derived_fields(ntypemap, fields)
 
-    # compute names derived from other values
-    if ntypemap.f_module is None:
-        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if ntypemap.f_class is None:
-        ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
-    if ntypemap.f_type is None:
-        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    if ntypemap.f_c_type is None:
-        ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
-    if ntypemap.f_c_module is None:
-        ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
-    if ntypemap.f_to_c is None:
+    if "f_to_c" not in fields:
         ntypemap.f_to_c = "{f_var}%%%s" % fmt_class.F_derived_member
+
+    if "f_module" not in fields:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+    if "f_c_module" not in fields:
+        ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+
     ntypemap.finalize()
 
     fmt_class.C_type_name = ntypemap.c_type
+
+
+def compute_struct_typemap_derived_fields(ntypemap, fields):
+    """Compute typemap fields which are derived from other fields.
+
+    If fields has a user provided value, do not compute default.
+    """
+    if "f_kind" not in fields:
+        ntypemap.f_kind = ntypemap.f_derived_type
+    if "f_type" not in fields:
+        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
 
 def create_struct_typemap_from_fields(cxx_name, fields, library):
     """Create a struct typemap from fields.
@@ -1193,10 +1216,17 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
     # Add defaults for missing names
     if ntypemap.f_derived_type is None:
         ntypemap.f_derived_type  = ntypemap.name
-    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+
+    compute_struct_typemap_derived_fields(ntypemap, fields)
+
+    if "f_module" not in fields:
+        ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+#    if "f_c_module" not in fields:
+#        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+
     library.symtab.add_typedef(cxx_name, ntypemap)
 
-def create_struct_typemap(node, fields=None):
+def create_struct_typemap(node, fields={}):
     """Create a typemap for a struct from a ClassNode.
     Use fields to override defaults.
 
@@ -1214,7 +1244,7 @@ def create_struct_typemap(node, fields=None):
     node.symtab.register_typemap(cxx_name, ntypemap)
     return ntypemap
 
-def fill_struct_typemap(node, fields=None):
+def fill_struct_typemap(node, fields={}):
     """Fill a struct typemap with wrapping fields.
 
     The typemap already exists in the node.
@@ -1260,15 +1290,13 @@ def fill_struct_typemap(node, fields=None):
     ntypemap.PY_struct_as = node.options.PY_struct_arg
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
     
-    if fields is not None:
-        ntypemap.update(fields)
+    ntypemap.update(fields)
+    compute_struct_typemap_derived_fields(ntypemap, fields)
 
-    # compute names derived from other values
-    if ntypemap.f_module is None:
+    if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if ntypemap.f_c_module is None:
+    if "f_c_module" not in fields:
         ntypemap.f_c_module = {"--import--": [ntypemap.f_derived_type]}
-
         
 # GGG - sets f_c_module_line and f_module_line which may or may not be needed
 ##    ntypemap.finalize()
@@ -1298,7 +1326,7 @@ def create_fcnptr_typemap(symtab, name):
     symtab.register_typemap(type_name, ntypemap)
     return ntypemap
 
-def fill_fcnptr_typemap(node, fields=None):
+def fill_fcnptr_typemap(node, fields={}):
     """Create a typemap for a function pointer
     The typemap contains a the declaration.
 
@@ -1331,12 +1359,11 @@ def fill_fcnptr_typemap(node, fields=None):
     # Check if all fields are C compatible
 #            ntypemap.compute_flat_name()
     
-    if fields is not None:
-        ntypemap.update(fields)
+    ntypemap.update(fields)
     register_typemap(cxx_name, ntypemap)
     return ntypemap
 
-def fill_typedef_typemap(node, fields=None):
+def fill_typedef_typemap(node, fields={}):
     """Fill a typedef typemap with wrapping fields.
 
     The typemap already exists in the node.
@@ -1388,8 +1415,7 @@ def fill_typedef_typemap(node, fields=None):
     # XXX - deal with namespaces vs modules
     ntypemap.f_module = {fmtdict.F_module_name: [f_name]}
     ntypemap.f_c_module = {"--import--": [f_name]}
-    if fields is not None:
-        ntypemap.update(fields)
+    ntypemap.update(fields)
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()
 

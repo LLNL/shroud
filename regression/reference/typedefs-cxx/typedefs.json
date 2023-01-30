@@ -469,6 +469,7 @@
                     ],
                     "typemap_name": "Struct1Rename"
                 },
+                "f_kind": "s_struct1",
                 "f_module": {
                     "typedefs_mod": [
                         "s_struct1"
@@ -590,6 +591,7 @@
                 ]
             },
             "f_derived_type": "s_struct1",
+            "f_kind": "s_struct1",
             "f_module": {
                 "typedefs_mod": [
                     "s_struct1"

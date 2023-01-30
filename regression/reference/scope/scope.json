@@ -694,6 +694,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
+                            "f_kind": "datapointer",
                             "f_type": "type(datapointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -861,6 +862,7 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
+                            "f_kind": "datapointer",
                             "f_type": "type(datapointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
@@ -1301,6 +1303,7 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
+                                    "f_kind": "datapointer",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -1468,6 +1471,7 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
+                                    "f_kind": "datapointer",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -1933,6 +1937,7 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
+                                    "f_kind": "datapointer",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2100,6 +2105,7 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
+                                    "f_kind": "datapointer",
                                     "f_type": "type(datapointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
@@ -2452,6 +2458,7 @@
                 ]
             },
             "f_derived_type": "datapointer",
+            "f_kind": "datapointer",
             "f_module": {
                 "scope_ns1_mod": [
                     "datapointer"
@@ -2504,6 +2511,7 @@
                 ]
             },
             "f_derived_type": "datapointer",
+            "f_kind": "datapointer",
             "f_module": {
                 "scope_ns2_mod": [
                     "datapointer"
@@ -2556,6 +2564,7 @@
                 ]
             },
             "f_derived_type": "datapointer",
+            "f_kind": "datapointer",
             "f_module": {
                 "scope_ns3_mod": [
                     "datapointer"

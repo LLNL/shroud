@@ -832,6 +832,7 @@
                 ]
             },
             "f_derived_type": "cstruct1",
+            "f_kind": "cstruct1",
             "f_module": {
                 "ns_outer_mod": [
                     "cstruct1"

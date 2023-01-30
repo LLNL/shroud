@@ -543,6 +543,7 @@
                 ]
             },
             "f_derived_type": "cstruct_as_class",
+            "f_kind": "cstruct_as_class",
             "f_module": {
                 "struct_mod": [
                     "cstruct_as_class"
@@ -577,6 +578,7 @@
                 ]
             },
             "f_derived_type": "cstruct_as_numpy",
+            "f_kind": "cstruct_as_numpy",
             "f_module": {
                 "struct_mod": [
                     "cstruct_as_numpy"

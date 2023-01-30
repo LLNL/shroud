@@ -333,6 +333,7 @@
                 ]
             },
             "f_derived_type": "arrays1",
+            "f_kind": "arrays1",
             "f_module": {
                 "struct_mod": [
                     "arrays1"
