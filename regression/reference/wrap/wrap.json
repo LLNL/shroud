@@ -37,6 +37,7 @@
                         },
                         "zz_fmtdict": {
                             "F_C_call": "-F_C_name-",
+                            "F_api_name": "func_in_class",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "func_in_class",
@@ -65,6 +66,7 @@
                     "C_impl_filename": "wrapClass1.cpp",
                     "C_name_scope": "Class1_",
                     "C_type_name": "WRA_Class1",
+                    "F_api_name": "class1",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
                     "class_scope": "Class1::",

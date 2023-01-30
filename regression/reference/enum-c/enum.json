@@ -321,6 +321,7 @@
                     "F_C_name": "convert_to_int",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "convert_to_int",
                     "F_arg_c_call": "in",
                     "F_arguments": "in",
                     "F_name_function": "convert_to_int",

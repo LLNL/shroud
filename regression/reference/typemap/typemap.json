@@ -234,6 +234,7 @@
                     "F_C_name": "c_pass_index",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "pass_index",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
                     "underscore_name": "pass_index"
@@ -414,6 +415,7 @@
                     "F_C_name": "c_pass_index_32",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "pass_index",
                     "F_arg_c_call": "i1,\t i2",
                     "F_arguments": "i1,\t i2",
                     "F_name_function": "pass_index_32",
@@ -607,6 +609,7 @@
                     "F_C_name": "c_pass_index_64",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "pass_index",
                     "F_arg_c_call": "i1,\t i2",
                     "F_arguments": "i1,\t i2",
                     "F_name_function": "pass_index_64",
@@ -784,6 +787,7 @@
                     "F_C_arguments": "i1",
                     "F_C_name": "c_pass_index2",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "pass_index2",
                     "function_name": "passIndex2",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine",
@@ -838,6 +842,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_pass_index2",
+                    "F_api_name": "pass_index2",
                     "F_arg_c_call": "int(i1, INDEXTYPE)",
                     "F_arguments": "i1",
                     "F_name_function": "pass_index2_32",
@@ -901,6 +906,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_pass_index2",
+                    "F_api_name": "pass_index2",
                     "F_arg_c_call": "int(i1, INDEXTYPE)",
                     "F_arguments": "i1",
                     "F_name_function": "pass_index2_64",
@@ -1048,6 +1054,7 @@
                     "F_C_arguments": "f1",
                     "F_C_name": "c_pass_float",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "pass_float",
                     "function_name": "passFloat",
                     "stmt0": "c_subroutine",
                     "stmt1": "c_subroutine",
@@ -1102,6 +1109,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_pass_float",
+                    "F_api_name": "pass_float",
                     "F_arg_c_call": "real(f1, FLOATTYPE)",
                     "F_arguments": "f1",
                     "F_name_function": "pass_float_float",
@@ -1165,6 +1173,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_pass_float",
+                    "F_api_name": "pass_float",
                     "F_arg_c_call": "real(f1, FLOATTYPE)",
                     "F_arguments": "f1",
                     "F_name_function": "pass_float_double",

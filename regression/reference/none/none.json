@@ -31,6 +31,7 @@
             "C_typedef_name_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
+            "F_API_case": "underscore",
             "F_CFI": false,
             "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",

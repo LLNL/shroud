@@ -49,6 +49,7 @@
                             "F_C_name": "c_class1_dtor",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "dtor",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "dtor",
@@ -118,6 +119,7 @@
                             "F_C_name": "c_class1_get_flag",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "get_flag",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_flag",
@@ -223,6 +225,7 @@
                     "C_impl_filename": "wrapClass1.cpp",
                     "C_name_scope": "Class1_",
                     "C_type_name": "OWN_Class1",
+                    "F_api_name": "class1",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
                     "LUA_class_reg": "l_Class1_Reg",
@@ -308,6 +311,7 @@
                     "F_C_name": "c_return_int_ptr_raw",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_raw",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrRaw",
                     "underscore_name": "return_int_ptr_raw"
@@ -386,6 +390,7 @@
                     "F_C_name": "return_int_ptr_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_scalar",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_scalar",
                     "F_name_generic": "return_int_ptr_scalar",
@@ -496,6 +501,7 @@
                     "F_C_name": "c_return_int_ptr_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_pointer",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
@@ -606,6 +612,7 @@
                     "F_C_name": "c_return_int_ptr_pointer_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_pointer",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrPointer",
                     "function_suffix": "_bufferify",
@@ -737,6 +744,7 @@
                     "F_C_name": "c_return_int_ptr_dim_raw",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_raw",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRaw",
                     "underscore_name": "return_int_ptr_dim_raw"
@@ -900,6 +908,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_pointer",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_pointer",
@@ -1084,6 +1093,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "return_int_ptr_dim_pointer",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "function_suffix": "_bufferify",
@@ -1255,6 +1265,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_alloc",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_alloc",
@@ -1439,6 +1450,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "return_int_ptr_dim_alloc",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "function_suffix": "_bufferify",
@@ -1608,6 +1620,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_default",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_default",
@@ -1790,6 +1803,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "return_int_ptr_dim_default",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "function_suffix": "_bufferify",
@@ -1936,6 +1950,7 @@
                     "F_C_name": "c_return_int_ptr_dim_raw_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_raw_new",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRawNew",
                     "underscore_name": "return_int_ptr_dim_raw_new"
@@ -2106,6 +2121,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_pointer_new",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
@@ -2293,6 +2309,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "return_int_ptr_dim_pointer_new",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "function_suffix": "_bufferify",
@@ -2461,6 +2478,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAllocNew",
@@ -2652,6 +2670,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_int_ptr_dim_default_new",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_default_new",
@@ -2838,6 +2857,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "return_int_ptr_dim_default_new",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "function_suffix": "_bufferify",
@@ -2956,6 +2976,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_raw",
                     "function_name": "IntPtrDimRaw",
                     "underscore_name": "int_ptr_dim_raw"
                 }
@@ -3043,6 +3064,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_pointer",
                     "function_name": "IntPtrDimPointer",
                     "underscore_name": "int_ptr_dim_pointer"
                 }
@@ -3130,6 +3152,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_alloc",
                     "function_name": "IntPtrDimAlloc",
                     "underscore_name": "int_ptr_dim_alloc"
                 }
@@ -3216,6 +3239,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_default",
                     "function_name": "IntPtrDimDefault",
                     "underscore_name": "int_ptr_dim_default"
                 }
@@ -3297,6 +3321,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_raw_new",
                     "function_name": "IntPtrDimRawNew",
                     "underscore_name": "int_ptr_dim_raw_new"
                 }
@@ -3384,6 +3409,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_pointer_new",
                     "function_name": "IntPtrDimPointerNew",
                     "underscore_name": "int_ptr_dim_pointer_new"
                 }
@@ -3471,6 +3497,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_alloc_new",
                     "function_name": "IntPtrDimAllocNew",
                     "underscore_name": "int_ptr_dim_alloc_new"
                 }
@@ -3557,6 +3584,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "int_ptr_dim_default_new",
                     "function_name": "IntPtrDimDefaultNew",
                     "underscore_name": "int_ptr_dim_default_new"
                 }
@@ -3669,6 +3697,7 @@
                     "F_C_call": "c_create_class_static",
                     "F_C_name": "create_class_static",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "create_class_static",
                     "F_arg_c_call": "flag",
                     "F_arguments": "flag",
                     "F_name_function": "create_class_static",
@@ -3730,6 +3759,7 @@
                     "F_C_name": "c_get_class_static",
                     "F_C_result_clause": "\fresult(SHT_prv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "get_class_static",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_class_static",
@@ -3919,6 +3949,7 @@
                     "F_C_name": "c_get_class_new",
                     "F_C_result_clause": "\fresult(SHT_prv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "get_class_new",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                     "F_arguments": "flag",
                     "F_name_function": "get_class_new",

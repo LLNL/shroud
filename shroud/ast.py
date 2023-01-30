@@ -137,12 +137,23 @@ class AstNode(object):
         and its parents."""
         return self.ast.unqualified_lookup(name)
 
-    def apply_case_option(self, name):
+    def apply_C_API_option(self, name):
         """Apply option.C_API_case to name"""
         if self.options.C_API_case == 'lower':
             return name.lower()
         elif self.options.C_API_case == 'upper':
             return name.upper()
+        else:
+            return name
+
+    def apply_F_API_option(self, name):
+        """Apply option.F_API_case to name"""
+        if self.options.F_API_case == 'lower':
+            return name.lower()
+        elif self.options.F_API_case == 'upper':
+            return name.upper()
+        elif self.options.F_API_case == 'underscore':
+            return util.un_camel(self.name)
         else:
             return name
 
@@ -527,6 +538,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 #            C_var_size_template="S{c_var}",  # argument for result of size(arg)
             CXX_standard=2011,
             # Fortran's names for C functions
+            F_API_case="underscore",
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
@@ -995,7 +1007,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         )
         if not skip:
             fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_"
+                parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_"
             )
             if options.flatten_namespace or options.F_flatten_namespace:
                 fmt_ns.F_name_scope = (
@@ -1189,12 +1201,13 @@ class ClassNode(AstNode, NamespaceMixin):
             underscore_name = util.un_camel(self.name),
             upper_name = self.name.upper(),
             lower_name = self.name.lower(),
+            F_api_name = self.apply_F_API_option(self.name),
 
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
 
             # The scope for things in the class.
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
@@ -1373,9 +1386,6 @@ class FunctionNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
-        self.user_fmt = format
-        self.default_format(parent, format, kwargs)
-
         # working variables
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
@@ -1447,6 +1457,8 @@ class FunctionNode(AstNode):
         self.ast = ast
         declarator = ast.declarator
         self.name = declarator.user_name
+        self.user_fmt = format
+        self.default_format(parent, format, kwargs)
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
@@ -1499,10 +1511,6 @@ class FunctionNode(AstNode):
 
         # XXX - waring about unused fields in attrs
 
-        fmt_func = self.fmtdict
-        fmt_func.function_name = self.name
-        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
-
     def default_format(self, parent, fmtdict, kwargs):
 
         # Move fields from kwargs into instance
@@ -1537,6 +1545,14 @@ class FunctionNode(AstNode):
             setattr(self, name, kwargs.get(name, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
+
+        fmt_func = self.fmtdict
+
+        fmt_func.update(dict(
+            function_name=self.name,
+            underscore_name=util.un_camel(self.name),
+            F_api_name=self.apply_F_API_option(self.name),
+        ))
 
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
@@ -1765,6 +1781,7 @@ class TypedefNode(AstNode):
             cxx_type=self.name,
             typedef_name=self.name,
             underscore_name = util.un_camel(self.name),
+            F_api_name = self.apply_F_API_option(self.name),
         )
 
     def update_names(self):

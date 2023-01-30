@@ -31,6 +31,7 @@
                     "C_impl_filename": "wrapWorker.cpp",
                     "C_name_scope": "Worker_",
                     "C_type_name": "TEM_Worker",
+                    "F_api_name": "worker",
                     "F_derived_name": "worker",
                     "F_name_scope": "worker_",
                     "PY_PyObject": "PY_Worker",
@@ -132,6 +133,7 @@
                         ],
                         "wrap": {},
                         "zz_fmtdict": {
+                            "F_api_name": "nested",
                             "function_name": "nested",
                             "underscore_name": "nested"
                         }
@@ -336,6 +338,7 @@
                             "F_C_call": "c_user_int_nested_double",
                             "F_C_name": "c_user_int_nested_double",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "nested",
                             "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
                             "F_arguments": "obj,\t arg1,\t arg2",
                             "F_name_function": "nested_double",
@@ -389,6 +392,7 @@
                     "C_impl_filename": "wrapuser_int.cpp",
                     "C_name_scope": "user_int_",
                     "C_type_name": "TEM_user_int",
+                    "F_api_name": "user",
                     "F_derived_name": "user_int",
                     "F_name_scope": "user_int_",
                     "PY_PyObject": "PY_user_int",
@@ -456,6 +460,7 @@
                             "F_C_name": "c_structasclass_int_ctor",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "ctor",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -587,6 +592,7 @@
                             "F_C_call": "c_structasclass_int_set_npts",
                             "F_C_name": "c_structasclass_int_set_npts",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "set_npts",
                             "F_arg_c_call": "obj%cxxmem,\t n",
                             "F_arguments": "obj,\t n",
                             "F_name_function": "set_npts",
@@ -639,6 +645,7 @@
                             "F_C_name": "c_structasclass_int_get_npts",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "get_npts",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_npts",
@@ -726,6 +733,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "F_api_name": "set_value",
                             "function_name": "set_value",
                             "underscore_name": "set_value"
                         }
@@ -821,6 +829,7 @@
                             "F_C_call": "c_structasclass_int_set_value",
                             "F_C_name": "c_structasclass_int_set_value",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "set_value",
                             "F_arg_c_call": "obj%cxxmem,\t v",
                             "F_arguments": "obj,\t v",
                             "F_name_function": "set_value",
@@ -861,6 +870,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "F_api_name": "get_value",
                             "function_name": "get_value",
                             "underscore_name": "get_value"
                         }
@@ -906,6 +916,7 @@
                             "F_C_name": "c_structasclass_int_get_value",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "get_value",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_value",
@@ -1001,6 +1012,7 @@
                     "C_impl_filename": "wrapstructAsClass_int.cpp",
                     "C_name_scope": "structAsClass_int_",
                     "C_type_name": "TEM_structAsClass_int",
+                    "F_api_name": "struct_as_class",
                     "F_derived_name": "structasclass_int",
                     "F_name_scope": "structasclass_int_",
                     "PY_struct_array_descr_create": "PY_structAsClass_int_create_array_descr",
@@ -1063,6 +1075,7 @@
                             "F_C_name": "c_structasclass_double_ctor",
                             "F_C_result_clause": "\fresult(SHT_prv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "ctor",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -1194,6 +1207,7 @@
                             "F_C_call": "c_structasclass_double_set_npts",
                             "F_C_name": "c_structasclass_double_set_npts",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "set_npts",
                             "F_arg_c_call": "obj%cxxmem,\t n",
                             "F_arguments": "obj,\t n",
                             "F_name_function": "set_npts",
@@ -1246,6 +1260,7 @@
                             "F_C_name": "c_structasclass_double_get_npts",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "get_npts",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_npts",
@@ -1333,6 +1348,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "F_api_name": "set_value",
                             "function_name": "set_value",
                             "underscore_name": "set_value"
                         }
@@ -1428,6 +1444,7 @@
                             "F_C_call": "c_structasclass_double_set_value",
                             "F_C_name": "c_structasclass_double_set_value",
                             "F_C_subprogram": "subroutine",
+                            "F_api_name": "set_value",
                             "F_arg_c_call": "obj%cxxmem,\t v",
                             "F_arguments": "obj,\t v",
                             "F_name_function": "set_value",
@@ -1468,6 +1485,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "F_api_name": "get_value",
                             "function_name": "get_value",
                             "underscore_name": "get_value"
                         }
@@ -1513,6 +1531,7 @@
                             "F_C_name": "c_structasclass_double_get_value",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_api_name": "get_value",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_value",
@@ -1608,6 +1627,7 @@
                     "C_impl_filename": "wrapstructAsClass_double.cpp",
                     "C_name_scope": "structAsClass_double_",
                     "C_type_name": "TEM_structAsClass_double",
+                    "F_api_name": "struct_as_class",
                     "F_derived_name": "structasclass_double",
                     "F_name_scope": "structasclass_double_",
                     "PY_struct_array_descr_create": "PY_structAsClass_double_create_array_descr",
@@ -1685,6 +1705,7 @@
                     "F_C_name": "c_return_user_type",
                     "F_C_result_clause": "\fresult(SHT_prv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "return_user_type",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "return_user_type",
@@ -1836,6 +1857,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "function_tu",
                     "function_name": "FunctionTU",
                     "underscore_name": "function_tu"
                 }
@@ -2064,6 +2086,7 @@
                     "F_C_call": "c_function_tu_0",
                     "F_C_name": "c_function_tu_0",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "function_tu",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function_tu_0",
@@ -2310,6 +2333,7 @@
                     "F_C_call": "c_function_tu_1",
                     "F_C_name": "c_function_tu_1",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "function_tu",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function_tu_1",
@@ -2388,6 +2412,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "F_api_name": "use_impl_worker",
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 }
@@ -2466,6 +2491,7 @@
                     "F_C_name": "c_use_impl_worker_internal_implworker1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "use_impl_worker",
                     "F_arguments": "",
                     "F_name_function": "use_impl_worker_internal_ImplWorker1",
                     "F_name_generic": "use_impl_worker",
@@ -2606,6 +2632,7 @@
                     "F_C_name": "c_use_impl_worker_internal_implworker2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_api_name": "use_impl_worker",
                     "F_arguments": "",
                     "F_name_function": "use_impl_worker_internal_ImplWorker2",
                     "F_name_generic": "use_impl_worker",
@@ -2723,6 +2750,7 @@
                                     "F_C_name": "c_vector_int_ctor",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "ctor",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
@@ -2832,6 +2860,7 @@
                                     "F_C_name": "c_vector_int_dtor",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
+                                    "F_api_name": "dtor",
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_name_function": "dtor",
@@ -2895,6 +2924,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "F_api_name": "push_back",
                                     "function_name": "push_back",
                                     "underscore_name": "push_back"
                                 }
@@ -3017,6 +3047,7 @@
                                     "F_C_call": "c_vector_int_push_back",
                                     "F_C_name": "c_vector_int_push_back",
                                     "F_C_subprogram": "subroutine",
+                                    "F_api_name": "push_back",
                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                     "F_arguments": "obj,\t value",
                                     "F_name_function": "push_back",
@@ -3081,6 +3112,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "F_api_name": "at",
                                     "function_name": "at",
                                     "underscore_name": "at"
                                 }
@@ -3203,6 +3235,7 @@
                                     "F_C_name": "c_vector_int_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "at",
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
                                     "F_name_function": "at",
@@ -3370,6 +3403,7 @@
                                     "F_C_name": "c_vector_int_at_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "at",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -3466,6 +3500,7 @@
                             "C_impl_filename": "wrapvectorforint.cpp",
                             "C_name_scope": "vector_int_",
                             "C_type_name": "TEM_vector_int",
+                            "F_api_name": "vector",
                             "F_derived_name": "vector_int",
                             "F_name_scope": "vector_int_",
                             "PY_PyObject": "PY_vector_int",
@@ -3537,6 +3572,7 @@
                                     "F_C_name": "c_vector_double_ctor",
                                     "F_C_result_clause": "\fresult(SHT_prv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "ctor",
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
@@ -3646,6 +3682,7 @@
                                     "F_C_name": "c_vector_double_dtor",
                                     "F_C_result_clause": "",
                                     "F_C_subprogram": "subroutine",
+                                    "F_api_name": "dtor",
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_name_function": "dtor",
@@ -3709,6 +3746,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "F_api_name": "push_back",
                                     "function_name": "push_back",
                                     "underscore_name": "push_back"
                                 }
@@ -3831,6 +3869,7 @@
                                     "F_C_call": "c_vector_double_push_back",
                                     "F_C_name": "c_vector_double_push_back",
                                     "F_C_subprogram": "subroutine",
+                                    "F_api_name": "push_back",
                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                     "F_arguments": "obj,\t value",
                                     "F_name_function": "push_back",
@@ -3895,6 +3934,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "F_api_name": "at",
                                     "function_name": "at",
                                     "underscore_name": "at"
                                 }
@@ -4017,6 +4057,7 @@
                                     "F_C_name": "c_vector_double_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "at",
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
                                     "F_name_function": "at",
@@ -4184,6 +4225,7 @@
                                     "F_C_name": "c_vector_double_at_bufferify",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
+                                    "F_api_name": "at",
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
@@ -4278,6 +4320,7 @@
                             "C_impl_filename": "wrapstd_vector_double.cpp",
                             "C_name_scope": "vector_double_",
                             "C_type_name": "TEM_vector_double",
+                            "F_api_name": "vector",
                             "F_derived_name": "vector_double",
                             "F_name_scope": "vector_double_",
                             "PY_PyObject": "PY_vector_double",
@@ -4359,6 +4402,7 @@
                             "C_impl_filename": "wrapinternal_ImplWorker1.cpp",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TEM_internal_ImplWorker1",
+                            "F_api_name": "impl_worker1",
                             "F_derived_name": "implworker1",
                             "F_name_scope": "implworker1_",
                             "PY_PyObject": "PY_ImplWorker1",
@@ -4400,6 +4444,7 @@
                             "C_impl_filename": "wrapinternal_ImplWorker2.cpp",
                             "C_name_scope": "internal_ImplWorker2_",
                             "C_type_name": "TEM_internal_ImplWorker2",
+                            "F_api_name": "impl_worker2",
                             "F_derived_name": "implworker2",
                             "F_name_scope": "implworker2_",
                             "PY_PyObject": "PY_ImplWorker2",

@@ -872,6 +872,13 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
+F_api_name
+    Root name that is used to create various names in the Fortran API.
+    Controlled by the **F_API_case** option with values
+    *lower*, *upper*, *underscore*.
+    Any other value will preserve the case of the name.
+    Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
+
 F_array_type
     Name of derived type used to store metadata about an array
     such as its address and size.

@@ -43,6 +43,7 @@
                     "F_C_call": "c_a_function",
                     "F_C_name": "a_function",
                     "F_C_subprogram": "subroutine",
+                    "F_api_name": "a_function",
                     "F_arguments": "",
                     "F_name_function": "a_function",
                     "F_name_generic": "a_function",
