@@ -41,7 +41,7 @@ module cxxlibrary_structns_mod
         ! Match:     c_inout_struct
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
-                bind(C, name="CXX_structns_pass_struct_by_reference")
+                bind(C, name="CXX_structns_passStructByReference")
             use iso_c_binding, only : C_INT
             import :: cstruct1
             implicit none
@@ -61,7 +61,7 @@ module cxxlibrary_structns_mod
         ! Match:     c_in_struct
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
-                bind(C, name="CXX_structns_pass_struct_by_reference_in")
+                bind(C, name="CXX_structns_passStructByReferenceIn")
             use iso_c_binding, only : C_INT
             import :: cstruct1
             implicit none
@@ -80,7 +80,7 @@ module cxxlibrary_structns_mod
         ! Requested: c_inout_struct_&
         ! Match:     c_inout_struct
         subroutine pass_struct_by_reference_inout(arg) &
-                bind(C, name="CXX_structns_pass_struct_by_reference_inout")
+                bind(C, name="CXX_structns_passStructByReferenceInout")
             import :: cstruct1
             implicit none
             type(cstruct1), intent(INOUT) :: arg
@@ -97,7 +97,7 @@ module cxxlibrary_structns_mod
         ! Requested: c_out_struct_&
         ! Match:     c_out_struct
         subroutine pass_struct_by_reference_out(arg) &
-                bind(C, name="CXX_structns_pass_struct_by_reference_out")
+                bind(C, name="CXX_structns_passStructByReferenceOut")
             import :: cstruct1
             implicit none
             type(cstruct1), intent(OUT) :: arg

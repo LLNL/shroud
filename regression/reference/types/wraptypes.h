@@ -83,7 +83,7 @@ size_t TYP_size_func(size_t arg1);
 
 bool TYP_bool_func(bool arg);
 
-bool TYP_return_bool_and_others(int * flag);
+bool TYP_returnBoolAndOthers(int * flag);
 
 #ifdef __cplusplus
 }

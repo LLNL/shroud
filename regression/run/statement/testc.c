@@ -15,7 +15,7 @@
 
 void test_statement(void)
 {
-  const char * name = STMT_get_name_error_pattern();
+  const char * name = STMT_getNameErrorPattern();
   assert(strcmp(name, "the-name") == 0 && "STMT_get_name_error_pattern");
 }
 

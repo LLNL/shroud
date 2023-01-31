@@ -73,16 +73,16 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// start TUT_no_return_no_arguments
-void TUT_no_return_no_arguments(void)
+// start TUT_NoReturnNoArguments
+void TUT_NoReturnNoArguments(void)
 {
     // splicer begin function.no_return_no_arguments
     tutorial::NoReturnNoArguments();
     // splicer end function.no_return_no_arguments
 }
-// end TUT_no_return_no_arguments
+// end TUT_NoReturnNoArguments
 
-double TUT_pass_by_value(double arg1, int arg2)
+double TUT_PassByValue(double arg1, int arg2)
 {
     // splicer begin function.pass_by_value
     double SHC_rv = tutorial::PassByValue(arg1, arg2);
@@ -94,7 +94,7 @@ double TUT_pass_by_value(double arg1, int arg2)
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-void TUT_concatenate_strings_bufferify(char *arg1, int SHT_arg1_len,
+void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.concatenate_strings_bufferify
@@ -108,37 +108,37 @@ void TUT_concatenate_strings_bufferify(char *arg1, int SHT_arg1_len,
     // splicer end function.concatenate_strings_bufferify
 }
 
-// start TUT_use_default_arguments
-double TUT_use_default_arguments(void)
+// start TUT_UseDefaultArguments
+double TUT_UseDefaultArguments(void)
 {
     // splicer begin function.use_default_arguments
     double SHC_rv = tutorial::UseDefaultArguments();
     return SHC_rv;
     // splicer end function.use_default_arguments
 }
-// end TUT_use_default_arguments
+// end TUT_UseDefaultArguments
 
-// start TUT_use_default_arguments_arg1
-double TUT_use_default_arguments_arg1(double arg1)
+// start TUT_UseDefaultArguments_arg1
+double TUT_UseDefaultArguments_arg1(double arg1)
 {
     // splicer begin function.use_default_arguments_arg1
     double SHC_rv = tutorial::UseDefaultArguments(arg1);
     return SHC_rv;
     // splicer end function.use_default_arguments_arg1
 }
-// end TUT_use_default_arguments_arg1
+// end TUT_UseDefaultArguments_arg1
 
-// start TUT_use_default_arguments_arg1_arg2
-double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
+// start TUT_UseDefaultArguments_arg1_arg2
+double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 {
     // splicer begin function.use_default_arguments_arg1_arg2
     double SHC_rv = tutorial::UseDefaultArguments(arg1, arg2);
     return SHC_rv;
     // splicer end function.use_default_arguments_arg1_arg2
 }
-// end TUT_use_default_arguments_arg1_arg2
+// end TUT_UseDefaultArguments_arg1_arg2
 
-void TUT_overloaded_function_from_name(const char * name)
+void TUT_OverloadedFunction_from_name(const char * name)
 {
     // splicer begin function.overloaded_function_from_name
     const std::string SHCXX_name(name);
@@ -146,7 +146,7 @@ void TUT_overloaded_function_from_name(const char * name)
     // splicer end function.overloaded_function_from_name
 }
 
-void TUT_overloaded_function_from_name_bufferify(char *name,
+void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
     // splicer begin function.overloaded_function_from_name_bufferify
@@ -156,28 +156,28 @@ void TUT_overloaded_function_from_name_bufferify(char *name,
     // splicer end function.overloaded_function_from_name_bufferify
 }
 
-void TUT_overloaded_function_from_index(int indx)
+void TUT_OverloadedFunction_from_index(int indx)
 {
     // splicer begin function.overloaded_function_from_index
     tutorial::OverloadedFunction(indx);
     // splicer end function.overloaded_function_from_index
 }
 
-void TUT_template_argument_int(int arg)
+void TUT_TemplateArgument_int(int arg)
 {
     // splicer begin function.template_argument_int
     tutorial::TemplateArgument<int>(arg);
     // splicer end function.template_argument_int
 }
 
-void TUT_template_argument_double(double arg)
+void TUT_TemplateArgument_double(double arg)
 {
     // splicer begin function.template_argument_double
     tutorial::TemplateArgument<double>(arg);
     // splicer end function.template_argument_double
 }
 
-int TUT_template_return_int(void)
+int TUT_TemplateReturn_int(void)
 {
     // splicer begin function.template_return_int
     int SHC_rv = tutorial::TemplateReturn<int>();
@@ -185,7 +185,7 @@ int TUT_template_return_int(void)
     // splicer end function.template_return_int
 }
 
-double TUT_template_return_double(void)
+double TUT_TemplateReturn_double(void)
 {
     // splicer begin function.template_return_double
     double SHC_rv = tutorial::TemplateReturn<double>();
@@ -193,14 +193,14 @@ double TUT_template_return_double(void)
     // splicer end function.template_return_double
 }
 
-void TUT_fortran_generic_overloaded_0(void)
+void TUT_FortranGenericOverloaded_0(void)
 {
     // splicer begin function.fortran_generic_overloaded_0
     tutorial::FortranGenericOverloaded();
     // splicer end function.fortran_generic_overloaded_0
 }
 
-void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
+void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1
     const std::string SHCXX_name(name);
@@ -208,7 +208,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
     // splicer end function.fortran_generic_overloaded_1
 }
 
-void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
+void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_float_bufferify
@@ -218,7 +218,7 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(char *name,
     // splicer end function.fortran_generic_overloaded_1_float_bufferify
 }
 
-void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
+void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1_double_bufferify
@@ -228,7 +228,7 @@ void TUT_fortran_generic_overloaded_1_double_bufferify(char *name,
     // splicer end function.fortran_generic_overloaded_1_double_bufferify
 }
 
-int TUT_use_default_overload_num(int num)
+int TUT_UseDefaultOverload_num(int num)
 {
     // splicer begin function.use_default_overload_num
     int SHC_rv = tutorial::UseDefaultOverload(num);
@@ -236,7 +236,7 @@ int TUT_use_default_overload_num(int num)
     // splicer end function.use_default_overload_num
 }
 
-int TUT_use_default_overload_num_offset(int num, int offset)
+int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
     // splicer begin function.use_default_overload_num_offset
     int SHC_rv = tutorial::UseDefaultOverload(num, offset);
@@ -244,7 +244,7 @@ int TUT_use_default_overload_num_offset(int num, int offset)
     // splicer end function.use_default_overload_num_offset
 }
 
-int TUT_use_default_overload_num_offset_stride(int num, int offset,
+int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
 {
     // splicer begin function.use_default_overload_num_offset_stride
@@ -253,7 +253,7 @@ int TUT_use_default_overload_num_offset_stride(int num, int offset,
     // splicer end function.use_default_overload_num_offset_stride
 }
 
-int TUT_use_default_overload_3(double type, int num)
+int TUT_UseDefaultOverload_3(double type, int num)
 {
     // splicer begin function.use_default_overload_3
     int SHC_rv = tutorial::UseDefaultOverload(type, num);
@@ -261,7 +261,7 @@ int TUT_use_default_overload_3(double type, int num)
     // splicer end function.use_default_overload_3
 }
 
-int TUT_use_default_overload_4(double type, int num, int offset)
+int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
     // splicer begin function.use_default_overload_4
     int SHC_rv = tutorial::UseDefaultOverload(type, num, offset);
@@ -269,7 +269,7 @@ int TUT_use_default_overload_4(double type, int num, int offset)
     // splicer end function.use_default_overload_4
 }
 
-int TUT_use_default_overload_5(double type, int num, int offset,
+int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
 {
     // splicer begin function.use_default_overload_5
@@ -312,14 +312,14 @@ int TUT_colorfunc(int arg)
  * \brief Pass in reference to scalar
  *
  */
-// start TUT_get_min_max
-void TUT_get_min_max(int * min, int * max)
+// start TUT_getMinMax
+void TUT_getMinMax(int * min, int * max)
 {
     // splicer begin function.get_min_max
     tutorial::getMinMax(*min, *max);
     // splicer end function.get_min_max
 }
-// end TUT_get_min_max
+// end TUT_getMinMax
 
 /**
  * \brief Test function pointer
@@ -335,7 +335,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 }
 // end TUT_callback1
 
-const char * TUT_last_function_called(void)
+const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
@@ -344,7 +344,7 @@ const char * TUT_last_function_called(void)
     // splicer end function.last_function_called
 }
 
-void TUT_last_function_called_bufferify(char *SHC_rv, int SHT_rv_len)
+void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();

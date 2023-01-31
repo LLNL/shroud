@@ -28,7 +28,7 @@ extern "C" {
 // Attrs:     +api(capptr)+intent(function)
 // Requested: c_function_shadow_scalar_capptr_targ_native_scalar
 // Match:     c_function_shadow_scalar_capptr
-TEM_user_int * TEM_return_user_type(TEM_user_int * SHC_rv)
+TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
     // splicer begin function.return_user_type
     user<int> * SHCXX_rv = new user<int>;
@@ -57,7 +57,7 @@ TEM_user_int * TEM_return_user_type(TEM_user_int * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void TEM_function_tu_0(int arg1, long arg2)
+void TEM_FunctionTU_0(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
     FunctionTU<int, long>(arg1, arg2);
@@ -82,7 +82,7 @@ void TEM_function_tu_0(int arg1, long arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void TEM_function_tu_1(float arg1, double arg2)
+void TEM_FunctionTU_1(float arg1, double arg2)
 {
     // splicer begin function.function_tu_1
     FunctionTU<float, double>(arg1, arg2);
@@ -98,7 +98,7 @@ void TEM_function_tu_1(float arg1, double arg2)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int TEM_use_impl_worker_internal_ImplWorker1(void)
+int TEM_UseImplWorker_internal_ImplWorker1(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker1
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
@@ -115,7 +115,7 @@ int TEM_use_impl_worker_internal_ImplWorker1(void)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int TEM_use_impl_worker_internal_ImplWorker2(void)
+int TEM_UseImplWorker_internal_ImplWorker2(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker2
     int SHC_rv = UseImplWorker<internal::ImplWorker2>();

@@ -48,7 +48,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int STMT_get_name_length(void)
+int STMT_GetNameLength(void)
 {
     // splicer begin function.get_name_length
     return getNameErrorPattern().length();
@@ -60,7 +60,7 @@ int STMT_get_name_length(void)
 // Attrs:     +deref(copy)+intent(function)
 // Requested: c_function_string_&_copy
 // Match:     c_function_string_&
-const char * STMT_get_name_error_pattern(void)
+const char * STMT_getNameErrorPattern(void)
 {
     // splicer begin function.get_name_error_pattern
     const std::string & SHCXX_rv = getNameErrorPattern();
@@ -79,7 +79,7 @@ const char * STMT_get_name_error_pattern(void)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
 // Requested: c_function_string_&_buf_copy
 // Match:     c_function_string_&_buf
-void STMT_get_name_error_pattern_bufferify(char *SHC_rv, int SHT_rv_len)
+void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.get_name_error_pattern_bufferify
     const std::string & SHCXX_rv = getNameErrorPattern();

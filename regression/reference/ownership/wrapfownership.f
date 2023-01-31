@@ -113,7 +113,7 @@ module ownership_mod
         ! Match:     c_function_native_*
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_raw")
+                bind(C, name="OWN_ReturnIntPtrRaw")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -125,7 +125,7 @@ module ownership_mod
         ! Exact:     c_function_native_*_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_scalar")
+                bind(C, name="OWN_ReturnIntPtrScalar")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -138,7 +138,7 @@ module ownership_mod
         ! Match:     c_function_native_*
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_pointer")
+                bind(C, name="OWN_ReturnIntPtrPointer")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -151,7 +151,7 @@ module ownership_mod
         ! Match:     c_function_native_*
         function c_return_int_ptr_pointer_bufferify() &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_pointer_bufferify")
+                bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -169,7 +169,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_raw")
+                bind(C, name="OWN_ReturnIntPtrDimRaw")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -189,7 +189,7 @@ module ownership_mod
         ! start c_return_int_ptr_dim_pointer
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_pointer")
+                bind(C, name="OWN_ReturnIntPtrDimPointer")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -204,7 +204,7 @@ module ownership_mod
         ! Match:     c_function_native_*_cdesc
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_pointer_bufferify")
+                bind(C, name="OWN_ReturnIntPtrDimPointer_bufferify")
             import :: OWN_SHROUD_array
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
@@ -224,7 +224,7 @@ module ownership_mod
         ! start c_return_int_ptr_dim_alloc
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_alloc")
+                bind(C, name="OWN_ReturnIntPtrDimAlloc")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -239,7 +239,7 @@ module ownership_mod
         ! Match:     c_function_native_*_cdesc
         ! start c_return_int_ptr_dim_alloc_bufferify
         subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
+                bind(C, name="OWN_ReturnIntPtrDimAlloc_bufferify")
             import :: OWN_SHROUD_array
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
@@ -258,7 +258,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_default")
+                bind(C, name="OWN_ReturnIntPtrDimDefault")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -271,7 +271,7 @@ module ownership_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_default_bufferify")
+                bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
             import :: OWN_SHROUD_array
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
@@ -289,7 +289,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_raw_new")
+                bind(C, name="OWN_ReturnIntPtrDimRawNew")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -308,7 +308,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_pointer_new")
+                bind(C, name="OWN_ReturnIntPtrDimPointerNew")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -321,7 +321,7 @@ module ownership_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_pointer_new_bufferify")
+                bind(C, name="OWN_ReturnIntPtrDimPointerNew_bufferify")
             import :: OWN_SHROUD_array
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
@@ -339,7 +339,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_alloc_new")
+                bind(C, name="OWN_ReturnIntPtrDimAllocNew")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -358,7 +358,7 @@ module ownership_mod
         ! Match:     c_default
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_default_new")
+                bind(C, name="OWN_ReturnIntPtrDimDefaultNew")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
@@ -371,7 +371,7 @@ module ownership_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_default_new_bufferify")
+                bind(C, name="OWN_ReturnIntPtrDimDefaultNew_bufferify")
             import :: OWN_SHROUD_array
             implicit none
             type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
@@ -388,7 +388,7 @@ module ownership_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine create_class_static(flag) &
-                bind(C, name="OWN_create_class_static")
+                bind(C, name="OWN_createClassStatic")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: flag
@@ -400,7 +400,7 @@ module ownership_mod
         ! Exact:     c_function_shadow_*_capptr
         function c_get_class_static(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="OWN_get_class_static")
+                bind(C, name="OWN_getClassStatic")
             use iso_c_binding, only : C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
@@ -419,7 +419,7 @@ module ownership_mod
         ! Match:     c_default
         function c_get_class_new(flag, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="OWN_get_class_new")
+                bind(C, name="OWN_getClassNew")
             use iso_c_binding, only : C_INT, C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none

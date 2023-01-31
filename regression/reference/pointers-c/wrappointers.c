@@ -72,8 +72,8 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_char_**_buf
-// start POI_accept_char_array_in_bufferify
-int POI_accept_char_array_in_bufferify(const char *names,
+// start POI_acceptCharArrayIn_bufferify
+int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len)
 {
     // splicer begin function.accept_char_array_in_bufferify
@@ -84,7 +84,7 @@ int POI_accept_char_array_in_bufferify(const char *names,
     return SHC_rv;
     // splicer end function.accept_char_array_in_bufferify
 }
-// end POI_accept_char_array_in_bufferify
+// end POI_acceptCharArrayIn_bufferify
 
 // ----------------------------------------
 // Function:  void getPtrToScalar
@@ -95,8 +95,8 @@ int POI_accept_char_array_in_bufferify(const char *names,
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_cdesc_pointer
 // Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_scalar_bufferify
-void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
+// start POI_getPtrToScalar_bufferify
+void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
     // splicer begin function.get_ptr_to_scalar_bufferify
     int *nitems;
@@ -110,7 +110,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
     SHT_nitems_cdesc->size = 1;
     // splicer end function.get_ptr_to_scalar_bufferify
 }
-// end POI_get_ptr_to_scalar_bufferify
+// end POI_getPtrToScalar_bufferify
 
 /**
  * Return a Fortran pointer to an array which is always the same length.
@@ -124,9 +124,8 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_cdesc_pointer
 // Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_fixed_array_bufferify
-void POI_get_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// start POI_getPtrToFixedArray_bufferify
+void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_fixed_array_bufferify
     int *count;
@@ -141,7 +140,7 @@ void POI_get_ptr_to_fixed_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_fixed_array_bufferify
 }
-// end POI_get_ptr_to_fixed_array_bufferify
+// end POI_getPtrToFixedArray_bufferify
 
 /**
  * Return a Fortran pointer to an array which is the length of
@@ -160,8 +159,8 @@ void POI_get_ptr_to_fixed_array_bufferify(
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-// start POI_get_ptr_to_dynamic_array_bufferify
-void POI_get_ptr_to_dynamic_array_bufferify(
+// start POI_getPtrToDynamicArray_bufferify
+void POI_getPtrToDynamicArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_array_bufferify
@@ -178,7 +177,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_array_bufferify
 }
-// end POI_get_ptr_to_dynamic_array_bufferify
+// end POI_getPtrToDynamicArray_bufferify
 
 /**
  * Return a Fortran pointer to an array which is the length
@@ -194,9 +193,8 @@ void POI_get_ptr_to_dynamic_array_bufferify(
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_cdesc_pointer
 // Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_func_array_bufferify
-void POI_get_ptr_to_func_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc)
+// start POI_getPtrToFuncArray_bufferify
+void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_func_array_bufferify
     int *count;
@@ -211,7 +209,7 @@ void POI_get_ptr_to_func_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_func_array_bufferify
 }
-// end POI_get_ptr_to_func_array_bufferify
+// end POI_getPtrToFuncArray_bufferify
 
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
@@ -222,8 +220,8 @@ void POI_get_ptr_to_func_array_bufferify(
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_cdesc_pointer
 // Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_const_scalar_bufferify
-void POI_get_ptr_to_const_scalar_bufferify(
+// start POI_getPtrToConstScalar_bufferify
+void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
 {
     // splicer begin function.get_ptr_to_const_scalar_bufferify
@@ -238,7 +236,7 @@ void POI_get_ptr_to_const_scalar_bufferify(
     SHT_nitems_cdesc->size = 1;
     // splicer end function.get_ptr_to_const_scalar_bufferify
 }
-// end POI_get_ptr_to_const_scalar_bufferify
+// end POI_getPtrToConstScalar_bufferify
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
@@ -249,8 +247,8 @@ void POI_get_ptr_to_const_scalar_bufferify(
 // Attrs:     +api(cdesc)+deref(pointer)+intent(out)
 // Requested: c_out_native_**_cdesc_pointer
 // Match:     c_out_native_**_cdesc
-// start POI_get_ptr_to_fixed_const_array_bufferify
-void POI_get_ptr_to_fixed_const_array_bufferify(
+// start POI_getPtrToFixedConstArray_bufferify
+void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_fixed_const_array_bufferify
@@ -266,7 +264,7 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_fixed_const_array_bufferify
 }
-// end POI_get_ptr_to_fixed_const_array_bufferify
+// end POI_getPtrToFixedConstArray_bufferify
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
@@ -281,8 +279,8 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-// start POI_get_ptr_to_dynamic_const_array_bufferify
-void POI_get_ptr_to_dynamic_const_array_bufferify(
+// start POI_getPtrToDynamicConstArray_bufferify
+void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
@@ -299,7 +297,7 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_ptr_to_dynamic_const_array_bufferify
 }
-// end POI_get_ptr_to_dynamic_const_array_bufferify
+// end POI_getPtrToDynamicConstArray_bufferify
 
 /**
  * Return a Fortran pointer to an array which is always the same length.
@@ -313,8 +311,8 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(out)
 // Requested: c_out_native_**_cdesc_allocatable
 // Match:     c_out_native_**_cdesc
-// start POI_get_alloc_to_fixed_array_bufferify
-void POI_get_alloc_to_fixed_array_bufferify(
+// start POI_getAllocToFixedArray_bufferify
+void POI_getAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
     // splicer begin function.get_alloc_to_fixed_array_bufferify
@@ -330,15 +328,15 @@ void POI_get_alloc_to_fixed_array_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     // splicer end function.get_alloc_to_fixed_array_bufferify
 }
-// end POI_get_alloc_to_fixed_array_bufferify
+// end POI_getAllocToFixedArray_bufferify
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
 // Requested: c_function_native_*_cdesc_pointer
 // Match:     c_function_native_*_cdesc
-// start POI_return_int_ptr_to_fixed_array_bufferify
-void POI_return_int_ptr_to_fixed_array_bufferify(
+// start POI_returnIntPtrToFixedArray_bufferify
+void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_fixed_array_bufferify
@@ -353,15 +351,15 @@ void POI_return_int_ptr_to_fixed_array_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_to_fixed_array_bufferify
 }
-// end POI_return_int_ptr_to_fixed_array_bufferify
+// end POI_returnIntPtrToFixedArray_bufferify
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +api(cdesc)+deref(pointer)+intent(function)
 // Requested: c_function_native_*_cdesc_pointer
 // Match:     c_function_native_*_cdesc
-// start POI_return_int_ptr_to_fixed_const_array_bufferify
-void POI_return_int_ptr_to_fixed_const_array_bufferify(
+// start POI_returnIntPtrToFixedConstArray_bufferify
+void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
@@ -376,29 +374,29 @@ void POI_return_int_ptr_to_fixed_const_array_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
 }
-// end POI_return_int_ptr_to_fixed_const_array_bufferify
+// end POI_returnIntPtrToFixedConstArray_bufferify
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
 // Attrs:     +deref(scalar)+intent(function)
 // Exact:     c_function_native_*_scalar
-// start POI_return_int_scalar
-int POI_return_int_scalar(void)
+// start POI_returnIntScalar
+int POI_returnIntScalar(void)
 {
     // splicer begin function.return_int_scalar
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
     // splicer end function.return_int_scalar
 }
-// end POI_return_int_scalar
+// end POI_returnIntScalar
 
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Requested: c_function_native_*_cdesc_allocatable
 // Match:     c_function_native_*_cdesc
-// start POI_return_int_alloc_to_fixed_array_bufferify
-void POI_return_int_alloc_to_fixed_array_bufferify(
+// start POI_returnIntAllocToFixedArray_bufferify
+void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_int_alloc_to_fixed_array_bufferify
@@ -413,4 +411,4 @@ void POI_return_int_alloc_to_fixed_array_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     // splicer end function.return_int_alloc_to_fixed_array_bufferify
 }
-// end POI_return_int_alloc_to_fixed_array_bufferify
+// end POI_returnIntAllocToFixedArray_bufferify

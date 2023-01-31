@@ -35,21 +35,20 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-bool CXX_default_ptr_is_null_0(void);
+bool CXX_defaultPtrIsNULL_0(void);
 
-bool CXX_default_ptr_is_null_1(double * data);
+bool CXX_defaultPtrIsNULL_1(double * data);
 
-void CXX_default_args_in_out_0(int in1, int * out1, int * out2);
+void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2);
 
-void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
-    bool flag);
+void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag);
 
-const char * CXX_get_group_name(long idx);
+const char * CXX_getGroupName(long idx);
 
-void CXX_get_group_name_int32_t_bufferify(int32_t idx, char *SHC_rv,
+void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len);
 
-void CXX_get_group_name_int64_t_bufferify(int64_t idx, char *SHC_rv,
+void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len);
 
 #ifdef __cplusplus

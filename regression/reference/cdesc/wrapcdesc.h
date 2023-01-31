@@ -28,21 +28,21 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void CDE_rank2_in(int * arg);
+void CDE_Rank2In(int * arg);
 
-void CDE_rank2_in_bufferify(CDE_SHROUD_array *SHT_arg_cdesc);
+void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc);
 
-void CDE_get_scalar1(char * name, void * value);
+void CDE_GetScalar1(char * name, void * value);
 
-void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
+void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc);
 
-void CDE_get_scalar1_1_bufferify(char *name, int SHT_name_len,
+void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc);
 
-int CDE_get_data_int(void);
+int CDE_getData_int(void);
 
-double CDE_get_data_double(void);
+double CDE_getData_double(void);
 
 #ifdef __cplusplus
 }

@@ -105,6 +105,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_sum",
+                    "F_name_api": "vector_sum",
                     "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum",
                     "underscore_name": "vector_sum"
@@ -223,6 +225,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out",
+                    "F_name_api": "vector_iota_out",
                     "PY_name_impl": "PY_vector_iota_out",
                     "function_name": "vector_iota_out",
                     "underscore_name": "vector_iota_out"
@@ -320,6 +324,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_with_num",
+                    "F_name_api": "vector_iota_out_with_num",
                     "function_name": "vector_iota_out_with_num",
                     "underscore_name": "vector_iota_out_with_num"
                 }
@@ -404,6 +410,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_with_num2",
+                    "F_name_api": "vector_iota_out_with_num2",
                     "function_name": "vector_iota_out_with_num2",
                     "underscore_name": "vector_iota_out_with_num2"
                 }
@@ -473,6 +481,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_alloc",
+                    "F_name_api": "vector_iota_out_alloc",
                     "function_name": "vector_iota_out_alloc",
                     "underscore_name": "vector_iota_out_alloc"
                 }
@@ -542,6 +552,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_inout_alloc",
+                    "F_name_api": "vector_iota_inout_alloc",
                     "function_name": "vector_iota_inout_alloc",
                     "underscore_name": "vector_iota_inout_alloc"
                 }
@@ -604,6 +616,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_increment",
+                    "F_name_api": "vector_increment",
                     "function_name": "vector_increment",
                     "underscore_name": "vector_increment"
                 }
@@ -701,6 +715,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_d",
+                    "F_name_api": "vector_iota_out_d",
                     "PY_name_impl": "PY_vector_iota_out_d",
                     "function_name": "vector_iota_out_d",
                     "underscore_name": "vector_iota_out_d"
@@ -790,6 +806,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_of_pointers",
+                    "F_name_api": "vector_of_pointers",
                     "function_name": "vector_of_pointers",
                     "underscore_name": "vector_of_pointers"
                 }
@@ -856,6 +874,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_count",
+                    "F_name_api": "vector_string_count",
                     "function_name": "vector_string_count",
                     "underscore_name": "vector_string_count"
                 }
@@ -925,6 +945,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_fill",
+                    "F_name_api": "vector_string_fill",
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 }
@@ -993,6 +1015,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_append",
+                    "F_name_api": "vector_string_append",
                     "function_name": "vector_string_append",
                     "underscore_name": "vector_string_append"
                 }
@@ -1079,6 +1103,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "ReturnVectorAlloc",
+                    "F_name_api": "return_vector_alloc",
                     "PY_name_impl": "PY_ReturnVectorAlloc",
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
@@ -1219,6 +1245,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "returnDim2",
+                    "F_name_api": "return_dim2",
                     "PY_name_impl": "PY_returnDim2",
                     "function_name": "returnDim2",
                     "underscore_name": "return_dim2"

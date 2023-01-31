@@ -92,7 +92,7 @@ static void ShroudStrFree(char *src)
 // Attrs:     +intent(inout)
 // Requested: c_inout_char_*
 // Match:     c_default
-void TES_get_name(char * name)
+void TES_getName(char * name)
 {
     // splicer begin function.get_name
     getName(name);
@@ -107,7 +107,7 @@ void TES_get_name(char * name)
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
-void TES_get_name_bufferify(char *name, int SHT_name_len)
+void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.get_name_bufferify
     char * ARG_name = ShroudStrAlloc(name, SHT_name_len, 0);
@@ -234,7 +234,7 @@ void YYY_TES_fiveplus(void)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void TES_test_multiline_splicer(char * name, int * value)
+void TES_TestMultilineSplicer(char * name, int * value)
 {
     // splicer begin function.test_multiline_splicer
     // line 1
@@ -258,7 +258,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void TES_test_multiline_splicer_bufferify(char *name, int SHT_name_len,
+void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
     // splicer begin function.test_multiline_splicer_bufferify
@@ -310,7 +310,7 @@ void c_name_instantiation1(int arg1, long arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void TES_function_tu_instantiation2(float arg1, double arg2)
+void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.function_tu_instantiation2
     FunctionTU<float, double>(arg1, arg2);
@@ -326,7 +326,7 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int TES_use_impl_worker_instantiation3(void)
+int TES_UseImplWorker_instantiation3(void)
 {
     // splicer begin function.use_impl_worker_instantiation3
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
@@ -343,7 +343,7 @@ int TES_use_impl_worker_instantiation3(void)
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
 // Exact:     c_in_shadow_*
-int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
+int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum
     const Cstruct_as_class * ARG_point =

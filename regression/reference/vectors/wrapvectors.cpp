@@ -361,7 +361,7 @@ int VEC_vector_string_count_bufferify(const char *arg,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void VEC_return_vector_alloc_bufferify(int n,
+void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.return_vector_alloc_bufferify
@@ -393,7 +393,7 @@ void VEC_return_vector_alloc_bufferify(int n,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int VEC_return_dim2(int * arg, int len)
+int VEC_returnDim2(int * arg, int len)
 {
     // splicer begin function.return_dim2
     int SHC_rv = returnDim2(arg, len);

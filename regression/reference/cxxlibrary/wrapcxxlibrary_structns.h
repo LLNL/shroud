@@ -35,13 +35,13 @@ typedef struct s_CXX_cstruct1 CXX_cstruct1;
 // splicer begin namespace.structns.C_declarations
 // splicer end namespace.structns.C_declarations
 
-int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg);
+int CXX_structns_passStructByReference(CXX_cstruct1 * arg);
 
-int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg);
+int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg);
 
-void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg);
+void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg);
 
-void CXX_structns_pass_struct_by_reference_out(CXX_cstruct1 * arg);
+void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg);
 
 #ifdef __cplusplus
 }

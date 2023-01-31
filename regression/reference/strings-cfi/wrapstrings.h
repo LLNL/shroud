@@ -31,133 +31,132 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void STR_pass_char(char status);
+void STR_passChar(char status);
 
-void STR_pass_char_force(char status);
+void STR_passCharForce(char status);
 
-void STR_return_char(char *SHC_rv);
+void STR_returnChar(char *SHC_rv);
 
-void STR_pass_char_ptr(char * dest, const char * src);
+void STR_passCharPtr(char * dest, const char * src);
 
-void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
+void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_pass_char_ptr_in_out(char * s);
+void STR_passCharPtrInOut(char * s);
 
-void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHT_s_cfi);
+void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi);
 
-const char * STR_get_char_ptr1(void);
+const char * STR_getCharPtr1(void);
 
-void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_char_ptr2(void);
+const char * STR_getCharPtr2(void);
 
-void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_char_ptr3(void);
+const char * STR_getCharPtr3(void);
 
-void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_output_cfi);
 
-const char * STR_get_char_ptr4(void);
+const char * STR_getCharPtr4(void);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * STR_get_char_ptr5(void);
+const char * STR_getCharPtr5(void);
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void STR_get_char_ptr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
 
-void STR_get_const_string_result_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_get_const_string_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_output_cfi);
 
-void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ref_pure(void);
+const char * STR_getConstStringRefPure(void);
 
-void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ref_len(void);
+const char * STR_getConstStringRefLen(void);
 
-void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ref_as_arg(void);
+const char * STR_getConstStringRefAsArg(void);
 
-void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHT_output_cfi);
+void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_output_cfi);
 
-const char * STR_get_const_string_ref_len_empty(void);
+const char * STR_getConstStringRefLenEmpty(void);
 
-void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ref_alloc(void);
+const char * STR_getConstStringRefAlloc(void);
 
-void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ptr_len(void);
+const char * STR_getConstStringPtrLen(void);
 
-void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ptr_alloc(void);
+const char * STR_getConstStringPtrAlloc(void);
 
-void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ptr_owns_alloc(void);
+const char * STR_getConstStringPtrOwnsAlloc(void);
 
-void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
+const char * STR_getConstStringPtrOwnsAllocPattern(void);
 
-void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
-    CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * STR_get_const_string_ptr_pointer(void);
+const char * STR_getConstStringPtrPointer(void);
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void STR_get_const_string_ptr_pointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
 
-void STR_accept_string_const_reference(const char * arg1);
+void STR_acceptStringConstReference(const char * arg1);
 
-void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_accept_string_reference_out(char * arg1);
+void STR_acceptStringReferenceOut(char * arg1);
 
-void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_accept_string_reference(char * arg1);
+void STR_acceptStringReference(char * arg1);
 
-void STR_accept_string_reference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_accept_string_pointer_const(const char * arg1);
+void STR_acceptStringPointerConst(const char * arg1);
 
-void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_accept_string_pointer(char * arg1);
+void STR_acceptStringPointer(char * arg1);
 
-void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_fetch_string_pointer(char * arg1);
+void STR_fetchStringPointer(char * arg1);
 
-void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_accept_string_pointer_len(char * arg1, int * nlen);
+void STR_acceptStringPointerLen(char * arg1, int * nlen);
 
-void STR_accept_string_pointer_len_CFI(CFI_cdesc_t *SHT_arg1_cfi,
+void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen);
 
-void STR_fetch_string_pointer_len(char * arg1, int * nlen);
+void STR_fetchStringPointerLen(char * arg1, int * nlen);
 
-void STR_fetch_string_pointer_len_CFI(CFI_cdesc_t *SHT_arg1_cfi,
+void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen);
 
-int STR_accept_string_instance(char *arg1);
+int STR_acceptStringInstance(char *arg1);
 
-int STR_accept_string_instance_CFI(CFI_cdesc_t *SHT_arg1_cfi);
+int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
 void STR_explicit1(char * name);
 
@@ -167,30 +166,30 @@ void STR_explicit2(char * name);
 
 void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
 
-void STR_creturn_char(char *SHC_rv);
+void STR_CreturnChar(char *SHC_rv);
 
-void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHT_dest_cfi,
+void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_cpass_char_ptr_blank(char * dest, const char * src);
+void STR_CpassCharPtrBlank(char * dest, const char * src);
 
-void STR_cpass_char_ptr_blank_CFI(CFI_cdesc_t *SHT_dest_cfi,
+void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_post_declare(int * count, char * name);
+void STR_PostDeclare(int * count, char * name);
 
-void STR_post_declare_CFI(CFI_cdesc_t *SHT_count_cfi,
+void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     CFI_cdesc_t *SHT_name_cfi);
 
-int STR_cpass_char_ptr_notrim(const char * src);
+int STR_CpassCharPtrNotrim(const char * src);
 
-int STR_cpass_char_ptr_notrim_CFI(CFI_cdesc_t *SHT_src_cfi);
+int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi);
 
-int STR_cpass_char_ptr_capi(void * addr, const char * src);
+int STR_CpassCharPtrCAPI(void * addr, const char * src);
 
-int STR_cpass_char_ptr_capi2(const char * in, const char * src);
+int STR_CpassCharPtrCAPI2(const char * in, const char * src);
 
-int STR_cpass_char_ptr_capi2_CFI(CFI_cdesc_t *SHT_in_cfi,
+int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi,
     const char * src);
 
 #ifdef __cplusplus

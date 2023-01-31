@@ -28,11 +28,11 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-const char * NS_last_function_called(void);
+const char * NS_LastFunctionCalled(void);
 
-void NS_last_function_called_bufferify(NS_SHROUD_array *SHT_rv_cdesc);
+void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc);
 
-void NS_one(void);
+void NS_One(void);
 
 #ifdef __cplusplus
 }

@@ -55,7 +55,7 @@ module name_module
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +api(capptr)+intent(ctor)
         ! Exact:     c_ctor_shadow_scalar_capptr
-        function xxx_tes_names_defaultctor(SHT_rv) &
+        function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
             use iso_c_binding, only : C_PTR
@@ -63,31 +63,31 @@ module name_module
             implicit none
             type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function xxx_tes_names_defaultctor
+        end function XXX_TES_names_defaultctor
 
         ! ----------------------------------------
         ! Function:  void method1
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine xxx_tes_names_method1(self) &
+        subroutine XXX_TES_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
             implicit none
             type(TES_SHROUD_capsule_data), intent(IN) :: self
-        end subroutine xxx_tes_names_method1
+        end subroutine XXX_TES_names_method1
 
         ! ----------------------------------------
         ! Function:  void method2
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine xxx_tes_names_method2(self2) &
+        subroutine XXX_TES_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data
             implicit none
             type(TES_SHROUD_capsule_data), intent(IN) :: self2
-        end subroutine xxx_tes_names_method2
+        end subroutine XXX_TES_names_method2
 
         ! splicer begin namespace.ns0.class.Names.additional_interfaces
         ! splicer end namespace.ns0.class.Names.additional_interfaces
@@ -114,7 +114,7 @@ contains
         type(FNames) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.ns0.class.Names.method.defaultctor
-        SHT_prv = xxx_tes_names_defaultctor(SHT_rv%cxxmem)
+        SHT_prv = XXX_TES_names_defaultctor(SHT_rv%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.defaultctor
     end function names_defaultctor
 
@@ -127,7 +127,7 @@ contains
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%cxxmem)
+        call XXX_TES_names_method1(obj%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.type_method1
     end subroutine names_method1
 
@@ -140,7 +140,7 @@ contains
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2
-        call xxx_tes_names_method2(obj2%cxxmem)
+        call XXX_TES_names_method2(obj2%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.method2
     end subroutine names_method2
 

@@ -30,7 +30,7 @@ extern "C" {
 // Attrs:     +intent(in)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-int FOR_pass_struct1(const STR_cstruct1 * arg)
+int FOR_passStruct1(const STR_cstruct1 * arg)
 {
     // splicer begin function.pass_struct1
     const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>

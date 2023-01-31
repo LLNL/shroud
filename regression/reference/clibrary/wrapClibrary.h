@@ -27,24 +27,24 @@ typedef int CLI_EnumTypeID;
 // splicer begin C_declarations
 // splicer end C_declarations
 
-double CLI_pass_by_value_macro(int arg2);
+double CLI_PassByValueMacro(int arg2);
 
-void CLI_function4a_bufferify(const char * arg1, const char * arg2,
+void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len);
 
-void CLI_pass_char_ptr_in_out_bufferify(char *s, int SHT_s_len);
+void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len);
 
-void CLI_return_one_name_bufferify(char *name1, int SHT_name1_len);
+void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len);
 
-void CLI_return_two_names_bufferify(char *name1, int SHT_name1_len,
+void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len);
 
-void CLI_implied_text_len_bufferify(char *text, int SHT_text_len,
+void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext);
 
-void CLI_bind_c2_bufferify(char *outbuf, int SHT_outbuf_len);
+void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len);
 
-int CLI_pass_assumed_type_buf_bufferify(void * arg, char *outbuf,
+int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len);
 
 void CLI_callback1a(int type, void ( * incr)(void));

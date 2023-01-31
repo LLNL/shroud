@@ -78,9 +78,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_sum",
                     "F_C_call": "c_vector_sum_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T)",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_sum",
                     "F_name_function": "vector_sum",
                     "F_name_generic": "vector_sum",
                     "F_name_impl": "vector_sum",
@@ -215,12 +217,14 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
+                    "C_name_api": "vector_sum",
                     "C_prototype": "int *arg,\t size_t SHT_arg_size",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t SHT_arg_size",
                     "F_C_name": "c_vector_sum_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_name_api": "vector_sum",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_sum",
                     "function_suffix": "_bufferify",
@@ -322,9 +326,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out",
                     "F_C_call": "c_vector_iota_out_bufferify",
                     "F_arg_c_call": "SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_out",
                     "F_name_function": "vector_iota_out",
                     "F_name_generic": "vector_iota_out",
                     "F_name_impl": "vector_iota_out",
@@ -452,11 +458,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_bufferify",
+                    "C_name_api": "vector_iota_out",
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_out_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_iota_out",
                     "function_name": "vector_iota_out",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -562,9 +570,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_with_num",
                     "F_C_call": "c_vector_iota_out_with_num_bufferify",
                     "F_arg_c_call": "SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_out_with_num",
                     "F_name_function": "vector_iota_out_with_num",
                     "F_name_generic": "vector_iota_out_with_num",
                     "F_name_impl": "vector_iota_out_with_num",
@@ -724,12 +734,14 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num_bufferify",
+                    "C_name_api": "vector_iota_out_with_num",
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "long",
                     "F_C_arguments": "SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_out_with_num_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_name_api": "vector_iota_out_with_num",
                     "function_name": "vector_iota_out_with_num",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -823,9 +835,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_with_num2",
                     "F_C_call": "c_vector_iota_out_with_num2_bufferify",
                     "F_arg_c_call": "SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_out_with_num2",
                     "F_name_function": "vector_iota_out_with_num2",
                     "F_name_generic": "vector_iota_out_with_num2",
                     "F_name_impl": "vector_iota_out_with_num2",
@@ -973,11 +987,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_with_num2_bufferify",
+                    "C_name_api": "vector_iota_out_with_num2",
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_out_with_num2_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_iota_out_with_num2",
                     "function_name": "vector_iota_out_with_num2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -1056,9 +1072,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_alloc",
                     "F_C_call": "c_vector_iota_out_alloc_bufferify",
                     "F_arg_c_call": "SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_out_alloc",
                     "F_name_function": "vector_iota_out_alloc",
                     "F_name_generic": "vector_iota_out_alloc",
                     "F_name_impl": "vector_iota_out_alloc",
@@ -1189,11 +1207,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_alloc_bufferify",
+                    "C_name_api": "vector_iota_out_alloc",
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_out_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_iota_out_alloc",
                     "function_name": "vector_iota_out_alloc",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -1272,9 +1292,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_inout_alloc",
                     "F_C_call": "c_vector_iota_inout_alloc_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_inout_alloc",
                     "F_name_function": "vector_iota_inout_alloc",
                     "F_name_generic": "vector_iota_inout_alloc",
                     "F_name_impl": "vector_iota_inout_alloc",
@@ -1407,11 +1429,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify",
+                    "C_name_api": "vector_iota_inout_alloc",
                     "C_prototype": "int *arg,\t size_t SHT_arg_size,\t VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_inout_alloc_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_iota_inout_alloc",
                     "function_name": "vector_iota_inout_alloc",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -1483,9 +1507,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_increment",
                     "F_C_call": "c_vector_increment_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_increment",
                     "F_name_function": "vector_increment",
                     "F_name_generic": "vector_increment",
                     "F_name_impl": "vector_increment",
@@ -1611,11 +1637,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
+                    "C_name_api": "vector_increment",
                     "C_prototype": "int *arg,\t size_t SHT_arg_size,\t VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_cdesc",
                     "F_C_name": "c_vector_increment_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_increment",
                     "function_name": "vector_increment",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -1690,9 +1718,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_iota_out_d",
                     "F_C_call": "c_vector_iota_out_d_bufferify",
                     "F_arg_c_call": "SHT_arg_cdesc",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_iota_out_d",
                     "F_name_function": "vector_iota_out_d",
                     "F_name_generic": "vector_iota_out_d",
                     "F_name_impl": "vector_iota_out_d",
@@ -1819,11 +1849,13 @@
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_d_bufferify",
+                    "C_name_api": "vector_iota_out_d",
                     "C_prototype": "VEC_SHROUD_array *SHT_arg_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_arg_cdesc",
                     "F_C_name": "c_vector_iota_out_d_bufferify",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "vector_iota_out_d",
                     "function_name": "vector_iota_out_d",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
@@ -1921,9 +1953,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_of_pointers",
                     "F_C_call": "c_vector_of_pointers_bufferify",
                     "F_arg_c_call": "arg1,\t size(arg1, 1, kind=C_SIZE_T),\t size(arg1, 2, kind=C_SIZE_T),\t num",
                     "F_arguments": "arg1,\t num",
+                    "F_name_api": "vector_of_pointers",
                     "F_name_function": "vector_of_pointers",
                     "F_name_generic": "vector_of_pointers",
                     "F_name_impl": "vector_of_pointers",
@@ -2119,12 +2153,14 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t num",
                     "C_name": "VEC_vector_of_pointers_bufferify",
+                    "C_name_api": "vector_of_pointers",
                     "C_prototype": "double *arg1,\t size_t SHT_arg1_len,\t size_t SHT_arg1_size,\t int num",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t SHT_arg1_size,\t num",
                     "F_C_name": "c_vector_of_pointers_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_name_api": "vector_of_pointers",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_of_pointers",
                     "function_suffix": "_bufferify",
@@ -2226,9 +2262,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_count",
                     "F_C_call": "c_vector_string_count_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_SIZE_T),\t len(arg, kind=C_INT)",
                     "F_arguments": "arg",
+                    "F_name_api": "vector_string_count",
                     "F_name_function": "vector_string_count",
                     "F_name_generic": "vector_string_count",
                     "F_name_impl": "vector_string_count",
@@ -2375,12 +2413,14 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_string_count_bufferify",
+                    "C_name_api": "vector_string_count",
                     "C_prototype": "const char *arg,\t size_t SHT_arg_size,\t int SHT_arg_len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t SHT_arg_size,\t SHT_arg_len",
                     "F_C_name": "c_vector_string_count_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_name_api": "vector_string_count",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_string_count",
                     "function_suffix": "_bufferify",
@@ -2479,6 +2519,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_fill",
+                    "F_name_api": "vector_string_fill",
                     "function_name": "vector_string_fill",
                     "underscore_name": "vector_string_fill"
                 }
@@ -2547,6 +2589,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "vector_string_append",
+                    "F_name_api": "vector_string_append",
                     "function_name": "vector_string_append",
                     "underscore_name": "vector_string_append"
                 }
@@ -2614,9 +2658,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "ReturnVectorAlloc",
                     "F_C_call": "c_return_vector_alloc_bufferify",
                     "F_arg_c_call": "n,\t SHT_rv_cdesc",
                     "F_arguments": "n",
+                    "F_name_api": "return_vector_alloc",
                     "F_name_function": "return_vector_alloc",
                     "F_name_generic": "return_vector_alloc",
                     "F_name_impl": "return_vector_alloc",
@@ -2748,13 +2794,15 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "n",
-                    "C_name": "VEC_return_vector_alloc_bufferify",
+                    "C_name": "VEC_ReturnVectorAlloc_bufferify",
+                    "C_name_api": "ReturnVectorAlloc",
                     "C_prototype": "int n,\t VEC_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "n,\t SHT_rv",
                     "F_C_name": "c_return_vector_alloc_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "return_vector_alloc",
                     "cxx_rv_decl": "*SHC_rv",
                     "function_name": "ReturnVectorAlloc",
                     "function_suffix": "_bufferify",
@@ -2929,7 +2977,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg,\t len",
-                    "C_name": "VEC_return_dim2",
+                    "C_name": "VEC_returnDim2",
+                    "C_name_api": "returnDim2",
                     "C_prototype": "int * arg,\t int len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t len",
@@ -2939,6 +2988,7 @@
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "arg,\t SH_len",
                     "F_arguments": "arg",
+                    "F_name_api": "return_dim2",
                     "F_name_function": "return_dim2",
                     "F_name_generic": "return_dim2",
                     "F_name_impl": "return_dim2",

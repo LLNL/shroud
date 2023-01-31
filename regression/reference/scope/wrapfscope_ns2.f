@@ -50,10 +50,10 @@ module scope_ns2_mod
     integer(C_INT), parameter :: white = 32
 
 
-    type, bind(C) :: datapointer
+    type, bind(C) :: data_pointer
         integer(C_INT) :: nitems
         type(C_PTR) :: items
-    end type datapointer
+    end type data_pointer
 
     interface
 
@@ -68,10 +68,10 @@ module scope_ns2_mod
         ! Requested: c_in_struct_*
         ! Match:     c_in_struct
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
-                bind(C, name="SCO_ns2_data_pointer_get_items_bufferify")
-            import :: SCO_SHROUD_array, datapointer
+                bind(C, name="SCO_ns2_DataPointer_get_items_bufferify")
+            import :: SCO_SHROUD_array, data_pointer
             implicit none
-            type(datapointer), intent(IN) :: SH_this
+            type(data_pointer), intent(IN) :: SH_this
             type(SCO_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_data_pointer_get_items_bufferify
 
@@ -90,11 +90,11 @@ module scope_ns2_mod
         ! Attrs:     +intent(setter)
         ! Exact:     c_setter_native_*
         subroutine data_pointer_set_items(SH_this, val) &
-                bind(C, name="SCO_ns2_data_pointer_set_items")
+                bind(C, name="SCO_ns2_DataPointer_set_items")
             use iso_c_binding, only : C_INT
-            import :: datapointer
+            import :: data_pointer
             implicit none
-            type(datapointer), intent(INOUT) :: SH_this
+            type(data_pointer), intent(INOUT) :: SH_this
             integer(C_INT), intent(IN) :: val(*)
         end subroutine data_pointer_set_items
 
@@ -123,7 +123,7 @@ contains
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        type(datapointer), intent(IN) :: SH_this
+        type(data_pointer), intent(IN) :: SH_this
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin namespace.ns2.function.data_pointer_get_items
         type(SCO_SHROUD_array) :: SHT_rv_cdesc

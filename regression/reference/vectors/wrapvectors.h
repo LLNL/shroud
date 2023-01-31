@@ -55,10 +55,10 @@ int VEC_vector_of_pointers_bufferify(double *arg1, size_t SHT_arg1_len,
 int VEC_vector_string_count_bufferify(const char *arg,
     size_t SHT_arg_size, int SHT_arg_len);
 
-void VEC_return_vector_alloc_bufferify(int n,
+void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 
-int VEC_return_dim2(int * arg, int len);
+int VEC_returnDim2(int * arg, int len);
 
 #ifdef __cplusplus
 }

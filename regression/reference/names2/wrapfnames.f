@@ -28,7 +28,7 @@ module worker_names
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         subroutine a_function() &
-                bind(C, name="NAM_a_function")
+                bind(C, name="NAM_AFunction")
             implicit none
         end subroutine a_function
 

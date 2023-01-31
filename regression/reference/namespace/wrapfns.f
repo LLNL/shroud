@@ -48,7 +48,7 @@ module ns_mod
     integer(C_INT), parameter :: upper_error = 0
     integer(C_INT), parameter :: upper_warn = 1
 
-    type classwork
+    type class_work
         type(NS_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
@@ -58,7 +58,7 @@ module ns_mod
         procedure :: associated => nswork_classwork_associated
         ! splicer begin namespace.outer.class.ClassWork.type_bound_procedure_part
         ! splicer end namespace.outer.class.ClassWork.type_bound_procedure_part
-    end type classwork
+    end type class_work
 
     interface operator (.eq.)
         module procedure nswork_classwork_eq
@@ -77,7 +77,7 @@ module ns_mod
         ! Match:     c_function_string_&
         function c_last_function_called() &
                 result(SHT_rv) &
-                bind(C, name="NS_last_function_called")
+                bind(C, name="NS_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -88,7 +88,7 @@ module ns_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv) &
-                bind(C, name="NS_last_function_called_bufferify")
+                bind(C, name="NS_LastFunctionCalled_bufferify")
             import :: NS_SHROUD_array
             implicit none
             type(NS_SHROUD_array), intent(OUT) :: SHT_rv
@@ -100,7 +100,7 @@ module ns_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         subroutine one() &
-                bind(C, name="NS_one")
+                bind(C, name="NS_One")
             implicit none
         end subroutine one
 
@@ -151,14 +151,14 @@ contains
     ! Return pointer to C++ memory.
     function nswork_classwork_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(classwork), intent(IN) :: obj
+        class(class_work), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function nswork_classwork_get_instance
 
     subroutine nswork_classwork_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(classwork), intent(INOUT) :: obj
+        class(class_work), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -166,7 +166,7 @@ contains
 
     function nswork_classwork_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(classwork), intent(IN) :: obj
+        class(class_work), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function nswork_classwork_associated
@@ -176,7 +176,7 @@ contains
 
     function nswork_classwork_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classwork), intent(IN) ::a,b
+        type(class_work), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -187,7 +187,7 @@ contains
 
     function nswork_classwork_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classwork), intent(IN) ::a,b
+        type(class_work), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

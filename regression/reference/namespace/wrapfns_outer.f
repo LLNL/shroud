@@ -35,7 +35,7 @@ module ns_outer_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         subroutine one() &
-                bind(C, name="NS_outer_one")
+                bind(C, name="NS_outer_One")
             implicit none
         end subroutine one
 

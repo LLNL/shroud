@@ -47,7 +47,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
-void CDE_rank2_in(int * arg)
+void CDE_Rank2In(int * arg)
 {
     // splicer begin function.rank2_in
     Rank2In(arg);
@@ -62,7 +62,7 @@ void CDE_rank2_in(int * arg)
 // Argument:  int * arg +cdesc+intent(in)+rank(2)
 // Attrs:     +api(cdesc)+intent(in)
 // Exact:     c_in_native_*_cdesc
-void CDE_rank2_in_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
+void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.rank2_in_bufferify
     int * arg = static_cast<int *>
@@ -96,7 +96,7 @@ void CDE_rank2_in_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // Attrs:     +intent(in)
 // Requested: c_in_void_*
 // Match:     c_default
-void CDE_get_scalar1(char * name, void * value)
+void CDE_GetScalar1(char * name, void * value)
 {
     // splicer begin function.get_scalar1
     std::string SHCXX_name(name);
@@ -128,7 +128,7 @@ void CDE_get_scalar1(char * name, void * value)
 // Argument:  int * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
+void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.get_scalar1_0_bufferify
@@ -178,7 +178,7 @@ void CDE_get_scalar1_0_bufferify(char *name, int SHT_name_len,
 // Argument:  double * value +cdesc+intent(out)+rank(0)
 // Attrs:     +api(cdesc)+intent(out)
 // Exact:     c_out_native_*_cdesc
-void CDE_get_scalar1_1_bufferify(char *name, int SHT_name_len,
+void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
 {
     // splicer begin function.get_scalar1_1_bufferify
@@ -212,7 +212,7 @@ void CDE_get_scalar1_1_bufferify(char *name, int SHT_name_len,
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-int CDE_get_data_int(void)
+int CDE_getData_int(void)
 {
     // splicer begin function.get_data_int
     int SHC_rv = getData<int>();
@@ -228,7 +228,7 @@ int CDE_get_data_int(void)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-double CDE_get_data_double(void)
+double CDE_getData_double(void)
 {
     // splicer begin function.get_data_double
     double SHC_rv = getData<double>();

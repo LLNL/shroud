@@ -50,7 +50,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_length",
+                    "C_name": "STMT_GetNameLength",
+                    "C_name_api": "GetNameLength",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -60,6 +61,7 @@
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_arguments": "",
+                    "F_name_api": "get_name_length",
                     "F_name_function": "get_name_length",
                     "F_name_generic": "get_name_length",
                     "F_name_impl": "get_name_length",
@@ -143,7 +145,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_error_pattern",
+                    "C_name": "STMT_getNameErrorPattern",
+                    "C_name_api": "getNameErrorPattern",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -153,6 +156,7 @@
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
                     "F_arguments": "",
+                    "F_name_api": "get_name_error_pattern",
                     "F_name_function": "get_name_error_pattern",
                     "F_name_generic": "get_name_error_pattern",
                     "F_name_impl": "get_name_error_pattern",
@@ -238,13 +242,15 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_error_pattern_bufferify",
+                    "C_name": "STMT_getNameErrorPattern_bufferify",
+                    "C_name_api": "getNameErrorPattern",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
                     "F_C_name": "c_get_name_error_pattern_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "get_name_error_pattern",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getNameErrorPattern",
                     "function_suffix": "_bufferify",

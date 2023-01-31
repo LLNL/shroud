@@ -33,7 +33,7 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int FOR_pass_struct1(const STR_cstruct1 * arg);
+int FOR_passStruct1(const STR_cstruct1 * arg);
 
 #ifdef __cplusplus
 }

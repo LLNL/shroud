@@ -17,7 +17,21 @@ pass meta-data arguments.  When called from Fortran, its wrappers will
 provide the meta-data.  When called directly by a C application, the
 meta-data must be provided by the user.
 
-To help control the scope of C names, all externals add a prefix.
+Names
+-----
+
+Shroud will flatten scoped C++ library names to create the C API.
+Since C does not support scopes such as classes and namespaces, a name
+such as ``ns1::function`` must be flattened into ``ns1_function`` to
+avoid conflict with a similarly named function ``ns2::function``.
+
+Names are also contolled by the **C_api_case** option. It can be set
+to *lower*, *upper*, *underscore* or *preserve*. This option is used to set
+the format field **C_name_api** which in turn is used in the option
+**C_name_template**. The default is *preserve*. This creates a stronger
+correlation between the C API and the C++ API.
+
+To further help control the scope of C names, all externals add a prefix.
 It defaults to the first three letters of the
 **library** but may be changed by setting the format **C_prefix**:
 

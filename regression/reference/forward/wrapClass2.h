@@ -36,7 +36,7 @@ void FOR_Class2_dtor(FOR_Class2 * self);
 
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg);
 
-void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg);
+void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg);
 
 #ifdef __cplusplus
 }

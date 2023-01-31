@@ -160,7 +160,7 @@ module top_module
         ! Requested: c_inout_char_*
         ! Match:     c_default
         subroutine c_get_name(name) &
-                bind(C, name="TES_get_name")
+                bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -176,7 +176,7 @@ module top_module
         ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_char_*_buf
         subroutine c_get_name_bufferify(name, SHT_name_len) &
-                bind(C, name="TES_get_name_bufferify")
+                bind(C, name="TES_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -188,10 +188,10 @@ module top_module
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine yyy_tes_function1() &
+        subroutine YYY_TES_function1() &
                 bind(C, name="YYY_TES_function1")
             implicit none
-        end subroutine yyy_tes_function1
+        end subroutine YYY_TES_function1
 
         ! ----------------------------------------
         ! Function:  void function2
@@ -213,12 +213,12 @@ module top_module
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine yyy_tes_function3a_0(i) &
+        subroutine YYY_TES_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: i
-        end subroutine yyy_tes_function3a_0
+        end subroutine YYY_TES_function3a_0
 
         ! ----------------------------------------
         ! Function:  void function3a
@@ -230,12 +230,12 @@ module top_module
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine yyy_tes_function3a_1(i) &
+        subroutine YYY_TES_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
             use iso_c_binding, only : C_LONG
             implicit none
             integer(C_LONG), value, intent(IN) :: i
-        end subroutine yyy_tes_function3a_1
+        end subroutine YYY_TES_function3a_1
 
         ! ----------------------------------------
         ! Function:  int function4
@@ -246,14 +246,14 @@ module top_module
         ! Argument:  const std::string & rv
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_&
-        function yyy_tes_function4(rv) &
+        function YYY_TES_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: rv(*)
             integer(C_INT) :: SHT_rv
-        end function yyy_tes_function4
+        end function YYY_TES_function4
 
         ! ----------------------------------------
         ! Function:  int function4
@@ -264,7 +264,7 @@ module top_module
         ! Argument:  const std::string & rv
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_&_buf
-        function yyy_tes_function4_bufferify(rv, SHT_rv_len) &
+        function YYY_TES_function4_bufferify(rv, SHT_rv_len) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -272,17 +272,17 @@ module top_module
             character(kind=C_CHAR), intent(IN) :: rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
             integer(C_INT) :: SHT_rv
-        end function yyy_tes_function4_bufferify
+        end function YYY_TES_function4_bufferify
 
         ! ----------------------------------------
         ! Function:  void function5 +name(fiveplus)
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine yyy_tes_fiveplus() &
+        subroutine YYY_TES_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
             implicit none
-        end subroutine yyy_tes_fiveplus
+        end subroutine YYY_TES_fiveplus
 
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
@@ -299,7 +299,7 @@ module top_module
         ! Requested: c_out_native_*
         ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
-                bind(C, name="TES_test_multiline_splicer")
+                bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -322,7 +322,7 @@ module top_module
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, &
                 SHT_name_len, value) &
-                bind(C, name="TES_test_multiline_splicer_bufferify")
+                bind(C, name="TES_TestMultilineSplicer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -369,7 +369,7 @@ module top_module
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_instantiation2(arg1, arg2) &
-                bind(C, name="TES_function_tu_instantiation2")
+                bind(C, name="TES_FunctionTU_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
             implicit none
             real(C_FLOAT), value, intent(IN) :: arg1
@@ -383,7 +383,7 @@ module top_module
         ! Match:     c_function
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
-                bind(C, name="TES_use_impl_worker_instantiation3")
+                bind(C, name="TES_UseImplWorker_instantiation3")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -400,7 +400,7 @@ module top_module
         ! Exact:     c_in_shadow_*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
-                bind(C, name="TES_cstruct_as_class_sum")
+                bind(C, name="TES_Cstruct_as_class_sum")
             use iso_c_binding, only : C_INT
             import :: TES_SHROUD_capsule_data
             implicit none
@@ -635,7 +635,7 @@ contains
     ! Exact:     c_subroutine
     subroutine testnames_function1()
         ! splicer begin function.function1
-        call yyy_tes_function1()
+        call YYY_TES_function1()
         ! splicer end function.function1
     end subroutine testnames_function1
 
@@ -669,7 +669,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
         ! splicer begin function.function3a_0
-        call yyy_tes_function3a_0(i)
+        call YYY_TES_function3a_0(i)
         ! splicer end function.function3a_0
     end subroutine F_name_function3a_int
 
@@ -691,7 +691,7 @@ contains
         use iso_c_binding, only : C_LONG
         integer(C_LONG), value, intent(IN) :: i
         ! splicer begin function.function3a_1
-        call yyy_tes_function3a_1(i)
+        call YYY_TES_function3a_1(i)
         ! splicer end function.function3a_1
     end subroutine F_name_function3a_long
 
@@ -718,7 +718,7 @@ contains
         ! splicer begin function.function4
         integer(C_INT) SHT_rv_len
         SHT_rv_len = len(rv, kind=C_INT)
-        SHT_rv = yyy_tes_function4_bufferify(rv, SHT_rv_len)
+        SHT_rv = YYY_TES_function4_bufferify(rv, SHT_rv_len)
         ! splicer end function.function4
     end function testnames_function4
 
@@ -730,7 +730,7 @@ contains
     ! Exact:     c_subroutine
     subroutine testnames_fiveplus()
         ! splicer begin function.fiveplus
-        call yyy_tes_fiveplus()
+        call YYY_TES_fiveplus()
         ! splicer end function.fiveplus
     end subroutine testnames_fiveplus
 

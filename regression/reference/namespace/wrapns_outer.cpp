@@ -24,7 +24,7 @@ extern "C" {
 // Function:  void One
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
-void NS_outer_one(void)
+void NS_outer_One(void)
 {
     // splicer begin namespace.outer.function.one
     outer::One();

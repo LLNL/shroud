@@ -35,7 +35,7 @@
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int GEN_sum_values_0d(const int * values, int nvalues)
+int GEN_SumValues_0d(const int * values, int nvalues)
 {
     // splicer begin function.sum_values_0d
     int SHC_rv = SumValues(values, nvalues);
@@ -62,7 +62,7 @@ int GEN_sum_values_0d(const int * values, int nvalues)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int GEN_sum_values_1d(const int * values, int nvalues)
+int GEN_SumValues_1d(const int * values, int nvalues)
 {
     // splicer begin function.sum_values_1d
     int SHC_rv = SumValues(values, nvalues);
@@ -89,7 +89,7 @@ int GEN_sum_values_1d(const int * values, int nvalues)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int GEN_sum_values_2d(const int * values, int nvalues)
+int GEN_SumValues_2d(const int * values, int nvalues)
 {
     // splicer begin function.sum_values_2d
     int SHC_rv = SumValues(values, nvalues);
@@ -125,7 +125,7 @@ int GEN_sum_values_2d(const int * values, int nvalues)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
+void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
     int nto)
 {
     // splicer begin function.assign_values_scalar
@@ -161,7 +161,7 @@ void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
+void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
     int nto)
 {
     // splicer begin function.assign_values_broadcast
@@ -197,7 +197,7 @@ void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_copy(const int * from, int nfrom, int * to,
+void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
     int nto)
 {
     // splicer begin function.assign_values_copy
@@ -225,7 +225,7 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float1d(float * addr, int type, size_t size)
+void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer_float1d
     SavePointer(addr, type, size);
@@ -253,7 +253,7 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float2d(float * addr, int type, size_t size)
+void GEN_SavePointer_float2d(float * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer_float2d
     SavePointer(addr, type, size);
@@ -280,7 +280,7 @@ void GEN_save_pointer_float2d(float * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2(void * addr, int type, size_t size)
+void GEN_SavePointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2
     // Test adding a blank line below.
@@ -309,7 +309,7 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
+void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2_float1d
     // Test adding a blank line below.
@@ -338,7 +338,7 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
+void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2_float2d
     // Test adding a blank line below.
@@ -366,7 +366,7 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float1d_bufferify(
+void GEN_GetPointerAsPointer_float1d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_bufferify
@@ -403,7 +403,7 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float2d_bufferify(
+void GEN_GetPointerAsPointer_float2d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_bufferify
@@ -426,8 +426,7 @@ void GEN_get_pointer_as_pointer_float2d_bufferify(
 // Function:  StructAsClass * CreateStructAsClass
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_*_capptr
-GEN_StructAsClass * GEN_create_struct_as_class(
-    GEN_StructAsClass * SHC_rv)
+GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.create_struct_as_class
     StructAsClass * SHCXX_rv = CreateStructAsClass();
@@ -451,7 +450,7 @@ GEN_StructAsClass * GEN_create_struct_as_class(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
+long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.update_struct_as_class
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
@@ -474,7 +473,7 @@ long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
+long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 {
     // splicer begin function.update_struct_as_class_int
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
@@ -497,7 +496,7 @@ long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class_long(GEN_StructAsClass * arg, long inew)
+long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.update_struct_as_class_long
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;

@@ -24,8 +24,8 @@ extern "C" {
 // Function:  static Singleton & getReference
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_&_capptr
-// start CLA_Singleton_get_reference
-CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
+// start CLA_Singleton_getReference
+CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)
 {
     // splicer begin class.Singleton.method.get_reference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
@@ -34,6 +34,6 @@ CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
     return SHC_rv;
     // splicer end class.Singleton.method.get_reference
 }
-// end CLA_Singleton_get_reference
+// end CLA_Singleton_getReference
 
 }  // extern "C"

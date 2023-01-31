@@ -47,7 +47,7 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
 // Attrs:     +deref(allocatable)+intent(function)
 // Requested: c_function_string_&_allocatable
 // Match:     c_function_string_&
-const char * NS_last_function_called(void)
+const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = LastFunctionCalled();
@@ -60,7 +60,7 @@ const char * NS_last_function_called(void)
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_cdesc_allocatable
-void NS_last_function_called_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
+void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
@@ -72,7 +72,7 @@ void NS_last_function_called_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 // Function:  void One
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
-void NS_one(void)
+void NS_One(void)
 {
     // splicer begin function.one
     One();

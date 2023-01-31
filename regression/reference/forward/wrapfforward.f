@@ -123,7 +123,7 @@ module forward_mod
         ! Attrs:     +intent(in)
         ! Exact:     c_in_shadow_*
         subroutine c_class2_accept_class3(self, arg) &
-                bind(C, name="FOR_Class2_accept_class3")
+                bind(C, name="FOR_Class2_acceptClass3")
             import :: FOR_SHROUD_capsule_data
             implicit none
             type(FOR_SHROUD_capsule_data), intent(IN) :: self
@@ -145,7 +145,7 @@ module forward_mod
         ! Match:     c_in_struct
         function c_pass_struct1(arg) &
                 result(SHT_rv) &
-                bind(C, name="FOR_pass_struct1")
+                bind(C, name="FOR_passStruct1")
             use iso_c_binding, only : C_INT
             use struct_mod, only : cstruct1
             implicit none

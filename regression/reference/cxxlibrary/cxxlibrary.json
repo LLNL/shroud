@@ -120,6 +120,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Cstruct1_cls_ctor",
+                            "F_name_api": "cstruct1_cls_ctor",
                             "PY_name_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_method": "tp_init",
@@ -226,9 +228,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct1_cls.h",
                     "C_impl_filename": "wrapCstruct1_cls.cpp",
+                    "C_name_api": "Cstruct1_cls",
                     "C_name_scope": "Cstruct1_cls_",
                     "C_type_name": "CXX_cstruct1_cls",
                     "F_derived_name": "cstruct1_cls",
+                    "F_name_api": "cstruct1_cls",
                     "F_name_scope": "cstruct1_cls_",
                     "PY_PyObject": "PY_Cstruct1_cls",
                     "PY_PyTypeObject": "PY_Cstruct1_cls_Type",
@@ -335,6 +339,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStructByReferenceCls",
+                    "F_name_api": "pass_struct_by_reference_cls",
                     "PY_name_impl": "PY_passStructByReferenceCls",
                     "function_name": "passStructByReferenceCls",
                     "underscore_name": "pass_struct_by_reference_cls"
@@ -435,6 +441,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStructByReferenceInCls",
+                    "F_name_api": "pass_struct_by_reference_in_cls",
                     "PY_name_impl": "PY_passStructByReferenceInCls",
                     "function_name": "passStructByReferenceInCls",
                     "underscore_name": "pass_struct_by_reference_in_cls"
@@ -534,6 +542,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStructByReferenceInoutCls",
+                    "F_name_api": "pass_struct_by_reference_inout_cls",
                     "PY_name_impl": "PY_passStructByReferenceInoutCls",
                     "function_name": "passStructByReferenceInoutCls",
                     "underscore_name": "pass_struct_by_reference_inout_cls"
@@ -613,6 +623,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStructByReferenceOutCls",
+                    "F_name_api": "pass_struct_by_reference_out_cls",
                     "PY_name_impl": "PY_passStructByReferenceOutCls",
                     "function_name": "passStructByReferenceOutCls",
                     "underscore_name": "pass_struct_by_reference_out_cls"
@@ -649,7 +661,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "CXX_default_ptr_is_null_0",
+                    "C_name": "CXX_defaultPtrIsNULL_0",
+                    "C_name_api": "defaultPtrIsNULL",
                     "C_prototype": "void",
                     "C_return_type": "bool",
                     "F_C_arguments": "",
@@ -658,6 +671,7 @@
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_arguments": "",
+                    "F_name_api": "default_ptr_is_null",
                     "F_name_function": "default_ptr_is_null_0",
                     "F_name_generic": "default_ptr_is_null",
                     "F_name_impl": "default_ptr_is_null_0",
@@ -822,7 +836,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "data",
-                    "C_name": "CXX_default_ptr_is_null_1",
+                    "C_name": "CXX_defaultPtrIsNULL_1",
+                    "C_name_api": "defaultPtrIsNULL",
                     "C_prototype": "double * data",
                     "C_return_type": "bool",
                     "F_C_arguments": "data",
@@ -832,6 +847,7 @@
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "data",
                     "F_arguments": "data",
+                    "F_name_api": "default_ptr_is_null",
                     "F_name_function": "default_ptr_is_null_1",
                     "F_name_generic": "default_ptr_is_null",
                     "F_name_impl": "default_ptr_is_null_1",
@@ -1087,7 +1103,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "in1,\t out1,\t out2",
-                    "C_name": "CXX_default_args_in_out_0",
+                    "C_name": "CXX_defaultArgsInOut_0",
+                    "C_name_api": "defaultArgsInOut",
                     "C_prototype": "int in1,\t int * out1,\t int * out2",
                     "C_return_type": "void",
                     "F_C_arguments": "in1,\t out1,\t out2",
@@ -1096,6 +1113,7 @@
                     "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in1,\t out1,\t out2",
                     "F_arguments": "in1,\t out1,\t out2",
+                    "F_name_api": "default_args_in_out",
                     "F_name_function": "default_args_in_out_0",
                     "F_name_generic": "default_args_in_out",
                     "F_name_impl": "default_args_in_out_0",
@@ -1436,7 +1454,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "in1,\t out1,\t out2,\t flag",
-                    "C_name": "CXX_default_args_in_out_1",
+                    "C_name": "CXX_defaultArgsInOut_1",
+                    "C_name_api": "defaultArgsInOut",
                     "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                     "C_return_type": "void",
                     "F_C_arguments": "in1,\t out1,\t out2,\t flag",
@@ -1445,6 +1464,7 @@
                     "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in1,\t out1,\t out2,\t SH_flag",
                     "F_arguments": "in1,\t out1,\t out2,\t flag",
+                    "F_name_api": "default_args_in_out",
                     "F_name_function": "default_args_in_out_1",
                     "F_name_generic": "default_args_in_out",
                     "F_name_impl": "default_args_in_out_1",
@@ -1595,13 +1615,15 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "idx",
-                    "C_name": "CXX_get_group_name",
+                    "C_name": "CXX_getGroupName",
+                    "C_name_api": "getGroupName",
                     "C_prototype": "long idx",
                     "C_return_type": "const char *",
                     "F_C_arguments": "idx",
                     "F_C_name": "c_get_group_name",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getGroupName",
                     "underscore_name": "get_group_name"
@@ -1700,9 +1722,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getGroupName",
                     "F_C_call": "c_get_group_name_int32_t_bufferify",
                     "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
                     "F_arguments": "idx",
+                    "F_name_api": "get_group_name",
                     "F_name_function": "get_group_name_int32_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int32_t",
@@ -1828,13 +1852,15 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "idx",
-                    "C_name": "CXX_get_group_name_int32_t_bufferify",
+                    "C_name": "CXX_getGroupName_int32_t_bufferify",
+                    "C_name_api": "getGroupName",
                     "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                     "F_C_name": "c_get_group_name_int32_t_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t_bufferify",
@@ -1934,9 +1960,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getGroupName",
                     "F_C_call": "c_get_group_name_int64_t_bufferify",
                     "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
                     "F_arguments": "idx",
+                    "F_name_api": "get_group_name",
                     "F_name_function": "get_group_name_int64_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int64_t",
@@ -2062,13 +2090,15 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "idx",
-                    "C_name": "CXX_get_group_name_int64_t_bufferify",
+                    "C_name": "CXX_getGroupName_int64_t_bufferify",
+                    "C_name_api": "getGroupName",
                     "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                     "F_C_name": "c_get_group_name_int64_t_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t_bufferify",
@@ -2185,9 +2215,11 @@
                         "zz_fmtdict": {
                             "C_header_filename": "wrapstructns_Cstruct1.h",
                             "C_impl_filename": "wrapstructns_Cstruct1.cpp",
+                            "C_name_api": "Cstruct1",
                             "C_name_scope": "structns_Cstruct1_",
                             "C_type_name": "CXX_cstruct1",
                             "F_derived_name": "cstruct1",
+                            "F_name_api": "cstruct1",
                             "F_name_scope": "cstruct1_",
                             "PY_PyObject": "PY_Cstruct1",
                             "PY_PyTypeObject": "PY_Cstruct1_Type",
@@ -2318,7 +2350,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*SHCXX_arg",
-                            "C_name": "CXX_structns_pass_struct_by_reference",
+                            "C_name": "CXX_structns_passStructByReference",
+                            "C_name_api": "passStructByReference",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
@@ -2328,6 +2361,7 @@
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
+                            "F_name_api": "pass_struct_by_reference",
                             "F_name_function": "pass_struct_by_reference",
                             "F_name_generic": "pass_struct_by_reference",
                             "F_name_impl": "pass_struct_by_reference",
@@ -2499,7 +2533,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*SHCXX_arg",
-                            "C_name": "CXX_structns_pass_struct_by_reference_in",
+                            "C_name": "CXX_structns_passStructByReferenceIn",
+                            "C_name_api": "passStructByReferenceIn",
                             "C_prototype": "const CXX_cstruct1 * arg",
                             "C_return_type": "int",
                             "F_C_arguments": "arg",
@@ -2509,6 +2544,7 @@
                             "F_C_subprogram": "function",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
+                            "F_name_api": "pass_struct_by_reference_in",
                             "F_name_function": "pass_struct_by_reference_in",
                             "F_name_generic": "pass_struct_by_reference_in",
                             "F_name_impl": "pass_struct_by_reference_in",
@@ -2679,7 +2715,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*SHCXX_arg",
-                            "C_name": "CXX_structns_pass_struct_by_reference_inout",
+                            "C_name": "CXX_structns_passStructByReferenceInout",
+                            "C_name_api": "passStructByReferenceInout",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
@@ -2688,6 +2725,7 @@
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
+                            "F_name_api": "pass_struct_by_reference_inout",
                             "F_name_function": "pass_struct_by_reference_inout",
                             "F_name_generic": "pass_struct_by_reference_inout",
                             "F_name_impl": "pass_struct_by_reference_inout",
@@ -2810,7 +2848,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*SHCXX_arg",
-                            "C_name": "CXX_structns_pass_struct_by_reference_out",
+                            "C_name": "CXX_structns_passStructByReferenceOut",
+                            "C_name_api": "passStructByReferenceOut",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "arg",
@@ -2819,6 +2858,7 @@
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
+                            "F_name_api": "pass_struct_by_reference_out",
                             "F_name_function": "pass_struct_by_reference_out",
                             "F_name_generic": "pass_struct_by_reference_out",
                             "F_name_impl": "pass_struct_by_reference_out",

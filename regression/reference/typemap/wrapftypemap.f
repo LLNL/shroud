@@ -36,7 +36,7 @@ module typemap_mod
 
         function c_pass_index(i1, i2) &
                 result(SHT_rv) &
-                bind(C, name="TYP_pass_index")
+                bind(C, name="TYP_passIndex")
             use iso_c_binding, only : C_BOOL
             import :: INDEXTYPE
             implicit none
@@ -47,7 +47,7 @@ module typemap_mod
 
         function c_pass_index_32(i1, i2) &
                 result(SHT_rv) &
-                bind(C, name="TYP_pass_index_32")
+                bind(C, name="TYP_passIndex_32")
             use iso_c_binding, only : C_BOOL, C_INT32_T
             import :: INDEXTYPE
             implicit none
@@ -58,7 +58,7 @@ module typemap_mod
 
         function c_pass_index_64(i1, i2) &
                 result(SHT_rv) &
-                bind(C, name="TYP_pass_index_64")
+                bind(C, name="TYP_passIndex_64")
             use iso_c_binding, only : C_BOOL, C_INT64_T
             import :: INDEXTYPE
             implicit none
@@ -68,14 +68,14 @@ module typemap_mod
         end function c_pass_index_64
 
         subroutine c_pass_index2(i1) &
-                bind(C, name="TYP_pass_index2")
+                bind(C, name="TYP_passIndex2")
             import :: INDEXTYPE
             implicit none
             integer(INDEXTYPE), value, intent(IN) :: i1
         end subroutine c_pass_index2
 
         subroutine c_pass_float(f1) &
-                bind(C, name="TYP_pass_float")
+                bind(C, name="TYP_passFloat")
             import :: FLOATTYPE
             implicit none
             real(FLOATTYPE), value, intent(IN) :: f1

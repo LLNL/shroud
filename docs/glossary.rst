@@ -10,11 +10,11 @@ Glossary
 bufferify
 
     The process of creating a buffer.
-    The c wrapper will may create an additional function for each wrapped function.
+    The C wrapper may create an additional function for each wrapped function.
     This function has additional arguments needed for the Fortran interface
-    to pass the size of an argument.
+    to pass the metadata of the argument such as the size.
 
-c wrapper
+C wrapper
 
     The wrapper with a C API.
     When wrapping C++, the C wrapper will be C++ code but functions will use
@@ -25,9 +25,9 @@ capsule
 
    Holds a pointer to a C++ class instance and some
    memory management flags.
-   The name was inspired by the Python PyCapsule type.
+   The name was inspired by the Python ``PyCapsule`` type.
 
-fortran wrapper
+Fortran wrapper
 
    Fortran functions which call the C wrapper functions.
 

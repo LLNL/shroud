@@ -471,7 +471,7 @@ module types_mod
         ! Match:     c_default
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
-                bind(C, name="TYP_return_bool_and_others")
+                bind(C, name="TYP_returnBoolAndOthers")
             use iso_c_binding, only : C_BOOL, C_INT
             implicit none
             integer(C_INT), intent(OUT) :: flag

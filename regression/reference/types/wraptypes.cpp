@@ -454,7 +454,7 @@ bool TYP_bool_func(bool arg)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-bool TYP_return_bool_and_others(int * flag)
+bool TYP_returnBoolAndOthers(int * flag)
 {
     // splicer begin function.return_bool_and_others
     bool SHC_rv = returnBoolAndOthers(flag);

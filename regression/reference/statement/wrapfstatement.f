@@ -29,7 +29,7 @@ module statement_mod
         ! Match:     c_function
         pure function get_name_length() &
                 result(SHT_rv) &
-                bind(C, name="STMT_get_name_length")
+                bind(C, name="STMT_GetNameLength")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -42,7 +42,7 @@ module statement_mod
         ! Match:     c_function_string_&
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
-                bind(C, name="STMT_get_name_error_pattern")
+                bind(C, name="STMT_getNameErrorPattern")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -55,7 +55,7 @@ module statement_mod
         ! Match:     c_function_string_&_buf
         subroutine c_get_name_error_pattern_bufferify(SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="STMT_get_name_error_pattern_bufferify")
+                bind(C, name="STMT_getNameErrorPattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)

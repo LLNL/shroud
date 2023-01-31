@@ -54,8 +54,8 @@ that Fortran can call.
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c
-   :start-after: start TUT_no_return_no_arguments
-   :end-before: end TUT_no_return_no_arguments
+   :start-after: start TUT_NoReturnNoArguments
+   :end-before: end TUT_NoReturnNoArguments
 
 Fortran usage:
 
@@ -326,8 +326,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_get_ptr_to_scalar_bufferify
-   :end-before: end POI_get_ptr_to_scalar_bufferify
+   :start-after: start POI_getPtrToScalar_bufferify
+   :end-before: end POI_getPtrToScalar_bufferify
 
 Fortran calls C via the following interface:
 
@@ -381,8 +381,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_get_ptr_to_dynamic_array_bufferify
-   :end-before: end POI_get_ptr_to_dynamic_array_bufferify
+   :start-after: start POI_getPtrToDynamicArray_bufferify
+   :end-before: end POI_getPtrToDynamicArray_bufferify
 
 Fortran calls C via the following interface:
 
@@ -531,8 +531,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c
-   :start-after: start TUT_get_min_max
-   :end-before: end TUT_get_min_max
+   :start-after: start TUT_getMinMax
+   :end-before: end TUT_getMinMax
 
 Fortran calls C via the following interface:
 
@@ -607,8 +607,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_return_int_ptr_to_fixed_array_bufferify
-   :end-before: end POI_return_int_ptr_to_fixed_array_bufferify
+   :start-after: start POI_returnIntPtrToFixedArray_bufferify
+   :end-before: end POI_returnIntPtrToFixedArray_bufferify
 
 Fortran calls C via the following interface:
 
@@ -652,8 +652,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_return_int_scalar
-   :end-before: end POI_return_int_scalar
+   :start-after: start POI_returnIntScalar
+   :end-before: end POI_returnIntScalar
 
 Fortran calls C via the following interface:
 
@@ -698,16 +698,16 @@ This function does not use the *deref* attribute.
       
 .. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
    :language: c++
-   :start-after: start OWN_return_int_ptr_dim_pointer
-   :end-before: end OWN_return_int_ptr_dim_pointer
+   :start-after: start OWN_ReturnIntPtrDimPointer
+   :end-before: end OWN_ReturnIntPtrDimPointer
 
 The bufferify function passes an argument to contain the meta data of the array.
 It is written to :file:`wrapownership.cpp`.
 
 .. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
    :language: c++
-   :start-after: start OWN_return_int_ptr_dim_pointer_bufferify
-   :end-before: end OWN_return_int_ptr_dim_pointer_bufferify
+   :start-after: start OWN_ReturnIntPtrDimPointer_bufferify
+   :end-before: end OWN_ReturnIntPtrDimPointer_bufferify
 
 Fortran calls the bufferify function in :file:`wrapfownership.f`.
 
@@ -758,16 +758,16 @@ This function does not use the *deref* attribute.
       
 .. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
    :language: c++
-   :start-after: start OWN_return_int_ptr_dim_alloc
-   :end-before: end OWN_return_int_ptr_dim_alloc
+   :start-after: start OWN_ReturnIntPtrDimAlloc
+   :end-before: end OWN_ReturnIntPtrDimAlloc
 
 The bufferify function passes an argument to contain the meta data of the array.
 It is written to :file:`wrapownership.cpp`.
 
 .. literalinclude:: ../regression/reference/ownership/wrapownership.cpp
    :language: c++
-   :start-after: start OWN_return_int_ptr_dim_alloc_bufferify
-   :end-before: end OWN_return_int_ptr_dim_alloc_bufferify
+   :start-after: start OWN_ReturnIntPtrDimAlloc_bufferify
+   :end-before: end OWN_ReturnIntPtrDimAlloc_bufferify
 
 Fortran calls the bufferify function in :file:`wrapfownership.f`.
 
@@ -925,8 +925,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: start CLI_return_one_name_bufferify
-   :end-before: end CLI_return_one_name_bufferify
+   :start-after: start CLI_returnOneName_bufferify
+   :end-before: end CLI_returnOneName_bufferify
 
 Fortran calls C via the following interface:
 
@@ -990,15 +990,15 @@ blank filled.:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_pass_char_ptr
-   :end-before: end STR_pass_char_ptr
+   :start-after: start STR_passCharPtr
+   :end-before: end STR_passCharPtr
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_pass_char_ptr_bufferify
-   :end-before: end STR_pass_char_ptr_bufferify
+   :start-after: start STR_passCharPtr_bufferify
+   :end-before: end STR_passCharPtr_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1065,8 +1065,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: start CLI_implied_text_len_bufferify
-   :end-before: end CLI_implied_text_len_bufferify
+   :start-after: start CLI_ImpliedTextLen_bufferify
+   :end-before: end CLI_ImpliedTextLen_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1117,8 +1117,8 @@ This is a C file which provides the bufferify function.
 
 .. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start POI_accept_char_array_in_bufferify
-   :end-before: end POI_accept_char_array_in_bufferify
+   :start-after: start POI_acceptCharArrayIn_bufferify
+   :end-before: end POI_acceptCharArrayIn_bufferify
 
 Most of the work is done by the helper function.
 This converts the Fortran array into NULL terminated strings by
@@ -1190,15 +1190,15 @@ Which will call the C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_accept_string_reference
-   :end-before: end STR_accept_string_reference
+   :start-after: start STR_acceptStringReference
+   :end-before: end STR_acceptStringReference
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_accept_string_reference_bufferify
-   :end-before: end STR_accept_string_reference_bufferify
+   :start-after: start STR_acceptStringReference_bufferify
+   :end-before: end STR_acceptStringReference_bufferify
 
 An interface for the native C function is also created:
 
@@ -1275,8 +1275,8 @@ struct which is used by the Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr1_bufferify
-   :end-before: end STR_get_char_ptr1_bufferify
+   :start-after: start STR_getCharPtr1_bufferify
+   :end-before: end STR_getCharPtr1_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1333,8 +1333,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr2_bufferify
-   :end-before: end STR_get_char_ptr2_bufferify
+   :start-after: start STR_getCharPtr2_bufferify
+   :end-before: end STR_getCharPtr2_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1390,8 +1390,8 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_char_ptr3_bufferify
-   :end-before: end STR_get_char_ptr3_bufferify
+   :start-after: start STR_getCharPtr3_bufferify
+   :end-before: end STR_getCharPtr3_bufferify
 
 Fortran calls C via the following interface:
 
@@ -1443,15 +1443,15 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_const_string_ref_pure_bufferify
-   :end-before: end STR_get_const_string_ref_pure_bufferify
+   :start-after: start STR_getConstStringRefPure_bufferify
+   :end-before: end STR_getConstStringRefPure_bufferify
 
 The native C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_get_const_string_ref_pure
-   :end-before: end STR_get_const_string_ref_pure
+   :start-after: start STR_getConstStringRefPure
+   :end-before: end STR_getConstStringRefPure
 
 Fortran calls C via the following interface:
 
@@ -2443,23 +2443,23 @@ and fills in the fields for the shadow struct.
 
 .. literalinclude:: ../regression/reference/struct-c/wrapstruct.c
    :language: c
-   :start-after: start STR_create__cstruct_as_class
-   :end-before: end STR_create__cstruct_as_class
+   :start-after: start STR_Create_Cstruct_as_class
+   :end-before: end STR_Create_Cstruct_as_class
 
 A Fortran generic interface is created for the class:
 
 .. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
    :language: fortran
-   :start-after: start generic interface Cstruct_as_class
-   :end-before: end generic interface Cstruct_as_class
+   :start-after: start generic interface cstruct_as_class
+   :end-before: end generic interface cstruct_as_class
    :dedent: 4
 
 And the Fortran constructor call the C wrapper function.
 
 .. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
    :language: fortran
-   :start-after: start create__cstruct_as_class
-   :end-before: end create__cstruct_as_class
+   :start-after: start create_cstruct_as_class
+   :end-before: end create_cstruct_as_class
    :dedent: 4
 
 The class can be used as:
@@ -2507,18 +2507,18 @@ create each wrapper.
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments
-   :end-before: end TUT_use_default_arguments
+   :start-after: start TUT_UseDefaultArguments
+   :end-before: end TUT_UseDefaultArguments
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments_arg1
-   :end-before: end TUT_use_default_arguments_arg1
+   :start-after: start TUT_UseDefaultArguments_arg1
+   :end-before: end TUT_UseDefaultArguments_arg1
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
-   :start-after: start TUT_use_default_arguments_arg1_arg2
-   :end-before: end TUT_use_default_arguments_arg1_arg2
+   :start-after: start TUT_UseDefaultArguments_arg1_arg2
+   :end-before: end TUT_UseDefaultArguments_arg1_arg2
 
 This creates three corresponding Fortran interfaces:
 

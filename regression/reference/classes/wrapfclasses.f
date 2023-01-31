@@ -230,7 +230,7 @@ module classes_mod
     interface
         function c_class1_method1(self) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class1_method1")
+                bind(C, name="CLA_Class1_Method1")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -272,7 +272,7 @@ module classes_mod
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
-                bind(C, name="CLA_Class1_return_this")
+                bind(C, name="CLA_Class1_returnThis")
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
@@ -297,7 +297,7 @@ module classes_mod
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_Class1_return_this_buffer")
+                bind(C, name="CLA_Class1_returnThisBuffer")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -328,7 +328,7 @@ module classes_mod
         function c_class1_return_this_buffer_bufferify(self, name, &
                 SHT_name_len, flag, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_Class1_return_this_buffer_bufferify")
+                bind(C, name="CLA_Class1_returnThisBuffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -370,7 +370,7 @@ module classes_mod
     interface
         function c_class1_get_name(self) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class1_get_name")
+                bind(C, name="CLA_Class1_getName")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -387,7 +387,7 @@ module classes_mod
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, SHT_rv) &
-                bind(C, name="CLA_Class1_get_name_bufferify")
+                bind(C, name="CLA_Class1_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
@@ -410,7 +410,7 @@ module classes_mod
     interface
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class1_direction_func")
+                bind(C, name="CLA_Class1_directionFunc")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -530,7 +530,7 @@ module classes_mod
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class2_get_name")
+                bind(C, name="CLA_Class2_getName")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -545,7 +545,7 @@ module classes_mod
     ! Exact:     c_function_string_&_cdesc_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, SHT_rv) &
-                bind(C, name="CLA_Class2_get_name_bufferify")
+                bind(C, name="CLA_Class2_getName_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
@@ -564,7 +564,7 @@ module classes_mod
     interface
         function c_singleton_get_reference(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_Singleton_get_reference")
+                bind(C, name="CLA_Singleton_getReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -800,7 +800,7 @@ module classes_mod
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
-                bind(C, name="CLA_direction_func")
+                bind(C, name="CLA_directionFunc")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
@@ -819,7 +819,7 @@ module classes_mod
     ! Exact:     c_in_shadow_scalar
     interface
         subroutine c_pass_class_by_value(arg) &
-                bind(C, name="CLA_pass_class_by_value")
+                bind(C, name="CLA_passClassByValue")
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN), value :: arg
@@ -912,7 +912,7 @@ module classes_mod
     interface
         function c_get_const_class_reference(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_get_const_class_reference")
+                bind(C, name="CLA_getConstClassReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -928,7 +928,7 @@ module classes_mod
     interface
         function c_get_class_reference(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_get_class_reference")
+                bind(C, name="CLA_getClassReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -949,7 +949,7 @@ module classes_mod
     interface
         function c_get_class_copy(flag, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="CLA_get_class_copy")
+                bind(C, name="CLA_getClassCopy")
             use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
@@ -1001,7 +1001,7 @@ module classes_mod
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
-                bind(C, name="CLA_last_function_called")
+                bind(C, name="CLA_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -1015,7 +1015,7 @@ module classes_mod
     ! Match:     c_function_string_&_buf
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="CLA_last_function_called_bufferify")
+                bind(C, name="CLA_LastFunctionCalled_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)

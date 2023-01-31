@@ -308,7 +308,7 @@ module templates_mod
         ! Match:     c_function_shadow_scalar_capptr
         function c_return_user_type(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="TEM_return_user_type")
+                bind(C, name="TEM_returnUserType")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
@@ -332,7 +332,7 @@ module templates_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_0(arg1, arg2) &
-                bind(C, name="TEM_function_tu_0")
+                bind(C, name="TEM_FunctionTU_0")
             use iso_c_binding, only : C_INT, C_LONG
             implicit none
             integer(C_INT), value, intent(IN) :: arg1
@@ -355,7 +355,7 @@ module templates_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_1(arg1, arg2) &
-                bind(C, name="TEM_function_tu_1")
+                bind(C, name="TEM_FunctionTU_1")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
             implicit none
             real(C_FLOAT), value, intent(IN) :: arg1
@@ -367,26 +367,26 @@ module templates_mod
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_use_impl_worker_internal_implworker1() &
+        function c_use_impl_worker_internal_ImplWorker1() &
                 result(SHT_rv) &
-                bind(C, name="TEM_use_impl_worker_internal_ImplWorker1")
+                bind(C, name="TEM_UseImplWorker_internal_ImplWorker1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_use_impl_worker_internal_implworker1
+        end function c_use_impl_worker_internal_ImplWorker1
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_use_impl_worker_internal_implworker2() &
+        function c_use_impl_worker_internal_ImplWorker2() &
                 result(SHT_rv) &
-                bind(C, name="TEM_use_impl_worker_internal_ImplWorker2")
+                bind(C, name="TEM_UseImplWorker_internal_ImplWorker2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_use_impl_worker_internal_implworker2
+        end function c_use_impl_worker_internal_ImplWorker2
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -852,7 +852,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.use_impl_worker_internal_ImplWorker1
-        SHT_rv = c_use_impl_worker_internal_implworker1()
+        SHT_rv = c_use_impl_worker_internal_ImplWorker1()
         ! splicer end function.use_impl_worker_internal_ImplWorker1
     end function use_impl_worker_internal_ImplWorker1
 
@@ -874,7 +874,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.use_impl_worker_internal_ImplWorker2
-        SHT_rv = c_use_impl_worker_internal_implworker2()
+        SHT_rv = c_use_impl_worker_internal_ImplWorker2()
         ! splicer end function.use_impl_worker_internal_ImplWorker2
     end function use_impl_worker_internal_ImplWorker2
 

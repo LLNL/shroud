@@ -54,7 +54,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_last_function_called",
+                    "C_name": "NS_LastFunctionCalled",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -64,6 +65,7 @@
                     "F_C_subprogram": "function",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
+                    "F_name_api": "last_function_called",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
@@ -165,13 +167,15 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_last_function_called_bufferify",
+                    "C_name": "NS_LastFunctionCalled_bufferify",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_last_function_called_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
                     "function_suffix": "_bufferify",
@@ -233,7 +237,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_one",
+                    "C_name": "NS_One",
+                    "C_name_api": "One",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -241,6 +246,7 @@
                     "F_C_name": "one",
                     "F_C_subprogram": "subroutine",
                     "F_arguments": "",
+                    "F_name_api": "one",
                     "F_name_function": "one",
                     "F_name_generic": "one",
                     "F_name_impl": "one",
@@ -455,6 +461,8 @@
                                     }
                                 },
                                 "zz_fmtdict": {
+                                    "C_name_api": "Cstruct1_ctor",
+                                    "F_name_api": "cstruct1_ctor",
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_method": "tp_init",
@@ -565,9 +573,11 @@
                         "zz_fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
                             "C_impl_filename": "wrapouter_Cstruct1.cpp",
+                            "C_name_api": "Cstruct1",
                             "C_name_scope": "outer_Cstruct1_",
                             "C_type_name": "NS_cstruct1",
                             "F_derived_name": "cstruct1",
+                            "F_name_api": "cstruct1",
                             "F_name_scope": "cstruct1_",
                             "PY_PyObject": "PY_Cstruct1",
                             "PY_PyTypeObject": "PY_Cstruct1_Type",
@@ -618,7 +628,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "NS_outer_one",
+                            "C_name": "NS_outer_One",
+                            "C_name_api": "One",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -626,6 +637,7 @@
                             "F_C_name": "one",
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
+                            "F_name_api": "one",
                             "F_name_function": "one",
                             "F_name_generic": "one",
                             "F_name_impl": "one",
@@ -690,9 +702,11 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapnswork_ClassWork.h",
                             "C_impl_filename": "wrapnswork_ClassWork.cpp",
+                            "C_name_api": "ClassWork",
                             "C_name_scope": "nswork_ClassWork_",
                             "C_type_name": "NS_nswork_ClassWork",
-                            "F_derived_name": "classwork",
+                            "F_derived_name": "class_work",
+                            "F_name_api": "class_work",
                             "F_name_scope": "nswork_classwork_",
                             "PY_PyObject": "PY_ClassWork",
                             "PY_PyTypeObject": "PY_ClassWork_Type",
@@ -792,17 +806,17 @@
             "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
             "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
-            "f_class": "class(classwork)",
-            "f_derived_type": "classwork",
+            "f_class": "class(class_work)",
+            "f_derived_type": "class_work",
             "f_module": {
                 "ns_nswork_mod": [
-                    "classwork"
+                    "class_work"
                 ]
             },
-            "f_module_line": "ns_nswork_mod:classwork",
+            "f_module_line": "ns_nswork_mod:class_work",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(classwork)",
+            "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
             "impl_header": [
                 "namespace.hpp"

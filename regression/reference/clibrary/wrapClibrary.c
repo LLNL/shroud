@@ -99,7 +99,7 @@ static void ShroudStrFree(char *src)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-double CLI_pass_by_value_macro(int arg2)
+double CLI_PassByValueMacro(int arg2)
 {
     // splicer begin function.pass_by_value_macro
     double SHC_rv = PassByValueMacro(arg2);
@@ -122,7 +122,7 @@ double CLI_pass_by_value_macro(int arg2)
 // Attrs:     +intent(in)
 // Requested: c_in_char_*
 // Match:     c_default
-void CLI_function4a_bufferify(const char * arg1, const char * arg2,
+void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.function4a_bufferify
@@ -145,7 +145,7 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
 // Argument:  char * s +intent(inout)
 // Attrs:     +api(buf)+intent(inout)
 // Exact:     c_inout_char_*_buf
-void CLI_pass_char_ptr_in_out_bufferify(char *s, int SHT_s_len)
+void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
     char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
@@ -170,15 +170,15 @@ void CLI_pass_char_ptr_in_out_bufferify(char *s, int SHT_s_len)
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-// start CLI_return_one_name_bufferify
-void CLI_return_one_name_bufferify(char *name1, int SHT_name1_len)
+// start CLI_returnOneName_bufferify
+void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
     // splicer begin function.return_one_name_bufferify
     returnOneName(name1);
     ShroudStrBlankFill(name1, SHT_name1_len);
     // splicer end function.return_one_name_bufferify
 }
-// end CLI_return_one_name_bufferify
+// end CLI_returnOneName_bufferify
 
 /**
  * \brief Test charlen attribute
@@ -199,7 +199,7 @@ void CLI_return_one_name_bufferify(char *name1, int SHT_name1_len)
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-void CLI_return_two_names_bufferify(char *name1, int SHT_name1_len,
+void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len)
 {
     // splicer begin function.return_two_names_bufferify
@@ -226,8 +226,8 @@ void CLI_return_two_names_bufferify(char *name1, int SHT_name1_len,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-// start CLI_implied_text_len_bufferify
-void CLI_implied_text_len_bufferify(char *text, int SHT_text_len,
+// start CLI_ImpliedTextLen_bufferify
+void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
 {
     // splicer begin function.implied_text_len_bufferify
@@ -235,7 +235,7 @@ void CLI_implied_text_len_bufferify(char *text, int SHT_text_len,
     ShroudStrBlankFill(text, SHT_text_len);
     // splicer end function.implied_text_len_bufferify
 }
-// end CLI_implied_text_len_bufferify
+// end CLI_ImpliedTextLen_bufferify
 
 /**
  * \brief Rename Fortran name for interface only function
@@ -250,7 +250,7 @@ void CLI_implied_text_len_bufferify(char *text, int SHT_text_len,
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-void CLI_bind_c2_bufferify(char *outbuf, int SHT_outbuf_len)
+void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.bind_c2_bufferify
     bindC2(outbuf);
@@ -279,7 +279,7 @@ void CLI_bind_c2_bufferify(char *outbuf, int SHT_outbuf_len)
 // Argument:  char * outbuf +intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-int CLI_pass_assumed_type_buf_bufferify(void * arg, char *outbuf,
+int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len)
 {
     // splicer begin function.pass_assumed_type_buf_bufferify

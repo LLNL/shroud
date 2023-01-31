@@ -79,7 +79,7 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
 // Exact:     c_in_shadow_*
-void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
+void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
         (self->addr);

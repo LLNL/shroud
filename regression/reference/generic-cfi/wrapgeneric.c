@@ -34,7 +34,7 @@
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int GEN_sum_values_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
+int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 {
     // splicer begin function.sum_values_CFI
     int *SHCXX_values = (int *) SHT_values_cfi->base_addr;
@@ -71,7 +71,7 @@ int GEN_sum_values_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
+void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
     int nto)
 {
     // splicer begin function.assign_values_scalar
@@ -106,7 +106,7 @@ void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_broadcast_CFI(const int * from, int nfrom,
+void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
 {
     // splicer begin function.assign_values_broadcast_CFI
@@ -141,7 +141,7 @@ void GEN_assign_values_broadcast_CFI(const int * from, int nfrom,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_assign_values_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
+void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
 {
     // splicer begin function.assign_values_copy_CFI
@@ -170,7 +170,7 @@ void GEN_assign_values_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.save_pointer_float1d_CFI
@@ -199,7 +199,7 @@ void GEN_save_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.save_pointer_float2d_CFI
@@ -228,7 +228,7 @@ void GEN_save_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2(void * addr, int type, size_t size)
+void GEN_SavePointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2
     // Test adding a blank line below.
@@ -256,7 +256,7 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.save_pointer2_float1d_CFI
@@ -286,7 +286,7 @@ void GEN_save_pointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void GEN_save_pointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.save_pointer2_float2d_CFI
@@ -315,7 +315,7 @@ void GEN_save_pointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
+void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.get_pointer_as_pointer_float1d_CFI
     float * SHCXX_addr;
@@ -354,7 +354,7 @@ void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 // Argument:  size_t * size +hidden+intent(out)
 // Attrs:     +intent(out)
 // Exact:     c_out_native_*_hidden
-void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
+void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.get_pointer_as_pointer_float2d_CFI
     float * SHCXX_addr;
@@ -380,8 +380,7 @@ void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 // Function:  StructAsClass * CreateStructAsClass
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_*_capptr
-GEN_StructAsClass * GEN_create_struct_as_class(
-    GEN_StructAsClass * SHC_rv)
+GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.create_struct_as_class
     StructAsClass * SHCXX_rv = CreateStructAsClass();
@@ -405,7 +404,7 @@ GEN_StructAsClass * GEN_create_struct_as_class(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
+long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.update_struct_as_class
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
@@ -428,7 +427,7 @@ long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
+long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 {
     // splicer begin function.update_struct_as_class_int
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
@@ -451,7 +450,7 @@ long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long GEN_update_struct_as_class_long(GEN_StructAsClass * arg, long inew)
+long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew)
 {
     // splicer begin function.update_struct_as_class_long
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;

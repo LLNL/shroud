@@ -39,8 +39,8 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Attrs:     +intent(in)
 // Requested: c_in_struct_scalar
 // Match:     c_in_struct
-// start STR_pass_struct_by_value
-int STR_pass_struct_by_value(STR_cstruct1 arg)
+// start STR_passStructByValue
+int STR_passStructByValue(STR_cstruct1 arg)
 {
     // splicer begin function.pass_struct_by_value
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
@@ -49,7 +49,7 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
     return SHC_rv;
     // splicer end function.pass_struct_by_value
 }
-// end STR_pass_struct_by_value
+// end STR_passStructByValue
 
 // ----------------------------------------
 // Function:  int passStruct1
@@ -61,8 +61,8 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 // Attrs:     +intent(in)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-// start STR_pass_struct1
-int STR_pass_struct1(const STR_cstruct1 * arg)
+// start STR_passStruct1
+int STR_passStruct1(const STR_cstruct1 * arg)
 {
     // splicer begin function.pass_struct1
     const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>
@@ -71,7 +71,7 @@ int STR_pass_struct1(const STR_cstruct1 * arg)
     return SHC_rv;
     // splicer end function.pass_struct1
 }
-// end STR_pass_struct1
+// end STR_passStruct1
 
 /**
  * Pass name argument which will build a bufferify function.
@@ -91,7 +91,7 @@ int STR_pass_struct1(const STR_cstruct1 * arg)
 // Attrs:     +intent(out)
 // Requested: c_out_char_*
 // Match:     c_default
-int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
+int STR_passStruct2(const STR_cstruct1 * s1, char * outbuf)
 {
     // splicer begin function.pass_struct2
     const Cstruct1 * SHCXX_s1 = static_cast<const Cstruct1 *>
@@ -118,7 +118,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
+int STR_passStruct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
     int SHT_outbuf_len)
 {
     // splicer begin function.pass_struct2_bufferify
@@ -140,7 +140,7 @@ int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
 // Attrs:     +intent(in)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
+int STR_acceptStructInPtr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_ptr
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
@@ -172,7 +172,7 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
+void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d)
 {
     // splicer begin function.accept_struct_out_ptr
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
@@ -190,7 +190,7 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 // Attrs:     +intent(inout)
 // Requested: c_inout_struct_*
 // Match:     c_inout_struct
-void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
+void STR_acceptStructInOutPtr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_out_ptr
     Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
@@ -214,7 +214,7 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_cstruct1 STR_return_struct_by_value(int i, double d)
+STR_cstruct1 STR_returnStructByValue(int i, double d)
 {
     // splicer begin function.return_struct_by_value
     Cstruct1 SHCXX_rv = returnStructByValue(i, d);
@@ -244,7 +244,7 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
+STR_cstruct1 * STR_returnStructPtr1(int i, double d)
 {
     // splicer begin function.return_struct_ptr1
     Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
@@ -274,7 +274,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d)
+STR_cstruct1 * STR_returnStructPtr1_bufferify(int i, double d)
 {
     // splicer begin function.return_struct_ptr1_bufferify
     Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
@@ -309,7 +309,7 @@ STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d)
 // Attrs:     +intent(out)
 // Requested: c_out_char_*
 // Match:     c_default
-STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
+STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf)
 {
     // splicer begin function.return_struct_ptr2
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
@@ -343,7 +343,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Attrs:     +api(buf)+intent(out)
 // Exact:     c_out_char_*_buf
-STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
+STR_cstruct1 * STR_returnStructPtr2_bufferify(int i, double d,
     char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.return_struct_ptr2_bufferify
@@ -389,8 +389,8 @@ STR_cstruct_list * STR_get_global_struct_list_bufferify(void)
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_*_capptr
-// start STR_create_cstruct_as_class
-STR_Cstruct_as_class * STR_create_cstruct_as_class(
+// start STR_Create_Cstruct_as_class
+STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.create_cstruct_as_class
@@ -400,7 +400,7 @@ STR_Cstruct_as_class * STR_create_cstruct_as_class(
     return SHC_rv;
     // splicer end function.create_cstruct_as_class
 }
-// end STR_create_cstruct_as_class
+// end STR_Create_Cstruct_as_class
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
@@ -416,7 +416,7 @@ STR_Cstruct_as_class * STR_create_cstruct_as_class(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_Cstruct_as_class * STR_create_cstruct_as_class_args(int x, int y,
+STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.create_cstruct_as_class_args
@@ -436,7 +436,7 @@ STR_Cstruct_as_class * STR_create_cstruct_as_class_args(int x, int y,
 // Argument:  const Cstruct_as_class * point +pass
 // Attrs:     +intent(in)
 // Exact:     c_in_shadow_*
-int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
+int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum
     const Cstruct_as_class * SHCXX_point =
@@ -465,7 +465,7 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-STR_Cstruct_as_subclass * STR_create_cstruct_as_subclass_args(int x,
+STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
     // splicer begin function.create_cstruct_as_subclass_args
@@ -487,7 +487,7 @@ STR_Cstruct_as_subclass * STR_create_cstruct_as_subclass_args(int x,
 // Attrs:     +intent(in)+struct(Cstruct_ptr)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
+const double * STR_Cstruct_ptr_get_const_dvalue_bufferify(
     STR_cstruct_ptr * SH_this)
 {
     // splicer begin function.cstruct_ptr_get_const_dvalue_bufferify
@@ -511,7 +511,7 @@ const double * STR_cstruct_ptr_get_const_dvalue_bufferify(
 // Argument:  const double * val +intent(in)
 // Attrs:     +intent(setter)
 // Exact:     c_setter_native_*
-void STR_cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
+void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
     const double * val)
 {
     // splicer begin function.cstruct_ptr_set_const_dvalue
@@ -532,7 +532,7 @@ void STR_cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
 // Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-void STR_cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.cstruct_list_get_ivalue_bufferify
@@ -563,7 +563,7 @@ void STR_cstruct_list_get_ivalue_bufferify(STR_cstruct_list * SH_this,
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
 // Exact:     c_setter_native_*
-void STR_cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val)
+void STR_Cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val)
 {
     // splicer begin function.cstruct_list_set_ivalue
     Cstruct_list * SHCXX_SH_this = static_cast<Cstruct_list *>
@@ -583,7 +583,7 @@ void STR_cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val)
 // Attrs:     +intent(in)+struct(Cstruct_list)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-void STR_cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.cstruct_list_get_dvalue_bufferify
@@ -614,7 +614,7 @@ void STR_cstruct_list_get_dvalue_bufferify(STR_cstruct_list * SH_this,
 // Argument:  double * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
 // Exact:     c_setter_native_*
-void STR_cstruct_list_set_dvalue(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_set_dvalue(STR_cstruct_list * SH_this,
     double * val)
 {
     // splicer begin function.cstruct_list_set_dvalue

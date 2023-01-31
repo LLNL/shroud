@@ -95,9 +95,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapns3_DataPointer.h",
                     "C_impl_filename": "wrapns3_DataPointer.cpp",
+                    "C_name_api": "DataPointer",
                     "C_name_scope": "ns3_DataPointer_",
                     "C_type_name": "SCO_datapointer",
-                    "F_derived_name": "datapointer",
+                    "F_derived_name": "data_pointer",
+                    "F_name_api": "data_pointer",
                     "F_name_scope": "ns3_datapointer_",
                     "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                     "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -191,9 +193,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
+                    "C_name_api": "Class1",
                     "C_name_scope": "Class1_",
                     "C_type_name": "SCO_Class1",
                     "F_derived_name": "class1",
+                    "F_name_api": "class1",
                     "F_name_scope": "class1_",
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
@@ -286,9 +290,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass2.h",
                     "C_impl_filename": "wrapClass2.cpp",
+                    "C_name_api": "Class2",
                     "C_name_scope": "Class2_",
                     "C_type_name": "SCO_Class2",
                     "F_derived_name": "class2",
+                    "F_name_api": "class2",
                     "F_name_scope": "class2_",
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
@@ -570,9 +576,11 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "DataPointer_get_items",
                     "F_C_call": "c_data_pointer_get_items_bufferify",
                     "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                     "F_arguments": "SH_this",
+                    "F_name_api": "data_pointer_get_items",
                     "F_name_function": "data_pointer_get_items",
                     "F_name_generic": "data_pointer_get_items",
                     "F_name_impl": "data_pointer_get_items",
@@ -694,8 +702,8 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
-                            "f_kind": "datapointer",
-                            "f_type": "type(datapointer)",
+                            "f_kind": "data_pointer",
+                            "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
@@ -708,13 +716,15 @@
                 "zz_fmtdict": {
                     "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this",
-                    "C_name": "SCO_data_pointer_get_items_bufferify",
+                    "C_name": "SCO_DataPointer_get_items_bufferify",
+                    "C_name_api": "DataPointer_get_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SH_this,\t SHT_rv",
                     "F_C_name": "c_data_pointer_get_items_bufferify",
                     "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
+                    "F_name_api": "data_pointer_get_items",
                     "cxx_rv_decl": "int * SHC_rv",
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
@@ -862,8 +872,8 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
-                            "f_kind": "datapointer",
-                            "f_type": "type(datapointer)",
+                            "f_kind": "data_pointer",
+                            "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
@@ -914,7 +924,8 @@
                 "zz_fmtdict": {
                     "CXX_this": "SHCXX_SH_this",
                     "C_call_list": "SHCXX_SH_this,\t val",
-                    "C_name": "SCO_data_pointer_set_items",
+                    "C_name": "SCO_DataPointer_set_items",
+                    "C_name_api": "DataPointer_set_items",
                     "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                     "C_return_type": "void",
                     "F_C_arguments": "SH_this,\t val",
@@ -923,6 +934,7 @@
                     "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SH_this,\t val",
                     "F_arguments": "SH_this,\t val",
+                    "F_name_api": "data_pointer_set_items",
                     "F_name_function": "data_pointer_set_items",
                     "F_name_generic": "data_pointer_set_items",
                     "F_name_impl": "data_pointer_set_items",
@@ -1030,9 +1042,11 @@
                         "zz_fmtdict": {
                             "C_header_filename": "wrapns1_DataPointer.h",
                             "C_impl_filename": "wrapns1_DataPointer.cpp",
+                            "C_name_api": "DataPointer",
                             "C_name_scope": "ns1_DataPointer_",
                             "C_type_name": "SCO_datapointer",
-                            "F_derived_name": "datapointer",
+                            "F_derived_name": "data_pointer",
+                            "F_name_api": "data_pointer",
                             "F_name_scope": "datapointer_",
                             "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                             "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -1178,9 +1192,11 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "DataPointer_get_items",
                             "F_C_call": "c_data_pointer_get_items_bufferify",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                             "F_arguments": "SH_this",
+                            "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
@@ -1303,8 +1319,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
@@ -1317,13 +1333,15 @@
                         "zz_fmtdict": {
                             "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this",
-                            "C_name": "SCO_ns1_data_pointer_get_items_bufferify",
+                            "C_name": "SCO_ns1_DataPointer_get_items_bufferify",
+                            "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv",
                             "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_name_api": "data_pointer_get_items",
                             "cxx_rv_decl": "int * SHC_rv",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
@@ -1471,8 +1489,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
@@ -1523,7 +1541,8 @@
                         "zz_fmtdict": {
                             "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this,\t val",
-                            "C_name": "SCO_ns1_data_pointer_set_items",
+                            "C_name": "SCO_ns1_DataPointer_set_items",
+                            "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
@@ -1532,6 +1551,7 @@
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
+                            "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
                             "F_name_impl": "data_pointer_set_items",
@@ -1664,9 +1684,11 @@
                         "zz_fmtdict": {
                             "C_header_filename": "wrapns2_DataPointer.h",
                             "C_impl_filename": "wrapns2_DataPointer.cpp",
+                            "C_name_api": "DataPointer",
                             "C_name_scope": "ns2_DataPointer_",
                             "C_type_name": "SCO_datapointer",
-                            "F_derived_name": "datapointer",
+                            "F_derived_name": "data_pointer",
+                            "F_name_api": "data_pointer",
                             "F_name_scope": "datapointer_",
                             "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                             "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -1812,9 +1834,11 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "DataPointer_get_items",
                             "F_C_call": "c_data_pointer_get_items_bufferify",
                             "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                             "F_arguments": "SH_this",
+                            "F_name_api": "data_pointer_get_items",
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
@@ -1937,8 +1961,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
@@ -1951,13 +1975,15 @@
                         "zz_fmtdict": {
                             "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this",
-                            "C_name": "SCO_ns2_data_pointer_get_items_bufferify",
+                            "C_name": "SCO_ns2_DataPointer_get_items_bufferify",
+                            "C_name_api": "DataPointer_get_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv",
                             "F_C_name": "c_data_pointer_get_items_bufferify",
                             "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
+                            "F_name_api": "data_pointer_get_items",
                             "cxx_rv_decl": "int * SHC_rv",
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
@@ -2105,8 +2131,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
@@ -2157,7 +2183,8 @@
                         "zz_fmtdict": {
                             "CXX_this": "SHCXX_SH_this",
                             "C_call_list": "SHCXX_SH_this,\t val",
-                            "C_name": "SCO_ns2_data_pointer_set_items",
+                            "C_name": "SCO_ns2_DataPointer_set_items",
+                            "C_name_api": "DataPointer_set_items",
                             "C_prototype": "SCO_datapointer * SH_this,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
@@ -2166,6 +2193,7 @@
                             "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
+                            "F_name_api": "data_pointer_set_items",
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
                             "F_name_impl": "data_pointer_set_items",
@@ -2454,18 +2482,18 @@
             "cxx_type": "ns1::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns1_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns1_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns1_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
@@ -2507,18 +2535,18 @@
             "cxx_type": "ns2::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns2_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns2_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns2_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
@@ -2560,18 +2588,18 @@
             "cxx_type": "ns3::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns3_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns3_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns3_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"

@@ -125,6 +125,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Cstruct1_ctor",
+                            "F_name_api": "cstruct1_ctor",
                             "PY_name_impl": "PY_Cstruct1_tp_init",
                             "PY_type_impl": "PY_Cstruct1_tp_init",
                             "PY_type_method": "tp_init",
@@ -231,9 +233,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
                     "C_impl_filename": "wrapCstruct1.cpp",
+                    "C_name_api": "Cstruct1",
                     "C_name_scope": "Cstruct1_",
                     "C_type_name": "STR_cstruct1",
                     "F_derived_name": "cstruct1",
+                    "F_name_api": "cstruct1",
                     "F_name_scope": "cstruct1_",
                     "PY_PyObject": "PY_Cstruct1",
                     "PY_PyTypeObject": "PY_Cstruct1_Type",
@@ -386,6 +390,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Cstruct_ptr_ctor",
+                            "F_name_api": "cstruct_ptr_ctor",
                             "PY_name_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_impl": "PY_Cstruct_ptr_tp_init",
                             "PY_type_method": "tp_init",
@@ -507,9 +513,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_ptr.h",
                     "C_impl_filename": "wrapCstruct_ptr.cpp",
+                    "C_name_api": "Cstruct_ptr",
                     "C_name_scope": "Cstruct_ptr_",
                     "C_type_name": "STR_cstruct_ptr",
                     "F_derived_name": "cstruct_ptr",
+                    "F_name_api": "cstruct_ptr",
                     "F_name_scope": "cstruct_ptr_",
                     "PY_PyObject": "PY_Cstruct_ptr",
                     "PY_PyTypeObject": "PY_Cstruct_ptr_Type",
@@ -797,6 +805,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Cstruct_list_ctor",
+                            "F_name_api": "cstruct_list_ctor",
                             "PY_name_impl": "PY_Cstruct_list_tp_init",
                             "PY_type_impl": "PY_Cstruct_list_tp_init",
                             "PY_type_method": "tp_init",
@@ -1030,9 +1040,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_list.h",
                     "C_impl_filename": "wrapCstruct_list.cpp",
+                    "C_name_api": "Cstruct_list",
                     "C_name_scope": "Cstruct_list_",
                     "C_type_name": "STR_cstruct_list",
                     "F_derived_name": "cstruct_list",
+                    "F_name_api": "cstruct_list",
                     "F_name_scope": "cstruct_list_",
                     "PY_PyObject": "PY_Cstruct_list",
                     "PY_PyTypeObject": "PY_Cstruct_list_Type",
@@ -1247,6 +1259,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Cstruct_numpy_ctor",
+                            "F_name_api": "cstruct_numpy_ctor",
                             "PY_name_impl": "PY_Cstruct_numpy_tp_init",
                             "PY_type_impl": "PY_Cstruct_numpy_tp_init",
                             "PY_type_method": "tp_init",
@@ -1419,9 +1433,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_numpy.h",
                     "C_impl_filename": "wrapCstruct_numpy.cpp",
+                    "C_name_api": "Cstruct_numpy",
                     "C_name_scope": "Cstruct_numpy_",
                     "C_type_name": "STR_cstruct_numpy",
                     "F_derived_name": "cstruct_numpy",
+                    "F_name_api": "cstruct_numpy",
                     "F_name_scope": "cstruct_numpy_",
                     "PY_PyObject": "PY_Cstruct_numpy",
                     "PY_PyTypeObject": "PY_Cstruct_numpy_Type",
@@ -1573,6 +1589,8 @@
                             }
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "Arrays1_ctor",
+                            "F_name_api": "arrays1_ctor",
                             "PY_name_impl": "PY_Arrays1_tp_init",
                             "PY_type_impl": "PY_Arrays1_tp_init",
                             "PY_type_method": "tp_init",
@@ -1695,9 +1713,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapArrays1.h",
                     "C_impl_filename": "wrapArrays1.cpp",
+                    "C_name_api": "Arrays1",
                     "C_name_scope": "Arrays1_",
                     "C_type_name": "STR_arrays1",
                     "F_derived_name": "arrays1",
+                    "F_name_api": "arrays1",
                     "F_name_scope": "arrays1_",
                     "PY_PyObject": "PY_Arrays1",
                     "PY_PyTypeObject": "PY_Arrays1_Type",
@@ -1786,9 +1806,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_as_class.h",
                     "C_impl_filename": "wrapCstruct_as_class.cpp",
+                    "C_name_api": "Cstruct_as_class",
                     "C_name_scope": "Cstruct_as_class_",
                     "C_type_name": "STR_Cstruct_as_class",
                     "F_derived_name": "cstruct_as_class",
+                    "F_name_api": "cstruct_as_class",
                     "F_name_scope": "cstruct_as_class_",
                     "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
                     "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
@@ -1894,9 +1916,11 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_as_subclass.h",
                     "C_impl_filename": "wrapCstruct_as_subclass.cpp",
+                    "C_name_api": "Cstruct_as_subclass",
                     "C_name_scope": "Cstruct_as_subclass_",
                     "C_type_name": "STR_Cstruct_as_subclass",
                     "F_derived_name": "cstruct_as_subclass",
+                    "F_name_api": "cstruct_as_subclass",
                     "F_name_scope": "cstruct_as_subclass_",
                     "PY_struct_array_descr_create": "PY_Cstruct_as_subclass_create_array_descr",
                     "PY_struct_array_descr_name": "Cstruct_as_subclass_dtype",
@@ -1994,6 +2018,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStructByValue",
+                    "F_name_api": "pass_struct_by_value",
                     "PY_name_impl": "PY_passStructByValue",
                     "function_name": "passStructByValue",
                     "underscore_name": "pass_struct_by_value"
@@ -2093,6 +2119,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStruct1",
+                    "F_name_api": "pass_struct1",
                     "PY_name_impl": "PY_passStruct1",
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
@@ -2238,6 +2266,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "passStruct2",
+                    "F_name_api": "pass_struct2",
                     "PY_name_impl": "PY_passStruct2",
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
@@ -2337,6 +2367,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "acceptStructInPtr",
+                    "F_name_api": "accept_struct_in_ptr",
                     "PY_name_impl": "PY_acceptStructInPtr",
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
@@ -2512,6 +2544,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "acceptStructOutPtr",
+                    "F_name_api": "accept_struct_out_ptr",
                     "PY_name_impl": "PY_acceptStructOutPtr",
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
@@ -2592,6 +2626,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "acceptStructInOutPtr",
+                    "F_name_api": "accept_struct_in_out_ptr",
                     "PY_name_impl": "PY_acceptStructInOutPtr",
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
@@ -2698,6 +2734,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "returnStructByValue",
+                    "F_name_api": "return_struct_by_value",
                     "PY_name_impl": "PY_returnStructByValue",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
@@ -2840,6 +2878,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "returnStructPtr1",
+                    "F_name_api": "return_struct_ptr1",
                     "PY_name_impl": "PY_returnStructPtr1",
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
@@ -3025,6 +3065,8 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "returnStructPtr2",
+                    "F_name_api": "return_struct_ptr2",
                     "PY_name_impl": "PY_returnStructPtr2",
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
@@ -3084,6 +3126,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "get_global_struct_list",
+                    "F_name_api": "get_global_struct_list",
                     "PY_name_impl": "PY_get_global_struct_list",
                     "function_name": "get_global_struct_list",
                     "underscore_name": "get_global_struct_list"
@@ -3145,6 +3189,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "Create_Cstruct_as_class",
+                    "F_name_api": "create_cstruct_as_class",
                     "function_name": "Create_Cstruct_as_class",
                     "underscore_name": "create_cstruct_as_class"
                 }
@@ -3213,6 +3259,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "Create_Cstruct_as_class_args",
+                    "F_name_api": "create_cstruct_as_class_args",
                     "function_name": "Create_Cstruct_as_class_args",
                     "underscore_name": "create_cstruct_as_class_args"
                 }
@@ -3268,6 +3316,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "Cstruct_as_class_sum",
+                    "F_name_api": "cstruct_as_class_sum",
                     "F_name_function": "sum",
                     "function_name": "Cstruct_as_class_sum",
                     "underscore_name": "cstruct_as_class_sum"
@@ -3353,6 +3403,8 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "Create_Cstruct_as_subclass_args",
+                    "F_name_api": "create_cstruct_as_subclass_args",
                     "function_name": "Create_Cstruct_as_subclass_args",
                     "underscore_name": "create_cstruct_as_subclass_args"
                 }

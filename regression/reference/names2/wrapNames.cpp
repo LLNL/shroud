@@ -22,7 +22,7 @@ extern "C" {
 // Function:  void AFunction
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
-void NAM_a_function(void)
+void NAM_AFunction(void)
 {
     // splicer begin function.a_function
     ignore1::ignore2::AFunction();

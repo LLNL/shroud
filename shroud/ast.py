@@ -113,6 +113,12 @@ class AstNode(object):
         """Return language of library: c or c++"""
         return self.get_LibraryNode().language
 
+    def lookup_class(self, name):
+        """Lookup a class/struct AstNode by name.
+        """
+        node = self.get_LibraryNode().class_map.get(name, None)
+        return node
+    
     def find_header(self):
         """Return most recent cxx_header.
         Return list of headers to preserve order.
@@ -137,14 +143,37 @@ class AstNode(object):
         and its parents."""
         return self.ast.unqualified_lookup(name)
 
-    def apply_case_option(self, name):
+    def apply_C_API_option(self, name):
         """Apply option.C_API_case to name"""
-        if self.options.C_API_case == 'lower':
-            return name.lower()
-        elif self.options.C_API_case == 'upper':
-            return name.upper()
-        else:
+        case = self.options.C_API_case
+        if case == 'preserve':
             return name
+        elif case == 'lower':
+            return name.lower()
+        elif case == 'upper':
+            return name.upper()
+        elif case == 'underscore':
+            return util.un_camel(self.name)
+        else:
+            raise RuntimeError(
+                "Unexpected value of option C_API_case: {}"
+                .format(case))
+
+    def apply_F_API_option(self, name):
+        """Apply option.F_API_case to name"""
+        case = self.options.F_API_case
+        if case == 'underscore':
+            return util.un_camel(self.name)
+        elif case == 'lower':
+            return name.lower()
+        elif case == 'upper':
+            return name.upper()
+        elif case == 'preserve':
+            return name
+        else:
+            raise RuntimeError(
+                "Unexpected value of option F_API_case: {}"
+                .format(case))
 
     def update_names(self):
         """Update C and Fortran names.
@@ -498,7 +527,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # blank for functions, set in classes.
             YAML_type_filename_template="{library_lower}_types.yaml",
 
-            C_API_case="native",
+            C_API_case="preserve",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -513,7 +542,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -527,15 +556,16 @@ class LibraryNode(AstNode, NamespaceMixin):
 #            C_var_size_template="S{c_var}",  # argument for result of size(arg)
             CXX_standard=2011,
             # Fortran's names for C functions
+            F_API_case="underscore",
             F_C_name_template=(
-                "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template="{F_name_scope}{enum_member_lower}",
             F_name_impl_template=(
-                "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
-            F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
-            F_name_generic_template="{underscore_name}",
+            F_name_function_template="{F_name_api}{function_suffix}{template_suffix}",
+            F_name_generic_template="{F_name_api}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -543,10 +573,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type_template="{C_prefix}SHROUD_array",
             F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
-            F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
+            F_abstract_interface_subprogram_template="{F_name_api}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
-            F_derived_name_template="{lower_name}",
-            F_typedef_name_template="{F_name_scope}{underscore_name}",
+            F_derived_name_template="{F_name_api}",
+            F_typedef_name_template="{F_name_scope}{F_name_api}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
@@ -995,7 +1025,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         )
         if not skip:
             fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_"
+                parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_"
             )
             if options.flatten_namespace or options.F_flatten_namespace:
                 fmt_ns.F_name_scope = (
@@ -1189,12 +1219,14 @@ class ClassNode(AstNode, NamespaceMixin):
             underscore_name = util.un_camel(self.name),
             upper_name = self.name.upper(),
             lower_name = self.name.lower(),
+            C_name_api = self.apply_C_API_option(self.name),
+            F_name_api = self.apply_F_API_option(self.name),
 
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
 
             # The scope for things in the class.
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_case_option(self.name) + "_",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_",
             F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
@@ -1373,9 +1405,6 @@ class FunctionNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
-        self.user_fmt = format
-        self.default_format(parent, format, kwargs)
-
         # working variables
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
@@ -1447,6 +1476,8 @@ class FunctionNode(AstNode):
         self.ast = ast
         declarator = ast.declarator
         self.name = declarator.user_name
+        self.user_fmt = format
+        self.default_format(parent, format, kwargs)
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
@@ -1499,10 +1530,6 @@ class FunctionNode(AstNode):
 
         # XXX - waring about unused fields in attrs
 
-        fmt_func = self.fmtdict
-        fmt_func.function_name = self.name
-        fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
-
     def default_format(self, parent, fmtdict, kwargs):
 
         # Move fields from kwargs into instance
@@ -1538,6 +1565,15 @@ class FunctionNode(AstNode):
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
+        fmt_func = self.fmtdict
+
+        fmt_func.update(dict(
+            function_name=self.name,
+            underscore_name=util.un_camel(self.name),
+            C_name_api = self.apply_C_API_option(self.name),
+            F_name_api=self.apply_F_API_option(self.name),
+        ))
+
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
 
@@ -1547,7 +1583,6 @@ class FunctionNode(AstNode):
         if self.wrap.c:
             self.eval_template("C_name")
             self.eval_template("F_C_name")
-            fmt.F_C_name = fmt.F_C_name.lower()
         if self.wrap.fortran:
             self.eval_template("F_name_impl")
             self.eval_template("F_name_function")
@@ -1765,6 +1800,8 @@ class TypedefNode(AstNode):
             cxx_type=self.name,
             typedef_name=self.name,
             underscore_name = util.un_camel(self.name),
+            C_name_api = self.apply_C_API_option(self.name),
+            F_name_api = self.apply_F_API_option(self.name),
         )
 
     def update_names(self):

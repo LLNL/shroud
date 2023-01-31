@@ -28,9 +28,9 @@ extern "C" {
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations
 
-const char * CLA_Class2_get_name(CLA_Class2 * self);
+const char * CLA_Class2_getName(CLA_Class2 * self);
 
-void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
+void CLA_Class2_getName_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *SHT_rv_cdesc);
 
 #ifdef __cplusplus
