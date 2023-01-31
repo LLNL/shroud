@@ -931,16 +931,16 @@ module struct_mod
         ! splicer end additional_interfaces
     end interface
 
-    ! start generic interface Cstruct_as_class
-    interface Cstruct_as_class
+    ! start generic interface cstruct_as_class
+    interface cstruct_as_class
         module procedure create_cstruct_as_class
         module procedure create_cstruct_as_class_args
-    end interface Cstruct_as_class
-    ! end generic interface Cstruct_as_class
+    end interface cstruct_as_class
+    ! end generic interface cstruct_as_class
 
-    interface Cstruct_as_subclass
+    interface cstruct_as_subclass
         module procedure create_cstruct_as_subclass_args
-    end interface Cstruct_as_subclass
+    end interface cstruct_as_subclass
 
 contains
 

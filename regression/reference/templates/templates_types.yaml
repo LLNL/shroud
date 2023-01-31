@@ -27,7 +27,7 @@ typemap:
         - typestemplates.h
         c_type: TEM_internal_ImplWorker1
         f_module_name: templates_internal_mod
-        f_derived_type: implworker1
+        f_derived_type: impl_worker1
         f_capsule_data_type: TEM_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
     - type: ImplWorker2
@@ -37,7 +37,7 @@ typemap:
         - typestemplates.h
         c_type: TEM_internal_ImplWorker2
         f_module_name: templates_internal_mod
-        f_derived_type: implworker2
+        f_derived_type: impl_worker2
         f_capsule_data_type: TEM_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
   - namespace: std

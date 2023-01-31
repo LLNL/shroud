@@ -113,6 +113,12 @@ class AstNode(object):
         """Return language of library: c or c++"""
         return self.get_LibraryNode().language
 
+    def lookup_class(self, name):
+        """Lookup a class/struct AstNode by name.
+        """
+        node = self.get_LibraryNode().class_map.get(name, None)
+        return node
+    
     def find_header(self):
         """Return most recent cxx_header.
         Return list of headers to preserve order.
@@ -540,14 +546,14 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Fortran's names for C functions
             F_API_case="underscore",
             F_C_name_template=(
-                "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{F_api_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template="{F_name_scope}{enum_member_lower}",
             F_name_impl_template=(
-                "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_name_scope}{F_api_name}{function_suffix}{template_suffix}"
             ),
-            F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
-            F_name_generic_template="{underscore_name}",
+            F_name_function_template="{F_api_name}{function_suffix}{template_suffix}",
+            F_name_generic_template="{F_api_name}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -555,10 +561,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type_template="{C_prefix}SHROUD_array",
             F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
-            F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
+            F_abstract_interface_subprogram_template="{F_api_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
-            F_derived_name_template="{lower_name}",
-            F_typedef_name_template="{F_name_scope}{underscore_name}",
+            F_derived_name_template="{F_api_name}",
+            F_typedef_name_template="{F_name_scope}{F_api_name}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(

@@ -85,7 +85,7 @@ module generic_mod
     end type GEN_SHROUD_array
     ! end array_context
 
-    type structasclass
+    type struct_as_class
         type(GEN_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.StructAsClass.component_part
         ! splicer end class.StructAsClass.component_part
@@ -95,7 +95,7 @@ module generic_mod
         procedure :: associated => structasclass_associated
         ! splicer begin class.StructAsClass.type_bound_procedure_part
         ! splicer end class.StructAsClass.type_bound_procedure_part
-    end type structasclass
+    end type struct_as_class
 
     interface operator (.eq.)
         module procedure structasclass_eq
@@ -865,10 +865,6 @@ module generic_mod
         ! splicer end additional_interfaces
     end interface
 
-    interface StructAsClass
-        module procedure create_struct_as_class
-    end interface StructAsClass
-
     interface assign_values
         module procedure assign_values_scalar
         module procedure assign_values_broadcast
@@ -906,6 +902,10 @@ module generic_mod
         module procedure save_pointer2_float2d
     end interface save_pointer2
 
+    interface struct_as_class
+        module procedure create_struct_as_class
+    end interface struct_as_class
+
     interface sum_values
         module procedure sum_values_0d
         module procedure sum_values_1d
@@ -927,14 +927,14 @@ contains
     ! Return pointer to C++ memory.
     function structasclass_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(structasclass), intent(IN) :: obj
+        class(struct_as_class), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function structasclass_get_instance
 
     subroutine structasclass_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(structasclass), intent(INOUT) :: obj
+        class(struct_as_class), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -942,7 +942,7 @@ contains
 
     function structasclass_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(structasclass), intent(IN) :: obj
+        class(struct_as_class), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function structasclass_associated
@@ -1594,7 +1594,7 @@ contains
     function create_struct_as_class() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(structasclass) :: SHT_rv
+        type(struct_as_class) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin function.create_struct_as_class
         SHT_prv = c_create_struct_as_class(SHT_rv%cxxmem)
@@ -1628,7 +1628,7 @@ contains
     function update_struct_as_class_int(arg, inew) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
-        type(structasclass), intent(INOUT) :: arg
+        type(struct_as_class), intent(INOUT) :: arg
         integer(C_INT), value, intent(IN) :: inew
         integer(C_LONG) :: SHT_rv
         ! splicer begin function.update_struct_as_class_int
@@ -1663,7 +1663,7 @@ contains
     function update_struct_as_class_long(arg, inew) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
-        type(structasclass), intent(INOUT) :: arg
+        type(struct_as_class), intent(INOUT) :: arg
         integer(C_LONG), value, intent(IN) :: inew
         integer(C_LONG) :: SHT_rv
         ! splicer begin function.update_struct_as_class_long
@@ -1676,7 +1676,7 @@ contains
 
     function structasclass_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass), intent(IN) ::a,b
+        type(struct_as_class), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -1687,7 +1687,7 @@ contains
 
     function structasclass_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass), intent(IN) ::a,b
+        type(struct_as_class), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

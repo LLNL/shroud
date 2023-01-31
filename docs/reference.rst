@@ -565,11 +565,11 @@ C_typedef_name_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
     
 F_C_name_template
-    ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
-   Defaults to ``{underscore_name}_{argname}``
+   Defaults to ``{F_name_api}_{argname}``
    where *argname* is the name of the function argument.
    see :ref:`DeclAnchor_Function_Pointers`.
 
@@ -592,8 +592,7 @@ F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``
 
 F_derived_name_template
-    Defaults to ``{underscore_name}``.
-    Other useful values are ``{lower_name}`` and ``{upper_name}``.
+    Defaults to ``{F_name_api}``.
     
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
@@ -602,13 +601,13 @@ F_enum_member_template
     in the Fortran code, not the enum name itself.
 
 F_name_generic_template
-    ``{underscore_name}``
+    ``{F_name_api}``
 
 F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_name_scope}{F_name_api}{function_suffix}{template_suffix}``
 
 F_module_name_library_template
     ``{library_lower}_mod``
@@ -617,10 +616,10 @@ F_module_name_namespace_template
     ``{file_scope}_mod``
 
 F_name_function_template
-    ``{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_name_api}{function_suffix}{template_suffix}``
 
 F_typedef_name_template
-    ``{F_name_scope}{underscore_name}``
+    ``{F_name_scope}{F_name_api}``
     
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
@@ -872,13 +871,6 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
-F_api_name
-    Root name that is used to create various names in the Fortran API.
-    Controlled by the **F_API_case** option with values
-    *lower*, *upper*, *underscore*.
-    Any other value will preserve the case of the name.
-    Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
-
 F_array_type
     Name of derived type used to store metadata about an array
     such as its address and size.
@@ -932,6 +924,17 @@ F_module_name
     Defaulted from expansion of option *F_module_name_library_template*
     which is **{library_lower}_mod**.
     Then converted to lower case.
+
+F_name_api
+    Root name that is used to create various names in the Fortran API.
+    Controlled by the **F_API_case** option with values
+    *lower*, *upper*, *underscore*.
+    Any other value will preserve the case of the name.
+    Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
+    Used with options **templates F_C_name_template**, **F_name_impl_template**,
+    **F_name_function_template**, **F_name_generic_template**,
+    **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
+    **F_typedef_name_template**.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.

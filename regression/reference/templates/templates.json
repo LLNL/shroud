@@ -4403,7 +4403,7 @@
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TEM_internal_ImplWorker1",
                             "F_api_name": "impl_worker1",
-                            "F_derived_name": "implworker1",
+                            "F_derived_name": "impl_worker1",
                             "F_name_scope": "implworker1_",
                             "PY_PyObject": "PY_ImplWorker1",
                             "PY_PyTypeObject": "PY_ImplWorker1_Type",
@@ -4445,7 +4445,7 @@
                             "C_name_scope": "internal_ImplWorker2_",
                             "C_type_name": "TEM_internal_ImplWorker2",
                             "F_api_name": "impl_worker2",
-                            "F_derived_name": "implworker2",
+                            "F_derived_name": "impl_worker2",
                             "F_name_scope": "implworker2_",
                             "PY_PyObject": "PY_ImplWorker2",
                             "PY_PyTypeObject": "PY_ImplWorker2_Type",
@@ -4583,17 +4583,17 @@
             "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
             "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-            "f_class": "class(implworker1)",
-            "f_derived_type": "implworker1",
+            "f_class": "class(impl_worker1)",
+            "f_derived_type": "impl_worker1",
             "f_module": {
                 "templates_internal_mod": [
-                    "implworker1"
+                    "impl_worker1"
                 ]
             },
-            "f_module_line": "templates_internal_mod:implworker1",
+            "f_module_line": "templates_internal_mod:impl_worker1",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(implworker1)",
+            "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
             "impl_header": [
                 "implworker1.hpp"
@@ -4624,17 +4624,17 @@
             "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
             "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-            "f_class": "class(implworker2)",
-            "f_derived_type": "implworker2",
+            "f_class": "class(impl_worker2)",
+            "f_derived_type": "impl_worker2",
             "f_module": {
                 "templates_internal_mod": [
-                    "implworker2"
+                    "impl_worker2"
                 ]
             },
-            "f_module_line": "templates_internal_mod:implworker2",
+            "f_module_line": "templates_internal_mod:impl_worker2",
             "f_module_name": "templates_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(implworker2)",
+            "f_type": "type(impl_worker2)",
             "flat_name": "internal_ImplWorker2",
             "impl_header": [
                 "implworker2.hpp"
@@ -4905,17 +4905,17 @@
             "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
             "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-            "f_class": "class(structasclass)",
-            "f_derived_type": "structasclass",
+            "f_class": "class(struct_as_class)",
+            "f_derived_type": "struct_as_class",
             "f_module": {
                 "templates_mod": [
-                    "structasclass"
+                    "struct_as_class"
                 ]
             },
-            "f_module_line": "templates_mod:structasclass",
+            "f_module_line": "templates_mod:struct_as_class",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(structasclass)",
+            "f_type": "type(struct_as_class)",
             "flat_name": "structAsClass",
             "impl_header": [
                 "templates.hpp"

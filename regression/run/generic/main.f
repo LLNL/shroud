@@ -141,12 +141,12 @@ contains
   end subroutine test_database
 
   subroutine test_struct
-    type(StructAsClass) stru1
+    type(struct_as_class) stru1
     integer(C_LONG) ll
     
     call set_case_name("test_struct")
 
-    stru1 = StructAsClass()
+    stru1 = struct_as_class()
     ll = update_struct_as_class(stru1, 10_C_INT)
     call assert_true(ll .eq. 10_C_INT, "update_struct_as_class int")
     ll = update_struct_as_class(stru1, 20_C_LONG)

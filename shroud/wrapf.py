@@ -493,8 +493,8 @@ class Wrapf(util.WrapperMixin):
         fmt = util.Scope(fmt_class)
 
         # getter
-        fmt.underscore_name = fmt_class.F_name_instance_get
-        if fmt.underscore_name:
+        if fmt.F_name_instance_get:
+            fmt.F_api_name = fmt_class.F_name_instance_get
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -516,8 +516,8 @@ cxxptr = {F_this}%{F_derived_member}%addr
             )
 
         # setter
-        fmt.underscore_name = fmt_class.F_name_instance_set
-        if fmt.underscore_name:
+        if fmt_class.F_name_instance_set:
+            fmt.F_api_name = fmt_class.F_name_instance_set
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -540,8 +540,8 @@ type(C_PTR), intent(IN) :: {F_derived_member}
             )
 
         # associated
-        fmt.underscore_name = fmt_class.F_name_associated
-        if fmt.underscore_name:
+        if fmt_class.F_name_associated:
+            fmt.F_api_name = fmt_class.F_name_associated
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -1995,7 +1995,8 @@ rv = .false.
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
-            fmt_func.F_name_generic = node.options.class_ctor
+            clsnode = node.lookup_class(node.options.class_ctor)
+            fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
             fileinfo.f_function_generic.setdefault(
                 fmt_func.F_name_generic, GenericFunction(True, [])
             ).functions.append(node)

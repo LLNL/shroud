@@ -98,7 +98,7 @@
                     "C_name_scope": "ns3_DataPointer_",
                     "C_type_name": "SCO_datapointer",
                     "F_api_name": "data_pointer",
-                    "F_derived_name": "datapointer",
+                    "F_derived_name": "data_pointer",
                     "F_name_scope": "ns3_datapointer_",
                     "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                     "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -698,8 +698,8 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "IN",
-                            "f_kind": "datapointer",
-                            "f_type": "type(datapointer)",
+                            "f_kind": "data_pointer",
+                            "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_in_struct_*",
@@ -867,8 +867,8 @@
                             "F_C_var": "SH_this",
                             "c_var": "SH_this",
                             "f_intent": "INOUT",
-                            "f_kind": "datapointer",
-                            "f_type": "type(datapointer)",
+                            "f_kind": "data_pointer",
+                            "f_type": "type(data_pointer)",
                             "f_var": "SH_this",
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_inout_struct_*",
@@ -1039,7 +1039,7 @@
                             "C_name_scope": "ns1_DataPointer_",
                             "C_type_name": "SCO_datapointer",
                             "F_api_name": "data_pointer",
-                            "F_derived_name": "datapointer",
+                            "F_derived_name": "data_pointer",
                             "F_name_scope": "datapointer_",
                             "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                             "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -1311,8 +1311,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
@@ -1480,8 +1480,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
@@ -1677,7 +1677,7 @@
                             "C_name_scope": "ns2_DataPointer_",
                             "C_type_name": "SCO_datapointer",
                             "F_api_name": "data_pointer",
-                            "F_derived_name": "datapointer",
+                            "F_derived_name": "data_pointer",
                             "F_name_scope": "datapointer_",
                             "PY_struct_array_descr_create": "PY_DataPointer_create_array_descr",
                             "PY_struct_array_descr_name": "DataPointer_dtype",
@@ -1949,8 +1949,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "IN",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_in_struct_*",
@@ -2118,8 +2118,8 @@
                                     "F_C_var": "SH_this",
                                     "c_var": "SH_this",
                                     "f_intent": "INOUT",
-                                    "f_kind": "datapointer",
-                                    "f_type": "type(datapointer)",
+                                    "f_kind": "data_pointer",
+                                    "f_type": "type(data_pointer)",
                                     "f_var": "SH_this",
                                     "sh_type": "SH_TYPE_STRUCT",
                                     "stmt0": "f_inout_struct_*",
@@ -2468,18 +2468,18 @@
             "cxx_type": "ns1::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns1_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns1_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns1_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
@@ -2521,18 +2521,18 @@
             "cxx_type": "ns2::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns2_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns2_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns2_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
@@ -2574,18 +2574,18 @@
             "cxx_type": "ns3::DataPointer",
             "f_c_module": {
                 "--import--": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
-            "f_derived_type": "datapointer",
-            "f_kind": "datapointer",
+            "f_derived_type": "data_pointer",
+            "f_kind": "data_pointer",
             "f_module": {
                 "scope_ns3_mod": [
-                    "datapointer"
+                    "data_pointer"
                 ]
             },
             "f_module_name": "scope_ns3_mod",
-            "f_type": "type(datapointer)",
+            "f_type": "type(data_pointer)",
             "flat_name": "ns3_DataPointer",
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"

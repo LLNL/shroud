@@ -15,6 +15,6 @@ typemap:
       - typesarrayclass.h
       c_type: ARR_ArrayWrapper
       f_module_name: arrayclass_mod
-      f_derived_type: arraywrapper
+      f_derived_type: ArrayWrapper
       f_capsule_data_type: ARR_SHROUD_capsule_data
       f_to_c: "{f_var}%cxxmem"

@@ -77,7 +77,7 @@
                                             "F_arg_c_call": "SHT_rv%cxxmem",
                                             "F_arguments": "",
                                             "F_name_function": "ctor_0",
-                                            "F_name_generic": "exclass1",
+                                            "F_name_generic": "ex_class1",
                                             "F_name_impl": "exclass1_ctor_0",
                                             "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
@@ -115,7 +115,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass1)",
+                                                "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_ctor_shadow_scalar_capptr",
@@ -297,7 +297,7 @@
                                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
-                                            "F_name_generic": "exclass1",
+                                            "F_name_generic": "ex_class1",
                                             "F_name_impl": "exclass1_ctor_1",
                                             "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
@@ -333,7 +333,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass1)",
+                                                "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_ctor_shadow_scalar_capptr",
@@ -481,7 +481,7 @@
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
                                             "F_api_name": "ctor",
-                                            "F_name_generic": "exclass1",
+                                            "F_name_generic": "ex_class1",
                                             "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
@@ -509,7 +509,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass1)",
+                                                "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER"
                                             }
@@ -2025,7 +2025,7 @@
                                     "C_name_scope": "example_nested_ExClass1_",
                                     "C_type_name": "AA_example_nested_ExClass1",
                                     "F_api_name": "ex_class1",
-                                    "F_derived_name": "exclass1",
+                                    "F_derived_name": "ex_class1",
                                     "F_name_scope": "exclass1_",
                                     "LUA_class_reg": "l_ExClass1_Reg",
                                     "LUA_ctor_name": "ExClass1",
@@ -2076,7 +2076,7 @@
                                             "C_name_scope": "example_nested_ExClass2_ExClass2Nested_",
                                             "C_type_name": "AA_example_nested_ExClass2_ExClass2Nested",
                                             "F_api_name": "ex_class2_nested",
-                                            "F_derived_name": "exclass2nested",
+                                            "F_derived_name": "ex_class2_nested",
                                             "F_name_scope": "exclass2_exclass2nested_",
                                             "class_scope": "ExClass2Nested::",
                                             "cxx_class": "ExClass2Nested",
@@ -2235,7 +2235,7 @@
                                             "F_arg_c_call": "name,\t SHT_name_len,\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
-                                            "F_name_generic": "exclass2",
+                                            "F_name_generic": "ex_class2",
                                             "F_name_impl": "exclass2_ctor",
                                             "F_result": "SHT_prv",
                                             "F_result_clause": "\fresult(SHT_rv)",
@@ -2272,7 +2272,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass2)",
+                                                "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_ctor_shadow_scalar_capptr",
@@ -2421,7 +2421,7 @@
                                             "F_C_result_clause": "\fresult(SHT_prv)",
                                             "F_C_subprogram": "function",
                                             "F_api_name": "ctor",
-                                            "F_name_generic": "exclass2",
+                                            "F_name_generic": "ex_class2",
                                             "F_result": "SHT_prv",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
@@ -2449,7 +2449,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass2)",
+                                                "f_type": "type(ex_class2)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER"
                                             }
@@ -3586,7 +3586,7 @@
                                                     "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                     "f_intent": "IN",
-                                                    "f_type": "type(exclass1)",
+                                                    "f_type": "type(ex_class1)",
                                                     "f_var": "in",
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "stmt0": "f_in_shadow_*",
@@ -3688,7 +3688,7 @@
                                                 "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
                                                 "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                                 "f_intent": "OUT",
-                                                "f_type": "type(exclass1)",
+                                                "f_type": "type(ex_class1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_function_shadow_*_capptr",
@@ -6416,7 +6416,7 @@
                                     "C_name_scope": "example_nested_ExClass2_",
                                     "C_type_name": "AA_example_nested_ExClass2",
                                     "F_api_name": "ex_class2",
-                                    "F_derived_name": "exclass2",
+                                    "F_derived_name": "ex_class2",
                                     "F_name_scope": "exclass2_",
                                     "LUA_class_reg": "l_ExClass2_Reg",
                                     "LUA_ctor_name": "ExClass2",
@@ -11753,17 +11753,17 @@
             "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
-            "f_class": "class(exclass1)",
-            "f_derived_type": "exclass1",
+            "f_class": "class(ex_class1)",
+            "f_derived_type": "ex_class1",
             "f_module": {
                 "userlibrary_example_nested_mod": [
-                    "exclass1"
+                    "ex_class1"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:exclass1",
+            "f_module_line": "userlibrary_example_nested_mod:ex_class1",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(exclass1)",
+            "f_type": "type(ex_class1)",
             "flat_name": "example_nested_ExClass1",
             "idtor": "1",
             "impl_header": [
@@ -11795,17 +11795,17 @@
             "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
-            "f_class": "class(exclass2)",
-            "f_derived_type": "exclass2",
+            "f_class": "class(ex_class2)",
+            "f_derived_type": "ex_class2",
             "f_module": {
                 "userlibrary_example_nested_mod": [
-                    "exclass2"
+                    "ex_class2"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:exclass2",
+            "f_module_line": "userlibrary_example_nested_mod:ex_class2",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(exclass2)",
+            "f_type": "type(ex_class2)",
             "flat_name": "example_nested_ExClass2",
             "idtor": "2",
             "impl_header": [
@@ -11832,17 +11832,17 @@
             "f_c_module_line": "--import--:AA_SHROUD_capsule_data",
             "f_c_type": "type(AA_SHROUD_capsule_data)",
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
-            "f_class": "class(exclass2nested)",
-            "f_derived_type": "exclass2nested",
+            "f_class": "class(ex_class2_nested)",
+            "f_derived_type": "ex_class2_nested",
             "f_module": {
                 "userlibrary_example_nested_mod": [
-                    "exclass2nested"
+                    "ex_class2_nested"
                 ]
             },
-            "f_module_line": "userlibrary_example_nested_mod:exclass2nested",
+            "f_module_line": "userlibrary_example_nested_mod:ex_class2_nested",
             "f_module_name": "userlibrary_example_nested_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(exclass2nested)",
+            "f_type": "type(ex_class2_nested)",
             "flat_name": "example_nested_ExClass2Nested",
             "impl_header": [
                 "ExClass2.hpp"

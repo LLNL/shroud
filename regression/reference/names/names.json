@@ -3664,7 +3664,7 @@
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TES_internal_ImplWorker1",
                             "F_api_name": "impl_worker1",
-                            "F_derived_name": "implworker1",
+                            "F_derived_name": "impl_worker1",
                             "F_name_scope": "implworker1_",
                             "class_scope": "ImplWorker1::",
                             "cxx_class": "ImplWorker1",
@@ -4546,17 +4546,17 @@
             "f_c_module_line": "--import--:TES_SHROUD_capsule_data",
             "f_c_type": "type(TES_SHROUD_capsule_data)",
             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-            "f_class": "class(implworker1)",
-            "f_derived_type": "implworker1",
+            "f_class": "class(impl_worker1)",
+            "f_derived_type": "impl_worker1",
             "f_module": {
                 "testnames_internal_mod": [
-                    "implworker1"
+                    "impl_worker1"
                 ]
             },
-            "f_module_line": "testnames_internal_mod:implworker1",
+            "f_module_line": "testnames_internal_mod:impl_worker1",
             "f_module_name": "testnames_internal_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(implworker1)",
+            "f_type": "type(impl_worker1)",
             "flat_name": "internal_ImplWorker1",
             "impl_header": [],
             "sgroup": "shadow",
@@ -4831,17 +4831,17 @@
             "f_c_module_line": "--import--:TES_SHROUD_capsule_data",
             "f_c_type": "type(TES_SHROUD_capsule_data)",
             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-            "f_class": "class(twots)",
-            "f_derived_type": "twots",
+            "f_class": "class(two_ts)",
+            "f_derived_type": "two_ts",
             "f_module": {
                 "top_module": [
-                    "twots"
+                    "two_ts"
                 ]
             },
-            "f_module_line": "top_module:twots",
+            "f_module_line": "top_module:two_ts",
             "f_module_name": "top_module",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(twots)",
+            "f_type": "type(two_ts)",
             "flat_name": "twoTs",
             "impl_header": [],
             "sgroup": "shadow",

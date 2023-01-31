@@ -27,7 +27,7 @@
                     "C_name_scope": "StructAsClass_",
                     "C_type_name": "GEN_StructAsClass",
                     "F_api_name": "struct_as_class",
-                    "F_derived_name": "structasclass",
+                    "F_derived_name": "struct_as_class",
                     "F_name_scope": "structasclass_",
                     "PY_struct_array_descr_create": "PY_StructAsClass_create_array_descr",
                     "PY_struct_array_descr_name": "StructAsClass_dtype",
@@ -6270,7 +6270,7 @@
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "create_struct_as_class",
-                    "F_name_generic": "StructAsClass",
+                    "F_name_generic": "struct_as_class",
                     "F_name_impl": "create_struct_as_class",
                     "F_result": "SHT_prv",
                     "F_result_clause": "\fresult(SHT_rv)",
@@ -6303,7 +6303,7 @@
                         "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
                         "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                         "f_intent": "OUT",
-                        "f_type": "type(structasclass)",
+                        "f_type": "type(struct_as_class)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_function_shadow_*_capptr",
@@ -6480,7 +6480,7 @@
                             "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
                             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                             "f_intent": "INOUT",
-                            "f_type": "type(structasclass)",
+                            "f_type": "type(struct_as_class)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER"
                         }
@@ -6650,7 +6650,7 @@
                             "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
                             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                             "f_intent": "INOUT",
-                            "f_type": "type(structasclass)",
+                            "f_type": "type(struct_as_class)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_inout_shadow_*",
@@ -6842,7 +6842,7 @@
                             "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
                             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                             "f_intent": "INOUT",
-                            "f_type": "type(structasclass)",
+                            "f_type": "type(struct_as_class)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_inout_shadow_*",
@@ -6972,17 +6972,17 @@
             "f_c_module_line": "--import--:GEN_SHROUD_capsule_data",
             "f_c_type": "type(GEN_SHROUD_capsule_data)",
             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-            "f_class": "class(structasclass)",
-            "f_derived_type": "structasclass",
+            "f_class": "class(struct_as_class)",
+            "f_derived_type": "struct_as_class",
             "f_module": {
                 "generic_mod": [
-                    "structasclass"
+                    "struct_as_class"
                 ]
             },
-            "f_module_line": "generic_mod:structasclass",
+            "f_module_line": "generic_mod:struct_as_class",
             "f_module_name": "generic_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(structasclass)",
+            "f_type": "type(struct_as_class)",
             "flat_name": "StructAsClass",
             "impl_header": [
                 "generic.h",

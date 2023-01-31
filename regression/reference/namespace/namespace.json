@@ -699,7 +699,7 @@
                             "C_name_scope": "nswork_ClassWork_",
                             "C_type_name": "NS_nswork_ClassWork",
                             "F_api_name": "class_work",
-                            "F_derived_name": "classwork",
+                            "F_derived_name": "class_work",
                             "F_name_scope": "nswork_classwork_",
                             "PY_PyObject": "PY_ClassWork",
                             "PY_PyTypeObject": "PY_ClassWork_Type",
@@ -799,17 +799,17 @@
             "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
             "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
-            "f_class": "class(classwork)",
-            "f_derived_type": "classwork",
+            "f_class": "class(class_work)",
+            "f_derived_type": "class_work",
             "f_module": {
                 "ns_nswork_mod": [
-                    "classwork"
+                    "class_work"
                 ]
             },
-            "f_module_line": "ns_nswork_mod:classwork",
+            "f_module_line": "ns_nswork_mod:class_work",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(classwork)",
+            "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
             "impl_header": [
                 "namespace.hpp"

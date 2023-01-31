@@ -48,7 +48,7 @@ module ns_mod
     integer(C_INT), parameter :: upper_error = 0
     integer(C_INT), parameter :: upper_warn = 1
 
-    type classwork
+    type class_work
         type(NS_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
@@ -58,7 +58,7 @@ module ns_mod
         procedure :: associated => nswork_classwork_associated
         ! splicer begin namespace.outer.class.ClassWork.type_bound_procedure_part
         ! splicer end namespace.outer.class.ClassWork.type_bound_procedure_part
-    end type classwork
+    end type class_work
 
     interface operator (.eq.)
         module procedure nswork_classwork_eq
@@ -151,14 +151,14 @@ contains
     ! Return pointer to C++ memory.
     function nswork_classwork_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(classwork), intent(IN) :: obj
+        class(class_work), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function nswork_classwork_get_instance
 
     subroutine nswork_classwork_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(classwork), intent(INOUT) :: obj
+        class(class_work), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -166,7 +166,7 @@ contains
 
     function nswork_classwork_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(classwork), intent(IN) :: obj
+        class(class_work), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function nswork_classwork_associated
@@ -176,7 +176,7 @@ contains
 
     function nswork_classwork_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classwork), intent(IN) ::a,b
+        type(class_work), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -187,7 +187,7 @@ contains
 
     function nswork_classwork_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(classwork), intent(IN) ::a,b
+        type(class_work), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

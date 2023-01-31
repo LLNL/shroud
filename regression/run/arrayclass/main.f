@@ -38,64 +38,64 @@ contains
 
 !   generic calls ArrayWrapper_ctor()
     arrinst = ArrayWrapper()
-    call arrinst%set_size(10)
-    call assert_equals(10, arrinst%get_size())
+    call arrinst%setSize(10)
+    call assert_equals(10, arrinst%getSize())
 
-    call arrinst%fill_size(isize)
+    call arrinst%fillSize(isize)
     call assert_equals(10, isize)
 
     call arrinst%allocate()
-    arr => arrinst%get_array()
+    arr => arrinst%getArray()
     call assert_true(associated(arr))
     call assert_equals(10, size(arr))
 
     ! Make sure we're pointing to the array in the instance.
     arr(:) = 0.0
-    call assert_equals(0.0_C_DOUBLE, arrinst%sum_array())
+    call assert_equals(0.0_C_DOUBLE, arrinst%sumArray())
     arr(:) = 1.0
-    call assert_equals(10.0_C_DOUBLE, arrinst%sum_array())
+    call assert_equals(10.0_C_DOUBLE, arrinst%sumArray())
     arr(:) = 0.0
     arr(1) = 10.0
     arr(10) = 1.0
-    call assert_equals(11.0_C_DOUBLE, arrinst%sum_array())
+    call assert_equals(11.0_C_DOUBLE, arrinst%sumarray())
 
-    arrconst => arrinst%get_array_const()
+    arrconst => arrinst%getArrayConst()
     call assert_true(associated(arrconst, arr))
     call assert_equals(10, size(arrconst))
 
-    arr3 => arrinst%get_array_c()
+    arr3 => arrinst%getArrayC()
     call assert_true(associated(arr3, arr))
     call assert_equals(10, size(arr3))
 
-    arr4 => arrinst%get_array_const_c()
+    arr4 => arrinst%getArrayConstC()
     call assert_true(associated(arr4, arr))
     call assert_equals(10, size(arr4))
 
-    call arrinst%fetch_array_ptr(arr5)
+    call arrinst%fetchArrayPtr(arr5)
     call assert_true(associated(arr5, arr))
     call assert_equals(10, size(arr5))
 
-    call arrinst%fetch_array_ref(arr6)
+    call arrinst%fetchArrayRef(arr6)
     call assert_true(associated(arr6, arr))
     call assert_equals(10, size(arr6))
 
-    call arrinst%fetch_array_ptr_const(arr7)
+    call arrinst%fetchArrayPtrConst(arr7)
     call assert_true(associated(arr7, arr))
     call assert_equals(10, size(arr7))
 
-    call arrinst%fetch_array_ref_const(arr8)
+    call arrinst%fetchArrayRefConst(arr8)
     call assert_true(associated(arr8, arr))
     call assert_equals(10, size(arr8))
 
     voidptr = C_NULL_PTR
-    call arrinst%fetch_void_ptr(voidptr)
+    call arrinst%fetchVoidPtr(voidptr)
     call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidPtr")
-    call assert_true(arrinst%check_ptr(voidptr), "checkPtr")
+    call assert_true(arrinst%checkPtr(voidptr), "checkPtr")
 
     voidptr = C_NULL_PTR
-    call arrinst%fetch_void_ref(voidptr)
+    call arrinst%fetchVoidRef(voidptr)
     call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidRef")
-    call assert_true(arrinst%check_ptr(voidptr), "checkPtr")
+    call assert_true(arrinst%checkPtr(voidptr), "checkPtr")
 
   end subroutine test_arraywrapper
     

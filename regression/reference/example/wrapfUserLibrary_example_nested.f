@@ -45,7 +45,7 @@ module userlibrary_example_nested_mod
         integer(C_LONG) :: shape(7) = 0
     end type AA_SHROUD_array
 
-    type exclass1
+    type ex_class1
         type(AA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.example::nested.class.ExClass1.component_part
           component part 1a
@@ -66,9 +66,9 @@ module userlibrary_example_nested_mod
         ! splicer begin namespace.example::nested.class.ExClass1.type_bound_procedure_part
           type bound procedure part 1
         ! splicer end namespace.example::nested.class.ExClass1.type_bound_procedure_part
-    end type exclass1
+    end type ex_class1
 
-    type exclass2
+    type ex_class2
         type(AA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.example::nested.class.ExClass2.component_part
         ! splicer end namespace.example::nested.class.ExClass2.component_part
@@ -100,7 +100,7 @@ module userlibrary_example_nested_mod
             set_value_float, set_value_double
         ! splicer begin namespace.example::nested.class.ExClass2.type_bound_procedure_part
         ! splicer end namespace.example::nested.class.ExClass2.type_bound_procedure_part
-    end type exclass2
+    end type ex_class2
 
     interface operator (.eq.)
         module procedure exclass1_eq
@@ -1263,14 +1263,14 @@ module userlibrary_example_nested_mod
         ! splicer end namespace.example::nested.additional_interfaces
     end interface
 
-    interface exclass1
+    interface ex_class1
         module procedure exclass1_ctor_0
         module procedure exclass1_ctor_1
-    end interface exclass1
+    end interface ex_class1
 
-    interface exclass2
+    interface ex_class2
         module procedure exclass2_ctor
-    end interface exclass2
+    end interface ex_class2
 
     interface test_names
         module procedure test_names
@@ -1316,7 +1316,7 @@ contains
     function exclass1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(exclass1) :: SHT_rv
+        type(ex_class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
         SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
@@ -1348,7 +1348,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(exclass1) :: SHT_rv
+        type(ex_class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         integer(C_INT) SHT_name_len
@@ -1370,7 +1370,7 @@ contains
     !! longer description joined with previous line
     !<
     subroutine exclass1_dtor(obj)
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.delete
         call c_exclass1_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.delete
@@ -1395,7 +1395,7 @@ contains
     function exclass1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.increment_count
@@ -1412,7 +1412,7 @@ contains
     ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1441,7 +1441,7 @@ contains
     ! Match:     c_function_string_&_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
         integer(C_INT) SHT_name_len
@@ -1470,7 +1470,7 @@ contains
     function exclass1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
@@ -1497,7 +1497,7 @@ contains
     function exclass1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
@@ -1524,7 +1524,7 @@ contains
     function exclass1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         logical, value, intent(IN) :: in
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
@@ -1541,7 +1541,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     subroutine exclass1_splicer_special(obj)
-        class(exclass1) :: obj
+        class(ex_class1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
         blah blah blah
         ! splicer end namespace.example::nested.class.ExClass1.method.splicer_special
@@ -1550,14 +1550,14 @@ contains
     ! Return pointer to C++ memory.
     function exclass1_yadda(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(exclass1), intent(IN) :: obj
+        class(ex_class1), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function exclass1_yadda
 
     function exclass1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(exclass1), intent(IN) :: obj
+        class(ex_class1), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass1_associated
@@ -1587,7 +1587,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
-        type(exclass2) :: SHT_rv
+        type(ex_class2) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         integer(C_INT) SHT_name_len
@@ -1608,7 +1608,7 @@ contains
     !!
     !<
     subroutine exclass2_dtor(obj)
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.delete
         call c_exclass2_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.delete
@@ -1626,7 +1626,7 @@ contains
     function exclass2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name
         integer(C_INT) SHT_rv_len
@@ -1645,7 +1645,7 @@ contains
     ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1665,7 +1665,7 @@ contains
     ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1685,7 +1685,7 @@ contains
     ! Exact:     c_function_string_&_cdesc_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1711,7 +1711,7 @@ contains
     function exclass2_get_name_length(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
         SHT_rv = c_exclass2_get_name_length(obj%cxxmem)
@@ -1734,9 +1734,9 @@ contains
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        class(exclass2) :: obj
-        type(exclass1), intent(IN) :: in
-        type(exclass1) :: SHT_rv
+        class(ex_class2) :: obj
+        type(ex_class1), intent(IN) :: in
+        type(ex_class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
         SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
@@ -1761,7 +1761,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_declare_0_int(obj, type)
         use userlibrary_mod, only : type_id
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_int
         call c_exclass2_declare_0(obj%cxxmem, type)
@@ -1785,7 +1785,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_declare_0_long(obj, type)
         use userlibrary_mod, only : type_id
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_long
         call c_exclass2_declare_0(obj%cxxmem, type)
@@ -1819,7 +1819,7 @@ contains
     subroutine exclass2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT
         use userlibrary_mod, only : sidre_length, type_id
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_int
@@ -1854,7 +1854,7 @@ contains
     subroutine exclass2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_LONG
         use userlibrary_mod, only : sidre_length, type_id
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         integer(C_LONG), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_long
@@ -1869,7 +1869,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
     subroutine exclass2_destroyall(obj)
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.destroyall
         call c_exclass2_destroyall(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.destroyall
@@ -1886,7 +1886,7 @@ contains
     function exclass2_get_type_id(obj) &
             result(SHT_rv)
         use userlibrary_mod, only : type_id
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(type_id) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
         SHT_rv = c_exclass2_get_type_id(obj%cxxmem)
@@ -1910,7 +1910,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(C_INT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
         call c_exclass2_set_value_int(obj%cxxmem, value)
@@ -1934,7 +1934,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(C_LONG), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
         call c_exclass2_set_value_long(obj%cxxmem, value)
@@ -1958,7 +1958,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         real(C_FLOAT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
         call c_exclass2_set_value_float(obj%cxxmem, value)
@@ -1982,7 +1982,7 @@ contains
     ! Match:     c_default
     subroutine exclass2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         real(C_DOUBLE), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
         call c_exclass2_set_value_double(obj%cxxmem, value)
@@ -2001,7 +2001,7 @@ contains
     function exclass2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
         SHT_rv = c_exclass2_get_value_int(obj%cxxmem)
@@ -2020,7 +2020,7 @@ contains
     function exclass2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        class(exclass2) :: obj
+        class(ex_class2) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
         SHT_rv = c_exclass2_get_value_double(obj%cxxmem)
@@ -2030,14 +2030,14 @@ contains
     ! Return pointer to C++ memory.
     function exclass2_yadda(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(exclass2), intent(IN) :: obj
+        class(ex_class2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function exclass2_yadda
 
     function exclass2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(exclass2), intent(IN) :: obj
+        class(ex_class2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass2_associated
@@ -2539,7 +2539,7 @@ contains
 
     function exclass1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(exclass1), intent(IN) ::a,b
+        type(ex_class1), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -2550,7 +2550,7 @@ contains
 
     function exclass1_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(exclass1), intent(IN) ::a,b
+        type(ex_class1), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -2561,7 +2561,7 @@ contains
 
     function exclass2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(exclass2), intent(IN) ::a,b
+        type(ex_class2), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -2572,7 +2572,7 @@ contains
 
     function exclass2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(exclass2), intent(IN) ::a,b
+        type(ex_class2), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

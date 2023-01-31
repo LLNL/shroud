@@ -15,6 +15,7 @@ cxx_header: arrayclass.hpp
 options:
   debug: True
   wrap_python: True
+  F_API_case: original
 
 declarations:
 ##################################################
