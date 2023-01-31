@@ -1217,7 +1217,7 @@
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_call": "c_sum_values_cfi",
+                    "F_C_call": "c_sum_values_CFI",
                     "F_C_name": "c_sum_values",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -2305,7 +2305,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_assign_values_broadcast_cfi",
+                    "F_C_call": "c_assign_values_broadcast_CFI",
                     "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                     "F_arguments": "from,\t nfrom,\t to,\t nto",
                     "F_name_api": "assign_values",
@@ -2580,7 +2580,7 @@
                     "C_prototype": "const int * from,\t int nfrom,\t CFI_cdesc_t *SHT_to_cfi,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
-                    "F_C_name": "c_assign_values_broadcast_cfi",
+                    "F_C_name": "c_assign_values_broadcast_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
@@ -2704,7 +2704,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_assign_values_copy_cfi",
+                    "F_C_call": "c_assign_values_copy_CFI",
                     "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                     "F_arguments": "from,\t nfrom,\t to,\t nto",
                     "F_name_api": "assign_values",
@@ -2993,7 +2993,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_from_cfi,\t int nfrom,\t CFI_cdesc_t *SHT_to_cfi,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
-                    "F_C_name": "c_assign_values_copy_cfi",
+                    "F_C_name": "c_assign_values_copy_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
@@ -3403,7 +3403,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer_float1d_cfi",
+                    "F_C_call": "c_save_pointer_float1d_CFI",
                     "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_api": "save_pointer",
@@ -3620,7 +3620,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
-                    "F_C_name": "c_save_pointer_float1d_cfi",
+                    "F_C_name": "c_save_pointer_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
@@ -3722,7 +3722,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer_float2d_cfi",
+                    "F_C_call": "c_save_pointer_float2d_CFI",
                     "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_api": "save_pointer",
@@ -3939,7 +3939,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
-                    "F_C_name": "c_save_pointer_float2d_cfi",
+                    "F_C_name": "c_save_pointer_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
@@ -4370,7 +4370,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer2_float1d_cfi",
+                    "F_C_call": "c_save_pointer2_float1d_CFI",
                     "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_api": "save_pointer2",
@@ -4597,7 +4597,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
-                    "F_C_name": "c_save_pointer2_float1d_cfi",
+                    "F_C_name": "c_save_pointer2_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
@@ -4709,7 +4709,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer2_float2d_cfi",
+                    "F_C_call": "c_save_pointer2_float2d_CFI",
                     "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_api": "save_pointer2",
@@ -4936,7 +4936,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
-                    "F_C_name": "c_save_pointer2_float2d_cfi",
+                    "F_C_name": "c_save_pointer2_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
@@ -5621,7 +5621,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer_float1d_cfi",
+                    "F_C_call": "c_get_pointer_as_pointer_float1d_CFI",
                     "F_arg_c_call": "addr",
                     "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
@@ -5859,7 +5859,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "addr",
-                    "F_C_name": "c_get_pointer_as_pointer_float1d_cfi",
+                    "F_C_name": "c_get_pointer_as_pointer_float1d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
@@ -5976,7 +5976,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer_float2d_cfi",
+                    "F_C_call": "c_get_pointer_as_pointer_float2d_CFI",
                     "F_arg_c_call": "addr",
                     "F_arguments": "addr",
                     "F_name_api": "get_pointer_as_pointer",
@@ -6214,7 +6214,7 @@
                     "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
                     "C_return_type": "void",
                     "F_C_arguments": "addr",
-                    "F_C_name": "c_get_pointer_as_pointer_float2d_cfi",
+                    "F_C_name": "c_get_pointer_as_pointer_float2d_CFI",
                     "F_C_subprogram": "subroutine",
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",

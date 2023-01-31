@@ -342,7 +342,7 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_assign_values_broadcast_cfi(from, nfrom, to, nto) &
+        subroutine c_assign_values_broadcast_CFI(from, nfrom, to, nto) &
                 bind(C, name="GEN_assign_values_broadcast_CFI")
             use iso_c_binding, only : C_INT
             implicit none
@@ -350,7 +350,7 @@ module generic_mod
             integer(C_INT), value, intent(IN) :: nfrom
             integer(C_INT), intent(INOUT) :: to(:)
             integer(C_INT), value, intent(IN) :: nto
-        end subroutine c_assign_values_broadcast_cfi
+        end subroutine c_assign_values_broadcast_CFI
     end interface
 
     ! ----------------------------------------
@@ -377,7 +377,7 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_assign_values_copy_cfi(from, nfrom, to, nto) &
+        subroutine c_assign_values_copy_CFI(from, nfrom, to, nto) &
                 bind(C, name="GEN_assign_values_copy_CFI")
             use iso_c_binding, only : C_INT
             implicit none
@@ -385,7 +385,7 @@ module generic_mod
             integer(C_INT), value, intent(IN) :: nfrom
             integer(C_INT), intent(INOUT) :: to(:)
             integer(C_INT), value, intent(IN) :: nto
-        end subroutine c_assign_values_copy_cfi
+        end subroutine c_assign_values_copy_CFI
     end interface
 
 #if 1
@@ -442,14 +442,14 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_save_pointer_float1d_cfi(addr, type, size) &
+        subroutine c_save_pointer_float1d_CFI(addr, type, size) &
                 bind(C, name="GEN_save_pointer_float1d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:)
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
-        end subroutine c_save_pointer_float1d_cfi
+        end subroutine c_save_pointer_float1d_CFI
     end interface
 #endif
 
@@ -474,14 +474,14 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_save_pointer_float2d_cfi(addr, type, size) &
+        subroutine c_save_pointer_float2d_CFI(addr, type, size) &
                 bind(C, name="GEN_save_pointer_float2d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:,:)
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
-        end subroutine c_save_pointer_float2d_cfi
+        end subroutine c_save_pointer_float2d_CFI
     end interface
 #endif
 
@@ -536,14 +536,14 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_save_pointer2_float1d_cfi(addr, type, size) &
+        subroutine c_save_pointer2_float1d_CFI(addr, type, size) &
                 bind(C, name="GEN_save_pointer2_float1d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:)
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
-        end subroutine c_save_pointer2_float1d_cfi
+        end subroutine c_save_pointer2_float1d_CFI
     end interface
 
     ! ----------------------------------------
@@ -566,14 +566,14 @@ module generic_mod
     ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
-        subroutine c_save_pointer2_float2d_cfi(addr, type, size) &
+        subroutine c_save_pointer2_float2d_CFI(addr, type, size) &
                 bind(C, name="GEN_save_pointer2_float2d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:,:)
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
-        end subroutine c_save_pointer2_float2d_cfi
+        end subroutine c_save_pointer2_float2d_CFI
     end interface
 
     ! ----------------------------------------
@@ -649,12 +649,12 @@ module generic_mod
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     interface
-        subroutine c_get_pointer_as_pointer_float1d_cfi(addr) &
+        subroutine c_get_pointer_as_pointer_float1d_CFI(addr) &
                 bind(C, name="GEN_get_pointer_as_pointer_float1d_CFI")
             use iso_c_binding, only : C_FLOAT
             implicit none
             real(C_FLOAT), intent(OUT), pointer :: addr(:)
-        end subroutine c_get_pointer_as_pointer_float1d_cfi
+        end subroutine c_get_pointer_as_pointer_float1d_CFI
     end interface
 #endif
 
@@ -669,12 +669,12 @@ module generic_mod
     ! Attrs:     +api(cfi)+deref(pointer)+intent(out)
     ! Exact:     c_out_native_**_cfi_pointer
     interface
-        subroutine c_get_pointer_as_pointer_float2d_cfi(addr) &
+        subroutine c_get_pointer_as_pointer_float2d_CFI(addr) &
                 bind(C, name="GEN_get_pointer_as_pointer_float2d_CFI")
             use iso_c_binding, only : C_FLOAT
             implicit none
             real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
-        end subroutine c_get_pointer_as_pointer_float2d_cfi
+        end subroutine c_get_pointer_as_pointer_float2d_CFI
     end interface
 #endif
 
@@ -1151,7 +1151,7 @@ contains
         integer(C_INT), intent(INOUT) :: to(:)
         integer(C_INT), value, intent(IN) :: nto
         ! splicer begin function.assign_values_broadcast
-        call c_assign_values_broadcast_cfi(from, nfrom, to, nto)
+        call c_assign_values_broadcast_CFI(from, nfrom, to, nto)
         ! splicer end function.assign_values_broadcast
     end subroutine assign_values_broadcast
 
@@ -1203,7 +1203,7 @@ contains
         integer(C_INT), intent(INOUT) :: to(:)
         integer(C_INT), value, intent(IN) :: nto
         ! splicer begin function.assign_values_copy
-        call c_assign_values_copy_cfi(from, nfrom, to, nto)
+        call c_assign_values_copy_CFI(from, nfrom, to, nto)
         ! splicer end function.assign_values_copy
     end subroutine assign_values_copy
 
@@ -1230,7 +1230,7 @@ contains
         ! splicer begin function.save_pointer_float1d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer_float1d_cfi(addr, SH_type, SH_size)
+        call c_save_pointer_float1d_CFI(addr, SH_type, SH_size)
         ! splicer end function.save_pointer_float1d
     end subroutine save_pointer_float1d
 #endif
@@ -1258,7 +1258,7 @@ contains
         ! splicer begin function.save_pointer_float2d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer_float2d_cfi(addr, SH_type, SH_size)
+        call c_save_pointer_float2d_CFI(addr, SH_type, SH_size)
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
 #endif
@@ -1285,7 +1285,7 @@ contains
         ! splicer begin function.save_pointer2_float1d
         SH_type = SH_TYPE_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer2_float1d_cfi(addr, SH_type, SH_size)
+        call c_save_pointer2_float1d_CFI(addr, SH_type, SH_size)
         ! splicer end function.save_pointer2_float1d
     end subroutine save_pointer2_float1d
 
@@ -1311,7 +1311,7 @@ contains
         ! splicer begin function.save_pointer2_float2d
         SH_type = SH_TYPE_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer2_float2d_cfi(addr, SH_type, SH_size)
+        call c_save_pointer2_float2d_CFI(addr, SH_type, SH_size)
         ! splicer end function.save_pointer2_float2d
     end subroutine save_pointer2_float2d
 
@@ -1334,7 +1334,7 @@ contains
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
         ! splicer begin function.get_pointer_as_pointer_float1d
-        call c_get_pointer_as_pointer_float1d_cfi(addr)
+        call c_get_pointer_as_pointer_float1d_CFI(addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -1358,7 +1358,7 @@ contains
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
         ! splicer begin function.get_pointer_as_pointer_float2d
-        call c_get_pointer_as_pointer_float2d_cfi(addr)
+        call c_get_pointer_as_pointer_float2d_CFI(addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

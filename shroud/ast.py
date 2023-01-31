@@ -1569,7 +1569,6 @@ class FunctionNode(AstNode):
         if self.wrap.c:
             self.eval_template("C_name")
             self.eval_template("F_C_name")
-            fmt.F_C_name = fmt.F_C_name.lower()
         if self.wrap.fortran:
             self.eval_template("F_name_impl")
             self.eval_template("F_name_function")

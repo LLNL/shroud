@@ -3801,7 +3801,7 @@
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
-                    "F_C_call": "fortran_bindc1b",
+                    "F_C_call": "Fortran_bindC1b",
                     "F_C_name": "Fortran_bindC1a",
                     "F_C_subprogram": "subroutine",
                     "F_arguments": "",

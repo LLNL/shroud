@@ -367,26 +367,26 @@ module templates_mod
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_use_impl_worker_internal_implworker1() &
+        function c_use_impl_worker_internal_ImplWorker1() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_use_impl_worker_internal_implworker1
+        end function c_use_impl_worker_internal_ImplWorker1
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_use_impl_worker_internal_implworker2() &
+        function c_use_impl_worker_internal_ImplWorker2() &
                 result(SHT_rv) &
                 bind(C, name="TEM_use_impl_worker_internal_ImplWorker2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_use_impl_worker_internal_implworker2
+        end function c_use_impl_worker_internal_ImplWorker2
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -852,7 +852,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.use_impl_worker_internal_ImplWorker1
-        SHT_rv = c_use_impl_worker_internal_implworker1()
+        SHT_rv = c_use_impl_worker_internal_ImplWorker1()
         ! splicer end function.use_impl_worker_internal_ImplWorker1
     end function use_impl_worker_internal_ImplWorker1
 
@@ -874,7 +874,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
         ! splicer begin function.use_impl_worker_internal_ImplWorker2
-        SHT_rv = c_use_impl_worker_internal_implworker2()
+        SHT_rv = c_use_impl_worker_internal_ImplWorker2()
         ! splicer end function.use_impl_worker_internal_ImplWorker2
     end function use_impl_worker_internal_ImplWorker2
 

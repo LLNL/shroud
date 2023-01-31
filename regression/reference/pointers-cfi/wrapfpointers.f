@@ -168,18 +168,18 @@ module pointers_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    ! start c_cos_doubles_cfi
+    ! start c_cos_doubles_CFI
     interface
-        subroutine c_cos_doubles_cfi(in, out, sizein) &
+        subroutine c_cos_doubles_CFI(in, out, sizein) &
                 bind(C, name="POI_cos_doubles_CFI")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(:)
             real(C_DOUBLE), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_cos_doubles_cfi
+        end subroutine c_cos_doubles_CFI
     end interface
-    ! end c_cos_doubles_cfi
+    ! end c_cos_doubles_CFI
 
     ! ----------------------------------------
     ! Function:  void truncate_to_int
@@ -233,18 +233,18 @@ module pointers_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    ! start c_truncate_to_int_cfi
+    ! start c_truncate_to_int_CFI
     interface
-        subroutine c_truncate_to_int_cfi(in, out, sizein) &
+        subroutine c_truncate_to_int_CFI(in, out, sizein) &
                 bind(C, name="POI_truncate_to_int_CFI")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(:)
             integer(C_INT), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_truncate_to_int_cfi
+        end subroutine c_truncate_to_int_CFI
     end interface
-    ! end c_truncate_to_int_cfi
+    ! end c_truncate_to_int_CFI
 
     ! ----------------------------------------
     ! Function:  void get_values
@@ -379,18 +379,18 @@ module pointers_mod
     ! Attrs:     +intent(out)
     ! Requested: c_out_native_*
     ! Match:     c_default
-    ! start c_sum_cfi
+    ! start c_sum_CFI
     interface
-        subroutine c_sum_cfi(len, values, result) &
+        subroutine c_sum_CFI(len, values, result) &
                 bind(C, name="POI_sum_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: len
             integer(C_INT), intent(IN) :: values(:)
             integer(C_INT), intent(OUT) :: result
-        end subroutine c_sum_cfi
+        end subroutine c_sum_CFI
     end interface
-    ! end c_sum_cfi
+    ! end c_sum_CFI
 
     ! ----------------------------------------
     ! Function:  void fillIntArray
@@ -454,17 +454,17 @@ module pointers_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    ! start c_increment_int_array_cfi
+    ! start c_increment_int_array_CFI
     interface
-        subroutine c_increment_int_array_cfi(array, sizein) &
+        subroutine c_increment_int_array_CFI(array, sizein) &
                 bind(C, name="POI_increment_int_array_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: array(:)
             integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_increment_int_array_cfi
+        end subroutine c_increment_int_array_CFI
     end interface
-    ! end c_increment_int_array_cfi
+    ! end c_increment_int_array_CFI
 
     ! ----------------------------------------
     ! Function:  void fill_with_zeros
@@ -507,17 +507,17 @@ module pointers_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    ! start c_fill_with_zeros_cfi
+    ! start c_fill_with_zeros_CFI
     interface
-        subroutine c_fill_with_zeros_cfi(x, x_length) &
+        subroutine c_fill_with_zeros_CFI(x, x_length) &
                 bind(C, name="POI_fill_with_zeros_CFI")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(INOUT) :: x(:)
             integer(C_INT), value, intent(IN) :: x_length
-        end subroutine c_fill_with_zeros_cfi
+        end subroutine c_fill_with_zeros_CFI
     end interface
-    ! end c_fill_with_zeros_cfi
+    ! end c_fill_with_zeros_CFI
 
     ! ----------------------------------------
     ! Function:  int accumulate
@@ -562,9 +562,9 @@ module pointers_mod
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    ! start c_accumulate_cfi
+    ! start c_accumulate_CFI
     interface
-        function c_accumulate_cfi(arr, len) &
+        function c_accumulate_CFI(arr, len) &
                 result(SHT_rv) &
                 bind(C, name="POI_accumulate_CFI")
             use iso_c_binding, only : C_INT, C_SIZE_T
@@ -572,9 +572,9 @@ module pointers_mod
             integer(C_INT), intent(IN) :: arr(:)
             integer(C_SIZE_T), value, intent(IN) :: len
             integer(C_INT) :: SHT_rv
-        end function c_accumulate_cfi
+        end function c_accumulate_CFI
     end interface
-    ! end c_accumulate_cfi
+    ! end c_accumulate_CFI
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
@@ -1264,18 +1264,18 @@ module pointers_mod
     ! Attrs:     +api(cfi)+intent(in)
     ! Requested: c_in_void_**_cfi
     ! Match:     c_in_void_**
-    ! start c_void_ptr_array_cfi
+    ! start c_void_ptr_array_CFI
     interface
-        function c_void_ptr_array_cfi(addr) &
+        function c_void_ptr_array_CFI(addr) &
                 result(SHT_rv) &
                 bind(C, name="POI_void_ptr_array_CFI")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(IN) :: addr(*)
             integer(C_INT) :: SHT_rv
-        end function c_void_ptr_array_cfi
+        end function c_void_ptr_array_CFI
     end interface
-    ! end c_void_ptr_array_cfi
+    ! end c_void_ptr_array_CFI
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
@@ -1298,16 +1298,16 @@ module pointers_mod
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
-    ! start c_return_int_ptr_to_scalar_cfi
+    ! start c_return_int_ptr_to_scalar_CFI
     interface
-        subroutine c_return_int_ptr_to_scalar_cfi(SHT_rv) &
+        subroutine c_return_int_ptr_to_scalar_CFI(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_scalar_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT), pointer :: SHT_rv
-        end subroutine c_return_int_ptr_to_scalar_cfi
+        end subroutine c_return_int_ptr_to_scalar_CFI
     end interface
-    ! end c_return_int_ptr_to_scalar_cfi
+    ! end c_return_int_ptr_to_scalar_CFI
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
@@ -1330,16 +1330,16 @@ module pointers_mod
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
-    ! start c_return_int_ptr_to_fixed_array_cfi
+    ! start c_return_int_ptr_to_fixed_array_CFI
     interface
-        subroutine c_return_int_ptr_to_fixed_array_cfi(SHT_rv) &
+        subroutine c_return_int_ptr_to_fixed_array_CFI(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_array_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT), pointer :: SHT_rv(:)
-        end subroutine c_return_int_ptr_to_fixed_array_cfi
+        end subroutine c_return_int_ptr_to_fixed_array_CFI
     end interface
-    ! end c_return_int_ptr_to_fixed_array_cfi
+    ! end c_return_int_ptr_to_fixed_array_CFI
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
@@ -1362,16 +1362,16 @@ module pointers_mod
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
-    ! start c_return_int_ptr_to_const_scalar_cfi
+    ! start c_return_int_ptr_to_const_scalar_CFI
     interface
-        subroutine c_return_int_ptr_to_const_scalar_cfi(SHT_rv) &
+        subroutine c_return_int_ptr_to_const_scalar_CFI(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_const_scalar_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT), pointer :: SHT_rv
-        end subroutine c_return_int_ptr_to_const_scalar_cfi
+        end subroutine c_return_int_ptr_to_const_scalar_CFI
     end interface
-    ! end c_return_int_ptr_to_const_scalar_cfi
+    ! end c_return_int_ptr_to_const_scalar_CFI
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
@@ -1394,16 +1394,16 @@ module pointers_mod
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +api(cfi)+deref(pointer)+intent(function)
     ! Exact:     c_function_native_*_cfi_pointer
-    ! start c_return_int_ptr_to_fixed_const_array_cfi
+    ! start c_return_int_ptr_to_fixed_const_array_CFI
     interface
-        subroutine c_return_int_ptr_to_fixed_const_array_cfi(SHT_rv) &
+        subroutine c_return_int_ptr_to_fixed_const_array_CFI(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_const_array_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT), pointer :: SHT_rv(:)
-        end subroutine c_return_int_ptr_to_fixed_const_array_cfi
+        end subroutine c_return_int_ptr_to_fixed_const_array_CFI
     end interface
-    ! end c_return_int_ptr_to_fixed_const_array_cfi
+    ! end c_return_int_ptr_to_fixed_const_array_CFI
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
@@ -1520,16 +1520,16 @@ module pointers_mod
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
     ! Attrs:     +api(cfi)+deref(allocatable)+intent(function)
     ! Exact:     c_function_native_*_cfi_allocatable
-    ! start c_return_int_alloc_to_fixed_array_cfi
+    ! start c_return_int_alloc_to_fixed_array_CFI
     interface
-        subroutine c_return_int_alloc_to_fixed_array_cfi(SHT_rv) &
+        subroutine c_return_int_alloc_to_fixed_array_CFI(SHT_rv) &
                 bind(C, name="POI_return_int_alloc_to_fixed_array_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT), allocatable :: SHT_rv(:)
-        end subroutine c_return_int_alloc_to_fixed_array_cfi
+        end subroutine c_return_int_alloc_to_fixed_array_CFI
     end interface
-    ! end c_return_int_alloc_to_fixed_array_cfi
+    ! end c_return_int_alloc_to_fixed_array_CFI
 
     interface
         ! splicer begin additional_interfaces
@@ -1572,7 +1572,7 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.cos_doubles
         SH_sizein = size(in,kind=C_INT)
-        call c_cos_doubles_cfi(in, out, SH_sizein)
+        call c_cos_doubles_CFI(in, out, SH_sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
     ! end cos_doubles
@@ -1612,7 +1612,7 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.truncate_to_int
         SH_sizein = size(in,kind=C_INT)
-        call c_truncate_to_int_cfi(in, out, SH_sizein)
+        call c_truncate_to_int_CFI(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
     ! end truncate_to_int
@@ -1646,7 +1646,7 @@ contains
         integer(C_INT), intent(OUT) :: result
         ! splicer begin function.sum
         SH_len = size(values,kind=C_INT)
-        call c_sum_cfi(SH_len, values, result)
+        call c_sum_CFI(SH_len, values, result)
         ! splicer end function.sum
     end subroutine sum
     ! end sum
@@ -1675,7 +1675,7 @@ contains
         integer(C_INT) :: SH_sizein
         ! splicer begin function.increment_int_array
         SH_sizein = size(array,kind=C_INT)
-        call c_increment_int_array_cfi(array, SH_sizein)
+        call c_increment_int_array_CFI(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
     ! end increment_int_array
@@ -1701,7 +1701,7 @@ contains
         integer(C_INT) :: SH_x_length
         ! splicer begin function.fill_with_zeros
         SH_x_length = size(x,kind=C_INT)
-        call c_fill_with_zeros_cfi(x, SH_x_length)
+        call c_fill_with_zeros_CFI(x, SH_x_length)
         ! splicer end function.fill_with_zeros
     end subroutine fill_with_zeros
     ! end fill_with_zeros
@@ -1731,7 +1731,7 @@ contains
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accumulate
         SH_len = size(arr,kind=C_SIZE_T)
-        SHT_rv = c_accumulate_cfi(arr, SH_len)
+        SHT_rv = c_accumulate_CFI(arr, SH_len)
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
@@ -1890,7 +1890,7 @@ contains
         type(C_PTR), intent(IN) :: addr(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.void_ptr_array
-        SHT_rv = c_void_ptr_array_cfi(addr)
+        SHT_rv = c_void_ptr_array_CFI(addr)
         ! splicer end function.void_ptr_array
     end function void_ptr_array
     ! end void_ptr_array
@@ -1909,7 +1909,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
         nullify(SHT_rv)
-        call c_return_int_ptr_to_scalar_cfi(SHT_rv)
+        call c_return_int_ptr_to_scalar_CFI(SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
@@ -1928,7 +1928,7 @@ contains
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_array
         nullify(SHT_rv)
-        call c_return_int_ptr_to_fixed_array_cfi(SHT_rv)
+        call c_return_int_ptr_to_fixed_array_CFI(SHT_rv)
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array
@@ -1947,7 +1947,7 @@ contains
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
         nullify(SHT_rv)
-        call c_return_int_ptr_to_const_scalar_cfi(SHT_rv)
+        call c_return_int_ptr_to_const_scalar_CFI(SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
     ! end return_int_ptr_to_const_scalar
@@ -1966,7 +1966,7 @@ contains
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_const_array
         nullify(SHT_rv)
-        call c_return_int_ptr_to_fixed_const_array_cfi(SHT_rv)
+        call c_return_int_ptr_to_fixed_const_array_CFI(SHT_rv)
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
@@ -2005,7 +2005,7 @@ contains
         use iso_c_binding, only : C_INT
         integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_int_alloc_to_fixed_array
-        call c_return_int_alloc_to_fixed_array_cfi(SHT_rv)
+        call c_return_int_alloc_to_fixed_array_CFI(SHT_rv)
         ! splicer end function.return_int_alloc_to_fixed_array
     end function return_int_alloc_to_fixed_array
     ! end return_int_alloc_to_fixed_array
