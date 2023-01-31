@@ -364,6 +364,8 @@
                     }
                 ],
                 "name": "user",
+                "name_api": "user_int",
+                "name_instantiation": "user<int>",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "user::",
@@ -393,11 +395,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapuser_int.h",
                     "C_impl_filename": "wrapuser_int.cpp",
-                    "C_name_api": "user",
+                    "C_name_api": "user_int",
                     "C_name_scope": "user_int_",
                     "C_type_name": "TEM_user_int",
                     "F_derived_name": "user_int",
-                    "F_name_api": "user",
+                    "F_name_api": "user_int",
                     "F_name_scope": "user_int_",
                     "PY_PyObject": "PY_user_int",
                     "PY_PyTypeObject": "PY_user_int_Type",
@@ -469,7 +471,7 @@
                             "F_arguments": "",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
-                            "F_name_generic": "structasclass_int",
+                            "F_name_generic": "struct_as_class_int",
                             "F_name_impl": "structasclass_int_ctor",
                             "F_result": "SHT_prv",
                             "F_result_clause": "\fresult(SHT_rv)",
@@ -501,7 +503,7 @@
                                 "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_intent": "OUT",
-                                "f_type": "type(structasclass_int)",
+                                "f_type": "type(struct_as_class_int)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
@@ -978,6 +980,8 @@
                     }
                 ],
                 "name": "structAsClass",
+                "name_api": "structAsClass_int",
+                "name_instantiation": "structAsClass<int>",
                 "options": {
                     "wrap_python": false,
                     "wrap_struct_as": "class"
@@ -1021,11 +1025,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapstructAsClass_int.h",
                     "C_impl_filename": "wrapstructAsClass_int.cpp",
-                    "C_name_api": "structAsClass",
+                    "C_name_api": "structAsClass_int",
                     "C_name_scope": "structAsClass_int_",
                     "C_type_name": "TEM_structAsClass_int",
-                    "F_derived_name": "structasclass_int",
-                    "F_name_api": "struct_as_class",
+                    "F_derived_name": "struct_as_class_int",
+                    "F_name_api": "struct_as_class_int",
                     "F_name_scope": "structasclass_int_",
                     "PY_struct_array_descr_create": "PY_structAsClass_int_create_array_descr",
                     "PY_struct_array_descr_name": "structAsClass_int_dtype",
@@ -1092,7 +1096,7 @@
                             "F_arguments": "",
                             "F_name_api": "ctor",
                             "F_name_function": "ctor",
-                            "F_name_generic": "structasclass_double",
+                            "F_name_generic": "struct_as_class_double",
                             "F_name_impl": "structasclass_double_ctor",
                             "F_result": "SHT_prv",
                             "F_result_clause": "\fresult(SHT_rv)",
@@ -1124,7 +1128,7 @@
                                 "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_intent": "OUT",
-                                "f_type": "type(structasclass_double)",
+                                "f_type": "type(struct_as_class_double)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_ctor_shadow_scalar_capptr",
@@ -1601,6 +1605,8 @@
                     }
                 ],
                 "name": "structAsClass",
+                "name_api": "structAsClass_double",
+                "name_instantiation": "structAsClass<double>",
                 "options": {
                     "wrap_python": false,
                     "wrap_struct_as": "class"
@@ -1644,11 +1650,11 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapstructAsClass_double.h",
                     "C_impl_filename": "wrapstructAsClass_double.cpp",
-                    "C_name_api": "structAsClass",
+                    "C_name_api": "structAsClass_double",
                     "C_name_scope": "structAsClass_double_",
                     "C_type_name": "TEM_structAsClass_double",
-                    "F_derived_name": "structasclass_double",
-                    "F_name_api": "struct_as_class",
+                    "F_derived_name": "struct_as_class_double",
+                    "F_name_api": "struct_as_class_double",
                     "F_name_scope": "structasclass_double_",
                     "PY_struct_array_descr_create": "PY_structAsClass_double_create_array_descr",
                     "PY_struct_array_descr_name": "structAsClass_double_dtype",
@@ -3477,6 +3483,8 @@
                             }
                         ],
                         "name": "vector",
+                        "name_api": "vector_int",
+                        "name_instantiation": "vector<int>",
                         "options": {
                             "optsample": "two"
                         },
@@ -3532,11 +3540,11 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_int.h",
                             "C_impl_filename": "wrapvectorforint.cpp",
-                            "C_name_api": "vector",
+                            "C_name_api": "vector_int",
                             "C_name_scope": "vector_int_",
                             "C_type_name": "TEM_vector_int",
                             "F_derived_name": "vector_int",
-                            "F_name_api": "vector",
+                            "F_name_api": "vector_int",
                             "F_name_scope": "vector_int_",
                             "PY_PyObject": "PY_vector_int",
                             "PY_PyTypeObject": "PY_vector_int_Type",
@@ -4307,6 +4315,8 @@
                             }
                         ],
                         "name": "vector",
+                        "name_api": "vector_double",
+                        "name_instantiation": "vector<double>",
                         "options": {},
                         "parse_keyword": "class",
                         "scope": "std::vector::",
@@ -4360,11 +4370,11 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_double.h",
                             "C_impl_filename": "wrapstd_vector_double.cpp",
-                            "C_name_api": "vector",
+                            "C_name_api": "vector_double",
                             "C_name_scope": "vector_double_",
                             "C_type_name": "TEM_vector_double",
                             "F_derived_name": "vector_double",
-                            "F_name_api": "vector",
+                            "F_name_api": "vector_double",
                             "F_name_scope": "vector_double_",
                             "PY_PyObject": "PY_vector_double",
                             "PY_PyTypeObject": "PY_vector_double_Type",
@@ -4986,17 +4996,17 @@
             "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
             "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-            "f_class": "class(structasclass_double)",
-            "f_derived_type": "structasclass_double",
+            "f_class": "class(struct_as_class_double)",
+            "f_derived_type": "struct_as_class_double",
             "f_module": {
                 "templates_mod": [
-                    "structasclass_double"
+                    "struct_as_class_double"
                 ]
             },
-            "f_module_line": "templates_mod:structasclass_double",
+            "f_module_line": "templates_mod:struct_as_class_double",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(structasclass_double)",
+            "f_type": "type(struct_as_class_double)",
             "flat_name": "structAsClass_double",
             "idtor": "4",
             "impl_header": [
@@ -5023,17 +5033,17 @@
             "f_c_module_line": "--import--:TEM_SHROUD_capsule_data",
             "f_c_type": "type(TEM_SHROUD_capsule_data)",
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
-            "f_class": "class(structasclass_int)",
-            "f_derived_type": "structasclass_int",
+            "f_class": "class(struct_as_class_int)",
+            "f_derived_type": "struct_as_class_int",
             "f_module": {
                 "templates_mod": [
-                    "structasclass_int"
+                    "struct_as_class_int"
                 ]
             },
-            "f_module_line": "templates_mod:structasclass_int",
+            "f_module_line": "templates_mod:struct_as_class_int",
             "f_module_name": "templates_mod",
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(structasclass_int)",
+            "f_type": "type(struct_as_class_int)",
             "flat_name": "structAsClass_int",
             "idtor": "3",
             "impl_header": [

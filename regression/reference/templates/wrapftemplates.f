@@ -52,7 +52,7 @@ module templates_mod
         ! splicer end class.user_int.type_bound_procedure_part
     end type user_int
 
-    type structasclass_int
+    type struct_as_class_int
         type(TEM_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.structAsClass_int.component_part
         ! splicer end class.structAsClass_int.component_part
@@ -66,9 +66,9 @@ module templates_mod
         procedure :: associated => structasclass_int_associated
         ! splicer begin class.structAsClass_int.type_bound_procedure_part
         ! splicer end class.structAsClass_int.type_bound_procedure_part
-    end type structasclass_int
+    end type struct_as_class_int
 
-    type structasclass_double
+    type struct_as_class_double
         type(TEM_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.structAsClass_double.component_part
         ! splicer end class.structAsClass_double.component_part
@@ -82,7 +82,7 @@ module templates_mod
         procedure :: associated => structasclass_double_associated
         ! splicer begin class.structAsClass_double.type_bound_procedure_part
         ! splicer end class.structAsClass_double.type_bound_procedure_part
-    end type structasclass_double
+    end type struct_as_class_double
 
     interface operator (.eq.)
         module procedure worker_eq
@@ -397,13 +397,13 @@ module templates_mod
         module procedure function_tu_1
     end interface function_tu
 
-    interface structasclass_double
+    interface struct_as_class_double
         module procedure structasclass_double_ctor
-    end interface structasclass_double
+    end interface struct_as_class_double
 
-    interface structasclass_int
+    interface struct_as_class_int
         module procedure structasclass_int_ctor
-    end interface structasclass_int
+    end interface struct_as_class_int
 
 contains
 
@@ -501,7 +501,7 @@ contains
     function structasclass_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(structasclass_int) :: SHT_rv
+        type(struct_as_class_int) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin class.structAsClass_int.method.ctor
         SHT_prv = c_structasclass_int_ctor(SHT_rv%cxxmem)
@@ -524,7 +524,7 @@ contains
     ! Match:     c_default
     subroutine structasclass_int_set_npts(obj, n)
         use iso_c_binding, only : C_INT
-        class(structasclass_int) :: obj
+        class(struct_as_class_int) :: obj
         integer(C_INT), value, intent(IN) :: n
         ! splicer begin class.structAsClass_int.method.set_npts
         call c_structasclass_int_set_npts(obj%cxxmem, n)
@@ -542,7 +542,7 @@ contains
     function structasclass_int_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(structasclass_int) :: obj
+        class(struct_as_class_int) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_int.method.get_npts
         SHT_rv = c_structasclass_int_get_npts(obj%cxxmem)
@@ -566,7 +566,7 @@ contains
     ! Match:     c_default
     subroutine structasclass_int_set_value(obj, v)
         use iso_c_binding, only : C_INT
-        class(structasclass_int) :: obj
+        class(struct_as_class_int) :: obj
         integer(C_INT), value, intent(IN) :: v
         ! splicer begin class.structAsClass_int.method.set_value
         call c_structasclass_int_set_value(obj%cxxmem, v)
@@ -585,7 +585,7 @@ contains
     function structasclass_int_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(structasclass_int) :: obj
+        class(struct_as_class_int) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_int.method.get_value
         SHT_rv = c_structasclass_int_get_value(obj%cxxmem)
@@ -595,14 +595,14 @@ contains
     ! Return pointer to C++ memory.
     function structasclass_int_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(structasclass_int), intent(IN) :: obj
+        class(struct_as_class_int), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function structasclass_int_get_instance
 
     subroutine structasclass_int_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(structasclass_int), intent(INOUT) :: obj
+        class(struct_as_class_int), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -610,7 +610,7 @@ contains
 
     function structasclass_int_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(structasclass_int), intent(IN) :: obj
+        class(struct_as_class_int), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function structasclass_int_associated
@@ -627,7 +627,7 @@ contains
     function structasclass_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        type(structasclass_double) :: SHT_rv
+        type(struct_as_class_double) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin class.structAsClass_double.method.ctor
         SHT_prv = c_structasclass_double_ctor(SHT_rv%cxxmem)
@@ -650,7 +650,7 @@ contains
     ! Match:     c_default
     subroutine structasclass_double_set_npts(obj, n)
         use iso_c_binding, only : C_INT
-        class(structasclass_double) :: obj
+        class(struct_as_class_double) :: obj
         integer(C_INT), value, intent(IN) :: n
         ! splicer begin class.structAsClass_double.method.set_npts
         call c_structasclass_double_set_npts(obj%cxxmem, n)
@@ -668,7 +668,7 @@ contains
     function structasclass_double_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(structasclass_double) :: obj
+        class(struct_as_class_double) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_double.method.get_npts
         SHT_rv = c_structasclass_double_get_npts(obj%cxxmem)
@@ -692,7 +692,7 @@ contains
     ! Match:     c_default
     subroutine structasclass_double_set_value(obj, v)
         use iso_c_binding, only : C_DOUBLE
-        class(structasclass_double) :: obj
+        class(struct_as_class_double) :: obj
         real(C_DOUBLE), value, intent(IN) :: v
         ! splicer begin class.structAsClass_double.method.set_value
         call c_structasclass_double_set_value(obj%cxxmem, v)
@@ -711,7 +711,7 @@ contains
     function structasclass_double_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        class(structasclass_double) :: obj
+        class(struct_as_class_double) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin class.structAsClass_double.method.get_value
         SHT_rv = c_structasclass_double_get_value(obj%cxxmem)
@@ -721,14 +721,14 @@ contains
     ! Return pointer to C++ memory.
     function structasclass_double_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(structasclass_double), intent(IN) :: obj
+        class(struct_as_class_double), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function structasclass_double_get_instance
 
     subroutine structasclass_double_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(structasclass_double), intent(INOUT) :: obj
+        class(struct_as_class_double), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -736,7 +736,7 @@ contains
 
     function structasclass_double_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(structasclass_double), intent(IN) :: obj
+        class(struct_as_class_double), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function structasclass_double_associated
@@ -927,7 +927,7 @@ contains
 
     function structasclass_int_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass_int), intent(IN) ::a,b
+        type(struct_as_class_int), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -938,7 +938,7 @@ contains
 
     function structasclass_int_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass_int), intent(IN) ::a,b
+        type(struct_as_class_int), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -949,7 +949,7 @@ contains
 
     function structasclass_double_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass_double), intent(IN) ::a,b
+        type(struct_as_class_double), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -960,7 +960,7 @@ contains
 
     function structasclass_double_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(structasclass_double), intent(IN) ::a,b
+        type(struct_as_class_double), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

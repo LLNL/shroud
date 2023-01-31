@@ -306,6 +306,8 @@ class ToDict(visitor.Visitor):
         add_non_none_fields(node, d, ["linenumber"])
         add_true_fields(
             node, d, [
+                "name_api",
+                "name_instantiation",
                 "python",
                 "scope",
                 "template_parameters",

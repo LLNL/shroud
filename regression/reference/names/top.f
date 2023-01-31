@@ -44,7 +44,7 @@ module top_module
         ! splicer end class.Names2.type_bound_procedure_part
     end type names2
 
-    type twots_0
+    type two_ts_0
         type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_0.component_part
         ! splicer end class.twoTs_0.component_part
@@ -54,9 +54,9 @@ module top_module
         procedure :: associated => twots_0_associated
         ! splicer begin class.twoTs_0.type_bound_procedure_part
         ! splicer end class.twoTs_0.type_bound_procedure_part
-    end type twots_0
+    end type two_ts_0
 
-    type twots_instantiation4
+    type two_ts_instantiation4
         type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
@@ -66,7 +66,7 @@ module top_module
         procedure :: associated_instantiation4 => twots_instantiation4_associated_instantiation4
         ! splicer begin class.twoTs_instantiation4.type_bound_procedure_part
         ! splicer end class.twoTs_instantiation4.type_bound_procedure_part
-    end type twots_instantiation4
+    end type two_ts_instantiation4
 
     type Fstruct_as_class
         type(TES_SHROUD_capsule_data) :: cxxmem
@@ -503,14 +503,14 @@ contains
     ! Return pointer to C++ memory.
     function twots_0_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(twots_0), intent(IN) :: obj
+        class(two_ts_0), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function twots_0_get_instance
 
     subroutine twots_0_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(twots_0), intent(INOUT) :: obj
+        class(two_ts_0), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -518,7 +518,7 @@ contains
 
     function twots_0_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(twots_0), intent(IN) :: obj
+        class(two_ts_0), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function twots_0_associated
@@ -529,14 +529,14 @@ contains
     ! Return pointer to C++ memory.
     function twots_instantiation4_get_instance_instantiation4(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(twots_instantiation4), intent(IN) :: obj
+        class(two_ts_instantiation4), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
     end function twots_instantiation4_get_instance_instantiation4
 
     subroutine twots_instantiation4_set_instance_instantiation4(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(twots_instantiation4), intent(INOUT) :: obj
+        class(two_ts_instantiation4), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
@@ -544,7 +544,7 @@ contains
 
     function twots_instantiation4_associated_instantiation4(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(twots_instantiation4), intent(IN) :: obj
+        class(two_ts_instantiation4), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function twots_instantiation4_associated_instantiation4
@@ -934,7 +934,7 @@ contains
 
     function twots_0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_0), intent(IN) ::a,b
+        type(two_ts_0), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -945,7 +945,7 @@ contains
 
     function twots_0_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_0), intent(IN) ::a,b
+        type(two_ts_0), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -956,7 +956,7 @@ contains
 
     function twots_instantiation4_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_instantiation4), intent(IN) ::a,b
+        type(two_ts_instantiation4), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
@@ -967,7 +967,7 @@ contains
 
     function twots_instantiation4_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_instantiation4), intent(IN) ::a,b
+        type(two_ts_instantiation4), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.

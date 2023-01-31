@@ -972,22 +972,24 @@ class GenFunctions(object):
                         # Check if user has changed cxx_class.
                         cxx_class = targs.fmtdict["cxx_class"]
 
+                    newcls.name_api = cxx_class           # ex. name_int
+                    newcls.name_instantiation = cxx_type  # ex. name<int>
+
                     newcls.scope_file[-1] += class_suffix
                     # Update default values to format dictionary.
+#TODO                    newcls.default_format()
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
                             cxx_class=cxx_class,
+                            C_name_api=newcls.apply_C_API_option(cxx_class),
+                            F_name_api=newcls.apply_F_API_option(cxx_class),
                             class_scope=cxx_type + "::",
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
-                            F_derived_name=cxx_class.lower(),
                             file_scope="_".join(newcls.scope_file[1:]),
                         )
                     )
-                    # Add user specified values to format dictionary.
-                    if targs.fmtdict:
-                        newcls.fmtdict.update(targs.fmtdict)
 
                     # Remove defaulted attributes, load files from fmtdict, recompute defaults
                     newcls.delete_format_templates()
