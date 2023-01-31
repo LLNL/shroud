@@ -546,14 +546,14 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Fortran's names for C functions
             F_API_case="underscore",
             F_C_name_template=(
-                "{F_C_prefix}{F_name_scope}{F_api_name}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template="{F_name_scope}{enum_member_lower}",
             F_name_impl_template=(
-                "{F_name_scope}{F_api_name}{function_suffix}{template_suffix}"
+                "{F_name_scope}{F_name_api}{function_suffix}{template_suffix}"
             ),
-            F_name_function_template="{F_api_name}{function_suffix}{template_suffix}",
-            F_name_generic_template="{F_api_name}",
+            F_name_function_template="{F_name_api}{function_suffix}{template_suffix}",
+            F_name_generic_template="{F_name_api}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -561,10 +561,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_array_type_template="{C_prefix}SHROUD_array",
             F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
-            F_abstract_interface_subprogram_template="{F_api_name}_{argname}",
+            F_abstract_interface_subprogram_template="{F_name_api}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
-            F_derived_name_template="{F_api_name}",
-            F_typedef_name_template="{F_name_scope}{F_api_name}",
+            F_derived_name_template="{F_name_api}",
+            F_typedef_name_template="{F_name_scope}{F_name_api}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
@@ -1207,7 +1207,7 @@ class ClassNode(AstNode, NamespaceMixin):
             underscore_name = util.un_camel(self.name),
             upper_name = self.name.upper(),
             lower_name = self.name.lower(),
-            F_api_name = self.apply_F_API_option(self.name),
+            F_name_api = self.apply_F_API_option(self.name),
 
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
@@ -1557,7 +1557,7 @@ class FunctionNode(AstNode):
         fmt_func.update(dict(
             function_name=self.name,
             underscore_name=util.un_camel(self.name),
-            F_api_name=self.apply_F_API_option(self.name),
+            F_name_api=self.apply_F_API_option(self.name),
         ))
 
         if fmtdict:
@@ -1787,7 +1787,7 @@ class TypedefNode(AstNode):
             cxx_type=self.name,
             typedef_name=self.name,
             underscore_name = util.un_camel(self.name),
-            F_api_name = self.apply_F_API_option(self.name),
+            F_name_api = self.apply_F_API_option(self.name),
         )
 
     def update_names(self):

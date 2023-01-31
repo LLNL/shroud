@@ -135,7 +135,7 @@
                             }
                         },
                         "zz_fmtdict": {
-                            "F_api_name": "arrays1_ctor",
+                            "F_name_api": "arrays1_ctor",
                             "PY_name_impl": "PY_Arrays1_tp_init",
                             "PY_type_impl": "PY_Arrays1_tp_init",
                             "PY_type_method": "tp_init",
@@ -261,8 +261,8 @@
                     "C_impl_filename": "wrapArrays1.c",
                     "C_name_scope": "Arrays1_",
                     "C_type_name": "Arrays1",
-                    "F_api_name": "arrays1",
                     "F_derived_name": "arrays1",
+                    "F_name_api": "arrays1",
                     "F_name_scope": "arrays1_",
                     "PY_PyObject": "PY_Arrays1",
                     "PY_PyTypeObject": "PY_Arrays1_Type",

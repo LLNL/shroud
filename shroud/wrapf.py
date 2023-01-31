@@ -494,7 +494,7 @@ class Wrapf(util.WrapperMixin):
 
         # getter
         if fmt.F_name_instance_get:
-            fmt.F_api_name = fmt_class.F_name_instance_get
+            fmt.F_name_api = fmt_class.F_name_instance_get
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -517,7 +517,7 @@ cxxptr = {F_this}%{F_derived_member}%addr
 
         # setter
         if fmt_class.F_name_instance_set:
-            fmt.F_api_name = fmt_class.F_name_instance_set
+            fmt.F_name_api = fmt_class.F_name_instance_set
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -541,7 +541,7 @@ type(C_PTR), intent(IN) :: {F_derived_member}
 
         # associated
         if fmt_class.F_name_associated:
-            fmt.F_api_name = fmt_class.F_name_associated
+            fmt.F_name_api = fmt_class.F_name_associated
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
