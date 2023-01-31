@@ -179,7 +179,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int AA_example_nested_ExClass1_increment_count(
+int AA_example_nested_ExClass1_incrementCount(
     AA_example_nested_ExClass1 * self, int incr)
 {
     example::nested::ExClass1 *SH_this =
@@ -195,7 +195,7 @@ int AA_example_nested_ExClass1_increment_count(
 // Attrs:     +deref(allocatable)+intent(function)
 // Requested: c_function_string_&_allocatable
 // Match:     c_function_string_&
-const char * AA_example_nested_ExClass1_get_name_error_check(
+const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const AA_example_nested_ExClass1 * self)
 {
     const example::nested::ExClass1 *SH_this =
@@ -211,7 +211,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Function:  const string & getNameErrorCheck
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_cdesc_allocatable
-void AA_example_nested_ExClass1_get_name_error_check_bufferify(
+void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const AA_example_nested_ExClass1 * self,
     AA_SHROUD_array *SHT_rv_cdesc)
 {
@@ -227,7 +227,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
 // Function:  const string & getNameArg
 // Attrs:     +intent(function)
 // Exact:     c_function_string_&
-const char * AA_example_nested_ExClass1_get_name_arg(
+const char * AA_example_nested_ExClass1_getNameArg(
     const AA_example_nested_ExClass1 * self)
 {
     const example::nested::ExClass1 *SH_this =
@@ -249,7 +249,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 // Attrs:     +api(buf)+deref(result)+intent(out)+is_result
 // Requested: c_function_string_&_buf_result
 // Match:     c_function_string_&_buf
-void AA_example_nested_ExClass1_get_name_arg_bufferify(
+void AA_example_nested_ExClass1_getNameArg_bufferify(
     const AA_example_nested_ExClass1 * self, char *name,
     int SHT_name_len)
 {
@@ -276,7 +276,7 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int AA_example_nested_ExClass1_get_value_from_int(
+int AA_example_nested_ExClass1_getValue_from_int(
     AA_example_nested_ExClass1 * self, int value)
 {
     example::nested::ExClass1 *SH_this =
@@ -297,7 +297,7 @@ int AA_example_nested_ExClass1_get_value_from_int(
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-long AA_example_nested_ExClass1_get_value_1(
+long AA_example_nested_ExClass1_getValue_1(
     AA_example_nested_ExClass1 * self, long value)
 {
     example::nested::ExClass1 *SH_this =
@@ -318,7 +318,7 @@ long AA_example_nested_ExClass1_get_value_1(
 // Attrs:     +intent(in)
 // Requested: c_in_bool_scalar
 // Match:     c_default
-bool AA_example_nested_ExClass1_has_addr(
+bool AA_example_nested_ExClass1_hasAddr(
     AA_example_nested_ExClass1 * self, bool in)
 {
     example::nested::ExClass1 *SH_this =
@@ -333,7 +333,7 @@ bool AA_example_nested_ExClass1_has_addr(
 // Function:  void SplicerSpecial
 // Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
-void AA_example_nested_ExClass1_splicer_special(
+void AA_example_nested_ExClass1_SplicerSpecial(
     AA_example_nested_ExClass1 * self)
 {
     example::nested::ExClass1 *SH_this =

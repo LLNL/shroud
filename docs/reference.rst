@@ -223,7 +223,7 @@ Options
 
 C_API_case
    Control case of *C_name_scope*.
-   Possible values are 'lower' or 'upper'.
+   Possible values are *lower*, *upper*, *underscore*.
    Any other value will preserve the case of the identifier.
 
 C_extern_C
@@ -559,7 +559,7 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}``
 
 C_typedef_name_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
@@ -834,6 +834,11 @@ C_local
 
 C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
+
+C_name_api
+    Root name that is used to create various names in the C API.
+    Controlled by the **C_API_case** option with values
+    *lower*, *upper*, *underscore*.
 
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.

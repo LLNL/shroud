@@ -52,6 +52,7 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wraparray_info.h",
                     "C_impl_filename": "wraparray_info.c",
+                    "C_name_api": "array_info",
                     "C_name_scope": "array_info_",
                     "C_type_name": "array_info",
                     "F_derived_name": "array_info",
@@ -112,6 +113,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "NoReturnNoArguments",
+                    "C_name_api": "NoReturnNoArguments",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -303,6 +305,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByValue",
+                    "C_name_api": "PassByValue",
                     "C_prototype": "double arg1,\t int arg2",
                     "C_return_type": "double",
                     "F_C_arguments": "arg1,\t arg2",
@@ -555,6 +558,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByReference",
+                    "C_name_api": "PassByReference",
                     "C_prototype": "double * arg1,\t int * arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -681,7 +685,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg2",
-                    "C_name": "CLI_pass_by_value_macro",
+                    "C_name": "CLI_PassByValueMacro",
+                    "C_name_api": "PassByValueMacro",
                     "C_prototype": "int arg2",
                     "C_return_type": "double",
                     "F_C_arguments": "arg2",
@@ -1011,6 +1016,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2,\t arg3",
                     "C_name": "checkBool",
+                    "C_name_api": "checkBool",
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2,\t arg3",
@@ -1215,6 +1221,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function4a",
+                    "C_name_api": "Function4a",
                     "C_prototype": "const char * arg1,\t const char * arg2",
                     "C_return_type": "char *",
                     "F_C_arguments": "arg1,\t arg2",
@@ -1426,7 +1433,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "CLI_function4a_bufferify",
+                    "C_name": "CLI_Function4a_bufferify",
+                    "C_name_api": "Function4a",
                     "C_prototype": "const char * arg1,\t const char * arg2,\t char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2,\t SHT_rv,\t SHT_rv_len",
@@ -1571,6 +1579,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "name",
                     "C_name": "acceptName",
+                    "C_name_api": "acceptName",
                     "C_prototype": "const char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
@@ -1702,6 +1711,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "s",
                     "C_name": "passCharPtrInOut",
+                    "C_name_api": "passCharPtrInOut",
                     "C_prototype": "char * s",
                     "C_return_type": "void",
                     "F_C_arguments": "s",
@@ -1817,7 +1827,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
-                    "C_name": "CLI_pass_char_ptr_in_out_bufferify",
+                    "C_name": "CLI_passCharPtrInOut_bufferify",
+                    "C_name_api": "passCharPtrInOut",
                     "C_prototype": "char *s,\t int SHT_s_len",
                     "C_return_type": "void",
                     "F_C_arguments": "s,\t SHT_s_len",
@@ -1944,6 +1955,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "name1",
                     "C_name": "returnOneName",
+                    "C_name_api": "returnOneName",
                     "C_prototype": "char * name1",
                     "C_return_type": "void",
                     "F_C_arguments": "name1",
@@ -2062,7 +2074,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name1",
-                    "C_name": "CLI_return_one_name_bufferify",
+                    "C_name": "CLI_returnOneName_bufferify",
+                    "C_name_api": "returnOneName",
                     "C_prototype": "char *name1,\t int SHT_name1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name1,\t SHT_name1_len",
@@ -2259,6 +2272,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "name1,\t name2",
                     "C_name": "returnTwoNames",
+                    "C_name_api": "returnTwoNames",
                     "C_prototype": "char * name1,\t char * name2",
                     "C_return_type": "void",
                     "F_C_arguments": "name1,\t name2",
@@ -2433,7 +2447,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name1,\t name2",
-                    "C_name": "CLI_return_two_names_bufferify",
+                    "C_name": "CLI_returnTwoNames_bufferify",
+                    "C_name_api": "returnTwoNames",
                     "C_prototype": "char *name1,\t int SHT_name1_len,\t char *name2,\t int SHT_name2_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name1,\t SHT_name1_len,\t name2,\t SHT_name2_len",
@@ -2623,6 +2638,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "text,\t ltext",
                     "C_name": "ImpliedTextLen",
+                    "C_name_api": "ImpliedTextLen",
                     "C_prototype": "char * text,\t int ltext",
                     "C_return_type": "void",
                     "F_C_arguments": "text,\t ltext",
@@ -2787,7 +2803,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "text,\t ltext",
-                    "C_name": "CLI_implied_text_len_bufferify",
+                    "C_name": "CLI_ImpliedTextLen_bufferify",
+                    "C_name_api": "ImpliedTextLen",
                     "C_prototype": "char *text,\t int SHT_text_len,\t int ltext",
                     "C_return_type": "void",
                     "F_C_arguments": "text,\t SHT_text_len,\t ltext",
@@ -3039,6 +3056,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLen",
+                    "C_name_api": "ImpliedLen",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_type": "int",
                     "F_C_arguments": "text,\t ltext,\t flag",
@@ -3347,6 +3365,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLenTrim",
+                    "C_name_api": "ImpliedLenTrim",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_type": "int",
                     "F_C_arguments": "text,\t ltext,\t flag",
@@ -3518,6 +3537,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "ImpliedBoolTrue",
+                    "C_name_api": "ImpliedBoolTrue",
                     "C_prototype": "bool flag",
                     "C_return_type": "bool",
                     "F_C_arguments": "flag",
@@ -3690,6 +3710,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "ImpliedBoolFalse",
+                    "C_name_api": "ImpliedBoolFalse",
                     "C_prototype": "bool flag",
                     "C_return_type": "bool",
                     "F_C_arguments": "flag",
@@ -3798,6 +3819,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "bindC1",
+                    "C_name_api": "bindC1",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -3911,6 +3933,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "outbuf",
                     "C_name": "bindC2",
+                    "C_name_api": "bindC2",
                     "C_prototype": "char * outbuf",
                     "C_return_type": "void",
                     "F_C_arguments": "outbuf",
@@ -4030,7 +4053,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "outbuf",
-                    "C_name": "CLI_bind_c2_bufferify",
+                    "C_name": "CLI_bindC2_bufferify",
+                    "C_name_api": "bindC2",
                     "C_prototype": "char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "void",
                     "F_C_arguments": "outbuf,\t SHT_outbuf_len",
@@ -4193,6 +4217,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "in,\t out",
                     "C_name": "passVoidStarStar",
+                    "C_name_api": "passVoidStarStar",
                     "C_prototype": "void * in,\t void **out",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out",
@@ -4301,6 +4326,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "passAssumedType",
+                    "C_name_api": "passAssumedType",
                     "C_prototype": "void * arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
@@ -4444,6 +4470,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "passAssumedTypeDim",
+                    "C_name_api": "passAssumedTypeDim",
                     "C_prototype": "void * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -4604,6 +4631,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "passAssumedTypeBuf",
+                    "C_name_api": "passAssumedTypeBuf",
                     "C_prototype": "void * arg,\t char * outbuf",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t outbuf",
@@ -4800,7 +4828,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg,\t outbuf",
-                    "C_name": "CLI_pass_assumed_type_buf_bufferify",
+                    "C_name": "CLI_passAssumedTypeBuf_bufferify",
+                    "C_name_api": "passAssumedTypeBuf",
                     "C_prototype": "void * arg,\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg,\t outbuf,\t SHT_outbuf_len",
@@ -4983,6 +5012,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t incr",
                     "C_name": "callback1",
+                    "C_name_api": "callback1",
                     "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t incr",
@@ -5148,6 +5178,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t incr",
                     "C_name": "CLI_callback1a",
+                    "C_name_api": "callback1a",
                     "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t incr",
@@ -5374,6 +5405,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t in,\t incr",
                     "C_name": "callback2",
+                    "C_name_api": "callback2",
                     "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t in,\t incr",
@@ -5654,6 +5686,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "callback3",
+                    "C_name_api": "callback3",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t in,\t incr,\t outbuf",
@@ -5940,6 +5973,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "CLI_callback3_bufferify",
+                    "C_name_api": "callback3",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char *outbuf,\t int SHT_outbuf_len",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t in,\t incr,\t outbuf,\t SHT_outbuf_len",
@@ -6186,6 +6220,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "tc,\t arr,\t alloc",
                     "C_name": "callback_set_alloc",
+                    "C_name_api": "callback_set_alloc",
                     "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
                     "C_return_type": "void",
                     "F_C_arguments": "tc,\t arr,\t alloc",
@@ -6242,6 +6277,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "TypeID",
                     "C_typedef_name": "CLI_TypeID",
                     "F_name_api": "type_id",
                     "F_typedef_name": "type_id",
@@ -6283,6 +6319,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "EnumTypeID",
                     "C_typedef_name": "CLI_EnumTypeID",
                     "F_name_api": "enum_type_id",
                     "F_typedef_name": "enum_type_id",

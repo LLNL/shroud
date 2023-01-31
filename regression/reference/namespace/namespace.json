@@ -54,7 +54,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_last_function_called",
+                    "C_name": "NS_LastFunctionCalled",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -166,7 +167,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_last_function_called_bufferify",
+                    "C_name": "NS_LastFunctionCalled_bufferify",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -235,7 +237,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "NS_one",
+                    "C_name": "NS_One",
+                    "C_name_api": "One",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -458,6 +461,7 @@
                                     }
                                 },
                                 "zz_fmtdict": {
+                                    "C_name_api": "Cstruct1_ctor",
                                     "F_name_api": "cstruct1_ctor",
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",
@@ -569,6 +573,7 @@
                         "zz_fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
                             "C_impl_filename": "wrapouter_Cstruct1.cpp",
+                            "C_name_api": "Cstruct1",
                             "C_name_scope": "outer_Cstruct1_",
                             "C_type_name": "NS_cstruct1",
                             "F_derived_name": "cstruct1",
@@ -623,7 +628,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "NS_outer_one",
+                            "C_name": "NS_outer_One",
+                            "C_name_api": "One",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -696,6 +702,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapnswork_ClassWork.h",
                             "C_impl_filename": "wrapnswork_ClassWork.cpp",
+                            "C_name_api": "ClassWork",
                             "C_name_scope": "nswork_ClassWork_",
                             "C_type_name": "NS_nswork_ClassWork",
                             "F_derived_name": "class_work",

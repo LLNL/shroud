@@ -28,7 +28,7 @@ extern "C" {
 // Attrs:     +intent(in)+struct(ns2_DataPointer)
 // Requested: c_in_struct_*
 // Match:     c_in_struct
-void SCO_ns2_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
+void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin namespace.ns2.function.data_pointer_get_items_bufferify
@@ -59,8 +59,7 @@ void SCO_ns2_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
 // Argument:  int * val +intent(in)+rank(1)
 // Attrs:     +intent(setter)
 // Exact:     c_setter_native_*
-void SCO_ns2_data_pointer_set_items(SCO_datapointer * SH_this,
-    int * val)
+void SCO_ns2_DataPointer_set_items(SCO_datapointer * SH_this, int * val)
 {
     // splicer begin namespace.ns2.function.data_pointer_set_items
     ns2::DataPointer * SHCXX_SH_this = static_cast<ns2::DataPointer *>

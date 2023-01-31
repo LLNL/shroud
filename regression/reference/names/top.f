@@ -160,7 +160,7 @@ module top_module
         ! Requested: c_inout_char_*
         ! Match:     c_default
         subroutine c_get_name(name) &
-                bind(C, name="TES_get_name")
+                bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -176,7 +176,7 @@ module top_module
         ! Attrs:     +api(buf)+intent(inout)
         ! Exact:     c_inout_char_*_buf
         subroutine c_get_name_bufferify(name, SHT_name_len) &
-                bind(C, name="TES_get_name_bufferify")
+                bind(C, name="TES_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -299,7 +299,7 @@ module top_module
         ! Requested: c_out_native_*
         ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
-                bind(C, name="TES_test_multiline_splicer")
+                bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -322,7 +322,7 @@ module top_module
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, &
                 SHT_name_len, value) &
-                bind(C, name="TES_test_multiline_splicer_bufferify")
+                bind(C, name="TES_TestMultilineSplicer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: name(*)
@@ -369,7 +369,7 @@ module top_module
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_function_tu_instantiation2(arg1, arg2) &
-                bind(C, name="TES_function_tu_instantiation2")
+                bind(C, name="TES_FunctionTU_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
             implicit none
             real(C_FLOAT), value, intent(IN) :: arg1
@@ -383,7 +383,7 @@ module top_module
         ! Match:     c_function
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
-                bind(C, name="TES_use_impl_worker_instantiation3")
+                bind(C, name="TES_UseImplWorker_instantiation3")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -400,7 +400,7 @@ module top_module
         ! Exact:     c_in_shadow_*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
-                bind(C, name="TES_cstruct_as_class_sum")
+                bind(C, name="TES_Cstruct_as_class_sum")
             use iso_c_binding, only : C_INT
             import :: TES_SHROUD_capsule_data
             implicit none

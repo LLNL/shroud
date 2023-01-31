@@ -28,50 +28,49 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int * OWN_return_int_ptr_raw(void);
+int * OWN_ReturnIntPtrRaw(void);
 
-int OWN_return_int_ptr_scalar(void);
+int OWN_ReturnIntPtrScalar(void);
 
-int * OWN_return_int_ptr_pointer(void);
+int * OWN_ReturnIntPtrPointer(void);
 
-int * OWN_return_int_ptr_pointer_bufferify(void);
+int * OWN_ReturnIntPtrPointer_bufferify(void);
 
-int * OWN_return_int_ptr_dim_raw(int * len);
+int * OWN_ReturnIntPtrDimRaw(int * len);
 
-int * OWN_return_int_ptr_dim_pointer(int * len);
+int * OWN_ReturnIntPtrDimPointer(int * len);
 
-void OWN_return_int_ptr_dim_pointer_bufferify(
+void OWN_ReturnIntPtrDimPointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_return_int_ptr_dim_alloc(int * len);
+int * OWN_ReturnIntPtrDimAlloc(int * len);
 
-void OWN_return_int_ptr_dim_alloc_bufferify(
+void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc);
+
+int * OWN_ReturnIntPtrDimDefault(int * len);
+
+void OWN_ReturnIntPtrDimDefault_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_return_int_ptr_dim_default(int * len);
+int * OWN_ReturnIntPtrDimRawNew(int * len);
 
-void OWN_return_int_ptr_dim_default_bufferify(
+int * OWN_ReturnIntPtrDimPointerNew(int * len);
+
+void OWN_ReturnIntPtrDimPointerNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_return_int_ptr_dim_raw_new(int * len);
+int * OWN_ReturnIntPtrDimAllocNew(int * len);
 
-int * OWN_return_int_ptr_dim_pointer_new(int * len);
+int * OWN_ReturnIntPtrDimDefaultNew(int * len);
 
-void OWN_return_int_ptr_dim_pointer_new_bufferify(
+void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_return_int_ptr_dim_alloc_new(int * len);
+void OWN_createClassStatic(int flag);
 
-int * OWN_return_int_ptr_dim_default_new(int * len);
+OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv);
 
-void OWN_return_int_ptr_dim_default_new_bufferify(
-    OWN_SHROUD_array *SHT_rv_cdesc);
-
-void OWN_create_class_static(int flag);
-
-OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHC_rv);
-
-OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHC_rv);
+OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv);
 
 #ifdef __cplusplus
 }

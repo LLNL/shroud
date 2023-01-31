@@ -109,7 +109,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_no_return_no_arguments",
+                    "C_name": "TUT_NoReturnNoArguments",
+                    "C_name_api": "NoReturnNoArguments",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -335,7 +336,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TUT_pass_by_value",
+                    "C_name": "TUT_PassByValue",
+                    "C_name_api": "PassByValue",
                     "C_prototype": "double arg1,\t int arg2",
                     "C_return_type": "double",
                     "F_C_arguments": "arg1,\t arg2",
@@ -566,6 +568,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "ConcatenateStrings",
                     "F_C_call": "c_concatenate_strings_bufferify",
                     "F_arg_c_call": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv_cdesc",
                     "F_arguments": "arg1,\t arg2",
@@ -775,7 +778,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
-                    "C_name": "TUT_concatenate_strings_bufferify",
+                    "C_name": "TUT_ConcatenateStrings_bufferify",
+                    "C_name_api": "ConcatenateStrings",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t char *arg2,\t int SHT_arg2_len,\t TUT_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t arg2,\t SHT_arg2_len,\t SHT_rv",
@@ -855,7 +859,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_use_default_arguments",
+                    "C_name": "TUT_UseDefaultArguments",
+                    "C_name_api": "UseDefaultArguments",
                     "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_arguments": "",
@@ -1000,7 +1005,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
-                    "C_name": "TUT_use_default_arguments_arg1",
+                    "C_name": "TUT_UseDefaultArguments_arg1",
+                    "C_name_api": "UseDefaultArguments",
                     "C_prototype": "double arg1",
                     "C_return_type": "double",
                     "F_C_arguments": "arg1",
@@ -1271,7 +1277,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TUT_use_default_arguments_arg1_arg2",
+                    "C_name": "TUT_UseDefaultArguments_arg1_arg2",
+                    "C_name_api": "UseDefaultArguments",
                     "C_prototype": "double arg1,\t bool arg2",
                     "C_return_type": "double",
                     "F_C_arguments": "arg1,\t arg2",
@@ -1477,7 +1484,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name",
-                    "C_name": "TUT_overloaded_function_from_name",
+                    "C_name": "TUT_OverloadedFunction_from_name",
+                    "C_name_api": "OverloadedFunction",
                     "C_prototype": "const char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
@@ -1600,7 +1608,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name",
-                    "C_name": "TUT_overloaded_function_from_name_bufferify",
+                    "C_name": "TUT_OverloadedFunction_from_name_bufferify",
+                    "C_name_api": "OverloadedFunction",
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
@@ -1732,7 +1741,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "indx",
-                    "C_name": "TUT_overloaded_function_from_index",
+                    "C_name": "TUT_OverloadedFunction_from_index",
+                    "C_name_api": "OverloadedFunction",
                     "C_prototype": "int indx",
                     "C_return_type": "void",
                     "F_C_arguments": "indx",
@@ -1835,6 +1845,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "TemplateArgument",
                     "F_name_api": "template_argument",
                     "function_name": "TemplateArgument",
                     "underscore_name": "template_argument"
@@ -1988,7 +1999,8 @@
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
                     "C_call_list": "arg",
-                    "C_name": "TUT_template_argument_int",
+                    "C_name": "TUT_TemplateArgument_int",
+                    "C_name_api": "TemplateArgument",
                     "C_prototype": "int arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -2172,7 +2184,8 @@
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
                     "C_call_list": "arg",
-                    "C_name": "TUT_template_argument_double",
+                    "C_name": "TUT_TemplateArgument_double",
+                    "C_name_api": "TemplateArgument",
                     "C_prototype": "double arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -2261,6 +2274,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
                     "function_name": "TemplateReturn",
                     "underscore_name": "template_return"
@@ -2330,7 +2344,8 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<int>",
-                    "C_name": "TUT_template_return_int",
+                    "C_name": "TUT_TemplateReturn_int",
+                    "C_name_api": "TemplateReturn",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -2451,7 +2466,8 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<double>",
-                    "C_name": "TUT_template_return_double",
+                    "C_name": "TUT_TemplateReturn_double",
+                    "C_name_api": "TemplateReturn",
                     "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_arguments": "",
@@ -2533,7 +2549,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_fortran_generic_overloaded_0",
+                    "C_name": "TUT_FortranGenericOverloaded_0",
+                    "C_name_api": "FortranGenericOverloaded",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -2841,7 +2858,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
-                    "C_name": "TUT_fortran_generic_overloaded_1",
+                    "C_name": "TUT_FortranGenericOverloaded_1",
+                    "C_name_api": "FortranGenericOverloaded",
                     "C_prototype": "const char * name,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t arg2",
@@ -2933,6 +2951,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "FortranGenericOverloaded",
                     "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
                     "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                     "F_arguments": "name,\t arg2",
@@ -3090,7 +3109,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
-                    "C_name": "TUT_fortran_generic_overloaded_1_float_bufferify",
+                    "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
+                    "C_name_api": "FortranGenericOverloaded",
                     "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t arg2",
@@ -3175,6 +3195,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "FortranGenericOverloaded",
                     "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                     "F_arguments": "name,\t arg2",
@@ -3332,7 +3353,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
-                    "C_name": "TUT_fortran_generic_overloaded_1_double_bufferify",
+                    "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
+                    "C_name_api": "FortranGenericOverloaded",
                     "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t arg2",
@@ -3435,7 +3457,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "num",
-                    "C_name": "TUT_use_default_overload_num",
+                    "C_name": "TUT_UseDefaultOverload_num",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "int num",
                     "C_return_type": "int",
                     "F_C_arguments": "num",
@@ -3628,7 +3651,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "num,\t offset",
-                    "C_name": "TUT_use_default_overload_num_offset",
+                    "C_name": "TUT_UseDefaultOverload_num_offset",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "int num,\t int offset",
                     "C_return_type": "int",
                     "F_C_arguments": "num,\t offset",
@@ -3977,7 +4001,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "num,\t offset,\t stride",
-                    "C_name": "TUT_use_default_overload_num_offset_stride",
+                    "C_name": "TUT_UseDefaultOverload_num_offset_stride",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "int num,\t int offset,\t int stride",
                     "C_return_type": "int",
                     "F_C_arguments": "num,\t offset,\t stride",
@@ -4195,7 +4220,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "type,\t num",
-                    "C_name": "TUT_use_default_overload_3",
+                    "C_name": "TUT_UseDefaultOverload_3",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "double type,\t int num",
                     "C_return_type": "int",
                     "F_C_arguments": "type,\t num",
@@ -4432,7 +4458,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "type,\t num,\t offset",
-                    "C_name": "TUT_use_default_overload_4",
+                    "C_name": "TUT_UseDefaultOverload_4",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "double type,\t int num,\t int offset",
                     "C_return_type": "int",
                     "F_C_arguments": "type,\t num,\t offset",
@@ -4858,7 +4885,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "type,\t num,\t offset,\t stride",
-                    "C_name": "TUT_use_default_overload_5",
+                    "C_name": "TUT_UseDefaultOverload_5",
+                    "C_name_api": "UseDefaultOverload",
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                     "C_return_type": "int",
                     "F_C_arguments": "type,\t num,\t offset,\t stride",
@@ -5057,6 +5085,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TUT_typefunc",
+                    "C_name_api": "typefunc",
                     "C_prototype": "TUT_TypeID arg",
                     "C_return_type": "TUT_TypeID",
                     "F_C_arguments": "arg",
@@ -5260,6 +5289,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
+                    "C_name_api": "enumfunc",
                     "C_prototype": "TUT_EnumTypeID arg",
                     "C_return_type": "TUT_EnumTypeID",
                     "F_C_arguments": "arg",
@@ -5464,6 +5494,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
+                    "C_name_api": "colorfunc",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
@@ -5733,7 +5764,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*min,\t *max",
-                    "C_name": "TUT_get_min_max",
+                    "C_name": "TUT_getMinMax",
+                    "C_name_api": "getMinMax",
                     "C_prototype": "int * min,\t int * max",
                     "C_return_type": "void",
                     "F_C_arguments": "min,\t max",
@@ -5911,6 +5943,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "in,\t incr",
                     "C_name": "TUT_callback1",
+                    "C_name_api": "callback1",
                     "C_prototype": "int in,\t int ( * incr)(\tint)",
                     "C_return_type": "int",
                     "F_C_arguments": "in,\t incr",
@@ -6004,7 +6037,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_last_function_called",
+                    "C_name": "TUT_LastFunctionCalled",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -6129,7 +6163,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TUT_last_function_called_bufferify",
+                    "C_name": "TUT_LastFunctionCalled_bufferify",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -6207,6 +6242,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "TypeID",
                     "C_typedef_name": "TUT_TypeID",
                     "F_name_api": "type_id",
                     "F_typedef_name": "type_id",
@@ -6249,6 +6285,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "EnumTypeID",
                     "C_typedef_name": "TUT_EnumTypeID",
                     "F_name_api": "enum_type_id",
                     "F_typedef_name": "enum_type_id",

@@ -57,7 +57,7 @@ module memdoc_mod
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_alloc")
+                bind(C, name="STR_getConstStringPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -72,7 +72,7 @@ module memdoc_mod
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
+                bind(C, name="STR_getConstStringPtrAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv

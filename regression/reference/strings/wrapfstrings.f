@@ -60,7 +60,7 @@ module strings_mod
     ! Exact:     c_in_char_scalar
     interface
         subroutine pass_char(status) &
-                bind(C, name="STR_pass_char")
+                bind(C, name="STR_passChar")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), value, intent(IN) :: status
@@ -78,7 +78,7 @@ module strings_mod
     ! Exact:     c_in_char_scalar
     interface
         subroutine c_pass_char_force(status) &
-                bind(C, name="STR_pass_char_force")
+                bind(C, name="STR_passCharForce")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), value, intent(IN) :: status
@@ -91,7 +91,7 @@ module strings_mod
     ! Exact:     c_function_char_scalar
     interface
         subroutine c_return_char(SHT_rv) &
-                bind(C, name="STR_return_char")
+                bind(C, name="STR_returnChar")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv
@@ -116,7 +116,7 @@ module strings_mod
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
-                bind(C, name="STR_pass_char_ptr")
+                bind(C, name="STR_passCharPtr")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
@@ -142,7 +142,7 @@ module strings_mod
     ! start c_pass_char_ptr_bufferify
     interface
         subroutine c_pass_char_ptr_bufferify(dest, SHT_dest_len, src) &
-                bind(C, name="STR_pass_char_ptr_bufferify")
+                bind(C, name="STR_passCharPtr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
@@ -164,7 +164,7 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_pass_char_ptr_in_out(s) &
-                bind(C, name="STR_pass_char_ptr_in_out")
+                bind(C, name="STR_passCharPtrInOut")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
@@ -182,7 +182,7 @@ module strings_mod
     ! Exact:     c_inout_char_*_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
-                bind(C, name="STR_pass_char_ptr_in_out_bufferify")
+                bind(C, name="STR_passCharPtrInOut_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
@@ -199,7 +199,7 @@ module strings_mod
     interface
         function c_get_char_ptr1() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char_ptr1")
+                bind(C, name="STR_getCharPtr1")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -215,7 +215,7 @@ module strings_mod
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(SHT_rv) &
-                bind(C, name="STR_get_char_ptr1_bufferify")
+                bind(C, name="STR_getCharPtr1_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -232,7 +232,7 @@ module strings_mod
     interface
         function c_get_char_ptr2() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char_ptr2")
+                bind(C, name="STR_getCharPtr2")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -248,7 +248,7 @@ module strings_mod
     ! start c_get_char_ptr2_bufferify
     interface
         subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="STR_get_char_ptr2_bufferify")
+                bind(C, name="STR_getCharPtr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
@@ -265,7 +265,7 @@ module strings_mod
     interface
         function c_get_char_ptr3() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char_ptr3")
+                bind(C, name="STR_getCharPtr3")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -286,7 +286,7 @@ module strings_mod
     ! start c_get_char_ptr3_bufferify
     interface
         subroutine c_get_char_ptr3_bufferify(output, SHT_output_len) &
-                bind(C, name="STR_get_char_ptr3_bufferify")
+                bind(C, name="STR_getCharPtr3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
@@ -303,7 +303,7 @@ module strings_mod
     interface
         function get_char_ptr4() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char_ptr4")
+                bind(C, name="STR_getCharPtr4")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -319,7 +319,7 @@ module strings_mod
     interface
         function c_get_char_ptr5() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_char_ptr5")
+                bind(C, name="STR_getCharPtr5")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -335,7 +335,7 @@ module strings_mod
     ! Match:     c_function_char_*_cdesc
     interface
         subroutine c_get_char_ptr5_bufferify(SHT_rv) &
-                bind(C, name="STR_get_char_ptr5_bufferify")
+                bind(C, name="STR_getCharPtr5_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -349,7 +349,7 @@ module strings_mod
     ! Exact:     c_function_string_scalar_cdesc_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_result_bufferify")
+                bind(C, name="STR_getConstStringResult_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -363,7 +363,7 @@ module strings_mod
     ! Match:     c_function_string_scalar_buf
     interface
         subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="STR_get_const_string_len_bufferify")
+                bind(C, name="STR_getConstStringLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
@@ -384,7 +384,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, &
                 SHT_output_len) &
-                bind(C, name="STR_get_const_string_as_arg_bufferify")
+                bind(C, name="STR_getConstStringAsArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
@@ -398,7 +398,7 @@ module strings_mod
     ! Exact:     c_function_string_scalar_cdesc_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_alloc_bufferify")
+                bind(C, name="STR_getConstStringAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -414,7 +414,7 @@ module strings_mod
     interface
         function c_get_const_string_ref_pure() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_pure")
+                bind(C, name="STR_getConstStringRefPure")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -429,7 +429,7 @@ module strings_mod
     ! start c_get_const_string_ref_pure_bufferify
     interface
         subroutine c_get_const_string_ref_pure_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_pure_bufferify")
+                bind(C, name="STR_getConstStringRefPure_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -445,7 +445,7 @@ module strings_mod
     interface
         function c_get_const_string_ref_len() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_len")
+                bind(C, name="STR_getConstStringRefLen")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -460,7 +460,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="STR_get_const_string_ref_len_bufferify")
+                bind(C, name="STR_getConstStringRefLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
@@ -475,7 +475,7 @@ module strings_mod
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_as_arg")
+                bind(C, name="STR_getConstStringRefAsArg")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -495,7 +495,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 SHT_output_len) &
-                bind(C, name="STR_get_const_string_ref_as_arg_bufferify")
+                bind(C, name="STR_getConstStringRefAsArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
@@ -511,7 +511,7 @@ module strings_mod
     interface
         function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_len_empty")
+                bind(C, name="STR_getConstStringRefLenEmpty")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -526,7 +526,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="STR_get_const_string_ref_len_empty_bufferify")
+                bind(C, name="STR_getConstStringRefLenEmpty_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
@@ -542,7 +542,7 @@ module strings_mod
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_alloc")
+                bind(C, name="STR_getConstStringRefAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -555,7 +555,7 @@ module strings_mod
     ! Exact:     c_function_string_&_cdesc_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ref_alloc_bufferify")
+                bind(C, name="STR_getConstStringRefAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -570,7 +570,7 @@ module strings_mod
     interface
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_len")
+                bind(C, name="STR_getConstStringPtrLen")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -585,7 +585,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="STR_get_const_string_ptr_len_bufferify")
+                bind(C, name="STR_getConstStringPtrLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
@@ -601,7 +601,7 @@ module strings_mod
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_alloc")
+                bind(C, name="STR_getConstStringPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -614,7 +614,7 @@ module strings_mod
     ! Exact:     c_function_string_*_cdesc_allocatable
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
+                bind(C, name="STR_getConstStringPtrAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -629,7 +629,7 @@ module strings_mod
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_owns_alloc")
+                bind(C, name="STR_getConstStringPtrOwnsAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -642,7 +642,7 @@ module strings_mod
     ! Exact:     c_function_string_*_cdesc_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
+                bind(C, name="STR_getConstStringPtrOwnsAlloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -657,7 +657,7 @@ module strings_mod
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_owns_alloc_pattern")
+                bind(C, name="STR_getConstStringPtrOwnsAllocPattern")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -671,7 +671,7 @@ module strings_mod
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
                 SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_owns_alloc_pattern_bufferify")
+                bind(C, name="STR_getConstStringPtrOwnsAllocPattern_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -687,7 +687,7 @@ module strings_mod
     interface
         function c_get_const_string_ptr_pointer() &
                 result(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_pointer")
+                bind(C, name="STR_getConstStringPtrPointer")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -702,7 +702,7 @@ module strings_mod
     ! Exact:     c_function_string_*_cdesc_pointer
     interface
         subroutine c_get_const_string_ptr_pointer_bufferify(SHT_rv) &
-                bind(C, name="STR_get_const_string_ptr_pointer_bufferify")
+                bind(C, name="STR_getConstStringPtrPointer_bufferify")
             import :: STR_SHROUD_array
             implicit none
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv
@@ -721,7 +721,7 @@ module strings_mod
     ! Exact:     c_in_string_&
     interface
         subroutine c_accept_string_const_reference(arg1) &
-                bind(C, name="STR_accept_string_const_reference")
+                bind(C, name="STR_acceptStringConstReference")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -740,7 +740,7 @@ module strings_mod
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
                 SHT_arg1_len) &
-                bind(C, name="STR_accept_string_const_reference_bufferify")
+                bind(C, name="STR_acceptStringConstReference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -759,7 +759,7 @@ module strings_mod
     ! Exact:     c_out_string_&
     interface
         subroutine c_accept_string_reference_out(arg1) &
-                bind(C, name="STR_accept_string_reference_out")
+                bind(C, name="STR_acceptStringReferenceOut")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -778,7 +778,7 @@ module strings_mod
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, &
                 SHT_arg1_len) &
-                bind(C, name="STR_accept_string_reference_out_bufferify")
+                bind(C, name="STR_acceptStringReferenceOut_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -798,7 +798,7 @@ module strings_mod
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
-                bind(C, name="STR_accept_string_reference")
+                bind(C, name="STR_acceptStringReference")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -819,7 +819,7 @@ module strings_mod
     interface
         subroutine c_accept_string_reference_bufferify(arg1, &
                 SHT_arg1_len) &
-                bind(C, name="STR_accept_string_reference_bufferify")
+                bind(C, name="STR_acceptStringReference_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -839,7 +839,7 @@ module strings_mod
     ! Exact:     c_in_string_*
     interface
         subroutine c_accept_string_pointer_const(arg1) &
-                bind(C, name="STR_accept_string_pointer_const")
+                bind(C, name="STR_acceptStringPointerConst")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -858,7 +858,7 @@ module strings_mod
     interface
         subroutine c_accept_string_pointer_const_bufferify(arg1, &
                 SHT_arg1_len) &
-                bind(C, name="STR_accept_string_pointer_const_bufferify")
+                bind(C, name="STR_acceptStringPointerConst_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -877,7 +877,7 @@ module strings_mod
     ! Exact:     c_inout_string_*
     interface
         subroutine c_accept_string_pointer(arg1) &
-                bind(C, name="STR_accept_string_pointer")
+                bind(C, name="STR_acceptStringPointer")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -895,7 +895,7 @@ module strings_mod
     ! Exact:     c_inout_string_*_buf
     interface
         subroutine c_accept_string_pointer_bufferify(arg1, SHT_arg1_len) &
-                bind(C, name="STR_accept_string_pointer_bufferify")
+                bind(C, name="STR_acceptStringPointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -914,7 +914,7 @@ module strings_mod
     ! Exact:     c_out_string_*
     interface
         subroutine c_fetch_string_pointer(arg1) &
-                bind(C, name="STR_fetch_string_pointer")
+                bind(C, name="STR_fetchStringPointer")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -932,7 +932,7 @@ module strings_mod
     ! Exact:     c_out_string_*_buf
     interface
         subroutine c_fetch_string_pointer_bufferify(arg1, SHT_arg1_len) &
-                bind(C, name="STR_fetch_string_pointer_bufferify")
+                bind(C, name="STR_fetchStringPointer_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -956,7 +956,7 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
-                bind(C, name="STR_accept_string_pointer_len")
+                bind(C, name="STR_acceptStringPointerLen")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -981,7 +981,7 @@ module strings_mod
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
-                bind(C, name="STR_accept_string_pointer_len_bufferify")
+                bind(C, name="STR_acceptStringPointerLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: arg1(*)
@@ -1006,7 +1006,7 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
-                bind(C, name="STR_fetch_string_pointer_len")
+                bind(C, name="STR_fetchStringPointerLen")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -1031,7 +1031,7 @@ module strings_mod
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
-                bind(C, name="STR_fetch_string_pointer_len_bufferify")
+                bind(C, name="STR_fetchStringPointerLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: arg1(*)
@@ -1052,7 +1052,7 @@ module strings_mod
     interface
         function c_accept_string_instance(arg1) &
                 result(SHT_rv) &
-                bind(C, name="STR_accept_string_instance")
+                bind(C, name="STR_acceptStringInstance")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -1072,7 +1072,7 @@ module strings_mod
     interface
         function c_accept_string_instance_bufferify(arg1, SHT_arg1_len) &
                 result(SHT_rv) &
-                bind(C, name="STR_accept_string_instance_bufferify")
+                bind(C, name="STR_acceptStringInstance_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -1162,7 +1162,7 @@ module strings_mod
     ! Exact:     c_function_char_scalar
     interface
         subroutine c_creturn_char(SHT_rv) &
-                bind(C, name="STR_creturn_char")
+                bind(C, name="STR_CreturnChar")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv
@@ -1210,7 +1210,7 @@ module strings_mod
     interface
         subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
                 SHT_src_len) &
-                bind(C, name="STR_cpass_char_ptr_bufferify")
+                bind(C, name="STR_CpassCharPtr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
@@ -1237,7 +1237,7 @@ module strings_mod
     ! Match:     c_default
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
-                bind(C, name="STR_cpass_char_ptr_blank")
+                bind(C, name="STR_CpassCharPtrBlank")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
@@ -1261,7 +1261,7 @@ module strings_mod
     interface
         subroutine c_cpass_char_ptr_blank_bufferify(dest, SHT_dest_len, &
                 src, SHT_src_len) &
-                bind(C, name="STR_cpass_char_ptr_blank_bufferify")
+                bind(C, name="STR_CpassCharPtrBlank_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
@@ -1287,7 +1287,7 @@ module strings_mod
     ! Exact:     c_inout_string_&
     interface
         subroutine c_post_declare(count, name) &
-                bind(C, name="STR_post_declare")
+                bind(C, name="STR_PostDeclare")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), intent(IN) :: count(*)
@@ -1311,7 +1311,7 @@ module strings_mod
     ! Exact:     c_inout_string_&_buf
     interface
         subroutine c_post_declare_bufferify(count, name, SHT_name_len) &
-                bind(C, name="STR_post_declare_bufferify")
+                bind(C, name="STR_PostDeclare_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), intent(IN) :: count(*)
@@ -1333,7 +1333,7 @@ module strings_mod
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
-                bind(C, name="STR_cpass_char_ptr_notrim")
+                bind(C, name="STR_CpassCharPtrNotrim")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: src(*)
@@ -1353,7 +1353,7 @@ module strings_mod
     interface
         function c_cpass_char_ptr_notrim_bufferify(src, SHT_src_len) &
                 result(SHT_rv) &
-                bind(C, name="STR_cpass_char_ptr_notrim_bufferify")
+                bind(C, name="STR_CpassCharPtrNotrim_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: src(*)
@@ -1380,7 +1380,7 @@ module strings_mod
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
-                bind(C, name="STR_cpass_char_ptr_capi")
+                bind(C, name="STR_CpassCharPtrCAPI")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: addr
@@ -1407,7 +1407,7 @@ module strings_mod
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
-                bind(C, name="STR_cpass_char_ptr_capi2")
+                bind(C, name="STR_CpassCharPtrCAPI2")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: in(*)

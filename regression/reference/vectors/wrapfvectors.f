@@ -289,7 +289,7 @@ module vectors_mod
     ! Match:     c_default
     interface
         subroutine c_return_vector_alloc_bufferify(n, SHT_rv) &
-                bind(C, name="VEC_return_vector_alloc_bufferify")
+                bind(C, name="VEC_ReturnVectorAlloc_bufferify")
             use iso_c_binding, only : C_INT
             import :: VEC_SHROUD_array
             implicit none
@@ -316,7 +316,7 @@ module vectors_mod
     interface
         function c_return_dim2(arg, len) &
                 result(SHT_rv) &
-                bind(C, name="VEC_return_dim2")
+                bind(C, name="VEC_returnDim2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg(*)

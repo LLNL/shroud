@@ -26,7 +26,7 @@
             "C_impl_utility_template": "util{library}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}",
             "C_shadow_result": true,
             "C_typedef_name_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_var_capsule_template": "C{c_var}",

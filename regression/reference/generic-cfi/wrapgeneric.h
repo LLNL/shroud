@@ -26,51 +26,49 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int GEN_sum_values_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
+int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
 
-void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
+void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
     int nto);
 
-void GEN_assign_values_broadcast_CFI(const int * from, int nfrom,
+void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto);
 
-void GEN_assign_values_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
+void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto);
 
 #if 1
-void GEN_save_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 #endif
 
 #if 1
-void GEN_save_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 #endif
 
-void GEN_save_pointer2(void * addr, int type, size_t size);
+void GEN_SavePointer2(void * addr, int type, size_t size);
 
-void GEN_save_pointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 
-void GEN_save_pointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
+void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size);
 
 #if 0
-void GEN_get_pointer_as_pointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi);
+void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
 #if 0
-void GEN_get_pointer_as_pointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
+void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 #endif
 
-GEN_StructAsClass * GEN_create_struct_as_class(
-    GEN_StructAsClass * SHC_rv);
+GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv);
 
-long GEN_update_struct_as_class(GEN_StructAsClass * arg, long inew);
+long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew);
 
-long GEN_update_struct_as_class_int(GEN_StructAsClass * arg, int inew);
+long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew);
 
-long GEN_update_struct_as_class_long(GEN_StructAsClass * arg,
-    long inew);
+long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew);
 
 #endif  // WRAPGENERIC_H

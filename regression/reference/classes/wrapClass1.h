@@ -46,27 +46,27 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv);
 
 void CLA_Class1_delete(CLA_Class1 * self);
 
-int CLA_Class1_method1(CLA_Class1 * self);
+int CLA_Class1_Method1(CLA_Class1 * self);
 
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2);
 
-void CLA_Class1_return_this(CLA_Class1 * self);
+void CLA_Class1_returnThis(CLA_Class1 * self);
 
-CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
-    char * name, bool flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
+    bool flag, CLA_Class1 * SHC_rv);
 
-CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
+CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv);
 
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHC_rv);
 
-const char * CLA_Class1_get_name(CLA_Class1 * self);
+const char * CLA_Class1_getName(CLA_Class1 * self);
 
-void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
+void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc);
 
-int CLA_Class1_direction_func(CLA_Class1 * self, int arg);
+int CLA_Class1_directionFunc(CLA_Class1 * self, int arg);
 
 int CLA_Class1_get_m_flag(CLA_Class1 * self);
 

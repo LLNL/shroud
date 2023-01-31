@@ -28,9 +28,9 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-const char * STR_get_const_string_ptr_alloc(void);
+const char * STR_getConstStringPtrAlloc(void);
 
-void STR_get_const_string_ptr_alloc_bufferify(
+void STR_getConstStringPtrAlloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 
 #ifdef __cplusplus

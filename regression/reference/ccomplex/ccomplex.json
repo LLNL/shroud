@@ -98,6 +98,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptFloatComplexInoutPtr",
+                    "C_name_api": "acceptFloatComplexInoutPtr",
                     "C_prototype": "float complex * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -226,6 +227,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexInoutPtr",
+                    "C_name_api": "acceptDoubleComplexInoutPtr",
                     "C_prototype": "double complex * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -357,6 +359,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexOutPtr",
+                    "C_name_api": "acceptDoubleComplexOutPtr",
                     "C_prototype": "double complex * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -499,6 +502,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "acceptDoubleComplexInoutPtrFlag",
                     "F_name_api": "accept_double_complex_inout_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
                     "function_name": "acceptDoubleComplexInoutPtrFlag",
@@ -691,6 +695,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t flag",
                     "C_name": "acceptDoubleComplexOutPtrFlag",
+                    "C_name_api": "acceptDoubleComplexOutPtrFlag",
                     "C_prototype": "double complex * arg1,\t int * flag",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t flag",

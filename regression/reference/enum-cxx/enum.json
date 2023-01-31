@@ -316,6 +316,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_in",
                     "C_name": "ENU_convert_to_int",
+                    "C_name_api": "convert_to_int",
                     "C_prototype": "int in",
                     "C_return_type": "int",
                     "F_C_arguments": "in",

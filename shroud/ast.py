@@ -149,6 +149,8 @@ class AstNode(object):
             return name.lower()
         elif self.options.C_API_case == 'upper':
             return name.upper()
+        elif self.options.C_API_case == 'underscore':
+            return util.un_camel(self.name)
         else:
             return name
 
@@ -530,7 +532,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -1207,6 +1209,7 @@ class ClassNode(AstNode, NamespaceMixin):
             underscore_name = util.un_camel(self.name),
             upper_name = self.name.upper(),
             lower_name = self.name.lower(),
+            C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
 
             class_scope=self.name + "::",
@@ -1557,6 +1560,7 @@ class FunctionNode(AstNode):
         fmt_func.update(dict(
             function_name=self.name,
             underscore_name=util.un_camel(self.name),
+            C_name_api = self.apply_C_API_option(self.name),
             F_name_api=self.apply_F_API_option(self.name),
         ))
 
@@ -1786,6 +1790,7 @@ class TypedefNode(AstNode):
             cxx_type=self.name,
             typedef_name=self.name,
             underscore_name = util.un_camel(self.name),
+            C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
         )
 

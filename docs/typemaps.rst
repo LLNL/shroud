@@ -190,8 +190,8 @@ Name of C++ header file required for implementation.
 .. code-block:: yaml
 
     c_type: size_t
-    c_header: '<stddef.h>',
-    cxx_header: '<cstddef>',
+    c_header: '<stddef.h>'
+    cxx_header: '<cstddef>'
 
 See also *c_header*.
 
@@ -234,7 +234,7 @@ Defaults to *None*.
 
 In this example, the symbol indextype is created by a typedef which
 creates a symbol in Fortran. This symbol, ``indextype``, must be
-``IMPORT``ed into the interface.
+imported into the interface.
 
 .. code-block:: c
 

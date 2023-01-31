@@ -29,6 +29,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapWorker.h",
                     "C_impl_filename": "wrapWorker.cpp",
+                    "C_name_api": "Worker",
                     "C_name_scope": "Worker_",
                     "C_type_name": "TEM_Worker",
                     "F_derived_name": "worker",
@@ -133,6 +134,7 @@
                         ],
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "nested",
                             "F_name_api": "nested",
                             "function_name": "nested",
                             "underscore_name": "nested"
@@ -332,6 +334,7 @@
                             "CXX_template": "<double>",
                             "C_call_list": "arg1,\t arg2",
                             "C_name": "TEM_user_int_nested_double",
+                            "C_name_api": "nested",
                             "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t arg1,\t arg2",
@@ -390,6 +393,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapuser_int.h",
                     "C_impl_filename": "wrapuser_int.cpp",
+                    "C_name_api": "user",
                     "C_name_scope": "user_int_",
                     "C_type_name": "TEM_user_int",
                     "F_derived_name": "user_int",
@@ -453,6 +457,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_int_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "TEM_structAsClass_int * SHC_rv",
                             "C_return_type": "TEM_structAsClass_int *",
                             "F_C_arguments": "SHT_rv",
@@ -586,6 +591,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "n",
                             "C_name": "TEM_structAsClass_int_set_npts",
+                            "C_name_api": "set_npts",
                             "C_prototype": "TEM_structAsClass_int * self,\t int n",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t n",
@@ -638,6 +644,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_int_get_npts",
+                            "C_name_api": "get_npts",
                             "C_prototype": "TEM_structAsClass_int * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -733,6 +740,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value",
                             "underscore_name": "set_value"
@@ -823,6 +831,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "v",
                             "C_name": "TEM_structAsClass_int_set_value",
+                            "C_name_api": "set_value",
                             "C_prototype": "TEM_structAsClass_int * self,\t int v",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t v",
@@ -870,6 +879,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value",
                             "underscore_name": "get_value"
@@ -909,6 +919,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_int_get_value",
+                            "C_name_api": "get_value",
                             "C_prototype": "TEM_structAsClass_int * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -1010,6 +1021,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapstructAsClass_int.h",
                     "C_impl_filename": "wrapstructAsClass_int.cpp",
+                    "C_name_api": "structAsClass",
                     "C_name_scope": "structAsClass_int_",
                     "C_type_name": "TEM_structAsClass_int",
                     "F_derived_name": "structasclass_int",
@@ -1068,6 +1080,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_double_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "TEM_structAsClass_double * SHC_rv",
                             "C_return_type": "TEM_structAsClass_double *",
                             "F_C_arguments": "SHT_rv",
@@ -1201,6 +1214,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "n",
                             "C_name": "TEM_structAsClass_double_set_npts",
+                            "C_name_api": "set_npts",
                             "C_prototype": "TEM_structAsClass_double * self,\t int n",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t n",
@@ -1253,6 +1267,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_double_get_npts",
+                            "C_name_api": "get_npts",
                             "C_prototype": "TEM_structAsClass_double * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -1348,6 +1363,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "set_value",
                             "F_name_api": "set_value",
                             "function_name": "set_value",
                             "underscore_name": "set_value"
@@ -1438,6 +1454,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "v",
                             "C_name": "TEM_structAsClass_double_set_value",
+                            "C_name_api": "set_value",
                             "C_prototype": "TEM_structAsClass_double * self,\t double v",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t v",
@@ -1485,6 +1502,7 @@
                         "options": {},
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "get_value",
                             "F_name_api": "get_value",
                             "function_name": "get_value",
                             "underscore_name": "get_value"
@@ -1524,6 +1542,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TEM_structAsClass_double_get_value",
+                            "C_name_api": "get_value",
                             "C_prototype": "TEM_structAsClass_double * self",
                             "C_return_type": "double",
                             "F_C_arguments": "self",
@@ -1625,6 +1644,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapstructAsClass_double.h",
                     "C_impl_filename": "wrapstructAsClass_double.cpp",
+                    "C_name_api": "structAsClass",
                     "C_name_scope": "structAsClass_double_",
                     "C_type_name": "TEM_structAsClass_double",
                     "F_derived_name": "structasclass_double",
@@ -1697,7 +1717,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "TEM_return_user_type",
+                    "C_name": "TEM_returnUserType",
+                    "C_name_api": "returnUserType",
                     "C_prototype": "TEM_user_int * SHC_rv",
                     "C_return_type": "TEM_user_int *",
                     "F_C_arguments": "SHT_rv",
@@ -1857,6 +1878,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU",
                     "underscore_name": "function_tu"
@@ -2079,7 +2101,8 @@
                 "zz_fmtdict": {
                     "CXX_template": "<int, long>",
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TEM_function_tu_0",
+                    "C_name": "TEM_FunctionTU_0",
+                    "C_name_api": "FunctionTU",
                     "C_prototype": "int arg1,\t long arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -2326,7 +2349,8 @@
                 "zz_fmtdict": {
                     "CXX_template": "<float, double>",
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TEM_function_tu_1",
+                    "C_name": "TEM_FunctionTU_1",
+                    "C_name_api": "FunctionTU",
                     "C_prototype": "float arg1,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -2412,6 +2436,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
@@ -2483,7 +2508,8 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_name": "TEM_use_impl_worker_internal_ImplWorker1",
+                    "C_name": "TEM_UseImplWorker_internal_ImplWorker1",
+                    "C_name_api": "UseImplWorker",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -2624,7 +2650,8 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker2>",
-                    "C_name": "TEM_use_impl_worker_internal_ImplWorker2",
+                    "C_name": "TEM_UseImplWorker_internal_ImplWorker2",
+                    "C_name_api": "UseImplWorker",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -2743,6 +2770,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_int_ctor",
+                                    "C_name_api": "ctor",
                                     "C_prototype": "TEM_vector_int * SHC_rv",
                                     "C_return_type": "TEM_vector_int *",
                                     "F_C_arguments": "SHT_rv",
@@ -2853,6 +2881,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_int_dtor",
+                                    "C_name_api": "dtor",
                                     "C_prototype": "TEM_vector_int * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -2924,6 +2953,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name_api": "push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back",
                                     "underscore_name": "push_back"
@@ -3041,6 +3071,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "*value",
                                     "C_name": "TEM_vector_int_push_back",
+                                    "C_name_api": "push_back",
                                     "C_prototype": "TEM_vector_int * self,\t const int * value",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t value",
@@ -3112,6 +3143,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name_api": "at",
                                     "F_name_api": "at",
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -3228,6 +3260,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
+                                    "C_name_api": "at",
                                     "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
@@ -3397,6 +3430,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at_bufferify",
+                                    "C_name_api": "at",
                                     "C_prototype": "TEM_vector_int * self,\t TEM_vector_int_size_type n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
@@ -3498,6 +3532,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_int.h",
                             "C_impl_filename": "wrapvectorforint.cpp",
+                            "C_name_api": "vector",
                             "C_name_scope": "vector_int_",
                             "C_type_name": "TEM_vector_int",
                             "F_derived_name": "vector_int",
@@ -3565,6 +3600,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_double_ctor",
+                                    "C_name_api": "ctor",
                                     "C_prototype": "TEM_vector_double * SHC_rv",
                                     "C_return_type": "TEM_vector_double *",
                                     "F_C_arguments": "SHT_rv",
@@ -3675,6 +3711,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "TEM_vector_double_dtor",
+                                    "C_name_api": "dtor",
                                     "C_prototype": "TEM_vector_double * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -3746,6 +3783,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name_api": "push_back",
                                     "F_name_api": "push_back",
                                     "function_name": "push_back",
                                     "underscore_name": "push_back"
@@ -3863,6 +3901,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "*value",
                                     "C_name": "TEM_vector_double_push_back",
+                                    "C_name_api": "push_back",
                                     "C_prototype": "TEM_vector_double * self,\t const double * value",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self,\t value",
@@ -3934,6 +3973,7 @@
                                 "options": {},
                                 "wrap": {},
                                 "zz_fmtdict": {
+                                    "C_name_api": "at",
                                     "F_name_api": "at",
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -4050,6 +4090,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",
+                                    "C_name_api": "at",
                                     "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
@@ -4219,6 +4260,7 @@
                                 "zz_fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at_bufferify",
+                                    "C_name_api": "at",
                                     "C_prototype": "TEM_vector_double * self,\t TEM_vector_double_size_type n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
@@ -4318,6 +4360,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_double.h",
                             "C_impl_filename": "wrapstd_vector_double.cpp",
+                            "C_name_api": "vector",
                             "C_name_scope": "vector_double_",
                             "C_type_name": "TEM_vector_double",
                             "F_derived_name": "vector_double",
@@ -4400,6 +4443,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker1.h",
                             "C_impl_filename": "wrapinternal_ImplWorker1.cpp",
+                            "C_name_api": "ImplWorker1",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TEM_internal_ImplWorker1",
                             "F_derived_name": "impl_worker1",
@@ -4442,6 +4486,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker2.h",
                             "C_impl_filename": "wrapinternal_ImplWorker2.cpp",
+                            "C_name_api": "ImplWorker2",
                             "C_name_scope": "internal_ImplWorker2_",
                             "C_type_name": "TEM_internal_ImplWorker2",
                             "F_derived_name": "impl_worker2",

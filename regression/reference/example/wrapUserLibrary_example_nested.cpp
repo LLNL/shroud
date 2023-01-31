@@ -56,7 +56,7 @@ void AA_example_nested_local_function1(void)
 // Argument:  const std::string & name
 // Attrs:     +intent(in)
 // Exact:     c_in_string_&
-bool AA_example_nested_is_name_valid(const char * name)
+bool AA_example_nested_isNameValid(const char * name)
 {
     // splicer begin namespace.example::nested.function.is_name_valid
     return name != NULL;
@@ -72,7 +72,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Argument:  const std::string & name
 // Attrs:     +api(buf)+intent(in)
 // Exact:     c_in_string_&_buf
-bool AA_example_nested_is_name_valid_bufferify(char *name,
+bool AA_example_nested_isNameValid_bufferify(char *name,
     int SHT_name_len)
 {
     // splicer begin namespace.example::nested.function.is_name_valid_bufferify
@@ -85,7 +85,7 @@ bool AA_example_nested_is_name_valid_bufferify(char *name,
 // Attrs:     +intent(function)
 // Requested: c_function_bool_scalar
 // Match:     c_function
-bool AA_example_nested_is_initialized(void)
+bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.is_initialized
     bool SHC_rv = example::nested::isInitialized();
@@ -277,7 +277,7 @@ void AA_example_nested_testmpi_serial(void)
 // Attrs:     +intent(in)
 // Requested: c_in_void_scalar
 // Match:     c_default
-void AA_example_nested_func_ptr1(void ( * get)(void))
+void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.func_ptr1
     example::nested::FuncPtr1(get);
@@ -297,7 +297,7 @@ void AA_example_nested_func_ptr1(void ( * get)(void))
 // Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
-void AA_example_nested_func_ptr2(double * ( * get)(void))
+void AA_example_nested_FuncPtr2(double * ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.func_ptr2
     example::nested::FuncPtr2(get);
@@ -317,7 +317,7 @@ void AA_example_nested_func_ptr2(double * ( * get)(void))
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void AA_example_nested_func_ptr3(double ( * get)(int i, int))
+void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 {
     // splicer begin namespace.example::nested.function.func_ptr3
     example::nested::FuncPtr3(get);
@@ -337,7 +337,7 @@ void AA_example_nested_func_ptr3(double ( * get)(int i, int))
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void AA_example_nested_func_ptr4(double ( * get)(double, int))
+void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 {
     // splicer begin namespace.example::nested.function.func_ptr4
     example::nested::FuncPtr4(get);
@@ -353,7 +353,7 @@ void AA_example_nested_func_ptr4(double ( * get)(double, int))
 // Attrs:     +intent(in)
 // Requested: c_in_void_scalar
 // Match:     c_default
-void AA_example_nested_func_ptr5(void ( * get)(int verylongname1,
+void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
     int verylongname8, int verylongname9, int verylongname10))

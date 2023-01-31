@@ -113,6 +113,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_func",
+                    "C_name_api": "short_func",
                     "C_prototype": "short arg1",
                     "C_return_type": "short",
                     "F_C_arguments": "arg1",
@@ -283,6 +284,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int_func",
+                    "C_name_api": "int_func",
                     "C_prototype": "int arg1",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1",
@@ -453,6 +455,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_func",
+                    "C_name_api": "long_func",
                     "C_prototype": "long arg1",
                     "C_return_type": "long",
                     "F_C_arguments": "arg1",
@@ -625,6 +628,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_func",
+                    "C_name_api": "long_long_func",
                     "C_prototype": "long long arg1",
                     "C_return_type": "long long",
                     "F_C_arguments": "arg1",
@@ -799,6 +803,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_int_func",
+                    "C_name_api": "short_int_func",
                     "C_prototype": "short arg1",
                     "C_return_type": "short",
                     "F_C_arguments": "arg1",
@@ -971,6 +976,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_int_func",
+                    "C_name_api": "long_int_func",
                     "C_prototype": "long arg1",
                     "C_return_type": "long",
                     "F_C_arguments": "arg1",
@@ -1145,6 +1151,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_int_func",
+                    "C_name_api": "long_long_int_func",
                     "C_prototype": "long long arg1",
                     "C_return_type": "long long",
                     "F_C_arguments": "arg1",
@@ -1317,6 +1324,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_unsigned_func",
+                    "C_name_api": "unsigned_func",
                     "C_prototype": "unsigned int arg1",
                     "C_return_type": "unsigned int",
                     "F_C_arguments": "arg1",
@@ -1489,6 +1497,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ushort_func",
+                    "C_name_api": "ushort_func",
                     "C_prototype": "unsigned short arg1",
                     "C_return_type": "unsigned short",
                     "F_C_arguments": "arg1",
@@ -1661,6 +1670,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint_func",
+                    "C_name_api": "uint_func",
                     "C_prototype": "unsigned int arg1",
                     "C_return_type": "unsigned int",
                     "F_C_arguments": "arg1",
@@ -1833,6 +1843,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_func",
+                    "C_name_api": "ulong_func",
                     "C_prototype": "unsigned long arg1",
                     "C_return_type": "unsigned long",
                     "F_C_arguments": "arg1",
@@ -2007,6 +2018,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_long_func",
+                    "C_name_api": "ulong_long_func",
                     "C_prototype": "unsigned long long arg1",
                     "C_return_type": "unsigned long long",
                     "F_C_arguments": "arg1",
@@ -2183,6 +2195,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_int_func",
+                    "C_name_api": "ulong_int_func",
                     "C_prototype": "unsigned long arg1",
                     "C_return_type": "unsigned long",
                     "F_C_arguments": "arg1",
@@ -2353,6 +2366,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int8_func",
+                    "C_name_api": "int8_func",
                     "C_prototype": "int8_t arg1",
                     "C_return_type": "int8_t",
                     "F_C_arguments": "arg1",
@@ -2523,6 +2537,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int16_func",
+                    "C_name_api": "int16_func",
                     "C_prototype": "int16_t arg1",
                     "C_return_type": "int16_t",
                     "F_C_arguments": "arg1",
@@ -2693,6 +2708,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int32_func",
+                    "C_name_api": "int32_func",
                     "C_prototype": "int32_t arg1",
                     "C_return_type": "int32_t",
                     "F_C_arguments": "arg1",
@@ -2863,6 +2879,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int64_func",
+                    "C_name_api": "int64_func",
                     "C_prototype": "int64_t arg1",
                     "C_return_type": "int64_t",
                     "F_C_arguments": "arg1",
@@ -3033,6 +3050,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint8_func",
+                    "C_name_api": "uint8_func",
                     "C_prototype": "uint8_t arg1",
                     "C_return_type": "uint8_t",
                     "F_C_arguments": "arg1",
@@ -3203,6 +3221,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint16_func",
+                    "C_name_api": "uint16_func",
                     "C_prototype": "uint16_t arg1",
                     "C_return_type": "uint16_t",
                     "F_C_arguments": "arg1",
@@ -3373,6 +3392,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint32_func",
+                    "C_name_api": "uint32_func",
                     "C_prototype": "uint32_t arg1",
                     "C_return_type": "uint32_t",
                     "F_C_arguments": "arg1",
@@ -3543,6 +3563,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint64_func",
+                    "C_name_api": "uint64_func",
                     "C_prototype": "uint64_t arg1",
                     "C_return_type": "uint64_t",
                     "F_C_arguments": "arg1",
@@ -3713,6 +3734,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_size_func",
+                    "C_name_api": "size_func",
                     "C_prototype": "size_t arg1",
                     "C_return_type": "size_t",
                     "F_C_arguments": "arg1",
@@ -3885,6 +3907,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TYP_bool_func",
+                    "C_name_api": "bool_func",
                     "C_prototype": "bool arg",
                     "C_return_type": "bool",
                     "F_C_arguments": "arg",
@@ -4065,7 +4088,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "flag",
-                    "C_name": "TYP_return_bool_and_others",
+                    "C_name": "TYP_returnBoolAndOthers",
+                    "C_name_api": "returnBoolAndOthers",
                     "C_prototype": "int * flag",
                     "C_return_type": "bool",
                     "F_C_arguments": "flag",

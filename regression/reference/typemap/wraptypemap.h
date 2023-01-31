@@ -36,15 +36,15 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-bool TYP_pass_index(IndexType i1, IndexType * i2);
+bool TYP_passIndex(IndexType i1, IndexType * i2);
 
-bool TYP_pass_index_32(int32_t i1, IndexType * i2);
+bool TYP_passIndex_32(int32_t i1, IndexType * i2);
 
-bool TYP_pass_index_64(int64_t i1, IndexType * i2);
+bool TYP_passIndex_64(int64_t i1, IndexType * i2);
 
-void TYP_pass_index2(IndexType i1);
+void TYP_passIndex2(IndexType i1);
 
-void TYP_pass_float(FloatType f1);
+void TYP_passFloat(FloatType f1);
 
 #ifdef __cplusplus
 }

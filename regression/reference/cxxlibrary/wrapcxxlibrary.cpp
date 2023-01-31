@@ -44,7 +44,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Attrs:     +intent(function)
 // Requested: c_function_bool_scalar
 // Match:     c_function
-bool CXX_default_ptr_is_null_0(void)
+bool CXX_defaultPtrIsNULL_0(void)
 {
     // splicer begin function.default_ptr_is_null_0
     bool SHC_rv = defaultPtrIsNULL();
@@ -62,7 +62,7 @@ bool CXX_default_ptr_is_null_0(void)
 // Attrs:     +intent(in)
 // Requested: c_in_native_*
 // Match:     c_default
-bool CXX_default_ptr_is_null_1(double * data)
+bool CXX_defaultPtrIsNULL_1(double * data)
 {
     // splicer begin function.default_ptr_is_null_1
     bool SHC_rv = defaultPtrIsNULL(data);
@@ -89,7 +89,7 @@ bool CXX_default_ptr_is_null_1(double * data)
 // Attrs:     +intent(out)
 // Requested: c_out_native_*
 // Match:     c_default
-void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
+void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.default_args_in_out_0
     defaultArgsInOut(in1, out1, out2);
@@ -120,8 +120,7 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 // Attrs:     +intent(in)
 // Requested: c_in_bool_scalar
 // Match:     c_default
-void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
-    bool flag)
+void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
     // splicer begin function.default_args_in_out_1
     defaultArgsInOut(in1, out1, out2, flag);
@@ -142,7 +141,7 @@ void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-const char * CXX_get_group_name(long idx)
+const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.get_group_name
     const std::string & SHCXX_rv = getGroupName(idx);
@@ -165,7 +164,7 @@ const char * CXX_get_group_name(long idx)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void CXX_get_group_name_int32_t_bufferify(int32_t idx, char *SHC_rv,
+void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
     // splicer begin function.get_group_name_int32_t_bufferify
@@ -193,7 +192,7 @@ void CXX_get_group_name_int32_t_bufferify(int32_t idx, char *SHC_rv,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-void CXX_get_group_name_int64_t_bufferify(int64_t idx, char *SHC_rv,
+void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
     // splicer begin function.get_group_name_int64_t_bufferify

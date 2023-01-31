@@ -38,6 +38,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "WWW_inner3_worker3",
+                    "C_name_api": "worker3",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -87,6 +88,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "WWW_worker",
+                    "C_name_api": "worker",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -142,6 +144,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "WWW_inner1_worker",
+                            "C_name_api": "worker",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -225,6 +228,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "WWW_inner2_worker",
+                            "C_name_api": "worker",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -308,6 +312,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "WWW_inner4_worker4",
+                            "C_name_api": "worker4",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",

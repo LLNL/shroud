@@ -41,9 +41,9 @@ enum TES_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void TES_get_name(char * name);
+void TES_getName(char * name);
 
-void TES_get_name_bufferify(char *name, int SHT_name_len);
+void TES_getName_bufferify(char *name, int SHT_name_len);
 
 void YYY_TES_function1(void);
 
@@ -59,18 +59,18 @@ int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len);
 
 void YYY_TES_fiveplus(void);
 
-void TES_test_multiline_splicer(char * name, int * value);
+void TES_TestMultilineSplicer(char * name, int * value);
 
-void TES_test_multiline_splicer_bufferify(char *name, int SHT_name_len,
+void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value);
 
 void c_name_instantiation1(int arg1, long arg2);
 
-void TES_function_tu_instantiation2(float arg1, double arg2);
+void TES_FunctionTU_instantiation2(float arg1, double arg2);
 
-int TES_use_impl_worker_instantiation3(void);
+int TES_UseImplWorker_instantiation3(void);
 
-int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point);
+int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point);
 
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),

@@ -464,7 +464,7 @@ module pointers_mod
         function c_accept_char_array_in_bufferify(names, SHT_names_size, &
                 SHT_names_len) &
                 result(SHT_rv) &
-                bind(C, name="POI_accept_char_array_in_bufferify")
+                bind(C, name="POI_acceptCharArrayIn_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_SIZE_T
             implicit none
             character(kind=C_CHAR), intent(IN) :: names(*)
@@ -547,7 +547,7 @@ module pointers_mod
     ! start c_get_ptr_to_scalar_bufferify
     interface
         subroutine c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc) &
-                bind(C, name="POI_get_ptr_to_scalar_bufferify")
+                bind(C, name="POI_getPtrToScalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
@@ -589,7 +589,7 @@ module pointers_mod
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_fixed_array_bufferify")
+                bind(C, name="POI_getPtrToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -637,7 +637,7 @@ module pointers_mod
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
+                bind(C, name="POI_getPtrToDynamicArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -679,7 +679,7 @@ module pointers_mod
     ! start c_get_ptr_to_func_array_bufferify
     interface
         subroutine c_get_ptr_to_func_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_func_array_bufferify")
+                bind(C, name="POI_getPtrToFuncArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -721,7 +721,7 @@ module pointers_mod
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
         subroutine c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc) &
-                bind(C, name="POI_get_ptr_to_const_scalar_bufferify")
+                bind(C, name="POI_getPtrToConstScalar_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_nitems_cdesc
@@ -764,7 +764,7 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_fixed_const_array_bufferify( &
                 SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_fixed_const_array_bufferify")
+                bind(C, name="POI_getPtrToFixedConstArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -813,7 +813,7 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
                 SHT_count_cdesc) &
-                bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
+                bind(C, name="POI_getPtrToDynamicConstArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -1003,7 +1003,7 @@ module pointers_mod
     ! start c_get_alloc_to_fixed_array_bufferify
     interface
         subroutine c_get_alloc_to_fixed_array_bufferify(SHT_count_cdesc) &
-                bind(C, name="POI_get_alloc_to_fixed_array_bufferify")
+                bind(C, name="POI_getAllocToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_count_cdesc
@@ -1178,7 +1178,7 @@ module pointers_mod
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_array_bufferify(SHT_rv) &
-                bind(C, name="POI_return_int_ptr_to_fixed_array_bufferify")
+                bind(C, name="POI_returnIntPtrToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_rv
@@ -1246,7 +1246,7 @@ module pointers_mod
     interface
         subroutine c_return_int_ptr_to_fixed_const_array_bufferify( &
                 SHT_rv) &
-                bind(C, name="POI_return_int_ptr_to_fixed_const_array_bufferify")
+                bind(C, name="POI_returnIntPtrToFixedConstArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_rv
@@ -1262,7 +1262,7 @@ module pointers_mod
     interface
         function return_int_scalar() &
                 result(SHT_rv) &
-                bind(C, name="POI_return_int_scalar")
+                bind(C, name="POI_returnIntScalar")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -1351,7 +1351,7 @@ module pointers_mod
     ! start c_return_int_alloc_to_fixed_array_bufferify
     interface
         subroutine c_return_int_alloc_to_fixed_array_bufferify(SHT_rv) &
-                bind(C, name="POI_return_int_alloc_to_fixed_array_bufferify")
+                bind(C, name="POI_returnIntAllocToFixedArray_bufferify")
             import :: POI_SHROUD_array
             implicit none
             type(POI_SHROUD_array), intent(OUT) :: SHT_rv

@@ -128,7 +128,7 @@ module scope_mod
         ! Requested: c_in_struct_*
         ! Match:     c_in_struct
         subroutine c_data_pointer_get_items_bufferify(SH_this, SHT_rv) &
-                bind(C, name="SCO_data_pointer_get_items_bufferify")
+                bind(C, name="SCO_DataPointer_get_items_bufferify")
             import :: SCO_SHROUD_array, data_pointer
             implicit none
             type(data_pointer), intent(IN) :: SH_this
@@ -150,7 +150,7 @@ module scope_mod
         ! Attrs:     +intent(setter)
         ! Exact:     c_setter_native_*
         subroutine data_pointer_set_items(SH_this, val) &
-                bind(C, name="SCO_data_pointer_set_items")
+                bind(C, name="SCO_DataPointer_set_items")
             use iso_c_binding, only : C_INT
             import :: data_pointer
             implicit none

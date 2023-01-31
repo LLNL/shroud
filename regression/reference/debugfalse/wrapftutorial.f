@@ -73,7 +73,7 @@ module tutorial_mod
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
-                bind(C, name="TUT_no_return_no_arguments")
+                bind(C, name="TUT_NoReturnNoArguments")
             implicit none
         end subroutine no_return_no_arguments
     end interface
@@ -82,7 +82,7 @@ module tutorial_mod
     interface
         function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_pass_by_value")
+                bind(C, name="TUT_PassByValue")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
@@ -94,7 +94,7 @@ module tutorial_mod
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
                 arg2, SHT_arg2_len, SHT_rv) &
-                bind(C, name="TUT_concatenate_strings_bufferify")
+                bind(C, name="TUT_ConcatenateStrings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
             implicit none
@@ -110,7 +110,7 @@ module tutorial_mod
     interface
         function c_use_default_arguments() &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_arguments")
+                bind(C, name="TUT_UseDefaultArguments")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
@@ -122,7 +122,7 @@ module tutorial_mod
     interface
         function c_use_default_arguments_arg1(arg1) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_arguments_arg1")
+                bind(C, name="TUT_UseDefaultArguments_arg1")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
@@ -135,7 +135,7 @@ module tutorial_mod
     interface
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_arguments_arg1_arg2")
+                bind(C, name="TUT_UseDefaultArguments_arg1_arg2")
             use iso_c_binding, only : C_BOOL, C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
@@ -147,7 +147,7 @@ module tutorial_mod
 
     interface
         subroutine c_overloaded_function_from_name(name) &
-                bind(C, name="TUT_overloaded_function_from_name")
+                bind(C, name="TUT_OverloadedFunction_from_name")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -157,7 +157,7 @@ module tutorial_mod
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 SHT_name_len) &
-                bind(C, name="TUT_overloaded_function_from_name_bufferify")
+                bind(C, name="TUT_OverloadedFunction_from_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -167,7 +167,7 @@ module tutorial_mod
 
     interface
         subroutine c_overloaded_function_from_index(indx) &
-                bind(C, name="TUT_overloaded_function_from_index")
+                bind(C, name="TUT_OverloadedFunction_from_index")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: indx
@@ -176,7 +176,7 @@ module tutorial_mod
 
     interface
         subroutine c_template_argument_int(arg) &
-                bind(C, name="TUT_template_argument_int")
+                bind(C, name="TUT_TemplateArgument_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
@@ -185,7 +185,7 @@ module tutorial_mod
 
     interface
         subroutine c_template_argument_double(arg) &
-                bind(C, name="TUT_template_argument_double")
+                bind(C, name="TUT_TemplateArgument_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
@@ -195,7 +195,7 @@ module tutorial_mod
     interface
         function c_template_return_int() &
                 result(SHT_rv) &
-                bind(C, name="TUT_template_return_int")
+                bind(C, name="TUT_TemplateReturn_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -205,7 +205,7 @@ module tutorial_mod
     interface
         function c_template_return_double() &
                 result(SHT_rv) &
-                bind(C, name="TUT_template_return_double")
+                bind(C, name="TUT_TemplateReturn_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
@@ -214,14 +214,14 @@ module tutorial_mod
 
     interface
         subroutine c_fortran_generic_overloaded_0() &
-                bind(C, name="TUT_fortran_generic_overloaded_0")
+                bind(C, name="TUT_FortranGenericOverloaded_0")
             implicit none
         end subroutine c_fortran_generic_overloaded_0
     end interface
 
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
-                bind(C, name="TUT_fortran_generic_overloaded_1")
+                bind(C, name="TUT_FortranGenericOverloaded_1")
             use iso_c_binding, only : C_CHAR, C_DOUBLE
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -232,7 +232,7 @@ module tutorial_mod
     interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
                 SHT_name_len, arg2) &
-                bind(C, name="TUT_fortran_generic_overloaded_1_float_bufferify")
+                bind(C, name="TUT_FortranGenericOverloaded_1_float_bufferify")
             use iso_c_binding, only : C_CHAR, C_FLOAT, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -244,7 +244,7 @@ module tutorial_mod
     interface
         subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
                 SHT_name_len, arg2) &
-                bind(C, name="TUT_fortran_generic_overloaded_1_double_bufferify")
+                bind(C, name="TUT_FortranGenericOverloaded_1_double_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -256,7 +256,7 @@ module tutorial_mod
     interface
         function c_use_default_overload_num(num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_num")
+                bind(C, name="TUT_UseDefaultOverload_num")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
@@ -267,7 +267,7 @@ module tutorial_mod
     interface
         function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_num_offset")
+                bind(C, name="TUT_UseDefaultOverload_num_offset")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
@@ -280,7 +280,7 @@ module tutorial_mod
         function c_use_default_overload_num_offset_stride(num, offset, &
                 stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_num_offset_stride")
+                bind(C, name="TUT_UseDefaultOverload_num_offset_stride")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
@@ -293,7 +293,7 @@ module tutorial_mod
     interface
         function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_3")
+                bind(C, name="TUT_UseDefaultOverload_3")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
@@ -305,7 +305,7 @@ module tutorial_mod
     interface
         function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_4")
+                bind(C, name="TUT_UseDefaultOverload_4")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
@@ -318,7 +318,7 @@ module tutorial_mod
     interface
         function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_use_default_overload_5")
+                bind(C, name="TUT_UseDefaultOverload_5")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
@@ -365,7 +365,7 @@ module tutorial_mod
     ! start get_min_max
     interface
         subroutine get_min_max(min, max) &
-                bind(C, name="TUT_get_min_max")
+                bind(C, name="TUT_getMinMax")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(OUT) :: min
@@ -392,7 +392,7 @@ module tutorial_mod
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
-                bind(C, name="TUT_last_function_called")
+                bind(C, name="TUT_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -401,7 +401,7 @@ module tutorial_mod
 
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="TUT_last_function_called_bufferify")
+                bind(C, name="TUT_LastFunctionCalled_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)

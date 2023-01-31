@@ -49,7 +49,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
+                    "C_name": "STR_getConstStringPtrAlloc",
+                    "C_name_api": "getConstStringPtrAlloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -144,7 +145,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
+                    "C_name": "STR_getConstStringPtrAlloc_bufferify",
+                    "C_name_api": "getConstStringPtrAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",

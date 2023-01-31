@@ -234,7 +234,7 @@ module generic_mod
     interface
         function sum_values(values, nvalues) &
                 result(SHT_rv) &
-                bind(C, name="GEN_sum_values_CFI")
+                bind(C, name="GEN_SumValues_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: values(..)
@@ -307,7 +307,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_assign_values_scalar(from, nfrom, to, nto) &
-                bind(C, name="GEN_assign_values_scalar")
+                bind(C, name="GEN_AssignValues_scalar")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: from
@@ -343,7 +343,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_assign_values_broadcast_CFI(from, nfrom, to, nto) &
-                bind(C, name="GEN_assign_values_broadcast_CFI")
+                bind(C, name="GEN_AssignValues_broadcast_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: from
@@ -378,7 +378,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_assign_values_copy_CFI(from, nfrom, to, nto) &
-                bind(C, name="GEN_assign_values_copy_CFI")
+                bind(C, name="GEN_AssignValues_copy_CFI")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: from(:)
@@ -443,7 +443,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_save_pointer_float1d_CFI(addr, type, size) &
-                bind(C, name="GEN_save_pointer_float1d_CFI")
+                bind(C, name="GEN_SavePointer_float1d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:)
@@ -475,7 +475,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_save_pointer_float2d_CFI(addr, type, size) &
-                bind(C, name="GEN_save_pointer_float2d_CFI")
+                bind(C, name="GEN_SavePointer_float2d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:,:)
@@ -507,7 +507,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_save_pointer2(addr, type, size) &
-                bind(C, name="GEN_save_pointer2")
+                bind(C, name="GEN_SavePointer2")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
             implicit none
             type(C_PTR), value, intent(IN) :: addr
@@ -537,7 +537,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_save_pointer2_float1d_CFI(addr, type, size) &
-                bind(C, name="GEN_save_pointer2_float1d_CFI")
+                bind(C, name="GEN_SavePointer2_float1d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:)
@@ -567,7 +567,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_save_pointer2_float2d_CFI(addr, type, size) &
-                bind(C, name="GEN_save_pointer2_float2d_CFI")
+                bind(C, name="GEN_SavePointer2_float2d_CFI")
             use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
             implicit none
             real(C_FLOAT), intent(IN) :: addr(:,:)
@@ -650,7 +650,7 @@ module generic_mod
     ! Exact:     c_out_native_**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float1d_CFI(addr) &
-                bind(C, name="GEN_get_pointer_as_pointer_float1d_CFI")
+                bind(C, name="GEN_GetPointerAsPointer_float1d_CFI")
             use iso_c_binding, only : C_FLOAT
             implicit none
             real(C_FLOAT), intent(OUT), pointer :: addr(:)
@@ -670,7 +670,7 @@ module generic_mod
     ! Exact:     c_out_native_**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float2d_CFI(addr) &
-                bind(C, name="GEN_get_pointer_as_pointer_float2d_CFI")
+                bind(C, name="GEN_GetPointerAsPointer_float2d_CFI")
             use iso_c_binding, only : C_FLOAT
             implicit none
             real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
@@ -685,7 +685,7 @@ module generic_mod
     interface
         function c_create_struct_as_class(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="GEN_create_struct_as_class")
+                bind(C, name="GEN_CreateStructAsClass")
             use iso_c_binding, only : C_PTR
             import :: GEN_SHROUD_capsule_data
             implicit none
@@ -711,7 +711,7 @@ module generic_mod
     interface
         function c_update_struct_as_class(arg, inew) &
                 result(SHT_rv) &
-                bind(C, name="GEN_update_struct_as_class")
+                bind(C, name="GEN_UpdateStructAsClass")
             use iso_c_binding, only : C_LONG
             import :: GEN_SHROUD_capsule_data
             implicit none
@@ -738,7 +738,7 @@ module generic_mod
     interface
         function c_update_struct_as_class_int(arg, inew) &
                 result(SHT_rv) &
-                bind(C, name="GEN_update_struct_as_class_int")
+                bind(C, name="GEN_UpdateStructAsClass_int")
             use iso_c_binding, only : C_INT, C_LONG
             import :: GEN_SHROUD_capsule_data
             implicit none
@@ -765,7 +765,7 @@ module generic_mod
     interface
         function c_update_struct_as_class_long(arg, inew) &
                 result(SHT_rv) &
-                bind(C, name="GEN_update_struct_as_class_long")
+                bind(C, name="GEN_UpdateStructAsClass_long")
             use iso_c_binding, only : C_LONG
             import :: GEN_SHROUD_capsule_data
             implicit none

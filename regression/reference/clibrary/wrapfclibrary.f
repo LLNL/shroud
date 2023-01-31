@@ -158,7 +158,7 @@ module clibrary_mod
     interface
         function pass_by_value_macro(arg2) &
                 result(SHT_rv) &
-                bind(C, name="CLI_pass_by_value_macro")
+                bind(C, name="CLI_PassByValueMacro")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg2
@@ -244,7 +244,7 @@ module clibrary_mod
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="CLI_function4a_bufferify")
+                bind(C, name="CLI_Function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
@@ -305,7 +305,7 @@ module clibrary_mod
     ! Exact:     c_inout_char_*_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
-                bind(C, name="CLI_pass_char_ptr_in_out_bufferify")
+                bind(C, name="CLI_passCharPtrInOut_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(INOUT) :: s(*)
@@ -346,7 +346,7 @@ module clibrary_mod
     ! start c_return_one_name_bufferify
     interface
         subroutine c_return_one_name_bufferify(name1, SHT_name1_len) &
-                bind(C, name="CLI_return_one_name_bufferify")
+                bind(C, name="CLI_returnOneName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
@@ -396,7 +396,7 @@ module clibrary_mod
     interface
         subroutine c_return_two_names_bufferify(name1, SHT_name1_len, &
                 name2, SHT_name2_len) &
-                bind(C, name="CLI_return_two_names_bufferify")
+                bind(C, name="CLI_returnTwoNames_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
@@ -451,7 +451,7 @@ module clibrary_mod
     interface
         subroutine c_implied_text_len_bufferify(text, SHT_text_len, &
                 ltext) &
-                bind(C, name="CLI_implied_text_len_bufferify")
+                bind(C, name="CLI_ImpliedTextLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: text(*)
@@ -611,7 +611,7 @@ module clibrary_mod
     ! Exact:     c_out_char_*_buf
     interface
         subroutine c_bind_c2_bufferify(outbuf, SHT_outbuf_len) &
-                bind(C, name="CLI_bind_c2_bufferify")
+                bind(C, name="CLI_bindC2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
@@ -733,7 +733,7 @@ module clibrary_mod
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, &
                 SHT_outbuf_len) &
                 result(SHT_rv) &
-                bind(C, name="CLI_pass_assumed_type_buf_bufferify")
+                bind(C, name="CLI_passAssumedTypeBuf_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             type(*) :: arg

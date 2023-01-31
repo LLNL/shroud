@@ -50,7 +50,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_length",
+                    "C_name": "STMT_GetNameLength",
+                    "C_name_api": "GetNameLength",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -144,7 +145,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_error_pattern",
+                    "C_name": "STMT_getNameErrorPattern",
+                    "C_name_api": "getNameErrorPattern",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -240,7 +242,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STMT_get_name_error_pattern_bufferify",
+                    "C_name": "STMT_getNameErrorPattern_bufferify",
+                    "C_name_api": "getNameErrorPattern",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",

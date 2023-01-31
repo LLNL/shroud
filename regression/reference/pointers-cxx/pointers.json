@@ -96,6 +96,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "POI_intargs_in",
+                    "C_name_api": "intargs_in",
                     "C_prototype": "const int * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -202,6 +203,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "POI_intargs_inout",
+                    "C_name_api": "intargs_inout",
                     "C_prototype": "int * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -308,6 +310,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "POI_intargs_out",
+                    "C_name_api": "intargs_out",
                     "C_prototype": "int * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -519,6 +522,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "argin,\t arginout,\t argout",
                     "C_name": "POI_intargs",
+                    "C_name_api": "intargs",
                     "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                     "C_return_type": "void",
                     "F_C_arguments": "argin,\t arginout,\t argout",
@@ -750,6 +754,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_cos_doubles",
+                    "C_name_api": "cos_doubles",
                     "C_prototype": "double * in,\t double * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
@@ -981,6 +986,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "in,\t out,\t sizein",
                     "C_name": "POI_truncate_to_int",
+                    "C_name_api": "truncate_to_int",
                     "C_prototype": "double * in,\t int * out,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "in,\t out,\t sizein",
@@ -1155,6 +1161,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "nvalues,\t values",
                     "C_name": "POI_get_values",
+                    "C_name_api": "get_values",
                     "C_prototype": "int * nvalues,\t int * values",
                     "C_return_type": "void",
                     "F_C_arguments": "nvalues,\t values",
@@ -1339,6 +1346,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "POI_get_values2",
+                    "C_name_api": "get_values2",
                     "C_prototype": "int * arg1,\t int * arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -1504,6 +1512,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "nvar,\t values",
                     "C_name": "POI_iota_dimension",
+                    "C_name_api": "iota_dimension",
                     "C_prototype": "int nvar,\t int * values",
                     "C_return_type": "void",
                     "F_C_arguments": "nvar,\t values",
@@ -1717,7 +1726,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "len,\t values,\t result",
-                    "C_name": "POI_sum",
+                    "C_name": "POI_Sum",
+                    "C_name_api": "Sum",
                     "C_prototype": "int len,\t const int * values,\t int * result",
                     "C_return_type": "void",
                     "F_C_arguments": "len,\t values,\t result",
@@ -1836,7 +1846,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "out",
-                    "C_name": "POI_fill_int_array",
+                    "C_name": "POI_fillIntArray",
+                    "C_name_api": "fillIntArray",
                     "C_prototype": "int * out",
                     "C_return_type": "void",
                     "F_C_arguments": "out",
@@ -1997,7 +2008,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "array,\t sizein",
-                    "C_name": "POI_increment_int_array",
+                    "C_name": "POI_incrementIntArray",
+                    "C_name_api": "incrementIntArray",
                     "C_prototype": "int * array,\t int sizein",
                     "C_return_type": "void",
                     "F_C_arguments": "array,\t sizein",
@@ -2155,6 +2167,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "x,\t x_length",
                     "C_name": "POI_fill_with_zeros",
+                    "C_name_api": "fill_with_zeros",
                     "C_prototype": "double * x,\t int x_length",
                     "C_return_type": "void",
                     "F_C_arguments": "x,\t x_length",
@@ -2313,6 +2326,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arr,\t len",
                     "C_name": "POI_accumulate",
+                    "C_name_api": "accumulate",
                     "C_prototype": "const int * arr,\t size_t len",
                     "C_return_type": "int",
                     "F_C_arguments": "arr,\t len",
@@ -2459,7 +2473,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "names",
-                    "C_name": "POI_accept_char_array_in",
+                    "C_name": "POI_acceptCharArrayIn",
+                    "C_name_api": "acceptCharArrayIn",
                     "C_prototype": "char **names",
                     "C_return_type": "int",
                     "F_C_arguments": "names",
@@ -2614,7 +2629,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_names",
-                    "C_name": "POI_accept_char_array_in_bufferify",
+                    "C_name": "POI_acceptCharArrayIn_bufferify",
+                    "C_name_api": "acceptCharArrayIn",
                     "C_prototype": "const char *names,\t size_t SHT_names_size,\t int SHT_names_len",
                     "C_return_type": "int",
                     "F_C_arguments": "names,\t SHT_names_size,\t SHT_names_len",
@@ -2734,7 +2750,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "value",
-                    "C_name": "POI_set_global_int",
+                    "C_name": "POI_setGlobalInt",
+                    "C_name_api": "setGlobalInt",
                     "C_prototype": "int value",
                     "C_return_type": "void",
                     "F_C_arguments": "value",
@@ -2785,7 +2802,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_sum_fixed_array",
+                    "C_name": "POI_sumFixedArray",
+                    "C_name_api": "sumFixedArray",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -2926,7 +2944,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "nitems",
-                    "C_name": "POI_get_ptr_to_scalar",
+                    "C_name": "POI_getPtrToScalar",
+                    "C_name_api": "getPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
@@ -3044,7 +3063,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&nitems",
-                    "C_name": "POI_get_ptr_to_scalar_bufferify",
+                    "C_name": "POI_getPtrToScalar_bufferify",
+                    "C_name_api": "getPtrToScalar",
                     "C_prototype": "POI_SHROUD_array *SHT_nitems_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_nitems_cdesc",
@@ -3158,7 +3178,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_ptr_to_fixed_array",
+                    "C_name": "POI_getPtrToFixedArray",
+                    "C_name_api": "getPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -3290,7 +3311,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
-                    "C_name": "POI_get_ptr_to_fixed_array_bufferify",
+                    "C_name": "POI_getPtrToFixedArray_bufferify",
+                    "C_name_api": "getPtrToFixedArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -3455,7 +3477,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count,\t ncount",
-                    "C_name": "POI_get_ptr_to_dynamic_array",
+                    "C_name": "POI_getPtrToDynamicArray",
+                    "C_name_api": "getPtrToDynamicArray",
                     "C_prototype": "int * * count,\t int * ncount",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t ncount",
@@ -3638,7 +3661,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count,\t &ncount",
-                    "C_name": "POI_get_ptr_to_dynamic_array_bufferify",
+                    "C_name": "POI_getPtrToDynamicArray_bufferify",
+                    "C_name_api": "getPtrToDynamicArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -3753,7 +3777,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_ptr_to_func_array",
+                    "C_name": "POI_getPtrToFuncArray",
+                    "C_name_api": "getPtrToFuncArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -3886,7 +3911,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
-                    "C_name": "POI_get_ptr_to_func_array_bufferify",
+                    "C_name": "POI_getPtrToFuncArray_bufferify",
+                    "C_name_api": "getPtrToFuncArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -3990,7 +4016,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "nitems",
-                    "C_name": "POI_get_ptr_to_const_scalar",
+                    "C_name": "POI_getPtrToConstScalar",
+                    "C_name_api": "getPtrToConstScalar",
                     "C_prototype": "const int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
@@ -4109,7 +4136,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&nitems",
-                    "C_name": "POI_get_ptr_to_const_scalar_bufferify",
+                    "C_name": "POI_getPtrToConstScalar_bufferify",
+                    "C_name_api": "getPtrToConstScalar",
                     "C_prototype": "POI_SHROUD_array *SHT_nitems_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_nitems_cdesc",
@@ -4221,7 +4249,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_ptr_to_fixed_const_array",
+                    "C_name": "POI_getPtrToFixedConstArray",
+                    "C_name_api": "getPtrToFixedConstArray",
                     "C_prototype": "const int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -4351,7 +4380,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
-                    "C_name": "POI_get_ptr_to_fixed_const_array_bufferify",
+                    "C_name": "POI_getPtrToFixedConstArray_bufferify",
+                    "C_name_api": "getPtrToFixedConstArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -4514,7 +4544,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count,\t ncount",
-                    "C_name": "POI_get_ptr_to_dynamic_const_array",
+                    "C_name": "POI_getPtrToDynamicConstArray",
+                    "C_name_api": "getPtrToDynamicConstArray",
                     "C_prototype": "const int * * count,\t int * ncount",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t ncount",
@@ -4695,7 +4726,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count,\t &ncount",
-                    "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
+                    "C_name": "POI_getPtrToDynamicConstArray_bufferify",
+                    "C_name_api": "getPtrToDynamicConstArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -4801,7 +4833,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "nitems",
-                    "C_name": "POI_get_raw_ptr_to_scalar",
+                    "C_name": "POI_getRawPtrToScalar",
+                    "C_name_api": "getRawPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
@@ -4918,7 +4951,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "nitems",
-                    "C_name": "POI_get_raw_ptr_to_scalar_force",
+                    "C_name": "POI_getRawPtrToScalarForce",
+                    "C_name_api": "getRawPtrToScalarForce",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_arguments": "nitems",
@@ -5032,7 +5066,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_raw_ptr_to_fixed_array",
+                    "C_name": "POI_getRawPtrToFixedArray",
+                    "C_name_api": "getRawPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -5149,7 +5184,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_raw_ptr_to_fixed_array_force",
+                    "C_name": "POI_getRawPtrToFixedArrayForce",
+                    "C_name_api": "getRawPtrToFixedArrayForce",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -5266,7 +5302,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg",
-                    "C_name": "POI_get_raw_ptr_to_int2d",
+                    "C_name": "POI_getRawPtrToInt2d",
+                    "C_name_api": "getRawPtrToInt2d",
                     "C_prototype": "int * * * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -5380,7 +5417,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg",
-                    "C_name": "POI_check_int2d",
+                    "C_name": "POI_checkInt2d",
+                    "C_name_api": "checkInt2d",
                     "C_prototype": "int **arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
@@ -5536,7 +5574,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg",
-                    "C_name": "POI_dimension_in",
+                    "C_name": "POI_DimensionIn",
+                    "C_name_api": "DimensionIn",
                     "C_prototype": "const int * arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -5661,7 +5700,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count",
-                    "C_name": "POI_get_alloc_to_fixed_array",
+                    "C_name": "POI_getAllocToFixedArray",
+                    "C_name_api": "getAllocToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_arguments": "count",
@@ -5796,7 +5836,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&count",
-                    "C_name": "POI_get_alloc_to_fixed_array_bufferify",
+                    "C_name": "POI_getAllocToFixedArray_bufferify",
+                    "C_name_api": "getAllocToFixedArray",
                     "C_prototype": "POI_SHROUD_array *SHT_count_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_count_cdesc",
@@ -5894,7 +5935,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "flag",
-                    "C_name": "POI_return_address1",
+                    "C_name": "POI_returnAddress1",
+                    "C_name_api": "returnAddress1",
                     "C_prototype": "int flag",
                     "C_return_type": "void *",
                     "F_C_arguments": "flag",
@@ -6032,7 +6074,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "flag",
-                    "C_name": "POI_return_address2",
+                    "C_name": "POI_returnAddress2",
+                    "C_name_api": "returnAddress2",
                     "C_prototype": "int flag",
                     "C_return_type": "void *",
                     "F_C_arguments": "flag",
@@ -6170,7 +6213,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr",
-                    "C_name": "POI_fetch_void_ptr",
+                    "C_name": "POI_fetchVoidPtr",
+                    "C_name_api": "fetchVoidPtr",
                     "C_prototype": "void **addr",
                     "C_return_type": "void",
                     "F_C_arguments": "addr",
@@ -6281,7 +6325,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr",
-                    "C_name": "POI_update_void_ptr",
+                    "C_name": "POI_updateVoidPtr",
+                    "C_name_api": "updateVoidPtr",
                     "C_prototype": "void **addr",
                     "C_return_type": "void",
                     "F_C_arguments": "addr",
@@ -6396,7 +6441,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr",
-                    "C_name": "POI_void_ptr_array",
+                    "C_name": "POI_VoidPtrArray",
+                    "C_name_api": "VoidPtrArray",
                     "C_prototype": "void **addr",
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
@@ -6484,7 +6530,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_scalar",
+                    "C_name": "POI_returnIntPtrToScalar",
+                    "C_name_api": "returnIntPtrToScalar",
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
@@ -6572,7 +6619,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_scalar_bufferify",
+                    "C_name": "POI_returnIntPtrToScalar_bufferify",
+                    "C_name_api": "returnIntPtrToScalar",
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
@@ -6656,7 +6704,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_array",
+                    "C_name": "POI_returnIntPtrToFixedArray",
+                    "C_name_api": "returnIntPtrToFixedArray",
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
@@ -6759,7 +6808,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
+                    "C_name": "POI_returnIntPtrToFixedArray_bufferify",
+                    "C_name_api": "returnIntPtrToFixedArray",
                     "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -6843,7 +6893,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_const_scalar",
+                    "C_name": "POI_returnIntPtrToConstScalar",
+                    "C_name_api": "returnIntPtrToConstScalar",
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
@@ -6932,7 +6983,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_const_scalar_bufferify",
+                    "C_name": "POI_returnIntPtrToConstScalar_bufferify",
+                    "C_name_api": "returnIntPtrToConstScalar",
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
@@ -7017,7 +7069,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_const_array",
+                    "C_name": "POI_returnIntPtrToFixedConstArray",
+                    "C_name_api": "returnIntPtrToFixedConstArray",
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
@@ -7121,7 +7174,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
+                    "C_name": "POI_returnIntPtrToFixedConstArray_bufferify",
+                    "C_name_api": "returnIntPtrToFixedConstArray",
                     "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -7204,7 +7258,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_scalar",
+                    "C_name": "POI_returnIntScalar",
+                    "C_name_api": "returnIntScalar",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -7295,7 +7350,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_raw",
+                    "C_name": "POI_returnIntRaw",
+                    "C_name_api": "returnIntRaw",
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
@@ -7440,7 +7496,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name",
-                    "C_name": "POI_return_int_raw_with_args",
+                    "C_name": "POI_returnIntRawWithArgs",
+                    "C_name_api": "returnIntRawWithArgs",
                     "C_prototype": "const char * name",
                     "C_return_type": "int *",
                     "F_C_arguments": "name",
@@ -7533,7 +7590,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_raw_ptr_to_int2d",
+                    "C_name": "POI_returnRawPtrToInt2d",
+                    "C_name_api": "returnRawPtrToInt2d",
                     "C_prototype": "void",
                     "C_return_type": "int * *",
                     "F_C_arguments": "",
@@ -7631,7 +7689,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_alloc_to_fixed_array",
+                    "C_name": "POI_returnIntAllocToFixedArray",
+                    "C_name_api": "returnIntAllocToFixedArray",
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
@@ -7737,7 +7796,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "POI_return_int_alloc_to_fixed_array_bufferify",
+                    "C_name": "POI_returnIntAllocToFixedArray_bufferify",
+                    "C_name_api": "returnIntAllocToFixedArray",
                     "C_prototype": "POI_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",

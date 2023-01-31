@@ -40,6 +40,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "Function1",
+                    "C_name_api": "Function1",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -189,6 +190,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function2",
+                    "C_name_api": "Function2",
                     "C_prototype": "double arg1,\t int arg2",
                     "C_return_type": "double",
                     "F_C_arguments": "arg1,\t arg2",

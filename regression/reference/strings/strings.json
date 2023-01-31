@@ -120,7 +120,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "status",
-                    "C_name": "STR_pass_char",
+                    "C_name": "STR_passChar",
+                    "C_name_api": "passChar",
                     "C_prototype": "char status",
                     "C_return_type": "void",
                     "F_C_arguments": "status",
@@ -228,7 +229,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "status",
-                    "C_name": "STR_pass_char_force",
+                    "C_name": "STR_passCharForce",
+                    "C_name_api": "passCharForce",
                     "C_prototype": "char status",
                     "C_return_type": "void",
                     "F_C_arguments": "status",
@@ -280,7 +282,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_return_char",
+                    "C_name": "STR_returnChar",
+                    "C_name_api": "returnChar",
                     "C_prototype": "char *SHC_rv",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -531,7 +534,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
-                    "C_name": "STR_pass_char_ptr",
+                    "C_name": "STR_passCharPtr",
+                    "C_name_api": "passCharPtr",
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
@@ -700,7 +704,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
-                    "C_name": "STR_pass_char_ptr_bufferify",
+                    "C_name": "STR_passCharPtr_bufferify",
+                    "C_name_api": "passCharPtr",
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src",
@@ -822,7 +827,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "s",
-                    "C_name": "STR_pass_char_ptr_in_out",
+                    "C_name": "STR_passCharPtrInOut",
+                    "C_name_api": "passCharPtrInOut",
                     "C_prototype": "char * s",
                     "C_return_type": "void",
                     "F_C_arguments": "s",
@@ -938,7 +944,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
-                    "C_name": "STR_pass_char_ptr_in_out_bufferify",
+                    "C_name": "STR_passCharPtrInOut_bufferify",
+                    "C_name_api": "passCharPtrInOut",
                     "C_prototype": "char *s,\t int SHT_s_len",
                     "C_return_type": "void",
                     "F_C_arguments": "s,\t SHT_s_len",
@@ -994,7 +1001,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr1",
+                    "C_name": "STR_getCharPtr1",
+                    "C_name_api": "getCharPtr1",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -1110,7 +1118,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr1_bufferify",
+                    "C_name": "STR_getCharPtr1_bufferify",
+                    "C_name_api": "getCharPtr1",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -1197,7 +1206,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr2",
+                    "C_name": "STR_getCharPtr2",
+                    "C_name_api": "getCharPtr2",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -1313,7 +1323,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr2_bufferify",
+                    "C_name": "STR_getCharPtr2_bufferify",
+                    "C_name_api": "getCharPtr2",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -1394,7 +1405,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr3",
+                    "C_name": "STR_getCharPtr3",
+                    "C_name_api": "getCharPtr3",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -1549,7 +1561,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr3_bufferify",
+                    "C_name": "STR_getCharPtr3_bufferify",
+                    "C_name_api": "getCharPtr3",
                     "C_prototype": "char *output,\t int SHT_output_len",
                     "C_return_type": "void",
                     "F_C_arguments": "output,\t SHT_output_len",
@@ -1641,6 +1654,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getCharPtr3",
                     "F_C_call": "c_get_char_ptr3_bufferify",
                     "F_arg_c_call": "output,\t SHT_output_len",
                     "F_arguments": "output",
@@ -1700,7 +1714,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr4",
+                    "C_name": "STR_getCharPtr4",
+                    "C_name_api": "getCharPtr4",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -1796,7 +1811,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr5",
+                    "C_name": "STR_getCharPtr5",
+                    "C_name_api": "getCharPtr5",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -1896,7 +1912,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_char_ptr5_bufferify",
+                    "C_name": "STR_getCharPtr5_bufferify",
+                    "C_name_api": "getCharPtr5",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -1973,6 +1990,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringResult",
                     "F_C_call": "c_get_const_string_result_bufferify",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
@@ -2057,7 +2075,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_result_bufferify",
+                    "C_name": "STR_getConstStringResult_bufferify",
+                    "C_name_api": "getConstStringResult",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -2137,6 +2156,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringLen",
                     "F_C_call": "c_get_const_string_len_bufferify",
                     "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
                     "F_arguments": "",
@@ -2222,7 +2242,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_len_bufferify",
+                    "C_name": "STR_getConstStringLen_bufferify",
+                    "C_name_api": "getConstStringLen",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -2296,6 +2317,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringAsArg",
                     "F_name_api": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
@@ -2416,7 +2438,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_as_arg_bufferify",
+                    "C_name": "STR_getConstStringAsArg_bufferify",
+                    "C_name_api": "getConstStringAsArg",
                     "C_prototype": "char *output,\t int SHT_output_len",
                     "C_return_type": "void",
                     "F_C_arguments": "output,\t SHT_output_len",
@@ -2507,6 +2530,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringAsArg",
                     "F_C_call": "c_get_const_string_as_arg_bufferify",
                     "F_arg_c_call": "output,\t SHT_output_len",
                     "F_arguments": "output",
@@ -2556,6 +2580,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringAlloc",
                     "F_C_call": "c_get_const_string_alloc_bufferify",
                     "F_arg_c_call": "SHT_rv_cdesc",
                     "F_arguments": "",
@@ -2636,7 +2661,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_alloc_bufferify",
+                    "C_name": "STR_getConstStringAlloc_bufferify",
+                    "C_name_api": "getConstStringAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -2720,7 +2746,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_pure",
+                    "C_name": "STR_getConstStringRefPure",
+                    "C_name_api": "getConstStringRefPure",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -2837,7 +2864,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_pure_bufferify",
+                    "C_name": "STR_getConstStringRefPure_bufferify",
+                    "C_name_api": "getConstStringRefPure",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -2924,7 +2952,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len",
+                    "C_name": "STR_getConstStringRefLen",
+                    "C_name_api": "getConstStringRefLen",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -3042,7 +3071,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len_bufferify",
+                    "C_name": "STR_getConstStringRefLen_bufferify",
+                    "C_name_api": "getConstStringRefLen",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -3123,7 +3153,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_as_arg",
+                    "C_name": "STR_getConstStringRefAsArg",
+                    "C_name_api": "getConstStringRefAsArg",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -3279,7 +3310,8 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_as_arg_bufferify",
+                    "C_name": "STR_getConstStringRefAsArg_bufferify",
+                    "C_name_api": "getConstStringRefAsArg",
                     "C_prototype": "char *output,\t int SHT_output_len",
                     "C_return_type": "void",
                     "F_C_arguments": "output,\t SHT_output_len",
@@ -3371,6 +3403,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "getConstStringRefAsArg",
                     "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
                     "F_arg_c_call": "output,\t SHT_output_len",
                     "F_arguments": "output",
@@ -3433,7 +3466,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len_empty",
+                    "C_name": "STR_getConstStringRefLenEmpty",
+                    "C_name_api": "getConstStringRefLenEmpty",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -3550,7 +3584,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len_empty_bufferify",
+                    "C_name": "STR_getConstStringRefLenEmpty_bufferify",
+                    "C_name_api": "getConstStringRefLenEmpty",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -3629,7 +3664,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_alloc",
+                    "C_name": "STR_getConstStringRefAlloc",
+                    "C_name_api": "getConstStringRefAlloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -3741,7 +3777,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ref_alloc_bufferify",
+                    "C_name": "STR_getConstStringRefAlloc_bufferify",
+                    "C_name_api": "getConstStringRefAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -3834,7 +3871,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_len",
+                    "C_name": "STR_getConstStringPtrLen",
+                    "C_name_api": "getConstStringPtrLen",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -3958,7 +3996,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_len_bufferify",
+                    "C_name": "STR_getConstStringPtrLen_bufferify",
+                    "C_name_api": "getConstStringPtrLen",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",
@@ -4040,7 +4079,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
+                    "C_name": "STR_getConstStringPtrAlloc",
+                    "C_name_api": "getConstStringPtrAlloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -4155,7 +4195,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
+                    "C_name": "STR_getConstStringPtrAlloc_bufferify",
+                    "C_name_api": "getConstStringPtrAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -4240,7 +4281,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc",
+                    "C_name": "STR_getConstStringPtrOwnsAlloc",
+                    "C_name_api": "getConstStringPtrOwnsAlloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -4358,7 +4400,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
+                    "C_name": "STR_getConstStringPtrOwnsAlloc_bufferify",
+                    "C_name_api": "getConstStringPtrOwnsAlloc",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -4444,7 +4487,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
+                    "C_name": "STR_getConstStringPtrOwnsAllocPattern",
+                    "C_name_api": "getConstStringPtrOwnsAllocPattern",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -4563,7 +4607,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                    "C_name": "STR_getConstStringPtrOwnsAllocPattern_bufferify",
+                    "C_name_api": "getConstStringPtrOwnsAllocPattern",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -4647,7 +4692,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_pointer",
+                    "C_name": "STR_getConstStringPtrPointer",
+                    "C_name_api": "getConstStringPtrPointer",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -4746,7 +4792,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_pointer_bufferify",
+                    "C_name": "STR_getConstStringPtrPointer_bufferify",
+                    "C_name_api": "getConstStringPtrPointer",
                     "C_prototype": "STR_SHROUD_array *SHT_rv_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -4894,7 +4941,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_const_reference",
+                    "C_name": "STR_acceptStringConstReference",
+                    "C_name_api": "acceptStringConstReference",
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -5008,7 +5056,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_const_reference_bufferify",
+                    "C_name": "STR_acceptStringConstReference_bufferify",
+                    "C_name_api": "acceptStringConstReference",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -5130,7 +5179,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_reference_out",
+                    "C_name": "STR_acceptStringReferenceOut",
+                    "C_name_api": "acceptStringReferenceOut",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -5246,7 +5296,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_reference_out_bufferify",
+                    "C_name": "STR_acceptStringReferenceOut_bufferify",
+                    "C_name_api": "acceptStringReferenceOut",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -5367,7 +5418,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_reference",
+                    "C_name": "STR_acceptStringReference",
+                    "C_name_api": "acceptStringReference",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -5482,7 +5534,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_reference_bufferify",
+                    "C_name": "STR_acceptStringReference_bufferify",
+                    "C_name_api": "acceptStringReference",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -5601,7 +5654,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_accept_string_pointer_const",
+                    "C_name": "STR_acceptStringPointerConst",
+                    "C_name_api": "acceptStringPointerConst",
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -5714,7 +5768,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_accept_string_pointer_const_bufferify",
+                    "C_name": "STR_acceptStringPointerConst_bufferify",
+                    "C_name_api": "acceptStringPointerConst",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -5832,7 +5887,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_accept_string_pointer",
+                    "C_name": "STR_acceptStringPointer",
+                    "C_name_api": "acceptStringPointer",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -5944,7 +6000,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_accept_string_pointer_bufferify",
+                    "C_name": "STR_acceptStringPointer_bufferify",
+                    "C_name_api": "acceptStringPointer",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -6066,7 +6123,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_fetch_string_pointer",
+                    "C_name": "STR_fetchStringPointer",
+                    "C_name_api": "fetchStringPointer",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -6182,7 +6240,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
-                    "C_name": "STR_fetch_string_pointer_bufferify",
+                    "C_name": "STR_fetchStringPointer_bufferify",
+                    "C_name_api": "fetchStringPointer",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -6371,7 +6430,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
-                    "C_name": "STR_accept_string_pointer_len",
+                    "C_name": "STR_acceptStringPointerLen",
+                    "C_name_api": "acceptStringPointerLen",
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
@@ -6538,7 +6598,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
-                    "C_name": "STR_accept_string_pointer_len_bufferify",
+                    "C_name": "STR_acceptStringPointerLen_bufferify",
+                    "C_name_api": "acceptStringPointerLen",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
@@ -6730,7 +6791,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
-                    "C_name": "STR_fetch_string_pointer_len",
+                    "C_name": "STR_fetchStringPointerLen",
+                    "C_name_api": "fetchStringPointerLen",
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t nlen",
@@ -6900,7 +6962,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&SHCXX_arg1,\t nlen",
-                    "C_name": "STR_fetch_string_pointer_len_bufferify",
+                    "C_name": "STR_fetchStringPointerLen_bufferify",
+                    "C_name_api": "fetchStringPointerLen",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len,\t int * nlen",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t SHT_arg1_len,\t nlen",
@@ -7015,7 +7078,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "arg1",
-                    "C_name": "STR_accept_string_instance",
+                    "C_name": "STR_acceptStringInstance",
+                    "C_name_api": "acceptStringInstance",
                     "C_prototype": "char *arg1",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1",
@@ -7175,7 +7239,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
-                    "C_name": "STR_accept_string_instance_bufferify",
+                    "C_name": "STR_acceptStringInstance_bufferify",
+                    "C_name_api": "acceptStringInstance",
                     "C_prototype": "char *arg1,\t int SHT_arg1_len",
                     "C_return_type": "int",
                     "F_C_arguments": "arg1,\t SHT_arg1_len",
@@ -7335,6 +7400,7 @@
                     }
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "returnStrings",
                     "F_name_api": "return_strings",
                     "PY_name_impl": "PY_returnStrings",
                     "function_name": "returnStrings",
@@ -7392,6 +7458,7 @@
                 },
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "returnMany",
                     "F_name_api": "return_many",
                     "function_name": "returnMany",
                     "underscore_name": "return_many"
@@ -7505,6 +7572,7 @@
                     "C_bufferify_suffix": "_BUFFER",
                     "C_call_list": "name",
                     "C_name": "STR_explicit1",
+                    "C_name_api": "explicit1",
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
@@ -7615,6 +7683,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "name",
                     "C_name": "STR_explicit2",
+                    "C_name_api": "explicit2",
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
@@ -7730,6 +7799,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "name",
                     "C_name": "STR_explicit2_bufferify",
+                    "C_name_api": "explicit2",
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
@@ -7849,6 +7919,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "status",
                     "C_name": "CpassChar",
+                    "C_name_api": "CpassChar",
                     "C_prototype": "char status",
                     "C_return_type": "void",
                     "F_C_arguments": "status",
@@ -7903,7 +7974,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "STR_creturn_char",
+                    "C_name": "STR_CreturnChar",
+                    "C_name_api": "CreturnChar",
                     "C_prototype": "char *SHC_rv",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -8117,6 +8189,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
                     "C_name": "CpassCharPtr",
+                    "C_name_api": "CpassCharPtr",
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
@@ -8295,7 +8368,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t SHCXX_src",
-                    "C_name": "STR_cpass_char_ptr_bufferify",
+                    "C_name": "STR_CpassCharPtr_bufferify",
+                    "C_name_api": "CpassCharPtr",
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
@@ -8449,7 +8523,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t src",
-                    "C_name": "STR_cpass_char_ptr_blank",
+                    "C_name": "STR_CpassCharPtrBlank",
+                    "C_name_api": "CpassCharPtrBlank",
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
@@ -8624,7 +8699,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "dest,\t SHCXX_src",
-                    "C_name": "STR_cpass_char_ptr_blank_bufferify",
+                    "C_name": "STR_CpassCharPtrBlank_bufferify",
+                    "C_name_api": "CpassCharPtrBlank",
                     "C_prototype": "char *dest,\t int SHT_dest_len,\t char *src,\t int SHT_src_len",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t SHT_dest_len,\t src,\t SHT_src_len",
@@ -8821,7 +8897,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count,\t SHCXX_name",
-                    "C_name": "STR_post_declare",
+                    "C_name": "STR_PostDeclare",
+                    "C_name_api": "PostDeclare",
                     "C_prototype": "int * count,\t char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name",
@@ -8994,7 +9071,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "count,\t SHCXX_name",
-                    "C_name": "STR_post_declare_bufferify",
+                    "C_name": "STR_PostDeclare_bufferify",
+                    "C_name_api": "PostDeclare",
                     "C_prototype": "int * count,\t char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "count,\t name,\t SHT_name_len",
@@ -9095,7 +9173,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "src",
-                    "C_name": "STR_cpass_char_ptr_notrim",
+                    "C_name": "STR_CpassCharPtrNotrim",
+                    "C_name_api": "CpassCharPtrNotrim",
                     "C_prototype": "const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "src",
@@ -9241,7 +9320,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_src",
-                    "C_name": "STR_cpass_char_ptr_notrim_bufferify",
+                    "C_name": "STR_CpassCharPtrNotrim_bufferify",
+                    "C_name_api": "CpassCharPtrNotrim",
                     "C_prototype": "char *src,\t int SHT_src_len",
                     "C_return_type": "int",
                     "F_C_arguments": "src,\t SHT_src_len",
@@ -9427,7 +9507,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t src",
-                    "C_name": "STR_cpass_char_ptr_capi",
+                    "C_name": "STR_CpassCharPtrCAPI",
+                    "C_name_api": "CpassCharPtrCAPI",
                     "C_prototype": "void * addr,\t const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "addr,\t src",
@@ -9620,7 +9701,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "in,\t src",
-                    "C_name": "STR_cpass_char_ptr_capi2",
+                    "C_name": "STR_CpassCharPtrCAPI2",
+                    "C_name_api": "CpassCharPtrCAPI2",
                     "C_prototype": "const char * in,\t const char * src",
                     "C_return_type": "int",
                     "F_C_arguments": "in,\t src",

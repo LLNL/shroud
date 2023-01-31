@@ -42,10 +42,10 @@ typedef struct s_SCO_datapointer SCO_datapointer;
 // splicer begin namespace.ns2.C_declarations
 // splicer end namespace.ns2.C_declarations
 
-void SCO_ns2_data_pointer_get_items_bufferify(SCO_datapointer * SH_this,
+void SCO_ns2_DataPointer_get_items_bufferify(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc);
 
-void SCO_ns2_data_pointer_set_items(SCO_datapointer * SH_this,
+void SCO_ns2_DataPointer_set_items(SCO_datapointer * SH_this,
     int * val);
 
 #ifdef __cplusplus

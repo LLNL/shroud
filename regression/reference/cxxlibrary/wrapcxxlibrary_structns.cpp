@@ -33,7 +33,7 @@ extern "C" {
 // Attrs:     +intent(inout)
 // Requested: c_inout_struct_&
 // Match:     c_inout_struct
-int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
+int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
@@ -56,7 +56,7 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 // Attrs:     +intent(in)
 // Requested: c_in_struct_&
 // Match:     c_in_struct
-int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
+int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_in
     const structns::Cstruct1 * SHCXX_arg = 
@@ -76,7 +76,7 @@ int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 // Attrs:     +intent(inout)
 // Requested: c_inout_struct_&
 // Match:     c_inout_struct
-void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
+void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_inout
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
@@ -94,7 +94,7 @@ void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 // Attrs:     +intent(out)
 // Requested: c_out_struct_&
 // Match:     c_out_struct
-void CXX_structns_pass_struct_by_reference_out(CXX_cstruct1 * arg)
+void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_out
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>

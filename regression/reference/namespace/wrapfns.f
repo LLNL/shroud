@@ -77,7 +77,7 @@ module ns_mod
         ! Match:     c_function_string_&
         function c_last_function_called() &
                 result(SHT_rv) &
-                bind(C, name="NS_last_function_called")
+                bind(C, name="NS_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) SHT_rv
@@ -88,7 +88,7 @@ module ns_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv) &
-                bind(C, name="NS_last_function_called_bufferify")
+                bind(C, name="NS_LastFunctionCalled_bufferify")
             import :: NS_SHROUD_array
             implicit none
             type(NS_SHROUD_array), intent(OUT) :: SHT_rv
@@ -100,7 +100,7 @@ module ns_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         subroutine one() &
-                bind(C, name="NS_one")
+                bind(C, name="NS_One")
             implicit none
         end subroutine one
 

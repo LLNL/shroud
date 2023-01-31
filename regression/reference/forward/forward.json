@@ -28,6 +28,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass3.h",
                     "C_impl_filename": "wrapClass3.cpp",
+                    "C_name_api": "Class3",
                     "C_name_scope": "Class3_",
                     "C_type_name": "FOR_Class3",
                     "F_derived_name": "class3",
@@ -100,6 +101,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "FOR_Class2 * SHC_rv",
                             "C_return_type": "FOR_Class2 *",
                             "F_C_arguments": "SHT_rv",
@@ -221,6 +223,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "FOR_Class2_dtor",
+                            "C_name_api": "dtor",
                             "C_prototype": "FOR_Class2 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -379,6 +382,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
+                            "C_name_api": "func1",
                             "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t arg",
@@ -538,7 +542,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "FOR_Class2_accept_class3",
+                            "C_name": "FOR_Class2_acceptClass3",
+                            "C_name_api": "acceptClass3",
                             "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t arg",
@@ -589,6 +594,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass2.h",
                     "C_impl_filename": "wrapClass2.cpp",
+                    "C_name_api": "Class2",
                     "C_name_scope": "Class2_",
                     "C_type_name": "FOR_Class2",
                     "F_derived_name": "class2",
@@ -718,7 +724,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
-                    "C_name": "FOR_pass_struct1",
+                    "C_name": "FOR_passStruct1",
+                    "C_name_api": "passStruct1",
                     "C_prototype": "const STR_cstruct1 * arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",

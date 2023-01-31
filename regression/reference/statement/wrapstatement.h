@@ -28,12 +28,11 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int STMT_get_name_length(void);
+int STMT_GetNameLength(void);
 
-const char * STMT_get_name_error_pattern(void);
+const char * STMT_getNameErrorPattern(void);
 
-void STMT_get_name_error_pattern_bufferify(char *SHC_rv,
-    int SHT_rv_len);
+void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len);
 
 #ifdef __cplusplus
 }

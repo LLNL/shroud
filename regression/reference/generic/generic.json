@@ -24,6 +24,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapStructAsClass.h",
                     "C_impl_filename": "wrapStructAsClass.c",
+                    "C_name_api": "StructAsClass",
                     "C_name_scope": "StructAsClass_",
                     "C_type_name": "GEN_StructAsClass",
                     "F_derived_name": "struct_as_class",
@@ -142,6 +143,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "UpdateAsFloat",
+                    "C_name_api": "UpdateAsFloat",
                     "C_prototype": "float arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -248,6 +250,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "UpdateAsDouble",
+                    "C_name_api": "UpdateAsDouble",
                     "C_prototype": "double arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -296,6 +299,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "GetGlobalDouble",
+                    "C_name_api": "GetGlobalDouble",
                     "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_arguments": "",
@@ -478,6 +482,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "GenericReal",
+                    "C_name_api": "GenericReal",
                     "C_prototype": "double arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -542,6 +547,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GenericReal",
                     "F_C_call": "c_generic_real",
                     "F_arg_c_call": "real(arg, C_DOUBLE)",
                     "F_arguments": "arg",
@@ -611,6 +617,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GenericReal",
                     "F_C_call": "c_generic_real",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
@@ -839,6 +846,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "GenericReal2",
+                    "C_name_api": "GenericReal2",
                     "C_prototype": "long arg1,\t long arg2",
                     "C_return_type": "long",
                     "F_C_arguments": "arg1,\t arg2",
@@ -945,6 +953,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GenericReal2",
                     "F_C_call": "c_generic_real2",
                     "F_arg_c_call": "int(arg1, C_LONG),\t int(arg2, C_LONG)",
                     "F_arguments": "arg1,\t arg2",
@@ -1041,6 +1050,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GenericReal2",
                     "F_C_call": "c_generic_real2",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
@@ -1347,6 +1357,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
                     "C_name": "SumValues",
+                    "C_name_api": "SumValues",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
@@ -1539,7 +1550,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "GEN_sum_values_0d",
+                    "C_name": "GEN_SumValues_0d",
+                    "C_name_api": "SumValues",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
@@ -1748,7 +1760,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "GEN_sum_values_1d",
+                    "C_name": "GEN_SumValues_1d",
+                    "C_name_api": "SumValues",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
@@ -1957,7 +1970,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "GEN_sum_values_2d",
+                    "C_name": "GEN_SumValues_2d",
+                    "C_name_api": "SumValues",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
@@ -2465,6 +2479,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
                     "C_name": "AssignValues",
+                    "C_name_api": "AssignValues",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
@@ -2718,7 +2733,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "GEN_assign_values_scalar",
+                    "C_name": "GEN_AssignValues_scalar",
+                    "C_name_api": "AssignValues",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
@@ -2989,7 +3005,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "GEN_assign_values_broadcast",
+                    "C_name": "GEN_AssignValues_broadcast",
+                    "C_name_api": "AssignValues",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
@@ -3267,7 +3284,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "GEN_assign_values_copy",
+                    "C_name": "GEN_AssignValues_copy",
+                    "C_name_api": "AssignValues",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
@@ -3586,6 +3604,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "SavePointer",
+                    "C_name_api": "SavePointer",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -3788,7 +3807,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "GEN_save_pointer_float1d",
+                    "C_name": "GEN_SavePointer_float1d",
+                    "C_name_api": "SavePointer",
                     "C_prototype": "float * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -4001,7 +4021,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "GEN_save_pointer_float2d",
+                    "C_name": "GEN_SavePointer_float2d",
+                    "C_name_api": "SavePointer",
                     "C_prototype": "float * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -4330,7 +4351,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "GEN_save_pointer2",
+                    "C_name": "GEN_SavePointer2",
+                    "C_name_api": "SavePointer2",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -4543,7 +4565,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "GEN_save_pointer2_float1d",
+                    "C_name": "GEN_SavePointer2_float1d",
+                    "C_name_api": "SavePointer2",
                     "C_prototype": "float * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -4766,7 +4789,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
-                    "C_name": "GEN_save_pointer2_float2d",
+                    "C_name": "GEN_SavePointer2_float2d",
+                    "C_name_api": "SavePointer2",
                     "C_prototype": "float * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -4984,6 +5008,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointer",
+                    "C_name_api": "GetPointer",
                     "C_prototype": "void **addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -5345,6 +5370,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "addr,\t type,\t size",
                     "C_name": "GetPointerAsPointer",
+                    "C_name_api": "GetPointerAsPointer",
                     "C_prototype": "void **addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
                     "F_C_arguments": "addr,\t type,\t size",
@@ -5462,6 +5488,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GetPointerAsPointer",
                     "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
                     "F_arg_c_call": "SHT_addr_cdesc",
                     "F_arguments": "addr",
@@ -5683,7 +5710,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&addr,\t &type,\t &size",
-                    "C_name": "GEN_get_pointer_as_pointer_float1d_bufferify",
+                    "C_name": "GEN_GetPointerAsPointer_float1d_bufferify",
+                    "C_name_api": "GetPointerAsPointer",
                     "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_addr_cdesc",
@@ -5802,6 +5830,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "GetPointerAsPointer",
                     "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
                     "F_arg_c_call": "SHT_addr_cdesc",
                     "F_arguments": "addr",
@@ -6023,7 +6052,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "&addr,\t &type,\t &size",
-                    "C_name": "GEN_get_pointer_as_pointer_float2d_bufferify",
+                    "C_name": "GEN_GetPointerAsPointer_float2d_bufferify",
+                    "C_name_api": "GetPointerAsPointer",
                     "C_prototype": "GEN_SHROUD_array *SHT_addr_cdesc",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_addr_cdesc",
@@ -6071,7 +6101,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "GEN_create_struct_as_class",
+                    "C_name": "GEN_CreateStructAsClass",
+                    "C_name_api": "CreateStructAsClass",
                     "C_prototype": "GEN_StructAsClass * SHC_rv",
                     "C_return_type": "GEN_StructAsClass *",
                     "F_C_arguments": "SHT_rv",
@@ -6330,7 +6361,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg,\t inew",
-                    "C_name": "GEN_update_struct_as_class",
+                    "C_name": "GEN_UpdateStructAsClass",
+                    "C_name_api": "UpdateStructAsClass",
                     "C_prototype": "GEN_StructAsClass * arg,\t long inew",
                     "C_return_type": "long",
                     "F_C_arguments": "arg,\t inew",
@@ -6508,7 +6540,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg,\t inew",
-                    "C_name": "GEN_update_struct_as_class_int",
+                    "C_name": "GEN_UpdateStructAsClass_int",
+                    "C_name_api": "UpdateStructAsClass",
                     "C_prototype": "GEN_StructAsClass * arg,\t int inew",
                     "C_return_type": "long",
                     "F_C_arguments": "arg,\t inew",
@@ -6700,7 +6733,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg,\t inew",
-                    "C_name": "GEN_update_struct_as_class_long",
+                    "C_name": "GEN_UpdateStructAsClass_long",
+                    "C_name_api": "UpdateStructAsClass",
                     "C_prototype": "GEN_StructAsClass * arg,\t long inew",
                     "C_return_type": "long",
                     "F_C_arguments": "arg,\t inew",

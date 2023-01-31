@@ -122,8 +122,8 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // Attrs:     +intent(function)
 // Requested: c_function_native_scalar
 // Match:     c_function
-// start CLA_Class1_method1
-int CLA_Class1_method1(CLA_Class1 * self)
+// start CLA_Class1_Method1
+int CLA_Class1_Method1(CLA_Class1 * self)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -132,7 +132,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
     return SHC_rv;
     // splicer end class.Class1.method.method1
 }
-// end CLA_Class1_method1
+// end CLA_Class1_Method1
 
 /**
  * \brief Pass in reference to instance
@@ -169,8 +169,8 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 // Function:  void returnThis
 // Attrs:     +api(capptr)+intent(subroutine)
 // Exact:     c_subroutine
-// start CLA_Class1_return_this
-void CLA_Class1_return_this(CLA_Class1 * self)
+// start CLA_Class1_returnThis
+void CLA_Class1_returnThis(CLA_Class1 * self)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -178,7 +178,7 @@ void CLA_Class1_return_this(CLA_Class1 * self)
     SH_this->returnThis();
     // splicer end class.Class1.method.return_this
 }
-// end CLA_Class1_return_this
+// end CLA_Class1_returnThis
 
 /**
  * \brief Return pointer to 'this' to allow chaining calls
@@ -197,9 +197,9 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Attrs:     +intent(in)
 // Requested: c_in_bool_scalar
 // Match:     c_default
-// start CLA_Class1_return_this_buffer
-CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
-    char * name, bool flag, CLA_Class1 * SHC_rv)
+// start CLA_Class1_returnThisBuffer
+CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
+    bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -212,7 +212,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer
 }
-// end CLA_Class1_return_this_buffer
+// end CLA_Class1_returnThisBuffer
 
 /**
  * \brief Return pointer to 'this' to allow chaining calls
@@ -231,8 +231,8 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Attrs:     +intent(in)
 // Requested: c_in_bool_scalar
 // Match:     c_default
-// start CLA_Class1_return_this_buffer_bufferify
-CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
+// start CLA_Class1_returnThisBuffer_bufferify
+CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
@@ -246,7 +246,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     return SHC_rv;
     // splicer end class.Class1.method.return_this_buffer_bufferify
 }
-// end CLA_Class1_return_this_buffer_bufferify
+// end CLA_Class1_returnThisBuffer_bufferify
 
 /**
  * \brief Test const method
@@ -280,8 +280,8 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // Attrs:     +deref(allocatable)+intent(function)
 // Requested: c_function_string_&_allocatable
 // Match:     c_function_string_&
-// start CLA_Class1_get_name
-const char * CLA_Class1_get_name(CLA_Class1 * self)
+// start CLA_Class1_getName
+const char * CLA_Class1_getName(CLA_Class1 * self)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -291,7 +291,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
     return SHC_rv;
     // splicer end class.Class1.method.get_name
 }
-// end CLA_Class1_get_name
+// end CLA_Class1_getName
 
 /**
  * \brief test helper
@@ -301,8 +301,8 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Function:  const std::string & getName
 // Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
 // Exact:     c_function_string_&_cdesc_allocatable
-// start CLA_Class1_get_name_bufferify
-void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
+// start CLA_Class1_getName_bufferify
+void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
@@ -312,7 +312,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
     ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
     // splicer end class.Class1.method.get_name_bufferify
 }
-// end CLA_Class1_get_name_bufferify
+// end CLA_Class1_getName_bufferify
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
@@ -324,8 +324,8 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-// start CLA_Class1_direction_func
-int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
+// start CLA_Class1_directionFunc
+int CLA_Class1_directionFunc(CLA_Class1 * self, int arg)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -338,7 +338,7 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
     return SHC_rv;
     // splicer end class.Class1.method.direction_func
 }
-// end CLA_Class1_direction_func
+// end CLA_Class1_directionFunc
 
 // ----------------------------------------
 // Function:  int get_m_flag

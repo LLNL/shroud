@@ -29,7 +29,7 @@ module cxxlibrary_mod
         ! Match:     c_function
         function c_default_ptr_is_null_0() &
                 result(SHT_rv) &
-                bind(C, name="CXX_default_ptr_is_null_0")
+                bind(C, name="CXX_defaultPtrIsNULL_0")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL) :: SHT_rv
@@ -47,7 +47,7 @@ module cxxlibrary_mod
         ! Match:     c_default
         function c_default_ptr_is_null_1(data) &
                 result(SHT_rv) &
-                bind(C, name="CXX_default_ptr_is_null_1")
+                bind(C, name="CXX_defaultPtrIsNULL_1")
             use iso_c_binding, only : C_BOOL, C_DOUBLE
             implicit none
             real(C_DOUBLE), intent(IN) :: data(*)
@@ -75,7 +75,7 @@ module cxxlibrary_mod
         ! Requested: c_out_native_*
         ! Match:     c_default
         subroutine c_default_args_in_out_0(in1, out1, out2) &
-                bind(C, name="CXX_default_args_in_out_0")
+                bind(C, name="CXX_defaultArgsInOut_0")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: in1
@@ -109,7 +109,7 @@ module cxxlibrary_mod
         ! Requested: c_in_bool_scalar
         ! Match:     c_default
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
-                bind(C, name="CXX_default_args_in_out_1")
+                bind(C, name="CXX_defaultArgsInOut_1")
             use iso_c_binding, only : C_BOOL, C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: in1
@@ -130,7 +130,7 @@ module cxxlibrary_mod
         ! Match:     c_default
         function c_get_group_name(idx) &
                 result(SHT_rv) &
-                bind(C, name="CXX_get_group_name")
+                bind(C, name="CXX_getGroupName")
             use iso_c_binding, only : C_LONG, C_PTR
             implicit none
             integer(C_LONG), value, intent(IN) :: idx
@@ -149,7 +149,7 @@ module cxxlibrary_mod
         ! Match:     c_default
         subroutine c_get_group_name_int32_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="CXX_get_group_name_int32_t_bufferify")
+                bind(C, name="CXX_getGroupName_int32_t_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_INT32_T
             implicit none
             integer(C_INT32_T), value, intent(IN) :: idx
@@ -169,7 +169,7 @@ module cxxlibrary_mod
         ! Match:     c_default
         subroutine c_get_group_name_int64_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="CXX_get_group_name_int64_t_bufferify")
+                bind(C, name="CXX_getGroupName_int64_t_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_INT64_T
             implicit none
             integer(C_INT64_T), value, intent(IN) :: idx

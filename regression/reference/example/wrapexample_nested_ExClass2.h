@@ -43,33 +43,33 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
 
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self);
 
-const char * AA_example_nested_ExClass2_get_name(
+const char * AA_example_nested_ExClass2_getName(
     const AA_example_nested_ExClass2 * self);
 
-void AA_example_nested_ExClass2_get_name_bufferify(
+void AA_example_nested_ExClass2_getName_bufferify(
     const AA_example_nested_ExClass2 * self, char *SHC_rv,
     int SHT_rv_len);
 
-const char * AA_example_nested_ExClass2_get_name2(
+const char * AA_example_nested_ExClass2_getName2(
     AA_example_nested_ExClass2 * self);
 
-void AA_example_nested_ExClass2_get_name2_bufferify(
+void AA_example_nested_ExClass2_getName2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc);
 
-char * AA_example_nested_ExClass2_get_name3(
+char * AA_example_nested_ExClass2_getName3(
     const AA_example_nested_ExClass2 * self);
 
-void AA_example_nested_ExClass2_get_name3_bufferify(
+void AA_example_nested_ExClass2_getName3_bufferify(
     const AA_example_nested_ExClass2 * self,
     AA_SHROUD_array *SHT_rv_cdesc);
 
-char * AA_example_nested_ExClass2_get_name4(
+char * AA_example_nested_ExClass2_getName4(
     AA_example_nested_ExClass2 * self);
 
-void AA_example_nested_ExClass2_get_name4_bufferify(
+void AA_example_nested_ExClass2_getName4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHT_rv_cdesc);
 
-int AA_example_nested_ExClass2_get_name_length(
+int AA_example_nested_ExClass2_GetNameLength(
     const AA_example_nested_ExClass2 * self);
 
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
@@ -86,25 +86,25 @@ void AA_example_nested_ExClass2_declare_1(
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self);
 
-AA_TypeID AA_example_nested_ExClass2_get_type_id(
+AA_TypeID AA_example_nested_ExClass2_getTypeID(
     const AA_example_nested_ExClass2 * self);
 
-void AA_example_nested_ExClass2_set_value_int(
+void AA_example_nested_ExClass2_setValue_int(
     AA_example_nested_ExClass2 * self, int value);
 
-void AA_example_nested_ExClass2_set_value_long(
+void AA_example_nested_ExClass2_setValue_long(
     AA_example_nested_ExClass2 * self, long value);
 
-void AA_example_nested_ExClass2_set_value_float(
+void AA_example_nested_ExClass2_setValue_float(
     AA_example_nested_ExClass2 * self, float value);
 
-void AA_example_nested_ExClass2_set_value_double(
+void AA_example_nested_ExClass2_setValue_double(
     AA_example_nested_ExClass2 * self, double value);
 
-int AA_example_nested_ExClass2_get_value_int(
+int AA_example_nested_ExClass2_getValue_int(
     AA_example_nested_ExClass2 * self);
 
-double AA_example_nested_ExClass2_get_value_double(
+double AA_example_nested_ExClass2_getValue_double(
     AA_example_nested_ExClass2 * self);
 
 #ifdef __cplusplus

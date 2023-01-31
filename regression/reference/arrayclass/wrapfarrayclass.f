@@ -107,7 +107,7 @@ module arrayclass_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_arraywrapper_setSize(self, size) &
-                bind(C, name="ARR_ArrayWrapper_set_size")
+                bind(C, name="ARR_ArrayWrapper_setSize")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -122,7 +122,7 @@ module arrayclass_mod
         ! Match:     c_function
         pure function c_arraywrapper_getSize(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_size")
+                bind(C, name="ARR_ArrayWrapper_getSize")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -141,7 +141,7 @@ module arrayclass_mod
         ! Requested: c_out_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fillSize(self, size) &
-                bind(C, name="ARR_ArrayWrapper_fill_size")
+                bind(C, name="ARR_ArrayWrapper_fillSize")
             use iso_c_binding, only : C_INT
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -168,7 +168,7 @@ module arrayclass_mod
         ! Match:     c_function_native_*
         function c_arraywrapper_getArray(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array")
+                bind(C, name="ARR_ArrayWrapper_getArray")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -182,7 +182,7 @@ module arrayclass_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_getArray_bufferify(self, SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_bufferify")
+                bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -196,7 +196,7 @@ module arrayclass_mod
         ! Match:     c_function_native_*
         pure function c_arraywrapper_getArrayConst(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_const")
+                bind(C, name="ARR_ArrayWrapper_getArrayConst")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -210,7 +210,7 @@ module arrayclass_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_getArrayConst_bufferify(self, SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_const_bufferify")
+                bind(C, name="ARR_ArrayWrapper_getArrayConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -224,7 +224,7 @@ module arrayclass_mod
         ! Match:     c_function_native_*
         function c_arraywrapper_getArrayC(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_c")
+                bind(C, name="ARR_ArrayWrapper_getArrayC")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -238,7 +238,7 @@ module arrayclass_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_getArrayC_bufferify(self, SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_c_bufferify")
+                bind(C, name="ARR_ArrayWrapper_getArrayC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -252,7 +252,7 @@ module arrayclass_mod
         ! Match:     c_function_native_*
         pure function c_arraywrapper_getArrayConstC(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_const_c")
+                bind(C, name="ARR_ArrayWrapper_getArrayConstC")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -266,7 +266,7 @@ module arrayclass_mod
         ! Requested: c_function_native_*_cdesc_pointer
         ! Match:     c_function_native_*_cdesc
         subroutine c_arraywrapper_getArrayConstC_bufferify(self, SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_get_array_const_c_bufferify")
+                bind(C, name="ARR_ArrayWrapper_getArrayConstC_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -289,7 +289,7 @@ module arrayclass_mod
         ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetchArrayPtr(self, array, isize) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ptr")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayPtr")
             use iso_c_binding, only : C_INT, C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -310,7 +310,7 @@ module arrayclass_mod
         ! Match:     c_out_native_**_cdesc
         subroutine c_arraywrapper_fetchArrayPtr_bufferify(self, &
                 SHT_array_cdesc) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_bufferify")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayPtr_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -333,7 +333,7 @@ module arrayclass_mod
         ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetchArrayRef(self, array, isize) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ref")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayRef")
             use iso_c_binding, only : C_INT, C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -354,7 +354,7 @@ module arrayclass_mod
         ! Match:     c_out_native_*&_cdesc
         subroutine c_arraywrapper_fetchArrayRef_bufferify(self, &
                 SHT_array_cdesc) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ref_bufferify")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayRef_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -377,7 +377,7 @@ module arrayclass_mod
         ! Requested: c_inout_native_*
         ! Match:     c_default
         subroutine c_arraywrapper_fetchArrayPtrConst(self, array, isize) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_const")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst")
             use iso_c_binding, only : C_INT, C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -398,7 +398,7 @@ module arrayclass_mod
         ! Match:     c_out_native_**_cdesc
         subroutine c_arraywrapper_fetchArrayPtrConst_bufferify(self, &
                 SHT_array_cdesc) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ptr_const_bufferify")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -421,7 +421,7 @@ module arrayclass_mod
         ! Requested: c_inout_native_&
         ! Match:     c_default
         subroutine c_arraywrapper_fetchArrayRefConst(self, array, isize) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ref_const")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst")
             use iso_c_binding, only : C_INT, C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -442,7 +442,7 @@ module arrayclass_mod
         ! Match:     c_out_native_*&_cdesc
         subroutine c_arraywrapper_fetchArrayRefConst_bufferify(self, &
                 SHT_array_cdesc) &
-                bind(C, name="ARR_ArrayWrapper_fetch_array_ref_const_bufferify")
+                bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
@@ -459,7 +459,7 @@ module arrayclass_mod
         ! Attrs:     +intent(out)
         ! Exact:     c_out_void_**
         subroutine c_arraywrapper_fetchVoidPtr(self, array) &
-                bind(C, name="ARR_ArrayWrapper_fetch_void_ptr")
+                bind(C, name="ARR_ArrayWrapper_fetchVoidPtr")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -478,7 +478,7 @@ module arrayclass_mod
         ! Requested: c_out_void_*&
         ! Match:     c_default
         subroutine c_arraywrapper_fetchVoidRef(self, array) &
-                bind(C, name="ARR_ArrayWrapper_fetch_void_ref")
+                bind(C, name="ARR_ArrayWrapper_fetchVoidRef")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -498,7 +498,7 @@ module arrayclass_mod
         ! Match:     c_default
         function c_arraywrapper_checkPtr(self, array) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_check_ptr")
+                bind(C, name="ARR_ArrayWrapper_checkPtr")
             use iso_c_binding, only : C_BOOL, C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
@@ -514,7 +514,7 @@ module arrayclass_mod
         ! Match:     c_function
         function c_arraywrapper_sumArray(self) &
                 result(SHT_rv) &
-                bind(C, name="ARR_ArrayWrapper_sum_array")
+                bind(C, name="ARR_ArrayWrapper_sumArray")
             use iso_c_binding, only : C_DOUBLE
             import :: ARR_SHROUD_capsule_data
             implicit none

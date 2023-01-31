@@ -79,6 +79,7 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wraps_Struct1.h",
                     "C_impl_filename": "wraps_Struct1.cpp",
+                    "C_name_api": "s_Struct1",
                     "C_name_scope": "s_Struct1_",
                     "C_type_name": "TYP_s_struct1",
                     "F_derived_name": "s_struct1",
@@ -215,6 +216,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TYP_typefunc",
+                    "C_name_api": "typefunc",
                     "C_prototype": "TYP_TypeID arg",
                     "C_return_type": "TYP_TypeID",
                     "F_C_arguments": "arg",
@@ -393,6 +395,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1",
                     "C_name": "TYP_typestruct",
+                    "C_name_api": "typestruct",
                     "C_prototype": "TYP_Struct1Rename * arg1",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1",
@@ -450,6 +453,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "TypeID",
                     "C_typedef_name": "TYP_TypeID",
                     "F_name_api": "type_id",
                     "F_typedef_name": "type_id",
@@ -487,6 +491,7 @@
                     "python": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "Struct1Rename",
                     "C_typedef_name": "TYP_Struct1Rename",
                     "F_name_api": "struct1_rename",
                     "F_typedef_name": "struct1_rename",

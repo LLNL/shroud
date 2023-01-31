@@ -38,6 +38,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "PRE_User1_method1",
+                            "C_name_api": "method1",
                             "C_prototype": "PRE_User1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -92,6 +93,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "PRE_User1_method2",
+                            "C_name_api": "method2",
                             "C_prototype": "PRE_User1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -150,6 +152,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "PRE_User1_method3def_0",
+                            "C_name_api": "method3def",
                             "C_prototype": "PRE_User1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -286,6 +289,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "i",
                             "C_name": "PRE_User1_method3def_1",
+                            "C_name_api": "method3def",
                             "C_prototype": "PRE_User1 * self,\t int i",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t i",
@@ -329,6 +333,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser1.h",
                     "C_impl_filename": "wrapUser1.cpp",
+                    "C_name_api": "User1",
                     "C_name_scope": "User1_",
                     "C_type_name": "PRE_User1",
                     "F_derived_name": "user1",
@@ -388,6 +393,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "PRE_User2_exfunc_0",
+                            "C_name_api": "exfunc",
                             "C_prototype": "PRE_User2 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -516,6 +522,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "PRE_User2_exfunc_1",
+                            "C_name_api": "exfunc",
                             "C_prototype": "PRE_User2 * self,\t int flag",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t flag",
@@ -558,6 +565,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapUser2.h",
                     "C_impl_filename": "wrapUser2.cpp",
+                    "C_name_api": "User2",
                     "C_name_scope": "User2_",
                     "C_type_name": "PRE_User2",
                     "F_derived_name": "user2",

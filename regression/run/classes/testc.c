@@ -21,7 +21,7 @@ void test_class(void)
 
     CLA_Class1_ctor_default(&c1);
 
-    int flag = CLA_Class1_method1(&c1);
+    int flag = CLA_Class1_Method1(&c1);
     assert(flag == 0 && "CLA_class1_method1");
 }
 
@@ -33,7 +33,7 @@ void test_class_by_value(void)
 
     CLA_set_global_flag(0);
     CLA_Class1_set_test(&obj0, 13);
-    CLA_pass_class_by_value(obj0);
+    CLA_passClassByValue(obj0);
     int iflag = CLA_get_global_flag();
     assert(iflag == 13 && "passClassByValue");
     CLA_Class1_delete(&obj0);

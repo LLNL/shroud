@@ -49,7 +49,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-int CLA_direction_func(int arg)
+int CLA_directionFunc(int arg)
 {
     // splicer begin function.direction_func
     classes::Class1::DIRECTION SHCXX_arg =
@@ -73,7 +73,7 @@ int CLA_direction_func(int arg)
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
 // Exact:     c_in_shadow_scalar
-void CLA_pass_class_by_value(CLA_Class1 arg)
+void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value
     classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
@@ -175,7 +175,7 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 // Function:  const Class1 & getConstClassReference
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_&_capptr
-CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_const_class_reference
     const classes::Class1 & SHCXX_rv = classes::getConstClassReference(
@@ -190,7 +190,7 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 // Function:  Class1 & getClassReference
 // Attrs:     +api(capptr)+intent(function)
 // Exact:     c_function_shadow_&_capptr
-CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_reference
     classes::Class1 & SHCXX_rv = classes::getClassReference();
@@ -213,7 +213,7 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv)
 // Attrs:     +intent(in)
 // Requested: c_in_native_scalar
 // Match:     c_default
-CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.get_class_copy
     classes::Class1 * SHCXX_rv = new classes::Class1;
@@ -258,7 +258,7 @@ int CLA_get_global_flag(void)
 // Attrs:     +deref(copy)+intent(function)
 // Requested: c_function_string_&_copy
 // Match:     c_function_string_&
-const char * CLA_last_function_called(void)
+const char * CLA_LastFunctionCalled(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = classes::LastFunctionCalled();
@@ -272,7 +272,7 @@ const char * CLA_last_function_called(void)
 // Attrs:     +api(buf)+deref(copy)+intent(function)
 // Requested: c_function_string_&_buf_copy
 // Match:     c_function_string_&_buf
-void CLA_last_function_called_bufferify(char *SHC_rv, int SHT_rv_len)
+void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = classes::LastFunctionCalled();

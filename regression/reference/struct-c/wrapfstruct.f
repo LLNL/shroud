@@ -425,7 +425,7 @@ module struct_mod
     interface
         function c_pass_struct2_bufferify(s1, outbuf, SHT_outbuf_len) &
                 result(SHT_rv) &
-                bind(C, name="STR_pass_struct2_bufferify")
+                bind(C, name="STR_passStruct2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: cstruct1
             implicit none
@@ -647,7 +647,7 @@ module struct_mod
         function c_return_struct_ptr2_bufferify(i, d, outbuf, &
                 SHT_outbuf_len) &
                 result(SHT_rv) &
-                bind(C, name="STR_return_struct_ptr2_bufferify")
+                bind(C, name="STR_returnStructPtr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: i
@@ -696,7 +696,7 @@ module struct_mod
     interface
         function c_create_cstruct_as_class(SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_create_cstruct_as_class")
+                bind(C, name="STR_Create_Cstruct_as_class")
             use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -723,7 +723,7 @@ module struct_mod
     interface
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_create_cstruct_as_class_args")
+                bind(C, name="STR_Create_Cstruct_as_class_args")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -746,7 +746,7 @@ module struct_mod
     interface
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
-                bind(C, name="STR_cstruct_as_class_sum")
+                bind(C, name="STR_Cstruct_as_class_sum")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -777,7 +777,7 @@ module struct_mod
     interface
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 result(SHT_prv) &
-                bind(C, name="STR_create_cstruct_as_subclass_args")
+                bind(C, name="STR_Create_Cstruct_as_subclass_args")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
@@ -802,7 +802,7 @@ module struct_mod
     interface
         function cstruct_ptr_get_const_dvalue(SH_this) &
                 result(SHT_rv) &
-                bind(C, name="STR_cstruct_ptr_get_const_dvalue_bufferify")
+                bind(C, name="STR_Cstruct_ptr_get_const_dvalue_bufferify")
             use iso_c_binding, only : C_DOUBLE
             import :: cstruct_ptr
             implicit none
@@ -827,7 +827,7 @@ module struct_mod
     ! Exact:     c_setter_native_*
     interface
         subroutine cstruct_ptr_set_const_dvalue(SH_this, val) &
-                bind(C, name="STR_cstruct_ptr_set_const_dvalue")
+                bind(C, name="STR_Cstruct_ptr_set_const_dvalue")
             use iso_c_binding, only : C_DOUBLE
             import :: cstruct_ptr
             implicit none
@@ -848,7 +848,7 @@ module struct_mod
     ! Match:     c_in_struct
     interface
         subroutine c_cstruct_list_get_ivalue_bufferify(SH_this, SHT_rv) &
-                bind(C, name="STR_cstruct_list_get_ivalue_bufferify")
+                bind(C, name="STR_Cstruct_list_get_ivalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
@@ -872,7 +872,7 @@ module struct_mod
     ! Exact:     c_setter_native_*
     interface
         subroutine cstruct_list_set_ivalue(SH_this, val) &
-                bind(C, name="STR_cstruct_list_set_ivalue")
+                bind(C, name="STR_Cstruct_list_set_ivalue")
             use iso_c_binding, only : C_INT
             import :: cstruct_list
             implicit none
@@ -893,7 +893,7 @@ module struct_mod
     ! Match:     c_in_struct
     interface
         subroutine c_cstruct_list_get_dvalue_bufferify(SH_this, SHT_rv) &
-                bind(C, name="STR_cstruct_list_get_dvalue_bufferify")
+                bind(C, name="STR_Cstruct_list_get_dvalue_bufferify")
             import :: STR_SHROUD_array, cstruct_list
             implicit none
             type(cstruct_list), intent(IN) :: SH_this
@@ -917,7 +917,7 @@ module struct_mod
     ! Exact:     c_setter_native_*
     interface
         subroutine cstruct_list_set_dvalue(SH_this, val) &
-                bind(C, name="STR_cstruct_list_set_dvalue")
+                bind(C, name="STR_Cstruct_list_set_dvalue")
             use iso_c_binding, only : C_DOUBLE
             import :: cstruct_list
             implicit none

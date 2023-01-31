@@ -135,6 +135,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_ctor_default",
+                            "C_name_api": "ctor",
                             "C_prototype": "CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_arguments": "SHT_rv",
@@ -350,6 +351,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "CLA_Class1_ctor_flag",
+                            "C_name_api": "ctor",
                             "C_prototype": "int flag,\t CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_arguments": "flag,\t SHT_rv",
@@ -471,6 +473,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_delete",
+                            "C_name_api": "delete",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -536,7 +539,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_method1",
+                            "C_name": "CLA_Class1_Method1",
+                            "C_name_api": "Method1",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -738,6 +742,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "*SHCXX_obj2",
                             "C_name": "CLA_Class1_equivalent",
+                            "C_name_api": "equivalent",
                             "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * obj2",
                             "C_return_type": "bool",
                             "F_C_arguments": "self,\t obj2",
@@ -849,6 +854,7 @@
                         "return_this": true,
                         "wrap": {},
                         "zz_fmtdict": {
+                            "C_name_api": "returnThis",
                             "F_name_api": "return_this",
                             "function_name": "returnThis",
                             "underscore_name": "return_this"
@@ -892,7 +898,8 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_return_this",
+                            "C_name": "CLA_Class1_returnThis",
+                            "C_name_api": "returnThis",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -1058,7 +1065,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
-                            "C_name": "CLA_Class1_return_this_buffer",
+                            "C_name": "CLA_Class1_returnThisBuffer",
+                            "C_name_api": "returnThisBuffer",
                             "C_prototype": "CLA_Class1 * self,\t char * name,\t bool flag,\t CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_arguments": "self,\t name,\t flag,\t SHT_rv",
@@ -1267,7 +1275,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
-                            "C_name": "CLA_Class1_return_this_buffer_bufferify",
+                            "C_name": "CLA_Class1_returnThisBuffer_bufferify",
+                            "C_name_api": "returnThisBuffer",
                             "C_prototype": "CLA_Class1 * self,\t char *name,\t int SHT_name_len,\t bool flag,\t CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_arguments": "self,\t name,\t SHT_name_len,\t flag,\t SHT_rv",
@@ -1353,6 +1362,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_getclass3",
+                            "C_name_api": "getclass3",
                             "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -1474,7 +1484,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_get_name",
+                            "C_name": "CLA_Class1_getName",
+                            "C_name_api": "getName",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "const char *",
                             "F_C_arguments": "self",
@@ -1605,7 +1616,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class1_get_name_bufferify",
+                            "C_name": "CLA_Class1_getName_bufferify",
+                            "C_name_api": "getName",
                             "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -1769,7 +1781,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "CLA_Class1_direction_func",
+                            "C_name": "CLA_Class1_directionFunc",
+                            "C_name_api": "directionFunc",
                             "C_prototype": "CLA_Class1 * self,\t int arg",
                             "C_return_type": "int",
                             "F_C_arguments": "self,\t arg",
@@ -1894,6 +1907,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_get_m_flag",
+                            "C_name_api": "get_m_flag",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -1987,6 +2001,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_get_test",
+                            "C_name_api": "get_test",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -2134,6 +2149,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "val",
                             "C_name": "CLA_Class1_set_test",
+                            "C_name_api": "set_test",
                             "C_prototype": "CLA_Class1 * self,\t int val",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t val",
@@ -2198,6 +2214,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "get_m_name",
                             "F_C_call": "c_class1_get_m_name_bufferify",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                             "F_arguments": "obj",
@@ -2268,6 +2285,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_get_m_name_bufferify",
+                            "C_name_api": "get_m_name",
                             "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -2367,6 +2385,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "set_m_name",
                             "F_C_call": "c_class1_set_m_name_bufferify",
                             "F_arg_c_call": "obj%cxxmem,\t val,\t SHT_val_len",
                             "F_arguments": "obj,\t val",
@@ -2476,6 +2495,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "val",
                             "C_name": "CLA_Class1_set_m_name_bufferify",
+                            "C_name_api": "set_m_name",
                             "C_prototype": "CLA_Class1 * self,\t char *val,\t int SHT_val_len",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t val,\t SHT_val_len",
@@ -2616,6 +2636,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
+                    "C_name_api": "Class1",
                     "C_name_scope": "Class1_",
                     "C_type_name": "CLA_Class1",
                     "F_derived_name": "class1",
@@ -2692,7 +2713,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class2_get_name",
+                            "C_name": "CLA_Class2_getName",
+                            "C_name_api": "getName",
                             "C_prototype": "CLA_Class2 * self",
                             "C_return_type": "const char *",
                             "F_C_arguments": "self",
@@ -2823,7 +2845,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "CLA_Class2_get_name_bufferify",
+                            "C_name": "CLA_Class2_getName_bufferify",
+                            "C_name_api": "getName",
                             "C_prototype": "CLA_Class2 * self,\t CLA_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -2885,6 +2908,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass2.h",
                     "C_impl_filename": "wrapClass2.cpp",
+                    "C_name_api": "Class2",
                     "C_name_scope": "Class2_",
                     "C_type_name": "CLA_Class2",
                     "F_derived_name": "class2",
@@ -2957,7 +2981,8 @@
                         },
                         "zz_fmtdict": {
                             "CXX_this_call": "classes::Singleton::",
-                            "C_name": "CLA_Singleton_get_reference",
+                            "C_name": "CLA_Singleton_getReference",
+                            "C_name_api": "getReference",
                             "C_prototype": "CLA_Singleton * SHC_rv",
                             "C_return_type": "CLA_Singleton *",
                             "F_C_arguments": "SHT_rv",
@@ -3062,6 +3087,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapSingleton.h",
                     "C_impl_filename": "wrapSingleton.cpp",
+                    "C_name_api": "Singleton",
                     "C_name_scope": "Singleton_",
                     "C_type_name": "CLA_Singleton",
                     "F_derived_name": "singleton",
@@ -3130,6 +3156,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Shape_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "CLA_Shape * SHC_rv",
                             "C_return_type": "CLA_Shape *",
                             "F_C_arguments": "SHT_rv",
@@ -3248,6 +3275,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Shape_get_ivar",
+                            "C_name_api": "get_ivar",
                             "C_prototype": "const CLA_Shape * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -3351,6 +3379,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapShape.h",
                     "C_impl_filename": "wrapShape.cpp",
+                    "C_name_api": "Shape",
                     "C_name_scope": "Shape_",
                     "C_type_name": "CLA_Shape",
                     "F_derived_name": "shape",
@@ -3430,6 +3459,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Circle_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "CLA_Circle * SHC_rv",
                             "C_return_type": "CLA_Circle *",
                             "F_C_arguments": "SHT_rv",
@@ -3534,6 +3564,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapCircle.h",
                     "C_impl_filename": "wrapCircle.cpp",
+                    "C_name_api": "Circle",
                     "C_name_scope": "Circle_",
                     "C_type_name": "CLA_Circle",
                     "F_derived_member_base": "shape",
@@ -3651,6 +3682,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "n",
                             "C_name": "CLA_Data_allocate",
+                            "C_name_api": "allocate",
                             "C_prototype": "CLA_Data * self,\t int n",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t n",
@@ -3703,6 +3735,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Data_free",
+                            "C_name_api": "free",
                             "C_prototype": "CLA_Data * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -3763,6 +3796,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Data_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "CLA_Data * SHC_rv",
                             "C_return_type": "CLA_Data *",
                             "F_C_arguments": "SHT_rv",
@@ -3847,6 +3881,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Data_dtor",
+                            "C_name_api": "dtor",
                             "C_prototype": "CLA_Data * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -3909,6 +3944,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Data_get_nitems",
+                            "C_name_api": "get_nitems",
                             "C_prototype": "CLA_Data * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -4056,6 +4092,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "val",
                             "C_name": "CLA_Data_set_nitems",
+                            "C_name_api": "set_nitems",
                             "C_prototype": "CLA_Data * self,\t int val",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t val",
@@ -4130,6 +4167,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "get_items",
                             "F_C_call": "c_data_get_items_bufferify",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                             "F_arguments": "obj",
@@ -4213,6 +4251,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Data_get_items_bufferify",
+                            "C_name_api": "get_items",
                             "C_prototype": "CLA_Data * self,\t CLA_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -4371,6 +4410,7 @@
                         "zz_fmtdict": {
                             "C_call_list": "val",
                             "C_name": "CLA_Data_set_items",
+                            "C_name_api": "set_items",
                             "C_prototype": "CLA_Data * self,\t int * val",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t val",
@@ -4493,6 +4533,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapData.h",
                     "C_impl_filename": "wrapData.cpp",
+                    "C_name_api": "Data",
                     "C_name_scope": "Data_",
                     "C_type_name": "CLA_Data",
                     "F_derived_name": "data",
@@ -4643,7 +4684,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
-                    "C_name": "CLA_direction_func",
+                    "C_name": "CLA_directionFunc",
+                    "C_name_api": "directionFunc",
                     "C_prototype": "int arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
@@ -4837,7 +4879,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
-                    "C_name": "CLA_pass_class_by_value",
+                    "C_name": "CLA_passClassByValue",
+                    "C_name_api": "passClassByValue",
                     "C_prototype": "CLA_Class1 arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -4971,6 +5014,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "CLA_useclass",
+                    "C_name_api": "useclass",
                     "C_prototype": "CLA_Class1 * arg",
                     "C_return_type": "int",
                     "F_C_arguments": "arg",
@@ -5081,6 +5125,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass2",
+                    "C_name_api": "getclass2",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_arguments": "SHT_rv",
@@ -5174,6 +5219,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass3",
+                    "C_name_api": "getclass3",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_arguments": "SHT_rv",
@@ -5291,6 +5337,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass2_void",
+                    "C_name_api": "getclass2_void",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -5383,6 +5430,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_getclass3_void",
+                    "C_name_api": "getclass3_void",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
@@ -5471,7 +5519,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "CLA_get_const_class_reference",
+                    "C_name": "CLA_getConstClassReference",
+                    "C_name_api": "getConstClassReference",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_arguments": "SHT_rv",
@@ -5561,7 +5610,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "CLA_get_class_reference",
+                    "C_name": "CLA_getClassReference",
+                    "C_name_api": "getClassReference",
                     "C_prototype": "CLA_Class1 * SHC_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_arguments": "SHT_rv",
@@ -5724,7 +5774,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "flag",
-                    "C_name": "CLA_get_class_copy",
+                    "C_name": "CLA_getClassCopy",
+                    "C_name_api": "getClassCopy",
                     "C_prototype": "int flag,\t CLA_Class1 * SHC_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_arguments": "flag,\t SHT_rv",
@@ -5894,6 +5945,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "CLA_set_global_flag",
+                    "C_name_api": "set_global_flag",
                     "C_prototype": "int arg",
                     "C_return_type": "void",
                     "F_C_arguments": "arg",
@@ -5953,6 +6005,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "CLA_get_global_flag",
+                    "C_name_api": "get_global_flag",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -6075,7 +6128,8 @@
                     "python": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "CLA_last_function_called",
+                    "C_name": "CLA_LastFunctionCalled",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
@@ -6200,7 +6254,8 @@
                     "f_c": true
                 },
                 "zz_fmtdict": {
-                    "C_name": "CLA_last_function_called_bufferify",
+                    "C_name": "CLA_LastFunctionCalled_bufferify",
+                    "C_name_api": "LastFunctionCalled",
                     "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t SHT_rv_len",

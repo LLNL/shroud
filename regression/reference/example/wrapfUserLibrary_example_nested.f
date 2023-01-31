@@ -238,7 +238,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_increment_count")
+                bind(C, name="AA_example_nested_ExClass1_incrementCount")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -254,7 +254,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_check")
+                bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -268,7 +268,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
+                bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -281,7 +281,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_function_string_&
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_arg")
+                bind(C, name="AA_example_nested_ExClass1_getNameArg")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -301,7 +301,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, &
                 SHT_name_len) &
-                bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
+                bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -322,7 +322,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         function c_exclass1_get_value_from_int(self, value) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_value_from_int")
+                bind(C, name="AA_example_nested_ExClass1_getValue_from_int")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -343,7 +343,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         function c_exclass1_get_value_1(self, value) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_get_value_1")
+                bind(C, name="AA_example_nested_ExClass1_getValue_1")
             use iso_c_binding, only : C_LONG
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -364,7 +364,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         function c_exclass1_has_addr(self, in) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_has_addr")
+                bind(C, name="AA_example_nested_ExClass1_hasAddr")
             use iso_c_binding, only : C_BOOL
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -379,7 +379,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
         subroutine c_exclass1_splicer_special(self) &
-                bind(C, name="AA_example_nested_ExClass1_splicer_special")
+                bind(C, name="AA_example_nested_ExClass1_SplicerSpecial")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -446,7 +446,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name")
+                bind(C, name="AA_example_nested_ExClass2_getName")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -461,7 +461,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&_buf
         subroutine c_exclass2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
-                bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
+                bind(C, name="AA_example_nested_ExClass2_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -477,7 +477,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name2")
+                bind(C, name="AA_example_nested_ExClass2_getName2")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -490,7 +490,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
+                bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -504,7 +504,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name3")
+                bind(C, name="AA_example_nested_ExClass2_getName3")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -517,7 +517,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
+                bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -531,7 +531,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function_string_&
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name4")
+                bind(C, name="AA_example_nested_ExClass2_getName4")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -544,7 +544,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
+                bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -558,7 +558,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function
         pure function c_exclass2_get_name_length(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_name_length")
+                bind(C, name="AA_example_nested_ExClass2_GetNameLength")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -647,7 +647,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function
         pure function c_exclass2_get_type_id(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_type_id")
+                bind(C, name="AA_example_nested_ExClass2_getTypeID")
             import :: AA_SHROUD_capsule_data, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
@@ -665,7 +665,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_exclass2_set_value_int(self, value) &
-                bind(C, name="AA_example_nested_ExClass2_set_value_int")
+                bind(C, name="AA_example_nested_ExClass2_setValue_int")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -684,7 +684,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_exclass2_set_value_long(self, value) &
-                bind(C, name="AA_example_nested_ExClass2_set_value_long")
+                bind(C, name="AA_example_nested_ExClass2_setValue_long")
             use iso_c_binding, only : C_LONG
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -703,7 +703,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_exclass2_set_value_float(self, value) &
-                bind(C, name="AA_example_nested_ExClass2_set_value_float")
+                bind(C, name="AA_example_nested_ExClass2_setValue_float")
             use iso_c_binding, only : C_FLOAT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -722,7 +722,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_exclass2_set_value_double(self, value) &
-                bind(C, name="AA_example_nested_ExClass2_set_value_double")
+                bind(C, name="AA_example_nested_ExClass2_setValue_double")
             use iso_c_binding, only : C_DOUBLE
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -737,7 +737,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function
         function c_exclass2_get_value_int(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_value_int")
+                bind(C, name="AA_example_nested_ExClass2_getValue_int")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -752,7 +752,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function
         function c_exclass2_get_value_double(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass2_get_value_double")
+                bind(C, name="AA_example_nested_ExClass2_getValue_double")
             use iso_c_binding, only : C_DOUBLE
             import :: AA_SHROUD_capsule_data
             implicit none
@@ -784,7 +784,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_in_string_&
         function c_is_name_valid(name) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_is_name_valid")
+                bind(C, name="AA_example_nested_isNameValid")
             use iso_c_binding, only : C_BOOL, C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -802,7 +802,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_in_string_&_buf
         function c_is_name_valid_bufferify(name, SHT_name_len) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_is_name_valid_bufferify")
+                bind(C, name="AA_example_nested_isNameValid_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -817,7 +817,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_function
         function c_is_initialized() &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_is_initialized")
+                bind(C, name="AA_example_nested_isInitialized")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL) :: SHT_rv
@@ -1006,7 +1006,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_void_scalar
         ! Match:     c_default
         subroutine func_ptr1(get) &
-                bind(C, name="AA_example_nested_func_ptr1")
+                bind(C, name="AA_example_nested_FuncPtr1")
             import :: func_ptr1_get
             implicit none
             procedure(func_ptr1_get) :: get
@@ -1023,7 +1023,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_*
         ! Match:     c_default
         subroutine func_ptr2(get) &
-                bind(C, name="AA_example_nested_func_ptr2")
+                bind(C, name="AA_example_nested_FuncPtr2")
             import :: func_ptr2_get
             implicit none
             procedure(func_ptr2_get) :: get
@@ -1040,7 +1040,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_func_ptr3(get) &
-                bind(C, name="AA_example_nested_func_ptr3")
+                bind(C, name="AA_example_nested_FuncPtr3")
             import :: func_ptr3_get
             implicit none
             procedure(func_ptr3_get) :: get
@@ -1057,7 +1057,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_native_scalar
         ! Match:     c_default
         subroutine c_func_ptr4(get) &
-                bind(C, name="AA_example_nested_func_ptr4")
+                bind(C, name="AA_example_nested_FuncPtr4")
             import :: custom_funptr
             implicit none
             procedure(custom_funptr) :: get
@@ -1074,7 +1074,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_in_void_scalar
         ! Match:     c_default
         subroutine func_ptr5(get) &
-                bind(C, name="AA_example_nested_func_ptr5")
+                bind(C, name="AA_example_nested_FuncPtr5")
             import :: func_ptr5_get
             implicit none
             procedure(func_ptr5_get) :: get

@@ -28,9 +28,9 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int CLA_direction_func(int arg);
+int CLA_directionFunc(int arg);
 
-void CLA_pass_class_by_value(CLA_Class1 arg);
+void CLA_passClassByValue(CLA_Class1 arg);
 
 int CLA_useclass(CLA_Class1 * arg);
 
@@ -42,19 +42,19 @@ void CLA_getclass2_void(CLA_Class1 * SHC_rv);
 
 void CLA_getclass3_void(CLA_Class1 * SHC_rv);
 
-CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv);
 
-CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv);
 
-CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv);
 
 void CLA_set_global_flag(int arg);
 
 int CLA_get_global_flag(void);
 
-const char * CLA_last_function_called(void);
+const char * CLA_LastFunctionCalled(void);
 
-void CLA_last_function_called_bufferify(char *SHC_rv, int SHT_rv_len);
+void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len);
 
 #ifdef __cplusplus
 }

@@ -13,28 +13,28 @@
 
 #include <assert.h>
 
-void test_pass_index(void)
+void test_passIndex(void)
 {
     IndexType indx;
 
 #if defined(USE_64BIT_INDEXTYPE)
     int64_t indx64 = pow(2,34);
     assert(sizeof(IndexType) == sizeof(int64_t) && "TYPEMAP_size64");
-    assert(! TYP_pass_index(indx64 - 1, &indx));
-    assert(  TYP_pass_index(indx64, &indx));
+    assert(! TYP_passIndex(indx64 - 1, &indx));
+    assert(  TYP_passIndex(indx64, &indx));
     assert(  indx == indx64);
 #else
     int32_t indx32 = 2;
     assert(sizeof(IndexType) == sizeof(int32_t) && "TYPEMAP_size32");
-    assert(! TYP_pass_index(indx32 - 1, &indx));
-    assert(  TYP_pass_index(indx32, &indx));
+    assert(! TYP_passIndex(indx32 - 1, &indx));
+    assert(  TYP_passIndex(indx32, &indx));
     assert(  indx == indx32);
 #endif
 }
 
 int main(int argc, char *argv[])
 {
-  test_pass_index();
+  test_passIndex();
 
   return 0;
 }

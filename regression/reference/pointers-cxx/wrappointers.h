@@ -52,119 +52,116 @@ void POI_get_values2(int * arg1, int * arg2);
 
 void POI_iota_dimension(int nvar, int * values);
 
-void POI_sum(int len, const int * values, int * result);
+void POI_Sum(int len, const int * values, int * result);
 
-void POI_fill_int_array(int * out);
+void POI_fillIntArray(int * out);
 
-void POI_increment_int_array(int * array, int sizein);
+void POI_incrementIntArray(int * array, int sizein);
 
 void POI_fill_with_zeros(double * x, int x_length);
 
 int POI_accumulate(const int * arr, size_t len);
 
-int POI_accept_char_array_in(char **names);
+int POI_acceptCharArrayIn(char **names);
 
-int POI_accept_char_array_in_bufferify(const char *names,
+int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len);
 
-void POI_set_global_int(int value);
+void POI_setGlobalInt(int value);
 
-int POI_sum_fixed_array(void);
+int POI_sumFixedArray(void);
 
-void POI_get_ptr_to_scalar(int * * nitems);
+void POI_getPtrToScalar(int * * nitems);
 
-void POI_get_ptr_to_scalar_bufferify(
+void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc);
+
+void POI_getPtrToFixedArray(int * * count);
+
+void POI_getPtrToFixedArray_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc);
+
+void POI_getPtrToDynamicArray(int * * count, int * ncount);
+
+void POI_getPtrToDynamicArray_bufferify(
+    POI_SHROUD_array *SHT_count_cdesc);
+
+void POI_getPtrToFuncArray(int * * count);
+
+void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc);
+
+void POI_getPtrToConstScalar(const int * * nitems);
+
+void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc);
 
-void POI_get_ptr_to_fixed_array(int * * count);
+void POI_getPtrToFixedConstArray(const int * * count);
 
-void POI_get_ptr_to_fixed_array_bufferify(
+void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc);
 
-void POI_get_ptr_to_dynamic_array(int * * count, int * ncount);
+void POI_getPtrToDynamicConstArray(const int * * count, int * ncount);
 
-void POI_get_ptr_to_dynamic_array_bufferify(
+void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc);
 
-void POI_get_ptr_to_func_array(int * * count);
+void POI_getRawPtrToScalar(int * * nitems);
 
-void POI_get_ptr_to_func_array_bufferify(
+void POI_getRawPtrToScalarForce(int * * nitems);
+
+void POI_getRawPtrToFixedArray(int * * count);
+
+void POI_getRawPtrToFixedArrayForce(int * * count);
+
+void POI_getRawPtrToInt2d(int * * * arg);
+
+int POI_checkInt2d(int **arg);
+
+void POI_DimensionIn(const int * arg);
+
+void POI_getAllocToFixedArray(int * * count);
+
+void POI_getAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc);
 
-void POI_get_ptr_to_const_scalar(const int * * nitems);
+void * POI_returnAddress1(int flag);
 
-void POI_get_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *SHT_nitems_cdesc);
+void * POI_returnAddress2(int flag);
 
-void POI_get_ptr_to_fixed_const_array(const int * * count);
+void POI_fetchVoidPtr(void **addr);
 
-void POI_get_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+void POI_updateVoidPtr(void **addr);
 
-void POI_get_ptr_to_dynamic_const_array(const int * * count,
-    int * ncount);
+int POI_VoidPtrArray(void **addr);
 
-void POI_get_ptr_to_dynamic_const_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
+int * POI_returnIntPtrToScalar(void);
 
-void POI_get_raw_ptr_to_scalar(int * * nitems);
+int * POI_returnIntPtrToScalar_bufferify(void);
 
-void POI_get_raw_ptr_to_scalar_force(int * * nitems);
+int * POI_returnIntPtrToFixedArray(void);
 
-void POI_get_raw_ptr_to_fixed_array(int * * count);
-
-void POI_get_raw_ptr_to_fixed_array_force(int * * count);
-
-void POI_get_raw_ptr_to_int2d(int * * * arg);
-
-int POI_check_int2d(int **arg);
-
-void POI_dimension_in(const int * arg);
-
-void POI_get_alloc_to_fixed_array(int * * count);
-
-void POI_get_alloc_to_fixed_array_bufferify(
-    POI_SHROUD_array *SHT_count_cdesc);
-
-void * POI_return_address1(int flag);
-
-void * POI_return_address2(int flag);
-
-void POI_fetch_void_ptr(void **addr);
-
-void POI_update_void_ptr(void **addr);
-
-int POI_void_ptr_array(void **addr);
-
-int * POI_return_int_ptr_to_scalar(void);
-
-int * POI_return_int_ptr_to_scalar_bufferify(void);
-
-int * POI_return_int_ptr_to_fixed_array(void);
-
-void POI_return_int_ptr_to_fixed_array_bufferify(
+void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
-const int * POI_return_int_ptr_to_const_scalar(void);
+const int * POI_returnIntPtrToConstScalar(void);
 
-const int * POI_return_int_ptr_to_const_scalar_bufferify(void);
+const int * POI_returnIntPtrToConstScalar_bufferify(void);
 
-const int * POI_return_int_ptr_to_fixed_const_array(void);
+const int * POI_returnIntPtrToFixedConstArray(void);
 
-void POI_return_int_ptr_to_fixed_const_array_bufferify(
+void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
-int POI_return_int_scalar(void);
+int POI_returnIntScalar(void);
 
-int * POI_return_int_raw(void);
+int * POI_returnIntRaw(void);
 
-int * POI_return_int_raw_with_args(const char * name);
+int * POI_returnIntRawWithArgs(const char * name);
 
-int * * POI_return_raw_ptr_to_int2d(void);
+int * * POI_returnRawPtrToInt2d(void);
 
-int * POI_return_int_alloc_to_fixed_array(void);
+int * POI_returnIntAllocToFixedArray(void);
 
-void POI_return_int_alloc_to_fixed_array_bufferify(
+void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc);
 
 #ifdef __cplusplus

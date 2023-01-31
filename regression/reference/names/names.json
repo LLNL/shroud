@@ -33,6 +33,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapNames2.hh",
                     "C_impl_filename": "wrapNames2.cc",
+                    "C_name_api": "Names2",
                     "C_name_scope": "Names2_",
                     "C_type_name": "TES_Names2",
                     "F_derived_name": "names2",
@@ -117,6 +118,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wraptwoTs_0.hh",
                     "C_impl_filename": "wraptwoTs_0.cc",
+                    "C_name_api": "twoTs",
                     "C_name_scope": "twoTs_0_",
                     "C_type_name": "TES_twoTs_0",
                     "F_derived_name": "twots_0",
@@ -201,6 +203,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wraptwoTs_instantiation4.hh",
                     "C_impl_filename": "wraptwoTs_instantiation4.cc",
+                    "C_name_api": "twoTs",
                     "C_name_scope": "twoTs_instantiation4_",
                     "C_type_name": "TES_twoTs_instantiation4",
                     "F_derived_name": "twots_instantiation4",
@@ -249,6 +252,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapCstruct_as_class.hh",
                     "C_impl_filename": "wrapCstruct_as_class.cc",
+                    "C_name_api": "Cstruct_as_class",
                     "C_name_scope": "Cstruct_as_class_",
                     "C_type_name": "TES_Cstruct_as_class",
                     "F_derived_name": "Fstruct_as_class",
@@ -297,6 +301,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapCstruct_as_subclass.hh",
                     "C_impl_filename": "wrapCstruct_as_subclass.cc",
+                    "C_name_api": "Cstruct_as_subclass",
                     "C_name_scope": "Cstruct_as_subclass_",
                     "C_type_name": "TES_Cstruct_as_subclass",
                     "F_derived_member_base": "Fstruct_as_class",
@@ -502,7 +507,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "name",
-                    "C_name": "TES_get_name",
+                    "C_name": "TES_getName",
+                    "C_name_api": "getName",
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
@@ -615,7 +621,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name",
-                    "C_name": "TES_get_name_bufferify",
+                    "C_name": "TES_getName_bufferify",
+                    "C_name_api": "getName",
                     "C_prototype": "char *name,\t int SHT_name_len",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len",
@@ -657,6 +664,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "YYY_TES_function1",
+                    "C_name_api": "function1",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -711,6 +719,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "c_name_special",
+                    "C_name_api": "function2",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -837,6 +846,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_0",
+                    "C_name_api": "function3a",
                     "C_prototype": "int i",
                     "C_return_type": "void",
                     "F_C_arguments": "i",
@@ -965,6 +975,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_1",
+                    "C_name_api": "function3a",
                     "C_prototype": "long i",
                     "C_return_type": "void",
                     "F_C_arguments": "i",
@@ -1091,6 +1102,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4",
+                    "C_name_api": "function4",
                     "C_prototype": "const char * rv",
                     "C_return_type": "int",
                     "F_C_arguments": "rv",
@@ -1249,6 +1261,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
+                    "C_name_api": "function4",
                     "C_prototype": "char *rv,\t int SHT_rv_len",
                     "C_return_type": "int",
                     "F_C_arguments": "rv,\t SHT_rv_len",
@@ -1320,6 +1333,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "YYY_TES_fiveplus",
+                    "C_name_api": "fiveplus",
                     "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_arguments": "",
@@ -1533,7 +1547,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name,\t value",
-                    "C_name": "TES_test_multiline_splicer",
+                    "C_name": "TES_TestMultilineSplicer",
+                    "C_name_api": "TestMultilineSplicer",
                     "C_prototype": "char * name,\t int * value",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t value",
@@ -1717,7 +1732,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_name,\t value",
-                    "C_name": "TES_test_multiline_splicer_bufferify",
+                    "C_name": "TES_TestMultilineSplicer_bufferify",
+                    "C_name_api": "TestMultilineSplicer",
                     "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t SHT_name_len,\t value",
@@ -1844,6 +1860,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU",
                     "underscore_name": "function_tu"
@@ -2076,6 +2093,7 @@
                     "CXX_template": "<int, long>",
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "c_name_instantiation1",
+                    "C_name_api": "FunctionTU",
                     "C_prototype": "int arg1,\t long arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -2331,7 +2349,8 @@
                 "zz_fmtdict": {
                     "CXX_template": "<float, double>",
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TES_function_tu_instantiation2",
+                    "C_name": "TES_FunctionTU_instantiation2",
+                    "C_name_api": "FunctionTU",
                     "C_prototype": "float arg1,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "arg1,\t arg2",
@@ -2402,6 +2421,7 @@
                 ],
                 "wrap": {},
                 "zz_fmtdict": {
+                    "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
@@ -2462,7 +2482,8 @@
                 },
                 "zz_fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
-                    "C_name": "TES_use_impl_worker_instantiation3",
+                    "C_name": "TES_UseImplWorker_instantiation3",
+                    "C_name_api": "UseImplWorker",
                     "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_arguments": "",
@@ -2646,7 +2667,8 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "ARG_point",
-                    "C_name": "TES_cstruct_as_class_sum",
+                    "C_name": "TES_Cstruct_as_class_sum",
+                    "C_name_api": "Cstruct_as_class_sum",
                     "C_prototype": "TES_Cstruct_as_class * point",
                     "C_return_type": "int",
                     "F_C_arguments": "point",
@@ -3167,6 +3189,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                     "C_name": "TES_external_funcs",
+                    "C_name_api": "external_funcs",
                     "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                     "C_return_type": "void",
                     "F_C_arguments": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
@@ -3235,6 +3258,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_defaultctor",
+                                    "C_name_api": "defaultctor",
                                     "C_prototype": "TES_ns0_Names * SHC_rv",
                                     "C_return_type": "TES_ns0_Names *",
                                     "F_C_arguments": "SHT_rv",
@@ -3344,6 +3368,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_method1",
+                                    "C_name_api": "method1",
                                     "C_prototype": "TES_ns0_Names * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -3404,6 +3429,7 @@
                                 "zz_fmtdict": {
                                     "CXX_this": "SH_this2",
                                     "C_name": "XXX_TES_ns0_Names_method2",
+                                    "C_name_api": "method2",
                                     "C_prototype": "TES_ns0_Names * self2",
                                     "C_return_type": "void",
                                     "C_this": "self2",
@@ -3456,6 +3482,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "foo.h",
                             "C_impl_filename": "foo.cpp",
+                            "C_name_api": "Names",
                             "C_name_scope": "ns0_Names_",
                             "C_type_name": "TES_ns0_Names",
                             "F_derived_name": "FNames",
@@ -3583,6 +3610,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TES_ns1_init_ns1",
+                            "C_name_api": "init_ns1",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",
@@ -3661,6 +3689,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapinternal_ImplWorker1.hh",
                             "C_impl_filename": "wrapinternal_ImplWorker1.cc",
+                            "C_name_api": "ImplWorker1",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TES_internal_ImplWorker1",
                             "F_derived_name": "impl_worker1",
@@ -3785,6 +3814,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_int.hh",
                             "C_impl_filename": "wrapstd_vector_int.cc",
+                            "C_name_api": "vector",
                             "C_name_scope": "std_Vvv1_",
                             "C_type_name": "TES_std_Vvv1",
                             "F_derived_name": "FFvvv1",
@@ -3884,6 +3914,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_double.hh",
                             "C_impl_filename": "wrapstd_vector_double.cc",
+                            "C_name_api": "vector",
                             "C_name_scope": "std_vector_double_",
                             "C_type_name": "TES_std_vector_double",
                             "F_derived_name": "vector_double",
@@ -3983,6 +4014,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_instantiation5.hh",
                             "C_impl_filename": "wrapstd_vector_instantiation5.cc",
+                            "C_name_api": "vector",
                             "C_name_scope": "std_vector_instantiation5_",
                             "C_type_name": "TES_std_vector_instantiation5",
                             "F_derived_name": "vector_instantiation5",
@@ -4083,6 +4115,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapstd_vector_instantiation3.hh",
                             "C_impl_filename": "wrapstd_vector_instantiation3.cc",
+                            "C_name_api": "vector",
                             "C_name_scope": "std_vector_instantiation3_",
                             "C_type_name": "TES_std_vector_instantiation3",
                             "F_derived_name": "vector_instantiation3",
@@ -4172,6 +4205,7 @@
                                 },
                                 "zz_fmtdict": {
                                     "C_name": "TES_capi_class1_member1",
+                                    "C_name_api": "member1",
                                     "C_prototype": "TES_capi_class1 * self",
                                     "C_return_type": "void",
                                     "F_C_arguments": "self",
@@ -4211,6 +4245,7 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapCAPI_Class1.hh",
                             "C_impl_filename": "wrapCAPI_Class1.cc",
+                            "C_name_api": "class1",
                             "C_name_scope": "capi_class1_",
                             "C_type_name": "TES_capi_class1",
                             "F_derived_name": "class1",
@@ -4256,6 +4291,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "TES_capi_worker1",
+                            "C_name_api": "worker1",
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_arguments": "",

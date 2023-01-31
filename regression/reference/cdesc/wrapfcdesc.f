@@ -90,7 +90,7 @@ module cdesc_mod
         ! Requested: c_in_native_*
         ! Match:     c_default
         subroutine c_rank2_in(arg) &
-                bind(C, name="CDE_rank2_in")
+                bind(C, name="CDE_Rank2In")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: arg(*)
@@ -106,7 +106,7 @@ module cdesc_mod
         ! Attrs:     +api(cdesc)+intent(in)
         ! Exact:     c_in_native_*_cdesc
         subroutine c_rank2_in_bufferify(SHT_arg_cdesc) &
-                bind(C, name="CDE_rank2_in_bufferify")
+                bind(C, name="CDE_Rank2In_bufferify")
             import :: CDE_SHROUD_array
             implicit none
             type(CDE_SHROUD_array), intent(OUT) :: SHT_arg_cdesc
@@ -127,7 +127,7 @@ module cdesc_mod
         ! Requested: c_in_void_*
         ! Match:     c_default
         subroutine c_get_scalar1(name, value) &
-                bind(C, name="CDE_get_scalar1")
+                bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -149,7 +149,7 @@ module cdesc_mod
         ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_0_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
-                bind(C, name="CDE_get_scalar1_0_bufferify")
+                bind(C, name="CDE_GetScalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
@@ -173,7 +173,7 @@ module cdesc_mod
         ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_1_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
-                bind(C, name="CDE_get_scalar1_1_bufferify")
+                bind(C, name="CDE_GetScalar1_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
@@ -189,7 +189,7 @@ module cdesc_mod
         ! Match:     c_function
         function c_get_data_int() &
                 result(SHT_rv) &
-                bind(C, name="CDE_get_data_int")
+                bind(C, name="CDE_getData_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
@@ -202,7 +202,7 @@ module cdesc_mod
         ! Match:     c_function
         function c_get_data_double() &
                 result(SHT_rv) &
-                bind(C, name="CDE_get_data_double")
+                bind(C, name="CDE_getData_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv

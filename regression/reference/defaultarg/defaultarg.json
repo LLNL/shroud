@@ -106,6 +106,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "num_elems",
                     "C_name": "DEF_apply_generic_nelems",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "IndexType num_elems",
                     "C_return_type": "void",
                     "F_C_arguments": "num_elems",
@@ -272,6 +273,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "num_elems,\t offset",
                     "C_name": "DEF_apply_generic_nelems_offset",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "IndexType num_elems,\t IndexType offset",
                     "C_return_type": "void",
                     "F_C_arguments": "num_elems,\t offset",
@@ -494,6 +496,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_generic_nelems_offset_stride",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "num_elems,\t offset,\t stride",
@@ -661,6 +664,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems",
                     "C_name": "DEF_apply_generic_type_nelems",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "DEF_TypeID type,\t IndexType num_elems",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems",
@@ -879,6 +883,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset",
                     "C_name": "DEF_apply_generic_type_nelems_offset",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset",
@@ -1153,6 +1158,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_generic_type_nelems_offset_stride",
+                    "C_name_api": "apply_generic",
                     "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -1365,6 +1371,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_require_0",
+                    "C_name_api": "apply_require",
                     "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "num_elems,\t offset,\t stride",
@@ -1629,6 +1636,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_require_1",
+                    "C_name_api": "apply_require",
                     "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -1843,6 +1851,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_optional_0",
+                    "C_name_api": "apply_optional",
                     "C_prototype": "IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "num_elems,\t offset,\t stride",
@@ -2109,6 +2118,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_type,\t num_elems,\t offset,\t stride",
                     "C_name": "DEF_apply_optional_1",
+                    "C_name_api": "apply_optional",
                     "C_prototype": "DEF_TypeID type,\t IndexType num_elems,\t IndexType offset,\t IndexType stride",
                     "C_return_type": "void",
                     "F_C_arguments": "type,\t num_elems,\t offset,\t stride",
@@ -2169,6 +2179,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
+                    "C_name_api": "TypeID",
                     "C_typedef_name": "DEF_TypeID",
                     "F_name_api": "type_id",
                     "F_typedef_name": "type_id",

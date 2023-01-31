@@ -15,12 +15,12 @@
 
 void test_ns(void)
 {
-  NS_one();
+  NS_One();
 }
 
 void test_ns_outer(void)
 {
-  NS_outer_one();
+  NS_outer_One();
 }
 
 int main(int argc, char *argv[])

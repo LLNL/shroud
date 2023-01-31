@@ -16,7 +16,7 @@ void test_out_ptrs(void)
 {
   int *count, ncount;
   
-  POI_get_ptr_to_dynamic_array(&count, &ncount);
+  POI_getPtrToDynamicArray(&count, &ncount);
   assert(ncount == 10 && "CLA_class1_method1");
   
 }

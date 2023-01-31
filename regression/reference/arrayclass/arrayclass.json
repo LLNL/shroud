@@ -45,6 +45,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_ctor",
+                            "C_name_api": "ctor",
                             "C_prototype": "ARR_ArrayWrapper * SHC_rv",
                             "C_return_type": "ARR_ArrayWrapper *",
                             "F_C_arguments": "SHT_rv",
@@ -222,7 +223,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "size",
-                            "C_name": "ARR_ArrayWrapper_set_size",
+                            "C_name": "ARR_ArrayWrapper_setSize",
+                            "C_name_api": "setSize",
                             "C_prototype": "ARR_ArrayWrapper * self,\t int size",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t size",
@@ -277,7 +279,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_size",
+                            "C_name": "ARR_ArrayWrapper_getSize",
+                            "C_name_api": "getSize",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "int",
                             "F_C_arguments": "self",
@@ -458,7 +461,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*size",
-                            "C_name": "ARR_ArrayWrapper_fill_size",
+                            "C_name": "ARR_ArrayWrapper_fillSize",
+                            "C_name_api": "fillSize",
                             "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t size",
@@ -513,6 +517,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_allocate",
+                            "C_name_api": "allocate",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "void",
                             "F_C_arguments": "self",
@@ -584,7 +589,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array",
+                            "C_name": "ARR_ArrayWrapper_getArray",
+                            "C_name_api": "getArray",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_arguments": "self",
@@ -716,7 +722,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_bufferify",
+                            "C_name": "ARR_ArrayWrapper_getArray_bufferify",
+                            "C_name_api": "getArray",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -814,7 +821,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_const",
+                            "C_name": "ARR_ArrayWrapper_getArrayConst",
+                            "C_name_api": "getArrayConst",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_arguments": "self",
@@ -948,7 +956,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
+                            "C_name": "ARR_ArrayWrapper_getArrayConst_bufferify",
+                            "C_name_api": "getArrayConst",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -1046,7 +1055,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_c",
+                            "C_name": "ARR_ArrayWrapper_getArrayC",
+                            "C_name_api": "getArrayC",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_arguments": "self",
@@ -1179,7 +1189,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
+                            "C_name": "ARR_ArrayWrapper_getArrayC_bufferify",
+                            "C_name_api": "getArrayC",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -1278,7 +1289,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_const_c",
+                            "C_name": "ARR_ArrayWrapper_getArrayConstC",
+                            "C_name_api": "getArrayConstC",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_arguments": "self",
@@ -1413,7 +1425,8 @@
                             "f_c": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
+                            "C_name": "ARR_ArrayWrapper_getArrayConstC_bufferify",
+                            "C_name_api": "getArrayConstC",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
@@ -1658,7 +1671,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayPtr",
+                            "C_name_api": "fetchArrayPtr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
@@ -1842,7 +1856,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "&array,\t &isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayPtr_bufferify",
+                            "C_name_api": "fetchArrayPtr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
@@ -2053,7 +2068,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*array,\t *isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ref",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayRef",
+                            "C_name_api": "fetchArrayRef",
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
@@ -2237,7 +2253,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayRef_bufferify",
+                            "C_name_api": "fetchArrayRef",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
@@ -2449,7 +2466,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst",
+                            "C_name_api": "fetchArrayPtrConst",
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
@@ -2634,7 +2652,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "&array,\t &isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst_bufferify",
+                            "C_name_api": "fetchArrayPtrConst",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
@@ -2846,7 +2865,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*array,\t *isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_const",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayRefConst",
+                            "C_name_api": "fetchArrayRefConst",
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array,\t isize",
@@ -3031,7 +3051,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",
+                            "C_name": "ARR_ArrayWrapper_fetchArrayRefConst_bufferify",
+                            "C_name_api": "fetchArrayRefConst",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_array_cdesc",
@@ -3156,7 +3177,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array",
-                            "C_name": "ARR_ArrayWrapper_fetch_void_ptr",
+                            "C_name": "ARR_ArrayWrapper_fetchVoidPtr",
+                            "C_name_api": "fetchVoidPtr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array",
@@ -3290,7 +3312,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "*array",
-                            "C_name": "ARR_ArrayWrapper_fetch_void_ref",
+                            "C_name": "ARR_ArrayWrapper_fetchVoidRef",
+                            "C_name_api": "fetchVoidRef",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t array",
@@ -3422,7 +3445,8 @@
                         },
                         "zz_fmtdict": {
                             "C_call_list": "array",
-                            "C_name": "ARR_ArrayWrapper_check_ptr",
+                            "C_name": "ARR_ArrayWrapper_checkPtr",
+                            "C_name_api": "checkPtr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
                             "C_return_type": "bool",
                             "F_C_arguments": "self,\t array",
@@ -3525,7 +3549,8 @@
                             "python": true
                         },
                         "zz_fmtdict": {
-                            "C_name": "ARR_ArrayWrapper_sum_array",
+                            "C_name": "ARR_ArrayWrapper_sumArray",
+                            "C_name_api": "sumArray",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double",
                             "F_C_arguments": "self",
@@ -3615,6 +3640,7 @@
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapArrayWrapper.h",
                     "C_impl_filename": "wrapArrayWrapper.cpp",
+                    "C_name_api": "ArrayWrapper",
                     "C_name_scope": "ArrayWrapper_",
                     "C_type_name": "ARR_ArrayWrapper",
                     "F_derived_name": "ArrayWrapper",

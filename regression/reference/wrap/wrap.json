@@ -36,6 +36,7 @@
                             "fortran": true
                         },
                         "zz_fmtdict": {
+                            "C_name_api": "FuncInClass",
                             "F_C_call": "-F_C_name-",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
@@ -64,6 +65,7 @@
                 "zz_fmtdict": {
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
+                    "C_name_api": "Class1",
                     "C_name_scope": "Class1_",
                     "C_type_name": "WRA_Class1",
                     "F_derived_name": "class1",
