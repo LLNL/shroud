@@ -88,6 +88,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     ``AFunction`` was ``afunction`` now ``a_function``.
 
 ### Changed
+- Changed default name mangling for C wrapper functions. Before it used the
+  *underscore_name* format field which converted ``CamelCase`` to ``camel_case``.
+  Added format field *C_name_api*, which is controlled by option *C_API_case*.
+  The default is now to preserve the case of the C++ library routine.
+  The previous behavior can be restored by setting ``C_API_case: underscore``.
+- Changed default name mangling for Fortran derived type names. Before it used
+  the *lower_name* format field which converted the ``CamelCase`` to ``camelcase``.
+  Added format field *F_name_api*, which is controlled by option *F_API_case*.
+  *F_name_api* is used by other options to define the Fortran name mangling consistently.
 - The *C_memory_dtor_function* is now written to the utility file,
   *C_impl_utility*.  This function contains code to delete memory from
   shadow classes. Previously it was written file *C_impl_filename*.

@@ -145,25 +145,35 @@ class AstNode(object):
 
     def apply_C_API_option(self, name):
         """Apply option.C_API_case to name"""
-        if self.options.C_API_case == 'lower':
+        case = self.options.C_API_case
+        if case == 'preserve':
+            return name
+        elif case == 'lower':
             return name.lower()
-        elif self.options.C_API_case == 'upper':
+        elif case == 'upper':
             return name.upper()
-        elif self.options.C_API_case == 'underscore':
+        elif case == 'underscore':
             return util.un_camel(self.name)
         else:
-            return name
+            raise RuntimeError(
+                "Unexpected value of option C_API_case: {}"
+                .format(case))
 
     def apply_F_API_option(self, name):
         """Apply option.F_API_case to name"""
-        if self.options.F_API_case == 'lower':
-            return name.lower()
-        elif self.options.F_API_case == 'upper':
-            return name.upper()
-        elif self.options.F_API_case == 'underscore':
+        case = self.options.F_API_case
+        if case == 'underscore':
             return util.un_camel(self.name)
-        else:
+        elif case == 'lower':
+            return name.lower()
+        elif case == 'upper':
+            return name.upper()
+        elif case == 'preserve':
             return name
+        else:
+            raise RuntimeError(
+                "Unexpected value of option F_API_case: {}"
+                .format(case))
 
     def update_names(self):
         """Update C and Fortran names.
@@ -517,7 +527,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # blank for functions, set in classes.
             YAML_type_filename_template="{library_lower}_types.yaml",
 
-            C_API_case="native",
+            C_API_case="preserve",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 

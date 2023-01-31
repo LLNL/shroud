@@ -838,7 +838,7 @@ C_memory_dtor_function
 C_name_api
     Root name that is used to create various names in the C API.
     Controlled by the **C_API_case** option with values
-    *lower*, *upper*, *underscore*.
+    *lower*, *upper*, *underscore*, or *preserve*.
 
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -933,8 +933,7 @@ F_module_name
 F_name_api
     Root name that is used to create various names in the Fortran API.
     Controlled by the **F_API_case** option with values
-    *lower*, *upper*, *underscore*.
-    Any other value will preserve the case of the name.
+    *lower*, *upper*, *underscore* or *preserve*.
     Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,

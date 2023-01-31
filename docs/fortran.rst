@@ -12,6 +12,29 @@ This section discusses Fortran specific wrapper details.
 This will also include some C wrapper details since some C wrappers
 are created specificially to be called by Fortran.
 
+Names
+-----
+
+There are several options to mangle the C++ library names into Fortran
+names.  By default, names are mangled to convert camel case into snake
+case. For example, ``StructAsClass`` into ``struct_as_class``.  Since
+Fortran is case insensitive, ``StructAsClass`` and ``structasclass``
+are equivalent. By using snake case, the identifier should be easier
+for a reader to parse regardless of the case.
+
+The behavior is controlled by the option **F_api_case** which may have
+the values *lower*, *upper*, *underscore*, or *preserve*. This option
+is used to set the format field **F_name_api** which in turn is used
+in several options used to define names consistently:
+**F_C_name_template**, **F_name_impl_template**,
+**F_name_function_template**, **F_name_generic_template**,
+**F_abstract_interface_subprogram_template**,
+**F_derived_name_template**, **F_typedef_name_template**.
+
+A Fortran module will be created the library.  This allows the
+compiler to do it's own mangling so it is unnecessary to add the
+library name into the function names.
+
 Wrapper
 -------
 

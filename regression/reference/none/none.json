@@ -12,7 +12,7 @@
         "language": "cxx",
         "options": {
             "CXX_standard": 2011,
-            "C_API_case": "native",
+            "C_API_case": "preserve",
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
             "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_force_wrapper": false,
