@@ -415,9 +415,9 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "user_int",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "user",
-                    "underscore_name": "user",
-                    "upper_name": "USER"
+                    "lower_name": "user_int",
+                    "underscore_name": "user_int",
+                    "upper_name": "USER_INT"
                 }
             },
             {
@@ -1040,9 +1040,9 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_int",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "structasclass",
-                    "underscore_name": "struct_as_class",
-                    "upper_name": "STRUCTASCLASS"
+                    "lower_name": "structasclass_int",
+                    "underscore_name": "struct_as_class_int",
+                    "upper_name": "STRUCTASCLASS_INT"
                 }
             },
             {
@@ -1665,9 +1665,9 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_double",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "structasclass",
-                    "underscore_name": "struct_as_class",
-                    "upper_name": "STRUCTASCLASS"
+                    "lower_name": "structasclass_double",
+                    "underscore_name": "struct_as_class_double",
+                    "upper_name": "STRUCTASCLASS_DOUBLE"
                 }
             }
         ],
@@ -3561,9 +3561,9 @@
                             "file_scope": "std_vector_int",
                             "fmtsample": "one",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector",
-                            "underscore_name": "vector",
-                            "upper_name": "VECTOR"
+                            "lower_name": "vector_int",
+                            "underscore_name": "vector_int",
+                            "upper_name": "VECTOR_INT"
                         }
                     },
                     {
@@ -4390,9 +4390,9 @@
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector",
-                            "underscore_name": "vector",
-                            "upper_name": "VECTOR"
+                            "lower_name": "vector_double",
+                            "underscore_name": "vector_double",
+                            "upper_name": "VECTOR_DOUBLE"
                         }
                     }
                 ],

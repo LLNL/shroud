@@ -978,14 +978,18 @@ class GenFunctions(object):
                     newcls.scope_file[-1] += class_suffix
                     # Update default values to format dictionary.
 #TODO                    newcls.default_format()
+                    name_api = cxx_class
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
-                            cxx_class=cxx_class,
-                            C_name_api=newcls.apply_C_API_option(cxx_class),
-                            F_name_api=newcls.apply_F_API_option(cxx_class),
+                            cxx_class=name_api,
+                            underscore_name=util.un_camel(name_api),
+                            upper_name=name_api.upper(),
+                            lower_name=name_api.lower(),
+                            C_name_api=newcls.apply_C_API_option(name_api),
+                            F_name_api=newcls.apply_F_API_option(name_api),
                             class_scope=cxx_type + "::",
-                            C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
+                            C_name_scope=newcls.parent.fmtdict.C_name_scope + newcls.apply_C_API_option(name_api) + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
                             file_scope="_".join(newcls.scope_file[1:]),
                         )
