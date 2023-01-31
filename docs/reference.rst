@@ -223,8 +223,7 @@ Options
 
 C_API_case
    Control case of *C_name_scope*.
-   Possible values are *lower*, *upper*, *underscore*.
-   Any other value will preserve the case of the identifier.
+   Possible values are *lower*, *upper*, *underscore*, or *preserve*.
 
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
@@ -332,6 +331,10 @@ debug_index
 
 doxygen
   If True, create doxygen comments.
+
+F_API_case
+   Control mangling of C++ library names to Fortran names.
+   Possible values are *lower*, *upper*, *underscore*, or *preserve*.
 
 F_assumed_rank_min
   Minimum rank of argument with assumed-rank.
