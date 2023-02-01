@@ -31,7 +31,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyArray_Descr *PY_s_Struct1_array_descr;
+PyArray_Descr *PY_Struct1Rename_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -119,9 +119,9 @@ static PyMethodDef PY_methods[] = {
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
-// start PY_s_Struct1_create_array_descr
-// Create PyArray_Descr for s_Struct1
-static PyArray_Descr *PY_s_Struct1_create_array_descr()
+// start PY_Struct1Rename_create_array_descr
+// Create PyArray_Descr for Struct1Rename
+static PyArray_Descr *PY_Struct1Rename_create_array_descr()
 {
     int ierr;
     PyObject *obj = nullptr;
@@ -181,7 +181,7 @@ fail:
     Py_XDECREF(dtype);
     return nullptr;
 }
-// end PY_s_Struct1_create_array_descr
+// end PY_Struct1Rename_create_array_descr
 
 /*
  * inittypedefs - Initialization function for the module
@@ -261,9 +261,9 @@ inittypedefs(void)
     import_array();
 
     // Define PyArray_Descr for structs
-    PY_s_Struct1_array_descr = PY_s_Struct1_create_array_descr();
-    PyModule_AddObject(m, "s_Struct1_dtype", 
-        (PyObject *) PY_s_Struct1_array_descr);
+    PY_Struct1Rename_array_descr = PY_Struct1Rename_create_array_descr();
+    PyModule_AddObject(m, "Struct1Rename_dtype", 
+        (PyObject *) PY_Struct1Rename_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

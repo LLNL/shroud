@@ -20,6 +20,7 @@ program tester
   call init_fruit
 
   call test_alias
+  call test_struct
 
   call fruit_summary
   call fruit_finalize
@@ -40,5 +41,15 @@ contains
     call assert_equals(rv, arg1 + 1, "typefunc")
 
   end subroutine test_alias
+
+  subroutine test_struct
+    type(struct1_rename) arg
+
+    arg%i = 10
+    arg%d = 0.0
+    call typestruct(arg)
+    call assert_equals(10._C_DOUBLE, arg%d, "typestruct")
+
+  end subroutine test_struct
 end program tester
 

@@ -753,12 +753,12 @@ class Header(object):
         
 
 class Scope(object):
-    """
-    Create a scoped dictionary-like object.
+    """Create a scoped dictionary-like object.
+
     If item is not found, look in parent.
     A replacement for a dictionary to allow obj.name syntax.
-    It will automatically look in __parent for attribute if not found to allow
-    A nesting of options.
+    It will automatically look in __parent for attribute if not found
+    to allow nesting of attributes.
     Use __attr to avoid xporting to json
     """
 

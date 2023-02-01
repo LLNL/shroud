@@ -1288,7 +1288,6 @@ def fill_struct_typemap(node, fields={}):
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
     ntypemap.PY_struct_as = node.options.PY_struct_arg
-    ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
     
     ntypemap.update(fields)
     compute_struct_typemap_derived_fields(ntypemap, fields)
@@ -1411,6 +1410,10 @@ def fill_typedef_typemap(node, fields={}):
 #        sh_type="SH_TYPE_OTHER",
 #        cfi_type="CFI_type_other",
     ))
+
+    if ntypemap.base in ["shadow", "struct"]:
+        ntypemap.f_type = "type({})".format(f_name)
+    
     # import names which are wrapped by this module
     # XXX - deal with namespaces vs modules
     ntypemap.f_module = {fmtdict.F_module_name: [f_name]}

@@ -3,9 +3,8 @@ Close typedefs_types.yaml
 C TypeID typefunc(TypeID arg +value)  +intent(function)
 C void typestruct(Struct1Rename * arg1)  +intent(subroutine)
 Close wraptypedefs.h
-class s_Struct1
+class Struct1Rename
 typedef TypeID
-typedef Struct1Rename
 Fortran TypeID typefunc(TypeID arg +value)  +intent(function)
 Fortran void typestruct(Struct1Rename * arg1)  +intent(subroutine)
 C-interface TypeID typefunc(TypeID arg +value)  +intent(function)

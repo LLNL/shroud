@@ -38,11 +38,11 @@ typedef struct s_Struct1 TYP_Struct1Rename;
 // end typedef Struct1Rename
 
 
-struct s_TYP_s_struct1 {
+struct s_TYP_struct1rename {
     int i;
     double d;
 };
-typedef struct s_TYP_s_struct1 TYP_s_struct1;
+typedef struct s_TYP_struct1rename TYP_struct1rename;
 
 // splicer begin C_declarations
 // splicer end C_declarations
