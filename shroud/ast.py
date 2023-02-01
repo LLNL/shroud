@@ -153,7 +153,7 @@ class AstNode(object):
         elif case == 'upper':
             return name.upper()
         elif case == 'underscore':
-            return util.un_camel(self.name)
+            return util.un_camel(name)
         else:
             raise RuntimeError(
                 "Unexpected value of option C_API_case: {}"
@@ -163,7 +163,7 @@ class AstNode(object):
         """Apply option.F_API_case to name"""
         case = self.options.F_API_case
         if case == 'underscore':
-            return util.un_camel(self.name)
+            return util.un_camel(name)
         elif case == 'lower':
             return name.lower()
         elif case == 'upper':
@@ -1140,6 +1140,8 @@ class ClassNode(AstNode, NamespaceMixin):
                 or isinstance(class_specifier, declast.Struct)):
             raise RuntimeError("class decl is not a CXXClass or Struct Node")
         self.name = class_specifier.name
+        self.name_api = None            # ex. name_int
+        self.name_instantiation = None  # ex. name<int>
 
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
@@ -1212,22 +1214,24 @@ class ClassNode(AstNode, NamespaceMixin):
 
     def default_format(self):
         """Set format dictionary."""
+        name_api = self.name_api or self.name
+        
         self.fmtdict.update(dict(
-            cxx_type=self.name,
+            cxx_type=self.name_instantiation or name_api,
             cxx_class=self.name,
 
-            underscore_name = util.un_camel(self.name),
-            upper_name = self.name.upper(),
-            lower_name = self.name.lower(),
-            C_name_api = self.apply_C_API_option(self.name),
-            F_name_api = self.apply_F_API_option(self.name),
+            underscore_name = util.un_camel(name_api),
+            upper_name = name_api.upper(),
+            lower_name = name_api.lower(),
+            C_name_api = self.apply_C_API_option(name_api),
+            F_name_api = self.apply_F_API_option(name_api),
 
-            class_scope=self.name + "::",
-#            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
+            class_scope=name_api + "::",
+#            namespace_scope=self.parent.fmtdict.namespace_scope + name_api + "::",
 
             # The scope for things in the class.
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_",
-            F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(name_api) + "_",
+            F_name_scope=self.parent.fmtdict.F_name_scope + self.apply_F_API_option(name_api) + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
 
@@ -1262,6 +1266,7 @@ class ClassNode(AstNode, NamespaceMixin):
             [
                 "C_header_filename",
                 "C_impl_filename",
+                "F_derived_name",
                 "F_module_name",
                 "F_impl_filename",
                 "F_capsule_data_type",

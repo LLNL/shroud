@@ -44,29 +44,29 @@ module top_module
         ! splicer end class.Names2.type_bound_procedure_part
     end type names2
 
-    type twots_0
+    type two_ts_0
         type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_0.component_part
         ! splicer end class.twoTs_0.component_part
     contains
-        procedure :: get_instance => twots_0_get_instance
-        procedure :: set_instance => twots_0_set_instance
-        procedure :: associated => twots_0_associated
+        procedure :: get_instance => two_ts_0_get_instance
+        procedure :: set_instance => two_ts_0_set_instance
+        procedure :: associated => two_ts_0_associated
         ! splicer begin class.twoTs_0.type_bound_procedure_part
         ! splicer end class.twoTs_0.type_bound_procedure_part
-    end type twots_0
+    end type two_ts_0
 
-    type twots_instantiation4
+    type two_ts_instantiation4
         type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
     contains
-        procedure :: get_instance_instantiation4 => twots_instantiation4_get_instance_instantiation4
-        procedure :: set_instance_instantiation4 => twots_instantiation4_set_instance_instantiation4
-        procedure :: associated_instantiation4 => twots_instantiation4_associated_instantiation4
+        procedure :: get_instance_instantiation4 => two_ts_instantiation4_get_instance_instantiation4
+        procedure :: set_instance_instantiation4 => two_ts_instantiation4_set_instance_instantiation4
+        procedure :: associated_instantiation4 => two_ts_instantiation4_associated_instantiation4
         ! splicer begin class.twoTs_instantiation4.type_bound_procedure_part
         ! splicer end class.twoTs_instantiation4.type_bound_procedure_part
-    end type twots_instantiation4
+    end type two_ts_instantiation4
 
     type Fstruct_as_class
         type(TES_SHROUD_capsule_data) :: cxxmem
@@ -94,16 +94,16 @@ module top_module
 
     interface operator (.eq.)
         module procedure names2_eq
-        module procedure twots_0_eq
-        module procedure twots_instantiation4_eq
+        module procedure two_ts_0_eq
+        module procedure two_ts_instantiation4_eq
         module procedure cstruct_as_class_eq
         module procedure cstruct_as_subclass_eq
     end interface
 
     interface operator (.ne.)
         module procedure names2_ne
-        module procedure twots_0_ne
-        module procedure twots_instantiation4_ne
+        module procedure two_ts_0_ne
+        module procedure two_ts_instantiation4_ne
         module procedure cstruct_as_class_ne
         module procedure cstruct_as_subclass_ne
     end interface
@@ -501,53 +501,53 @@ contains
     ! splicer end class.Names2.additional_functions
 
     ! Return pointer to C++ memory.
-    function twots_0_get_instance(obj) result (cxxptr)
+    function two_ts_0_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(twots_0), intent(IN) :: obj
+        class(two_ts_0), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function twots_0_get_instance
+    end function two_ts_0_get_instance
 
-    subroutine twots_0_set_instance(obj, cxxmem)
+    subroutine two_ts_0_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(twots_0), intent(INOUT) :: obj
+        class(two_ts_0), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine twots_0_set_instance
+    end subroutine two_ts_0_set_instance
 
-    function twots_0_associated(obj) result (rv)
+    function two_ts_0_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(twots_0), intent(IN) :: obj
+        class(two_ts_0), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function twots_0_associated
+    end function two_ts_0_associated
 
     ! splicer begin class.twoTs_0.additional_functions
     ! splicer end class.twoTs_0.additional_functions
 
     ! Return pointer to C++ memory.
-    function twots_instantiation4_get_instance_instantiation4(obj) result (cxxptr)
+    function two_ts_instantiation4_get_instance_instantiation4(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(twots_instantiation4), intent(IN) :: obj
+        class(two_ts_instantiation4), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function twots_instantiation4_get_instance_instantiation4
+    end function two_ts_instantiation4_get_instance_instantiation4
 
-    subroutine twots_instantiation4_set_instance_instantiation4(obj, cxxmem)
+    subroutine two_ts_instantiation4_set_instance_instantiation4(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(twots_instantiation4), intent(INOUT) :: obj
+        class(two_ts_instantiation4), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine twots_instantiation4_set_instance_instantiation4
+    end subroutine two_ts_instantiation4_set_instance_instantiation4
 
-    function twots_instantiation4_associated_instantiation4(obj) result (rv)
+    function two_ts_instantiation4_associated_instantiation4(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(twots_instantiation4), intent(IN) :: obj
+        class(two_ts_instantiation4), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function twots_instantiation4_associated_instantiation4
+    end function two_ts_instantiation4_associated_instantiation4
 
     ! splicer begin class.twoTs_instantiation4.additional_functions
     ! splicer end class.twoTs_instantiation4.additional_functions
@@ -932,49 +932,49 @@ contains
         endif
     end function names2_ne
 
-    function twots_0_eq(a,b) result (rv)
+    function two_ts_0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_0), intent(IN) ::a,b
+        type(two_ts_0), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function twots_0_eq
+    end function two_ts_0_eq
 
-    function twots_0_ne(a,b) result (rv)
+    function two_ts_0_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_0), intent(IN) ::a,b
+        type(two_ts_0), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function twots_0_ne
+    end function two_ts_0_ne
 
-    function twots_instantiation4_eq(a,b) result (rv)
+    function two_ts_instantiation4_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_instantiation4), intent(IN) ::a,b
+        type(two_ts_instantiation4), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function twots_instantiation4_eq
+    end function two_ts_instantiation4_eq
 
-    function twots_instantiation4_ne(a,b) result (rv)
+    function two_ts_instantiation4_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(twots_instantiation4), intent(IN) ::a,b
+        type(two_ts_instantiation4), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function twots_instantiation4_ne
+    end function two_ts_instantiation4_ne
 
     function cstruct_as_class_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

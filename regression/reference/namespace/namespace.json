@@ -707,7 +707,7 @@
                             "C_type_name": "NS_nswork_ClassWork",
                             "F_derived_name": "class_work",
                             "F_name_api": "class_work",
-                            "F_name_scope": "nswork_classwork_",
+                            "F_name_scope": "nswork_class_work_",
                             "PY_PyObject": "PY_ClassWork",
                             "PY_PyTypeObject": "PY_ClassWork_Type",
                             "PY_capsule_name": "PY_ClassWork_capsule_name",

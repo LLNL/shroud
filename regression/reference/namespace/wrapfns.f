@@ -53,19 +53,19 @@ module ns_mod
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains
-        procedure :: get_instance => nswork_classwork_get_instance
-        procedure :: set_instance => nswork_classwork_set_instance
-        procedure :: associated => nswork_classwork_associated
+        procedure :: get_instance => nswork_class_work_get_instance
+        procedure :: set_instance => nswork_class_work_set_instance
+        procedure :: associated => nswork_class_work_associated
         ! splicer begin namespace.outer.class.ClassWork.type_bound_procedure_part
         ! splicer end namespace.outer.class.ClassWork.type_bound_procedure_part
     end type class_work
 
     interface operator (.eq.)
-        module procedure nswork_classwork_eq
+        module procedure nswork_class_work_eq
     end interface
 
     interface operator (.ne.)
-        module procedure nswork_classwork_ne
+        module procedure nswork_class_work_ne
     end interface
 
     interface
@@ -149,32 +149,32 @@ contains
     ! splicer end additional_functions
 
     ! Return pointer to C++ memory.
-    function nswork_classwork_get_instance(obj) result (cxxptr)
+    function nswork_class_work_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
         class(class_work), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function nswork_classwork_get_instance
+    end function nswork_class_work_get_instance
 
-    subroutine nswork_classwork_set_instance(obj, cxxmem)
+    subroutine nswork_class_work_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(class_work), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine nswork_classwork_set_instance
+    end subroutine nswork_class_work_set_instance
 
-    function nswork_classwork_associated(obj) result (rv)
+    function nswork_class_work_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(class_work), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function nswork_classwork_associated
+    end function nswork_class_work_associated
 
     ! splicer begin namespace.outer.class.ClassWork.additional_functions
     ! splicer end namespace.outer.class.ClassWork.additional_functions
 
-    function nswork_classwork_eq(a,b) result (rv)
+    function nswork_class_work_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(class_work), intent(IN) ::a,b
         logical :: rv
@@ -183,9 +183,9 @@ contains
         else
             rv = .false.
         endif
-    end function nswork_classwork_eq
+    end function nswork_class_work_eq
 
-    function nswork_classwork_ne(a,b) result (rv)
+    function nswork_class_work_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(class_work), intent(IN) ::a,b
         logical :: rv
@@ -194,6 +194,6 @@ contains
         else
             rv = .false.
         endif
-    end function nswork_classwork_ne
+    end function nswork_class_work_ne
 
 end module ns_mod

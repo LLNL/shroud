@@ -108,13 +108,13 @@ contains
 
   subroutine struct_templates
 
-    type(structasclass_int) s_int
-    type(structasclass_double) s_double
+    type(struct_as_class_int) s_int
+    type(struct_as_class_double) s_double
 
     call set_case_name("struct_templates")
 
     ! int
-    s_int = structasclass_int()
+    s_int = struct_as_class_int()
 
     call s_int%set_npts(5_C_INT)
     call s_int%set_value(2_C_INT)
@@ -123,7 +123,7 @@ contains
     call assert_equals(2_C_INT, s_int%get_value())
 
     ! double
-    s_double = structasclass_double()
+    s_double = struct_as_class_double()
 
     call s_double%set_npts(5_C_INT)
     call s_double%set_value(2.5_C_DOUBLE)

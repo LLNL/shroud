@@ -52,16 +52,16 @@ module userlibrary_example_nested_mod
           component part 1b
         ! splicer end namespace.example::nested.class.ExClass1.component_part
     contains
-        procedure :: delete => exclass1_dtor
-        procedure :: increment_count => exclass1_increment_count
-        procedure :: get_name_error_check => exclass1_get_name_error_check
-        procedure :: get_name_arg => exclass1_get_name_arg
-        procedure :: get_value_from_int => exclass1_get_value_from_int
-        procedure :: get_value_1 => exclass1_get_value_1
-        procedure :: has_addr => exclass1_has_addr
-        procedure :: splicer_special => exclass1_splicer_special
-        procedure :: yadda => exclass1_yadda
-        procedure :: associated => exclass1_associated
+        procedure :: delete => ex_class1_dtor
+        procedure :: increment_count => ex_class1_increment_count
+        procedure :: get_name_error_check => ex_class1_get_name_error_check
+        procedure :: get_name_arg => ex_class1_get_name_arg
+        procedure :: get_value_from_int => ex_class1_get_value_from_int
+        procedure :: get_value_1 => ex_class1_get_value_1
+        procedure :: has_addr => ex_class1_has_addr
+        procedure :: splicer_special => ex_class1_splicer_special
+        procedure :: yadda => ex_class1_yadda
+        procedure :: associated => ex_class1_associated
         generic :: get_value => get_value_from_int, get_value_1
         ! splicer begin namespace.example::nested.class.ExClass1.type_bound_procedure_part
           type bound procedure part 1
@@ -73,27 +73,27 @@ module userlibrary_example_nested_mod
         ! splicer begin namespace.example::nested.class.ExClass2.component_part
         ! splicer end namespace.example::nested.class.ExClass2.component_part
     contains
-        procedure :: delete => exclass2_dtor
-        procedure :: get_name => exclass2_get_name
-        procedure :: get_name2 => exclass2_get_name2
-        procedure :: get_name3 => exclass2_get_name3
-        procedure :: get_name4 => exclass2_get_name4
-        procedure :: get_name_length => exclass2_get_name_length
-        procedure :: get_class1 => exclass2_get_class1
-        procedure :: declare_0_int => exclass2_declare_0_int
-        procedure :: declare_0_long => exclass2_declare_0_long
-        procedure :: declare_1_int => exclass2_declare_1_int
-        procedure :: declare_1_long => exclass2_declare_1_long
-        procedure :: destroyall => exclass2_destroyall
-        procedure :: get_type_id => exclass2_get_type_id
-        procedure :: set_value_int => exclass2_set_value_int
-        procedure :: set_value_long => exclass2_set_value_long
-        procedure :: set_value_float => exclass2_set_value_float
-        procedure :: set_value_double => exclass2_set_value_double
-        procedure :: get_value_int => exclass2_get_value_int
-        procedure :: get_value_double => exclass2_get_value_double
-        procedure :: yadda => exclass2_yadda
-        procedure :: associated => exclass2_associated
+        procedure :: delete => ex_class2_dtor
+        procedure :: get_name => ex_class2_get_name
+        procedure :: get_name2 => ex_class2_get_name2
+        procedure :: get_name3 => ex_class2_get_name3
+        procedure :: get_name4 => ex_class2_get_name4
+        procedure :: get_name_length => ex_class2_get_name_length
+        procedure :: get_class1 => ex_class2_get_class1
+        procedure :: declare_0_int => ex_class2_declare_0_int
+        procedure :: declare_0_long => ex_class2_declare_0_long
+        procedure :: declare_1_int => ex_class2_declare_1_int
+        procedure :: declare_1_long => ex_class2_declare_1_long
+        procedure :: destroyall => ex_class2_destroyall
+        procedure :: get_type_id => ex_class2_get_type_id
+        procedure :: set_value_int => ex_class2_set_value_int
+        procedure :: set_value_long => ex_class2_set_value_long
+        procedure :: set_value_float => ex_class2_set_value_float
+        procedure :: set_value_double => ex_class2_set_value_double
+        procedure :: get_value_int => ex_class2_get_value_int
+        procedure :: get_value_double => ex_class2_get_value_double
+        procedure :: yadda => ex_class2_yadda
+        procedure :: associated => ex_class2_associated
         generic :: declare => declare_0_int, declare_0_long,  &
             declare_1_int, declare_1_long
         generic :: set_value => set_value_int, set_value_long,  &
@@ -103,13 +103,13 @@ module userlibrary_example_nested_mod
     end type ex_class2
 
     interface operator (.eq.)
-        module procedure exclass1_eq
-        module procedure exclass2_eq
+        module procedure ex_class1_eq
+        module procedure ex_class2_eq
     end interface
 
     interface operator (.ne.)
-        module procedure exclass1_ne
-        module procedure exclass2_ne
+        module procedure ex_class1_ne
+        module procedure ex_class2_ne
     end interface
 
     abstract interface
@@ -165,7 +165,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass1
         ! Attrs:     +api(capptr)+intent(ctor)
         ! Exact:     c_ctor_shadow_scalar_capptr
-        function c_exclass1_ctor_0(SHT_rv) &
+        function c_ex_class1_ctor_0(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
             use iso_c_binding, only : C_PTR
@@ -173,7 +173,7 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function c_exclass1_ctor_0
+        end function c_ex_class1_ctor_0
 
         ! ----------------------------------------
         ! Function:  ExClass1
@@ -183,7 +183,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_*
-        function c_exclass1_ctor_1(name, SHT_rv) &
+        function c_ex_class1_ctor_1(name, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -192,7 +192,7 @@ module userlibrary_example_nested_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function c_exclass1_ctor_1
+        end function c_ex_class1_ctor_1
 
         ! ----------------------------------------
         ! Function:  ExClass1
@@ -202,7 +202,8 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        function c_exclass1_ctor_1_bufferify(name, SHT_name_len, SHT_rv) &
+        function c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
+                SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
@@ -212,19 +213,19 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: SHT_name_len
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function c_exclass1_ctor_1_bufferify
+        end function c_ex_class1_ctor_1_bufferify
 
         ! ----------------------------------------
         ! Function:  ~ExClass1
         ! Attrs:     +intent(dtor)
         ! Requested: c_dtor_void_scalar
         ! Match:     c_dtor
-        subroutine c_exclass1_dtor(self) &
+        subroutine c_ex_class1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(INOUT) :: self
-        end subroutine c_exclass1_dtor
+        end subroutine c_ex_class1_dtor
 
         ! ----------------------------------------
         ! Function:  int incrementCount
@@ -236,7 +237,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        function c_exclass1_increment_count(self, incr) &
+        function c_ex_class1_increment_count(self, incr) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_incrementCount")
             use iso_c_binding, only : C_INT
@@ -245,14 +246,14 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
-        end function c_exclass1_increment_count
+        end function c_ex_class1_increment_count
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +deref(allocatable)+intent(function)
         ! Requested: c_function_string_&_allocatable
         ! Match:     c_function_string_&
-        pure function c_exclass1_get_name_error_check(self) &
+        pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
             use iso_c_binding, only : C_PTR
@@ -260,26 +261,26 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass1_get_name_error_check
+        end function c_ex_class1_get_name_error_check
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
-        subroutine c_exclass1_get_name_error_check_bufferify(self, &
+        subroutine c_ex_class1_get_name_error_check_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(AA_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_exclass1_get_name_error_check_bufferify
+        end subroutine c_ex_class1_get_name_error_check_bufferify
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg
         ! Attrs:     +intent(function)
         ! Exact:     c_function_string_&
-        pure function c_exclass1_get_name_arg(self) &
+        pure function c_ex_class1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg")
             use iso_c_binding, only : C_PTR
@@ -287,7 +288,7 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass1_get_name_arg
+        end function c_ex_class1_get_name_arg
 
         ! ----------------------------------------
         ! Function:  void getNameArg
@@ -299,7 +300,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
         ! Requested: c_function_string_&_buf_result
         ! Match:     c_function_string_&_buf
-        subroutine c_exclass1_get_name_arg_bufferify(self, name, &
+        subroutine c_ex_class1_get_name_arg_bufferify(self, name, &
                 SHT_name_len) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -308,7 +309,7 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
-        end subroutine c_exclass1_get_name_arg_bufferify
+        end subroutine c_ex_class1_get_name_arg_bufferify
 
         ! ----------------------------------------
         ! Function:  int getValue
@@ -320,7 +321,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        function c_exclass1_get_value_from_int(self, value) &
+        function c_ex_class1_get_value_from_int(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getValue_from_int")
             use iso_c_binding, only : C_INT
@@ -329,7 +330,7 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
             integer(C_INT) :: SHT_rv
-        end function c_exclass1_get_value_from_int
+        end function c_ex_class1_get_value_from_int
 
         ! ----------------------------------------
         ! Function:  long getValue
@@ -341,7 +342,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        function c_exclass1_get_value_1(self, value) &
+        function c_ex_class1_get_value_1(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getValue_1")
             use iso_c_binding, only : C_LONG
@@ -350,7 +351,7 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
             integer(C_LONG) :: SHT_rv
-        end function c_exclass1_get_value_1
+        end function c_ex_class1_get_value_1
 
         ! ----------------------------------------
         ! Function:  bool hasAddr
@@ -362,7 +363,7 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_bool_scalar
         ! Match:     c_default
-        function c_exclass1_has_addr(self, in) &
+        function c_ex_class1_has_addr(self, in) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_hasAddr")
             use iso_c_binding, only : C_BOOL
@@ -371,19 +372,19 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             logical(C_BOOL), value, intent(IN) :: in
             logical(C_BOOL) :: SHT_rv
-        end function c_exclass1_has_addr
+        end function c_ex_class1_has_addr
 
         ! ----------------------------------------
         ! Function:  void SplicerSpecial
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine c_exclass1_splicer_special(self) &
+        subroutine c_ex_class1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_SplicerSpecial")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-        end subroutine c_exclass1_splicer_special
+        end subroutine c_ex_class1_splicer_special
 
         ! splicer begin namespace.example::nested.class.ExClass1.additional_interfaces
         ! splicer end namespace.example::nested.class.ExClass1.additional_interfaces
@@ -396,7 +397,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +intent(in)
         ! Exact:     c_in_string_*
-        function c_exclass2_ctor(name, SHT_rv) &
+        function c_ex_class2_ctor(name, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -405,7 +406,7 @@ module userlibrary_example_nested_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function c_exclass2_ctor
+        end function c_ex_class2_ctor
 
         ! ----------------------------------------
         ! Function:  ExClass2
@@ -415,7 +416,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const string * name +len_trim(trim_name)
         ! Attrs:     +api(buf)+intent(in)
         ! Exact:     c_in_string_*_buf
-        function c_exclass2_ctor_bufferify(name, SHT_name_len, SHT_rv) &
+        function c_ex_class2_ctor_bufferify(name, SHT_name_len, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
@@ -425,26 +426,26 @@ module userlibrary_example_nested_mod
             integer(C_INT), value, intent(IN) :: SHT_name_len
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) SHT_prv
-        end function c_exclass2_ctor_bufferify
+        end function c_ex_class2_ctor_bufferify
 
         ! ----------------------------------------
         ! Function:  ~ExClass2
         ! Attrs:     +intent(dtor)
         ! Requested: c_dtor_void_scalar
         ! Match:     c_dtor
-        subroutine c_exclass2_dtor(self) &
+        subroutine c_ex_class2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(INOUT) :: self
-        end subroutine c_exclass2_dtor
+        end subroutine c_ex_class2_dtor
 
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +deref(copy)+intent(function)
         ! Requested: c_function_string_&_copy
         ! Match:     c_function_string_&
-        pure function c_exclass2_get_name(self) &
+        pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName")
             use iso_c_binding, only : C_PTR
@@ -452,14 +453,14 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass2_get_name
+        end function c_ex_class2_get_name
 
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +api(buf)+deref(copy)+intent(function)
         ! Requested: c_function_string_&_buf_copy
         ! Match:     c_function_string_&_buf
-        subroutine c_exclass2_get_name_bufferify(self, SHT_rv, &
+        subroutine c_ex_class2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="AA_example_nested_ExClass2_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -468,14 +469,14 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_exclass2_get_name_bufferify
+        end subroutine c_ex_class2_get_name_bufferify
 
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +deref(allocatable)+intent(function)
         ! Requested: c_function_string_&_allocatable
         ! Match:     c_function_string_&
-        function c_exclass2_get_name2(self) &
+        function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2")
             use iso_c_binding, only : C_PTR
@@ -483,26 +484,26 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass2_get_name2
+        end function c_ex_class2_get_name2
 
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
-        subroutine c_exclass2_get_name2_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(AA_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_exclass2_get_name2_bufferify
+        end subroutine c_ex_class2_get_name2_bufferify
 
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +deref(allocatable)+intent(function)
         ! Requested: c_function_string_&_allocatable
         ! Match:     c_function_string_&
-        pure function c_exclass2_get_name3(self) &
+        pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3")
             use iso_c_binding, only : C_PTR
@@ -510,26 +511,26 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass2_get_name3
+        end function c_ex_class2_get_name3
 
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
-        subroutine c_exclass2_get_name3_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(AA_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_exclass2_get_name3_bufferify
+        end subroutine c_ex_class2_get_name3_bufferify
 
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +deref(allocatable)+intent(function)
         ! Requested: c_function_string_&_allocatable
         ! Match:     c_function_string_&
-        function c_exclass2_get_name4(self) &
+        function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4")
             use iso_c_binding, only : C_PTR
@@ -537,26 +538,26 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
-        end function c_exclass2_get_name4
+        end function c_ex_class2_get_name4
 
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
         ! Exact:     c_function_string_&_cdesc_allocatable
-        subroutine c_exclass2_get_name4_bufferify(self, SHT_rv) &
+        subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(AA_SHROUD_array), intent(OUT) :: SHT_rv
-        end subroutine c_exclass2_get_name4_bufferify
+        end subroutine c_ex_class2_get_name4_bufferify
 
         ! ----------------------------------------
         ! Function:  int GetNameLength
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        pure function c_exclass2_get_name_length(self) &
+        pure function c_ex_class2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_GetNameLength")
             use iso_c_binding, only : C_INT
@@ -564,7 +565,7 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
-        end function c_exclass2_get_name_length
+        end function c_ex_class2_get_name_length
 
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
@@ -574,7 +575,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const ExClass1 * in
         ! Attrs:     +intent(in)
         ! Exact:     c_in_shadow_*
-        function c_exclass2_get_class1(self, in, SHT_rv) &
+        function c_ex_class2_get_class1(self, in, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
             use iso_c_binding, only : C_PTR
@@ -584,7 +585,7 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: in
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
-        end function c_exclass2_get_class1
+        end function c_ex_class2_get_class1
 
         ! ----------------------------------------
         ! Function:  void declare
@@ -596,13 +597,13 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_declare_0(self, type) &
+        subroutine c_ex_class2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
             import :: AA_SHROUD_capsule_data, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
-        end subroutine c_exclass2_declare_0
+        end subroutine c_ex_class2_declare_0
 
         ! ----------------------------------------
         ! Function:  void declare
@@ -619,40 +620,40 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_declare_1(self, type, len) &
+        subroutine c_ex_class2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
             import :: AA_SHROUD_capsule_data, sidre_length, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id), value, intent(IN) :: type
             integer(sidre_length), value, intent(IN) :: len
-        end subroutine c_exclass2_declare_1
+        end subroutine c_ex_class2_declare_1
 
         ! ----------------------------------------
         ! Function:  void destroyall
         ! Attrs:     +intent(subroutine)
         ! Requested: c_subroutine_void_scalar
         ! Match:     c_subroutine
-        subroutine c_exclass2_destroyall(self) &
+        subroutine c_ex_class2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-        end subroutine c_exclass2_destroyall
+        end subroutine c_ex_class2_destroyall
 
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        pure function c_exclass2_get_type_id(self) &
+        pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
             import :: AA_SHROUD_capsule_data, type_id
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(type_id) :: SHT_rv
-        end function c_exclass2_get_type_id
+        end function c_ex_class2_get_type_id
 
         ! ----------------------------------------
         ! Function:  void setValue
@@ -664,14 +665,14 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_set_value_int(self, value) &
+        subroutine c_ex_class2_set_value_int(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_int")
             use iso_c_binding, only : C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
-        end subroutine c_exclass2_set_value_int
+        end subroutine c_ex_class2_set_value_int
 
         ! ----------------------------------------
         ! Function:  void setValue
@@ -683,14 +684,14 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_set_value_long(self, value) &
+        subroutine c_ex_class2_set_value_long(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_long")
             use iso_c_binding, only : C_LONG
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
-        end subroutine c_exclass2_set_value_long
+        end subroutine c_ex_class2_set_value_long
 
         ! ----------------------------------------
         ! Function:  void setValue
@@ -702,14 +703,14 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_set_value_float(self, value) &
+        subroutine c_ex_class2_set_value_float(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_float")
             use iso_c_binding, only : C_FLOAT
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             real(C_FLOAT), value, intent(IN) :: value
-        end subroutine c_exclass2_set_value_float
+        end subroutine c_ex_class2_set_value_float
 
         ! ----------------------------------------
         ! Function:  void setValue
@@ -721,21 +722,21 @@ module userlibrary_example_nested_mod
         ! Attrs:     +intent(in)
         ! Requested: c_in_native_scalar
         ! Match:     c_default
-        subroutine c_exclass2_set_value_double(self, value) &
+        subroutine c_ex_class2_set_value_double(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_setValue_double")
             use iso_c_binding, only : C_DOUBLE
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             real(C_DOUBLE), value, intent(IN) :: value
-        end subroutine c_exclass2_set_value_double
+        end subroutine c_ex_class2_set_value_double
 
         ! ----------------------------------------
         ! Function:  int getValue
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_exclass2_get_value_int(self) &
+        function c_ex_class2_get_value_int(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_int")
             use iso_c_binding, only : C_INT
@@ -743,14 +744,14 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
-        end function c_exclass2_get_value_int
+        end function c_ex_class2_get_value_int
 
         ! ----------------------------------------
         ! Function:  double getValue
         ! Attrs:     +intent(function)
         ! Requested: c_function_native_scalar
         ! Match:     c_function
-        function c_exclass2_get_value_double(self) &
+        function c_ex_class2_get_value_double(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_double")
             use iso_c_binding, only : C_DOUBLE
@@ -758,7 +759,7 @@ module userlibrary_example_nested_mod
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             real(C_DOUBLE) :: SHT_rv
-        end function c_exclass2_get_value_double
+        end function c_ex_class2_get_value_double
 
         ! splicer begin namespace.example::nested.class.ExClass2.additional_interfaces
         ! splicer end namespace.example::nested.class.ExClass2.additional_interfaces
@@ -1264,12 +1265,12 @@ module userlibrary_example_nested_mod
     end interface
 
     interface ex_class1
-        module procedure exclass1_ctor_0
-        module procedure exclass1_ctor_1
+        module procedure ex_class1_ctor_0
+        module procedure ex_class1_ctor_1
     end interface ex_class1
 
     interface ex_class2
-        module procedure exclass2_ctor
+        module procedure ex_class2_ctor
     end interface ex_class2
 
     interface test_names
@@ -1313,15 +1314,15 @@ contains
     ! Exact:     f_ctor_shadow_scalar_capptr
     ! Attrs:     +api(capptr)+intent(ctor)
     ! Exact:     c_ctor_shadow_scalar_capptr
-    function exclass1_ctor_0() &
+    function ex_class1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(ex_class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
-        SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
+        SHT_prv = c_ex_class1_ctor_0(SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
-    end function exclass1_ctor_0
+    end function ex_class1_ctor_0
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1344,7 +1345,7 @@ contains
     !!
     !! \return return new instance
     !<
-    function exclass1_ctor_1(name) &
+    function ex_class1_ctor_1(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
@@ -1353,10 +1354,10 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         integer(C_INT) SHT_name_len
         SHT_name_len = len(name, kind=C_INT)
-        SHT_prv = c_exclass1_ctor_1_bufferify(name, SHT_name_len, &
+        SHT_prv = c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
-    end function exclass1_ctor_1
+    end function ex_class1_ctor_1
 
     ! ----------------------------------------
     ! Function:  ~ExClass1
@@ -1369,12 +1370,12 @@ contains
     !!
     !! longer description joined with previous line
     !<
-    subroutine exclass1_dtor(obj)
+    subroutine ex_class1_dtor(obj)
         class(ex_class1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.delete
-        call c_exclass1_dtor(obj%cxxmem)
+        call c_ex_class1_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.delete
-    end subroutine exclass1_dtor
+    end subroutine ex_class1_dtor
 
     ! ----------------------------------------
     ! Function:  int incrementCount
@@ -1392,16 +1393,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    function exclass1_increment_count(obj, incr) &
+    function ex_class1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.increment_count
-        SHT_rv = c_exclass1_increment_count(obj%cxxmem, incr)
+        SHT_rv = c_ex_class1_increment_count(obj%cxxmem, incr)
         ! splicer end namespace.example::nested.class.ExClass1.method.increment_count
-    end function exclass1_increment_count
+    end function ex_class1_increment_count
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1410,19 +1411,19 @@ contains
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_cdesc_allocatable
-    function exclass1_get_name_error_check(obj) &
+    function ex_class1_get_name_error_check(obj) &
             result(SHT_rv)
         class(ex_class1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
+        call c_ex_class1_get_name_error_check_bufferify(obj%cxxmem, &
             SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
-    end function exclass1_get_name_error_check
+    end function ex_class1_get_name_error_check
 
     ! Generated by arg_to_buffer - arg_to_buffer
     ! ----------------------------------------
@@ -1439,17 +1440,17 @@ contains
     ! Attrs:     +api(buf)+deref(result)+intent(out)+is_result
     ! Requested: c_function_string_&_buf_result
     ! Match:     c_function_string_&_buf
-    subroutine exclass1_get_name_arg(obj, name)
+    subroutine ex_class1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
         character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
         integer(C_INT) SHT_name_len
         SHT_name_len = len(name, kind=C_INT)
-        call c_exclass1_get_name_arg_bufferify(obj%cxxmem, name, &
+        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, &
             SHT_name_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
-    end subroutine exclass1_get_name_arg
+    end subroutine ex_class1_get_name_arg
 
     ! ----------------------------------------
     ! Function:  int getValue
@@ -1467,16 +1468,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    function exclass1_get_value_from_int(obj, value) &
+    function ex_class1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
-        SHT_rv = c_exclass1_get_value_from_int(obj%cxxmem, value)
+        SHT_rv = c_ex_class1_get_value_from_int(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
-    end function exclass1_get_value_from_int
+    end function ex_class1_get_value_from_int
 
     ! ----------------------------------------
     ! Function:  long getValue
@@ -1494,16 +1495,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    function exclass1_get_value_1(obj, value) &
+    function ex_class1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
         class(ex_class1) :: obj
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
-        SHT_rv = c_exclass1_get_value_1(obj%cxxmem, value)
+        SHT_rv = c_ex_class1_get_value_1(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_value_1
-    end function exclass1_get_value_1
+    end function ex_class1_get_value_1
 
     ! ----------------------------------------
     ! Function:  bool hasAddr
@@ -1521,7 +1522,7 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_bool_scalar
     ! Match:     c_default
-    function exclass1_has_addr(obj, in) &
+    function ex_class1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         class(ex_class1) :: obj
@@ -1530,9 +1531,9 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
         logical(C_BOOL) SH_in
         SH_in = in  ! coerce to C_BOOL
-        SHT_rv = c_exclass1_has_addr(obj%cxxmem, SH_in)
+        SHT_rv = c_ex_class1_has_addr(obj%cxxmem, SH_in)
         ! splicer end namespace.example::nested.class.ExClass1.method.has_addr
-    end function exclass1_has_addr
+    end function ex_class1_has_addr
 
     ! ----------------------------------------
     ! Function:  void SplicerSpecial
@@ -1540,27 +1541,27 @@ contains
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
-    subroutine exclass1_splicer_special(obj)
+    subroutine ex_class1_splicer_special(obj)
         class(ex_class1) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
         blah blah blah
         ! splicer end namespace.example::nested.class.ExClass1.method.splicer_special
-    end subroutine exclass1_splicer_special
+    end subroutine ex_class1_splicer_special
 
     ! Return pointer to C++ memory.
-    function exclass1_yadda(obj) result (cxxptr)
+    function ex_class1_yadda(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
         class(ex_class1), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function exclass1_yadda
+    end function ex_class1_yadda
 
-    function exclass1_associated(obj) result (rv)
+    function ex_class1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(ex_class1), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function exclass1_associated
+    end function ex_class1_associated
 
     ! splicer begin namespace.example::nested.class.ExClass1.additional_functions
       insert extra functions here
@@ -1583,7 +1584,7 @@ contains
     !! \brief constructor
     !!
     !<
-    function exclass2_ctor(name) &
+    function ex_class2_ctor(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
@@ -1592,10 +1593,10 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         integer(C_INT) SHT_name_len
         SHT_name_len = len(name, kind=C_INT)
-        SHT_prv = c_exclass2_ctor_bufferify(name, SHT_name_len, &
+        SHT_prv = c_ex_class2_ctor_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
-    end function exclass2_ctor
+    end function ex_class2_ctor
 
     ! ----------------------------------------
     ! Function:  ~ExClass2
@@ -1607,12 +1608,12 @@ contains
     !! \brief destructor
     !!
     !<
-    subroutine exclass2_dtor(obj)
+    subroutine ex_class2_dtor(obj)
         class(ex_class2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.delete
-        call c_exclass2_dtor(obj%cxxmem)
+        call c_ex_class2_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.delete
-    end subroutine exclass2_dtor
+    end subroutine ex_class2_dtor
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1623,7 +1624,7 @@ contains
     ! Attrs:     +api(buf)+deref(copy)+intent(function)
     ! Requested: c_function_string_&_buf_copy
     ! Match:     c_function_string_&_buf
-    function exclass2_get_name(obj) &
+    function ex_class2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
@@ -1631,10 +1632,10 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name
         integer(C_INT) SHT_rv_len
         SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_exclass2_get_name_bufferify(obj%cxxmem, SHT_rv, &
+        call c_ex_class2_get_name_bufferify(obj%cxxmem, SHT_rv, &
             SHT_rv_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name
-    end function exclass2_get_name
+    end function ex_class2_get_name
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1643,18 +1644,18 @@ contains
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_cdesc_allocatable
-    function exclass2_get_name2(obj) &
+    function ex_class2_get_name2(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        call c_ex_class2_get_name2_bufferify(obj%cxxmem, SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
-    end function exclass2_get_name2
+    end function ex_class2_get_name2
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1663,18 +1664,18 @@ contains
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_cdesc_allocatable
-    function exclass2_get_name3(obj) &
+    function ex_class2_get_name3(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        call c_ex_class2_get_name3_bufferify(obj%cxxmem, SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
-    end function exclass2_get_name3
+    end function ex_class2_get_name3
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -1683,18 +1684,18 @@ contains
     ! Exact:     f_function_string_&_cdesc_allocatable
     ! Attrs:     +api(cdesc)+deref(allocatable)+intent(function)
     ! Exact:     c_function_string_&_cdesc_allocatable
-    function exclass2_get_name4(obj) &
+    function ex_class2_get_name4(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         type(AA_SHROUD_array) :: SHT_rv_cdesc
-        call c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_rv_cdesc)
+        call c_ex_class2_get_name4_bufferify(obj%cxxmem, SHT_rv_cdesc)
         allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
         call AA_SHROUD_copy_string_and_free(SHT_rv_cdesc, SHT_rv, &
             SHT_rv_cdesc%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
-    end function exclass2_get_name4
+    end function ex_class2_get_name4
 
     ! ----------------------------------------
     ! Function:  int GetNameLength
@@ -1708,15 +1709,15 @@ contains
     !! \brief helper function for Fortran
     !!
     !<
-    function exclass2_get_name_length(obj) &
+    function ex_class2_get_name_length(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
-        SHT_rv = c_exclass2_get_name_length(obj%cxxmem)
+        SHT_rv = c_ex_class2_get_name_length(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name_length
-    end function exclass2_get_name_length
+    end function ex_class2_get_name_length
 
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
@@ -1731,7 +1732,7 @@ contains
     ! Match:     f_in_shadow
     ! Attrs:     +intent(in)
     ! Exact:     c_in_shadow_*
-    function exclass2_get_class1(obj, in) &
+    function ex_class2_get_class1(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         class(ex_class2) :: obj
@@ -1739,10 +1740,10 @@ contains
         type(ex_class1) :: SHT_rv
         type(C_PTR) :: SHT_prv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
-        SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
+        SHT_prv = c_ex_class2_get_class1(obj%cxxmem, in%cxxmem, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_class1
-    end function exclass2_get_class1
+    end function ex_class2_get_class1
 
     ! Generated by fortran_generic - return_this
     ! ----------------------------------------
@@ -1759,14 +1760,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_declare_0_int(obj, type)
+    subroutine ex_class2_declare_0_int(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_int
-        call c_exclass2_declare_0(obj%cxxmem, type)
+        call c_ex_class2_declare_0(obj%cxxmem, type)
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_int
-    end subroutine exclass2_declare_0_int
+    end subroutine ex_class2_declare_0_int
 
     ! Generated by fortran_generic - return_this
     ! ----------------------------------------
@@ -1783,14 +1784,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_declare_0_long(obj, type)
+    subroutine ex_class2_declare_0_long(obj, type)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_0_long
-        call c_exclass2_declare_0(obj%cxxmem, type)
+        call c_ex_class2_declare_0(obj%cxxmem, type)
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_0_long
-    end subroutine exclass2_declare_0_long
+    end subroutine ex_class2_declare_0_long
 
     ! Generated by fortran_generic - return_this
     ! ----------------------------------------
@@ -1816,16 +1817,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_declare_1_int(obj, type, len)
+    subroutine ex_class2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT
         use userlibrary_mod, only : sidre_length, type_id
         class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_int
-        call c_exclass2_declare_1(obj%cxxmem, type, int(len, C_LONG))
+        call c_ex_class2_declare_1(obj%cxxmem, type, int(len, C_LONG))
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_int
-    end subroutine exclass2_declare_1_int
+    end subroutine ex_class2_declare_1_int
 
     ! Generated by fortran_generic - return_this
     ! ----------------------------------------
@@ -1851,16 +1852,16 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_declare_1_long(obj, type, len)
+    subroutine ex_class2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_LONG
         use userlibrary_mod, only : sidre_length, type_id
         class(ex_class2) :: obj
         integer(type_id), value, intent(IN) :: type
         integer(C_LONG), value, intent(IN) :: len
         ! splicer begin namespace.example::nested.class.ExClass2.method.declare_1_long
-        call c_exclass2_declare_1(obj%cxxmem, type, int(len, C_LONG))
+        call c_ex_class2_declare_1(obj%cxxmem, type, int(len, C_LONG))
         ! splicer end namespace.example::nested.class.ExClass2.method.declare_1_long
-    end subroutine exclass2_declare_1_long
+    end subroutine ex_class2_declare_1_long
 
     ! ----------------------------------------
     ! Function:  void destroyall
@@ -1868,12 +1869,12 @@ contains
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
     ! Exact:     c_subroutine
-    subroutine exclass2_destroyall(obj)
+    subroutine ex_class2_destroyall(obj)
         class(ex_class2) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.destroyall
-        call c_exclass2_destroyall(obj%cxxmem)
+        call c_ex_class2_destroyall(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.destroyall
-    end subroutine exclass2_destroyall
+    end subroutine ex_class2_destroyall
 
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
@@ -1883,15 +1884,15 @@ contains
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
     ! Match:     c_function
-    function exclass2_get_type_id(obj) &
+    function ex_class2_get_type_id(obj) &
             result(SHT_rv)
         use userlibrary_mod, only : type_id
         class(ex_class2) :: obj
         integer(type_id) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
-        SHT_rv = c_exclass2_get_type_id(obj%cxxmem)
+        SHT_rv = c_ex_class2_get_type_id(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_type_id
-    end function exclass2_get_type_id
+    end function ex_class2_get_type_id
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -1908,14 +1909,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_set_value_int(obj, value)
+    subroutine ex_class2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
         integer(C_INT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
-        call c_exclass2_set_value_int(obj%cxxmem, value)
+        call c_ex_class2_set_value_int(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_int
-    end subroutine exclass2_set_value_int
+    end subroutine ex_class2_set_value_int
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -1932,14 +1933,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_set_value_long(obj, value)
+    subroutine ex_class2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
         class(ex_class2) :: obj
         integer(C_LONG), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
-        call c_exclass2_set_value_long(obj%cxxmem, value)
+        call c_ex_class2_set_value_long(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_long
-    end subroutine exclass2_set_value_long
+    end subroutine ex_class2_set_value_long
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -1956,14 +1957,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_set_value_float(obj, value)
+    subroutine ex_class2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
         class(ex_class2) :: obj
         real(C_FLOAT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
-        call c_exclass2_set_value_float(obj%cxxmem, value)
+        call c_ex_class2_set_value_float(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_float
-    end subroutine exclass2_set_value_float
+    end subroutine ex_class2_set_value_float
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -1980,14 +1981,14 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_in_native_scalar
     ! Match:     c_default
-    subroutine exclass2_set_value_double(obj, value)
+    subroutine ex_class2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(ex_class2) :: obj
         real(C_DOUBLE), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
-        call c_exclass2_set_value_double(obj%cxxmem, value)
+        call c_ex_class2_set_value_double(obj%cxxmem, value)
         ! splicer end namespace.example::nested.class.ExClass2.method.set_value_double
-    end subroutine exclass2_set_value_double
+    end subroutine ex_class2_set_value_double
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -1998,15 +1999,15 @@ contains
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
     ! Match:     c_function
-    function exclass2_get_value_int(obj) &
+    function ex_class2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         class(ex_class2) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
-        SHT_rv = c_exclass2_get_value_int(obj%cxxmem)
+        SHT_rv = c_ex_class2_get_value_int(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_value_int
-    end function exclass2_get_value_int
+    end function ex_class2_get_value_int
 
     ! Generated by cxx_template
     ! ----------------------------------------
@@ -2017,30 +2018,30 @@ contains
     ! Attrs:     +intent(function)
     ! Requested: c_function_native_scalar
     ! Match:     c_function
-    function exclass2_get_value_double(obj) &
+    function ex_class2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         class(ex_class2) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
-        SHT_rv = c_exclass2_get_value_double(obj%cxxmem)
+        SHT_rv = c_ex_class2_get_value_double(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_value_double
-    end function exclass2_get_value_double
+    end function ex_class2_get_value_double
 
     ! Return pointer to C++ memory.
-    function exclass2_yadda(obj) result (cxxptr)
+    function ex_class2_yadda(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
         class(ex_class2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function exclass2_yadda
+    end function ex_class2_yadda
 
-    function exclass2_associated(obj) result (rv)
+    function ex_class2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(ex_class2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function exclass2_associated
+    end function ex_class2_associated
 
     ! splicer begin namespace.example::nested.class.ExClass2.additional_functions
     ! splicer end namespace.example::nested.class.ExClass2.additional_functions
@@ -2537,7 +2538,7 @@ contains
     ! splicer begin namespace.example::nested.additional_functions
     ! splicer end namespace.example::nested.additional_functions
 
-    function exclass1_eq(a,b) result (rv)
+    function ex_class1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(ex_class1), intent(IN) ::a,b
         logical :: rv
@@ -2546,9 +2547,9 @@ contains
         else
             rv = .false.
         endif
-    end function exclass1_eq
+    end function ex_class1_eq
 
-    function exclass1_ne(a,b) result (rv)
+    function ex_class1_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(ex_class1), intent(IN) ::a,b
         logical :: rv
@@ -2557,9 +2558,9 @@ contains
         else
             rv = .false.
         endif
-    end function exclass1_ne
+    end function ex_class1_ne
 
-    function exclass2_eq(a,b) result (rv)
+    function ex_class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(ex_class2), intent(IN) ::a,b
         logical :: rv
@@ -2568,9 +2569,9 @@ contains
         else
             rv = .false.
         endif
-    end function exclass2_eq
+    end function ex_class2_eq
 
-    function exclass2_ne(a,b) result (rv)
+    function ex_class2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(ex_class2), intent(IN) ::a,b
         logical :: rv
@@ -2579,6 +2580,6 @@ contains
         else
             rv = .false.
         endif
-    end function exclass2_ne
+    end function ex_class2_ne
 
 end module userlibrary_example_nested_mod

@@ -123,7 +123,7 @@ typemap:
       - typestestnames.hh
       c_type: TES_twoTs_0
       f_module_name: top_module
-      f_derived_type: twots_0
+      f_derived_type: two_ts_0
       f_capsule_data_type: TES_SHROUD_capsule_data
       f_to_c: "{f_var}%cxxmem"
   - type: twoTs_instantiation4
@@ -133,6 +133,6 @@ typemap:
       - typestestnames.hh
       c_type: TES_twoTs_instantiation4
       f_module_name: top_module
-      f_derived_type: twots_instantiation4
+      f_derived_type: two_ts_instantiation4
       f_capsule_data_type: TES_SHROUD_capsule_data
       f_to_c: "{f_var}%cxxmem"
