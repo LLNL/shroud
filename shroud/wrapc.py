@@ -573,7 +573,7 @@ class Wrapc(util.WrapperMixin):
         Args:
             node - ast.ClassNode.
         """
-        self.log.write("class {1.name}\n".format(self, node))
+        self.log.write("class {}\n".format(node.name_instantiation or node.name))
 
         fmt_class = node.fmtdict
         # call method syntax

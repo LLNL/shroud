@@ -1,6 +1,6 @@
 Read yaml templates.yaml
 Close templates_types.yaml
-class vector
+class vector<int>
 C vector(void)  +api(capptr)+intent(ctor)
 C ~vector(void)  +intent(dtor)
 C void push_back(const int & value +intent(in))  +intent(subroutine)
@@ -8,7 +8,7 @@ C int & at(size_type n +value)  +deref(pointer)+intent(function)
 C int & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
-class vector
+class vector<double>
 C vector(void)  +api(capptr)+intent(ctor)
 C ~vector(void)  +intent(dtor)
 C void push_back(const double & value +intent(in))  +intent(subroutine)
@@ -19,11 +19,11 @@ Close wrapstd_vector_double.cpp
 class ImplWorker1
 class ImplWorker2
 class Worker
-class user
+class user<int>
 C void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
 Close wrapuser_int.h
 Close wrapuser_int.cpp
-class structAsClass
+class structAsClass<int>
 C structAsClass(void)  +api(capptr)+intent(ctor)
 C void set_npts(int n +value)  +intent(subroutine)
 C int get_npts(void)  +intent(function)
@@ -31,7 +31,7 @@ C void set_value(int v +value)  +intent(subroutine)
 C int get_value(void)  +intent(function)
 Close wrapstructAsClass_int.h
 Close wrapstructAsClass_int.cpp
-class structAsClass
+class structAsClass<double>
 C structAsClass(void)  +api(capptr)+intent(ctor)
 C void set_npts(int n +value)  +intent(subroutine)
 C int get_npts(void)  +intent(function)
@@ -47,10 +47,10 @@ C int UseImplWorker(void)  +intent(function)
 Close wraptemplates.h
 Close wraptemplates.cpp
 class Worker
-class user
+class user<int>
 Fortran void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
 C-interface void nested(int arg1 +value, double arg2 +value)  +intent(subroutine)
-class structAsClass
+class structAsClass<int>
 Fortran structAsClass(void)  +api(capptr)+intent(ctor)
 Fortran void set_npts(int n +value)  +intent(subroutine)
 Fortran int get_npts(void)  +intent(function)
@@ -61,7 +61,7 @@ C-interface void set_npts(int n +value)  +intent(subroutine)
 C-interface int get_npts(void)  +intent(function)
 C-interface void set_value(int v +value)  +intent(subroutine)
 C-interface int get_value(void)  +intent(function)
-class structAsClass
+class structAsClass<double>
 Fortran structAsClass(void)  +api(capptr)+intent(ctor)
 Fortran void set_npts(int n +value)  +intent(subroutine)
 Fortran int get_npts(void)  +intent(function)
@@ -82,7 +82,7 @@ C-interface void FunctionTU(int arg1 +value, long arg2 +value)  +intent(subrouti
 C-interface void FunctionTU(float arg1 +value, double arg2 +value)  +intent(subroutine)
 C-interface int UseImplWorker(void)  +intent(function)
 C-interface int UseImplWorker(void)  +intent(function)
-class vector
+class vector<int>
 typedef size_type
 Fortran vector(void)  +api(capptr)+intent(ctor)
 Fortran ~vector(void)  +intent(dtor)
@@ -93,7 +93,7 @@ C-interface ~vector(void)  +intent(dtor)
 C-interface void push_back(const int & value +intent(in))  +intent(subroutine)
 C-interface int & at(size_type n +value)  +deref(pointer)+intent(function)
 C-interface int & at(size_type n +value)  +api(buf)+deref(pointer)+intent(function)
-class vector
+class vector<double>
 typedef size_type
 Fortran vector(void)  +api(capptr)+intent(ctor)
 Fortran ~vector(void)  +intent(dtor)
