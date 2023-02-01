@@ -11646,9 +11646,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "SidreLength",
-                    "C_typedef_name": "AA_SidreLength",
+                    "C_name_typedef": "AA_SidreLength",
                     "F_name_api": "sidre_length",
-                    "F_typedef_name": "sidre_length",
+                    "F_name_typedef": "sidre_length",
                     "cxx_type": "SidreLength",
                     "typedef_name": "SidreLength",
                     "underscore_name": "sidre_length"
@@ -11691,9 +11691,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_typedef_name": "AA_TypeID",
+                    "C_name_typedef": "AA_TypeID",
                     "F_name_api": "type_id",
-                    "F_typedef_name": "type_id",
+                    "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID",
                     "underscore_name": "type_id"

@@ -2180,9 +2180,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_typedef_name": "DEF_TypeID",
+                    "C_name_typedef": "DEF_TypeID",
                     "F_name_api": "type_id",
-                    "F_typedef_name": "type_id",
+                    "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID",
                     "underscore_name": "type_id"

@@ -634,7 +634,7 @@ class Wrapc(util.WrapperMixin):
         fmtdict = node.fmtdict
         ast = node.ast
         output = self.typedef_impl
-        decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_typedef_name)
+        decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef)
 
         output.append("")
         if options.literalinclude:

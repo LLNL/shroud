@@ -564,7 +564,7 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}``
 
-C_typedef_name_template
+C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
     
 F_C_name_template

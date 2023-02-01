@@ -6243,9 +6243,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_typedef_name": "TUT_TypeID",
+                    "C_name_typedef": "TUT_TypeID",
                     "F_name_api": "type_id",
-                    "F_typedef_name": "type_id",
+                    "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID",
                     "underscore_name": "type_id"
@@ -6286,9 +6286,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "EnumTypeID",
-                    "C_typedef_name": "TUT_EnumTypeID",
+                    "C_name_typedef": "TUT_EnumTypeID",
                     "F_name_api": "enum_type_id",
-                    "F_typedef_name": "enum_type_id",
+                    "F_name_typedef": "enum_type_id",
                     "cxx_type": "EnumTypeID",
                     "typedef_name": "EnumTypeID",
                     "underscore_name": "enum_type_id"
