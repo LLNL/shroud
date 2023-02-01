@@ -348,6 +348,18 @@ class NamespaceMixin(object):
         name = ast.declarator.user_name  # Local name.
         node = TypedefNode(name, self, ast, fields)
         self.typedefs.append(node)
+
+        # Add typedefs names to structs/enums.
+        # Check if typedef is for a struct tag
+        # find matching struct node
+        # update name in typemap
+        if ast.class_specifier:
+            struct = ast.class_specifier
+            for cls in self.classes:
+                if cls.ast is struct:
+                    cls.rename(node)
+                    typemap.fill_struct_typemap(cls, cls.user_fields)
+        
         return node
 
     def add_variable(self, decl, ast=None, **kwargs):
@@ -1213,9 +1225,9 @@ class ClassNode(AstNode, NamespaceMixin):
                 )
 
     def default_format(self):
-        """Set format dictionary."""
+        """Set format dictionary for a ClassNode."""
         name_api = self.name_api or self.name
-        
+
         self.fmtdict.update(dict(
             cxx_type=self.name_instantiation or name_api,
             cxx_class=self.name,
@@ -1276,6 +1288,19 @@ class ClassNode(AstNode, NamespaceMixin):
             ]
         )
 
+    def rename(self, nameobj):
+        """Rename the class.
+
+        Used with templated classes and typedef which
+        can change the name of a class/struct.
+
+        nameobj - TemplateArgument,  TypedefNode
+        """
+        self.name = nameobj.name
+        # XXX - what about templated typedefs (using statement)
+        self.delete_format_templates()
+        self.default_format()
+        
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""
         raise RuntimeError("Cannot add a namespace to a class")

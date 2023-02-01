@@ -11,6 +11,6 @@ typemap:
   - type: s_Struct1
     fields:
       base: struct
-      c_type: TYP_s_struct1
+      c_type: TYP_struct1rename
       f_module_name: typedefs_mod
-      f_derived_type: s_struct1
+      f_derived_type: struct1_rename

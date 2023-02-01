@@ -26,18 +26,13 @@ module typedefs_mod
     integer, parameter :: type_id = C_INT
     ! end typedef TypeID
 
-    ! start typedef Struct1Rename
-    ! typedef Struct1Rename
-    integer, parameter :: struct1_rename = s_struct1
-    ! end typedef Struct1Rename
 
-
-    ! start derived-type s_struct1
-    type, bind(C) :: s_struct1
+    ! start derived-type struct1_rename
+    type, bind(C) :: struct1_rename
         integer(C_INT) :: i
         real(C_DOUBLE) :: d
-    end type s_struct1
-    ! end derived-type s_struct1
+    end type struct1_rename
+    ! end derived-type struct1_rename
 
     ! ----------------------------------------
     ! Function:  TypeID typefunc
@@ -78,7 +73,7 @@ module typedefs_mod
                 bind(C, name="TYP_typestruct")
             import :: struct1_rename
             implicit none
-            struct(struct1_rename), intent(INOUT) :: arg1
+            type(struct1_rename), intent(INOUT) :: arg1
         end subroutine typestruct
     end interface
     ! end typestruct

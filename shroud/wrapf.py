@@ -400,7 +400,10 @@ class Wrapf(util.WrapperMixin):
     #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
 
     def wrap_typedefs(self, node, fileinfo):
-        """Wrap all typedefs in a splicer block
+        """Wrap all typedefs in a splicer block.
+
+        Do not create typedef parameter for class or struct.
+        The TYPE will be renamed instead.
 
         Args:
             node - ast.ClassNode, ast.LibraryNode
@@ -408,6 +411,8 @@ class Wrapf(util.WrapperMixin):
         """
         self._push_splicer("typedef")
         for typ in node.typedefs:
+            if typ.ast.typemap.sgroup in ["shadow", "struct"]:
+                continue
             self.wrap_typedef(typ, fileinfo)
         self._pop_splicer("typedef")
 

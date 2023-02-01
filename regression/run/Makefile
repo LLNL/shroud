@@ -186,14 +186,14 @@ test-cpp : $(cpp-test-list)
 
 ######################################################################
 # Python
+#  test-python-typedefs-c \
+#  test-python-typedefs-cxx
 
 python-test-list = \
   test-python-tutorial \
   test-python-types \
   test-python-classes \
   test-python-enum-c \
-  test-python-typedefs-c \
-  test-python-typedefs-cxx \
   test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cxx \

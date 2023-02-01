@@ -13,6 +13,6 @@ typemap:
       base: struct
       c_header:
       - typedefs.h
-      c_type: s_Struct1
+      c_type: Struct1Rename
       f_module_name: typedefs_mod
-      f_derived_type: s_struct1
+      f_derived_type: struct1_rename
