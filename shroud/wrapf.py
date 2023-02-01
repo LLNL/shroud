@@ -438,7 +438,7 @@ class Wrapf(util.WrapperMixin):
             output.append("! start typedef " + node.name)
         append_format(output, "! typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
         output.append("integer, parameter :: {} = {}".format(
-            node.fmtdict.F_typedef_name, node.f_kind))
+            node.fmtdict.F_name_typedef, node.f_kind))
         if options.literalinclude:
             output.append("! end typedef " + node.name)
         

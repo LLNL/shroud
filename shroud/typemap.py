@@ -1383,8 +1383,8 @@ def fill_typedef_typemap(node, fields={}):
 
 #    f_name = fmtdict.F_name_scope[:-1]
 #    c_name = fmtdict.C_prefix + fmtdict.C_name_scope[:-1]
-    f_name = fmtdict.F_typedef_name
-    c_name = fmtdict.C_typedef_name
+    f_name = fmtdict.F_name_typedef
+    c_name = fmtdict.C_name_typedef
 #    print("XXX   fill_typedef_typemap  f={}  c={}".format(f_name, c_name))
 
     # Define equivalent parameter for Fortran

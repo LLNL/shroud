@@ -940,9 +940,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "CustomType",
-                    "C_typedef_name": "LIB_CustomType",
+                    "C_name_typedef": "LIB_CustomType",
                     "F_name_api": "custom_type",
-                    "F_typedef_name": "custom_type",
+                    "F_name_typedef": "custom_type",
                     "cxx_type": "CustomType",
                     "typedef_name": "CustomType",
                     "underscore_name": "custom_type"

@@ -454,9 +454,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_typedef_name": "TYP_TypeID",
+                    "C_name_typedef": "TYP_TypeID",
                     "F_name_api": "type_id",
-                    "F_typedef_name": "type_id",
+                    "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID",
                     "underscore_name": "type_id"
@@ -492,9 +492,9 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "Struct1Rename",
-                    "C_typedef_name": "TYP_Struct1Rename",
+                    "C_name_typedef": "TYP_Struct1Rename",
                     "F_name_api": "struct1_rename",
-                    "F_typedef_name": "struct1_rename",
+                    "F_name_typedef": "struct1_rename",
                     "cxx_type": "Struct1Rename",
                     "typedef_name": "Struct1Rename",
                     "underscore_name": "struct1_rename"

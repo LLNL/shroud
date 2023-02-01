@@ -556,11 +556,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{template_suffix}"
             ),
+            C_name_typedef_template="{C_prefix}{C_name_scope}{typedef_name}",
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
             ),
             C_shadow_result=True,               # Return pointer to capsule
-            C_typedef_name_template="{C_prefix}{C_name_scope}{typedef_name}",
             C_var_capsule_template="C{c_var}",  # capsule argument
             C_var_context_template="D{c_var}",  # context argument
 #            C_var_len_template="N{c_var}",  # argument for result of len(arg)
@@ -578,6 +578,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             F_name_function_template="{F_name_api}{function_suffix}{template_suffix}",
             F_name_generic_template="{F_name_api}",
+            F_name_typedef_template="{F_name_scope}{F_name_api}",
             F_module_name_library_template="{library_lower}_mod",
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -588,7 +589,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_abstract_interface_subprogram_template="{F_name_api}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
             F_derived_name_template="{F_name_api}",
-            F_typedef_name_template="{F_name_scope}{F_name_api}",
 
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
@@ -691,8 +691,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_temp="SHT_",
             C_local="SHC_",
             C_name_scope = "",
+            C_name_typedef="",
             C_this="self",
-            C_typedef_name="",
             C_custom_return_type="",  # assume no value
             CXX_this="SH_this",
             CXX_local="SHCXX_",
@@ -709,9 +709,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_get="get_instance",
             F_name_instance_set="set_instance",
             F_name_final="final",
+            F_name_typedef="",
             F_result="SHT_rv",
             F_result_ptr="SHT_prv",
-            F_typedef_name="",
             F_name_scope = "",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
@@ -1840,9 +1840,9 @@ class TypedefNode(AstNode):
         ### XXX - maybe preserve the original fmt from yaml file.
         fmt = self.fmtdict
         if self.wrap.c:
-            self.reeval_template("C_typedef_name")
+            self.reeval_template("C_name_typedef")
         if self.wrap.fortran:
-            self.reeval_template("F_typedef_name")
+            self.reeval_template("F_name_typedef")
 
     def clone(self):
         """Create a copy of a TypedefNode to use with C++ template.
