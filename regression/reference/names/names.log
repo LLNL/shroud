@@ -12,10 +12,10 @@ C void init_ns1(void)  +intent(subroutine)
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
 class ImplWorker1
-class vector
-class vector
-class vector
-class vector
+class vector<int>
+class vector<double>
+class vector<long>
+class vector<internal::ImplWorker1>
 class Class1
 C void Member1(void)  +intent(subroutine)
 Close wrapCAPI_Class1.hh
@@ -25,8 +25,8 @@ Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
 class Names2
 Close wrapNames2.cc
-class twoTs
-class twoTs
+class twoTs<int, long>
+class twoTs<float, double>
 class Cstruct_as_class
 class Cstruct_as_subclass
 C void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
@@ -48,8 +48,8 @@ C void external_funcs(const char * rdbase, const char * pkg, const char * name, 
 Close top.h
 Close top.cpp
 class Names2
-class twoTs
-class twoTs
+class twoTs<int, long>
+class twoTs<float, double>
 class Cstruct_as_class
 class Cstruct_as_subclass
 Fortran void getName(char * name +len(worklen)+len_trim(worktrim))  +intent(subroutine)
@@ -94,10 +94,10 @@ Fortran void init_ns1(void)  +intent(subroutine)
 C-interface void init_ns1(void)  +intent(subroutine)
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
-class vector
-class vector
-class vector
-class vector
+class vector<int>
+class vector<double>
+class vector<long>
+class vector<internal::ImplWorker1>
 Close wrapftestnames_std.F
 class Class1
 Fortran void Member1(void)  +intent(subroutine)

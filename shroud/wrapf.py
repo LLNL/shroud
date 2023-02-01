@@ -235,7 +235,7 @@ class Wrapf(util.WrapperMixin):
             fileinfo - ModuleInfo
         """
 
-        self.log.write("class {1.name}\n".format(self, node))
+        self.log.write("class {}\n".format(node.name_instantiation or node.name))
 
         options = node.options
         fmt_class = node.fmtdict
