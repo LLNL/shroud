@@ -1231,7 +1231,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
             # The scope for things in the class.
             C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(name_api) + "_",
-            F_name_scope=self.parent.fmtdict.F_name_scope + name_api.lower() + "_",
+            F_name_scope=self.parent.fmtdict.F_name_scope + self.apply_F_API_option(name_api) + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
 

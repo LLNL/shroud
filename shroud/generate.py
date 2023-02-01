@@ -990,7 +990,7 @@ class GenFunctions(object):
                             F_name_api=newcls.apply_F_API_option(name_api),
                             class_scope=cxx_type + "::",
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + newcls.apply_C_API_option(name_api) + "_",
-                            F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
+                            F_name_scope=newcls.parent.fmtdict.F_name_scope + newcls.apply_F_API_option(name_api) + "_",
                             file_scope="_".join(newcls.scope_file[1:]),
                         )
                     )

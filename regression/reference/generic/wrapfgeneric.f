@@ -90,19 +90,19 @@ module generic_mod
         ! splicer begin class.StructAsClass.component_part
         ! splicer end class.StructAsClass.component_part
     contains
-        procedure :: get_instance => structasclass_get_instance
-        procedure :: set_instance => structasclass_set_instance
-        procedure :: associated => structasclass_associated
+        procedure :: get_instance => struct_as_class_get_instance
+        procedure :: set_instance => struct_as_class_set_instance
+        procedure :: associated => struct_as_class_associated
         ! splicer begin class.StructAsClass.type_bound_procedure_part
         ! splicer end class.StructAsClass.type_bound_procedure_part
     end type struct_as_class
 
     interface operator (.eq.)
-        module procedure structasclass_eq
+        module procedure struct_as_class_eq
     end interface
 
     interface operator (.ne.)
-        module procedure structasclass_ne
+        module procedure struct_as_class_ne
     end interface
 
     ! splicer begin class.StructAsClass.additional_interfaces
@@ -925,27 +925,27 @@ module generic_mod
 contains
 
     ! Return pointer to C++ memory.
-    function structasclass_get_instance(obj) result (cxxptr)
+    function struct_as_class_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
         class(struct_as_class), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function structasclass_get_instance
+    end function struct_as_class_get_instance
 
-    subroutine structasclass_set_instance(obj, cxxmem)
+    subroutine struct_as_class_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(struct_as_class), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine structasclass_set_instance
+    end subroutine struct_as_class_set_instance
 
-    function structasclass_associated(obj) result (rv)
+    function struct_as_class_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(struct_as_class), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function structasclass_associated
+    end function struct_as_class_associated
 
     ! splicer begin class.StructAsClass.additional_functions
     ! splicer end class.StructAsClass.additional_functions
@@ -1674,7 +1674,7 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
-    function structasclass_eq(a,b) result (rv)
+    function struct_as_class_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(struct_as_class), intent(IN) ::a,b
         logical :: rv
@@ -1683,9 +1683,9 @@ contains
         else
             rv = .false.
         endif
-    end function structasclass_eq
+    end function struct_as_class_eq
 
-    function structasclass_ne(a,b) result (rv)
+    function struct_as_class_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(struct_as_class), intent(IN) ::a,b
         logical :: rv
@@ -1694,6 +1694,6 @@ contains
         else
             rv = .false.
         endif
-    end function structasclass_ne
+    end function struct_as_class_ne
 
 end module generic_mod

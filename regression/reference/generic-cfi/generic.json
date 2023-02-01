@@ -29,7 +29,7 @@
                     "C_type_name": "GEN_StructAsClass",
                     "F_derived_name": "struct_as_class",
                     "F_name_api": "struct_as_class",
-                    "F_name_scope": "structasclass_",
+                    "F_name_scope": "struct_as_class_",
                     "PY_struct_array_descr_create": "PY_StructAsClass_create_array_descr",
                     "PY_struct_array_descr_name": "StructAsClass_dtype",
                     "PY_struct_array_descr_variable": "PY_StructAsClass_array_descr",
