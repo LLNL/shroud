@@ -1227,10 +1227,11 @@ class ClassNode(AstNode, NamespaceMixin):
     def default_format(self):
         """Set format dictionary for a ClassNode."""
         name_api = self.name_api or self.name
+        name_instantiation = self.name_instantiation or self.name
 
         self.fmtdict.update(dict(
-            cxx_type=self.name_instantiation or name_api,
-            cxx_class=self.name,
+            cxx_type=name_instantiation,
+            cxx_class=name_api,
 
             underscore_name = util.un_camel(name_api),
             upper_name = name_api.upper(),
@@ -1238,7 +1239,7 @@ class ClassNode(AstNode, NamespaceMixin):
             C_name_api = self.apply_C_API_option(name_api),
             F_name_api = self.apply_F_API_option(name_api),
 
-            class_scope=name_api + "::",
+            class_scope=name_instantiation + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + name_api + "::",
 
             # The scope for things in the class.
@@ -1321,6 +1322,7 @@ class ClassNode(AstNode, NamespaceMixin):
         new.options = self.options.clone()
         new.wrap = WrapFlags(self.options)
         new.scope_file = self.scope_file[:]
+        new.user_fmt = self.user_fmt.copy()
 
         # Clone all functions.
         newfcns = []

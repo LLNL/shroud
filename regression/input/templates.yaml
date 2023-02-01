@@ -25,6 +25,8 @@ declarations:
   declarations:
   - decl: template<typename T> class vector
     # std::vector class
+    format:
+       fmtsample: original
     cxx_header: <vector>
     cxx_template:
     - instantiation: <int>
