@@ -198,6 +198,9 @@
                     "T2"
                 ],
                 "typemap_name": "twoTs_instantiation4",
+                "user_fmt": {
+                    "template_suffix": "_instantiation4"
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3811,6 +3814,10 @@
                             "T"
                         ],
                         "typemap_name": "std::Vvv1",
+                        "user_fmt": {
+                            "F_derived_name": "FFvvv1",
+                            "cxx_class": "Vvv1"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true,
@@ -4015,6 +4022,9 @@
                             "T"
                         ],
                         "typemap_name": "std::vector_instantiation5",
+                        "user_fmt": {
+                            "template_suffix": "_instantiation5"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true,

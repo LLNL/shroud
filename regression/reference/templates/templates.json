@@ -3531,6 +3531,10 @@
                             ]
                         ],
                         "typemap_name": "std::vector_int",
+                        "user_fmt": {
+                            "C_impl_filename": "wrapvectorforint.cpp",
+                            "fmtsample": "one"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true,
@@ -4361,6 +4365,9 @@
                             ]
                         ],
                         "typemap_name": "std::vector_double",
+                        "user_fmt": {
+                            "fmtsample": "original"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true,
@@ -4389,6 +4396,7 @@
                             "cxx_type": "vector<double>",
                             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
+                            "fmtsample": "original",
                             "hnamefunc0": "capsule_data_helper",
                             "lower_name": "vector_double",
                             "underscore_name": "vector_double",

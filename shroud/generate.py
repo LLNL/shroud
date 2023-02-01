@@ -959,52 +959,24 @@ class GenFunctions(object):
                         class_suffix = "_" + str(i)
 
                     # Update name of class.
-                    #  cxx_class - vector_0 or vector_int     (Fortran and C names)
-                    #  cxx_type  - vector<int>
-                    cxx_class = "{}{}".format(
-                        newcls.fmtdict.cxx_class, class_suffix
-                    )
-                    cxx_type = "{}{}".format(
-                        newcls.fmtdict.cxx_class, targs.instantiation
-                    )
-
+                    #  name_api           - vector_0 or vector_int     (Fortran and C names)
+                    #  name_instantiation - vector<int>
                     if targs.fmtdict and "cxx_class" in targs.fmtdict:
-                        # Check if user has changed cxx_class.
-                        cxx_class = targs.fmtdict["cxx_class"]
-
-                    newcls.name_api = cxx_class           # ex. name_int
-                    newcls.name_instantiation = cxx_type  # ex. name<int>
-
+                        newcls.name_api = targs.fmtdict["cxx_class"]
+                    else:
+                        newcls.name_api = cls.name + class_suffix
+                    newcls.name_instantiation = cls.name + targs.instantiation
                     newcls.scope_file[-1] += class_suffix
-                    # Update default values to format dictionary.
-#TODO                    newcls.default_format()
-                    name_api = cxx_class
-                    newcls.fmtdict.update(
-                        dict(
-                            cxx_type=cxx_type,
-                            cxx_class=name_api,
-                            underscore_name=util.un_camel(name_api),
-                            upper_name=name_api.upper(),
-                            lower_name=name_api.lower(),
-                            C_name_api=newcls.apply_C_API_option(name_api),
-                            F_name_api=newcls.apply_F_API_option(name_api),
-                            class_scope=cxx_type + "::",
-                            C_name_scope=newcls.parent.fmtdict.C_name_scope + newcls.apply_C_API_option(name_api) + "_",
-                            F_name_scope=newcls.parent.fmtdict.F_name_scope + newcls.apply_F_API_option(name_api) + "_",
-                            file_scope="_".join(newcls.scope_file[1:]),
-                        )
-                    )
 
-                    # Remove defaulted attributes, load files from fmtdict, recompute defaults
-                    newcls.delete_format_templates()
-
-                    # Update format and options from template_arguments
                     if targs.fmtdict:
-                        newcls.fmtdict.update(targs.fmtdict)
+                        newcls.user_fmt.update(targs.fmtdict)
                     if targs.options:
                         newcls.options.update(targs.options)
+                    
+                    # Remove defaulted attributes then reset with current values.
+                    newcls.delete_format_templates()
+                    newcls.default_format()
 
-                    newcls.expand_format_templates()
                     newcls.typemap = typemap.create_class_typemap(newcls)
                     if targs.instantiation in orig_typemap.cxx_instantiation:
                         print("instantiate_classes: {} already in "
