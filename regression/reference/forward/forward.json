@@ -797,7 +797,8 @@
             "Class3": "forward::Class3"
         },
         "tutorial": {
-            "Class1": "tutorial::Class1"
+            "Class1": "tutorial::Class1",
+            "Class2": "tutorial::Class2"
         }
     },
     "types": {
@@ -941,6 +942,39 @@
             "sgroup": "shadow",
             "wrap_header": [
                 "wrapClass1.h"
+            ]
+        },
+        "tutorial::Class2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class2 *>\t({c_var}->addr)",
+            "c_type": "CLA_Class2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "tutorial::Class2",
+            "f_c_module": {
+                "classes_mod": [
+                    "CLA_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_module_line": "classes_mod:CLA_SHROUD_capsule_data",
+            "f_c_type": "type(CLA_SHROUD_capsule_data)",
+            "f_capsule_data_type": "CLA_SHROUD_capsule_data",
+            "f_class": "class(class2)",
+            "f_derived_type": "class2",
+            "f_module": {
+                "classes_mod": [
+                    "class2"
+                ]
+            },
+            "f_module_line": "classes_mod:class2",
+            "f_module_name": "classes_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class2)",
+            "flat_name": "tutorial_Class2",
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesclasses.h"
             ]
         }
     }

@@ -31,9 +31,10 @@ in several options used to define names consistently:
 **F_abstract_interface_subprogram_template**,
 **F_derived_name_template**, **F_typedef_name_template**.
 
-A Fortran module will be created the library.  This allows the
-compiler to do it's own mangling so it is unnecessary to add the
-library name into the function names.
+A Fortran module will be created for the library.  This allows the
+compiler to do it's own mangling so it is unnecessary to add an
+additional prefix to function names. In contrast, the C wrappers add a
+prefix to each wrapper since all names are global.
 
 Wrapper
 -------
