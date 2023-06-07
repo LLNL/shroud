@@ -28,6 +28,11 @@ typedef int TYP_TypeID;
 typedef struct s_Struct1 TYP_Struct1Rename;
 // end typedef Struct1Rename
 
+// start typedef IndexType
+// typedef IndexType
+typedef int32_t TYP_IndexType;
+// end typedef IndexType
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

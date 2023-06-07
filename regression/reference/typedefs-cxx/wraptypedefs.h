@@ -17,6 +17,11 @@
 
 // typemap
 #include "wraptypedefs.h"
+#ifdef __cplusplus
+#include <cstdint>
+#else
+#include <stdint.h>
+#endif
 // shroud
 #include "typestypedefs.h"
 
@@ -37,6 +42,11 @@ typedef int TYP_TypeID;
 typedef struct s_Struct1 TYP_Struct1Rename;
 // end typedef Struct1Rename
 
+// start typedef IndexType
+// typedef IndexType
+typedef int32_t TYP_IndexType;
+// end typedef IndexType
+
 
 struct s_TYP_struct1rename {
     int i;
@@ -50,6 +60,8 @@ typedef struct s_TYP_struct1rename TYP_struct1rename;
 TYP_TypeID TYP_typefunc(TYP_TypeID arg);
 
 void TYP_typestruct(TYP_Struct1Rename * arg1);
+
+int TYP_returnBytesForIndexType(TYP_IndexType arg);
 
 #ifdef __cplusplus
 }
