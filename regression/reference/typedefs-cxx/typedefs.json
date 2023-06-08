@@ -96,8 +96,7 @@
                     "class_scope": "Struct1Rename::",
                     "cxx_class": "Struct1Rename",
                     "cxx_type": "Struct1Rename",
-                    "file_scope": "s_Struct1",
-                    "underscore_name": "struct1_rename"
+                    "file_scope": "s_Struct1"
                 }
             }
         ],
@@ -232,8 +231,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_typefunc",
                     "cxx_rv_decl": "TypeID SHC_rv",
-                    "function_name": "typefunc",
-                    "underscore_name": "typefunc"
+                    "function_name": "typefunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -412,8 +410,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "typestruct"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -518,8 +515,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "returnBytesForIndexType",
-                    "underscore_name": "return_bytes_for_index_type"
+                    "function_name": "returnBytesForIndexType"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -594,8 +590,7 @@
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
-                    "typedef_name": "TypeID",
-                    "underscore_name": "type_id"
+                    "typedef_name": "TypeID"
                 }
             },
             {
@@ -632,8 +627,7 @@
                     "F_name_api": "struct1_rename",
                     "F_name_typedef": "struct1_rename",
                     "cxx_type": "Struct1Rename",
-                    "typedef_name": "Struct1Rename",
-                    "underscore_name": "struct1_rename"
+                    "typedef_name": "Struct1Rename"
                 }
             },
             {
@@ -674,8 +668,7 @@
                     "F_name_api": "index_type",
                     "F_name_typedef": "index_type",
                     "cxx_type": "IndexType",
-                    "typedef_name": "IndexType",
-                    "underscore_name": "index_type"
+                    "typedef_name": "IndexType"
                 }
             }
         ],

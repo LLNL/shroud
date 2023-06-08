@@ -96,8 +96,7 @@
                     "class_scope": "Cstruct1::",
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1",
-                    "file_scope": "Cstruct1",
-                    "underscore_name": "cstruct1"
+                    "file_scope": "Cstruct1"
                 }
             },
             {
@@ -194,8 +193,7 @@
                     "class_scope": "Cstruct_ptr::",
                     "cxx_class": "Cstruct_ptr",
                     "cxx_type": "Cstruct_ptr",
-                    "file_scope": "Cstruct_ptr",
-                    "underscore_name": "cstruct_ptr"
+                    "file_scope": "Cstruct_ptr"
                 }
             },
             {
@@ -397,8 +395,7 @@
                     "class_scope": "Cstruct_list::",
                     "cxx_class": "Cstruct_list",
                     "cxx_type": "Cstruct_list",
-                    "file_scope": "Cstruct_list",
-                    "underscore_name": "cstruct_list"
+                    "file_scope": "Cstruct_list"
                 }
             },
             {
@@ -544,8 +541,7 @@
                     "class_scope": "Cstruct_numpy::",
                     "cxx_class": "Cstruct_numpy",
                     "cxx_type": "Cstruct_numpy",
-                    "file_scope": "Cstruct_numpy",
-                    "underscore_name": "cstruct_numpy"
+                    "file_scope": "Cstruct_numpy"
                 }
             },
             {
@@ -643,8 +639,7 @@
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
-                    "file_scope": "Arrays1",
-                    "underscore_name": "arrays1"
+                    "file_scope": "Arrays1"
                 }
             },
             {
@@ -711,7 +706,6 @@
                             "field_name": "x1",
                             "function_name": "get_x1",
                             "struct_name": "Cstruct_as_class",
-                            "underscore_name": "get_x1",
                             "wrapped_name": "x1"
                         },
                         "zz_fmtresult": {
@@ -860,7 +854,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Cstruct_as_class",
-                            "underscore_name": "set_x1",
                             "wrapped_name": "x1"
                         }
                     },
@@ -924,7 +917,6 @@
                             "field_name": "y1",
                             "function_name": "get_y1",
                             "struct_name": "Cstruct_as_class",
-                            "underscore_name": "get_y1",
                             "wrapped_name": "y1"
                         },
                         "zz_fmtresult": {
@@ -1073,7 +1065,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Cstruct_as_class",
-                            "underscore_name": "set_y1",
                             "wrapped_name": "y1"
                         }
                     }
@@ -1166,8 +1157,7 @@
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "cstruct_as_class"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -1234,7 +1224,6 @@
                             "field_name": "x1",
                             "function_name": "get_x1",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "get_x1",
                             "wrapped_name": "x1"
                         },
                         "zz_fmtresult": {
@@ -1383,7 +1372,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "set_x1",
                             "wrapped_name": "x1"
                         }
                     },
@@ -1447,7 +1435,6 @@
                             "field_name": "y1",
                             "function_name": "get_y1",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "get_y1",
                             "wrapped_name": "y1"
                         },
                         "zz_fmtresult": {
@@ -1596,7 +1583,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "set_y1",
                             "wrapped_name": "y1"
                         }
                     },
@@ -1660,7 +1646,6 @@
                             "field_name": "z1",
                             "function_name": "get_z1",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "get_z1",
                             "wrapped_name": "z1"
                         },
                         "zz_fmtresult": {
@@ -1809,7 +1794,6 @@
                             "stmtc0": "c_setter",
                             "stmtc1": "c_setter",
                             "struct_name": "Cstruct_as_subclass",
-                            "underscore_name": "set_z1",
                             "wrapped_name": "z1"
                         }
                     }
@@ -1931,8 +1915,7 @@
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "cstruct_as_subclass"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -2047,8 +2030,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passStructByValue",
-                    "underscore_name": "pass_struct_by_value"
+                    "function_name": "passStructByValue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2185,8 +2167,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passStruct1",
-                    "underscore_name": "pass_struct1"
+                    "function_name": "passStruct1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2374,8 +2355,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passStruct2",
-                    "underscore_name": "pass_struct2"
+                    "function_name": "passStruct2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2566,8 +2546,7 @@
                     "F_name_api": "pass_struct2",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "pass_struct2"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2699,8 +2678,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptStructInPtr",
-                    "underscore_name": "accept_struct_in_ptr"
+                    "function_name": "acceptStructInPtr"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2939,8 +2917,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_struct_out_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3046,8 +3023,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_struct_in_out_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3196,8 +3172,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct1 SHC_rv",
-                    "function_name": "returnStructByValue",
-                    "underscore_name": "return_struct_by_value"
+                    "function_name": "returnStructByValue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3383,8 +3358,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                    "function_name": "returnStructPtr1",
-                    "underscore_name": "return_struct_ptr1"
+                    "function_name": "returnStructPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3572,8 +3546,7 @@
                     "F_name_api": "return_struct_ptr1",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr1",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_struct_ptr1"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3805,8 +3778,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
-                    "function_name": "returnStructPtr2",
-                    "underscore_name": "return_struct_ptr2"
+                    "function_name": "returnStructPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4052,8 +4024,7 @@
                     "F_name_api": "return_struct_ptr2",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_struct_ptr2"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4135,8 +4106,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct_list * SHC_rv",
-                    "function_name": "get_global_struct_list",
-                    "underscore_name": "get_global_struct_list"
+                    "function_name": "get_global_struct_list"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4218,8 +4188,7 @@
                     "F_name_api": "get_global_struct_list",
                     "cxx_rv_decl": "Cstruct_list * SHC_rv",
                     "function_name": "get_global_struct_list",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_global_struct_list"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4304,8 +4273,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                    "function_name": "Create_Cstruct_as_class",
-                    "underscore_name": "create_cstruct_as_class"
+                    "function_name": "Create_Cstruct_as_class"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4497,8 +4465,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
-                    "function_name": "Create_Cstruct_as_class_args",
-                    "underscore_name": "create_cstruct_as_class_args"
+                    "function_name": "Create_Cstruct_as_class_args"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4644,8 +4611,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "Cstruct_as_class_sum",
-                    "underscore_name": "cstruct_as_class_sum"
+                    "function_name": "Cstruct_as_class_sum"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4885,8 +4851,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "Cstruct_as_subclass * SHCXX_rv",
-                    "function_name": "Create_Cstruct_as_subclass_args",
-                    "underscore_name": "create_cstruct_as_subclass_args"
+                    "function_name": "Create_Cstruct_as_subclass_args"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4998,7 +4963,6 @@
                     "field_name": "const_dvalue",
                     "function_name": "Cstruct_ptr_get_const_dvalue",
                     "struct_name": "Cstruct_ptr",
-                    "underscore_name": "cstruct_ptr_get_const_dvalue",
                     "wrapped_name": "const_dvalue"
                 },
                 "zz_fmtresult": {
@@ -5130,7 +5094,6 @@
                     "function_name": "Cstruct_ptr_get_const_dvalue",
                     "function_suffix": "_bufferify",
                     "struct_name": "Cstruct_ptr",
-                    "underscore_name": "cstruct_ptr_get_const_dvalue",
                     "wrapped_name": "const_dvalue"
                 },
                 "zz_fmtresult": {
@@ -5328,7 +5291,6 @@
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
                     "struct_name": "Cstruct_ptr",
-                    "underscore_name": "cstruct_ptr_set_const_dvalue",
                     "wrapped_name": "const_dvalue"
                 }
             },
@@ -5418,7 +5380,6 @@
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_get_ivalue",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_get_ivalue",
                     "wrapped_name": "ivalue"
                 },
                 "zz_fmtresult": {
@@ -5566,7 +5527,6 @@
                     "function_name": "Cstruct_list_get_ivalue",
                     "function_suffix": "_bufferify",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_get_ivalue",
                     "wrapped_name": "ivalue"
                 },
                 "zz_fmtresult": {
@@ -5788,7 +5748,6 @@
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_set_ivalue",
                     "wrapped_name": "ivalue"
                 }
             },
@@ -5878,7 +5837,6 @@
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_get_dvalue",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_get_dvalue",
                     "wrapped_name": "dvalue"
                 },
                 "zz_fmtresult": {
@@ -6026,7 +5984,6 @@
                     "function_name": "Cstruct_list_get_dvalue",
                     "function_suffix": "_bufferify",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_get_dvalue",
                     "wrapped_name": "dvalue"
                 },
                 "zz_fmtresult": {
@@ -6248,7 +6205,6 @@
                     "stmtc0": "c_setter",
                     "stmtc1": "c_setter",
                     "struct_name": "Cstruct_list",
-                    "underscore_name": "cstruct_list_set_dvalue",
                     "wrapped_name": "dvalue"
                 }
             }

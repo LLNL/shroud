@@ -73,8 +73,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "underscore_name": "last_function_called"
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -178,8 +177,7 @@
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "last_function_called"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -256,8 +254,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "one"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],
@@ -466,8 +463,7 @@
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_method": "tp_init",
-                                    "function_name": "Cstruct1_ctor",
-                                    "underscore_name": "cstruct1_ctor"
+                                    "function_name": "Cstruct1_ctor"
                                 },
                                 "zz_fmtresult": {
                                     "fmtpy": {
@@ -593,8 +589,7 @@
                             "class_scope": "Cstruct1::",
                             "cxx_class": "Cstruct1",
                             "cxx_type": "Cstruct1",
-                            "file_scope": "outer_Cstruct1",
-                            "underscore_name": "cstruct1"
+                            "file_scope": "outer_Cstruct1"
                         }
                     }
                 ],
@@ -645,8 +640,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "one"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -719,8 +713,7 @@
                             "cxx_type": "ClassWork",
                             "f_capsule_data_type": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork",
-                            "hnamefunc0": "capsule_data_helper",
-                            "underscore_name": "class_work"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],

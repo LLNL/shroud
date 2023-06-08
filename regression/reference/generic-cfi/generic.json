@@ -38,8 +38,7 @@
                     "cxx_type": "StructAsClass",
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                     "file_scope": "StructAsClass",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "struct_as_class"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -159,8 +158,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "update_as_float"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -266,8 +264,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "update_as_double"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -313,8 +310,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "GetGlobalDouble",
-                    "underscore_name": "get_global_double"
+                    "function_name": "GetGlobalDouble"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -489,8 +485,7 @@
                     "F_name_api": "generic_real",
                     "function_name": "GenericReal",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "generic_real"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -559,8 +554,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "generic_real"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -629,8 +623,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "generic_real"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -853,8 +846,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "generic_real2",
                     "cxx_rv_decl": "long SHC_rv",
-                    "function_name": "GenericReal2",
-                    "underscore_name": "generic_real2"
+                    "function_name": "GenericReal2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -962,8 +954,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "GenericReal2",
-                    "function_suffix": "_all_int",
-                    "underscore_name": "generic_real2"
+                    "function_suffix": "_all_int"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -1059,8 +1050,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "GenericReal2",
-                    "function_suffix": "_all_long",
-                    "underscore_name": "generic_real2"
+                    "function_suffix": "_all_long"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -1239,8 +1229,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "SumValues",
-                    "underscore_name": "sum_values"
+                    "function_name": "SumValues"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1443,8 +1432,7 @@
                     "F_name_api": "sum_values",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
-                    "function_suffix": "_CFI",
-                    "underscore_name": "sum_values"
+                    "function_suffix": "_CFI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1937,8 +1925,7 @@
                     "F_name_api": "assign_values",
                     "function_name": "AssignValues",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2202,8 +2189,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2331,8 +2317,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2600,8 +2585,7 @@
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -2732,8 +2716,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3015,8 +2998,7 @@
                     "function_name": "AssignValues",
                     "function_suffix": "_copy_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "assign_values"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3324,8 +3306,7 @@
                     "F_name_api": "save_pointer",
                     "function_name": "SavePointer",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3434,8 +3415,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "save_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3645,8 +3625,7 @@
                     "function_name": "SavePointer",
                     "function_suffix": "_float1d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3755,8 +3734,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "save_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3966,8 +3944,7 @@
                     "function_name": "SavePointer",
                     "function_suffix": "_float2d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4286,8 +4263,7 @@
                     "F_name_api": "save_pointer2",
                     "function_name": "SavePointer2",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4406,8 +4382,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "save_pointer2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4627,8 +4602,7 @@
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -4747,8 +4721,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "save_pointer2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -4968,8 +4941,7 @@
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "save_pointer2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5185,8 +5157,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5538,8 +5509,7 @@
                     "F_name_api": "get_pointer_as_pointer",
                     "function_name": "GetPointerAsPointer",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_pointer_as_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5663,8 +5633,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_pointer_as_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5895,8 +5864,7 @@
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_pointer_as_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6020,8 +5988,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_pointer_as_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6252,8 +6219,7 @@
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d_CFI",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "get_pointer_as_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6309,8 +6275,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "StructAsClass * SHCXX_rv",
-                    "function_name": "CreateStructAsClass",
-                    "underscore_name": "create_struct_as_class"
+                    "function_name": "CreateStructAsClass"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6560,8 +6525,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "update_struct_as_class",
                     "cxx_rv_decl": "long SHC_rv",
-                    "function_name": "UpdateStructAsClass",
-                    "underscore_name": "update_struct_as_class"
+                    "function_name": "UpdateStructAsClass"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6748,8 +6712,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "UpdateStructAsClass",
-                    "function_suffix": "_int",
-                    "underscore_name": "update_struct_as_class"
+                    "function_suffix": "_int"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6941,8 +6904,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "UpdateStructAsClass",
-                    "function_suffix": "_long",
-                    "underscore_name": "update_struct_as_class"
+                    "function_suffix": "_long"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

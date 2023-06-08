@@ -131,8 +131,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "no_return_no_arguments"
+                    "stmtc1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -359,8 +358,7 @@
                     "LUA_name_impl": "l_PassByValue",
                     "PY_name_impl": "PY_PassByValue",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "PassByValue",
-                    "underscore_name": "pass_by_value"
+                    "function_name": "PassByValue"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -584,8 +582,7 @@
                     "LUA_name_api": "ConcatenateStrings",
                     "LUA_name_impl": "l_ConcatenateStrings",
                     "PY_name_impl": "PY_ConcatenateStrings",
-                    "function_name": "ConcatenateStrings",
-                    "underscore_name": "concatenate_strings"
+                    "function_name": "ConcatenateStrings"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -792,8 +789,7 @@
                     "F_name_api": "concatenate_strings",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "ConcatenateStrings",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "concatenate_strings"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -880,8 +876,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
-                    "function_suffix": "",
-                    "underscore_name": "use_default_arguments"
+                    "function_suffix": ""
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1027,8 +1022,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
-                    "function_suffix": "_arg1",
-                    "underscore_name": "use_default_arguments"
+                    "function_suffix": "_arg1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1304,8 +1298,7 @@
                     "PY_name_impl": "PY_UseDefaultArguments_arg1_arg2",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "UseDefaultArguments",
-                    "function_suffix": "_arg1_arg2",
-                    "underscore_name": "use_default_arguments"
+                    "function_suffix": "_arg1_arg2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1512,8 +1505,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "overloaded_function"
+                    "stmtc1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -1624,8 +1616,7 @@
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "overloaded_function"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1767,8 +1758,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "overloaded_function"
+                    "stmtc1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -1852,8 +1842,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "TemplateArgument",
                     "F_name_api": "template_argument",
-                    "function_name": "TemplateArgument",
-                    "underscore_name": "template_argument"
+                    "function_name": "TemplateArgument"
                 }
             },
             {
@@ -2028,8 +2017,7 @@
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
                     "stmtc1": "c_subroutine",
-                    "template_suffix": "_int",
-                    "underscore_name": "template_argument"
+                    "template_suffix": "_int"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2211,8 +2199,7 @@
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
                     "stmtc1": "c_subroutine",
-                    "template_suffix": "_double",
-                    "underscore_name": "template_argument"
+                    "template_suffix": "_double"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2282,8 +2269,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
-                    "function_name": "TemplateReturn",
-                    "underscore_name": "template_return"
+                    "function_name": "TemplateReturn"
                 }
             },
             {
@@ -2368,8 +2354,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "TemplateReturn",
-                    "template_suffix": "_int",
-                    "underscore_name": "template_return"
+                    "template_suffix": "_int"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2490,8 +2475,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "double SHC_rv",
                     "function_name": "TemplateReturn",
-                    "template_suffix": "_double",
-                    "underscore_name": "template_return"
+                    "template_suffix": "_double"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2578,8 +2562,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmtc1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2877,8 +2860,7 @@
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmt1": "c_subroutine"
                 },
                 "zz_fmtresult": {
                     "fmtl": {
@@ -2972,8 +2954,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3127,8 +3108,7 @@
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3216,8 +3196,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3371,8 +3350,7 @@
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fortran_generic_overloaded"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -3483,8 +3461,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_num",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_num"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3677,8 +3654,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_num_offset",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_num_offset"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4032,8 +4008,7 @@
                     "PY_name_impl": "PY_UseDefaultOverload_num_offset_stride",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_num_offset_stride",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_num_offset_stride"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4247,8 +4222,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_3",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4485,8 +4459,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_4",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_4"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4914,8 +4887,7 @@
                     "PY_name_impl": "PY_UseDefaultOverload_5",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseDefaultOverload",
-                    "function_suffix": "_5",
-                    "underscore_name": "use_default_overload"
+                    "function_suffix": "_5"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5114,8 +5086,7 @@
                     "LUA_name_impl": "l_typefunc",
                     "PY_name_impl": "PY_typefunc",
                     "cxx_rv_decl": "tutorial::TypeID SHC_rv",
-                    "function_name": "typefunc",
-                    "underscore_name": "typefunc"
+                    "function_name": "typefunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5319,8 +5290,7 @@
                     "LUA_name_impl": "l_enumfunc",
                     "PY_name_impl": "PY_enumfunc",
                     "cxx_rv_decl": "tutorial::EnumTypeID SHCXX_rv",
-                    "function_name": "enumfunc",
-                    "underscore_name": "enumfunc"
+                    "function_name": "enumfunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5525,8 +5495,7 @@
                     "LUA_name_impl": "l_colorfunc",
                     "PY_name_impl": "PY_colorfunc",
                     "cxx_rv_decl": "tutorial::Color SHCXX_rv",
-                    "function_name": "colorfunc",
-                    "underscore_name": "colorfunc"
+                    "function_name": "colorfunc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -5795,8 +5764,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_min_max"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5971,8 +5939,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "callback1",
-                    "underscore_name": "callback1"
+                    "function_name": "callback1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6070,8 +6037,7 @@
                     "LUA_name_impl": "l_LastFunctionCalled",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "underscore_name": "last_function_called"
+                    "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6186,8 +6152,7 @@
                     "F_name_api": "last_function_called",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "last_function_called"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -6259,8 +6224,7 @@
                     "F_name_api": "type_id",
                     "F_name_typedef": "type_id",
                     "cxx_type": "TypeID",
-                    "typedef_name": "TypeID",
-                    "underscore_name": "type_id"
+                    "typedef_name": "TypeID"
                 }
             },
             {
@@ -6302,8 +6266,7 @@
                     "F_name_api": "enum_type_id",
                     "F_name_typedef": "enum_type_id",
                     "cxx_type": "EnumTypeID",
-                    "typedef_name": "EnumTypeID",
-                    "underscore_name": "enum_type_id"
+                    "typedef_name": "EnumTypeID"
                 }
             }
         ],

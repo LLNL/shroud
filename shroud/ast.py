@@ -1235,7 +1235,6 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_type=name_instantiation,
             cxx_class=name_api,
 
-            underscore_name = util.un_camel(name_api),
             C_name_api = self.apply_C_API_option(name_api),
             F_name_api = self.apply_F_API_option(name_api),
 
@@ -1601,7 +1600,6 @@ class FunctionNode(AstNode):
 
         fmt_func.update(dict(
             function_name=self.name,
-            underscore_name=util.un_camel(self.name),
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api=self.apply_F_API_option(self.name),
         ))
@@ -1841,7 +1839,6 @@ class TypedefNode(AstNode):
             parent=parent.fmtdict,
             cxx_type=self.name,
             typedef_name=self.name,
-            underscore_name = util.un_camel(self.name),
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
         )

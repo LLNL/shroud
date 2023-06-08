@@ -116,8 +116,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method1"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -225,8 +224,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "method2"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -254,8 +252,7 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "class2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -324,8 +321,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "function1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -496,8 +492,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method1"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -525,8 +520,7 @@
                             "cxx_type": "Class1",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "three_Class1",
-                            "hnamefunc0": "capsule_data_helper",
-                            "underscore_name": "class1"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -613,8 +607,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -642,8 +635,7 @@
                             "cxx_type": "class0",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer1_class0",
-                            "hnamefunc0": "capsule_data_helper",
-                            "underscore_name": "class0"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -692,8 +684,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "outer_func"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -783,8 +774,7 @@
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
                                     "stmtc0": "c_subroutine",
-                                    "stmtc1": "c_subroutine",
-                                    "underscore_name": "method"
+                                    "stmtc1": "c_subroutine"
                                 }
                             }
                         ],
@@ -812,8 +802,7 @@
                             "cxx_type": "class0",
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer2_class0",
-                            "hnamefunc0": "capsule_data_helper",
-                            "underscore_name": "class0"
+                            "hnamefunc0": "capsule_data_helper"
                         }
                     }
                 ],
@@ -862,8 +851,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "outer_func"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],
@@ -936,8 +924,7 @@
                     "F_name_api": "custom_type",
                     "F_name_typedef": "custom_type",
                     "cxx_type": "CustomType",
-                    "typedef_name": "CustomType",
-                    "underscore_name": "custom_type"
+                    "typedef_name": "CustomType"
                 }
             }
         ],

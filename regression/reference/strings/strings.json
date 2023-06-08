@@ -140,8 +140,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_char"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -248,8 +247,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_char_force"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -301,8 +299,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnChar",
                     "cxx_rv_decl": "char SHC_rv",
-                    "function_name": "returnChar",
-                    "underscore_name": "return_char"
+                    "function_name": "returnChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -554,8 +551,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -715,8 +711,7 @@
                     "function_name": "passCharPtr",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -847,8 +842,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr_in_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -955,8 +949,7 @@
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "pass_char_ptr_in_out"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1020,8 +1013,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getCharPtr1",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr1",
-                    "underscore_name": "get_char_ptr1"
+                    "function_name": "getCharPtr1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1129,8 +1121,7 @@
                     "F_name_api": "get_char_ptr1",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_char_ptr1"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1225,8 +1216,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getCharPtr2",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr2",
-                    "underscore_name": "get_char_ptr2"
+                    "function_name": "getCharPtr2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1334,8 +1324,7 @@
                     "F_name_api": "get_char_ptr2",
                     "cxx_rv_decl": "const char * SHCXX_rv",
                     "function_name": "getCharPtr2",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_char_ptr2"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1417,8 +1406,7 @@
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr3",
-                    "underscore_name": "get_char_ptr3"
+                    "function_name": "getCharPtr3"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1572,8 +1560,7 @@
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr3",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_char_ptr3"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1669,8 +1656,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_char_ptr3"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1731,8 +1717,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr4",
-                    "underscore_name": "get_char_ptr4"
+                    "function_name": "getCharPtr4"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1829,8 +1814,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const char * SHC_rv",
-                    "function_name": "getCharPtr5",
-                    "underscore_name": "get_char_ptr5"
+                    "function_name": "getCharPtr5"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1923,8 +1907,7 @@
                     "F_name_api": "get_char_ptr5",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr5",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_char_ptr5"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2001,8 +1984,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringResult",
-                    "function_name": "getConstStringResult",
-                    "underscore_name": "get_const_string_result"
+                    "function_name": "getConstStringResult"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2086,8 +2068,7 @@
                     "F_name_api": "get_const_string_result",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "getConstStringResult",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_result"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2167,8 +2148,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringLen",
-                    "function_name": "getConstStringLen",
-                    "underscore_name": "get_const_string_len"
+                    "function_name": "getConstStringLen"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2253,8 +2233,7 @@
                     "F_name_api": "get_const_string_len",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringLen",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_len"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2321,8 +2300,7 @@
                     "F_name_api": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
-                    "function_name": "getConstStringAsArg",
-                    "underscore_name": "get_const_string_as_arg"
+                    "function_name": "getConstStringAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -2449,8 +2427,7 @@
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringAsArg",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_as_arg"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2545,8 +2522,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_const_string_as_arg"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -2591,8 +2567,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringAlloc",
-                    "function_name": "getConstStringAlloc",
-                    "underscore_name": "get_const_string_alloc"
+                    "function_name": "getConstStringAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2672,8 +2647,7 @@
                     "F_name_api": "get_const_string_alloc",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "getConstStringAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2765,8 +2739,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefPure",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefPure",
-                    "underscore_name": "get_const_string_ref_pure"
+                    "function_name": "getConstStringRefPure"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2875,8 +2848,7 @@
                     "F_name_api": "get_const_string_ref_pure",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ref_pure"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2971,8 +2943,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefLen",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefLen",
-                    "underscore_name": "get_const_string_ref_len"
+                    "function_name": "getConstStringRefLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3082,8 +3053,7 @@
                     "F_name_api": "get_const_string_ref_len",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ref_len"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3165,8 +3135,7 @@
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefAsArg",
-                    "underscore_name": "get_const_string_ref_as_arg"
+                    "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3321,8 +3290,7 @@
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ref_as_arg"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3418,8 +3386,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "get_const_string_ref_as_arg"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -3485,8 +3452,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefLenEmpty",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefLenEmpty",
-                    "underscore_name": "get_const_string_ref_len_empty"
+                    "function_name": "getConstStringRefLenEmpty"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3595,8 +3561,7 @@
                     "F_name_api": "get_const_string_ref_len_empty",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ref_len_empty"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3683,8 +3648,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringRefAlloc",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getConstStringRefAlloc",
-                    "underscore_name": "get_const_string_ref_alloc"
+                    "function_name": "getConstStringRefAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3788,8 +3752,7 @@
                     "F_name_api": "get_const_string_ref_alloc",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ref_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3890,8 +3853,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrLen",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrLen",
-                    "underscore_name": "get_const_string_ptr_len"
+                    "function_name": "getConstStringPtrLen"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4007,8 +3969,7 @@
                     "F_name_api": "get_const_string_ptr_len",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_len"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4098,8 +4059,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4206,8 +4166,7 @@
                     "F_name_api": "get_const_string_ptr_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4300,8 +4259,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrOwnsAlloc",
-                    "underscore_name": "get_const_string_ptr_owns_alloc"
+                    "function_name": "getConstStringPtrOwnsAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4411,8 +4369,7 @@
                     "F_name_api": "get_const_string_ptr_owns_alloc",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_owns_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4506,8 +4463,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrOwnsAllocPattern",
-                    "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
+                    "function_name": "getConstStringPtrOwnsAllocPattern"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4618,8 +4574,7 @@
                     "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4710,8 +4665,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrPointer",
-                    "underscore_name": "get_const_string_ptr_pointer"
+                    "function_name": "getConstStringPtrPointer"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4803,8 +4757,7 @@
                     "F_name_api": "get_const_string_ptr_pointer",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrPointer",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "get_const_string_ptr_pointer"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4961,8 +4914,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_const_reference"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5067,8 +5019,7 @@
                     "function_name": "acceptStringConstReference",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_const_reference"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5199,8 +5150,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_reference_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5307,8 +5257,7 @@
                     "function_name": "acceptStringReferenceOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_reference_out"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5438,8 +5387,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_reference"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5545,8 +5493,7 @@
                     "function_name": "acceptStringReference",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_reference"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5674,8 +5621,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer_const"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -5779,8 +5725,7 @@
                     "function_name": "acceptStringPointerConst",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer_const"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -5907,8 +5852,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6011,8 +5955,7 @@
                     "function_name": "acceptStringPointer",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6143,8 +6086,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fetch_string_pointer"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6251,8 +6193,7 @@
                     "function_name": "fetchStringPointer",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fetch_string_pointer"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6450,8 +6391,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer_len"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6609,8 +6549,7 @@
                     "function_name": "acceptStringPointerLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "accept_string_pointer_len"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -6811,8 +6750,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "fetch_string_pointer_len"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -6973,8 +6911,7 @@
                     "function_name": "fetchStringPointerLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "fetch_string_pointer_len"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -7097,8 +7034,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_acceptStringInstance",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "acceptStringInstance",
-                    "underscore_name": "accept_string_instance"
+                    "function_name": "acceptStringInstance"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7250,8 +7186,7 @@
                     "F_name_api": "accept_string_instance",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "accept_string_instance"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -7403,8 +7338,7 @@
                     "C_name_api": "returnStrings",
                     "F_name_api": "return_strings",
                     "PY_name_impl": "PY_returnStrings",
-                    "function_name": "returnStrings",
-                    "underscore_name": "return_strings"
+                    "function_name": "returnStrings"
                 }
             },
             {
@@ -7460,8 +7394,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnMany",
                     "F_name_api": "return_many",
-                    "function_name": "returnMany",
-                    "underscore_name": "return_many"
+                    "function_name": "returnMany"
                 }
             },
             {
@@ -7591,8 +7524,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "explicit1"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7701,8 +7633,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "explicit2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7809,8 +7740,7 @@
                     "function_name": "explicit2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "explicit2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -7938,8 +7868,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "cpass_char"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -7993,8 +7922,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_CreturnChar",
                     "cxx_rv_decl": "char SHC_rv",
-                    "function_name": "CreturnChar",
-                    "underscore_name": "creturn_char"
+                    "function_name": "CreturnChar"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -8207,8 +8135,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "cpass_char_ptr"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -8379,8 +8306,7 @@
                     "function_name": "CpassCharPtr",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "cpass_char_ptr"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -8542,8 +8468,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "cpass_char_ptr_blank"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -8710,8 +8635,7 @@
                     "function_name": "CpassCharPtrBlank",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "cpass_char_ptr_blank"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -8917,8 +8841,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "post_declare"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -9082,8 +9005,7 @@
                     "function_name": "PostDeclare",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "post_declare"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -9191,8 +9113,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrNotrim",
-                    "underscore_name": "cpass_char_ptr_notrim"
+                    "function_name": "CpassCharPtrNotrim"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9331,8 +9252,7 @@
                     "F_name_api": "cpass_char_ptr_notrim",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "CpassCharPtrNotrim",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "cpass_char_ptr_notrim"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9525,8 +9445,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrCAPI",
-                    "underscore_name": "cpass_char_ptr_capi"
+                    "function_name": "CpassCharPtrCAPI"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -9719,8 +9638,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "CpassCharPtrCAPI2",
-                    "underscore_name": "cpass_char_ptr_capi2"
+                    "function_name": "CpassCharPtrCAPI2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

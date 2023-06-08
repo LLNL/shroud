@@ -88,8 +88,7 @@
                     "F_name_impl": "vector_sum",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "vector_sum",
-                    "underscore_name": "vector_sum"
+                    "function_name": "vector_sum"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -227,8 +226,7 @@
                     "F_name_api": "vector_sum",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_sum",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "vector_sum"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -339,8 +337,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -468,8 +465,7 @@
                     "function_name": "vector_iota_out",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_out"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -585,8 +581,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_with_num"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -745,8 +740,7 @@
                     "function_name": "vector_iota_out_with_num",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_with_num"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -850,8 +844,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_with_num2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -997,8 +990,7 @@
                     "function_name": "vector_iota_out_with_num2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_with_num2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1085,8 +1077,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_alloc"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1217,8 +1208,7 @@
                     "function_name": "vector_iota_out_alloc",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_alloc"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1305,8 +1295,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_inout_alloc"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1439,8 +1428,7 @@
                     "function_name": "vector_iota_inout_alloc",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_inout_alloc"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1520,8 +1508,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_increment"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1647,8 +1634,7 @@
                     "function_name": "vector_increment",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_increment"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1731,8 +1717,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_d"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1859,8 +1844,7 @@
                     "function_name": "vector_iota_out_d",
                     "function_suffix": "_bufferify",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "vector_iota_out_d"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1963,8 +1947,7 @@
                     "F_name_impl": "vector_of_pointers",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "vector_of_pointers",
-                    "underscore_name": "vector_of_pointers"
+                    "function_name": "vector_of_pointers"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2163,8 +2146,7 @@
                     "F_name_api": "vector_of_pointers",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_of_pointers",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "vector_of_pointers"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2272,8 +2254,7 @@
                     "F_name_impl": "vector_string_count",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "vector_string_count",
-                    "underscore_name": "vector_string_count"
+                    "function_name": "vector_string_count"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2423,8 +2404,7 @@
                     "F_name_api": "vector_string_count",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_string_count",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "vector_string_count"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2521,8 +2501,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_fill",
                     "F_name_api": "vector_string_fill",
-                    "function_name": "vector_string_fill",
-                    "underscore_name": "vector_string_fill"
+                    "function_name": "vector_string_fill"
                 }
             },
             {
@@ -2591,8 +2570,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "vector_string_append",
                     "F_name_api": "vector_string_append",
-                    "function_name": "vector_string_append",
-                    "underscore_name": "vector_string_append"
+                    "function_name": "vector_string_append"
                 }
             },
             {
@@ -2668,8 +2646,7 @@
                     "F_name_impl": "return_vector_alloc",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "ReturnVectorAlloc",
-                    "underscore_name": "return_vector_alloc"
+                    "function_name": "ReturnVectorAlloc"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2805,8 +2782,7 @@
                     "F_name_api": "return_vector_alloc",
                     "cxx_rv_decl": "*SHC_rv",
                     "function_name": "ReturnVectorAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_vector_alloc"
+                    "function_suffix": "_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2995,8 +2971,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "returnDim2",
-                    "underscore_name": "return_dim2"
+                    "function_name": "returnDim2"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

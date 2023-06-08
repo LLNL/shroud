@@ -140,8 +140,7 @@
                             "PY_name_impl": "PY_Arrays1_tp_init",
                             "PY_type_impl": "PY_Arrays1_tp_init",
                             "PY_type_method": "tp_init",
-                            "function_name": "Arrays1_ctor",
-                            "underscore_name": "arrays1_ctor"
+                            "function_name": "Arrays1_ctor"
                         },
                         "zz_fmtresult": {
                             "fmtpy": {
@@ -280,8 +279,7 @@
                     "class_scope": "Arrays1::",
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
-                    "file_scope": "Arrays1",
-                    "underscore_name": "arrays1"
+                    "file_scope": "Arrays1"
                 }
             }
         ],

@@ -237,8 +237,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "pass_index",
                     "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "passIndex",
-                    "underscore_name": "pass_index"
+                    "function_name": "passIndex"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -427,8 +426,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
-                    "function_suffix": "_32",
-                    "underscore_name": "pass_index"
+                    "function_suffix": "_32"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -622,8 +620,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "passIndex",
-                    "function_suffix": "_64",
-                    "underscore_name": "pass_index"
+                    "function_suffix": "_64"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -794,8 +791,7 @@
                     "F_name_api": "pass_index2",
                     "function_name": "passIndex2",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "pass_index2"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -859,8 +855,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_index2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -924,8 +919,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_index2"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1064,8 +1058,7 @@
                     "F_name_api": "pass_float",
                     "function_name": "passFloat",
                     "stmt0": "c_subroutine",
-                    "stmt1": "c_subroutine",
-                    "underscore_name": "pass_float"
+                    "stmt1": "c_subroutine"
                 }
             },
             {
@@ -1129,8 +1122,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_float"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1194,8 +1186,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "pass_float"
+                    "stmtc1": "c_subroutine"
                 }
             }
         ],

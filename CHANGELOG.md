@@ -98,7 +98,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Added format field *C_name_api*, which is controlled by option *C_API_case*.
   The default is now to preserve the case of the C++ library routine.
   The previous behavior can be restored by setting option ``C_API_case: underscore``.
-  Removed format fields *lower_name* and *upper_name*.
+  Removed format fields *lower_name*, *upper_name* and *underscore_case*.
 - Changed default name mangling for LUA wrappers. Before it used the
   *underscore_name* format field. Now controlled by option *LUA_API_case* which defaults
   to *preserve* and sets *fmt.LUA_name_api*.

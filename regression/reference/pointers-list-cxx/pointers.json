@@ -84,8 +84,7 @@
                     "C_name_api": "intargs_in",
                     "F_name_api": "intargs_in",
                     "PY_name_impl": "PY_intargs_in",
-                    "function_name": "intargs_in",
-                    "underscore_name": "intargs_in"
+                    "function_name": "intargs_in"
                 }
             },
             {
@@ -161,8 +160,7 @@
                     "C_name_api": "intargs_inout",
                     "F_name_api": "intargs_inout",
                     "PY_name_impl": "PY_intargs_inout",
-                    "function_name": "intargs_inout",
-                    "underscore_name": "intargs_inout"
+                    "function_name": "intargs_inout"
                 }
             },
             {
@@ -238,8 +236,7 @@
                     "C_name_api": "intargs_out",
                     "F_name_api": "intargs_out",
                     "PY_name_impl": "PY_intargs_out",
-                    "function_name": "intargs_out",
-                    "underscore_name": "intargs_out"
+                    "function_name": "intargs_out"
                 }
             },
             {
@@ -397,8 +394,7 @@
                     "C_name_api": "intargs",
                     "F_name_api": "intargs",
                     "PY_name_impl": "PY_intargs",
-                    "function_name": "intargs",
-                    "underscore_name": "intargs"
+                    "function_name": "intargs"
                 }
             },
             {
@@ -578,8 +574,7 @@
                     "C_name_api": "cos_doubles",
                     "F_name_api": "cos_doubles",
                     "PY_name_impl": "PY_cos_doubles",
-                    "function_name": "cos_doubles",
-                    "underscore_name": "cos_doubles"
+                    "function_name": "cos_doubles"
                 }
             },
             {
@@ -759,8 +754,7 @@
                     "C_name_api": "truncate_to_int",
                     "F_name_api": "truncate_to_int",
                     "PY_name_impl": "PY_truncate_to_int",
-                    "function_name": "truncate_to_int",
-                    "underscore_name": "truncate_to_int"
+                    "function_name": "truncate_to_int"
                 }
             },
             {
@@ -895,8 +889,7 @@
                     "C_name_api": "get_values",
                     "F_name_api": "get_values",
                     "PY_name_impl": "PY_get_values",
-                    "function_name": "get_values",
-                    "underscore_name": "get_values"
+                    "function_name": "get_values"
                 }
             },
             {
@@ -1043,8 +1036,7 @@
                     "C_name_api": "get_values2",
                     "F_name_api": "get_values2",
                     "PY_name_impl": "PY_get_values2",
-                    "function_name": "get_values2",
-                    "underscore_name": "get_values2"
+                    "function_name": "get_values2"
                 }
             },
             {
@@ -1169,8 +1161,7 @@
                     "C_name_api": "iota_dimension",
                     "F_name_api": "iota_dimension",
                     "PY_name_impl": "PY_iota_dimension",
-                    "function_name": "iota_dimension",
-                    "underscore_name": "iota_dimension"
+                    "function_name": "iota_dimension"
                 }
             },
             {
@@ -1331,8 +1322,7 @@
                     "C_name_api": "Sum",
                     "F_name_api": "sum",
                     "PY_name_impl": "PY_Sum",
-                    "function_name": "Sum",
-                    "underscore_name": "sum"
+                    "function_name": "Sum"
                 }
             },
             {
@@ -1423,8 +1413,7 @@
                     "C_name_api": "fillIntArray",
                     "F_name_api": "fill_int_array",
                     "PY_name_impl": "PY_fillIntArray",
-                    "function_name": "fillIntArray",
-                    "underscore_name": "fill_int_array"
+                    "function_name": "fillIntArray"
                 }
             },
             {
@@ -1544,8 +1533,7 @@
                     "C_name_api": "incrementIntArray",
                     "F_name_api": "increment_int_array",
                     "PY_name_impl": "PY_incrementIntArray",
-                    "function_name": "incrementIntArray",
-                    "underscore_name": "increment_int_array"
+                    "function_name": "incrementIntArray"
                 }
             },
             {
@@ -1661,8 +1649,7 @@
                     "C_name_api": "fill_with_zeros",
                     "F_name_api": "fill_with_zeros",
                     "PY_name_impl": "PY_fill_with_zeros",
-                    "function_name": "fill_with_zeros",
-                    "underscore_name": "fill_with_zeros"
+                    "function_name": "fill_with_zeros"
                 }
             },
             {
@@ -1778,8 +1765,7 @@
                     "C_name_api": "accumulate",
                     "F_name_api": "accumulate",
                     "PY_name_impl": "PY_accumulate",
-                    "function_name": "accumulate",
-                    "underscore_name": "accumulate"
+                    "function_name": "accumulate"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1883,8 +1869,7 @@
                     "C_name_api": "acceptCharArrayIn",
                     "F_name_api": "accept_char_array_in",
                     "PY_name_impl": "PY_acceptCharArrayIn",
-                    "function_name": "acceptCharArrayIn",
-                    "underscore_name": "accept_char_array_in"
+                    "function_name": "acceptCharArrayIn"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -1973,8 +1958,7 @@
                     "C_name_api": "setGlobalInt",
                     "F_name_api": "set_global_int",
                     "PY_name_impl": "PY_setGlobalInt",
-                    "function_name": "setGlobalInt",
-                    "underscore_name": "set_global_int"
+                    "function_name": "setGlobalInt"
                 }
             },
             {
@@ -2007,8 +1991,7 @@
                     "C_name_api": "sumFixedArray",
                     "F_name_api": "sum_fixed_array",
                     "PY_name_impl": "PY_sumFixedArray",
-                    "function_name": "sumFixedArray",
-                    "underscore_name": "sum_fixed_array"
+                    "function_name": "sumFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -2082,8 +2065,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToScalar",
                     "F_name_api": "get_ptr_to_scalar",
-                    "function_name": "getPtrToScalar",
-                    "underscore_name": "get_ptr_to_scalar"
+                    "function_name": "getPtrToScalar"
                 }
             },
             {
@@ -2178,8 +2160,7 @@
                     "C_name_api": "getPtrToFixedArray",
                     "F_name_api": "get_ptr_to_fixed_array",
                     "PY_name_impl": "PY_getPtrToFixedArray",
-                    "function_name": "getPtrToFixedArray",
-                    "underscore_name": "get_ptr_to_fixed_array"
+                    "function_name": "getPtrToFixedArray"
                 }
             },
             {
@@ -2318,8 +2299,7 @@
                     "C_name_api": "getPtrToDynamicArray",
                     "F_name_api": "get_ptr_to_dynamic_array",
                     "PY_name_impl": "PY_getPtrToDynamicArray",
-                    "function_name": "getPtrToDynamicArray",
-                    "underscore_name": "get_ptr_to_dynamic_array"
+                    "function_name": "getPtrToDynamicArray"
                 }
             },
             {
@@ -2415,8 +2395,7 @@
                     "C_name_api": "getPtrToFuncArray",
                     "F_name_api": "get_ptr_to_func_array",
                     "PY_name_impl": "PY_getPtrToFuncArray",
-                    "function_name": "getPtrToFuncArray",
-                    "underscore_name": "get_ptr_to_func_array"
+                    "function_name": "getPtrToFuncArray"
                 }
             },
             {
@@ -2472,8 +2451,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToConstScalar",
                     "F_name_api": "get_ptr_to_const_scalar",
-                    "function_name": "getPtrToConstScalar",
-                    "underscore_name": "get_ptr_to_const_scalar"
+                    "function_name": "getPtrToConstScalar"
                 }
             },
             {
@@ -2566,8 +2544,7 @@
                     "C_name_api": "getPtrToFixedConstArray",
                     "F_name_api": "get_ptr_to_fixed_const_array",
                     "PY_name_impl": "PY_getPtrToFixedConstArray",
-                    "function_name": "getPtrToFixedConstArray",
-                    "underscore_name": "get_ptr_to_fixed_const_array"
+                    "function_name": "getPtrToFixedConstArray"
                 }
             },
             {
@@ -2704,8 +2681,7 @@
                     "C_name_api": "getPtrToDynamicConstArray",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
                     "PY_name_impl": "PY_getPtrToDynamicConstArray",
-                    "function_name": "getPtrToDynamicConstArray",
-                    "underscore_name": "get_ptr_to_dynamic_const_array"
+                    "function_name": "getPtrToDynamicConstArray"
                 }
             },
             {
@@ -2789,8 +2765,7 @@
                     "C_name_api": "getRawPtrToScalar",
                     "F_name_api": "get_raw_ptr_to_scalar",
                     "PY_name_impl": "PY_getRawPtrToScalar",
-                    "function_name": "getRawPtrToScalar",
-                    "underscore_name": "get_raw_ptr_to_scalar"
+                    "function_name": "getRawPtrToScalar"
                 }
             },
             {
@@ -2850,8 +2825,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToScalarForce",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
-                    "function_name": "getRawPtrToScalarForce",
-                    "underscore_name": "get_raw_ptr_to_scalar_force"
+                    "function_name": "getRawPtrToScalarForce"
                 }
             },
             {
@@ -2935,8 +2909,7 @@
                     "C_name_api": "getRawPtrToFixedArray",
                     "F_name_api": "get_raw_ptr_to_fixed_array",
                     "PY_name_impl": "PY_getRawPtrToFixedArray",
-                    "function_name": "getRawPtrToFixedArray",
-                    "underscore_name": "get_raw_ptr_to_fixed_array"
+                    "function_name": "getRawPtrToFixedArray"
                 }
             },
             {
@@ -2996,8 +2969,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToFixedArrayForce",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
-                    "function_name": "getRawPtrToFixedArrayForce",
-                    "underscore_name": "get_raw_ptr_to_fixed_array_force"
+                    "function_name": "getRawPtrToFixedArrayForce"
                 }
             },
             {
@@ -3057,8 +3029,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToInt2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
-                    "function_name": "getRawPtrToInt2d",
-                    "underscore_name": "get_raw_ptr_to_int2d"
+                    "function_name": "getRawPtrToInt2d"
                 }
             },
             {
@@ -3115,8 +3086,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "checkInt2d",
                     "F_name_api": "check_int2d",
-                    "function_name": "checkInt2d",
-                    "underscore_name": "check_int2d"
+                    "function_name": "checkInt2d"
                 }
             },
             {
@@ -3180,8 +3150,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "DimensionIn",
                     "F_name_api": "dimension_in",
-                    "function_name": "DimensionIn",
-                    "underscore_name": "dimension_in"
+                    "function_name": "DimensionIn"
                 }
             },
             {
@@ -3246,8 +3215,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "getAllocToFixedArray",
                     "F_name_api": "get_alloc_to_fixed_array",
-                    "function_name": "getAllocToFixedArray",
-                    "underscore_name": "get_alloc_to_fixed_array"
+                    "function_name": "getAllocToFixedArray"
                 }
             },
             {
@@ -3322,8 +3290,7 @@
                     "C_name_api": "returnAddress1",
                     "F_name_api": "return_address1",
                     "PY_name_impl": "PY_returnAddress1",
-                    "function_name": "returnAddress1",
-                    "underscore_name": "return_address1"
+                    "function_name": "returnAddress1"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3420,8 +3387,7 @@
                     "C_name_api": "returnAddress2",
                     "F_name_api": "return_address2",
                     "PY_name_impl": "PY_returnAddress2",
-                    "function_name": "returnAddress2",
-                    "underscore_name": "return_address2"
+                    "function_name": "returnAddress2"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3520,8 +3486,7 @@
                     "C_name_api": "fetchVoidPtr",
                     "F_name_api": "fetch_void_ptr",
                     "PY_name_impl": "PY_fetchVoidPtr",
-                    "function_name": "fetchVoidPtr",
-                    "underscore_name": "fetch_void_ptr"
+                    "function_name": "fetchVoidPtr"
                 }
             },
             {
@@ -3576,8 +3541,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "updateVoidPtr",
                     "F_name_api": "update_void_ptr",
-                    "function_name": "updateVoidPtr",
-                    "underscore_name": "update_void_ptr"
+                    "function_name": "updateVoidPtr"
                 }
             },
             {
@@ -3632,8 +3596,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "VoidPtrArray",
                     "F_name_api": "void_ptr_array",
-                    "function_name": "VoidPtrArray",
-                    "underscore_name": "void_ptr_array"
+                    "function_name": "VoidPtrArray"
                 }
             },
             {
@@ -3669,8 +3632,7 @@
                     "C_name_api": "returnIntPtrToScalar",
                     "F_name_api": "return_int_ptr_to_scalar",
                     "PY_name_impl": "PY_returnIntPtrToScalar",
-                    "function_name": "returnIntPtrToScalar",
-                    "underscore_name": "return_int_ptr_to_scalar"
+                    "function_name": "returnIntPtrToScalar"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3735,8 +3697,7 @@
                     "C_name_api": "returnIntPtrToFixedArray",
                     "F_name_api": "return_int_ptr_to_fixed_array",
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
-                    "function_name": "returnIntPtrToFixedArray",
-                    "underscore_name": "return_int_ptr_to_fixed_array"
+                    "function_name": "returnIntPtrToFixedArray"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3799,8 +3760,7 @@
                     "C_name_api": "returnIntPtrToConstScalar",
                     "F_name_api": "return_int_ptr_to_const_scalar",
                     "PY_name_impl": "PY_returnIntPtrToConstScalar",
-                    "function_name": "returnIntPtrToConstScalar",
-                    "underscore_name": "return_int_ptr_to_const_scalar"
+                    "function_name": "returnIntPtrToConstScalar"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3866,8 +3826,7 @@
                     "C_name_api": "returnIntPtrToFixedConstArray",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
                     "PY_name_impl": "PY_returnIntPtrToFixedConstArray",
-                    "function_name": "returnIntPtrToFixedConstArray",
-                    "underscore_name": "return_int_ptr_to_fixed_const_array"
+                    "function_name": "returnIntPtrToFixedConstArray"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3932,8 +3891,7 @@
                     "C_name_api": "returnIntScalar",
                     "F_name_api": "return_int_scalar",
                     "PY_name_impl": "PY_returnIntScalar",
-                    "function_name": "returnIntScalar",
-                    "underscore_name": "return_int_scalar"
+                    "function_name": "returnIntScalar"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -3994,8 +3952,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRaw",
                     "F_name_api": "return_int_raw",
-                    "function_name": "returnIntRaw",
-                    "underscore_name": "return_int_raw"
+                    "function_name": "returnIntRaw"
                 }
             },
             {
@@ -4057,8 +4014,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRawWithArgs",
                     "F_name_api": "return_int_raw_with_args",
-                    "function_name": "returnIntRawWithArgs",
-                    "underscore_name": "return_int_raw_with_args"
+                    "function_name": "returnIntRawWithArgs"
                 }
             },
             {
@@ -4099,8 +4055,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnRawPtrToInt2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
-                    "function_name": "returnRawPtrToInt2d",
-                    "underscore_name": "return_raw_ptr_to_int2d"
+                    "function_name": "returnRawPtrToInt2d"
                 }
             },
             {
@@ -4144,8 +4099,7 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntAllocToFixedArray",
                     "F_name_api": "return_int_alloc_to_fixed_array",
-                    "function_name": "returnIntAllocToFixedArray",
-                    "underscore_name": "return_int_alloc_to_fixed_array"
+                    "function_name": "returnIntAllocToFixedArray"
                 }
             }
         ],

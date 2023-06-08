@@ -55,8 +55,7 @@
                     "cxx_type": "Class3",
                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class3",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "class3"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             },
             {
@@ -124,8 +123,7 @@
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "forward::Class2 SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
+                            "function_name": "ctor"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -249,8 +247,7 @@
                             "stmt0": "f_dtor",
                             "stmt1": "f_dtor",
                             "stmtc0": "c_dtor",
-                            "stmtc1": "c_dtor",
-                            "underscore_name": "dtor"
+                            "stmtc1": "c_dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -409,8 +406,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "func1"
+                            "stmtc1": "c_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -571,8 +567,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "accept_class3"
+                            "stmtc1": "c_subroutine"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
@@ -624,8 +619,7 @@
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                     "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "class2"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -744,8 +738,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passStruct1",
-                    "underscore_name": "pass_struct1"
+                    "function_name": "passStruct1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

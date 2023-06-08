@@ -125,8 +125,7 @@
                             "PY_name_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_method": "tp_init",
-                            "function_name": "Cstruct1_cls_ctor",
-                            "underscore_name": "cstruct1_cls_ctor"
+                            "function_name": "Cstruct1_cls_ctor"
                         },
                         "zz_fmtresult": {
                             "fmtpy": {
@@ -248,8 +247,7 @@
                     "class_scope": "Cstruct1_cls::",
                     "cxx_class": "Cstruct1_cls",
                     "cxx_type": "Cstruct1_cls",
-                    "file_scope": "Cstruct1_cls",
-                    "underscore_name": "cstruct1_cls"
+                    "file_scope": "Cstruct1_cls"
                 }
             }
         ],
@@ -340,8 +338,7 @@
                     "C_name_api": "passStructByReferenceCls",
                     "F_name_api": "pass_struct_by_reference_cls",
                     "PY_name_impl": "PY_passStructByReferenceCls",
-                    "function_name": "passStructByReferenceCls",
-                    "underscore_name": "pass_struct_by_reference_cls"
+                    "function_name": "passStructByReferenceCls"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -442,8 +439,7 @@
                     "C_name_api": "passStructByReferenceInCls",
                     "F_name_api": "pass_struct_by_reference_in_cls",
                     "PY_name_impl": "PY_passStructByReferenceInCls",
-                    "function_name": "passStructByReferenceInCls",
-                    "underscore_name": "pass_struct_by_reference_in_cls"
+                    "function_name": "passStructByReferenceInCls"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
@@ -543,8 +539,7 @@
                     "C_name_api": "passStructByReferenceInoutCls",
                     "F_name_api": "pass_struct_by_reference_inout_cls",
                     "PY_name_impl": "PY_passStructByReferenceInoutCls",
-                    "function_name": "passStructByReferenceInoutCls",
-                    "underscore_name": "pass_struct_by_reference_inout_cls"
+                    "function_name": "passStructByReferenceInoutCls"
                 }
             },
             {
@@ -624,8 +619,7 @@
                     "C_name_api": "passStructByReferenceOutCls",
                     "F_name_api": "pass_struct_by_reference_out_cls",
                     "PY_name_impl": "PY_passStructByReferenceOutCls",
-                    "function_name": "passStructByReferenceOutCls",
-                    "underscore_name": "pass_struct_by_reference_out_cls"
+                    "function_name": "passStructByReferenceOutCls"
                 }
             },
             {
@@ -677,8 +671,7 @@
                     "F_subprogram": "function",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "defaultPtrIsNULL",
-                    "function_suffix": "_0",
-                    "underscore_name": "default_ptr_is_null"
+                    "function_suffix": "_0"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -855,8 +848,7 @@
                     "PY_name_impl": "PY_defaultPtrIsNULL_1",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "defaultPtrIsNULL",
-                    "function_suffix": "_1",
-                    "underscore_name": "default_ptr_is_null"
+                    "function_suffix": "_1"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1121,8 +1113,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "default_args_in_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1474,8 +1465,7 @@
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
                     "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine",
-                    "underscore_name": "default_args_in_out"
+                    "stmtc1": "c_subroutine"
                 }
             },
             {
@@ -1623,8 +1613,7 @@
                     "F_C_subprogram": "function",
                     "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "getGroupName",
-                    "underscore_name": "get_group_name"
+                    "function_name": "getGroupName"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1731,8 +1720,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int32_t",
-                    "underscore_name": "get_group_name"
+                    "function_suffix": "_int32_t"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -1861,8 +1849,7 @@
                     "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int32_t_bufferify",
-                    "underscore_name": "get_group_name"
+                    "function_suffix": "_int32_t_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1969,8 +1956,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int64_t",
-                    "underscore_name": "get_group_name"
+                    "function_suffix": "_int64_t"
                 },
                 "zz_fmtresult": {
                     "fmtf": {
@@ -2099,8 +2085,7 @@
                     "F_name_api": "get_group_name",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getGroupName",
-                    "function_suffix": "_int64_t_bufferify",
-                    "underscore_name": "get_group_name"
+                    "function_suffix": "_int64_t_bufferify"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2230,8 +2215,7 @@
                             "class_scope": "Cstruct1::",
                             "cxx_class": "Cstruct1",
                             "cxx_type": "Cstruct1",
-                            "file_scope": "structns_Cstruct1",
-                            "underscore_name": "cstruct1"
+                            "file_scope": "structns_Cstruct1"
                         }
                     }
                 ],
@@ -2365,8 +2349,7 @@
                             "F_subprogram": "function",
                             "PY_name_impl": "PY_passStructByReference",
                             "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "passStructByReference",
-                            "underscore_name": "pass_struct_by_reference"
+                            "function_name": "passStructByReference"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2548,8 +2531,7 @@
                             "F_subprogram": "function",
                             "PY_name_impl": "PY_passStructByReferenceIn",
                             "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "passStructByReferenceIn",
-                            "underscore_name": "pass_struct_by_reference_in"
+                            "function_name": "passStructByReferenceIn"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -2731,8 +2713,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "pass_struct_by_reference_inout"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -2864,8 +2845,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "pass_struct_by_reference_out"
+                            "stmtc1": "c_subroutine"
                         }
                     }
                 ],

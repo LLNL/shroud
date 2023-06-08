@@ -332,8 +332,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_convert_to_int",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "convert_to_int",
-                    "underscore_name": "convert_to_int"
+                    "function_name": "convert_to_int"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

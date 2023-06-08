@@ -131,8 +131,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_short_func",
                     "cxx_rv_decl": "short SHC_rv",
-                    "function_name": "short_func",
-                    "underscore_name": "short_func"
+                    "function_name": "short_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -302,8 +301,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int_func",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "int_func",
-                    "underscore_name": "int_func"
+                    "function_name": "int_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -473,8 +471,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_func",
                     "cxx_rv_decl": "long SHC_rv",
-                    "function_name": "long_func",
-                    "underscore_name": "long_func"
+                    "function_name": "long_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -646,8 +643,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_long_func",
                     "cxx_rv_decl": "long long SHC_rv",
-                    "function_name": "long_long_func",
-                    "underscore_name": "long_long_func"
+                    "function_name": "long_long_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -821,8 +817,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_short_int_func",
                     "cxx_rv_decl": "short SHC_rv",
-                    "function_name": "short_int_func",
-                    "underscore_name": "short_int_func"
+                    "function_name": "short_int_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -994,8 +989,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_int_func",
                     "cxx_rv_decl": "long SHC_rv",
-                    "function_name": "long_int_func",
-                    "underscore_name": "long_int_func"
+                    "function_name": "long_int_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1169,8 +1163,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_long_long_int_func",
                     "cxx_rv_decl": "long long SHC_rv",
-                    "function_name": "long_long_int_func",
-                    "underscore_name": "long_long_int_func"
+                    "function_name": "long_long_int_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1342,8 +1335,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_unsigned_func",
                     "cxx_rv_decl": "unsigned int SHC_rv",
-                    "function_name": "unsigned_func",
-                    "underscore_name": "unsigned_func"
+                    "function_name": "unsigned_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1515,8 +1507,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ushort_func",
                     "cxx_rv_decl": "unsigned short SHC_rv",
-                    "function_name": "ushort_func",
-                    "underscore_name": "ushort_func"
+                    "function_name": "ushort_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1688,8 +1679,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint_func",
                     "cxx_rv_decl": "unsigned int SHC_rv",
-                    "function_name": "uint_func",
-                    "underscore_name": "uint_func"
+                    "function_name": "uint_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -1861,8 +1851,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_func",
                     "cxx_rv_decl": "unsigned long SHC_rv",
-                    "function_name": "ulong_func",
-                    "underscore_name": "ulong_func"
+                    "function_name": "ulong_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2036,8 +2025,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_long_func",
                     "cxx_rv_decl": "unsigned long long SHC_rv",
-                    "function_name": "ulong_long_func",
-                    "underscore_name": "ulong_long_func"
+                    "function_name": "ulong_long_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2213,8 +2201,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_ulong_int_func",
                     "cxx_rv_decl": "unsigned long SHC_rv",
-                    "function_name": "ulong_int_func",
-                    "underscore_name": "ulong_int_func"
+                    "function_name": "ulong_int_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2384,8 +2371,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int8_func",
                     "cxx_rv_decl": "int8_t SHC_rv",
-                    "function_name": "int8_func",
-                    "underscore_name": "int8_func"
+                    "function_name": "int8_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2555,8 +2541,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int16_func",
                     "cxx_rv_decl": "int16_t SHC_rv",
-                    "function_name": "int16_func",
-                    "underscore_name": "int16_func"
+                    "function_name": "int16_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2726,8 +2711,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int32_func",
                     "cxx_rv_decl": "int32_t SHC_rv",
-                    "function_name": "int32_func",
-                    "underscore_name": "int32_func"
+                    "function_name": "int32_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -2897,8 +2881,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_int64_func",
                     "cxx_rv_decl": "int64_t SHC_rv",
-                    "function_name": "int64_func",
-                    "underscore_name": "int64_func"
+                    "function_name": "int64_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3068,8 +3051,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint8_func",
                     "cxx_rv_decl": "uint8_t SHC_rv",
-                    "function_name": "uint8_func",
-                    "underscore_name": "uint8_func"
+                    "function_name": "uint8_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3239,8 +3221,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint16_func",
                     "cxx_rv_decl": "uint16_t SHC_rv",
-                    "function_name": "uint16_func",
-                    "underscore_name": "uint16_func"
+                    "function_name": "uint16_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3410,8 +3391,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint32_func",
                     "cxx_rv_decl": "uint32_t SHC_rv",
-                    "function_name": "uint32_func",
-                    "underscore_name": "uint32_func"
+                    "function_name": "uint32_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3581,8 +3561,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_uint64_func",
                     "cxx_rv_decl": "uint64_t SHC_rv",
-                    "function_name": "uint64_func",
-                    "underscore_name": "uint64_func"
+                    "function_name": "uint64_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3752,8 +3731,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_size_func",
                     "cxx_rv_decl": "size_t SHC_rv",
-                    "function_name": "size_func",
-                    "underscore_name": "size_func"
+                    "function_name": "size_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -3925,8 +3903,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_bool_func",
                     "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "bool_func",
-                    "underscore_name": "bool_func"
+                    "function_name": "bool_func"
                 },
                 "zz_fmtresult": {
                     "fmtc": {
@@ -4107,8 +4084,7 @@
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_returnBoolAndOthers",
                     "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "returnBoolAndOthers",
-                    "underscore_name": "return_bool_and_others"
+                    "function_name": "returnBoolAndOthers"
                 },
                 "zz_fmtresult": {
                     "fmtc": {

@@ -66,8 +66,7 @@
                             "PY_type_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
+                            "function_name": "ctor"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -247,8 +246,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "set_size"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -303,8 +301,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "getSize",
-                            "underscore_name": "get_size"
+                            "function_name": "getSize"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -485,8 +482,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fill_size"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -540,8 +536,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "allocate"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -612,8 +607,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
-                            "function_name": "getArray",
-                            "underscore_name": "get_array"
+                            "function_name": "getArray"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -737,8 +731,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_array"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -845,8 +838,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
-                            "function_name": "getArrayConst",
-                            "underscore_name": "get_array_const"
+                            "function_name": "getArrayConst"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -971,8 +963,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_array_const"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1078,8 +1069,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
-                            "function_name": "getArrayC",
-                            "underscore_name": "get_array_c"
+                            "function_name": "getArrayC"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1204,8 +1194,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_array_c"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1313,8 +1302,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
-                            "function_name": "getArrayConstC",
-                            "underscore_name": "get_array_const_c"
+                            "function_name": "getArrayConstC"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1440,8 +1428,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
-                            "function_suffix": "_bufferify",
-                            "underscore_name": "get_array_const_c"
+                            "function_suffix": "_bufferify"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -1695,8 +1682,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_array_ptr"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -1871,8 +1857,7 @@
                             "function_name": "fetchArrayPtr",
                             "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine",
-                            "underscore_name": "fetch_array_ptr"
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
@@ -2092,8 +2077,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_array_ref"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -2268,8 +2252,7 @@
                             "function_name": "fetchArrayRef",
                             "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine",
-                            "underscore_name": "fetch_array_ref"
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
@@ -2490,8 +2473,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_array_ptr_const"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -2667,8 +2649,7 @@
                             "function_name": "fetchArrayPtrConst",
                             "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine",
-                            "underscore_name": "fetch_array_ptr_const"
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
@@ -2889,8 +2870,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_array_ref_const"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -3066,8 +3046,7 @@
                             "function_name": "fetchArrayRefConst",
                             "function_suffix": "_bufferify",
                             "stmt0": "c_subroutine",
-                            "stmt1": "c_subroutine",
-                            "underscore_name": "fetch_array_ref_const"
+                            "stmt1": "c_subroutine"
                         }
                     },
                     {
@@ -3201,8 +3180,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_void_ptr"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -3336,8 +3314,7 @@
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
                             "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine",
-                            "underscore_name": "fetch_void_ref"
+                            "stmtc1": "c_subroutine"
                         }
                     },
                     {
@@ -3468,8 +3445,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "bool SHC_rv",
-                            "function_name": "checkPtr",
-                            "underscore_name": "check_ptr"
+                            "function_name": "checkPtr"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3572,8 +3548,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "cxx_rv_decl": "double SHC_rv",
-                            "function_name": "sumArray",
-                            "underscore_name": "sum_array"
+                            "function_name": "sumArray"
                         },
                         "zz_fmtresult": {
                             "fmtc": {
@@ -3659,8 +3634,7 @@
                     "cxx_type": "ArrayWrapper",
                     "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                     "file_scope": "ArrayWrapper",
-                    "hnamefunc0": "capsule_data_helper",
-                    "underscore_name": "array_wrapper"
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],

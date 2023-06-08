@@ -125,8 +125,7 @@
                             "PY_name_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_method": "tp_init",
-                            "function_name": "Cstruct_as_class_ctor",
-                            "underscore_name": "cstruct_as_class_ctor"
+                            "function_name": "Cstruct_as_class_ctor"
                         },
                         "zz_fmtresult": {
                             "fmtpy": {
@@ -248,8 +247,7 @@
                     "class_scope": "Cstruct_as_class::",
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
-                    "file_scope": "Cstruct_as_class",
-                    "underscore_name": "cstruct_as_class"
+                    "file_scope": "Cstruct_as_class"
                 }
             },
             {
@@ -339,8 +337,7 @@
                     "class_scope": "Cstruct_as_numpy::",
                     "cxx_class": "Cstruct_as_numpy",
                     "cxx_type": "Cstruct_as_numpy",
-                    "file_scope": "Cstruct_as_numpy",
-                    "underscore_name": "cstruct_as_numpy"
+                    "file_scope": "Cstruct_as_numpy"
                 }
             }
         ],
@@ -482,8 +479,7 @@
                     "C_name_api": "acceptBothStructs",
                     "F_name_api": "accept_both_structs",
                     "PY_name_impl": "PY_acceptBothStructs",
-                    "function_name": "acceptBothStructs",
-                    "underscore_name": "accept_both_structs"
+                    "function_name": "acceptBothStructs"
                 },
                 "zz_fmtresult": {
                     "fmtpy": {
