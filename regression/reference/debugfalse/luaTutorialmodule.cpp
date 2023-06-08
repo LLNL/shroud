@@ -22,7 +22,7 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
-static int l_no_return_no_arguments(lua_State *)
+static int l_NoReturnNoArguments(lua_State *)
 {
     // splicer begin function.NoReturnNoArguments
     tutorial::NoReturnNoArguments();
@@ -30,7 +30,7 @@ static int l_no_return_no_arguments(lua_State *)
     // splicer end function.NoReturnNoArguments
 }
 
-static int l_pass_by_value(lua_State *L)
+static int l_PassByValue(lua_State *L)
 {
     // splicer begin function.PassByValue
     double arg1 = lua_tonumber(L, 1);
@@ -45,7 +45,7 @@ static int l_pass_by_value(lua_State *L)
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-static int l_concatenate_strings(lua_State *L)
+static int l_ConcatenateStrings(lua_State *L)
 {
     // splicer begin function.ConcatenateStrings
     const char * arg1 = lua_tostring(L, 1);
@@ -57,7 +57,7 @@ static int l_concatenate_strings(lua_State *L)
     // splicer end function.ConcatenateStrings
 }
 
-static int l_use_default_arguments(lua_State *L)
+static int l_UseDefaultArguments(lua_State *L)
 {
     // splicer begin function.UseDefaultArguments
     int SH_nresult = 0;
@@ -104,7 +104,7 @@ static int l_use_default_arguments(lua_State *L)
     // splicer end function.UseDefaultArguments
 }
 
-static int l_overloaded_function(lua_State *L)
+static int l_OverloadedFunction(lua_State *L)
 {
     // splicer begin function.OverloadedFunction
     int SH_nresult = 0;
@@ -134,7 +134,7 @@ static int l_overloaded_function(lua_State *L)
     // splicer end function.OverloadedFunction
 }
 
-static int l_template_argument(lua_State *L)
+static int l_TemplateArgument(lua_State *L)
 {
     // splicer begin function.TemplateArgument
     int SH_nresult = 0;
@@ -164,7 +164,7 @@ static int l_template_argument(lua_State *L)
     // splicer end function.TemplateArgument
 }
 
-static int l_fortran_generic_overloaded(lua_State *L)
+static int l_FortranGenericOverloaded(lua_State *L)
 {
     // splicer begin function.FortranGenericOverloaded
     int SH_nresult = 0;
@@ -198,7 +198,7 @@ static int l_fortran_generic_overloaded(lua_State *L)
     // splicer end function.FortranGenericOverloaded
 }
 
-static int l_use_default_overload(lua_State *L)
+static int l_UseDefaultOverload(lua_State *L)
 {
     // splicer begin function.UseDefaultOverload
     int SH_nresult = 0;
@@ -325,7 +325,7 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-static int l_last_function_called(lua_State *L)
+static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
@@ -338,18 +338,18 @@ static int l_last_function_called(lua_State *L)
 // splicer end additional_functions
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
-    {"NoReturnNoArguments", l_no_return_no_arguments},
-    {"PassByValue", l_pass_by_value},
-    {"ConcatenateStrings", l_concatenate_strings},
-    {"UseDefaultArguments", l_use_default_arguments},
-    {"OverloadedFunction", l_overloaded_function},
-    {"TemplateArgument", l_template_argument},
-    {"FortranGenericOverloaded", l_fortran_generic_overloaded},
-    {"UseDefaultOverload", l_use_default_overload},
+    {"NoReturnNoArguments", l_NoReturnNoArguments},
+    {"PassByValue", l_PassByValue},
+    {"ConcatenateStrings", l_ConcatenateStrings},
+    {"UseDefaultArguments", l_UseDefaultArguments},
+    {"OverloadedFunction", l_OverloadedFunction},
+    {"TemplateArgument", l_TemplateArgument},
+    {"FortranGenericOverloaded", l_FortranGenericOverloaded},
+    {"UseDefaultOverload", l_UseDefaultOverload},
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},
-    {"LastFunctionCalled", l_last_function_called},
+    {"LastFunctionCalled", l_LastFunctionCalled},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

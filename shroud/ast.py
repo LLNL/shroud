@@ -170,6 +170,11 @@ class AstNode(object):
         case = self.options.F_API_case
         return self.apply_API_option(name, case, "F_API_case")
 
+    def apply_LUA_API_option(self, name):
+        """Apply option.LUA_API_case to name"""
+        case = self.options.LUA_API_case
+        return self.apply_API_option(name, case, "LUA_API_case")
+
     def update_names(self):
         """Update C and Fortran names.
         Necessary after templates are instantiated which
@@ -586,6 +591,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_abstract_interface_argument_template="arg{index}",
             F_derived_name_template="{F_name_api}",
 
+            LUA_API_case="preserve",
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
                 "lua{library}module.{LUA_impl_filename_suffix}"
@@ -600,7 +606,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_metadata_template="{cxx_class}.metatable",
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
-            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
+            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{LUA_name_api}",
 
             PY_create_generic=True,
             PY_module_filename_template=(
