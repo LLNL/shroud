@@ -249,9 +249,7 @@
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
                     "file_scope": "Cstruct_as_class",
-                    "lower_name": "cstruct_as_class",
-                    "underscore_name": "cstruct_as_class",
-                    "upper_name": "CSTRUCT_AS_CLASS"
+                    "underscore_name": "cstruct_as_class"
                 }
             },
             {
@@ -342,9 +340,7 @@
                     "cxx_class": "Cstruct_as_numpy",
                     "cxx_type": "Cstruct_as_numpy",
                     "file_scope": "Cstruct_as_numpy",
-                    "lower_name": "cstruct_as_numpy",
-                    "underscore_name": "cstruct_as_numpy",
-                    "upper_name": "CSTRUCT_AS_NUMPY"
+                    "underscore_name": "cstruct_as_numpy"
                 }
             }
         ],

@@ -3660,9 +3660,7 @@
                     "f_capsule_data_type": "ARR_SHROUD_capsule_data",
                     "file_scope": "ArrayWrapper",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "arraywrapper",
-                    "underscore_name": "array_wrapper",
-                    "upper_name": "ARRAYWRAPPER"
+                    "underscore_name": "array_wrapper"
                 }
             }
         ],

@@ -39,9 +39,7 @@
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
                     "file_scope": "StructAsClass",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "structasclass",
-                    "underscore_name": "struct_as_class",
-                    "upper_name": "STRUCTASCLASS"
+                    "underscore_name": "struct_as_class"
                 }
             }
         ],

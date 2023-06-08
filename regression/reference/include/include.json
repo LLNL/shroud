@@ -255,9 +255,7 @@
                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class2",
-                    "underscore_name": "class2",
-                    "upper_name": "CLASS2"
+                    "underscore_name": "class2"
                 }
             }
         ],
@@ -528,9 +526,7 @@
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "three_Class1",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class1",
-                            "underscore_name": "class1",
-                            "upper_name": "CLASS1"
+                            "underscore_name": "class1"
                         }
                     }
                 ],
@@ -647,9 +643,7 @@
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer1_class0",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class0",
-                            "underscore_name": "class0",
-                            "upper_name": "CLASS0"
+                            "underscore_name": "class0"
                         }
                     }
                 ],
@@ -819,9 +813,7 @@
                             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                             "file_scope": "outer2_class0",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class0",
-                            "underscore_name": "class0",
-                            "upper_name": "CLASS0"
+                            "underscore_name": "class0"
                         }
                     }
                 ],

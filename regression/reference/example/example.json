@@ -2063,9 +2063,7 @@
                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass1",
                                     "hnamefunc0": "capsule_data_helper",
-                                    "lower_name": "exclass1",
-                                    "underscore_name": "ex_class1",
-                                    "upper_name": "EXCLASS1"
+                                    "underscore_name": "ex_class1"
                                 }
                             },
                             {
@@ -2098,9 +2096,7 @@
                                             "cxx_class": "ExClass2Nested",
                                             "cxx_type": "ExClass2Nested",
                                             "file_scope": "example_nested_ExClass2_ExClass2Nested",
-                                            "lower_name": "exclass2nested",
-                                            "underscore_name": "ex_class2_nested",
-                                            "upper_name": "EXCLASS2NESTED"
+                                            "underscore_name": "ex_class2_nested"
                                         }
                                     }
                                 ],
@@ -6487,9 +6483,7 @@
                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass2",
                                     "hnamefunc0": "capsule_data_helper",
-                                    "lower_name": "exclass2",
-                                    "underscore_name": "ex_class2",
-                                    "upper_name": "EXCLASS2"
+                                    "underscore_name": "ex_class2"
                                 }
                             }
                         ],

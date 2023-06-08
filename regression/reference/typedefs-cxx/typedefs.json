@@ -97,9 +97,7 @@
                     "cxx_class": "Struct1Rename",
                     "cxx_type": "Struct1Rename",
                     "file_scope": "s_Struct1",
-                    "lower_name": "struct1rename",
-                    "underscore_name": "struct1_rename",
-                    "upper_name": "STRUCT1RENAME"
+                    "underscore_name": "struct1_rename"
                 }
             }
         ],

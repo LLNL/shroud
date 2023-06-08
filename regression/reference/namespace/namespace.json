@@ -594,9 +594,7 @@
                             "cxx_class": "Cstruct1",
                             "cxx_type": "Cstruct1",
                             "file_scope": "outer_Cstruct1",
-                            "lower_name": "cstruct1",
-                            "underscore_name": "cstruct1",
-                            "upper_name": "CSTRUCT1"
+                            "underscore_name": "cstruct1"
                         }
                     }
                 ],
@@ -722,9 +720,7 @@
                             "f_capsule_data_type": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "classwork",
-                            "underscore_name": "class_work",
-                            "upper_name": "CLASSWORK"
+                            "underscore_name": "class_work"
                         }
                     }
                 ],

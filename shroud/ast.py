@@ -1235,8 +1235,6 @@ class ClassNode(AstNode, NamespaceMixin):
             cxx_class=name_api,
 
             underscore_name = util.un_camel(name_api),
-            upper_name = name_api.upper(),
-            lower_name = name_api.lower(),
             C_name_api = self.apply_C_API_option(name_api),
             F_name_api = self.apply_F_API_option(name_api),
 

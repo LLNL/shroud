@@ -49,9 +49,7 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "Worker",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "worker",
-                    "underscore_name": "worker",
-                    "upper_name": "WORKER"
+                    "underscore_name": "worker"
                 }
             },
             {
@@ -415,9 +413,7 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "user_int",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "user_int",
-                    "underscore_name": "user_int",
-                    "upper_name": "USER_INT"
+                    "underscore_name": "user_int"
                 }
             },
             {
@@ -1040,9 +1036,7 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_int",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "structasclass_int",
-                    "underscore_name": "struct_as_class_int",
-                    "upper_name": "STRUCTASCLASS_INT"
+                    "underscore_name": "struct_as_class_int"
                 }
             },
             {
@@ -1665,9 +1659,7 @@
                     "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                     "file_scope": "structAsClass_double",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "structasclass_double",
-                    "underscore_name": "struct_as_class_double",
-                    "upper_name": "STRUCTASCLASS_DOUBLE"
+                    "underscore_name": "struct_as_class_double"
                 }
             }
         ],
@@ -3565,9 +3557,7 @@
                             "file_scope": "std_vector_int",
                             "fmtsample": "one",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_int",
-                            "underscore_name": "vector_int",
-                            "upper_name": "VECTOR_INT"
+                            "underscore_name": "vector_int"
                         }
                     },
                     {
@@ -4398,9 +4388,7 @@
                             "file_scope": "std_vector_double",
                             "fmtsample": "original",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_double",
-                            "underscore_name": "vector_double",
-                            "upper_name": "VECTOR_DOUBLE"
+                            "underscore_name": "vector_double"
                         }
                     }
                 ],
@@ -4479,9 +4467,7 @@
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
                             "file_scope": "internal_ImplWorker1",
-                            "lower_name": "implworker1",
-                            "underscore_name": "impl_worker1",
-                            "upper_name": "IMPLWORKER1"
+                            "underscore_name": "impl_worker1"
                         }
                     },
                     {
@@ -4522,9 +4508,7 @@
                             "cxx_class": "ImplWorker2",
                             "cxx_type": "ImplWorker2",
                             "file_scope": "internal_ImplWorker2",
-                            "lower_name": "implworker2",
-                            "underscore_name": "impl_worker2",
-                            "upper_name": "IMPLWORKER2"
+                            "underscore_name": "impl_worker2"
                         }
                     }
                 ],

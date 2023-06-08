@@ -53,9 +53,7 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Names2",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "names2",
-                    "underscore_name": "names2",
-                    "upper_name": "NAMES2"
+                    "underscore_name": "names2"
                 }
             },
             {
@@ -140,9 +138,7 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_0",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "twots_0",
-                    "underscore_name": "two_ts_0",
-                    "upper_name": "TWOTS_0"
+                    "underscore_name": "two_ts_0"
                 }
             },
             {
@@ -230,10 +226,8 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_instantiation4",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "twots_instantiation4",
                     "template_suffix": "_instantiation4",
-                    "underscore_name": "two_ts_instantiation4",
-                    "upper_name": "TWOTS_INSTANTIATION4"
+                    "underscore_name": "two_ts_instantiation4"
                 }
             },
             {
@@ -279,9 +273,7 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_class",
-                    "underscore_name": "cstruct_as_class",
-                    "upper_name": "CSTRUCT_AS_CLASS"
+                    "underscore_name": "cstruct_as_class"
                 }
             },
             {
@@ -329,9 +321,7 @@
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_subclass",
-                    "underscore_name": "cstruct_as_subclass",
-                    "upper_name": "CSTRUCT_AS_SUBCLASS"
+                    "underscore_name": "cstruct_as_subclass"
                 }
             }
         ],
@@ -3509,9 +3499,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "ns0_Names",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "names",
-                            "underscore_name": "names",
-                            "upper_name": "NAMES"
+                            "underscore_name": "names"
                         }
                     }
                 ],
@@ -3706,10 +3694,8 @@
                             "cxx_class": "ImplWorker1",
                             "cxx_type": "ImplWorker1",
                             "file_scope": "internal_ImplWorker1",
-                            "lower_name": "implworker1",
                             "template_suffix": "_instantiation3",
-                            "underscore_name": "impl_worker1",
-                            "upper_name": "IMPLWORKER1"
+                            "underscore_name": "impl_worker1"
                         }
                     }
                 ],
@@ -3847,9 +3833,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_int",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vvv1",
-                            "underscore_name": "vvv1",
-                            "upper_name": "VVV1"
+                            "underscore_name": "vvv1"
                         }
                     },
                     {
@@ -3949,9 +3933,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_double",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_double",
-                            "underscore_name": "vector_double",
-                            "upper_name": "VECTOR_DOUBLE"
+                            "underscore_name": "vector_double"
                         }
                     },
                     {
@@ -4054,10 +4036,8 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation5",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_instantiation5",
                             "template_suffix": "_instantiation5",
-                            "underscore_name": "vector_instantiation5",
-                            "upper_name": "VECTOR_INSTANTIATION5"
+                            "underscore_name": "vector_instantiation5"
                         }
                     },
                     {
@@ -4157,9 +4137,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation3",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "vector_instantiation3",
-                            "underscore_name": "vector_instantiation3",
-                            "upper_name": "VECTOR_INSTANTIATION3"
+                            "underscore_name": "vector_instantiation3"
                         }
                     }
                 ],
@@ -4279,9 +4257,7 @@
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
                             "file_scope": "CAPI_Class1",
                             "hnamefunc0": "capsule_data_helper",
-                            "lower_name": "class1",
-                            "underscore_name": "class1",
-                            "upper_name": "CLASS1"
+                            "underscore_name": "class1"
                         }
                     }
                 ],

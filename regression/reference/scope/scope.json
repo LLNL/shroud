@@ -108,9 +108,7 @@
                     "cxx_class": "DataPointer",
                     "cxx_type": "DataPointer",
                     "file_scope": "ns3_DataPointer",
-                    "lower_name": "datapointer",
-                    "underscore_name": "data_pointer",
-                    "upper_name": "DATAPOINTER"
+                    "underscore_name": "data_pointer"
                 }
             },
             {
@@ -205,9 +203,7 @@
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class1",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class1",
-                    "underscore_name": "class1",
-                    "upper_name": "CLASS1"
+                    "underscore_name": "class1"
                 }
             },
             {
@@ -302,9 +298,7 @@
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class2",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "class2",
-                    "underscore_name": "class2",
-                    "upper_name": "CLASS2"
+                    "underscore_name": "class2"
                 }
             }
         ],
@@ -1055,9 +1049,7 @@
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
                             "file_scope": "ns1_DataPointer",
-                            "lower_name": "datapointer",
-                            "underscore_name": "data_pointer",
-                            "upper_name": "DATAPOINTER"
+                            "underscore_name": "data_pointer"
                         }
                     }
                 ],
@@ -1697,9 +1689,7 @@
                             "cxx_class": "DataPointer",
                             "cxx_type": "DataPointer",
                             "file_scope": "ns2_DataPointer",
-                            "lower_name": "datapointer",
-                            "underscore_name": "data_pointer",
-                            "upper_name": "DATAPOINTER"
+                            "underscore_name": "data_pointer"
                         }
                     }
                 ],

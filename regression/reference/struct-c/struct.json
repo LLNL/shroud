@@ -97,9 +97,7 @@
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1",
                     "file_scope": "Cstruct1",
-                    "lower_name": "cstruct1",
-                    "underscore_name": "cstruct1",
-                    "upper_name": "CSTRUCT1"
+                    "underscore_name": "cstruct1"
                 }
             },
             {
@@ -197,9 +195,7 @@
                     "cxx_class": "Cstruct_ptr",
                     "cxx_type": "Cstruct_ptr",
                     "file_scope": "Cstruct_ptr",
-                    "lower_name": "cstruct_ptr",
-                    "underscore_name": "cstruct_ptr",
-                    "upper_name": "CSTRUCT_PTR"
+                    "underscore_name": "cstruct_ptr"
                 }
             },
             {
@@ -402,9 +398,7 @@
                     "cxx_class": "Cstruct_list",
                     "cxx_type": "Cstruct_list",
                     "file_scope": "Cstruct_list",
-                    "lower_name": "cstruct_list",
-                    "underscore_name": "cstruct_list",
-                    "upper_name": "CSTRUCT_LIST"
+                    "underscore_name": "cstruct_list"
                 }
             },
             {
@@ -551,9 +545,7 @@
                     "cxx_class": "Cstruct_numpy",
                     "cxx_type": "Cstruct_numpy",
                     "file_scope": "Cstruct_numpy",
-                    "lower_name": "cstruct_numpy",
-                    "underscore_name": "cstruct_numpy",
-                    "upper_name": "CSTRUCT_NUMPY"
+                    "underscore_name": "cstruct_numpy"
                 }
             },
             {
@@ -652,9 +644,7 @@
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
                     "file_scope": "Arrays1",
-                    "lower_name": "arrays1",
-                    "underscore_name": "arrays1",
-                    "upper_name": "ARRAYS1"
+                    "underscore_name": "arrays1"
                 }
             },
             {
@@ -1177,9 +1167,7 @@
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_class",
-                    "underscore_name": "cstruct_as_class",
-                    "upper_name": "CSTRUCT_AS_CLASS"
+                    "underscore_name": "cstruct_as_class"
                 }
             },
             {
@@ -1944,9 +1932,7 @@
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass",
                     "hnamefunc0": "capsule_data_helper",
-                    "lower_name": "cstruct_as_subclass",
-                    "underscore_name": "cstruct_as_subclass",
-                    "upper_name": "CSTRUCT_AS_SUBCLASS"
+                    "underscore_name": "cstruct_as_subclass"
                 }
             }
         ],

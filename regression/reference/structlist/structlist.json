@@ -281,9 +281,7 @@
                     "cxx_class": "Arrays1",
                     "cxx_type": "Arrays1",
                     "file_scope": "Arrays1",
-                    "lower_name": "arrays1",
-                    "underscore_name": "arrays1",
-                    "upper_name": "ARRAYS1"
+                    "underscore_name": "arrays1"
                 }
             }
         ],
