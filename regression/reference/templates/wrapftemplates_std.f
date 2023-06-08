@@ -28,10 +28,14 @@ module templates_std_mod
     end type TEM_SHROUD_capsule_data
 
     ! typedef std::vector<int>::size_type
+    ! splicer begin namespace.std.class.vector_int.typedef.size_type
     integer, parameter :: vector_int_size_type = C_SIZE_T
+    ! splicer end namespace.std.class.vector_int.typedef.size_type
 
     ! typedef std::vector<double>::size_type
+    ! splicer begin namespace.std.class.vector_double.typedef.size_type
     integer, parameter :: vector_double_size_type = C_SIZE_T
+    ! splicer end namespace.std.class.vector_double.typedef.size_type
 
     type vector_int
         type(TEM_SHROUD_capsule_data) :: cxxmem

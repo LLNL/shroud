@@ -427,6 +427,14 @@ class Wrapf(util.WrapperMixin):
         fmtdict = node.fmtdict
         self.log.write("typedef {0.name}\n".format(node))
 
+        if "f" in node.splicer:
+            F_code = None
+            F_force = node.splicer["f"]
+        else:
+            F_code = ["integer, parameter :: {} = {}".format(
+                node.fmtdict.F_name_typedef, node.f_kind)]
+            F_force = None
+            
         # Any USE statements for typedef value (ex. C_INT)
         self.update_f_module(
             fileinfo.module_use, {},
@@ -437,11 +445,10 @@ class Wrapf(util.WrapperMixin):
         if options.literalinclude:
             output.append("! start typedef " + node.name)
         append_format(output, "! typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
-        output.append("integer, parameter :: {} = {}".format(
-            node.fmtdict.F_name_typedef, node.f_kind))
+        self._create_splicer(node.name, output, F_code, F_force)
         if options.literalinclude:
             output.append("! end typedef " + node.name)
-        
+
     def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
 

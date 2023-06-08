@@ -19,21 +19,24 @@ module typedefs_mod
     implicit none
 
     ! splicer begin module_top
-#if defined(USE_64BIT_INDEXTYPE)
-    integer, parameter :: INDEXTYPE = C_INT64_T
-#else
-    integer, parameter :: INDEXTYPE = C_INT32_T
-#endif
     ! splicer end module_top
 
     ! start typedef TypeID
     ! typedef TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
     ! end typedef TypeID
 
     ! start typedef IndexType
     ! typedef IndexType
-    integer, parameter :: index_type = C_INT32_T
+    ! splicer begin typedef.IndexType
+#if defined(USE_64BIT_INDEXTYPE)
+    integer, parameter :: INDEX_TYPE = C_INT64_T
+#else
+    integer, parameter :: INDEX_TYPE = C_INT32_T
+#endif
+    ! splicer end typedef.IndexType
     ! end typedef IndexType
 
 

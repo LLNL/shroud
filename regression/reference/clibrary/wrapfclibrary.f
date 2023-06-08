@@ -23,10 +23,14 @@ module clibrary_mod
     ! splicer end module_top
 
     ! typedef TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
 
     ! typedef EnumTypeID
+    ! splicer begin typedef.EnumTypeID
     integer, parameter :: enum_type_id = C_INT
+    ! splicer end typedef.EnumTypeID
 
 
     type, bind(C) :: array_info

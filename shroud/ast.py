@@ -346,7 +346,8 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, self.symtab)
 
         name = ast.declarator.user_name  # Local name.
-        node = TypedefNode(name, self, ast, fields)
+        splicer = kwargs.get("splicer", {})
+        node = TypedefNode(name, self, ast, fields, splicer)
         self.typedefs.append(node)
 
         # Add typedefs names to structs/enums.
@@ -1782,9 +1783,18 @@ class TypedefNode(AstNode):
     Includes builtin typedefs and from declarations.
 
     type name must be in a typemap.
+
+    - decl: typedef int IndexType
+    - fields:
+        
+    - splicer:
+      c: []
+      f: []
+      py: [] ???
     """
 
     def __init__(self, name, parent, ast, fields,
+                 splicer={},
                  format={}, options=None,
                  **kwargs):
         """
@@ -1799,6 +1809,7 @@ class TypedefNode(AstNode):
         self.parent = parent
         self.cxx_header = []
         self.linenumber = kwargs.get("__line__", "?")
+        self.splicer = splicer
 
         self.options = util.Scope(parent=parent.options)
         if options:

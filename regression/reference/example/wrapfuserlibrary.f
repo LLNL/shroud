@@ -23,10 +23,14 @@ module userlibrary_mod
     ! splicer end module_top
 
     ! typedef SidreLength
+    ! splicer begin typedef.SidreLength
     integer, parameter :: sidre_length = C_LONG
+    ! splicer end typedef.SidreLength
 
     ! typedef TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
 
     interface
 

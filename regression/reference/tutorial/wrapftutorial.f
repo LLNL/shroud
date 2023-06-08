@@ -49,10 +49,14 @@ module tutorial_mod
     ! end array_context
 
     ! typedef tutorial::TypeID
+    ! splicer begin typedef.TypeID
     integer, parameter :: type_id = C_INT
+    ! splicer end typedef.TypeID
 
     ! typedef tutorial::EnumTypeID
+    ! splicer begin typedef.EnumTypeID
     integer, parameter :: enum_type_id = C_INT
+    ! splicer end typedef.EnumTypeID
 
     !  enum tutorial::Color
     integer(C_INT), parameter :: red = 0

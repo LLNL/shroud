@@ -39,6 +39,19 @@ declarations:
     c_to_cxx : static_cast<IndexType>({c_var})
     cxx_to_c : static_cast<TYP_IndexType>({cxx_var})
 #    c_type   : SIDRE_TypeID
+  splicer:
+    c: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      typedef int64_t TYP_IndexType;
+      #else
+      typedef int32_t TYP_IndexType;
+      #endif
+    f: |
+      #if defined(USE_64BIT_INDEXTYPE)
+      integer, parameter :: INDEX_TYPE = C_INT64_T
+      #else
+      integer, parameter :: INDEX_TYPE = C_INT32_T
+      #endif
 
 - decl: int returnBytesForIndexType(IndexType arg);
   options:
@@ -46,14 +59,6 @@ declarations:
 
 
 ######################################################################
-splicer_code:
-  f:
-    module_top: |
-      #if defined(USE_64BIT_INDEXTYPE)
-      integer, parameter :: INDEXTYPE = C_INT64_T
-      #else
-      integer, parameter :: INDEXTYPE = C_INT32_T
-      #endif
 
 # Add code which will be integrated with other include and use statements
 # added by typemaps and statements.

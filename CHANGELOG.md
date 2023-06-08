@@ -58,6 +58,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Getter and setters will also be generated for struct fields which are pointers
   to native types. Option *F_struct_getter_setter* can be used to control their
   creation.
+- Added ability to add *splicer* to ``typedef`` declarations.
+  For example, to use the C preprocessor to set the type of the typedef.
+  See typedefs.yaml for an example.
 
 ### Fixed
 - yaml extensions supported include .yml in addition to the previous .yaml
