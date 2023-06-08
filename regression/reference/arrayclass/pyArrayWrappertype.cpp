@@ -81,7 +81,7 @@ PY_setSize(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ArrayWrapper.method.set_size
+// splicer begin class.ArrayWrapper.method.setSize
     int size;
     const char *SHT_kwlist[] = {
         "size",
@@ -93,7 +93,7 @@ PY_setSize(
 
     self->obj->setSize(size);
     Py_RETURN_NONE;
-// splicer end class.ArrayWrapper.method.set_size
+// splicer end class.ArrayWrapper.method.setSize
 }
 
 // ----------------------------------------
@@ -111,7 +111,7 @@ PY_getSize(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.get_size
+// splicer begin class.ArrayWrapper.method.getSize
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = self->obj->getSize();
@@ -120,7 +120,7 @@ PY_getSize(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ArrayWrapper.method.get_size
+// splicer end class.ArrayWrapper.method.getSize
 }
 
 // ----------------------------------------
@@ -141,7 +141,7 @@ PY_fillSize(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fill_size
+// splicer begin class.ArrayWrapper.method.fillSize
     int size;
     PyObject * SHPy_size = nullptr;
 
@@ -151,7 +151,7 @@ PY_fillSize(
     SHPy_size = PyInt_FromLong(size);
 
     return (PyObject *) SHPy_size;
-// splicer end class.ArrayWrapper.method.fill_size
+// splicer end class.ArrayWrapper.method.fillSize
 }
 
 // ----------------------------------------
@@ -188,7 +188,7 @@ PY_getArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.get_array
+// splicer begin class.ArrayWrapper.method.getArray
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
@@ -205,7 +205,7 @@ PY_getArray(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end class.ArrayWrapper.method.get_array
+// splicer end class.ArrayWrapper.method.getArray
 }
 
 // ----------------------------------------
@@ -222,7 +222,7 @@ PY_getArrayConst(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.get_array_const
+// splicer begin class.ArrayWrapper.method.getArrayConst
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
@@ -239,7 +239,7 @@ PY_getArrayConst(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end class.ArrayWrapper.method.get_array_const
+// splicer end class.ArrayWrapper.method.getArrayConst
 }
 
 // ----------------------------------------
@@ -256,7 +256,7 @@ PY_getArrayC(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.get_array_c
+// splicer begin class.ArrayWrapper.method.getArrayC
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
@@ -273,7 +273,7 @@ PY_getArrayC(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end class.ArrayWrapper.method.get_array_c
+// splicer end class.ArrayWrapper.method.getArrayC
 }
 
 // ----------------------------------------
@@ -290,7 +290,7 @@ PY_getArrayConstC(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.get_array_const_c
+// splicer begin class.ArrayWrapper.method.getArrayConstC
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
@@ -307,7 +307,7 @@ PY_getArrayConstC(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end class.ArrayWrapper.method.get_array_const_c
+// splicer end class.ArrayWrapper.method.getArrayConstC
 }
 
 // ----------------------------------------
@@ -332,7 +332,7 @@ PY_fetchArrayPtr(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array_ptr
+// splicer begin class.ArrayWrapper.method.fetchArrayPtr
     double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
@@ -351,7 +351,7 @@ PY_fetchArrayPtr(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array_ptr
+// splicer end class.ArrayWrapper.method.fetchArrayPtr
 }
 
 // ----------------------------------------
@@ -376,7 +376,7 @@ PY_fetchArrayRef(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array_ref
+// splicer begin class.ArrayWrapper.method.fetchArrayRef
     double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
@@ -395,7 +395,7 @@ PY_fetchArrayRef(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array_ref
+// splicer end class.ArrayWrapper.method.fetchArrayRef
 }
 
 // ----------------------------------------
@@ -420,7 +420,7 @@ PY_fetchArrayPtrConst(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
+// splicer begin class.ArrayWrapper.method.fetchArrayPtrConst
     const double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
@@ -439,7 +439,7 @@ PY_fetchArrayPtrConst(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array_ptr_const
+// splicer end class.ArrayWrapper.method.fetchArrayPtrConst
 }
 
 // ----------------------------------------
@@ -464,7 +464,7 @@ PY_fetchArrayRefConst(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array_ref_const
+// splicer begin class.ArrayWrapper.method.fetchArrayRefConst
     const double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
@@ -483,7 +483,7 @@ PY_fetchArrayRefConst(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array_ref_const
+// splicer end class.ArrayWrapper.method.fetchArrayRefConst
 }
 
 // ----------------------------------------
@@ -504,7 +504,7 @@ PY_fetchVoidPtr(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_void_ptr
+// splicer begin class.ArrayWrapper.method.fetchVoidPtr
     void *array;
     PyObject * SHPy_array = nullptr;
 
@@ -514,7 +514,7 @@ PY_fetchVoidPtr(
     SHPy_array = PyCapsule_New(array, NULL, NULL);
 
     return (PyObject *) SHPy_array;
-// splicer end class.ArrayWrapper.method.fetch_void_ptr
+// splicer end class.ArrayWrapper.method.fetchVoidPtr
 }
 
 // ----------------------------------------
@@ -535,7 +535,7 @@ PY_fetchVoidRef(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_void_ref
+// splicer begin class.ArrayWrapper.method.fetchVoidRef
     void *array;
     PyObject * SHPy_array = nullptr;
 
@@ -545,7 +545,7 @@ PY_fetchVoidRef(
     SHPy_array = PyCapsule_New(array, NULL, NULL);
 
     return (PyObject *) SHPy_array;
-// splicer end class.ArrayWrapper.method.fetch_void_ref
+// splicer end class.ArrayWrapper.method.fetchVoidRef
 }
 
 // ----------------------------------------
@@ -567,7 +567,7 @@ PY_checkPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ArrayWrapper.method.check_ptr
+// splicer begin class.ArrayWrapper.method.checkPtr
     void * array;
     PyObject *SHPy_array;
     const char *SHT_kwlist[] = {
@@ -596,7 +596,7 @@ PY_checkPtr(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end class.ArrayWrapper.method.check_ptr
+// splicer end class.ArrayWrapper.method.checkPtr
 }
 
 // ----------------------------------------
@@ -614,7 +614,7 @@ PY_sumArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.sum_array
+// splicer begin class.ArrayWrapper.method.sumArray
     PyObject * SHTPy_rv = nullptr;
 
     double SHCXX_rv = self->obj->sumArray();
@@ -623,7 +623,7 @@ PY_sumArray(
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ArrayWrapper.method.sum_array
+// splicer end class.ArrayWrapper.method.sumArray
 }
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods

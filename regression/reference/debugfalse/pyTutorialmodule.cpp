@@ -41,10 +41,10 @@ PY_NoReturnNoArguments(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.no_return_no_arguments
+// splicer begin function.NoReturnNoArguments
     tutorial::NoReturnNoArguments();
     Py_RETURN_NONE;
-// splicer end function.no_return_no_arguments
+// splicer end function.NoReturnNoArguments
 }
 
 static char PY_PassByValue__doc__[] =
@@ -57,7 +57,7 @@ PY_PassByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_by_value
+// splicer begin function.PassByValue
     double arg1;
     int arg2;
     const char *SHT_kwlist[] = {
@@ -72,7 +72,7 @@ PY_PassByValue(
     double SHCXX_rv = tutorial::PassByValue(arg1, arg2);
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_by_value
+// splicer end function.PassByValue
 }
 
 static char PY_ConcatenateStrings__doc__[] =
@@ -89,7 +89,7 @@ PY_ConcatenateStrings(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.concatenate_strings
+// splicer begin function.ConcatenateStrings
     char * arg1;
     char * arg2;
     const char *SHT_kwlist[] = {
@@ -109,7 +109,7 @@ PY_ConcatenateStrings(
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
     return (PyObject *) SHTPy_rv;
-// splicer end function.concatenate_strings
+// splicer end function.ConcatenateStrings
 }
 
 static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
@@ -122,7 +122,7 @@ PY_UseDefaultArguments_arg1_arg2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.use_default_arguments
+// splicer begin function.UseDefaultArguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
     bool arg2;
@@ -159,7 +159,7 @@ PY_UseDefaultArguments_arg1_arg2(
     }
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_default_arguments
+// splicer end function.UseDefaultArguments
 }
 
 static PyObject *
@@ -168,7 +168,7 @@ PY_OverloadedFunction_from_name(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.overloaded_function_from_name
+// splicer begin function.OverloadedFunction_from_name
     char * name;
     const char *SHT_kwlist[] = {
         "name",
@@ -180,7 +180,7 @@ PY_OverloadedFunction_from_name(
     const std::string SH_name(name);
     tutorial::OverloadedFunction(SH_name);
     Py_RETURN_NONE;
-// splicer end function.overloaded_function_from_name
+// splicer end function.OverloadedFunction_from_name
 }
 
 static PyObject *
@@ -189,7 +189,7 @@ PY_OverloadedFunction_from_index(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.overloaded_function_from_index
+// splicer begin function.OverloadedFunction_from_index
     int indx;
     const char *SHT_kwlist[] = {
         "indx",
@@ -200,7 +200,7 @@ PY_OverloadedFunction_from_index(
         return nullptr;
     tutorial::OverloadedFunction(indx);
     Py_RETURN_NONE;
-// splicer end function.overloaded_function_from_index
+// splicer end function.OverloadedFunction_from_index
 }
 
 static PyObject *
@@ -209,7 +209,7 @@ PY_TemplateArgument_int(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.template_argument_int
+// splicer begin function.TemplateArgument_int
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -220,7 +220,7 @@ PY_TemplateArgument_int(
         return nullptr;
     tutorial::TemplateArgument<int>(arg);
     Py_RETURN_NONE;
-// splicer end function.template_argument_int
+// splicer end function.TemplateArgument_int
 }
 
 static PyObject *
@@ -229,7 +229,7 @@ PY_TemplateArgument_double(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.template_argument_double
+// splicer begin function.TemplateArgument_double
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -240,7 +240,7 @@ PY_TemplateArgument_double(
         return nullptr;
     tutorial::TemplateArgument<double>(arg);
     Py_RETURN_NONE;
-// splicer end function.template_argument_double
+// splicer end function.TemplateArgument_double
 }
 
 static PyObject *
@@ -249,10 +249,10 @@ PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.fortran_generic_overloaded_0
+// splicer begin function.FortranGenericOverloaded_0
     tutorial::FortranGenericOverloaded();
     Py_RETURN_NONE;
-// splicer end function.fortran_generic_overloaded_0
+// splicer end function.FortranGenericOverloaded_0
 }
 
 static PyObject *
@@ -261,7 +261,7 @@ PY_FortranGenericOverloaded_1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.fortran_generic_overloaded_1
+// splicer begin function.FortranGenericOverloaded_1
     char * name;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -276,7 +276,7 @@ PY_FortranGenericOverloaded_1(
     const std::string SH_name(name);
     tutorial::FortranGenericOverloaded(SH_name, arg2);
     Py_RETURN_NONE;
-// splicer end function.fortran_generic_overloaded_1
+// splicer end function.FortranGenericOverloaded_1
 }
 
 static PyObject *
@@ -285,7 +285,7 @@ PY_UseDefaultOverload_num_offset_stride(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.use_default_overload_num_offset_stride
+// splicer begin function.UseDefaultOverload_num_offset_stride
     Py_ssize_t SH_nargs = 0;
     int num;
     int offset;
@@ -320,7 +320,7 @@ PY_UseDefaultOverload_num_offset_stride(
     }
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_default_overload_num_offset_stride
+// splicer end function.UseDefaultOverload_num_offset_stride
 }
 
 static PyObject *
@@ -329,7 +329,7 @@ PY_UseDefaultOverload_5(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.use_default_overload_5
+// splicer begin function.UseDefaultOverload_5
     Py_ssize_t SH_nargs = 0;
     double type;
     int num;
@@ -367,7 +367,7 @@ PY_UseDefaultOverload_5(
     }
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_default_overload_5
+// splicer end function.UseDefaultOverload_5
 }
 
 static char PY_typefunc__doc__[] =
@@ -465,7 +465,7 @@ PY_getMinMax(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_min_max
+// splicer begin function.getMinMax
     int min;
     int max;
     PyObject *SHTPy_rv = nullptr;  // return value object
@@ -473,7 +473,7 @@ PY_getMinMax(
     tutorial::getMinMax(min, max);
     SHTPy_rv = Py_BuildValue("ii", min, max);
     return SHTPy_rv;
-// splicer end function.get_min_max
+// splicer end function.getMinMax
 }
 
 static char PY_LastFunctionCalled__doc__[] =
@@ -486,14 +486,14 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.last_function_called
+// splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
     return (PyObject *) SHTPy_rv;
-// splicer end function.last_function_called
+// splicer end function.LastFunctionCalled
 }
 
 static char PY_OverloadedFunction__doc__[] =
@@ -506,7 +506,7 @@ PY_OverloadedFunction(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.overloaded_function
+// splicer begin function.OverloadedFunction
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -531,7 +531,7 @@ PY_OverloadedFunction(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.overloaded_function
+// splicer end function.OverloadedFunction
 }
 
 static char PY_TemplateArgument__doc__[] =
@@ -544,7 +544,7 @@ PY_TemplateArgument(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.template_argument
+// splicer begin function.TemplateArgument
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -569,7 +569,7 @@ PY_TemplateArgument(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.template_argument
+// splicer end function.TemplateArgument
 }
 
 static char PY_FortranGenericOverloaded__doc__[] =
@@ -582,7 +582,7 @@ PY_FortranGenericOverloaded(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.fortran_generic_overloaded
+// splicer begin function.FortranGenericOverloaded
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -607,7 +607,7 @@ PY_FortranGenericOverloaded(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.fortran_generic_overloaded
+// splicer end function.FortranGenericOverloaded
 }
 
 static char PY_UseDefaultOverload__doc__[] =
@@ -620,7 +620,7 @@ PY_UseDefaultOverload(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.use_default_overload
+// splicer begin function.UseDefaultOverload
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -645,7 +645,7 @@ PY_UseDefaultOverload(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.use_default_overload
+// splicer end function.UseDefaultOverload
 }
 static PyMethodDef PY_methods[] = {
 {"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,

@@ -57,7 +57,7 @@ PY_Cstruct1_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.outer.class.Cstruct1.method.cstruct1_ctor
+// splicer begin namespace.outer.class.Cstruct1.method.Cstruct1_ctor
     int ifield = 0;
     double dfield = 0;
     const char *SHT_kwlist[] = {
@@ -82,7 +82,7 @@ PY_Cstruct1_tp_init(
     SH_obj->dfield = dfield;
 
     return 0;
-// splicer end namespace.outer.class.Cstruct1.method.cstruct1_ctor
+// splicer end namespace.outer.class.Cstruct1.method.Cstruct1_ctor
 }
 // splicer begin namespace.outer.class.Cstruct1.impl.after_methods
 // splicer end namespace.outer.class.Cstruct1.impl.after_methods

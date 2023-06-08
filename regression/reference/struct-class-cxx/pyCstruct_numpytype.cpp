@@ -72,7 +72,7 @@ PY_Cstruct_numpy_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
+// splicer begin class.Cstruct_numpy.method.Cstruct_numpy_ctor
     int nitems = 0;
     STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, NULL, NULL, 0};
     SHValue_ivalue.name = "ivalue";
@@ -106,7 +106,7 @@ PY_Cstruct_numpy_tp_init(
     self->dvalue_obj = SHValue_dvalue.obj;  // steal reference
 
     return 0;
-// splicer end class.Cstruct_numpy.method.cstruct_numpy_ctor
+// splicer end class.Cstruct_numpy.method.Cstruct_numpy_ctor
 }
 // splicer begin class.Cstruct_numpy.impl.after_methods
 // splicer end class.Cstruct_numpy.impl.after_methods

@@ -79,7 +79,7 @@ PY_Cstruct_list_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Cstruct_list.method.cstruct_list_ctor
+// splicer begin class.Cstruct_list.method.Cstruct_list_ctor
     int nitems = 0;
     STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, NULL, NULL, 0};
     SHValue_ivalue.name = "ivalue";
@@ -119,7 +119,7 @@ PY_Cstruct_list_tp_init(
     self->svalue_obj = SHValue_svalue.obj;  // steal reference
 
     return 0;
-// splicer end class.Cstruct_list.method.cstruct_list_ctor
+// splicer end class.Cstruct_list.method.Cstruct_list_ctor
 }
 // splicer begin class.Cstruct_list.impl.after_methods
 // splicer end class.Cstruct_list.impl.after_methods

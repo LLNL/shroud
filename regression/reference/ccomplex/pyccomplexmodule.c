@@ -49,7 +49,7 @@ PY_acceptDoubleComplexInoutPtr(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_double_complex_inout_ptr
+// splicer begin function.acceptDoubleComplexInoutPtr
     double complex arg1;
     Py_complex SHCPY_arg1;
     char *SHT_kwlist[] = {
@@ -70,7 +70,7 @@ PY_acceptDoubleComplexInoutPtr(
     SHPy_arg1 = PyComplex_FromDoubles(creal(arg1), cimag(arg1));
 
     return (PyObject *) SHPy_arg1;
-// splicer end function.accept_double_complex_inout_ptr
+// splicer end function.acceptDoubleComplexInoutPtr
 }
 
 // ----------------------------------------
@@ -91,7 +91,7 @@ PY_acceptDoubleComplexOutPtr(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.accept_double_complex_out_ptr
+// splicer begin function.acceptDoubleComplexOutPtr
     double complex arg1;
     PyObject * SHPy_arg1 = NULL;
 
@@ -101,7 +101,7 @@ PY_acceptDoubleComplexOutPtr(
     SHPy_arg1 = PyComplex_FromDoubles(creal(arg1), cimag(arg1));
 
     return (PyObject *) SHPy_arg1;
-// splicer end function.accept_double_complex_out_ptr
+// splicer end function.acceptDoubleComplexOutPtr
 }
 
 // ----------------------------------------
@@ -129,7 +129,7 @@ PY_acceptDoubleComplexInoutPtrFlag(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_double_complex_inout_ptr_flag
+// splicer begin function.acceptDoubleComplexInoutPtrFlag
     double complex arg1;
     Py_complex SHCPY_arg1;
     int flag;
@@ -153,7 +153,7 @@ PY_acceptDoubleComplexInoutPtrFlag(
     SHTPy_rv = Py_BuildValue("Di", &SHCPY_arg1, flag);
 
     return SHTPy_rv;
-// splicer end function.accept_double_complex_inout_ptr_flag
+// splicer end function.acceptDoubleComplexInoutPtrFlag
 }
 
 // ----------------------------------------
@@ -182,7 +182,7 @@ PY_acceptDoubleComplexOutPtrFlag(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.accept_double_complex_out_ptr_flag
+// splicer begin function.acceptDoubleComplexOutPtrFlag
     double complex arg1;
     int flag;
     Py_complex SHCPY_arg1;
@@ -196,7 +196,7 @@ PY_acceptDoubleComplexOutPtrFlag(
     SHTPy_rv = Py_BuildValue("Di", &SHCPY_arg1, flag);
 
     return SHTPy_rv;
-// splicer end function.accept_double_complex_out_ptr_flag
+// splicer end function.acceptDoubleComplexOutPtrFlag
 }
 static PyMethodDef PY_methods[] = {
 {"acceptDoubleComplexInoutPtr",

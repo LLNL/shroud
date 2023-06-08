@@ -807,7 +807,7 @@ PY_Sum(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.sum
+// splicer begin function.Sum
     int len;
     int * values = NULL;
     PyObject *SHTPy_values = NULL;
@@ -847,7 +847,7 @@ PY_Sum(
 fail:
     Py_XDECREF(SHValue_values.dataobj);
     return NULL;
-// splicer end function.sum
+// splicer end function.Sum
 }
 
 // ----------------------------------------
@@ -871,7 +871,7 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.fill_int_array
+// splicer begin function.fillIntArray
     int * out = NULL;
     PyObject *SHPy_out = NULL;
 
@@ -898,7 +898,7 @@ fail:
     Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
-// splicer end function.fill_int_array
+// splicer end function.fillIntArray
 }
 
 // ----------------------------------------
@@ -925,7 +925,7 @@ PY_incrementIntArray(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.increment_int_array
+// splicer begin function.incrementIntArray
     int * array = NULL;
     PyObject *SHPy_array;
     PyObject *SHTPy_array = NULL;
@@ -965,7 +965,7 @@ PY_incrementIntArray(
 fail:
     Py_XDECREF(SHValue_array.dataobj);
     return NULL;
-// splicer end function.increment_int_array
+// splicer end function.incrementIntArray
 }
 
 // ----------------------------------------
@@ -1117,7 +1117,7 @@ PY_acceptCharArrayIn(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_char_array_in
+// splicer begin function.acceptCharArrayIn
     char ** names = NULL;
     PyObject * SHTPy_names;
     POI_SHROUD_converter_value SHValue_names = {NULL, NULL, NULL, NULL, 0};
@@ -1150,7 +1150,7 @@ PY_acceptCharArrayIn(
 fail:
     Py_XDECREF(SHValue_names.dataobj);
     return NULL;
-// splicer end function.accept_char_array_in
+// splicer end function.acceptCharArrayIn
 }
 
 // ----------------------------------------
@@ -1172,7 +1172,7 @@ PY_setGlobalInt(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.set_global_int
+// splicer begin function.setGlobalInt
     int value;
     char *SHT_kwlist[] = {
         "value",
@@ -1184,7 +1184,7 @@ PY_setGlobalInt(
 
     setGlobalInt(value);
     Py_RETURN_NONE;
-// splicer end function.set_global_int
+// splicer end function.setGlobalInt
 }
 
 // ----------------------------------------
@@ -1205,7 +1205,7 @@ PY_sumFixedArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.sum_fixed_array
+// splicer begin function.sumFixedArray
     PyObject * SHTPy_rv = NULL;
 
     int SHCXX_rv = sumFixedArray();
@@ -1214,7 +1214,7 @@ PY_sumFixedArray(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.sum_fixed_array
+// splicer end function.sumFixedArray
 }
 
 // ----------------------------------------
@@ -1238,7 +1238,7 @@ PY_getPtrToFixedArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_ptr_to_fixed_array
+// splicer begin function.getPtrToFixedArray
     int *count;
     PyObject *SHPy_count = NULL;
 
@@ -1253,7 +1253,7 @@ PY_getPtrToFixedArray(
 fail:
     Py_XDECREF(SHPy_count);
     return NULL;
-// splicer end function.get_ptr_to_fixed_array
+// splicer end function.getPtrToFixedArray
 }
 
 // ----------------------------------------
@@ -1282,7 +1282,7 @@ PY_getPtrToDynamicArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_ptr_to_dynamic_array
+// splicer begin function.getPtrToDynamicArray
     int *count;
     PyObject *SHPy_count = NULL;
     int ncount;
@@ -1298,7 +1298,7 @@ PY_getPtrToDynamicArray(
 fail:
     Py_XDECREF(SHPy_count);
     return NULL;
-// splicer end function.get_ptr_to_dynamic_array
+// splicer end function.getPtrToDynamicArray
 }
 
 // ----------------------------------------
@@ -1324,7 +1324,7 @@ PY_getPtrToFuncArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_ptr_to_func_array
+// splicer begin function.getPtrToFuncArray
     int *count;
     PyObject *SHPy_count = NULL;
 
@@ -1339,7 +1339,7 @@ PY_getPtrToFuncArray(
 fail:
     Py_XDECREF(SHPy_count);
     return NULL;
-// splicer end function.get_ptr_to_func_array
+// splicer end function.getPtrToFuncArray
 }
 
 // ----------------------------------------
@@ -1360,7 +1360,7 @@ PY_getPtrToFixedConstArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_ptr_to_fixed_const_array
+// splicer begin function.getPtrToFixedConstArray
     const int *count;
     PyObject *SHPy_count = NULL;
 
@@ -1375,7 +1375,7 @@ PY_getPtrToFixedConstArray(
 fail:
     Py_XDECREF(SHPy_count);
     return NULL;
-// splicer end function.get_ptr_to_fixed_const_array
+// splicer end function.getPtrToFixedConstArray
 }
 
 // ----------------------------------------
@@ -1400,7 +1400,7 @@ PY_getPtrToDynamicConstArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_ptr_to_dynamic_const_array
+// splicer begin function.getPtrToDynamicConstArray
     const int *count;
     PyObject *SHPy_count = NULL;
     int ncount;
@@ -1416,7 +1416,7 @@ PY_getPtrToDynamicConstArray(
 fail:
     Py_XDECREF(SHPy_count);
     return NULL;
-// splicer end function.get_ptr_to_dynamic_const_array
+// splicer end function.getPtrToDynamicConstArray
 }
 
 // ----------------------------------------
@@ -1440,7 +1440,7 @@ PY_getRawPtrToScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_raw_ptr_to_scalar
+// splicer begin function.getRawPtrToScalar
     int *nitems;
     PyObject *SHPy_nitems = NULL;
 
@@ -1450,7 +1450,7 @@ PY_getRawPtrToScalar(
     SHPy_nitems = PyCapsule_New(nitems, NULL, NULL);
 
     return (PyObject *) SHPy_nitems;
-// splicer end function.get_raw_ptr_to_scalar
+// splicer end function.getRawPtrToScalar
 }
 
 // ----------------------------------------
@@ -1476,7 +1476,7 @@ PY_getRawPtrToFixedArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.get_raw_ptr_to_fixed_array
+// splicer begin function.getRawPtrToFixedArray
     int *count;
     PyObject *SHPy_count = NULL;
 
@@ -1486,7 +1486,7 @@ PY_getRawPtrToFixedArray(
     SHPy_count = PyCapsule_New(count, NULL, NULL);
 
     return (PyObject *) SHPy_count;
-// splicer end function.get_raw_ptr_to_fixed_array
+// splicer end function.getRawPtrToFixedArray
 }
 
 // ----------------------------------------
@@ -1508,7 +1508,7 @@ PY_returnAddress1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_address1
+// splicer begin function.returnAddress1
     int flag;
     char *SHT_kwlist[] = {
         "flag",
@@ -1525,7 +1525,7 @@ PY_returnAddress1(
     SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.return_address1
+// splicer end function.returnAddress1
 }
 
 // ----------------------------------------
@@ -1547,7 +1547,7 @@ PY_returnAddress2(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.return_address2
+// splicer begin function.returnAddress2
     int flag;
     char *SHT_kwlist[] = {
         "flag",
@@ -1564,7 +1564,7 @@ PY_returnAddress2(
     SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.return_address2
+// splicer end function.returnAddress2
 }
 
 // ----------------------------------------
@@ -1585,7 +1585,7 @@ PY_fetchVoidPtr(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.fetch_void_ptr
+// splicer begin function.fetchVoidPtr
     void *addr;
     PyObject * SHPy_addr = NULL;
 
@@ -1595,7 +1595,7 @@ PY_fetchVoidPtr(
     SHPy_addr = PyCapsule_New(addr, NULL, NULL);
 
     return (PyObject *) SHPy_addr;
-// splicer end function.fetch_void_ptr
+// splicer end function.fetchVoidPtr
 }
 
 // ----------------------------------------
@@ -1612,7 +1612,7 @@ PY_returnIntPtrToScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_to_scalar
+// splicer begin function.returnIntPtrToScalar
     PyObject *SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntPtrToScalar();
@@ -1626,7 +1626,7 @@ PY_returnIntPtrToScalar(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_int_ptr_to_scalar
+// splicer end function.returnIntPtrToScalar
 }
 
 // ----------------------------------------
@@ -1643,7 +1643,7 @@ PY_returnIntPtrToFixedArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_to_fixed_array
+// splicer begin function.returnIntPtrToFixedArray
     PyObject *SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntPtrToFixedArray();
@@ -1657,7 +1657,7 @@ PY_returnIntPtrToFixedArray(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_int_ptr_to_fixed_array
+// splicer end function.returnIntPtrToFixedArray
 }
 
 // ----------------------------------------
@@ -1674,7 +1674,7 @@ PY_returnIntPtrToConstScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_to_const_scalar
+// splicer begin function.returnIntPtrToConstScalar
     PyObject *SHTPy_rv = NULL;
 
     const int * SHCXX_rv = returnIntPtrToConstScalar();
@@ -1688,7 +1688,7 @@ PY_returnIntPtrToConstScalar(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_int_ptr_to_const_scalar
+// splicer end function.returnIntPtrToConstScalar
 }
 
 // ----------------------------------------
@@ -1705,7 +1705,7 @@ PY_returnIntPtrToFixedConstArray(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_ptr_to_fixed_const_array
+// splicer begin function.returnIntPtrToFixedConstArray
     PyObject *SHTPy_rv = NULL;
 
     const int * SHCXX_rv = returnIntPtrToFixedConstArray();
@@ -1719,7 +1719,7 @@ PY_returnIntPtrToFixedConstArray(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.return_int_ptr_to_fixed_const_array
+// splicer end function.returnIntPtrToFixedConstArray
 }
 
 // ----------------------------------------
@@ -1737,7 +1737,7 @@ PY_returnIntScalar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_int_scalar
+// splicer begin function.returnIntScalar
     PyObject * SHTPy_rv = NULL;
 
     int * SHCXX_rv = returnIntScalar();
@@ -1746,7 +1746,7 @@ PY_returnIntScalar(
     SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_scalar
+// splicer end function.returnIntScalar
 }
 static PyMethodDef PY_methods[] = {
 {"intargs_in", (PyCFunction)PY_intargs_in, METH_VARARGS|METH_KEYWORDS,

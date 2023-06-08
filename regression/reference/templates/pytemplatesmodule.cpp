@@ -60,7 +60,7 @@ PY_FunctionTU_0(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu_0
+// splicer begin function.FunctionTU_0
     int arg1;
     long arg2;
     const char *SHT_kwlist[] = {
@@ -74,7 +74,7 @@ PY_FunctionTU_0(
 
     FunctionTU<int, long>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.function_tu_0
+// splicer end function.FunctionTU_0
 }
 
 // ----------------------------------------
@@ -101,7 +101,7 @@ PY_FunctionTU_1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu_1
+// splicer begin function.FunctionTU_1
     float arg1;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -115,7 +115,7 @@ PY_FunctionTU_1(
 
     FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.function_tu_1
+// splicer end function.FunctionTU_1
 }
 
 // ----------------------------------------
@@ -137,7 +137,7 @@ PY_UseImplWorker_internal_ImplWorker1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.use_impl_worker_internal_ImplWorker1
+// splicer begin function.UseImplWorker_internal_ImplWorker1
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker1>();
@@ -146,7 +146,7 @@ PY_UseImplWorker_internal_ImplWorker1(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_impl_worker_internal_ImplWorker1
+// splicer end function.UseImplWorker_internal_ImplWorker1
 }
 
 // ----------------------------------------
@@ -168,7 +168,7 @@ PY_UseImplWorker_internal_ImplWorker2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.use_impl_worker_internal_ImplWorker2
+// splicer begin function.UseImplWorker_internal_ImplWorker2
     PyObject * SHTPy_rv = nullptr;
 
     int SHCXX_rv = UseImplWorker<internal::ImplWorker2>();
@@ -177,7 +177,7 @@ PY_UseImplWorker_internal_ImplWorker2(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.use_impl_worker_internal_ImplWorker2
+// splicer end function.UseImplWorker_internal_ImplWorker2
 }
 
 static char PY_FunctionTU__doc__[] =
@@ -190,7 +190,7 @@ PY_FunctionTU(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function_tu
+// splicer begin function.FunctionTU
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -215,7 +215,7 @@ PY_FunctionTU(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return nullptr;
-// splicer end function.function_tu
+// splicer end function.FunctionTU
 }
 static PyMethodDef PY_methods[] = {
 {"UseImplWorker_internal_ImplWorker1",

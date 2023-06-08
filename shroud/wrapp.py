@@ -1898,7 +1898,7 @@ return 1;""",
         # XXX - make splicer name customizable?
         #        self._create_splicer(fmt.function_name, body, PY_impl)
         self._create_splicer(
-            fmt.underscore_name +
+            fmt.function_name +
             fmt.function_suffix +
             fmt.template_suffix,
             body,

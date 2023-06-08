@@ -55,7 +55,7 @@ PY_getName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.Class2.method.get_name
+// splicer begin class.Class2.method.getName
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = self->obj->getName();
@@ -65,7 +65,7 @@ PY_getName(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.Class2.method.get_name
+// splicer end class.Class2.method.getName
 }
 // splicer begin class.Class2.impl.after_methods
 // splicer end class.Class2.impl.after_methods

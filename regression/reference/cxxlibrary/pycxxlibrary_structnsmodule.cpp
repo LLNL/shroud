@@ -57,7 +57,7 @@ PY_passStructByReference(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.structns.function.pass_struct_by_reference
+// splicer begin namespace.structns.function.passStructByReference
     structns::Cstruct1 *arg;
     PyObject * SHTPy_arg = nullptr;
     PyArrayObject * SHPy_arg = nullptr;
@@ -96,7 +96,7 @@ PY_passStructByReference(
 fail:
     Py_XDECREF(SHPy_arg);
     return nullptr;
-// splicer end namespace.structns.function.pass_struct_by_reference
+// splicer end namespace.structns.function.passStructByReference
 }
 
 // ----------------------------------------
@@ -121,7 +121,7 @@ PY_passStructByReferenceIn(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.structns.function.pass_struct_by_reference_in
+// splicer begin namespace.structns.function.passStructByReferenceIn
     structns::Cstruct1 *arg;
     PyObject * SHTPy_arg = nullptr;
     PyArrayObject * SHPy_arg = nullptr;
@@ -163,7 +163,7 @@ PY_passStructByReferenceIn(
 fail:
     Py_XDECREF(SHPy_arg);
     return nullptr;
-// splicer end namespace.structns.function.pass_struct_by_reference_in
+// splicer end namespace.structns.function.passStructByReferenceIn
 }
 
 // ----------------------------------------
@@ -184,7 +184,7 @@ PY_passStructByReferenceInout(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin namespace.structns.function.pass_struct_by_reference_inout
+// splicer begin namespace.structns.function.passStructByReferenceInout
     structns::Cstruct1 *arg;
     PyObject * SHTPy_arg = nullptr;
     PyArrayObject * SHPy_arg = nullptr;
@@ -217,7 +217,7 @@ PY_passStructByReferenceInout(
 fail:
     Py_XDECREF(SHPy_arg);
     return nullptr;
-// splicer end namespace.structns.function.pass_struct_by_reference_inout
+// splicer end namespace.structns.function.passStructByReferenceInout
 }
 
 // ----------------------------------------
@@ -238,7 +238,7 @@ PY_passStructByReferenceOut(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin namespace.structns.function.pass_struct_by_reference_out
+// splicer begin namespace.structns.function.passStructByReferenceOut
     structns::Cstruct1 *arg;
     PyArrayObject * SHPy_arg = nullptr;
 
@@ -262,7 +262,7 @@ PY_passStructByReferenceOut(
 fail:
     Py_XDECREF(SHPy_arg);
     return nullptr;
-// splicer end namespace.structns.function.pass_struct_by_reference_out
+// splicer end namespace.structns.function.passStructByReferenceOut
 }
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,

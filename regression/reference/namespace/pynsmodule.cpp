@@ -47,7 +47,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.last_function_called
+// splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
     const std::string & SHCXX_rv = LastFunctionCalled();
@@ -57,7 +57,7 @@ PY_LastFunctionCalled(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.last_function_called
+// splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
@@ -74,10 +74,10 @@ PY_One(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.one
+// splicer begin function.One
     One();
     Py_RETURN_NONE;
-// splicer end function.one
+// splicer end function.One
 }
 static PyMethodDef PY_methods[] = {
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,

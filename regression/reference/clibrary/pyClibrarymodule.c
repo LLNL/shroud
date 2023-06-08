@@ -45,10 +45,10 @@ PY_NoReturnNoArguments(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.no_return_no_arguments
+// splicer begin function.NoReturnNoArguments
     NoReturnNoArguments();
     Py_RETURN_NONE;
-// splicer end function.no_return_no_arguments
+// splicer end function.NoReturnNoArguments
 }
 
 // ----------------------------------------
@@ -76,7 +76,7 @@ PY_PassByValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_by_value
+// splicer begin function.PassByValue
     double arg1;
     int arg2;
     char *SHT_kwlist[] = {
@@ -95,7 +95,7 @@ PY_PassByValue(
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_by_value
+// splicer end function.PassByValue
 }
 
 // ----------------------------------------
@@ -120,7 +120,7 @@ PY_PassByReference(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_by_reference
+// splicer begin function.PassByReference
     double arg1;
     int arg2;
     char *SHT_kwlist[] = {
@@ -138,7 +138,7 @@ PY_PassByReference(
     SHPy_arg2 = PyInt_FromLong(arg2);
 
     return (PyObject *) SHPy_arg2;
-// splicer end function.pass_by_reference
+// splicer end function.PassByReference
 }
 
 // ----------------------------------------
@@ -165,7 +165,7 @@ PY_PassByValueMacro(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_by_value_macro
+// splicer begin function.PassByValueMacro
     int arg2;
     char *SHT_kwlist[] = {
         "arg2",
@@ -182,7 +182,7 @@ PY_PassByValueMacro(
     SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_by_value_macro
+// splicer end function.PassByValueMacro
 }
 
 // ----------------------------------------
@@ -216,7 +216,7 @@ PY_checkBool(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.check_bool
+// splicer begin function.checkBool
     bool arg1;
     PyObject * SHPy_arg1;
     bool arg2;
@@ -252,7 +252,7 @@ fail:
     Py_XDECREF(SHPy_arg2);
     Py_XDECREF(SHPy_arg3);
     return NULL;
-// splicer end function.check_bool
+// splicer end function.checkBool
 }
 
 // ----------------------------------------
@@ -277,7 +277,7 @@ PY_Function4a(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function4a
+// splicer begin function.Function4a
     char * arg1;
     char * arg2;
     char *SHT_kwlist[] = {
@@ -296,7 +296,7 @@ PY_Function4a(
     SHTPy_rv = PyString_FromString(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function4a
+// splicer end function.Function4a
 }
 
 // ----------------------------------------
@@ -317,7 +317,7 @@ PY_acceptName(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_name
+// splicer begin function.acceptName
     char * name;
     char *SHT_kwlist[] = {
         "name",
@@ -329,7 +329,7 @@ PY_acceptName(
 
     acceptName(name);
     Py_RETURN_NONE;
-// splicer end function.accept_name
+// splicer end function.acceptName
 }
 
 // ----------------------------------------
@@ -356,7 +356,7 @@ PY_passCharPtrInOut(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_char_ptr_in_out
+// splicer begin function.passCharPtrInOut
     char * s;
     char *SHT_kwlist[] = {
         "s",
@@ -373,7 +373,7 @@ PY_passCharPtrInOut(
     SHPy_s = PyString_FromString(s);
 
     return (PyObject *) SHPy_s;
-// splicer end function.pass_char_ptr_in_out
+// splicer end function.passCharPtrInOut
 }
 
 // ----------------------------------------
@@ -401,7 +401,7 @@ PY_returnOneName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_one_name
+// splicer begin function.returnOneName
     char name1[MAXNAME];  // intent(out)
     PyObject * SHPy_name1 = NULL;
 
@@ -411,7 +411,7 @@ PY_returnOneName(
     SHPy_name1 = PyString_FromString(name1);
 
     return (PyObject *) SHPy_name1;
-// splicer end function.return_one_name
+// splicer end function.returnOneName
 }
 
 // ----------------------------------------
@@ -443,7 +443,7 @@ PY_returnTwoNames(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_two_names
+// splicer begin function.returnTwoNames
     char name1[MAXNAME];  // intent(out)
     char name2[MAXNAME];  // intent(out)
     PyObject *SHTPy_rv = NULL;  // return value object
@@ -454,7 +454,7 @@ PY_returnTwoNames(
     SHTPy_rv = Py_BuildValue("ss", name1, name2);
 
     return SHTPy_rv;
-// splicer end function.return_two_names
+// splicer end function.returnTwoNames
 }
 
 // ----------------------------------------
@@ -482,7 +482,7 @@ PY_ImpliedTextLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.implied_text_len
+// splicer begin function.ImpliedTextLen
     char text[MAXNAME];  // intent(out)
     int ltext;
     PyObject * SHPy_text = NULL;
@@ -496,7 +496,7 @@ PY_ImpliedTextLen(
     SHPy_text = PyString_FromString(text);
 
     return (PyObject *) SHPy_text;
-// splicer end function.implied_text_len
+// splicer end function.ImpliedTextLen
 }
 
 // ----------------------------------------
@@ -530,7 +530,7 @@ PY_ImpliedLen(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.implied_len
+// splicer begin function.ImpliedLen
     char * text;
     int ltext;
     bool flag;
@@ -553,7 +553,7 @@ PY_ImpliedLen(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.implied_len
+// splicer end function.ImpliedLen
 }
 
 // ----------------------------------------
@@ -587,7 +587,7 @@ PY_ImpliedLenTrim(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.implied_len_trim
+// splicer begin function.ImpliedLenTrim
     char * text;
     int ltext;
     bool flag;
@@ -610,7 +610,7 @@ PY_ImpliedLenTrim(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.implied_len_trim
+// splicer end function.ImpliedLenTrim
 }
 
 // ----------------------------------------
@@ -635,7 +635,7 @@ PY_ImpliedBoolTrue(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.implied_bool_true
+// splicer begin function.ImpliedBoolTrue
     bool flag;
     PyObject * SHTPy_rv = NULL;
 
@@ -653,7 +653,7 @@ PY_ImpliedBoolTrue(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.implied_bool_true
+// splicer end function.ImpliedBoolTrue
 }
 
 // ----------------------------------------
@@ -678,7 +678,7 @@ PY_ImpliedBoolFalse(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.implied_bool_false
+// splicer begin function.ImpliedBoolFalse
     bool flag;
     PyObject * SHTPy_rv = NULL;
 
@@ -696,7 +696,7 @@ PY_ImpliedBoolFalse(
 fail:
     Py_XDECREF(SHTPy_rv);
     return NULL;
-// splicer end function.implied_bool_false
+// splicer end function.ImpliedBoolFalse
 }
 static PyMethodDef PY_methods[] = {
 {"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,

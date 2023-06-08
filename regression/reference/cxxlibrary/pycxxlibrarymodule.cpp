@@ -54,7 +54,7 @@ PY_passStructByReferenceCls(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct_by_reference_cls
+// splicer begin function.passStructByReferenceCls
     PY_Cstruct1_cls * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -75,7 +75,7 @@ PY_passStructByReferenceCls(
     SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
 
     return SHTPy_rv;
-// splicer end function.pass_struct_by_reference_cls
+// splicer end function.passStructByReferenceCls
 }
 
 // ----------------------------------------
@@ -100,7 +100,7 @@ PY_passStructByReferenceInCls(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct_by_reference_in_cls
+// splicer begin function.passStructByReferenceInCls
     PY_Cstruct1_cls * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -122,7 +122,7 @@ PY_passStructByReferenceInCls(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.pass_struct_by_reference_in_cls
+// splicer end function.passStructByReferenceInCls
 }
 
 // ----------------------------------------
@@ -143,7 +143,7 @@ PY_passStructByReferenceInoutCls(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.pass_struct_by_reference_inout_cls
+// splicer begin function.passStructByReferenceInoutCls
     PY_Cstruct1_cls * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -160,7 +160,7 @@ PY_passStructByReferenceInoutCls(
 
     passStructByReferenceInoutCls(*arg);
     return (PyObject *) SHPy_arg;
-// splicer end function.pass_struct_by_reference_inout_cls
+// splicer end function.passStructByReferenceInoutCls
 }
 
 // ----------------------------------------
@@ -181,7 +181,7 @@ PY_passStructByReferenceOutCls(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.pass_struct_by_reference_out_cls
+// splicer begin function.passStructByReferenceOutCls
     Cstruct1_cls *arg = nullptr;
     PyObject *SHPy_arg = nullptr;
 
@@ -199,7 +199,7 @@ PY_passStructByReferenceOutCls(
 fail:
     Py_XDECREF(SHPy_arg);
     return nullptr;
-// splicer end function.pass_struct_by_reference_out_cls
+// splicer end function.passStructByReferenceOutCls
 }
 
 // ----------------------------------------
@@ -221,7 +221,7 @@ PY_defaultPtrIsNULL_1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.default_ptr_is_null
+// splicer begin function.defaultPtrIsNULL
     Py_ssize_t SH_nargs = 0;
     double * data;
     PyObject * SHTPy_data;
@@ -277,7 +277,7 @@ fail:
     Py_XDECREF(SHPy_data);
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.default_ptr_is_null
+// splicer end function.defaultPtrIsNULL
 }
 
 // ----------------------------------------
@@ -312,7 +312,7 @@ PY_defaultArgsInOut_1(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.default_args_in_out
+// splicer begin function.defaultArgsInOut
     Py_ssize_t SH_nargs = 0;
     int in1;
     int out1;
@@ -352,7 +352,7 @@ PY_defaultArgsInOut_1(
     SHTPy_rv = Py_BuildValue("ii", out1, out2);
 
     return SHTPy_rv;
-// splicer end function.default_args_in_out
+// splicer end function.defaultArgsInOut
 }
 static PyMethodDef PY_methods[] = {
 {"passStructByReferenceCls", (PyCFunction)PY_passStructByReferenceCls,

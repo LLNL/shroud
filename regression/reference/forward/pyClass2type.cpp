@@ -112,7 +112,7 @@ PY_acceptClass3(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Class2.method.accept_class3
+// splicer begin class.Class2.method.acceptClass3
     PY_Class3 * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -127,7 +127,7 @@ PY_acceptClass3(
 
     self->obj->acceptClass3(arg);
     Py_RETURN_NONE;
-// splicer end class.Class2.method.accept_class3
+// splicer end class.Class2.method.acceptClass3
 }
 // splicer begin class.Class2.impl.after_methods
 // splicer end class.Class2.impl.after_methods

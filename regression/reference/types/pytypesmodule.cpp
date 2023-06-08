@@ -989,7 +989,7 @@ PY_returnBoolAndOthers(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.return_bool_and_others
+// splicer begin function.returnBoolAndOthers
     int flag;
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHPyResult = nullptr;  // return value object
@@ -1006,7 +1006,7 @@ PY_returnBoolAndOthers(
 fail:
     Py_XDECREF(SHTPy_rv);
     return nullptr;
-// splicer end function.return_bool_and_others
+// splicer end function.returnBoolAndOthers
 }
 static PyMethodDef PY_methods[] = {
 {"short_func", (PyCFunction)PY_short_func, METH_VARARGS|METH_KEYWORDS,

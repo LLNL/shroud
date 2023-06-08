@@ -67,7 +67,7 @@ PY_Arrays1_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Arrays1.method.arrays1_ctor
+// splicer begin class.Arrays1.method.Arrays1_ctor
     PyObject *SHPy_name = NULL;
     PyObject *SHPy_count = NULL;
     char *SHT_kwlist[] = {
@@ -105,7 +105,7 @@ PY_Arrays1_tp_init(
 
 fail:
     return -1;
-// splicer end class.Arrays1.method.arrays1_ctor
+// splicer end class.Arrays1.method.Arrays1_ctor
 }
 // splicer begin class.Arrays1.impl.after_methods
 // splicer end class.Arrays1.impl.after_methods
