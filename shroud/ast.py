@@ -143,9 +143,10 @@ class AstNode(object):
         and its parents."""
         return self.ast.unqualified_lookup(name)
 
-    def apply_C_API_option(self, name):
-        """Apply option.C_API_case to name"""
-        case = self.options.C_API_case
+    def apply_API_option(self, name, case, optname):
+        """Apply case option to name
+        Used with options  C_API_case and F_API_case.
+        """
         if case == 'preserve':
             return name
         elif case == 'lower':
@@ -156,24 +157,18 @@ class AstNode(object):
             return util.un_camel(name)
         else:
             raise RuntimeError(
-                "Unexpected value of option C_API_case: {}"
-                .format(case))
+                "Unexpected value of option {}: {}"
+                .format(optname, case))
+
+    def apply_C_API_option(self, name):
+        """Apply option.C_API_case to name"""
+        case = self.options.C_API_case
+        return self.apply_API_option(name, case, "C_API_case")
 
     def apply_F_API_option(self, name):
         """Apply option.F_API_case to name"""
         case = self.options.F_API_case
-        if case == 'underscore':
-            return util.un_camel(name)
-        elif case == 'lower':
-            return name.lower()
-        elif case == 'upper':
-            return name.upper()
-        elif case == 'preserve':
-            return name
-        else:
-            raise RuntimeError(
-                "Unexpected value of option F_API_case: {}"
-                .format(case))
+        return self.apply_API_option(name, case, "F_API_case")
 
     def update_names(self):
         """Update C and Fortran names.
