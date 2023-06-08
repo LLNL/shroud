@@ -49,11 +49,11 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
 // Match:     c_function_string_&
 const char * NS_LastFunctionCalled(void)
 {
-    // splicer begin function.last_function_called
+    // splicer begin function.LastFunctionCalled
     const std::string & SHCXX_rv = LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.last_function_called
+    // splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
@@ -62,10 +62,10 @@ const char * NS_LastFunctionCalled(void)
 // Exact:     c_function_string_&_cdesc_allocatable
 void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.last_function_called_bufferify
+    // splicer begin function.LastFunctionCalled_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
     ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
-    // splicer end function.last_function_called_bufferify
+    // splicer end function.LastFunctionCalled_bufferify
 }
 
 // ----------------------------------------
@@ -74,9 +74,9 @@ void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc)
 // Exact:     c_subroutine
 void NS_One(void)
 {
-    // splicer begin function.one
+    // splicer begin function.One
     One();
-    // splicer end function.one
+    // splicer end function.One
 }
 
 }  // extern "C"

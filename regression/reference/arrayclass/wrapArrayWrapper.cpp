@@ -46,9 +46,9 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.set_size
+    // splicer begin class.ArrayWrapper.method.setSize
     SH_this->setSize(size);
-    // splicer end class.ArrayWrapper.method.set_size
+    // splicer end class.ArrayWrapper.method.setSize
 }
 
 // ----------------------------------------
@@ -60,10 +60,10 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
-    // splicer begin class.ArrayWrapper.method.get_size
+    // splicer begin class.ArrayWrapper.method.getSize
     int SHC_rv = SH_this->getSize();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.get_size
+    // splicer end class.ArrayWrapper.method.getSize
 }
 
 // ----------------------------------------
@@ -78,9 +78,9 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int * size)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fill_size
+    // splicer begin class.ArrayWrapper.method.fillSize
     SH_this->fillSize(*size);
-    // splicer end class.ArrayWrapper.method.fill_size
+    // splicer end class.ArrayWrapper.method.fillSize
 }
 
 // ----------------------------------------
@@ -103,10 +103,10 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 double * ARR_ArrayWrapper_getArray(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array
+    // splicer begin class.ArrayWrapper.method.getArray
     double * SHC_rv = SH_this->getArray();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.get_array
+    // splicer end class.ArrayWrapper.method.getArray
 }
 
 // ----------------------------------------
@@ -118,7 +118,7 @@ void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_bufferify
+    // splicer begin class.ArrayWrapper.method.getArray_bufferify
     double * SHC_rv = SH_this->getArray();
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -128,7 +128,7 @@ void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->getSize();
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.get_array_bufferify
+    // splicer end class.ArrayWrapper.method.getArray_bufferify
 }
 
 // ----------------------------------------
@@ -140,10 +140,10 @@ double * ARR_ArrayWrapper_getArrayConst(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_const
+    // splicer begin class.ArrayWrapper.method.getArrayConst
     double * SHC_rv = SH_this->getArrayConst();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.get_array_const
+    // splicer end class.ArrayWrapper.method.getArrayConst
 }
 
 // ----------------------------------------
@@ -156,7 +156,7 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_const_bufferify
+    // splicer begin class.ArrayWrapper.method.getArrayConst_bufferify
     double * SHC_rv = SH_this->getArrayConst();
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -166,7 +166,7 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->getSize();
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.get_array_const_bufferify
+    // splicer end class.ArrayWrapper.method.getArrayConst_bufferify
 }
 
 // ----------------------------------------
@@ -177,10 +177,10 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
 const double * ARR_ArrayWrapper_getArrayC(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_c
+    // splicer begin class.ArrayWrapper.method.getArrayC
     const double * SHC_rv = SH_this->getArrayC();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.get_array_c
+    // splicer end class.ArrayWrapper.method.getArrayC
 }
 
 // ----------------------------------------
@@ -192,7 +192,7 @@ void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_c_bufferify
+    // splicer begin class.ArrayWrapper.method.getArrayC_bufferify
     const double * SHC_rv = SH_this->getArrayC();
     SHT_rv_cdesc->cxx.addr  = const_cast<double *>(SHC_rv);
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -202,7 +202,7 @@ void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->getSize();
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.get_array_c_bufferify
+    // splicer end class.ArrayWrapper.method.getArrayC_bufferify
 }
 
 // ----------------------------------------
@@ -215,10 +215,10 @@ const double * ARR_ArrayWrapper_getArrayConstC(
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_const_c
+    // splicer begin class.ArrayWrapper.method.getArrayConstC
     const double * SHC_rv = SH_this->getArrayConstC();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.get_array_const_c
+    // splicer end class.ArrayWrapper.method.getArrayConstC
 }
 
 // ----------------------------------------
@@ -231,7 +231,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
-    // splicer begin class.ArrayWrapper.method.get_array_const_c_bufferify
+    // splicer begin class.ArrayWrapper.method.getArrayConstC_bufferify
     const double * SHC_rv = SH_this->getArrayConstC();
     SHT_rv_cdesc->cxx.addr  = const_cast<double *>(SHC_rv);
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -241,7 +241,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SH_this->getSize();
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.get_array_const_c_bufferify
+    // splicer end class.ArrayWrapper.method.getArrayConstC_bufferify
 }
 
 // ----------------------------------------
@@ -262,9 +262,9 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ptr
+    // splicer begin class.ArrayWrapper.method.fetchArrayPtr
     SH_this->fetchArrayPtr(array, isize);
-    // splicer end class.ArrayWrapper.method.fetch_array_ptr
+    // splicer end class.ArrayWrapper.method.fetchArrayPtr
 }
 
 // ----------------------------------------
@@ -284,7 +284,7 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_bufferify
+    // splicer begin class.ArrayWrapper.method.fetchArrayPtr_bufferify
     double *array;
     int isize;
     SH_this->fetchArrayPtr(&array, &isize);
@@ -296,7 +296,7 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
     SHT_array_cdesc->rank = 1;
     SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_ptr_bufferify
+    // splicer end class.ArrayWrapper.method.fetchArrayPtr_bufferify
 }
 
 // ----------------------------------------
@@ -317,9 +317,9 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ref
+    // splicer begin class.ArrayWrapper.method.fetchArrayRef
     SH_this->fetchArrayRef(*array, *isize);
-    // splicer end class.ArrayWrapper.method.fetch_array_ref
+    // splicer end class.ArrayWrapper.method.fetchArrayRef
 }
 
 // ----------------------------------------
@@ -339,7 +339,7 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ref_bufferify
+    // splicer begin class.ArrayWrapper.method.fetchArrayRef_bufferify
     double *array;
     int isize;
     SH_this->fetchArrayRef(array, isize);
@@ -351,7 +351,7 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
     SHT_array_cdesc->rank = 1;
     SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_ref_bufferify
+    // splicer end class.ArrayWrapper.method.fetchArrayRef_bufferify
 }
 
 // ----------------------------------------
@@ -372,9 +372,9 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
+    // splicer begin class.ArrayWrapper.method.fetchArrayPtrConst
     SH_this->fetchArrayPtrConst(array, isize);
-    // splicer end class.ArrayWrapper.method.fetch_array_ptr_const
+    // splicer end class.ArrayWrapper.method.fetchArrayPtrConst
 }
 
 // ----------------------------------------
@@ -394,7 +394,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
+    // splicer begin class.ArrayWrapper.method.fetchArrayPtrConst_bufferify
     const double *array;
     int isize;
     SH_this->fetchArrayPtrConst(&array, &isize);
@@ -406,7 +406,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
     SHT_array_cdesc->rank = 1;
     SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
+    // splicer end class.ArrayWrapper.method.fetchArrayPtrConst_bufferify
 }
 
 // ----------------------------------------
@@ -427,9 +427,9 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ref_const
+    // splicer begin class.ArrayWrapper.method.fetchArrayRefConst
     SH_this->fetchArrayRefConst(*array, *isize);
-    // splicer end class.ArrayWrapper.method.fetch_array_ref_const
+    // splicer end class.ArrayWrapper.method.fetchArrayRefConst
 }
 
 // ----------------------------------------
@@ -449,7 +449,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_ref_const_bufferify
+    // splicer begin class.ArrayWrapper.method.fetchArrayRefConst_bufferify
     const double *array;
     int isize;
     SH_this->fetchArrayRefConst(array, isize);
@@ -461,7 +461,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
     SHT_array_cdesc->rank = 1;
     SHT_array_cdesc->shape[0] = isize;
     SHT_array_cdesc->size = SHT_array_cdesc->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_ref_const_bufferify
+    // splicer end class.ArrayWrapper.method.fetchArrayRefConst_bufferify
 }
 
 // ----------------------------------------
@@ -476,9 +476,9 @@ void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
     void **array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_void_ptr
+    // splicer begin class.ArrayWrapper.method.fetchVoidPtr
     SH_this->fetchVoidPtr(array);
-    // splicer end class.ArrayWrapper.method.fetch_void_ptr
+    // splicer end class.ArrayWrapper.method.fetchVoidPtr
 }
 
 // ----------------------------------------
@@ -494,9 +494,9 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
     void * * array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_void_ref
+    // splicer begin class.ArrayWrapper.method.fetchVoidRef
     SH_this->fetchVoidRef(*array);
-    // splicer end class.ArrayWrapper.method.fetch_void_ref
+    // splicer end class.ArrayWrapper.method.fetchVoidRef
 }
 
 // ----------------------------------------
@@ -512,10 +512,10 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
 bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.check_ptr
+    // splicer begin class.ArrayWrapper.method.checkPtr
     bool SHC_rv = SH_this->checkPtr(array);
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.check_ptr
+    // splicer end class.ArrayWrapper.method.checkPtr
 }
 
 // ----------------------------------------
@@ -526,10 +526,10 @@ bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
 double ARR_ArrayWrapper_sumArray(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.sum_array
+    // splicer begin class.ArrayWrapper.method.sumArray
     double SHC_rv = SH_this->sumArray();
     return SHC_rv;
-    // splicer end class.ArrayWrapper.method.sum_array
+    // splicer end class.ArrayWrapper.method.sumArray
 }
 
 }  // extern "C"

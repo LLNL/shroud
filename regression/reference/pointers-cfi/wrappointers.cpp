@@ -420,9 +420,9 @@ void POI_iota_dimension(int nvar, int * values)
 // start POI_Sum
 void POI_Sum(int len, const int * values, int * result)
 {
-    // splicer begin function.sum
+    // splicer begin function.Sum
     Sum(len, values, result);
-    // splicer end function.sum
+    // splicer end function.Sum
 }
 // end POI_Sum
 
@@ -447,10 +447,10 @@ void POI_Sum(int len, const int * values, int * result)
 // start POI_Sum_CFI
 void POI_Sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result)
 {
-    // splicer begin function.sum_CFI
+    // splicer begin function.Sum_CFI
     int *SHCXX_values = static_cast<int *>(SHT_values_cfi->base_addr);
     Sum(len, SHCXX_values, result);
-    // splicer end function.sum_CFI
+    // splicer end function.Sum_CFI
 }
 // end POI_Sum_CFI
 
@@ -469,9 +469,9 @@ void POI_Sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result)
 // start POI_fillIntArray
 void POI_fillIntArray(int * out)
 {
-    // splicer begin function.fill_int_array
+    // splicer begin function.fillIntArray
     fillIntArray(out);
-    // splicer end function.fill_int_array
+    // splicer end function.fillIntArray
 }
 // end POI_fillIntArray
 
@@ -495,9 +495,9 @@ void POI_fillIntArray(int * out)
 // start POI_incrementIntArray
 void POI_incrementIntArray(int * array, int sizein)
 {
-    // splicer begin function.increment_int_array
+    // splicer begin function.incrementIntArray
     incrementIntArray(array, sizein);
-    // splicer end function.increment_int_array
+    // splicer end function.incrementIntArray
 }
 // end POI_incrementIntArray
 
@@ -520,10 +520,10 @@ void POI_incrementIntArray(int * array, int sizein)
 // start POI_incrementIntArray_CFI
 void POI_incrementIntArray_CFI(CFI_cdesc_t *SHT_array_cfi, int sizein)
 {
-    // splicer begin function.increment_int_array_CFI
+    // splicer begin function.incrementIntArray_CFI
     int *SHCXX_array = static_cast<int *>(SHT_array_cfi->base_addr);
     incrementIntArray(SHCXX_array, sizein);
-    // splicer end function.increment_int_array_CFI
+    // splicer end function.incrementIntArray_CFI
 }
 // end POI_incrementIntArray_CFI
 
@@ -638,10 +638,10 @@ int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
 {
-    // splicer begin function.accept_char_array_in
+    // splicer begin function.acceptCharArrayIn
     int SHC_rv = acceptCharArrayIn(names);
     return SHC_rv;
-    // splicer end function.accept_char_array_in
+    // splicer end function.acceptCharArrayIn
 }
 // end POI_acceptCharArrayIn
 
@@ -660,7 +660,7 @@ int POI_acceptCharArrayIn(char **names)
 // start POI_acceptCharArrayIn_CFI
 int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
 {
-    // splicer begin function.accept_char_array_in_CFI
+    // splicer begin function.acceptCharArrayIn_CFI
     char *names = static_cast<char *>(SHT_names_cfi->base_addr);
     size_t SHT_names_len = SHT_names_cfi->elem_len;
     size_t SHT_names_size = SHT_names_cfi->dim[0].extent;
@@ -669,7 +669,7 @@ int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
     int SHC_rv = acceptCharArrayIn(SHCXX_names);
     ShroudStrArrayFree(SHCXX_names, SHT_names_size);
     return SHC_rv;
-    // splicer end function.accept_char_array_in_CFI
+    // splicer end function.acceptCharArrayIn_CFI
 }
 // end POI_acceptCharArrayIn_CFI
 
@@ -685,9 +685,9 @@ int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
 // start POI_setGlobalInt
 void POI_setGlobalInt(int value)
 {
-    // splicer begin function.set_global_int
+    // splicer begin function.setGlobalInt
     setGlobalInt(value);
-    // splicer end function.set_global_int
+    // splicer end function.setGlobalInt
 }
 // end POI_setGlobalInt
 
@@ -702,10 +702,10 @@ void POI_setGlobalInt(int value)
 // start POI_sumFixedArray
 int POI_sumFixedArray(void)
 {
-    // splicer begin function.sum_fixed_array
+    // splicer begin function.sumFixedArray
     int SHC_rv = sumFixedArray();
     return SHC_rv;
-    // splicer end function.sum_fixed_array
+    // splicer end function.sumFixedArray
 }
 // end POI_sumFixedArray
 
@@ -721,9 +721,9 @@ int POI_sumFixedArray(void)
 // start POI_getPtrToScalar
 void POI_getPtrToScalar(int * * nitems)
 {
-    // splicer begin function.get_ptr_to_scalar
+    // splicer begin function.getPtrToScalar
     getPtrToScalar(nitems);
-    // splicer end function.get_ptr_to_scalar
+    // splicer end function.getPtrToScalar
 }
 // end POI_getPtrToScalar
 
@@ -738,7 +738,7 @@ void POI_getPtrToScalar(int * * nitems)
 // start POI_getPtrToScalar_CFI
 void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
-    // splicer begin function.get_ptr_to_scalar_CFI
+    // splicer begin function.getPtrToScalar_CFI
     int * SHCXX_nitems;
     getPtrToScalar(&SHCXX_nitems);
     {
@@ -754,7 +754,7 @@ void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
                 SHC_nitems_cdesc, NULL);
         }
     }
-    // splicer end function.get_ptr_to_scalar_CFI
+    // splicer end function.getPtrToScalar_CFI
 }
 // end POI_getPtrToScalar_CFI
 
@@ -773,9 +773,9 @@ void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 // start POI_getPtrToFixedArray
 void POI_getPtrToFixedArray(int * * count)
 {
-    // splicer begin function.get_ptr_to_fixed_array
+    // splicer begin function.getPtrToFixedArray
     getPtrToFixedArray(count);
-    // splicer end function.get_ptr_to_fixed_array
+    // splicer end function.getPtrToFixedArray
 }
 // end POI_getPtrToFixedArray
 
@@ -793,7 +793,7 @@ void POI_getPtrToFixedArray(int * * count)
 // start POI_getPtrToFixedArray_CFI
 void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_fixed_array_CFI
+    // splicer begin function.getPtrToFixedArray_CFI
     int * SHCXX_count;
     getPtrToFixedArray(&SHCXX_count);
     {
@@ -812,7 +812,7 @@ void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHC_count_cdesc, SHT_count_lower);
         }
     }
-    // splicer end function.get_ptr_to_fixed_array_CFI
+    // splicer end function.getPtrToFixedArray_CFI
 }
 // end POI_getPtrToFixedArray_CFI
 
@@ -837,9 +837,9 @@ void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_getPtrToDynamicArray
 void POI_getPtrToDynamicArray(int * * count, int * ncount)
 {
-    // splicer begin function.get_ptr_to_dynamic_array
+    // splicer begin function.getPtrToDynamicArray
     getPtrToDynamicArray(count, ncount);
-    // splicer end function.get_ptr_to_dynamic_array
+    // splicer end function.getPtrToDynamicArray
 }
 // end POI_getPtrToDynamicArray
 
@@ -862,7 +862,7 @@ void POI_getPtrToDynamicArray(int * * count, int * ncount)
 // start POI_getPtrToDynamicArray_CFI
 void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_dynamic_array_CFI
+    // splicer begin function.getPtrToDynamicArray_CFI
     int * SHCXX_count;
     int ncount;
     getPtrToDynamicArray(&SHCXX_count, &ncount);
@@ -882,7 +882,7 @@ void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHC_count_cdesc, SHT_count_lower);
         }
     }
-    // splicer end function.get_ptr_to_dynamic_array_CFI
+    // splicer end function.getPtrToDynamicArray_CFI
 }
 // end POI_getPtrToDynamicArray_CFI
 
@@ -903,9 +903,9 @@ void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_getPtrToFuncArray
 void POI_getPtrToFuncArray(int * * count)
 {
-    // splicer begin function.get_ptr_to_func_array
+    // splicer begin function.getPtrToFuncArray
     getPtrToFuncArray(count);
-    // splicer end function.get_ptr_to_func_array
+    // splicer end function.getPtrToFuncArray
 }
 // end POI_getPtrToFuncArray
 
@@ -925,7 +925,7 @@ void POI_getPtrToFuncArray(int * * count)
 // start POI_getPtrToFuncArray_CFI
 void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_func_array_CFI
+    // splicer begin function.getPtrToFuncArray_CFI
     int * SHCXX_count;
     getPtrToFuncArray(&SHCXX_count);
     {
@@ -944,7 +944,7 @@ void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHC_count_cdesc, SHT_count_lower);
         }
     }
-    // splicer end function.get_ptr_to_func_array_CFI
+    // splicer end function.getPtrToFuncArray_CFI
 }
 // end POI_getPtrToFuncArray_CFI
 
@@ -960,9 +960,9 @@ void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_getPtrToConstScalar
 void POI_getPtrToConstScalar(const int * * nitems)
 {
-    // splicer begin function.get_ptr_to_const_scalar
+    // splicer begin function.getPtrToConstScalar
     getPtrToConstScalar(nitems);
-    // splicer end function.get_ptr_to_const_scalar
+    // splicer end function.getPtrToConstScalar
 }
 // end POI_getPtrToConstScalar
 
@@ -977,7 +977,7 @@ void POI_getPtrToConstScalar(const int * * nitems)
 // start POI_getPtrToConstScalar_CFI
 void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
-    // splicer begin function.get_ptr_to_const_scalar_CFI
+    // splicer begin function.getPtrToConstScalar_CFI
     const int * SHCXX_nitems;
     getPtrToConstScalar(&SHCXX_nitems);
     {
@@ -993,7 +993,7 @@ void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
                 SHC_nitems_cdesc, NULL);
         }
     }
-    // splicer end function.get_ptr_to_const_scalar_CFI
+    // splicer end function.getPtrToConstScalar_CFI
 }
 // end POI_getPtrToConstScalar_CFI
 
@@ -1009,9 +1009,9 @@ void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 // start POI_getPtrToFixedConstArray
 void POI_getPtrToFixedConstArray(const int * * count)
 {
-    // splicer begin function.get_ptr_to_fixed_const_array
+    // splicer begin function.getPtrToFixedConstArray
     getPtrToFixedConstArray(count);
-    // splicer end function.get_ptr_to_fixed_const_array
+    // splicer end function.getPtrToFixedConstArray
 }
 // end POI_getPtrToFixedConstArray
 
@@ -1026,7 +1026,7 @@ void POI_getPtrToFixedConstArray(const int * * count)
 // start POI_getPtrToFixedConstArray_CFI
 void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_fixed_const_array_CFI
+    // splicer begin function.getPtrToFixedConstArray_CFI
     const int * SHCXX_count;
     getPtrToFixedConstArray(&SHCXX_count);
     {
@@ -1045,7 +1045,7 @@ void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHC_count_cdesc, SHT_count_lower);
         }
     }
-    // splicer end function.get_ptr_to_fixed_const_array_CFI
+    // splicer end function.getPtrToFixedConstArray_CFI
 }
 // end POI_getPtrToFixedConstArray_CFI
 
@@ -1066,9 +1066,9 @@ void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_getPtrToDynamicConstArray
 void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 {
-    // splicer begin function.get_ptr_to_dynamic_const_array
+    // splicer begin function.getPtrToDynamicConstArray
     getPtrToDynamicConstArray(count, ncount);
-    // splicer end function.get_ptr_to_dynamic_const_array
+    // splicer end function.getPtrToDynamicConstArray
 }
 // end POI_getPtrToDynamicConstArray
 
@@ -1087,7 +1087,7 @@ void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 // start POI_getPtrToDynamicConstArray_CFI
 void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_ptr_to_dynamic_const_array_CFI
+    // splicer begin function.getPtrToDynamicConstArray_CFI
     const int * SHCXX_count;
     int ncount;
     getPtrToDynamicConstArray(&SHCXX_count, &ncount);
@@ -1107,7 +1107,7 @@ void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHC_count_cdesc, SHT_count_lower);
         }
     }
-    // splicer end function.get_ptr_to_dynamic_const_array_CFI
+    // splicer end function.getPtrToDynamicConstArray_CFI
 }
 // end POI_getPtrToDynamicConstArray_CFI
 
@@ -1126,9 +1126,9 @@ void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_getRawPtrToScalar
 void POI_getRawPtrToScalar(int * * nitems)
 {
-    // splicer begin function.get_raw_ptr_to_scalar
+    // splicer begin function.getRawPtrToScalar
     getRawPtrToScalar(nitems);
-    // splicer end function.get_raw_ptr_to_scalar
+    // splicer end function.getRawPtrToScalar
 }
 // end POI_getRawPtrToScalar
 
@@ -1147,9 +1147,9 @@ void POI_getRawPtrToScalar(int * * nitems)
 // start POI_getRawPtrToScalarForce
 void POI_getRawPtrToScalarForce(int * * nitems)
 {
-    // splicer begin function.get_raw_ptr_to_scalar_force
+    // splicer begin function.getRawPtrToScalarForce
     getRawPtrToScalarForce(nitems);
-    // splicer end function.get_raw_ptr_to_scalar_force
+    // splicer end function.getRawPtrToScalarForce
 }
 // end POI_getRawPtrToScalarForce
 
@@ -1170,9 +1170,9 @@ void POI_getRawPtrToScalarForce(int * * nitems)
 // start POI_getRawPtrToFixedArray
 void POI_getRawPtrToFixedArray(int * * count)
 {
-    // splicer begin function.get_raw_ptr_to_fixed_array
+    // splicer begin function.getRawPtrToFixedArray
     getRawPtrToFixedArray(count);
-    // splicer end function.get_raw_ptr_to_fixed_array
+    // splicer end function.getRawPtrToFixedArray
 }
 // end POI_getRawPtrToFixedArray
 
@@ -1192,9 +1192,9 @@ void POI_getRawPtrToFixedArray(int * * count)
 // start POI_getRawPtrToFixedArrayForce
 void POI_getRawPtrToFixedArrayForce(int * * count)
 {
-    // splicer begin function.get_raw_ptr_to_fixed_array_force
+    // splicer begin function.getRawPtrToFixedArrayForce
     getRawPtrToFixedArrayForce(count);
-    // splicer end function.get_raw_ptr_to_fixed_array_force
+    // splicer end function.getRawPtrToFixedArrayForce
 }
 // end POI_getRawPtrToFixedArrayForce
 
@@ -1213,9 +1213,9 @@ void POI_getRawPtrToFixedArrayForce(int * * count)
 // start POI_getRawPtrToInt2d
 void POI_getRawPtrToInt2d(int * * * arg)
 {
-    // splicer begin function.get_raw_ptr_to_int2d
+    // splicer begin function.getRawPtrToInt2d
     getRawPtrToInt2d(arg);
-    // splicer end function.get_raw_ptr_to_int2d
+    // splicer end function.getRawPtrToInt2d
 }
 // end POI_getRawPtrToInt2d
 
@@ -1234,10 +1234,10 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // start POI_checkInt2d
 int POI_checkInt2d(int **arg)
 {
-    // splicer begin function.check_int2d
+    // splicer begin function.checkInt2d
     int SHC_rv = checkInt2d(arg);
     return SHC_rv;
-    // splicer end function.check_int2d
+    // splicer end function.checkInt2d
 }
 // end POI_checkInt2d
 
@@ -1257,9 +1257,9 @@ int POI_checkInt2d(int **arg)
 // start POI_DimensionIn
 void POI_DimensionIn(const int * arg)
 {
-    // splicer begin function.dimension_in
+    // splicer begin function.DimensionIn
     DimensionIn(arg);
-    // splicer end function.dimension_in
+    // splicer end function.DimensionIn
 }
 // end POI_DimensionIn
 
@@ -1278,9 +1278,9 @@ void POI_DimensionIn(const int * arg)
 // start POI_getAllocToFixedArray
 void POI_getAllocToFixedArray(int * * count)
 {
-    // splicer begin function.get_alloc_to_fixed_array
+    // splicer begin function.getAllocToFixedArray
     getAllocToFixedArray(count);
-    // splicer end function.get_alloc_to_fixed_array
+    // splicer end function.getAllocToFixedArray
 }
 // end POI_getAllocToFixedArray
 
@@ -1298,7 +1298,7 @@ void POI_getAllocToFixedArray(int * * count)
 // start POI_getAllocToFixedArray_CFI
 void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
-    // splicer begin function.get_alloc_to_fixed_array_CFI
+    // splicer begin function.getAllocToFixedArray_CFI
     int * SHCXX_count;
     getAllocToFixedArray(&SHCXX_count);
     if (SHCXX_count != nullptr) {
@@ -1312,7 +1312,7 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
                 SHT_count_cfi->elem_len);
         }
     }
-    // splicer end function.get_alloc_to_fixed_array_CFI
+    // splicer end function.getAllocToFixedArray_CFI
 }
 // end POI_getAllocToFixedArray_CFI
 
@@ -1329,10 +1329,10 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // start POI_returnAddress1
 void * POI_returnAddress1(int flag)
 {
-    // splicer begin function.return_address1
+    // splicer begin function.returnAddress1
     void * SHC_rv = returnAddress1(flag);
     return SHC_rv;
-    // splicer end function.return_address1
+    // splicer end function.returnAddress1
 }
 // end POI_returnAddress1
 
@@ -1349,10 +1349,10 @@ void * POI_returnAddress1(int flag)
 // start POI_returnAddress2
 void * POI_returnAddress2(int flag)
 {
-    // splicer begin function.return_address2
+    // splicer begin function.returnAddress2
     void * SHC_rv = returnAddress2(flag);
     return SHC_rv;
-    // splicer end function.return_address2
+    // splicer end function.returnAddress2
 }
 // end POI_returnAddress2
 
@@ -1367,9 +1367,9 @@ void * POI_returnAddress2(int flag)
 // start POI_fetchVoidPtr
 void POI_fetchVoidPtr(void **addr)
 {
-    // splicer begin function.fetch_void_ptr
+    // splicer begin function.fetchVoidPtr
     fetchVoidPtr(addr);
-    // splicer end function.fetch_void_ptr
+    // splicer end function.fetchVoidPtr
 }
 // end POI_fetchVoidPtr
 
@@ -1384,9 +1384,9 @@ void POI_fetchVoidPtr(void **addr)
 // start POI_updateVoidPtr
 void POI_updateVoidPtr(void **addr)
 {
-    // splicer begin function.update_void_ptr
+    // splicer begin function.updateVoidPtr
     updateVoidPtr(addr);
-    // splicer end function.update_void_ptr
+    // splicer end function.updateVoidPtr
 }
 // end POI_updateVoidPtr
 
@@ -1402,10 +1402,10 @@ void POI_updateVoidPtr(void **addr)
 // start POI_VoidPtrArray
 int POI_VoidPtrArray(void **addr)
 {
-    // splicer begin function.void_ptr_array
+    // splicer begin function.VoidPtrArray
     int SHC_rv = VoidPtrArray(addr);
     return SHC_rv;
-    // splicer end function.void_ptr_array
+    // splicer end function.VoidPtrArray
 }
 // end POI_VoidPtrArray
 
@@ -1422,10 +1422,10 @@ int POI_VoidPtrArray(void **addr)
 // start POI_VoidPtrArray_CFI
 int POI_VoidPtrArray_CFI(void **addr)
 {
-    // splicer begin function.void_ptr_array_CFI
+    // splicer begin function.VoidPtrArray_CFI
     int SHC_rv = VoidPtrArray(addr);
     return SHC_rv;
-    // splicer end function.void_ptr_array_CFI
+    // splicer end function.VoidPtrArray_CFI
 }
 // end POI_VoidPtrArray_CFI
 
@@ -1437,10 +1437,10 @@ int POI_VoidPtrArray_CFI(void **addr)
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
-    // splicer begin function.return_int_ptr_to_scalar
+    // splicer begin function.returnIntPtrToScalar
     int * SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_scalar
+    // splicer end function.returnIntPtrToScalar
 }
 // end POI_returnIntPtrToScalar
 
@@ -1451,7 +1451,7 @@ int * POI_returnIntPtrToScalar(void)
 // start POI_returnIntPtrToScalar_CFI
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_scalar_CFI
+    // splicer begin function.returnIntPtrToScalar_CFI
     int * SHCXX_rv = returnIntPtrToScalar();
     {
         CFI_CDESC_T(0) SHC_rv_fptr;
@@ -1464,7 +1464,7 @@ void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
             SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc, NULL);
         }
     }
-    // splicer end function.return_int_ptr_to_scalar_CFI
+    // splicer end function.returnIntPtrToScalar_CFI
 }
 // end POI_returnIntPtrToScalar_CFI
 
@@ -1476,10 +1476,10 @@ void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
-    // splicer begin function.return_int_ptr_to_fixed_array
+    // splicer begin function.returnIntPtrToFixedArray
     int * SHC_rv = returnIntPtrToFixedArray();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_fixed_array
+    // splicer end function.returnIntPtrToFixedArray
 }
 // end POI_returnIntPtrToFixedArray
 
@@ -1490,7 +1490,7 @@ int * POI_returnIntPtrToFixedArray(void)
 // start POI_returnIntPtrToFixedArray_CFI
 void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_fixed_array_CFI
+    // splicer begin function.returnIntPtrToFixedArray_CFI
     int * SHCXX_rv = returnIntPtrToFixedArray();
     {
         CFI_CDESC_T(1) SHC_rv_fptr;
@@ -1507,7 +1507,7 @@ void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 SHT_rv_lower);
         }
     }
-    // splicer end function.return_int_ptr_to_fixed_array_CFI
+    // splicer end function.returnIntPtrToFixedArray_CFI
 }
 // end POI_returnIntPtrToFixedArray_CFI
 
@@ -1519,10 +1519,10 @@ void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
-    // splicer begin function.return_int_ptr_to_const_scalar
+    // splicer begin function.returnIntPtrToConstScalar
     const int * SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_const_scalar
+    // splicer end function.returnIntPtrToConstScalar
 }
 // end POI_returnIntPtrToConstScalar
 
@@ -1533,7 +1533,7 @@ const int * POI_returnIntPtrToConstScalar(void)
 // start POI_returnIntPtrToConstScalar_CFI
 void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_const_scalar_CFI
+    // splicer begin function.returnIntPtrToConstScalar_CFI
     const int * SHCXX_rv = returnIntPtrToConstScalar();
     {
         CFI_CDESC_T(0) SHC_rv_fptr;
@@ -1546,7 +1546,7 @@ void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
             SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc, NULL);
         }
     }
-    // splicer end function.return_int_ptr_to_const_scalar_CFI
+    // splicer end function.returnIntPtrToConstScalar_CFI
 }
 // end POI_returnIntPtrToConstScalar_CFI
 
@@ -1558,10 +1558,10 @@ void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
-    // splicer begin function.return_int_ptr_to_fixed_const_array
+    // splicer begin function.returnIntPtrToFixedConstArray
     const int * SHC_rv = returnIntPtrToFixedConstArray();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_fixed_const_array
+    // splicer end function.returnIntPtrToFixedConstArray
 }
 // end POI_returnIntPtrToFixedConstArray
 
@@ -1572,7 +1572,7 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 // start POI_returnIntPtrToFixedConstArray_CFI
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_ptr_to_fixed_const_array_CFI
+    // splicer begin function.returnIntPtrToFixedConstArray_CFI
     const int * SHCXX_rv = returnIntPtrToFixedConstArray();
     {
         CFI_CDESC_T(1) SHC_rv_fptr;
@@ -1589,7 +1589,7 @@ void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 SHT_rv_lower);
         }
     }
-    // splicer end function.return_int_ptr_to_fixed_const_array_CFI
+    // splicer end function.returnIntPtrToFixedConstArray_CFI
 }
 // end POI_returnIntPtrToFixedConstArray_CFI
 
@@ -1600,10 +1600,10 @@ void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // start POI_returnIntScalar
 int POI_returnIntScalar(void)
 {
-    // splicer begin function.return_int_scalar
+    // splicer begin function.returnIntScalar
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
-    // splicer end function.return_int_scalar
+    // splicer end function.returnIntScalar
 }
 // end POI_returnIntScalar
 
@@ -1618,10 +1618,10 @@ int POI_returnIntScalar(void)
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
-    // splicer begin function.return_int_raw
+    // splicer begin function.returnIntRaw
     int * SHC_rv = returnIntRaw();
     return SHC_rv;
-    // splicer end function.return_int_raw
+    // splicer end function.returnIntRaw
 }
 // end POI_returnIntRaw
 
@@ -1642,10 +1642,10 @@ int * POI_returnIntRaw(void)
 // start POI_returnIntRawWithArgs
 int * POI_returnIntRawWithArgs(const char * name)
 {
-    // splicer begin function.return_int_raw_with_args
+    // splicer begin function.returnIntRawWithArgs
     int * SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
-    // splicer end function.return_int_raw_with_args
+    // splicer end function.returnIntRawWithArgs
 }
 // end POI_returnIntRawWithArgs
 
@@ -1665,13 +1665,13 @@ int * POI_returnIntRawWithArgs(const char * name)
 // start POI_returnIntRawWithArgs_CFI
 int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
-    // splicer begin function.return_int_raw_with_args_CFI
+    // splicer begin function.returnIntRawWithArgs_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     char *SHCXX_name = ShroudStrAlloc(name, SHT_name_cfi->elem_len, 0);
     int * SHC_rv = returnIntRawWithArgs(SHCXX_name);
     ShroudStrFree(SHCXX_name);
     return SHC_rv;
-    // splicer end function.return_int_raw_with_args_CFI
+    // splicer end function.returnIntRawWithArgs_CFI
 }
 // end POI_returnIntRawWithArgs_CFI
 
@@ -1686,10 +1686,10 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
 // start POI_returnRawPtrToInt2d
 int * * POI_returnRawPtrToInt2d(void)
 {
-    // splicer begin function.return_raw_ptr_to_int2d
+    // splicer begin function.returnRawPtrToInt2d
     int * * SHC_rv = returnRawPtrToInt2d();
     return SHC_rv;
-    // splicer end function.return_raw_ptr_to_int2d
+    // splicer end function.returnRawPtrToInt2d
 }
 // end POI_returnRawPtrToInt2d
 
@@ -1701,10 +1701,10 @@ int * * POI_returnRawPtrToInt2d(void)
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {
-    // splicer begin function.return_int_alloc_to_fixed_array
+    // splicer begin function.returnIntAllocToFixedArray
     int * SHC_rv = returnIntAllocToFixedArray();
     return SHC_rv;
-    // splicer end function.return_int_alloc_to_fixed_array
+    // splicer end function.returnIntAllocToFixedArray
 }
 // end POI_returnIntAllocToFixedArray
 
@@ -1715,7 +1715,7 @@ int * POI_returnIntAllocToFixedArray(void)
 // start POI_returnIntAllocToFixedArray_CFI
 void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.return_int_alloc_to_fixed_array_CFI
+    // splicer begin function.returnIntAllocToFixedArray_CFI
     int * SHCXX_rv = returnIntAllocToFixedArray();
     if (SHCXX_rv != nullptr) {
         CFI_index_t SHT_rv_lower[1] = {1};
@@ -1728,7 +1728,7 @@ void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 SHT_rv_cfi->elem_len);
         }
     }
-    // splicer end function.return_int_alloc_to_fixed_array_CFI
+    // splicer end function.returnIntAllocToFixedArray_CFI
 }
 // end POI_returnIntAllocToFixedArray_CFI
 

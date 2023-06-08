@@ -27,10 +27,10 @@ extern "C" {
 // Match:     c_function_native_*
 int * OWN_ReturnIntPtrRaw(void)
 {
-    // splicer begin function.return_int_ptr_raw
+    // splicer begin function.ReturnIntPtrRaw
     int * SHC_rv = ReturnIntPtrRaw();
     return SHC_rv;
-    // splicer end function.return_int_ptr_raw
+    // splicer end function.ReturnIntPtrRaw
 }
 
 // ----------------------------------------
@@ -39,10 +39,10 @@ int * OWN_ReturnIntPtrRaw(void)
 // Exact:     c_function_native_*_scalar
 int OWN_ReturnIntPtrScalar(void)
 {
-    // splicer begin function.return_int_ptr_scalar
+    // splicer begin function.ReturnIntPtrScalar
     int * SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
-    // splicer end function.return_int_ptr_scalar
+    // splicer end function.ReturnIntPtrScalar
 }
 
 // ----------------------------------------
@@ -52,10 +52,10 @@ int OWN_ReturnIntPtrScalar(void)
 // Match:     c_function_native_*
 int * OWN_ReturnIntPtrPointer(void)
 {
-    // splicer begin function.return_int_ptr_pointer
+    // splicer begin function.ReturnIntPtrPointer
     int * SHC_rv = ReturnIntPtrPointer();
     return SHC_rv;
-    // splicer end function.return_int_ptr_pointer
+    // splicer end function.ReturnIntPtrPointer
 }
 
 // ----------------------------------------
@@ -65,10 +65,10 @@ int * OWN_ReturnIntPtrPointer(void)
 // Match:     c_function_native_*
 int * OWN_ReturnIntPtrPointer_bufferify(void)
 {
-    // splicer begin function.return_int_ptr_pointer_bufferify
+    // splicer begin function.ReturnIntPtrPointer_bufferify
     int * SHC_rv = ReturnIntPtrPointer();
     return SHC_rv;
-    // splicer end function.return_int_ptr_pointer_bufferify
+    // splicer end function.ReturnIntPtrPointer_bufferify
 }
 
 // ----------------------------------------
@@ -83,10 +83,10 @@ int * OWN_ReturnIntPtrPointer_bufferify(void)
 // Match:     c_default
 int * OWN_ReturnIntPtrDimRaw(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_raw
+    // splicer begin function.ReturnIntPtrDimRaw
     int * SHC_rv = ReturnIntPtrDimRaw(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_raw
+    // splicer end function.ReturnIntPtrDimRaw
 }
 
 // ----------------------------------------
@@ -102,10 +102,10 @@ int * OWN_ReturnIntPtrDimRaw(int * len)
 // start OWN_ReturnIntPtrDimPointer
 int * OWN_ReturnIntPtrDimPointer(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_pointer
+    // splicer begin function.ReturnIntPtrDimPointer
     int * SHC_rv = ReturnIntPtrDimPointer(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_pointer
+    // splicer end function.ReturnIntPtrDimPointer
 }
 // end OWN_ReturnIntPtrDimPointer
 
@@ -122,7 +122,7 @@ int * OWN_ReturnIntPtrDimPointer(int * len)
 void OWN_ReturnIntPtrDimPointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_dim_pointer_bufferify
+    // splicer begin function.ReturnIntPtrDimPointer_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimPointer(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -133,7 +133,7 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_dim_pointer_bufferify
+    // splicer end function.ReturnIntPtrDimPointer_bufferify
 }
 // end OWN_ReturnIntPtrDimPointer_bufferify
 
@@ -150,10 +150,10 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 // start OWN_ReturnIntPtrDimAlloc
 int * OWN_ReturnIntPtrDimAlloc(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_alloc
+    // splicer begin function.ReturnIntPtrDimAlloc
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_alloc
+    // splicer end function.ReturnIntPtrDimAlloc
 }
 // end OWN_ReturnIntPtrDimAlloc
 
@@ -169,7 +169,7 @@ int * OWN_ReturnIntPtrDimAlloc(int * len)
 // start OWN_ReturnIntPtrDimAlloc_bufferify
 void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_dim_alloc_bufferify
+    // splicer begin function.ReturnIntPtrDimAlloc_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimAlloc(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -180,7 +180,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_dim_alloc_bufferify
+    // splicer end function.ReturnIntPtrDimAlloc_bufferify
 }
 // end OWN_ReturnIntPtrDimAlloc_bufferify
 
@@ -196,10 +196,10 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc)
 // Match:     c_default
 int * OWN_ReturnIntPtrDimDefault(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_default
+    // splicer begin function.ReturnIntPtrDimDefault
     int * SHC_rv = ReturnIntPtrDimDefault(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_default
+    // splicer end function.ReturnIntPtrDimDefault
 }
 
 // ----------------------------------------
@@ -214,7 +214,7 @@ int * OWN_ReturnIntPtrDimDefault(int * len)
 void OWN_ReturnIntPtrDimDefault_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_dim_default_bufferify
+    // splicer begin function.ReturnIntPtrDimDefault_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimDefault(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -225,7 +225,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_dim_default_bufferify
+    // splicer end function.ReturnIntPtrDimDefault_bufferify
 }
 
 // ----------------------------------------
@@ -240,10 +240,10 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 // Match:     c_default
 int * OWN_ReturnIntPtrDimRawNew(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_raw_new
+    // splicer begin function.ReturnIntPtrDimRawNew
     int * SHC_rv = ReturnIntPtrDimRawNew(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_raw_new
+    // splicer end function.ReturnIntPtrDimRawNew
 }
 
 // ----------------------------------------
@@ -258,10 +258,10 @@ int * OWN_ReturnIntPtrDimRawNew(int * len)
 // Match:     c_default
 int * OWN_ReturnIntPtrDimPointerNew(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_pointer_new
+    // splicer begin function.ReturnIntPtrDimPointerNew
     int * SHC_rv = ReturnIntPtrDimPointerNew(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_pointer_new
+    // splicer end function.ReturnIntPtrDimPointerNew
 }
 
 // ----------------------------------------
@@ -276,7 +276,7 @@ int * OWN_ReturnIntPtrDimPointerNew(int * len)
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_dim_pointer_new_bufferify
+    // splicer begin function.ReturnIntPtrDimPointerNew_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -287,7 +287,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_dim_pointer_new_bufferify
+    // splicer end function.ReturnIntPtrDimPointerNew_bufferify
 }
 
 // ----------------------------------------
@@ -302,10 +302,10 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 // Match:     c_default
 int * OWN_ReturnIntPtrDimAllocNew(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_alloc_new
+    // splicer begin function.ReturnIntPtrDimAllocNew
     int * SHC_rv = ReturnIntPtrDimAllocNew(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_alloc_new
+    // splicer end function.ReturnIntPtrDimAllocNew
 }
 
 // ----------------------------------------
@@ -320,10 +320,10 @@ int * OWN_ReturnIntPtrDimAllocNew(int * len)
 // Match:     c_default
 int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 {
-    // splicer begin function.return_int_ptr_dim_default_new
+    // splicer begin function.ReturnIntPtrDimDefaultNew
     int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
     return SHC_rv;
-    // splicer end function.return_int_ptr_dim_default_new
+    // splicer end function.ReturnIntPtrDimDefaultNew
 }
 
 // ----------------------------------------
@@ -338,7 +338,7 @@ int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_dim_default_new_bufferify
+    // splicer begin function.ReturnIntPtrDimDefaultNew_bufferify
     int len;
     int * SHC_rv = ReturnIntPtrDimDefaultNew(&len);
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
@@ -349,7 +349,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = len;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_dim_default_new_bufferify
+    // splicer end function.ReturnIntPtrDimDefaultNew_bufferify
 }
 
 // ----------------------------------------
@@ -363,9 +363,9 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 // Match:     c_default
 void OWN_createClassStatic(int flag)
 {
-    // splicer begin function.create_class_static
+    // splicer begin function.createClassStatic
     createClassStatic(flag);
-    // splicer end function.create_class_static
+    // splicer end function.createClassStatic
 }
 
 // ----------------------------------------
@@ -374,12 +374,12 @@ void OWN_createClassStatic(int flag)
 // Exact:     c_function_shadow_*_capptr
 OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 {
-    // splicer begin function.get_class_static
+    // splicer begin function.getClassStatic
     Class1 * SHCXX_rv = getClassStatic();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.get_class_static
+    // splicer end function.getClassStatic
 }
 
 /**
@@ -397,12 +397,12 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // Match:     c_default
 OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
 {
-    // splicer begin function.get_class_new
+    // splicer begin function.getClassNew
     Class1 * SHCXX_rv = getClassNew(flag);
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 1;
     return SHC_rv;
-    // splicer end function.get_class_new
+    // splicer end function.getClassNew
 }
 
 }  // extern "C"

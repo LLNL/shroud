@@ -58,9 +58,9 @@ void AA_example_nested_local_function1(void)
 // Exact:     c_in_string_&
 bool AA_example_nested_isNameValid(const char * name)
 {
-    // splicer begin namespace.example::nested.function.is_name_valid
+    // splicer begin namespace.example::nested.function.isNameValid
     return name != NULL;
-    // splicer end namespace.example::nested.function.is_name_valid
+    // splicer end namespace.example::nested.function.isNameValid
 }
 
 // ----------------------------------------
@@ -75,9 +75,9 @@ bool AA_example_nested_isNameValid(const char * name)
 bool AA_example_nested_isNameValid_bufferify(char *name,
     int SHT_name_len)
 {
-    // splicer begin namespace.example::nested.function.is_name_valid_bufferify
+    // splicer begin namespace.example::nested.function.isNameValid_bufferify
     return name != NULL;
-    // splicer end namespace.example::nested.function.is_name_valid_bufferify
+    // splicer end namespace.example::nested.function.isNameValid_bufferify
 }
 
 // ----------------------------------------
@@ -87,10 +87,10 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 // Match:     c_function
 bool AA_example_nested_isInitialized(void)
 {
-    // splicer begin namespace.example::nested.function.is_initialized
+    // splicer begin namespace.example::nested.function.isInitialized
     bool SHC_rv = example::nested::isInitialized();
     return SHC_rv;
-    // splicer end namespace.example::nested.function.is_initialized
+    // splicer end namespace.example::nested.function.isInitialized
 }
 
 // ----------------------------------------
@@ -279,9 +279,9 @@ void AA_example_nested_testmpi_serial(void)
 // Match:     c_default
 void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
-    // splicer begin namespace.example::nested.function.func_ptr1
+    // splicer begin namespace.example::nested.function.FuncPtr1
     example::nested::FuncPtr1(get);
-    // splicer end namespace.example::nested.function.func_ptr1
+    // splicer end namespace.example::nested.function.FuncPtr1
 }
 
 /**
@@ -299,9 +299,9 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // Match:     c_default
 void AA_example_nested_FuncPtr2(double * ( * get)(void))
 {
-    // splicer begin namespace.example::nested.function.func_ptr2
+    // splicer begin namespace.example::nested.function.FuncPtr2
     example::nested::FuncPtr2(get);
-    // splicer end namespace.example::nested.function.func_ptr2
+    // splicer end namespace.example::nested.function.FuncPtr2
 }
 
 /**
@@ -319,9 +319,9 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // Match:     c_default
 void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 {
-    // splicer begin namespace.example::nested.function.func_ptr3
+    // splicer begin namespace.example::nested.function.FuncPtr3
     example::nested::FuncPtr3(get);
-    // splicer end namespace.example::nested.function.func_ptr3
+    // splicer end namespace.example::nested.function.FuncPtr3
 }
 
 /**
@@ -339,9 +339,9 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // Match:     c_default
 void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 {
-    // splicer begin namespace.example::nested.function.func_ptr4
+    // splicer begin namespace.example::nested.function.FuncPtr4
     example::nested::FuncPtr4(get);
-    // splicer end namespace.example::nested.function.func_ptr4
+    // splicer end namespace.example::nested.function.FuncPtr4
 }
 
 // ----------------------------------------
@@ -358,9 +358,9 @@ void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname5, int verylongname6, int verylongname7,
     int verylongname8, int verylongname9, int verylongname10))
 {
-    // splicer begin namespace.example::nested.function.func_ptr5
+    // splicer begin namespace.example::nested.function.FuncPtr5
     example::nested::FuncPtr5(get);
-    // splicer end namespace.example::nested.function.func_ptr5
+    // splicer end namespace.example::nested.function.FuncPtr5
 }
 
 // ----------------------------------------

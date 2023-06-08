@@ -50,9 +50,9 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Match:     c_function
 int STMT_GetNameLength(void)
 {
-    // splicer begin function.get_name_length
+    // splicer begin function.GetNameLength
     return getNameErrorPattern().length();
-    // splicer end function.get_name_length
+    // splicer end function.GetNameLength
 }
 
 // ----------------------------------------
@@ -62,7 +62,7 @@ int STMT_GetNameLength(void)
 // Match:     c_function_string_&
 const char * STMT_getNameErrorPattern(void)
 {
-    // splicer begin function.get_name_error_pattern
+    // splicer begin function.getNameErrorPattern
     const std::string & SHCXX_rv = getNameErrorPattern();
     // C_error_pattern
     if (! isNameValid(SHCXX_rv)) {
@@ -71,7 +71,7 @@ const char * STMT_getNameErrorPattern(void)
 
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end function.get_name_error_pattern
+    // splicer end function.getNameErrorPattern
 }
 
 // ----------------------------------------
@@ -81,7 +81,7 @@ const char * STMT_getNameErrorPattern(void)
 // Match:     c_function_string_&_buf
 void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 {
-    // splicer begin function.get_name_error_pattern_bufferify
+    // splicer begin function.getNameErrorPattern_bufferify
     const std::string & SHCXX_rv = getNameErrorPattern();
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(SHC_rv, SHT_rv_len, nullptr, 0);
@@ -89,7 +89,7 @@ void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
         ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end function.get_name_error_pattern_bufferify
+    // splicer end function.getNameErrorPattern_bufferify
 }
 
 }  // extern "C"

@@ -57,11 +57,11 @@ const char * CLA_Class2_getName(CLA_Class2 * self)
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
-    // splicer begin class.Class2.method.get_name
+    // splicer begin class.Class2.method.getName
     const std::string & SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end class.Class2.method.get_name
+    // splicer end class.Class2.method.getName
 }
 
 /**
@@ -77,10 +77,10 @@ void CLA_Class2_getName_bufferify(CLA_Class2 * self,
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
-    // splicer begin class.Class2.method.get_name_bufferify
+    // splicer begin class.Class2.method.getName_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
     ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
-    // splicer end class.Class2.method.get_name_bufferify
+    // splicer end class.Class2.method.getName_bufferify
 }
 
 }  // extern "C"

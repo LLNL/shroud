@@ -27,12 +27,12 @@ extern "C" {
 // start CLA_Singleton_getReference
 CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)
 {
-    // splicer begin class.Singleton.method.get_reference
+    // splicer begin class.Singleton.method.getReference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
     SHC_rv->addr = &SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end class.Singleton.method.get_reference
+    // splicer end class.Singleton.method.getReference
 }
 // end CLA_Singleton_getReference
 

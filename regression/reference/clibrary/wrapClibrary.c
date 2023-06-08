@@ -101,10 +101,10 @@ static void ShroudStrFree(char *src)
 // Match:     c_default
 double CLI_PassByValueMacro(int arg2)
 {
-    // splicer begin function.pass_by_value_macro
+    // splicer begin function.PassByValueMacro
     double SHC_rv = PassByValueMacro(arg2);
     return SHC_rv;
-    // splicer end function.pass_by_value_macro
+    // splicer end function.PassByValueMacro
 }
 
 // ----------------------------------------
@@ -125,10 +125,10 @@ double CLI_PassByValueMacro(int arg2)
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
-    // splicer begin function.function4a_bufferify
+    // splicer begin function.Function4a_bufferify
     char * SHCXX_rv = Function4a(arg1, arg2);
     ShroudStrCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
-    // splicer end function.function4a_bufferify
+    // splicer end function.Function4a_bufferify
 }
 
 /**
@@ -147,12 +147,12 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 // Exact:     c_inout_char_*_buf
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
-    // splicer begin function.pass_char_ptr_in_out_bufferify
+    // splicer begin function.passCharPtrInOut_bufferify
     char * SHCXX_s = ShroudStrAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHCXX_s);
     ShroudStrCopy(s, SHT_s_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
-    // splicer end function.pass_char_ptr_in_out_bufferify
+    // splicer end function.passCharPtrInOut_bufferify
 }
 
 /**
@@ -173,10 +173,10 @@ void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 // start CLI_returnOneName_bufferify
 void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
-    // splicer begin function.return_one_name_bufferify
+    // splicer begin function.returnOneName_bufferify
     returnOneName(name1);
     ShroudStrBlankFill(name1, SHT_name1_len);
-    // splicer end function.return_one_name_bufferify
+    // splicer end function.returnOneName_bufferify
 }
 // end CLI_returnOneName_bufferify
 
@@ -202,11 +202,11 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len)
 {
-    // splicer begin function.return_two_names_bufferify
+    // splicer begin function.returnTwoNames_bufferify
     returnTwoNames(name1, name2);
     ShroudStrBlankFill(name1, SHT_name1_len);
     ShroudStrBlankFill(name2, SHT_name2_len);
-    // splicer end function.return_two_names_bufferify
+    // splicer end function.returnTwoNames_bufferify
 }
 
 /**
@@ -230,10 +230,10 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
 {
-    // splicer begin function.implied_text_len_bufferify
+    // splicer begin function.ImpliedTextLen_bufferify
     ImpliedTextLen(text, ltext);
     ShroudStrBlankFill(text, SHT_text_len);
-    // splicer end function.implied_text_len_bufferify
+    // splicer end function.ImpliedTextLen_bufferify
 }
 // end CLI_ImpliedTextLen_bufferify
 
@@ -252,10 +252,10 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 // Exact:     c_out_char_*_buf
 void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
-    // splicer begin function.bind_c2_bufferify
+    // splicer begin function.bindC2_bufferify
     bindC2(outbuf);
     ShroudStrBlankFill(outbuf, SHT_outbuf_len);
-    // splicer end function.bind_c2_bufferify
+    // splicer end function.bindC2_bufferify
 }
 
 /**
@@ -282,11 +282,11 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len)
 {
-    // splicer begin function.pass_assumed_type_buf_bufferify
+    // splicer begin function.passAssumedTypeBuf_bufferify
     int SHC_rv = passAssumedTypeBuf(arg, outbuf);
     ShroudStrBlankFill(outbuf, SHT_outbuf_len);
     return SHC_rv;
-    // splicer end function.pass_assumed_type_buf_bufferify
+    // splicer end function.passAssumedTypeBuf_bufferify
 }
 
 /**

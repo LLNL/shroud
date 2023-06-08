@@ -50,11 +50,11 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // start STR_getConstStringPtrAlloc
 const char * STR_getConstStringPtrAlloc(void)
 {
-    // splicer begin function.get_const_string_ptr_alloc
+    // splicer begin function.getConstStringPtrAlloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
-    // splicer end function.get_const_string_ptr_alloc
+    // splicer end function.getConstStringPtrAlloc
 }
 // end STR_getConstStringPtrAlloc
 
@@ -66,10 +66,10 @@ const char * STR_getConstStringPtrAlloc(void)
 void STR_getConstStringPtrAlloc_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.get_const_string_ptr_alloc_bufferify
+    // splicer begin function.getConstStringPtrAlloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     ShroudStrToArray(SHT_rv_cdesc, SHCXX_rv, 0);
-    // splicer end function.get_const_string_ptr_alloc_bufferify
+    // splicer end function.getConstStringPtrAlloc_bufferify
 }
 // end STR_getConstStringPtrAlloc_bufferify
 

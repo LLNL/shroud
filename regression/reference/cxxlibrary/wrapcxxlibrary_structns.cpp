@@ -35,12 +35,12 @@ extern "C" {
 // Match:     c_inout_struct
 int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 {
-    // splicer begin namespace.structns.function.pass_struct_by_reference
+    // splicer begin namespace.structns.function.passStructByReference
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
         (static_cast<void *>(arg));
     int SHC_rv = structns::passStructByReference(*SHCXX_arg);
     return SHC_rv;
-    // splicer end namespace.structns.function.pass_struct_by_reference
+    // splicer end namespace.structns.function.passStructByReference
 }
 
 /**
@@ -58,13 +58,13 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // Match:     c_in_struct
 int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 {
-    // splicer begin namespace.structns.function.pass_struct_by_reference_in
+    // splicer begin namespace.structns.function.passStructByReferenceIn
     const structns::Cstruct1 * SHCXX_arg = 
         static_cast<const structns::Cstruct1 *>
         (static_cast<const void *>(arg));
     int SHC_rv = structns::passStructByReferenceIn(*SHCXX_arg);
     return SHC_rv;
-    // splicer end namespace.structns.function.pass_struct_by_reference_in
+    // splicer end namespace.structns.function.passStructByReferenceIn
 }
 
 // ----------------------------------------
@@ -78,11 +78,11 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // Match:     c_inout_struct
 void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 {
-    // splicer begin namespace.structns.function.pass_struct_by_reference_inout
+    // splicer begin namespace.structns.function.passStructByReferenceInout
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
         (static_cast<void *>(arg));
     structns::passStructByReferenceInout(*SHCXX_arg);
-    // splicer end namespace.structns.function.pass_struct_by_reference_inout
+    // splicer end namespace.structns.function.passStructByReferenceInout
 }
 
 // ----------------------------------------
@@ -96,11 +96,11 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // Match:     c_out_struct
 void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
 {
-    // splicer begin namespace.structns.function.pass_struct_by_reference_out
+    // splicer begin namespace.structns.function.passStructByReferenceOut
     structns::Cstruct1 * SHCXX_arg = static_cast<structns::Cstruct1 *>
         (static_cast<void *>(arg));
     structns::passStructByReferenceOut(*SHCXX_arg);
-    // splicer end namespace.structns.function.pass_struct_by_reference_out
+    // splicer end namespace.structns.function.passStructByReferenceOut
 }
 
 }  // extern "C"

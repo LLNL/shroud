@@ -184,10 +184,10 @@ int AA_example_nested_ExClass1_incrementCount(
 {
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.increment_count
+    // splicer begin namespace.example::nested.class.ExClass1.method.incrementCount
     int SHC_rv = SH_this->incrementCount(incr);
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.increment_count
+    // splicer end namespace.example::nested.class.ExClass1.method.incrementCount
 }
 
 // ----------------------------------------
@@ -200,11 +200,11 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
+    // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
+    // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck
 }
 
 // ----------------------------------------
@@ -217,10 +217,10 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
+    // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
     ShroudStrToArray(SHT_rv_cdesc, &SHCXX_rv, 0);
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
+    // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
 }
 
 // ----------------------------------------
@@ -232,11 +232,11 @@ const char * AA_example_nested_ExClass1_getNameArg(
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
+    // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
     const std::string & SHCXX_rv = SH_this->getNameArg();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
+    // splicer end namespace.example::nested.class.ExClass1.method.getNameArg
 }
 
 // ----------------------------------------
@@ -255,7 +255,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
+    // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
     const std::string & SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
         ShroudStrCopy(name, SHT_name_len, nullptr, 0);
@@ -263,7 +263,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
         ShroudStrCopy(name, SHT_name_len, SHCXX_rv.data(),
             SHCXX_rv.size());
     }
-    // splicer end namespace.example::nested.class.ExClass1.method.get_name_arg_bufferify
+    // splicer end namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
 }
 
 // ----------------------------------------
@@ -281,10 +281,10 @@ int AA_example_nested_ExClass1_getValue_from_int(
 {
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
+    // splicer begin namespace.example::nested.class.ExClass1.method.getValue_from_int
     int SHC_rv = SH_this->getValue(value);
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_value_from_int
+    // splicer end namespace.example::nested.class.ExClass1.method.getValue_from_int
 }
 
 // ----------------------------------------
@@ -302,10 +302,10 @@ long AA_example_nested_ExClass1_getValue_1(
 {
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
+    // splicer begin namespace.example::nested.class.ExClass1.method.getValue_1
     long SHC_rv = SH_this->getValue(value);
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.get_value_1
+    // splicer end namespace.example::nested.class.ExClass1.method.getValue_1
 }
 
 // ----------------------------------------
@@ -323,10 +323,10 @@ bool AA_example_nested_ExClass1_hasAddr(
 {
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+    // splicer begin namespace.example::nested.class.ExClass1.method.hasAddr
     bool SHC_rv = SH_this->hasAddr(in);
     return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.has_addr
+    // splicer end namespace.example::nested.class.ExClass1.method.hasAddr
 }
 
 // ----------------------------------------
@@ -338,9 +338,9 @@ void AA_example_nested_ExClass1_SplicerSpecial(
 {
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
-    //   splicer for SplicerSpecial
-    // splicer end namespace.example::nested.class.ExClass1.method.splicer_special
+    // splicer begin namespace.example::nested.class.ExClass1.method.SplicerSpecial
+#//   splicer for SplicerSpecial
+    // splicer end namespace.example::nested.class.ExClass1.method.SplicerSpecial
 }
 
 }  // extern "C"

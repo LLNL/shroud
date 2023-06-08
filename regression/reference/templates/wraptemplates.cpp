@@ -30,13 +30,13 @@ extern "C" {
 // Match:     c_function_shadow_scalar_capptr
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
-    // splicer begin function.return_user_type
+    // splicer begin function.returnUserType
     user<int> * SHCXX_rv = new user<int>;
     *SHCXX_rv = returnUserType();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 5;
     return SHC_rv;
-    // splicer end function.return_user_type
+    // splicer end function.returnUserType
 }
 
 /**
@@ -59,9 +59,9 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // Match:     c_default
 void TEM_FunctionTU_0(int arg1, long arg2)
 {
-    // splicer begin function.function_tu_0
+    // splicer begin function.FunctionTU_0
     FunctionTU<int, long>(arg1, arg2);
-    // splicer end function.function_tu_0
+    // splicer end function.FunctionTU_0
 }
 
 /**
@@ -84,9 +84,9 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // Match:     c_default
 void TEM_FunctionTU_1(float arg1, double arg2)
 {
-    // splicer begin function.function_tu_1
+    // splicer begin function.FunctionTU_1
     FunctionTU<float, double>(arg1, arg2);
-    // splicer end function.function_tu_1
+    // splicer end function.FunctionTU_1
 }
 
 /**
@@ -100,10 +100,10 @@ void TEM_FunctionTU_1(float arg1, double arg2)
 // Match:     c_function
 int TEM_UseImplWorker_internal_ImplWorker1(void)
 {
-    // splicer begin function.use_impl_worker_internal_ImplWorker1
+    // splicer begin function.UseImplWorker_internal_ImplWorker1
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
     return SHC_rv;
-    // splicer end function.use_impl_worker_internal_ImplWorker1
+    // splicer end function.UseImplWorker_internal_ImplWorker1
 }
 
 /**
@@ -117,10 +117,10 @@ int TEM_UseImplWorker_internal_ImplWorker1(void)
 // Match:     c_function
 int TEM_UseImplWorker_internal_ImplWorker2(void)
 {
-    // splicer begin function.use_impl_worker_internal_ImplWorker2
+    // splicer begin function.UseImplWorker_internal_ImplWorker2
     int SHC_rv = UseImplWorker<internal::ImplWorker2>();
     return SHC_rv;
-    // splicer end function.use_impl_worker_internal_ImplWorker2
+    // splicer end function.UseImplWorker_internal_ImplWorker2
 }
 
 }  // extern "C"

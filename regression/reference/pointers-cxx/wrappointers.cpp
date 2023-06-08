@@ -324,9 +324,9 @@ void POI_iota_dimension(int nvar, int * values)
 // start POI_Sum
 void POI_Sum(int len, const int * values, int * result)
 {
-    // splicer begin function.sum
+    // splicer begin function.Sum
     Sum(len, values, result);
-    // splicer end function.sum
+    // splicer end function.Sum
 }
 // end POI_Sum
 
@@ -345,9 +345,9 @@ void POI_Sum(int len, const int * values, int * result)
 // start POI_fillIntArray
 void POI_fillIntArray(int * out)
 {
-    // splicer begin function.fill_int_array
+    // splicer begin function.fillIntArray
     fillIntArray(out);
-    // splicer end function.fill_int_array
+    // splicer end function.fillIntArray
 }
 // end POI_fillIntArray
 
@@ -371,9 +371,9 @@ void POI_fillIntArray(int * out)
 // start POI_incrementIntArray
 void POI_incrementIntArray(int * array, int sizein)
 {
-    // splicer begin function.increment_int_array
+    // splicer begin function.incrementIntArray
     incrementIntArray(array, sizein);
-    // splicer end function.increment_int_array
+    // splicer end function.incrementIntArray
 }
 // end POI_incrementIntArray
 
@@ -440,10 +440,10 @@ int POI_accumulate(const int * arr, size_t len)
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
 {
-    // splicer begin function.accept_char_array_in
+    // splicer begin function.acceptCharArrayIn
     int SHC_rv = acceptCharArrayIn(names);
     return SHC_rv;
-    // splicer end function.accept_char_array_in
+    // splicer end function.acceptCharArrayIn
 }
 // end POI_acceptCharArrayIn
 
@@ -463,13 +463,13 @@ int POI_acceptCharArrayIn(char **names)
 int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len)
 {
-    // splicer begin function.accept_char_array_in_bufferify
+    // splicer begin function.acceptCharArrayIn_bufferify
     char **SHCXX_names = ShroudStrArrayAlloc(names, SHT_names_size,
         SHT_names_len);
     int SHC_rv = acceptCharArrayIn(SHCXX_names);
     ShroudStrArrayFree(SHCXX_names, SHT_names_size);
     return SHC_rv;
-    // splicer end function.accept_char_array_in_bufferify
+    // splicer end function.acceptCharArrayIn_bufferify
 }
 // end POI_acceptCharArrayIn_bufferify
 
@@ -485,9 +485,9 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
 // start POI_setGlobalInt
 void POI_setGlobalInt(int value)
 {
-    // splicer begin function.set_global_int
+    // splicer begin function.setGlobalInt
     setGlobalInt(value);
-    // splicer end function.set_global_int
+    // splicer end function.setGlobalInt
 }
 // end POI_setGlobalInt
 
@@ -502,10 +502,10 @@ void POI_setGlobalInt(int value)
 // start POI_sumFixedArray
 int POI_sumFixedArray(void)
 {
-    // splicer begin function.sum_fixed_array
+    // splicer begin function.sumFixedArray
     int SHC_rv = sumFixedArray();
     return SHC_rv;
-    // splicer end function.sum_fixed_array
+    // splicer end function.sumFixedArray
 }
 // end POI_sumFixedArray
 
@@ -521,9 +521,9 @@ int POI_sumFixedArray(void)
 // start POI_getPtrToScalar
 void POI_getPtrToScalar(int * * nitems)
 {
-    // splicer begin function.get_ptr_to_scalar
+    // splicer begin function.getPtrToScalar
     getPtrToScalar(nitems);
-    // splicer end function.get_ptr_to_scalar
+    // splicer end function.getPtrToScalar
 }
 // end POI_getPtrToScalar
 
@@ -539,7 +539,7 @@ void POI_getPtrToScalar(int * * nitems)
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
-    // splicer begin function.get_ptr_to_scalar_bufferify
+    // splicer begin function.getPtrToScalar_bufferify
     int *nitems;
     getPtrToScalar(&nitems);
     SHT_nitems_cdesc->cxx.addr  = nitems;
@@ -549,7 +549,7 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
     SHT_nitems_cdesc->elem_len = sizeof(int);
     SHT_nitems_cdesc->rank = 0;
     SHT_nitems_cdesc->size = 1;
-    // splicer end function.get_ptr_to_scalar_bufferify
+    // splicer end function.getPtrToScalar_bufferify
 }
 // end POI_getPtrToScalar_bufferify
 
@@ -568,9 +568,9 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // start POI_getPtrToFixedArray
 void POI_getPtrToFixedArray(int * * count)
 {
-    // splicer begin function.get_ptr_to_fixed_array
+    // splicer begin function.getPtrToFixedArray
     getPtrToFixedArray(count);
-    // splicer end function.get_ptr_to_fixed_array
+    // splicer end function.getPtrToFixedArray
 }
 // end POI_getPtrToFixedArray
 
@@ -589,7 +589,7 @@ void POI_getPtrToFixedArray(int * * count)
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_ptr_to_fixed_array_bufferify
+    // splicer begin function.getPtrToFixedArray_bufferify
     int *count;
     getPtrToFixedArray(&count);
     SHT_count_cdesc->cxx.addr  = count;
@@ -600,7 +600,7 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = 10;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_fixed_array_bufferify
+    // splicer end function.getPtrToFixedArray_bufferify
 }
 // end POI_getPtrToFixedArray_bufferify
 
@@ -625,9 +625,9 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // start POI_getPtrToDynamicArray
 void POI_getPtrToDynamicArray(int * * count, int * ncount)
 {
-    // splicer begin function.get_ptr_to_dynamic_array
+    // splicer begin function.getPtrToDynamicArray
     getPtrToDynamicArray(count, ncount);
-    // splicer end function.get_ptr_to_dynamic_array
+    // splicer end function.getPtrToDynamicArray
 }
 // end POI_getPtrToDynamicArray
 
@@ -652,7 +652,7 @@ void POI_getPtrToDynamicArray(int * * count, int * ncount)
 void POI_getPtrToDynamicArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_ptr_to_dynamic_array_bufferify
+    // splicer begin function.getPtrToDynamicArray_bufferify
     int *count;
     int ncount;
     getPtrToDynamicArray(&count, &ncount);
@@ -664,7 +664,7 @@ void POI_getPtrToDynamicArray_bufferify(
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_dynamic_array_bufferify
+    // splicer end function.getPtrToDynamicArray_bufferify
 }
 // end POI_getPtrToDynamicArray_bufferify
 
@@ -685,9 +685,9 @@ void POI_getPtrToDynamicArray_bufferify(
 // start POI_getPtrToFuncArray
 void POI_getPtrToFuncArray(int * * count)
 {
-    // splicer begin function.get_ptr_to_func_array
+    // splicer begin function.getPtrToFuncArray
     getPtrToFuncArray(count);
-    // splicer end function.get_ptr_to_func_array
+    // splicer end function.getPtrToFuncArray
 }
 // end POI_getPtrToFuncArray
 
@@ -708,7 +708,7 @@ void POI_getPtrToFuncArray(int * * count)
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_ptr_to_func_array_bufferify
+    // splicer begin function.getPtrToFuncArray_bufferify
     int *count;
     getPtrToFuncArray(&count);
     SHT_count_cdesc->cxx.addr  = count;
@@ -719,7 +719,7 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = getLen();
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_func_array_bufferify
+    // splicer end function.getPtrToFuncArray_bufferify
 }
 // end POI_getPtrToFuncArray_bufferify
 
@@ -735,9 +735,9 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // start POI_getPtrToConstScalar
 void POI_getPtrToConstScalar(const int * * nitems)
 {
-    // splicer begin function.get_ptr_to_const_scalar
+    // splicer begin function.getPtrToConstScalar
     getPtrToConstScalar(nitems);
-    // splicer end function.get_ptr_to_const_scalar
+    // splicer end function.getPtrToConstScalar
 }
 // end POI_getPtrToConstScalar
 
@@ -754,7 +754,7 @@ void POI_getPtrToConstScalar(const int * * nitems)
 void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
 {
-    // splicer begin function.get_ptr_to_const_scalar_bufferify
+    // splicer begin function.getPtrToConstScalar_bufferify
     const int *nitems;
     getPtrToConstScalar(&nitems);
     SHT_nitems_cdesc->cxx.addr  = const_cast<int *>(nitems);
@@ -764,7 +764,7 @@ void POI_getPtrToConstScalar_bufferify(
     SHT_nitems_cdesc->elem_len = sizeof(int);
     SHT_nitems_cdesc->rank = 0;
     SHT_nitems_cdesc->size = 1;
-    // splicer end function.get_ptr_to_const_scalar_bufferify
+    // splicer end function.getPtrToConstScalar_bufferify
 }
 // end POI_getPtrToConstScalar_bufferify
 
@@ -780,9 +780,9 @@ void POI_getPtrToConstScalar_bufferify(
 // start POI_getPtrToFixedConstArray
 void POI_getPtrToFixedConstArray(const int * * count)
 {
-    // splicer begin function.get_ptr_to_fixed_const_array
+    // splicer begin function.getPtrToFixedConstArray
     getPtrToFixedConstArray(count);
-    // splicer end function.get_ptr_to_fixed_const_array
+    // splicer end function.getPtrToFixedConstArray
 }
 // end POI_getPtrToFixedConstArray
 
@@ -799,7 +799,7 @@ void POI_getPtrToFixedConstArray(const int * * count)
 void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_ptr_to_fixed_const_array_bufferify
+    // splicer begin function.getPtrToFixedConstArray_bufferify
     const int *count;
     getPtrToFixedConstArray(&count);
     SHT_count_cdesc->cxx.addr  = const_cast<int *>(count);
@@ -810,7 +810,7 @@ void POI_getPtrToFixedConstArray_bufferify(
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = 10;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_fixed_const_array_bufferify
+    // splicer end function.getPtrToFixedConstArray_bufferify
 }
 // end POI_getPtrToFixedConstArray_bufferify
 
@@ -831,9 +831,9 @@ void POI_getPtrToFixedConstArray_bufferify(
 // start POI_getPtrToDynamicConstArray
 void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 {
-    // splicer begin function.get_ptr_to_dynamic_const_array
+    // splicer begin function.getPtrToDynamicConstArray
     getPtrToDynamicConstArray(count, ncount);
-    // splicer end function.get_ptr_to_dynamic_const_array
+    // splicer end function.getPtrToDynamicConstArray
 }
 // end POI_getPtrToDynamicConstArray
 
@@ -854,7 +854,7 @@ void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_ptr_to_dynamic_const_array_bufferify
+    // splicer begin function.getPtrToDynamicConstArray_bufferify
     const int *count;
     int ncount;
     getPtrToDynamicConstArray(&count, &ncount);
@@ -866,7 +866,7 @@ void POI_getPtrToDynamicConstArray_bufferify(
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = ncount;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_ptr_to_dynamic_const_array_bufferify
+    // splicer end function.getPtrToDynamicConstArray_bufferify
 }
 // end POI_getPtrToDynamicConstArray_bufferify
 
@@ -885,9 +885,9 @@ void POI_getPtrToDynamicConstArray_bufferify(
 // start POI_getRawPtrToScalar
 void POI_getRawPtrToScalar(int * * nitems)
 {
-    // splicer begin function.get_raw_ptr_to_scalar
+    // splicer begin function.getRawPtrToScalar
     getRawPtrToScalar(nitems);
-    // splicer end function.get_raw_ptr_to_scalar
+    // splicer end function.getRawPtrToScalar
 }
 // end POI_getRawPtrToScalar
 
@@ -906,9 +906,9 @@ void POI_getRawPtrToScalar(int * * nitems)
 // start POI_getRawPtrToScalarForce
 void POI_getRawPtrToScalarForce(int * * nitems)
 {
-    // splicer begin function.get_raw_ptr_to_scalar_force
+    // splicer begin function.getRawPtrToScalarForce
     getRawPtrToScalarForce(nitems);
-    // splicer end function.get_raw_ptr_to_scalar_force
+    // splicer end function.getRawPtrToScalarForce
 }
 // end POI_getRawPtrToScalarForce
 
@@ -929,9 +929,9 @@ void POI_getRawPtrToScalarForce(int * * nitems)
 // start POI_getRawPtrToFixedArray
 void POI_getRawPtrToFixedArray(int * * count)
 {
-    // splicer begin function.get_raw_ptr_to_fixed_array
+    // splicer begin function.getRawPtrToFixedArray
     getRawPtrToFixedArray(count);
-    // splicer end function.get_raw_ptr_to_fixed_array
+    // splicer end function.getRawPtrToFixedArray
 }
 // end POI_getRawPtrToFixedArray
 
@@ -951,9 +951,9 @@ void POI_getRawPtrToFixedArray(int * * count)
 // start POI_getRawPtrToFixedArrayForce
 void POI_getRawPtrToFixedArrayForce(int * * count)
 {
-    // splicer begin function.get_raw_ptr_to_fixed_array_force
+    // splicer begin function.getRawPtrToFixedArrayForce
     getRawPtrToFixedArrayForce(count);
-    // splicer end function.get_raw_ptr_to_fixed_array_force
+    // splicer end function.getRawPtrToFixedArrayForce
 }
 // end POI_getRawPtrToFixedArrayForce
 
@@ -972,9 +972,9 @@ void POI_getRawPtrToFixedArrayForce(int * * count)
 // start POI_getRawPtrToInt2d
 void POI_getRawPtrToInt2d(int * * * arg)
 {
-    // splicer begin function.get_raw_ptr_to_int2d
+    // splicer begin function.getRawPtrToInt2d
     getRawPtrToInt2d(arg);
-    // splicer end function.get_raw_ptr_to_int2d
+    // splicer end function.getRawPtrToInt2d
 }
 // end POI_getRawPtrToInt2d
 
@@ -993,10 +993,10 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // start POI_checkInt2d
 int POI_checkInt2d(int **arg)
 {
-    // splicer begin function.check_int2d
+    // splicer begin function.checkInt2d
     int SHC_rv = checkInt2d(arg);
     return SHC_rv;
-    // splicer end function.check_int2d
+    // splicer end function.checkInt2d
 }
 // end POI_checkInt2d
 
@@ -1016,9 +1016,9 @@ int POI_checkInt2d(int **arg)
 // start POI_DimensionIn
 void POI_DimensionIn(const int * arg)
 {
-    // splicer begin function.dimension_in
+    // splicer begin function.DimensionIn
     DimensionIn(arg);
-    // splicer end function.dimension_in
+    // splicer end function.DimensionIn
 }
 // end POI_DimensionIn
 
@@ -1037,9 +1037,9 @@ void POI_DimensionIn(const int * arg)
 // start POI_getAllocToFixedArray
 void POI_getAllocToFixedArray(int * * count)
 {
-    // splicer begin function.get_alloc_to_fixed_array
+    // splicer begin function.getAllocToFixedArray
     getAllocToFixedArray(count);
-    // splicer end function.get_alloc_to_fixed_array
+    // splicer end function.getAllocToFixedArray
 }
 // end POI_getAllocToFixedArray
 
@@ -1059,7 +1059,7 @@ void POI_getAllocToFixedArray(int * * count)
 void POI_getAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
 {
-    // splicer begin function.get_alloc_to_fixed_array_bufferify
+    // splicer begin function.getAllocToFixedArray_bufferify
     int *count;
     getAllocToFixedArray(&count);
     SHT_count_cdesc->cxx.addr  = count;
@@ -1070,7 +1070,7 @@ void POI_getAllocToFixedArray_bufferify(
     SHT_count_cdesc->rank = 1;
     SHT_count_cdesc->shape[0] = 10;
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
-    // splicer end function.get_alloc_to_fixed_array_bufferify
+    // splicer end function.getAllocToFixedArray_bufferify
 }
 // end POI_getAllocToFixedArray_bufferify
 
@@ -1087,10 +1087,10 @@ void POI_getAllocToFixedArray_bufferify(
 // start POI_returnAddress1
 void * POI_returnAddress1(int flag)
 {
-    // splicer begin function.return_address1
+    // splicer begin function.returnAddress1
     void * SHC_rv = returnAddress1(flag);
     return SHC_rv;
-    // splicer end function.return_address1
+    // splicer end function.returnAddress1
 }
 // end POI_returnAddress1
 
@@ -1107,10 +1107,10 @@ void * POI_returnAddress1(int flag)
 // start POI_returnAddress2
 void * POI_returnAddress2(int flag)
 {
-    // splicer begin function.return_address2
+    // splicer begin function.returnAddress2
     void * SHC_rv = returnAddress2(flag);
     return SHC_rv;
-    // splicer end function.return_address2
+    // splicer end function.returnAddress2
 }
 // end POI_returnAddress2
 
@@ -1125,9 +1125,9 @@ void * POI_returnAddress2(int flag)
 // start POI_fetchVoidPtr
 void POI_fetchVoidPtr(void **addr)
 {
-    // splicer begin function.fetch_void_ptr
+    // splicer begin function.fetchVoidPtr
     fetchVoidPtr(addr);
-    // splicer end function.fetch_void_ptr
+    // splicer end function.fetchVoidPtr
 }
 // end POI_fetchVoidPtr
 
@@ -1142,9 +1142,9 @@ void POI_fetchVoidPtr(void **addr)
 // start POI_updateVoidPtr
 void POI_updateVoidPtr(void **addr)
 {
-    // splicer begin function.update_void_ptr
+    // splicer begin function.updateVoidPtr
     updateVoidPtr(addr);
-    // splicer end function.update_void_ptr
+    // splicer end function.updateVoidPtr
 }
 // end POI_updateVoidPtr
 
@@ -1160,10 +1160,10 @@ void POI_updateVoidPtr(void **addr)
 // start POI_VoidPtrArray
 int POI_VoidPtrArray(void **addr)
 {
-    // splicer begin function.void_ptr_array
+    // splicer begin function.VoidPtrArray
     int SHC_rv = VoidPtrArray(addr);
     return SHC_rv;
-    // splicer end function.void_ptr_array
+    // splicer end function.VoidPtrArray
 }
 // end POI_VoidPtrArray
 
@@ -1175,10 +1175,10 @@ int POI_VoidPtrArray(void **addr)
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
-    // splicer begin function.return_int_ptr_to_scalar
+    // splicer begin function.returnIntPtrToScalar
     int * SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_scalar
+    // splicer end function.returnIntPtrToScalar
 }
 // end POI_returnIntPtrToScalar
 
@@ -1190,10 +1190,10 @@ int * POI_returnIntPtrToScalar(void)
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
-    // splicer begin function.return_int_ptr_to_scalar_bufferify
+    // splicer begin function.returnIntPtrToScalar_bufferify
     int * SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_scalar_bufferify
+    // splicer end function.returnIntPtrToScalar_bufferify
 }
 // end POI_returnIntPtrToScalar_bufferify
 
@@ -1205,10 +1205,10 @@ int * POI_returnIntPtrToScalar_bufferify(void)
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
-    // splicer begin function.return_int_ptr_to_fixed_array
+    // splicer begin function.returnIntPtrToFixedArray
     int * SHC_rv = returnIntPtrToFixedArray();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_fixed_array
+    // splicer end function.returnIntPtrToFixedArray
 }
 // end POI_returnIntPtrToFixedArray
 
@@ -1221,7 +1221,7 @@ int * POI_returnIntPtrToFixedArray(void)
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_to_fixed_array_bufferify
+    // splicer begin function.returnIntPtrToFixedArray_bufferify
     int * SHC_rv = returnIntPtrToFixedArray();
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -1231,7 +1231,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = 10;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_to_fixed_array_bufferify
+    // splicer end function.returnIntPtrToFixedArray_bufferify
 }
 // end POI_returnIntPtrToFixedArray_bufferify
 
@@ -1243,10 +1243,10 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
-    // splicer begin function.return_int_ptr_to_const_scalar
+    // splicer begin function.returnIntPtrToConstScalar
     const int * SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_const_scalar
+    // splicer end function.returnIntPtrToConstScalar
 }
 // end POI_returnIntPtrToConstScalar
 
@@ -1258,10 +1258,10 @@ const int * POI_returnIntPtrToConstScalar(void)
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
-    // splicer begin function.return_int_ptr_to_const_scalar_bufferify
+    // splicer begin function.returnIntPtrToConstScalar_bufferify
     const int * SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_const_scalar_bufferify
+    // splicer end function.returnIntPtrToConstScalar_bufferify
 }
 // end POI_returnIntPtrToConstScalar_bufferify
 
@@ -1273,10 +1273,10 @@ const int * POI_returnIntPtrToConstScalar_bufferify(void)
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
-    // splicer begin function.return_int_ptr_to_fixed_const_array
+    // splicer begin function.returnIntPtrToFixedConstArray
     const int * SHC_rv = returnIntPtrToFixedConstArray();
     return SHC_rv;
-    // splicer end function.return_int_ptr_to_fixed_const_array
+    // splicer end function.returnIntPtrToFixedConstArray
 }
 // end POI_returnIntPtrToFixedConstArray
 
@@ -1289,7 +1289,7 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
+    // splicer begin function.returnIntPtrToFixedConstArray_bufferify
     const int * SHC_rv = returnIntPtrToFixedConstArray();
     SHT_rv_cdesc->cxx.addr  = const_cast<int *>(SHC_rv);
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -1299,7 +1299,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = 10;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
+    // splicer end function.returnIntPtrToFixedConstArray_bufferify
 }
 // end POI_returnIntPtrToFixedConstArray_bufferify
 
@@ -1310,10 +1310,10 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // start POI_returnIntScalar
 int POI_returnIntScalar(void)
 {
-    // splicer begin function.return_int_scalar
+    // splicer begin function.returnIntScalar
     int * SHC_rv = returnIntScalar();
     return *SHC_rv;
-    // splicer end function.return_int_scalar
+    // splicer end function.returnIntScalar
 }
 // end POI_returnIntScalar
 
@@ -1328,10 +1328,10 @@ int POI_returnIntScalar(void)
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
-    // splicer begin function.return_int_raw
+    // splicer begin function.returnIntRaw
     int * SHC_rv = returnIntRaw();
     return SHC_rv;
-    // splicer end function.return_int_raw
+    // splicer end function.returnIntRaw
 }
 // end POI_returnIntRaw
 
@@ -1352,10 +1352,10 @@ int * POI_returnIntRaw(void)
 // start POI_returnIntRawWithArgs
 int * POI_returnIntRawWithArgs(const char * name)
 {
-    // splicer begin function.return_int_raw_with_args
+    // splicer begin function.returnIntRawWithArgs
     int * SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
-    // splicer end function.return_int_raw_with_args
+    // splicer end function.returnIntRawWithArgs
 }
 // end POI_returnIntRawWithArgs
 
@@ -1370,10 +1370,10 @@ int * POI_returnIntRawWithArgs(const char * name)
 // start POI_returnRawPtrToInt2d
 int * * POI_returnRawPtrToInt2d(void)
 {
-    // splicer begin function.return_raw_ptr_to_int2d
+    // splicer begin function.returnRawPtrToInt2d
     int * * SHC_rv = returnRawPtrToInt2d();
     return SHC_rv;
-    // splicer end function.return_raw_ptr_to_int2d
+    // splicer end function.returnRawPtrToInt2d
 }
 // end POI_returnRawPtrToInt2d
 
@@ -1385,10 +1385,10 @@ int * * POI_returnRawPtrToInt2d(void)
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {
-    // splicer begin function.return_int_alloc_to_fixed_array
+    // splicer begin function.returnIntAllocToFixedArray
     int * SHC_rv = returnIntAllocToFixedArray();
     return SHC_rv;
-    // splicer end function.return_int_alloc_to_fixed_array
+    // splicer end function.returnIntAllocToFixedArray
 }
 // end POI_returnIntAllocToFixedArray
 
@@ -1401,7 +1401,7 @@ int * POI_returnIntAllocToFixedArray(void)
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
-    // splicer begin function.return_int_alloc_to_fixed_array_bufferify
+    // splicer begin function.returnIntAllocToFixedArray_bufferify
     int * SHC_rv = returnIntAllocToFixedArray();
     SHT_rv_cdesc->cxx.addr  = SHC_rv;
     SHT_rv_cdesc->cxx.idtor = 0;
@@ -1411,7 +1411,7 @@ void POI_returnIntAllocToFixedArray_bufferify(
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = 10;
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
-    // splicer end function.return_int_alloc_to_fixed_array_bufferify
+    // splicer end function.returnIntAllocToFixedArray_bufferify
 }
 // end POI_returnIntAllocToFixedArray_bufferify
 

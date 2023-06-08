@@ -73,11 +73,11 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 // start TYP_returnBytesForIndexType
 int TYP_returnBytesForIndexType(TYP_IndexType arg)
 {
-    // splicer begin function.return_bytes_for_index_type
+    // splicer begin function.returnBytesForIndexType
     IndexType SHCXX_arg = static_cast<IndexType>(arg);
     int SHC_rv = returnBytesForIndexType(SHCXX_arg);
     return SHC_rv;
-    // splicer end function.return_bytes_for_index_type
+    // splicer end function.returnBytesForIndexType
 }
 // end TYP_returnBytesForIndexType
 

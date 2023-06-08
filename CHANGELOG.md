@@ -91,7 +91,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     ``AFunction`` was ``afunction`` now ``a_function``.
 
 ### Changed
-- Changed name of Python function splicers to use *function_name* instead of *underscore_name*.
+- Changed name of C and Python function splicers to use *function_name* instead of
+  *underscore_name*.
 - Changed default name mangling for C wrapper functions. Before it used the
   *underscore_name* format field which converted ``CamelCase`` to ``camel_case``.
   Added format field *C_name_api*, which is controlled by option *C_API_case*.

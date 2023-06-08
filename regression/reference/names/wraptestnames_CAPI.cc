@@ -24,9 +24,9 @@ extern "C" {
 // Exact:     c_subroutine
 void TES_capi_worker1(void)
 {
-    // splicer begin namespace.CAPI.function.worker1
+    // splicer begin namespace.CAPI.function.Worker1
     CAPI::Worker1();
-    // splicer end namespace.CAPI.function.worker1
+    // splicer end namespace.CAPI.function.Worker1
 }
 
 }  // extern "C"

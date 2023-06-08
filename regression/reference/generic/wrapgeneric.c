@@ -37,10 +37,10 @@
 // Match:     c_default
 int GEN_SumValues_0d(const int * values, int nvalues)
 {
-    // splicer begin function.sum_values_0d
+    // splicer begin function.SumValues_0d
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.sum_values_0d
+    // splicer end function.SumValues_0d
 }
 
 /**
@@ -64,10 +64,10 @@ int GEN_SumValues_0d(const int * values, int nvalues)
 // Match:     c_default
 int GEN_SumValues_1d(const int * values, int nvalues)
 {
-    // splicer begin function.sum_values_1d
+    // splicer begin function.SumValues_1d
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.sum_values_1d
+    // splicer end function.SumValues_1d
 }
 
 /**
@@ -91,10 +91,10 @@ int GEN_SumValues_1d(const int * values, int nvalues)
 // Match:     c_default
 int GEN_SumValues_2d(const int * values, int nvalues)
 {
-    // splicer begin function.sum_values_2d
+    // splicer begin function.SumValues_2d
     int SHC_rv = SumValues(values, nvalues);
     return SHC_rv;
-    // splicer end function.sum_values_2d
+    // splicer end function.SumValues_2d
 }
 
 /**
@@ -128,9 +128,9 @@ int GEN_SumValues_2d(const int * values, int nvalues)
 void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
     int nto)
 {
-    // splicer begin function.assign_values_scalar
+    // splicer begin function.AssignValues_scalar
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.assign_values_scalar
+    // splicer end function.AssignValues_scalar
 }
 
 /**
@@ -164,9 +164,9 @@ void GEN_AssignValues_scalar(const int * from, int nfrom, int * to,
 void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
     int nto)
 {
-    // splicer begin function.assign_values_broadcast
+    // splicer begin function.AssignValues_broadcast
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.assign_values_broadcast
+    // splicer end function.AssignValues_broadcast
 }
 
 /**
@@ -200,9 +200,9 @@ void GEN_AssignValues_broadcast(const int * from, int nfrom, int * to,
 void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
     int nto)
 {
-    // splicer begin function.assign_values_copy
+    // splicer begin function.AssignValues_copy
     AssignValues(from, nfrom, to, nto);
-    // splicer end function.assign_values_copy
+    // splicer end function.AssignValues_copy
 }
 
 #if 1
@@ -227,9 +227,9 @@ void GEN_AssignValues_copy(const int * from, int nfrom, int * to,
 // Match:     c_default
 void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 {
-    // splicer begin function.save_pointer_float1d
+    // splicer begin function.SavePointer_float1d
     SavePointer(addr, type, size);
-    // splicer end function.save_pointer_float1d
+    // splicer end function.SavePointer_float1d
 }
 #endif  // if 1
 
@@ -255,9 +255,9 @@ void GEN_SavePointer_float1d(float * addr, int type, size_t size)
 // Match:     c_default
 void GEN_SavePointer_float2d(float * addr, int type, size_t size)
 {
-    // splicer begin function.save_pointer_float2d
+    // splicer begin function.SavePointer_float2d
     SavePointer(addr, type, size);
-    // splicer end function.save_pointer_float2d
+    // splicer end function.SavePointer_float2d
 }
 #endif  // if 1
 
@@ -282,12 +282,12 @@ void GEN_SavePointer_float2d(float * addr, int type, size_t size)
 // Match:     c_default
 void GEN_SavePointer2(void * addr, int type, size_t size)
 {
-    // splicer begin function.save_pointer2
+    // splicer begin function.SavePointer2
     // Test adding a blank line below.
 
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    // splicer end function.save_pointer2
+    // splicer end function.SavePointer2
 }
 
 // ----------------------------------------
@@ -311,12 +311,12 @@ void GEN_SavePointer2(void * addr, int type, size_t size)
 // Match:     c_default
 void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 {
-    // splicer begin function.save_pointer2_float1d
+    // splicer begin function.SavePointer2_float1d
     // Test adding a blank line below.
 
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    // splicer end function.save_pointer2_float1d
+    // splicer end function.SavePointer2_float1d
 }
 
 // ----------------------------------------
@@ -340,12 +340,12 @@ void GEN_SavePointer2_float1d(float * addr, int type, size_t size)
 // Match:     c_default
 void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
 {
-    // splicer begin function.save_pointer2_float2d
+    // splicer begin function.SavePointer2_float2d
     // Test adding a blank line below.
 
     type = convert_type(type);
     SavePointer2(addr, type, size);
-    // splicer end function.save_pointer2_float2d
+    // splicer end function.SavePointer2_float2d
 }
 
 #if 0
@@ -369,7 +369,7 @@ void GEN_SavePointer2_float2d(float * addr, int type, size_t size)
 void GEN_GetPointerAsPointer_float1d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
 {
-    // splicer begin function.get_pointer_as_pointer_float1d_bufferify
+    // splicer begin function.GetPointerAsPointer_float1d_bufferify
     float *addr;
     int type;
     size_t size;
@@ -381,7 +381,7 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
     SHT_addr_cdesc->elem_len = sizeof(float);
     SHT_addr_cdesc->rank = 0;
     SHT_addr_cdesc->size = 1;
-    // splicer end function.get_pointer_as_pointer_float1d_bufferify
+    // splicer end function.GetPointerAsPointer_float1d_bufferify
 }
 #endif  // if 0
 
@@ -406,7 +406,7 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
 void GEN_GetPointerAsPointer_float2d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
 {
-    // splicer begin function.get_pointer_as_pointer_float2d_bufferify
+    // splicer begin function.GetPointerAsPointer_float2d_bufferify
     float *addr;
     int type;
     size_t size;
@@ -418,7 +418,7 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
     SHT_addr_cdesc->elem_len = sizeof(float);
     SHT_addr_cdesc->rank = 0;
     SHT_addr_cdesc->size = 1;
-    // splicer end function.get_pointer_as_pointer_float2d_bufferify
+    // splicer end function.GetPointerAsPointer_float2d_bufferify
 }
 #endif  // if 0
 
@@ -428,12 +428,12 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
 // Exact:     c_function_shadow_*_capptr
 GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 {
-    // splicer begin function.create_struct_as_class
+    // splicer begin function.CreateStructAsClass
     StructAsClass * SHCXX_rv = CreateStructAsClass();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end function.create_struct_as_class
+    // splicer end function.CreateStructAsClass
 }
 
 // ----------------------------------------
@@ -452,11 +452,11 @@ GEN_StructAsClass * GEN_CreateStructAsClass(GEN_StructAsClass * SHC_rv)
 // Match:     c_default
 long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 {
-    // splicer begin function.update_struct_as_class
+    // splicer begin function.UpdateStructAsClass
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
     return SHC_rv;
-    // splicer end function.update_struct_as_class
+    // splicer end function.UpdateStructAsClass
 }
 
 // ----------------------------------------
@@ -475,11 +475,11 @@ long GEN_UpdateStructAsClass(GEN_StructAsClass * arg, long inew)
 // Match:     c_default
 long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 {
-    // splicer begin function.update_struct_as_class_int
+    // splicer begin function.UpdateStructAsClass_int
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
     return SHC_rv;
-    // splicer end function.update_struct_as_class_int
+    // splicer end function.UpdateStructAsClass_int
 }
 
 // ----------------------------------------
@@ -498,9 +498,9 @@ long GEN_UpdateStructAsClass_int(GEN_StructAsClass * arg, int inew)
 // Match:     c_default
 long GEN_UpdateStructAsClass_long(GEN_StructAsClass * arg, long inew)
 {
-    // splicer begin function.update_struct_as_class_long
+    // splicer begin function.UpdateStructAsClass_long
     StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
     return SHC_rv;
-    // splicer end function.update_struct_as_class_long
+    // splicer end function.UpdateStructAsClass_long
 }

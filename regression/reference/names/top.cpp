@@ -94,9 +94,9 @@ static void ShroudStrFree(char *src)
 // Match:     c_default
 void TES_getName(char * name)
 {
-    // splicer begin function.get_name
+    // splicer begin function.getName
     getName(name);
-    // splicer end function.get_name
+    // splicer end function.getName
 }
 
 // ----------------------------------------
@@ -109,12 +109,12 @@ void TES_getName(char * name)
 // Exact:     c_inout_char_*_buf
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
-    // splicer begin function.get_name_bufferify
+    // splicer begin function.getName_bufferify
     char * ARG_name = ShroudStrAlloc(name, SHT_name_len, 0);
     getName(ARG_name);
     ShroudStrCopy(name, SHT_name_len, ARG_name, -1);
     ShroudStrFree(ARG_name);
-    // splicer end function.get_name_bufferify
+    // splicer end function.getName_bufferify
 }
 
 // ----------------------------------------
@@ -236,10 +236,10 @@ void YYY_TES_fiveplus(void)
 // Match:     c_default
 void TES_TestMultilineSplicer(char * name, int * value)
 {
-    // splicer begin function.test_multiline_splicer
+    // splicer begin function.TestMultilineSplicer
     // line 1
     // line 2
-    // splicer end function.test_multiline_splicer
+    // splicer end function.TestMultilineSplicer
 }
 
 /**
@@ -261,10 +261,10 @@ void TES_TestMultilineSplicer(char * name, int * value)
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
-    // splicer begin function.test_multiline_splicer_bufferify
+    // splicer begin function.TestMultilineSplicer_bufferify
     // buf line 1
     // buf line 2
-    // splicer end function.test_multiline_splicer_bufferify
+    // splicer end function.TestMultilineSplicer_bufferify
 }
 
 /**
@@ -287,9 +287,9 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // Match:     c_default
 void c_name_instantiation1(int arg1, long arg2)
 {
-    // splicer begin function.function_tu_0
+    // splicer begin function.FunctionTU_0
     FunctionTU<int, long>(arg1, arg2);
-    // splicer end function.function_tu_0
+    // splicer end function.FunctionTU_0
 }
 
 /**
@@ -312,9 +312,9 @@ void c_name_instantiation1(int arg1, long arg2)
 // Match:     c_default
 void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
-    // splicer begin function.function_tu_instantiation2
+    // splicer begin function.FunctionTU_instantiation2
     FunctionTU<float, double>(arg1, arg2);
-    // splicer end function.function_tu_instantiation2
+    // splicer end function.FunctionTU_instantiation2
 }
 
 /**
@@ -328,10 +328,10 @@ void TES_FunctionTU_instantiation2(float arg1, double arg2)
 // Match:     c_function
 int TES_UseImplWorker_instantiation3(void)
 {
-    // splicer begin function.use_impl_worker_instantiation3
+    // splicer begin function.UseImplWorker_instantiation3
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();
     return SHC_rv;
-    // splicer end function.use_impl_worker_instantiation3
+    // splicer end function.UseImplWorker_instantiation3
 }
 
 // ----------------------------------------
@@ -345,12 +345,12 @@ int TES_UseImplWorker_instantiation3(void)
 // Exact:     c_in_shadow_*
 int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
-    // splicer begin function.cstruct_as_class_sum
+    // splicer begin function.Cstruct_as_class_sum
     const Cstruct_as_class * ARG_point =
         static_cast<const Cstruct_as_class *>(point->addr);
     int SHC_rv = Cstruct_as_class_sum(ARG_point);
     return SHC_rv;
-    // splicer end function.cstruct_as_class_sum
+    // splicer end function.Cstruct_as_class_sum
 }
 
 // ----------------------------------------
