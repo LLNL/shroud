@@ -1023,12 +1023,17 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.scope_file = self.parent.scope_file + [self.name]
 
         self.user_fmt = format
-        self.default_format(parent, format, skip)
+        self.default_format(parent, skip)
 
     #####
 
-    def default_format(self, parent, format, skip=False):
-        """Set format dictionary."""
+    def default_format(self, parent, skip=False):
+        """Set format dictionary.
+
+        Parameters
+        ----------
+        skip : Skip adding to name_scope.
+        """
 
         options = self.options
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1037,14 +1042,22 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
+        fmt_ns.C_name_api = self.apply_C_API_option(self.name)
+        fmt_ns.F_name_api = self.apply_F_API_option(self.name)
+
+        if self.user_fmt:
+            fmt_ns.update(self.user_fmt, replace=True)
+
         if not skip:
-            fmt_ns.C_name_scope = (
-                parent.fmtdict.C_name_scope + self.apply_C_API_option(self.name) + "_"
-            )
-            if options.flatten_namespace or options.F_flatten_namespace:
-                fmt_ns.F_name_scope = (
-                    parent.fmtdict.F_name_scope + self.name.lower() + "_"
+            if fmt_ns.C_name_api:
+                fmt_ns.C_name_scope = (
+                    parent.fmtdict.C_name_scope + fmt_ns.C_name_api + "_"
                 )
+            if fmt_ns.F_name_api:
+                if options.flatten_namespace or options.F_flatten_namespace:
+                    fmt_ns.F_name_scope = (
+                        parent.fmtdict.F_name_scope + fmt_ns.F_name_api + "_"
+                    )
         fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
@@ -1062,9 +1075,6 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.eval_template("F_impl_filename", "_namespace")
             self.eval_template("F_module_name", "_namespace")
         fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
-
-        if format:
-            fmt_ns.update(format, replace=True)
 
         # If user changes PY_module_name, reflect change in PY_module_scope.
         if not skip:
@@ -1242,8 +1252,6 @@ class ClassNode(AstNode, NamespaceMixin):
 #            namespace_scope=self.parent.fmtdict.namespace_scope + name_api + "::",
 
             # The scope for things in the class.
-            C_name_scope=self.parent.fmtdict.C_name_scope + self.apply_C_API_option(name_api) + "_",
-            F_name_scope=self.parent.fmtdict.F_name_scope + self.apply_F_API_option(name_api) + "_",
             file_scope="_".join(self.scope_file[1:]),
         ))
 
@@ -1263,6 +1271,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_impl_filename", "_class")
 
         self.eval_template("F_derived_name")
+
+        fmt = self.fmtdict
+        fmt.C_name_scope = self.parent.fmtdict.C_name_scope + fmt.C_name_api + "_"
+        fmt.F_name_scope = self.parent.fmtdict.F_name_scope + fmt.F_name_api + "_"
         
         # As PyArray_Descr
         if self.parse_keyword == "struct":

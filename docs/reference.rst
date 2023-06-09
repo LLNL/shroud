@@ -222,8 +222,11 @@ Options
 -------
 
 C_API_case
-   Control case of *C_name_scope*.
+   Controls mangling of C++ library names to C names
+   via the format field *C_name_api*.
    Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+   Defaults to *preserve* and will be combined with *C_prefix*.
+   For example, **C_name_template** includes ``{C_prefix}{C_name_scope}{C_name_api}``.
 
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
@@ -333,8 +336,13 @@ doxygen
   If True, create doxygen comments.
 
 F_API_case
-   Control mangling of C++ library names to Fortran names.
+   Controls mangling of C++ library names to Fortran names
+   via the format field *F_name_api*.
    Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+   Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
+   Since Fortran is case insensitive, users are not required to
+   respect the case of the C++ name.  Using *underscore* makes the
+   names easier to read regardless of the case.
 
 F_assumed_rank_min
   Minimum rank of argument with assumed-rank.
@@ -458,6 +466,12 @@ literalinclude2
   Each Fortran interface will be encluded in its own ``interface`` block.
   This is to provide the interface context when code is added to the
   documentation.
+
+LUA_API_case
+  Controls mangling of C++ library names to Lua names
+  via the format field *LUA_name_api*.
+  Possible values are *lower*, *upper*, *underscore*, or *preserve*.
+  Defaults to *preserve*.
 
 PY_create_generic
   Controls creation of a multi-dispatch function with
@@ -840,17 +854,24 @@ C_memory_dtor_function
 
 C_name_api
     Root name that is used to create various names in the C API.
-    Controlled by the **C_API_case** option with values
+    Defaulted by the **C_API_case** option with values
     *lower*, *upper*, *underscore*, or *preserve*.
+    If set explicitly then **C_API_case** will have no effect.
+
+    May be blank for namespaces to avoid adding the name to
+    *C_name_scope*.
 
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
-    Used with creating names in C.
+    Used to 'flatten' nested C++ names into global C identifiers.
     Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
+    For example, **C_name_template** includes ``{C_prefix}{C_name_scope}{C_name_api}``.
 
     *C_name_scope* will replace *class_name* with the instantiated *class_name*.
     which will contain a template arguments.
+
+    This is a computed using *C_name_api* and should not be set explicitly.
 
 C_result
     The name of the C wrapper's result variable.
@@ -937,7 +958,6 @@ F_name_api
     Root name that is used to create various names in the Fortran API.
     Controlled by the **F_API_case** option with values
     *lower*, *upper*, *underscore* or *preserve*.
-    Defaults to *underscore* to convert ``CamelCase`` to ``camel_case``.
     Used with options **templates F_C_name_template**, **F_name_impl_template**,
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
@@ -949,6 +969,8 @@ F_name_scope
     Ends with trailing underscore to allow the next scope to be appended.
     Does not include toplevel *namespace*.
 
+    This is a computed using *F_name_api* and should not be set explicitly.
+    
 F_impl_filename
     Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
@@ -1001,6 +1023,12 @@ LUA_impl_filename_suffix
 LUA_module_name
     Name of Lua module for library.
     ``{library_lower}``
+
+LUA_name_api
+    Root name that is used to create various names in the Lua API.
+    Defaulted by the **LUA_API_case** option with values
+    *lower*, *upper*, *underscore*, or *preserve*.
+    If set explicitly then **LUA_API_case** will have no effect.
 
 LUA_prefix
     Prefix added to Lua wrapper functions.

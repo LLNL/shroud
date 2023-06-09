@@ -9,6 +9,8 @@ Wrote wrapCAPI_Class1.hh
 Wrote wrapCAPI_Class1.cc
 Wrote wraptestnames_CAPI.hh
 Wrote wraptestnames_CAPI.cc
+Wrote wraptestnames_CAPI2.hh
+Wrote wraptestnames_CAPI2.cc
 Wrote wrapNames2.cc
 Wrote top.h
 Wrote top.cpp
@@ -18,6 +20,7 @@ Wrote wrapftestnames_ns1.F
 Wrote wrapftestnames_internal.F
 Wrote wrapftestnames_std.F
 Wrote wrapftestnames_CAPI.F
+Wrote wrapftestnames_CAPI2.F
 Wrote top.f
 Wrote utiltestnames.cc
 Wrote typestestnames.hh

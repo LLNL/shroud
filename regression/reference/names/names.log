@@ -23,6 +23,9 @@ Close wrapCAPI_Class1.cc
 C void Worker1(void)  +intent(subroutine)
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
+C void Worker1(void)  +intent(subroutine)
+Close wraptestnames_CAPI2.hh
+Close wraptestnames_CAPI2.cc
 class Names2
 Close wrapNames2.cc
 class twoTs<int, long>
@@ -105,6 +108,9 @@ C-interface void Member1(void)  +intent(subroutine)
 Fortran void Worker1(void)  +intent(subroutine)
 C-interface void Worker1(void)  +intent(subroutine)
 Close wrapftestnames_CAPI.F
+Fortran void Worker1(void)  +intent(subroutine)
+C-interface void Worker1(void)  +intent(subroutine)
+Close wrapftestnames_CAPI2.F
 Close top.f
 Close utiltestnames.cc
 Close typestestnames.hh

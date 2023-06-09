@@ -20,7 +20,7 @@ declarations:
 - decl: namespace std
   format:
     # Do not put 'std' into names
-    C_name_scope: ""
+    C_name_api: ""
     PY_module_scope: templates
   declarations:
   - decl: template<typename T> class vector

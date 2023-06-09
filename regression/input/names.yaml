@@ -223,7 +223,17 @@ declarations:
   - decl: class Class1
     declarations:
     - decl: void Member1()
-    
+
+- decl: namespace CAPI2
+  options:
+    wrap_python: False
+  format:
+    C_name_api: CAPItwo
+    F_name_api: FAPItwo
+  declarations:
+  - decl: void Worker1()
+
+
 ########################################
 # Copied from templates.yaml
 - decl: template<typename T> int UseImplWorker()

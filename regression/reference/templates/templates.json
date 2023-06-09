@@ -4357,7 +4357,7 @@
                     "std"
                 ],
                 "user_fmt": {
-                    "C_name_scope": "",
+                    "C_name_api": "",
                     "PY_module_scope": "templates"
                 },
                 "wrap": {
@@ -4369,9 +4369,10 @@
                     "CXX_this_call": "std::",
                     "C_header_filename": "wraptemplates_std.h",
                     "C_impl_filename": "wraptemplates_std.cpp",
-                    "C_name_scope": "",
+                    "C_name_api": "",
                     "F_impl_filename": "wrapftemplates_std.f",
                     "F_module_name": "templates_std_mod",
+                    "F_name_api": "std",
                     "LUA_this_call": "std::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytemplates_stdmodule.cpp",
@@ -4486,9 +4487,11 @@
                     "CXX_this_call": "internal::",
                     "C_header_filename": "wraptemplates_internal.h",
                     "C_impl_filename": "wraptemplates_internal.cpp",
+                    "C_name_api": "internal",
                     "C_name_scope": "internal_",
                     "F_impl_filename": "wrapftemplates_internal.f",
                     "F_module_name": "templates_internal_mod",
+                    "F_name_api": "internal",
                     "LUA_this_call": "internal::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pytemplates_internalmodule.cpp",
